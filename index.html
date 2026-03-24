@@ -560,6 +560,24 @@ nav .lang-switch { font-size: 12px; white-space: nowrap; }
 }
 .message-text blockquote strong { color: var(--tw-black); font-weight: 700; }
 
+/* ===== 09b: DIRECTOR ===== */
+.director { padding: 120px 0; background: var(--tw-paper); }
+.director .container {
+  display: grid; grid-template-columns: 30% 1fr; gap: 80px; align-items: start;
+}
+.director-photo {
+  aspect-ratio: 1/1; background: rgba(0,94,255,.04);
+  border-radius: 12px; overflow: hidden;
+  border: 1px solid rgba(0,94,255,.08);
+}
+.director-text h2 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+.director-text .role { font-size: 14px; color: var(--tw-slate); margin-bottom: 32px; line-height: 1.8; }
+.director-text blockquote {
+  font-size: 16px; line-height: 2.2; color: var(--tw-slate);
+  border: none; padding: 0; margin: 0;
+}
+.director-text blockquote strong { color: var(--tw-black); font-weight: 700; }
+
 /* ===== 10: FAQ ===== */
 .faq { padding: 120px 0; background: #fff; }
 .faq h2 {
@@ -672,6 +690,8 @@ footer .copyright {
   .flow-step::after { display: none; }
   .message .container { grid-template-columns: 1fr; }
   .message-photo { max-width: 300px; }
+  .director .container { grid-template-columns: 1fr; }
+  .director-photo { max-width: 300px; }
   footer .footer-inner { grid-template-columns: 1fr; gap: 32px; }
 }
 @media (max-width: 640px) {
@@ -1094,6 +1114,26 @@ footer .copyright {
         原因はシンプルです。<br>社内の業務知識、判断基準、暗黙のルール ── いわば「コンテキスト」が、AIに渡せる形で整理されていないのです。<br><br>
         <strong>私たちはこの「コンテキスト整理」を専門とし、上場企業を含む37社・2,500名のご支援を重ねてまいりました。</strong><br><br>
         AIツールを販売する会社ではありません。<br>貴社の業務が、AIによって本質的に変わる ── その状態をつくることが、私たちの仕事です。
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 09b: DIRECTOR ===== -->
+<section class="director">
+  <div class="container">
+    <div class="director-photo"><img src="assets/director-yamamoto.jpg" alt="山本敏行 - TechWorker取締役" style="width:100%;height:100%;object-fit:cover;border-radius:12px;"></div>
+    <div class="director-text">
+      <span class="label">Director</span>
+      <h2>山本 敏行</h2>
+      <p class="role">株式会社TechWorker 取締役<br>Chatwork株式会社 創業者 / Power Angels CEO / 日本エンジェル投資家協会 代表理事</p>
+      <blockquote>
+        私はChatworkというITツールを創業し、非IT業界に届けることに挑みました。<br>
+        2018年にCEOを共同創業者の弟に譲り、翌2019年に東証マザーズへ上場。時価総額は550億円を超えました。<br><br>
+        その経験を通じて確信したことがあります。<br>
+        <strong>テクノロジーがどれだけ優れていても、現場の業務文脈とつなぐ存在がいなければ、企業の中で使われることはありません。</strong><br><br>
+        今、生成AIという新たなテクノロジーで同じことが起きています。<br>
+        TechWorkerは、その翻訳者として日本企業のAI活用を進めていきます。
       </blockquote>
     </div>
   </div>
