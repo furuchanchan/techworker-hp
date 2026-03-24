@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>個人情報保護方針 | 株式会社TechWorker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Noto+Sans+JP:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+/* ===== TOKENS ===== */
+:root {
+  --tw-black: #0D1117;
+  --tw-paper: #F4F6F9;
+  --tw-electric: #005EFF;
+  --tw-electric-dark: #003DAA;
+  --tw-slate: #3C4B64;
+  --tw-emerald: #00B894;
+  --tw-violet: #7C3AED;
+}
+
+/* ===== RESET ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body {
+  font-family: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
+  background: var(--tw-paper);
+  color: var(--tw-black);
+  line-height: 1.7;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ===== UTILITIES ===== */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 40px; width: 100%; }
+.label {
+  font-size: 11px; font-weight: 600; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--tw-electric);
+  margin-bottom: 16px; display: block;
+}
+
+/* ===== NAV ===== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(244,246,249,.92); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,94,255,.08);
+  padding: 0 40px; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+nav .logo { font-size: 18px; font-weight: 800; color: var(--tw-black); text-decoration: none; }
+nav .logo span { color: var(--tw-electric); }
+nav ul { list-style: none; display: flex; gap: 32px; }
+nav ul a {
+  font-size: 13px; font-weight: 600; color: var(--tw-slate);
+  text-decoration: none; letter-spacing: .5px; transition: color .2s;
+}
+nav ul a:hover { color: var(--tw-electric); }
+nav .nav-cta {
+  font-size: 13px; font-weight: 700; padding: 8px 24px;
+  background: var(--tw-electric); color: var(--tw-paper);
+  border-radius: 5px; text-decoration: none; transition: background .2s;
+}
+nav .nav-cta:hover { background: var(--tw-electric-dark); }
+
+/* ===== PAGE HEADER ===== */
+.page-header {
+  padding: 140px 0 60px;
+  background: #fff;
+  border-bottom: 1px solid rgba(0,94,255,.06);
+}
+.page-header h1 {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.page-header .subtitle {
+  font-size: 14px;
+  color: var(--tw-slate);
+}
+
+/* ===== POLICY CONTENT ===== */
+.policy {
+  padding: 80px 0 120px;
+}
+.policy-inner {
+  max-width: 800px;
+}
+.policy-date {
+  font-size: 13px;
+  color: var(--tw-slate);
+  margin-bottom: 40px;
+  font-weight: 600;
+}
+.policy-intro {
+  font-size: 15px;
+  line-height: 2;
+  color: var(--tw-slate);
+  margin-bottom: 60px;
+}
+.policy h2 {
+  font-size: 20px;
+  font-weight: 800;
+  margin-top: 48px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--tw-electric);
+  display: inline-block;
+}
+.policy h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+.policy p {
+  font-size: 15px;
+  line-height: 2;
+  color: var(--tw-slate);
+  margin-bottom: 16px;
+}
+.policy ul, .policy ol {
+  margin: 12px 0 16px 24px;
+  font-size: 15px;
+  line-height: 2;
+  color: var(--tw-slate);
+}
+.policy li {
+  margin-bottom: 4px;
+}
+.policy .contact-info {
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px;
+  border: 1px solid rgba(0,94,255,.06);
+  margin-top: 16px;
+}
+.policy .contact-info p {
+  margin-bottom: 4px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  padding: 60px 0 40px;
+  background: #fff;
+  border-top: 1px solid rgba(0,94,255,.06);
+}
+footer .footer-inner {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px;
+  align-items: start;
+}
+footer .footer-brand .logo { font-size: 18px; font-weight: 800; margin-bottom: 12px; color: var(--tw-black); }
+footer .footer-brand .logo span { color: var(--tw-electric); }
+footer .footer-brand p { font-size: 13px; color: var(--tw-slate); line-height: 1.7; }
+footer .footer-col h4 {
+  font-size: 12px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--tw-slate); opacity: .5; margin-bottom: 16px;
+}
+footer .footer-col a {
+  display: block; font-size: 13px; color: var(--tw-slate);
+  text-decoration: none; margin-bottom: 10px; transition: color .2s;
+}
+footer .footer-col a:hover { color: var(--tw-electric); }
+footer .footer-col p {
+  font-size: 13px; color: var(--tw-slate); line-height: 1.7;
+}
+footer .copyright {
+  text-align: center; margin-top: 40px; padding-top: 24px;
+  border-top: 1px solid rgba(0,94,255,.06);
+  font-size: 12px; color: var(--tw-slate); opacity: .4;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  footer .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+}
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  nav { padding: 0 20px; }
+  nav ul { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <a href="index.html" class="logo">Tech<span>Worker</span></a>
+  <ul>
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="news.html">NEWS</a></li>
+    <li><a href="index.html#results">実績</a></li>
+    <li><a href="company.html">会社概要</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">お問い合わせ</a>
+</nav>
+
+<!-- ===== PAGE HEADER ===== -->
+<section class="page-header">
+  <div class="container">
+    <span class="label">Privacy Policy</span>
+    <h1>個人情報保護方針</h1>
+    <p class="subtitle">株式会社TechWorker（以下「当社」）は、個人情報の重要性を認識し、以下の方針に基づき適切に取り扱います。</p>
+  </div>
+</section>
+
+<!-- ===== POLICY CONTENT ===== -->
+<section class="policy">
+  <div class="container">
+    <div class="policy-inner">
+
+      <p class="policy-date">制定日: 2026年3月23日</p>
+
+      <p class="policy-intro">
+        株式会社TechWorker（以下「当社」といいます）は、お客様の個人情報の保護を重要な経営課題として位置づけ、個人情報の保護に関する法律（以下「個人情報保護法」）その他の関連法令・ガイドラインを遵守し、以下のとおり個人情報保護方針を定め、適切な取り扱いと保護に努めてまいります。
+      </p>
+
+      <h2>1. 個人情報の定義</h2>
+      <p>
+        本方針において「個人情報」とは、個人情報保護法に定義される個人情報を指し、生存する個人に関する情報であって、当該情報に含まれる氏名、生年月日、住所、電話番号、メールアドレスその他の記述により、特定の個人を識別できるもの（他の情報と容易に照合することができ、それにより特定の個人を識別することができるものを含みます）をいいます。
+      </p>
+
+      <h2>2. 個人情報の収集</h2>
+      <p>当社は、以下の場合に個人情報を取得することがあります。</p>
+      <ul>
+        <li>お問い合わせフォームからのご連絡をいただいた場合</li>
+        <li>資料請求のお申し込みをいただいた場合</li>
+        <li>無料相談のお申し込みをいただいた場合</li>
+        <li>セミナー・ウェビナーへお申し込みいただいた場合</li>
+        <li>業務委託契約等のお取引に際してご提供いただいた場合</li>
+        <li>名刺交換その他の方法でご提供いただいた場合</li>
+      </ul>
+      <p>当社は、適法かつ公正な手段により個人情報を取得し、不正な手段による取得は行いません。</p>
+
+      <h2>3. 利用目的</h2>
+      <p>当社は、取得した個人情報を以下の目的で利用いたします。</p>
+      <ul>
+        <li>お問い合わせへの回答およびご連絡のため</li>
+        <li>資料の送付のため</li>
+        <li>当社サービスに関するご案内・ご提案のため</li>
+        <li>セミナー・ウェビナー等のイベントに関するご案内のため</li>
+        <li>業務委託契約その他のお取引に関する業務遂行のため</li>
+        <li>サービスの改善および新サービスの開発のため</li>
+        <li>当社ウェブサイトの利用状況の分析・改善のため</li>
+        <li>その他、上記に付随する業務のため</li>
+      </ul>
+
+      <h2>4. 第三者提供の制限</h2>
+      <p>当社は、以下の場合を除き、お客様の同意なく個人情報を第三者に提供いたしません。</p>
+      <ul>
+        <li>法令に基づく場合</li>
+        <li>人の生命、身体または財産の保護のために必要がある場合であって、本人の同意を得ることが困難な場合</li>
+        <li>公衆衛生の向上または児童の健全な育成の推進のために特に必要がある場合であって、本人の同意を得ることが困難な場合</li>
+        <li>国の機関もしくは地方公共団体またはその委託を受けた者が法令の定める事務を遂行することに対して協力する必要がある場合</li>
+      </ul>
+
+      <h2>5. 個人情報の管理</h2>
+      <p>
+        当社は、お客様の個人情報を正確かつ最新の状態に保つとともに、個人情報への不正アクセス、個人情報の紛失、破壊、改ざんおよび漏洩等を防止するため、合理的なセキュリティ対策を講じ、適切に管理いたします。
+      </p>
+      <p>
+        また、個人情報の取り扱いを外部に委託する場合は、委託先において個人情報の安全管理が図られるよう、必要かつ適切な監督を行います。
+      </p>
+      <p>当社は、個人情報の安全管理のため、以下の措置を講じています。</p>
+      <ul>
+        <li>組織的措置：個人情報の取り扱いに関する責任者を定め、従業者への定期的な教育・研修を実施します</li>
+        <li>人的措置：従業者との間で守秘義務に関する合意を締結し、個人情報への不正アクセスを防止します</li>
+        <li>物理的措置：個人情報を取り扱う機器・書類等の適切な管理を行い、不正な持ち出しを防止します</li>
+        <li>技術的措置：個人情報へのアクセス権限を必要最小限の担当者に限定し、不正アクセス防止のための適切な設定を維持します</li>
+        <li>漏洩発生時の対応：万が一、個人情報の漏洩等が発生した場合は、個人情報保護法に従い、速やかに個人情報保護委員会への報告および影響を受けるお客様へのご通知を行います</li>
+      </ul>
+
+      <h2>6. Cookie等の利用</h2>
+      <p>
+        当社ウェブサイトでは、サービスの利便性向上およびウェブサイトの利用状況の把握のため、Cookie（クッキー）および類似の技術を使用する場合があります。Cookieとは、ウェブサーバーからお客様のブラウザに送信される小さなデータファイルであり、お客様のコンピュータに保存されます。
+      </p>
+      <p>
+        お客様はブラウザの設定によりCookieの受け入れを拒否することができますが、その場合、当社ウェブサイトの一部機能がご利用いただけなくなることがあります。
+      </p>
+
+      <h2>7. Google Analytics等の利用</h2>
+      <p>
+        当社ウェブサイトでは、ウェブサイトの利用状況を分析するためにGoogle LLC（以下「Google」）が提供するGoogle Analyticsを使用する場合があります。Google Analyticsは、Cookieを使用してお客様のウェブサイト利用情報（IPアドレスを含む）を収集します。
+      </p>
+      <p>
+        Google Analyticsによるデータ収集および処理の仕組みについては、<a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" style="color: var(--tw-electric);">Googleのポリシーと規約</a>をご確認ください。
+      </p>
+      <p>
+        Google Analyticsによるトラッキングを無効にしたい場合は、Googleが提供する<a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" style="color: var(--tw-electric);">オプトアウトアドオン</a>をご利用ください。
+      </p>
+
+      <h2>8. お問い合わせフォームでの情報収集について</h2>
+      <p>
+        当社ウェブサイトのお問い合わせフォームでは、お客様のお名前、メールアドレス、電話番号、会社名、お問い合わせ内容等の情報をご入力いただいております。これらの情報は、お問い合わせへの回答、資料の送付、サービスに関するご案内等の目的でのみ利用いたします。
+      </p>
+      <p>
+        ご入力いただいた情報は、当社が指定するフォームサービスを通じて送信され、当社が適切に管理するシステムにて保管いたします。
+      </p>
+
+      <h2>9. AIサービスの利用について</h2>
+      <p>
+        当社は、サービス提供の過程において、お客様からご提供いただいた情報をAIサービスを用いて処理する場合があります。利用するAIサービスは以下のとおりです。
+      </p>
+      <ul>
+        <li>OpenAI, L.L.C.（ChatGPT）</li>
+        <li>Anthropic, PBC（Claude）</li>
+        <li>Google LLC（Gemini）</li>
+      </ul>
+      <p>上記サービスはいずれも各社との法人契約に基づき利用しており、以下の条件のもとで運用しています。</p>
+      <ol>
+        <li>入力データがAIモデルの学習・改善に利用されない設定を適用しています</li>
+        <li>個人を特定できる情報は、AI処理に先立ち適切に匿名化または非識別化処理を行います</li>
+        <li>各サービス提供者との間で、データの取り扱いに関する契約を締結しています</li>
+      </ol>
+      <p>
+        なお、各サービスにおけるデータの取り扱いの詳細については、各社のプライバシーポリシーおよびサービス規約をご参照ください。
+      </p>
+
+      <h2>10. 外国にある第三者への個人情報の提供について</h2>
+      <p>
+        当社は、上記AIサービスの利用に伴い、お客様の情報が日本国外（主に米国）のサーバーで処理される場合があります。
+      </p>
+      <p>
+        各サービス提供者はいずれも、個人情報保護法第24条に基づく適切な体制（標準契約条項の締結または同等の保護水準の確保）を整備しています。
+      </p>
+      <p>
+        詳細については、各社のプライバシーポリシーをご参照いただくか、当社お問い合わせ窓口までご連絡ください。
+      </p>
+
+      <h2>11. 開示・訂正・削除の請求</h2>
+      <p>
+        お客様は、当社が保有するご自身の個人情報について、個人情報保護法に基づき、開示、訂正、追加、削除、利用停止、消去、または第三者提供の停止を請求することができます。
+      </p>
+      <p>
+        ご請求いただいた場合は、ご本人であることを確認のうえ、合理的な期間および範囲で対応いたします。なお、個人情報保護法その他の法令により、当社が開示等の義務を負わない場合は、ご請求に応じかねることがございます。
+      </p>
+
+      <h2>12. 本ポリシーの変更</h2>
+      <p>
+        当社は、法令の改正、社会情勢の変化、その他の事情により、本方針を変更する場合があります。変更後の方針は、当社ウェブサイトに掲載した時点から効力を生じるものとします。重要な変更を行う場合は、当社ウェブサイト上でお知らせいたします。
+      </p>
+
+      <h2>13. お問い合わせ窓口</h2>
+      <p>
+        本方針に関するお問い合わせ、および個人情報の開示・訂正・削除等のご請求は、下記窓口までご連絡ください。
+      </p>
+      <div class="contact-info">
+        <p><strong>株式会社TechWorker 個人情報保護担当</strong></p>
+        <p>代表者: 古野 光太朗（代表取締役）</p>
+        <p>所在地: 〒169-0051 東京都新宿区西早稲田一丁目22番3号</p>
+        <p>お問い合わせ: <a href="contact.html" style="color: var(--tw-electric);">お問い合わせフォーム</a></p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">Tech<span>Worker</span></div>
+        <p>企業向け生成AIコンサルティング<br>株式会社TechWorker</p>
+      </div>
+      <div class="footer-col">
+        <h4>Menu</h4>
+        <a href="news.html">ニュース</a>
+        <a href="index.html#approach">私たちの強み</a>
+        <a href="index.html#services">サービス</a>
+        <a href="index.html#results">実績</a>
+        <a href="index.html#company">会社概要</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="contact.html">無料相談</a>
+        <a href="contact.html?type=document">資料請求</a>
+        <p style="margin-top:12px;">〒169-0051<br>東京都新宿区西早稲田一丁目22番3号</p>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <p class="copyright">&copy; 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

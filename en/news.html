@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEWS Updates — TechWorker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Noto+Sans+JP:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --tw-black: #0D1117;
+  --tw-paper: #F4F6F9;
+  --tw-electric: #005EFF;
+  --tw-electric-dark: #003DAA;
+  --tw-slate: #3C4B64;
+  --tw-emerald: #00B894;
+  --tw-emerald-dark: #006B52;
+  --tw-violet: #7C3AED;
+  --tw-violet-dark: #4C1D95;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body { overflow-x: hidden;
+  font-family: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
+  background: var(--tw-paper);
+  color: var(--tw-black);
+  line-height: 1.7;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 40px; width: 100%; }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(244,246,249,.92); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,94,255,.08);
+  padding: 0 40px; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+nav .logo { font-size: 18px; font-weight: 800; color: var(--tw-black); text-decoration: none; }
+nav .logo span { color: var(--tw-electric); }
+nav ul { list-style: none; display: flex; gap: 32px; }
+nav ul a {
+  font-size: 13px; font-weight: 600; color: var(--tw-slate);
+  text-decoration: none; letter-spacing: .5px; transition: color .2s;
+}
+nav ul a:hover { color: var(--tw-electric); }
+nav .nav-cta {
+  font-size: 13px; font-weight: 700; padding: 8px 24px;
+  background: var(--tw-electric); color: var(--tw-paper);
+  border-radius: 5px; text-decoration: none; transition: background .2s;
+}
+nav .nav-cta:hover { background: var(--tw-electric-dark); }
+nav .nav-right { display: flex; align-items: center; gap: 16px; }
+nav .lang-switch {
+  font-size: 13px; font-weight: 700; color: var(--tw-slate);
+  text-decoration: none; transition: color .2s;
+}
+nav .lang-switch:hover { color: var(--tw-electric); }
+nav .lang-current {
+  font-size: 13px; font-weight: 700; color: var(--tw-electric);
+}
+
+.page-header {
+  padding: 140px 0 48px;
+  background: #fff;
+  border-bottom: 1px solid rgba(0,94,255,.06);
+}
+.page-header .breadcrumb {
+  font-size: 13px; color: var(--tw-slate); margin-bottom: 24px;
+}
+.page-header .breadcrumb a {
+  color: var(--tw-slate); text-decoration: none; transition: color .2s;
+}
+.page-header .breadcrumb a:hover { color: var(--tw-electric); }
+.page-header .breadcrumb .sep { margin: 0 8px; opacity: .4; }
+.page-header .label {
+  font-size: 11px; font-weight: 600; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--tw-electric);
+  margin-bottom: 8px; display: block;
+}
+.page-header h1 {
+  font-size: clamp(28px, 4vw, 40px); font-weight: 800;
+}
+
+.category-filter {
+  padding: 32px 0 0;
+  display: flex; gap: 8px; flex-wrap: wrap;
+}
+.category-filter .filter-btn {
+  display: inline-block; padding: 6px 20px;
+  font-size: 13px; font-weight: 600; border-radius: 100px;
+  border: 1px solid rgba(0,94,255,.12); background: #fff;
+  color: var(--tw-slate); cursor: pointer; text-decoration: none;
+  transition: all .2s;
+}
+.category-filter .filter-btn:hover {
+  border-color: var(--tw-electric); color: var(--tw-electric);
+}
+.category-filter .filter-btn.active {
+  background: var(--tw-electric); color: #fff;
+  border-color: var(--tw-electric);
+}
+
+.news-grid { padding: 48px 0 120px; }
+.news-grid-inner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.news-card {
+  display: block; text-decoration: none; color: inherit;
+  background: #fff; border-radius: 12px;
+  overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,.04);
+}
+.news-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,94,255,.08);
+}
+.news-card-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+.news-card-thumb .thumb-bg {
+  width: 100%; height: 100%;
+}
+.thumb-001 {
+  background: linear-gradient(135deg, #005EFF 0%, #003DAA 60%, #0D1117 100%);
+}
+.thumb-001::after {
+  content: ''; position: absolute; top: 20%; right: -10%; width: 60%; height: 60%;
+  border: 2px solid rgba(244,246,249,.12); border-radius: 50%;
+}
+.thumb-002 {
+  background: linear-gradient(135deg, #F4F6F9 0%, #b8d4ff 50%, #005EFF 100%);
+}
+.thumb-002::after {
+  content: ''; position: absolute; bottom: -20%; left: 10%; width: 50%; height: 50%;
+  border: 2px solid rgba(0,94,255,.1); border-radius: 50%;
+}
+.thumb-003 {
+  background: linear-gradient(135deg, #00B894 0%, #006B52 60%, #0D1117 100%);
+}
+.thumb-003::after {
+  content: ''; position: absolute; top: 10%; left: 60%; width: 40%; height: 80%;
+  border: 2px solid rgba(244,246,249,.1); border-radius: 4px;
+  transform: rotate(15deg);
+}
+.thumb-004 {
+  background: linear-gradient(135deg, #7C3AED 0%, #4C1D95 60%, #0D1117 100%);
+}
+.thumb-004::after {
+  content: ''; position: absolute; top: 30%; right: 15%; width: 30%; height: 30%;
+  border: 2px solid rgba(244,246,249,.12); border-radius: 50%;
+}
+.news-card-thumb .tag-overlay {
+  position: absolute; bottom: 12px; left: 12px;
+  font-size: 11px; font-weight: 700; letter-spacing: 1px;
+  padding: 4px 12px; border-radius: 100px;
+  backdrop-filter: blur(8px);
+}
+.tag-overlay--announce { background: rgba(0,94,255,.85); color: #fff; }
+.tag-overlay--event { background: rgba(0,184,148,.85); color: #fff; }
+.tag-overlay--media { background: rgba(124,58,237,.85); color: #fff; }
+.news-card-body { padding: 20px 24px 24px; }
+.news-card-date {
+  font-size: 12px; font-weight: 600; color: var(--tw-slate);
+  opacity: .6; margin-bottom: 8px;
+}
+.news-card-title {
+  font-size: 16px; font-weight: 700; line-height: 1.5;
+  margin-bottom: 8px;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.news-card-excerpt {
+  font-size: 13px; color: var(--tw-slate); line-height: 1.7;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+footer {
+  padding: 60px 0 40px;
+  background: #fff;
+  border-top: 1px solid rgba(0,94,255,.06);
+}
+footer .footer-inner {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px;
+  align-items: start;
+}
+footer .footer-brand .logo { font-size: 18px; font-weight: 800; margin-bottom: 12px; color: var(--tw-black); }
+footer .footer-brand .logo span { color: var(--tw-electric); }
+footer .footer-brand p { font-size: 13px; color: var(--tw-slate); line-height: 1.7; }
+footer .footer-col h4 {
+  font-size: 12px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--tw-slate); opacity: .5; margin-bottom: 16px;
+}
+footer .footer-col a {
+  display: block; font-size: 13px; color: var(--tw-slate);
+  text-decoration: none; margin-bottom: 10px; transition: color .2s;
+}
+footer .footer-col a:hover { color: var(--tw-electric); }
+footer .footer-col p { font-size: 13px; color: var(--tw-slate); line-height: 1.7; }
+footer .copyright {
+  text-align: center; margin-top: 40px; padding-top: 24px;
+  border-top: 1px solid rgba(0,94,255,.06);
+  font-size: 12px; color: var(--tw-slate); opacity: .4;
+}
+@media (max-width: 1024px) {
+  .news-grid-inner { grid-template-columns: repeat(2, 1fr); }
+  footer .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+}
+@media (max-width: 640px) {
+  .container { padding: 0 16px; }
+  nav { padding: 0 12px 0 16px; gap: 8px; }
+  nav ul { display: none; }
+  .news-grid-inner { grid-template-columns: 1fr; }
+  footer .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .category-filter { gap: 6px; }
+  .category-filter .filter-btn { padding: 5px 14px; font-size: 12px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Tech<span>Worker</span></a>
+  <ul>
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="news.html">NEWS</a></li>
+    <li><a href="index.html#results">Results</a></li>
+    <li><a href="../company.html">Company</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="contact.html" class="nav-cta">Contact Us</a>
+    <a href="../news.html" class="lang-switch">JP</a>
+    <span class="lang-current">EN</span>
+  </div>
+</nav>
+
+<section class="page-header">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span class="sep">/</span><span>News</span>
+    </div>
+    <span class="label">News</span>
+    <h1>News</h1>
+    <div class="category-filter">
+      <span class="filter-btn active">All</span>
+      <span class="filter-btn">Announcement</span>
+      <span class="filter-btn">Event</span>
+      <span class="filter-btn">Media</span>
+    </div>
+  </div>
+</section>
+
+<section class="news-grid">
+  <div class="container">
+    <div class="news-grid-inner">
+
+      <a href="news/001.html" class="news-card">
+        <div class="news-card-thumb">
+          <div class="thumb-bg thumb-001"></div>
+          <span class="tag-overlay tag-overlay--announce">Announcement</span>
+        </div>
+        <div class="news-card-body">
+          <div class="news-card-date">2026.03.20</div>
+          <div class="news-card-title">Published our Generative AI Use Cases White Paper</div>
+          <div class="news-card-excerpt">We have released a free white paper compiling real-world AI adoption case studies across 7 industries, covering specific use cases and measurable outcomes from our 37-company portfolio.</div>
+        </div>
+      </a>
+
+      <a href="news/002.html" class="news-card">
+        <div class="news-card-thumb">
+          <div class="thumb-bg thumb-002"></div>
+          <span class="tag-overlay tag-overlay--announce">Announcement</span>
+        </div>
+        <div class="news-card-body">
+          <div class="news-card-date">2026.03.14</div>
+          <div class="news-card-title">Refreshed our service lineup</div>
+          <div class="news-card-excerpt">We have reorganized our offerings into three programs aligned with each stage of enterprise AI adoption: Tool Deployment, Hands-On Consulting, and Enterprise Strategy Design.</div>
+        </div>
+      </a>
+
+      <a href="news/003.html" class="news-card">
+        <div class="news-card-thumb">
+          <div class="thumb-bg thumb-003"></div>
+          <span class="tag-overlay tag-overlay--event">Event</span>
+        </div>
+        <div class="news-card-body">
+          <div class="news-card-date">2026.02.28</div>
+          <div class="news-card-title">Free webinar: "The Pitfalls of AI Adoption"</div>
+          <div class="news-card-excerpt">A free webinar for executives and DX leaders covering the five most common failure patterns in enterprise AI adoption and practical solutions drawn from our experience with 37 companies.</div>
+        </div>
+      </a>
+
+      <a href="news/004.html" class="news-card">
+        <div class="news-card-thumb">
+          <div class="thumb-bg thumb-004"></div>
+          <span class="tag-overlay tag-overlay--event">Event</span>
+        </div>
+        <div class="news-card-body">
+          <div class="news-card-date">2025.05.07</div>
+          <div class="news-card-title">CEO Furuno delivered a keynote seminar at Sakura Internet Inc.</div>
+          <div class="news-card-excerpt">Our CEO Kotaro Furuno was invited as a keynote speaker at Sakura Internet Inc.'s internal seminar, presenting on practical enterprise applications of generative AI.</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">Tech<span>Worker</span></div>
+        <p>Enterprise Generative AI Consulting<br>TechWorker Inc.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Menu</h4>
+        <a href="news.html">News</a>
+        <a href="index.html#approach">Our Strengths</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#results">Results</a>
+        <a href="index.html#company">Company</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="contact.html">Free Consultation</a>
+        <a href="contact.html?type=document">Request Materials</a>
+        <p style="margin-top:12px;">〒169-0051<br>東京都新宿区西早稲田一丁目22番3号</p>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <p class="copyright">&copy; 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

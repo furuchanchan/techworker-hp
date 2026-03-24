@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechWorker — AIはエンジンだ。コンテキストは燃料だ。</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Noto+Sans+JP:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+/* ===== TOKENS ===== */
+:root {
+  --tw-black: #0D1117;
+  --tw-paper: #F4F6F9;
+  --tw-electric: #005EFF;
+  --tw-electric-dark: #003DAA;
+  --tw-slate: #3C4B64;
+  --tw-emerald: #00B894;
+  --tw-violet: #7C3AED;
+}
+
+/* ===== RESET ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body { overflow-x: hidden;
+  font-family: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
+  background: var(--tw-paper);
+  color: var(--tw-black);
+  line-height: 1.7;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== UTILITIES ===== */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 40px; width: 100%; }
+.label {
+  font-size: 11px; font-weight: 600; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--tw-electric);
+  margin-bottom: 16px; display: block;
+}
+.label--light { color: var(--tw-paper); opacity: .6; }
+
+/* CTA Button */
+.btn {
+  display: inline-block; padding: 16px 40px;
+  background: var(--tw-electric); color: var(--tw-paper);
+  font-size: 15px; font-weight: 700; border-radius: 6px;
+  text-decoration: none; letter-spacing: .5px;
+  transition: background .2s;
+}
+.btn:hover { background: var(--tw-electric-dark); }
+.btn--outline {
+  background: transparent; color: var(--tw-electric);
+  border: 2px solid var(--tw-electric);
+}
+.btn--outline:hover { background: var(--tw-electric); color: var(--tw-paper); }
+.btn--white { background: var(--tw-paper); color: var(--tw-electric); }
+.btn--white:hover { background: #e8ecf2; }
+
+/* ===== NAV ===== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(244,246,249,.92); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,94,255,.08);
+  padding: 0 40px; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+nav .logo { font-size: 18px; font-weight: 800; color: var(--tw-black); text-decoration: none; }
+nav .logo span { color: var(--tw-electric); }
+nav ul { list-style: none; display: flex; gap: 20px; white-space: nowrap; }
+nav ul a {
+  font-size: 13px; font-weight: 600; color: var(--tw-slate);
+  text-decoration: none; letter-spacing: .5px; transition: color .2s;
+}
+nav ul a:hover { color: var(--tw-electric); }
+nav .nav-cta {
+  font-size: 13px; font-weight: 700; padding: 8px 24px;
+  background: var(--tw-electric); color: var(--tw-paper);
+  border-radius: 5px; text-decoration: none; transition: background .2s;
+}
+nav .nav-cta:hover { background: var(--tw-electric-dark); }
+nav .nav-cta .nav-cta-short { display: none; }
+nav .nav-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+nav .lang-switch { font-size: 12px; white-space: nowrap; }
+
+/* ===== 01: HERO ===== */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  padding-top: 64px;
+  background: linear-gradient(135deg, var(--tw-paper) 60%, rgba(0,94,255,.04) 100%);
+}
+.hero .container {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.hero-text h1 {
+  font-size: clamp(36px, 5vw, 56px); font-weight: 800;
+  line-height: 1.2; margin-bottom: 24px;
+}
+.hero-text h1 em { font-style: normal; color: var(--tw-electric); }
+.hero-text p {
+  font-size: 18px; color: var(--tw-slate); line-height: 1.8;
+  margin-bottom: 40px; max-width: 520px;
+}
+.hero-text { min-width: 0; }
+.hero-text .btn-group { display: flex; gap: 16px; }
+.hero-visual { display: flex; justify-content: center; align-items: center; min-width: 0; }
+.hero-kpi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; min-width: 0; width: 100%; }
+.hero-kpi {
+  background: rgba(0,94,255,.04); border-radius: 12px;
+  padding: 32px; text-align: center;
+  border: 1px solid rgba(0,94,255,.08);
+}
+.hero-kpi .num {
+  font-size: clamp(40px, 6vw, 64px); font-weight: 800;
+  color: var(--tw-electric); line-height: 1;
+  display: block; margin-bottom: 8px;
+}
+.hero-kpi .unit { font-size: 14px; font-weight: 600; color: var(--tw-slate); }
+
+/* ===== 02: NEWS ===== */
+.news { padding: 80px 0; background: #fff; }
+.news h2 {
+  font-size: 24px; font-weight: 800; margin-bottom: 40px;
+  display: flex; align-items: center; gap: 16px;
+}
+.news h2 a {
+  font-size: 13px; font-weight: 600; color: var(--tw-electric);
+  text-decoration: none; margin-left: auto;
+}
+.news-list { display: flex; flex-direction: column; }
+.news-item {
+  display: flex; align-items: baseline; gap: 24px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(0,94,255,.06);
+}
+.news-item:first-child { border-top: 1px solid rgba(0,94,255,.06); }
+.news-date { font-size: 13px; font-weight: 600; color: var(--tw-slate); white-space: nowrap; }
+.news-tag {
+  font-size: 11px; font-weight: 700; letter-spacing: 1px;
+  padding: 3px 10px; border-radius: 3px;
+  background: rgba(0,94,255,.06); color: var(--tw-electric);
+  white-space: nowrap;
+}
+.news-tag--event { background: rgba(0,184,148,.08); color: var(--tw-emerald); }
+.news-tag--media { background: rgba(124,58,237,.08); color: var(--tw-violet); }
+.news-title {
+  font-size: 14px; color: var(--tw-black);
+  text-decoration: none; transition: color .2s;
+}
+.news-title:hover { color: var(--tw-electric); }
+
+/* ===== 03: MACRO ===== */
+.macro {
+  padding: 120px 0;
+  background: var(--tw-electric);
+  color: var(--tw-paper);
+  position: relative; overflow: hidden;
+}
+.macro::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(244,246,249,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244,246,249,.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+.macro .container { position: relative; z-index: 1; }
+.macro h2 {
+  font-size: clamp(28px, 4vw, 44px); font-weight: 800;
+  line-height: 1.3; margin-bottom: 24px; max-width: 800px;
+}
+.macro .lead {
+  font-size: 17px; line-height: 2; max-width: 760px;
+  margin-bottom: 60px; opacity: .9;
+}
+.macro-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+  margin-bottom: 60px;
+}
+.macro-stat {
+  background: rgba(244,246,249,.08); border-radius: 12px;
+  padding: 32px 24px; text-align: center;
+  border: 1px solid rgba(244,246,249,.1);
+}
+.macro-stat .num {
+  font-size: clamp(36px, 5vw, 56px); font-weight: 800;
+  display: block; line-height: 1; margin-bottom: 12px;
+}
+.macro-stat .desc { font-size: 13px; line-height: 1.6; opacity: .8; }
+.macro-logos {
+  display: flex; gap: 48px; align-items: center;
+  padding-top: 40px; border-top: 1px solid rgba(244,246,249,.12);
+}
+.macro-logos span { font-size: 13px; opacity: .5; font-weight: 600; }
+.macro-logo-item { font-size: 15px; font-weight: 700; opacity: .7; letter-spacing: .5px; }
+.macro-bottom {
+  margin-top: 60px; padding: 40px;
+  background: rgba(244,246,249,.06); border-radius: 12px;
+  border: 1px solid rgba(244,246,249,.1);
+}
+.macro-bottom p { font-size: 20px; font-weight: 700; line-height: 1.8; }
+
+/* ===== 04: PROBLEM ===== */
+.problem { padding: 120px 0; }
+.problem h2 {
+  font-size: clamp(28px, 4vw, 40px); font-weight: 800;
+  margin-bottom: 60px; text-align: center;
+}
+.problem-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  margin-bottom: 60px;
+}
+.problem-card {
+  background: #fff; border-radius: 12px; padding: 36px;
+  border: 1px solid rgba(0,94,255,.06);
+  display: flex; gap: 20px; align-items: flex-start;
+}
+.problem-card .icon {
+  width: 40px; height: 40px; border-radius: 8px;
+  background: rgba(0,94,255,.06); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--tw-electric); font-weight: 800; font-size: 18px;
+}
+.problem-card p { font-size: 15px; color: var(--tw-slate); line-height: 1.8; }
+.problem-answer {
+  text-align: center; max-width: 700px; margin: 0 auto;
+  padding: 48px; background: #fff; border-radius: 16px;
+  border-left: 4px solid var(--tw-electric);
+}
+.problem-answer p { font-size: 18px; font-weight: 600; line-height: 1.9; }
+.problem-answer em { font-style: normal; color: var(--tw-electric); font-weight: 800; }
+
+/* ===== 05: APPROACH ===== */
+.approach { padding: 120px 0; background: #fff; }
+.approach h2 {
+  font-size: clamp(28px, 4vw, 40px); font-weight: 800; margin-bottom: 16px;
+}
+.approach .lead {
+  font-size: 16px; color: var(--tw-slate); max-width: 680px;
+  line-height: 1.9; margin-bottom: 60px;
+}
+.strength-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.strength-card {
+  padding: 40px; border-radius: 12px;
+  background: var(--tw-paper);
+  border: 1px solid rgba(0,94,255,.06);
+}
+.strength-card .num {
+  font-size: 48px; font-weight: 800; color: var(--tw-electric);
+  line-height: 1; margin-bottom: 20px;
+}
+.strength-card h3 { font-size: 18px; font-weight: 800; margin-bottom: 12px; }
+.strength-card p { font-size: 14px; color: var(--tw-slate); line-height: 1.8; }
+
+/* ===== 06: SERVICES ===== */
+.services { padding: 120px 0; }
+.services h2 {
+  font-size: clamp(28px, 4vw, 40px); font-weight: 800; margin-bottom: 16px;
+}
+.services .lead {
+  font-size: 16px; color: var(--tw-slate); margin-bottom: 60px; max-width: 600px;
+}
+.service-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.service-card {
+  background: #fff; border-radius: 16px; overflow: hidden;
+  border: 1px solid rgba(0,94,255,.06);
+  display: flex; flex-direction: column;
+}
+.service-card-header {
+  padding: 36px 32px 24px;
+  border-bottom: 1px solid rgba(0,94,255,.06);
+}
+.service-card-header .program-num {
+  font-size: 11px; font-weight: 700; color: var(--tw-electric);
+  letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px;
+}
+.service-card-header h3 { font-size: 20px; font-weight: 800; line-height: 1.4; margin-bottom: 12px; }
+.service-card-header .tagline { font-size: 14px; color: var(--tw-slate); line-height: 1.7; }
+.service-card-body {
+  padding: 24px 32px 36px; flex: 1;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.service-meta {
+  display: flex; justify-content: space-between;
+  font-size: 13px; color: var(--tw-slate);
+  padding: 8px 0; border-bottom: 1px solid rgba(0,94,255,.04);
+}
+.service-meta .key { font-weight: 600; }
+.service-meta .val { font-weight: 700; color: var(--tw-black); }
+.service-card-quote {
+  margin-top: auto; padding-top: 16px;
+  font-size: 14px; font-weight: 600; color: var(--tw-electric);
+  border-left: 3px solid var(--tw-electric); padding-left: 12px;
+}
+
+/* ===== 07: RESULTS ===== */
+.results {
+  padding: 120px 0;
+  background: var(--tw-electric); color: var(--tw-paper);
+  position: relative; overflow: hidden;
+}
+.results::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(244,246,249,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244,246,249,.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+.results .container { position: relative; z-index: 1; }
+.results h2 {
+  font-size: clamp(28px, 4vw, 40px); font-weight: 800; margin-bottom: 60px;
+}
+.results-kpi {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+  margin-bottom: 80px;
+}
+.results-kpi-card { text-align: center; padding: 24px; }
+.results-kpi-card .num {
+  font-size: clamp(48px, 7vw, 72px); font-weight: 800;
+  line-height: 1; margin-bottom: 8px;
+}
+.results-kpi-card .unit { font-size: 14px; opacity: .7; font-weight: 600; }
+/* ===== HOME CASE MAGAZINE ===== */
+.home-case-impact {
+  background: var(--tw-electric); color: #fff;
+  padding: 80px 0; position: relative; overflow: hidden;
+}
+.home-case-impact::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,.08) 0%, transparent 50%);
+}
+.home-case-impact .container {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+}
+.home-case-left {}
+.home-case-sub {
+  font-size: 12px; font-weight: 600; color: rgba(255,255,255,.4);
+  letter-spacing: 2px; margin-bottom: 8px;
+}
+.home-case-num {
+  display: flex; align-items: baseline; gap: 8px;
+}
+.home-case-num .big-num {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(72px, 10vw, 120px); font-weight: 800; line-height: 1;
+}
+.home-case-num .big-unit {
+  font-size: 20px; font-weight: 600; color: rgba(255,255,255,.5);
+}
+.home-case-desc {
+  font-size: 14px; color: rgba(255,255,255,.45); margin-top: 8px;
+}
+.home-case-right {}
+.home-case-tag {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 16px;
+}
+.home-case-badge {
+  font-size: 10px; font-weight: 800; letter-spacing: 2px;
+  background: rgba(255,255,255,.15); padding: 5px 14px; border-radius: 100px;
+}
+.home-case-industry {
+  font-size: 12px; color: rgba(255,255,255,.5); font-weight: 600; letter-spacing: 1px;
+}
+.home-case-impact h3 {
+  font-size: clamp(24px, 3.5vw, 36px); font-weight: 800; line-height: 1.3;
+  margin-bottom: 8px;
+}
+.home-case-company {
+  font-size: 14px; color: rgba(255,255,255,.5); font-weight: 600;
+}
+
+.home-case-content {
+  background: #fff; padding: 64px 0;
+}
+.home-case-content .container {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
+}
+.home-case-before, .home-case-after {
+  position: relative; padding-left: 28px;
+}
+.home-case-before::before {
+  content: ''; position: absolute; left: 0; top: 0;
+  width: 3px; height: 100%; background: rgba(0,94,255,.12); border-radius: 2px;
+}
+.home-case-after::before {
+  content: ''; position: absolute; left: 0; top: 0;
+  width: 3px; height: 100%; background: var(--tw-electric); border-radius: 2px;
+}
+.home-col-label {
+  font-size: 11px; font-weight: 800; letter-spacing: 3px;
+  margin-bottom: 16px;
+}
+.home-case-before .home-col-label { color: var(--tw-slate); opacity: .4; }
+.home-case-after .home-col-label { color: var(--tw-electric); }
+.home-case-before p, .home-case-after p {
+  font-size: 15px; color: var(--tw-slate); line-height: 2;
+}
+.home-check-list {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.home-check-list li {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 15px; color: var(--tw-black); font-weight: 600; line-height: 1.6;
+}
+.home-check {
+  flex-shrink: 0; width: 24px; height: 24px; border-radius: 6px;
+  background: var(--tw-electric); color: #fff;
+  display: flex; align-items: center; justify-content: center; margin-top: 2px;
+}
+
+.home-case-others-strip {
+  background: var(--tw-paper); padding: 64px 0;
+}
+.home-others-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;
+}
+.home-other-card {
+  display: flex; flex-direction: column; gap: 8px;
+  background: #fff; border-radius: 12px; padding: 28px;
+  border: 1px solid rgba(0,94,255,.06);
+  text-decoration: none; color: var(--tw-black);
+  transition: box-shadow .2s, transform .2s;
+}
+.home-other-card:hover {
+  box-shadow: 0 8px 32px rgba(0,94,255,.08);
+  transform: translateY(-3px);
+}
+.home-other-industry {
+  font-size: 10px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--tw-electric); opacity: .6;
+}
+.home-other-card strong {
+  font-size: 15px; font-weight: 700; line-height: 1.5;
+}
+.home-other-metric {
+  font-size: 13px; color: var(--tw-slate); font-weight: 600;
+}
+
+/* Pickup case (legacy — keep for fallback) */
+.case-pickup {
+  background: rgba(244,246,249,.06); border-radius: 16px;
+  border: 1px solid rgba(244,246,249,.1); overflow: hidden;
+  margin-bottom: 48px;
+}
+.case-pickup-header {
+  display: flex; align-items: center; gap: 24px;
+  padding: 28px 40px; border-bottom: 1px solid rgba(244,246,249,.08);
+}
+.case-pickup-header .pickup-badge {
+  font-size: 10px; font-weight: 800; letter-spacing: 2px;
+  background: rgba(244,246,249,.15); padding: 5px 14px; border-radius: 100px;
+}
+.case-pickup-header .pickup-industry {
+  font-size: 12px; opacity: .5; font-weight: 600; letter-spacing: 1px;
+}
+.case-pickup-header h3 {
+  font-size: clamp(18px, 2.5vw, 24px); font-weight: 800; margin-left: auto;
+}
+.case-pickup-body {
+  display: grid; grid-template-columns: auto 1fr 1fr; gap: 0;
+}
+.case-pickup-metric {
+  padding: 40px; display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  border-right: 1px solid rgba(244,246,249,.08); min-width: 160px;
+}
+.case-pickup-metric .big-num {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(48px, 6vw, 72px); font-weight: 800; line-height: 1;
+}
+.case-pickup-metric .big-unit {
+  font-size: 16px; opacity: .5; font-weight: 600; margin-top: 4px;
+}
+.case-pickup-col {
+  padding: 40px; position: relative;
+}
+.case-pickup-col + .case-pickup-col {
+  border-left: 1px solid rgba(244,246,249,.08);
+}
+.case-pickup-col .col-label {
+  font-size: 10px; font-weight: 800; letter-spacing: 3px;
+  opacity: .35; margin-bottom: 16px;
+}
+.case-pickup-col p {
+  font-size: 14px; opacity: .85; line-height: 1.9;
+}
+.case-pickup-col .check-list {
+  list-style: none; padding: 0; margin: 0;
+}
+.case-pickup-col .check-list li {
+  font-size: 14px; font-weight: 600; line-height: 1.7;
+  padding-left: 24px; position: relative; margin-bottom: 10px;
+}
+.case-pickup-col .check-list li::before {
+  content: ''; position: absolute; left: 0; top: 7px;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--tw-paper); opacity: .6;
+}
+/* Other cases row */
+.case-others {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;
+  margin-bottom: 40px;
+}
+.case-other-card {
+  background: rgba(244,246,249,.06); border-radius: 12px;
+  padding: 28px; border: 1px solid rgba(244,246,249,.08);
+  transition: background .2s;
+}
+.case-other-card:hover { background: rgba(244,246,249,.1); }
+.case-other-card .industry {
+  font-size: 10px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; opacity: .4; margin-bottom: 12px;
+}
+.case-other-card h4 { font-size: 15px; font-weight: 700; line-height: 1.5; margin-bottom: 8px; }
+.case-other-card p { font-size: 13px; opacity: .6; line-height: 1.7; }
+
+/* ===== 08: FLOW ===== */
+.flow { padding: 120px 0; background: #fff; }
+.flow h2 {
+  font-size: clamp(28px, 4vw, 40px); font-weight: 800;
+  margin-bottom: 60px; text-align: center;
+}
+.flow-steps {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;
+  max-width: 1100px; margin: 0 auto;
+}
+.flow-step { text-align: center; position: relative; }
+.flow-step::after {
+  content: ''; position: absolute;
+  top: 32px; right: -8px;
+  width: 16px; height: 2px;
+  background: var(--tw-electric); opacity: .3;
+}
+.flow-step:last-child::after { display: none; }
+.flow-step .step-num {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: rgba(0,94,255,.06);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 24px; font-weight: 800; color: var(--tw-electric);
+  margin-bottom: 20px;
+}
+.flow-step h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+.flow-step p { font-size: 13px; color: var(--tw-slate); line-height: 1.7; }
+
+/* ===== 09: MESSAGE ===== */
+.message { padding: 120px 0; }
+.message .container {
+  display: grid; grid-template-columns: 30% 1fr; gap: 80px; align-items: start;
+}
+.message-photo {
+  aspect-ratio: 1/1; background: rgba(0,94,255,.04);
+  border-radius: 12px; overflow: hidden;
+  border: 1px solid rgba(0,94,255,.08);
+}
+.message-text h2 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+.message-text .role { font-size: 14px; color: var(--tw-slate); margin-bottom: 32px; }
+.message-text blockquote {
+  font-size: 16px; line-height: 2.2; color: var(--tw-slate);
+  border: none; padding: 0; margin: 0;
+}
+.message-text blockquote strong { color: var(--tw-black); font-weight: 700; }
+
+/* ===== 10: FAQ ===== */
+.faq { padding: 120px 0; background: #fff; }
+.faq h2 {
+  font-size: clamp(28px, 4vw, 40px); font-weight: 800;
+  margin-bottom: 60px; text-align: center;
+}
+.faq-list {
+  max-width: 760px; margin: 0 auto;
+  display: flex; flex-direction: column; gap: 20px;
+}
+.faq-item {
+  background: var(--tw-paper); border-radius: 12px;
+  padding: 32px; border: 1px solid rgba(0,94,255,.06);
+}
+.faq-item .q {
+  font-size: 15px; font-weight: 700; margin-bottom: 12px;
+  display: flex; gap: 12px;
+}
+.faq-item .q::before {
+  content: 'Q'; font-weight: 800; color: var(--tw-electric); flex-shrink: 0;
+}
+.faq-item .a {
+  font-size: 14px; color: var(--tw-slate); line-height: 1.8; padding-left: 24px;
+}
+
+/* ===== 11: COMPANY ===== */
+.company { padding: 100px 0; }
+.company h2 {
+  font-size: clamp(28px, 4vw, 40px); font-weight: 800;
+  margin-bottom: 48px;
+}
+.company-table {
+  width: 100%; max-width: 760px; border-collapse: collapse;
+}
+.company-table tr { border-bottom: 1px solid rgba(0,94,255,.06); }
+.company-table th {
+  text-align: left; padding: 20px 32px 20px 0;
+  font-size: 14px; font-weight: 700; color: var(--tw-slate);
+  white-space: nowrap; width: 160px; vertical-align: top;
+}
+.company-table td {
+  padding: 20px 0; font-size: 14px; line-height: 1.8;
+}
+
+/* ===== 12: FINAL CTA ===== */
+.final-cta {
+  padding: 120px 0;
+  background: var(--tw-electric); color: var(--tw-paper);
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.final-cta::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(244,246,249,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244,246,249,.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+.final-cta .container { position: relative; z-index: 1; }
+.final-cta h2 {
+  font-size: clamp(28px, 4vw, 44px); font-weight: 800; margin-bottom: 16px;
+}
+.final-cta p { font-size: 17px; opacity: .8; margin-bottom: 40px; }
+.final-cta .btn-group { display: flex; gap: 16px; justify-content: center; }
+
+/* ===== FOOTER ===== */
+footer {
+  padding: 60px 0 40px;
+  background: #fff;
+  border-top: 1px solid rgba(0,94,255,.06);
+}
+footer .footer-inner {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px;
+  align-items: start;
+}
+footer .footer-brand .logo { font-size: 18px; font-weight: 800; margin-bottom: 12px; color: var(--tw-black); }
+footer .footer-brand .logo span { color: var(--tw-electric); }
+footer .footer-brand p { font-size: 13px; color: var(--tw-slate); line-height: 1.7; }
+footer .footer-col h4 {
+  font-size: 12px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--tw-slate); opacity: .5; margin-bottom: 16px;
+}
+footer .footer-col a {
+  display: block; font-size: 13px; color: var(--tw-slate);
+  text-decoration: none; margin-bottom: 10px; transition: color .2s;
+}
+footer .footer-col a:hover { color: var(--tw-electric); }
+footer .footer-col p {
+  font-size: 13px; color: var(--tw-slate); line-height: 1.7;
+}
+footer .copyright {
+  text-align: center; margin-top: 40px; padding-top: 24px;
+  border-top: 1px solid rgba(0,94,255,.06);
+  font-size: 12px; color: var(--tw-slate); opacity: .4;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .hero .container { grid-template-columns: 1fr; gap: 40px; }
+  .hero-kpi-grid { grid-template-columns: repeat(4, 1fr); }
+  .macro-stats { grid-template-columns: repeat(2, 1fr); }
+  .strength-grid { grid-template-columns: 1fr; }
+  .service-cards { grid-template-columns: 1fr; }
+  .results-kpi { grid-template-columns: repeat(2, 1fr); }
+  .home-case-impact .container { grid-template-columns: 1fr; gap: 32px; }
+  .home-case-impact { padding: 60px 0; }
+  .home-case-content .container { grid-template-columns: 1fr; gap: 40px; }
+  .home-others-grid { grid-template-columns: 1fr; }
+  .flow-steps { grid-template-columns: 1fr; }
+  .flow-step::after { display: none; }
+  .message .container { grid-template-columns: 1fr; }
+  .message-photo { max-width: 300px; }
+  footer .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+}
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  nav { padding: 0 20px; }
+  nav ul { display: none; }
+  .hero .container { grid-template-columns: 1fr; gap: 32px; }
+  .hero-kpi-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .hero-kpi { padding: 20px 12px; }
+  .hero-kpi .num { font-size: 36px; }
+  .problem-grid { grid-template-columns: 1fr; }
+  .hero-text .btn-group { flex-direction: column; }
+  .hero-text h1 { font-size: 32px; }
+  .hero-text p { font-size: 15px; }
+  .final-cta .btn-group { flex-direction: column; align-items: center; }
+  .news-item { flex-wrap: wrap; gap: 8px 16px; }
+  nav { padding: 0 12px 0 16px; gap: 8px; overflow: visible; }
+  nav .nav-right { gap: 8px; }
+  nav .nav-cta { padding: 8px 14px; font-size: 11px; }
+  nav .nav-cta .nav-cta-full { display: none; }
+  nav .nav-cta .nav-cta-short { display: inline; }
+  nav .lang-switch { display: none; }
+  .macro-logos { flex-wrap: wrap; gap: 16px; }
+  .macro h2 { font-size: 24px; }
+  .macro .lead { font-size: 14px; }
+  .macro-bottom p { font-size: 16px; }
+  .problem-answer { padding: 32px 20px; text-align: left; }
+  .problem-answer p { font-size: 15px; }
+  .message .container { grid-template-columns: 1fr; gap: 40px; }
+  .message-photo { max-width: 200px; }
+  .company-table th { display: block; padding-bottom: 4px; }
+  .company-table td { display: block; padding-top: 0; padding-bottom: 20px; }
+  footer .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <a href="index.html" class="logo">Tech<span>Worker</span></a>
+  <ul>
+    <li><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">HOME</a></li>
+    <li><a href="#news">NEWS</a></li>
+    <li><a href="#results">実績</a></li>
+    <li><a href="company.html">会社概要</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="contact.html" class="nav-cta"><span class="nav-cta-full">お問い合わせ</span><span class="nav-cta-short">相談</span></a>
+    <span class="lang-switch"><span style="color:var(--tw-electric);font-weight:700;">JP</span> / <a href="en/index.html" style="color:var(--tw-slate);text-decoration:none;font-weight:700;">EN</a></span>
+  </div>
+</nav>
+
+<!-- ===== LOADING SCREEN ===== -->
+<div id="loader" style="position:fixed;inset:0;z-index:9999;background:var(--tw-paper);display:flex;align-items:center;justify-content:center;transition:opacity .6s ease, visibility .6s ease;">
+  <div style="text-align:center;">
+    <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:32px;font-weight:800;color:var(--tw-black);opacity:0;animation:loaderFade .8s .2s forwards;">Tech<span style="color:var(--tw-electric);">Worker</span></div>
+    <div style="width:48px;height:2px;background:var(--tw-electric);margin:16px auto 0;transform:scaleX(0);animation:loaderLine .6s .6s forwards;transform-origin:left;"></div>
+  </div>
+</div>
+<style>
+@keyframes loaderFade { to { opacity: 1; } }
+@keyframes loaderLine { to { transform: scaleX(1); } }
+</style>
+
+<!-- ===== 01: HERO ===== -->
+<section class="hero" style="position:relative;overflow:hidden;">
+  <canvas id="heroCanvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="hero-text">
+      <span class="label">Enterprise AI Consulting</span>
+      <h1>AIは<em>エンジン</em>だ。<br>コンテキストは<em>燃料</em>だ。</h1>
+      <p>ツールを導入しただけでは、AIは機能しません。<br>貴社の業務文脈をAIが理解できる形に変換する。<br>それが、私たちの仕事です。</p>
+      <div class="btn-group">
+        <a href="contact.html" class="btn">無料相談に申し込む</a>
+        <a href="contact.html?type=document" class="btn btn--outline">資料を請求する</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-kpi-grid">
+        <div class="hero-kpi">
+          <span class="num">37</span>
+          <span class="unit">支援企業数</span>
+        </div>
+        <div class="hero-kpi">
+          <span class="num">2,500</span>
+          <span class="unit">研修受講者数</span>
+        </div>
+        <div class="hero-kpi">
+          <span class="num">300+</span>
+          <span class="unit">ウェビナー参加者</span>
+        </div>
+        <div class="hero-kpi">
+          <span class="num">7</span>
+          <span class="unit">対応業種数</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 02: NEWS ===== -->
+<section class="news" id="news">
+  <div class="container">
+    <h2>
+      <span class="label" style="margin:0">News</span>
+      お知らせ
+      <a href="news.html">一覧を見る &rarr;</a>
+    </h2>
+    <div class="news-list">
+      <div class="news-item">
+        <span class="news-date">2026.03.20</span>
+        <span class="news-tag">お知らせ</span>
+        <a href="news/001.html" class="news-title">生成AI活用事例ホワイトペーパーを公開しました</a>
+      </div>
+      <div class="news-item">
+        <span class="news-date">2026.03.14</span>
+        <span class="news-tag">お知らせ</span>
+        <a href="news/002.html" class="news-title">サービスラインナップを刷新しました</a>
+      </div>
+      <div class="news-item">
+        <span class="news-date">2026.02.28</span>
+        <span class="news-tag news-tag--event">イベント</span>
+        <a href="news/003.html" class="news-title">「AI導入の落とし穴」無料ウェビナー開催のお知らせ</a>
+      </div>
+      <div class="news-item">
+        <span class="news-date">2025.05.07</span>
+        <span class="news-tag news-tag--event">イベント</span>
+        <a href="news/004.html" class="news-title">さくらインターネット株式会社の社内セミナーに代表・古野が講師として登壇しました</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 03: MACRO ===== -->
+<section class="macro" id="macro">
+  <div class="container">
+    <span class="label label--light">Why Now</span>
+    <h2>AIの開発元自身が、<br>導入支援に本気で動き始めています。</h2>
+    <p class="lead">
+      2026年2月、OpenAIは数百名規模の導入コンサルタントの採用を発表し、McKinsey・BCG・Accenture・Capgeminiとの大型提携を開始しました。Anthropicは1億ドルを投じてパートナーネットワークを構築し、45,000名超の専門人材を動員しています。<br><br>
+      なぜ、AIを開発している企業自身が「導入支援」に巨額を投じるのか。答えは明確です。<strong>ツールだけでは、企業のAI活用は進みません。</strong>
+    </p>
+
+    <div class="macro-stats">
+      <div class="macro-stat">
+        <span class="num">95%</span>
+        <span class="desc">生成AIのPoCが<br>実験段階で停滞</span>
+      </div>
+      <div class="macro-stat">
+        <span class="num">74%</span>
+        <span class="desc">AI投資が2年経っても<br>成果につながらず</span>
+      </div>
+      <div class="macro-stat">
+        <span class="num">1.8%</span>
+        <span class="desc">Microsoft Copilotの<br>実際の導入率</span>
+      </div>
+      <div class="macro-stat">
+        <span class="num">67%</span>
+        <span class="desc">外部パートナーと組んだ<br>企業のAI導入成功率</span>
+      </div>
+    </div>
+
+
+    <div class="macro-bottom">
+      <p>ツールの性能は、すでに十分に高い水準にあります。<br>足りないのは「自社の業務文脈をAIに渡す設計」です。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 04: PROBLEM ===== -->
+<section class="problem" id="problem">
+  <div class="container">
+    <span class="label">The Problem</span>
+    <h2>このような状態になっていませんか。</h2>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="icon">1</div>
+        <p>ChatGPTやCopilotを契約したが、<br>使っているのは一部の社員だけ。</p>
+      </div>
+      <div class="problem-card">
+        <div class="icon">2</div>
+        <p>PoCは完了した。<br>しかし全社展開の道筋が見えない。</p>
+      </div>
+      <div class="problem-card">
+        <div class="icon">3</div>
+        <p>経営層はAI活用を掲げているが、<br>現場は何から手をつければよいか分からない。</p>
+      </div>
+      <div class="problem-card">
+        <div class="icon">4</div>
+        <p>ツールは導入した。<br>しかし業務時間は減っていない。</p>
+      </div>
+    </div>
+    <div class="problem-answer">
+      <p>AIが機能しない原因の大半は、ツールの問題ではありません。<br>社内の業務知識・判断基準・意思決定プロセスが、<br>AIに渡せる形になっていないことが根本原因です。<br>私たちはこれを<em>「コンテキスト整理」</em>と呼んでいます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 05: APPROACH ===== -->
+<section class="approach" id="approach">
+  <div class="container">
+    <span class="label">Our Approach</span>
+    <h2>コンテキスト整理 ── AI時代の基盤インフラ</h2>
+    <p class="lead">
+      業務マニュアル、暗黙知、判断基準、社内用語、承認フロー。
+      これらはすべて「コンテキスト」です。人間同士であれば共有できますが、AIにはそのままでは渡せません。
+      TechWorkerは、このコンテキストをAIが理解・活用できる構造に変換する専門集団です。
+    </p>
+    <div class="strength-grid">
+      <div class="strength-card">
+        <div class="num">01</div>
+        <h3>コンテキスト整理の<br>専門性</h3>
+        <p>業務フロー・ナレッジ・意思決定をAIが活用できる構造に変換する独自メソッドを保有しています。</p>
+      </div>
+      <div class="strength-card">
+        <div class="num">02</div>
+        <h3>月30万円から。<br>小さく始められます</h3>
+        <p>成果が見えてから拡大可能です。大規模な初期投資は不要。リスクを最小化した設計でご提供しています。</p>
+      </div>
+      <div class="strength-card">
+        <div class="num">03</div>
+        <h3>37社・2,500名の<br>支援実績</h3>
+        <p>製薬・建設・化学・食品・IT・エンタメなど、業種を問わず成果を出してきた汎用フレームワークです。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 06: RESULTS (moved before services) ===== -->
+<section class="results" id="results">
+  <div class="container">
+    <span class="label label--light">Results</span>
+    <h2>37社、2,500名。<br>業種を問わず、成果を出してまいりました。</h2>
+
+    <div class="results-kpi">
+      <div class="results-kpi-card">
+        <span class="num">37+</span>
+        <span class="unit">支援企業</span>
+      </div>
+      <div class="results-kpi-card">
+        <span class="num">2,500+</span>
+        <span class="unit">研修受講者</span>
+      </div>
+      <div class="results-kpi-card">
+        <span class="num">300+</span>
+        <span class="unit">ウェビナー参加者</span>
+      </div>
+      <div class="results-kpi-card">
+        <span class="num">7+</span>
+        <span class="unit">対応業種</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PICKUP CASE: cases.htmlのマガジン風 -->
+<div class="home-case-impact">
+  <div class="container">
+    <div class="home-case-left">
+      <div class="home-case-sub">IDEATION TIME</div>
+      <div class="home-case-num">
+        <span class="big-num">1</span>
+        <span class="big-unit">時間</span>
+      </div>
+      <p class="home-case-desc">アイデアの発散から収束まで完了</p>
+    </div>
+    <div class="home-case-right">
+      <div class="home-case-tag">
+        <span class="home-case-badge">PICKUP</span>
+        <span class="home-case-industry">化学 / 素材</span>
+      </div>
+      <h3>新素材アイディエーションの革新</h3>
+      <p class="home-case-company">東証プライム上場 総合科学メーカー</p>
+    </div>
+  </div>
+</div>
+<div class="home-case-content">
+  <div class="container">
+    <div class="home-case-before">
+      <div class="home-col-label">BEFORE</div>
+      <p>新素材の用途探索は研究者の経験と勘に依存。1,000件中わずか3件の成功率。スピードとスケールの両立が困難な状態でした。</p>
+    </div>
+    <div class="home-case-after">
+      <div class="home-col-label">AFTER</div>
+      <ul class="home-check-list">
+        <li><span class="home-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>1時間で発散から収束まで完了する手法を確立</li>
+        <li><span class="home-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>ビジネスモデル特許を出願中</li>
+        <li><span class="home-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>自社では到達できなかった新用途をAIが提示</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="home-case-others-strip">
+  <div class="container">
+    <div class="home-others-grid">
+      <a href="cases.html" class="home-other-card">
+        <span class="home-other-industry">医薬 / ヘルスケア</span>
+        <strong>リサーチ外注費の大幅削減</strong>
+        <span class="home-other-metric">年間数百万円削減</span>
+      </a>
+      <a href="cases.html" class="home-other-card">
+        <span class="home-other-industry">IT / クラウド</span>
+        <strong>さくらインターネット 全社300名AI研修</strong>
+        <span class="home-other-metric">300名が自律活用</span>
+      </a>
+      <a href="cases.html" class="home-other-card">
+        <span class="home-other-industry">建設 / 不動産</span>
+        <strong>全社AI活用支援</strong>
+        <span class="home-other-metric">複数部門を段階展開中</span>
+      </a>
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="cases.html" class="btn btn--outline" style="color:var(--tw-electric);border-color:var(--tw-electric);">他の実績を見る →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 07: SERVICES ===== -->
+<section class="services" id="services">
+  <div class="container">
+    <span class="label">Services</span>
+    <h2>AI導入プログラム</h2>
+    <p class="lead">個別ツールの導入から、組織全体のAI活用設計まで。段階に応じた3つのプログラムをご用意しています。</p>
+
+    <div class="service-cards">
+      <div class="service-card">
+        <div class="service-card-header">
+          <div class="program-num">Program 01</div>
+          <h3>まず業務から変える、<br>AIクイックスタート</h3>
+          <p class="tagline">社内データと接続した"自社専用AI"で、複数業務を3ヶ月で改善します。</p>
+        </div>
+        <div class="service-card-body">
+          <div class="service-meta"><span class="key">対象</span><span class="val">中小〜中堅企業（経営者・部門責任者）</span></div>
+          <div class="service-meta"><span class="key">内容</span><span class="val">業務単位でのAIワークフロー構築・自社データ連携</span></div>
+          <div class="service-meta"><span class="key">期間</span><span class="val">最低3ヶ月</span></div>
+          <div class="service-meta"><span class="key">月額</span><span class="val">30万円〜</span></div>
+          <div class="service-card-quote">「まず目の前の業務で、AIの投資対効果を実証します。」</div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card-header">
+          <div class="program-num">Program 02</div>
+          <h3>部署まるごと、<br>AIで回す組織へ</h3>
+          <p class="tagline">AIが組み込まれた業務フローを、部署単位で6ヶ月かけて定着させます。</p>
+        </div>
+        <div class="service-card-body">
+          <div class="service-meta"><span class="key">対象</span><span class="val">中堅企業（経営者・DX推進責任者・部門長）</span></div>
+          <div class="service-meta"><span class="key">内容</span><span class="val">部署単位でのAI導入・社内データ構造化・業務フロー再設計</span></div>
+          <div class="service-meta"><span class="key">期間</span><span class="val">6ヶ月〜</span></div>
+          <div class="service-meta"><span class="key">月額</span><span class="val">50万円〜</span></div>
+          <div class="service-card-quote">「データ蓄積の差は不可逆。半年後には追いつけない。」</div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card-header">
+          <div class="program-num">Program 03</div>
+          <h3>全社をAIドリブンに変える<br>導入設計</h3>
+          <p class="tagline">部署ごとにAIを導入し、全社のAIドリブン体制を構築します。</p>
+        </div>
+        <div class="service-card-body">
+          <div class="service-meta"><span class="key">対象</span><span class="val">上場企業・大手（経営層・DX推進部門長・部門長）</span></div>
+          <div class="service-meta"><span class="key">内容</span><span class="val">部署別AI導入計画・順次実装・経営KPIへの接続</span></div>
+          <div class="service-meta"><span class="key">期間</span><span class="val">3ヶ月〜（PoC → 本契約）</span></div>
+          <div class="service-meta"><span class="key">費用</span><span class="val">要相談</span></div>
+          <div class="service-card-quote">「全社で本気で取り組む」ための設計パートナーです。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 08: FLOW ===== -->
+<section class="flow" id="flow">
+  <div class="container">
+    <span class="label">Flow</span>
+    <h2>ご利用の流れ</h2>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="step-num">1</div>
+        <h3>無料相談</h3>
+        <p>30分のヒアリングで<br>現状の課題を把握します</p>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">2</div>
+        <h3>診断・ご提案</h3>
+        <p>AI活用ステージを診断し<br>最適なプログラムをご提案します</p>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">3</div>
+        <h3>ご契約・キックオフ</h3>
+        <p>月額制で柔軟に開始<br>月30万円から</p>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">4</div>
+        <h3>導入・伴走</h3>
+        <p>コンテキスト整理から<br>定着支援まで一貫対応</p>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">5</div>
+        <h3>成果検証・拡大</h3>
+        <p>KPIに基づき効果を測定し<br>次のステップを決定します</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 09: MESSAGE ===== -->
+<section class="message" id="message">
+  <div class="container">
+    <div class="message-photo"><img src="assets/ceo-portrait.jpg" alt="古野光太朗 - TechWorker代表取締役" style="width:100%;height:100%;object-fit:cover;object-position:50% 30%;transform:scale(2);transform-origin:50% 30%;border-radius:12px;"></div>
+    <div class="message-text">
+      <span class="label">Message</span>
+      <h2>古野光太朗</h2>
+      <p class="role">株式会社TechWorker 代表取締役　<a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" style="color:var(--tw-electric);text-decoration:none;font-weight:700;font-size:13px;"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" style="vertical-align:-1px;margin-right:2px;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a></p>
+      <blockquote>
+        生成AIの性能は、日々進化しています。<br>しかし、それを業務で使いこなせている企業は、まだ多くありません。<br><br>
+        原因はシンプルです。<br>社内の業務知識、判断基準、暗黙のルール ── いわば「コンテキスト」が、AIに渡せる形で整理されていないのです。<br><br>
+        <strong>私たちはこの「コンテキスト整理」を専門とし、上場企業を含む37社・2,500名のご支援を重ねてまいりました。</strong><br><br>
+        AIツールを販売する会社ではありません。<br>貴社の業務が、AIによって本質的に変わる ── その状態をつくることが、私たちの仕事です。
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 10: FAQ ===== -->
+<section class="faq" id="faq">
+  <div class="container">
+    <span class="label">FAQ</span>
+    <h2>よくあるご質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="q">AI知識がない社員が多いのですが、大丈夫でしょうか。</div>
+        <div class="a">問題ございません。研修から業務実装まで一貫して伴走いたします。専門知識は不要です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">どのAIツールに対応していますか。</div>
+        <div class="a">Claude、ChatGPT、Microsoft Copilotをはじめ、主要ツールすべてに対応しております。特定ツールに依存しません。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">最低契約期間はどれくらいですか。</div>
+        <div class="a">導入支援は1ヶ月から、伴走コンサルティングは6ヶ月からとなっております。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">助成金は活用できますか。</div>
+        <div class="a">人材開発支援助成金（DXリスキリングコース）の対象となります。活用実績もございますので、お気軽にご相談ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">大手企業でも対応可能ですか。</div>
+        <div class="a">東証プライム上場企業を含む37社のご支援実績がございます。全社規模の設計・展開にも対応しております。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 11: COMPANY (SUMMARY) ===== -->
+<section class="company" id="company">
+  <div class="container" style="text-align:center;">
+    <span class="label">Company</span>
+    <h2>会社概要</h2>
+    <table class="company-table" style="max-width:600px;margin:0 auto 40px;">
+      <tr><th>会社名</th><td>株式会社TechWorker</td></tr>
+      <tr><th>代表取締役</th><td>古野 光太朗</td></tr>
+      <tr><th>設立</th><td>2023年12月</td></tr>
+      <tr><th>所在地</th><td>東京都新宿区西早稲田一丁目22番3号</td></tr>
+    </table>
+    <a href="company.html" class="btn" style="display:inline-block;">詳しく見る</a>
+  </div>
+</section>
+
+<!-- ===== 12: FINAL CTA ===== -->
+<section class="final-cta" id="contact">
+  <div class="container">
+    <h2>AIの導入、止まっていませんか。</h2>
+    <p>まずは30分、お話をお聞かせください。</p>
+    <div class="btn-group">
+      <a href="contact.html" class="btn btn--white">無料相談に申し込む</a>
+      <a href="contact.html?type=document" class="btn" style="background:transparent;border:2px solid var(--tw-paper);">資料を請求する</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">Tech<span>Worker</span></div>
+        <p>企業向け生成AIコンサルティング<br>株式会社TechWorker</p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:13px;font-weight:700;color:var(--tw-slate);text-decoration:none;transition:color .2s;"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+      </div>
+      <div class="footer-col">
+        <h4>Menu</h4>
+        <a href="news.html">ニュース</a>
+        <a href="#approach">私たちの強み</a>
+        <a href="#services">サービス</a>
+        <a href="cases.html">実績</a>
+        <a href="company.html">会社概要</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="contact.html">無料相談</a>
+        <a href="contact.html?type=document">資料請求</a>
+        <a href="privacy.html">プライバシーポリシー</a>
+        <p style="margin-top:12px;">〒169-0051<br>東京都新宿区西早稲田一丁目22番3号</p>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <p class="copyright">&copy; 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+/* ===== LOADING SCREEN ===== */
+(function(){
+  window.addEventListener('load', function(){
+    var loader = document.getElementById('loader');
+    setTimeout(function(){
+      loader.style.opacity = '0';
+      loader.style.visibility = 'hidden';
+      document.body.classList.add('loaded');
+    }, 1200);
+  });
+})();
+
+/* ===== HERO CANVAS — NETWORK PARTICLES ===== */
+(function(){
+  var canvas = document.getElementById('heroCanvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var dpr = window.devicePixelRatio || 1;
+  var particles = [];
+  var mouse = { x: -999, y: -999 };
+  var PARTICLE_COUNT = 60;
+  var CONNECT_DIST = 140;
+  var MOUSE_DIST = 180;
+
+  function resize() {
+    var rect = canvas.parentElement.getBoundingClientRect();
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    canvas.style.width = rect.width + 'px';
+    canvas.style.height = rect.height + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function createParticles() {
+    particles = [];
+    var w = canvas.width / dpr;
+    var h = canvas.height / dpr;
+    for (var i = 0; i < PARTICLE_COUNT; i++) {
+      particles.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        r: Math.random() * 2 + 1
+      });
+    }
+  }
+
+  function draw() {
+    var w = canvas.width / dpr;
+    var h = canvas.height / dpr;
+    ctx.clearRect(0, 0, w, h);
+
+    /* Update & draw particles */
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > w) p.vx *= -1;
+      if (p.y < 0 || p.y > h) p.vy *= -1;
+
+      /* Mouse repulsion */
+      var dx = p.x - mouse.x, dy = p.y - mouse.y;
+      var dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < MOUSE_DIST) {
+        var force = (MOUSE_DIST - dist) / MOUSE_DIST * 0.02;
+        p.vx += dx * force;
+        p.vy += dy * force;
+      }
+      /* Speed limit */
+      var speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+      if (speed > 1.2) { p.vx *= 0.98; p.vy *= 0.98; }
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(0,94,255,0.15)';
+      ctx.fill();
+    }
+
+    /* Draw connections */
+    for (var i = 0; i < particles.length; i++) {
+      for (var j = i + 1; j < particles.length; j++) {
+        var dx = particles[i].x - particles[j].x;
+        var dy = particles[i].y - particles[j].y;
+        var d = Math.sqrt(dx * dx + dy * dy);
+        if (d < CONNECT_DIST) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = 'rgba(0,94,255,' + (0.08 * (1 - d / CONNECT_DIST)) + ')';
+          ctx.lineWidth = 0.6;
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  createParticles();
+  draw();
+
+  window.addEventListener('resize', function(){ resize(); createParticles(); });
+  canvas.parentElement.addEventListener('mousemove', function(e){
+    var rect = canvas.parentElement.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
+  });
+  canvas.parentElement.addEventListener('mouseleave', function(){
+    mouse.x = -999; mouse.y = -999;
+  });
+})();
+
+/* ===== HERO TEXT — CHARACTER-BY-CHARACTER REVEAL ===== */
+(function(){
+  var h1 = document.querySelector('.hero-text h1');
+  if (!h1) return;
+  /* Split into chars, preserving <em> and <br> */
+  var html = h1.innerHTML;
+  var result = '';
+  var charIdx = 0;
+  var inTag = false;
+  for (var i = 0; i < html.length; i++) {
+    var c = html[i];
+    if (c === '<') { inTag = true; result += c; continue; }
+    if (c === '>') { inTag = false; result += c; continue; }
+    if (inTag) { result += c; continue; }
+    if (c === ' ' || c === '\n') { result += c; continue; }
+    result += '<span class="char-reveal" style="opacity:0;display:inline-block;transform:translateY(16px);transition:opacity .4s ease, transform .4s ease;transition-delay:' + (charIdx * 0.035) + 's;">' + c + '</span>';
+    charIdx++;
+  }
+  h1.innerHTML = result;
+
+  /* Trigger after loader */
+  setTimeout(function(){
+    var chars = h1.querySelectorAll('.char-reveal');
+    chars.forEach(function(c){ c.style.opacity = '1'; c.style.transform = 'translateY(0)'; });
+  }, 1400);
+})();
+
+/* ===== CARD TILT EFFECT ===== */
+(function(){
+  var cards = document.querySelectorAll('.hero-kpi, .strength-card, .service-card, .problem-card');
+  cards.forEach(function(card){
+    card.style.transition = 'transform .3s ease, box-shadow .3s ease';
+    card.addEventListener('mousemove', function(e){
+      var rect = card.getBoundingClientRect();
+      var x = (e.clientX - rect.left) / rect.width - 0.5;
+      var y = (e.clientY - rect.top) / rect.height - 0.5;
+      card.style.transform = 'perspective(600px) rotateX(' + (-y * 6) + 'deg) rotateY(' + (x * 6) + 'deg) scale(1.02)';
+      card.style.boxShadow = '0 12px 40px rgba(0,94,255,.1)';
+    });
+    card.addEventListener('mouseleave', function(){
+      card.style.transform = 'perspective(600px) rotateX(0) rotateY(0) scale(1)';
+      card.style.boxShadow = '';
+    });
+  });
+})();
+
+/* ===== PARALLAX SECTIONS ===== */
+(function(){
+  var parallaxEls = document.querySelectorAll('.macro h2, .approach h2, .final-cta h2');
+  window.addEventListener('scroll', function(){
+    var scrollY = window.scrollY;
+    parallaxEls.forEach(function(el){
+      var rect = el.getBoundingClientRect();
+      var center = rect.top + rect.height / 2;
+      var viewCenter = window.innerHeight / 2;
+      var offset = (center - viewCenter) * 0.05;
+      el.style.transform = 'translateY(' + offset + 'px)';
+    });
+  }, { passive: true });
+})();
+
+/* ===== SCROLL REVEAL ===== */
+(function(){
+  const reveals = document.querySelectorAll(
+    '.hero-text, .hero-kpi, .news-section, .problem-card, .problem-answer, '+
+    '.macro, .approach, .strength-card, .service-card, .results-kpi > div, '+
+    '.case-card, .flow-step, .message-photo, .message-text, .faq-item, '+
+    '.company, .final-cta'
+  );
+  /* Initial hidden state */
+  const style = document.createElement('style');
+  style.textContent = `
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+    .reveal-scale { opacity: 0; transform: scale(.92); transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1); }
+    .reveal-scale.visible { opacity: 1; transform: scale(1); }
+  `;
+  document.head.appendChild(style);
+
+  reveals.forEach(function(el, i){
+    el.classList.add('reveal');
+    /* Stagger siblings */
+    var siblings = el.parentElement ? Array.from(el.parentElement.children).filter(function(c){ return c.classList.contains('reveal'); }) : [];
+    var idx = siblings.indexOf(el);
+    if (idx > 0) el.style.transitionDelay = (idx * 0.1) + 's';
+  });
+
+  /* Special: message photo slides from left */
+  document.querySelectorAll('.message-photo').forEach(function(el){
+    el.classList.remove('reveal');
+    el.classList.add('reveal-left');
+  });
+  document.querySelectorAll('.message-text').forEach(function(el){
+    el.classList.remove('reveal');
+    el.classList.add('reveal-right');
+  });
+
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el){
+    observer.observe(el);
+  });
+})();
+
+/* ===== KPI COUNTER ANIMATION ===== */
+(function(){
+  function animateCounter(el, target, suffix) {
+    var start = 0;
+    var duration = 1800;
+    var startTime = null;
+    function ease(t) { return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2; }
+    function step(ts) {
+      if (!startTime) startTime = ts;
+      var progress = Math.min((ts - startTime) / duration, 1);
+      var val = Math.round(ease(progress) * target);
+      el.textContent = val.toLocaleString() + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  var kpiEls = document.querySelectorAll('.hero-kpi .num, .results-kpi .kpi-num');
+  var kpiObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        var el = entry.target;
+        var text = el.textContent.trim();
+        var suffix = '';
+        if (text.indexOf('+') !== -1) { suffix = '+'; text = text.replace('+',''); }
+        var num = parseInt(text.replace(/,/g, ''), 10);
+        if (!isNaN(num)) animateCounter(el, num, suffix);
+        kpiObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  kpiEls.forEach(function(el){ kpiObserver.observe(el); });
+})();
+
+/* ===== NAV SCROLL EFFECT ===== */
+(function(){
+  var nav = document.querySelector('nav');
+  var lastScroll = 0;
+  window.addEventListener('scroll', function(){
+    var y = window.scrollY;
+    if (y > 80) {
+      nav.style.background = 'rgba(244,246,249,.98)';
+      nav.style.boxShadow = '0 1px 12px rgba(0,94,255,.06)';
+    } else {
+      nav.style.background = 'rgba(244,246,249,.92)';
+      nav.style.boxShadow = 'none';
+    }
+    lastScroll = y;
+  }, { passive: true });
+})();
+
+/* ===== FAQ ACCORDION ===== */
+(function(){
+  var items = document.querySelectorAll('.faq-item');
+  items.forEach(function(item){
+    var q = item.querySelector('.q');
+    var a = item.querySelector('.a');
+    if (!q || !a) return;
+
+    /* Wrap answer for animated height */
+    a.style.overflow = 'hidden';
+    a.style.maxHeight = '0';
+    a.style.transition = 'max-height .4s cubic-bezier(.16,1,.3,1), padding .4s ease';
+    a.style.paddingTop = '0';
+    a.style.paddingBottom = '0';
+    var originalPadding = '16px';
+
+    /* Add toggle arrow */
+    q.style.cursor = 'pointer';
+    q.style.display = 'flex';
+    q.style.alignItems = 'center';
+    q.style.justifyContent = 'space-between';
+    var arrow = document.createElement('span');
+    arrow.textContent = '+';
+    arrow.style.cssText = 'font-size:24px;font-weight:300;color:var(--tw-electric);transition:transform .3s;flex-shrink:0;margin-left:16px;';
+    q.appendChild(arrow);
+
+    q.addEventListener('click', function(){
+      var isOpen = item.classList.contains('open');
+      /* Close all */
+      items.forEach(function(other){
+        other.classList.remove('open');
+        var oa = other.querySelector('.a');
+        var ow = other.querySelector('.q span:last-child');
+        if (oa) { oa.style.maxHeight = '0'; oa.style.paddingTop = '0'; oa.style.paddingBottom = '0'; }
+        if (ow) { ow.textContent = '+'; ow.style.transform = 'rotate(0deg)'; }
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 32 + 'px';
+        a.style.paddingTop = originalPadding;
+        a.style.paddingBottom = originalPadding;
+        arrow.textContent = '−';
+        arrow.style.transform = 'rotate(180deg)';
+      }
+    });
+  });
+})();
+
+/* ===== SMOOTH SCROLL ===== */
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click', function(e){
+    var target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      var y = target.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  });
+});
+
+/* ===== LABEL TYPING EFFECT ===== */
+(function(){
+  var label = document.querySelector('.hero-text .label');
+  if (!label) return;
+  var text = label.textContent;
+  label.textContent = '';
+  label.style.borderRight = '2px solid var(--tw-electric)';
+  label.style.opacity = '1';
+  var i = 0;
+  function type() {
+    if (i < text.length) {
+      label.textContent += text.charAt(i);
+      i++;
+      setTimeout(type, 40);
+    } else {
+      setTimeout(function(){ label.style.borderRight = 'none'; }, 600);
+    }
+  }
+  /* Start after loader finishes */
+  setTimeout(type, 1300);
+})();
+</script>
+
+</body>
+</html>

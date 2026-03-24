@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>サービスラインナップを刷新しました — TechWorker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Noto+Sans+JP:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --tw-black: #0D1117;
+  --tw-paper: #F4F6F9;
+  --tw-electric: #005EFF;
+  --tw-electric-dark: #003DAA;
+  --tw-slate: #3C4B64;
+  --tw-emerald: #00B894;
+  --tw-violet: #7C3AED;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body { overflow-x: hidden;
+  font-family: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
+  background: var(--tw-paper);
+  color: var(--tw-black);
+  line-height: 1.7;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 40px; width: 100%; }
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(244,246,249,.92); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,94,255,.08);
+  padding: 0 40px; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+nav .logo { font-size: 18px; font-weight: 800; color: var(--tw-black); text-decoration: none; }
+nav .logo span { color: var(--tw-electric); }
+nav ul { list-style: none; display: flex; gap: 32px; }
+nav ul a { font-size: 13px; font-weight: 600; color: var(--tw-slate); text-decoration: none; letter-spacing: .5px; transition: color .2s; }
+nav ul a:hover { color: var(--tw-electric); }
+nav .nav-cta { font-size: 13px; font-weight: 700; padding: 8px 24px; background: var(--tw-electric); color: var(--tw-paper); border-radius: 5px; text-decoration: none; transition: background .2s; }
+nav .nav-cta:hover { background: var(--tw-electric-dark); }
+nav .nav-cta .nav-cta-short { display: none; }
+nav .nav-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+nav .lang-switch { font-size: 12px; white-space: nowrap; }
+
+.article-header { padding: 120px 0 0; background: #fff; }
+.article-header .breadcrumb { font-size: 13px; color: var(--tw-slate); margin-bottom: 24px; padding-top: 20px; }
+.article-header .breadcrumb a { color: var(--tw-slate); text-decoration: none; transition: color .2s; }
+.article-header .breadcrumb a:hover { color: var(--tw-electric); }
+.article-header .breadcrumb .sep { margin: 0 8px; opacity: .4; }
+.article-header .breadcrumb .current { color: var(--tw-black); }
+.article-hero { width: 100%; aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden; margin: 24px 0 32px; }
+.article-hero .hero-bg { width: 100%; height: 100%; position: relative; }
+.hero-002 { background: linear-gradient(135deg, #F4F6F9 0%, #b8d4ff 50%, #005EFF 100%); }
+.hero-002::after { content: ''; position: absolute; bottom: -20%; left: 10%; width: 50%; height: 50%; border: 2px solid rgba(0,94,255,.1); border-radius: 50%; }
+.article-meta { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+.article-date { font-size: 13px; font-weight: 600; color: var(--tw-slate); }
+.news-tag { font-size: 11px; font-weight: 700; letter-spacing: 1px; padding: 4px 14px; border-radius: 100px; background: rgba(0,94,255,.08); color: var(--tw-electric); }
+.article-header h1 { font-size: clamp(28px, 3.5vw, 40px); font-weight: 800; line-height: 1.4; max-width: 800px; padding-bottom: 40px; }
+
+.article-body-wrap { padding: 60px 0 48px; }
+.article-body { max-width: 760px; margin: 0 auto; }
+.article-body h2 { font-size: 20px; font-weight: 800; margin: 48px 0 16px; padding-left: 16px; border-left: 3px solid var(--tw-electric); }
+.article-body h2:first-child { margin-top: 0; }
+.article-body p { font-size: 15px; color: var(--tw-slate); line-height: 2; margin-bottom: 32px; }
+.article-body ul { margin: 0 0 32px 20px; font-size: 15px; color: var(--tw-slate); line-height: 2; }
+.article-body li { margin-bottom: 4px; }
+
+.back-to-list { max-width: 760px; margin: 0 auto; padding: 32px 0 0; border-top: 1px solid rgba(0,94,255,.06); }
+.back-to-list a { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--tw-electric); text-decoration: none; transition: opacity .2s; }
+.back-to-list a:hover { opacity: .7; }
+
+.article-pager { max-width: 760px; margin: 0 auto; padding: 40px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.pager-card { display: block; text-decoration: none; color: inherit; padding: 24px; background: #fff; border-radius: 10px; border: 1px solid rgba(0,94,255,.06); transition: border-color .2s, box-shadow .2s; }
+.pager-card:hover { border-color: var(--tw-electric); box-shadow: 0 4px 16px rgba(0,94,255,.06); }
+.pager-card .pager-label { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--tw-electric); margin-bottom: 8px; display: block; }
+.pager-card .pager-title { font-size: 14px; font-weight: 700; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.pager-card .pager-date { font-size: 12px; color: var(--tw-slate); opacity: .5; margin-top: 8px; }
+.pager-card.pager-next { text-align: right; }
+
+.related-news { padding: 60px 0 80px; border-top: 1px solid rgba(0,94,255,.06); }
+.related-news .section-label { font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--tw-electric); margin-bottom: 8px; display: block; }
+.related-news h2 { font-size: 24px; font-weight: 800; margin-bottom: 32px; }
+.related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.related-card { display: block; text-decoration: none; color: inherit; background: #fff; border-radius: 10px; overflow: hidden; transition: transform .25s ease, box-shadow .25s ease; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
+.related-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,94,255,.07); }
+.related-card-thumb { width: 100%; aspect-ratio: 16 / 9; position: relative; overflow: hidden; }
+.related-card-thumb .thumb-bg { width: 100%; height: 100%; }
+.thumb-001 { background: linear-gradient(135deg, #005EFF 0%, #003DAA 60%, #0D1117 100%); }
+.thumb-003 { background: linear-gradient(135deg, #00B894 0%, #006B52 60%, #0D1117 100%); }
+.thumb-004 { background: linear-gradient(135deg, #7C3AED 0%, #4C1D95 60%, #0D1117 100%); }
+.related-card-body { padding: 16px 20px 20px; }
+.related-card-date { font-size: 11px; font-weight: 600; color: var(--tw-slate); opacity: .5; margin-bottom: 6px; }
+.related-card-title { font-size: 14px; font-weight: 700; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+footer { padding: 60px 0 40px; background: #fff; border-top: 1px solid rgba(0,94,255,.06); }
+footer .footer-inner { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; align-items: start; }
+footer .footer-brand .logo { font-size: 18px; font-weight: 800; margin-bottom: 12px; color: var(--tw-black); }
+footer .footer-brand .logo span { color: var(--tw-electric); }
+footer .footer-brand p { font-size: 13px; color: var(--tw-slate); line-height: 1.7; }
+footer .footer-col h4 { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--tw-slate); opacity: .5; margin-bottom: 16px; }
+footer .footer-col a { display: block; font-size: 13px; color: var(--tw-slate); text-decoration: none; margin-bottom: 10px; transition: color .2s; }
+footer .footer-col a:hover { color: var(--tw-electric); }
+footer .footer-col p { font-size: 13px; color: var(--tw-slate); line-height: 1.7; }
+footer .copyright { text-align: center; margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(0,94,255,.06); font-size: 12px; color: var(--tw-slate); opacity: .4; }
+
+@media (max-width: 1024px) {
+  .related-grid { grid-template-columns: repeat(2, 1fr); }
+  .related-grid .related-card:nth-child(3) { display: none; }
+  footer .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+}
+@media (max-width: 640px) {
+  .container { padding: 0 16px; }
+  nav { padding: 0 12px 0 16px; gap: 8px; }
+  nav ul { display: none; }
+  nav .nav-right { gap: 8px; }
+  nav .nav-cta { padding: 8px 14px; font-size: 11px; }
+  nav .nav-cta .nav-cta-full { display: none; }
+  nav .nav-cta .nav-cta-short { display: inline; }
+  nav .lang-switch { display: none; }
+  .article-pager { grid-template-columns: 1fr; }
+  .pager-card.pager-next { text-align: left; }
+  .related-grid { grid-template-columns: 1fr; }
+  .related-grid .related-card:nth-child(3) { display: block; }
+  footer .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .article-meta { flex-wrap: wrap; gap: 8px; }
+  .article-hero { border-radius: 8px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="logo">Tech<span>Worker</span></a>
+  <ul>
+    <li><a href="../index.html">HOME</a></li>
+    <li><a href="../news.html">NEWS</a></li>
+    <li><a href="../index.html#results">実績</a></li>
+    <li><a href="../company.html">会社概要</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="../contact.html" class="nav-cta"><span class="nav-cta-full">お問い合わせ</span><span class="nav-cta-short">相談</span></a>
+    <span class="lang-switch"><span style="color:var(--tw-electric);font-weight:700;">JP</span> / <a href="../en/news/002.html" style="color:var(--tw-slate);text-decoration:none;font-weight:700;">EN</a></span>
+  </div>
+</nav>
+
+<section class="article-header">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">トップ</a><span class="sep">/</span><a href="../news.html">ニュース</a><span class="sep">/</span><span class="current">サービス刷新</span>
+    </div>
+    <div class="article-meta">
+      <span class="article-date">2026.03.14</span>
+      <span class="news-tag">お知らせ</span>
+    </div>
+    <h1>サービスラインナップを刷新しました</h1>
+  </div>
+  <div class="container">
+    <div class="article-hero">
+      <div class="hero-bg hero-002"></div>
+    </div>
+  </div>
+</section>
+
+<section class="article-body-wrap">
+  <div class="container">
+    <div class="article-body">
+
+      <p>株式会社TechWorkerは、2026年3月14日付でサービスラインナップを全面的に刷新いたしました。お客様のAI活用フェーズに応じた3つのプログラム体系に再編し、より明確な支援内容でご提供を開始いたします。</p>
+
+      <h2>刷新の背景</h2>
+
+      <p>当社は創業以来、企業向け生成AIコンサルティングおよび研修を提供してまいりました。37社・2,500名への支援を通じて明確になったのは、企業のAI活用における課題が、導入フェーズによって大きく異なるという事実です。</p>
+
+      <p>「まず目の前の業務を改善したい」段階の企業と、「全社のAIドリブン体制を構築したい」段階の企業では、必要な支援内容が根本的に異なります。この知見をもとに、3段階のプログラムに体系化いたしました。</p>
+
+      <h2>新プログラム体系</h2>
+
+      <p><strong>Program 01｜まず業務から変える、AIクイックスタート</strong><br>
+      社内データと接続した"自社専用AI"で、複数業務を3ヶ月で改善します。中小〜中堅企業の経営者・部門責任者を対象とし、業務単位でのAIワークフロー構築と自社データ連携を行います。最低3ヶ月、月額30万円からご利用いただけます。</p>
+
+      <p><strong>Program 02｜部署まるごと、AIで回す組織へ</strong><br>
+      AIが組み込まれた業務フローを、部署単位で6ヶ月かけて定着させます。中堅企業の経営者・DX推進責任者・部門長を対象とし、部署単位でのAI導入・社内データ構造化・業務フロー再設計を実施します。6ヶ月以上、月額50万円からご利用いただけます。</p>
+
+      <p><strong>Program 03｜全社をAIドリブンに変える導入設計</strong><br>
+      部署ごとにAIを導入し、全社のAIドリブン体制を構築します。上場企業・大手の経営層・DX推進部門長を対象とし、部署別AI導入計画の策定から順次実装、経営KPIへの接続までを一貫して支援します。PoCから本契約への移行設計に対応しており、費用は要相談となっております。</p>
+
+      <h2>すべてのプログラムに共通する特長</h2>
+
+      <p>いずれのプログラムも、当社が「コンテキスト整理」と呼ぶアプローチを基盤としています。社内の業務知識・判断基準・暗黙のルールをAIが理解・活用できる形に構造化することで、ツール導入だけでは得られない実効性のある成果を実現します。</p>
+
+      <p>また、Claude、ChatGPT、Microsoft Copilotをはじめとする主要AIツールすべてに対応しており、特定のツールに依存しない中立的な立場でご支援いたします。</p>
+
+      <p>サービスの詳細につきましては、当社ウェブサイトの<a href="../index.html#services" style="color:var(--tw-electric);">サービスページ</a>をご覧いただくか、<a href="../contact.html" style="color:var(--tw-electric);">お問い合わせフォーム</a>よりお気軽にご連絡ください。</p>
+
+    </div>
+
+    <div class="back-to-list">
+      <a href="../news.html">&larr; ニュース一覧に戻る</a>
+    </div>
+
+    <div class="article-pager">
+      <a href="001.html" class="pager-card pager-prev">
+        <span class="pager-label">Prev</span>
+        <div class="pager-title">生成AI活用事例ホワイトペーパーを公開しました</div>
+        <div class="pager-date">2026.03.20</div>
+      </a>
+      <a href="003.html" class="pager-card pager-next">
+        <span class="pager-label">Next</span>
+        <div class="pager-title">「AI導入の落とし穴」無料ウェビナー開催のお知らせ</div>
+        <div class="pager-date">2026.02.28</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="related-news">
+  <div class="container">
+    <span class="section-label">Related</span>
+    <h2>関連ニュース</h2>
+    <div class="related-grid">
+      <a href="001.html" class="related-card">
+        <div class="related-card-thumb"><div class="thumb-bg thumb-001"></div></div>
+        <div class="related-card-body">
+          <div class="related-card-date">2026.03.20</div>
+          <div class="related-card-title">生成AI活用事例ホワイトペーパーを公開しました</div>
+        </div>
+      </a>
+      <a href="003.html" class="related-card">
+        <div class="related-card-thumb"><div class="thumb-bg thumb-003"></div></div>
+        <div class="related-card-body">
+          <div class="related-card-date">2026.02.28</div>
+          <div class="related-card-title">「AI導入の落とし穴」無料ウェビナー開催のお知らせ</div>
+        </div>
+      </a>
+      <a href="004.html" class="related-card">
+        <div class="related-card-thumb"><div class="thumb-bg thumb-004"></div></div>
+        <div class="related-card-body">
+          <div class="related-card-date">2025.05.07</div>
+          <div class="related-card-title">さくらインターネット株式会社の社内セミナーに代表・古野が講師として登壇しました</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">Tech<span>Worker</span></div>
+        <p>企業向け生成AIコンサルティング<br>株式会社TechWorker</p>
+      </div>
+      <div class="footer-col">
+        <h4>Menu</h4>
+        <a href="../news.html">ニュース</a>
+        <a href="../index.html#approach">私たちの強み</a>
+        <a href="../index.html#services">サービス</a>
+        <a href="../index.html#results">実績</a>
+        <a href="../index.html#company">会社概要</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="../contact.html">無料相談</a>
+        <a href="../contact.html?type=document">資料請求</a>
+        <a href="../privacy.html">プライバシーポリシー</a>
+        <p style="margin-top:12px;">〒169-0051<br>東京都新宿区西早稲田一丁目22番3号</p>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <p class="copyright">&copy; 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

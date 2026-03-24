@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Published our Generative AI Use Cases White Paper — TechWorker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Noto+Sans+JP:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --tw-black: #0D1117;
+  --tw-paper: #F4F6F9;
+  --tw-electric: #005EFF;
+  --tw-electric-dark: #003DAA;
+  --tw-slate: #3C4B64;
+  --tw-emerald: #00B894;
+  --tw-violet: #7C3AED;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body { overflow-x: hidden;
+  font-family: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
+  background: var(--tw-paper);
+  color: var(--tw-black);
+  line-height: 1.7;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 40px; width: 100%; }
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(244,246,249,.92); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,94,255,.08);
+  padding: 0 40px; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+nav .logo { font-size: 18px; font-weight: 800; color: var(--tw-black); text-decoration: none; }
+nav .logo span { color: var(--tw-electric); }
+nav ul { list-style: none; display: flex; gap: 32px; }
+nav ul a { font-size: 13px; font-weight: 600; color: var(--tw-slate); text-decoration: none; letter-spacing: .5px; transition: color .2s; }
+nav ul a:hover { color: var(--tw-electric); }
+nav .nav-cta { font-size: 13px; font-weight: 700; padding: 8px 24px; background: var(--tw-electric); color: var(--tw-paper); border-radius: 5px; text-decoration: none; transition: background .2s; }
+nav .nav-cta:hover { background: var(--tw-electric-dark); }
+nav .nav-right { display: flex; align-items: center; gap: 16px; }
+nav .lang-switch { font-size: 13px; font-weight: 700; color: var(--tw-slate); text-decoration: none; transition: color .2s; }
+nav .lang-switch:hover { color: var(--tw-electric); }
+nav .lang-current { font-size: 13px; font-weight: 700; color: var(--tw-electric); }
+
+.article-header { padding: 120px 0 0; background: #fff; }
+.article-header .breadcrumb { font-size: 13px; color: var(--tw-slate); margin-bottom: 24px; padding-top: 20px; }
+.article-header .breadcrumb a { color: var(--tw-slate); text-decoration: none; transition: color .2s; }
+.article-header .breadcrumb a:hover { color: var(--tw-electric); }
+.article-header .breadcrumb .sep { margin: 0 8px; opacity: .4; }
+.article-header .breadcrumb .current { color: var(--tw-black); }
+.article-hero { width: 100%; aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden; margin: 24px 0 32px; }
+.article-hero .hero-bg { width: 100%; height: 100%; position: relative; }
+.hero-001 { background: linear-gradient(135deg, #005EFF 0%, #003DAA 60%, #0D1117 100%); }
+.hero-001::after { content: ''; position: absolute; top: 15%; right: -5%; width: 50%; height: 50%; border: 2px solid rgba(244,246,249,.1); border-radius: 50%; }
+.article-meta { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+.article-date { font-size: 13px; font-weight: 600; color: var(--tw-slate); }
+.news-tag { font-size: 11px; font-weight: 700; letter-spacing: 1px; padding: 4px 14px; border-radius: 100px; background: rgba(0,94,255,.08); color: var(--tw-electric); }
+.article-header h1 { font-size: clamp(28px, 3.5vw, 40px); font-weight: 800; line-height: 1.4; max-width: 800px; padding-bottom: 40px; }
+
+.article-body-wrap { padding: 60px 0 48px; }
+.article-body { max-width: 760px; margin: 0 auto; }
+.article-body h2 { font-size: 20px; font-weight: 800; margin: 48px 0 16px; padding-left: 16px; border-left: 3px solid var(--tw-electric); }
+.article-body h2:first-child { margin-top: 0; }
+.article-body p { font-size: 15px; color: var(--tw-slate); line-height: 2; margin-bottom: 32px; }
+.article-body ul { margin: 0 0 32px 20px; font-size: 15px; color: var(--tw-slate); line-height: 2; }
+.article-body li { margin-bottom: 4px; }
+
+.back-to-list { max-width: 760px; margin: 0 auto; padding: 32px 0 0; border-top: 1px solid rgba(0,94,255,.06); }
+.back-to-list a { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--tw-electric); text-decoration: none; transition: opacity .2s; }
+.back-to-list a:hover { opacity: .7; }
+
+.article-pager { max-width: 760px; margin: 0 auto; padding: 40px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.pager-card { display: block; text-decoration: none; color: inherit; padding: 24px; background: #fff; border-radius: 10px; border: 1px solid rgba(0,94,255,.06); transition: border-color .2s, box-shadow .2s; }
+.pager-card:hover { border-color: var(--tw-electric); box-shadow: 0 4px 16px rgba(0,94,255,.06); }
+.pager-card .pager-label { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--tw-electric); margin-bottom: 8px; display: block; }
+.pager-card .pager-title { font-size: 14px; font-weight: 700; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.pager-card .pager-date { font-size: 12px; color: var(--tw-slate); opacity: .5; margin-top: 8px; }
+.pager-card.pager-next { text-align: right; }
+.pager-card.pager-placeholder { visibility: hidden; }
+
+.related-news { padding: 60px 0 80px; border-top: 1px solid rgba(0,94,255,.06); }
+.related-news .section-label { font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--tw-electric); margin-bottom: 8px; display: block; }
+.related-news h2 { font-size: 24px; font-weight: 800; margin-bottom: 32px; }
+.related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.related-card { display: block; text-decoration: none; color: inherit; background: #fff; border-radius: 10px; overflow: hidden; transition: transform .25s ease, box-shadow .25s ease; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
+.related-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,94,255,.07); }
+.related-card-thumb { width: 100%; aspect-ratio: 16 / 9; position: relative; overflow: hidden; }
+.related-card-thumb .thumb-bg { width: 100%; height: 100%; }
+.thumb-002 { background: linear-gradient(135deg, #F4F6F9 0%, #b8d4ff 50%, #005EFF 100%); }
+.thumb-003 { background: linear-gradient(135deg, #00B894 0%, #006B52 60%, #0D1117 100%); }
+.thumb-004 { background: linear-gradient(135deg, #7C3AED 0%, #4C1D95 60%, #0D1117 100%); }
+.related-card-body { padding: 16px 20px 20px; }
+.related-card-date { font-size: 11px; font-weight: 600; color: var(--tw-slate); opacity: .5; margin-bottom: 6px; }
+.related-card-title { font-size: 14px; font-weight: 700; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+footer { padding: 60px 0 40px; background: #fff; border-top: 1px solid rgba(0,94,255,.06); }
+footer .footer-inner { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; align-items: start; }
+footer .footer-brand .logo { font-size: 18px; font-weight: 800; margin-bottom: 12px; color: var(--tw-black); }
+footer .footer-brand .logo span { color: var(--tw-electric); }
+footer .footer-brand p { font-size: 13px; color: var(--tw-slate); line-height: 1.7; }
+footer .footer-col h4 { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--tw-slate); opacity: .5; margin-bottom: 16px; }
+footer .footer-col a { display: block; font-size: 13px; color: var(--tw-slate); text-decoration: none; margin-bottom: 10px; transition: color .2s; }
+footer .footer-col a:hover { color: var(--tw-electric); }
+footer .footer-col p { font-size: 13px; color: var(--tw-slate); line-height: 1.7; }
+footer .copyright { text-align: center; margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(0,94,255,.06); font-size: 12px; color: var(--tw-slate); opacity: .4; }
+
+@media (max-width: 1024px) {
+  .related-grid { grid-template-columns: repeat(2, 1fr); }
+  .related-grid .related-card:nth-child(3) { display: none; }
+  footer .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+}
+@media (max-width: 640px) {
+  .container { padding: 0 16px; }
+  nav { padding: 0 12px 0 16px; gap: 8px; }
+  nav ul { display: none; }
+  .article-pager { grid-template-columns: 1fr; }
+  .pager-card.pager-next { text-align: left; }
+  .pager-card.pager-placeholder { display: none; }
+  .related-grid { grid-template-columns: 1fr; }
+  .related-grid .related-card:nth-child(3) { display: block; }
+  footer .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .article-meta { flex-wrap: wrap; gap: 8px; }
+  .article-hero { border-radius: 8px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="logo">Tech<span>Worker</span></a>
+  <ul>
+    <li><a href="../index.html">HOME</a></li>
+    <li><a href="../news.html">NEWS</a></li>
+    <li><a href="../index.html#results">Results</a></li>
+    <li><a href="../../company.html">Company</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="../contact.html" class="nav-cta">Contact Us</a>
+    <a href="../../news/001.html" class="lang-switch">JP</a>
+    <span class="lang-current">EN</span>
+  </div>
+</nav>
+
+<section class="article-header">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">Home</a><span class="sep">/</span><a href="../news.html">News</a><span class="sep">/</span><span class="current">White Paper</span>
+    </div>
+    <div class="article-meta">
+      <span class="article-date">2026.03.20</span>
+      <span class="news-tag">Announcement</span>
+    </div>
+    <h1>Published our Generative AI Use Cases White Paper</h1>
+  </div>
+  <div class="container">
+    <div class="article-hero">
+      <div class="hero-bg hero-001"></div>
+    </div>
+  </div>
+</section>
+
+<section class="article-body-wrap">
+  <div class="container">
+    <div class="article-body">
+
+      <p>TechWorker Inc. has published a comprehensive white paper titled "Generative AI Use Cases 2026 -- Success Patterns from 37 Companies Across 7 Industries." The white paper is available for free download.</p>
+
+      <h2>White Paper Overview</h2>
+
+      <p>This white paper analyzes the most reproducible success patterns from our portfolio of 37 client engagements across seven distinct industries. Each case study details the pre-deployment challenges, the specific interventions implemented, and the quantitative outcomes achieved.</p>
+
+      <h2>Industries Covered</h2>
+
+      <ul>
+        <li>IT and Cloud -- Company-wide generative AI training and workflow integration</li>
+        <li>Chemicals and Materials -- AI-powered R&D processes and new material ideation</li>
+        <li>Construction and Real Estate -- Operational efficiency and safety management</li>
+        <li>Pharmaceuticals -- Accelerated data analysis in drug discovery</li>
+        <li>Food and Beverage -- Quality control and demand forecasting improvements</li>
+        <li>Entertainment -- Content production workflow optimization</li>
+        <li>Financial Services and Insurance -- Automated compliance document review</li>
+      </ul>
+
+      <h2>Our Context Engineering Approach</h2>
+
+      <p>The white paper highlights "context engineering" as the common success factor across all case studies. While generative AI tools continue to improve rapidly, they cannot deliver business value unless an organization's domain knowledge, decision criteria, and institutional processes are structured in a format that AI can understand and act upon.</p>
+
+      <p>TechWorker specializes in this context engineering discipline, having supported over 37 companies and 2,500 professionals, including publicly listed enterprises. We hope this white paper serves as a practical reference for advancing AI adoption within your organization.</p>
+
+      <h2>How to Download</h2>
+
+      <p>To request a copy of the white paper, please use our contact form and select "Request Materials." A member of our team will send the document directly to you.</p>
+
+    </div>
+
+    <div class="back-to-list">
+      <a href="../news.html">&larr; Back to news</a>
+    </div>
+
+    <div class="article-pager">
+      <div class="pager-card pager-placeholder"></div>
+      <a href="002.html" class="pager-card pager-next">
+        <span class="pager-label">Next</span>
+        <div class="pager-title">Refreshed our service lineup</div>
+        <div class="pager-date">2026.03.14</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="related-news">
+  <div class="container">
+    <span class="section-label">Related</span>
+    <h2>Related News</h2>
+    <div class="related-grid">
+      <a href="002.html" class="related-card">
+        <div class="related-card-thumb"><div class="thumb-bg thumb-002"></div></div>
+        <div class="related-card-body">
+          <div class="related-card-date">2026.03.14</div>
+          <div class="related-card-title">Refreshed our service lineup</div>
+        </div>
+      </a>
+      <a href="003.html" class="related-card">
+        <div class="related-card-thumb"><div class="thumb-bg thumb-003"></div></div>
+        <div class="related-card-body">
+          <div class="related-card-date">2026.02.28</div>
+          <div class="related-card-title">Free webinar: "The Pitfalls of AI Adoption"</div>
+        </div>
+      </a>
+      <a href="004.html" class="related-card">
+        <div class="related-card-thumb"><div class="thumb-bg thumb-004"></div></div>
+        <div class="related-card-body">
+          <div class="related-card-date">2025.05.07</div>
+          <div class="related-card-title">CEO Furuno delivered a keynote seminar at Sakura Internet Inc.</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">Tech<span>Worker</span></div>
+        <p>Enterprise Generative AI Consulting<br>TechWorker Inc.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Menu</h4>
+        <a href="../news.html">News</a>
+        <a href="../index.html#approach">Our Strengths</a>
+        <a href="../index.html#services">Services</a>
+        <a href="../index.html#results">Results</a>
+        <a href="../index.html#company">Company</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="../contact.html">Free Consultation</a>
+        <a href="../contact.html?type=document">Request Materials</a>
+        <p style="margin-top:12px;">〒169-0051<br>東京都新宿区西早稲田一丁目22番3号</p>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <p class="copyright">&copy; 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

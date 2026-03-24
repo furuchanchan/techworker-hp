@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy | TechWorker Inc.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Noto+Sans+JP:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+/* ===== TOKENS ===== */
+:root {
+  --tw-black: #0D1117;
+  --tw-paper: #F4F6F9;
+  --tw-electric: #005EFF;
+  --tw-electric-dark: #003DAA;
+  --tw-slate: #3C4B64;
+  --tw-emerald: #00B894;
+  --tw-violet: #7C3AED;
+}
+
+/* ===== RESET ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body {
+  font-family: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
+  background: var(--tw-paper);
+  color: var(--tw-black);
+  line-height: 1.7;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ===== UTILITIES ===== */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 40px; width: 100%; }
+.label {
+  font-size: 11px; font-weight: 600; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--tw-electric);
+  margin-bottom: 16px; display: block;
+}
+
+/* ===== NAV ===== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(244,246,249,.92); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,94,255,.08);
+  padding: 0 40px; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+nav .logo { font-size: 18px; font-weight: 800; color: var(--tw-black); text-decoration: none; }
+nav .logo span { color: var(--tw-electric); }
+nav ul { list-style: none; display: flex; gap: 32px; }
+nav ul a {
+  font-size: 13px; font-weight: 600; color: var(--tw-slate);
+  text-decoration: none; letter-spacing: .5px; transition: color .2s;
+}
+nav ul a:hover { color: var(--tw-electric); }
+nav .nav-cta {
+  font-size: 13px; font-weight: 700; padding: 8px 24px;
+  background: var(--tw-electric); color: var(--tw-paper);
+  border-radius: 5px; text-decoration: none; transition: background .2s;
+}
+nav .nav-cta:hover { background: var(--tw-electric-dark); }
+
+/* ===== PAGE HEADER ===== */
+.page-header {
+  padding: 140px 0 60px;
+  background: #fff;
+  border-bottom: 1px solid rgba(0,94,255,.06);
+}
+.page-header h1 {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.page-header .subtitle {
+  font-size: 14px;
+  color: var(--tw-slate);
+}
+
+/* ===== POLICY CONTENT ===== */
+.policy {
+  padding: 80px 0 120px;
+}
+.policy-inner {
+  max-width: 800px;
+}
+.policy-date {
+  font-size: 13px;
+  color: var(--tw-slate);
+  margin-bottom: 40px;
+  font-weight: 600;
+}
+.policy-intro {
+  font-size: 15px;
+  line-height: 2;
+  color: var(--tw-slate);
+  margin-bottom: 60px;
+}
+.policy h2 {
+  font-size: 20px;
+  font-weight: 800;
+  margin-top: 48px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--tw-electric);
+  display: inline-block;
+}
+.policy h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+.policy p {
+  font-size: 15px;
+  line-height: 2;
+  color: var(--tw-slate);
+  margin-bottom: 16px;
+}
+.policy ul, .policy ol {
+  margin: 12px 0 16px 24px;
+  font-size: 15px;
+  line-height: 2;
+  color: var(--tw-slate);
+}
+.policy li {
+  margin-bottom: 4px;
+}
+.policy .contact-info {
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px;
+  border: 1px solid rgba(0,94,255,.06);
+  margin-top: 16px;
+}
+.policy .contact-info p {
+  margin-bottom: 4px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  padding: 60px 0 40px;
+  background: #fff;
+  border-top: 1px solid rgba(0,94,255,.06);
+}
+footer .footer-inner {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px;
+  align-items: start;
+}
+footer .footer-brand .logo { font-size: 18px; font-weight: 800; margin-bottom: 12px; color: var(--tw-black); }
+footer .footer-brand .logo span { color: var(--tw-electric); }
+footer .footer-brand p { font-size: 13px; color: var(--tw-slate); line-height: 1.7; }
+footer .footer-col h4 {
+  font-size: 12px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--tw-slate); opacity: .5; margin-bottom: 16px;
+}
+footer .footer-col a {
+  display: block; font-size: 13px; color: var(--tw-slate);
+  text-decoration: none; margin-bottom: 10px; transition: color .2s;
+}
+footer .footer-col a:hover { color: var(--tw-electric); }
+footer .footer-col p {
+  font-size: 13px; color: var(--tw-slate); line-height: 1.7;
+}
+footer .copyright {
+  text-align: center; margin-top: 40px; padding-top: 24px;
+  border-top: 1px solid rgba(0,94,255,.06);
+  font-size: 12px; color: var(--tw-slate); opacity: .4;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  footer .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+}
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  nav { padding: 0 20px; }
+  nav ul { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <a href="../index.html" class="logo">Tech<span>Worker</span></a>
+  <ul>
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="news.html">NEWS</a></li>
+    <li><a href="index.html#results">Results</a></li>
+    <li><a href="../company.html">Company</a></li>
+  </ul>
+  <a href="../contact.html" class="nav-cta">Contact Us</a>
+</nav>
+
+<!-- ===== PAGE HEADER ===== -->
+<section class="page-header">
+  <div class="container">
+    <span class="label">Privacy Policy</span>
+    <h1>Privacy Policy</h1>
+    <p class="subtitle">TechWorker Inc. ("the Company") recognizes the importance of personal information and handles it appropriately in accordance with the following policy.</p>
+  </div>
+</section>
+
+<!-- ===== POLICY CONTENT ===== -->
+<section class="policy">
+  <div class="container">
+    <div class="policy-inner">
+
+      <p class="policy-date">Effective Date: March 23, 2026</p>
+
+      <p class="policy-intro">
+        TechWorker Inc. (hereinafter referred to as "the Company") considers the protection of personal information to be a critical management responsibility. The Company complies with the Act on the Protection of Personal Information (Japan) and all other applicable laws, regulations, and guidelines, and strives to handle and protect personal information appropriately as set forth in this Privacy Policy.
+      </p>
+
+      <h2>1. Definition of Personal Information</h2>
+      <p>
+        In this policy, "personal information" refers to information about a living individual as defined by the Act on the Protection of Personal Information of Japan, including name, date of birth, address, telephone number, email address, and other descriptions that can identify a specific individual (including information that can be easily cross-referenced with other data to identify a specific individual).
+      </p>
+
+      <h2>2. Collection of Personal Information</h2>
+      <p>The Company may collect personal information in the following cases:</p>
+      <ul>
+        <li>When you contact us via our inquiry form</li>
+        <li>When you request documentation or materials</li>
+        <li>When you apply for a free consultation</li>
+        <li>When you register for seminars or webinars</li>
+        <li>When you provide information in connection with a business contract or transaction</li>
+        <li>When you provide information through business card exchanges or other means</li>
+      </ul>
+      <p>The Company collects personal information through lawful and fair means and does not acquire personal information by improper methods.</p>
+
+      <h2>3. Purpose of Use</h2>
+      <p>The Company uses collected personal information for the following purposes:</p>
+      <ul>
+        <li>To respond to inquiries and contact you</li>
+        <li>To send requested documentation and materials</li>
+        <li>To provide information and proposals about our services</li>
+        <li>To send notifications about seminars, webinars, and other events</li>
+        <li>To perform operations related to business contracts and other transactions</li>
+        <li>To improve our services and develop new services</li>
+        <li>To analyze and improve usage of our website</li>
+        <li>For other purposes incidental to the above</li>
+      </ul>
+
+      <h2>4. Restrictions on Disclosure to Third Parties</h2>
+      <p>The Company will not provide personal information to third parties without your consent, except in the following cases:</p>
+      <ul>
+        <li>When required by law</li>
+        <li>When necessary to protect a person's life, body, or property and it is difficult to obtain the individual's consent</li>
+        <li>When particularly necessary to improve public health or promote the sound development of children and it is difficult to obtain the individual's consent</li>
+        <li>When it is necessary to cooperate with a national or local government agency or an entity entrusted by such agency in performing duties prescribed by law</li>
+      </ul>
+
+      <h2>5. Management of Personal Information</h2>
+      <p>
+        The Company maintains personal information in an accurate and up-to-date state and implements reasonable security measures to prevent unauthorized access, loss, destruction, alteration, and leakage of personal information.
+      </p>
+      <p>
+        When outsourcing the handling of personal information, the Company exercises necessary and appropriate supervision over the outsourced party to ensure the secure management of personal information.
+      </p>
+
+      <h2>6. Use of Cookies</h2>
+      <p>
+        Our website may use cookies and similar technologies to improve service usability and understand website usage patterns. Cookies are small data files sent from a web server to your browser and stored on your computer.
+      </p>
+      <p>
+        You can refuse cookies through your browser settings. However, doing so may prevent some features of our website from functioning properly.
+      </p>
+
+      <h2>7. Use of Google Analytics</h2>
+      <p>
+        Our website may use Google Analytics, provided by Google LLC ("Google"), to analyze website usage. Google Analytics uses cookies to collect website usage information, including IP addresses.
+      </p>
+      <p>
+        For information about how Google Analytics collects and processes data, please refer to <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" style="color: var(--tw-electric);">Google's Policies and Terms</a>.
+      </p>
+      <p>
+        To opt out of Google Analytics tracking, you can use the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" style="color: var(--tw-electric);">Google Analytics Opt-out Browser Add-on</a>.
+      </p>
+
+      <h2>8. Information Collection via Inquiry Forms</h2>
+      <p>
+        Our website's inquiry forms collect information such as your name, email address, phone number, company name, and the content of your inquiry. This information is used solely for the purposes of responding to your inquiry, sending materials, and providing information about our services.
+      </p>
+      <p>
+        Information submitted through our forms is transmitted via SSL (Secure Sockets Layer) encrypted connections.
+      </p>
+
+      <h2>9. Requests for Disclosure, Correction, or Deletion</h2>
+      <p>
+        You may request the disclosure, correction, addition, deletion, suspension of use, erasure, or cessation of third-party provision of your personal information held by the Company, in accordance with the Act on the Protection of Personal Information.
+      </p>
+      <p>
+        Upon receiving such a request, we will verify your identity and respond within a reasonable period and scope. Please note that we may not be able to accommodate your request in cases where the Company is not obligated to do so under the Act on the Protection of Personal Information or other applicable laws.
+      </p>
+
+      <h2>10. Changes to This Policy</h2>
+      <p>
+        The Company may amend this Privacy Policy due to changes in legislation, social circumstances, or other factors. The revised policy shall take effect upon publication on our website. In the case of significant changes, we will provide notice on our website.
+      </p>
+
+      <h2>11. Contact Information</h2>
+      <p>
+        For inquiries regarding this Privacy Policy or requests for disclosure, correction, or deletion of personal information, please contact us through the following:
+      </p>
+      <div class="contact-info">
+        <p><strong>TechWorker Inc. — Personal Information Protection</strong></p>
+        <p>Representative: Kotaro Furuno, CEO</p>
+        <p>Address: 1-22-3 Nishi-Waseda, Shinjuku-ku, Tokyo 169-0051, Japan</p>
+        <p>Contact: <a href="../contact.html" style="color: var(--tw-electric);">Inquiry Form</a></p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">Tech<span>Worker</span></div>
+        <p>Enterprise AI Consulting<br>TechWorker Inc.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Menu</h4>
+        <a href="news.html">News</a>
+        <a href="../index.html#approach">Our Strengths</a>
+        <a href="../index.html#services">Services</a>
+        <a href="../index.html#results">Results</a>
+        <a href="../index.html#company">Company</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="../contact.html">Free Consultation</a>
+        <a href="../contact.html?type=document">Request Materials</a>
+        <p style="margin-top:12px;">1-22-3 Nishi-Waseda,<br>Shinjuku-ku, Tokyo 169-0051</p>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <p class="copyright">&copy; 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

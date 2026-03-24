@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | TechWorker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Noto+Sans+JP:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+/* ===== TOKENS ===== */
+:root {
+  --tw-black: #0D1117;
+  --tw-paper: #F4F6F9;
+  --tw-electric: #005EFF;
+  --tw-electric-dark: #003DAA;
+  --tw-slate: #3C4B64;
+  --tw-emerald: #00B894;
+}
+
+/* ===== RESET ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body {
+  font-family: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
+  background: var(--tw-paper);
+  color: var(--tw-black);
+  line-height: 1.7;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 40px; width: 100%; }
+.label {
+  font-size: 11px; font-weight: 600; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--tw-electric);
+  margin-bottom: 16px; display: block;
+}
+
+/* ===== NAV ===== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(244,246,249,.92); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,94,255,.08);
+  padding: 0 40px; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+nav .logo { font-size: 18px; font-weight: 800; color: var(--tw-black); text-decoration: none; }
+nav .logo span { color: var(--tw-electric); }
+nav ul { list-style: none; display: flex; gap: 32px; }
+nav ul a {
+  font-size: 13px; font-weight: 600; color: var(--tw-slate);
+  text-decoration: none; letter-spacing: .5px; transition: color .2s;
+}
+nav ul a:hover { color: var(--tw-electric); }
+nav .nav-right { display: flex; align-items: center; gap: 16px; }
+nav .nav-cta {
+  font-size: 13px; font-weight: 700; padding: 8px 24px;
+  background: var(--tw-electric); color: var(--tw-paper);
+  border-radius: 5px; text-decoration: none; transition: background .2s;
+}
+nav .nav-cta:hover { background: var(--tw-electric-dark); }
+nav .lang-switch {
+  font-size: 13px; font-weight: 700; color: var(--tw-slate);
+  text-decoration: none; transition: color .2s;
+}
+nav .lang-switch:hover { color: var(--tw-electric); }
+nav .lang-current {
+  font-size: 13px; font-weight: 700; color: var(--tw-electric);
+}
+
+/* ===== PAGE HEADER ===== */
+.page-header {
+  padding: 140px 0 60px;
+  background: #fff;
+  border-bottom: 1px solid rgba(0,94,255,.06);
+}
+.page-header h1 {
+  font-size: clamp(28px, 4vw, 40px); font-weight: 800;
+  margin-bottom: 12px;
+}
+.page-header p {
+  font-size: 16px; color: var(--tw-slate); max-width: 560px;
+}
+
+/* ===== CONTACT LAYOUT ===== */
+.contact-section {
+  padding: 80px 0 120px;
+}
+.contact-layout {
+  display: grid; grid-template-columns: 1fr 360px; gap: 80px;
+  align-items: start;
+}
+
+/* ===== INQUIRY TYPE TABS ===== */
+.inquiry-tabs {
+  display: flex; gap: 12px; margin-bottom: 48px;
+}
+.inquiry-tab {
+  flex: 1; padding: 20px 16px;
+  background: #fff; border: 2px solid rgba(0,94,255,.08);
+  border-radius: 12px; cursor: pointer;
+  text-align: center; transition: all .2s;
+}
+.inquiry-tab:hover { border-color: rgba(0,94,255,.2); }
+.inquiry-tab.active {
+  border-color: var(--tw-electric);
+  background: rgba(0,94,255,.02);
+}
+.inquiry-tab .tab-icon {
+  font-size: 28px; margin-bottom: 8px; display: block;
+}
+.inquiry-tab .tab-label {
+  font-size: 14px; font-weight: 700; display: block;
+  color: var(--tw-black);
+}
+.inquiry-tab .tab-desc {
+  font-size: 12px; color: var(--tw-slate); margin-top: 4px;
+  display: block;
+}
+
+/* ===== FORM ===== */
+.form-group { margin-bottom: 24px; }
+.form-group label {
+  display: block; font-size: 14px; font-weight: 700;
+  margin-bottom: 8px;
+}
+.form-group label .required {
+  color: #E53E3E; font-size: 12px; margin-left: 4px;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%; padding: 14px 16px;
+  font-size: 15px; font-family: inherit;
+  border: 1px solid rgba(0,94,255,.12);
+  border-radius: 8px; background: #fff;
+  color: var(--tw-black);
+  transition: border-color .2s;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--tw-electric);
+  box-shadow: 0 0 0 3px rgba(0,94,255,.08);
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #A0AEC0;
+}
+.form-group textarea { resize: vertical; min-height: 120px; }
+.form-group select { appearance: none; cursor: pointer; }
+.select-wrapper {
+  position: relative;
+}
+.select-wrapper::after {
+  content: '';
+  position: absolute; right: 16px; top: 50%;
+  transform: translateY(-50%);
+  width: 0; height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid var(--tw-slate);
+  pointer-events: none;
+}
+.form-checkbox {
+  display: flex; align-items: flex-start; gap: 10px;
+  margin-bottom: 24px;
+}
+.form-checkbox input[type="checkbox"] {
+  width: 18px; height: 18px; margin-top: 2px;
+  accent-color: var(--tw-electric);
+}
+.form-checkbox label {
+  font-size: 13px; color: var(--tw-slate); line-height: 1.6;
+}
+.form-checkbox label a {
+  color: var(--tw-electric); text-decoration: none;
+}
+.btn-submit {
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px; width: 100%; padding: 18px;
+  background: var(--tw-electric); color: var(--tw-paper);
+  font-size: 16px; font-weight: 700; border: none;
+  border-radius: 8px; cursor: pointer;
+  transition: background .2s;
+}
+.btn-submit:hover { background: var(--tw-electric-dark); }
+.btn-submit svg { width: 20px; height: 20px; }
+
+/* ===== SIDEBAR ===== */
+.sidebar-card {
+  background: #fff; border-radius: 16px;
+  padding: 32px; margin-bottom: 24px;
+  border: 1px solid rgba(0,94,255,.06);
+}
+.sidebar-card h3 {
+  font-size: 16px; font-weight: 800; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+.sidebar-card p {
+  font-size: 14px; color: var(--tw-slate); line-height: 1.8;
+  margin-bottom: 16px;
+}
+.sidebar-card ul {
+  list-style: none; padding: 0;
+}
+.sidebar-card ul li {
+  font-size: 13px; color: var(--tw-slate); line-height: 1.8;
+  padding: 6px 0; border-bottom: 1px solid rgba(0,94,255,.04);
+  display: flex; align-items: baseline; gap: 8px;
+}
+.sidebar-card ul li::before {
+  content: ''; width: 4px; height: 4px;
+  background: var(--tw-electric); border-radius: 50%;
+  flex-shrink: 0; margin-top: 8px;
+}
+.wp-highlight {
+  background: rgba(0,94,255,.03);
+  border: 2px solid rgba(0,94,255,.12);
+}
+.wp-highlight .wp-badge {
+  display: inline-block; padding: 3px 10px;
+  background: var(--tw-electric); color: var(--tw-paper);
+  font-size: 11px; font-weight: 700; border-radius: 4px;
+  letter-spacing: 1px; margin-bottom: 12px;
+}
+.wp-contents {
+  display: flex; flex-direction: column; gap: 8px; margin-top: 16px;
+}
+.wp-contents .wp-item {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: var(--tw-black); font-weight: 600;
+}
+.wp-contents .wp-item::before {
+  content: ''; width: 20px; height: 20px;
+  background: rgba(0,94,255,.06); border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ===== THANK YOU (hidden by default) ===== */
+.thank-you {
+  display: none;
+  text-align: center;
+  padding: 80px 40px;
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid rgba(0,94,255,.06);
+}
+.thank-you.show { display: block; }
+.thank-you .check-icon {
+  width: 80px; height: 80px; border-radius: 50%;
+  background: rgba(0,94,255,.06);
+  display: inline-flex; align-items: center; justify-content: center;
+  margin-bottom: 24px;
+}
+.thank-you .check-icon svg {
+  width: 40px; height: 40px; color: var(--tw-electric);
+}
+.thank-you h2 {
+  font-size: 24px; font-weight: 800; margin-bottom: 12px;
+}
+.thank-you p {
+  font-size: 15px; color: var(--tw-slate); line-height: 1.8;
+  margin-bottom: 32px;
+}
+.thank-you .dl-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 16px 40px;
+  background: var(--tw-electric); color: var(--tw-paper);
+  font-size: 15px; font-weight: 700; border-radius: 8px;
+  text-decoration: none; transition: background .2s;
+  margin-bottom: 16px;
+}
+.thank-you .dl-btn:hover { background: var(--tw-electric-dark); }
+.thank-you .back-link {
+  display: block; font-size: 13px; color: var(--tw-electric);
+  text-decoration: none; margin-top: 16px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  padding: 60px 0 40px;
+  background: #fff;
+  border-top: 1px solid rgba(0,94,255,.06);
+}
+footer .footer-inner {
+  display: flex; justify-content: space-between; align-items: flex-start;
+}
+footer .footer-brand .logo { font-size: 18px; font-weight: 800; margin-bottom: 12px; color: var(--tw-black); }
+footer .footer-brand .logo span { color: var(--tw-electric); }
+footer .footer-brand p { font-size: 13px; color: var(--tw-slate); line-height: 1.7; }
+footer .footer-links { display: flex; gap: 48px; }
+footer .footer-links a {
+  font-size: 13px; color: var(--tw-slate);
+  text-decoration: none; transition: color .2s;
+}
+footer .footer-links a:hover { color: var(--tw-electric); }
+footer .copyright {
+  text-align: center; margin-top: 40px; padding-top: 24px;
+  border-top: 1px solid rgba(0,94,255,.06);
+  font-size: 12px; color: var(--tw-slate); opacity: .4;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .contact-layout { grid-template-columns: 1fr; gap: 40px; }
+  .inquiry-tabs { flex-direction: column; }
+  footer .footer-inner { flex-direction: column; gap: 32px; }
+}
+@media (max-width: 640px) {
+  .container { padding: 0 16px; }
+  nav { padding: 0 12px 0 16px; }
+  nav ul { display: none; }
+  .page-header { padding: 120px 0 40px; }
+  .page-header h1 { font-size: 24px; }
+  .contact-section { padding: 40px 0 80px; }
+  .inquiry-tabs { gap: 8px; }
+  .inquiry-tab { padding: 14px 12px; }
+  .inquiry-tab .tab-icon { font-size: 22px; margin-bottom: 4px; }
+  .inquiry-tab .tab-label { font-size: 13px; }
+  .inquiry-tab .tab-desc { font-size: 11px; }
+  .sidebar-card { padding: 24px; }
+  .thank-you { padding: 60px 20px; }
+  .form-group input, .form-group select, .form-group textarea { font-size: 16px; }
+  footer .footer-links { flex-direction: column; gap: 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <a href="index.html" class="logo">Tech<span>Worker</span></a>
+  <ul>
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="news.html">NEWS</a></li>
+    <li><a href="index.html#results">Results</a></li>
+    <li><a href="../company.html">Company</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="contact.html" class="nav-cta">Contact Us</a>
+    <a href="../contact.html" class="lang-switch">JP</a>
+    <span class="lang-current">EN</span>
+  </div>
+</nav>
+
+<!-- ===== PAGE HEADER ===== -->
+<section class="page-header">
+  <div class="container">
+    <span class="label">Contact</span>
+    <h1>Contact Us</h1>
+    <p>We offer free consultations and materials on request.<br>Please fill out the form below to get in touch.</p>
+  </div>
+</section>
+
+<!-- ===== CONTACT FORM ===== -->
+<section class="contact-section">
+  <div class="container">
+
+    <!-- Inquiry Type Tabs -->
+    <div class="inquiry-tabs">
+      <div class="inquiry-tab active" data-type="consultation" onclick="switchTab(this)">
+        <span class="tab-icon">&#128172;</span>
+        <span class="tab-label">Free Consultation</span>
+        <span class="tab-desc">30-minute discovery call</span>
+      </div>
+      <div class="inquiry-tab" data-type="document" onclick="switchTab(this)">
+        <span class="tab-icon">&#128196;</span>
+        <span class="tab-label">Request Materials</span>
+        <span class="tab-desc">AI use cases white paper</span>
+      </div>
+      <div class="inquiry-tab" data-type="other" onclick="switchTab(this)">
+        <span class="tab-icon">&#9993;</span>
+        <span class="tab-label">Other</span>
+        <span class="tab-desc">Press, partnerships, etc.</span>
+      </div>
+    </div>
+
+    <div class="contact-layout">
+      <!-- FORM -->
+      <div>
+        <form id="contactForm" onsubmit="handleSubmit(event)">
+          <input type="hidden" id="inquiryType" name="inquiry_type" value="consultation">
+
+          <div class="form-group">
+            <label>Full Name<span class="required">*</span></label>
+            <input type="text" name="name" placeholder="John Smith" required>
+          </div>
+
+          <div class="form-group">
+            <label>Company Name<span class="required">*</span></label>
+            <input type="text" name="company" placeholder="Acme Corporation" required>
+          </div>
+
+          <div class="form-group">
+            <label>Email Address<span class="required">*</span></label>
+            <input type="email" name="email" placeholder="sample@example.com" required>
+          </div>
+
+          <div class="form-group">
+            <label>Phone Number<span class="required">*</span></label>
+            <input type="tel" name="phone" placeholder="+81-3-0000-0000" required>
+          </div>
+
+          <div class="form-group">
+            <label>Job Title</label>
+            <input type="text" name="position" placeholder="Director / Manager etc.">
+          </div>
+
+          <div class="form-group">
+            <label>Company Size</label>
+            <div class="select-wrapper">
+              <select name="company_size">
+                <option value="" disabled selected>Please select</option>
+                <option value="1-10">1-10 employees</option>
+                <option value="11-50">11-50 employees</option>
+                <option value="51-200">51-200 employees</option>
+                <option value="201-1000">201-1,000 employees</option>
+                <option value="1001+">1,001+ employees</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group" id="consultationField">
+            <label>How can we help?<span class="required">*</span></label>
+            <textarea name="message" placeholder="Tell us about your current AI adoption status and challenges" required></textarea>
+          </div>
+
+          <div class="form-checkbox">
+            <input type="checkbox" id="privacy" required>
+            <label for="privacy">I agree to the <a href="privacy.html">Privacy Policy</a> and consent to submit this form.</label>
+          </div>
+
+          <button type="submit" class="btn-submit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg>
+            Submit
+          </button>
+        </form>
+
+        <!-- THANK YOU -->
+        <div class="thank-you" id="thankYou">
+          <div class="check-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17L4 12"/></svg>
+          </div>
+          <h2>Thank you for your inquiry</h2>
+          <p id="thankYouMsg">A member of our team will contact you within one business day.</p>
+          <a href="#" class="dl-btn" id="dlBtn" style="display:none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download White Paper
+          </a>
+          <a href="index.html" class="back-link">&larr; Back to Home</a>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="sidebar-card wp-highlight">
+          <span class="wp-badge">FREE DOWNLOAD</span>
+          <h3>Generative AI Use Cases</h3>
+          <p>A white paper compiling insights from our work with 37 companies, including publicly listed enterprises. Available free when you request materials or book a consultation.</p>
+          <div class="wp-contents">
+            <div class="wp-item">Gen AI adoption: success &amp; failure patterns</div>
+            <div class="wp-item">Context Engineering examples by industry</div>
+            <div class="wp-item">ROI simulation</div>
+            <div class="wp-item">Step-by-step deployment guide</div>
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <h3>What we cover in a free consultation</h3>
+          <ul>
+            <li>Understanding your current AI adoption status</li>
+            <li>Identifying challenges and prioritizing them</li>
+            <li>Recommending the right program for your needs</li>
+            <li>Discussing budget and timeline expectations</li>
+          </ul>
+          <p style="margin-top:16px;font-size:13px;"><strong>Duration:</strong> Approx. 30 min<br><strong>Cost:</strong> Free<br><strong>Format:</strong> Online (Zoom / Teams)</p>
+        </div>
+
+        <div class="sidebar-card">
+          <h3>Phone Inquiries</h3>
+          <p style="margin-bottom:0;">If email is not convenient,<br>feel free to call us directly.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">Tech<span>Worker</span></div>
+        <p>Enterprise Generative AI Consulting<br>TechWorker Inc.</p>
+      </div>
+      <div class="footer-links">
+        <a href="news.html">News</a>
+        <a href="index.html">Home</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#company">Company</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <p class="copyright">&copy; 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+// Tab switching
+function switchTab(el) {
+  document.querySelectorAll('.inquiry-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  const type = el.dataset.type;
+  document.getElementById('inquiryType').value = type;
+
+  const msgField = document.getElementById('consultationField');
+  const textarea = msgField.querySelector('textarea');
+  if (type === 'document') {
+    msgField.querySelector('label').innerHTML = 'Questions or additional notes';
+    textarea.placeholder = 'Let us know if there are specific areas of interest (optional)';
+    textarea.required = false;
+  } else if (type === 'other') {
+    msgField.querySelector('label').innerHTML = 'Your message<span class="required">*</span>';
+    textarea.placeholder = 'Please describe your inquiry';
+    textarea.required = true;
+  } else {
+    msgField.querySelector('label').innerHTML = 'How can we help?<span class="required">*</span>';
+    textarea.placeholder = 'Tell us about your current AI adoption status and challenges';
+    textarea.required = true;
+  }
+}
+
+// URL param auto-select
+const params = new URLSearchParams(window.location.search);
+if (params.get('type')) {
+  const tab = document.querySelector('[data-type="' + params.get('type') + '"]');
+  if (tab) switchTab(tab);
+}
+
+// Form submit
+function handleSubmit(e) {
+  e.preventDefault();
+  const type = document.getElementById('inquiryType').value;
+  const form = document.getElementById('contactForm');
+  const thanks = document.getElementById('thankYou');
+  const dlBtn = document.getElementById('dlBtn');
+  const msg = document.getElementById('thankYouMsg');
+
+  form.style.display = 'none';
+  thanks.classList.add('show');
+
+  if (type === 'document' || type === 'consultation') {
+    dlBtn.style.display = 'inline-flex';
+    dlBtn.href = '#'; // Replace with actual whitepaper URL
+    if (type === 'document') {
+      msg.textContent = 'We will also send the materials to the email address you provided.';
+    } else {
+      msg.textContent = 'A member of our team will contact you within one business day. You can also download our materials below.';
+    }
+  } else {
+    dlBtn.style.display = 'none';
+    msg.textContent = 'A member of our team will contact you within one business day.';
+  }
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>

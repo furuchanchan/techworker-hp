@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>実績・導入事例 — TechWorker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Noto+Sans+JP:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+/* ===== TOKENS ===== */
+:root {
+  --tw-black: #0D1117;
+  --tw-paper: #F4F6F9;
+  --tw-electric: #005EFF;
+  --tw-electric-dark: #003DAA;
+  --tw-slate: #3C4B64;
+  --tw-emerald: #00B894;
+  --tw-violet: #7C3AED;
+}
+
+/* ===== RESET ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body { overflow-x: hidden;
+  font-family: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
+  background: var(--tw-paper);
+  color: var(--tw-black);
+  line-height: 1.7;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== UTILITIES ===== */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 40px; width: 100%; }
+.label {
+  font-size: 11px; font-weight: 600; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--tw-electric);
+  margin-bottom: 16px; display: block;
+}
+.label--light { color: var(--tw-paper); opacity: .6; }
+
+/* CTA Button */
+.btn {
+  display: inline-block; padding: 16px 40px;
+  background: var(--tw-electric); color: var(--tw-paper);
+  font-size: 15px; font-weight: 700; border-radius: 6px;
+  text-decoration: none; letter-spacing: .5px;
+  transition: background .2s;
+}
+.btn:hover { background: var(--tw-electric-dark); }
+.btn--outline {
+  background: transparent; color: var(--tw-electric);
+  border: 2px solid var(--tw-electric);
+}
+.btn--outline:hover { background: var(--tw-electric); color: var(--tw-paper); }
+.btn--white { background: var(--tw-paper); color: var(--tw-electric); }
+.btn--white:hover { background: #e8ecf2; }
+
+/* ===== NAV ===== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(244,246,249,.92); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,94,255,.08);
+  padding: 0 40px; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+nav .logo { font-size: 18px; font-weight: 800; color: var(--tw-black); text-decoration: none; }
+nav .logo span { color: var(--tw-electric); }
+nav ul { list-style: none; display: flex; gap: 20px; white-space: nowrap; }
+nav ul a {
+  font-size: 13px; font-weight: 600; color: var(--tw-slate);
+  text-decoration: none; letter-spacing: .5px; transition: color .2s;
+}
+nav ul a:hover { color: var(--tw-electric); }
+nav ul a.active { color: var(--tw-electric); }
+nav .nav-cta {
+  font-size: 13px; font-weight: 700; padding: 8px 24px;
+  background: var(--tw-electric); color: var(--tw-paper);
+  border-radius: 5px; text-decoration: none; transition: background .2s;
+}
+nav .nav-cta:hover { background: var(--tw-electric-dark); }
+nav .nav-cta .nav-cta-short { display: none; }
+nav .nav-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+nav .lang-switch { font-size: 12px; white-space: nowrap; }
+
+/* ===== HERO ===== */
+.cases-hero {
+  padding: 160px 0 100px;
+  background: linear-gradient(135deg, var(--tw-paper) 60%, rgba(0,94,255,.04) 100%);
+  text-align: center;
+}
+.cases-hero h1 {
+  font-size: clamp(36px, 5vw, 56px); font-weight: 800;
+  line-height: 1.2; margin-bottom: 20px;
+}
+.cases-hero h1 em { font-style: normal; color: var(--tw-electric); }
+.cases-hero p {
+  font-size: 18px; color: var(--tw-slate); line-height: 1.8;
+  max-width: 600px; margin: 0 auto;
+}
+
+/* ===== KPI SECTION ===== */
+.kpi-section {
+  padding: 100px 0;
+  background: var(--tw-electric); color: var(--tw-paper);
+  position: relative; overflow: hidden;
+}
+.kpi-section::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(244,246,249,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244,246,249,.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+.kpi-section .container { position: relative; z-index: 1; }
+.kpi-section h2 {
+  font-size: clamp(28px, 4vw, 40px); font-weight: 800;
+  margin-bottom: 60px; text-align: center;
+}
+.kpi-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+}
+.kpi-card { text-align: center; padding: 24px; }
+.kpi-card .num {
+  font-size: clamp(48px, 7vw, 72px); font-weight: 800;
+  line-height: 1; margin-bottom: 8px;
+}
+.kpi-card .unit { font-size: 14px; opacity: .7; font-weight: 600; }
+
+/* ===== CASE STUDIES ===== */
+.case-studies { padding: 100px 0 0; }
+.case-studies > .container > .label { margin-bottom: 8px; }
+.case-studies h2 {
+  font-size: clamp(28px, 4vw, 40px); font-weight: 800; margin-bottom: 16px;
+}
+.case-studies .lead {
+  font-size: 16px; color: var(--tw-slate); max-width: 680px;
+  line-height: 1.9; margin-bottom: 80px;
+}
+
+/* --- Magazine-style case block --- */
+.case-block { margin-bottom: 0; }
+
+/* Impact hero: full-bleed blue with giant metric */
+.case-impact {
+  background: var(--tw-electric); color: #fff;
+  padding: 80px 0; position: relative; overflow: hidden;
+}
+.case-impact::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,.08) 0%, transparent 50%);
+}
+.case-impact .container {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+}
+.case-impact-left {}
+.case-impact-num {
+  display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px;
+}
+.case-impact-num .big-num {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(72px, 10vw, 120px); font-weight: 800; line-height: 1;
+  color: #fff;
+}
+.case-impact-num .big-unit {
+  font-size: 20px; font-weight: 600; color: rgba(255,255,255,.6);
+}
+.case-impact-sub {
+  font-size: 15px; color: rgba(255,255,255,.5); font-weight: 600;
+  letter-spacing: 1px; margin-bottom: 20px;
+}
+.case-impact-right {}
+.case-impact-tag {
+  display: inline-flex; align-items: center; gap: 8px; margin-bottom: 16px;
+}
+.case-impact-tag .case-num {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px; font-weight: 800; background: rgba(255,255,255,.15);
+  padding: 4px 12px; border-radius: 100px; letter-spacing: 2px;
+}
+.case-impact-tag .industry-tag {
+  font-size: 12px; font-weight: 700; color: rgba(255,255,255,.7);
+  letter-spacing: 1px;
+}
+.case-impact h3 {
+  font-size: clamp(24px, 3.5vw, 36px); font-weight: 800; line-height: 1.3;
+  margin-bottom: 12px;
+}
+.case-impact .company-name {
+  font-size: 15px; font-weight: 600; color: rgba(255,255,255,.6);
+}
+
+/* Content: white card with before/after */
+.case-content {
+  background: #fff; padding: 64px 0;
+}
+.case-content .container {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
+}
+
+/* Before (challenge) */
+.case-before {
+  position: relative; padding-left: 32px;
+}
+.case-before::before {
+  content: ''; position: absolute; left: 0; top: 0;
+  width: 3px; height: 100%; background: rgba(0,94,255,.12); border-radius: 2px;
+}
+.case-before-label {
+  font-size: 11px; font-weight: 800; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--tw-slate); opacity: .4;
+  margin-bottom: 20px;
+}
+.case-before h4 {
+  font-size: 20px; font-weight: 800; margin-bottom: 16px; line-height: 1.4;
+}
+.case-before p {
+  font-size: 15px; color: var(--tw-slate); line-height: 2;
+}
+
+/* After (solution + results) */
+.case-after {
+  position: relative; padding-left: 32px;
+}
+.case-after::before {
+  content: ''; position: absolute; left: 0; top: 0;
+  width: 3px; height: 100%; background: var(--tw-electric); border-radius: 2px;
+}
+.case-after-label {
+  font-size: 11px; font-weight: 800; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--tw-electric);
+  margin-bottom: 20px;
+}
+.case-after h4 {
+  font-size: 20px; font-weight: 800; margin-bottom: 16px; line-height: 1.4;
+}
+.case-after p {
+  font-size: 15px; color: var(--tw-slate); line-height: 2; margin-bottom: 24px;
+}
+.case-after .results-list {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.case-after .results-list li {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 15px; color: var(--tw-black); font-weight: 600; line-height: 1.6;
+}
+.case-after .results-list li .check {
+  flex-shrink: 0; width: 24px; height: 24px; border-radius: 6px;
+  background: var(--tw-electric); color: #fff;
+  display: flex; align-items: center; justify-content: center; margin-top: 2px;
+}
+
+/* Point strip */
+.case-point-strip {
+  background: var(--tw-paper); border-top: 1px solid rgba(0,94,255,.06);
+  border-bottom: 1px solid rgba(0,94,255,.06);
+  padding: 32px 0;
+}
+.case-point-strip .container {
+  display: flex; align-items: center; gap: 20px;
+}
+.case-point-strip .point-badge {
+  flex-shrink: 0; background: var(--tw-electric); color: #fff;
+  font-size: 10px; font-weight: 800; letter-spacing: 2px;
+  padding: 6px 16px; border-radius: 100px;
+}
+.case-point-strip p {
+  font-size: 15px; color: var(--tw-black); font-weight: 600; line-height: 1.8;
+}
+
+/* ===== INDUSTRIES ===== */
+.industries { padding: 120px 0; background: #fff; }
+.industries h2 {
+  font-size: clamp(28px, 4vw, 40px); font-weight: 800;
+  margin-bottom: 16px; text-align: center;
+}
+.industries .lead {
+  font-size: 16px; color: var(--tw-slate); max-width: 600px;
+  line-height: 1.9; margin: 0 auto 60px; text-align: center;
+}
+.industry-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+  max-width: 900px; margin: 0 auto;
+}
+.industry-card {
+  background: var(--tw-paper); border-radius: 12px;
+  padding: 32px 24px; text-align: center;
+  border: 1px solid rgba(0,94,255,.06);
+  transition: transform .2s, box-shadow .2s;
+}
+.industry-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0,94,255,.08);
+}
+.industry-card .industry-icon {
+  width: 48px; height: 48px; border-radius: 10px;
+  background: rgba(0,94,255,.06);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 20px; font-weight: 800; color: var(--tw-electric);
+  margin-bottom: 16px;
+}
+.industry-card h3 { font-size: 15px; font-weight: 700; }
+
+/* ===== FINAL CTA ===== */
+.final-cta {
+  padding: 120px 0;
+  background: var(--tw-electric); color: var(--tw-paper);
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.final-cta::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(244,246,249,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244,246,249,.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+.final-cta .container { position: relative; z-index: 1; }
+.final-cta h2 {
+  font-size: clamp(28px, 4vw, 44px); font-weight: 800; margin-bottom: 16px;
+}
+.final-cta p { font-size: 17px; opacity: .8; margin-bottom: 40px; }
+.final-cta .btn-group { display: flex; gap: 16px; justify-content: center; }
+
+/* ===== FOOTER ===== */
+footer {
+  padding: 60px 0 40px;
+  background: #fff;
+  border-top: 1px solid rgba(0,94,255,.06);
+}
+footer .footer-inner {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px;
+  align-items: start;
+}
+footer .footer-brand .logo { font-size: 18px; font-weight: 800; margin-bottom: 12px; color: var(--tw-black); }
+footer .footer-brand .logo span { color: var(--tw-electric); }
+footer .footer-brand p { font-size: 13px; color: var(--tw-slate); line-height: 1.7; }
+footer .footer-col h4 {
+  font-size: 12px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--tw-slate); opacity: .5; margin-bottom: 16px;
+}
+footer .footer-col a {
+  display: block; font-size: 13px; color: var(--tw-slate);
+  text-decoration: none; margin-bottom: 10px; transition: color .2s;
+}
+footer .footer-col a:hover { color: var(--tw-electric); }
+footer .footer-col p {
+  font-size: 13px; color: var(--tw-slate); line-height: 1.7;
+}
+footer .copyright {
+  text-align: center; margin-top: 40px; padding-top: 24px;
+  border-top: 1px solid rgba(0,94,255,.06);
+  font-size: 12px; color: var(--tw-slate); opacity: .4;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .case-impact .container { grid-template-columns: 1fr; gap: 32px; }
+  .case-impact { padding: 60px 0; }
+  .case-content .container { grid-template-columns: 1fr; gap: 40px; }
+  .industry-grid { grid-template-columns: repeat(3, 1fr); }
+  footer .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+}
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  nav { padding: 0 20px; }
+  nav ul { display: none; }
+  nav { padding: 0 12px 0 16px; gap: 8px; overflow: visible; }
+  nav .nav-right { gap: 8px; }
+  nav .nav-cta { padding: 8px 14px; font-size: 11px; }
+  nav .nav-cta .nav-cta-full { display: none; }
+  nav .nav-cta .nav-cta-short { display: inline; }
+  nav .lang-switch { display: none; }
+  .cases-hero { padding: 120px 0 60px; }
+  .cases-hero h1 { font-size: 32px; }
+  .cases-hero p { font-size: 15px; }
+  .kpi-grid { grid-template-columns: 1fr 1fr; }
+  .case-impact { padding: 48px 0; }
+  .case-impact-num .big-num { font-size: 64px; }
+  .case-impact h3 { font-size: 22px; }
+  .case-content { padding: 40px 0; }
+  .case-before, .case-after { padding-left: 20px; }
+  .case-point-strip .container { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .industry-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .industry-card { padding: 20px 16px; }
+  .final-cta .btn-group { flex-direction: column; align-items: center; }
+  footer .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <a href="index.html" class="logo">Tech<span>Worker</span></a>
+  <ul>
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="news.html">NEWS</a></li>
+    <li><a href="index.html#results">実績</a></li>
+    <li><a href="company.html">会社概要</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="contact.html" class="nav-cta"><span class="nav-cta-full">お問い合わせ</span><span class="nav-cta-short">相談</span></a>
+    <span class="lang-switch"><span style="color:var(--tw-electric);font-weight:700;">JP</span> / <a href="en/cases.html" style="color:var(--tw-slate);text-decoration:none;font-weight:700;">EN</a></span>
+  </div>
+</nav>
+
+<!-- ===== LOADING SCREEN ===== -->
+<div id="loader" style="position:fixed;inset:0;z-index:9999;background:var(--tw-paper);display:flex;align-items:center;justify-content:center;transition:opacity .6s ease, visibility .6s ease;">
+  <div style="text-align:center;">
+    <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:32px;font-weight:800;color:var(--tw-black);opacity:0;animation:loaderFade .8s .2s forwards;">Tech<span style="color:var(--tw-electric);">Worker</span></div>
+    <div style="width:48px;height:2px;background:var(--tw-electric);margin:16px auto 0;transform:scaleX(0);animation:loaderLine .6s .6s forwards;transform-origin:left;"></div>
+  </div>
+</div>
+<style>
+@keyframes loaderFade { to { opacity: 1; } }
+@keyframes loaderLine { to { transform: scaleX(1); } }
+</style>
+
+<!-- ===== HERO ===== -->
+<section class="cases-hero">
+  <div class="container">
+    <span class="label">Cases &amp; Results</span>
+    <h1><em>実績</em>・導入事例</h1>
+    <p>業種を問わず、37社・2,500名のご支援実績。</p>
+  </div>
+</section>
+
+<!-- ===== KPI SECTION ===== -->
+<section class="kpi-section">
+  <div class="container">
+    <span class="label label--light">Key Numbers</span>
+    <h2>数字で証明する。</h2>
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <span class="num kpi-num">37+</span>
+        <span class="unit">支援企業</span>
+      </div>
+      <div class="kpi-card">
+        <span class="num kpi-num">2,500+</span>
+        <span class="unit">研修受講者</span>
+      </div>
+      <div class="kpi-card">
+        <span class="num kpi-num">300+</span>
+        <span class="unit">ウェビナー参加者</span>
+      </div>
+      <div class="kpi-card">
+        <span class="num kpi-num">7+</span>
+        <span class="unit">対応業種</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CASE STUDIES ===== -->
+<section class="case-studies">
+  <div class="container">
+    <span class="label">Case Studies</span>
+    <h2>導入事例</h2>
+    <p class="lead">上場企業を含む多様な業種の企業様に、生成AI活用の成果を実感していただいております。</p>
+  </div>
+</section>
+
+<!-- CASE 01 -->
+<div class="case-block">
+  <div class="case-impact">
+    <div class="container">
+      <div class="case-impact-left">
+        <div class="case-impact-sub">IDEATION TIME</div>
+        <div class="case-impact-num">
+          <span class="big-num">1</span>
+          <span class="big-unit">時間</span>
+        </div>
+        <p style="color:rgba(255,255,255,.5);font-size:14px;margin-top:8px;">アイデアの発散から収束まで完了</p>
+      </div>
+      <div class="case-impact-right">
+        <div class="case-impact-tag">
+          <span class="case-num">CASE 01</span>
+          <span class="industry-tag">化学 / 素材</span>
+        </div>
+        <h3>新素材アイディエーションの革新</h3>
+        <div class="company-name">東証プライム上場 総合科学メーカー</div>
+      </div>
+    </div>
+  </div>
+  <div class="case-content">
+    <div class="container">
+      <div class="case-before">
+        <div class="case-before-label">BEFORE</div>
+        <h4>課題</h4>
+        <p>新規事業探索は1,000件のうち成功するのはわずか3件。社内に十分な時間的リソースはなく、外部に市場調査を依頼する莫大な予算もない。新素材の用途探索は研究者の経験と勘に依存しており、スピードとスケールの両立が困難な状態でした。</p>
+      </div>
+      <div class="case-after">
+        <div class="case-after-label">AFTER</div>
+        <h4>導入内容と成果</h4>
+        <p>生成AIによる新素材アイディエーション手法を構築。市場性・技術難易度・自社方針適合度の3観点でアイデアを定量評価するプロンプトを設計し、発散から収束までのプロセスを体系化しました。</p>
+        <ul class="results-list">
+          <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>1時間でアイデアの発散から収束まで完了する手法を確立</li>
+          <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>このアイディエーション手法でビジネスモデル特許を出願中</li>
+          <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>自社だけでは到達できなかった新用途の切り口をAIが複数提示</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="case-point-strip">
+    <div class="container">
+      <span class="point-badge">POINT</span>
+      <p>単なるコスト削減ではなく、R&Dの意思決定スピードと質を根本から変えた事例。知的生産プロセスそのものをAIで再設計しました。</p>
+    </div>
+  </div>
+</div>
+
+<!-- CASE 02 -->
+<div class="case-block">
+  <div class="case-impact" style="background:var(--tw-electric-dark);">
+    <div class="container">
+      <div class="case-impact-left">
+        <div class="case-impact-sub">ANNUAL SAVINGS</div>
+        <div class="case-impact-num">
+          <span class="big-num">数百</span>
+          <span class="big-unit">万円</span>
+        </div>
+        <p style="color:rgba(255,255,255,.5);font-size:14px;margin-top:8px;">外部コンサル委託費を大幅に削減</p>
+      </div>
+      <div class="case-impact-right">
+        <div class="case-impact-tag">
+          <span class="case-num">CASE 02</span>
+          <span class="industry-tag">医薬 / ヘルスケア</span>
+        </div>
+        <h3>リサーチ外注費の大幅削減と内製化</h3>
+        <div class="company-name">大手製薬企業</div>
+      </div>
+    </div>
+  </div>
+  <div class="case-content">
+    <div class="container">
+      <div class="case-before">
+        <div class="case-before-label">BEFORE</div>
+        <h4>課題</h4>
+        <p>疾患・薬剤に関する市場リサーチを外部コンサル会社に委託しており、年間数百万円規模の外注費が発生。アウトプットのみが納品されるためリサーチノウハウが社内に蓄積されず、「痒い所に手が届かない」状態が常態化していました。</p>
+      </div>
+      <div class="case-after">
+        <div class="case-after-label">AFTER</div>
+        <h4>導入内容と成果</h4>
+        <p>対面研修を複数回実施し、Deep Research機能を活用した市場リサーチの内製化を推進。プロンプトBPO（業務代行）と伴走支援を組み合わせ、社員が自律的にリサーチできる環境を構築しました。</p>
+        <ul class="results-list">
+          <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>リサーチを完全に内製化 — 社員が誰でも・いつでも実施可能に</li>
+          <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>外部コンサルへの委託費を大幅に削減（年間数百万円規模）</li>
+          <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>リサーチ完了までのスピードも大幅に短縮</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="case-point-strip">
+    <div class="container">
+      <span class="point-badge">POINT</span>
+      <p>外注費の削減だけでなく、「リサーチ力」という組織ケイパビリティそのものを獲得。自社の意思決定を外部に依存しない体制への転換を実現しました。</p>
+    </div>
+  </div>
+</div>
+
+<!-- CASE 03 -->
+<div class="case-block">
+  <div class="case-impact">
+    <div class="container">
+      <div class="case-impact-left">
+        <div class="case-impact-sub">TRAINING SCALE</div>
+        <div class="case-impact-num">
+          <span class="big-num">300</span>
+          <span class="big-unit">名</span>
+        </div>
+        <p style="color:rgba(255,255,255,.5);font-size:14px;margin-top:8px;">全社員を対象にした実践型AI研修</p>
+      </div>
+      <div class="case-impact-right">
+        <div class="case-impact-tag">
+          <span class="case-num">CASE 03</span>
+          <span class="industry-tag">IT / クラウド</span>
+        </div>
+        <h3>全社員対象の生成AI研修</h3>
+        <div class="company-name">さくらインターネット株式会社</div>
+      </div>
+    </div>
+  </div>
+  <div class="case-content">
+    <div class="container">
+      <div class="case-before">
+        <div class="case-before-label">BEFORE</div>
+        <h4>課題</h4>
+        <p>生成AIツールの法人契約は完了しているが、実際に業務で活用できている社員はごく一部。「何に使えるのか」が現場レベルで浸透しておらず、投資対効果が見えない状態でした。</p>
+      </div>
+      <div class="case-after">
+        <div class="case-after-label">AFTER</div>
+        <h4>導入内容と成果</h4>
+        <p>全社員300名を対象に、部門別の業務文脈に即した実践型の生成AI研修を実施。「自分の業務でどう使うか」を理解した状態でAIを活用できる設計としました。</p>
+        <ul class="results-list">
+          <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>全社員がAIを「自分の業務で使える」状態を実現</li>
+          <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>部門ごとの具体的な活用シーンを体系化</li>
+          <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>導入後の自律的な活用が定着し、継続的な業務改善へ</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="case-point-strip">
+    <div class="container">
+      <span class="point-badge">POINT</span>
+      <p>300名規模の組織に対して、一律の研修ではなく業務文脈に合わせた設計を行うことで、「使われるAI」への転換を実現しました。</p>
+    </div>
+  </div>
+</div>
+
+<!-- CASE 04 -->
+<div class="case-block">
+  <div class="case-impact" style="background:var(--tw-electric-dark);">
+    <div class="container">
+      <div class="case-impact-left">
+        <div class="case-impact-sub">SCOPE</div>
+        <div class="case-impact-num">
+          <span class="big-num" style="font-size:clamp(48px,7vw,80px);">全社</span>
+        </div>
+        <p style="color:rgba(255,255,255,.5);font-size:14px;margin-top:8px;">複数部門にまたがるAI導入設計</p>
+      </div>
+      <div class="case-impact-right">
+        <div class="case-impact-tag">
+          <span class="case-num">CASE 04</span>
+          <span class="industry-tag">建設 / 不動産</span>
+        </div>
+        <h3>全社AI活用支援</h3>
+        <div class="company-name">東証プライム上場 建設企業</div>
+      </div>
+    </div>
+  </div>
+  <div class="case-content">
+    <div class="container">
+      <div class="case-before">
+        <div class="case-before-label">BEFORE</div>
+        <h4>課題</h4>
+        <p>経営層はAI活用を掲げているが、部門ごとに業務特性が大きく異なり、全社で統一的にAIを展開する道筋が見えない状態でした。</p>
+      </div>
+      <div class="case-after">
+        <div class="case-after-label">AFTER</div>
+        <h4>導入内容と成果</h4>
+        <p>複数部門にまたがるAI導入設計を伴走中。部門ごとの業務特性を踏まえた導入計画を策定し、段階的な展開を進めています。</p>
+        <ul class="results-list">
+          <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>部門別のAI活用ロードマップを策定</li>
+          <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>先行部門での成功事例を横展開する仕組みを構築</li>
+          <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>全社規模でのAI活用体制を段階的に実現中</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="case-point-strip">
+    <div class="container">
+      <span class="point-badge">POINT</span>
+      <p>組織全体でのAI活用定着を目指し、「一部門の成功」を「全社の標準」に変えるための伴走支援を継続しています。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== INDUSTRIES ===== -->
+<section class="industries">
+  <div class="container">
+    <span class="label">Industries</span>
+    <h2>対応業種</h2>
+    <p class="lead">7つ以上の業種で導入実績がございます。業種固有の業務文脈を理解した上で、最適なAI活用を設計いたします。</p>
+    <div class="industry-grid">
+      <div class="industry-card">
+        <div class="industry-icon">IT</div>
+        <h3>IT / クラウド</h3>
+      </div>
+      <div class="industry-card">
+        <div class="industry-icon">Mf</div>
+        <h3>化学 / 素材</h3>
+      </div>
+      <div class="industry-card">
+        <div class="industry-icon">Cn</div>
+        <h3>建設 / 不動産</h3>
+      </div>
+      <div class="industry-card">
+        <div class="industry-icon">Fn</div>
+        <h3>金融 / 保険</h3>
+      </div>
+      <div class="industry-card">
+        <div class="industry-icon">Md</div>
+        <h3>医療 / ヘルスケア</h3>
+      </div>
+      <div class="industry-card">
+        <div class="industry-icon">Ed</div>
+        <h3>教育 / 人材</h3>
+      </div>
+      <div class="industry-card">
+        <div class="industry-icon">Sv</div>
+        <h3>サービス / コンサル</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="final-cta">
+  <div class="container">
+    <h2>貴社の業種でも、成果を出せます。</h2>
+    <p>まずは30分、お話をお聞かせください。</p>
+    <div class="btn-group">
+      <a href="contact.html" class="btn btn--white">無料相談に申し込む</a>
+      <a href="contact.html?type=document" class="btn" style="background:transparent;border:2px solid var(--tw-paper);">資料を請求する</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">Tech<span>Worker</span></div>
+        <p>企業向け生成AIコンサルティング<br>株式会社TechWorker</p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:13px;font-weight:700;color:var(--tw-slate);text-decoration:none;transition:color .2s;"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+      </div>
+      <div class="footer-col">
+        <h4>Menu</h4>
+        <a href="news.html">ニュース</a>
+        <a href="index.html#approach">私たちの強み</a>
+        <a href="index.html#services">サービス</a>
+        <a href="cases.html">実績</a>
+        <a href="company.html">会社概要</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="contact.html">無料相談</a>
+        <a href="contact.html?type=document">資料請求</a>
+        <a href="privacy.html">プライバシーポリシー</a>
+        <p style="margin-top:12px;">〒169-0051<br>東京都新宿区西早稲田一丁目22番3号</p>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <p class="copyright">&copy; 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+/* ===== LOADING SCREEN ===== */
+(function(){
+  window.addEventListener('load', function(){
+    var loader = document.getElementById('loader');
+    setTimeout(function(){
+      loader.style.opacity = '0';
+      loader.style.visibility = 'hidden';
+      document.body.classList.add('loaded');
+    }, 1200);
+  });
+})();
+
+/* ===== CARD TILT EFFECT ===== */
+(function(){
+  var cards = document.querySelectorAll('.kpi-card, .case-block, .industry-card');
+  cards.forEach(function(card){
+    card.style.transition = 'transform .3s ease, box-shadow .3s ease';
+    card.addEventListener('mousemove', function(e){
+      var rect = card.getBoundingClientRect();
+      var x = (e.clientX - rect.left) / rect.width - 0.5;
+      var y = (e.clientY - rect.top) / rect.height - 0.5;
+      card.style.transform = 'perspective(600px) rotateX(' + (-y * 6) + 'deg) rotateY(' + (x * 6) + 'deg) scale(1.02)';
+      card.style.boxShadow = '0 12px 40px rgba(0,94,255,.1)';
+    });
+    card.addEventListener('mouseleave', function(){
+      card.style.transform = 'perspective(600px) rotateX(0) rotateY(0) scale(1)';
+      card.style.boxShadow = '';
+    });
+  });
+})();
+
+/* ===== PARALLAX SECTIONS ===== */
+(function(){
+  var parallaxEls = document.querySelectorAll('.kpi-section h2, .final-cta h2');
+  window.addEventListener('scroll', function(){
+    parallaxEls.forEach(function(el){
+      var rect = el.getBoundingClientRect();
+      var center = rect.top + rect.height / 2;
+      var viewCenter = window.innerHeight / 2;
+      var offset = (center - viewCenter) * 0.05;
+      el.style.transform = 'translateY(' + offset + 'px)';
+    });
+  }, { passive: true });
+})();
+
+/* ===== SCROLL REVEAL ===== */
+(function(){
+  var reveals = document.querySelectorAll(
+    '.cases-hero, .kpi-card, .case-block, .industry-card, .final-cta'
+  );
+  var style = document.createElement('style');
+  style.textContent =
+    '.reveal { opacity: 0; transform: translateY(40px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }' +
+    '.reveal.visible { opacity: 1; transform: translateY(0); }' +
+    '.reveal-scale { opacity: 0; transform: scale(.92); transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1); }' +
+    '.reveal-scale.visible { opacity: 1; transform: scale(1); }';
+  document.head.appendChild(style);
+
+  reveals.forEach(function(el){
+    el.classList.add('reveal');
+    var siblings = el.parentElement ? Array.from(el.parentElement.children).filter(function(c){ return c.classList.contains('reveal'); }) : [];
+    var idx = siblings.indexOf(el);
+    if (idx > 0) el.style.transitionDelay = (idx * 0.1) + 's';
+  });
+
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal, .reveal-scale').forEach(function(el){
+    observer.observe(el);
+  });
+})();
+
+/* ===== KPI COUNTER ANIMATION ===== */
+(function(){
+  function animateCounter(el, target, suffix) {
+    var start = 0;
+    var duration = 1800;
+    var startTime = null;
+    function ease(t) { return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2; }
+    function step(ts) {
+      if (!startTime) startTime = ts;
+      var progress = Math.min((ts - startTime) / duration, 1);
+      var val = Math.round(ease(progress) * target);
+      el.textContent = val.toLocaleString() + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  var kpiEls = document.querySelectorAll('.kpi-num');
+  var kpiObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        var el = entry.target;
+        var text = el.textContent.trim();
+        var suffix = '';
+        if (text.indexOf('+') !== -1) { suffix = '+'; text = text.replace('+',''); }
+        var num = parseInt(text.replace(/,/g, ''), 10);
+        if (!isNaN(num)) animateCounter(el, num, suffix);
+        kpiObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  kpiEls.forEach(function(el){ kpiObserver.observe(el); });
+})();
+
+/* ===== NAV SCROLL EFFECT ===== */
+(function(){
+  var nav = document.querySelector('nav');
+  window.addEventListener('scroll', function(){
+    var y = window.scrollY;
+    if (y > 80) {
+      nav.style.background = 'rgba(244,246,249,.98)';
+      nav.style.boxShadow = '0 1px 12px rgba(0,94,255,.06)';
+    } else {
+      nav.style.background = 'rgba(244,246,249,.92)';
+      nav.style.boxShadow = 'none';
+    }
+  }, { passive: true });
+})();
+</script>
+
+</body>
+</html>
