@@ -271,9 +271,10 @@ nav {
 .problem-inner {
   display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
 }
+.problem-header { text-align: center; margin-bottom: 56px; }
 .problem h2 {
   font-size: clamp(26px, 3.5vw, 38px); font-weight: 800; line-height: 1.35;
-  margin-bottom: 24px;
+  margin-bottom: 0;
 }
 .problem-lead {
   font-size: 17px; color: var(--tw-slate); line-height: 1.9; margin-bottom: 32px;
@@ -749,19 +750,19 @@ footer {
         </div>
       </div>
       <div class="hero-card--kpi">
-        <div class="kpi-num">1週間</div>
+        <div class="kpi-num">3日</div>
         <div class="kpi-body">
           <div class="kpi-label">納期</div>
-          <div class="kpi-unit">最短1週間で納品</div>
+          <div class="kpi-unit">72時間以内に納品</div>
           <div class="kpi-sub">従来4〜8週間</div>
         </div>
       </div>
       <div class="hero-card--kpi">
-        <div class="kpi-num" style="font-size:36px;">∞</div>
+        <div class="kpi-num" style="font-size:36px;">↺</div>
         <div class="kpi-body">
-          <div class="kpi-label">テスト回数</div>
-          <div class="kpi-unit">何案でも比較可能</div>
-          <div class="kpi-sub">年数回の制約なし</div>
+          <div class="kpi-label">改善サイクル</div>
+          <div class="kpi-unit">発売前に修正できる</div>
+          <div class="kpi-sub">結果を見て改善・再テスト。磨き込める。</div>
         </div>
       </div>
     </div>
@@ -807,10 +808,12 @@ footer {
 <!-- PROBLEM -->
 <section class="problem">
   <div class="container">
+    <div class="problem-header">
+      <span class="label" style="text-align:center;display:block;">The Problem</span>
+      <h2>調査をしている。それでも、失敗する。</h2>
+    </div>
     <div class="problem-inner">
       <div>
-        <span class="label">The Problem</span>
-        <h2>調査をしている。<br>それでも、失敗する。</h2>
         <p class="problem-lead">
           あなたのチームも、テストしたのに売れなかった商品を持っているはずだ。
         </p>
