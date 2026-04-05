@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ローンチシミュレーション — 出す前に、答えを持て。| TechWorker</title>
+<meta name="description" content="新商品の市場反応を、発売前にAIでシミュレーションする。従来のコンセプトテストより1/5のコスト、3日で結果。85%の新商品失敗率に終止符を。">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ローンチシミュレーション — 出す前に、答えを持て。| TechWorker">
+<meta property="og:description" content="新商品の市場反応を、発売前にAIでシミュレーションする。従来のコンセプトテストより1/5のコスト、3日で結果。">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/launch-simulation/">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Noto+Sans+JP:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+/* ===== TOKENS ===== */
+:root {
+  --tw-black:        #0D1117;
+  --tw-paper:        #F4F6F9;
+  --tw-electric:     #005EFF;
+  --tw-electric-dark:#003DAA;
+  --tw-slate:        #3C4B64;
+  --tw-muted:        #8896A8;
+  --tw-emerald:      #00B894;
+  --tw-violet:       #7C3AED;
+}
+
+/* ===== RESET ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body {
+  font-family: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
+  background: var(--tw-paper);
+  color: var(--tw-black);
+  line-height: 1.7;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ===== UTILS ===== */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 40px; width: 100%; }
+.label {
+  font-size: 11px; font-weight: 600; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--tw-electric);
+  margin-bottom: 16px; display: block;
+}
+.label--light { color: rgba(244,246,249,.6); }
+.btn {
+  display: inline-block; padding: 16px 40px;
+  background: var(--tw-electric); color: var(--tw-paper);
+  font-size: 15px; font-weight: 700; border-radius: 6px;
+  text-decoration: none; letter-spacing: .5px;
+  transition: background .2s, transform .2s;
+}
+.btn:hover { background: var(--tw-electric-dark); transform: translateY(-1px); }
+.btn--outline {
+  background: transparent; color: var(--tw-electric);
+  border: 2px solid var(--tw-electric);
+}
+.btn--outline:hover { background: var(--tw-electric); color: var(--tw-paper); transform: translateY(-1px); }
+.btn--white { background: var(--tw-paper); color: var(--tw-electric); }
+.btn--white:hover { background: #e8ecf2; }
+
+/* ===== NAV ===== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(244,246,249,.92); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,94,255,.08);
+  padding: 0 40px; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { font-size: 17px; font-weight: 800; color: var(--tw-black); text-decoration: none; }
+.nav-logo span { color: var(--tw-electric); }
+.nav-service {
+  font-size: 13px; font-weight: 600; color: var(--tw-slate);
+  padding: 0 16px; border-left: 1px solid rgba(0,94,255,.12);
+  margin-left: 16px;
+}
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.nav-links { display: flex; gap: 24px; list-style: none; }
+.nav-links a { font-size: 13px; font-weight: 600; color: var(--tw-slate); text-decoration: none; }
+.nav-links a:hover { color: var(--tw-electric); }
+.nav-cta {
+  font-size: 13px; font-weight: 700; padding: 8px 24px;
+  background: var(--tw-electric); color: var(--tw-paper);
+  border-radius: 5px; text-decoration: none; transition: background .2s;
+}
+.nav-cta:hover { background: var(--tw-electric-dark); }
+
+/* ===== 01: HERO ===== */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  padding-top: 64px;
+  background: linear-gradient(135deg, var(--tw-paper) 55%, rgba(0,94,255,.05) 100%);
+  position: relative; overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute; right: -200px; top: 50%; transform: translateY(-50%);
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(0,94,255,.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero .container {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  position: relative; z-index: 1;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px; border-radius: 100px;
+  background: rgba(0,94,255,.08); border: 1px solid rgba(0,94,255,.15);
+  font-size: 12px; font-weight: 700; color: var(--tw-electric);
+  letter-spacing: 1.5px; text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.hero-eyebrow::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--tw-electric); animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .4; transform: scale(.7); }
+}
+.hero h1 {
+  font-size: clamp(36px, 5vw, 54px); font-weight: 800;
+  line-height: 1.2; margin-bottom: 24px; color: var(--tw-black);
+}
+.hero h1 em { font-style: normal; color: var(--tw-electric); }
+.hero-sub {
+  font-size: 17px; color: var(--tw-slate); line-height: 1.85;
+  margin-bottom: 40px; max-width: 500px;
+}
+.hero-btn-group { display: flex; gap: 16px; flex-wrap: wrap; }
+.hero-note { font-size: 12px; color: var(--tw-muted); margin-top: 16px; }
+
+/* Hero visual */
+.hero-visual { position: relative; }
+.hero-card-stack { display: flex; flex-direction: column; gap: 16px; }
+.hero-card {
+  background: #fff; border-radius: 14px;
+  padding: 24px 28px;
+  border: 1px solid rgba(0,94,255,.08);
+  box-shadow: 0 4px 24px rgba(0,94,255,.06);
+}
+.hero-card .card-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--tw-muted); margin-bottom: 12px;
+}
+.hero-card .card-num {
+  font-size: 42px; font-weight: 800; color: var(--tw-electric); line-height: 1;
+}
+.hero-card .card-unit { font-size: 14px; font-weight: 600; color: var(--tw-slate); margin-top: 6px; }
+.hero-card .card-vs {
+  font-size: 12px; color: var(--tw-muted); margin-top: 8px;
+  padding-top: 8px; border-top: 1px solid rgba(0,94,255,.06);
+}
+.hero-card .card-vs s { color: var(--tw-muted); }
+.hero-card-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.hero-card--small { padding: 18px 20px; }
+.hero-card--small .card-num { font-size: 30px; }
+
+/* ===== 02: STAT STRIP ===== */
+.stat-strip {
+  background: var(--tw-electric); padding: 20px 0;
+  position: relative; overflow: hidden;
+}
+.stat-strip::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(244,246,249,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244,246,249,.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.stat-strip .container {
+  display: flex; justify-content: center; align-items: center; gap: 0;
+  position: relative; z-index: 1;
+}
+.stat-item {
+  text-align: center; padding: 0 48px;
+  border-right: 1px solid rgba(244,246,249,.15);
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-size: 32px; font-weight: 800; color: var(--tw-paper); line-height: 1;
+  display: block; margin-bottom: 6px;
+}
+.stat-desc { font-size: 12px; color: rgba(244,246,249,.7); font-weight: 500; }
+
+/* ===== 03: PROBLEM ===== */
+.problem { padding: 120px 0; background: #fff; }
+.problem-inner {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.problem h2 {
+  font-size: clamp(26px, 3.5vw, 38px); font-weight: 800; line-height: 1.35;
+  margin-bottom: 24px;
+}
+.problem-lead {
+  font-size: 16px; color: var(--tw-slate); line-height: 1.9; margin-bottom: 32px;
+}
+.problem-list { display: flex; flex-direction: column; gap: 16px; }
+.problem-item {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 20px; background: var(--tw-paper); border-radius: 10px;
+  border-left: 3px solid var(--tw-electric);
+}
+.problem-item-icon {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: rgba(0,94,255,.08); display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0;
+}
+.problem-item-text strong {
+  display: block; font-size: 14px; font-weight: 700; margin-bottom: 4px;
+}
+.problem-item-text span { font-size: 13px; color: var(--tw-slate); line-height: 1.6; }
+
+.problem-visual {
+  background: var(--tw-black); border-radius: 20px;
+  padding: 48px 40px; color: var(--tw-paper); position: relative; overflow: hidden;
+}
+.problem-visual::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(244,246,249,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244,246,249,.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.problem-visual-inner { position: relative; z-index: 1; }
+.problem-visual .big-num {
+  font-size: 96px; font-weight: 800; line-height: 1;
+  color: var(--tw-electric); margin-bottom: 8px;
+}
+.problem-visual .big-label {
+  font-size: 15px; font-weight: 600; color: rgba(244,246,249,.7); margin-bottom: 32px;
+}
+.problem-visual .source { font-size: 11px; color: rgba(244,246,249,.3); margin-top: 24px; }
+.gap-bar { margin-top: 32px; }
+.gap-bar-label {
+  display: flex; justify-content: space-between;
+  font-size: 12px; font-weight: 600; margin-bottom: 8px;
+}
+.gap-bar-label .say { color: rgba(244,246,249,.6); }
+.gap-bar-label .do { color: var(--tw-electric); }
+.gap-bar-track {
+  height: 8px; background: rgba(244,246,249,.1); border-radius: 4px; overflow: hidden;
+}
+.gap-bar-fill {
+  height: 100%; border-radius: 4px;
+  background: linear-gradient(90deg, rgba(244,246,249,.3), var(--tw-electric));
+  width: 75%;
+}
+.gap-note { font-size: 12px; color: rgba(244,246,249,.4); margin-top: 10px; }
+
+/* ===== 04: WHAT IS ===== */
+.what-is {
+  padding: 120px 0;
+  background: var(--tw-electric); color: var(--tw-paper);
+  position: relative; overflow: hidden;
+}
+.what-is::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(244,246,249,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244,246,249,.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+.what-is .container { position: relative; z-index: 1; }
+.what-is-header { max-width: 700px; margin: 0 auto 72px; text-align: center; }
+.what-is h2 {
+  font-size: clamp(28px, 4vw, 44px); font-weight: 800; line-height: 1.25;
+  margin-bottom: 20px;
+}
+.what-is-lead { font-size: 17px; opacity: .8; line-height: 1.85; }
+.what-is-cards {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 860px; margin: 0 auto;
+}
+.what-is-card {
+  background: rgba(244,246,249,.07); border-radius: 16px;
+  padding: 40px 36px;
+  border: 1px solid rgba(244,246,249,.12);
+  backdrop-filter: blur(4px);
+}
+.what-is-card .wic-tag {
+  font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 100px;
+  margin-bottom: 20px; display: inline-block;
+}
+.what-is-card.before .wic-tag {
+  background: rgba(244,246,249,.12); color: rgba(244,246,249,.5);
+}
+.what-is-card.after .wic-tag {
+  background: rgba(244,246,249,.2); color: var(--tw-paper);
+}
+.what-is-card h3 {
+  font-size: 20px; font-weight: 800; margin-bottom: 16px; line-height: 1.4;
+}
+.what-is-card p { font-size: 14px; line-height: 1.85; opacity: .75; }
+.what-is-card.before { opacity: .65; }
+.what-is-card.after {
+  border-color: rgba(244,246,249,.3);
+  background: rgba(244,246,249,.1);
+}
+.what-is-arrow {
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; color: rgba(244,246,249,.4);
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+}
+.what-is-cards-wrap { position: relative; max-width: 860px; margin: 0 auto; }
+
+.analogy {
+  margin-top: 64px; max-width: 700px; margin-left: auto; margin-right: auto;
+  background: rgba(244,246,249,.06); border-radius: 14px;
+  padding: 32px 40px; border: 1px solid rgba(244,246,249,.1);
+  text-align: center;
+}
+.analogy-icon { font-size: 36px; margin-bottom: 16px; }
+.analogy p { font-size: 16px; line-height: 1.85; opacity: .8; }
+.analogy strong { color: var(--tw-paper); opacity: 1; font-weight: 700; }
+
+/* ===== 05: HOW IT WORKS ===== */
+.how { padding: 120px 0; background: var(--tw-paper); }
+.how h2 {
+  font-size: clamp(28px, 3.5vw, 40px); font-weight: 800;
+  text-align: center; margin-bottom: 64px;
+}
+.how-steps {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+  position: relative; max-width: 900px; margin: 0 auto;
+}
+.how-steps::before {
+  content: ''; position: absolute;
+  top: 52px; left: calc(16.66% + 20px); right: calc(16.66% + 20px);
+  height: 2px; background: linear-gradient(90deg, var(--tw-electric), rgba(0,94,255,.2));
+}
+.how-step { text-align: center; padding: 0 24px; position: relative; }
+.how-step-num {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: var(--tw-electric); color: var(--tw-paper);
+  font-size: 20px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 24px; position: relative; z-index: 1;
+  box-shadow: 0 0 0 8px rgba(0,94,255,.1);
+}
+.how-step h3 { font-size: 17px; font-weight: 700; margin-bottom: 12px; }
+.how-step p { font-size: 13px; color: var(--tw-slate); line-height: 1.8; }
+.how-step-tag {
+  display: inline-block; font-size: 11px; font-weight: 700;
+  padding: 4px 12px; border-radius: 100px;
+  background: rgba(0,94,255,.08); color: var(--tw-electric);
+  margin-top: 12px; letter-spacing: .5px;
+}
+.how-note {
+  text-align: center; margin-top: 64px;
+  padding: 32px; background: rgba(0,94,255,.04); border-radius: 14px;
+  border: 1px solid rgba(0,94,255,.08); max-width: 700px; margin-left: auto; margin-right: auto;
+}
+.how-note p { font-size: 15px; color: var(--tw-slate); line-height: 1.9; }
+.how-note strong { color: var(--tw-electric); font-weight: 700; }
+
+/* ===== 06: COMPARISON ===== */
+.comparison { padding: 120px 0; background: #fff; }
+.comparison h2 {
+  font-size: clamp(26px, 3.5vw, 38px); font-weight: 800;
+  text-align: center; margin-bottom: 56px;
+}
+.comparison-table { max-width: 800px; margin: 0 auto; }
+.comp-row {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 0; border-bottom: 1px solid rgba(0,94,255,.06);
+}
+.comp-row.header {
+  border-bottom: 2px solid rgba(0,94,255,.12); margin-bottom: 0;
+}
+.comp-cell {
+  padding: 20px 24px; font-size: 14px;
+}
+.comp-cell:first-child { color: var(--tw-slate); font-weight: 600; padding-left: 0; }
+.comp-row.header .comp-cell {
+  font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  color: var(--tw-muted); padding-top: 0;
+}
+.comp-row.header .comp-cell.highlight {
+  background: rgba(0,94,255,.04); border-radius: 8px 8px 0 0;
+  color: var(--tw-electric);
+}
+.comp-cell.highlight {
+  background: rgba(0,94,255,.04); font-weight: 600; color: var(--tw-black);
+}
+.comp-cell .bad { color: var(--tw-muted); }
+.comp-cell .good { color: var(--tw-electric); font-weight: 700; }
+.comp-cell .dot {
+  display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+  margin-right: 6px; vertical-align: middle;
+}
+.dot--bad { background: rgba(60,75,100,.3); }
+.dot--good { background: var(--tw-electric); }
+
+/* ===== 07: FOR WHOM ===== */
+.for-whom { padding: 120px 0; background: var(--tw-paper); }
+.for-whom h2 {
+  font-size: clamp(26px, 3.5vw, 38px); font-weight: 800;
+  text-align: center; margin-bottom: 56px;
+}
+.whom-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.whom-card {
+  background: #fff; border-radius: 16px; padding: 40px 36px;
+  border: 1px solid rgba(0,94,255,.08);
+  box-shadow: 0 4px 32px rgba(0,94,255,.04);
+}
+.whom-card-tag {
+  font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  padding: 5px 14px; border-radius: 100px;
+  margin-bottom: 20px; display: inline-block;
+}
+.whom-card-tag--primary {
+  background: rgba(0,94,255,.08); color: var(--tw-electric);
+}
+.whom-card-tag--secondary {
+  background: rgba(0,184,148,.08); color: var(--tw-emerald);
+}
+.whom-card h3 { font-size: 19px; font-weight: 800; margin-bottom: 8px; }
+.whom-card .role { font-size: 13px; color: var(--tw-muted); margin-bottom: 20px; }
+.whom-card ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.whom-card ul li {
+  font-size: 14px; color: var(--tw-slate); line-height: 1.6;
+  padding-left: 20px; position: relative;
+}
+.whom-card ul li::before {
+  content: ''; position: absolute; left: 0; top: 8px;
+  width: 6px; height: 6px; border-radius: 50%;
+}
+.whom-card--primary ul li::before { background: var(--tw-electric); }
+.whom-card--secondary ul li::before { background: var(--tw-emerald); }
+
+/* ===== 08: PILOT CTA ===== */
+.pilot-cta {
+  padding: 120px 0;
+  background: var(--tw-black); color: var(--tw-paper);
+  position: relative; overflow: hidden;
+}
+.pilot-cta::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(244,246,249,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244,246,249,.03) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+.pilot-cta .container { position: relative; z-index: 1; text-align: center; }
+.pilot-cta h2 {
+  font-size: clamp(28px, 4vw, 46px); font-weight: 800; line-height: 1.25;
+  margin-bottom: 20px;
+}
+.pilot-cta h2 em { font-style: normal; color: var(--tw-electric); }
+.pilot-cta p { font-size: 17px; opacity: .7; margin-bottom: 48px; max-width: 560px; margin-left: auto; margin-right: auto; line-height: 1.85; }
+.pilot-offer {
+  display: inline-flex; flex-direction: column; align-items: center;
+  background: rgba(0,94,255,.12); border: 1px solid rgba(0,94,255,.3);
+  border-radius: 16px; padding: 32px 48px; margin-bottom: 40px;
+  max-width: 520px; width: 100%;
+}
+.pilot-offer-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--tw-electric); margin-bottom: 12px;
+}
+.pilot-offer-title { font-size: 22px; font-weight: 800; margin-bottom: 12px; }
+.pilot-offer-desc { font-size: 14px; opacity: .65; line-height: 1.7; }
+.pilot-cta .btn-group { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.pilot-cta .disclaimer { font-size: 12px; opacity: .4; margin-top: 20px; }
+
+/* ===== FOOTER ===== */
+footer {
+  padding: 60px 0 40px; background: #fff;
+  border-top: 1px solid rgba(0,94,255,.06);
+}
+.footer-inner { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; align-items: start; }
+.footer-brand .logo { font-size: 17px; font-weight: 800; color: var(--tw-black); margin-bottom: 12px; }
+.footer-brand .logo span { color: var(--tw-electric); }
+.footer-brand p { font-size: 13px; color: var(--tw-slate); line-height: 1.7; }
+.footer-col h4 {
+  font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--tw-slate); opacity: .5; margin-bottom: 16px;
+}
+.footer-col a {
+  display: block; font-size: 13px; color: var(--tw-slate);
+  text-decoration: none; margin-bottom: 10px; transition: color .2s;
+}
+.footer-col a:hover { color: var(--tw-electric); }
+.footer-bottom {
+  margin-top: 48px; padding-top: 24px;
+  border-top: 1px solid rgba(0,94,255,.06);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-bottom p { font-size: 12px; color: var(--tw-muted); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .hero .container { grid-template-columns: 1fr; gap: 48px; }
+  .problem-inner { grid-template-columns: 1fr; gap: 48px; }
+  .what-is-cards { grid-template-columns: 1fr; }
+  .how-steps { grid-template-columns: 1fr; gap: 40px; }
+  .how-steps::before { display: none; }
+  .whom-cards { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+}
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  nav { padding: 0 20px; }
+  .nav-service { display: none; }
+  .nav-links { display: none; }
+  .hero h1 { font-size: 32px; }
+  .stat-strip .container { flex-direction: column; gap: 20px; }
+  .stat-item { border-right: none; border-bottom: 1px solid rgba(244,246,249,.1); padding: 16px 0; width: 100%; }
+  .stat-item:last-child { border-bottom: none; }
+  .hero-card-row { grid-template-columns: 1fr; }
+  .comp-row { grid-template-columns: 1fr; }
+  .comp-row.header { display: none; }
+  .comp-cell:first-child { background: var(--tw-paper); font-size: 13px; border-radius: 6px 6px 0 0; padding-bottom: 8px; }
+  .comp-cell { padding: 12px 16px; }
+  .pilot-offer { padding: 24px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div style="display:flex;align-items:center;">
+    <a href="../index.html" class="nav-logo">Tech<span>Worker</span></a>
+    <span class="nav-service">ローンチシミュレーション</span>
+  </div>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#what-is">サービス概要</a></li>
+      <li><a href="#how">使い方</a></li>
+      <li><a href="#for-whom">対象</a></li>
+    </ul>
+    <a href="../contact.html?service=launch-simulation" class="nav-cta">無料パイロットに申し込む</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Launch Simulation</div>
+      <h1>出す前に、<br><em>答えを持て。</em></h1>
+      <p class="hero-sub">
+        新商品の市場反応を、発売前にAIでシミュレーションする。<br>
+        調査はしている。それでも85%が失敗する。<br>
+        その構造的な問題を、私たちは解決します。
+      </p>
+      <div class="hero-btn-group">
+        <a href="../contact.html?service=launch-simulation" class="btn">無料パイロットに申し込む</a>
+        <a href="../contact.html?service=launch-simulation&type=document" class="btn btn--outline">資料を請求する</a>
+      </div>
+      <p class="hero-note">初回パイロット：貴社の過去コンセプトテスト1件をAIで無料再現します</p>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card-stack">
+        <div class="hero-card">
+          <div class="card-label">シミュレーション精度（目標）</div>
+          <div class="card-num">r ≥ 0.85</div>
+          <div class="card-unit">実購買との相関係数</div>
+          <div class="card-vs">従来調査のSay/Do Gap：最大<s>25%</s>のズレ</div>
+        </div>
+        <div class="hero-card-row">
+          <div class="hero-card hero-card--small">
+            <div class="card-label">コスト</div>
+            <div class="card-num">1/5</div>
+            <div class="card-unit">従来比（¥30〜100万）</div>
+          </div>
+          <div class="hero-card hero-card--small">
+            <div class="card-label">納期</div>
+            <div class="card-num">3日</div>
+            <div class="card-unit">従来4〜8週間</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STAT STRIP -->
+<div class="stat-strip">
+  <div class="container">
+    <div class="stat-item">
+      <span class="stat-num">85<span style="font-size:20px;">%</span></span>
+      <span class="stat-desc">新商品が2年以内に失敗（Nielsen）</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">¥150<span style="font-size:18px;">〜300万</span></span>
+      <span class="stat-desc">従来コンセプトテストの費用/件</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">4<span style="font-size:18px;">〜8週間</span></span>
+      <span class="stat-desc">従来調査の所要期間</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">24,769</span>
+      <span class="stat-desc">日本の食品製造業事業所数（経済センサス）</span>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="container">
+    <div class="problem-inner">
+      <div>
+        <span class="label">The Problem</span>
+        <h2>調査をしている。<br>それでも、失敗する。</h2>
+        <p class="problem-lead">
+          大手CPGメーカーは年間数十件のコンセプトテストを実施します。
+          それでも新商品の85%が失敗する。なぜか。
+          調査の構造そのものに問題があるからです。
+        </p>
+        <div class="problem-list">
+          <div class="problem-item">
+            <div class="problem-item-icon">📊</div>
+            <div class="problem-item-text">
+              <strong>Say/Do Gap（言行不一致）</strong>
+              <span>「買いたい」と答えた人の最大25%が実際には購入しない。アンケートは意図を測るが、行動を予測しない。</span>
+            </div>
+          </div>
+          <div class="problem-item">
+            <div class="problem-item-icon">💰</div>
+            <div class="problem-item-text">
+              <strong>コストの壁</strong>
+              <span>1件¥150〜300万、4〜8週間。高コストがテスト回数を制限し、磨き込みの機会を奪っている。</span>
+            </div>
+          </div>
+          <div class="problem-item">
+            <div class="problem-item-icon">🏢</div>
+            <div class="problem-item-text">
+              <strong>リサーチ会社はAI化できない</strong>
+              <span>パネル資産と人件費が収益の柱。AI化は自社モデルの破壊を意味する。外部エンジンが必要な理由がここにある。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="problem-visual">
+        <div class="problem-visual-inner">
+          <div class="big-num">85%</div>
+          <div class="big-label">新商品が2年以内に市場から消える</div>
+          <div class="gap-bar">
+            <div class="gap-bar-label">
+              <span class="say">「買う」と答えた人（調査）</span>
+              <span class="do">実際に買った人</span>
+            </div>
+            <div class="gap-bar-track">
+              <div class="gap-bar-fill"></div>
+            </div>
+            <div class="gap-note">この差がSay/Do Gap。最大25ポイントの乖離。</div>
+          </div>
+          <p class="source">出典: Nielsen / NIQ, 2023. ESOMAR Global Research Report, 2024.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS -->
+<section class="what-is" id="what-is">
+  <div class="container">
+    <div class="what-is-header">
+      <span class="label label--light">What is Launch Simulation</span>
+      <h2>意見を集めるのではなく、<br>市場の結果をシミュレーションする。</h2>
+      <p class="what-is-lead">
+        ローンチシミュレーションは、新しいカテゴリーです。
+        国勢調査ベースで構築したAIペルソナ100体が、実際の消費者として商品コンセプトに反応する。
+        「聞く」のではなく「動かす」。
+      </p>
+    </div>
+    <div class="what-is-cards-wrap">
+      <div class="what-is-cards">
+        <div class="what-is-card before">
+          <span class="wic-tag">従来のコンセプトテスト</span>
+          <h3>消費者に「どう思いますか？」と聞く</h3>
+          <p>アンケートやFGIで意見を収集する。「買いたい」という回答を集計し、予測の根拠とする。しかし実際の購買行動とのギャップは埋まらない。</p>
+        </div>
+        <div class="what-is-card after">
+          <span class="wic-tag">ローンチシミュレーション</span>
+          <h3>AIペルソナが「実際に市場で反応する」</h3>
+          <p>実在する消費者セグメントを忠実に再現したAIペルソナが、コンセプトに対して行動ベースで反応する。購買確率・価格感度・改善点を定量的に出力する。</p>
+        </div>
+      </div>
+    </div>
+    <div class="analogy">
+      <div class="analogy-icon">✈️</div>
+      <p>
+        パイロットは実機を飛ばす前に<strong>フライトシミュレーター</strong>で練習する。<br>
+        同じように、商品を出す前に<strong>市場をシミュレーションする</strong>。<br>
+        失敗してから学ぶのではなく、仮想市場で学ぶ。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="container">
+    <span class="label" style="text-align:center;display:block;">How It Works</span>
+    <h2>3ステップで、発売前の答えが出る</h2>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="how-step-num">01</div>
+        <h3>コンセプトを入力する</h3>
+        <p>商品名・ターゲット・価格帯・訴求軸などのコンセプトボードをご提出いただきます。既存フォーマットのままで構いません。</p>
+        <span class="how-step-tag">所要時間: 1時間以内</span>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num">02</div>
+        <h3>AIが100体の消費者をシミュレーション</h3>
+        <p>国勢調査ベースで設計されたAIペルソナ100体が、コンセプトに対して独立して反応します。並列処理で高速・低コストを実現。</p>
+        <span class="how-step-tag">処理時間: 数時間〜1日</span>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num">03</div>
+        <h3>購買予測レポートを受け取る</h3>
+        <p>Top2Box購買意向・セグメント別反応・価格感度・改善提案をレポートにまとめてお届けします。Go/No-Goの判断材料として活用できます。</p>
+        <span class="how-step-tag">納期: 72時間以内</span>
+      </div>
+    </div>
+    <div class="how-note">
+      <p>
+        <strong>現在、精度検証フェーズ（無料パイロット募集中）。</strong><br>
+        貴社が過去に実施したコンセプトテスト結果をご提供いただき、AIシミュレーションで再現します。
+        精度が一定水準（r≥0.70）に達した場合のみ、正式契約をご提案します。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="comparison">
+  <div class="container">
+    <span class="label" style="text-align:center;display:block;">Comparison</span>
+    <h2>従来調査との比較</h2>
+    <div class="comparison-table">
+      <div class="comp-row header">
+        <div class="comp-cell"></div>
+        <div class="comp-cell">従来のコンセプトテスト</div>
+        <div class="comp-cell highlight">ローンチシミュレーション</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell">費用</div>
+        <div class="comp-cell"><span class="bad">¥150〜300万 / 件</span></div>
+        <div class="comp-cell highlight"><span class="good">¥30〜100万 / 件</span></div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell">納期</div>
+        <div class="comp-cell"><span class="bad">4〜8週間</span></div>
+        <div class="comp-cell highlight"><span class="good">72時間以内</span></div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell">テスト回数</div>
+        <div class="comp-cell"><span class="bad">年数回が限界</span></div>
+        <div class="comp-cell highlight"><span class="good">何案でも比較可能</span></div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell">Say/Do Gap</div>
+        <div class="comp-cell"><span class="bad">構造上避けられない</span></div>
+        <div class="comp-cell highlight"><span class="good">行動ベース予測で低減</span></div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell">改善サイクル</div>
+        <div class="comp-cell"><span class="bad">1案ずつ、時間がかかる</span></div>
+        <div class="comp-cell highlight"><span class="good">複数案を並列で検証</span></div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell">精度証明</div>
+        <div class="comp-cell"><span class="bad">業界標準（検証なし）</span></div>
+        <div class="comp-cell highlight"><span class="good">実購買データとの相関を開示</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHOM -->
+<section class="for-whom" id="for-whom">
+  <div class="container">
+    <span class="label" style="text-align:center;display:block;">For Whom</span>
+    <h2>こんな方に使っていただきたい</h2>
+    <div class="whom-cards">
+      <div class="whom-card whom-card--primary">
+        <span class="whom-card-tag whom-card-tag--primary">CPGメーカー</span>
+        <h3>商品企画・マーケティング担当の方</h3>
+        <p class="role">食品・飲料・日用品・化粧品メーカーの新商品開発チーム</p>
+        <ul>
+          <li>新商品の上市判断を数字で裏付けたい</li>
+          <li>コンセプトテストのコスト・時間を削減したい</li>
+          <li>複数案を素早く比較してから絞り込みたい</li>
+          <li>発売前に改善ポイントを特定したい</li>
+        </ul>
+      </div>
+      <div class="whom-card whom-card--secondary">
+        <span class="whom-card-tag whom-card-tag--secondary">リサーチ会社</span>
+        <h3>OEM・パートナーシップを検討している方</h3>
+        <p class="role">マーケティングリサーチ会社・インサイト部門</p>
+        <ul>
+          <li>AIを使ったコンセプトテストを自社サービスに加えたい</li>
+          <li>既存クライアントへの新しい価値提供を模索している</li>
+          <li>LLM開発のリソースなしに最新技術を活用したい</li>
+          <li>まず精度を確認してから導入を検討したい</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILOT CTA -->
+<section class="pilot-cta">
+  <div class="container">
+    <span class="label label--light" style="text-align:center;display:block;">Free Pilot Program</span>
+    <h2>まず1件、<em>無料で体験</em>してください。</h2>
+    <p>
+      貴社が過去に実施したコンセプトテスト1件をご提供いただき、
+      AIシミュレーションで再現します。
+      従来の結果との乖離を確認した上で、導入を判断してください。
+    </p>
+    <div class="pilot-offer">
+      <span class="pilot-offer-label">無料パイロットプログラム</span>
+      <div class="pilot-offer-title">過去テスト1件を無料AI再現</div>
+      <div class="pilot-offer-desc">
+        精度が r ≥ 0.70 に達した場合のみ正式契約をご提案。<br>
+        達しない場合は費用は一切いただきません。
+      </div>
+    </div>
+    <div class="btn-group">
+      <a href="../contact.html?service=launch-simulation&type=pilot" class="btn btn--white">無料パイロットに申し込む</a>
+      <a href="../contact.html?service=launch-simulation&type=document" class="btn" style="background:rgba(244,246,249,.12);border:1px solid rgba(244,246,249,.2);">資料を請求する</a>
+    </div>
+    <p class="disclaimer">現在、先着3社限定でパイロットプログラムを受付中です。</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">Tech<span>Worker</span></div>
+        <p>AIはエンジンだ。<br>コンテキストは燃料だ。</p>
+      </div>
+      <div class="footer-col">
+        <h4>Service</h4>
+        <a href="../index.html">コンテキスト整理</a>
+        <a href="./">ローンチシミュレーション</a>
+        <a href="../contact.html">お問い合わせ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="../company.html">会社概要</a>
+        <a href="../cases.html">導入事例</a>
+        <a href="../privacy.html">プライバシーポリシー</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 株式会社TechWorker All Rights Reserved.</p>
+      <p style="font-size:11px;color:var(--tw-muted);">techworker.co.jp/launch-simulation</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Scroll animations
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.problem-item, .how-step, .whom-card, .what-is-card, .comp-row:not(.header)').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(24px)';
+  el.style.transition = 'opacity .6s ease, transform .6s ease';
+  observer.observe(el);
+});
+</script>
+
+</body>
+</html>
