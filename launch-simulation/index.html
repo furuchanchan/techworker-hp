@@ -188,7 +188,7 @@ nav {
   font-size: 32px; font-weight: 800; color: var(--tw-paper); line-height: 1;
   display: block; margin-bottom: 6px;
 }
-.stat-desc { font-size: 12px; color: rgba(244,246,249,.7); font-weight: 500; }
+.stat-desc { font-size: 13px; color: rgba(244,246,249,.85); font-weight: 500; }
 
 /* ===== 03: PROBLEM ===== */
 .problem { padding: 120px 0; background: #fff; }
@@ -200,7 +200,7 @@ nav {
   margin-bottom: 24px;
 }
 .problem-lead {
-  font-size: 16px; color: var(--tw-slate); line-height: 1.9; margin-bottom: 32px;
+  font-size: 17px; color: var(--tw-slate); line-height: 1.9; margin-bottom: 32px;
 }
 .problem-list { display: flex; flex-direction: column; gap: 16px; }
 .problem-item {
@@ -214,20 +214,13 @@ nav {
   font-size: 16px; flex-shrink: 0;
 }
 .problem-item-text strong {
-  display: block; font-size: 14px; font-weight: 700; margin-bottom: 4px;
+  display: block; font-size: 15px; font-weight: 700; margin-bottom: 6px;
 }
-.problem-item-text span { font-size: 13px; color: var(--tw-slate); line-height: 1.6; }
+.problem-item-text span { font-size: 14px; color: var(--tw-slate); line-height: 1.7; }
 
 .problem-visual {
-  background: var(--tw-electric-dark); border-radius: 20px;
+  background: var(--tw-electric); border-radius: 20px;
   padding: 48px 40px; color: var(--tw-paper); position: relative; overflow: hidden;
-}
-.problem-visual::before {
-  content: ''; position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(244,246,249,.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(244,246,249,.04) 1px, transparent 1px);
-  background-size: 32px 32px;
 }
 .problem-visual-inner { position: relative; z-index: 1; }
 .problem-visual .big-num {
@@ -235,25 +228,34 @@ nav {
   color: var(--tw-paper); margin-bottom: 8px;
 }
 .problem-visual .big-label {
-  font-size: 15px; font-weight: 600; color: rgba(244,246,249,.8); margin-bottom: 32px;
+  font-size: 15px; font-weight: 600; color: rgba(244,246,249,.85); margin-bottom: 32px;
 }
-.problem-visual .source { font-size: 11px; color: rgba(244,246,249,.4); margin-top: 24px; }
-.gap-bar { margin-top: 32px; }
-.gap-bar-label {
-  display: flex; justify-content: space-between;
-  font-size: 12px; font-weight: 600; margin-bottom: 8px;
+.problem-visual .source { font-size: 11px; color: rgba(244,246,249,.5); margin-top: 24px; }
+.say-do-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 32px;
 }
-.gap-bar-label .say { color: rgba(244,246,249,.6); }
-.gap-bar-label .do { color: rgba(244,246,249,.95); }
-.gap-bar-track {
-  height: 8px; background: rgba(244,246,249,.15); border-radius: 4px; overflow: hidden;
+.say-do-card {
+  background: rgba(244,246,249,.12); border-radius: 10px;
+  padding: 18px 16px; border: 1px solid rgba(244,246,249,.18);
 }
-.gap-bar-fill {
-  height: 100%; border-radius: 4px;
-  background: linear-gradient(90deg, rgba(244,246,249,.3), rgba(244,246,249,.9));
-  width: 75%;
+.say-do-card .sdc-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; color: rgba(244,246,249,.6); margin-bottom: 8px;
 }
-.gap-note { font-size: 12px; color: rgba(244,246,249,.5); margin-top: 10px; }
+.say-do-card .sdc-num {
+  font-size: 36px; font-weight: 800; color: var(--tw-paper); line-height: 1; margin-bottom: 4px;
+}
+.say-do-card .sdc-desc { font-size: 12px; color: rgba(244,246,249,.7); line-height: 1.5; }
+.say-do-card.gap-card {
+  grid-column: 1 / -1;
+  background: rgba(244,246,249,.07);
+  display: flex; align-items: center; gap: 16px; padding: 16px 20px;
+}
+.say-do-card.gap-card .gap-icon {
+  font-size: 28px; flex-shrink: 0;
+}
+.say-do-card.gap-card .gap-text { font-size: 13px; color: rgba(244,246,249,.85); line-height: 1.6; }
+.say-do-card.gap-card .gap-text strong { color: var(--tw-paper); font-size: 14px; }
 
 /* ===== 04: WHAT IS ===== */
 .what-is {
@@ -346,7 +348,7 @@ nav {
   box-shadow: 0 0 0 8px rgba(0,94,255,.1);
 }
 .how-step h3 { font-size: 17px; font-weight: 700; margin-bottom: 12px; }
-.how-step p { font-size: 13px; color: var(--tw-slate); line-height: 1.8; }
+.how-step p { font-size: 14px; color: var(--tw-slate); line-height: 1.85; }
 .how-step-tag {
   display: inline-block; font-size: 11px; font-weight: 700;
   padding: 4px 12px; border-radius: 100px;
@@ -376,7 +378,7 @@ nav {
   border-bottom: 2px solid rgba(0,94,255,.12); margin-bottom: 0;
 }
 .comp-cell {
-  padding: 20px 24px; font-size: 14px;
+  padding: 20px 24px; font-size: 15px;
 }
 .comp-cell:first-child { color: var(--tw-slate); font-weight: 600; padding-left: 0; }
 .comp-row.header .comp-cell {
@@ -543,8 +545,9 @@ footer {
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="container">
+<section class="hero" style="position:relative;overflow:hidden;">
+  <canvas id="heroCanvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
+  <div class="container" style="position:relative;z-index:1;">
     <div class="hero-text">
       <div class="hero-eyebrow">Launch Simulation</div>
       <h1>出す前に、<br><em>答えを持て。</em></h1>
@@ -646,15 +649,24 @@ footer {
         <div class="problem-visual-inner">
           <div class="big-num">85%</div>
           <div class="big-label">新商品が2年以内に市場から消える</div>
-          <div class="gap-bar">
-            <div class="gap-bar-label">
-              <span class="say">「買う」と答えた人（調査）</span>
-              <span class="do">実際に買った人</span>
+          <div class="say-do-grid">
+            <div class="say-do-card">
+              <div class="sdc-label">調査での回答</div>
+              <div class="sdc-num">100人</div>
+              <div class="sdc-desc">「この商品を買いたい」<br>と答えた消費者</div>
             </div>
-            <div class="gap-bar-track">
-              <div class="gap-bar-fill"></div>
+            <div class="say-do-card">
+              <div class="sdc-label">実際の購買行動</div>
+              <div class="sdc-num">75〜80人</div>
+              <div class="sdc-desc">実際に購入した消費者<br>（最大25%が離脱）</div>
             </div>
-            <div class="gap-note">この差がSay/Do Gap。最大25ポイントの乖離。</div>
+            <div class="say-do-card gap-card">
+              <div class="gap-icon">⚠️</div>
+              <div class="gap-text">
+                <strong>Say/Do Gap：最大25ポイントの乖離</strong><br>
+                アンケートは「意図」を測る。実購買は測れない。この構造的欠陥が、85%失敗の根本原因。
+              </div>
+            </div>
           </div>
           <p class="source">出典: Nielsen / NIQ, 2023. ESOMAR Global Research Report, 2024.</p>
         </div>
@@ -867,9 +879,103 @@ footer {
 </footer>
 
 <script>
-// Scroll animations
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
+/* ===== HERO CANVAS PARTICLE ANIMATION ===== */
+(function(){
+  var canvas = document.getElementById('heroCanvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var dpr = window.devicePixelRatio || 1;
+  var particles = [];
+  var mouse = { x: -999, y: -999 };
+  var PARTICLE_COUNT = 60;
+  var CONNECT_DIST = 140;
+  var MOUSE_DIST = 180;
+
+  function resize() {
+    var rect = canvas.parentElement.getBoundingClientRect();
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    canvas.style.width = rect.width + 'px';
+    canvas.style.height = rect.height + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  function createParticles() {
+    particles = [];
+    var w = canvas.width / dpr, h = canvas.height / dpr;
+    for (var i = 0; i < PARTICLE_COUNT; i++) {
+      particles.push({
+        x: Math.random() * w, y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        r: Math.random() * 2 + 1
+      });
+    }
+  }
+  function draw() {
+    var w = canvas.width / dpr, h = canvas.height / dpr;
+    ctx.clearRect(0, 0, w, h);
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > w) p.vx *= -1;
+      if (p.y < 0 || p.y > h) p.vy *= -1;
+      var dx = p.x - mouse.x, dy = p.y - mouse.y;
+      var dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist < MOUSE_DIST) {
+        var force = (MOUSE_DIST - dist) / MOUSE_DIST * 0.02;
+        p.vx += dx * force; p.vy += dy * force;
+      }
+      var speed = Math.sqrt(p.vx*p.vx + p.vy*p.vy);
+      if (speed > 1.2) { p.vx *= 0.98; p.vy *= 0.98; }
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(0,94,255,0.15)';
+      ctx.fill();
+    }
+    for (var i = 0; i < particles.length; i++) {
+      for (var j = i + 1; j < particles.length; j++) {
+        var dx = particles[i].x - particles[j].x;
+        var dy = particles[i].y - particles[j].y;
+        var d = Math.sqrt(dx*dx + dy*dy);
+        if (d < CONNECT_DIST) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = 'rgba(0,94,255,' + (0.08 * (1 - d / CONNECT_DIST)) + ')';
+          ctx.lineWidth = 0.6;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  resize(); createParticles(); draw();
+  window.addEventListener('resize', function(){ resize(); createParticles(); });
+  canvas.parentElement.addEventListener('mousemove', function(e){
+    var rect = canvas.parentElement.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left; mouse.y = e.clientY - rect.top;
+  });
+  canvas.parentElement.addEventListener('mouseleave', function(){
+    mouse.x = -999; mouse.y = -999;
+  });
+})();
+
+/* ===== HERO FADE-IN ===== */
+(function(){
+  var els = ['.hero-eyebrow', '.hero h1', '.hero-sub', '.hero-btn-group', '.hero-note', '.hero-card-stack'];
+  els.forEach(function(sel, i) {
+    var el = document.querySelector(sel);
+    if (!el) return;
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity .7s ease, transform .7s ease';
+    setTimeout(function(){ el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }, 100 + i * 120);
+  });
+})();
+
+/* ===== SCROLL ANIMATIONS ===== */
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
     if (e.isIntersecting) {
       e.target.style.opacity = '1';
       e.target.style.transform = 'translateY(0)';
@@ -877,7 +983,7 @@ const observer = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.problem-item, .how-step, .whom-card, .what-is-card, .comp-row:not(.header)').forEach(el => {
+document.querySelectorAll('.problem-item, .how-step, .whom-card, .what-is-card, .comp-row:not(.header), .say-do-card').forEach(function(el) {
   el.style.opacity = '0';
   el.style.transform = 'translateY(24px)';
   el.style.transition = 'opacity .6s ease, transform .6s ease';
