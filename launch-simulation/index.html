@@ -239,13 +239,13 @@ nav {
   padding: 18px 16px; border: 1px solid rgba(244,246,249,.18);
 }
 .say-do-card .sdc-label {
-  font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
-  text-transform: uppercase; color: rgba(244,246,249,.6); margin-bottom: 8px;
+  font-size: 12px; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; color: rgba(244,246,249,.65); margin-bottom: 8px;
 }
 .say-do-card .sdc-num {
-  font-size: 36px; font-weight: 800; color: var(--tw-paper); line-height: 1; margin-bottom: 4px;
+  font-size: 40px; font-weight: 800; color: var(--tw-paper); line-height: 1; margin-bottom: 6px;
 }
-.say-do-card .sdc-desc { font-size: 12px; color: rgba(244,246,249,.7); line-height: 1.5; }
+.say-do-card .sdc-desc { font-size: 13px; color: rgba(244,246,249,.75); line-height: 1.6; }
 .say-do-card.gap-card {
   grid-column: 1 / -1;
   background: rgba(244,246,249,.07);
@@ -254,8 +254,8 @@ nav {
 .say-do-card.gap-card .gap-icon {
   font-size: 28px; flex-shrink: 0;
 }
-.say-do-card.gap-card .gap-text { font-size: 13px; color: rgba(244,246,249,.85); line-height: 1.6; }
-.say-do-card.gap-card .gap-text strong { color: var(--tw-paper); font-size: 14px; }
+.say-do-card.gap-card .gap-text { font-size: 14px; color: rgba(244,246,249,.85); line-height: 1.65; }
+.say-do-card.gap-card .gap-text strong { color: var(--tw-paper); font-size: 15px; }
 
 /* ===== 04: WHAT IS ===== */
 .what-is {
@@ -456,7 +456,7 @@ nav {
   font-size: clamp(28px, 4vw, 46px); font-weight: 800; line-height: 1.25;
   margin-bottom: 20px;
 }
-.pilot-cta h2 em { font-style: normal; color: var(--tw-paper); text-decoration: underline; text-underline-offset: 4px; text-decoration-color: rgba(244,246,249,.4); }
+.pilot-cta h2 em { font-style: normal; color: var(--tw-paper); }
 .pilot-cta p { font-size: 17px; opacity: .8; margin-bottom: 48px; max-width: 560px; margin-left: auto; margin-right: auto; line-height: 1.85; }
 .pilot-offer {
   display: inline-flex; flex-direction: column; align-items: center;
@@ -552,9 +552,9 @@ footer {
       <div class="hero-eyebrow">Launch Simulation</div>
       <h1>出す前に、<br><em>答えを持て。</em></h1>
       <p class="hero-sub">
-        新商品の市場反応を、発売前にAIでシミュレーションする。<br>
-        調査はしている。それでも85%が失敗する。<br>
-        その構造的な問題を、私たちは解決します。
+        新商品の85%は2年で消える。調査をしても、だ。<br>
+        原因は「Say/Do Gap」——アンケートは意図を測るが、<br>
+        購買行動は測れない。AIがその壁を壊す。
       </p>
       <div class="hero-btn-group">
         <a href="../contact.html?service=launch-simulation" class="btn">無料パイロットに申し込む</a>
@@ -617,30 +617,28 @@ footer {
         <span class="label">The Problem</span>
         <h2>調査をしている。<br>それでも、失敗する。</h2>
         <p class="problem-lead">
-          大手CPGメーカーは年間数十件のコンセプトテストを実施します。
-          それでも新商品の85%が失敗する。なぜか。
-          調査の構造そのものに問題があるからです。
+          年間数十件のテストを打っても、85%が失敗する。<br>問題は調査の量ではなく、構造だ。
         </p>
         <div class="problem-list">
           <div class="problem-item">
             <div class="problem-item-icon">📊</div>
             <div class="problem-item-text">
-              <strong>Say/Do Gap（言行不一致）</strong>
-              <span>「買いたい」と答えた人の最大25%が実際には購入しない。アンケートは意図を測るが、行動を予測しない。</span>
+              <strong>Say/Do Gap</strong>
+              <span>「買う」と答えた人の最大25%が実際には買わない。アンケートは行動を予測できない。</span>
             </div>
           </div>
           <div class="problem-item">
             <div class="problem-item-icon">💰</div>
             <div class="problem-item-text">
-              <strong>コストの壁</strong>
-              <span>1件¥150〜300万、4〜8週間。高コストがテスト回数を制限し、磨き込みの機会を奪っている。</span>
+              <strong>1件¥150〜300万・4〜8週間</strong>
+              <span>コストが高すぎてテスト回数を絞らざるを得ない。磨き込みの機会が失われる。</span>
             </div>
           </div>
           <div class="problem-item">
             <div class="problem-item-icon">🏢</div>
             <div class="problem-item-text">
               <strong>リサーチ会社はAI化できない</strong>
-              <span>パネル資産と人件費が収益の柱。AI化は自社モデルの破壊を意味する。外部エンジンが必要な理由がここにある。</span>
+              <span>パネルと人件費が収益の柱。AI化は自社モデルの自壊を意味する。</span>
             </div>
           </div>
         </div>
@@ -663,8 +661,8 @@ footer {
             <div class="say-do-card gap-card">
               <div class="gap-icon">⚠️</div>
               <div class="gap-text">
-                <strong>Say/Do Gap：最大25ポイントの乖離</strong><br>
-                アンケートは「意図」を測る。実購買は測れない。この構造的欠陥が、85%失敗の根本原因。
+                <strong>最大25%がSay/Do Gap</strong><br>
+                意図と行動のズレ。これが85%失敗の根本原因。
               </div>
             </div>
           </div>
@@ -680,33 +678,31 @@ footer {
   <div class="container">
     <div class="what-is-header">
       <span class="label label--light">What is Launch Simulation</span>
-      <h2>意見を集めるのではなく、<br>市場の結果をシミュレーションする。</h2>
+      <h2>「聞く」のをやめて、<br>「動かす」。</h2>
       <p class="what-is-lead">
-        ローンチシミュレーションは、新しいカテゴリーです。
-        国勢調査ベースで構築したAIペルソナ100体が、実際の消費者として商品コンセプトに反応する。
-        「聞く」のではなく「動かす」。
+        国勢調査ベースのAIペルソナ1,000体が、実際の消費者として反応する。<br>
+        意見収集ではなく、市場シミュレーション。
       </p>
     </div>
     <div class="what-is-cards-wrap">
       <div class="what-is-cards">
         <div class="what-is-card before">
           <span class="wic-tag">従来のコンセプトテスト</span>
-          <h3>消費者に「どう思いますか？」と聞く</h3>
-          <p>アンケートやFGIで意見を収集する。「買いたい」という回答を集計し、予測の根拠とする。しかし実際の購買行動とのギャップは埋まらない。</p>
+          <h3>「買いたいですか？」と聞く</h3>
+          <p>アンケートで意見を収集。回答を集計して判断する。Say/Do Gapは解消されない。</p>
         </div>
         <div class="what-is-card after">
           <span class="wic-tag">ローンチシミュレーション</span>
-          <h3>AIペルソナが「実際に市場で反応する」</h3>
-          <p>実在する消費者セグメントを忠実に再現したAIペルソナが、コンセプトに対して行動ベースで反応する。購買確率・価格感度・改善点を定量的に出力する。</p>
+          <h3>AI 1,000体が市場で実際に動く</h3>
+          <p>AIペルソナが行動ベースで反応。購買確率・価格感度・改善点を定量的に出力する。</p>
         </div>
       </div>
     </div>
     <div class="analogy">
       <div class="analogy-icon">✈️</div>
       <p>
-        パイロットは実機を飛ばす前に<strong>フライトシミュレーター</strong>で練習する。<br>
-        同じように、商品を出す前に<strong>市場をシミュレーションする</strong>。<br>
-        失敗してから学ぶのではなく、仮想市場で学ぶ。
+        パイロットは飛ぶ前に<strong>フライトシミュレーター</strong>で試す。<br>
+        商品も、出す前に<strong>市場でシミュレーションする</strong>。
       </p>
     </div>
   </div>
@@ -720,28 +716,27 @@ footer {
     <div class="how-steps">
       <div class="how-step">
         <div class="how-step-num">01</div>
-        <h3>コンセプトを入力する</h3>
-        <p>商品名・ターゲット・価格帯・訴求軸などのコンセプトボードをご提出いただきます。既存フォーマットのままで構いません。</p>
+        <h3>コンセプトを渡す</h3>
+        <p>商品名・ターゲット・価格帯・訴求軸。既存フォーマットのままでOK。</p>
         <span class="how-step-tag">所要時間: 1時間以内</span>
       </div>
       <div class="how-step">
         <div class="how-step-num">02</div>
-        <h3>AIが100体の消費者をシミュレーション</h3>
-        <p>国勢調査ベースで設計されたAIペルソナ100体が、コンセプトに対して独立して反応します。並列処理で高速・低コストを実現。</p>
+        <h3>AI 1,000体が市場を動かす</h3>
+        <p>国勢調査ベースのAIペルソナ1,000体が並列で反応。高速・低コストを実現。</p>
         <span class="how-step-tag">処理時間: 数時間〜1日</span>
       </div>
       <div class="how-step">
         <div class="how-step-num">03</div>
-        <h3>購買予測レポートを受け取る</h3>
-        <p>Top2Box購買意向・セグメント別反応・価格感度・改善提案をレポートにまとめてお届けします。Go/No-Goの判断材料として活用できます。</p>
+        <h3>Go / No-Go の答えが出る</h3>
+        <p>購買確率・価格感度・セグメント別反応・改善提案。72時間でレポート納品。</p>
         <span class="how-step-tag">納期: 72時間以内</span>
       </div>
     </div>
     <div class="how-note">
       <p>
-        <strong>現在、精度検証フェーズ（無料パイロット募集中）。</strong><br>
-        貴社が過去に実施したコンセプトテスト結果をご提供いただき、AIシミュレーションで再現します。
-        精度が一定水準（r≥0.70）に達した場合のみ、正式契約をご提案します。
+        <strong>現在、無料パイロット募集中。</strong><br>
+        過去のコンセプトテスト1件をAIで再現。精度 r≥0.70 未達なら費用ゼロ。
       </p>
     </div>
   </div>
@@ -800,24 +795,24 @@ footer {
     <div class="whom-cards">
       <div class="whom-card whom-card--primary">
         <span class="whom-card-tag whom-card-tag--primary">CPGメーカー</span>
-        <h3>商品企画・マーケティング担当の方</h3>
-        <p class="role">食品・飲料・日用品・化粧品メーカーの新商品開発チーム</p>
+        <h3>商品企画・マーケティング担当</h3>
+        <p class="role">食品・飲料・日用品・化粧品の新商品開発チーム</p>
         <ul>
-          <li>新商品の上市判断を数字で裏付けたい</li>
-          <li>コンセプトテストのコスト・時間を削減したい</li>
-          <li>複数案を素早く比較してから絞り込みたい</li>
-          <li>発売前に改善ポイントを特定したい</li>
+          <li>出す前に「売れるか」を数字で確認したい</li>
+          <li>テストのコストと時間を大幅に減らしたい</li>
+          <li>複数案を並べて素早く絞り込みたい</li>
+          <li>改善ポイントを発売前に特定したい</li>
         </ul>
       </div>
       <div class="whom-card whom-card--secondary">
         <span class="whom-card-tag whom-card-tag--secondary">リサーチ会社</span>
-        <h3>OEM・パートナーシップを検討している方</h3>
+        <h3>OEM・パートナーシップ担当</h3>
         <p class="role">マーケティングリサーチ会社・インサイト部門</p>
         <ul>
-          <li>AIを使ったコンセプトテストを自社サービスに加えたい</li>
-          <li>既存クライアントへの新しい価値提供を模索している</li>
-          <li>LLM開発のリソースなしに最新技術を活用したい</li>
-          <li>まず精度を確認してから導入を検討したい</li>
+          <li>AIコンセプトテストを自社サービスに加えたい</li>
+          <li>既存クライアントへの新たな価値を作りたい</li>
+          <li>LLM開発なしに最新技術を活用したい</li>
+          <li>精度を確認してから判断したい</li>
         </ul>
       </div>
     </div>
@@ -828,25 +823,23 @@ footer {
 <section class="pilot-cta">
   <div class="container">
     <span class="label label--light" style="text-align:center;display:block;">Free Pilot Program</span>
-    <h2>まず1件、<em>無料で体験</em>してください。</h2>
+    <h2>まず1件、<em>無料で試してください。</em></h2>
     <p>
-      貴社が過去に実施したコンセプトテスト1件をご提供いただき、
-      AIシミュレーションで再現します。
-      従来の結果との乖離を確認した上で、導入を判断してください。
+      過去のコンセプトテスト1件をAIで再現。<br>
+      精度を確認してから、導入を判断してください。
     </p>
     <div class="pilot-offer">
-      <span class="pilot-offer-label">無料パイロットプログラム</span>
+      <span class="pilot-offer-label">Free Pilot Program</span>
       <div class="pilot-offer-title">過去テスト1件を無料AI再現</div>
       <div class="pilot-offer-desc">
-        精度が r ≥ 0.70 に達した場合のみ正式契約をご提案。<br>
-        達しない場合は費用は一切いただきません。
+        精度 r ≥ 0.70 未達なら費用ゼロ。先着3社限定。
       </div>
     </div>
     <div class="btn-group">
       <a href="../contact.html?service=launch-simulation&type=pilot" class="btn btn--white">無料パイロットに申し込む</a>
       <a href="../contact.html?service=launch-simulation&type=document" class="btn" style="background:rgba(244,246,249,.12);border:1px solid rgba(244,246,249,.2);">資料を請求する</a>
     </div>
-    <p class="disclaimer">現在、先着3社限定でパイロットプログラムを受付中です。</p>
+    <p class="disclaimer">※ 現在、精度検証フェーズのため先着3社限定でご提供しています。</p>
   </div>
 </section>
 
