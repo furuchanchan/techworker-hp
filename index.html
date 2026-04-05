@@ -4,6 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TechWorker — AIはエンジンだ。コンテキストは燃料だ。</title>
+<meta name="description" content="TechWorkerは、企業の業務文脈をAIが理解できる形に変換する「コンテキスト整理」の専門企業です。上場企業を含む37社・2,500名の支援実績。">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="TechWorker — AIはエンジンだ。コンテキストは燃料だ。">
+<meta property="og:description" content="企業の業務文脈をAIが理解できる形に変換する「コンテキスト整理」の専門企業。37社・2,500名の支援実績。">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TechWorker — AIはエンジンだ。コンテキストは燃料だ。">
+<meta name="twitter:description" content="企業の業務文脈をAIが理解できる形に変換する「コンテキスト整理」の専門企業。">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Noto+Sans+JP:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
@@ -115,6 +127,46 @@ nav .lang-switch { font-size: 12px; white-space: nowrap; }
   display: block; margin-bottom: 8px;
 }
 .hero-kpi .unit { font-size: 14px; font-weight: 600; color: var(--tw-slate); }
+
+/* ===== 01b: AI TOOLS ===== */
+.ai-tools {
+  padding: 48px 0 56px;
+  background: #fff;
+  border-bottom: 1px solid rgba(0,94,255,.06);
+}
+.ai-tools .container { text-align: center; }
+.ai-tools-label {
+  font-size: 13px; font-weight: 700; color: var(--tw-slate);
+  letter-spacing: .12em; text-transform: uppercase; margin-bottom: 32px;
+}
+.ai-tools-grid {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 24px 40px; max-width: 900px; margin: 0 auto;
+}
+.ai-tool-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 20px;
+  background: var(--tw-paper);
+  border-radius: 10px;
+  border: 1px solid rgba(0,94,255,.06);
+  transition: transform .2s, box-shadow .2s;
+}
+.ai-tool-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,94,255,.08);
+}
+.ai-tool-logo {
+  width: 40px; height: 40px; object-fit: contain; flex-shrink: 0;
+}
+.ai-tool-icon {
+  width: 32px; height: 32px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 800; flex-shrink: 0;
+}
+.ai-tool-name { font-size: 14px; font-weight: 700; color: var(--tw-black); white-space: nowrap; }
+.ai-tools-note {
+  margin-top: 24px; font-size: 13px; color: var(--tw-slate);
+}
 
 /* ===== 02: NEWS ===== */
 .news { padding: 80px 0; background: #fff; }
@@ -256,7 +308,40 @@ nav .lang-switch { font-size: 12px; white-space: nowrap; }
   font-size: clamp(28px, 4vw, 40px); font-weight: 800; margin-bottom: 16px;
 }
 .services .lead {
-  font-size: 16px; color: var(--tw-slate); margin-bottom: 60px; max-width: 600px;
+  font-size: 16px; color: var(--tw-slate); margin-bottom: 56px; max-width: 600px;
+}
+/* Service Overview (3-category row) */
+.svc-overview {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+  margin-bottom: 72px; max-width: 780px;
+}
+.svc-card {
+  background: #fff; border-radius: 16px; padding: 36px 32px;
+  border: 1px solid rgba(0,94,255,.08);
+  box-shadow: 0 4px 20px rgba(0,94,255,.04);
+  display: flex; flex-direction: column; gap: 0;
+  transition: box-shadow .2s, transform .2s;
+}
+.svc-card:hover { box-shadow: 0 8px 32px rgba(0,94,255,.1); transform: translateY(-2px); }
+.svc-card--featured {
+  border-color: var(--tw-electric);
+  box-shadow: 0 4px 24px rgba(0,94,255,.12);
+}
+.svc-num {
+  font-size: 11px; font-weight: 800; letter-spacing: 3px; color: var(--tw-electric);
+  opacity: .6; margin-bottom: 14px;
+}
+.svc-card h3 { font-size: 20px; font-weight: 800; margin-bottom: 12px; line-height: 1.4; }
+.svc-card p { font-size: 14px; color: var(--tw-slate); line-height: 1.85; flex: 1; margin-bottom: 24px; }
+.svc-link {
+  font-size: 13px; font-weight: 700; color: var(--tw-electric);
+  text-decoration: none; display: inline-flex; align-items: center; gap: 4px;
+  transition: gap .2s;
+}
+.svc-link:hover { gap: 8px; }
+.programs-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--tw-black); opacity: .4; margin-bottom: 32px; display: block;
 }
 .service-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 .service-card {
@@ -320,12 +405,12 @@ nav .lang-switch { font-size: 12px; white-space: nowrap; }
 .results-kpi-card .unit { font-size: 14px; opacity: .7; font-weight: 600; }
 /* ===== HOME CASE MAGAZINE ===== */
 .home-case-impact {
-  background: var(--tw-electric); color: #fff;
+  background: var(--tw-paper); color: var(--tw-black);
   padding: 80px 0; position: relative; overflow: hidden;
 }
 .home-case-impact::before {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(0,0,0,.08) 0%, transparent 50%);
+  background: none;
 }
 .home-case-impact .container {
   position: relative; z-index: 1;
@@ -333,7 +418,7 @@ nav .lang-switch { font-size: 12px; white-space: nowrap; }
 }
 .home-case-left {}
 .home-case-sub {
-  font-size: 12px; font-weight: 600; color: rgba(255,255,255,.4);
+  font-size: 12px; font-weight: 600; color: var(--tw-slate);
   letter-spacing: 2px; margin-bottom: 8px;
 }
 .home-case-num {
@@ -342,12 +427,13 @@ nav .lang-switch { font-size: 12px; white-space: nowrap; }
 .home-case-num .big-num {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: clamp(72px, 10vw, 120px); font-weight: 800; line-height: 1;
+  color: var(--tw-electric);
 }
 .home-case-num .big-unit {
-  font-size: 20px; font-weight: 600; color: rgba(255,255,255,.5);
+  font-size: 20px; font-weight: 600; color: var(--tw-slate);
 }
 .home-case-desc {
-  font-size: 14px; color: rgba(255,255,255,.45); margin-top: 8px;
+  font-size: 14px; color: var(--tw-slate); margin-top: 8px;
 }
 .home-case-right {}
 .home-case-tag {
@@ -355,17 +441,17 @@ nav .lang-switch { font-size: 12px; white-space: nowrap; }
 }
 .home-case-badge {
   font-size: 10px; font-weight: 800; letter-spacing: 2px;
-  background: rgba(255,255,255,.15); padding: 5px 14px; border-radius: 100px;
+  background: var(--tw-electric); color: #fff; padding: 5px 14px; border-radius: 100px;
 }
 .home-case-industry {
-  font-size: 12px; color: rgba(255,255,255,.5); font-weight: 600; letter-spacing: 1px;
+  font-size: 12px; color: var(--tw-slate); font-weight: 600; letter-spacing: 1px;
 }
 .home-case-impact h3 {
   font-size: clamp(24px, 3.5vw, 36px); font-weight: 800; line-height: 1.3;
   margin-bottom: 8px;
 }
 .home-case-company {
-  font-size: 14px; color: rgba(255,255,255,.5); font-weight: 600;
+  font-size: 14px; color: var(--tw-slate); font-weight: 600;
 }
 
 .home-case-content {
@@ -650,7 +736,7 @@ footer {
   border-top: 1px solid rgba(0,94,255,.06);
 }
 footer .footer-inner {
-  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px;
+  display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px;
   align-items: start;
 }
 footer .footer-brand .logo { font-size: 18px; font-weight: 800; margin-bottom: 12px; color: var(--tw-black); }
@@ -681,6 +767,7 @@ footer .copyright {
   .macro-stats { grid-template-columns: repeat(2, 1fr); }
   .strength-grid { grid-template-columns: 1fr; }
   .service-cards { grid-template-columns: 1fr; }
+  .svc-overview { grid-template-columns: 1fr; }
   .results-kpi { grid-template-columns: repeat(2, 1fr); }
   .home-case-impact .container { grid-template-columns: 1fr; gap: 32px; }
   .home-case-impact { padding: 60px 0; }
@@ -692,7 +779,7 @@ footer .copyright {
   .message-photo { max-width: 300px; }
   .director .container { grid-template-columns: 1fr; }
   .director-photo { max-width: 300px; }
-  footer .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  footer .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
 }
 @media (max-width: 640px) {
   .container { padding: 0 20px; }
@@ -726,6 +813,54 @@ footer .copyright {
   .company-table td { display: block; padding-top: 0; padding-bottom: 20px; }
   footer .footer-inner { grid-template-columns: 1fr; gap: 32px; }
 }
+
+/* ===== NAV DROPDOWN ===== */
+nav ul li { position: relative; }
+.nav-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%; padding-top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0,94,255,.12);
+  border: 1px solid rgba(0,94,255,.08);
+  min-width: 200px;
+  padding: 8px 0;
+  z-index: 200;
+  white-space: nowrap;
+}
+.nav-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: 6px; left: 50%; transform: translateX(-50%);
+  width: 10px; height: 10px;
+  background: #fff;
+  border-left: 1px solid rgba(0,94,255,.08);
+  border-top: 1px solid rgba(0,94,255,.08);
+  transform: translateX(-50%) rotate(45deg);
+}
+.nav-dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #3C4B64;
+  text-decoration: none;
+  transition: color .15s, background .15s;
+}
+.nav-dropdown-menu a:hover {
+  color: #005EFF;
+  background: rgba(0,94,255,.04);
+}
+nav ul li:hover .nav-dropdown-menu { display: block; }
+.nav-dropdown-trigger { cursor: default; }
+.nav-dropdown-trigger::after {
+  content: ' ▾';
+  font-size: 10px;
+  opacity: .6;
+}
 </style>
 </head>
 <body>
@@ -734,9 +869,16 @@ footer .copyright {
 <nav>
   <a href="index.html" class="logo">Tech<span>Worker</span></a>
   <ul>
-    <li><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">HOME</a></li>
-    <li><a href="#news">NEWS</a></li>
-    <li><a href="#results">実績</a></li>
+    <li><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">ホーム</a></li>
+    <li>
+      <a href="#services" class="nav-dropdown-trigger">サービス</a>
+      <div class="nav-dropdown-menu">
+        <a href="#services">生成AIコンサル</a>
+        <a href="launch-simulation/">ローンチシミュレーション</a>
+      </div>
+    </li>
+    <li><a href="cases.html">実績</a></li>
+    <li><a href="news.html">ニュース</a></li>
     <li><a href="company.html">会社概要</a></li>
   </ul>
   <div class="nav-right">
@@ -790,6 +932,44 @@ footer .copyright {
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ===== 01b: AI TOOLS ===== -->
+<section class="ai-tools">
+  <div class="container">
+    <p class="ai-tools-label">主要AIサービスすべてに対応</p>
+    <div class="ai-tools-grid">
+      <div class="ai-tool-item">
+        <img src="assets/logos/claude.svg" alt="Claude" class="ai-tool-logo">
+        <span class="ai-tool-name">Claude</span>
+      </div>
+      <div class="ai-tool-item">
+        <img src="assets/logos/chatgpt.png" alt="ChatGPT" class="ai-tool-logo">
+        <span class="ai-tool-name">ChatGPT</span>
+      </div>
+      <div class="ai-tool-item">
+        <img src="assets/logos/copilot.webp" alt="Microsoft Copilot" class="ai-tool-logo">
+        <span class="ai-tool-name">Microsoft Copilot</span>
+      </div>
+      <div class="ai-tool-item">
+        <img src="assets/logos/gemini.svg" alt="Gemini" class="ai-tool-logo">
+        <span class="ai-tool-name">Gemini</span>
+      </div>
+      <div class="ai-tool-item">
+        <img src="assets/logos/perplexity.png" alt="Perplexity" class="ai-tool-logo">
+        <span class="ai-tool-name">Perplexity</span>
+      </div>
+      <div class="ai-tool-item">
+        <img src="assets/logos/notion.png" alt="Notion AI" class="ai-tool-logo">
+        <span class="ai-tool-name">Notion AI</span>
+      </div>
+      <div class="ai-tool-item">
+        <img src="assets/logos/github-copilot.png" alt="GitHub Copilot" class="ai-tool-logo">
+        <span class="ai-tool-name">GitHub Copilot</span>
+      </div>
+    </div>
+    <p class="ai-tools-note">特定のツールに依存しない、マルチAI対応のコンサルティング</p>
   </div>
 </section>
 
@@ -1014,9 +1194,25 @@ footer .copyright {
 <section class="services" id="services">
   <div class="container">
     <span class="label">Services</span>
-    <h2>AI導入プログラム</h2>
-    <p class="lead">個別ツールの導入から、組織全体のAI活用設計まで。段階に応じた3つのプログラムをご用意しています。</p>
+    <h2>私たちのサービス</h2>
+    <p class="lead">生成AIの力で、ビジネスの課題を解決する3つのソリューション。</p>
 
+    <div class="svc-overview">
+      <div class="svc-card">
+        <div class="svc-num">01</div>
+        <h3>生成AIコンサル</h3>
+        <p>企業のAI活用を伴走支援。コンテキスト整理・業務フロー構築・組織への定着まで一気通貫でサポートします。</p>
+        <a href="#programs" class="svc-link">詳細を見る →</a>
+      </div>
+      <div class="svc-card svc-card--featured">
+        <div class="svc-num">02</div>
+        <h3>ローンチシミュレーション</h3>
+        <p>CPGメーカー・リサーチ会社向け。AIペルソナ1,000体が新商品の市場反応を1週間で予測します。</p>
+        <a href="launch-simulation/" class="svc-link">LPを見る →</a>
+      </div>
+    </div>
+
+    <span class="programs-label" id="programs">生成AIコンサル — プログラム詳細</span>
     <div class="service-cards">
       <div class="service-card">
         <div class="service-card-header">
@@ -1155,7 +1351,7 @@ footer .copyright {
       </div>
       <div class="faq-item">
         <div class="q">最低契約期間はどれくらいですか。</div>
-        <div class="a">導入支援は1ヶ月から、伴走コンサルティングは6ヶ月からとなっております。</div>
+        <div class="a">導入支援は3ヶ月から、伴走コンサルティングは6ヶ月からとなっております。</div>
       </div>
       <div class="faq-item">
         <div class="q">助成金は活用できますか。</div>
@@ -1206,10 +1402,13 @@ footer .copyright {
         <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:13px;font-weight:700;color:var(--tw-slate);text-decoration:none;transition:color .2s;"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
       </div>
       <div class="footer-col">
-        <h4>Menu</h4>
+        <h4>サービス</h4>
+        <a href="index.html#services">生成AIコンサル</a>
+        <a href="launch-simulation/">ローンチシミュレーション</a>
+      </div>
+      <div class="footer-col">
+        <h4>サイト</h4>
         <a href="news.html">ニュース</a>
-        <a href="#approach">私たちの強み</a>
-        <a href="#services">サービス</a>
         <a href="cases.html">実績</a>
         <a href="company.html">会社概要</a>
       </div>

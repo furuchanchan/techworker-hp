@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ローンチシミュレーション — 出す前に、答えを持て。| TechWorker</title>
-<meta name="description" content="新商品の市場反応を、発売前にAIでシミュレーションする。従来のコンセプトテストより1/5のコスト、3日で結果。85%の新商品失敗率に終止符を。">
+<title>ローンチシミュレーション — 新商品を出す前に、1,000人の市場で試す。| TechWorker</title>
+<meta name="description" content="AIペルソナ1,000体が購買行動をシミュレーション。72時間で、Go/No-Goの答えが出る。従来のコンセプトテストより1/5のコスト。">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <meta property="og:type" content="website">
-<meta property="og:title" content="ローンチシミュレーション — 出す前に、答えを持て。| TechWorker">
-<meta property="og:description" content="新商品の市場反応を、発売前にAIでシミュレーションする。従来のコンセプトテストより1/5のコスト、3日で結果。">
+<meta property="og:title" content="ローンチシミュレーション — 新商品を出す前に、1,000人の市場で試す。| TechWorker">
+<meta property="og:description" content="AIペルソナ1,000体が購買行動をシミュレーション。72時間で、Go/No-Goの答えが出る。">
 <meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
 <meta property="og:url" content="https://techworker.co.jp/launch-simulation/">
 <meta property="og:site_name" content="TechWorker">
@@ -126,8 +126,8 @@ nav {
   50% { opacity: .4; transform: scale(.7); }
 }
 .hero h1 {
-  font-size: clamp(36px, 5vw, 54px); font-weight: 800;
-  line-height: 1.2; margin-bottom: 24px; color: var(--tw-black);
+  font-size: clamp(32px, 4.5vw, 50px); font-weight: 800;
+  line-height: 1.25; margin-bottom: 24px; color: var(--tw-black);
 }
 .hero h1 em { font-style: normal; color: var(--tw-electric); }
 .hero-sub {
@@ -154,14 +154,29 @@ nav {
   font-size: 42px; font-weight: 800; color: var(--tw-electric); line-height: 1;
 }
 .hero-card .card-unit { font-size: 14px; font-weight: 600; color: var(--tw-slate); margin-top: 6px; }
-.hero-card .card-vs {
-  font-size: 12px; color: var(--tw-muted); margin-top: 8px;
-  padding-top: 8px; border-top: 1px solid rgba(0,94,255,.06);
+.hero-visual { display: flex; flex-direction: column; gap: 14px; }
+.hero-card--kpi {
+  background: #fff; border-radius: 14px;
+  padding: 28px 32px;
+  border: 1px solid rgba(0,94,255,.08);
+  box-shadow: 0 4px 24px rgba(0,94,255,.05);
+  display: flex; align-items: center; gap: 24px;
 }
-.hero-card .card-vs s { color: var(--tw-muted); }
-.hero-card-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.hero-card--small { padding: 18px 20px; }
-.hero-card--small .card-num { font-size: 30px; }
+.hero-card--kpi .kpi-num {
+  font-size: 52px; font-weight: 800; color: var(--tw-electric);
+  line-height: 1; white-space: nowrap; flex-shrink: 0;
+}
+.hero-card--kpi .kpi-body {}
+.hero-card--kpi .kpi-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--tw-muted); margin-bottom: 4px;
+}
+.hero-card--kpi .kpi-unit {
+  font-size: 15px; font-weight: 700; color: var(--tw-black); line-height: 1.4;
+}
+.hero-card--kpi .kpi-sub {
+  font-size: 12px; color: var(--tw-muted); margin-top: 3px;
+}
 
 /* ===== 02: STAT STRIP ===== */
 .stat-strip {
@@ -190,7 +205,68 @@ nav {
 }
 .stat-desc { font-size: 13px; color: rgba(244,246,249,.85); font-weight: 500; }
 
-/* ===== 03: PROBLEM ===== */
+/* ===== 03: WHAT IS ===== */
+.what-is {
+  padding: 120px 0;
+  background: var(--tw-electric); color: var(--tw-paper);
+  position: relative; overflow: hidden;
+}
+.what-is::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(244,246,249,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244,246,249,.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+.what-is .container { position: relative; z-index: 1; }
+.what-is-header { max-width: 700px; margin: 0 auto 72px; text-align: center; }
+.what-is h2 {
+  font-size: clamp(28px, 4vw, 44px); font-weight: 800; line-height: 1.25;
+  margin-bottom: 20px;
+}
+.what-is-lead { font-size: 17px; opacity: .8; line-height: 1.85; }
+.what-is-cards {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 860px; margin: 0 auto;
+}
+.what-is-card {
+  background: rgba(244,246,249,.07); border-radius: 16px;
+  padding: 40px 36px;
+  border: 1px solid rgba(244,246,249,.12);
+  backdrop-filter: blur(4px);
+}
+.what-is-card .wic-tag {
+  font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 100px;
+  margin-bottom: 20px; display: inline-block;
+}
+.what-is-card.before .wic-tag {
+  background: rgba(244,246,249,.12); color: rgba(244,246,249,.5);
+}
+.what-is-card.after .wic-tag {
+  background: rgba(244,246,249,.2); color: var(--tw-paper);
+}
+.what-is-card h3 {
+  font-size: 20px; font-weight: 800; margin-bottom: 16px; line-height: 1.4;
+}
+.what-is-card p { font-size: 14px; line-height: 1.85; opacity: .75; }
+.what-is-card.before { opacity: .65; }
+.what-is-card.after {
+  border-color: rgba(244,246,249,.3);
+  background: rgba(244,246,249,.1);
+}
+.what-is-cards-wrap { position: relative; max-width: 860px; margin: 0 auto; }
+
+.analogy {
+  margin-top: 64px; max-width: 700px; margin-left: auto; margin-right: auto;
+  background: rgba(244,246,249,.06); border-radius: 14px;
+  padding: 32px 40px; border: 1px solid rgba(244,246,249,.1);
+  text-align: center;
+}
+.analogy-icon { font-size: 36px; margin-bottom: 16px; }
+.analogy p { font-size: 16px; line-height: 1.85; opacity: .8; }
+.analogy strong { color: var(--tw-paper); opacity: 1; font-weight: 700; }
+
+/* ===== 04: PROBLEM ===== */
 .problem { padding: 120px 0; background: #fff; }
 .problem-inner {
   display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
@@ -257,73 +333,73 @@ nav {
 .say-do-card.gap-card .gap-text { font-size: 14px; color: rgba(244,246,249,.85); line-height: 1.65; }
 .say-do-card.gap-card .gap-text strong { color: var(--tw-paper); font-size: 15px; }
 
-/* ===== 04: WHAT IS ===== */
-.what-is {
-  padding: 120px 0;
-  background: var(--tw-electric); color: var(--tw-paper);
-  position: relative; overflow: hidden;
+/* ===== 05: EVIDENCE ===== */
+.evidence { padding: 120px 0; background: var(--tw-paper); }
+.evidence-header { text-align: center; max-width: 700px; margin: 0 auto 64px; }
+.evidence h2 {
+  font-size: clamp(26px, 3.5vw, 38px); font-weight: 800; line-height: 1.35;
+  margin-bottom: 16px;
 }
-.what-is::before {
-  content: ''; position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(244,246,249,.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(244,246,249,.04) 1px, transparent 1px);
-  background-size: 56px 56px;
+.evidence-lead { font-size: 17px; color: var(--tw-slate); line-height: 1.85; }
+.evidence-papers {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 48px;
 }
-.what-is .container { position: relative; z-index: 1; }
-.what-is-header { max-width: 700px; margin: 0 auto 72px; text-align: center; }
-.what-is h2 {
-  font-size: clamp(28px, 4vw, 44px); font-weight: 800; line-height: 1.25;
-  margin-bottom: 20px;
+.paper-card {
+  background: #fff; border-radius: 14px; padding: 32px 28px;
+  border: 1px solid rgba(0,94,255,.08);
+  box-shadow: 0 4px 20px rgba(0,94,255,.04);
+  display: flex; flex-direction: column;
 }
-.what-is-lead { font-size: 17px; opacity: .8; line-height: 1.85; }
-.what-is-cards {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 860px; margin: 0 auto;
-}
-.what-is-card {
-  background: rgba(244,246,249,.07); border-radius: 16px;
-  padding: 40px 36px;
-  border: 1px solid rgba(244,246,249,.12);
-  backdrop-filter: blur(4px);
-}
-.what-is-card .wic-tag {
-  font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-  padding: 4px 12px; border-radius: 100px;
-  margin-bottom: 20px; display: inline-block;
-}
-.what-is-card.before .wic-tag {
-  background: rgba(244,246,249,.12); color: rgba(244,246,249,.5);
-}
-.what-is-card.after .wic-tag {
-  background: rgba(244,246,249,.2); color: var(--tw-paper);
-}
-.what-is-card h3 {
-  font-size: 20px; font-weight: 800; margin-bottom: 16px; line-height: 1.4;
-}
-.what-is-card p { font-size: 14px; line-height: 1.85; opacity: .75; }
-.what-is-card.before { opacity: .65; }
-.what-is-card.after {
-  border-color: rgba(244,246,249,.3);
-  background: rgba(244,246,249,.1);
-}
-.what-is-arrow {
+.paper-card-num {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(0,94,255,.08); color: var(--tw-electric);
+  font-size: 15px; font-weight: 800;
   display: flex; align-items: center; justify-content: center;
-  font-size: 28px; color: rgba(244,246,249,.4);
-  position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+  margin-bottom: 20px; flex-shrink: 0;
 }
-.what-is-cards-wrap { position: relative; max-width: 860px; margin: 0 auto; }
-
-.analogy {
-  margin-top: 64px; max-width: 700px; margin-left: auto; margin-right: auto;
-  background: rgba(244,246,249,.06); border-radius: 14px;
-  padding: 32px 40px; border: 1px solid rgba(244,246,249,.1);
-  text-align: center;
+.paper-card h3 {
+  font-size: 15px; font-weight: 700; margin-bottom: 12px; line-height: 1.5;
+  color: var(--tw-black);
 }
-.analogy-icon { font-size: 36px; margin-bottom: 16px; }
-.analogy p { font-size: 16px; line-height: 1.85; opacity: .8; }
-.analogy strong { color: var(--tw-paper); opacity: 1; font-weight: 700; }
+.paper-card p {
+  font-size: 13px; color: var(--tw-slate); line-height: 1.8; flex: 1;
+}
+.paper-card-cite {
+  margin-top: 16px; padding-top: 16px;
+  border-top: 1px solid rgba(0,94,255,.06);
+  font-size: 11px; color: var(--tw-muted); line-height: 1.5;
+}
+.evidence-validation {
+  background: #fff; border-radius: 16px; padding: 40px 48px;
+  border: 1px solid rgba(0,94,255,.08);
+  box-shadow: 0 4px 24px rgba(0,94,255,.04);
+}
+.evidence-validation-header {
+  display: flex; align-items: baseline; gap: 16px; margin-bottom: 32px;
+}
+.evidence-validation-header h3 {
+  font-size: 18px; font-weight: 800;
+}
+.evidence-validation-header span {
+  font-size: 12px; color: var(--tw-muted);
+}
+.validation-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+}
+.validation-item { text-align: center; }
+.validation-num {
+  font-size: 36px; font-weight: 800; color: var(--tw-electric);
+  line-height: 1; margin-bottom: 8px; display: block;
+}
+.validation-label {
+  font-size: 12px; color: var(--tw-slate); line-height: 1.5;
+}
+.validation-note {
+  margin-top: 24px; font-size: 12px; color: var(--tw-muted);
+  border-top: 1px solid rgba(0,94,255,.06); padding-top: 16px; line-height: 1.7;
+}
 
-/* ===== 05: HOW IT WORKS ===== */
+/* ===== 06: HOW IT WORKS ===== */
 .how { padding: 120px 0; background: var(--tw-paper); }
 .how h2 {
   font-size: clamp(28px, 3.5vw, 40px); font-weight: 800;
@@ -363,8 +439,43 @@ nav {
 .how-note p { font-size: 15px; color: var(--tw-slate); line-height: 1.9; }
 .how-note strong { color: var(--tw-black); font-weight: 700; }
 
-/* ===== 06: COMPARISON ===== */
-.comparison { padding: 120px 0; background: #fff; }
+/* ===== 07: FAQ ===== */
+.faq { padding: 120px 0; background: #fff; }
+.faq h2 {
+  font-size: clamp(26px, 3.5vw, 38px); font-weight: 800;
+  text-align: center; margin-bottom: 56px;
+}
+.faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 2px; }
+.faq-item {
+  background: var(--tw-paper); border-radius: 10px;
+  overflow: hidden;
+}
+.faq-item + .faq-item { margin-top: 8px; }
+.faq-q {
+  width: 100%; background: none; border: none; cursor: pointer;
+  padding: 24px 28px; text-align: left;
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  font-family: inherit;
+}
+.faq-q-text {
+  font-size: 16px; font-weight: 700; color: var(--tw-black); line-height: 1.5;
+}
+.faq-q-icon {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: rgba(0,94,255,.08); color: var(--tw-electric);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0; transition: transform .3s;
+}
+.faq-item.open .faq-q-icon { transform: rotate(45deg); }
+.faq-a {
+  padding: 0 28px; max-height: 0; overflow: hidden;
+  transition: max-height .35s ease, padding .35s ease;
+}
+.faq-item.open .faq-a { max-height: 400px; padding: 0 28px 24px; }
+.faq-a p { font-size: 14px; color: var(--tw-slate); line-height: 1.85; }
+
+/* ===== 08: COMPARISON ===== */
+.comparison { padding: 120px 0; background: var(--tw-paper); }
 .comparison h2 {
   font-size: clamp(26px, 3.5vw, 38px); font-weight: 800;
   text-align: center; margin-bottom: 56px;
@@ -401,17 +512,21 @@ nav {
 .dot--bad { background: rgba(60,75,100,.3); }
 .dot--good { background: var(--tw-electric); }
 
-/* ===== 07: FOR WHOM ===== */
-.for-whom { padding: 120px 0; background: var(--tw-paper); }
+/* ===== 09: FOR WHOM ===== */
+.for-whom { padding: 120px 0; background: #fff; }
 .for-whom h2 {
   font-size: clamp(26px, 3.5vw, 38px); font-weight: 800;
   text-align: center; margin-bottom: 56px;
 }
-.whom-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.whom-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 .whom-card {
-  background: #fff; border-radius: 16px; padding: 40px 36px;
+  background: var(--tw-paper); border-radius: 16px; padding: 36px 32px;
   border: 1px solid rgba(0,94,255,.08);
-  box-shadow: 0 4px 32px rgba(0,94,255,.04);
+}
+.whom-card--primary {
+  background: #fff;
+  box-shadow: 0 4px 32px rgba(0,94,255,.08);
+  border-color: rgba(0,94,255,.15);
 }
 .whom-card-tag {
   font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
@@ -422,23 +537,27 @@ nav {
   background: rgba(0,94,255,.08); color: var(--tw-electric);
 }
 .whom-card-tag--secondary {
+  background: rgba(124,58,237,.08); color: var(--tw-violet);
+}
+.whom-card-tag--tertiary {
   background: rgba(0,184,148,.08); color: var(--tw-emerald);
 }
-.whom-card h3 { font-size: 19px; font-weight: 800; margin-bottom: 8px; }
-.whom-card .role { font-size: 13px; color: var(--tw-muted); margin-bottom: 20px; }
+.whom-card h3 { font-size: 18px; font-weight: 800; margin-bottom: 8px; }
+.whom-card .role { font-size: 12px; color: var(--tw-muted); margin-bottom: 20px; }
 .whom-card ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 .whom-card ul li {
-  font-size: 14px; color: var(--tw-slate); line-height: 1.6;
-  padding-left: 20px; position: relative;
+  font-size: 13px; color: var(--tw-slate); line-height: 1.6;
+  padding-left: 18px; position: relative;
 }
 .whom-card ul li::before {
   content: ''; position: absolute; left: 0; top: 8px;
   width: 6px; height: 6px; border-radius: 50%;
 }
 .whom-card--primary ul li::before { background: var(--tw-electric); }
-.whom-card--secondary ul li::before { background: var(--tw-emerald); }
+.whom-card--secondary ul li::before { background: var(--tw-violet); }
+.whom-card--tertiary ul li::before { background: var(--tw-emerald); }
 
-/* ===== 08: PILOT CTA ===== */
+/* ===== 10: PILOT CTA ===== */
 .pilot-cta {
   padding: 120px 0;
   background: var(--tw-electric); color: var(--tw-paper);
@@ -478,7 +597,7 @@ footer {
   padding: 60px 0 40px; background: #fff;
   border-top: 1px solid rgba(0,94,255,.06);
 }
-.footer-inner { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; align-items: start; }
+.footer-inner { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; align-items: start; }
 .footer-brand .logo { font-size: 17px; font-weight: 800; color: var(--tw-black); margin-bottom: 12px; }
 .footer-brand .logo span { color: var(--tw-electric); }
 .footer-brand p { font-size: 13px; color: var(--tw-slate); line-height: 1.7; }
@@ -507,22 +626,77 @@ footer {
   .how-steps::before { display: none; }
   .whom-cards { grid-template-columns: 1fr; }
   .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .evidence-papers { grid-template-columns: 1fr; }
+  .validation-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .whom-cards { grid-template-columns: 1fr; }
+  .evidence-papers { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
   .container { padding: 0 20px; }
   nav { padding: 0 20px; }
   .nav-service { display: none; }
   .nav-links { display: none; }
-  .hero h1 { font-size: 32px; }
+  .hero h1 { font-size: 28px; }
   .stat-strip .container { flex-direction: column; gap: 20px; }
   .stat-item { border-right: none; border-bottom: 1px solid rgba(244,246,249,.1); padding: 16px 0; width: 100%; }
   .stat-item:last-child { border-bottom: none; }
-  .hero-card-row { grid-template-columns: 1fr; }
   .comp-row { grid-template-columns: 1fr; }
   .comp-row.header { display: none; }
   .comp-cell:first-child { background: var(--tw-paper); font-size: 13px; border-radius: 6px 6px 0 0; padding-bottom: 8px; }
   .comp-cell { padding: 12px 16px; }
   .pilot-offer { padding: 24px 20px; }
+  .evidence-validation { padding: 28px 20px; }
+  .validation-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+}
+
+/* ===== NAV DROPDOWN ===== */
+.nav-links li { position: relative; }
+.nav-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%; padding-top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0,94,255,.12);
+  border: 1px solid rgba(0,94,255,.08);
+  min-width: 200px;
+  padding: 8px 0;
+  z-index: 200;
+  white-space: nowrap;
+}
+.nav-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -6px; left: 50%;
+  width: 10px; height: 10px;
+  background: #fff;
+  border-left: 1px solid rgba(0,94,255,.08);
+  border-top: 1px solid rgba(0,94,255,.08);
+  transform: translateX(-50%) rotate(45deg);
+}
+.nav-dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #3C4B64;
+  text-decoration: none;
+  transition: color .15s, background .15s;
+}
+.nav-dropdown-menu a:hover {
+  color: #005EFF;
+  background: rgba(0,94,255,.04);
+}
+.nav-links li:hover .nav-dropdown-menu { display: block; }
+.nav-dropdown-trigger { cursor: default; }
+.nav-dropdown-trigger::after {
+  content: ' ▾';
+  font-size: 10px;
+  opacity: .6;
 }
 </style>
 </head>
@@ -530,15 +704,20 @@ footer {
 
 <!-- NAV -->
 <nav>
-  <div style="display:flex;align-items:center;">
-    <a href="../index.html" class="nav-logo">Tech<span>Worker</span></a>
-    <span class="nav-service">ローンチシミュレーション</span>
-  </div>
+  <a href="../index.html" class="nav-logo">Tech<span>Worker</span></a>
   <div class="nav-right">
     <ul class="nav-links">
-      <li><a href="#what-is">サービス概要</a></li>
-      <li><a href="#how">使い方</a></li>
-      <li><a href="#for-whom">対象</a></li>
+      <li><a href="../index.html">ホーム</a></li>
+      <li>
+        <a href="../index.html#services" class="nav-dropdown-trigger">サービス</a>
+        <div class="nav-dropdown-menu">
+          <a href="../index.html#services">生成AIコンサル</a>
+          <a href="./">ローンチシミュレーション</a>
+        </div>
+      </li>
+      <li><a href="../cases.html">実績</a></li>
+      <li><a href="../news.html">ニュース</a></li>
+      <li><a href="../company.html">会社概要</a></li>
     </ul>
     <a href="../contact.html?service=launch-simulation" class="nav-cta">無料パイロットに申し込む</a>
   </div>
@@ -550,64 +729,80 @@ footer {
   <div class="container" style="position:relative;z-index:1;">
     <div class="hero-text">
       <div class="hero-eyebrow">Launch Simulation</div>
-      <h1>出す前に、<br><em>答えを持て。</em></h1>
+      <h1>新商品を出す前に、<br><em>1,000人の市場で試す。</em></h1>
       <p class="hero-sub">
-        新商品の85%は2年で消える。調査をしても、だ。<br>
-        原因は「Say/Do Gap」——アンケートは意図を測るが、<br>
-        購買行動は測れない。AIがその壁を壊す。
+        AIペルソナ1,000体が購買行動をシミュレーション。<br>
+        72時間で、Go/No-Goの答えが出る。
       </p>
       <div class="hero-btn-group">
         <a href="../contact.html?service=launch-simulation" class="btn">無料パイロットに申し込む</a>
-        <a href="../contact.html?service=launch-simulation&type=document" class="btn btn--outline">資料を請求する</a>
       </div>
       <p class="hero-note">初回パイロット：貴社の過去コンセプトテスト1件をAIで無料再現します</p>
     </div>
     <div class="hero-visual">
-      <div class="hero-card-stack">
-        <div class="hero-card">
-          <div class="card-label">シミュレーション精度（目標）</div>
-          <div class="card-num">r ≥ 0.85</div>
-          <div class="card-unit">実購買との相関係数</div>
-          <div class="card-vs">従来調査のSay/Do Gap：最大<s>25%</s>のズレ</div>
+      <div class="hero-card--kpi">
+        <div class="kpi-num">1/5</div>
+        <div class="kpi-body">
+          <div class="kpi-label">コスト</div>
+          <div class="kpi-unit">従来の1/5以下</div>
+          <div class="kpi-sub">¥30〜100万 / 件</div>
         </div>
-        <div class="hero-card-row">
-          <div class="hero-card hero-card--small">
-            <div class="card-label">コスト</div>
-            <div class="card-num">1/5</div>
-            <div class="card-unit">従来比（¥30〜100万）</div>
-          </div>
-          <div class="hero-card hero-card--small">
-            <div class="card-label">納期</div>
-            <div class="card-num">3日</div>
-            <div class="card-unit">従来4〜8週間</div>
-          </div>
+      </div>
+      <div class="hero-card--kpi">
+        <div class="kpi-num">1週間</div>
+        <div class="kpi-body">
+          <div class="kpi-label">納期</div>
+          <div class="kpi-unit">最短1週間で納品</div>
+          <div class="kpi-sub">従来4〜8週間</div>
+        </div>
+      </div>
+      <div class="hero-card--kpi">
+        <div class="kpi-num" style="font-size:36px;">∞</div>
+        <div class="kpi-body">
+          <div class="kpi-label">テスト回数</div>
+          <div class="kpi-unit">何案でも比較可能</div>
+          <div class="kpi-sub">年数回の制約なし</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- STAT STRIP -->
-<div class="stat-strip">
+
+<!-- WHAT IS -->
+<section class="what-is" id="what-is">
   <div class="container">
-    <div class="stat-item">
-      <span class="stat-num">85<span style="font-size:20px;">%</span></span>
-      <span class="stat-desc">新商品が2年以内に失敗（Nielsen）</span>
+    <div class="what-is-header">
+      <span class="label label--light">What is Launch Simulation</span>
+      <h2>「聞く」のをやめて、<br>「動かす」。</h2>
+      <p class="what-is-lead">
+        国勢調査ベースのAIペルソナ1,000体が、実際の消費者として反応する。<br>
+        意見収集ではなく、市場シミュレーション。
+      </p>
     </div>
-    <div class="stat-item">
-      <span class="stat-num">¥150<span style="font-size:18px;">〜300万</span></span>
-      <span class="stat-desc">従来コンセプトテストの費用/件</span>
+    <div class="what-is-cards-wrap">
+      <div class="what-is-cards">
+        <div class="what-is-card before">
+          <span class="wic-tag">従来のコンセプトテスト</span>
+          <h3>500人に「買いたいですか？」と聞く</h3>
+          <p>アンケートで意見を収集。回答を集計して判断する。25%が嘘をつく。Say/Do Gapは解消されない。</p>
+        </div>
+        <div class="what-is-card after">
+          <span class="wic-tag">ローンチシミュレーション</span>
+          <h3>1,000人のAIペルソナが、棚の前で実際に選ぶ</h3>
+          <p>AIペルソナが行動ベースで反応。購買確率・価格感度・改善点を定量的に出力する。</p>
+        </div>
+      </div>
     </div>
-    <div class="stat-item">
-      <span class="stat-num">4<span style="font-size:18px;">〜8週間</span></span>
-      <span class="stat-desc">従来調査の所要期間</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num">24,769</span>
-      <span class="stat-desc">日本の食品製造業事業所数（経済センサス）</span>
+    <div class="analogy">
+      <div class="analogy-icon">✈️</div>
+      <p>
+        パイロットは飛ぶ前に<strong>フライトシミュレーター</strong>で試す。<br>
+        新商品も、市場に出す前に<strong>シミュレーションできる時代になった</strong>。
+      </p>
     </div>
   </div>
-</div>
+</section>
 
 <!-- PROBLEM -->
 <section class="problem">
@@ -617,7 +812,7 @@ footer {
         <span class="label">The Problem</span>
         <h2>調査をしている。<br>それでも、失敗する。</h2>
         <p class="problem-lead">
-          年間数十件のテストを打っても、85%が失敗する。<br>問題は調査の量ではなく、構造だ。
+          あなたのチームも、テストしたのに売れなかった商品を持っているはずだ。
         </p>
         <div class="problem-list">
           <div class="problem-item">
@@ -632,13 +827,6 @@ footer {
             <div class="problem-item-text">
               <strong>1件¥150〜300万・4〜8週間</strong>
               <span>コストが高すぎてテスト回数を絞らざるを得ない。磨き込みの機会が失われる。</span>
-            </div>
-          </div>
-          <div class="problem-item">
-            <div class="problem-item-icon">🏢</div>
-            <div class="problem-item-text">
-              <strong>リサーチ会社はAI化できない</strong>
-              <span>パネルと人件費が収益の柱。AI化は自社モデルの自壊を意味する。</span>
             </div>
           </div>
         </div>
@@ -673,37 +861,58 @@ footer {
   </div>
 </section>
 
-<!-- WHAT IS -->
-<section class="what-is" id="what-is">
+<!-- EVIDENCE -->
+<section class="evidence" id="evidence">
   <div class="container">
-    <div class="what-is-header">
-      <span class="label label--light">What is Launch Simulation</span>
-      <h2>「聞く」のをやめて、<br>「動かす」。</h2>
-      <p class="what-is-lead">
-        国勢調査ベースのAIペルソナ1,000体が、実際の消費者として反応する。<br>
-        意見収集ではなく、市場シミュレーション。
-      </p>
+    <div class="evidence-header">
+      <span class="label" style="text-align:center;display:block;">Evidence</span>
+      <h2>なぜ信頼できるのか</h2>
+      <p class="evidence-lead">3つの独立した学術研究が、AIシミュレーションの有効性を支持している。</p>
     </div>
-    <div class="what-is-cards-wrap">
-      <div class="what-is-cards">
-        <div class="what-is-card before">
-          <span class="wic-tag">従来のコンセプトテスト</span>
-          <h3>「買いたいですか？」と聞く</h3>
-          <p>アンケートで意見を収集。回答を集計して判断する。Say/Do Gapは解消されない。</p>
-        </div>
-        <div class="what-is-card after">
-          <span class="wic-tag">ローンチシミュレーション</span>
-          <h3>AI 1,000体が市場で実際に動く</h3>
-          <p>AIペルソナが行動ベースで反応。購買確率・価格感度・改善点を定量的に出力する。</p>
-        </div>
+    <div class="evidence-papers">
+      <div class="paper-card">
+        <div class="paper-card-num">①</div>
+        <h3>デジタルツインの精度検証</h3>
+        <p>2,000人以上の実際の消費者データを用いて、AIデジタルツインの精度を大規模に検証。購買判断・価格感度といった経済・社会的ドメインで高い精度が確認された。ローンチシミュレーションが対象とする「新商品コンセプトテスト」はまさにこの精度が出やすい領域。</p>
+        <div class="paper-card-cite">Toubia et al. (2025) Twin-2K-500 — Marketing Science（Columbia Business School）</div>
+      </div>
+      <div class="paper-card">
+        <div class="paper-card-num">②</div>
+        <h3>合成消費者による購買意向の再現</h3>
+        <p>57件の実消費者調査（9,300人の実データ）との比較で、AI合成消費者が人間のテスト・リテスト信頼性の90%を達成。自然言語で回答させた後に意味的類似度でスコア化する手法が鍵。当社エンジンはこの手法を参考に設計している。</p>
+        <div class="paper-card-cite">Maier et al. (2025) — PyMC Labs × Colgate-Palmolive</div>
+      </div>
+      <div class="paper-card">
+        <div class="paper-card-num">③</div>
+        <h3>ペルソナの「深さ」が精度を決める</h3>
+        <p>AIペルソナに詳細な生活背景・価値観・購買習慣を与えることで、実調査との一致度が最大87%改善されることが実証された。当社は国勢調査・家計調査の公開統計データから抽出したリアルな生活背景をペルソナに組み込んでいる。</p>
+        <div class="paper-card-cite">Park et al. (2025) — Persona-Based Simulation of Human Opinion at Population Scale</div>
       </div>
     </div>
-    <div class="analogy">
-      <div class="analogy-icon">✈️</div>
-      <p>
-        パイロットは飛ぶ前に<strong>フライトシミュレーター</strong>で試す。<br>
-        商品も、出す前に<strong>市場でシミュレーションする</strong>。
-      </p>
+    <div class="evidence-validation">
+      <div class="evidence-validation-header">
+        <h3>内部検証結果（飲料カテゴリ）</h3>
+        <span>※ 実購買データとの突合検証を進行中</span>
+      </div>
+      <div class="validation-grid">
+        <div class="validation-item">
+          <span class="validation-num">r=0.87</span>
+          <div class="validation-label">ブランドシェア予測</div>
+        </div>
+        <div class="validation-item">
+          <span class="validation-num">r=0.82</span>
+          <div class="validation-label">属性別購買基準</div>
+        </div>
+        <div class="validation-item">
+          <span class="validation-num">r=0.99</span>
+          <div class="validation-label">価格感度</div>
+        </div>
+        <div class="validation-item">
+          <span class="validation-num">r=0.99</span>
+          <div class="validation-label">過去コンセプト再現</div>
+        </div>
+      </div>
+      <div class="validation-note">内部検証データ。実購買データとの突合検証を進行中。無料パイロットでは御社の過去テストデータで精度を検証します。</div>
     </div>
   </div>
 </section>
@@ -722,7 +931,7 @@ footer {
       </div>
       <div class="how-step">
         <div class="how-step-num">02</div>
-        <h3>AI 1,000体が市場を動かす</h3>
+        <h3>AI 1,000人が、あなたの商品を評価する</h3>
         <p>国勢調査ベースのAIペルソナ1,000体が並列で反応。高速・低コストを実現。</p>
         <span class="how-step-tag">処理時間: 数時間〜1日</span>
       </div>
@@ -735,8 +944,8 @@ footer {
     </div>
     <div class="how-note">
       <p>
-        <strong>現在、無料パイロット募集中。</strong><br>
-        過去のコンセプトテスト1件をAIで再現。精度 r≥0.70 未達なら費用ゼロ。
+        <strong>現在、精度検証フェーズにつき先着3社限定で無料パイロット実施中。</strong><br>
+        過去のコンセプトテスト1件をAIで再現し、実際の精度を確認できます。
       </p>
     </div>
   </div>
@@ -746,7 +955,7 @@ footer {
 <section class="comparison">
   <div class="container">
     <span class="label" style="text-align:center;display:block;">Comparison</span>
-    <h2>従来調査との比較</h2>
+    <h2>同じ予算で、10倍テストできる。</h2>
     <div class="comparison-table">
       <div class="comp-row header">
         <div class="comp-cell"></div>
@@ -779,9 +988,9 @@ footer {
         <div class="comp-cell highlight"><span class="good">複数案を並列で検証</span></div>
       </div>
       <div class="comp-row">
-        <div class="comp-cell">精度証明</div>
+        <div class="comp-cell">精度検証</div>
         <div class="comp-cell"><span class="bad">業界標準（検証なし）</span></div>
-        <div class="comp-cell highlight"><span class="good">実購買データとの相関を開示</span></div>
+        <div class="comp-cell highlight"><span class="good">精度検証プログラムあり（無料パイロットで確認可能）</span></div>
       </div>
     </div>
   </div>
@@ -794,18 +1003,7 @@ footer {
     <h2>こんな方に使っていただきたい</h2>
     <div class="whom-cards">
       <div class="whom-card whom-card--primary">
-        <span class="whom-card-tag whom-card-tag--primary">CPGメーカー</span>
-        <h3>商品企画・マーケティング担当</h3>
-        <p class="role">食品・飲料・日用品・化粧品の新商品開発チーム</p>
-        <ul>
-          <li>出す前に「売れるか」を数字で確認したい</li>
-          <li>テストのコストと時間を大幅に減らしたい</li>
-          <li>複数案を並べて素早く絞り込みたい</li>
-          <li>改善ポイントを発売前に特定したい</li>
-        </ul>
-      </div>
-      <div class="whom-card whom-card--secondary">
-        <span class="whom-card-tag whom-card-tag--secondary">リサーチ会社</span>
+        <span class="whom-card-tag whom-card-tag--primary">リサーチ会社 ★</span>
         <h3>OEM・パートナーシップ担当</h3>
         <p class="role">マーケティングリサーチ会社・インサイト部門</p>
         <ul>
@@ -814,6 +1012,92 @@ footer {
           <li>LLM開発なしに最新技術を活用したい</li>
           <li>精度を確認してから判断したい</li>
         </ul>
+      </div>
+      <div class="whom-card whom-card--secondary">
+        <span class="whom-card-tag whom-card-tag--secondary">広告代理店 / コンサル</span>
+        <h3>マーケティング戦略・ブランド戦略部門</h3>
+        <p class="role">マーケティング戦略・ブランド戦略部門</p>
+        <ul>
+          <li>クライアントへの提案にデータの裏付けがほしい</li>
+          <li>キャンペーン前にコンセプトの勝ち筋を検証したい</li>
+          <li>調査の外注コストと期間を圧縮したい</li>
+          <li>新規サービスメニューとして差別化したい</li>
+        </ul>
+      </div>
+      <div class="whom-card whom-card--tertiary">
+        <span class="whom-card-tag whom-card-tag--tertiary">食品・飲料・日用品メーカー</span>
+        <h3>商品企画・マーケティング担当</h3>
+        <p class="role">新商品開発チーム</p>
+        <ul>
+          <li>出す前に「売れるか」を数字で確認したい</li>
+          <li>テストのコストと時間を大幅に減らしたい</li>
+          <li>複数案を並べて素早く絞り込みたい</li>
+          <li>改善ポイントを発売前に特定したい</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <span class="label" style="text-align:center;display:block;">FAQ</span>
+    <h2>よくあるご質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">
+          <span class="faq-q-text">従来の調査と何が違うのですか？</span>
+          <span class="faq-q-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>従来のコンセプトテストは「この商品を買いたいですか？」と消費者に直接聴きます。しかし人間は「買いたい」と答えても実際には買わないことがある——これがSay/Do Gapです。ローンチシミュレーションでは、AIペルソナが「自分の生活背景・予算・購買習慣」を踏まえた上で、実際の購買場面をシミュレーションします。例えば「35歳・共働き・子供2人・食費月6万円」というペルソナが、¥198のボタニカルウォーターを棚の前で選ぶかどうかを判断する。「買いたいですか？」ではなく「この人は買うか？」を予測します。</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          <span class="faq-q-text">AIペルソナはどうやって作るのですか？</span>
+          <span class="faq-q-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>国勢調査・家計調査などの日本の公開統計データから、1,000体のAIペルソナを生成します。単なる「35歳・女性・東京」というラベルではなく、例えばこんなペルソナです：「34歳女性。世田谷区在住、夫と3歳の娘の3人暮らし。世帯年収800万円。平日は時短勤務で、週2回は保育園帰りにスーパーで買い物。飲料は子供向けと自分用を分けて選ぶ。健康志向だが価格も気にする。お茶は綾鷹派。」——この深さが精度を決めます。最新の研究では、こうした詳細なバックストーリーを与えることで、実調査との一致度が最大87%改善されています。</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          <span class="faq-q-text">従来調査を置き換えるものですか？</span>
+          <span class="faq-q-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>いいえ。使い分けのイメージは「初期スクリーニング＝ローンチシミュレーション、最終判断＝従来パネル調査」です。例えば、10案のコンセプトをローンチシミュレーションで72時間以内に絞り込み、上位2〜3案を従来のパネル調査で最終検証する。従来なら全10案をパネルでテストすると¥1,500万〜3,000万・数ヶ月かかるところが、初期スクリーニングをAIで行うことで¥200〜300万・1週間に圧縮できます。御社の既存サービスに「AI初期スクリーニング」のメニューが加わるイメージです。</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          <span class="faq-q-text">精度はどう確認できますか？</span>
+          <span class="faq-q-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>無料パイロットで、御社の過去テスト1件をAIで再現します。具体的には、御社から調査票・コンセプトボード・調査結果をお預かりし、同じ質問をAIペルソナ1,000体に投げます。納品するのは「突合レポート」です。内容は、全体のTop2Box比較、年齢×性別のクロス集計比較、相関係数の算出、ズレが大きい項目の分析です。このレポートを見て「使える」と判断いただければ有料案件に進みます。「使えない」と判断された場合、費用は一切かかりません。</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          <span class="faq-q-text">クライアントへの提供はどうなりますか？</span>
+          <span class="faq-q-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>OEMモデルです。エンドクライアントには御社のサービス名で納品されます。レポートのフォーマットも御社のテンプレートに合わせてカスタマイズ可能です。「御社の既存メニューに『AIスクリーニング』が加わる」という形なので、エンドクライアントから見れば御社のサービスの一部です。TechWorkerの名前は出ません。</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          <span class="faq-q-text">コンセプト情報のセキュリティは？</span>
+          <span class="faq-q-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>NDAを締結した上で取り扱います。コンセプト情報はシミュレーション実行時にのみLLMに送信され、API経由の処理なのでモデルの学習データには使用されません。シミュレーション完了後、コンセプト情報・回答データともに当社サーバーから削除します。ご要望に応じて削除証明書も発行可能です。</p>
+        </div>
       </div>
     </div>
   </div>
@@ -832,12 +1116,12 @@ footer {
       <span class="pilot-offer-label">Free Pilot Program</span>
       <div class="pilot-offer-title">過去テスト1件を無料AI再現</div>
       <div class="pilot-offer-desc">
-        精度 r ≥ 0.70 未達なら費用ゼロ。先着3社限定。
+        先着3社限定。リスクはゼロ。<br>
+        30分のヒアリングで、あなたの過去テストをAIで再現します。
       </div>
     </div>
     <div class="btn-group">
       <a href="../contact.html?service=launch-simulation&type=pilot" class="btn btn--white">無料パイロットに申し込む</a>
-      <a href="../contact.html?service=launch-simulation&type=document" class="btn" style="background:rgba(244,246,249,.12);border:1px solid rgba(244,246,249,.2);">資料を請求する</a>
     </div>
     <p class="disclaimer">※ 現在、精度検証フェーズのため先着3社限定でご提供しています。</p>
   </div>
@@ -849,18 +1133,22 @@ footer {
     <div class="footer-inner">
       <div class="footer-brand">
         <div class="logo">Tech<span>Worker</span></div>
-        <p>AIはエンジンだ。<br>コンテキストは燃料だ。</p>
+        <p>新商品を出す前に、<br>1,000人の市場で試す。</p>
       </div>
       <div class="footer-col">
-        <h4>Service</h4>
-        <a href="../index.html">コンテキスト整理</a>
+        <h4>サービス</h4>
+        <a href="../index.html#services">生成AIコンサル</a>
         <a href="./">ローンチシミュレーション</a>
-        <a href="../contact.html">お問い合わせ</a>
       </div>
       <div class="footer-col">
-        <h4>Company</h4>
+        <h4>サイト</h4>
+        <a href="../news.html">ニュース</a>
+        <a href="../cases.html">実績</a>
         <a href="../company.html">会社概要</a>
-        <a href="../cases.html">導入事例</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="../contact.html">お問い合わせ</a>
         <a href="../privacy.html">プライバシーポリシー</a>
       </div>
     </div>
@@ -976,11 +1264,21 @@ var observer = new IntersectionObserver(function(entries) {
   });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.problem-item, .how-step, .whom-card, .what-is-card, .comp-row:not(.header), .say-do-card').forEach(function(el) {
+document.querySelectorAll('.problem-item, .how-step, .whom-card, .what-is-card, .comp-row:not(.header), .say-do-card, .paper-card, .faq-item, .validation-item').forEach(function(el) {
   el.style.opacity = '0';
   el.style.transform = 'translateY(24px)';
   el.style.transition = 'opacity .6s ease, transform .6s ease';
   observer.observe(el);
+});
+
+/* ===== FAQ ACCORDION ===== */
+document.querySelectorAll('.faq-q').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var item = this.closest('.faq-item');
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+    if (!isOpen) item.classList.add('open');
+  });
 });
 </script>
 

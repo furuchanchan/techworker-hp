@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>お問い合わせ | TechWorker</title>
+<meta name="description" content="TechWorker — 企業向け生成AIコンサルティング">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Noto+Sans+JP:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
@@ -277,17 +284,24 @@ footer {
   border-top: 1px solid rgba(0,94,255,.06);
 }
 footer .footer-inner {
-  display: flex; justify-content: space-between; align-items: flex-start;
+  display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px;
+  align-items: start;
 }
 footer .footer-brand .logo { font-size: 18px; font-weight: 800; margin-bottom: 12px; color: var(--tw-black); }
 footer .footer-brand .logo span { color: var(--tw-electric); }
 footer .footer-brand p { font-size: 13px; color: var(--tw-slate); line-height: 1.7; }
-footer .footer-links { display: flex; gap: 48px; }
-footer .footer-links a {
-  font-size: 13px; color: var(--tw-slate);
-  text-decoration: none; transition: color .2s;
+footer .footer-col h4 {
+  font-size: 12px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--tw-slate); opacity: .5; margin-bottom: 16px;
 }
-footer .footer-links a:hover { color: var(--tw-electric); }
+footer .footer-col a {
+  display: block; font-size: 13px; color: var(--tw-slate);
+  text-decoration: none; margin-bottom: 10px; transition: color .2s;
+}
+footer .footer-col a:hover { color: var(--tw-electric); }
+footer .footer-col p {
+  font-size: 13px; color: var(--tw-slate); line-height: 1.7;
+}
 footer .copyright {
   text-align: center; margin-top: 40px; padding-top: 24px;
   border-top: 1px solid rgba(0,94,255,.06);
@@ -295,10 +309,12 @@ footer .copyright {
 }
 
 /* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  footer .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
 @media (max-width: 768px) {
   .contact-layout { grid-template-columns: 1fr; gap: 40px; }
   .inquiry-tabs { flex-direction: column; }
-  footer .footer-inner { flex-direction: column; gap: 32px; }
 }
 @media (max-width: 640px) {
   .container { padding: 0 16px; }
@@ -315,7 +331,55 @@ footer .copyright {
   .sidebar-card { padding: 24px; }
   .thank-you { padding: 60px 20px; }
   .form-group input, .form-group select, .form-group textarea { font-size: 16px; }
-  footer .footer-links { flex-direction: column; gap: 12px; }
+  footer .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+}
+
+/* ===== NAV DROPDOWN ===== */
+nav ul li { position: relative; }
+.nav-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%; padding-top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0,94,255,.12);
+  border: 1px solid rgba(0,94,255,.08);
+  min-width: 200px;
+  padding: 8px 0;
+  z-index: 200;
+  white-space: nowrap;
+}
+.nav-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: 6px; left: 50%; transform: translateX(-50%);
+  width: 10px; height: 10px;
+  background: #fff;
+  border-left: 1px solid rgba(0,94,255,.08);
+  border-top: 1px solid rgba(0,94,255,.08);
+  transform: translateX(-50%) rotate(45deg);
+}
+.nav-dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #3C4B64;
+  text-decoration: none;
+  transition: color .15s, background .15s;
+}
+.nav-dropdown-menu a:hover {
+  color: #005EFF;
+  background: rgba(0,94,255,.04);
+}
+nav ul li:hover .nav-dropdown-menu { display: block; }
+.nav-dropdown-trigger { cursor: default; }
+.nav-dropdown-trigger::after {
+  content: ' ▾';
+  font-size: 10px;
+  opacity: .6;
 }
 </style>
 </head>
@@ -325,9 +389,16 @@ footer .copyright {
 <nav>
   <a href="index.html" class="logo">Tech<span>Worker</span></a>
   <ul>
-    <li><a href="index.html">HOME</a></li>
-    <li><a href="news.html">NEWS</a></li>
-    <li><a href="index.html#results">実績</a></li>
+    <li><a href="index.html">ホーム</a></li>
+    <li>
+      <a href="index.html#services" class="nav-dropdown-trigger">サービス</a>
+      <div class="nav-dropdown-menu">
+        <a href="index.html#services">生成AIコンサル</a>
+        <a href="launch-simulation/">ローンチシミュレーション</a>
+      </div>
+    </li>
+    <li><a href="cases.html">実績</a></li>
+    <li><a href="news.html">ニュース</a></li>
     <li><a href="company.html">会社概要</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:16px;">
@@ -492,13 +563,23 @@ footer .copyright {
         <div class="logo">Tech<span>Worker</span></div>
         <p>企業向け生成AIコンサルティング<br>株式会社TechWorker</p>
       </div>
-      <div class="footer-links">
+      <div class="footer-col">
+        <h4>サービス</h4>
+        <a href="index.html#services">生成AIコンサル</a>
+        <a href="launch-simulation/">ローンチシミュレーション</a>
+      </div>
+      <div class="footer-col">
+        <h4>サイト</h4>
         <a href="news.html">ニュース</a>
-        <a href="index.html">トップ</a>
-        <a href="index.html#services">サービス</a>
-        <a href="index.html#company">会社概要</a>
-        <a href="contact.html">お問い合わせ</a>
+        <a href="cases.html">実績</a>
+        <a href="company.html">会社概要</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="contact.html">無料相談</a>
+        <a href="contact.html?type=document">資料請求</a>
         <a href="privacy.html">プライバシーポリシー</a>
+        <p style="margin-top:12px;">〒169-0051<br>東京都新宿区西早稲田一丁目22番3号</p>
       </div>
     </div>
   </div>

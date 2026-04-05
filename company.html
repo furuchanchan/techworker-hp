@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>会社概要 | TechWorker — 企業向け生成AIコンサルティング</title>
+<meta name="description" content="TechWorker — 企業向け生成AIコンサルティング">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Noto+Sans+JP:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
@@ -202,7 +209,7 @@ footer {
   border-top: 1px solid rgba(0,94,255,.06);
 }
 footer .footer-inner {
-  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px;
+  display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px;
   align-items: start;
 }
 footer .footer-brand .logo { font-size: 18px; font-weight: 800; margin-bottom: 12px; color: var(--tw-black); }
@@ -233,7 +240,7 @@ footer .copyright {
   .director .container { grid-template-columns: 1fr; }
   .director-photo { max-width: 300px; }
   .access-content { grid-template-columns: 1fr; }
-  footer .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  footer .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
 }
 @media (max-width: 640px) {
   .container { padding: 0 20px; }
@@ -255,6 +262,54 @@ footer .copyright {
   nav .lang-switch { display: none; }
   footer .footer-inner { grid-template-columns: 1fr; gap: 32px; }
 }
+
+/* ===== NAV DROPDOWN ===== */
+nav ul li { position: relative; }
+.nav-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%; padding-top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0,94,255,.12);
+  border: 1px solid rgba(0,94,255,.08);
+  min-width: 200px;
+  padding: 8px 0;
+  z-index: 200;
+  white-space: nowrap;
+}
+.nav-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: 6px; left: 50%; transform: translateX(-50%);
+  width: 10px; height: 10px;
+  background: #fff;
+  border-left: 1px solid rgba(0,94,255,.08);
+  border-top: 1px solid rgba(0,94,255,.08);
+  transform: translateX(-50%) rotate(45deg);
+}
+.nav-dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #3C4B64;
+  text-decoration: none;
+  transition: color .15s, background .15s;
+}
+.nav-dropdown-menu a:hover {
+  color: #005EFF;
+  background: rgba(0,94,255,.04);
+}
+nav ul li:hover .nav-dropdown-menu { display: block; }
+.nav-dropdown-trigger { cursor: default; }
+.nav-dropdown-trigger::after {
+  content: ' ▾';
+  font-size: 10px;
+  opacity: .6;
+}
 </style>
 </head>
 <body>
@@ -263,9 +318,16 @@ footer .copyright {
 <nav>
   <a href="index.html" class="logo">Tech<span>Worker</span></a>
   <ul>
-    <li><a href="index.html">HOME</a></li>
-    <li><a href="news.html">NEWS</a></li>
-    <li><a href="index.html#results">実績</a></li>
+    <li><a href="index.html">ホーム</a></li>
+    <li>
+      <a href="index.html#services" class="nav-dropdown-trigger">サービス</a>
+      <div class="nav-dropdown-menu">
+        <a href="index.html#services">生成AIコンサル</a>
+        <a href="launch-simulation/">ローンチシミュレーション</a>
+      </div>
+    </li>
+    <li><a href="cases.html">実績</a></li>
+    <li><a href="news.html">ニュース</a></li>
     <li><a href="company.html">会社概要</a></li>
   </ul>
   <div class="nav-right">
@@ -390,10 +452,13 @@ footer .copyright {
         <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:13px;font-weight:700;color:var(--tw-slate);text-decoration:none;transition:color .2s;"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
       </div>
       <div class="footer-col">
-        <h4>Menu</h4>
+        <h4>サービス</h4>
+        <a href="index.html#services">生成AIコンサル</a>
+        <a href="launch-simulation/">ローンチシミュレーション</a>
+      </div>
+      <div class="footer-col">
+        <h4>サイト</h4>
         <a href="news.html">ニュース</a>
-        <a href="index.html#approach">私たちの強み</a>
-        <a href="index.html#services">サービス</a>
         <a href="cases.html">実績</a>
         <a href="company.html">会社概要</a>
       </div>
