@@ -3168,19 +3168,81 @@ JSON のみ返す。コードブロック記号や説明禁止。
   });
   backBtn.addEventListener('click', () => goToStep(1));
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<span class="dot"></span>送信中…';
-    // Simulate async submission (in production: fetch to backend)
-    setTimeout(() => {
-      const email = document.getElementById('cf-email').value;
+
+    // --- Build payload that matches /contact backend ---
+    const fd = new FormData(form);
+    const interests = fd.getAll('interest');
+    const interestLabel = {
+      blind:    'ブラインド検証',
+      pilot:    'パイロットテスト',
+      full:     '本導入',
+      estimate: '見積もりのみ',
+    };
+    const modeLabel = {
+      consult: '無料相談',
+      blind:   'ブラインド検証',
+      pilot:   'パイロットテスト',
+      full:    '本導入',
+    };
+    const mode = fd.get('mode') || 'consult';
+
+    // Compose detailed message body for Notion/Slack
+    const messageParts = [
+      `【お問い合わせ経路】Launch Simulation LP（${modeLabel[mode] || mode}）`,
+      ``,
+      `【業種】${fd.get('industry') || '-'}`,
+      `【関心のあるサービス】${interests.length ? interests.map(v => interestLabel[v] || v).join(' / ') : '-'}`,
+      `【想定スケジュール】${fd.get('timing') || '-'}`,
+      ``,
+      `【商品・コンセプト概要】`,
+      fd.get('concept') || '-',
+      ``,
+      `【ご質問・特記事項】`,
+      fd.get('notes') || '（なし）',
+    ];
+
+    const payload = {
+      name:         fd.get('name')    || '',
+      company:      fd.get('company') || '',
+      email:        fd.get('email')   || '',
+      phone:        fd.get('phone')   || '',
+      department:   fd.get('dept')    || '',
+      position:     fd.get('title')   || '',
+      inquiry_type: 'consultation',
+      message:      messageParts.join('\n'),
+      source:       'launch-simulation',
+    };
+
+    try {
+      const res = await fetch('/contact', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(payload),
+      });
+      if (!res.ok) {
+        const detail = await res.text().catch(() => '');
+        throw new Error(`HTTP ${res.status} ${detail}`);
+      }
+      // Success: show step 3
+      const email = fd.get('email') || '';
       document.getElementById('cf-success-email').textContent = email;
       document.getElementById('cf-ref').textContent = generateRef();
       goToStep(3);
+      // Meta Pixel: lead conversion
+      if (typeof fbq === 'function') {
+        try { fbq('track', 'Lead', { content_name: 'Launch Simulation LP' }); } catch (_) {}
+      }
+    } catch (err) {
+      console.error('Form submit failed:', err);
+      alert('送信に失敗しました。お手数ですが、しばらく時間をおいて再度お試しいただくか、info@techworker.co.jp までご連絡ください。');
+    } finally {
       submitBtn.disabled = false;
       submitBtn.innerHTML = 'この内容で送信 <span class="arrow">→</span>';
-    }, 900);
+    }
   });
 
   doneBtn.addEventListener('click', () => {
