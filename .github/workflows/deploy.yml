@@ -10,9 +10,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      # Cloudflare Pages API rejects commit messages that contain certain
+      # Unicode characters (em dashes, some CJK combos, etc.) with
+      # "Invalid commit message, it must be a valid UTF-8 string. [code: 8000111]".
+      # To keep deploys robust regardless of what we write in `git commit -m`,
+      # pass an explicit ASCII-only message plus the short SHA so the
+      # deploy stays traceable in the Cloudflare dashboard.
+      - name: Prepare deploy metadata
+        id: meta
+        run: |
+          echo "sha=$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+          echo "branch=${GITHUB_REF#refs/heads/}" >> "$GITHUB_OUTPUT"
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy . --project-name techworker-hp
+          command: pages deploy . --project-name techworker-hp --branch ${{ steps.meta.outputs.branch }} --commit-hash ${{ steps.meta.outputs.sha }} --commit-message "Deploy ${{ steps.meta.outputs.sha }}" --commit-dirty true
