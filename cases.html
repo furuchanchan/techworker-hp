@@ -1,448 +1,295 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" class="no-js">
 <head>
 <meta charset="UTF-8">
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>実績・導入事例 — TechWorker</title>
-<meta name="description" content="TechWorker — 企業向け生成AIコンサルティング">
+<meta name="description" content="TechWorkerの導入事例・実績。上場企業を含む37社・2,500名の生成AI支援実績。化学・医薬・IT・建設など業種を問わず、Before→Afterと数値で成果を公開しています。">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <meta property="og:type" content="website">
+<meta property="og:title" content="実績・導入事例 — TechWorker">
+<meta property="og:description" content="上場企業を含む37社・2,500名の生成AI支援実績。業種を問わず、成果を出してまいりました。">
 <meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/cases.html">
 <meta property="og:site_name" content="TechWorker">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="実績・導入事例 — TechWorker">
 <meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Noto+Sans+JP:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ===== TOKENS ===== */
-:root {
-  --tw-black: #0D1117;
-  --tw-paper: #F4F6F9;
-  --tw-electric: #005EFF;
-  --tw-electric-dark: #003DAA;
-  --tw-slate: #3C4B64;
-  --tw-emerald: #00B894;
-  --tw-violet: #7C3AED;
+:root{
+  --ink:#0D1117; --paper:#F4F6F9; --paper-2:#ECEFF3; --white:#FBFCFD;
+  --electric:#005EFF; --electric-dark:#003DAA;
+  --slate:#4A5666; --line:rgba(13,17,23,.12); --line-2:rgba(13,17,23,.20);
+  --emerald:#00B894; --violet:#7C3AED;
+  --jp:'IBM Plex Sans JP','IBM Plex Sans',system-ui,sans-serif;
+  --en:'IBM Plex Sans','IBM Plex Sans JP',system-ui,sans-serif;
 }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:76px;}
+body{font-family:var(--jp);background:var(--paper);color:var(--ink);line-height:1.85;font-size:16px;-webkit-font-smoothing:antialiased;font-feature-settings:"palt" 1;overflow-x:hidden;}
+::selection{background:var(--electric);color:var(--paper);}
+a{color:inherit;}
+img{display:block;max-width:100%;}
 
-/* ===== RESET ===== */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; overflow-x: hidden; }
-body { overflow-x: hidden;
-  font-family: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
-  background: var(--tw-paper);
-  color: var(--tw-black);
-  line-height: 1.7;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* ===== UTILITIES ===== */
-.container { max-width: 1200px; margin: 0 auto; padding: 0 40px; width: 100%; }
-.label {
-  font-size: 11px; font-weight: 600; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--tw-electric);
-  margin-bottom: 16px; display: block;
-}
-.label--light { color: var(--tw-paper); opacity: .6; }
-
-/* CTA Button */
-.btn {
-  display: inline-block; padding: 16px 40px;
-  background: var(--tw-electric); color: var(--tw-paper);
-  font-size: 15px; font-weight: 700; border-radius: 6px;
-  text-decoration: none; letter-spacing: .5px;
-  transition: background .2s;
-}
-.btn:hover { background: var(--tw-electric-dark); }
-.btn--outline {
-  background: transparent; color: var(--tw-electric);
-  border: 2px solid var(--tw-electric);
-}
-.btn--outline:hover { background: var(--tw-electric); color: var(--tw-paper); }
-.btn--white { background: var(--tw-paper); color: var(--tw-electric); }
-.btn--white:hover { background: #e8ecf2; }
+/* ===== SHARED ===== */
+.container{max-width:1280px;margin:0 auto;padding:0 48px;width:100%;}
+.tag{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--electric);display:inline-flex;align-items:center;gap:11px;padding-left:14px;border-left:3px solid var(--electric);}
+.tag span{color:var(--slate);font-weight:500;letter-spacing:.02em;text-transform:none;font-size:13px;}
+.sec-head h2{font-family:var(--jp);font-weight:700;font-size:clamp(26px,3.4vw,42px);line-height:1.4;letter-spacing:-.02em;margin-top:22px;}
+.sec-head .lead{font-size:16px;color:var(--slate);line-height:2.05;margin-top:22px;max-width:62ch;}
+.sec-head .lead strong{color:var(--ink);font-weight:600;}
+.btn{font-family:var(--jp);font-size:14.5px;font-weight:600;color:var(--paper);background:var(--electric);text-decoration:none;border-radius:5px;padding:15px 30px;display:inline-flex;align-items:center;gap:11px;transition:background .25s,transform .25s;border:none;cursor:pointer;}
+.btn:hover{background:var(--electric-dark);transform:translateY(-1px);}
+.btn i{font-style:normal;transition:transform .25s;}
+.btn:hover i{transform:translateX(4px);}
+.btn--ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line-2);}
+.btn--ghost:hover{background:transparent;border-color:var(--electric);color:var(--electric);}
+.btn--on-blue{background:var(--paper);color:var(--electric);}
+.btn--on-blue:hover{background:var(--white);}
+.btn--on-blue-ghost{background:transparent;color:var(--paper);border:1.5px solid rgba(244,246,249,.5);}
+.btn--on-blue-ghost:hover{background:rgba(244,246,249,.1);border-color:var(--paper);}
 
 /* ===== NAV ===== */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(244,246,249,.92); backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0,94,255,.08);
-  padding: 0 40px; height: 64px;
-  display: flex; align-items: center; justify-content: space-between;
-}
-nav .logo { font-size: 18px; font-weight: 800; color: var(--tw-black); text-decoration: none; }
-nav .logo span { color: var(--tw-electric); }
-nav ul { list-style: none; display: flex; gap: 20px; white-space: nowrap; }
-nav ul a {
-  font-size: 13px; font-weight: 600; color: var(--tw-slate);
-  text-decoration: none; letter-spacing: .5px; transition: color .2s;
-}
-nav ul a:hover { color: var(--tw-electric); }
-nav ul a.active { color: var(--tw-electric); }
-nav .nav-cta {
-  font-size: 13px; font-weight: 700; padding: 8px 24px;
-  background: var(--tw-electric); color: var(--tw-paper);
-  border-radius: 5px; text-decoration: none; transition: background .2s;
-}
-nav .nav-cta:hover { background: var(--tw-electric-dark); }
-nav .nav-cta .nav-cta-short { display: none; }
-nav .nav-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
-nav .lang-switch { font-size: 12px; white-space: nowrap; }
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:68px;background:rgba(244,246,249,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transition:box-shadow .3s,height .3s cubic-bezier(.2,.8,.2,1),background .3s;}
+nav.scrolled{box-shadow:0 1px 16px rgba(0,94,255,.06);height:58px;background:rgba(244,246,249,.92);}
+nav .logo{transition:font-size .3s cubic-bezier(.2,.8,.2,1);}
+nav.scrolled .logo{font-size:18px;}
+nav .logo{font-family:var(--en);font-weight:700;font-size:20px;letter-spacing:-.01em;text-decoration:none;color:var(--ink);}
+nav .logo i{font-style:normal;color:var(--electric);}
+nav ul{list-style:none;display:flex;gap:34px;}
+nav ul a{font-size:14px;font-weight:500;color:var(--ink);text-decoration:none;position:relative;}
+nav ul a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--electric);transition:width .28s cubic-bezier(.2,.8,.2,1);}
+nav ul a:hover::after{width:100%;}
+nav ul a.active{color:var(--electric);}
+nav ul a.active::after{width:100%;}
+nav .nav-right{display:flex;align-items:center;gap:18px;}
+nav .nav-cta{font-family:var(--jp);font-size:13.5px;font-weight:600;color:var(--paper);background:var(--electric);text-decoration:none;padding:10px 22px;border-radius:4px;transition:background .25s;}
+nav .nav-cta:hover{background:var(--electric-dark);}
+nav .nav-cta .short{display:none;}
+nav .lang{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.04em;}
+nav .lang a{color:var(--slate);text-decoration:none;}
+nav .lang .cur{color:var(--electric);}
+
+/* hamburger */
+.hamb{display:none;width:44px;height:44px;border:none;background:none;cursor:pointer;position:relative;margin-left:2px;}
+.hamb span{position:absolute;left:11px;width:22px;height:2px;background:var(--ink);transition:transform .3s,opacity .2s;}
+.hamb span:nth-child(1){top:15px;} .hamb span:nth-child(2){top:21px;} .hamb span:nth-child(3){top:27px;}
+body.menu-open .hamb span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+body.menu-open .hamb span:nth-child(2){opacity:0;}
+body.menu-open .hamb span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+/* mobile menu panel */
+.mmenu{position:fixed;inset:68px 0 0;z-index:45;background:var(--paper);transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);visibility:hidden;display:flex;flex-direction:column;padding:18px 24px 40px;}
+body.menu-open .mmenu{transform:none;visibility:visible;}
+.mmenu a{font-size:19px;font-weight:600;color:var(--ink);text-decoration:none;padding:20px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;}
+.mmenu a::after{content:"→";color:var(--electric);font-family:var(--en);}
+.mmenu .m-cta{margin-top:28px;background:var(--electric);color:var(--paper);justify-content:center;border-radius:5px;border:none;padding:17px;}
+.mmenu .m-cta::after{content:none;}
+.mmenu .m-lang{margin-top:auto;border:none;font-family:var(--en);font-size:13px;color:var(--slate);}
+.mmenu .m-lang::after{content:none;}
 
 /* ===== HERO ===== */
-.cases-hero {
-  padding: 160px 0 100px;
-  background: linear-gradient(135deg, var(--tw-paper) 60%, rgba(0,94,255,.04) 100%);
-  text-align: center;
-}
-.cases-hero h1 {
-  font-size: clamp(36px, 5vw, 56px); font-weight: 800;
-  line-height: 1.2; margin-bottom: 20px;
-}
-.cases-hero h1 em { font-style: normal; color: var(--tw-electric); }
-.cases-hero p {
-  font-size: 18px; color: var(--tw-slate); line-height: 1.8;
-  max-width: 600px; margin: 0 auto;
+.hero{max-width:1280px;margin:0 auto;padding:168px 48px 70px;}
+.hero .tag{margin-bottom:40px;}
+.hero h1{font-family:var(--jp);font-weight:700;font-size:clamp(38px,6.4vw,90px);line-height:1.26;letter-spacing:-.02em;}
+.hero h1 .en{font-family:var(--en);font-weight:600;letter-spacing:-.01em;}
+.hero h1 .u{background:linear-gradient(transparent 80%,var(--electric) 80%,var(--electric) 91%,transparent 91%);}
+.hero-foot{display:grid;grid-template-columns:1fr auto;gap:48px;align-items:end;margin-top:52px;padding-top:34px;border-top:1px solid var(--line);}
+.hero-foot p{font-size:16px;color:var(--slate);max-width:52ch;line-height:2.05;}
+.hero-foot p strong{color:var(--ink);font-weight:600;}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
+
+/* ===== FIGURES BAND ===== */
+.figures{max-width:1280px;margin:0 auto;padding:24px 48px 86px;}
+.figures .row{display:grid;grid-template-columns:repeat(4,1fr);}
+.fig{padding:30px 28px 26px;border-left:1px solid var(--line);}
+.fig:first-child{border-left:none;padding-left:0;}
+.fig .n{font-family:var(--en);font-weight:600;font-size:clamp(44px,5vw,72px);line-height:1;letter-spacing:-.03em;font-feature-settings:"tnum" 1;}
+.fig .n sub{font-size:.4em;vertical-align:baseline;font-weight:600;}
+.fig:nth-child(1) .n,.fig:nth-child(3) .n{color:var(--electric);}
+.fig .l{font-size:13px;color:var(--slate);margin-top:13px;}
+
+/* ===== INTRO STATEMENT ===== */
+.results-st{padding:90px 0 60px;border-top:1px solid var(--line);}
+.results-st h2{font-family:var(--jp);font-weight:700;font-size:clamp(26px,3.4vw,44px);line-height:1.4;letter-spacing:-.02em;margin-top:22px;}
+.results-st h2 .mk{color:var(--electric);}
+.results-st .lead{font-size:16px;color:var(--slate);line-height:2.05;margin-top:24px;max-width:64ch;}
+.results-st .lead strong{color:var(--ink);font-weight:600;}
+
+/* ===== RESULTS SUMMARY ===== */
+.res-summary{padding:6px 0 26px;}
+.rs-table{margin-top:12px;border-top:2px solid var(--ink);}
+.rs-row{display:grid;grid-template-columns:148px 1.15fr 1.5fr 1.4fr;gap:26px;padding:22px 0;border-bottom:1px solid var(--line);align-items:center;transition:background .2s;}
+.rs-row.head{padding:13px 0;}
+.rs-row.head span{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);}
+.rs-row:not(.head):hover{background:var(--paper-2);}
+.rs-ind{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.05em;color:var(--electric);padding-left:10px;border-left:3px solid var(--electric);align-self:start;}
+.rs-co{font-size:13px;color:var(--slate);font-weight:500;line-height:1.55;}
+.rs-problem{font-size:13.5px;color:#28313f;line-height:1.65;}
+.rs-result{font-size:13.5px;color:#28313f;line-height:1.6;}
+.rs-result .m{font-family:var(--en);font-weight:700;color:var(--electric);font-size:22px;letter-spacing:-.02em;margin-right:5px;vertical-align:-1px;}
+.rs-result .m.jp{font-family:var(--jp);font-size:18px;}
+@media(max-width:860px){
+  .rs-table{border-top:1px solid var(--line);}
+  .rs-row{grid-template-columns:1fr;gap:7px;padding:22px 0;}
+  .rs-row.head{display:none;}
+  .rs-co{order:-1;}
+  .rs-problem::before{content:"課題：";color:var(--slate);font-weight:600;}
+  .rs-result{margin-top:3px;}
+  .rs-result::before{content:"成果：";color:var(--slate);font-weight:600;font-size:13px;}
 }
 
-/* ===== KPI SECTION ===== */
-.kpi-section {
-  padding: 100px 0;
-  background: var(--tw-electric); color: var(--tw-paper);
-  position: relative; overflow: hidden;
-}
-.kpi-section::before {
-  content: ''; position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(244,246,249,.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(244,246,249,.04) 1px, transparent 1px);
-  background-size: 56px 56px;
-}
-.kpi-section .container { position: relative; z-index: 1; }
-.kpi-section h2 {
-  font-size: clamp(28px, 4vw, 40px); font-weight: 800;
-  margin-bottom: 60px; text-align: center;
-}
-.kpi-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
-}
-.kpi-card { text-align: center; padding: 24px; }
-.kpi-card .num {
-  font-size: clamp(48px, 7vw, 72px); font-weight: 800;
-  line-height: 1; margin-bottom: 8px;
-}
-.kpi-card .unit { font-size: 14px; opacity: .7; font-weight: 600; }
 
-/* ===== CASE STUDIES ===== */
-.case-studies { padding: 100px 0 0; }
-.case-studies > .container > .label { margin-bottom: 8px; }
-.case-studies h2 {
-  font-size: clamp(28px, 4vw, 40px); font-weight: 800; margin-bottom: 16px;
-}
-.case-studies .lead {
-  font-size: 16px; color: var(--tw-slate); max-width: 680px;
-  line-height: 1.9; margin-bottom: 80px;
-}
-
-/* --- Magazine-style case block --- */
-.case-block { margin-bottom: 0; }
-
-/* Impact hero: full-bleed blue with giant metric */
-.case-impact {
-  background: var(--tw-electric); color: #fff;
-  padding: 80px 0; position: relative; overflow: hidden;
-}
-.case-impact::before {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(0,0,0,.08) 0%, transparent 50%);
-}
-.case-impact .container {
-  position: relative; z-index: 1;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
-}
-.case-impact-left {}
-.case-impact-num {
-  display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px;
-}
-.case-impact-num .big-num {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(72px, 10vw, 120px); font-weight: 800; line-height: 1;
-  color: #fff;
-}
-.case-impact-num .big-unit {
-  font-size: 20px; font-weight: 600; color: rgba(255,255,255,.6);
-}
-.case-impact-sub {
-  font-size: 15px; color: rgba(255,255,255,.5); font-weight: 600;
-  letter-spacing: 1px; margin-bottom: 20px;
-}
-.case-impact-right {}
-.case-impact-tag {
-  display: inline-flex; align-items: center; gap: 8px; margin-bottom: 16px;
-}
-.case-impact-tag .case-num {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 12px; font-weight: 800; background: rgba(255,255,255,.15);
-  padding: 4px 12px; border-radius: 100px; letter-spacing: 2px;
-}
-.case-impact-tag .industry-tag {
-  font-size: 12px; font-weight: 700; color: rgba(255,255,255,.7);
-  letter-spacing: 1px;
-}
-.case-impact h3 {
-  font-size: clamp(24px, 3.5vw, 36px); font-weight: 800; line-height: 1.3;
-  margin-bottom: 12px;
-}
-.case-impact .company-name {
-  font-size: 15px; font-weight: 600; color: rgba(255,255,255,.6);
-}
-
-/* Content: white card with before/after */
-.case-content {
-  background: #fff; padding: 64px 0;
-}
-.case-content .container {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
-}
-
-/* Before (challenge) */
-.case-before {
-  position: relative; padding-left: 32px;
-}
-.case-before::before {
-  content: ''; position: absolute; left: 0; top: 0;
-  width: 3px; height: 100%; background: rgba(0,94,255,.12); border-radius: 2px;
-}
-.case-before-label {
-  font-size: 11px; font-weight: 800; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--tw-slate); opacity: .4;
-  margin-bottom: 20px;
-}
-.case-before h4 {
-  font-size: 20px; font-weight: 800; margin-bottom: 16px; line-height: 1.4;
-}
-.case-before p {
-  font-size: 15px; color: var(--tw-slate); line-height: 2;
-}
-
-/* After (solution + results) */
-.case-after {
-  position: relative; padding-left: 32px;
-}
-.case-after::before {
-  content: ''; position: absolute; left: 0; top: 0;
-  width: 3px; height: 100%; background: var(--tw-electric); border-radius: 2px;
-}
-.case-after-label {
-  font-size: 11px; font-weight: 800; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--tw-electric);
-  margin-bottom: 20px;
-}
-.case-after h4 {
-  font-size: 20px; font-weight: 800; margin-bottom: 16px; line-height: 1.4;
-}
-.case-after p {
-  font-size: 15px; color: var(--tw-slate); line-height: 2; margin-bottom: 24px;
-}
-.case-after .results-list {
-  list-style: none; padding: 0; margin: 0;
-  display: flex; flex-direction: column; gap: 12px;
-}
-.case-after .results-list li {
-  display: flex; align-items: flex-start; gap: 12px;
-  font-size: 15px; color: var(--tw-black); font-weight: 600; line-height: 1.6;
-}
-.case-after .results-list li .check {
-  flex-shrink: 0; width: 24px; height: 24px; border-radius: 6px;
-  background: var(--tw-electric); color: #fff;
-  display: flex; align-items: center; justify-content: center; margin-top: 2px;
-}
-
-/* Point strip */
-.case-point-strip {
-  background: var(--tw-paper); border-top: 1px solid rgba(0,94,255,.06);
-  border-bottom: 1px solid rgba(0,94,255,.06);
-  padding: 32px 0;
-}
-.case-point-strip .container {
-  display: flex; align-items: center; gap: 20px;
-}
-.case-point-strip .point-badge {
-  flex-shrink: 0; background: var(--tw-electric); color: #fff;
-  font-size: 10px; font-weight: 800; letter-spacing: 2px;
-  padding: 6px 16px; border-radius: 100px;
-}
-.case-point-strip p {
-  font-size: 15px; color: var(--tw-black); font-weight: 600; line-height: 1.8;
-}
+/* ===== EDITORIAL CASE BLOCKS (hcase reference) ===== */
+.cases-wrap{padding-bottom:30px;}
+.hcase{padding-top:28px;}
+.hcase-top{display:grid;grid-template-columns:auto 1fr;gap:60px;align-items:center;padding:46px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.hcase-num .s{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);}
+.hcase-num .big{display:flex;align-items:baseline;gap:8px;margin-top:6px;}
+.hcase-num .big b{font-family:var(--en);font-weight:600;font-size:clamp(56px,7vw,92px);line-height:1;color:var(--electric);letter-spacing:-.03em;}
+.hcase-num .big b.jp{font-family:var(--jp);font-weight:700;font-size:clamp(44px,5.4vw,72px);}
+.hcase-num .big i{font-style:normal;font-size:22px;font-weight:600;}
+.hcase-num .desc{font-size:13px;color:var(--slate);margin-top:6px;max-width:28ch;}
+.hcase-meta .mtag{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap;}
+.hcase-meta .badge{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.12em;color:var(--paper);background:var(--electric);padding:4px 10px;border-radius:3px;}
+.hcase-meta .ind{font-size:13px;color:var(--slate);font-weight:500;}
+.hcase-meta .ongoing{display:inline-block;margin-left:10px;font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.08em;color:var(--slate);border:1px solid var(--line-2);border-radius:3px;padding:2px 8px;vertical-align:2px;}
+.hcase-meta h3{font-family:var(--jp);font-weight:700;font-size:clamp(22px,2.6vw,32px);line-height:1.4;letter-spacing:-.02em;}
+.hcase-meta .co{font-size:14px;color:var(--slate);margin-top:8px;}
+.hcase-ba{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid var(--line);}
+.hcase-ba > div{padding:38px 40px 38px 0;}
+.hcase-ba > div:last-child{padding-left:48px;border-left:1px solid var(--line);}
+.hcase-ba .col-l{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.14em;color:var(--slate);margin-bottom:14px;}
+.hcase-ba .col-l.aft{color:var(--electric);}
+.hcase-ba p{font-size:15px;color:#28313f;line-height:1.95;}
+.hcase-ba p strong{color:var(--ink);font-weight:700;}
+.hcase-ba .hl{color:var(--electric);font-weight:700;}
+.hcase-ba li strong{color:var(--ink);font-weight:700;}
+.hcase-ba p + p{margin-top:14px;}
+.hcase-ba ul{list-style:none;margin-top:16px;}
+.hcase-ba li{display:flex;gap:12px;align-items:flex-start;padding:7px 0;font-size:15px;line-height:1.7;}
+.hcase-ba li svg{flex-shrink:0;margin-top:5px;color:var(--electric);}
+.hcase-point{display:flex;align-items:baseline;gap:18px;padding:26px 0 8px;}
+.hcase-point .pl{flex-shrink:0;font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--electric);padding-left:12px;border-left:3px solid var(--electric);}
+.hcase-point p{font-size:14.5px;color:#28313f;line-height:1.9;font-weight:500;max-width:78ch;}
+.hcase-point p strong{color:var(--ink);font-weight:600;}
 
 /* ===== INDUSTRIES ===== */
-.industries { padding: 120px 0; background: #fff; }
-.industries h2 {
-  font-size: clamp(28px, 4vw, 40px); font-weight: 800;
-  margin-bottom: 16px; text-align: center;
-}
-.industries .lead {
-  font-size: 16px; color: var(--tw-slate); max-width: 600px;
-  line-height: 1.9; margin: 0 auto 60px; text-align: center;
-}
-.industry-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
-  max-width: 900px; margin: 0 auto;
-}
-.industry-card {
-  background: var(--tw-paper); border-radius: 12px;
-  padding: 32px 24px; text-align: center;
-  border: 1px solid rgba(0,94,255,.06);
-  transition: transform .2s, box-shadow .2s;
-}
-.industry-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 32px rgba(0,94,255,.08);
-}
-.industry-card .industry-icon {
-  width: 48px; height: 48px; border-radius: 10px;
-  background: rgba(0,94,255,.06);
-  display: inline-flex; align-items: center; justify-content: center;
-  font-size: 20px; font-weight: 800; color: var(--tw-electric);
-  margin-bottom: 16px;
-}
-.industry-card h3 { font-size: 15px; font-weight: 700; }
+.industries{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:96px 0;}
+.industries .lead{margin-top:22px;font-size:16px;color:#28313f;line-height:2.05;max-width:64ch;}
+.industries .lead strong{color:var(--ink);font-weight:600;}
+.ind-grid{display:grid;grid-template-columns:repeat(4,1fr);margin-top:50px;border-top:1px solid var(--line);}
+.ind-cell{padding:30px 26px 28px;border-left:1px solid var(--line);border-bottom:1px solid var(--line);}
+.ind-cell:nth-child(4n+1){border-left:none;padding-left:0;}
+.ind-cell .ic{font-family:var(--en);font-weight:600;font-size:13px;letter-spacing:.1em;color:var(--electric);}
+.ind-cell h3{font-family:var(--jp);font-weight:700;font-size:17px;line-height:1.5;margin-top:12px;letter-spacing:-.01em;}
 
 /* ===== FINAL CTA ===== */
-.final-cta {
-  padding: 120px 0;
-  background: var(--tw-electric); color: var(--tw-paper);
-  text-align: center;
-  position: relative; overflow: hidden;
-}
-.final-cta::before {
-  content: ''; position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(244,246,249,.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(244,246,249,.04) 1px, transparent 1px);
-  background-size: 56px 56px;
-}
-.final-cta .container { position: relative; z-index: 1; }
-.final-cta h2 {
-  font-size: clamp(28px, 4vw, 44px); font-weight: 800; margin-bottom: 16px;
-}
-.final-cta p { font-size: 17px; opacity: .8; margin-bottom: 40px; }
-.final-cta .btn-group { display: flex; gap: 16px; justify-content: center; }
+.final{background:var(--electric);color:var(--paper);padding:104px 0;text-align:center;}
+.final h2{font-family:var(--jp);font-weight:700;font-size:clamp(28px,3.6vw,46px);line-height:1.4;letter-spacing:-.02em;}
+.final p{font-size:16px;color:rgba(244,246,249,.85);margin-top:18px;}
+.final .actions{display:flex;gap:14px;justify-content:center;margin-top:36px;flex-wrap:wrap;}
 
 /* ===== FOOTER ===== */
-footer {
-  padding: 60px 0 40px;
-  background: #fff;
-  border-top: 1px solid rgba(0,94,255,.06);
+footer{background:var(--white);border-top:1px solid var(--line);padding:64px 0 40px;}
+.footer-inner{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;}
+.footer-brand .logo{font-family:var(--en);font-size:19px;font-weight:700;color:var(--ink);}
+.footer-brand .logo i{font-style:normal;color:var(--electric);}
+.footer-brand p{font-size:13px;color:var(--slate);line-height:1.7;margin-top:12px;}
+.footer-brand .x{display:inline-flex;align-items:center;gap:7px;margin-top:16px;font-size:13px;font-weight:600;color:var(--slate);text-decoration:none;}
+.footer-brand .x:hover{color:var(--electric);}
+.footer-col h4{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:16px;}
+.footer-col a{display:block;font-size:13px;color:var(--slate);text-decoration:none;margin-bottom:10px;}
+.footer-col a:hover{color:var(--electric);}
+.footer-col p{font-size:13px;color:var(--slate);line-height:1.7;margin-top:12px;}
+.copyright{text-align:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-family:var(--en);font-size:12px;color:var(--slate);}
+
+/* ===== reveal (progressive enhancement: visible without JS) ===== */
+html.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+html.js .rv.show{opacity:1;transform:none;}
+
+/* ===== focus visibility (keyboard) ===== */
+a:focus-visible,button:focus-visible{outline:2px solid var(--electric);outline-offset:3px;border-radius:3px;}
+:focus:not(:focus-visible){outline:none;}
+
+/* ===== reduced motion ===== */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  html.js .rv{opacity:1;transform:none;transition:none;}
+  html.js .rvg>*{opacity:1;transform:none;}
+  *{animation-duration:.001ms!important;transition-duration:.001ms!important;}
 }
-footer .footer-inner {
-  display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px;
-  align-items: start;
+
+/* ===== UI: hero orchestration ===== */
+@keyframes heroIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+@keyframes drawLine{to{background-size:100% 100%;}}
+html.js .hero .tag{animation:heroIn .7s .05s both cubic-bezier(.16,1,.3,1);}
+html.js .hero h1{animation:heroIn .8s .16s both cubic-bezier(.16,1,.3,1);}
+html.js .hero-foot{animation:heroIn .8s .42s both cubic-bezier(.16,1,.3,1);}
+html.js .hero h1 .u{background-repeat:no-repeat;background-size:0% 100%;animation:drawLine .7s .8s forwards cubic-bezier(.16,1,.3,1);}
+
+/* ===== UI: staggered group reveal ===== */
+html.js .rvg>*{opacity:0;transform:translateY(18px);}
+html.js .rvg.show>*{opacity:1;transform:none;transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1);}
+html.js .rvg.show>*:nth-child(1){transition-delay:.04s;}
+html.js .rvg.show>*:nth-child(2){transition-delay:.12s;}
+html.js .rvg.show>*:nth-child(3){transition-delay:.20s;}
+html.js .rvg.show>*:nth-child(4){transition-delay:.28s;}
+html.js .rvg.show>*:nth-child(5){transition-delay:.36s;}
+
+/* ===== UI: custom scrollbar ===== */
+@media (pointer:fine){
+  *{scrollbar-width:thin;scrollbar-color:#c3ccd8 transparent;}
+  ::-webkit-scrollbar{width:12px;height:12px;}
+  ::-webkit-scrollbar-thumb{background:#c3ccd8;border-radius:10px;border:3px solid var(--paper);}
+  ::-webkit-scrollbar-thumb:hover{background:#9aa7b8;}
+  ::-webkit-scrollbar-track{background:transparent;}
 }
-footer .footer-brand .logo { font-size: 18px; font-weight: 800; margin-bottom: 12px; color: var(--tw-black); }
-footer .footer-brand .logo span { color: var(--tw-electric); }
-footer .footer-brand p { font-size: 13px; color: var(--tw-slate); line-height: 1.7; }
-footer .footer-col h4 {
-  font-size: 12px; font-weight: 700; letter-spacing: 2px;
-  text-transform: uppercase; color: var(--tw-slate); opacity: .5; margin-bottom: 16px;
-}
-footer .footer-col a {
-  display: block; font-size: 13px; color: var(--tw-slate);
-  text-decoration: none; margin-bottom: 10px; transition: color .2s;
-}
-footer .footer-col a:hover { color: var(--tw-electric); }
-footer .footer-col p {
-  font-size: 13px; color: var(--tw-slate); line-height: 1.7;
-}
-footer .copyright {
-  text-align: center; margin-top: 40px; padding-top: 24px;
-  border-top: 1px solid rgba(0,94,255,.06);
-  font-size: 12px; color: var(--tw-slate); opacity: .4;
-}
+
+/* ===== UI: refined hover micro-interactions ===== */
+.btn:active{transform:translateY(0);}
+.ind-cell{transition:background .2s;}
+.ind-cell:hover{background:rgba(0,94,255,.03);}
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 1024px) {
-  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
-  .case-impact .container { grid-template-columns: 1fr; gap: 32px; }
-  .case-impact { padding: 60px 0; }
-  .case-content .container { grid-template-columns: 1fr; gap: 40px; }
-  .industry-grid { grid-template-columns: repeat(3, 1fr); }
-  footer .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+@media(max-width:1000px){
+  .footer-inner{grid-template-columns:1fr 1fr;gap:32px;}
+  .ind-grid{grid-template-columns:repeat(2,1fr);}
+  .ind-cell:nth-child(4n+1){border-left:1px solid var(--line);padding-left:26px;}
+  .ind-cell:nth-child(2n+1){border-left:none;padding-left:0;}
 }
-@media (max-width: 640px) {
-  .container { padding: 0 20px; }
-  nav { padding: 0 20px; }
-  nav ul { display: none; }
-  nav { padding: 0 12px 0 16px; gap: 8px; overflow: visible; }
-  nav .nav-right { gap: 8px; }
-  nav .nav-cta { padding: 8px 14px; font-size: 11px; }
-  nav .nav-cta .nav-cta-full { display: none; }
-  nav .nav-cta .nav-cta-short { display: inline; }
-  nav .lang-switch { display: none; }
-  .cases-hero { padding: 120px 0 60px; }
-  .cases-hero h1 { font-size: 32px; }
-  .cases-hero p { font-size: 15px; }
-  .kpi-grid { grid-template-columns: 1fr 1fr; }
-  .case-impact { padding: 48px 0; }
-  .case-impact-num .big-num { font-size: 64px; }
-  .case-impact h3 { font-size: 22px; }
-  .case-content { padding: 40px 0; }
-  .case-before, .case-after { padding-left: 20px; }
-  .case-point-strip .container { flex-direction: column; align-items: flex-start; gap: 12px; }
-  .industry-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-  .industry-card { padding: 20px 16px; }
-  .final-cta .btn-group { flex-direction: column; align-items: center; }
-  footer .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+@media(max-width:860px){
+  nav ul{display:none;}
+  nav .nav-cta{display:none;}
+  nav .lang{display:none;}
+  .hamb{display:block;}
+  .hero{padding:120px 24px 56px;}
+  .hero-foot{grid-template-columns:1fr;gap:26px;align-items:start;}
+  .figures{padding:14px 24px 64px;}
+  .figures .row{grid-template-columns:1fr 1fr;}
+  .fig{padding:22px 0;}
+  .fig:nth-child(even){padding-left:22px;border-left:1px solid var(--line);}
+  .fig:nth-child(odd){border-left:none;}
+  .fig:nth-child(n+3){border-top:1px solid var(--line);}
+  .hcase-top{grid-template-columns:1fr;gap:28px;}
+  .hcase-ba{grid-template-columns:1fr;}
+  .hcase-ba > div{padding:28px 0;}
+  .hcase-ba > div:last-child{border-left:none;border-top:1px solid var(--line);padding-left:0;}
+  .hcase-point{flex-direction:column;align-items:flex-start;gap:12px;}
 }
-
-/* ===== NAV DROPDOWN ===== */
-nav ul li { position: relative; }
-.nav-dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%; padding-top: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 8px 32px rgba(0,94,255,.12);
-  border: 1px solid rgba(0,94,255,.08);
-  min-width: 200px;
-  padding: 8px 0;
-  z-index: 200;
-  white-space: nowrap;
-}
-.nav-dropdown-menu::before {
-  content: '';
-  position: absolute;
-  top: 6px; left: 50%; transform: translateX(-50%);
-  width: 10px; height: 10px;
-  background: #fff;
-  border-left: 1px solid rgba(0,94,255,.08);
-  border-top: 1px solid rgba(0,94,255,.08);
-  transform: translateX(-50%) rotate(45deg);
-}
-.nav-dropdown-menu a {
-  display: block;
-  padding: 10px 20px;
-  font-size: 13px;
-  font-weight: 600;
-  color: #3C4B64;
-  text-decoration: none;
-  transition: color .15s, background .15s;
-}
-.nav-dropdown-menu a:hover {
-  color: #005EFF;
-  background: rgba(0,94,255,.04);
-}
-nav ul li:hover .nav-dropdown-menu { display: block; }
-.nav-dropdown-trigger { cursor: default; }
-.nav-dropdown-trigger::after {
-  content: ' ▾';
-  font-size: 10px;
-  opacity: .6;
+@media(max-width:560px){
+  .container{padding:0 22px;}
+  nav{padding:0 10px 0 18px;height:60px;}
+  .mmenu{top:60px;}
+  .figures .row{grid-template-columns:1fr;}
+  .fig:nth-child(even){padding-left:0;border-left:none;}
+  .fig:nth-child(n+2){border-top:1px solid var(--line);}
+  .ind-grid{grid-template-columns:1fr;}
+  .ind-cell,.ind-cell:nth-child(2n+1){border-left:none;padding-left:0;}
 }
 </style>
 <!-- Meta Pixel Code -->
@@ -465,332 +312,288 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
 </head>
 <body>
 
-<!-- ===== NAV ===== -->
-<nav>
-  <a href="index.html" class="logo">Tech<span>Worker</span></a>
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="logo">Tech<i>Worker</i></a>
   <ul>
     <li><a href="index.html">ホーム</a></li>
     <li><a href="index.html#services">サービス</a></li>
-    <li><a href="cases.html">実績</a></li>
+    <li><a href="cases.html" class="active">実績</a></li>
+    <li><a href="library/">資料</a></li>
     <li><a href="news.html">ニュース</a></li>
     <li><a href="company.html">会社概要</a></li>
   </ul>
   <div class="nav-right">
-    <a href="contact.html" class="nav-cta"><span class="nav-cta-full">お問い合わせ</span><span class="nav-cta-short">相談</span></a>
-    <span class="lang-switch"><span style="color:var(--tw-electric);font-weight:700;">JP</span> / <a href="en/cases.html" style="color:var(--tw-slate);text-decoration:none;font-weight:700;">EN</a></span>
+    <a href="contact.html" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
+    <span class="lang"><span class="cur">JP</span> / <a href="en/index.html">EN</a></span>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
-<!-- ===== LOADING SCREEN ===== -->
-<div id="loader" style="position:fixed;inset:0;z-index:9999;background:var(--tw-paper);display:flex;align-items:center;justify-content:center;transition:opacity .6s ease, visibility .6s ease;">
-  <div style="text-align:center;">
-    <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:32px;font-weight:800;color:var(--tw-black);opacity:0;animation:loaderFade .8s .2s forwards;">Tech<span style="color:var(--tw-electric);">Worker</span></div>
-    <div style="width:48px;height:2px;background:var(--tw-electric);margin:16px auto 0;transform:scaleX(0);animation:loaderLine .6s .6s forwards;transform-origin:left;"></div>
-  </div>
+<!-- MOBILE MENU -->
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="index.html">ホーム</a>
+  <a href="index.html#services">サービス</a>
+  <a href="cases.html">実績</a>
+  <a href="library/">資料ダウンロード</a>
+  <a href="news.html">ニュース</a>
+  <a href="company.html">会社概要</a>
+  <a href="contact.html" class="m-cta">無料相談を申し込む</a>
+  <a href="en/index.html" class="m-lang">English ↗</a>
 </div>
-<style>
-@keyframes loaderFade { to { opacity: 1; } }
-@keyframes loaderLine { to { transform: scaleX(1); } }
-</style>
 
-<!-- ===== HERO ===== -->
-<section class="cases-hero">
-  <div class="container">
-    <span class="label">Cases &amp; Results</span>
-    <h1><em>実績</em>・導入事例</h1>
-    <p>業種を問わず、37社・2,500名のご支援実績。</p>
+<!-- HERO -->
+<header class="hero">
+  <div class="tag">Cases &amp; Results <span>実績・導入事例</span></div>
+  <h1>業種を問わず、<br><span class="u">成果</span>を出してきました。</h1>
+  <div class="hero-foot">
+    <p>上場企業を含む<strong>37社・2,500名</strong>の現場で、生成AI活用の成果を実証してきました。化学・医薬・IT・建設まで、業種ごとの業務文脈に踏み込んだ導入事例を、Before→Afterと数値でご紹介します。</p>
+    <div class="hero-actions">
+      <a href="contact.html" class="btn">無料相談 <i>→</i></a>
+      <a href="library/" class="btn btn--ghost">活用事例集をもらう</a>
+    </div>
+  </div>
+</header>
+
+<!-- FIGURES -->
+<section class="figures">
+  <div class="row rvg">
+    <div class="fig"><div class="n">37<sub>+</sub></div><div class="l">支援企業数（上場企業を含む）</div></div>
+    <div class="fig"><div class="n">2,500<sub>+</sub></div><div class="l">研修受講者数</div></div>
+    <div class="fig"><div class="n">300<sub>+</sub></div><div class="l">ウェビナー参加者</div></div>
+    <div class="fig"><div class="n">7<sub>+</sub></div><div class="l">対応業種数</div></div>
   </div>
 </section>
 
-<!-- ===== KPI SECTION ===== -->
-<section class="kpi-section">
+<!-- INTRO STATEMENT -->
+<section class="results-st" id="results">
   <div class="container">
-    <span class="label label--light">Key Numbers</span>
-    <h2>数字で証明する。</h2>
-    <div class="kpi-grid">
-      <div class="kpi-card">
-        <span class="num kpi-num">37+</span>
-        <span class="unit">支援企業</span>
+    <div class="rv"><span class="tag">Case Studies <span>導入事例</span></span>
+    <h2>37社、2,500名。<br>同じ問いを、業種ごとに<span class="mk">解いて</span>きました。</h2>
+    <p class="lead">「ツールは入れた。けれど、現場では使われない」。どの業種でも、入り口の課題は驚くほど似ています。私たちは業務の文脈をAIに渡せる形に整え、<strong>R&Dの意思決定から全社展開まで</strong>、成果が出る状態をつくってきました。</p></div>
+  </div>
+</section>
+
+<!-- RESULTS SUMMARY -->
+<section class="res-summary">
+  <div class="container">
+    <div class="rv"><span class="tag">At a glance <span>ひと目でわかる、導入成果</span></span></div>
+    <div class="rs-table rv">
+      <div class="rs-row head"><span>業種</span><span>企業</span><span>課題</span><span>成果</span></div>
+      <div class="rs-row">
+        <span class="rs-ind">化学 / 素材</span>
+        <span class="rs-co">東証プライム上場<br>総合化学メーカー</span>
+        <span class="rs-problem">新素材の用途探索が研究者の経験と勘に依存していた</span>
+        <span class="rs-result"><span class="m">1</span>時間でアイデアを発散→収束。手法で特許を出願中</span>
       </div>
-      <div class="kpi-card">
-        <span class="num kpi-num">2,500+</span>
-        <span class="unit">研修受講者</span>
+      <div class="rs-row">
+        <span class="rs-ind">医薬 / ヘルスケア</span>
+        <span class="rs-co">外資系大手製薬企業</span>
+        <span class="rs-problem">市場リサーチを外注し、ノウハウが社内に残らなかった</span>
+        <span class="rs-result"><span class="m jp">数百</span>万円／年の外注費を削減し、リサーチを内製化</span>
       </div>
-      <div class="kpi-card">
-        <span class="num kpi-num">300+</span>
-        <span class="unit">ウェビナー参加者</span>
+      <div class="rs-row">
+        <span class="rs-ind">IT / クラウド</span>
+        <span class="rs-co">さくらインターネット<br>株式会社</span>
+        <span class="rs-problem">AIを契約したが、業務で使えている社員はごく一部だった</span>
+        <span class="rs-result"><span class="m">300</span>名が、自分の業務でAIを使える状態に</span>
       </div>
-      <div class="kpi-card">
-        <span class="num kpi-num">7+</span>
-        <span class="unit">対応業種</span>
+      <div class="rs-row">
+        <span class="rs-ind">建設 / 不動産</span>
+        <span class="rs-co">東証プライム上場<br>建設企業</span>
+        <span class="rs-problem">部門ごとに業務が異なり、全社展開の道筋が見えなかった</span>
+        <span class="rs-result"><span class="m jp">全社</span>横断のAI導入を設計し、段階展開中</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== CASE STUDIES ===== -->
-<section class="case-studies">
-  <div class="container">
-    <span class="label">Case Studies</span>
-    <h2>導入事例</h2>
-    <p class="lead">上場企業を含む多様な業種の企業様に、生成AI活用の成果を実感していただいております。</p>
-  </div>
-</section>
+<!-- CASE STUDIES -->
+<section class="cases-wrap">
 
-<!-- CASE 01 -->
-<div class="case-block">
-  <div class="case-impact">
-    <div class="container">
-      <div class="case-impact-left">
-        <div class="case-impact-sub">IDEATION TIME</div>
-        <div class="case-impact-num">
-          <span class="big-num">1</span>
-          <span class="big-unit">時間</span>
-        </div>
-        <p style="color:rgba(255,255,255,.5);font-size:14px;margin-top:8px;">アイデアの発散から収束まで完了</p>
+  <!-- CASE 01 -->
+  <div class="container hcase">
+    <div class="hcase-top rv">
+      <div class="hcase-num">
+        <div class="s">Ideation Time</div>
+        <div class="big"><b>1</b><i>時間</i></div>
+        <div class="desc">アイデアの発散から収束まで完了</div>
       </div>
-      <div class="case-impact-right">
-        <div class="case-impact-tag">
-          <span class="case-num">CASE 01</span>
-          <span class="industry-tag">化学 / 素材</span>
-        </div>
+      <div class="hcase-meta">
+        <div class="mtag"><span class="badge">CASE 01</span><span class="ind">化学 / 素材</span></div>
         <h3>新素材アイディエーションの革新</h3>
-        <div class="company-name">東証プライム上場 総合科学メーカー</div>
+        <div class="co">東証プライム上場 総合化学メーカー</div>
       </div>
     </div>
-  </div>
-  <div class="case-content">
-    <div class="container">
-      <div class="case-before">
-        <div class="case-before-label">BEFORE</div>
-        <h4>課題</h4>
-        <p>新規事業探索は1,000件のうち成功するのはわずか3件。社内に十分な時間的リソースはなく、外部に市場調査を依頼する莫大な予算もない。新素材の用途探索は研究者の経験と勘に依存しており、スピードとスケールの両立が困難な状態でした。</p>
+    <div class="hcase-ba rv">
+      <div>
+        <div class="col-l">Before</div>
+        <p>新規事業探索は<span class="hl">1,000件のうち成功はわずか3件</span>。社内に十分な時間的リソースはなく、外部調査の莫大な予算もない。新素材の用途探索は<strong>研究者の経験と勘に依存</strong>しており、スピードとスケールの両立が困難な状態でした。</p>
       </div>
-      <div class="case-after">
-        <div class="case-after-label">AFTER</div>
-        <h4>導入内容と成果</h4>
-        <p>生成AIによる新素材アイディエーション手法を構築。市場性・技術難易度・自社方針適合度の3観点でアイデアを定量評価するプロンプトを設計し、発散から収束までのプロセスを体系化しました。</p>
-        <ul class="results-list">
-          <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>1時間でアイデアの発散から収束まで完了する手法を確立</li>
-          <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>このアイディエーション手法でビジネスモデル特許を出願中</li>
-          <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>自社だけでは到達できなかった新用途の切り口をAIが複数提示</li>
+      <div>
+        <div class="col-l aft">After</div>
+        <p><strong>生成AIによる新素材アイディエーション手法を構築。</strong>市場性・技術難易度・自社方針適合度の<strong>3観点で定量評価</strong>するプロンプトを設計し、発散から収束までのプロセスを体系化しました。</p>
+        <ul>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span class="hl">1時間</span>で発散から収束まで完了する手法を確立</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>このアイディエーション手法で<strong>ビジネスモデル特許を出願中</strong></li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>自社だけでは到達できなかった<strong>新用途の切り口</strong>をAIが複数提示</li>
         </ul>
       </div>
     </div>
-  </div>
-  <div class="case-point-strip">
-    <div class="container">
-      <span class="point-badge">POINT</span>
-      <p>単なるコスト削減ではなく、R&Dの意思決定スピードと質を根本から変えた事例。知的生産プロセスそのものをAIで再設計しました。</p>
+    <div class="hcase-point rv">
+      <span class="pl">Point</span>
+      <p>単なるコスト削減ではなく、<strong>R&Dの意思決定スピードと質を根本から変えた</strong>事例。知的生産プロセスそのものをAIで再設計しました。</p>
     </div>
   </div>
-</div>
 
-<!-- CASE 02 -->
-<div class="case-block">
-  <div class="case-impact" style="background:var(--tw-electric-dark);">
-    <div class="container">
-      <div class="case-impact-left">
-        <div class="case-impact-sub">ANNUAL SAVINGS</div>
-        <div class="case-impact-num">
-          <span class="big-num">数百</span>
-          <span class="big-unit">万円</span>
-        </div>
-        <p style="color:rgba(255,255,255,.5);font-size:14px;margin-top:8px;">外部コンサル委託費を大幅に削減</p>
+  <!-- CASE 02 -->
+  <div class="container hcase">
+    <div class="hcase-top rv">
+      <div class="hcase-num">
+        <div class="s">Annual Savings</div>
+        <div class="big"><b class="jp">数百</b><i>万円</i></div>
+        <div class="desc">外部コンサル委託費を大幅に削減</div>
       </div>
-      <div class="case-impact-right">
-        <div class="case-impact-tag">
-          <span class="case-num">CASE 02</span>
-          <span class="industry-tag">医薬 / ヘルスケア</span>
-        </div>
+      <div class="hcase-meta">
+        <div class="mtag"><span class="badge">CASE 02</span><span class="ind">医薬 / ヘルスケア</span></div>
         <h3>リサーチ外注費の大幅削減と内製化</h3>
-        <div class="company-name">大手製薬企業</div>
+        <div class="co">外資系大手製薬企業</div>
       </div>
     </div>
-  </div>
-  <div class="case-content">
-    <div class="container">
-      <div class="case-before">
-        <div class="case-before-label">BEFORE</div>
-        <h4>課題</h4>
-        <p>疾患・薬剤に関する市場リサーチを外部コンサル会社に委託しており、年間数百万円規模の外注費が発生。アウトプットのみが納品されるためリサーチノウハウが社内に蓄積されず、「痒い所に手が届かない」状態が常態化していました。</p>
+    <div class="hcase-ba rv">
+      <div>
+        <div class="col-l">Before</div>
+        <p>疾患・薬剤の市場リサーチを外部コンサルに委託しており、<span class="hl">年間数百万円規模の外注費</span>が発生。アウトプットのみ納品されるため<strong>リサーチノウハウが社内に蓄積されず</strong>、「痒い所に手が届かない」状態が常態化していました。</p>
       </div>
-      <div class="case-after">
-        <div class="case-after-label">AFTER</div>
-        <h4>導入内容と成果</h4>
-        <p>対面研修を複数回実施し、Deep Research機能を活用した市場リサーチの内製化を推進。プロンプトBPO（業務代行）と伴走支援を組み合わせ、社員が自律的にリサーチできる環境を構築しました。</p>
-        <ul class="results-list">
-          <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>リサーチを完全に内製化 — 社員が誰でも・いつでも実施可能に</li>
-          <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>外部コンサルへの委託費を大幅に削減（年間数百万円規模）</li>
-          <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>リサーチ完了までのスピードも大幅に短縮</li>
+      <div>
+        <div class="col-l aft">After</div>
+        <p><strong>市場リサーチの内製化</strong>を推進。Deep Research機能を活用した対面研修を複数回実施し、プロンプトBPO（業務代行）と伴走支援を組み合わせて、<strong>社員が自律的にリサーチできる環境</strong>を構築しました。</p>
+        <ul>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>リサーチを完全に内製化。<strong>社員が誰でも・いつでも実施可能に</strong></li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>外部コンサルへの委託費を<span class="hl">年間数百万円規模で削減</span></li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>リサーチ完了までの<strong>スピードも大幅に短縮</strong></li>
         </ul>
       </div>
     </div>
-  </div>
-  <div class="case-point-strip">
-    <div class="container">
-      <span class="point-badge">POINT</span>
-      <p>外注費の削減だけでなく、「リサーチ力」という組織ケイパビリティそのものを獲得。自社の意思決定を外部に依存しない体制への転換を実現しました。</p>
+    <div class="hcase-point rv">
+      <span class="pl">Point</span>
+      <p>外注費の削減だけでなく、<strong>「リサーチ力」という組織ケイパビリティそのもの</strong>を獲得。自社の意思決定を外部に依存しない体制への転換を実現しました。</p>
     </div>
   </div>
-</div>
 
-<!-- CASE 03 -->
-<div class="case-block">
-  <div class="case-impact">
-    <div class="container">
-      <div class="case-impact-left">
-        <div class="case-impact-sub">TRAINING SCALE</div>
-        <div class="case-impact-num">
-          <span class="big-num">300</span>
-          <span class="big-unit">名</span>
-        </div>
-        <p style="color:rgba(255,255,255,.5);font-size:14px;margin-top:8px;">全社員を対象にした実践型AI研修</p>
+  <!-- CASE 03 -->
+  <div class="container hcase">
+    <div class="hcase-top rv">
+      <div class="hcase-num">
+        <div class="s">Training Scale</div>
+        <div class="big"><b>300</b><i>名</i></div>
+        <div class="desc">全社員を対象にした実践型AI研修</div>
       </div>
-      <div class="case-impact-right">
-        <div class="case-impact-tag">
-          <span class="case-num">CASE 03</span>
-          <span class="industry-tag">IT / クラウド</span>
-        </div>
+      <div class="hcase-meta">
+        <div class="mtag"><span class="badge">CASE 03</span><span class="ind">IT / クラウド</span></div>
         <h3>全社員対象の生成AI研修</h3>
-        <div class="company-name">さくらインターネット株式会社</div>
+        <div class="co">さくらインターネット株式会社</div>
       </div>
     </div>
-  </div>
-  <div class="case-content">
-    <div class="container">
-      <div class="case-before">
-        <div class="case-before-label">BEFORE</div>
-        <h4>課題</h4>
-        <p>生成AIツールの法人契約は完了しているが、実際に業務で活用できている社員はごく一部。「何に使えるのか」が現場レベルで浸透しておらず、投資対効果が見えない状態でした。</p>
+    <div class="hcase-ba rv">
+      <div>
+        <div class="col-l">Before</div>
+        <p>生成AIツールの法人契約は完了しているが、<strong>業務で活用できている社員はごく一部</strong>。「何に使えるのか」が現場に浸透しておらず、<strong>投資対効果が見えない</strong>状態でした。</p>
       </div>
-      <div class="case-after">
-        <div class="case-after-label">AFTER</div>
-        <h4>導入内容と成果</h4>
-        <p>全社員300名を対象に、部門別の業務文脈に即した実践型の生成AI研修を実施。「自分の業務でどう使うか」を理解した状態でAIを活用できる設計としました。</p>
-        <ul class="results-list">
-          <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>全社員がAIを「自分の業務で使える」状態を実現</li>
-          <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>部門ごとの具体的な活用シーンを体系化</li>
-          <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>導入後の自律的な活用が定着し、継続的な業務改善へ</li>
+      <div>
+        <div class="col-l aft">After</div>
+        <p><span class="hl">全社員300名</span>を対象に、<strong>部門別の業務文脈に即した実践型研修</strong>を実施。「自分の業務でどう使うか」を理解した状態でAIを使える設計としました。</p>
+        <ul>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>全社員がAIを<strong>「自分の業務で使える」状態</strong>に</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>部門ごとの<strong>具体的な活用シーン</strong>を体系化</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>導入後の<strong>自律的な活用が定着</strong>し、継続的な業務改善へ</li>
         </ul>
       </div>
     </div>
-  </div>
-  <div class="case-point-strip">
-    <div class="container">
-      <span class="point-badge">POINT</span>
-      <p>300名規模の組織に対して、一律の研修ではなく業務文脈に合わせた設計を行うことで、「使われるAI」への転換を実現しました。</p>
+    <div class="hcase-point rv">
+      <span class="pl">Point</span>
+      <p>300名規模の組織に対して、一律の研修ではなく<strong>業務文脈に合わせた設計</strong>を行うことで、「使われるAI」への転換を実現しました。</p>
     </div>
   </div>
-</div>
 
-<!-- CASE 04 -->
-<div class="case-block">
-  <div class="case-impact" style="background:var(--tw-electric-dark);">
-    <div class="container">
-      <div class="case-impact-left">
-        <div class="case-impact-sub">SCOPE</div>
-        <div class="case-impact-num">
-          <span class="big-num" style="font-size:clamp(48px,7vw,80px);">全社</span>
-        </div>
-        <p style="color:rgba(255,255,255,.5);font-size:14px;margin-top:8px;">複数部門にまたがるAI導入設計</p>
+  <!-- CASE 04 -->
+  <div class="container hcase">
+    <div class="hcase-top rv">
+      <div class="hcase-num">
+        <div class="s">Scope</div>
+        <div class="big"><b class="jp">全社</b></div>
+        <div class="desc">複数部門にまたがるAI導入設計</div>
       </div>
-      <div class="case-impact-right">
-        <div class="case-impact-tag">
-          <span class="case-num">CASE 04</span>
-          <span class="industry-tag">建設 / 不動産</span>
-        </div>
+      <div class="hcase-meta">
+        <div class="mtag"><span class="badge">CASE 04</span><span class="ind">建設 / 不動産</span><span class="ongoing">進行中</span></div>
         <h3>全社AI活用支援</h3>
-        <div class="company-name">東証プライム上場 建設企業</div>
+        <div class="co">東証プライム上場 建設企業</div>
       </div>
     </div>
-  </div>
-  <div class="case-content">
-    <div class="container">
-      <div class="case-before">
-        <div class="case-before-label">BEFORE</div>
-        <h4>課題</h4>
-        <p>経営層はAI活用を掲げているが、部門ごとに業務特性が大きく異なり、全社で統一的にAIを展開する道筋が見えない状態でした。</p>
+    <div class="hcase-ba rv">
+      <div>
+        <div class="col-l">Before</div>
+        <p>経営層はAI活用を掲げているが、部門ごとに業務特性が大きく異なり、<strong>全社で統一的に展開する道筋が見えない</strong>状態でした。</p>
       </div>
-      <div class="case-after">
-        <div class="case-after-label">AFTER</div>
-        <h4>導入内容と成果</h4>
-        <p>複数部門にまたがるAI導入設計を伴走中。部門ごとの業務特性を踏まえた導入計画を策定し、段階的な展開を進めています。</p>
-        <ul class="results-list">
-          <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>部門別のAI活用ロードマップを策定</li>
-          <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>先行部門での成功事例を横展開する仕組みを構築</li>
-          <li><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>全社規模でのAI活用体制を段階的に実現中</li>
+      <div>
+        <div class="col-l aft">After</div>
+        <p><strong>複数部門にまたがるAI導入設計</strong>を伴走中。部門ごとの業務特性を踏まえた導入計画を策定し、<strong>段階的な全社展開</strong>を進めています。</p>
+        <ul>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>部門別の<strong>AI活用ロードマップ</strong>を策定</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>先行部門の成功事例を<strong>横展開する仕組み</strong>を構築</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span class="hl">全社規模</span>でのAI活用体制を段階的に実現中</li>
         </ul>
       </div>
     </div>
-  </div>
-  <div class="case-point-strip">
-    <div class="container">
-      <span class="point-badge">POINT</span>
-      <p>組織全体でのAI活用定着を目指し、「一部門の成功」を「全社の標準」に変えるための伴走支援を継続しています。</p>
+    <div class="hcase-point rv">
+      <span class="pl">Point</span>
+      <p>組織全体でのAI活用定着を目指し、<strong>「一部門の成功」を「全社の標準」に変える</strong>ための伴走支援を継続しています。</p>
     </div>
   </div>
-</div>
 
-<!-- ===== INDUSTRIES ===== -->
-<section class="industries">
+</section>
+
+<!-- INDUSTRIES -->
+<section class="industries" id="industries">
   <div class="container">
-    <span class="label">Industries</span>
-    <h2>対応業種</h2>
-    <p class="lead">7つ以上の業種で導入実績がございます。業種固有の業務文脈を理解した上で、最適なAI活用を設計いたします。</p>
-    <div class="industry-grid">
-      <div class="industry-card">
-        <div class="industry-icon">IT</div>
-        <h3>IT / クラウド</h3>
-      </div>
-      <div class="industry-card">
-        <div class="industry-icon">Mf</div>
-        <h3>化学 / 素材</h3>
-      </div>
-      <div class="industry-card">
-        <div class="industry-icon">Cn</div>
-        <h3>建設 / 不動産</h3>
-      </div>
-      <div class="industry-card">
-        <div class="industry-icon">Fn</div>
-        <h3>金融 / 保険</h3>
-      </div>
-      <div class="industry-card">
-        <div class="industry-icon">Md</div>
-        <h3>医療 / ヘルスケア</h3>
-      </div>
-      <div class="industry-card">
-        <div class="industry-icon">Ed</div>
-        <h3>教育 / 人材</h3>
-      </div>
-      <div class="industry-card">
-        <div class="industry-icon">Sv</div>
-        <h3>サービス / コンサル</h3>
-      </div>
+    <div class="sec-head rv">
+      <span class="tag">Industries <span>対応業種</span></span>
+      <h2>対応業種</h2>
+      <p class="lead">7つ以上の業種で導入実績がございます。<strong>業種固有の業務文脈を理解した上で</strong>、最適なAI活用を設計いたします。</p>
+    </div>
+    <div class="ind-grid rvg">
+      <div class="ind-cell"><div class="ic">IT</div><h3>IT / クラウド</h3></div>
+      <div class="ind-cell"><div class="ic">Mat</div><h3>化学 / 素材</h3></div>
+      <div class="ind-cell"><div class="ic">Con</div><h3>建設 / 不動産</h3></div>
+      <div class="ind-cell"><div class="ic">Fin</div><h3>金融 / 保険</h3></div>
+      <div class="ind-cell"><div class="ic">Med</div><h3>医療 / ヘルスケア</h3></div>
+      <div class="ind-cell"><div class="ic">Edu</div><h3>教育 / 人材</h3></div>
+      <div class="ind-cell"><div class="ic">Svc</div><h3>サービス / コンサル</h3></div>
+      <div class="ind-cell"><div class="ic">+</div><h3>その他業種にも対応</h3></div>
     </div>
   </div>
 </section>
 
-<!-- ===== FINAL CTA ===== -->
-<section class="final-cta">
+<!-- FINAL CTA -->
+<section class="final" id="contact">
   <div class="container">
     <h2>貴社の業種でも、成果を出せます。</h2>
-    <p>まずは30分、お話をお聞かせください。</p>
-    <div class="btn-group">
-      <a href="contact.html" class="btn btn--white">無料相談に申し込む</a>
-      <a href="contact.html?type=document" class="btn" style="background:transparent;border:2px solid var(--tw-paper);">資料を請求する</a>
+    <p>まずは30分、現状の課題をお聞かせください。<br>37社・2,500名の支援で培った手法で、最適な始め方をその場で整理します。</p>
+    <div class="actions">
+      <a href="contact.html" class="btn btn--on-blue">無料相談に申し込む</a>
+      <a href="library/" class="btn btn--on-blue-ghost">活用事例集をもらう（無料）</a>
     </div>
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
+<!-- FOOTER -->
 <footer>
   <div class="container">
     <div class="footer-inner">
       <div class="footer-brand">
-        <div class="logo">Tech<span>Worker</span></div>
+        <div class="logo">Tech<i>Worker</i></div>
         <p>企業向け生成AIコンサルティング<br>株式会社TechWorker</p>
-        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:13px;font-weight:700;color:var(--tw-slate);text-decoration:none;transition:color .2s;"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
       </div>
       <div class="footer-col">
         <h4>サービス</h4>
@@ -807,144 +610,65 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
         <a href="contact.html">無料相談</a>
         <a href="contact.html?type=document">資料請求</a>
         <a href="privacy.html">プライバシーポリシー</a>
-        <p style="margin-top:12px;">〒169-0051<br>東京都新宿区西早稲田一丁目22番3号</p>
+        <p>〒169-0051<br>東京都新宿区西早稲田一丁目22番3号</p>
       </div>
     </div>
-  </div>
-  <div class="container">
-    <p class="copyright">&copy; 2026 TechWorker Inc. All rights reserved.</p>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
   </div>
 </footer>
 
 <script>
-/* ===== LOADING SCREEN ===== */
+/* nav shadow on scroll */
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>40);},{passive:true});
+
+/* mobile menu */
 (function(){
-  window.addEventListener('load', function(){
-    var loader = document.getElementById('loader');
-    setTimeout(function(){
-      loader.style.opacity = '0';
-      loader.style.visibility = 'hidden';
-      document.body.classList.add('loaded');
-    }, 1200);
-  });
-})();
-
-/* ===== CARD TILT EFFECT ===== */
-(function(){
-  var cards = document.querySelectorAll('.kpi-card, .case-block, .industry-card');
-  cards.forEach(function(card){
-    card.style.transition = 'transform .3s ease, box-shadow .3s ease';
-    card.addEventListener('mousemove', function(e){
-      var rect = card.getBoundingClientRect();
-      var x = (e.clientX - rect.left) / rect.width - 0.5;
-      var y = (e.clientY - rect.top) / rect.height - 0.5;
-      card.style.transform = 'perspective(600px) rotateX(' + (-y * 6) + 'deg) rotateY(' + (x * 6) + 'deg) scale(1.02)';
-      card.style.boxShadow = '0 12px 40px rgba(0,94,255,.1)';
-    });
-    card.addEventListener('mouseleave', function(){
-      card.style.transform = 'perspective(600px) rotateX(0) rotateY(0) scale(1)';
-      card.style.boxShadow = '';
-    });
-  });
-})();
-
-/* ===== PARALLAX SECTIONS ===== */
-(function(){
-  var parallaxEls = document.querySelectorAll('.kpi-section h2, .final-cta h2');
-  window.addEventListener('scroll', function(){
-    parallaxEls.forEach(function(el){
-      var rect = el.getBoundingClientRect();
-      var center = rect.top + rect.height / 2;
-      var viewCenter = window.innerHeight / 2;
-      var offset = (center - viewCenter) * 0.05;
-      el.style.transform = 'translateY(' + offset + 'px)';
-    });
-  }, { passive: true });
-})();
-
-/* ===== SCROLL REVEAL ===== */
-(function(){
-  var reveals = document.querySelectorAll(
-    '.cases-hero, .kpi-card, .case-block, .industry-card, .final-cta'
-  );
-  var style = document.createElement('style');
-  style.textContent =
-    '.reveal { opacity: 0; transform: translateY(40px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }' +
-    '.reveal.visible { opacity: 1; transform: translateY(0); }' +
-    '.reveal-scale { opacity: 0; transform: scale(.92); transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1); }' +
-    '.reveal-scale.visible { opacity: 1; transform: scale(1); }';
-  document.head.appendChild(style);
-
-  reveals.forEach(function(el){
-    el.classList.add('reveal');
-    var siblings = el.parentElement ? Array.from(el.parentElement.children).filter(function(c){ return c.classList.contains('reveal'); }) : [];
-    var idx = siblings.indexOf(el);
-    if (idx > 0) el.style.transitionDelay = (idx * 0.1) + 's';
-  });
-
-  var observer = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-
-  document.querySelectorAll('.reveal, .reveal-scale').forEach(function(el){
-    observer.observe(el);
-  });
-})();
-
-/* ===== KPI COUNTER ANIMATION ===== */
-(function(){
-  function animateCounter(el, target, suffix) {
-    var start = 0;
-    var duration = 1800;
-    var startTime = null;
-    function ease(t) { return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2; }
-    function step(ts) {
-      if (!startTime) startTime = ts;
-      var progress = Math.min((ts - startTime) / duration, 1);
-      var val = Math.round(ease(progress) * target);
-      el.textContent = val.toLocaleString() + suffix;
-      if (progress < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(open){
+    document.body.classList.toggle('menu-open',open);
+    hamb.setAttribute('aria-expanded',open?'true':'false');
+    hamb.setAttribute('aria-label',open?'メニューを閉じる':'メニューを開く');
+    mmenu.setAttribute('aria-hidden',open?'false':'true');
+    document.body.style.overflow=open?'hidden':'';
   }
-
-  var kpiEls = document.querySelectorAll('.kpi-num');
-  var kpiObserver = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if (entry.isIntersecting) {
-        var el = entry.target;
-        var text = el.textContent.trim();
-        var suffix = '';
-        if (text.indexOf('+') !== -1) { suffix = '+'; text = text.replace('+',''); }
-        var num = parseInt(text.replace(/,/g, ''), 10);
-        if (!isNaN(num)) animateCounter(el, num, suffix);
-        kpiObserver.unobserve(el);
-      }
-    });
-  }, { threshold: 0.5 });
-  kpiEls.forEach(function(el){ kpiObserver.observe(el); });
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+  matchMedia('(min-width:861px)').addEventListener('change',function(e){if(e.matches)setMenu(false);});
 })();
 
-/* ===== NAV SCROLL EFFECT ===== */
-(function(){
-  var nav = document.querySelector('nav');
-  window.addEventListener('scroll', function(){
-    var y = window.scrollY;
-    if (y > 80) {
-      nav.style.background = 'rgba(244,246,249,.98)';
-      nav.style.boxShadow = '0 1px 12px rgba(0,94,255,.06)';
-    } else {
-      nav.style.background = 'rgba(244,246,249,.92)';
-      nav.style.boxShadow = 'none';
-    }
-  }, { passive: true });
-})();
+/* scroll reveal */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv,.rvg').forEach(function(el){io.observe(el);});
+
+/* count-up for figures */
+function countUp(el){
+  var raw=el.textContent.trim();var suf='';var t=raw;
+  if(t.indexOf('%')>-1){suf='%';t=t.replace('%','');}
+  var dec=t.indexOf('.')>-1;
+  var target=parseFloat(t.replace(/,/g,''));if(isNaN(target))return;
+  var hasPlus=el.querySelector('sub')?'+':'';
+  var start=null,dur=1500;
+  function step(ts){if(!start)start=ts;var p=Math.min((ts-start)/dur,1);var e=1-Math.pow(1-p,3);var v=e*target;
+    var out=dec?v.toFixed(1):Math.round(v).toLocaleString();
+    el.innerHTML=out+suf+(hasPlus?'<sub>+</sub>':'');
+    if(p<1)requestAnimationFrame(step);}
+  requestAnimationFrame(step);
+}
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){countUp(e.target);io2.unobserve(e.target);}});},{threshold:.6});
+  document.querySelectorAll('.fig .n').forEach(function(el){io2.observe(el);});
+}
+
+/* smooth anchor offset */
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var id=this.getAttribute('href');if(id==='#'||id.length<2)return;
+    var t=document.querySelector(id);if(!t)return;e.preventDefault();
+    scrollTo({top:t.getBoundingClientRect().top+scrollY-80,behavior:'smooth'});
+  });
+});
 </script>
-
 </body>
 </html>

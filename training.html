@@ -1,0 +1,1445 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Claude Code 法人研修 | 株式会社TechWorker</title>
+<meta name="description" content="Claude Codeを「個人スキル」から「組織の武器」へ。37社・2,500名の生成AI研修実績。人材開発支援助成金「事業展開等リスキリング支援コース」対応、4回完結の法人研修。無料セットアップ体験会・無料セキュリティ診断あり。" />
+<link rel="canonical" href="https://techworker.co.jp/training.html" />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Claude Code 法人研修 | 株式会社TechWorker" />
+<meta property="og:description" content="Claude Codeを「個人スキル」から「組織の武器」へ。37社・2,500名の研修実績。助成金（最大75%）対応、4回完結の法人研修。" />
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png" />
+<meta property="og:url" content="https://techworker.co.jp/training.html" />
+<meta property="og:site_name" content="TechWorker" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Claude Code 法人研修 | 株式会社TechWorker" />
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper:    #F4F6F9;
+    --paper-2:  #ECEFF4;
+    --paper-3:  #E4E8EF;
+    --ink:      #0D1117;
+    --blue:     #005EFF;
+    --blue-deep:#003DAA;
+    --slate:    #4A586C;
+    --slate-2:  #586679;
+    --emerald:  #00B894;
+    --line:     rgba(13,17,23,0.14);
+    --line-soft:rgba(13,17,23,0.08);
+
+    /* 本番HP（Projects/techworker-hp）と統一: IBM Plex Sans / IBM Plex Sans JP */
+    --jp:    'IBM Plex Sans JP','IBM Plex Sans',system-ui,sans-serif;
+    --en:    'IBM Plex Sans','IBM Plex Sans JP',system-ui,sans-serif;
+    --serif: 'IBM Plex Sans JP','IBM Plex Sans',system-ui,sans-serif;
+    --mono:  'IBM Plex Sans','IBM Plex Sans JP',system-ui,sans-serif;
+
+    --mx: clamp(20px, 5vw, 96px);
+  }
+
+  * , *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--jp);
+    font-weight: 400;
+    line-height: 1.85;
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+  /* paper grain */
+  body::before {
+    content: ""; position: fixed; inset: 0; z-index: 1; pointer-events: none;
+    opacity: 0.32; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  }
+  img, svg { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; cursor: pointer; }
+  :focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 2px; }
+  /* 本文の汎用強調（まとまり・視認性向上） */
+  .ib { font-weight: 700; color: var(--ink); }
+  .bb { font-weight: 700; color: var(--blue); }
+
+  /* ---------- layout primitives ---------- */
+  .wrap { width: 100%; padding-left: var(--mx); padding-right: var(--mx); }
+  .col { max-width: 1280px; margin: 0 auto; }
+
+  .rule { height: 1px; background: var(--line); border: 0; margin: 0; }
+  .rule-ink { height: 2px; background: var(--ink); border: 0; margin: 0; }
+
+  /* kicker / index — mono spec labels */
+  .kicker {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--slate);
+    display: inline-flex; align-items: center; gap: 12px;
+  }
+  .kicker .sq { width: 7px; height: 7px; background: var(--blue); display: inline-block; }
+  .idx {
+    font-family: var(--mono);
+    font-weight: 500;
+    color: var(--blue);
+    letter-spacing: 0.04em;
+  }
+
+  /* section head — editorial: meta gutter + offset heading */
+  section { position: relative; z-index: 2; }
+  .sec { padding: clamp(72px, 9vw, 130px) 0; }
+  .sec-head {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 0 48px;
+    align-items: start;
+    padding-top: 26px;
+    border-top: 2px solid var(--ink);
+    margin-bottom: clamp(40px, 5vw, 72px);
+  }
+  .sec-head .meta { font-family: var(--jp); font-weight: 500; font-size: 13px; letter-spacing: 0.14em; color: var(--slate); line-height: 1.95; }
+  .sec-head .meta .n { display:block; font-family: var(--mono); font-size: 13px; color: var(--blue); margin-bottom: 9px; letter-spacing: 0.04em; }
+  .h2 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(27px, 3.7vw, 47px);
+    line-height: 1.42;
+    letter-spacing: 0.01em;
+    margin: 0;
+    color: var(--ink);
+  }
+  .h2 .b { color: var(--blue); }
+  .lead {
+    margin: 22px 0 0;
+    font-size: clamp(15px, 1.3vw, 17px);
+    color: var(--slate);
+    max-width: 640px;
+    line-height: 2;
+  }
+
+  /* buttons */
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--jp);
+    font-weight: 700;
+    font-size: 15px;
+    padding: 15px 26px;
+    border: 1.5px solid transparent;
+    transition: background .18s, color .18s, border-color .18s, transform .18s;
+    white-space: nowrap;
+  }
+  .btn .ar { font-family: var(--mono); transition: transform .18s; }
+  .btn:hover .ar { transform: translateX(4px); }
+  .btn-blue { background: var(--blue); color: var(--paper); border-color: var(--blue); }
+  .btn-blue:hover { background: var(--blue-deep); border-color: var(--blue-deep); }
+  .btn-line { background: transparent; color: var(--ink); border-color: var(--ink); }
+  .btn-line:hover { color: var(--blue); border-color: var(--blue); }
+  .btn-paper { background: var(--paper); color: var(--blue); border-color: var(--paper); }
+  .btn-paper:hover { background: var(--paper-2); }
+  .btn-onblue { background: transparent; color: var(--paper); border-color: rgba(244,246,249,0.5); }
+  .btn-onblue:hover { background: var(--paper); color: var(--blue); border-color: var(--paper); }
+
+  /* reveal on scroll */
+  .rv { opacity: 0; transform: translateY(24px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+  .rv.in { opacity: 1; transform: none; }
+
+  /* ============ HEADER ============ */
+  .hd {
+    position: sticky; top: 0; z-index: 40;
+    background: rgba(244,246,249,0.82);
+    backdrop-filter: saturate(160%) blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .hd .row { display: flex; align-items: center; justify-content: space-between; height: 66px; }
+  .brand { display: inline-flex; align-items: baseline; gap: 10px; }
+  .brand .mk {
+    font-family: var(--en); font-weight: 800; font-size: 17px; letter-spacing: -0.04em;
+    color: var(--ink); border-bottom: 3px solid var(--blue); line-height: 1.1; padding-bottom: 1px;
+  }
+  .brand .sub { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--slate-2); text-transform: uppercase; }
+  .hd nav { display: flex; gap: 28px; }
+  .hd nav a { font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; color: var(--slate); transition: color .15s; }
+  .hd nav a:hover { color: var(--blue); }
+  .hd .cta { font-family: var(--jp); font-weight: 700; font-size: 13px; color: var(--paper); background: var(--blue); padding: 10px 18px; display: inline-flex; gap: 8px; align-items: center; }
+  .hd .cta:hover { background: var(--blue-deep); }
+
+  /* ============ HERO ============ */
+  .hero { padding: clamp(48px, 7vw, 104px) 0 0; }
+  .hero-top { font-family: var(--jp); font-weight: 500; font-size: 13px; letter-spacing: 0.1em; color: var(--slate); display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .hero-top .tag { color: var(--blue); border: 1px solid var(--blue); padding: 5px 12px; font-weight: 600; }
+  .hero-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: end; margin-top: 40px; }
+  .hero h1 {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: clamp(38px, 6.4vw, 84px);
+    line-height: 1.28;
+    letter-spacing: 0.01em;
+    margin: 0;
+  }
+  .hero h1 .b { color: var(--blue); }
+  .hero h1 .thin { font-weight: 500; }
+  .hero-claim {
+    margin-top: 32px;
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(17px, 1.7vw, 22px);
+    letter-spacing: 0.02em;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+  .hero-claim .b { color: var(--blue); }
+  .hero-sub { margin-top: 14px; font-size: 15px; color: var(--slate); line-height: 2; max-width: 540px; }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 34px; }
+  .hero-links { display: flex; gap: 22px; margin-top: 18px; flex-wrap: wrap; }
+  .hero-links a { font-family: var(--mono); font-size: 13px; color: var(--blue); border-bottom: 1px solid var(--blue); padding-bottom: 2px; }
+
+  /* spec ledger */
+  .ledger { border-top: 2px solid var(--ink); }
+  .ledger .lr { display: grid; grid-template-columns: 92px 1fr; gap: 16px; align-items: baseline; padding: 15px 0; border-bottom: 1px solid var(--line); }
+  .ledger .lk { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: var(--slate-2); text-transform: uppercase; }
+  .ledger .lv { font-family: var(--jp); font-weight: 700; font-size: 16px; color: var(--ink); }
+  .ledger .lv .big { font-family: var(--en); font-weight: 800; font-size: 26px; letter-spacing: -0.02em; color: var(--blue); margin-right: 4px; }
+
+  /* hero proof row */
+  .proof { margin-top: clamp(48px, 6vw, 80px); border-top: 2px solid var(--ink); border-bottom: 1px solid var(--line); display: grid; grid-template-columns: repeat(4, 1fr); }
+  .proof .p { padding: 26px 28px 26px 0; border-right: 1px solid var(--line); }
+  .proof .p:last-child { border-right: 0; }
+  .proof .num { font-family: var(--en); font-weight: 800; font-size: clamp(30px, 3.4vw, 46px); letter-spacing: -0.03em; line-height: 1; color: var(--ink); }
+  .proof .num .u { font-size: 0.42em; color: var(--blue); margin-left: 4px; letter-spacing: 0; }
+  .proof .num.blue { color: var(--blue); }
+  .proof .lb { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--slate); margin-top: 12px; }
+
+  /* ============ PROBLEM ============ */
+  .prob-list { display: grid; gap: 0; }
+  .prob {
+    display: grid; grid-template-columns: 200px 1fr; gap: 48px;
+    padding: 38px 0; border-bottom: 1px solid var(--line); align-items: start;
+  }
+  .prob:first-child { border-top: 1px solid var(--line); }
+  .prob .pn { font-family: var(--en); font-weight: 800; font-size: clamp(40px, 5vw, 66px); line-height: 0.9; color: rgba(0,94,255,0.30); letter-spacing: -0.03em; }
+  .prob h3 { font-family: var(--jp); font-weight: 900; font-size: clamp(19px, 2.1vw, 26px); margin: 0 0 14px; line-height: 1.45; }
+  .prob p { margin: 0; font-size: 15px; color: var(--slate); line-height: 2; max-width: 680px; }
+  .verdict { margin-top: 56px; display: grid; grid-template-columns: 200px 1fr; gap: 48px; }
+  .verdict .vk { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; color: var(--blue); text-transform: uppercase; }
+  .verdict p { margin: 0; font-family: var(--serif); font-weight: 600; font-size: clamp(18px, 2vw, 27px); line-height: 1.9; letter-spacing: 0.01em; }
+  .verdict p .b { color: var(--blue); }
+
+  /* ============ STRENGTH ============ */
+  .str { display: grid; grid-template-columns: 200px 1fr; gap: 48px; padding: 44px 0; border-bottom: 1px solid var(--line); align-items: start; }
+  .str:first-of-type { border-top: 1px solid var(--line); }
+  .str .sk { font-family: var(--mono); }
+  .str .sk .sn { font-family: var(--en); font-weight: 800; font-size: 44px; color: var(--blue); letter-spacing: -0.03em; line-height: 1; }
+  .str .sk .sl { font-size: 11px; letter-spacing: 0.12em; color: var(--slate-2); text-transform: uppercase; margin-top: 8px; display:block; }
+  .str h3 { font-family: var(--jp); font-weight: 900; font-size: clamp(20px, 2.3vw, 30px); margin: 0 0 16px; line-height: 1.4; }
+  .str p { font-size: 15px; color: var(--slate); line-height: 2; margin: 0 0 22px; max-width: 660px; }
+  .str ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; max-width: 640px; }
+  .str li { font-size: 14px; padding: 11px 0 11px 28px; border-top: 1px solid var(--line-soft); position: relative; color: var(--ink); }
+  .str li:first-child { border-top: 0; }
+  .str li::before { content: "→"; position: absolute; left: 0; font-family: var(--mono); color: var(--blue); }
+
+  /* ============ CASES (carousel) ============ */
+  .cases-hint { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 22px; flex-wrap: wrap; }
+  .cases-hint .ch { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; color: var(--slate); display: inline-flex; align-items: center; gap: 10px; }
+  .cases-hint .ch .dragln { width: 40px; height: 1px; background: var(--slate-2); position: relative; }
+  .cases-nav { display: flex; gap: 8px; }
+  .cases-nav button { width: 42px; height: 42px; border: 1px solid var(--ink); background: transparent; color: var(--ink); font-family: var(--mono); font-size: 18px; transition: background .15s, color .15s; }
+  .cases-nav button:hover { background: var(--blue); color: var(--paper); border-color: var(--blue); }
+  .cases-wrap { position: relative; }
+  .cases-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 16px; width: 64px; background: linear-gradient(90deg, rgba(244,246,249,0), var(--paper)); pointer-events: none; }
+  .case-track { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 14px; scrollbar-width: none; -ms-overflow-style: none; }
+  .case-track::-webkit-scrollbar { display: none; }
+  .case-card {
+    flex: 0 0 clamp(320px, 40vw, 440px);
+    scroll-snap-align: start;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-top: 2px solid var(--ink);
+    padding: 30px 30px 32px;
+    display: flex; flex-direction: column;
+  }
+  .case-card.named { border-top-color: var(--blue); background: linear-gradient(180deg, rgba(0,94,255,0.035), transparent 40%); }
+  .case-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+  .case-ind { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--blue); border: 1px solid var(--blue); padding: 5px 10px; }
+  .case-named-tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; color: var(--paper); background: var(--blue); padding: 5px 9px; }
+  .case-co { font-family: var(--serif); font-weight: 700; font-size: 20px; line-height: 1.45; margin: 0 0 4px; letter-spacing: 0.01em; min-height: 2.9em; }
+  .case-sub { font-size: 12.5px; color: var(--slate); margin: 0 0 22px; line-height: 1.7; min-height: 2.55em; }
+  .ba { display: grid; gap: 0; margin-bottom: 22px; }
+  .ba-row { padding: 14px 0; }
+  .ba-row .bl { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; display: inline-block; margin-bottom: 8px; }
+  .ba-row.bef { border-top: 1px solid var(--line); }
+  .ba-row.bef .bl { color: var(--slate-2); }
+  .ba-row.bef p { color: var(--slate); }
+  .ba-row.aft { border-top: 1px solid var(--line); }
+  .ba-row.aft .bl { color: var(--blue); }
+  .ba-row.aft p { color: var(--ink); font-weight: 600; }
+  .ba-row p { margin: 0; font-size: 14px; line-height: 1.75; }
+  .ba-arrow { text-align: center; font-family: var(--mono); color: var(--blue); font-size: 18px; line-height: 1; padding: 2px 0; }
+  .case-facts { margin-top: auto; border-top: 1px solid var(--line); padding-top: 16px; display: flex; flex-direction: column; gap: 9px; }
+  .case-facts .f { display: flex; gap: 10px; font-size: 12.5px; color: var(--slate); line-height: 1.5; }
+  .case-facts .f::before { content: "▪"; color: var(--blue); flex: 0 0 auto; }
+  .case-facts .f b { color: var(--ink); font-weight: 700; }
+
+  /* ============ BLUE BAND ============ */
+  .band { background: var(--blue); color: var(--paper); position: relative; overflow: hidden; }
+  .band::before {
+    content: "✓"; position: absolute; right: -2vw; bottom: -8vw;
+    font-family: var(--en); font-weight: 800;
+    font-size: clamp(220px, 30vw, 460px); line-height: 0.7;
+    color: rgba(244,246,249,0.06); pointer-events: none; user-select: none;
+  }
+  .band-in { display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; padding: clamp(54px, 6vw, 88px) 0; position: relative; }
+  .band-k { font-family: var(--mono); font-size: 12px; letter-spacing: 0.16em; color: rgba(244,246,249,0.75); margin-bottom: 20px; display: inline-flex; align-items: center; gap: 12px; }
+  .band-k::before { content: ""; width: 26px; height: 1px; background: rgba(244,246,249,0.6); }
+  .band h3 { font-family: var(--serif); font-weight: 700; font-size: clamp(22px, 2.7vw, 38px); margin: 0; color: var(--paper); line-height: 1.55; letter-spacing: 0.01em; }
+  .band-opts { display: flex; gap: 10px; margin-top: 26px; flex-wrap: wrap; }
+  .band-opts span { font-family: var(--jp); font-weight: 500; font-size: 13px; color: var(--paper); border: 1px solid rgba(244,246,249,0.42); padding: 8px 15px; }
+  .band-cta { display: inline-flex; align-items: center; gap: 14px; background: var(--paper); color: var(--blue); font-family: var(--jp); font-weight: 700; font-size: 16px; padding: 22px 34px; white-space: nowrap; transition: transform .18s, box-shadow .18s; }
+  .band-cta:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(13,17,23,0.28); }
+  .band-cta .ar { font-family: var(--mono); transition: transform .18s; }
+  .band-cta:hover .ar { transform: translateX(4px); }
+
+  /* ============ STEPS ============ */
+  .steps { border-top: 2px solid var(--ink); }
+  .step { display: grid; grid-template-columns: 88px 1fr 1fr; gap: 40px; padding: 36px 0; border-bottom: 1px solid var(--line); align-items: start; }
+  .step .stn { font-family: var(--en); font-weight: 800; font-size: 40px; color: var(--blue); letter-spacing: -0.03em; line-height: 1; }
+  .step .stn .sl { display: block; font-family: var(--mono); font-size: 10px; color: var(--slate-2); letter-spacing: 0.14em; margin-top: 6px; }
+  .step h4 { font-family: var(--jp); font-weight: 900; font-size: clamp(18px, 1.9vw, 24px); margin: 0 0 8px; }
+  .step .smeta { font-family: var(--mono); font-size: 11px; color: var(--slate); letter-spacing: 0.06em; margin-bottom: 12px; }
+  .step p { margin: 0; font-size: 14px; color: var(--slate); line-height: 1.95; }
+  .step .take { border-left: 2px solid var(--blue); padding-left: 18px; }
+  .step .take .tl { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--blue); text-transform: uppercase; margin-bottom: 10px; }
+  .step .take ul { list-style: none; padding: 0; margin: 0; }
+  .step .take li { font-size: 13.5px; color: var(--ink); padding: 5px 0; }
+  .step .take li::before { content: "▪ "; color: var(--blue); }
+  .after { margin-top: 56px; background: var(--blue-deep); color: var(--paper); padding: clamp(36px,4vw,56px); display: grid; grid-template-columns: 280px 1fr; gap: 44px; align-items: center; }
+  .after .ak { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; color: #8FB8FF; text-transform: uppercase; }
+  .after h3 { font-family: var(--serif); font-weight: 700; font-size: clamp(22px,2.3vw,30px); margin: 14px 0 0; color: var(--paper); line-height: 1.6; letter-spacing: 0.01em; }
+  .after ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  .after li { font-size: 14.5px; color: var(--paper); padding: 14px 0 14px 26px; border-top: 1px solid rgba(244,246,249,0.18); position: relative; }
+  .after li::before { content: "✓"; position: absolute; left: 0; color: #8FB8FF; font-family: var(--mono); }
+
+  /* ============ PROGRAM ============ */
+  .prog { border-top: 2px solid var(--ink); }
+  .pgm { padding: 0; border-bottom: 1px solid var(--line); }
+  .pgm summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 60px 1fr auto; gap: 28px; align-items: center; padding: 30px 0; }
+  .pgm summary::-webkit-details-marker { display: none; }
+  .pgm .pn { font-family: var(--en); font-weight: 800; font-size: 34px; color: var(--blue); letter-spacing: -0.03em; line-height: 1; }
+  .pgm .pt .pl { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: var(--slate); text-transform: uppercase; }
+  .pgm .pt h3 { font-family: var(--jp); font-weight: 900; font-size: clamp(18px, 2vw, 26px); margin: 6px 0 0; }
+  .pgm .pmeta { font-family: var(--mono); font-size: 11px; color: var(--slate); letter-spacing: 0.04em; text-align: right; }
+  .pgm .pplus { font-family: var(--mono); font-size: 24px; color: var(--blue); transition: transform .2s; margin-left: 18px; }
+  .pgm[open] .pplus { transform: rotate(45deg); }
+  .pgm .pbody { display: grid; grid-template-columns: 60px 1fr 1fr; gap: 28px; padding: 0 0 34px; }
+  .pgm .pbody .void { }
+  .pgm .pblock .bl { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--blue); text-transform: uppercase; margin-bottom: 12px; }
+  .pgm .pblock ul { list-style: none; padding: 0; margin: 0; }
+  .pgm .pblock li { font-size: 14px; color: var(--slate); padding: 6px 0 6px 18px; position: relative; line-height: 1.7; }
+  .pgm .pblock li::before { content: "—"; position: absolute; left: 0; color: var(--blue); font-family: var(--mono); }
+  .pgm .goal { background: var(--paper-2); padding: 18px 20px; margin-bottom: 14px; }
+  .pgm .goal .gv { font-size: 15px; font-weight: 700; color: var(--ink); margin: 0; }
+  .pgm .take2 { font-family: var(--mono); font-size: 12px; color: var(--slate); border-top: 1px solid var(--line); padding-top: 14px; }
+  .pgm .take2 b { color: var(--blue); letter-spacing: 0.1em; }
+
+  /* program — outline rows (具体は伏せる) */
+  .pgm-row { display: grid; grid-template-columns: 64px 1fr auto; gap: 28px; align-items: center; padding: 30px 0; border-bottom: 1px solid var(--line); }
+  .pgm-row .pn { font-family: var(--en); font-weight: 800; font-size: 34px; color: var(--blue); letter-spacing: -0.03em; line-height: 1; }
+  .pgm-row .pl { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: var(--slate); text-transform: uppercase; }
+  .pgm-row h3 { font-family: var(--serif); font-weight: 700; font-size: clamp(18px, 2vw, 25px); margin: 7px 0 6px; letter-spacing: 0.01em; }
+  .pgm-row .theme { font-size: 13.5px; color: var(--slate); margin: 0; line-height: 1.7; }
+  .pgm-row .pmeta { font-family: var(--mono); font-size: 11px; color: var(--slate); letter-spacing: 0.04em; text-align: right; white-space: nowrap; }
+  .prog-lock { margin-top: 44px; border: 1px solid var(--ink); padding: 32px 36px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .prog-lock .pl-txt h4 { font-family: var(--serif); font-weight: 700; font-size: 19px; margin: 0 0 8px; letter-spacing: 0.01em; }
+  .prog-lock .pl-txt p { margin: 0; font-size: 13.5px; color: var(--slate); line-height: 1.8; max-width: 640px; }
+
+  /* ============ COMPARE ============ */
+  .cmp { border-top: 2px solid var(--ink); }
+  .cmp .cr { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1.3fr; border-bottom: 1px solid var(--line); }
+  .cmp .cc { padding: 22px 22px 22px 0; font-size: 14px; color: var(--slate); display: flex; align-items: center; }
+  .cmp .cr.head .cc { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--slate-2); align-items: flex-start; flex-direction: column; gap: 4px; padding-top: 26px; }
+  .cmp .cr.head .cc .nm { font-family: var(--jp); font-weight: 700; font-size: 15px; color: var(--ink); letter-spacing: 0; text-transform: none; }
+  .cmp .cc.rec { background: rgba(0,94,255,0.05); border-left: 2px solid var(--blue); padding-left: 20px; color: var(--ink); font-weight: 600; }
+  .cmp .cr.head .cc.rec { color: var(--blue); }
+  .cmp .cr.head .cc.rec .nm { color: var(--blue); }
+  .cmp .rl { font-weight: 700; color: var(--ink); }
+  .cmp .yes::before { content: "→ "; color: var(--blue); font-family: var(--mono); font-weight: 700; }
+  .cmp .no { color: var(--slate-2); }
+  .cmp .no::before { content: "— "; font-family: var(--mono); }
+
+  /* ============ SUBSIDY ============ */
+  .sub-hero { display: grid; grid-template-columns: 0.9fr 1.3fr; gap: clamp(32px,4vw,64px); border-top: 2px solid var(--ink); padding-top: 44px; align-items: start; }
+  .sub-big { font-family: var(--en); font-weight: 800; font-size: clamp(80px, 11vw, 160px); line-height: 0.85; letter-spacing: -0.04em; color: var(--blue); }
+  .sub-big sup { font-size: 0.4em; vertical-align: super; }
+  .sub-big .cap { display: block; font-family: var(--mono); font-size: 13px; letter-spacing: 0.06em; color: var(--slate); margin-top: 18px; -webkit-text-stroke: 0; }
+  .sub-arrow { font-family: var(--mono); font-size: 13px; color: var(--slate); margin-top: 24px; display: flex; align-items: baseline; gap: 14px; }
+  .sub-arrow .frac { font-family: var(--en); font-weight: 800; font-size: 40px; color: var(--ink); }
+  .sub-body p { font-size: 15px; color: var(--slate); line-height: 2.05; margin: 0 0 16px; max-width: 620px; }
+  .sub-body p .b { color: var(--ink); font-weight: 700; }
+  .sub-body p .bl { color: var(--blue); font-weight: 700; }
+  .flow { margin-top: 56px; display: grid; grid-template-columns: repeat(7, 1fr); gap: 0; }
+  .flow .fs { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 6px; }
+  .flow .fs:not(:last-child)::after { content: ""; position: absolute; top: 23px; left: 50%; width: 100%; height: 2px; background: var(--line); z-index: 0; }
+  .flow .fn { width: 46px; height: 46px; border-radius: 50%; background: var(--blue); color: var(--paper); font-family: var(--en); font-weight: 700; font-size: 16px; display: grid; place-items: center; position: relative; z-index: 1; flex-shrink: 0; }
+  .flow .ft { margin-top: 16px; font-family: var(--jp); font-size: 12px; color: var(--slate); line-height: 1.6; letter-spacing: 0; }
+  .sim { margin-top: 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; border: 1px solid var(--ink); padding: 30px 34px; }
+  .sim h4 { font-family: var(--jp); font-weight: 900; font-size: 19px; margin: 0 0 6px; }
+  .sim p { margin: 0; font-family: var(--mono); font-size: 12px; color: var(--slate); }
+
+  /* ============ EXITS ============ */
+  .exits { border-top: 2px solid var(--ink); }
+  .exit { display: grid; grid-template-columns: 88px 1fr auto; gap: 40px; padding: 34px 0; border-bottom: 1px solid var(--line); align-items: center; }
+  .exit .en { font-family: var(--en); font-weight: 800; font-size: 40px; color: rgba(0,94,255,0.30); letter-spacing: -0.03em; }
+  .exit h3 { font-family: var(--jp); font-weight: 900; font-size: clamp(18px,2vw,24px); margin: 0 0 8px; }
+  .exit p { margin: 0; font-size: 14px; color: var(--slate); line-height: 1.9; max-width: 620px; }
+  .exit .rec { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--blue); border: 1px solid var(--blue); padding: 5px 10px; text-transform: uppercase; white-space: nowrap; }
+
+  /* ============ TESTIMONIALS ============ */
+  .tg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 2px solid var(--ink); }
+  .tc { padding: 36px 32px 34px 0; border-right: 1px solid var(--line); }
+  .tc:last-child { border-right: 0; padding-right: 0; }
+  .tc .tm { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--blue); }
+  .tc .tq { font-family: var(--en); font-weight: 800; font-size: 48px; color: var(--blue); line-height: 0.5; margin: 18px 0 14px; }
+  .tc p { font-size: 14.5px; line-height: 2; color: var(--ink); margin: 0; }
+  .tc p em { font-style: normal; font-weight: 700; border-bottom: 2px solid var(--blue); }
+  .tc .who { margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--line); }
+  .tc .who .nm { font-weight: 700; font-size: 13px; }
+  .tc .who .rl { font-family: var(--mono); font-size: 11px; color: var(--slate); margin-top: 2px; }
+
+  /* ============ FIT ============ */
+  .fit { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 2px solid var(--ink); }
+  .fc { padding: 40px 40px 40px 0; }
+  .fc.no { padding-left: 40px; border-left: 1px solid var(--line); }
+  .fc h3 { font-family: var(--jp); font-weight: 900; font-size: 20px; margin: 0 0 24px; display: flex; align-items: center; gap: 12px; }
+  .fc h3 .mk { font-family: var(--mono); font-size: 16px; width: 28px; height: 28px; display: grid; place-items: center; }
+  .fc.yes h3 .mk { background: var(--blue); color: var(--paper); }
+  .fc.no h3 .mk { border: 1.5px solid var(--slate-2); color: var(--slate-2); }
+  .fc ul { list-style: none; padding: 0; margin: 0; }
+  .fc li { font-size: 14.5px; color: var(--slate); padding: 14px 0 14px 24px; border-top: 1px solid var(--line); position: relative; line-height: 1.7; }
+  .fc.yes li::before { content: "→"; position: absolute; left: 0; color: var(--blue); font-family: var(--mono); }
+  .fc.no li::before { content: "×"; position: absolute; left: 2px; color: var(--slate-2); font-family: var(--mono); }
+  .fit-note { margin-top: 28px; font-family: var(--mono); font-size: 13px; color: var(--slate); }
+  .fit-note a { color: var(--blue); border-bottom: 1px solid var(--blue); }
+
+  /* ============ FAQ ============ */
+  .faq { border-top: 2px solid var(--ink); max-width: 920px; }
+  .fq { border-bottom: 1px solid var(--line); }
+  .fq summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 18px; padding: 24px 0; font-weight: 700; font-size: 15.5px; }
+  .fq summary::-webkit-details-marker { display: none; }
+  .fq summary .q { font-family: var(--mono); color: var(--blue); font-weight: 700; flex: 0 0 auto; }
+  .fq summary .pl { margin-left: auto; font-family: var(--mono); color: var(--blue); font-size: 20px; transition: transform .2s; }
+  .fq[open] summary .pl { transform: rotate(45deg); }
+  .fq .a { padding: 0 0 26px 40px; font-size: 14.5px; color: var(--slate); line-height: 2; }
+
+  /* ============ OFFERS ============ */
+  .offers { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 2px solid var(--ink); }
+  .of { padding: 44px 44px 44px 0; }
+  .of.sec2 { padding-left: 44px; border-left: 1px solid var(--line); }
+  .of .obadge { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; color: var(--blue); border: 1px solid var(--blue); padding: 5px 11px; display: inline-block; }
+  .of.sec2 .obadge { color: var(--emerald); border-color: var(--emerald); }
+  .of .ofree { font-family: var(--mono); font-size: 12px; color: var(--slate); margin: 18px 0 6px; letter-spacing: 0.04em; }
+  .of h3 { font-family: var(--serif); font-weight: 700; font-size: clamp(22px, 2.3vw, 29px); margin: 0 0 16px; line-height: 1.5; letter-spacing: 0.01em; }
+  .of .od { font-size: 14.5px; color: var(--slate); line-height: 2; margin: 0 0 22px; }
+  .of .ometa { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+  .of .ometa span { font-family: var(--mono); font-size: 11px; color: var(--slate); border: 1px solid var(--line); padding: 5px 10px; }
+  .of ul { list-style: none; padding: 0; margin: 0 0 28px; }
+  .of li { font-size: 14px; color: var(--ink); padding: 11px 0 11px 26px; border-top: 1px solid var(--line); position: relative; }
+  .of li::before { content: "→"; position: absolute; left: 0; font-family: var(--mono); color: var(--blue); }
+  .of.sec2 li::before { color: var(--emerald); }
+
+  /* mid offers (compact, interstitial) */
+  .midcta-head { margin-bottom: 32px; }
+  .midcta-head .mk { font-family: var(--mono); font-size: 12px; letter-spacing: 0.16em; color: var(--blue); text-transform: uppercase; display: inline-flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .midcta-head .mk::before { content: ""; width: 26px; height: 1px; background: var(--blue); }
+  .midcta-head h3 { font-family: var(--serif); font-weight: 700; font-size: clamp(22px, 2.6vw, 34px); line-height: 1.5; margin: 0; letter-spacing: 0.01em; }
+  .midcta-head h3 .b { color: var(--blue); }
+  .mid-offers { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .mo { background: var(--paper); border: 1px solid var(--line); border-top: 3px solid var(--blue); padding: 30px 32px 32px; display: flex; flex-direction: column; }
+  .mo.sec2 { border-top-color: var(--emerald); }
+  .mo .mb { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; color: var(--blue); border: 1px solid var(--blue); padding: 5px 10px; align-self: flex-start; }
+  .mo.sec2 .mb { color: var(--emerald); border-color: var(--emerald); }
+  .mo h4 { font-family: var(--serif); font-weight: 700; font-size: clamp(19px, 2vw, 24px); line-height: 1.45; margin: 18px 0 10px; letter-spacing: 0.01em; }
+  .mo p { font-size: 14px; color: var(--slate); line-height: 1.85; margin: 0 0 18px; }
+  .mo .mmeta { font-family: var(--mono); font-size: 11px; color: var(--slate-2); letter-spacing: 0.04em; margin-bottom: 24px; }
+  .mo .btn { margin-top: auto; align-self: flex-start; }
+
+  /* application */
+  .apply { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 0; margin-top: 28px; border: 1px solid var(--ink); }
+  .apply .al { background: var(--blue-deep); color: var(--paper); padding: clamp(32px,4vw,48px); }
+  .apply .al .ak { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; color: #8FB8FF; text-transform: uppercase; }
+  .apply .al h3 { font-family: var(--serif); font-weight: 700; font-size: clamp(22px,2.3vw,30px); margin: 14px 0 28px; color: var(--paper); line-height: 1.55; letter-spacing: 0.01em; }
+  .apply .al .ah { font-family: var(--jp); font-weight: 900; color: #8FB8FF; }
+  .apply .al ol { list-style: none; padding: 0; margin: 0; counter-reset: s; }
+  .apply .al li { display: grid; grid-template-columns: 34px 1fr; gap: 12px; padding: 14px 0; border-top: 1px solid rgba(244,246,249,0.16); font-size: 14px; color: var(--paper); align-items: start; }
+  .apply .al li::before { counter-increment: s; content: counter(s, decimal-leading-zero); font-family: var(--mono); font-size: 12px; color: #8FB8FF; padding-top: 3px; }
+  .apply .al .anote { margin-top: 24px; font-family: var(--mono); font-size: 11px; color: var(--paper); opacity: 0.7; line-height: 1.8; }
+  .apply .ar2 { background: var(--paper); padding: clamp(32px,4vw,48px); }
+  .apply .ar2 h3 { font-family: var(--jp); font-weight: 900; font-size: 21px; margin: 0 0 6px; }
+  .apply .ar2 .as { font-family: var(--mono); font-size: 12px; color: var(--slate); margin: 0 0 28px; }
+  .fld { margin-bottom: 18px; }
+  .fld label { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; color: var(--ink); margin-bottom: 8px; text-transform: uppercase; }
+  .fld label .rq { color: var(--blue); margin-left: 6px; }
+  .fld input, .fld select { width: 100%; padding: 13px 14px; border: 1px solid var(--line); background: var(--paper-2); font-family: var(--jp); font-size: 14px; color: var(--ink); transition: border-color .15s, background .15s; }
+  .fld input:focus, .fld select:focus { outline: none; border-color: var(--blue); background: var(--paper); }
+  .submit { width: 100%; justify-content: center; margin-top: 8px; padding: 16px; }
+  .trust { margin-top: 16px; font-family: var(--mono); font-size: 11px; color: var(--slate-2); text-align: center; line-height: 1.7; }
+  .trust a { color: var(--blue); text-decoration: underline; }
+
+  /* ============ FOOTER ============ */
+  footer { border-top: 2px solid var(--ink); padding: clamp(48px,5vw,72px) 0 36px; }
+  footer .frow { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
+  footer .ft { font-family: var(--mono); font-size: 12px; color: var(--slate); line-height: 1.9; margin-top: 14px; max-width: 380px; }
+  footer h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); margin: 0 0 16px; }
+  footer ul { list-style: none; padding: 0; margin: 0; }
+  footer li { padding: 6px 0; }
+  footer li a { font-size: 13px; color: var(--slate); }
+  footer li a:hover { color: var(--blue); }
+  footer .legal { margin-top: 44px; padding-top: 24px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; font-family: var(--mono); font-size: 11px; color: var(--slate-2); flex-wrap: wrap; gap: 10px; }
+
+  /* ============ FLOATING CTA ============ */
+  .float { position: fixed; bottom: 20px; right: 20px; z-index: 50; display: flex; gap: 10px; opacity: 0; transform: translateY(16px); transition: opacity .25s, transform .25s; pointer-events: none; }
+  .float.show { opacity: 1; transform: none; pointer-events: auto; }
+  .float .btn { box-shadow: 0 10px 30px rgba(13,17,23,0.16); padding: 13px 20px; font-size: 14px; }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 1040px) {
+    .hero-grid { grid-template-columns: 1fr; align-items: start; }
+    .sec-head { grid-template-columns: 1fr; gap: 20px; }
+    .sec-head .meta { display: flex; gap: 16px; align-items: baseline; }
+    .sec-head .meta .n { display: inline; margin: 0; }
+    .prob, .verdict, .str { grid-template-columns: 1fr; gap: 16px; }
+    .str .sk { display: flex; align-items: baseline; gap: 14px; }
+    .str .sk .sl { margin-top: 0; }
+    .step { grid-template-columns: 1fr; gap: 16px; }
+    .pgm .pbody { grid-template-columns: 1fr; gap: 18px; }
+    .pgm .pbody .void { display: none; }
+    .after { grid-template-columns: 1fr; gap: 24px; }
+    .after ul { grid-template-columns: 1fr; }
+    .sub-hero { grid-template-columns: 1fr; }
+    .exit { grid-template-columns: 60px 1fr; }
+    .exit .rec { grid-column: 2; justify-self: start; }
+    .tg { grid-template-columns: 1fr; }
+    .tc { border-right: 0; border-bottom: 1px solid var(--line); padding-right: 0; }
+    .apply { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 1040px) {
+    .band-in { grid-template-columns: 1fr; gap: 28px; }
+    .band-cta { justify-self: start; }
+  }
+  @media (max-width: 760px) {
+    .hd nav { display: none; }
+    .case-card { flex-basis: 84vw; }
+    .proof { grid-template-columns: 1fr 1fr; }
+    .proof .p:nth-child(2) { border-right: 0; }
+    .proof .p:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+    .clients { grid-template-columns: 1fr 1fr; }
+    .client:nth-child(2n) { border-right: 0; }
+    .flow { grid-template-columns: 1fr; }
+    .flow .fs { flex-direction: row; align-items: flex-start; text-align: left; gap: 16px; padding: 0 0 26px 0; }
+    .flow .fs:not(:last-child)::after { top: 46px; left: 23px; width: 2px; height: 100%; transform: translateX(-50%); }
+    .flow .ft { margin-top: 0; padding-top: 13px; }
+    .cmp .cr { grid-template-columns: 1fr; }
+    .cmp .cr.head { display: none; }
+    .cmp .cc { border-top: 1px solid var(--line-soft); padding: 14px 0; }
+    .cmp .cc::before { content: attr(data-h); display: block; font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; color: var(--slate-2); text-transform: uppercase; margin-bottom: 6px; }
+    .offers { grid-template-columns: 1fr; }
+    .mid-offers { grid-template-columns: 1fr; }
+    .of { padding-right: 0; border-bottom: 1px solid var(--line); padding-bottom: 36px; }
+    .of.sec2 { padding-left: 0; border-left: 0; }
+    .fit { grid-template-columns: 1fr; }
+    .fc { padding-right: 0; }
+    .fc.no { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); padding-top: 36px; }
+    .footer .frow, footer .frow { grid-template-columns: 1fr; gap: 28px; }
+    .float .btn.hide-sm { display: none; }
+  }
+</style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1264057945446029');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="hd">
+  <div class="wrap"><div class="col row">
+    <a href="/" class="brand">
+      <span class="mk">TechWorker</span>
+      <span class="sub">Claude Code 法人研修</span>
+    </a>
+    <nav>
+      <a href="#problem">課題</a>
+      <a href="#strength">強み</a>
+      <a href="#program">プログラム</a>
+      <a href="#subsidy">助成金</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a href="#cta" class="cta">無料で試す <span>→</span></a>
+  </div></div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap"><div class="col">
+    <div class="hero-top rv">
+      <span class="tag">30名以上の組織向け</span>
+      <span>人材開発支援助成金 対応 ／ Claude Code 法人研修プログラム</span>
+    </div>
+
+    <div class="hero-grid">
+      <div>
+        <h1 class="rv">Claude Code を、<br/><span class="thin">個人スキルから</span><br/><span class="b">組織の武器</span>へ。</h1>
+        <p class="hero-claim rv">AI はエンジンだ。<span class="b">コンテキスト</span>は燃料だ。</p>
+        <p class="hero-sub rv">Claude Code を組織で使い倒すための<span class="bb">「コンテキスト設計」</span>を、<span class="ib">4回完結</span>で貴社に移植する法人研修。<span class="ib">37社・2,500名</span>の生成AI研修実績をベースに、現場の実装知をそのまま伝えます。</p>
+        <div class="hero-ctas rv">
+          <a class="btn btn-blue" href="#cta">無料で試す（体験会・診断）<span class="ar">→</span></a>
+          <a class="btn btn-line" href="https://app.spirinc.com/" target="_blank" rel="noopener">無料相談（30分）</a>
+        </div>
+        <div class="hero-links rv">
+          <a href="#program">プログラムを見る</a>
+          <a href="#subsidy">助成金・料金を見る</a>
+        </div>
+      </div>
+
+      <div class="rv">
+        <div class="ledger">
+          <div class="lr"><span class="lk">Course</span><span class="lv"><span class="big">4</span>回完結</span></div>
+          <div class="lr"><span class="lk">Hours</span><span class="lv"><span class="big">12</span>時間〜</span></div>
+          <div class="lr"><span class="lk">Target</span><span class="lv"><span class="big">30</span>名〜 の組織</span></div>
+          <div class="lr"><span class="lk">Subsidy</span><span class="lv">最大 <span class="big">75</span>% 助成</span></div>
+          <div class="lr"><span class="lk">Format</span><span class="lv">オンライン / 訪問</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="proof rv">
+      <div class="p"><div class="num">37<span class="u">社</span></div><div class="lb">支援企業数</div></div>
+      <div class="p"><div class="num">2,500<span class="u">名</span></div><div class="lb">研修受講者数</div></div>
+      <div class="p"><div class="num">12<span class="u">時間〜</span></div><div class="lb">合計研修時間</div></div>
+      <div class="p"><div class="num blue">75<span class="u">%</span></div><div class="lb">最大経費助成率（中小）</div></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem" class="sec">
+  <div class="wrap"><div class="col">
+    <div class="sec-head rv">
+      <div class="meta"><span class="n">§01</span>PROBLEM<br/>課題提起</div>
+      <h2 class="h2">組織の AI 活用、<br/>こんな<span class="b">壁</span>に当たっていませんか？</h2>
+    </div>
+
+    <div class="prob-list">
+      <div class="prob rv">
+        <div class="pn">01</div>
+        <div>
+          <h3>ChatGPT は使ってるけど、業務に組み込めていない</h3>
+          <p>個人ツールとして触っている人はいるが、業務フローに乗せられず「便利だね」レベルで止まっている。<span class="ib">属人化したまま、組織として再現できない。</span></p>
+        </div>
+      </div>
+      <div class="prob rv">
+        <div class="pn">02</div>
+        <div>
+          <h3>セキュリティが心配で、AI に任せきれない</h3>
+          <p>機密情報の扱い・権限管理・社内ルールが整理できず、現場が AI 導入に二の足を踏んでいる。情シスから「ガードレールを作って」と言われたが、<span class="ib">何から手をつけるか分からない。</span></p>
+        </div>
+      </div>
+      <div class="prob rv">
+        <div class="pn">03</div>
+        <div>
+          <h3>全社展開したいが、運用設計図がない</h3>
+          <p>ディレクトリ設計・エージェント分割・レビュー基準など、組織で動かす「設計図」が無く、<span class="ib">進め方が見えない。</span>コンテキストを誰が・どう整理するかが決まっていない。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="verdict rv">
+      <div class="vk">TechWorker<br/>の見立て</div>
+      <p>AI が組織で動かないのは、ツールの問題ではなく <span class="b">「コンテキスト」</span> が言語化されていないから。<span class="ib">37社・2,500名で証明した「コンテキスト整理」のフレーム</span>を、貴社の業務に移植します。</p>
+    </div>
+  </div></div>
+</section>
+
+<!-- STRENGTH -->
+<section id="strength" class="sec">
+  <div class="wrap"><div class="col">
+    <div class="sec-head rv">
+      <div class="meta"><span class="n">§02</span>STRENGTH<br/>選ばれる理由</div>
+      <h2 class="h2">TechWorker が法人研修で<br/>選ばれる、<span class="b">3 つの理由</span></h2>
+    </div>
+
+    <div class="str rv">
+      <div class="sk"><div class="sn">01</div><span class="sl">Context Design</span></div>
+      <div>
+        <h3>コンテキスト整理の専門性 ──「AI 時代の基盤インフラ」</h3>
+        <p>競合がほぼ訴求していない差別化軸。業務・顧客・自社の状況をどう構造化し、CLAUDE.md に落とすか。その実装フレームを体系として持っているのは <span class="bb">TechWorker だけ</span>です。</p>
+        <ul>
+          <li>会社・事業・顧客を 3層で構造化するフレーム</li>
+          <li>SSoT（フロー vs ストック）運用ルール</li>
+          <li>役職別 context の粒度設計</li>
+          <li>サブエージェント分割の判断基準</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="str rv">
+      <div class="sk"><div class="sn">02</div><span class="sl">Proven Track Record</span></div>
+      <div>
+        <h3>37社・2,500名の研修実装実績</h3>
+        <p>上場企業を含む <span class="ib">37社・2,500名</span>規模で支援してきた「現場の実装知」を、研修パッケージとして提供します。<span class="ib">研修のために学んだ知識ではなく、事業運営のために蓄積した実装知です。</span></p>
+        <ul>
+          <li>さくらインターネット ── 全社300名規模研修・完了</li>
+          <li>住友林業 ── 生成AI活用支援・進行中</li>
+          <li>デンカ ── 新素材アイディエーション・特許出願中</li>
+          <li>製薬・不動産・建設・食品・エンタメ業界に展開</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="str rv">
+      <div class="sk"><div class="sn">03</div><span class="sl">Assets That Remain</span></div>
+      <div>
+        <h3>形として残る、貴社専用の運用設計図</h3>
+        <p>4回の研修は通過点。残るのは、<span class="ib">貴社専用の CLAUDE.md・カスタムエージェント・運用ルールブック</span>。研修期間が終わっても、設計図は貴社の業務で動き続けます。</p>
+        <ul>
+          <li>組織契約 CLAUDE.md（自社版）</li>
+          <li>業務別カスタムエージェント設計</li>
+          <li>レビュー基準・セキュリティガイドライン</li>
+          <li>AI Ops 運用ルールブック</li>
+        </ul>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- CASES -->
+<section id="clients" class="sec">
+  <div class="wrap"><div class="col">
+    <div class="sec-head rv">
+      <div class="meta"><span class="n">§03</span>CASES<br/>導入事例</div>
+      <h2 class="h2"><span class="b">37社・2,500名</span>で積み上げた、<br/>生成AI活用の導入事例</h2>
+    </div>
+    <p class="lead rv" style="margin:-24px 0 36px;">研修・ワークショップ・伴走支援を通じて、各社の「導入前の停滞」を「全社的な活用」へ転換してきました。Claude Code 研修も、この実装知の上に設計されています。</p>
+
+    <div class="cases-hint rv">
+      <div class="ch"><span class="dragln"></span>横スクロールで 7 事例をご覧いただけます<span class="dragln"></span></div>
+      <div class="cases-nav">
+        <button type="button" aria-label="前へ" data-dir="-1">‹</button>
+        <button type="button" aria-label="次へ" data-dir="1">›</button>
+      </div>
+    </div>
+
+    <div class="cases-wrap rv">
+      <div class="case-track" id="caseTrack">
+
+        <div class="case-card named">
+          <div class="case-top"><span class="case-ind">IT業界</span><span class="case-named-tag">社名公開</span></div>
+          <h3 class="case-co">さくらインターネット様</h3>
+          <p class="case-sub">全社導入 ── 社員の生成AI活用普及支援</p>
+          <div class="ba">
+            <div class="ba-row bef"><span class="bl">導入前</span><p>生成AIシステムは社内にあるが、現場で活用できている社員が少なく、推進人材も不足。</p></div>
+            <div class="ba-arrow">↓</div>
+            <div class="ba-row aft"><span class="bl">導入後</span><p>基礎理解が進み、正しい生成AI活用が全社的に浸透した。</p></div>
+          </div>
+          <div class="case-facts">
+            <div class="f">生成AI研修・ワークショップ <b>3回</b></div>
+            <div class="f">対象者 <b>約300名</b></div>
+            <div class="f">オウンドメディア「さくナレ」へ記事寄稿</div>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-top"><span class="case-ind">総合科学メーカー</span></div>
+          <h3 class="case-co">新素材アイディエーションの確立</h3>
+          <p class="case-sub">ワークショップで探索手法を体系化</p>
+          <div class="ba">
+            <div class="ba-row bef"><span class="bl">導入前</span><p>1000のうち3つしか成功しない新素材探索。調査予算も時間も不足。</p></div>
+            <div class="ba-arrow">↓</div>
+            <div class="ba-row aft"><span class="bl">導入後</span><p>アイディエーション手法を確立。1時間で発散から収束までを実現。</p></div>
+          </div>
+          <div class="case-facts">
+            <div class="f">アイデアの発散・収束／ベンチマーク／市場リサーチ／評価</div>
+            <div class="f">ビジネスモデル <b>特許出願中</b></div>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-top"><span class="case-ind">製薬業界</span></div>
+          <h3 class="case-co">市場リサーチの完全内製化</h3>
+          <p class="case-sub">プロンプトBPO & 伴走支援で定着</p>
+          <div class="ba">
+            <div class="ba-row bef"><span class="bl">導入前</span><p>市場リサーチを外部コンサルに丸投げ。ノウハウが蓄積されなかった。</p></div>
+            <div class="ba-arrow">↓</div>
+            <div class="ba-row aft"><span class="bl">導入後</span><p>社員の誰もが Deep Research でリサーチ可能に。速度も大幅改善。</p></div>
+          </div>
+          <div class="case-facts">
+            <div class="f">外注コストを <b>大幅削減</b></div>
+            <div class="f">リサーチを <b>社内で内製化</b></div>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-top"><span class="case-ind">建設業界</span></div>
+          <h3 class="case-co">全部署での最適ユースケース探索</h3>
+          <p class="case-sub">業務ヒアリングで現場に定着</p>
+          <div class="ba">
+            <div class="ba-row bef"><span class="bl">導入前</span><p>自社専用の生成AI環境はあるが、社内の活用がほとんど進まない。</p></div>
+            <div class="ba-arrow">↓</div>
+            <div class="ba-row aft"><span class="bl">導入後</span><p>コンサルタントの業務棚卸しで、現場に最適なユースケースを導入・定着。</p></div>
+          </div>
+          <div class="case-facts">
+            <div class="f">対象 <b>8部署</b> に業務ヒアリング</div>
+            <div class="f">各部署で最適ユースケースを <b>2つずつ</b> 発見</div>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-top"><span class="case-ind">食品業界</span></div>
+          <h3 class="case-co">ワークショップでユースケース探索</h3>
+          <p class="case-sub">活用の個人差を全社で平準化</p>
+          <div class="ba">
+            <div class="ba-row bef"><span class="bl">導入前</span><p>ユースケースが見つからず、全体的に活用が停滞していた。</p></div>
+            <div class="ba-arrow">↓</div>
+            <div class="ba-row aft"><span class="bl">導入後</span><p>対象部署すべてで、最も効果の高いユースケースに生成AIを導入。</p></div>
+          </div>
+          <div class="case-facts">
+            <div class="f">対象部署にワークショップを実施</div>
+            <div class="f">個人ごとに最適ユースケースを <b>3つずつ</b> 発見</div>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-top"><span class="case-ind">エンタメ業界</span></div>
+          <h3 class="case-co">伴走支援でユースケース定着</h3>
+          <p class="case-sub">使いこなし事例を全社で共有</p>
+          <div class="ba">
+            <div class="ba-row bef"><span class="bl">導入前</span><p>使いこなせる人とそうでない人の個人差が大きく、活用状況が悪い。</p></div>
+            <div class="ba-arrow">↓</div>
+            <div class="ba-row aft"><span class="bl">導入後</span><p>ワークショップで新たな活用法の発見と、優良事例の横展開を両立。</p></div>
+          </div>
+          <div class="case-facts">
+            <div class="f">対象部署にワークショップを実施</div>
+            <div class="f">各個人で最適ユースケースを <b>2つずつ</b> 発見</div>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-top"><span class="case-ind">不動産・金融業界</span></div>
+          <h3 class="case-co">複雑業務でのユースケース設計</h3>
+          <p class="case-sub">伴走支援 & CS窓口で定着</p>
+          <div class="ba">
+            <div class="ba-row bef"><span class="bl">導入前</span><p>複雑性の高い業務で、そもそも生成AIが使えるかの判断が困難だった。</p></div>
+            <div class="ba-arrow">↓</div>
+            <div class="ba-row aft"><span class="bl">導入後</span><p>実現性を踏まえ、複雑な業務に合うユースケースを作成・定着。</p></div>
+          </div>
+          <div class="case-facts">
+            <div class="f">複雑性に応じた実現性評価を実施</div>
+            <div class="f">各個人で最適ユースケースを <b>3つずつ</b> 発見</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <p class="fit-note rv" style="margin-top:20px;">※ さくらインターネット様以外は、守秘義務により業種のみの掲載とさせていただいています。製薬・不動産・建設・食品・エンタメなど業種横断で支援。</p>
+  </div></div>
+</section>
+
+<!-- BLUE BAND -->
+<section class="band">
+  <div class="wrap"><div class="col band-in">
+    <div class="rv">
+      <div class="band-k">FREE PROGRAM</div>
+      <h3>ここまで読んで気になったら、<br/>まずは無料で試してみませんか？</h3>
+      <div class="band-opts">
+        <span>セットアップ体験会</span>
+        <span>セキュリティ診断</span>
+        <span>無料相談（30分）</span>
+      </div>
+    </div>
+    <a href="#cta" class="band-cta rv">無料プログラムを見る <span class="ar">→</span></a>
+  </div></div>
+</section>
+
+<!-- STEPS -->
+<section id="steps" class="sec">
+  <div class="wrap"><div class="col">
+    <div class="sec-head rv">
+      <div class="meta"><span class="n">§04</span>PROCESS<br/>移植プロセス</div>
+      <h2 class="h2">「うちで再現できるのか」に、<br/><span class="b">4ステップ</span>でお答えします</h2>
+    </div>
+
+    <div class="steps">
+      <div class="step rv">
+        <div class="stn">01<span class="sl">STEP</span></div>
+        <div>
+          <h4>概念理解・個人習熟</h4>
+          <div class="smeta">3時間〜 / 全員参加</div>
+          <p>概念レクチャーと初期セットアップ。受講者全員がローカルで Claude Code を動かせる状態に。</p>
+        </div>
+        <div class="take">
+          <div class="tl">Takeaway</div>
+          <ul><li>個人セットアップ完了チェックリスト</li><li>初期プロンプト・運用テンプレ集</li></ul>
+        </div>
+      </div>
+
+      <div class="step rv">
+        <div class="stn">02<span class="sl">STEP</span></div>
+        <div>
+          <h4>業務別活用</h4>
+          <div class="smeta">3時間〜 / 全員参加</div>
+          <p>業務別の使いこなし方をレクチャー。事業運営で活用できるレベルに引き上げ。</p>
+        </div>
+        <div class="take">
+          <div class="tl">Takeaway</div>
+          <ul><li>業務別 Tips・実例集（営業/採用/QA/BO 等）</li><li>業務フロー組み込みパターン</li></ul>
+        </div>
+      </div>
+
+      <div class="step rv">
+        <div class="stn">03<span class="sl">STEP</span></div>
+        <div>
+          <h4>組織活用</h4>
+          <div class="smeta">3時間〜 / コア人材</div>
+          <p>事業部別エージェント・組織ディレクトリ・CLAUDE.md 設計を実装。</p>
+        </div>
+        <div class="take">
+          <div class="tl">Takeaway</div>
+          <ul><li>組織契約 CLAUDE.md（自社版）</li><li>業務別カスタムエージェント設計図</li></ul>
+        </div>
+      </div>
+
+      <div class="step rv">
+        <div class="stn">04<span class="sl">STEP</span></div>
+        <div>
+          <h4>品質保証・セキュリティ</h4>
+          <div class="smeta">3時間〜 / 全員参加</div>
+          <p>品質保証・セキュリティを担保した運用フローと AI Ops への接続を設計。</p>
+        </div>
+        <div class="take">
+          <div class="tl">Takeaway</div>
+          <ul><li>AI Ops 運用ルールブック</li><li>レビュー基準・セキュリティガイドライン</li></ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="after rv">
+      <div>
+        <div class="ak">After 4 Steps</div>
+        <h3>4回完了後、<br/>貴社が手にする状態</h3>
+      </div>
+      <ul>
+        <li>メンバー全員が Claude Code を業務で使える</li>
+        <li>組織版 CLAUDE.md・Agent 設計が運用中</li>
+        <li>AI 生成物のレビュー基準が定着</li>
+        <li>AI Ops と接続された継続改善サイクル</li>
+      </ul>
+    </div>
+  </div></div>
+</section>
+
+<!-- PROGRAM -->
+<section id="program" class="sec">
+  <div class="wrap"><div class="col">
+    <div class="sec-head rv">
+      <div class="meta"><span class="n">§05</span>CURRICULUM<br/>プログラム構成</div>
+      <h2 class="h2">4回完結プログラム<br/><span class="b">（合計 12 時間〜）</span></h2>
+    </div>
+    <p class="lead rv" style="margin-bottom:40px;">4回で「個人習熟 → 業務活用 → 組織設計 → 品質・セキュリティ」へ。各回の到達点はこちら。具体的な内容・演習は、貴社の業務に合わせて設計するため、無料相談・体験会でご案内します。</p>
+
+    <div class="prog">
+      <div class="pgm-row rv">
+        <span class="pn">01</span>
+        <div>
+          <span class="pl">初期設定編</span>
+          <h3>概念理解と環境セットアップ</h3>
+          <p class="theme">受講者全員が、ローカルで Claude Code を動かせる状態へ。</p>
+        </div>
+        <span class="pmeta">3時間〜<br/>全員参加</span>
+      </div>
+      <div class="pgm-row rv">
+        <span class="pn">02</span>
+        <div>
+          <span class="pl">上級編</span>
+          <h3>業務別の使いこなし方</h3>
+          <p class="theme">個々人が、事業運営で活用できるレベルへ。</p>
+        </div>
+        <span class="pmeta">3時間〜<br/>全員参加</span>
+      </div>
+      <div class="pgm-row rv">
+        <span class="pn">03</span>
+        <div>
+          <span class="pl">組織活用編</span>
+          <h3>組織契約としてのエージェント設計</h3>
+          <p class="theme">組織版 CLAUDE.md・カスタムエージェントを設計。</p>
+        </div>
+        <span class="pmeta">3時間〜<br/>コア人材</span>
+      </div>
+      <div class="pgm-row rv">
+        <span class="pn">04</span>
+        <div>
+          <span class="pl">Vibe コーディング編</span>
+          <h3>品質保証・セキュリティを担保した運用</h3>
+          <p class="theme">QA・セキュリティを担保した運用フローへ。</p>
+        </div>
+        <span class="pmeta">3時間〜<br/>全員参加</span>
+      </div>
+    </div>
+
+    <div class="prog-lock rv">
+      <div class="pl-txt">
+        <h4>具体的なカリキュラム・演習内容は、貴社向けにご案内します</h4>
+        <p>各回の詳細な進め方・ユースケース・持ち帰り成果物は、貴社の業種・体制に合わせて設計します。まずは無料の体験会・相談で、実際の中身をご確認ください。</p>
+      </div>
+      <a class="btn btn-blue" href="#cta">無料で内容を確認する<span class="ar">→</span></a>
+    </div>
+  </div></div>
+</section>
+
+<!-- COMPARE -->
+<section id="compare" class="sec">
+  <div class="wrap"><div class="col">
+    <div class="sec-head rv">
+      <div class="meta"><span class="n">§06</span>COMPARE<br/>他社比較</div>
+      <h2 class="h2">なぜ TechWorker の研修なのか、<br/><span class="b">一覧</span>で確認できます</h2>
+    </div>
+
+    <div class="cmp rv">
+      <div class="cr head">
+        <div class="cc">比較項目</div>
+        <div class="cc">Option A<span class="nm">DIY 独学</span></div>
+        <div class="cc">Option B<span class="nm">一般 AI 研修</span></div>
+        <div class="cc rec">Option C<span class="nm">TechWorker 法人研修</span></div>
+      </div>
+      <div class="cr">
+        <div class="cc" data-h="比較項目"><span class="rl">講師の事業運営での実装経験</span></div>
+        <div class="cc no" data-h="DIY 独学">研修なし</div>
+        <div class="cc no" data-h="一般 AI 研修">研修用デモ中心</div>
+        <div class="cc rec" data-h="TechWorker"><span class="yes">37社・2,500名で支援実績</span></div>
+      </div>
+      <div class="cr">
+        <div class="cc" data-h="比較項目"><span class="rl">コンテキスト整理の専門性</span></div>
+        <div class="cc no" data-h="DIY 独学">—</div>
+        <div class="cc no" data-h="一般 AI 研修">プロンプト Tips が中心</div>
+        <div class="cc rec" data-h="TechWorker"><span class="yes">SSoT / 3層 context フレーム</span></div>
+      </div>
+      <div class="cr">
+        <div class="cc" data-h="比較項目"><span class="rl">持ち帰り成果物（設計図）</span></div>
+        <div class="cc no" data-h="DIY 独学">全部自作</div>
+        <div class="cc no" data-h="一般 AI 研修">研修資料のみ</div>
+        <div class="cc rec" data-h="TechWorker"><span class="yes">CLAUDE.md / Agent 設計図</span></div>
+      </div>
+      <div class="cr">
+        <div class="cc" data-h="比較項目"><span class="rl">助成金対応カリキュラム</span></div>
+        <div class="cc no" data-h="DIY 独学">—</div>
+        <div class="cc no" data-h="一般 AI 研修">対応バラつき</div>
+        <div class="cc rec" data-h="TechWorker"><span class="yes">リスキリング支援コース要件準拠</span></div>
+      </div>
+      <div class="cr">
+        <div class="cc" data-h="比較項目"><span class="rl">事業事例・演習の選定</span></div>
+        <div class="cc no" data-h="DIY 独学">全部自前</div>
+        <div class="cc no" data-h="一般 AI 研修">汎用研修</div>
+        <div class="cc rec" data-h="TechWorker"><span class="yes">STEP 3 以降は貴社業務の事例で演習</span></div>
+      </div>
+      <div class="cr">
+        <div class="cc" data-h="比較項目"><span class="rl">助成金活用後の実質負担</span></div>
+        <div class="cc no" data-h="DIY 独学">工数別</div>
+        <div class="cc no" data-h="一般 AI 研修">対応次第</div>
+        <div class="cc rec" data-h="TechWorker"><span class="yes">中小 75% / 大企業 60% 助成</span></div>
+      </div>
+    </div>
+    <p class="fit-note rv" style="margin-top:18px;">※「一般 AI 研修」は当社見立てによる傾向。社名は特定致しません。</p>
+  </div></div>
+</section>
+
+<!-- SUBSIDY -->
+<section id="subsidy" class="sec">
+  <div class="wrap"><div class="col">
+    <div class="sec-head rv">
+      <div class="meta"><span class="n">§07</span>SUBSIDY<br/>助成金対応</div>
+      <h2 class="h2"><span class="b">人材開発支援助成金</span>対応の<br/>カリキュラム設計です</h2>
+    </div>
+
+    <div class="sub-hero rv">
+      <div>
+        <div class="sub-big">75<sup>%</sup><span class="cap">最大経費助成率（中小企業）</span></div>
+        <div class="sub-arrow">助成適用後のご負担例 <span class="frac">約 1/4</span></div>
+      </div>
+      <div class="sub-body">
+        <p>本研修は「事業展開等リスキリング支援コース」の <span class="b">OFF-JT 10時間以上</span> 要件を満たすカリキュラム設計（4回×3時間〜 = 計12時間〜）です。中小企業の場合、申請が認められれば <span class="bl">経費助成として最大 75%</span>（大企業は 60%）、加えて <span class="bl">賃金助成（中小960円/時間 等）</span> も対象となります。</p>
+        <p style="color:var(--slate-2);font-size:13px;">※ 助成金は申請結果により受給可否・金額が変動します。新規事業立ち上げ・業務改革・DX 推進等の「事業展開」に伴って、新たに必要となる知識・スキル習得が要件です。最終的な対象判定は管轄労働局・社労士確認となり、TechWorker 側で書類準備・社労士連携をサポートいたします。</p>
+      </div>
+    </div>
+
+    <div class="flow rv">
+      <div class="fs"><div class="fn">01</div><div class="ft">無料相談</div></div>
+      <div class="fs"><div class="fn">02</div><div class="ft">見積・申請書類準備<br/>社労士連携可</div></div>
+      <div class="fs"><div class="fn">03</div><div class="ft">研修1ヶ月前までに申請<br/>2ヶ月前推奨</div></div>
+      <div class="fs"><div class="fn">04</div><div class="ft">受給決定通知</div></div>
+      <div class="fs"><div class="fn">05</div><div class="ft">研修実施</div></div>
+      <div class="fs"><div class="fn">06</div><div class="ft">実績報告</div></div>
+      <div class="fs"><div class="fn">07</div><div class="ft">助成金受給</div></div>
+    </div>
+
+    <div class="sim rv">
+      <div>
+        <h4>助成金活用後のご負担額を、その場で試算</h4>
+        <p>受講人数・中小企業判定により変動。30秒・無料。</p>
+      </div>
+      <a class="btn btn-blue" href="#cta">料金試算（助成金対応）<span class="ar">→</span></a>
+    </div>
+  </div></div>
+</section>
+
+<!-- MID CTA (compact 2 offers) -->
+<section class="sec" style="padding-top:0;">
+  <div class="wrap"><div class="col">
+    <div class="midcta-head rv">
+      <div class="mk">FREE PROGRAM</div>
+      <h3>助成金で負担も小さい今、<br/><span class="b">無料の2プログラム</span>から始めませんか？</h3>
+    </div>
+    <div class="mid-offers">
+      <div class="mo rv">
+        <span class="mb">FREE WORKSHOP</span>
+        <h4>Claude Code 無料セットアップ体験会</h4>
+        <p>参加者のPCで実際に環境構築し、貴社業務を1つ動かすところまで。<span class="bb">「うちでも再現できる」</span>を試せます。</p>
+        <div class="mmeta">オンライン60分 ／ 現場・DX推進担当向け</div>
+        <a class="btn btn-blue" href="#apply" onclick="document.querySelector('[name=offer]').value='無料セットアップ体験会';">体験会に申し込む<span class="ar">→</span></a>
+      </div>
+      <div class="mo sec2 rv">
+        <span class="mb">FREE ASSESSMENT</span>
+        <h4>AI 利用 無料セキュリティ診断</h4>
+        <p>機密情報・権限・レビュー体制のリスクを診断し、改善優先度をレポート化。<span class="ib">導入前に足元のリスクを可視化します。</span></p>
+        <div class="mmeta">診断レポート付 ／ 経営・情シス向け</div>
+        <a class="btn btn-line" href="#apply" onclick="document.querySelector('[name=offer]').value='無料セキュリティ診断';">診断を申し込む<span class="ar">→</span></a>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- EXITS -->
+<section id="exits" class="sec">
+  <div class="wrap"><div class="col">
+    <div class="sec-head rv">
+      <div class="meta"><span class="n">§08</span>NEXT<br/>受講後の出口</div>
+      <h2 class="h2">研修受けて終わり、ではない<br/><span class="b">3 つの出口</span></h2>
+    </div>
+
+    <div class="exits">
+      <div class="exit rv">
+        <div class="en">01</div>
+        <div><h3>社内内製で完結</h3><p>研修ノウハウを使って自社で運用。継続的な相談は無料コミュニティでサポート。</p></div>
+        <div></div>
+      </div>
+      <div class="exit rv">
+        <div class="en">02</div>
+        <div><h3>伴走コンサルで継続支援</h3><p>TechWorker がプロジェクト並走。運用アップデート・トラブル対応・KPI 改善を月額で支援（<span class="ib">月30万〜・最低6ヶ月</span>）。</p></div>
+        <div class="rec">推奨</div>
+      </div>
+      <div class="exit rv">
+        <div class="en">03</div>
+        <div><h3>エンプラ PoC へ拡張</h3><p>研修で設計した運用を、複数部門・複数事業に拡張するための PoC を実施（<span class="ib">月250〜300万・最低3ヶ月</span>）。</p></div>
+        <div></div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="voice" class="sec">
+  <div class="wrap"><div class="col">
+    <div class="sec-head rv">
+      <div class="meta"><span class="n">§09</span>VOICE<br/>受講者の声</div>
+      <h2 class="h2">導入企業のレビュー</h2>
+    </div>
+
+    <div class="tg">
+      <div class="tc rv">
+        <div class="tm">SaaS / 80名規模</div>
+        <div class="tq">&ldquo;</div>
+        <p>概念だけのセミナーは何度か受けましたが、<em>「組織として運用するならこう設計する」</em>という具体例が圧倒的でした。CLAUDE.md の構成、エージェント分割、レビュー基準まで、全部そのまま社内に持ち帰れた。</p>
+        <div class="who"><div class="nm">S.K. 様</div><div class="rl">SaaS / VP of Engineering</div></div>
+      </div>
+      <div class="tc rv">
+        <div class="tm">受託開発 / 30名規模</div>
+        <div class="tq">&ldquo;</div>
+        <p>一番効いたのは第 4 回の品質保証編。<em>「Vibe コーディングで生産性は上がるが、レビュー設計がないと逆に怖い」</em>というモヤモヤを、品質基準ベースの運用フローに落とし込んでもらえた。実装視点の研修、初めてでした。</p>
+        <div class="who"><div class="nm">M.N. 様</div><div class="rl">受託開発 / CTO</div></div>
+      </div>
+      <div class="tc rv">
+        <div class="tm">事業会社 / 200名規模</div>
+        <div class="tq">&ldquo;</div>
+        <p>正直「本当に助成金 75% 戻るのか？」と疑っていましたが、社労士連携で書類準備までフルサポート。<em>受講料の実質負担は想定の 1/4 以下</em>に。経営判断としても通しやすかったです。</p>
+        <div class="who"><div class="nm">T.H. 様</div><div class="rl">事業会社 / 経営企画室 室長</div></div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- FIT -->
+<section id="fit" class="sec">
+  <div class="wrap"><div class="col">
+    <div class="sec-head rv">
+      <div class="meta"><span class="n">§10</span>FIT<br/>適合判定</div>
+      <h2 class="h2">この研修が<span class="b">向いている会社</span>と、<br/>向いていない会社があります</h2>
+    </div>
+
+    <div class="fit">
+      <div class="fc yes rv">
+        <h3><span class="mk">✓</span> 向いている会社</h3>
+        <ul>
+          <li>30名以上の組織で、Claude Code または同等ツールを既に導入している</li>
+          <li>AI 生成物の品質保証・セキュリティ設計を強化したい</li>
+          <li>個人スキルではなく、「組織の運用設計」を持ち帰りたい</li>
+          <li>研修費を「組織の資産形成のための予算」と捉えられる</li>
+        </ul>
+      </div>
+      <div class="fc no rv">
+        <h3><span class="mk">×</span> 向いていない会社</h3>
+        <ul>
+          <li>個人スキル習得が主目的（自社研修化を求めない）</li>
+          <li>即日成果のみを期待し、中長期の運用設計に時間・予算を割けない</li>
+          <li>機密情報のガードレール設計が不要</li>
+          <li>受講人数 10 名未満（個社向けの事例選定が成り立たない）</li>
+        </ul>
+      </div>
+    </div>
+    <p class="fit-note rv">迷う場合は、<a href="https://app.spirinc.com/" target="_blank" rel="noopener">無料相談（30分）</a>で適合判定だけでもどうぞ。</p>
+  </div></div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="sec">
+  <div class="wrap"><div class="col">
+    <div class="sec-head rv">
+      <div class="meta"><span class="n">§11</span>FAQ<br/>よくある質問</div>
+      <h2 class="h2">よくあるご質問</h2>
+    </div>
+
+    <div class="faq rv">
+      <details class="fq"><summary><span class="q">Q</span><span>助成金申請は誰がやりますか？</span><span class="pl">+</span></summary><div class="a">TechWorker が社労士と連携してサポートします（自社対応も可）。書類準備から提出まで一貫してご支援可能です。最終的な受給可否判定は管轄労働局の審査となります。</div></details>
+      <details class="fq"><summary><span class="q">Q</span><span>受講人数の下限・上限は？</span><span class="pl">+</span></summary><div class="a">10 名から、上限は応相談（助成金枠の関係で 20-30 名規模での個別調整）となります。</div></details>
+      <details class="fq"><summary><span class="q">Q</span><span>講師は誰ですか？</span><span class="pl">+</span></summary><div class="a">TechWorker との外部委託訓練契約に基づき、Claude Code を日常運用している TechWorker 認定講師が担当します。一定の実務経験・知識を有する外部講師として、人材開発支援助成金の講師要件を満たします。代表（古野光太朗）登壇は別途オプションでご用意可能です。</div></details>
+      <details class="fq"><summary><span class="q">Q</span><span>受講形式は？</span><span class="pl">+</span></summary><div class="a">オンサイト（貴社訪問）／オンライン（Zoom 等のライブ授業）／ハイブリッドから選択可能です。動画閲覧型 eラーニング部分が含まれる場合は、その部分について賃金助成が対象外となる点ご留意ください（経費助成は対象）。</div></details>
+      <details class="fq"><summary><span class="q">Q</span><span>研修後のサポートは？</span><span class="pl">+</span></summary><div class="a">伴走コンサル月額契約（月30万〜）／社内講師認定（Train the Trainer）／エンプラ PoC から選択可能です。</div></details>
+      <details class="fq"><summary><span class="q">Q</span><span>業界に縛りはありますか？</span><span class="pl">+</span></summary><div class="a">業界不問です。製薬・不動産・建設・食品・SaaS・受託開発・エンタメ等で実績があります。ソフトウェア開発・QA・データ業務がある組織に特に効果が出ます。</div></details>
+      <details class="fq"><summary><span class="q">Q</span><span>助成金の「事業展開」要件とは何ですか？</span><span class="pl">+</span></summary><div class="a">「事業展開等リスキリング支援コース」は、新規事業立ち上げ・業務改革・DX 推進・新分野進出など、事業展開に伴って従業員に新たに必要となる知識・スキルを習得させる訓練が対象です。2026年3月改正で、人事・人材育成計画に基づく訓練も対象拡大されました。Claude Code を組織的に業務に組み込む取組は、AI 活用という新分野へのスキル習得として該当しうる事案です。最終的な該当性判断は管轄労働局および社労士による事前確認が必要です。</div></details>
+      <details class="fq"><summary><span class="q">Q</span><span>非エンジニア中心の組織でも参加できますか？</span><span class="pl">+</span></summary><div class="a">はい。Claude Code は「コードを書くツール」ではなく「業務に AI を組み込むツール」として設計可能で、TechWorker 自身も非エンジニアロール含む 20 名以上で日常運用しています。第 1 回はエンジニア・非エンジニア混在で実施可能です。なお助成金の対象は雇用保険被保険者であり、事業展開に伴って AI 活用スキルの習得が業務上必要となる従業員に限られます（経営者・役員は対象外）。</div></details>
+      <details class="fq"><summary><span class="q">Q</span><span>個社事業に合わせて内容を変更できますか？</span><span class="pl">+</span></summary><div class="a">助成金要件を満たすため、カリキュラム本体（10時間以上の標準構成）は維持します。STEP 3（組織活用編）以降は、貴社業務に近い事例・演習を選定して進めることが可能です。計画届提出時点で訓練内容が確定している必要があるため、当日に内容を改変するオーダーメイドはお受けできません。</div></details>
+      <details class="fq"><summary><span class="q">Q</span><span>助成金の構造は？</span><span class="pl">+</span></summary><div class="a">本コースは「経費助成」と「賃金助成」の二層構造です。経費助成は中小75%・大企業60%（最大）、賃金助成は中小960円/時間・大企業480円/時間（最大）。1人あたり経費30万円上限、1事業所年度1億円上限あり。動画閲覧型 eラーニング部分は賃金助成対象外。具体額は料金試算または無料相談で算出します。</div></details>
+    </div>
+  </div></div>
+</section>
+
+<!-- OFFERS + APPLY -->
+<section id="cta" class="sec">
+  <div class="wrap"><div class="col">
+    <div class="sec-head rv">
+      <div class="meta"><span class="n">§12</span>FREE<br/>まずは無料で試す</div>
+      <h2 class="h2">いきなり契約は不要です。<br/><span class="b">2つの無料プログラム</span>からお試しください</h2>
+    </div>
+    <p class="lead rv" style="margin:-32px 0 40px;">「自社で再現できるか」を体感する無料セットアップ体験会と、「安全に使えるか」を可視化する無料セキュリティ診断。どちらも費用は一切かかりません。</p>
+
+    <div class="offers">
+      <div class="of rv">
+        <span class="obadge">FREE WORKSHOP</span>
+        <div class="ofree">無料・オンライン60分</div>
+        <h3>Claude Code<br/>無料セットアップ体験会</h3>
+        <p class="od">参加者ご自身のPCで、実際に Claude Code を環境構築。貴社の業務を1つ、その場で動かすところまで体験いただきます。「うちでも再現できる」を、聞くのではなく試せます。</p>
+        <div class="ometa"><span>現場・DX推進担当向け</span><span>最大5名まで参加可</span></div>
+        <ul>
+          <li>ローカル環境のセットアップを一緒に完了</li>
+          <li>貴社業務の1ユースケースを実演・実装</li>
+          <li>体験後、そのまま使える初期テンプレを進呈</li>
+        </ul>
+        <a class="btn btn-blue" href="#apply" onclick="document.querySelector('[name=offer]').value='無料セットアップ体験会';">体験会に申し込む<span class="ar">→</span></a>
+      </div>
+
+      <div class="of sec2 rv">
+        <span class="obadge">FREE ASSESSMENT</span>
+        <div class="ofree">無料・診断レポート付</div>
+        <h3>AI 利用<br/>無料セキュリティ診断</h3>
+        <p class="od">現状の生成AI利用における「機密情報の扱い・権限管理・レビュー体制」のリスクを診断。改善すべきポイントを優先度付きのレポートにしてお渡しします。導入の前に、足元のリスクを可視化。</p>
+        <div class="ometa"><span>経営・情シス向け</span><span>レポート納品あり</span></div>
+        <ul>
+          <li>機密情報の漏洩・権限の暴走リスクを点検</li>
+          <li>AI 生成物のレビュー不在リスクを評価</li>
+          <li>改善優先度マップをレポートで提示</li>
+        </ul>
+        <a class="btn btn-line" href="#apply" onclick="document.querySelector('[name=offer]').value='無料セキュリティ診断';">診断を申し込む<span class="ar">→</span></a>
+      </div>
+    </div>
+
+    <div class="apply rv" id="apply">
+      <div class="al">
+        <div class="ak">How It Works</div>
+        <h3>申込から、<br/><span class="ah">実施まで最短3日</span></h3>
+        <ol>
+          <li>フォーム送信（30秒）。希望のプログラムを選んでください</li>
+          <li>担当より日程調整のご連絡（オンライン／貴社訪問）</li>
+          <li>無料体験会 or セキュリティ診断を実施</li>
+          <li>結果をふまえ、研修・助成金活用をご提案（任意）</li>
+        </ol>
+        <p class="anote">「まず資料だけ欲しい」「直接相談したい」も、フォームの希望項目から選べます。</p>
+      </div>
+      <div class="ar2">
+        <h3>無料プログラムに申し込む</h3>
+        <p class="as">30秒で入力完了。担当より1営業日以内にご連絡します。</p>
+        <form id="trainingForm" onsubmit="submitTraining(event)">
+          <div class="fld">
+            <label>ご希望のプログラム<span class="rq">必須</span></label>
+            <select name="offer" required>
+              <option value="">選択してください</option>
+              <option>無料セットアップ体験会</option>
+              <option>無料セキュリティ診断</option>
+              <option>両方とも興味がある</option>
+              <option>まず資料だけ欲しい</option>
+              <option>無料相談で話を聞きたい</option>
+            </select>
+          </div>
+          <div class="fld"><label>会社名<span class="rq">必須</span></label><input type="text" name="company" placeholder="株式会社サンプル" required /></div>
+          <div class="fld"><label>お名前<span class="rq">必須</span></label><input type="text" name="name" placeholder="山田 太郎" required /></div>
+          <div class="fld"><label>会社メールアドレス<span class="rq">必須</span></label><input type="email" name="email" placeholder="taro@example.co.jp" required /></div>
+          <button type="submit" class="btn btn-blue submit">無料で申し込む<span class="ar">→</span></button>
+          <p class="trust">入力情報はご案内のみに利用します。<a href="privacy.html">プライバシーポリシー</a>に同意のうえ送信してください。</p>
+        </form>
+        <div id="trainingThanks" style="display:none;">
+          <h3>送信が完了しました。</h3>
+          <p class="as">担当より1営業日以内にご連絡します。ありがとうございます。</p>
+        </div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap"><div class="col">
+    <div class="frow">
+      <div>
+        <a href="/" class="brand"><span class="mk">TechWorker</span></a>
+        <p class="ft">AI はエンジンだ。コンテキストは燃料だ。37社・2,500名の研修実装実績を持つ、企業向け生成 AI コンサルティング・研修事業者。<br/><br/>代表取締役: 古野 光太朗<br/>運営: <a href="https://techworker.co.jp" style="color:var(--blue);">株式会社TechWorker</a></p>
+      </div>
+      <div>
+        <h5>Program</h5>
+        <ul>
+          <li><a href="#problem">課題</a></li>
+          <li><a href="#strength">3つの強み</a></li>
+          <li><a href="#program">プログラム詳細</a></li>
+          <li><a href="#subsidy">助成金対応</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="#cta">無料で試す</a></li>
+          <li><a href="https://app.spirinc.com/" target="_blank" rel="noopener">無料相談（30分）</a></li>
+          <li><a href="#subsidy">料金試算</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2026 TechWorker Inc. All rights reserved.</span>
+      <a href="privacy.html">プライバシーポリシー</a>
+    </div>
+  </div></div>
+</footer>
+
+<!-- FLOATING CTA -->
+<div class="float" id="floatCta">
+  <a class="btn btn-line hide-sm" href="https://app.spirinc.com/" target="_blank" rel="noopener" style="background:var(--paper);">無料相談</a>
+  <a class="btn btn-blue" href="#cta">無料で試す <span class="ar">→</span></a>
+</div>
+
+<script>
+  // reveal on scroll
+  (function () {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.rv').forEach(function (el) { io.observe(el); });
+  })();
+  // case carousel nav
+  (function () {
+    var track = document.getElementById('caseTrack');
+    if (!track) return;
+    document.querySelectorAll('.cases-nav button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var card = track.querySelector('.case-card');
+        var step = card ? card.getBoundingClientRect().width + 20 : 360;
+        track.scrollBy({ left: step * parseInt(b.dataset.dir, 10), behavior: 'smooth' });
+      });
+    });
+  })();
+  // floating cta
+  (function () {
+    var fc = document.getElementById('floatCta');
+    var hero = document.querySelector('.hero');
+    var cta = document.getElementById('cta');
+    function onScroll() {
+      var past = window.scrollY > (hero ? hero.offsetHeight * 0.7 : 600);
+      var atForm = cta && cta.getBoundingClientRect().top < window.innerHeight;
+      if (past && !atForm) fc.classList.add('show'); else fc.classList.remove('show');
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
+
+<script>
+function submitTraining(e){
+  e.preventDefault();
+  var form=e.target;
+  var btn=form.querySelector('.submit');
+  var get=function(n){var el=form.querySelector('[name='+n+']');return el?el.value:'';};
+  var offer=get('offer');
+  var inquiry=(offer==='まず資料だけ欲しい')?'document':'consultation';
+  var payload={
+    name:get('name'),
+    company:get('company'),
+    email:get('email'),
+    inquiry_type:inquiry,
+    source:'研修LP',
+    message:'【Claude Code 法人研修LP】ご希望: '+(offer||'(未選択)')
+  };
+  var label=btn?btn.innerHTML:'';
+  if(btn){btn.disabled=true;btn.style.opacity='0.7';btn.innerHTML='<span>送信中...</span>';}
+  fetch('/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+  .then(function(res){if(!res.ok)throw new Error('server');return res.json();})
+  .then(function(){
+    if(typeof fbq==='function'){fbq('track','Lead');}
+    var thanks=document.getElementById('trainingThanks');
+    form.style.display='none';
+    if(thanks){thanks.style.display='block';}
+    var ap=document.getElementById('apply');
+    if(window.scrollTo&&ap){window.scrollTo({top:ap.offsetTop-80,behavior:'smooth'});}
+  })
+  .catch(function(){
+    if(btn){btn.disabled=false;btn.style.opacity='1';btn.innerHTML=label;}
+    alert('送信に失敗しました。お手数ですが時間をおいて再度お試しください。');
+  });
+}
+</script>
+</body>
+</html>

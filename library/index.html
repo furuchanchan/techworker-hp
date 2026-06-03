@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+<meta charset="UTF-8">
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>資料ダウンロード — TechWorker</title>
+<meta name="description" content="TechWorkerの知見を無料で公開。2026年版 生成AI活用事例集、Claude Code 企業導入セキュリティ＆セットアップ実践ガイドを無料でダウンロードできます。">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="資料ダウンロード — TechWorker">
+<meta property="og:description" content="2026年版 生成AI活用事例集／Claude Code セキュリティ＆セットアップ実践ガイドを無料配布。">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/library/">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0D1117;--paper:#F4F6F9;--paper-2:#ECEFF3;--white:#FBFCFD;
+  --electric:#005EFF;--electric-dark:#003DAA;--slate:#4A5666;--line:rgba(13,17,23,.12);--line-2:rgba(13,17,23,.20);
+  --emerald:#00B894;--violet:#7C3AED;
+  --jp:'IBM Plex Sans JP','IBM Plex Sans',system-ui,sans-serif;
+  --en:'IBM Plex Sans','IBM Plex Sans JP',system-ui,sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:76px;}
+body{font-family:var(--jp);background:var(--paper);color:var(--ink);line-height:1.85;font-size:16px;-webkit-font-smoothing:antialiased;font-feature-settings:"palt" 1;overflow-x:hidden;}
+::selection{background:var(--electric);color:var(--paper);}
+a{color:inherit;}
+a:focus-visible,button:focus-visible{outline:2px solid var(--electric);outline-offset:3px;border-radius:3px;}
+:focus:not(:focus-visible){outline:none;}
+.container{max-width:1200px;margin:0 auto;padding:0 48px;width:100%;}
+.tag{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--electric);display:inline-flex;align-items:center;gap:11px;padding-left:14px;border-left:3px solid var(--electric);}
+.tag span{color:var(--slate);font-weight:500;letter-spacing:.02em;text-transform:none;font-size:13px;}
+.btn{font-family:var(--jp);font-size:14.5px;font-weight:600;color:var(--paper);background:var(--electric);text-decoration:none;border-radius:5px;padding:14px 28px;display:inline-flex;align-items:center;gap:10px;transition:background .25s,transform .25s;border:none;cursor:pointer;}
+.btn:hover{background:var(--electric-dark);transform:translateY(-1px);}
+.btn:active{transform:translateY(0);}
+.btn i{font-style:normal;transition:transform .25s;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:68px;background:rgba(244,246,249,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+nav .logo{font-family:var(--en);font-weight:700;font-size:20px;color:var(--ink);text-decoration:none;}
+nav .logo i{font-style:normal;color:var(--electric);}
+nav.scrolled{box-shadow:0 1px 16px rgba(0,94,255,.06);}
+nav ul{list-style:none;display:flex;gap:30px;}
+nav ul a{font-size:14px;font-weight:500;color:var(--ink);text-decoration:none;position:relative;}
+nav ul a.active{color:var(--electric);}
+nav ul a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--electric);transition:width .28s cubic-bezier(.2,.8,.2,1);}
+nav ul a:hover::after,nav ul a.active::after{width:100%;}
+nav .nav-right{display:flex;align-items:center;gap:16px;}
+nav .nav-cta{font-family:var(--jp);font-size:13.5px;font-weight:600;color:var(--paper);background:var(--electric);text-decoration:none;padding:10px 22px;border-radius:4px;transition:background .25s;}
+nav .nav-cta:hover{background:var(--electric-dark);}
+nav .lang{font-family:var(--en);font-size:12px;font-weight:600;}
+nav .lang a{color:var(--slate);text-decoration:none;}
+nav .lang .cur{color:var(--electric);}
+.hamb{display:none;width:44px;height:44px;border:none;background:none;cursor:pointer;position:relative;}
+.hamb span{position:absolute;left:11px;width:22px;height:2px;background:var(--ink);transition:transform .3s,opacity .2s;}
+.hamb span:nth-child(1){top:15px;}.hamb span:nth-child(2){top:21px;}.hamb span:nth-child(3){top:27px;}
+body.menu-open .hamb span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+body.menu-open .hamb span:nth-child(2){opacity:0;}
+body.menu-open .hamb span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+.mmenu{position:fixed;inset:68px 0 0;z-index:45;background:var(--paper);transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);visibility:hidden;display:flex;flex-direction:column;padding:18px 24px 40px;}
+body.menu-open .mmenu{transform:none;visibility:visible;}
+.mmenu a{font-size:19px;font-weight:600;color:var(--ink);text-decoration:none;padding:20px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;}
+.mmenu a::after{content:"→";color:var(--electric);font-family:var(--en);}
+.mmenu .m-cta{margin-top:28px;background:var(--electric);color:var(--paper);justify-content:center;border-radius:5px;padding:17px;}
+.mmenu .m-cta::after{content:none;}
+.mmenu .m-lang{margin-top:auto;border:none;font-family:var(--en);font-size:13px;color:var(--slate);}
+.mmenu .m-lang::after{content:none;}
+
+/* HERO */
+.lib-hero{padding:150px 0 50px;}
+.lib-hero h1{font-family:var(--jp);font-weight:700;font-size:clamp(32px,5vw,56px);line-height:1.35;letter-spacing:-.02em;margin-top:24px;max-width:20ch;}
+.lib-hero h1 em{font-style:normal;color:var(--electric);}
+.lib-hero .lead{font-size:16px;color:var(--slate);margin-top:22px;max-width:62ch;line-height:2.05;}
+.lib-hero .note{margin-top:26px;display:inline-flex;align-items:center;gap:9px;font-size:13px;color:var(--ink);font-weight:600;padding:9px 18px;background:rgba(0,184,148,.08);border-radius:100px;}
+.lib-hero .note::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--emerald);}
+
+/* UNLOCK BANNER */
+.unlocked-banner{display:none;align-items:center;gap:11px;margin:0 0 30px;padding:15px 22px;border-radius:8px;background:rgba(0,184,148,.08);border:1px solid rgba(0,184,148,.28);font-size:14px;color:var(--ink);font-weight:600;}
+.unlocked-banner.show{display:flex;}
+.unlocked-banner::before{content:"✓";display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--emerald);color:#fff;font-size:13px;font-weight:800;flex-shrink:0;}
+
+/* RESOURCE GRID */
+.resources{padding:30px 0 100px;}
+.res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.res-card{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:32px 30px 30px;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:border-color .25s,transform .25s,box-shadow .25s;}
+.res-card::after{content:"";position:absolute;top:0;left:0;height:3px;width:0;background:var(--electric);transition:width .35s cubic-bezier(.2,.8,.2,1);}
+.res-card:not(.is-soon):hover{border-color:var(--electric);transform:translateY(-4px);box-shadow:0 18px 44px rgba(13,17,23,.08);}
+.res-card:not(.is-soon):hover::after{width:100%;}
+.res-card.security::after{background:var(--violet);}
+.res-kind{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);padding-left:11px;border-left:3px solid var(--electric);align-self:flex-start;}
+.res-card.security .res-kind{color:var(--violet);border-color:var(--violet);}
+.res-card.soon .res-kind{color:var(--slate);border-color:var(--line-2);}
+.res-card h3{font-family:var(--jp);font-weight:700;font-size:20px;line-height:1.5;margin:18px 0 12px;letter-spacing:-.01em;}
+.res-card p{font-size:13.5px;color:var(--slate);line-height:1.9;flex:1;}
+.res-meta{display:flex;flex-wrap:wrap;gap:8px 16px;margin:18px 0;}
+.res-meta span{font-family:var(--en);font-size:11px;color:var(--slate);display:inline-flex;align-items:center;gap:6px;}
+.res-meta span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--electric);}
+.res-card.security .res-meta span::before{background:var(--violet);}
+.res-actions{margin-top:auto;}
+.res-actions .btn{width:100%;justify-content:center;}
+.res-card.security .btn{background:var(--violet);}
+.res-card.security .btn:hover{background:#5b22b8;}
+.res-soon{display:block;text-align:center;padding:14px;border-radius:5px;background:rgba(60,75,100,.08);color:var(--slate);font-weight:700;font-size:14px;}
+.res-card.is-soon{opacity:.7;}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;z-index:1000;background:rgba(13,17,23,.55);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:20px;}
+.modal-overlay.show{display:flex;}
+.modal{background:var(--paper);border-radius:12px;max-width:460px;width:100%;padding:36px 34px;position:relative;max-height:92vh;overflow-y:auto;box-shadow:0 30px 80px rgba(13,17,23,.35);}
+.modal .close{position:absolute;top:16px;right:18px;background:none;border:none;font-size:26px;color:var(--slate);cursor:pointer;line-height:1;}
+.modal h3{font-family:var(--jp);font-size:21px;font-weight:700;line-height:1.4;margin:8px 0 6px;letter-spacing:-.01em;}
+.modal .modal-doc{font-size:13px;color:var(--slate);margin-bottom:22px;}
+.modal .modal-doc strong{color:var(--electric);font-weight:600;}
+.modal label.field{display:block;margin-bottom:13px;}
+.modal label.field span{display:block;font-size:12px;font-weight:600;color:var(--slate);margin-bottom:6px;}
+.modal label.field span em{color:#c0392b;font-style:normal;}
+.modal input,.modal textarea{width:100%;padding:12px 14px;border:1px solid var(--line-2);border-radius:7px;font-family:inherit;font-size:14px;background:var(--white);transition:border-color .2s,box-shadow .2s;}
+.modal textarea{resize:vertical;min-height:84px;line-height:1.7;}
+.modal label.field span em.opt{color:var(--slate);font-weight:500;}
+.modal input:focus{outline:none;border-color:var(--electric);box-shadow:0 0 0 3px rgba(0,94,255,.12);}
+.modal .agree{display:flex;align-items:flex-start;gap:9px;margin:8px 0 20px;font-size:12px;color:var(--slate);line-height:1.6;}
+.modal .agree input{width:auto;margin-top:3px;}
+.modal .agree a{color:var(--electric);text-decoration:underline;}
+.modal .btn{width:100%;justify-content:center;}
+.modal .fineprint{font-size:11px;color:var(--slate);text-align:center;margin-top:14px;line-height:1.6;}
+.modal .modal-success{display:none;text-align:center;padding:12px 0;}
+.modal .modal-success.show{display:block;}
+.modal .modal-success .check{width:54px;height:54px;border-radius:50%;background:var(--emerald);color:#fff;font-size:26px;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;}
+.modal .modal-success p{font-size:14px;color:var(--slate);margin:10px 0 22px;line-height:1.8;}
+
+/* FOOTER */
+footer{background:var(--white);border-top:1px solid var(--line);padding:60px 0 40px;}
+.footer-inner{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;}
+.footer-brand .logo{font-family:var(--en);font-size:19px;font-weight:700;color:var(--ink);}
+.footer-brand .logo i{font-style:normal;color:var(--electric);}
+.footer-brand p{font-size:13px;color:var(--slate);line-height:1.7;margin-top:12px;}
+.footer-col h4{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:16px;}
+.footer-col a{display:block;font-size:13px;color:var(--slate);text-decoration:none;margin-bottom:10px;}
+.footer-col a:hover{color:var(--electric);}
+.footer-col p{font-size:13px;color:var(--slate);line-height:1.7;margin-top:12px;}
+.copyright{text-align:center;margin-top:46px;padding-top:24px;border-top:1px solid var(--line);font-family:var(--en);font-size:12px;color:var(--slate);}
+
+@media(max-width:900px){.res-grid{grid-template-columns:1fr;}.footer-inner{grid-template-columns:1fr 1fr;gap:32px;}}
+@media(max-width:860px){nav ul{display:none;}nav .nav-cta,nav .lang{display:none;}.hamb{display:block;}}
+@media(max-width:560px){.container{padding:0 22px;}nav{padding:0 10px 0 18px;height:60px;}.mmenu{top:60px;}.lib-hero{padding:120px 0 40px;}.footer-inner{grid-template-columns:1fr;}}
+</style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1264057945446029');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+
+<nav id="nav">
+  <a href="../index.html" class="logo">Tech<i>Worker</i></a>
+  <ul>
+    <li><a href="../index.html">ホーム</a></li>
+    <li><a href="../index.html#services">サービス</a></li>
+    <li><a href="../cases.html">実績</a></li>
+    <li><a href="index.html" class="active">資料</a></li>
+    <li><a href="../news.html">ニュース</a></li>
+    <li><a href="../company.html">会社概要</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="../contact.html" class="nav-cta">無料相談</a>
+    <span class="lang"><span class="cur">JP</span> / <a href="../en/index.html">EN</a></span>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="../index.html">ホーム</a>
+  <a href="../index.html#services">サービス</a>
+  <a href="../cases.html">実績</a>
+  <a href="index.html">資料ダウンロード</a>
+  <a href="../news.html">ニュース</a>
+  <a href="../company.html">会社概要</a>
+  <a href="../contact.html" class="m-cta">無料相談を申し込む</a>
+  <a href="../en/index.html" class="m-lang">English ↗</a>
+</div>
+
+<!-- HERO -->
+<section class="lib-hero">
+  <div class="container">
+    <span class="tag">Free Resources <span>無料資料</span></span>
+    <h1>TechWorkerの知見を、<br><em>惜しみなく</em>公開しています。</h1>
+    <p class="lead">37社・2,500名の支援で蓄積した、生成AI導入の実践知。活用事例とセキュリティ設計を資料化しました。現場でそのまま使える内容だけを収録しています。</p>
+    <div class="note">メールアドレスのご登録だけで、すべての資料をダウンロードいただけます</div>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<section class="resources">
+  <div class="container">
+    <div class="unlocked-banner" id="unlockedBanner">ご登録ありがとうございます。すべての資料をダウンロードいただけます。</div>
+    <div class="res-grid">
+
+      <!-- CASES (live) -->
+      <article class="res-card">
+        <span class="res-kind">活用事例集</span>
+        <h3>2026年版<br>生成AI活用事例集</h3>
+        <p>業種別に「成果が出た現場」をBefore→Afterと数値で収録。社内提案・意思決定の判断材料にそのまま使えます。</p>
+        <div class="res-meta"><span>事例5件</span><span>全業種横断</span><span>PDF / Web</span></div>
+        <div class="res-actions"><button class="btn js-download" data-doc="cases">無料でダウンロード <i>↓</i></button></div>
+      </article>
+
+      <!-- SECURITY (live) -->
+      <article class="res-card security">
+        <span class="res-kind">セキュリティ</span>
+        <h3>Claude Code 企業導入<br>セキュリティ＆セットアップ実践ガイド</h3>
+        <p>「使いたいが、情シスが止める」を外す。生成AIコーディングを安全に全社展開するための設計を、経営の言葉で解説します。</p>
+        <div class="res-meta"><span>3大リスク</span><span>10項目チェック</span><span>PDF / Web</span></div>
+        <div class="res-actions"><button class="btn js-download" data-doc="security">無料でダウンロード <i>↓</i></button></div>
+      </article>
+
+      <!-- ROADMAP (coming soon) -->
+      <article class="res-card is-soon soon">
+        <span class="res-kind">ロードマップ</span>
+        <h3>社内AI導入<br>30日ロードマップ</h3>
+        <p>何から手をつければいいか分からない——を解消する4週間の実行計画。コンテキスト整理から最初の業務適用まで、週次タスクに落とし込みました。</p>
+        <div class="res-meta"><span>4週間プラン</span><span>テンプレート付</span></div>
+        <div class="res-actions"><span class="res-soon">近日公開</span></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="close" id="modalClose" aria-label="閉じる">&times;</button>
+    <div class="modal-form" id="modalForm">
+      <span class="tag">Free Download</span>
+      <h3 id="modalTitle">資料をダウンロード</h3>
+      <p class="modal-doc">お届けする資料：<strong id="modalDocName">—</strong></p>
+      <form id="dlForm" novalidate>
+        <label class="field"><span>お名前 <em>*</em></span><input type="text" name="name" required autocomplete="name"></label>
+        <label class="field"><span>会社名 <em>*</em></span><input type="text" name="company" required autocomplete="organization"></label>
+        <label class="field"><span>役職 <em>*</em></span><input type="text" name="position" required autocomplete="organization-title" placeholder="例：経営企画部 部長"></label>
+        <label class="field"><span>メールアドレス <em>*</em></span><input type="email" name="email" required autocomplete="email"></label>
+        <label class="field"><span>電話番号 <em class="opt">任意</em></span><input type="tel" name="phone" autocomplete="tel" placeholder="例：03-1234-5678"></label>
+        <label class="field"><span>ご相談内容・お悩み <em class="opt">任意</em></span><textarea name="note" rows="3" placeholder="AI活用でお困りのこと、知りたいテーマなどがあればお書きください"></textarea></label>
+        <label class="agree"><input type="checkbox" id="dlAgree" required><span><a href="../privacy.html" target="_blank">プライバシーポリシー</a>に同意します。ご登録のメールアドレスに、関連資料のご案内をお送りする場合があります。</span></label>
+        <button type="submit" class="btn" id="dlSubmit">ダウンロードする</button>
+        <p class="fineprint">しつこい営業は一切いたしません。<br>1クリックでいつでも配信停止できます。</p>
+      </form>
+    </div>
+    <div class="modal-success" id="modalSuccess">
+      <div class="check">✓</div>
+      <h3>ご登録ありがとうございます</h3>
+      <p>下のボタンから資料をご覧いただけます。<br>次回以降は登録不要で、すべての資料をダウンロードできます。</p>
+      <a href="#" class="btn" id="successDownload" target="_blank" rel="noopener" style="width:100%;justify-content:center;">資料を開く <i style="font-style:normal;">↓</i></a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">Tech<i>Worker</i></div>
+        <p>企業向け生成AIコンサルティング<br>株式会社TechWorker</p>
+      </div>
+      <div class="footer-col"><h4>サービス</h4><a href="../index.html#services">生成AIコンサル</a></div>
+      <div class="footer-col"><h4>サイト</h4><a href="../news.html">ニュース</a><a href="../cases.html">実績</a><a href="index.html">資料</a><a href="../company.html">会社概要</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="../contact.html">無料相談</a><a href="../privacy.html">プライバシーポリシー</a><p>〒169-0051<br>東京都新宿区西早稲田一丁目22番3号</p></div>
+    </div>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+addEventListener('scroll',function(){var n=document.querySelector('nav');if(n)n.classList.toggle('scrolled',scrollY>40);},{passive:true});
+
+/* mobile menu */
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(open){document.body.classList.toggle('menu-open',open);hamb.setAttribute('aria-expanded',open?'true':'false');mmenu.setAttribute('aria-hidden',open?'false':'true');document.body.style.overflow=open?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+
+/* download gate */
+(function(){
+  var DOCS={
+    cases:{title:'2026年版 生成AI活用事例集',url:'cases-2026.html'},
+    security:{title:'Claude Code 企業導入 セキュリティ＆セットアップ実践ガイド',url:'claude-code-security.html'}
+  };
+  var STORE_KEY='tw_library_unlocked';
+  var overlay=document.getElementById('modalOverlay'),modalForm=document.getElementById('modalForm'),modalSuccess=document.getElementById('modalSuccess');
+  var modalDocName=document.getElementById('modalDocName'),successDownload=document.getElementById('successDownload');
+  var form=document.getElementById('dlForm'),submitBtn=document.getElementById('dlSubmit'),banner=document.getElementById('unlockedBanner');
+  var currentDoc=null,lastFocus=null;
+  function isUnlocked(){try{return localStorage.getItem(STORE_KEY)==='1';}catch(e){return false;}}
+  function setUnlocked(){try{localStorage.setItem(STORE_KEY,'1');}catch(e){}}
+  function refreshUI(){
+    if(isUnlocked()){
+      banner.classList.add('show');
+      document.querySelectorAll('.js-download').forEach(function(btn){
+        if(!DOCS[btn.dataset.doc])return;
+        btn.innerHTML='資料を開く <i style="font-style:normal">↓</i>';
+        btn.dataset.unlocked='1';
+      });
+    }
+  }
+  function openModal(doc){currentDoc=doc;lastFocus=document.activeElement;modalForm.style.display='block';modalSuccess.classList.remove('show');modalDocName.textContent=DOCS[doc].title;overlay.classList.add('show');document.body.style.overflow='hidden';var f=overlay.querySelector('#dlForm input');if(f)f.focus();}
+  function closeModal(){overlay.classList.remove('show');document.body.style.overflow='';if(lastFocus&&lastFocus.focus)lastFocus.focus();}
+  document.querySelectorAll('.js-download').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var doc=btn.dataset.doc,info=DOCS[doc];if(!info)return;
+      if(btn.dataset.unlocked==='1'||isUnlocked()){window.open(info.url,'_blank');return;}
+      openModal(doc);
+    });
+  });
+  document.getElementById('modalClose').addEventListener('click',closeModal);
+  overlay.addEventListener('keydown',function(e){if(e.key!=='Tab')return;var els=overlay.querySelectorAll('a[href],button:not([disabled]),input,textarea');if(!els.length)return;var first=els[0],last=els[els.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}});
+  overlay.addEventListener('click',function(e){if(e.target===overlay)closeModal();});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&overlay.classList.contains('show'))closeModal();});
+  form.addEventListener('submit',async function(e){
+    e.preventDefault();
+    if(!document.getElementById('dlAgree').checked){alert('プライバシーポリシーへの同意が必要です。');return;}
+    submitBtn.disabled=true;submitBtn.textContent='送信中…';
+    var fd=new FormData(form),info=DOCS[currentDoc];
+    var note=fd.get('note')||'';
+    var payload={
+      name:fd.get('name')||'',company:fd.get('company')||'',email:fd.get('email')||'',position:fd.get('position')||'',phone:fd.get('phone')||'',
+      inquiry_type:'document',
+      message:'【資料ダウンロード】'+(info?info.title:currentDoc)+'（役職: '+(fd.get('position')||'-')+'）'+(note?'\n【ご相談内容】'+note:''),
+      source:'library'
+    };
+    try{
+      var res=await fetch('/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+      if(!res.ok)throw new Error('HTTP '+res.status);
+      setUnlocked();
+      if(typeof fbq==='function'){try{fbq('track','Lead',{content_name:info?info.title:currentDoc});}catch(_){}}
+      successDownload.href=info?info.url:'#';
+      modalForm.style.display='none';modalSuccess.classList.add('show');refreshUI();
+    }catch(err){console.error('Download form failed:',err);alert('送信に失敗しました。お手数ですが info@techworker.co.jp までご連絡ください。');}
+    finally{submitBtn.disabled=false;submitBtn.textContent='ダウンロードする';}
+  });
+  refreshUI();
+})();
+</script>
+</body>
+</html>

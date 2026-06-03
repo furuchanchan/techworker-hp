@@ -24,6 +24,7 @@ async function saveToNotion(data, apiKey) {
   if (data.position)     properties['役職']           = { rich_text: [{ text: { content: data.position } }] };
   if (data.company_size) properties['会社規模']       = { select:       { name: data.company_size } };
   if (data.inquiry_type) properties['問い合わせ種別'] = { select:       { name: INQUIRY_MAP[data.inquiry_type] || '無料相談' } };
+  if (data.source)       properties['ソース']         = { select:       { name: data.source } };
 
   const res = await fetch('https://api.notion.com/v1/pages', {
     method: 'POST',
@@ -62,6 +63,7 @@ async function sendSlackNotification(data, webhookUrl) {
           { type: 'mrkdwn', text: `*部署*\n${data.department || '-'}` },
           { type: 'mrkdwn', text: `*役職*\n${data.position || '-'}` },
           { type: 'mrkdwn', text: `*種別*\n${type}` },
+          { type: 'mrkdwn', text: `*ソース*\n${data.source || 'HP本体'}` },
           { type: 'mrkdwn', text: `*メール*\n${data.email || '-'}` },
           { type: 'mrkdwn', text: `*電話番号*\n${data.phone || '-'}` },
           { type: 'mrkdwn', text: `*会社規模*\n${data.company_size || '-'}` },

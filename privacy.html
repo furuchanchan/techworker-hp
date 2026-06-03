@@ -1,237 +1,177 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" class="no-js">
 <head>
 <meta charset="UTF-8">
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>個人情報保護方針 | 株式会社TechWorker</title>
-<meta name="description" content="TechWorker — 企業向け生成AIコンサルティング">
+<title>個人情報保護方針 — 株式会社TechWorker</title>
+<meta name="description" content="株式会社TechWorkerの個人情報保護方針。個人情報の取得・利用・管理・第三者提供・Cookie・AIサービスの利用等の方針を定めています。">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <meta property="og:type" content="website">
+<meta property="og:title" content="個人情報保護方針 | 株式会社TechWorker">
+<meta property="og:description" content="株式会社TechWorkerの個人情報保護方針。">
 <meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/privacy.html">
 <meta property="og:site_name" content="TechWorker">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="個人情報保護方針 | 株式会社TechWorker">
 <meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Noto+Sans+JP:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ===== TOKENS ===== */
-:root {
-  --tw-black: #0D1117;
-  --tw-paper: #F4F6F9;
-  --tw-electric: #005EFF;
-  --tw-electric-dark: #003DAA;
-  --tw-slate: #3C4B64;
-  --tw-emerald: #00B894;
-  --tw-violet: #7C3AED;
+:root{
+  --ink:#0D1117; --paper:#F4F6F9; --paper-2:#ECEFF3; --white:#FBFCFD;
+  --electric:#005EFF; --electric-dark:#003DAA;
+  --slate:#4A5666; --line:rgba(13,17,23,.12); --line-2:rgba(13,17,23,.20);
+  --emerald:#00B894; --violet:#7C3AED;
+  --jp:'IBM Plex Sans JP','IBM Plex Sans',system-ui,sans-serif;
+  --en:'IBM Plex Sans','IBM Plex Sans JP',system-ui,sans-serif;
 }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:76px;}
+body{font-family:var(--jp);background:var(--paper);color:var(--ink);line-height:1.85;font-size:16px;-webkit-font-smoothing:antialiased;font-feature-settings:"palt" 1;overflow-x:hidden;}
+::selection{background:var(--electric);color:var(--paper);}
+a{color:inherit;}
+img{display:block;max-width:100%;}
 
-/* ===== RESET ===== */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; overflow-x: hidden; }
-body {
-  font-family: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
-  background: var(--tw-paper);
-  color: var(--tw-black);
-  line-height: 1.7;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
-
-/* ===== UTILITIES ===== */
-.container { max-width: 1200px; margin: 0 auto; padding: 0 40px; width: 100%; }
-.label {
-  font-size: 11px; font-weight: 600; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--tw-electric);
-  margin-bottom: 16px; display: block;
-}
+/* ===== SHARED ===== */
+.container{max-width:1280px;margin:0 auto;padding:0 48px;width:100%;}
+.tag{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--electric);display:inline-flex;align-items:center;gap:11px;padding-left:14px;border-left:3px solid var(--electric);}
+.tag span{color:var(--slate);font-weight:500;letter-spacing:.02em;text-transform:none;font-size:13px;}
+.btn{font-family:var(--jp);font-size:14.5px;font-weight:600;color:var(--paper);background:var(--electric);text-decoration:none;border-radius:5px;padding:15px 30px;display:inline-flex;align-items:center;gap:11px;transition:background .25s,transform .25s;border:none;cursor:pointer;}
+.btn:hover{background:var(--electric-dark);transform:translateY(-1px);}
+.btn i{font-style:normal;transition:transform .25s;}
+.btn:hover i{transform:translateX(4px);}
+.btn--ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line-2);}
+.btn--ghost:hover{background:transparent;border-color:var(--electric);color:var(--electric);}
 
 /* ===== NAV ===== */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(244,246,249,.92); backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0,94,255,.08);
-  padding: 0 40px; height: 64px;
-  display: flex; align-items: center; justify-content: space-between;
-}
-nav .logo { font-size: 18px; font-weight: 800; color: var(--tw-black); text-decoration: none; }
-nav .logo span { color: var(--tw-electric); }
-nav ul { list-style: none; display: flex; gap: 32px; }
-nav ul a {
-  font-size: 13px; font-weight: 600; color: var(--tw-slate);
-  text-decoration: none; letter-spacing: .5px; transition: color .2s;
-}
-nav ul a:hover { color: var(--tw-electric); }
-nav .nav-cta {
-  font-size: 13px; font-weight: 700; padding: 8px 24px;
-  background: var(--tw-electric); color: var(--tw-paper);
-  border-radius: 5px; text-decoration: none; transition: background .2s;
-}
-nav .nav-cta:hover { background: var(--tw-electric-dark); }
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:68px;background:rgba(244,246,249,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transition:box-shadow .3s,height .3s cubic-bezier(.2,.8,.2,1),background .3s;}
+nav.scrolled{box-shadow:0 1px 16px rgba(0,94,255,.06);height:58px;background:rgba(244,246,249,.92);}
+nav .logo{transition:font-size .3s cubic-bezier(.2,.8,.2,1);}
+nav.scrolled .logo{font-size:18px;}
+nav .logo{font-family:var(--en);font-weight:700;font-size:20px;letter-spacing:-.01em;text-decoration:none;color:var(--ink);}
+nav .logo i{font-style:normal;color:var(--electric);}
+nav ul{list-style:none;display:flex;gap:34px;}
+nav ul a{font-size:14px;font-weight:500;color:var(--ink);text-decoration:none;position:relative;}
+nav ul a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--electric);transition:width .28s cubic-bezier(.2,.8,.2,1);}
+nav ul a:hover::after{width:100%;}
+nav .nav-right{display:flex;align-items:center;gap:18px;}
+nav .nav-cta{font-family:var(--jp);font-size:13.5px;font-weight:600;color:var(--paper);background:var(--electric);text-decoration:none;padding:10px 22px;border-radius:4px;transition:background .25s;}
+nav .nav-cta:hover{background:var(--electric-dark);}
+nav .nav-cta .short{display:none;}
+nav .lang{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.04em;}
+nav .lang a{color:var(--slate);text-decoration:none;}
+nav .lang .cur{color:var(--electric);}
+
+/* hamburger */
+.hamb{display:none;width:44px;height:44px;border:none;background:none;cursor:pointer;position:relative;margin-left:2px;}
+.hamb span{position:absolute;left:11px;width:22px;height:2px;background:var(--ink);transition:transform .3s,opacity .2s;}
+.hamb span:nth-child(1){top:15px;} .hamb span:nth-child(2){top:21px;} .hamb span:nth-child(3){top:27px;}
+body.menu-open .hamb span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+body.menu-open .hamb span:nth-child(2){opacity:0;}
+body.menu-open .hamb span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+/* mobile menu panel */
+.mmenu{position:fixed;inset:68px 0 0;z-index:45;background:var(--paper);transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);visibility:hidden;display:flex;flex-direction:column;padding:18px 24px 40px;}
+body.menu-open .mmenu{transform:none;visibility:visible;}
+.mmenu a{font-size:19px;font-weight:600;color:var(--ink);text-decoration:none;padding:20px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;}
+.mmenu a::after{content:"→";color:var(--electric);font-family:var(--en);}
+.mmenu .m-cta{margin-top:28px;background:var(--electric);color:var(--paper);justify-content:center;border-radius:5px;border:none;padding:17px;}
+.mmenu .m-cta::after{content:none;}
+.mmenu .m-lang{margin-top:auto;border:none;font-family:var(--en);font-size:13px;color:var(--slate);}
+.mmenu .m-lang::after{content:none;}
 
 /* ===== PAGE HEADER ===== */
-.page-header {
-  padding: 140px 0 60px;
-  background: #fff;
-  border-bottom: 1px solid rgba(0,94,255,.06);
-}
-.page-header h1 {
-  font-size: clamp(28px, 4vw, 40px);
-  font-weight: 800;
-  margin-bottom: 8px;
-}
-.page-header .subtitle {
-  font-size: 14px;
-  color: var(--tw-slate);
-}
+.page-head{padding:152px 0 64px;border-bottom:1px solid var(--line);}
+.page-head .tag{margin-bottom:30px;}
+.page-head h1{font-family:var(--jp);font-weight:700;font-size:clamp(32px,5vw,56px);line-height:1.3;letter-spacing:-.02em;}
+.page-head .intro{font-size:16px;color:var(--slate);line-height:2.05;margin-top:24px;max-width:64ch;}
+.page-head .intro strong{color:var(--ink);font-weight:600;}
+.page-head .date{font-family:var(--en);font-size:13px;font-weight:600;color:var(--slate);letter-spacing:.02em;margin-top:28px;padding-left:12px;border-left:3px solid var(--line-2);}
 
-/* ===== POLICY CONTENT ===== */
-.policy {
-  padding: 80px 0 120px;
-}
-.policy-inner {
-  max-width: 800px;
-}
-.policy-date {
-  font-size: 13px;
-  color: var(--tw-slate);
-  margin-bottom: 40px;
-  font-weight: 600;
-}
-.policy-intro {
-  font-size: 15px;
-  line-height: 2;
-  color: var(--tw-slate);
-  margin-bottom: 60px;
-}
-.policy h2 {
-  font-size: 20px;
-  font-weight: 800;
-  margin-top: 48px;
-  margin-bottom: 16px;
-  padding-bottom: 12px;
-  border-bottom: 2px solid var(--tw-electric);
-  display: inline-block;
-}
-.policy h3 {
-  font-size: 16px;
-  font-weight: 700;
-  margin-top: 24px;
-  margin-bottom: 8px;
-}
-.policy p {
-  font-size: 15px;
-  line-height: 2;
-  color: var(--tw-slate);
-  margin-bottom: 16px;
-}
-.policy ul, .policy ol {
-  margin: 12px 0 16px 24px;
-  font-size: 15px;
-  line-height: 2;
-  color: var(--tw-slate);
-}
-.policy li {
-  margin-bottom: 4px;
-}
-.policy .contact-info {
-  background: #fff;
-  border-radius: 12px;
-  padding: 32px;
-  border: 1px solid rgba(0,94,255,.06);
-  margin-top: 16px;
-}
-.policy .contact-info p {
-  margin-bottom: 4px;
-}
+/* ===== POLICY DOCUMENT ===== */
+.policy{padding:72px 0 110px;}
+.policy-inner{max-width:820px;}
+.policy section{margin-bottom:52px;}
+.policy section:last-child{margin-bottom:0;}
+.policy h2{font-family:var(--jp);font-weight:700;font-size:clamp(20px,2.4vw,26px);line-height:1.45;letter-spacing:-.01em;color:var(--ink);padding-bottom:14px;margin-bottom:22px;border-bottom:1px solid var(--line);position:relative;}
+.policy h2 .num{font-family:var(--en);font-weight:600;color:var(--electric);margin-right:14px;font-feature-settings:"tnum" 1;}
+.policy p{font-size:15.5px;line-height:2.1;color:#28313f;margin-bottom:18px;}
+.policy p:last-child{margin-bottom:0;}
+.policy p strong{color:var(--ink);font-weight:700;}
+.policy a.lnk{color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);transition:border-color .2s;}
+.policy a.lnk:hover{border-color:var(--electric);}
+.policy ul,.policy ol{margin:16px 0 18px;padding-left:0;list-style:none;font-size:15.5px;line-height:1.95;color:#28313f;}
+.policy ul li,.policy ol li{position:relative;padding-left:26px;margin-bottom:10px;}
+.policy ul li::before{content:"";position:absolute;left:4px;top:13px;width:7px;height:7px;background:var(--electric);border-radius:1px;}
+.policy ol{counter-reset:pol;}
+.policy ol li{counter-increment:pol;}
+.policy ol li::before{content:counter(pol);position:absolute;left:0;top:1px;font-family:var(--en);font-weight:600;font-size:13px;color:var(--electric);width:18px;text-align:left;}
+.policy .contact-card{margin-top:24px;background:var(--white);border:1px solid var(--line);border-radius:6px;padding:32px 34px;}
+.policy .contact-card p{font-size:15px;line-height:1.9;margin-bottom:6px;color:#28313f;}
+.policy .contact-card p:last-child{margin-bottom:0;}
+.policy .contact-card .org{font-weight:700;color:var(--ink);font-size:16px;margin-bottom:14px;}
+.policy-back{margin-top:64px;padding-top:38px;border-top:1px solid var(--line);}
 
 /* ===== FOOTER ===== */
-footer {
-  padding: 60px 0 40px;
-  background: #fff;
-  border-top: 1px solid rgba(0,94,255,.06);
+footer{background:var(--white);border-top:1px solid var(--line);padding:64px 0 40px;}
+.footer-inner{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;}
+.footer-brand .logo{font-family:var(--en);font-size:19px;font-weight:700;color:var(--ink);}
+.footer-brand .logo i{font-style:normal;color:var(--electric);}
+.footer-brand p{font-size:13px;color:var(--slate);line-height:1.7;margin-top:12px;}
+.footer-brand .x{display:inline-flex;align-items:center;gap:7px;margin-top:16px;font-size:13px;font-weight:600;color:var(--slate);text-decoration:none;}
+.footer-brand .x:hover{color:var(--electric);}
+.footer-col h4{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:16px;}
+.footer-col a{display:block;font-size:13px;color:var(--slate);text-decoration:none;margin-bottom:10px;}
+.footer-col a:hover{color:var(--electric);}
+.footer-col p{font-size:13px;color:var(--slate);line-height:1.7;margin-top:12px;}
+.copyright{text-align:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-family:var(--en);font-size:12px;color:var(--slate);}
+
+/* ===== reveal (progressive enhancement: visible without JS) ===== */
+html.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+html.js .rv.show{opacity:1;transform:none;}
+
+/* ===== focus visibility (keyboard) ===== */
+a:focus-visible,button:focus-visible{outline:2px solid var(--electric);outline-offset:3px;border-radius:3px;}
+:focus:not(:focus-visible){outline:none;}
+
+/* ===== reduced motion ===== */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  html.js .rv{opacity:1;transform:none;transition:none;}
+  *{animation-duration:.001ms!important;transition-duration:.001ms!important;}
 }
-footer .footer-inner {
-  display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px;
-  align-items: start;
+
+/* ===== UI: custom scrollbar ===== */
+@media (pointer:fine){
+  *{scrollbar-width:thin;scrollbar-color:#c3ccd8 transparent;}
+  ::-webkit-scrollbar{width:12px;height:12px;}
+  ::-webkit-scrollbar-thumb{background:#c3ccd8;border-radius:10px;border:3px solid var(--paper);}
+  ::-webkit-scrollbar-thumb:hover{background:#9aa7b8;}
+  ::-webkit-scrollbar-track{background:transparent;}
 }
-footer .footer-brand .logo { font-size: 18px; font-weight: 800; margin-bottom: 12px; color: var(--tw-black); }
-footer .footer-brand .logo span { color: var(--tw-electric); }
-footer .footer-brand p { font-size: 13px; color: var(--tw-slate); line-height: 1.7; }
-footer .footer-col h4 {
-  font-size: 12px; font-weight: 700; letter-spacing: 2px;
-  text-transform: uppercase; color: var(--tw-slate); opacity: .5; margin-bottom: 16px;
-}
-footer .footer-col a {
-  display: block; font-size: 13px; color: var(--tw-slate);
-  text-decoration: none; margin-bottom: 10px; transition: color .2s;
-}
-footer .footer-col a:hover { color: var(--tw-electric); }
-footer .footer-col p {
-  font-size: 13px; color: var(--tw-slate); line-height: 1.7;
-}
-footer .copyright {
-  text-align: center; margin-top: 40px; padding-top: 24px;
-  border-top: 1px solid rgba(0,94,255,.06);
-  font-size: 12px; color: var(--tw-slate); opacity: .4;
-}
+
+/* ===== UI: refined hover micro-interactions ===== */
+.btn:active{transform:translateY(0);}
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 1024px) {
-  footer .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+@media(max-width:1000px){
+  .footer-inner{grid-template-columns:1fr 1fr;gap:32px;}
 }
-@media (max-width: 640px) {
-  .container { padding: 0 20px; }
-  nav { padding: 0 20px; }
-  nav ul { display: none; }
+@media(max-width:860px){
+  nav ul{display:none;}
+  nav .nav-cta{display:none;}
+  nav .lang{display:none;}
+  .hamb{display:block;}
+  .page-head{padding:116px 0 48px;}
 }
-
-/* ===== NAV DROPDOWN ===== */
-nav ul li { position: relative; }
-.nav-dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%; padding-top: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 8px 32px rgba(0,94,255,.12);
-  border: 1px solid rgba(0,94,255,.08);
-  min-width: 200px;
-  padding: 8px 0;
-  z-index: 200;
-  white-space: nowrap;
-}
-.nav-dropdown-menu::before {
-  content: '';
-  position: absolute;
-  top: 6px; left: 50%; transform: translateX(-50%);
-  width: 10px; height: 10px;
-  background: #fff;
-  border-left: 1px solid rgba(0,94,255,.08);
-  border-top: 1px solid rgba(0,94,255,.08);
-  transform: translateX(-50%) rotate(45deg);
-}
-.nav-dropdown-menu a {
-  display: block;
-  padding: 10px 20px;
-  font-size: 13px;
-  font-weight: 600;
-  color: #3C4B64;
-  text-decoration: none;
-  transition: color .15s, background .15s;
-}
-.nav-dropdown-menu a:hover {
-  color: #005EFF;
-  background: rgba(0,94,255,.04);
-}
-nav ul li:hover .nav-dropdown-menu { display: block; }
-.nav-dropdown-trigger { cursor: default; }
-.nav-dropdown-trigger::after {
-  content: ' ▾';
-  font-size: 10px;
-  opacity: .6;
+@media(max-width:560px){
+  .container{padding:0 22px;}
+  nav{padding:0 10px 0 18px;height:60px;}
+  .mmenu{top:60px;}
+  .policy .contact-card{padding:26px 24px;}
 }
 </style>
 <!-- Meta Pixel Code -->
@@ -254,186 +194,235 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
 </head>
 <body>
 
-<!-- ===== NAV ===== -->
-<nav>
-  <a href="index.html" class="logo">Tech<span>Worker</span></a>
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="logo">Tech<i>Worker</i></a>
   <ul>
     <li><a href="index.html">ホーム</a></li>
     <li><a href="index.html#services">サービス</a></li>
     <li><a href="cases.html">実績</a></li>
+    <li><a href="library/">資料</a></li>
     <li><a href="news.html">ニュース</a></li>
     <li><a href="company.html">会社概要</a></li>
   </ul>
-  <a href="contact.html" class="nav-cta">お問い合わせ</a>
+  <div class="nav-right">
+    <a href="contact.html" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
+    <span class="lang"><span class="cur">JP</span> / <a href="en/index.html">EN</a></span>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
 </nav>
 
-<!-- ===== PAGE HEADER ===== -->
-<section class="page-header">
-  <div class="container">
-    <span class="label">Privacy Policy</span>
-    <h1>個人情報保護方針</h1>
-    <p class="subtitle">株式会社TechWorker（以下「当社」）は、個人情報の重要性を認識し、以下の方針に基づき適切に取り扱います。</p>
-  </div>
-</section>
+<!-- MOBILE MENU -->
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="index.html">ホーム</a>
+  <a href="index.html#services">サービス</a>
+  <a href="cases.html">実績</a>
+  <a href="library/">資料ダウンロード</a>
+  <a href="news.html">ニュース</a>
+  <a href="company.html">会社概要</a>
+  <a href="contact.html" class="m-cta">無料相談を申し込む</a>
+  <a href="en/index.html" class="m-lang">English ↗</a>
+</div>
 
-<!-- ===== POLICY CONTENT ===== -->
+<!-- PAGE HEADER -->
+<header class="page-head">
+  <div class="container">
+    <div class="tag">Privacy Policy <span>個人情報保護方針</span></div>
+    <h1>個人情報保護方針</h1>
+    <p class="intro">株式会社TechWorker（以下「当社」）は、個人情報の重要性を認識し、<strong>個人情報保護法その他の関連法令・ガイドラインを遵守</strong>し、以下の方針に基づき適切に取り扱います。</p>
+    <p class="date">制定日: 2026年3月23日</p>
+  </div>
+</header>
+
+<!-- POLICY CONTENT -->
 <section class="policy">
   <div class="container">
     <div class="policy-inner">
 
-      <p class="policy-date">制定日: 2026年3月23日</p>
+      <section class="rv">
+        <p>
+          株式会社TechWorker（以下「当社」といいます）は、お客様の個人情報の保護を重要な経営課題として位置づけ、個人情報の保護に関する法律（以下「個人情報保護法」）その他の関連法令・ガイドラインを遵守し、以下のとおり個人情報保護方針を定め、適切な取り扱いと保護に努めてまいります。
+        </p>
+      </section>
 
-      <p class="policy-intro">
-        株式会社TechWorker（以下「当社」といいます）は、お客様の個人情報の保護を重要な経営課題として位置づけ、個人情報の保護に関する法律（以下「個人情報保護法」）その他の関連法令・ガイドラインを遵守し、以下のとおり個人情報保護方針を定め、適切な取り扱いと保護に努めてまいります。
-      </p>
+      <section class="rv">
+        <h2><span class="num">01</span>個人情報の定義</h2>
+        <p>
+          本方針において「個人情報」とは、個人情報保護法に定義される個人情報を指し、生存する個人に関する情報であって、当該情報に含まれる氏名、生年月日、住所、電話番号、メールアドレスその他の記述により、特定の個人を識別できるもの（他の情報と容易に照合することができ、それにより特定の個人を識別することができるものを含みます）をいいます。
+        </p>
+      </section>
 
-      <h2>1. 個人情報の定義</h2>
-      <p>
-        本方針において「個人情報」とは、個人情報保護法に定義される個人情報を指し、生存する個人に関する情報であって、当該情報に含まれる氏名、生年月日、住所、電話番号、メールアドレスその他の記述により、特定の個人を識別できるもの（他の情報と容易に照合することができ、それにより特定の個人を識別することができるものを含みます）をいいます。
-      </p>
+      <section class="rv">
+        <h2><span class="num">02</span>個人情報の収集</h2>
+        <p>当社は、以下の場合に個人情報を取得することがあります。</p>
+        <ul>
+          <li>お問い合わせフォームからのご連絡をいただいた場合</li>
+          <li>資料請求のお申し込みをいただいた場合</li>
+          <li>無料相談のお申し込みをいただいた場合</li>
+          <li>セミナー・ウェビナーへお申し込みいただいた場合</li>
+          <li>業務委託契約等のお取引に際してご提供いただいた場合</li>
+          <li>名刺交換その他の方法でご提供いただいた場合</li>
+        </ul>
+        <p>当社は、適法かつ公正な手段により個人情報を取得し、不正な手段による取得は行いません。</p>
+      </section>
 
-      <h2>2. 個人情報の収集</h2>
-      <p>当社は、以下の場合に個人情報を取得することがあります。</p>
-      <ul>
-        <li>お問い合わせフォームからのご連絡をいただいた場合</li>
-        <li>資料請求のお申し込みをいただいた場合</li>
-        <li>無料相談のお申し込みをいただいた場合</li>
-        <li>セミナー・ウェビナーへお申し込みいただいた場合</li>
-        <li>業務委託契約等のお取引に際してご提供いただいた場合</li>
-        <li>名刺交換その他の方法でご提供いただいた場合</li>
-      </ul>
-      <p>当社は、適法かつ公正な手段により個人情報を取得し、不正な手段による取得は行いません。</p>
+      <section class="rv">
+        <h2><span class="num">03</span>利用目的</h2>
+        <p>当社は、取得した個人情報を以下の目的で利用いたします。</p>
+        <ul>
+          <li>お問い合わせへの回答およびご連絡のため</li>
+          <li>資料の送付のため</li>
+          <li>当社サービスに関するご案内・ご提案のため</li>
+          <li>セミナー・ウェビナー等のイベントに関するご案内のため</li>
+          <li>業務委託契約その他のお取引に関する業務遂行のため</li>
+          <li>サービスの改善および新サービスの開発のため</li>
+          <li>当社ウェブサイトの利用状況の分析・改善のため</li>
+          <li>その他、上記に付随する業務のため</li>
+        </ul>
+      </section>
 
-      <h2>3. 利用目的</h2>
-      <p>当社は、取得した個人情報を以下の目的で利用いたします。</p>
-      <ul>
-        <li>お問い合わせへの回答およびご連絡のため</li>
-        <li>資料の送付のため</li>
-        <li>当社サービスに関するご案内・ご提案のため</li>
-        <li>セミナー・ウェビナー等のイベントに関するご案内のため</li>
-        <li>業務委託契約その他のお取引に関する業務遂行のため</li>
-        <li>サービスの改善および新サービスの開発のため</li>
-        <li>当社ウェブサイトの利用状況の分析・改善のため</li>
-        <li>その他、上記に付随する業務のため</li>
-      </ul>
+      <section class="rv">
+        <h2><span class="num">04</span>第三者提供の制限</h2>
+        <p>当社は、以下の場合を除き、お客様の同意なく個人情報を第三者に提供いたしません。</p>
+        <ul>
+          <li>法令に基づく場合</li>
+          <li>人の生命、身体または財産の保護のために必要がある場合であって、本人の同意を得ることが困難な場合</li>
+          <li>公衆衛生の向上または児童の健全な育成の推進のために特に必要がある場合であって、本人の同意を得ることが困難な場合</li>
+          <li>国の機関もしくは地方公共団体またはその委託を受けた者が法令の定める事務を遂行することに対して協力する必要がある場合</li>
+        </ul>
+      </section>
 
-      <h2>4. 第三者提供の制限</h2>
-      <p>当社は、以下の場合を除き、お客様の同意なく個人情報を第三者に提供いたしません。</p>
-      <ul>
-        <li>法令に基づく場合</li>
-        <li>人の生命、身体または財産の保護のために必要がある場合であって、本人の同意を得ることが困難な場合</li>
-        <li>公衆衛生の向上または児童の健全な育成の推進のために特に必要がある場合であって、本人の同意を得ることが困難な場合</li>
-        <li>国の機関もしくは地方公共団体またはその委託を受けた者が法令の定める事務を遂行することに対して協力する必要がある場合</li>
-      </ul>
+      <section class="rv">
+        <h2><span class="num">05</span>個人情報の管理</h2>
+        <p>
+          当社は、お客様の個人情報を正確かつ最新の状態に保つとともに、個人情報への不正アクセス、個人情報の紛失、破壊、改ざんおよび漏洩等を防止するため、合理的なセキュリティ対策を講じ、適切に管理いたします。
+        </p>
+        <p>
+          また、個人情報の取り扱いを外部に委託する場合は、委託先において個人情報の安全管理が図られるよう、必要かつ適切な監督を行います。
+        </p>
+        <p>当社は、個人情報の安全管理のため、以下の措置を講じています。</p>
+        <ul>
+          <li>組織的措置：個人情報の取り扱いに関する責任者を定め、従業者への定期的な教育・研修を実施します</li>
+          <li>人的措置：従業者との間で守秘義務に関する合意を締結し、個人情報への不正アクセスを防止します</li>
+          <li>物理的措置：個人情報を取り扱う機器・書類等の適切な管理を行い、不正な持ち出しを防止します</li>
+          <li>技術的措置：個人情報へのアクセス権限を必要最小限の担当者に限定し、不正アクセス防止のための適切な設定を維持します</li>
+          <li>漏洩発生時の対応：万が一、個人情報の漏洩等が発生した場合は、個人情報保護法に従い、速やかに個人情報保護委員会への報告および影響を受けるお客様へのご通知を行います</li>
+        </ul>
+      </section>
 
-      <h2>5. 個人情報の管理</h2>
-      <p>
-        当社は、お客様の個人情報を正確かつ最新の状態に保つとともに、個人情報への不正アクセス、個人情報の紛失、破壊、改ざんおよび漏洩等を防止するため、合理的なセキュリティ対策を講じ、適切に管理いたします。
-      </p>
-      <p>
-        また、個人情報の取り扱いを外部に委託する場合は、委託先において個人情報の安全管理が図られるよう、必要かつ適切な監督を行います。
-      </p>
-      <p>当社は、個人情報の安全管理のため、以下の措置を講じています。</p>
-      <ul>
-        <li>組織的措置：個人情報の取り扱いに関する責任者を定め、従業者への定期的な教育・研修を実施します</li>
-        <li>人的措置：従業者との間で守秘義務に関する合意を締結し、個人情報への不正アクセスを防止します</li>
-        <li>物理的措置：個人情報を取り扱う機器・書類等の適切な管理を行い、不正な持ち出しを防止します</li>
-        <li>技術的措置：個人情報へのアクセス権限を必要最小限の担当者に限定し、不正アクセス防止のための適切な設定を維持します</li>
-        <li>漏洩発生時の対応：万が一、個人情報の漏洩等が発生した場合は、個人情報保護法に従い、速やかに個人情報保護委員会への報告および影響を受けるお客様へのご通知を行います</li>
-      </ul>
+      <section class="rv">
+        <h2><span class="num">06</span>Cookie等の利用</h2>
+        <p>
+          当社ウェブサイトでは、サービスの利便性向上およびウェブサイトの利用状況の把握のため、Cookie（クッキー）および類似の技術を使用する場合があります。Cookieとは、ウェブサーバーからお客様のブラウザに送信される小さなデータファイルであり、お客様のコンピュータに保存されます。
+        </p>
+        <p>
+          お客様はブラウザの設定によりCookieの受け入れを拒否することができますが、その場合、当社ウェブサイトの一部機能がご利用いただけなくなることがあります。
+        </p>
+      </section>
 
-      <h2>6. Cookie等の利用</h2>
-      <p>
-        当社ウェブサイトでは、サービスの利便性向上およびウェブサイトの利用状況の把握のため、Cookie（クッキー）および類似の技術を使用する場合があります。Cookieとは、ウェブサーバーからお客様のブラウザに送信される小さなデータファイルであり、お客様のコンピュータに保存されます。
-      </p>
-      <p>
-        お客様はブラウザの設定によりCookieの受け入れを拒否することができますが、その場合、当社ウェブサイトの一部機能がご利用いただけなくなることがあります。
-      </p>
+      <section class="rv">
+        <h2><span class="num">07</span>Google Analytics等の利用</h2>
+        <p>
+          当社ウェブサイトでは、ウェブサイトの利用状況を分析するためにGoogle LLC（以下「Google」）が提供するGoogle Analyticsを使用する場合があります。Google Analyticsは、Cookieを使用してお客様のウェブサイト利用情報（IPアドレスを含む）を収集します。
+        </p>
+        <p>
+          Google Analyticsによるデータ収集および処理の仕組みについては、<a class="lnk" href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">Googleのポリシーと規約</a>をご確認ください。
+        </p>
+        <p>
+          Google Analyticsによるトラッキングを無効にしたい場合は、Googleが提供する<a class="lnk" href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">オプトアウトアドオン</a>をご利用ください。
+        </p>
+      </section>
 
-      <h2>7. Google Analytics等の利用</h2>
-      <p>
-        当社ウェブサイトでは、ウェブサイトの利用状況を分析するためにGoogle LLC（以下「Google」）が提供するGoogle Analyticsを使用する場合があります。Google Analyticsは、Cookieを使用してお客様のウェブサイト利用情報（IPアドレスを含む）を収集します。
-      </p>
-      <p>
-        Google Analyticsによるデータ収集および処理の仕組みについては、<a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" style="color: var(--tw-electric);">Googleのポリシーと規約</a>をご確認ください。
-      </p>
-      <p>
-        Google Analyticsによるトラッキングを無効にしたい場合は、Googleが提供する<a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" style="color: var(--tw-electric);">オプトアウトアドオン</a>をご利用ください。
-      </p>
+      <section class="rv">
+        <h2><span class="num">08</span>お問い合わせフォームでの情報収集について</h2>
+        <p>
+          当社ウェブサイトのお問い合わせフォームでは、お客様のお名前、メールアドレス、電話番号、会社名、お問い合わせ内容等の情報をご入力いただいております。これらの情報は、お問い合わせへの回答、資料の送付、サービスに関するご案内等の目的でのみ利用いたします。
+        </p>
+        <p>
+          ご入力いただいた情報は、当社が指定するフォームサービスを通じて送信され、当社が適切に管理するシステムにて保管いたします。
+        </p>
+      </section>
 
-      <h2>8. お問い合わせフォームでの情報収集について</h2>
-      <p>
-        当社ウェブサイトのお問い合わせフォームでは、お客様のお名前、メールアドレス、電話番号、会社名、お問い合わせ内容等の情報をご入力いただいております。これらの情報は、お問い合わせへの回答、資料の送付、サービスに関するご案内等の目的でのみ利用いたします。
-      </p>
-      <p>
-        ご入力いただいた情報は、当社が指定するフォームサービスを通じて送信され、当社が適切に管理するシステムにて保管いたします。
-      </p>
+      <section class="rv">
+        <h2><span class="num">09</span>AIサービスの利用について</h2>
+        <p>
+          当社は、サービス提供の過程において、お客様からご提供いただいた情報をAIサービスを用いて処理する場合があります。利用するAIサービスは以下のとおりです。
+        </p>
+        <ul>
+          <li>OpenAI, L.L.C.（ChatGPT）</li>
+          <li>Anthropic, PBC（Claude）</li>
+          <li>Google LLC（Gemini）</li>
+        </ul>
+        <p>上記サービスはいずれも各社との法人契約に基づき利用しており、以下の条件のもとで運用しています。</p>
+        <ol>
+          <li>入力データがAIモデルの学習・改善に利用されない設定を適用しています</li>
+          <li>個人を特定できる情報は、AI処理に先立ち適切に匿名化または非識別化処理を行います</li>
+          <li>各サービス提供者との間で、データの取り扱いに関する契約を締結しています</li>
+        </ol>
+        <p>
+          なお、各サービスにおけるデータの取り扱いの詳細については、各社のプライバシーポリシーおよびサービス規約をご参照ください。
+        </p>
+      </section>
 
-      <h2>9. AIサービスの利用について</h2>
-      <p>
-        当社は、サービス提供の過程において、お客様からご提供いただいた情報をAIサービスを用いて処理する場合があります。利用するAIサービスは以下のとおりです。
-      </p>
-      <ul>
-        <li>OpenAI, L.L.C.（ChatGPT）</li>
-        <li>Anthropic, PBC（Claude）</li>
-        <li>Google LLC（Gemini）</li>
-      </ul>
-      <p>上記サービスはいずれも各社との法人契約に基づき利用しており、以下の条件のもとで運用しています。</p>
-      <ol>
-        <li>入力データがAIモデルの学習・改善に利用されない設定を適用しています</li>
-        <li>個人を特定できる情報は、AI処理に先立ち適切に匿名化または非識別化処理を行います</li>
-        <li>各サービス提供者との間で、データの取り扱いに関する契約を締結しています</li>
-      </ol>
-      <p>
-        なお、各サービスにおけるデータの取り扱いの詳細については、各社のプライバシーポリシーおよびサービス規約をご参照ください。
-      </p>
+      <section class="rv">
+        <h2><span class="num">10</span>外国にある第三者への個人情報の提供について</h2>
+        <p>
+          当社は、上記AIサービスの利用に伴い、お客様の情報が日本国外（主に米国）のサーバーで処理される場合があります。
+        </p>
+        <p>
+          各サービス提供者はいずれも、個人情報保護法第28条に基づく適切な体制（標準契約条項の締結または同等の保護水準の確保）を整備しています。
+        </p>
+        <p>
+          詳細については、各社のプライバシーポリシーをご参照いただくか、当社お問い合わせ窓口までご連絡ください。
+        </p>
+      </section>
 
-      <h2>10. 外国にある第三者への個人情報の提供について</h2>
-      <p>
-        当社は、上記AIサービスの利用に伴い、お客様の情報が日本国外（主に米国）のサーバーで処理される場合があります。
-      </p>
-      <p>
-        各サービス提供者はいずれも、個人情報保護法第24条に基づく適切な体制（標準契約条項の締結または同等の保護水準の確保）を整備しています。
-      </p>
-      <p>
-        詳細については、各社のプライバシーポリシーをご参照いただくか、当社お問い合わせ窓口までご連絡ください。
-      </p>
+      <section class="rv">
+        <h2><span class="num">11</span>開示・訂正・削除の請求</h2>
+        <p>
+          お客様は、当社が保有するご自身の個人情報について、個人情報保護法に基づき、開示、訂正、追加、削除、利用停止、消去、または第三者提供の停止を請求することができます。
+        </p>
+        <p>
+          ご請求いただいた場合は、ご本人であることを確認のうえ、合理的な期間および範囲で対応いたします。なお、個人情報保護法その他の法令により、当社が開示等の義務を負わない場合は、ご請求に応じかねることがございます。
+        </p>
+      </section>
 
-      <h2>11. 開示・訂正・削除の請求</h2>
-      <p>
-        お客様は、当社が保有するご自身の個人情報について、個人情報保護法に基づき、開示、訂正、追加、削除、利用停止、消去、または第三者提供の停止を請求することができます。
-      </p>
-      <p>
-        ご請求いただいた場合は、ご本人であることを確認のうえ、合理的な期間および範囲で対応いたします。なお、個人情報保護法その他の法令により、当社が開示等の義務を負わない場合は、ご請求に応じかねることがございます。
-      </p>
+      <section class="rv">
+        <h2><span class="num">12</span>本ポリシーの変更</h2>
+        <p>
+          当社は、法令の改正、社会情勢の変化、その他の事情により、本方針を変更する場合があります。変更後の方針は、当社ウェブサイトに掲載した時点から効力を生じるものとします。重要な変更を行う場合は、当社ウェブサイト上でお知らせいたします。
+        </p>
+      </section>
 
-      <h2>12. 本ポリシーの変更</h2>
-      <p>
-        当社は、法令の改正、社会情勢の変化、その他の事情により、本方針を変更する場合があります。変更後の方針は、当社ウェブサイトに掲載した時点から効力を生じるものとします。重要な変更を行う場合は、当社ウェブサイト上でお知らせいたします。
-      </p>
+      <section class="rv">
+        <h2><span class="num">13</span>お問い合わせ窓口</h2>
+        <p>
+          本方針に関するお問い合わせ、および個人情報の開示・訂正・削除等のご請求は、下記窓口までご連絡ください。
+        </p>
+        <div class="contact-card">
+          <p class="org">株式会社TechWorker 個人情報保護担当</p>
+          <p>代表者: 古野 光太朗（代表取締役）</p>
+          <p>所在地: 〒169-0051 東京都新宿区西早稲田一丁目22番3号</p>
+          <p>お問い合わせ: <a class="lnk" href="contact.html">お問い合わせフォーム</a></p>
+        </div>
+      </section>
 
-      <h2>13. お問い合わせ窓口</h2>
-      <p>
-        本方針に関するお問い合わせ、および個人情報の開示・訂正・削除等のご請求は、下記窓口までご連絡ください。
-      </p>
-      <div class="contact-info">
-        <p><strong>株式会社TechWorker 個人情報保護担当</strong></p>
-        <p>代表者: 古野 光太朗（代表取締役）</p>
-        <p>所在地: 〒169-0051 東京都新宿区西早稲田一丁目22番3号</p>
-        <p>お問い合わせ: <a href="contact.html" style="color: var(--tw-electric);">お問い合わせフォーム</a></p>
+      <div class="policy-back rv">
+        <a href="index.html" class="btn btn--ghost"><i>←</i> トップページに戻る</a>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
+<!-- FOOTER -->
 <footer>
   <div class="container">
     <div class="footer-inner">
       <div class="footer-brand">
-        <div class="logo">Tech<span>Worker</span></div>
+        <div class="logo">Tech<i>Worker</i></div>
         <p>企業向け生成AIコンサルティング<br>株式会社TechWorker</p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
       </div>
       <div class="footer-col">
         <h4>サービス</h4>
@@ -450,14 +439,37 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
         <a href="contact.html">無料相談</a>
         <a href="contact.html?type=document">資料請求</a>
         <a href="privacy.html">プライバシーポリシー</a>
-        <p style="margin-top:12px;">〒169-0051<br>東京都新宿区西早稲田一丁目22番3号</p>
+        <p>〒169-0051<br>東京都新宿区西早稲田一丁目22番3号</p>
       </div>
     </div>
-  </div>
-  <div class="container">
-    <p class="copyright">&copy; 2026 TechWorker Inc. All rights reserved.</p>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
   </div>
 </footer>
 
+<script>
+/* nav shadow on scroll */
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>40);},{passive:true});
+
+/* mobile menu */
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(open){
+    document.body.classList.toggle('menu-open',open);
+    hamb.setAttribute('aria-expanded',open?'true':'false');
+    hamb.setAttribute('aria-label',open?'メニューを閉じる':'メニューを開く');
+    mmenu.setAttribute('aria-hidden',open?'false':'true');
+    document.body.style.overflow=open?'hidden':'';
+  }
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+  matchMedia('(min-width:861px)').addEventListener('change',function(e){if(e.matches)setMenu(false);});
+})();
+
+/* scroll reveal */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv,.rvg').forEach(function(el){io.observe(el);});
+</script>
 </body>
 </html>

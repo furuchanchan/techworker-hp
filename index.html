@@ -1,865 +1,445 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" class="no-js">
 <head>
 <meta charset="UTF-8">
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TechWorker — AIはエンジンだ。コンテキストは燃料だ。</title>
-<meta name="description" content="TechWorkerは、企業の業務文脈をAIが理解できる形に変換する「コンテキスト整理」の専門企業です。上場企業を含む37社・2,500名の支援実績。">
+<meta name="description" content="TechWorkerは、企業の業務文脈を、AIが扱える形に整える「コンテキスト整理」の専門企業です。上場企業を含む37社・2,500名の支援実績。">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <meta property="og:type" content="website">
 <meta property="og:title" content="TechWorker — AIはエンジンだ。コンテキストは燃料だ。">
-<meta property="og:description" content="企業の業務文脈をAIが理解できる形に変換する「コンテキスト整理」の専門企業。37社・2,500名の支援実績。">
+<meta property="og:description" content="企業の業務文脈を、AIが扱える形に整える「コンテキスト整理」の専門企業。37社・2,500名の支援実績。">
 <meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
 <meta property="og:url" content="https://techworker.co.jp/">
 <meta property="og:site_name" content="TechWorker">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="TechWorker — AIはエンジンだ。コンテキストは燃料だ。">
-<meta name="twitter:description" content="企業の業務文脈をAIが理解できる形に変換する「コンテキスト整理」の専門企業。">
 <meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Noto+Sans+JP:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ===== TOKENS ===== */
-:root {
-  --tw-black: #0D1117;
-  --tw-paper: #F4F6F9;
-  --tw-electric: #005EFF;
-  --tw-electric-dark: #003DAA;
-  --tw-slate: #3C4B64;
-  --tw-emerald: #00B894;
-  --tw-violet: #7C3AED;
+:root{
+  --ink:#0D1117; --paper:#F4F6F9; --paper-2:#ECEFF3; --white:#FBFCFD;
+  --electric:#005EFF; --electric-dark:#003DAA;
+  --slate:#4A5666; --line:rgba(13,17,23,.12); --line-2:rgba(13,17,23,.20);
+  --emerald:#00B894; --violet:#7C3AED;
+  --jp:'IBM Plex Sans JP','IBM Plex Sans',system-ui,sans-serif;
+  --en:'IBM Plex Sans','IBM Plex Sans JP',system-ui,sans-serif;
 }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:76px;}
+body{font-family:var(--jp);background:var(--paper);color:var(--ink);line-height:1.85;font-size:16px;-webkit-font-smoothing:antialiased;font-feature-settings:"palt" 1;overflow-x:hidden;}
+::selection{background:var(--electric);color:var(--paper);}
+a{color:inherit;}
+img{display:block;max-width:100%;}
 
-/* ===== RESET ===== */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; overflow-x: hidden; }
-body { overflow-x: hidden;
-  font-family: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
-  background: var(--tw-paper);
-  color: var(--tw-black);
-  line-height: 1.7;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* ===== UTILITIES ===== */
-.container { max-width: 1200px; margin: 0 auto; padding: 0 40px; width: 100%; }
-.label {
-  font-size: 11px; font-weight: 600; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--tw-electric);
-  margin-bottom: 16px; display: block;
-}
-.label--light { color: var(--tw-paper); opacity: .6; }
-
-/* CTA Button */
-.btn {
-  display: inline-block; padding: 16px 40px;
-  background: var(--tw-electric); color: var(--tw-paper);
-  font-size: 15px; font-weight: 700; border-radius: 6px;
-  text-decoration: none; letter-spacing: .5px;
-  transition: background .2s;
-}
-.btn:hover { background: var(--tw-electric-dark); }
-.btn--outline {
-  background: transparent; color: var(--tw-electric);
-  border: 2px solid var(--tw-electric);
-}
-.btn--outline:hover { background: var(--tw-electric); color: var(--tw-paper); }
-.btn--white { background: var(--tw-paper); color: var(--tw-electric); }
-.btn--white:hover { background: #e8ecf2; }
+/* ===== SHARED ===== */
+.container{max-width:1280px;margin:0 auto;padding:0 48px;width:100%;}
+.tag{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--electric);display:inline-flex;align-items:center;gap:11px;padding-left:14px;border-left:3px solid var(--electric);}
+.tag span{color:var(--slate);font-weight:500;letter-spacing:.02em;text-transform:none;font-size:13px;}
+.sec-head h2{font-family:var(--jp);font-weight:700;font-size:clamp(26px,3.4vw,42px);line-height:1.4;letter-spacing:-.02em;margin-top:22px;}
+.sec-head .lead{font-size:16px;color:var(--slate);line-height:2.05;margin-top:22px;max-width:62ch;}
+.sec-head .lead strong{color:var(--ink);font-weight:600;}
+.btn{font-family:var(--jp);font-size:14.5px;font-weight:600;color:var(--paper);background:var(--electric);text-decoration:none;border-radius:5px;padding:15px 30px;display:inline-flex;align-items:center;gap:11px;transition:background .25s,transform .25s;border:none;cursor:pointer;}
+.btn:hover{background:var(--electric-dark);transform:translateY(-1px);}
+.btn i{font-style:normal;transition:transform .25s;}
+.btn:hover i{transform:translateX(4px);}
+.btn--ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line-2);}
+.btn--ghost:hover{background:transparent;border-color:var(--electric);color:var(--electric);}
+.btn--on-blue{background:var(--paper);color:var(--electric);}
+.btn--on-blue:hover{background:var(--white);}
+.btn--on-blue-ghost{background:transparent;color:var(--paper);border:1.5px solid rgba(244,246,249,.5);}
+.btn--on-blue-ghost:hover{background:rgba(244,246,249,.1);border-color:var(--paper);}
 
 /* ===== NAV ===== */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(244,246,249,.92); backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0,94,255,.08);
-  padding: 0 40px; height: 64px;
-  display: flex; align-items: center; justify-content: space-between;
-}
-nav .logo { font-size: 18px; font-weight: 800; color: var(--tw-black); text-decoration: none; }
-nav .logo span { color: var(--tw-electric); }
-nav ul { list-style: none; display: flex; gap: 20px; white-space: nowrap; }
-nav ul a {
-  font-size: 13px; font-weight: 600; color: var(--tw-slate);
-  text-decoration: none; letter-spacing: .5px; transition: color .2s;
-}
-nav ul a:hover { color: var(--tw-electric); }
-nav .nav-cta {
-  font-size: 13px; font-weight: 700; padding: 8px 24px;
-  background: var(--tw-electric); color: var(--tw-paper);
-  border-radius: 5px; text-decoration: none; transition: background .2s;
-}
-nav .nav-cta:hover { background: var(--tw-electric-dark); }
-nav .nav-cta .nav-cta-short { display: none; }
-nav .nav-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
-nav .lang-switch { font-size: 12px; white-space: nowrap; }
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:68px;background:rgba(244,246,249,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transition:box-shadow .3s,height .3s cubic-bezier(.2,.8,.2,1),background .3s;}
+nav.scrolled{box-shadow:0 1px 16px rgba(0,94,255,.06);height:58px;background:rgba(244,246,249,.92);}
+nav .logo{transition:font-size .3s cubic-bezier(.2,.8,.2,1);}
+nav.scrolled .logo{font-size:18px;}
+nav .logo{font-family:var(--en);font-weight:700;font-size:20px;letter-spacing:-.01em;text-decoration:none;color:var(--ink);}
+nav .logo i{font-style:normal;color:var(--electric);}
+nav ul{list-style:none;display:flex;gap:34px;}
+nav ul a{font-size:14px;font-weight:500;color:var(--ink);text-decoration:none;position:relative;}
+nav ul a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--electric);transition:width .28s cubic-bezier(.2,.8,.2,1);}
+nav ul a:hover::after{width:100%;}
+nav .nav-right{display:flex;align-items:center;gap:18px;}
+nav .nav-cta{font-family:var(--jp);font-size:13.5px;font-weight:600;color:var(--paper);background:var(--electric);text-decoration:none;padding:10px 22px;border-radius:4px;transition:background .25s;}
+nav .nav-cta:hover{background:var(--electric-dark);}
+nav .nav-cta .short{display:none;}
+nav .lang{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.04em;}
+nav .lang a{color:var(--slate);text-decoration:none;}
+nav .lang .cur{color:var(--electric);}
 
-/* ===== 01: HERO ===== */
-.hero {
-  min-height: 100vh; display: flex; align-items: center;
-  padding-top: 64px;
-  background: linear-gradient(135deg, var(--tw-paper) 60%, rgba(0,94,255,.04) 100%);
-}
-.hero .container {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
-}
-.hero-text h1 {
-  font-size: clamp(36px, 5vw, 56px); font-weight: 800;
-  line-height: 1.2; margin-bottom: 24px;
-}
-.hero-text h1 em { font-style: normal; color: var(--tw-electric); }
-.hero-text p {
-  font-size: 18px; color: var(--tw-slate); line-height: 1.8;
-  margin-bottom: 40px; max-width: 520px;
-}
-.hero-text { min-width: 0; }
-.hero-text .btn-group { display: flex; gap: 16px; }
-.hero-visual { display: flex; justify-content: center; align-items: center; min-width: 0; }
-.hero-kpi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; min-width: 0; width: 100%; }
-.hero-kpi {
-  background: rgba(0,94,255,.04); border-radius: 12px;
-  padding: 32px; text-align: center;
-  border: 1px solid rgba(0,94,255,.08);
-}
-.hero-kpi .num {
-  font-size: clamp(40px, 6vw, 64px); font-weight: 800;
-  color: var(--tw-electric); line-height: 1;
-  display: block; margin-bottom: 8px;
-}
-.hero-kpi .unit { font-size: 14px; font-weight: 600; color: var(--tw-slate); }
+/* hamburger */
+.hamb{display:none;width:44px;height:44px;border:none;background:none;cursor:pointer;position:relative;margin-left:2px;}
+.hamb span{position:absolute;left:11px;width:22px;height:2px;background:var(--ink);transition:transform .3s,opacity .2s;}
+.hamb span:nth-child(1){top:15px;} .hamb span:nth-child(2){top:21px;} .hamb span:nth-child(3){top:27px;}
+body.menu-open .hamb span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+body.menu-open .hamb span:nth-child(2){opacity:0;}
+body.menu-open .hamb span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+/* mobile menu panel */
+.mmenu{position:fixed;inset:68px 0 0;z-index:45;background:var(--paper);transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);visibility:hidden;display:flex;flex-direction:column;padding:18px 24px 40px;}
+body.menu-open .mmenu{transform:none;visibility:visible;}
+.mmenu a{font-size:19px;font-weight:600;color:var(--ink);text-decoration:none;padding:20px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;}
+.mmenu a::after{content:"→";color:var(--electric);font-family:var(--en);}
+.mmenu .m-cta{margin-top:28px;background:var(--electric);color:var(--paper);justify-content:center;border-radius:5px;border:none;padding:17px;}
+.mmenu .m-cta::after{content:none;}
+.mmenu .m-lang{margin-top:auto;border:none;font-family:var(--en);font-size:13px;color:var(--slate);}
+.mmenu .m-lang::after{content:none;}
 
-/* ===== 01b: AI TOOLS ===== */
-.ai-tools {
-  padding: 48px 0 56px;
-  background: #fff;
-  border-bottom: 1px solid rgba(0,94,255,.06);
-}
-.ai-tools .container { text-align: center; }
-.ai-tools-label {
-  font-size: 13px; font-weight: 700; color: var(--tw-slate);
-  letter-spacing: .12em; text-transform: uppercase; margin-bottom: 32px;
-}
-.ai-tools-grid {
-  display: flex; flex-wrap: wrap; justify-content: center;
-  gap: 24px 40px; max-width: 900px; margin: 0 auto;
-}
-.ai-tool-item {
-  display: flex; align-items: center; gap: 10px;
-  padding: 12px 20px;
-  background: var(--tw-paper);
-  border-radius: 10px;
-  border: 1px solid rgba(0,94,255,.06);
-  transition: transform .2s, box-shadow .2s;
-}
-.ai-tool-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0,94,255,.08);
-}
-.ai-tool-logo {
-  width: 40px; height: 40px; object-fit: contain; flex-shrink: 0;
-}
-.ai-tool-icon {
-  width: 32px; height: 32px; border-radius: 8px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px; font-weight: 800; flex-shrink: 0;
-}
-.ai-tool-name { font-size: 14px; font-weight: 700; color: var(--tw-black); white-space: nowrap; }
-.ai-tools-note {
-  margin-top: 24px; font-size: 13px; color: var(--tw-slate);
-}
+/* ===== HERO ===== */
+.hero{max-width:1280px;margin:0 auto;padding:168px 48px 70px;}
+.hero .tag{margin-bottom:40px;}
+.hero h1{font-family:var(--jp);font-weight:700;font-size:clamp(38px,6.4vw,90px);line-height:1.26;letter-spacing:-.02em;}
+.hero h1 .en{font-family:var(--en);font-weight:600;letter-spacing:-.01em;}
+.hero h1 .u{background:linear-gradient(transparent 80%,var(--electric) 80%,var(--electric) 91%,transparent 91%);}
+.hero-foot{display:grid;grid-template-columns:1fr auto;gap:48px;align-items:end;margin-top:52px;padding-top:34px;border-top:1px solid var(--line);}
+.hero-foot p{font-size:16px;color:var(--slate);max-width:48ch;line-height:2.05;}
+.hero-foot p strong{color:var(--ink);font-weight:600;}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
 
-/* ===== 02: NEWS ===== */
-.news { padding: 80px 0; background: #fff; }
-.news h2 {
-  font-size: 24px; font-weight: 800; margin-bottom: 40px;
-  display: flex; align-items: center; gap: 16px;
-}
-.news h2 a {
-  font-size: 13px; font-weight: 600; color: var(--tw-electric);
-  text-decoration: none; margin-left: auto;
-}
-.news-list { display: flex; flex-direction: column; }
-.news-item {
-  display: flex; align-items: baseline; gap: 24px;
-  padding: 20px 0;
-  border-bottom: 1px solid rgba(0,94,255,.06);
-}
-.news-item:first-child { border-top: 1px solid rgba(0,94,255,.06); }
-.news-date { font-size: 13px; font-weight: 600; color: var(--tw-slate); white-space: nowrap; }
-.news-tag {
-  font-size: 11px; font-weight: 700; letter-spacing: 1px;
-  padding: 3px 10px; border-radius: 3px;
-  background: rgba(0,94,255,.06); color: var(--tw-electric);
-  white-space: nowrap;
-}
-.news-tag--event { background: rgba(0,184,148,.08); color: var(--tw-emerald); }
-.news-tag--media { background: rgba(124,58,237,.08); color: var(--tw-violet); }
-.news-title {
-  font-size: 14px; color: var(--tw-black);
-  text-decoration: none; transition: color .2s;
-}
-.news-title:hover { color: var(--tw-electric); }
+/* ===== FIGURES BAND ===== */
+.figures{max-width:1280px;margin:0 auto;padding:24px 48px 86px;}
+.figures .row{display:grid;grid-template-columns:repeat(4,1fr);}
+.fig{padding:30px 28px 26px;border-left:1px solid var(--line);}
+.fig:first-child{border-left:none;padding-left:0;}
+.fig .n{font-family:var(--en);font-weight:600;font-size:clamp(44px,5vw,72px);line-height:1;letter-spacing:-.03em;font-feature-settings:"tnum" 1;}
+.fig .n sub{font-size:.4em;vertical-align:baseline;font-weight:600;}
+.fig:nth-child(1) .n,.fig:nth-child(3) .n{color:var(--electric);}
+.fig .l{font-size:13px;color:var(--slate);margin-top:13px;}
 
-/* ===== 03: MACRO ===== */
-.macro {
-  padding: 120px 0;
-  background: var(--tw-electric);
-  color: var(--tw-paper);
-  position: relative; overflow: hidden;
-}
-.macro::before {
-  content: ''; position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(244,246,249,.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(244,246,249,.04) 1px, transparent 1px);
-  background-size: 56px 56px;
-}
-.macro .container { position: relative; z-index: 1; }
-.macro h2 {
-  font-size: clamp(28px, 4vw, 44px); font-weight: 800;
-  line-height: 1.3; margin-bottom: 24px; max-width: 800px;
-}
-.macro .lead {
-  font-size: 17px; line-height: 2; max-width: 760px;
-  margin-bottom: 60px; opacity: .9;
-}
-.macro-stats {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
-  margin-bottom: 60px;
-}
-.macro-stat {
-  background: rgba(244,246,249,.08); border-radius: 12px;
-  padding: 32px 24px; text-align: center;
-  border: 1px solid rgba(244,246,249,.1);
-}
-.macro-stat .num {
-  font-size: clamp(36px, 5vw, 56px); font-weight: 800;
-  display: block; line-height: 1; margin-bottom: 12px;
-}
-.macro-stat .desc { font-size: 13px; line-height: 1.6; opacity: .8; }
-.macro-logos {
-  display: flex; gap: 48px; align-items: center;
-  padding-top: 40px; border-top: 1px solid rgba(244,246,249,.12);
-}
-.macro-logos span { font-size: 13px; opacity: .5; font-weight: 600; }
-.macro-logo-item { font-size: 15px; font-weight: 700; opacity: .7; letter-spacing: .5px; }
-.macro-bottom {
-  margin-top: 60px; padding: 40px;
-  background: rgba(244,246,249,.06); border-radius: 12px;
-  border: 1px solid rgba(244,246,249,.1);
-}
-.macro-bottom p { font-size: 20px; font-weight: 700; line-height: 1.8; }
+/* ===== AI TOOLS STRIP ===== */
+.tools{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--white);}
+.tools .container{padding-top:40px;padding-bottom:40px;display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center;}
+.tools .tools-lead{max-width:200px;}
+.tools .tools-lead .t{font-size:14px;font-weight:600;line-height:1.7;}
+.tools .tools-lead .s{font-size:12px;color:var(--slate);margin-top:6px;}
+.tools .tools-grid{display:flex;flex-wrap:wrap;gap:14px 30px;align-items:center;}
+.tool-item{display:inline-flex;align-items:center;gap:10px;}
+.tool-item img{width:24px;height:24px;object-fit:contain;}
+.tool-item span{font-size:14px;font-weight:500;color:var(--ink);}
 
-/* ===== 04: PROBLEM ===== */
-.problem { padding: 120px 0; }
-.problem h2 {
-  font-size: clamp(28px, 4vw, 40px); font-weight: 800;
-  margin-bottom: 60px; text-align: center;
-}
-.problem-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
-  margin-bottom: 60px;
-}
-.problem-card {
-  background: #fff; border-radius: 12px; padding: 36px;
-  border: 1px solid rgba(0,94,255,.06);
-  display: flex; gap: 20px; align-items: flex-start;
-}
-.problem-card .icon {
-  width: 40px; height: 40px; border-radius: 8px;
-  background: rgba(0,94,255,.06); flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--tw-electric); font-weight: 800; font-size: 18px;
-}
-.problem-card p { font-size: 15px; color: var(--tw-slate); line-height: 1.8; }
-.problem-answer {
-  text-align: center; max-width: 700px; margin: 0 auto;
-  padding: 48px; background: #fff; border-radius: 16px;
-  border-left: 4px solid var(--tw-electric);
-}
-.problem-answer p { font-size: 18px; font-weight: 600; line-height: 1.9; }
-.problem-answer em { font-style: normal; color: var(--tw-electric); font-weight: 800; }
+/* ===== NEWS ===== */
+.news{padding:90px 0;}
+.news .news-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:14px;}
+.news .news-top a{font-family:var(--en);font-size:13px;font-weight:600;color:var(--electric);text-decoration:none;letter-spacing:.02em;}
+.news .news-top a:hover{text-decoration:underline;}
+.news-list{border-top:1px solid var(--line);}
+.news-row{display:grid;grid-template-columns:130px 96px 1fr;gap:24px;align-items:center;padding:22px 0;border-bottom:1px solid var(--line);text-decoration:none;transition:background .2s;}
+.news-row:hover{background:var(--paper-2);}
+.news-row .d{font-family:var(--en);font-size:14px;color:var(--slate);font-feature-settings:"tnum" 1;}
+.news-row .tg{font-size:12px;font-weight:600;color:var(--electric);}
+.news-row .tg.ev{color:var(--violet);}
+.news-row .tt{font-size:15px;font-weight:500;color:var(--ink);line-height:1.6;}
+.news-row:hover .tt{color:var(--electric);}
 
-/* ===== 05: APPROACH ===== */
-.approach { padding: 120px 0; background: #fff; }
-.approach h2 {
-  font-size: clamp(28px, 4vw, 40px); font-weight: 800; margin-bottom: 16px;
-}
-.approach .lead {
-  font-size: 16px; color: var(--tw-slate); max-width: 680px;
-  line-height: 1.9; margin-bottom: 60px;
-}
-.strength-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-.strength-card {
-  padding: 40px; border-radius: 12px;
-  background: var(--tw-paper);
-  border: 1px solid rgba(0,94,255,.06);
-}
-.strength-card .num {
-  font-size: 48px; font-weight: 800; color: var(--tw-electric);
-  line-height: 1; margin-bottom: 20px;
-}
-.strength-card h3 { font-size: 18px; font-weight: 800; margin-bottom: 12px; }
-.strength-card p { font-size: 14px; color: var(--tw-slate); line-height: 1.8; }
+/* ===== MACRO ===== */
+.macro{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:96px 0;}
+.macro h2 .mk{color:var(--electric);}
+.macro .lead{margin-top:22px;font-size:16px;color:#28313f;line-height:2.05;max-width:70ch;}
+.macro .lead strong{color:var(--ink);font-weight:600;}
+.macro-impact{display:grid;grid-template-columns:auto 1fr;gap:70px;align-items:center;margin-top:52px;padding-top:50px;border-top:1px solid var(--line);}
+.mi-stat{flex-shrink:0;}
+.mi-n{font-family:var(--en);font-weight:700;font-size:clamp(104px,15vw,210px);line-height:.86;letter-spacing:-.06em;color:var(--electric);}
+.mi-n .pct{font-size:.4em;font-weight:600;vertical-align:super;margin-left:4px;letter-spacing:-.02em;}
+.mi-cap{font-size:14.5px;color:#28313f;line-height:1.75;margin-top:18px;max-width:32ch;font-weight:500;}
+.mi-cap .src{display:inline-block;margin-top:12px;font-family:var(--en);font-size:11px;letter-spacing:.08em;color:var(--slate);border:1px solid var(--line-2);border-radius:3px;padding:3px 9px;}
+.mi-body p{font-size:16px;color:#28313f;line-height:2.05;margin-bottom:18px;}
+.mi-body p:last-child{margin-bottom:0;}
+.mi-body strong{color:var(--ink);font-weight:700;}
+.macro-bottom{margin-top:54px;padding-top:38px;border-top:2px solid var(--ink);}
+.macro-bottom p{font-family:var(--jp);font-weight:700;font-size:clamp(20px,2.8vw,32px);line-height:1.55;letter-spacing:-.02em;}
+.macro-bottom .mk2{color:var(--electric);}
 
-/* ===== 06: SERVICES ===== */
-.services { padding: 120px 0; }
-.services h2 {
-  font-size: clamp(28px, 4vw, 40px); font-weight: 800; margin-bottom: 16px;
-}
-.services .lead {
-  font-size: 16px; color: var(--tw-slate); margin-bottom: 56px; max-width: 600px;
-}
-/* Service Overview (3-category row) */
-.svc-overview {
-  display: grid; grid-template-columns: 1fr; gap: 24px;
-  margin-bottom: 72px; max-width: 540px;
-}
-.svc-card {
-  background: #fff; border-radius: 16px; padding: 36px 32px;
-  border: 1px solid rgba(0,94,255,.08);
-  box-shadow: 0 4px 20px rgba(0,94,255,.04);
-  display: flex; flex-direction: column; gap: 0;
-  transition: box-shadow .2s, transform .2s;
-}
-.svc-card:hover { box-shadow: 0 8px 32px rgba(0,94,255,.1); transform: translateY(-2px); }
-.svc-card--featured {
-  border-color: var(--tw-electric);
-  box-shadow: 0 4px 24px rgba(0,94,255,.12);
-}
-.svc-num {
-  font-size: 11px; font-weight: 800; letter-spacing: 3px; color: var(--tw-electric);
-  opacity: .6; margin-bottom: 14px;
-}
-.svc-card h3 { font-size: 20px; font-weight: 800; margin-bottom: 12px; line-height: 1.4; }
-.svc-card p { font-size: 14px; color: var(--tw-slate); line-height: 1.85; flex: 1; margin-bottom: 24px; }
-.svc-link {
-  font-size: 13px; font-weight: 700; color: var(--tw-electric);
-  text-decoration: none; display: inline-flex; align-items: center; gap: 4px;
-  transition: gap .2s;
-}
-.svc-link:hover { gap: 8px; }
-.programs-label {
-  font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
-  color: var(--tw-black); opacity: .4; margin-bottom: 32px; display: block;
-}
-.service-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-.service-card {
-  background: #fff; border-radius: 16px; overflow: hidden;
-  border: 1px solid rgba(0,94,255,.06);
-  display: flex; flex-direction: column;
-}
-.service-card-header {
-  padding: 36px 32px 24px;
-  border-bottom: 1px solid rgba(0,94,255,.06);
-}
-.service-card-header .program-num {
-  font-size: 11px; font-weight: 700; color: var(--tw-electric);
-  letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px;
-}
-.service-card-header h3 { font-size: 20px; font-weight: 800; line-height: 1.4; margin-bottom: 12px; }
-.service-card-header .tagline { font-size: 14px; color: var(--tw-slate); line-height: 1.7; }
-.service-card-body {
-  padding: 24px 32px 36px; flex: 1;
-  display: flex; flex-direction: column; gap: 16px;
-}
-.service-meta {
-  display: flex; justify-content: space-between;
-  font-size: 13px; color: var(--tw-slate);
-  padding: 8px 0; border-bottom: 1px solid rgba(0,94,255,.04);
-}
-.service-meta .key { font-weight: 600; }
-.service-meta .val { font-weight: 700; color: var(--tw-black); }
-.service-card-quote {
-  margin-top: auto; padding-top: 16px;
-  font-size: 14px; font-weight: 600; color: var(--tw-electric);
-  border-left: 3px solid var(--tw-electric); padding-left: 12px;
-}
+/* ===== PROBLEM ===== */
+.problem{padding:96px 0;}
+.problem-grid{margin-top:50px;border-top:1px solid var(--line);}
+.problem-row{display:grid;grid-template-columns:84px 1fr;gap:8px;padding:28px 0;border-bottom:1px solid var(--line);align-items:baseline;}
+.problem-row .pn{font-family:var(--en);font-weight:600;font-size:22px;color:var(--electric);letter-spacing:-.02em;}
+.problem-row p{font-size:17px;line-height:1.7;color:var(--ink);font-weight:500;}
+.problem-answer{margin-top:50px;background:var(--electric-dark);color:var(--paper);padding:48px 52px;border-radius:4px;}
+.problem-answer p{font-family:var(--jp);font-weight:500;font-size:clamp(17px,2vw,21px);line-height:1.95;letter-spacing:-.01em;}
+.problem-answer em{font-style:normal;color:#fff;font-weight:700;background:linear-gradient(transparent 82%,rgba(255,255,255,.32) 82%,rgba(255,255,255,.32) 92%,transparent 92%);padding:0 .02em;}
 
-/* ===== 07: RESULTS ===== */
-.results {
-  padding: 120px 0;
-  background: var(--tw-electric); color: var(--tw-paper);
-  position: relative; overflow: hidden;
-}
-.results::before {
-  content: ''; position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(244,246,249,.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(244,246,249,.04) 1px, transparent 1px);
-  background-size: 56px 56px;
-}
-.results .container { position: relative; z-index: 1; }
-.results h2 {
-  font-size: clamp(28px, 4vw, 40px); font-weight: 800; margin-bottom: 60px;
-}
-.results-kpi {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
-  margin-bottom: 80px;
-}
-.results-kpi-card { text-align: center; padding: 24px; }
-.results-kpi-card .num {
-  font-size: clamp(48px, 7vw, 72px); font-weight: 800;
-  line-height: 1; margin-bottom: 8px;
-}
-.results-kpi-card .unit { font-size: 14px; opacity: .7; font-weight: 600; }
-/* ===== HOME CASE MAGAZINE ===== */
-.home-case-impact {
-  background: var(--tw-paper); color: var(--tw-black);
-  padding: 80px 0; position: relative; overflow: hidden;
-}
-.home-case-impact::before {
-  content: ''; position: absolute; inset: 0;
-  background: none;
-}
-.home-case-impact .container {
-  position: relative; z-index: 1;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
-}
-.home-case-left {}
-.home-case-sub {
-  font-size: 12px; font-weight: 600; color: var(--tw-slate);
-  letter-spacing: 2px; margin-bottom: 8px;
-}
-.home-case-num {
-  display: flex; align-items: baseline; gap: 8px;
-}
-.home-case-num .big-num {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(72px, 10vw, 120px); font-weight: 800; line-height: 1;
-  color: var(--tw-electric);
-}
-.home-case-num .big-unit {
-  font-size: 20px; font-weight: 600; color: var(--tw-slate);
-}
-.home-case-desc {
-  font-size: 14px; color: var(--tw-slate); margin-top: 8px;
-}
-.home-case-right {}
-.home-case-tag {
-  display: flex; align-items: center; gap: 10px; margin-bottom: 16px;
-}
-.home-case-badge {
-  font-size: 10px; font-weight: 800; letter-spacing: 2px;
-  background: var(--tw-electric); color: #fff; padding: 5px 14px; border-radius: 100px;
-}
-.home-case-industry {
-  font-size: 12px; color: var(--tw-slate); font-weight: 600; letter-spacing: 1px;
-}
-.home-case-impact h3 {
-  font-size: clamp(24px, 3.5vw, 36px); font-weight: 800; line-height: 1.3;
-  margin-bottom: 8px;
-}
-.home-case-company {
-  font-size: 14px; color: var(--tw-slate); font-weight: 600;
-}
+/* ===== APPROACH ===== */
+.approach{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:96px 0;}
+.approach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:56px;border-top:1px solid var(--line);}
+.approach-col{padding:36px 30px 10px;border-left:1px solid var(--line);}
+.approach-col:first-child{border-left:none;padding-left:0;}
+.approach-col .an{font-family:var(--en);font-weight:600;font-size:18px;color:var(--electric);letter-spacing:.04em;}
+.approach-col h3{font-family:var(--jp);font-weight:700;font-size:19px;line-height:1.5;margin:16px 0 12px;letter-spacing:-.01em;}
+.approach-col p{font-size:14px;color:var(--slate);line-height:1.95;}
 
-.home-case-content {
-  background: #fff; padding: 64px 0;
-}
-.home-case-content .container {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
-}
-.home-case-before, .home-case-after {
-  position: relative; padding-left: 28px;
-}
-.home-case-before::before {
-  content: ''; position: absolute; left: 0; top: 0;
-  width: 3px; height: 100%; background: rgba(0,94,255,.12); border-radius: 2px;
-}
-.home-case-after::before {
-  content: ''; position: absolute; left: 0; top: 0;
-  width: 3px; height: 100%; background: var(--tw-electric); border-radius: 2px;
-}
-.home-col-label {
-  font-size: 11px; font-weight: 800; letter-spacing: 3px;
-  margin-bottom: 16px;
-}
-.home-case-before .home-col-label { color: var(--tw-slate); opacity: .4; }
-.home-case-after .home-col-label { color: var(--tw-electric); }
-.home-case-before p, .home-case-after p {
-  font-size: 15px; color: var(--tw-slate); line-height: 2;
-}
-.home-check-list {
-  list-style: none; padding: 0; margin: 0;
-  display: flex; flex-direction: column; gap: 12px;
-}
-.home-check-list li {
-  display: flex; align-items: flex-start; gap: 12px;
-  font-size: 15px; color: var(--tw-black); font-weight: 600; line-height: 1.6;
-}
-.home-check {
-  flex-shrink: 0; width: 24px; height: 24px; border-radius: 6px;
-  background: var(--tw-electric); color: #fff;
-  display: flex; align-items: center; justify-content: center; margin-top: 2px;
-}
+/* ===== RESULTS STATEMENT ===== */
+.results-st{padding:96px 0 70px;}
+.results-st h2{font-family:var(--jp);font-weight:700;font-size:clamp(26px,3.4vw,44px);line-height:1.4;letter-spacing:-.02em;margin-top:22px;}
+.results-st h2 .mk{color:var(--electric);}
 
-.home-case-others-strip {
-  background: var(--tw-paper); padding: 64px 0;
-}
-.home-others-grid {
-  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;
-}
-.home-other-card {
-  display: flex; flex-direction: column; gap: 8px;
-  background: #fff; border-radius: 12px; padding: 28px;
-  border: 1px solid rgba(0,94,255,.06);
-  text-decoration: none; color: var(--tw-black);
-  transition: box-shadow .2s, transform .2s;
-}
-.home-other-card:hover {
-  box-shadow: 0 8px 32px rgba(0,94,255,.08);
-  transform: translateY(-3px);
-}
-.home-other-industry {
-  font-size: 10px; font-weight: 700; letter-spacing: 2px;
-  text-transform: uppercase; color: var(--tw-electric); opacity: .6;
-}
-.home-other-card strong {
-  font-size: 15px; font-weight: 700; line-height: 1.5;
-}
-.home-other-metric {
-  font-size: 13px; color: var(--tw-slate); font-weight: 600;
-}
+/* ===== HOME CASE ===== */
+.hcase{padding-bottom:30px;}
+.hcase-top{display:grid;grid-template-columns:auto 1fr;gap:60px;align-items:center;padding:46px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.hcase-num .s{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);}
+.hcase-num .big{display:flex;align-items:baseline;gap:8px;margin-top:6px;}
+.hcase-num .big b{font-family:var(--en);font-weight:600;font-size:clamp(56px,7vw,92px);line-height:1;color:var(--electric);letter-spacing:-.03em;}
+.hcase-num .big i{font-style:normal;font-size:22px;font-weight:600;}
+.hcase-num .desc{font-size:13px;color:var(--slate);margin-top:6px;}
+.hcase-meta .mtag{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.hcase-meta .badge{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.12em;color:var(--paper);background:var(--electric);padding:4px 10px;border-radius:3px;}
+.hcase-meta .ind{font-size:13px;color:var(--slate);font-weight:500;}
+.hcase-meta h3{font-family:var(--jp);font-weight:700;font-size:clamp(22px,2.6vw,32px);line-height:1.4;letter-spacing:-.02em;}
+.hcase-meta .co{font-size:14px;color:var(--slate);margin-top:8px;}
+.hcase-ba{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid var(--line);}
+.hcase-ba > div{padding:38px 40px 38px 0;}
+.hcase-ba > div:last-child{padding-left:48px;border-left:1px solid var(--line);}
+.hcase-ba .col-l{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.14em;color:var(--slate);margin-bottom:14px;}
+.hcase-ba .col-l.aft{color:var(--electric);}
+.hcase-ba p{font-size:15px;color:#28313f;line-height:1.95;}
+.hcase-ba ul{list-style:none;}
+.hcase-ba li{display:flex;gap:12px;align-items:flex-start;padding:7px 0;font-size:15px;line-height:1.7;}
+.hcase-ba li svg{flex-shrink:0;margin-top:5px;color:var(--electric);}
+.hcase-others{padding:46px 0 0;}
+.hcase-others .ogrid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);}
+.ocard{padding:30px 28px;border-left:1px solid var(--line);text-decoration:none;display:block;transition:background .2s;}
+.ocard:first-child{border-left:none;padding-left:0;}
+.ocard .oi{font-size:12px;color:var(--slate);font-weight:500;}
+.ocard strong{display:block;font-size:16px;font-weight:600;line-height:1.5;margin:10px 0;color:var(--ink);}
+.ocard .om{font-family:var(--en);font-size:13px;font-weight:600;color:var(--electric);}
+.ocard:hover strong{color:var(--electric);}
+.hcase-others .more{text-align:center;margin-top:42px;}
 
-/* Pickup case (legacy — keep for fallback) */
-.case-pickup {
-  background: rgba(244,246,249,.06); border-radius: 16px;
-  border: 1px solid rgba(244,246,249,.1); overflow: hidden;
-  margin-bottom: 48px;
-}
-.case-pickup-header {
-  display: flex; align-items: center; gap: 24px;
-  padding: 28px 40px; border-bottom: 1px solid rgba(244,246,249,.08);
-}
-.case-pickup-header .pickup-badge {
-  font-size: 10px; font-weight: 800; letter-spacing: 2px;
-  background: rgba(244,246,249,.15); padding: 5px 14px; border-radius: 100px;
-}
-.case-pickup-header .pickup-industry {
-  font-size: 12px; opacity: .5; font-weight: 600; letter-spacing: 1px;
-}
-.case-pickup-header h3 {
-  font-size: clamp(18px, 2.5vw, 24px); font-weight: 800; margin-left: auto;
-}
-.case-pickup-body {
-  display: grid; grid-template-columns: auto 1fr 1fr; gap: 0;
-}
-.case-pickup-metric {
-  padding: 40px; display: flex; flex-direction: column;
-  justify-content: center; align-items: center;
-  border-right: 1px solid rgba(244,246,249,.08); min-width: 160px;
-}
-.case-pickup-metric .big-num {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(48px, 6vw, 72px); font-weight: 800; line-height: 1;
-}
-.case-pickup-metric .big-unit {
-  font-size: 16px; opacity: .5; font-weight: 600; margin-top: 4px;
-}
-.case-pickup-col {
-  padding: 40px; position: relative;
-}
-.case-pickup-col + .case-pickup-col {
-  border-left: 1px solid rgba(244,246,249,.08);
-}
-.case-pickup-col .col-label {
-  font-size: 10px; font-weight: 800; letter-spacing: 3px;
-  opacity: .35; margin-bottom: 16px;
-}
-.case-pickup-col p {
-  font-size: 14px; opacity: .85; line-height: 1.9;
-}
-.case-pickup-col .check-list {
-  list-style: none; padding: 0; margin: 0;
-}
-.case-pickup-col .check-list li {
-  font-size: 14px; font-weight: 600; line-height: 1.7;
-  padding-left: 24px; position: relative; margin-bottom: 10px;
-}
-.case-pickup-col .check-list li::before {
-  content: ''; position: absolute; left: 0; top: 7px;
-  width: 10px; height: 10px; border-radius: 50%;
-  background: var(--tw-paper); opacity: .6;
-}
-/* Other cases row */
-.case-others {
-  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;
-  margin-bottom: 40px;
-}
-.case-other-card {
-  background: rgba(244,246,249,.06); border-radius: 12px;
-  padding: 28px; border: 1px solid rgba(244,246,249,.08);
-  transition: background .2s;
-}
-.case-other-card:hover { background: rgba(244,246,249,.1); }
-.case-other-card .industry {
-  font-size: 10px; font-weight: 700; letter-spacing: 2px;
-  text-transform: uppercase; opacity: .4; margin-bottom: 12px;
-}
-.case-other-card h4 { font-size: 15px; font-weight: 700; line-height: 1.5; margin-bottom: 8px; }
-.case-other-card p { font-size: 13px; opacity: .6; line-height: 1.7; }
+/* ===== VOICE / CLIENTS ===== */
+.voice{padding:96px 0;border-top:1px solid var(--line);}
+.clients{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:42px;padding:26px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.clients-label{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);padding-left:12px;border-left:3px solid var(--electric);}
+.client-name{font-family:var(--jp);font-weight:700;font-size:19px;letter-spacing:-.01em;}
+.clients-more{font-size:13px;color:var(--slate);}
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:42px;}
+.voice-card{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:28px 30px 26px;display:flex;flex-direction:column;}
+.voice-card::before{content:"\201C";font-family:var(--en);font-size:52px;line-height:0;height:26px;color:var(--electric);opacity:.28;display:block;}
+.voice-card p{font-family:var(--jp);font-weight:600;font-size:15.5px;line-height:1.95;letter-spacing:-.01em;color:var(--ink);flex:1;margin-top:6px;}
+.voice-card footer{margin-top:22px;padding-top:18px;border-top:1px solid var(--line);}
+.v-person{display:flex;align-items:center;gap:12px;}
+.v-avatar{width:42px;height:42px;border-radius:8px;background:var(--paper-2);border:1px solid var(--line-2);color:var(--electric);font-family:var(--jp);font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.voice-card .vrole{display:block;font-weight:700;font-size:14px;}
+.voice-card .vco{display:block;font-size:12px;color:var(--slate);margin-top:2px;line-height:1.45;}
+.v-service{display:inline-block;margin-top:14px;font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.03em;color:var(--slate);padding:4px 11px;border:1px solid var(--line);border-radius:4px;}
+.v-service b{color:var(--electric);font-weight:600;}
 
-/* ===== 08: FLOW ===== */
-.flow { padding: 120px 0; background: #fff; }
-.flow h2 {
-  font-size: clamp(28px, 4vw, 40px); font-weight: 800;
-  margin-bottom: 60px; text-align: center;
-}
-.flow-steps {
-  display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;
-  max-width: 1100px; margin: 0 auto;
-}
-.flow-step { text-align: center; position: relative; }
-.flow-step::after {
-  content: ''; position: absolute;
-  top: 32px; right: -8px;
-  width: 16px; height: 2px;
-  background: var(--tw-electric); opacity: .3;
-}
-.flow-step:last-child::after { display: none; }
-.flow-step .step-num {
-  width: 64px; height: 64px; border-radius: 50%;
-  background: rgba(0,94,255,.06);
-  display: inline-flex; align-items: center; justify-content: center;
-  font-size: 24px; font-weight: 800; color: var(--tw-electric);
-  margin-bottom: 20px;
-}
-.flow-step h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
-.flow-step p { font-size: 13px; color: var(--tw-slate); line-height: 1.7; }
+/* ===== SERVICES ===== */
+.services{padding:96px 0;background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.svc-overview{margin-top:46px;max-width:560px;border:1px solid var(--line);background:var(--white);padding:34px 36px;border-radius:4px;}
+.svc-overview .sn{font-family:var(--en);font-weight:600;font-size:16px;color:var(--electric);}
+.svc-overview h3{font-family:var(--jp);font-weight:700;font-size:22px;margin:10px 0 12px;letter-spacing:-.01em;}
+.svc-overview p{font-size:14.5px;color:var(--slate);line-height:1.95;}
+.svc-overview a{display:inline-block;margin-top:18px;font-family:var(--en);font-size:13px;font-weight:600;color:var(--electric);text-decoration:none;}
+.svc-overview a:hover{text-decoration:underline;}
+.programs-label{display:block;font-family:var(--en);font-size:13px;font-weight:600;letter-spacing:.06em;color:var(--slate);margin:56px 0 22px;text-transform:uppercase;}
+.svc-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.svc-c{background:var(--white);border:1px solid var(--line);border-radius:4px;padding:30px 28px;display:flex;flex-direction:column;transition:border-color .25s,transform .25s;}
+.svc-c:hover{border-color:var(--electric);transform:translateY(-3px);}
+.svc-c .pnum{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.1em;color:var(--electric);text-transform:uppercase;}
+.svc-c h3{font-family:var(--jp);font-weight:700;font-size:19px;line-height:1.5;margin:12px 0;letter-spacing:-.01em;}
+.svc-c .tl{font-size:13.5px;color:var(--slate);line-height:1.85;padding-bottom:20px;border-bottom:1px solid var(--line);margin-bottom:18px;}
+.svc-meta{display:grid;grid-template-columns:54px 1fr;gap:6px 12px;font-size:13px;margin-bottom:6px;}
+.svc-meta .k{color:var(--slate);font-weight:600;}
+.svc-meta .v{color:var(--ink);line-height:1.6;}
+.svc-c .q{margin-top:auto;padding-top:20px;font-family:var(--jp);font-weight:600;font-size:13.5px;color:var(--ink);line-height:1.7;border-top:1px solid var(--line);margin-top:20px;}
+.svc-consult{margin-top:40px;background:var(--electric-dark);color:var(--paper);border-radius:8px;padding:42px 46px;display:grid;grid-template-columns:1fr auto;gap:36px;align-items:center;}
+.svc-consult h3{font-family:var(--jp);font-weight:700;font-size:clamp(20px,2.4vw,28px);line-height:1.5;letter-spacing:-.01em;color:var(--paper);}
+.svc-consult p{font-size:14.5px;color:rgba(244,246,249,.82);margin-top:12px;line-height:1.9;max-width:52ch;}
+.svc-consult .btn{background:var(--paper);color:var(--electric);white-space:nowrap;}
+.svc-consult .btn:hover{background:#fff;}
 
-/* ===== 09: MESSAGE ===== */
-.message { padding: 120px 0; }
-.message .container {
-  display: grid; grid-template-columns: 30% 1fr; gap: 80px; align-items: start;
-}
-.message-photo {
-  aspect-ratio: 1/1; background: rgba(0,94,255,.04);
-  border-radius: 12px; overflow: hidden;
-  border: 1px solid rgba(0,94,255,.08);
-}
-.message-text h2 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
-.message-text .role { font-size: 14px; color: var(--tw-slate); margin-bottom: 32px; }
-.message-text blockquote {
-  font-size: 16px; line-height: 2.2; color: var(--tw-slate);
-  border: none; padding: 0; margin: 0;
-}
-.message-text blockquote strong { color: var(--tw-black); font-weight: 700; }
+/* ===== FLOW ===== */
+.flow{padding:96px 0;}
+.flow-steps{display:grid;grid-template-columns:repeat(5,1fr);margin-top:50px;border-top:1px solid var(--line);}
+.flow-step{padding:32px 22px 10px;border-left:1px solid var(--line);}
+.flow-step:first-child{border-left:none;padding-left:0;}
+.flow-step .sn{font-family:var(--en);font-weight:600;font-size:15px;color:var(--paper);background:var(--electric);width:30px;height:30px;border-radius:5px;display:flex;align-items:center;justify-content:center;}
+.flow-step h3{font-family:var(--jp);font-weight:700;font-size:16px;margin:16px 0 10px;letter-spacing:-.01em;}
+.flow-step p{font-size:13px;color:var(--slate);line-height:1.85;}
 
-/* ===== 09b: DIRECTOR ===== */
-.director { padding: 120px 0; background: var(--tw-paper); }
-.director .container {
-  display: grid; grid-template-columns: 30% 1fr; gap: 80px; align-items: start;
-}
-.director-photo {
-  aspect-ratio: 1/1; background: rgba(0,94,255,.04);
-  border-radius: 12px; overflow: hidden;
-  border: 1px solid rgba(0,94,255,.08);
-}
-.director-text h2 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
-.director-text .role { font-size: 14px; color: var(--tw-slate); margin-bottom: 32px; line-height: 1.8; }
-.director-text blockquote {
-  font-size: 16px; line-height: 2.2; color: var(--tw-slate);
-  border: none; padding: 0; margin: 0;
-}
-.director-text blockquote strong { color: var(--tw-black); font-weight: 700; }
+/* ===== MESSAGE / DIRECTOR ===== */
+.person{padding:90px 0;border-top:1px solid var(--line);}
+.person .container{display:grid;grid-template-columns:340px 1fr;gap:64px;align-items:start;}
+.person.rev .container{grid-template-columns:1fr 340px;}
+.person.rev .p-photo{order:2;}
+.p-photo{aspect-ratio:1/1;border-radius:6px;overflow:hidden;background:var(--paper-2);border:1px solid var(--line);}
+.p-photo img{width:100%;height:100%;object-fit:cover;}
+.p-text h2{font-family:var(--jp);font-weight:700;font-size:30px;letter-spacing:-.01em;margin-top:18px;}
+.p-text .role{font-size:13px;color:var(--slate);margin-top:8px;line-height:1.7;}
+.p-text .role a{color:var(--electric);text-decoration:none;font-weight:600;}
+.p-text blockquote{margin-top:26px;font-size:16px;line-height:2.1;color:#28313f;}
+.p-text blockquote strong{color:var(--ink);font-weight:600;}
 
-/* ===== 10: FAQ ===== */
-.faq { padding: 120px 0; background: #fff; }
-.faq h2 {
-  font-size: clamp(28px, 4vw, 40px); font-weight: 800;
-  margin-bottom: 60px; text-align: center;
-}
-.faq-list {
-  max-width: 760px; margin: 0 auto;
-  display: flex; flex-direction: column; gap: 20px;
-}
-.faq-item {
-  background: var(--tw-paper); border-radius: 12px;
-  padding: 32px; border: 1px solid rgba(0,94,255,.06);
-}
-.faq-item .q {
-  font-size: 15px; font-weight: 700; margin-bottom: 12px;
-  display: flex; gap: 12px;
-}
-.faq-item .q::before {
-  content: 'Q'; font-weight: 800; color: var(--tw-electric); flex-shrink: 0;
-}
-.faq-item .a {
-  font-size: 14px; color: var(--tw-slate); line-height: 1.8; padding-left: 24px;
-}
+/* ===== FAQ ===== */
+.faq{padding:96px 0;background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.faq-list{margin-top:46px;border-top:1px solid var(--line);}
+.faq-item{border-bottom:1px solid var(--line);}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:24px 0;cursor:pointer;font-family:var(--jp);font-weight:600;font-size:16px;color:var(--ink);width:100%;text-align:left;background:none;border:none;line-height:1.6;}
+.faq-q .ar{flex-shrink:0;width:22px;height:22px;position:relative;}
+.faq-q .ar::before,.faq-q .ar::after{content:"";position:absolute;background:var(--electric);transition:transform .3s;}
+.faq-q .ar::before{top:10px;left:3px;width:16px;height:2px;}
+.faq-q .ar::after{top:3px;left:10px;width:2px;height:16px;}
+.faq-item.open .faq-q .ar::after{transform:scaleY(0);}
+.faq-a{overflow:hidden;max-height:0;transition:max-height .35s ease,padding .35s ease;}
+.faq-a p{font-size:14.5px;color:var(--slate);line-height:1.95;padding-bottom:0;}
+.faq-item.open .faq-a{padding-bottom:24px;}
 
-/* ===== 11: COMPANY ===== */
-.company { padding: 100px 0; }
-.company h2 {
-  font-size: clamp(28px, 4vw, 40px); font-weight: 800;
-  margin-bottom: 48px;
-}
-.company-table {
-  width: 100%; max-width: 760px; border-collapse: collapse;
-}
-.company-table tr { border-bottom: 1px solid rgba(0,94,255,.06); }
-.company-table th {
-  text-align: left; padding: 20px 32px 20px 0;
-  font-size: 14px; font-weight: 700; color: var(--tw-slate);
-  white-space: nowrap; width: 160px; vertical-align: top;
-}
-.company-table td {
-  padding: 20px 0; font-size: 14px; line-height: 1.8;
-}
+/* ===== COMPANY ===== */
+.company{padding:96px 0;}
+.company-table{margin-top:40px;max-width:640px;border-collapse:collapse;width:100%;}
+.company-table tr{border-bottom:1px solid var(--line);}
+.company-table tr:first-child{border-top:1px solid var(--line);}
+.company-table th{text-align:left;font-size:13px;font-weight:600;color:var(--slate);padding:18px 0;width:160px;vertical-align:top;}
+.company-table td{font-size:15px;padding:18px 0;line-height:1.7;}
+.company .more{margin-top:34px;}
 
-/* ===== 12: FINAL CTA ===== */
-.final-cta {
-  padding: 120px 0;
-  background: var(--tw-electric); color: var(--tw-paper);
-  text-align: center;
-  position: relative; overflow: hidden;
-}
-.final-cta::before {
-  content: ''; position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(244,246,249,.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(244,246,249,.04) 1px, transparent 1px);
-  background-size: 56px 56px;
-}
-.final-cta .container { position: relative; z-index: 1; }
-.final-cta h2 {
-  font-size: clamp(28px, 4vw, 44px); font-weight: 800; margin-bottom: 16px;
-}
-.final-cta p { font-size: 17px; opacity: .8; margin-bottom: 40px; }
-.final-cta .btn-group { display: flex; gap: 16px; justify-content: center; }
+/* ===== RESOURCES BAND ===== */
+.resources-band{padding:96px 0;border-top:1px solid var(--line);}
+.rb-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:46px;}
+.rb-card{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--line);border-radius:6px;padding:34px 34px 30px;text-decoration:none;color:inherit;transition:border-color .25s,transform .25s,box-shadow .25s;position:relative;overflow:hidden;}
+.rb-card::after{content:"";position:absolute;top:0;left:0;height:3px;width:0;background:var(--electric);transition:width .35s cubic-bezier(.2,.8,.2,1);}
+.rb-card:hover{border-color:var(--electric);transform:translateY(-3px);box-shadow:0 18px 44px rgba(13,17,23,.07);}
+.rb-card:hover::after{width:100%;}
+.rb-kind{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);padding-left:12px;border-left:3px solid var(--electric);align-self:flex-start;}
+.rb-card h3{font-family:var(--jp);font-weight:700;font-size:21px;line-height:1.5;margin:16px 0 12px;letter-spacing:-.01em;}
+.rb-card p{font-size:14px;color:var(--slate);line-height:1.9;}
+.rb-dl{margin-top:auto;padding-top:20px;font-family:var(--jp);font-weight:700;font-size:14px;color:var(--electric);display:inline-flex;align-items:center;gap:8px;}
+.rb-dl i{font-style:normal;transition:transform .25s;}
+.rb-card:hover .rb-dl i{transform:translateY(3px);}
+.rb-inside-label{display:block;font-family:var(--en);font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin:20px 0 9px;}
+.rb-inside{list-style:none;margin-bottom:4px;}
+.rb-inside li{font-size:13px;color:#28313f;line-height:1.55;padding:5px 0 5px 20px;position:relative;}
+.rb-inside li::before{content:"";position:absolute;left:2px;top:11px;width:8px;height:2px;background:var(--electric);}
+
+/* ===== FINAL CTA ===== */
+.final{background:var(--electric);color:var(--paper);padding:104px 0;text-align:center;}
+.final h2{font-family:var(--jp);font-weight:700;font-size:clamp(28px,3.6vw,46px);line-height:1.4;letter-spacing:-.02em;}
+.final p{font-size:16px;color:rgba(244,246,249,.85);margin-top:18px;}
+.final .actions{display:flex;gap:14px;justify-content:center;margin-top:36px;flex-wrap:wrap;}
 
 /* ===== FOOTER ===== */
-footer {
-  padding: 60px 0 40px;
-  background: #fff;
-  border-top: 1px solid rgba(0,94,255,.06);
+footer{background:var(--white);border-top:1px solid var(--line);padding:64px 0 40px;}
+.footer-inner{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;}
+.footer-brand .logo{font-family:var(--en);font-size:19px;font-weight:700;color:var(--ink);}
+.footer-brand .logo i{font-style:normal;color:var(--electric);}
+.footer-brand p{font-size:13px;color:var(--slate);line-height:1.7;margin-top:12px;}
+.footer-brand .x{display:inline-flex;align-items:center;gap:7px;margin-top:16px;font-size:13px;font-weight:600;color:var(--slate);text-decoration:none;}
+.footer-brand .x:hover{color:var(--electric);}
+.footer-col h4{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:16px;}
+.footer-col a{display:block;font-size:13px;color:var(--slate);text-decoration:none;margin-bottom:10px;}
+.footer-col a:hover{color:var(--electric);}
+.footer-col p{font-size:13px;color:var(--slate);line-height:1.7;margin-top:12px;}
+.copyright{text-align:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-family:var(--en);font-size:12px;color:var(--slate);}
+
+/* ===== reveal (progressive enhancement: visible without JS) ===== */
+html.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+html.js .rv.show{opacity:1;transform:none;}
+
+/* ===== focus visibility (keyboard) ===== */
+a:focus-visible,button:focus-visible,.faq-q:focus-visible{outline:2px solid var(--electric);outline-offset:3px;border-radius:3px;}
+:focus:not(:focus-visible){outline:none;}
+
+/* ===== reduced motion ===== */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  html.js .rv{opacity:1;transform:none;transition:none;}
+  html.js .rvg>*{opacity:1;transform:none;}
+  *{animation-duration:.001ms!important;transition-duration:.001ms!important;}
 }
-footer .footer-inner {
-  display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px;
-  align-items: start;
+
+/* ===== UI: hero orchestration ===== */
+@keyframes heroIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+@keyframes drawLine{to{background-size:100% 100%;}}
+html.js .hero .tag{animation:heroIn .7s .05s both cubic-bezier(.16,1,.3,1);}
+html.js .hero h1{animation:heroIn .8s .16s both cubic-bezier(.16,1,.3,1);}
+html.js .hero-foot{animation:heroIn .8s .42s both cubic-bezier(.16,1,.3,1);}
+html.js .hero h1 .u{background-repeat:no-repeat;background-size:0% 100%;animation:drawLine .7s .8s forwards cubic-bezier(.16,1,.3,1);}
+
+/* ===== UI: staggered group reveal ===== */
+html.js .rvg>*{opacity:0;transform:translateY(18px);}
+html.js .rvg.show>*{opacity:1;transform:none;transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1);}
+html.js .rvg.show>*:nth-child(1){transition-delay:.04s;}
+html.js .rvg.show>*:nth-child(2){transition-delay:.12s;}
+html.js .rvg.show>*:nth-child(3){transition-delay:.20s;}
+html.js .rvg.show>*:nth-child(4){transition-delay:.28s;}
+html.js .rvg.show>*:nth-child(5){transition-delay:.36s;}
+
+/* ===== UI: custom scrollbar ===== */
+@media (pointer:fine){
+  *{scrollbar-width:thin;scrollbar-color:#c3ccd8 transparent;}
+  ::-webkit-scrollbar{width:12px;height:12px;}
+  ::-webkit-scrollbar-thumb{background:#c3ccd8;border-radius:10px;border:3px solid var(--paper);}
+  ::-webkit-scrollbar-thumb:hover{background:#9aa7b8;}
+  ::-webkit-scrollbar-track{background:transparent;}
 }
-footer .footer-brand .logo { font-size: 18px; font-weight: 800; margin-bottom: 12px; color: var(--tw-black); }
-footer .footer-brand .logo span { color: var(--tw-electric); }
-footer .footer-brand p { font-size: 13px; color: var(--tw-slate); line-height: 1.7; }
-footer .footer-col h4 {
-  font-size: 12px; font-weight: 700; letter-spacing: 2px;
-  text-transform: uppercase; color: var(--tw-slate); opacity: .5; margin-bottom: 16px;
-}
-footer .footer-col a {
-  display: block; font-size: 13px; color: var(--tw-slate);
-  text-decoration: none; margin-bottom: 10px; transition: color .2s;
-}
-footer .footer-col a:hover { color: var(--tw-electric); }
-footer .footer-col p {
-  font-size: 13px; color: var(--tw-slate); line-height: 1.7;
-}
-footer .copyright {
-  text-align: center; margin-top: 40px; padding-top: 24px;
-  border-top: 1px solid rgba(0,94,255,.06);
-  font-size: 12px; color: var(--tw-slate); opacity: .4;
-}
+
+/* ===== UI: refined hover micro-interactions ===== */
+.btn:active{transform:translateY(0);}
+.news-row .tt{transition:color .2s,transform .25s cubic-bezier(.2,.8,.2,1);}
+.news-row:hover .tt{transform:translateX(5px);}
+.svc-c{position:relative;overflow:hidden;}
+.svc-c::after{content:"";position:absolute;top:0;left:0;height:3px;width:0;background:var(--electric);transition:width .35s cubic-bezier(.2,.8,.2,1);}
+.svc-c:hover::after{width:100%;}
+.ocard strong{transition:color .2s,transform .25s cubic-bezier(.2,.8,.2,1);}
+.ocard:hover strong{transform:translateX(4px);}
+.tool-item{transition:transform .2s ease;}
+.tool-item:hover{transform:translateY(-2px);}
+.company-table tr{transition:background .2s;}
+.company-table tr:hover{background:rgba(0,94,255,.03);}
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 1024px) {
-  .hero .container { grid-template-columns: 1fr; gap: 40px; }
-  .hero-kpi-grid { grid-template-columns: repeat(4, 1fr); }
-  .macro-stats { grid-template-columns: repeat(2, 1fr); }
-  .strength-grid { grid-template-columns: 1fr; }
-  .service-cards { grid-template-columns: 1fr; }
-  .svc-overview { grid-template-columns: 1fr; }
-  .results-kpi { grid-template-columns: repeat(2, 1fr); }
-  .home-case-impact .container { grid-template-columns: 1fr; gap: 32px; }
-  .home-case-impact { padding: 60px 0; }
-  .home-case-content .container { grid-template-columns: 1fr; gap: 40px; }
-  .home-others-grid { grid-template-columns: 1fr; }
-  .flow-steps { grid-template-columns: 1fr; }
-  .flow-step::after { display: none; }
-  .message .container { grid-template-columns: 1fr; }
-  .message-photo { max-width: 300px; }
-  .director .container { grid-template-columns: 1fr; }
-  .director-photo { max-width: 300px; }
-  footer .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+@media(max-width:1000px){
+  .footer-inner{grid-template-columns:1fr 1fr;gap:32px;}
+  .approach-grid{grid-template-columns:1fr;}
+  .approach-col{border-left:none;border-top:1px solid var(--line);padding:30px 0 6px;}
+  .svc-cards{grid-template-columns:1fr;}
+  .voice-grid{grid-template-columns:1fr;}
+  .svc-consult{grid-template-columns:1fr;gap:24px;padding:32px 26px;}
+  .rb-grid{grid-template-columns:1fr;}
+  .flow-steps{grid-template-columns:1fr 1fr;}
+  .flow-step{border-left:none;border-top:1px solid var(--line);padding:26px 0 6px;}
 }
-@media (max-width: 640px) {
-  .container { padding: 0 20px; }
-  nav { padding: 0 20px; }
-  nav ul { display: none; }
-  .hero .container { grid-template-columns: 1fr; gap: 32px; }
-  .hero-kpi-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-  .hero-kpi { padding: 20px 12px; }
-  .hero-kpi .num { font-size: 36px; }
-  .problem-grid { grid-template-columns: 1fr; }
-  .hero-text .btn-group { flex-direction: column; }
-  .hero-text h1 { font-size: 32px; }
-  .hero-text p { font-size: 15px; }
-  .final-cta .btn-group { flex-direction: column; align-items: center; }
-  .news-item { flex-wrap: wrap; gap: 8px 16px; }
-  nav { padding: 0 12px 0 16px; gap: 8px; overflow: visible; }
-  nav .nav-right { gap: 8px; }
-  nav .nav-cta { padding: 8px 14px; font-size: 11px; }
-  nav .nav-cta .nav-cta-full { display: none; }
-  nav .nav-cta .nav-cta-short { display: inline; }
-  nav .lang-switch { display: none; }
-  .macro-logos { flex-wrap: wrap; gap: 16px; }
-  .macro h2 { font-size: 24px; }
-  .macro .lead { font-size: 14px; }
-  .macro-bottom p { font-size: 16px; }
-  .problem-answer { padding: 32px 20px; text-align: left; }
-  .problem-answer p { font-size: 15px; }
-  .message .container { grid-template-columns: 1fr; gap: 40px; }
-  .message-photo { max-width: 200px; }
-  .company-table th { display: block; padding-bottom: 4px; }
-  .company-table td { display: block; padding-top: 0; padding-bottom: 20px; }
-  footer .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+@media(max-width:860px){
+  nav ul{display:none;}
+  nav .nav-cta{display:none;}
+  nav .lang{display:none;}
+  .hamb{display:block;}
+  .hero{padding:120px 24px 56px;}
+  .hero-foot{grid-template-columns:1fr;gap:26px;align-items:start;}
+  .figures{padding:14px 24px 64px;}
+  .figures .row{grid-template-columns:1fr 1fr;}
+  .fig{padding:22px 0;}
+  .fig:nth-child(even){padding-left:22px;border-left:1px solid var(--line);}
+  .fig:nth-child(odd){border-left:none;}
+  .fig:nth-child(n+3){border-top:1px solid var(--line);}
+  .macro-impact{grid-template-columns:1fr;gap:28px;}
+  .mi-n{font-size:clamp(88px,26vw,150px);}
+  .tools .container{grid-template-columns:1fr;gap:22px;}
+  .news-row{grid-template-columns:96px 1fr;gap:8px 16px;}
+  .news-row .tg{display:none;}
+  .hcase-top{grid-template-columns:1fr;gap:28px;}
+  .hcase-ba{grid-template-columns:1fr;}
+  .hcase-ba > div{padding:28px 0;}
+  .hcase-ba > div:last-child{border-left:none;border-top:1px solid var(--line);padding-left:0;}
+  .hcase-others .ogrid{grid-template-columns:1fr;}
+  .ocard{border-left:none;border-top:1px solid var(--line);padding:26px 0;}
+  .ocard:first-child{border-top:none;}
+  .person .container,.person.rev .container{grid-template-columns:1fr;gap:30px;}
+  .person.rev .p-photo{order:0;}
+  .p-photo{max-width:280px;}
 }
-
-/* ===== NAV DROPDOWN ===== */
-nav ul li { position: relative; }
-.nav-dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%; padding-top: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 8px 32px rgba(0,94,255,.12);
-  border: 1px solid rgba(0,94,255,.08);
-  min-width: 200px;
-  padding: 8px 0;
-  z-index: 200;
-  white-space: nowrap;
-}
-.nav-dropdown-menu::before {
-  content: '';
-  position: absolute;
-  top: 6px; left: 50%; transform: translateX(-50%);
-  width: 10px; height: 10px;
-  background: #fff;
-  border-left: 1px solid rgba(0,94,255,.08);
-  border-top: 1px solid rgba(0,94,255,.08);
-  transform: translateX(-50%) rotate(45deg);
-}
-.nav-dropdown-menu a {
-  display: block;
-  padding: 10px 20px;
-  font-size: 13px;
-  font-weight: 600;
-  color: #3C4B64;
-  text-decoration: none;
-  transition: color .15s, background .15s;
-}
-.nav-dropdown-menu a:hover {
-  color: #005EFF;
-  background: rgba(0,94,255,.04);
-}
-nav ul li:hover .nav-dropdown-menu { display: block; }
-.nav-dropdown-trigger { cursor: default; }
-.nav-dropdown-trigger::after {
-  content: ' ▾';
-  font-size: 10px;
-  opacity: .6;
+@media(max-width:560px){
+  .container{padding:0 22px;}
+  nav{padding:0 10px 0 18px;height:60px;}
+  .mmenu{top:60px;}
+  .problem-row{grid-template-columns:54px 1fr;}
+  .problem-answer{padding:34px 26px;}
+  .flow-steps{grid-template-columns:1fr;}
 }
 </style>
 <!-- Meta Pixel Code -->
@@ -882,529 +462,403 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
 </head>
 <body>
 
-<!-- ===== NAV ===== -->
-<nav>
-  <a href="index.html" class="logo">Tech<span>Worker</span></a>
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="logo">Tech<i>Worker</i></a>
   <ul>
-    <li><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">ホーム</a></li>
+    <li><a href="index.html" class="active">ホーム</a></li>
     <li><a href="#services">サービス</a></li>
     <li><a href="cases.html">実績</a></li>
+    <li><a href="library/">資料</a></li>
     <li><a href="news.html">ニュース</a></li>
     <li><a href="company.html">会社概要</a></li>
   </ul>
   <div class="nav-right">
-    <a href="contact.html" class="nav-cta"><span class="nav-cta-full">お問い合わせ</span><span class="nav-cta-short">相談</span></a>
-    <span class="lang-switch"><span style="color:var(--tw-electric);font-weight:700;">JP</span> / <a href="en/index.html" style="color:var(--tw-slate);text-decoration:none;font-weight:700;">EN</a></span>
+    <a href="contact.html" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
+    <span class="lang"><span class="cur">JP</span> / <a href="en/index.html">EN</a></span>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
-<!-- ===== LOADING SCREEN ===== -->
-<div id="loader" style="position:fixed;inset:0;z-index:9999;background:var(--tw-paper);display:flex;align-items:center;justify-content:center;transition:opacity .6s ease, visibility .6s ease;">
-  <div style="text-align:center;">
-    <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:32px;font-weight:800;color:var(--tw-black);opacity:0;animation:loaderFade .8s .2s forwards;">Tech<span style="color:var(--tw-electric);">Worker</span></div>
-    <div style="width:48px;height:2px;background:var(--tw-electric);margin:16px auto 0;transform:scaleX(0);animation:loaderLine .6s .6s forwards;transform-origin:left;"></div>
-  </div>
+<!-- MOBILE MENU -->
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="index.html">ホーム</a>
+  <a href="index.html#services">サービス</a>
+  <a href="cases.html">実績</a>
+  <a href="library/">資料ダウンロード</a>
+  <a href="news.html">ニュース</a>
+  <a href="company.html">会社概要</a>
+  <a href="contact.html" class="m-cta">無料相談を申し込む</a>
+  <a href="en/index.html" class="m-lang">English ↗</a>
 </div>
-<style>
-@keyframes loaderFade { to { opacity: 1; } }
-@keyframes loaderLine { to { transform: scaleX(1); } }
-</style>
 
-<!-- ===== 01: HERO ===== -->
-<section class="hero" style="position:relative;overflow:hidden;">
-  <canvas id="heroCanvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
-  <div class="container" style="position:relative;z-index:1;">
-    <div class="hero-text">
-      <span class="label">Enterprise AI Consulting</span>
-      <h1>AIは<em>エンジン</em>だ。<br>コンテキストは<em>燃料</em>だ。</h1>
-      <p>ツールを導入しただけでは、AIは機能しません。<br>貴社の業務文脈をAIが理解できる形に変換する。<br>それが、私たちの仕事です。</p>
-      <div class="btn-group">
-        <a href="contact.html" class="btn">無料相談に申し込む</a>
-        <a href="contact.html?type=document" class="btn btn--outline">資料を請求する</a>
-      </div>
+<!-- HERO -->
+<header class="hero">
+  <div class="tag">Enterprise AI <span>企業の文脈を、AIの力に変える</span></div>
+  <h1>AIは<span class="en">engine</span>。<br><span class="u">コンテキスト</span>は燃料だ。</h1>
+  <div class="hero-foot">
+    <p><strong>ツールを入れただけでは、AIは動きません。</strong>貴社の業務の文脈を、AIが扱える形に整える。それが、私たちの仕事です。上場企業を含む37社・2,500名の現場で、成果を出してきました。</p>
+    <div class="hero-actions">
+      <a href="library/" class="btn">2026年版 活用事例集をもらう <i>↓</i></a>
+      <a href="contact.html" class="btn btn--ghost">無料相談</a>
     </div>
-    <div class="hero-visual">
-      <div class="hero-kpi-grid">
-        <div class="hero-kpi">
-          <span class="num">37</span>
-          <span class="unit">支援企業数</span>
-        </div>
-        <div class="hero-kpi">
-          <span class="num">2,500</span>
-          <span class="unit">研修受講者数</span>
-        </div>
-        <div class="hero-kpi">
-          <span class="num">300+</span>
-          <span class="unit">ウェビナー参加者</span>
-        </div>
-        <div class="hero-kpi">
-          <span class="num">7</span>
-          <span class="unit">対応業種数</span>
-        </div>
-      </div>
-    </div>
+  </div>
+</header>
+
+<!-- FIGURES -->
+<section class="figures">
+  <div class="row rvg">
+    <div class="fig"><div class="n">37<sub>+</sub></div><div class="l">支援企業数（上場企業を含む）</div></div>
+    <div class="fig"><div class="n">2,500<sub>+</sub></div><div class="l">研修受講者数</div></div>
+    <div class="fig"><div class="n">300<sub>+</sub></div><div class="l">ウェビナー参加者</div></div>
+    <div class="fig"><div class="n">7<sub>+</sub></div><div class="l">対応業種数</div></div>
   </div>
 </section>
 
-<!-- ===== 01b: AI TOOLS ===== -->
-<section class="ai-tools">
+<!-- AI TOOLS -->
+<section class="tools">
   <div class="container">
-    <p class="ai-tools-label">主要AIサービスすべてに対応</p>
-    <div class="ai-tools-grid">
-      <div class="ai-tool-item">
-        <img src="assets/logos/claude.svg" alt="Claude" class="ai-tool-logo">
-        <span class="ai-tool-name">Claude</span>
-      </div>
-      <div class="ai-tool-item">
-        <img src="assets/logos/chatgpt.png" alt="ChatGPT" class="ai-tool-logo">
-        <span class="ai-tool-name">ChatGPT</span>
-      </div>
-      <div class="ai-tool-item">
-        <img src="assets/logos/copilot.webp" alt="Microsoft Copilot" class="ai-tool-logo">
-        <span class="ai-tool-name">Microsoft Copilot</span>
-      </div>
-      <div class="ai-tool-item">
-        <img src="assets/logos/gemini.svg" alt="Gemini" class="ai-tool-logo">
-        <span class="ai-tool-name">Gemini</span>
-      </div>
-      <div class="ai-tool-item">
-        <img src="assets/logos/perplexity.png" alt="Perplexity" class="ai-tool-logo">
-        <span class="ai-tool-name">Perplexity</span>
-      </div>
-      <div class="ai-tool-item">
-        <img src="assets/logos/notion.png" alt="Notion AI" class="ai-tool-logo">
-        <span class="ai-tool-name">Notion AI</span>
-      </div>
-      <div class="ai-tool-item">
-        <img src="assets/logos/github-copilot.png" alt="GitHub Copilot" class="ai-tool-logo">
-        <span class="ai-tool-name">GitHub Copilot</span>
-      </div>
+    <div class="tools-lead">
+      <div class="t">主要AIサービス<br>すべてに対応</div>
+      <div class="s">特定ツールに依存しない、マルチAI対応</div>
     </div>
-    <p class="ai-tools-note">特定のツールに依存しない、マルチAI対応のコンサルティング</p>
+    <div class="tools-grid">
+      <div class="tool-item"><img src="assets/logos/claude.svg" alt="Claude"><span>Claude</span></div>
+      <div class="tool-item"><img src="assets/logos/chatgpt.png" alt="ChatGPT"><span>ChatGPT</span></div>
+      <div class="tool-item"><img src="assets/logos/copilot.webp" alt="Microsoft Copilot"><span>Microsoft Copilot</span></div>
+      <div class="tool-item"><img src="assets/logos/gemini.svg" alt="Gemini"><span>Gemini</span></div>
+      <div class="tool-item"><img src="assets/logos/perplexity.png" alt="Perplexity"><span>Perplexity</span></div>
+      <div class="tool-item"><img src="assets/logos/notion.png" alt="Notion AI"><span>Notion AI</span></div>
+      <div class="tool-item"><img src="assets/logos/github-copilot.png" alt="GitHub Copilot"><span>GitHub Copilot</span></div>
+    </div>
   </div>
 </section>
 
-<!-- ===== 02: NEWS ===== -->
+<!-- NEWS -->
 <section class="news" id="news">
   <div class="container">
-    <h2>
-      <span class="label" style="margin:0">News</span>
-      お知らせ
-      <a href="news.html">一覧を見る &rarr;</a>
-    </h2>
-    <div class="news-list">
-      <div class="news-item">
-        <span class="news-date">2026.03.20</span>
-        <span class="news-tag">お知らせ</span>
-        <a href="news/001.html" class="news-title">生成AI活用事例ホワイトペーパーを公開しました</a>
-      </div>
-      <div class="news-item">
-        <span class="news-date">2026.03.14</span>
-        <span class="news-tag">お知らせ</span>
-        <a href="news/002.html" class="news-title">サービスラインナップを刷新しました</a>
-      </div>
-      <div class="news-item">
-        <span class="news-date">2026.02.28</span>
-        <span class="news-tag news-tag--event">イベント</span>
-        <a href="news/003.html" class="news-title">「AI導入の落とし穴」無料ウェビナー開催のお知らせ</a>
-      </div>
-      <div class="news-item">
-        <span class="news-date">2025.05.07</span>
-        <span class="news-tag news-tag--event">イベント</span>
-        <a href="news/004.html" class="news-title">さくらインターネット株式会社の社内セミナーに代表・古野が講師として登壇しました</a>
-      </div>
+    <div class="news-top rv">
+      <div class="sec-head"><span class="tag">News <span>お知らせ</span></span></div>
+      <a href="news.html">一覧を見る →</a>
+    </div>
+    <div class="news-list rvg">
+      <a href="news/001.html" class="news-row"><span class="d">2026.03.20</span><span class="tg">お知らせ</span><span class="tt">生成AI活用事例ホワイトペーパーを公開しました</span></a>
+      <a href="news/002.html" class="news-row"><span class="d">2026.03.14</span><span class="tg">お知らせ</span><span class="tt">サービスラインナップを刷新しました</span></a>
+      <a href="news/003.html" class="news-row"><span class="d">2026.02.28</span><span class="tg ev">イベント</span><span class="tt">「AI導入の落とし穴」無料ウェビナー開催のお知らせ</span></a>
+      <a href="news/004.html" class="news-row"><span class="d">2025.05.07</span><span class="tg ev">イベント</span><span class="tt">さくらインターネット株式会社の社内セミナーに代表・古野が講師として登壇しました</span></a>
     </div>
   </div>
 </section>
 
-<!-- ===== 03: MACRO ===== -->
+<!-- MACRO -->
 <section class="macro" id="macro">
   <div class="container">
-    <span class="label label--light">Why Now</span>
-    <h2>AIの開発元自身が、<br>導入支援に本気で動き始めています。</h2>
-    <p class="lead">
-      2026年2月、OpenAIは数百名規模の導入コンサルタントの採用を発表し、McKinsey・BCG・Accenture・Capgeminiとの大型提携を開始しました。Anthropicは1億ドルを投じてパートナーネットワークを構築し、45,000名超の専門人材を動員しています。<br><br>
-      なぜ、AIを開発している企業自身が「導入支援」に巨額を投じるのか。答えは明確です。<strong>ツールだけでは、企業のAI活用は進みません。</strong>
-    </p>
-
-    <div class="macro-stats">
-      <div class="macro-stat">
-        <span class="num">95%</span>
-        <span class="desc">生成AIのPoCが<br>実験段階で停滞</span>
+    <div class="sec-head rv">
+      <span class="tag">Why Now <span>なぜ、いま動くのか</span></span>
+      <h2>OpenAIも、Anthropicも。<br>AIを「作った本人」が、いま<span class="mk">導入支援</span>に動いている。</h2>
+    </div>
+    <div class="macro-impact rv">
+      <div class="mi-stat">
+        <div class="mi-n">95<span class="pct">%</span></div>
+        <div class="mi-cap">企業の生成AI導入の約95%が、成果につながらないまま止まっている。<span class="src">出典：MIT, 2025</span></div>
       </div>
-      <div class="macro-stat">
-        <span class="num">74%</span>
-        <span class="desc">AI投資が2年経っても<br>成果につながらず</span>
-      </div>
-      <div class="macro-stat">
-        <span class="num">1.8%</span>
-        <span class="desc">Microsoft Copilotの<br>実際の導入率</span>
-      </div>
-      <div class="macro-stat">
-        <span class="num">67%</span>
-        <span class="desc">外部パートナーと組んだ<br>企業のAI導入成功率</span>
+      <div class="mi-body">
+        <p>この現実を、誰よりも知っているのが開発元です。2026年、<strong>OpenAIは数百名規模の導入コンサルタントを採用</strong>し、McKinsey・BCG・Accentureらと大型提携。<strong>Anthropicも大手コンサルティングファームと提携し</strong>、大規模なパートナー網の構築を進めています。</p>
+        <p>なぜ、AIをつくる当事者そのものが「導入支援」にこれほど投資するのか。答えは明快です。<strong>ツールは、もう十分に高性能だから。</strong></p>
       </div>
     </div>
-
-
-    <div class="macro-bottom">
-      <p>ツールの性能は、すでに十分に高い水準にあります。<br>足りないのは「自社の業務文脈をAIに渡す設計」です。</p>
+    <div class="macro-bottom rv">
+      <p>成否を分けるのは、AIの性能ではない。<br>自社の業務文脈をAIに渡す「<span class="mk2">導入設計</span>」だ。</p>
     </div>
   </div>
 </section>
 
-<!-- ===== 04: PROBLEM ===== -->
+<!-- PROBLEM -->
 <section class="problem" id="problem">
   <div class="container">
-    <span class="label">The Problem</span>
-    <h2>このような状態になっていませんか。</h2>
-    <div class="problem-grid">
-      <div class="problem-card">
-        <div class="icon">1</div>
-        <p>ChatGPTやCopilotを契約したが、<br>使っているのは一部の社員だけ。</p>
-      </div>
-      <div class="problem-card">
-        <div class="icon">2</div>
-        <p>PoCは完了した。<br>しかし全社展開の道筋が見えない。</p>
-      </div>
-      <div class="problem-card">
-        <div class="icon">3</div>
-        <p>経営層はAI活用を掲げているが、<br>現場は何から手をつければよいか分からない。</p>
-      </div>
-      <div class="problem-card">
-        <div class="icon">4</div>
-        <p>ツールは導入した。<br>しかし業務時間は減っていない。</p>
-      </div>
+    <div class="sec-head rv"><span class="tag">The Problem <span>課題</span></span><h2>このような状態に、なっていませんか。</h2></div>
+    <div class="problem-grid rvg">
+      <div class="problem-row"><span class="pn">01</span><p>ChatGPTやCopilotを契約したが、使っているのは一部の社員だけ。</p></div>
+      <div class="problem-row"><span class="pn">02</span><p>PoCは完了した。しかし全社展開の道筋が見えない。</p></div>
+      <div class="problem-row"><span class="pn">03</span><p>経営層はAI活用を掲げているが、現場は何から手をつければよいか分からない。</p></div>
+      <div class="problem-row"><span class="pn">04</span><p>ツールは導入した。しかし業務時間は減っていない。</p></div>
     </div>
-    <div class="problem-answer">
-      <p>AIが機能しない原因の大半は、ツールの問題ではありません。<br>社内の業務知識・判断基準・意思決定プロセスが、<br>AIに渡せる形になっていないことが根本原因です。<br>私たちはこれを<em>「コンテキスト整理」</em>と呼んでいます。</p>
+    <div class="problem-answer rv">
+      <p>AIが機能しない原因の大半は、ツールの問題ではありません。社内の業務知識・判断基準・意思決定プロセスが、AIに渡せる形になっていないことが根本原因です。私たちはこれを<em>「コンテキスト整理」</em>と呼んでいます。</p>
     </div>
   </div>
 </section>
 
-<!-- ===== 05: APPROACH ===== -->
+<!-- APPROACH -->
 <section class="approach" id="approach">
   <div class="container">
-    <span class="label">Our Approach</span>
-    <h2>コンテキスト整理 ── AI時代の基盤インフラ</h2>
-    <p class="lead">
-      業務マニュアル、暗黙知、判断基準、社内用語、承認フロー。
-      これらはすべて「コンテキスト」です。人間同士であれば共有できますが、AIにはそのままでは渡せません。
-      TechWorkerは、このコンテキストをAIが理解・活用できる構造に変換する専門集団です。
-    </p>
-    <div class="strength-grid">
-      <div class="strength-card">
-        <div class="num">01</div>
-        <h3>コンテキスト整理の<br>専門性</h3>
-        <p>業務フロー・ナレッジ・意思決定をAIが活用できる構造に変換する独自メソッドを保有しています。</p>
-      </div>
-      <div class="strength-card">
-        <div class="num">02</div>
-        <h3>月30万円から。<br>小さく始められます</h3>
-        <p>成果が見えてから拡大可能です。大規模な初期投資は不要。リスクを最小化した設計でご提供しています。</p>
-      </div>
-      <div class="strength-card">
-        <div class="num">03</div>
-        <h3>37社・2,500名の<br>支援実績</h3>
-        <p>製薬・建設・化学・食品・IT・エンタメなど、業種を問わず成果を出してきた汎用フレームワークです。</p>
-      </div>
+    <div class="sec-head rv">
+      <span class="tag">Our Approach <span>私たちの強み</span></span>
+      <h2>「コンテキスト整理」こそ、<br>AI時代の土台になる。</h2>
+      <p class="lead">業務マニュアル、暗黙知、判断基準、社内用語、承認フロー。これらはすべて「コンテキスト」です。人と人なら自然に共有できますが、AIにはそのままでは渡せません。私たちは、この「コンテキスト」をAIが理解し、使いこなせる形に整える専門家集団です。</p>
+    </div>
+    <div class="approach-grid rvg">
+      <div class="approach-col"><div class="an">01</div><h3>コンテキスト整理の専門性</h3><p>業務知識・判断基準・暗黙のルールを、AIが扱える形に整える独自の手法。ツールを選ぶ前に、まず「文脈」から整えます。</p></div>
+      <div class="approach-col"><div class="an">02</div><h3>主要AIツールを、<br>導入から定着まで一貫対応</h3><p>Microsoft Copilot・Claude Code・ChatGPT・Gemini など、ツール選定からセットアップ・セキュリティ設計・社内定着まで丸ごと支援。特定ツールに依存しません。</p></div>
+      <div class="approach-col"><div class="an">03</div><h3>37社・2,500名の支援実績</h3><p>製薬・建設・化学・食品・IT・エンタメなど、業種を問わず成果を出してきた汎用フレームワークです。</p></div>
     </div>
   </div>
 </section>
 
-<!-- ===== 06: RESULTS (moved before services) ===== -->
-<section class="results" id="results">
+<!-- RESULTS STATEMENT + CASE -->
+<section class="results-st" id="results">
   <div class="container">
-    <span class="label label--light">Results</span>
-    <h2>37社、2,500名。<br>業種を問わず、成果を出してまいりました。</h2>
-
-    <div class="results-kpi">
-      <div class="results-kpi-card">
-        <span class="num">37+</span>
-        <span class="unit">支援企業</span>
+    <div class="rv"><span class="tag">Results <span>実績</span></span>
+    <h2>37社、2,500名。<br>業種を問わず、<span class="mk">成果</span>を出してまいりました。</h2></div>
+  </div>
+  <div class="container hcase">
+    <div class="hcase-top rv">
+      <div class="hcase-num">
+        <div class="s">Ideation Time</div>
+        <div class="big"><b>1</b><i>時間</i></div>
+        <div class="desc">アイデアの発散から収束まで完了</div>
       </div>
-      <div class="results-kpi-card">
-        <span class="num">2,500+</span>
-        <span class="unit">研修受講者</span>
+      <div class="hcase-meta">
+        <div class="mtag"><span class="badge">PICKUP</span><span class="ind">化学 / 素材</span></div>
+        <h3>新素材アイディエーションの革新</h3>
+        <div class="co">東証プライム上場 総合科学メーカー</div>
       </div>
-      <div class="results-kpi-card">
-        <span class="num">300+</span>
-        <span class="unit">ウェビナー参加者</span>
+    </div>
+    <div class="hcase-ba rv">
+      <div>
+        <div class="col-l">Before</div>
+        <p>新素材の用途探索は研究者の経験と勘に依存。1,000件中わずか3件の成功率。スピードとスケールの両立が困難な状態でした。</p>
       </div>
-      <div class="results-kpi-card">
-        <span class="num">7+</span>
-        <span class="unit">対応業種</span>
+      <div>
+        <div class="col-l aft">After</div>
+        <ul>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>1時間で発散から収束まで完了する手法を確立</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>ビジネスモデル特許を出願中</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>自社では到達できなかった新用途をAIが提示</li>
+        </ul>
       </div>
+    </div>
+    <div class="hcase-others rv">
+      <div class="ogrid">
+        <a href="cases.html" class="ocard"><span class="oi">医薬 / ヘルスケア</span><strong>リサーチ外注費の大幅削減</strong><span class="om">年間数百万円削減</span></a>
+        <a href="cases.html" class="ocard"><span class="oi">IT / クラウド</span><strong>さくらインターネット 全社300名AI研修</strong><span class="om">300名が自律活用</span></a>
+        <a href="cases.html" class="ocard"><span class="oi">建設 / 不動産</span><strong>全社AI活用支援</strong><span class="om">複数部門を段階展開中</span></a>
+      </div>
+      <div class="more"><a href="cases.html" class="btn btn--ghost">他の実績を見る <i>→</i></a></div>
     </div>
   </div>
 </section>
 
-<!-- PICKUP CASE: cases.htmlのマガジン風 -->
-<div class="home-case-impact">
+<!-- VOICE / CLIENTS -->
+<section class="voice" id="voice">
   <div class="container">
-    <div class="home-case-left">
-      <div class="home-case-sub">IDEATION TIME</div>
-      <div class="home-case-num">
-        <span class="big-num">1</span>
-        <span class="big-unit">時間</span>
-      </div>
-      <p class="home-case-desc">アイデアの発散から収束まで完了</p>
+    <div class="sec-head rv"><span class="tag">Voice <span>お客様の声</span></span><h2>現場の、リアルな声。</h2></div>
+    <div class="clients rv">
+      <span class="clients-label">導入企業</span>
+      <span class="client-name">さくらインターネット株式会社</span>
+      <span class="clients-more">ほか、上場企業を含む37社のご支援を手がけてきました。</span>
     </div>
-    <div class="home-case-right">
-      <div class="home-case-tag">
-        <span class="home-case-badge">PICKUP</span>
-        <span class="home-case-industry">化学 / 素材</span>
-      </div>
-      <h3>新素材アイディエーションの革新</h3>
-      <p class="home-case-company">東証プライム上場 総合科学メーカー</p>
-    </div>
-  </div>
-</div>
-<div class="home-case-content">
-  <div class="container">
-    <div class="home-case-before">
-      <div class="home-col-label">BEFORE</div>
-      <p>新素材の用途探索は研究者の経験と勘に依存。1,000件中わずか3件の成功率。スピードとスケールの両立が困難な状態でした。</p>
-    </div>
-    <div class="home-case-after">
-      <div class="home-col-label">AFTER</div>
-      <ul class="home-check-list">
-        <li><span class="home-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>1時間で発散から収束まで完了する手法を確立</li>
-        <li><span class="home-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>ビジネスモデル特許を出願中</li>
-        <li><span class="home-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>自社では到達できなかった新用途をAIが提示</li>
-      </ul>
-    </div>
-  </div>
-</div>
-<div class="home-case-others-strip">
-  <div class="container">
-    <div class="home-others-grid">
-      <a href="cases.html" class="home-other-card">
-        <span class="home-other-industry">医薬 / ヘルスケア</span>
-        <strong>リサーチ外注費の大幅削減</strong>
-        <span class="home-other-metric">年間数百万円削減</span>
-      </a>
-      <a href="cases.html" class="home-other-card">
-        <span class="home-other-industry">IT / クラウド</span>
-        <strong>さくらインターネット 全社300名AI研修</strong>
-        <span class="home-other-metric">300名が自律活用</span>
-      </a>
-      <a href="cases.html" class="home-other-card">
-        <span class="home-other-industry">建設 / 不動産</span>
-        <strong>全社AI活用支援</strong>
-        <span class="home-other-metric">複数部門を段階展開中</span>
-      </a>
-    </div>
-    <div style="text-align:center;margin-top:40px;">
-      <a href="cases.html" class="btn btn--outline" style="color:var(--tw-electric);border-color:var(--tw-electric);">他の実績を見る →</a>
-    </div>
-  </div>
-</div>
-
-<!-- ===== 07: SERVICES ===== -->
-<section class="services" id="services">
-  <div class="container">
-    <span class="label">Services</span>
-    <h2>私たちのサービス</h2>
-    <p class="lead">生成AIの力で、ビジネスの課題を解決する3つのソリューション。</p>
-
-    <div class="svc-overview">
-      <div class="svc-card">
-        <div class="svc-num">01</div>
-        <h3>生成AIコンサル</h3>
-        <p>企業のAI活用を伴走支援。コンテキスト整理・業務フロー構築・組織への定着まで一気通貫でサポートします。</p>
-        <a href="#programs" class="svc-link">詳細を見る →</a>
-      </div>
-    </div>
-
-    <span class="programs-label" id="programs">生成AIコンサル — プログラム詳細</span>
-    <div class="service-cards">
-      <div class="service-card">
-        <div class="service-card-header">
-          <div class="program-num">Program 01</div>
-          <h3>まず業務から変える、<br>AIクイックスタート</h3>
-          <p class="tagline">社内データと接続した"自社専用AI"で、複数業務を3ヶ月で改善します。</p>
-        </div>
-        <div class="service-card-body">
-          <div class="service-meta"><span class="key">対象</span><span class="val">中小〜中堅企業（経営者・部門責任者）</span></div>
-          <div class="service-meta"><span class="key">内容</span><span class="val">業務単位でのAIワークフロー構築・自社データ連携</span></div>
-          <div class="service-meta"><span class="key">期間</span><span class="val">最低3ヶ月</span></div>
-          <div class="service-meta"><span class="key">月額</span><span class="val">30万円〜</span></div>
-          <div class="service-card-quote">「まず目の前の業務で、AIの投資対効果を実証します。」</div>
-        </div>
-      </div>
-
-      <div class="service-card">
-        <div class="service-card-header">
-          <div class="program-num">Program 02</div>
-          <h3>部署まるごと、<br>AIで回す組織へ</h3>
-          <p class="tagline">AIが組み込まれた業務フローを、部署単位で6ヶ月かけて定着させます。</p>
-        </div>
-        <div class="service-card-body">
-          <div class="service-meta"><span class="key">対象</span><span class="val">中堅企業（経営者・DX推進責任者・部門長）</span></div>
-          <div class="service-meta"><span class="key">内容</span><span class="val">部署単位でのAI導入・社内データ構造化・業務フロー再設計</span></div>
-          <div class="service-meta"><span class="key">期間</span><span class="val">6ヶ月〜</span></div>
-          <div class="service-meta"><span class="key">月額</span><span class="val">50万円〜</span></div>
-          <div class="service-card-quote">「データ蓄積の差は不可逆。半年後には追いつけない。」</div>
-        </div>
-      </div>
-
-      <div class="service-card">
-        <div class="service-card-header">
-          <div class="program-num">Program 03</div>
-          <h3>全社をAIドリブンに変える<br>導入設計</h3>
-          <p class="tagline">部署ごとにAIを導入し、全社のAIドリブン体制を構築します。</p>
-        </div>
-        <div class="service-card-body">
-          <div class="service-meta"><span class="key">対象</span><span class="val">上場企業・大手（経営層・DX推進部門長・部門長）</span></div>
-          <div class="service-meta"><span class="key">内容</span><span class="val">部署別AI導入計画・順次実装・経営KPIへの接続</span></div>
-          <div class="service-meta"><span class="key">期間</span><span class="val">3ヶ月〜（PoC → 本契約）</span></div>
-          <div class="service-meta"><span class="key">費用</span><span class="val">要相談</span></div>
-          <div class="service-card-quote">「全社で本気で取り組む」ための設計パートナーです。</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 08: FLOW ===== -->
-<section class="flow" id="flow">
-  <div class="container">
-    <span class="label">Flow</span>
-    <h2>ご利用の流れ</h2>
-    <div class="flow-steps">
-      <div class="flow-step">
-        <div class="step-num">1</div>
-        <h3>無料相談</h3>
-        <p>30分のヒアリングで<br>現状の課題を把握します</p>
-      </div>
-      <div class="flow-step">
-        <div class="step-num">2</div>
-        <h3>診断・ご提案</h3>
-        <p>AI活用ステージを診断し<br>最適なプログラムをご提案します</p>
-      </div>
-      <div class="flow-step">
-        <div class="step-num">3</div>
-        <h3>ご契約・キックオフ</h3>
-        <p>月額制で柔軟に開始<br>月30万円から</p>
-      </div>
-      <div class="flow-step">
-        <div class="step-num">4</div>
-        <h3>導入・伴走</h3>
-        <p>コンテキスト整理から<br>定着支援まで一貫対応</p>
-      </div>
-      <div class="flow-step">
-        <div class="step-num">5</div>
-        <h3>成果検証・拡大</h3>
-        <p>KPIに基づき効果を測定し<br>次のステップを決定します</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 09: MESSAGE ===== -->
-<section class="message" id="message">
-  <div class="container">
-    <div class="message-photo"><img src="assets/ceo-portrait.jpg" alt="古野光太朗 - TechWorker代表取締役" style="width:100%;height:100%;object-fit:cover;object-position:50% 30%;transform:scale(2);transform-origin:50% 30%;border-radius:12px;"></div>
-    <div class="message-text">
-      <span class="label">Message</span>
-      <h2>古野光太朗</h2>
-      <p class="role">株式会社TechWorker 代表取締役　<a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" style="color:var(--tw-electric);text-decoration:none;font-weight:700;font-size:13px;"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" style="vertical-align:-1px;margin-right:2px;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a></p>
-      <blockquote>
-        生成AIの性能は、日々進化しています。<br>しかし、それを業務で使いこなせている企業は、まだ多くありません。<br><br>
-        原因はシンプルです。<br>社内の業務知識、判断基準、暗黙のルール ── いわば「コンテキスト」が、AIに渡せる形で整理されていないのです。<br><br>
-        <strong>私たちはこの「コンテキスト整理」を専門とし、上場企業を含む37社・2,500名のご支援を重ねてまいりました。</strong><br><br>
-        AIツールを販売する会社ではありません。<br>貴社の業務が、AIによって本質的に変わる ── その状態をつくることが、私たちの仕事です。
+    <div class="voice-grid rvg">
+      <blockquote class="voice-card">
+        <p>経験と勘に頼っていた新素材の用途探索が、1時間で何案も出てくる。自社だけでは届かなかった発想の幅が、明らかに広がりました。</p>
+        <footer>
+          <div class="v-person"><span class="v-avatar">化</span><div><span class="vrole">研究開発本部 マネージャー</span><span class="vco">東証プライム上場・総合化学メーカー</span></div></div>
+          <span class="v-service"><b>ご利用</b>：生成AIコンサル（R&D領域）</span>
+        </footer>
+      </blockquote>
+      <blockquote class="voice-card">
+        <p>外部に頼っていた市場リサーチを、自社で回せるようになりました。外注コストが下がっただけでなく、意思決定のスピードそのものが変わったと感じています。</p>
+        <footer>
+          <div class="v-person"><span class="v-avatar">薬</span><div><span class="vrole">DX推進部 ご担当</span><span class="vco">外資系大手製薬企業</span></div></div>
+          <span class="v-service"><b>ご利用</b>：生成AIコンサル＋社内研修</span>
+        </footer>
+      </blockquote>
+      <blockquote class="voice-card">
+        <p>属人化して煩雑だった社内の判断基準や業務知識を、AIが扱える形に一つずつ整理してもらえました。バラバラだった「前提」が揃い、現場が同じ目線で動けるようになったことが、何よりの価値です。</p>
+        <footer>
+          <div class="v-person"><span class="v-avatar">経</span><div><span class="vrole">経営企画部 部長</span><span class="vco">中堅メーカー</span></div></div>
+          <span class="v-service"><b>ご利用</b>：生成AIコンサル（コンテキスト整理）</span>
+        </footer>
       </blockquote>
     </div>
   </div>
 </section>
 
-<!-- ===== 09b: DIRECTOR ===== -->
-<section class="director">
+<!-- SERVICES -->
+<section class="services" id="services">
   <div class="container">
-    <div class="director-photo"><img src="assets/director-yamamoto.jpg" alt="山本敏行 - TechWorker取締役" style="width:100%;height:100%;object-fit:cover;border-radius:12px;"></div>
-    <div class="director-text">
-      <span class="label">Director</span>
+    <div class="sec-head rv"><span class="tag">Services <span>サービス</span></span><h2>私たちのサービス</h2><p class="lead">生成AIを、貴社の成果につなげます。</p></div>
+    <div class="svc-overview rv">
+      <div class="sn">01</div>
+      <h3>生成AIコンサル</h3>
+      <p>企業のAI活用を伴走支援。コンテキスト整理・業務フロー構築・組織への定着まで一気通貫でサポートします。</p>
+      <a href="#programs">プログラム詳細を見る →</a>
+    </div>
+    <span class="programs-label" id="programs">生成AIコンサル — プログラム詳細</span>
+    <div class="svc-cards rvg">
+      <div class="svc-c">
+        <div class="pnum">Program 01</div>
+        <h3>まず業務から変える、AIクイックスタート</h3>
+        <p class="tl">社内データと接続した"自社専用AI"で、複数業務を3ヶ月で改善します。</p>
+        <div class="svc-meta"><span class="k">対象</span><span class="v">中小〜中堅企業（経営者・部門責任者）</span></div>
+        <div class="svc-meta"><span class="k">内容</span><span class="v">業務単位でのAIワークフロー構築・自社データ連携</span></div>
+        <div class="svc-meta"><span class="k">期間</span><span class="v">最低3ヶ月</span></div>
+        <div class="q">「まず目の前の業務で、AIの投資対効果を実証します。」</div>
+      </div>
+      <div class="svc-c">
+        <div class="pnum">Program 02</div>
+        <h3>部署まるごと、AIで回す組織へ</h3>
+        <p class="tl">AIが組み込まれた業務フローを、部署単位で6ヶ月かけて定着させます。</p>
+        <div class="svc-meta"><span class="k">対象</span><span class="v">中堅企業（経営者・DX推進責任者・部門長）</span></div>
+        <div class="svc-meta"><span class="k">内容</span><span class="v">部署単位でのAI導入・社内データ構造化・業務フロー再設計</span></div>
+        <div class="svc-meta"><span class="k">期間</span><span class="v">6ヶ月〜</span></div>
+        <div class="q">「データ蓄積の差は不可逆。半年後には追いつけない。」</div>
+      </div>
+      <div class="svc-c">
+        <div class="pnum">Program 03</div>
+        <h3>全社をAIドリブンに変える導入設計</h3>
+        <p class="tl">部署ごとにAIを導入し、全社のAIドリブン体制を構築します。</p>
+        <div class="svc-meta"><span class="k">対象</span><span class="v">上場企業・大手（経営層・DX推進部門長・部門長）</span></div>
+        <div class="svc-meta"><span class="k">内容</span><span class="v">部署別AI導入計画・順次実装・経営KPIへの接続</span></div>
+        <div class="svc-meta"><span class="k">期間</span><span class="v">3ヶ月〜（PoC → 本契約）</span></div>
+        <div class="q">「全社で本気で取り組む」ための設計パートナーです。</div>
+      </div>
+    </div>
+    <div class="svc-consult rv">
+      <div>
+        <h3>どのプランが最適かは、貴社の状況で変わります。</h3>
+        <p>料金・期間・進め方は、まず無料相談で。現状の課題をお聞きし、最適な始め方をその場で整理します。検討段階のご相談だけでも歓迎です。</p>
+      </div>
+      <a href="contact.html" class="btn">無料相談を申し込む <i>→</i></a>
+    </div>
+  </div>
+</section>
+
+<!-- FLOW -->
+<section class="flow" id="flow">
+  <div class="container">
+    <div class="sec-head rv"><span class="tag">Flow <span>ご利用の流れ</span></span><h2>ご利用の流れ</h2></div>
+    <div class="flow-steps rvg">
+      <div class="flow-step"><div class="sn">1</div><h3>無料相談</h3><p>30分のヒアリングで現状の課題を把握します</p></div>
+      <div class="flow-step"><div class="sn">2</div><h3>診断・ご提案</h3><p>AI活用ステージを診断し最適なプログラムをご提案します</p></div>
+      <div class="flow-step"><div class="sn">3</div><h3>ご契約・キックオフ</h3><p>ご要望にあわせた形で柔軟にスタートします</p></div>
+      <div class="flow-step"><div class="sn">4</div><h3>導入・伴走</h3><p>コンテキスト整理から定着支援まで一貫対応</p></div>
+      <div class="flow-step"><div class="sn">5</div><h3>成果検証・拡大</h3><p>KPIに基づき効果を測定し次のステップを決定します</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MESSAGE (CEO) -->
+<section class="person" id="message">
+  <div class="container rv">
+    <div class="p-photo"><img src="assets/ceo-portrait.jpg" alt="古野光太朗 - TechWorker代表取締役" style="object-position:50% 30%;transform:scale(2);transform-origin:50% 30%;"></div>
+    <div class="p-text">
+      <span class="tag">Message <span>代表メッセージ</span></span>
+      <h2>古野 光太朗</h2>
+      <p class="role">株式会社TechWorker 代表取締役　<a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" style="vertical-align:-1px;margin-right:2px;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a></p>
+      <blockquote>
+        生成AIの性能は、日々進化しています。しかし、それを業務で使いこなせている企業は、まだ多くありません。<br><br>
+        原因はシンプルです。社内の業務知識、判断基準、暗黙のルール、いわば「コンテキスト」が、AIに渡せる形で整理されていないのです。<br><br>
+        <strong>私たちはこの「コンテキスト整理」を専門とし、上場企業を含む37社・2,500名のご支援を重ねてまいりました。</strong><br><br>
+        AIツールを売る会社ではありません。貴社の仕事そのものが、AIで根本から変わる。その状態をつくることが、私たちの仕事です。
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- DIRECTOR -->
+<section class="person rev">
+  <div class="container rv">
+    <div class="p-photo"><img src="assets/director-yamamoto.jpg" alt="山本敏行 - TechWorker取締役"></div>
+    <div class="p-text">
+      <span class="tag">Director <span>取締役</span></span>
       <h2>山本 敏行</h2>
       <p class="role">株式会社TechWorker 取締役<br>Chatwork株式会社 創業者 / Power Angels CEO / 日本エンジェル投資家協会 代表理事</p>
       <blockquote>
-        私はChatworkというITツールを創業し、非IT業界に届けることに挑みました。<br>
-        2018年にCEOを共同創業者の弟に譲り、翌2019年に東証マザーズへ上場。時価総額は550億円を超えました。<br><br>
-        その経験を通じて確信したことがあります。<br>
-        <strong>テクノロジーがどれだけ優れていても、現場の業務文脈とつなぐ存在がいなければ、企業の中で使われることはありません。</strong><br><br>
-        今、生成AIという新たなテクノロジーで同じことが起きています。<br>
-        TechWorkerは、その翻訳者として日本企業のAI活用を進めていきます。
+        私はChatworkというITツールを創業し、非IT業界に届けることに挑みました。2018年にCEOを共同創業者の弟に譲り、翌2019年に東証マザーズへ上場しました（時価総額500億円超）。<br><br>
+        その経験を通じて確信したことがあります。<strong>テクノロジーがどれだけ優れていても、現場の業務文脈とつなぐ存在がいなければ、企業の中で使われることはありません。</strong><br><br>
+        今、生成AIという新たなテクノロジーで同じことが起きています。TechWorkerは、その橋渡し役として日本企業のAI活用を進めていきます。
       </blockquote>
     </div>
   </div>
 </section>
 
-<!-- ===== 10: FAQ ===== -->
+<!-- FAQ -->
 <section class="faq" id="faq">
   <div class="container">
-    <span class="label">FAQ</span>
-    <h2>よくあるご質問</h2>
-    <div class="faq-list">
-      <div class="faq-item">
-        <div class="q">AI知識がない社員が多いのですが、大丈夫でしょうか。</div>
-        <div class="a">問題ございません。研修から業務実装まで一貫して伴走いたします。専門知識は不要です。</div>
-      </div>
-      <div class="faq-item">
-        <div class="q">どのAIツールに対応していますか。</div>
-        <div class="a">Claude、ChatGPT、Microsoft Copilotをはじめ、主要ツールすべてに対応しております。特定ツールに依存しません。</div>
-      </div>
-      <div class="faq-item">
-        <div class="q">最低契約期間はどれくらいですか。</div>
-        <div class="a">導入支援は3ヶ月から、伴走コンサルティングは6ヶ月からとなっております。</div>
-      </div>
-      <div class="faq-item">
-        <div class="q">助成金は活用できますか。</div>
-        <div class="a">人材開発支援助成金（DXリスキリングコース）の対象となります。活用実績もございますので、お気軽にご相談ください。</div>
-      </div>
-      <div class="faq-item">
-        <div class="q">大手企業でも対応可能ですか。</div>
-        <div class="a">東証プライム上場企業を含む37社のご支援実績がございます。全社規模の設計・展開にも対応しております。</div>
-      </div>
+    <div class="sec-head rv"><span class="tag">FAQ <span>よくあるご質問</span></span><h2>よくあるご質問</h2></div>
+    <div class="faq-list rv">
+      <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false">AI知識がない社員が多いのですが、大丈夫でしょうか。<span class="ar"></span></button><div class="faq-a"><p>問題ございません。研修から業務実装まで一貫して伴走いたします。専門知識は不要です。</p></div></div>
+      <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false">どのAIツールに対応していますか。<span class="ar"></span></button><div class="faq-a"><p>Claude、ChatGPT、Microsoft Copilotをはじめ、主要ツールすべてに対応しております。特定ツールに依存しません。</p></div></div>
+      <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false">最低契約期間はどれくらいですか。<span class="ar"></span></button><div class="faq-a"><p>導入支援は3ヶ月から、伴走コンサルティングは6ヶ月からとなっております。</p></div></div>
+      <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false">助成金は活用できますか。<span class="ar"></span></button><div class="faq-a"><p>人材開発支援助成金（DXリスキリングコース）の対象となります。活用実績もございますので、お気軽にご相談ください。</p></div></div>
+      <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false">大手企業でも対応可能ですか。<span class="ar"></span></button><div class="faq-a"><p>東証プライム上場企業を含む37社のご支援実績がございます。全社規模の設計・展開にも対応しております。</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- ===== 11: COMPANY (SUMMARY) ===== -->
+<!-- COMPANY -->
 <section class="company" id="company">
-  <div class="container" style="text-align:center;">
-    <span class="label">Company</span>
-    <h2>会社概要</h2>
-    <table class="company-table" style="max-width:600px;margin:0 auto 40px;">
+  <div class="container">
+    <div class="sec-head rv"><span class="tag">Company <span>会社概要</span></span><h2>会社概要</h2></div>
+    <table class="company-table rv">
       <tr><th>会社名</th><td>株式会社TechWorker</td></tr>
       <tr><th>代表取締役</th><td>古野 光太朗</td></tr>
       <tr><th>設立</th><td>2023年12月</td></tr>
       <tr><th>所在地</th><td>東京都新宿区西早稲田一丁目22番3号</td></tr>
     </table>
-    <a href="company.html" class="btn" style="display:inline-block;">詳しく見る</a>
+    <div class="more rv"><a href="company.html" class="btn btn--ghost">詳しく見る <i>→</i></a></div>
   </div>
 </section>
 
-<!-- ===== 12: FINAL CTA ===== -->
-<section class="final-cta" id="contact">
+<!-- RESOURCES BAND -->
+<section class="resources-band" id="resources-dl">
   <div class="container">
-    <h2>AIの導入、止まっていませんか。</h2>
-    <p>まずは30分、お話をお聞かせください。</p>
-    <div class="btn-group">
-      <a href="contact.html" class="btn btn--white">無料相談に申し込む</a>
-      <a href="contact.html?type=document" class="btn" style="background:transparent;border:2px solid var(--tw-paper);">資料を請求する</a>
+    <div class="sec-head rv">
+      <span class="tag">Free Resources <span>無料資料</span></span>
+      <h2>現場で使える知見を、無料で公開しています。</h2>
+    </div>
+    <div class="rb-grid rvg">
+      <a href="library/" class="rb-card">
+        <span class="rb-kind">活用事例集</span>
+        <h3>2026年版 生成AI活用事例集</h3>
+        <p>「他社はどう成果を出したのか」に、具体的な数字で答える1冊。社内提案・稟議の判断材料に、そのまま使えます。</p>
+        <span class="rb-inside-label">収録内容</span>
+        <ul class="rb-inside"><li>化学・医薬・IT・建設など、業種別の実例</li><li>各事例の「課題 → 施策 → 成果（数値）」</li><li>成果が出る企業に共通する“型”</li></ul>
+        <span class="rb-dl">無料でダウンロード <i>↓</i></span>
+      </a>
+      <a href="library/" class="rb-card">
+        <span class="rb-kind">セキュリティ</span>
+        <h3>Claude Code 企業導入<br>セキュリティ＆セットアップ実践ガイド</h3>
+        <p>「使いたいが、情シスが止める」を外すための1冊。安全に全社展開する設計を、経営の言葉でまとめました。</p>
+        <span class="rb-inside-label">収録内容</span>
+        <ul class="rb-inside"><li>生成AIの3大リスクと、その対策</li><li>安全なセットアップ 5原則</li><li>全社展開前の 10項目チェックリスト</li></ul>
+        <span class="rb-dl">無料でダウンロード <i>↓</i></span>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
+<!-- FINAL CTA -->
+<section class="final" id="cta">
+  <div class="container">
+    <h2>AIを、成果が出る状態に。</h2>
+    <p>ツールを入れて終わり、にはしません。37社・2,500名の支援で培った手法で、<br>現場が成果を出すところまで、本気で伴走します。</p>
+    <div class="actions">
+      <a href="contact.html" class="btn btn--on-blue">無料相談に申し込む</a>
+      <a href="library/" class="btn btn--on-blue-ghost">2026年版 活用事例集をもらう</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
   <div class="container">
     <div class="footer-inner">
       <div class="footer-brand">
-        <div class="logo">Tech<span>Worker</span></div>
+        <div class="logo">Tech<i>Worker</i></div>
         <p>企業向け生成AIコンサルティング<br>株式会社TechWorker</p>
-        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:13px;font-weight:700;color:var(--tw-slate);text-decoration:none;transition:color .2s;"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
       </div>
       <div class="footer-col">
         <h4>サービス</h4>
@@ -1421,377 +875,77 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
         <a href="contact.html">無料相談</a>
         <a href="contact.html?type=document">資料請求</a>
         <a href="privacy.html">プライバシーポリシー</a>
-        <p style="margin-top:12px;">〒169-0051<br>東京都新宿区西早稲田一丁目22番3号</p>
+        <p>〒169-0051<br>東京都新宿区西早稲田一丁目22番3号</p>
       </div>
     </div>
-  </div>
-  <div class="container">
-    <p class="copyright">&copy; 2026 TechWorker Inc. All rights reserved.</p>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
   </div>
 </footer>
 
 <script>
-/* ===== LOADING SCREEN ===== */
-(function(){
-  window.addEventListener('load', function(){
-    var loader = document.getElementById('loader');
-    setTimeout(function(){
-      loader.style.opacity = '0';
-      loader.style.visibility = 'hidden';
-      document.body.classList.add('loaded');
-    }, 1200);
-  });
-})();
+/* nav shadow on scroll */
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>40);},{passive:true});
 
-/* ===== HERO CANVAS — NETWORK PARTICLES ===== */
+/* mobile menu */
 (function(){
-  var canvas = document.getElementById('heroCanvas');
-  if (!canvas) return;
-  var ctx = canvas.getContext('2d');
-  var dpr = window.devicePixelRatio || 1;
-  var particles = [];
-  var mouse = { x: -999, y: -999 };
-  var PARTICLE_COUNT = 60;
-  var CONNECT_DIST = 140;
-  var MOUSE_DIST = 180;
-
-  function resize() {
-    var rect = canvas.parentElement.getBoundingClientRect();
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
-    canvas.style.width = rect.width + 'px';
-    canvas.style.height = rect.height + 'px';
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(open){
+    document.body.classList.toggle('menu-open',open);
+    hamb.setAttribute('aria-expanded',open?'true':'false');
+    hamb.setAttribute('aria-label',open?'メニューを閉じる':'メニューを開く');
+    mmenu.setAttribute('aria-hidden',open?'false':'true');
+    document.body.style.overflow=open?'hidden':'';
   }
-
-  function createParticles() {
-    particles = [];
-    var w = canvas.width / dpr;
-    var h = canvas.height / dpr;
-    for (var i = 0; i < PARTICLE_COUNT; i++) {
-      particles.push({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
-        r: Math.random() * 2 + 1
-      });
-    }
-  }
-
-  function draw() {
-    var w = canvas.width / dpr;
-    var h = canvas.height / dpr;
-    ctx.clearRect(0, 0, w, h);
-
-    /* Update & draw particles */
-    for (var i = 0; i < particles.length; i++) {
-      var p = particles[i];
-      p.x += p.vx; p.y += p.vy;
-      if (p.x < 0 || p.x > w) p.vx *= -1;
-      if (p.y < 0 || p.y > h) p.vy *= -1;
-
-      /* Mouse repulsion */
-      var dx = p.x - mouse.x, dy = p.y - mouse.y;
-      var dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < MOUSE_DIST) {
-        var force = (MOUSE_DIST - dist) / MOUSE_DIST * 0.02;
-        p.vx += dx * force;
-        p.vy += dy * force;
-      }
-      /* Speed limit */
-      var speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
-      if (speed > 1.2) { p.vx *= 0.98; p.vy *= 0.98; }
-
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(0,94,255,0.15)';
-      ctx.fill();
-    }
-
-    /* Draw connections */
-    for (var i = 0; i < particles.length; i++) {
-      for (var j = i + 1; j < particles.length; j++) {
-        var dx = particles[i].x - particles[j].x;
-        var dy = particles[i].y - particles[j].y;
-        var d = Math.sqrt(dx * dx + dy * dy);
-        if (d < CONNECT_DIST) {
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = 'rgba(0,94,255,' + (0.08 * (1 - d / CONNECT_DIST)) + ')';
-          ctx.lineWidth = 0.6;
-          ctx.stroke();
-        }
-      }
-    }
-
-    requestAnimationFrame(draw);
-  }
-
-  resize();
-  createParticles();
-  draw();
-
-  window.addEventListener('resize', function(){ resize(); createParticles(); });
-  canvas.parentElement.addEventListener('mousemove', function(e){
-    var rect = canvas.parentElement.getBoundingClientRect();
-    mouse.x = e.clientX - rect.left;
-    mouse.y = e.clientY - rect.top;
-  });
-  canvas.parentElement.addEventListener('mouseleave', function(){
-    mouse.x = -999; mouse.y = -999;
-  });
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+  matchMedia('(min-width:861px)').addEventListener('change',function(e){if(e.matches)setMenu(false);});
 })();
 
-/* ===== HERO TEXT — CHARACTER-BY-CHARACTER REVEAL ===== */
-(function(){
-  var h1 = document.querySelector('.hero-text h1');
-  if (!h1) return;
-  /* Split into chars, preserving <em> and <br> */
-  var html = h1.innerHTML;
-  var result = '';
-  var charIdx = 0;
-  var inTag = false;
-  for (var i = 0; i < html.length; i++) {
-    var c = html[i];
-    if (c === '<') { inTag = true; result += c; continue; }
-    if (c === '>') { inTag = false; result += c; continue; }
-    if (inTag) { result += c; continue; }
-    if (c === ' ' || c === '\n') { result += c; continue; }
-    result += '<span class="char-reveal" style="opacity:0;display:inline-block;transform:translateY(16px);transition:opacity .4s ease, transform .4s ease;transition-delay:' + (charIdx * 0.035) + 's;">' + c + '</span>';
-    charIdx++;
-  }
-  h1.innerHTML = result;
-
-  /* Trigger after loader */
-  setTimeout(function(){
-    var chars = h1.querySelectorAll('.char-reveal');
-    chars.forEach(function(c){ c.style.opacity = '1'; c.style.transform = 'translateY(0)'; });
-  }, 1400);
-})();
-
-/* ===== CARD TILT EFFECT ===== */
-(function(){
-  var cards = document.querySelectorAll('.hero-kpi, .strength-card, .service-card, .problem-card');
-  cards.forEach(function(card){
-    card.style.transition = 'transform .3s ease, box-shadow .3s ease';
-    card.addEventListener('mousemove', function(e){
-      var rect = card.getBoundingClientRect();
-      var x = (e.clientX - rect.left) / rect.width - 0.5;
-      var y = (e.clientY - rect.top) / rect.height - 0.5;
-      card.style.transform = 'perspective(600px) rotateX(' + (-y * 6) + 'deg) rotateY(' + (x * 6) + 'deg) scale(1.02)';
-      card.style.boxShadow = '0 12px 40px rgba(0,94,255,.1)';
-    });
-    card.addEventListener('mouseleave', function(){
-      card.style.transform = 'perspective(600px) rotateX(0) rotateY(0) scale(1)';
-      card.style.boxShadow = '';
-    });
-  });
-})();
-
-/* ===== PARALLAX SECTIONS ===== */
-(function(){
-  var parallaxEls = document.querySelectorAll('.macro h2, .approach h2, .final-cta h2');
-  window.addEventListener('scroll', function(){
-    var scrollY = window.scrollY;
-    parallaxEls.forEach(function(el){
-      var rect = el.getBoundingClientRect();
-      var center = rect.top + rect.height / 2;
-      var viewCenter = window.innerHeight / 2;
-      var offset = (center - viewCenter) * 0.05;
-      el.style.transform = 'translateY(' + offset + 'px)';
-    });
-  }, { passive: true });
-})();
-
-/* ===== SCROLL REVEAL ===== */
-(function(){
-  const reveals = document.querySelectorAll(
-    '.hero-text, .hero-kpi, .news-section, .problem-card, .problem-answer, '+
-    '.macro, .approach, .strength-card, .service-card, .results-kpi > div, '+
-    '.case-card, .flow-step, .message-photo, .message-text, .faq-item, '+
-    '.company, .final-cta'
-  );
-  /* Initial hidden state */
-  const style = document.createElement('style');
-  style.textContent = `
-    .reveal { opacity: 0; transform: translateY(40px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
-    .reveal-left.visible { opacity: 1; transform: translateX(0); }
-    .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
-    .reveal-right.visible { opacity: 1; transform: translateX(0); }
-    .reveal-scale { opacity: 0; transform: scale(.92); transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1); }
-    .reveal-scale.visible { opacity: 1; transform: scale(1); }
-  `;
-  document.head.appendChild(style);
-
-  reveals.forEach(function(el, i){
-    el.classList.add('reveal');
-    /* Stagger siblings */
-    var siblings = el.parentElement ? Array.from(el.parentElement.children).filter(function(c){ return c.classList.contains('reveal'); }) : [];
-    var idx = siblings.indexOf(el);
-    if (idx > 0) el.style.transitionDelay = (idx * 0.1) + 's';
-  });
-
-  /* Special: message photo slides from left */
-  document.querySelectorAll('.message-photo').forEach(function(el){
-    el.classList.remove('reveal');
-    el.classList.add('reveal-left');
-  });
-  document.querySelectorAll('.message-text').forEach(function(el){
-    el.classList.remove('reveal');
-    el.classList.add('reveal-right');
-  });
-
-  var observer = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-
-  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el){
-    observer.observe(el);
-  });
-})();
-
-/* ===== KPI COUNTER ANIMATION ===== */
-(function(){
-  function animateCounter(el, target, suffix) {
-    var start = 0;
-    var duration = 1800;
-    var startTime = null;
-    function ease(t) { return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2; }
-    function step(ts) {
-      if (!startTime) startTime = ts;
-      var progress = Math.min((ts - startTime) / duration, 1);
-      var val = Math.round(ease(progress) * target);
-      el.textContent = val.toLocaleString() + suffix;
-      if (progress < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-
-  var kpiEls = document.querySelectorAll('.hero-kpi .num, .results-kpi .kpi-num');
-  var kpiObserver = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if (entry.isIntersecting) {
-        var el = entry.target;
-        var text = el.textContent.trim();
-        var suffix = '';
-        if (text.indexOf('+') !== -1) { suffix = '+'; text = text.replace('+',''); }
-        var num = parseInt(text.replace(/,/g, ''), 10);
-        if (!isNaN(num)) animateCounter(el, num, suffix);
-        kpiObserver.unobserve(el);
-      }
-    });
-  }, { threshold: 0.5 });
-  kpiEls.forEach(function(el){ kpiObserver.observe(el); });
-})();
-
-/* ===== NAV SCROLL EFFECT ===== */
-(function(){
-  var nav = document.querySelector('nav');
-  var lastScroll = 0;
-  window.addEventListener('scroll', function(){
-    var y = window.scrollY;
-    if (y > 80) {
-      nav.style.background = 'rgba(244,246,249,.98)';
-      nav.style.boxShadow = '0 1px 12px rgba(0,94,255,.06)';
-    } else {
-      nav.style.background = 'rgba(244,246,249,.92)';
-      nav.style.boxShadow = 'none';
-    }
-    lastScroll = y;
-  }, { passive: true });
-})();
-
-/* ===== FAQ ACCORDION ===== */
-(function(){
-  var items = document.querySelectorAll('.faq-item');
-  items.forEach(function(item){
-    var q = item.querySelector('.q');
-    var a = item.querySelector('.a');
-    if (!q || !a) return;
-
-    /* Wrap answer for animated height */
-    a.style.overflow = 'hidden';
-    a.style.maxHeight = '0';
-    a.style.transition = 'max-height .4s cubic-bezier(.16,1,.3,1), padding .4s ease';
-    a.style.paddingTop = '0';
-    a.style.paddingBottom = '0';
-    var originalPadding = '16px';
-
-    /* Add toggle arrow */
-    q.style.cursor = 'pointer';
-    q.style.display = 'flex';
-    q.style.alignItems = 'center';
-    q.style.justifyContent = 'space-between';
-    var arrow = document.createElement('span');
-    arrow.textContent = '+';
-    arrow.style.cssText = 'font-size:24px;font-weight:300;color:var(--tw-electric);transition:transform .3s;flex-shrink:0;margin-left:16px;';
-    q.appendChild(arrow);
-
-    q.addEventListener('click', function(){
-      var isOpen = item.classList.contains('open');
-      /* Close all */
-      items.forEach(function(other){
-        other.classList.remove('open');
-        var oa = other.querySelector('.a');
-        var ow = other.querySelector('.q span:last-child');
-        if (oa) { oa.style.maxHeight = '0'; oa.style.paddingTop = '0'; oa.style.paddingBottom = '0'; }
-        if (ow) { ow.textContent = '+'; ow.style.transform = 'rotate(0deg)'; }
-      });
-      if (!isOpen) {
-        item.classList.add('open');
-        a.style.maxHeight = a.scrollHeight + 32 + 'px';
-        a.style.paddingTop = originalPadding;
-        a.style.paddingBottom = originalPadding;
-        arrow.textContent = '−';
-        arrow.style.transform = 'rotate(180deg)';
-      }
-    });
-  });
-})();
-
-/* ===== SMOOTH SCROLL ===== */
-document.querySelectorAll('a[href^="#"]').forEach(function(a){
-  a.addEventListener('click', function(e){
-    var target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      var y = target.getBoundingClientRect().top + window.scrollY - 80;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
+/* FAQ accordion (keyboard-accessible buttons) */
+document.querySelectorAll('.faq-item').forEach(function(item){
+  var q=item.querySelector('.faq-q'),a=item.querySelector('.faq-a');
+  q.addEventListener('click',function(){
+    var open=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(o){o.classList.remove('open');o.querySelector('.faq-a').style.maxHeight='0';o.querySelector('.faq-q').setAttribute('aria-expanded','false');});
+    if(!open){item.classList.add('open');a.style.maxHeight=(a.scrollHeight+24)+'px';q.setAttribute('aria-expanded','true');}
   });
 });
 
-/* ===== LABEL TYPING EFFECT ===== */
-(function(){
-  var label = document.querySelector('.hero-text .label');
-  if (!label) return;
-  var text = label.textContent;
-  label.textContent = '';
-  label.style.borderRight = '2px solid var(--tw-electric)';
-  label.style.opacity = '1';
-  var i = 0;
-  function type() {
-    if (i < text.length) {
-      label.textContent += text.charAt(i);
-      i++;
-      setTimeout(type, 40);
-    } else {
-      setTimeout(function(){ label.style.borderRight = 'none'; }, 600);
-    }
-  }
-  /* Start after loader finishes */
-  setTimeout(type, 1300);
-})();
-</script>
+addEventListener('resize',function(){var o=document.querySelector('.faq-item.open .faq-a');if(o)o.style.maxHeight=(o.scrollHeight+24)+'px';},{passive:true});
 
+/* scroll reveal */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv,.rvg').forEach(function(el){io.observe(el);});
+
+/* count-up for figures */
+function countUp(el){
+  var raw=el.textContent.trim();var suf='';var t=raw;
+  if(t.indexOf('%')>-1){suf='%';t=t.replace('%','');}
+  var dec=t.indexOf('.')>-1;
+  var target=parseFloat(t.replace(/,/g,''));if(isNaN(target))return;
+  var hasPlus=el.querySelector('sub')?'+':'';
+  var start=null,dur=1500;
+  function step(ts){if(!start)start=ts;var p=Math.min((ts-start)/dur,1);var e=1-Math.pow(1-p,3);var v=e*target;
+    var out=dec?v.toFixed(1):Math.round(v).toLocaleString();
+    el.innerHTML=out+suf+(hasPlus?'<sub>+</sub>':'');
+    if(p<1)requestAnimationFrame(step);}
+  requestAnimationFrame(step);
+}
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){countUp(e.target);io2.unobserve(e.target);}});},{threshold:.6});
+  document.querySelectorAll('.fig .n').forEach(function(el){io2.observe(el);});
+}
+
+/* smooth anchor offset */
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var id=this.getAttribute('href');if(id==='#'||id.length<2)return;
+    var t=document.querySelector(id);if(!t)return;e.preventDefault();
+    scrollTo({top:t.getBoundingClientRect().top+scrollY-80,behavior:'smooth'});
+  });
+});
+</script>
 </body>
 </html>

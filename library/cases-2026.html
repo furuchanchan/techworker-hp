@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026年版 生成AI活用事例集 — 業種別・成果が出た現場のすべて — TechWorker</title>
+<meta name="description" content="ツールではなく成果に到達した企業は、何が違ったのか。化学・医薬・IT・建設、業種横断5事例で見る生成AI活用の実像。上場企業を含む37社・2,500名の支援実績から、成果を出す企業の共通点を解説します。">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2026年版 生成AI活用事例集 — 業種別・成果が出た現場のすべて — TechWorker">
+<meta property="og:description" content="ツールではなく成果に到達した企業は、何が違ったのか。業種横断5事例で見る生成AI活用の実像。">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/library/cases-2026.html">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="2026年版 生成AI活用事例集 — TechWorker">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== TOKENS (v2) ===== */
+:root{
+  --ink:#0D1117; --paper:#F4F6F9; --paper-2:#ECEFF3; --white:#FBFCFD;
+  --electric:#005EFF; --electric-dark:#003DAA;
+  --slate:#5A6677; --line:rgba(13,17,23,.12); --line-2:rgba(13,17,23,.20);
+  --emerald:#00B894; --violet:#7C3AED;
+  --jp:'IBM Plex Sans JP','IBM Plex Sans',system-ui,sans-serif;
+  --en:'IBM Plex Sans','IBM Plex Sans JP',system-ui,sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;overflow-x:hidden;}
+body{font-family:var(--jp);background:var(--paper);color:var(--ink);line-height:1.85;font-size:16px;-webkit-font-smoothing:antialiased;font-feature-settings:"palt" 1;overflow-x:hidden;}
+a{color:var(--electric);}
+::selection{background:var(--electric);color:var(--paper);}
+
+/* shared label */
+.tag{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--electric);display:inline-flex;align-items:center;gap:11px;padding-left:14px;border-left:3px solid var(--electric);}
+.tag span{color:var(--slate);font-weight:500;letter-spacing:.02em;text-transform:none;font-size:13px;}
+
+/* ===== READER BAR ===== */
+.reader-bar{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;background:rgba(244,246,249,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 24px;}
+.reader-bar .back{font-size:13px;font-weight:600;color:var(--slate);text-decoration:none;display:inline-flex;align-items:center;gap:7px;}
+.reader-bar .back:hover{color:var(--electric);}
+.reader-bar .brand{font-family:var(--en);font-size:16px;font-weight:700;letter-spacing:-.01em;color:var(--ink);text-decoration:none;}
+.reader-bar .brand i{font-style:normal;color:var(--electric);}
+.reader-bar .print{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.02em;padding:8px 16px;border:1.5px solid var(--line-2);color:var(--ink);background:none;border-radius:5px;cursor:pointer;transition:border-color .2s,color .2s;}
+.reader-bar .print:hover{border-color:var(--electric);color:var(--electric);}
+
+/* ===== DOC ===== */
+.doc{max-width:840px;margin:0 auto;padding:56px 40px 90px;}
+
+/* ===== COVER ===== */
+.cover{padding:80px 0 64px;border-bottom:2px solid var(--ink);margin-bottom:60px;}
+.cover .tag{margin-bottom:32px;}
+.cover h1{font-family:var(--jp);font-weight:700;font-size:clamp(32px,5.2vw,48px);line-height:1.34;letter-spacing:-.025em;margin-bottom:14px;}
+.cover h1 em{font-style:normal;color:var(--electric);}
+.cover .h1-sub{font-family:var(--jp);font-weight:600;font-size:clamp(15px,2vw,18px);color:var(--slate);line-height:1.7;letter-spacing:-.01em;margin-bottom:24px;}
+.cover .sub{font-size:16.5px;color:#28313f;line-height:2;max-width:640px;}
+.cover .sub strong{color:var(--ink);font-weight:600;}
+.cover-meta{display:flex;gap:0;margin-top:46px;border-top:1px solid var(--line);}
+.cover-meta div{padding:24px 34px 0 0;}
+.cover-meta div + div{padding-left:34px;border-left:1px solid var(--line);}
+.cover-meta div b{display:block;font-family:var(--en);font-weight:600;font-size:clamp(34px,5vw,48px);line-height:1;letter-spacing:-.03em;color:var(--electric);font-feature-settings:"tnum" 1;}
+.cover-meta div span{display:block;font-size:13px;color:var(--slate);margin-top:12px;}
+
+/* ===== TOC ===== */
+.toc{background:var(--white);border:1px solid var(--line);border-radius:6px;padding:30px 34px;margin-bottom:70px;}
+.toc h4{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);margin-bottom:8px;}
+.toc ol{list-style:none;counter-reset:toc;}
+.toc li{counter-increment:toc;padding:15px 0;border-bottom:1px solid var(--line);display:flex;align-items:baseline;gap:16px;font-size:15.5px;font-weight:600;}
+.toc li:last-child{border-bottom:none;}
+.toc li::before{content:counter(toc,decimal-leading-zero);font-family:var(--en);font-size:13px;color:var(--electric);font-weight:600;letter-spacing:.02em;min-width:24px;}
+.toc li a{color:var(--ink);text-decoration:none;line-height:1.5;}
+.toc li a:hover{color:var(--electric);}
+
+/* ===== CHAPTER ===== */
+.chapter{margin-bottom:72px;}
+.chapter > .tag{margin-bottom:18px;}
+.chapter > h2{font-family:var(--jp);font-weight:700;font-size:clamp(24px,3.2vw,32px);line-height:1.4;letter-spacing:-.02em;padding-bottom:20px;border-bottom:1px solid var(--line);}
+.chapter h3{font-family:var(--jp);font-weight:700;font-size:19px;line-height:1.5;margin:36px 0 12px;letter-spacing:-.01em;}
+.chapter p{margin:16px 0;color:#28313f;line-height:2.02;}
+.chapter strong{color:var(--ink);font-weight:600;}
+.chapter .lead-p{font-size:16.5px;color:#28313f;line-height:2.05;margin-top:24px;}
+.chapter .lead-p strong{font-weight:600;}
+
+/* macro stat (intro) */
+.macro-stat{display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center;margin:40px 0;padding:38px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.macro-stat .ms-n{font-family:var(--en);font-weight:700;font-size:clamp(78px,12vw,128px);line-height:.86;letter-spacing:-.05em;color:var(--electric);}
+.macro-stat .ms-n .pct{font-size:.36em;font-weight:600;vertical-align:super;margin-left:3px;letter-spacing:-.02em;}
+.macro-stat .ms-body p{margin:0 0 14px;font-size:15.5px;line-height:1.95;}
+.macro-stat .ms-body p:last-child{margin-bottom:0;}
+.macro-stat .src{display:inline-block;margin-top:6px;font-family:var(--en);font-size:11px;letter-spacing:.06em;color:var(--slate);border:1px solid var(--line-2);border-radius:3px;padding:3px 9px;}
+
+/* common-points list */
+.points{margin:32px 0 8px;border-top:1px solid var(--line);}
+.points .pt{display:grid;grid-template-columns:64px 1fr;gap:8px;padding:26px 0;border-bottom:1px solid var(--line);align-items:baseline;}
+.points .pt .pn{font-family:var(--en);font-weight:600;font-size:20px;color:var(--electric);letter-spacing:-.02em;}
+.points .pt .pb h4{font-family:var(--jp);font-weight:700;font-size:17px;line-height:1.5;margin-bottom:6px;letter-spacing:-.01em;}
+.points .pt .pb p{margin:0;font-size:14.5px;color:var(--slate);line-height:1.9;}
+
+/* ===== CASE BLOCK ===== */
+.case{margin:30px 0;padding-top:30px;border-top:1px solid var(--line);}
+.case:first-of-type{border-top:none;padding-top:0;}
+.case-head{display:grid;grid-template-columns:auto 1fr;gap:44px;align-items:center;padding:8px 0 30px;}
+.case-num .s{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);}
+.case-num .big{display:flex;align-items:baseline;gap:7px;margin-top:8px;}
+.case-num .big b{font-family:var(--en);font-weight:600;font-size:clamp(46px,8vw,72px);line-height:1;color:var(--electric);letter-spacing:-.03em;font-feature-settings:"tnum" 1;}
+.case-num .big i{font-style:normal;font-size:18px;font-weight:600;color:var(--ink);}
+.case-num .cap{font-size:12px;color:var(--slate);margin-top:8px;max-width:18ch;line-height:1.6;}
+.case-meta .ind{font-size:13px;font-weight:600;color:var(--electric);letter-spacing:.02em;margin-bottom:10px;}
+.case-meta h3{font-family:var(--jp);font-weight:700;font-size:clamp(20px,2.6vw,26px);line-height:1.4;letter-spacing:-.02em;margin:0;}
+.case-meta .co{font-size:13.5px;color:var(--slate);margin-top:10px;}
+.case-ba{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);}
+.case-ba > div{padding:30px 36px 30px 0;}
+.case-ba > div:last-child{padding:30px 0 30px 40px;border-left:1px solid var(--line);}
+.case-ba .col-l{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);margin-bottom:14px;}
+.case-ba .col-l.aft{color:var(--electric);}
+.case-ba p{margin:0;font-size:14.5px;color:#28313f;line-height:1.9;}
+.case-ba ul{list-style:none;}
+.case-ba li{display:flex;gap:11px;align-items:flex-start;padding:6px 0;font-size:14.5px;line-height:1.7;color:#28313f;}
+.case-ba li svg{flex-shrink:0;margin-top:5px;color:var(--electric);}
+.case-point{padding:22px 0 4px;border-top:1px solid var(--line);}
+.case-point .pl{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);}
+.case-point p{margin:8px 0 0;font-size:14.5px;color:#28313f;line-height:1.9;}
+
+/* ===== DIVERGENCE ===== */
+.diverge{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);margin-top:32px;}
+.diverge > div{padding:32px 36px 32px 0;}
+.diverge > div:last-child{padding:32px 0 32px 40px;border-left:1px solid var(--line);}
+.diverge .dl{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-bottom:14px;}
+.diverge .dl.win{color:var(--electric);}
+.diverge p{margin:0;font-size:15px;line-height:1.95;color:#28313f;}
+.diverge p strong{color:var(--ink);font-weight:600;}
+
+/* emphasis block */
+.statement{background:var(--electric-dark);color:var(--paper);padding:44px 48px;border-radius:6px;margin:34px 0 4px;}
+.statement p{margin:0;font-family:var(--jp);font-weight:500;font-size:clamp(17px,2.2vw,21px);line-height:1.95;letter-spacing:-.01em;color:var(--paper);}
+.statement em{font-style:normal;color:var(--white);font-weight:700;}
+
+/* method steps */
+.method{margin:32px 0 8px;border-top:1px solid var(--line);}
+.method .step{display:grid;grid-template-columns:44px 1fr;gap:18px;padding:24px 0;border-bottom:1px solid var(--line);align-items:flex-start;}
+.method .step .sn{font-family:var(--en);font-weight:600;font-size:15px;color:var(--paper);background:var(--electric);width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.method .step h4{font-family:var(--jp);font-weight:700;font-size:16.5px;margin-bottom:5px;letter-spacing:-.01em;}
+.method .step p{margin:0;font-size:14px;color:var(--slate);line-height:1.9;}
+
+/* ===== DOC CTA ===== */
+.doc-cta{background:var(--electric);color:var(--paper);border-radius:8px;padding:56px 48px;margin:80px 0 0;text-align:center;}
+.doc-cta .tag{justify-content:center;border-left:none;padding-left:0;color:var(--paper);}
+.doc-cta .tag::before{content:"";width:28px;height:2px;background:var(--paper);margin-right:12px;}
+.doc-cta h2{font-family:var(--jp);font-weight:700;font-size:clamp(24px,3.2vw,32px);line-height:1.45;letter-spacing:-.02em;border:none;padding:0;margin:18px 0 14px;color:var(--paper);}
+.doc-cta p{color:rgba(244,246,249,.88);font-size:15.5px;margin-bottom:32px;line-height:1.9;}
+.doc-cta .btn{font-family:var(--jp);font-size:15px;font-weight:600;display:inline-flex;align-items:center;gap:10px;background:var(--paper);color:var(--electric);padding:16px 38px;border-radius:5px;text-decoration:none;transition:background .25s,transform .25s;}
+.doc-cta .btn:hover{background:var(--white);transform:translateY(-2px);}
+.doc-cta .btn i{font-style:normal;transition:transform .25s;}
+.doc-cta .btn:hover i{transform:translateX(4px);}
+
+.doc-foot{text-align:center;margin-top:50px;padding-top:26px;border-top:1px solid var(--line);font-family:var(--en);font-size:12px;letter-spacing:.02em;color:var(--slate);}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width:640px){
+  .doc{padding:40px 22px 64px;}
+  .reader-bar .brand{display:none;}
+  .cover{padding:56px 0 44px;}
+  .cover-meta{flex-wrap:wrap;}
+  .cover-meta div{padding:22px 24px 0 0;}
+  .cover-meta div + div{padding-left:24px;}
+  .macro-stat{grid-template-columns:1fr;gap:24px;}
+  .macro-stat .ms-n{font-size:clamp(72px,24vw,110px);}
+  .points .pt{grid-template-columns:48px 1fr;}
+  .case-head{grid-template-columns:1fr;gap:24px;}
+  .case-ba{grid-template-columns:1fr;}
+  .case-ba > div{padding:26px 0;}
+  .case-ba > div:last-child{padding:26px 0;border-left:none;border-top:1px solid var(--line);}
+  .diverge{grid-template-columns:1fr;}
+  .diverge > div{padding:26px 0;}
+  .diverge > div:last-child{padding:26px 0;border-left:none;border-top:1px solid var(--line);}
+  .statement{padding:34px 28px;}
+  .doc-cta{padding:44px 28px;}
+}
+
+/* ===== PRINT ===== */
+@media print{
+  .reader-bar{display:none;}
+  body{background:var(--white);font-size:11pt;line-height:1.6;color:var(--ink);}
+  .doc{max-width:100%;padding:0;}
+  .chapter,.case,.case-ba,.diverge,.statement,.doc-cta,.toc,.points .pt,.method .step,.macro-stat{break-inside:avoid;page-break-inside:avoid;}
+  .chapter{margin-bottom:34px;}
+  .cover{padding:14px 0 26px;}
+  .doc-cta{background:var(--electric)!important;color:var(--paper)!important;}
+  .doc-cta h2,.doc-cta p,.doc-cta .tag,.doc-cta .btn{color:inherit;}
+  .doc-cta .btn{background:var(--paper)!important;color:var(--electric)!important;}
+  .statement{background:var(--electric-dark)!important;color:var(--paper)!important;}
+  .case-num .big b,.macro-stat .ms-n,.cover h1 em,.cover-meta div b,.tag,.case-meta .ind,.diverge .dl.win{-webkit-print-color-adjust:exact;print-color-adjust:exact;color-adjust:exact;}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  a{text-decoration:none;color:inherit;}
+}
+</style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1264057945446029');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+
+<div class="reader-bar">
+  <a href="index.html" class="back">← 資料ライブラリ</a>
+  <a href="../index.html" class="brand">Tech<i>Worker</i></a>
+  <button class="print" onclick="window.print()">PDFで保存 / 印刷</button>
+</div>
+
+<div class="doc">
+
+  <!-- COVER -->
+  <header class="cover">
+    <div class="tag">Use Cases 2026 <span>成果が出た現場のすべて</span></div>
+    <h1>2026年版<br><em>生成AI活用事例集</em></h1>
+    <p class="h1-sub">業種別・成果が出た現場のすべて</p>
+    <p class="sub">ツールではなく<strong>"成果"に到達した企業</strong>は、何が違ったのか。化学・医薬・IT・建設、そして業種横断。上場企業を含む37社・2,500名の支援実績から、成果が出た5つの現場を、再現できる形で公開します。</p>
+    <div class="cover-meta">
+      <div><b>5</b><span>事例件数</span></div>
+      <div><b>全</b><span>業種横断</span></div>
+      <div><b>2026</b><span>年版</span></div>
+    </div>
+  </header>
+
+  <!-- TOC -->
+  <nav class="toc">
+    <h4>Contents</h4>
+    <ol>
+      <li><a href="#c1">2026年、成果を出した企業の3つの共通点</a></li>
+      <li><a href="#c2">事例集 — CASE 01〜05</a></li>
+      <li><a href="#c3">成果を出す企業と、止まる企業の分岐点</a></li>
+      <li><a href="#c4">自社で再現する「コンテキスト整理」の型</a></li>
+      <li><a href="#c5">無料相談のご案内</a></li>
+    </ol>
+  </nav>
+
+  <!-- CHAPTER 1 -->
+  <section class="chapter" id="c1">
+    <div class="tag">Chapter 01 <span>はじめに</span></div>
+    <h2>2026年、成果を出した企業の3つの共通点</h2>
+    <p class="lead-p">生成AIを導入した企業のうち、約95%が成果につながらないまま止まっている。これは精神論ではなく、調査が示した事実です。問題はツールの性能ではありません。ツールは、もう十分に高性能です。</p>
+    <div class="macro-stat">
+      <div class="ms-n">95<span class="pct">%</span></div>
+      <div class="ms-body">
+        <p>企業の生成AI導入の約95%が、成果につながらないまま止まっている。<span class="src">出典：MIT, 2025</span></p>
+        <p>では、残りの数%——確かに成果を出した企業は、何をしたのか。私たちが37社の現場で見てきた答えは、驚くほど共通していました。</p>
+      </div>
+    </div>
+    <p>成果を出した企業に共通していたのは、優れたツールを選んだことではありません。<strong>ツール選定より先に、自社の業務文脈（コンテキスト）を整理したこと</strong>です。具体的には、次の3つに集約されます。</p>
+    <div class="points">
+      <div class="pt">
+        <span class="pn">01</span>
+        <div class="pb"><h4>課題起点で始めた</h4><p>「AIで何ができるか」ではなく「どの業務の、どの課題を解くか」から始めた。ツールありきではなく、成果の出口を先に定義した。</p></div>
+      </div>
+      <div class="pt">
+        <span class="pn">02</span>
+        <div class="pb"><h4>現場の業務文脈をAIに渡せる形にした</h4><p>暗黙知・判断基準・社内用語・承認フロー。人間同士なら共有できるこれらを、AIが理解・活用できる構造に変換した。</p></div>
+      </div>
+      <div class="pt">
+        <span class="pn">03</span>
+        <div class="pb"><h4>小さく実証して、広げた</h4><p>一気に全社展開せず、まず一つの業務で投資対効果を実証。成果が見えてから、再現可能な型として横展開した。</p></div>
+      </div>
+    </div>
+    <p>以降の5つの事例は、すべてこの3点を満たした現場です。業種は違っても、成果に到達した道筋は同じでした。</p>
+  </section>
+
+  <!-- CHAPTER 2 -->
+  <section class="chapter" id="c2">
+    <div class="tag">Chapter 02 <span>事例集</span></div>
+    <h2>事例集 — CASE 01〜05</h2>
+    <p class="lead-p">化学・医薬・IT・建設、そして業種横断。実際に成果が出た現場を、課題（Before）と成果（After）の対比で公開します。</p>
+
+    <!-- CASE 01 -->
+    <div class="case">
+      <div class="case-head">
+        <div class="case-num">
+          <div class="s">Ideation Time</div>
+          <div class="big"><b>1</b><i>時間</i></div>
+          <div class="cap">発散から収束まで完了</div>
+        </div>
+        <div class="case-meta">
+          <div class="ind">CASE 01 ｜ 化学・素材</div>
+          <h3>新素材アイディエーションの革新</h3>
+          <div class="co">東証プライム上場 総合化学メーカー</div>
+        </div>
+      </div>
+      <div class="case-ba">
+        <div>
+          <div class="col-l">Before — 課題</div>
+          <p>新素材の用途探索は、研究者の経験と勘に依存。1,000件の候補からわずか3件しか成功しない確率で、スピードとスケールの両立が構造的に困難でした。</p>
+        </div>
+        <div>
+          <div class="col-l aft">After — 成果</div>
+          <ul>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>発散から収束まで1時間で完了する手法を確立</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>ビジネスモデル特許を出願中</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>自社では到達できなかった新用途をAIが提示</li>
+          </ul>
+        </div>
+      </div>
+      <div class="case-point">
+        <div class="pl">Point</div>
+        <p>鍵は、研究者の暗黙知と探索基準をAIが扱える構造に変換したこと。AIは万能な発想機ではなく、整理された文脈の上ではじめて人を超える候補を出します。</p>
+      </div>
+    </div>
+
+    <!-- CASE 02 -->
+    <div class="case">
+      <div class="case-head">
+        <div class="case-num">
+          <div class="s">Cost Reduction</div>
+          <div class="big"><b>年数百万</b><i>円減</i></div>
+          <div class="cap">外注費を大幅削減</div>
+        </div>
+        <div class="case-meta">
+          <div class="ind">CASE 02 ｜ 医薬・ヘルスケア</div>
+          <h3>市場リサーチの内製化</h3>
+          <div class="co">大手製薬企業</div>
+        </div>
+      </div>
+      <div class="case-ba">
+        <div>
+          <div class="col-l">Before — 課題</div>
+          <p>市場リサーチを外部コンサルに外注。年間数百万円規模のコストがかかる上、調査ノウハウが社内に一切残らず、依頼のたびにゼロから外注する状態でした。</p>
+        </div>
+        <div>
+          <div class="col-l aft">After — 成果</div>
+          <ul>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Deep Research活用でリサーチを内製化</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>外注費を年間数百万円規模で削減</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>リサーチ速度も向上し、社内にノウハウが蓄積</li>
+          </ul>
+        </div>
+      </div>
+      <div class="case-point">
+        <div class="pl">Point</div>
+        <p>外注は速いが、知見は社外に残ります。内製化の本質はコスト削減だけでなく、リサーチの型が資産として社内に積み上がること。一度型を作れば、二回目以降は加速します。</p>
+      </div>
+    </div>
+
+    <!-- CASE 03 -->
+    <div class="case">
+      <div class="case-head">
+        <div class="case-num">
+          <div class="s">Trained</div>
+          <div class="big"><b>300</b><i>名</i></div>
+          <div class="cap">全社規模で自律活用へ</div>
+        </div>
+        <div class="case-meta">
+          <div class="ind">CASE 03 ｜ IT・クラウド</div>
+          <h3>全社300名のAI研修</h3>
+          <div class="co">さくらインターネット株式会社</div>
+        </div>
+      </div>
+      <div class="case-ba">
+        <div>
+          <div class="col-l">Before — 課題</div>
+          <p>全社的なAIリテラシーの底上げが課題でした。一部の先進的な社員は使いこなす一方、全社として現場が自律的にAIを活用できる状態には至っていませんでした。</p>
+        </div>
+        <div>
+          <div class="col-l aft">After — 成果</div>
+          <ul>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>300名規模の社内研修を実施</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>現場が自律的にAIを活用できる状態に到達</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>全社のAIリテラシーを底上げ</li>
+          </ul>
+        </div>
+      </div>
+      <div class="case-point">
+        <div class="pl">Point</div>
+        <p>研修は「受けて終わり」では意味がありません。業務に紐づけて教えるからこそ、研修が現場で"使われる"状態に変わります。300名規模でも、設計次第で定着します。</p>
+      </div>
+    </div>
+
+    <!-- CASE 04 -->
+    <div class="case">
+      <div class="case-head">
+        <div class="case-num">
+          <div class="s">Roll-out</div>
+          <div class="big"><b>複数部門</b></div>
+          <div class="cap">段階展開中</div>
+        </div>
+        <div class="case-meta">
+          <div class="ind">CASE 04 ｜ 建設・不動産</div>
+          <h3>全社AI活用支援</h3>
+          <div class="co">大手建設・不動産企業</div>
+        </div>
+      </div>
+      <div class="case-ba">
+        <div>
+          <div class="col-l">Before — 課題</div>
+          <p>部門ごとに業務がサイロ化し、AI活用の旗振り役が不在。各部門が個別に試すものの、全社としての方針も推進体制もない状態でした。</p>
+        </div>
+        <div>
+          <div class="col-l aft">After — 成果</div>
+          <ul>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>全社方針の策定を支援</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>複数部門での段階展開を実施</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>展開範囲は現在も拡大中</li>
+          </ul>
+        </div>
+      </div>
+      <div class="case-point">
+        <div class="pl">Point</div>
+        <p>全社展開は、一斉導入では失敗します。方針を定めた上で、成果が出た部門から順に広げる。サイロを越える旗振り役を外部から補うことで、推進が止まらなくなります。</p>
+      </div>
+    </div>
+
+    <!-- CASE 05 -->
+    <div class="case">
+      <div class="case-head">
+        <div class="case-num">
+          <div class="s">Trained Total</div>
+          <div class="big"><b>2,500</b><i>名</i></div>
+          <div class="cap">37社での横断知見</div>
+        </div>
+        <div class="case-meta">
+          <div class="ind">CASE 05 ｜ 業種横断</div>
+          <h3>研修2,500名の知見</h3>
+          <div class="co">上場企業を含む37社での横断知見</div>
+        </div>
+      </div>
+      <div class="case-ba">
+        <div>
+          <div class="col-l">Before — 課題</div>
+          <p>「研修はしたが、現場で使われない」が頻発。知識をインプットしても、自分の業務とつながらないため、研修翌日には元の働き方に戻ってしまう——多くの企業に共通する壁でした。</p>
+        </div>
+        <div>
+          <div class="col-l aft">After — 成果</div>
+          <ul>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>業務に紐づけた実装伴走で、研修を"使われる"状態へ</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>累計2,500名・37社にわたる横断知見を蓄積</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>業種を問わず再現できるフレームワークを確立</li>
+          </ul>
+        </div>
+      </div>
+      <div class="case-point">
+        <div class="pl">Point</div>
+        <p>2,500名の現場で分かったのは、定着の差は受講者の意欲ではなく設計で決まるということ。研修を業務文脈に接続できれば、AIは"知っている道具"から"使う道具"に変わります。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 3 -->
+  <section class="chapter" id="c3">
+    <div class="tag">Chapter 03 <span>分岐点</span></div>
+    <h2>成果を出す企業と、止まる企業の分岐点</h2>
+    <p class="lead-p">5つの事例を並べると、成否を分けた一点が浮かび上がります。それは、どのツールを導入したかではありませんでした。</p>
+    <div class="diverge">
+      <div>
+        <div class="dl">止まる企業</div>
+        <p>高性能なツールを導入した。しかし、<strong>自社の業務文脈はAIに渡せないまま</strong>。AIは一般論しか返さず、現場は「結局使えない」と離れていく。</p>
+      </div>
+      <div>
+        <div class="dl win">成果を出す企業</div>
+        <p>ツールは同じでも、<strong>自社の業務文脈をAIが扱える形に整えた</strong>。AIは現場の判断基準に沿って動き、人を超える成果を返し始める。</p>
+      </div>
+    </div>
+    <div class="statement">
+      <p>分岐は「ツールを入れたか」ではない。<br><em>自社の業務文脈を、AIに渡せる形に整えたか</em>——そこで、すべてが分かれる。</p>
+    </div>
+  </section>
+
+  <!-- CHAPTER 4 -->
+  <section class="chapter" id="c4">
+    <div class="tag">Chapter 04 <span>再現の型</span></div>
+    <h2>自社で再現する「コンテキスト整理」の型</h2>
+    <p class="lead-p">成果を出した企業がやったことは、再現できます。私たちが37社で繰り返してきた、4つのステップに整理しました。</p>
+    <div class="method">
+      <div class="step">
+        <span class="sn">1</span>
+        <div><h4>課題の特定</h4><p>「AIで何ができるか」ではなく「どの業務の、どの課題を解くか」を先に決める。成果の出口を定義してから着手する。</p></div>
+      </div>
+      <div class="step">
+        <span class="sn">2</span>
+        <div><h4>業務文脈の棚卸し</h4><p>その業務に潜む暗黙知・判断基準・社内用語・承認フローを洗い出す。人の頭の中にある"前提"を、まず可視化する。</p></div>
+      </div>
+      <div class="step">
+        <span class="sn">3</span>
+        <div><h4>AIが扱える構造への変換</h4><p>棚卸しした文脈を、AIが理解・参照できる形に再構成する。これがTechWorkerの中核「コンテキスト整理」です。</p></div>
+      </div>
+      <div class="step">
+        <span class="sn">4</span>
+        <div><h4>実装と定着</h4><p>小さく実証して投資対効果を確認し、再現可能な型として横展開する。現場が"使い続ける"状態まで伴走する。</p></div>
+      </div>
+    </div>
+    <p>この4ステップは業種を問いません。化学でも、医薬でも、建設でも、成果に到達した現場はすべてこの型を通っていました。</p>
+  </section>
+
+  <!-- CHAPTER 5 / CTA -->
+  <section class="chapter" id="c5" style="margin-bottom:0;">
+    <div class="tag">Chapter 05 <span>無料相談のご案内</span></div>
+    <h2>無料相談のご案内</h2>
+    <p class="lead-p">事例を読んで「自社ならどこから始めるべきか」と感じたなら、それが最初の一歩です。あとは、その問いを一緒に整理するだけです。</p>
+  </section>
+
+  <!-- DOC CTA -->
+  <div class="doc-cta">
+    <div class="tag">Next Step</div>
+    <h2>自社のどの業務から始めるべきか、<br>30分の無料相談で整理します。</h2>
+    <p>事例と同じ成果を、自社で再現するために。<br>御社の業務文脈にあわせた最初の一歩を、一緒に設計します。</p>
+    <a href="../contact.html" class="btn">無料相談を申し込む <i>→</i></a>
+  </div>
+
+  <p class="doc-foot">© 2026 TechWorker Inc. — 2026年版 生成AI活用事例集</p>
+
+</div>
+</body>
+</html>

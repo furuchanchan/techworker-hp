@@ -1,314 +1,214 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" class="no-js">
 <head>
 <meta charset="UTF-8">
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>会社概要 | TechWorker — 企業向け生成AIコンサルティング</title>
-<meta name="description" content="TechWorker — 企業向け生成AIコンサルティング">
+<title>会社概要 — TechWorker｜企業向け生成AIコンサルティング</title>
+<meta name="description" content="株式会社TechWorkerの会社概要。代表取締役 古野光太朗、取締役 山本敏行（Chatwork創業者）。企業の業務文脈をAIが理解できる形に変換する「コンテキスト整理」の専門企業です。">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <meta property="og:type" content="website">
+<meta property="og:title" content="会社概要 — TechWorker">
+<meta property="og:description" content="企業の業務文脈をAIが理解できる形に変換する「コンテキスト整理」の専門企業。会社概要・代表メッセージ。">
 <meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/company.html">
 <meta property="og:site_name" content="TechWorker">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="会社概要 — TechWorker">
 <meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Noto+Sans+JP:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ===== TOKENS ===== */
-:root {
-  --tw-black: #0D1117;
-  --tw-paper: #F4F6F9;
-  --tw-electric: #005EFF;
-  --tw-electric-dark: #003DAA;
-  --tw-slate: #3C4B64;
-  --tw-emerald: #00B894;
-  --tw-violet: #7C3AED;
+:root{
+  --ink:#0D1117; --paper:#F4F6F9; --paper-2:#ECEFF3; --white:#FBFCFD;
+  --electric:#005EFF; --electric-dark:#003DAA;
+  --slate:#4A5666; --line:rgba(13,17,23,.12); --line-2:rgba(13,17,23,.20);
+  --emerald:#00B894; --violet:#7C3AED;
+  --jp:'IBM Plex Sans JP','IBM Plex Sans',system-ui,sans-serif;
+  --en:'IBM Plex Sans','IBM Plex Sans JP',system-ui,sans-serif;
 }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:76px;}
+body{font-family:var(--jp);background:var(--paper);color:var(--ink);line-height:1.85;font-size:16px;-webkit-font-smoothing:antialiased;font-feature-settings:"palt" 1;overflow-x:hidden;}
+::selection{background:var(--electric);color:var(--paper);}
+a{color:inherit;}
+img{display:block;max-width:100%;}
 
-/* ===== RESET ===== */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; overflow-x: hidden; }
-body { overflow-x: hidden;
-  font-family: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
-  background: var(--tw-paper);
-  color: var(--tw-black);
-  line-height: 1.7;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* ===== UTILITIES ===== */
-.container { max-width: 1200px; margin: 0 auto; padding: 0 40px; width: 100%; }
-.label {
-  font-size: 11px; font-weight: 600; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--tw-electric);
-  margin-bottom: 16px; display: block;
-}
-.label--light { color: var(--tw-paper); opacity: .6; }
-
-/* CTA Button */
-.btn {
-  display: inline-block; padding: 16px 40px;
-  background: var(--tw-electric); color: var(--tw-paper);
-  font-size: 15px; font-weight: 700; border-radius: 6px;
-  text-decoration: none; letter-spacing: .5px;
-  transition: background .2s;
-}
-.btn:hover { background: var(--tw-electric-dark); }
-.btn--outline {
-  background: transparent; color: var(--tw-electric);
-  border: 2px solid var(--tw-electric);
-}
-.btn--outline:hover { background: var(--tw-electric); color: var(--tw-paper); }
-.btn--white { background: var(--tw-paper); color: var(--tw-electric); }
-.btn--white:hover { background: #e8ecf2; }
+/* ===== SHARED ===== */
+.container{max-width:1280px;margin:0 auto;padding:0 48px;width:100%;}
+.tag{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--electric);display:inline-flex;align-items:center;gap:11px;padding-left:14px;border-left:3px solid var(--electric);}
+.tag span{color:var(--slate);font-weight:500;letter-spacing:.02em;text-transform:none;font-size:13px;}
+.sec-head h2{font-family:var(--jp);font-weight:700;font-size:clamp(26px,3.4vw,42px);line-height:1.4;letter-spacing:-.02em;margin-top:22px;}
+.sec-head .lead{font-size:16px;color:var(--slate);line-height:2.05;margin-top:22px;max-width:62ch;}
+.sec-head .lead strong{color:var(--ink);font-weight:600;}
+.btn{font-family:var(--jp);font-size:14.5px;font-weight:600;color:var(--paper);background:var(--electric);text-decoration:none;border-radius:5px;padding:15px 30px;display:inline-flex;align-items:center;gap:11px;transition:background .25s,transform .25s;border:none;cursor:pointer;}
+.btn:hover{background:var(--electric-dark);transform:translateY(-1px);}
+.btn i{font-style:normal;transition:transform .25s;}
+.btn:hover i{transform:translateX(4px);}
+.btn--ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line-2);}
+.btn--ghost:hover{background:transparent;border-color:var(--electric);color:var(--electric);}
+.btn--on-blue{background:var(--paper);color:var(--electric);}
+.btn--on-blue:hover{background:var(--white);}
+.btn--on-blue-ghost{background:transparent;color:var(--paper);border:1.5px solid rgba(244,246,249,.5);}
+.btn--on-blue-ghost:hover{background:rgba(244,246,249,.1);border-color:var(--paper);}
 
 /* ===== NAV ===== */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(244,246,249,.92); backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0,94,255,.08);
-  padding: 0 40px; height: 64px;
-  display: flex; align-items: center; justify-content: space-between;
-}
-nav .logo { font-size: 18px; font-weight: 800; color: var(--tw-black); text-decoration: none; }
-nav .logo span { color: var(--tw-electric); }
-nav ul { list-style: none; display: flex; gap: 20px; white-space: nowrap; }
-nav ul a {
-  font-size: 13px; font-weight: 600; color: var(--tw-slate);
-  text-decoration: none; letter-spacing: .5px; transition: color .2s;
-}
-nav ul a:hover { color: var(--tw-electric); }
-nav ul a.active { color: var(--tw-electric); }
-nav .nav-cta {
-  font-size: 13px; font-weight: 700; padding: 8px 24px;
-  background: var(--tw-electric); color: var(--tw-paper);
-  border-radius: 5px; text-decoration: none; transition: background .2s;
-}
-nav .nav-cta:hover { background: var(--tw-electric-dark); }
-nav .nav-cta .nav-cta-short { display: none; }
-nav .nav-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
-nav .lang-switch { font-size: 12px; white-space: nowrap; }
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:68px;background:rgba(244,246,249,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transition:box-shadow .3s,height .3s cubic-bezier(.2,.8,.2,1),background .3s;}
+nav.scrolled{box-shadow:0 1px 16px rgba(0,94,255,.06);height:58px;background:rgba(244,246,249,.92);}
+nav .logo{transition:font-size .3s cubic-bezier(.2,.8,.2,1);}
+nav.scrolled .logo{font-size:18px;}
+nav .logo{font-family:var(--en);font-weight:700;font-size:20px;letter-spacing:-.01em;text-decoration:none;color:var(--ink);}
+nav .logo i{font-style:normal;color:var(--electric);}
+nav ul{list-style:none;display:flex;gap:34px;}
+nav ul a{font-size:14px;font-weight:500;color:var(--ink);text-decoration:none;position:relative;}
+nav ul a.active{color:var(--electric);}
+nav ul a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--electric);transition:width .28s cubic-bezier(.2,.8,.2,1);}
+nav ul a:hover::after{width:100%;}
+nav ul a.active::after{width:100%;}
+nav .nav-right{display:flex;align-items:center;gap:18px;}
+nav .nav-cta{font-family:var(--jp);font-size:13.5px;font-weight:600;color:var(--paper);background:var(--electric);text-decoration:none;padding:10px 22px;border-radius:4px;transition:background .25s;}
+nav .nav-cta:hover{background:var(--electric-dark);}
+nav .nav-cta .short{display:none;}
+nav .lang{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.04em;}
+nav .lang a{color:var(--slate);text-decoration:none;}
+nav .lang .cur{color:var(--electric);}
 
-/* ===== PAGE HERO ===== */
-.page-hero {
-  padding: 160px 0 80px;
-  text-align: center;
-  background: linear-gradient(135deg, var(--tw-paper) 60%, rgba(0,94,255,.04) 100%);
-}
-.page-hero h1 {
-  font-size: clamp(32px, 5vw, 48px); font-weight: 800;
-  line-height: 1.2; margin-bottom: 12px;
-}
-.page-hero .subtitle {
-  font-size: 18px; color: var(--tw-slate); font-weight: 600;
-}
+/* hamburger */
+.hamb{display:none;width:44px;height:44px;border:none;background:none;cursor:pointer;position:relative;margin-left:2px;}
+.hamb span{position:absolute;left:11px;width:22px;height:2px;background:var(--ink);transition:transform .3s,opacity .2s;}
+.hamb span:nth-child(1){top:15px;} .hamb span:nth-child(2){top:21px;} .hamb span:nth-child(3){top:27px;}
+body.menu-open .hamb span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+body.menu-open .hamb span:nth-child(2){opacity:0;}
+body.menu-open .hamb span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+/* mobile menu panel */
+.mmenu{position:fixed;inset:68px 0 0;z-index:45;background:var(--paper);transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);visibility:hidden;display:flex;flex-direction:column;padding:18px 24px 40px;}
+body.menu-open .mmenu{transform:none;visibility:visible;}
+.mmenu a{font-size:19px;font-weight:600;color:var(--ink);text-decoration:none;padding:20px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;}
+.mmenu a::after{content:"→";color:var(--electric);font-family:var(--en);}
+.mmenu .m-cta{margin-top:28px;background:var(--electric);color:var(--paper);justify-content:center;border-radius:5px;border:none;padding:17px;}
+.mmenu .m-cta::after{content:none;}
+.mmenu .m-lang{margin-top:auto;border:none;font-family:var(--en);font-size:13px;color:var(--slate);}
+.mmenu .m-lang::after{content:none;}
 
-/* ===== COMPANY INFO TABLE ===== */
-.company-info { padding: 100px 0; }
-.company-info h2 {
-  font-size: clamp(24px, 3vw, 32px); font-weight: 800;
-  margin-bottom: 48px;
-}
-.company-table {
-  width: 100%; max-width: 800px; border-collapse: collapse;
-}
-.company-table tr { border-bottom: 1px solid rgba(0,94,255,.06); }
-.company-table th {
-  text-align: left; padding: 20px 32px 20px 0;
-  font-size: 14px; font-weight: 700; color: var(--tw-slate);
-  white-space: nowrap; width: 160px; vertical-align: top;
-}
-.company-table td {
-  padding: 20px 0; font-size: 14px; line-height: 1.8;
-}
+/* ===== HERO ===== */
+.hero{max-width:1280px;margin:0 auto;padding:168px 48px 70px;}
+.hero .tag{margin-bottom:40px;}
+.hero h1{font-family:var(--jp);font-weight:700;font-size:clamp(38px,6.4vw,90px);line-height:1.26;letter-spacing:-.02em;}
+.hero h1 .en{font-family:var(--en);font-weight:600;letter-spacing:-.01em;}
+.hero-foot{display:grid;grid-template-columns:1fr auto;gap:48px;align-items:end;margin-top:52px;padding-top:34px;border-top:1px solid var(--line);}
+.hero-foot p{font-size:16px;color:var(--slate);max-width:52ch;line-height:2.05;}
+.hero-foot p strong{color:var(--ink);font-weight:600;}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
 
-/* ===== MESSAGE ===== */
-.message { padding: 120px 0; background: #fff; }
-.message .container {
-  display: grid; grid-template-columns: 30% 1fr; gap: 80px; align-items: start;
-}
-.message-photo {
-  aspect-ratio: 1/1; background: rgba(0,94,255,.04);
-  border-radius: 12px; overflow: hidden;
-  border: 1px solid rgba(0,94,255,.08);
-}
-.message-text h2 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
-.message-text .role { font-size: 14px; color: var(--tw-slate); margin-bottom: 32px; }
-.message-text blockquote {
-  font-size: 16px; line-height: 2.2; color: var(--tw-slate);
-  border: none; padding: 0; margin: 0;
-}
-.message-text blockquote strong { color: var(--tw-black); font-weight: 700; }
+/* ===== COMPANY TABLE ===== */
+.company{padding:96px 0;}
+.company-table{margin-top:42px;max-width:760px;border-collapse:collapse;width:100%;}
+.company-table tr{border-bottom:1px solid var(--line);transition:background .2s;}
+.company-table tr:first-child{border-top:1px solid var(--line);}
+.company-table tr:hover{background:rgba(0,94,255,.03);}
+.company-table th{text-align:left;font-size:13px;font-weight:600;color:var(--slate);padding:20px 32px 20px 0;width:180px;vertical-align:top;}
+.company-table td{font-size:15px;padding:20px 0;line-height:1.85;}
 
-/* ===== DIRECTOR ===== */
-.director { padding: 120px 0; background: var(--tw-paper); }
-.director .container {
-  display: grid; grid-template-columns: 30% 1fr; gap: 80px; align-items: start;
-}
-.director-photo {
-  aspect-ratio: 1/1; background: rgba(0,94,255,.04);
-  border-radius: 12px; overflow: hidden;
-  border: 1px solid rgba(0,94,255,.08);
-}
-.director-text h2 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
-.director-text .role { font-size: 14px; color: var(--tw-slate); margin-bottom: 32px; }
-.director-text blockquote {
-  font-size: 16px; line-height: 2.2; color: var(--tw-slate);
-  border: none; padding: 0; margin: 0;
-}
-.director-text blockquote strong { color: var(--tw-black); font-weight: 700; }
+/* ===== PERSON (MESSAGE / DIRECTOR) ===== */
+.person{padding:90px 0;border-top:1px solid var(--line);}
+.person .container{display:grid;grid-template-columns:340px 1fr;gap:64px;align-items:start;}
+.person.rev .container{grid-template-columns:1fr 340px;}
+.person.rev .p-photo{order:2;}
+.p-photo{aspect-ratio:1/1;border-radius:6px;overflow:hidden;background:var(--paper-2);border:1px solid var(--line);}
+.p-photo img{width:100%;height:100%;object-fit:cover;}
+.p-text h2{font-family:var(--jp);font-weight:700;font-size:30px;letter-spacing:-.01em;margin-top:18px;}
+.p-text .role{font-size:13px;color:var(--slate);margin-top:8px;line-height:1.7;}
+.p-text .role a{color:var(--electric);text-decoration:none;font-weight:600;}
+.p-text blockquote{margin-top:26px;font-size:16px;line-height:2.1;color:#28313f;}
+.p-text blockquote strong{color:var(--ink);font-weight:600;}
 
 /* ===== ACCESS ===== */
-.access { padding: 100px 0; }
-.access h2 {
-  font-size: clamp(24px, 3vw, 32px); font-weight: 800;
-  margin-bottom: 48px;
-}
-.access-content {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;
-}
-.access-info .address-block {
-  font-size: 15px; line-height: 2; margin-bottom: 24px;
-}
-.access-info .address-block .postal { font-size: 13px; color: var(--tw-slate); }
-.access-map {
-  border-radius: 12px; overflow: hidden;
-  border: 1px solid rgba(0,94,255,.08);
-  aspect-ratio: 16/10;
-}
-.access-map iframe {
-  width: 100%; height: 100%; border: 0;
-}
+.access{padding:96px 0;border-top:1px solid var(--line);}
+.access-content{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-top:42px;}
+.access-info .address-block{font-size:15px;line-height:2;margin-bottom:26px;}
+.access-info .address-block .postal{font-family:var(--en);font-size:13px;color:var(--slate);font-feature-settings:"tnum" 1;}
+.access-info .address-block .station{font-size:13px;color:var(--slate);}
+.access-map{border-radius:6px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/10;background:var(--paper-2);}
+.access-map iframe{width:100%;height:100%;border:0;}
 
 /* ===== FINAL CTA ===== */
-.final-cta {
-  padding: 120px 0;
-  background: var(--tw-electric); color: var(--tw-paper);
-  text-align: center;
-  position: relative; overflow: hidden;
-}
-.final-cta::before {
-  content: ''; position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(244,246,249,.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(244,246,249,.04) 1px, transparent 1px);
-  background-size: 56px 56px;
-}
-.final-cta .container { position: relative; z-index: 1; }
-.final-cta h2 {
-  font-size: clamp(28px, 4vw, 44px); font-weight: 800; margin-bottom: 16px;
-}
-.final-cta p { font-size: 17px; opacity: .8; margin-bottom: 40px; }
-.final-cta .btn-group { display: flex; gap: 16px; justify-content: center; }
+.final{background:var(--electric);color:var(--paper);padding:104px 0;text-align:center;}
+.final h2{font-family:var(--jp);font-weight:700;font-size:clamp(28px,3.6vw,46px);line-height:1.4;letter-spacing:-.02em;}
+.final p{font-size:16px;color:rgba(244,246,249,.85);margin-top:18px;}
+.final .actions{display:flex;gap:14px;justify-content:center;margin-top:36px;flex-wrap:wrap;}
 
 /* ===== FOOTER ===== */
-footer {
-  padding: 60px 0 40px;
-  background: #fff;
-  border-top: 1px solid rgba(0,94,255,.06);
+footer{background:var(--white);border-top:1px solid var(--line);padding:64px 0 40px;}
+.footer-inner{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;}
+.footer-brand .logo{font-family:var(--en);font-size:19px;font-weight:700;color:var(--ink);}
+.footer-brand .logo i{font-style:normal;color:var(--electric);}
+.footer-brand p{font-size:13px;color:var(--slate);line-height:1.7;margin-top:12px;}
+.footer-brand .x{display:inline-flex;align-items:center;gap:7px;margin-top:16px;font-size:13px;font-weight:600;color:var(--slate);text-decoration:none;}
+.footer-brand .x:hover{color:var(--electric);}
+.footer-col h4{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:16px;}
+.footer-col a{display:block;font-size:13px;color:var(--slate);text-decoration:none;margin-bottom:10px;}
+.footer-col a:hover{color:var(--electric);}
+.footer-col p{font-size:13px;color:var(--slate);line-height:1.7;margin-top:12px;}
+.copyright{text-align:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-family:var(--en);font-size:12px;color:var(--slate);}
+
+/* ===== reveal (progressive enhancement: visible without JS) ===== */
+html.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+html.js .rv.show{opacity:1;transform:none;}
+
+/* ===== focus visibility (keyboard) ===== */
+a:focus-visible,button:focus-visible{outline:2px solid var(--electric);outline-offset:3px;border-radius:3px;}
+:focus:not(:focus-visible){outline:none;}
+
+/* ===== reduced motion ===== */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  html.js .rv{opacity:1;transform:none;transition:none;}
+  *{animation-duration:.001ms!important;transition-duration:.001ms!important;}
 }
-footer .footer-inner {
-  display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px;
-  align-items: start;
+
+/* ===== UI: hero orchestration ===== */
+@keyframes heroIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+html.js .hero .tag{animation:heroIn .7s .05s both cubic-bezier(.16,1,.3,1);}
+html.js .hero h1{animation:heroIn .8s .16s both cubic-bezier(.16,1,.3,1);}
+html.js .hero-foot{animation:heroIn .8s .42s both cubic-bezier(.16,1,.3,1);}
+
+/* ===== UI: custom scrollbar ===== */
+@media (pointer:fine){
+  *{scrollbar-width:thin;scrollbar-color:#c3ccd8 transparent;}
+  ::-webkit-scrollbar{width:12px;height:12px;}
+  ::-webkit-scrollbar-thumb{background:#c3ccd8;border-radius:10px;border:3px solid var(--paper);}
+  ::-webkit-scrollbar-thumb:hover{background:#9aa7b8;}
+  ::-webkit-scrollbar-track{background:transparent;}
 }
-footer .footer-brand .logo { font-size: 18px; font-weight: 800; margin-bottom: 12px; color: var(--tw-black); }
-footer .footer-brand .logo span { color: var(--tw-electric); }
-footer .footer-brand p { font-size: 13px; color: var(--tw-slate); line-height: 1.7; }
-footer .footer-col h4 {
-  font-size: 12px; font-weight: 700; letter-spacing: 2px;
-  text-transform: uppercase; color: var(--tw-slate); opacity: .5; margin-bottom: 16px;
-}
-footer .footer-col a {
-  display: block; font-size: 13px; color: var(--tw-slate);
-  text-decoration: none; margin-bottom: 10px; transition: color .2s;
-}
-footer .footer-col a:hover { color: var(--tw-electric); }
-footer .footer-col p {
-  font-size: 13px; color: var(--tw-slate); line-height: 1.7;
-}
-footer .copyright {
-  text-align: center; margin-top: 40px; padding-top: 24px;
-  border-top: 1px solid rgba(0,94,255,.06);
-  font-size: 12px; color: var(--tw-slate); opacity: .4;
-}
+
+/* ===== UI: refined hover micro-interactions ===== */
+.btn:active{transform:translateY(0);}
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 1024px) {
-  .message .container { grid-template-columns: 1fr; }
-  .message-photo { max-width: 300px; }
-  .director .container { grid-template-columns: 1fr; }
-  .director-photo { max-width: 300px; }
-  .access-content { grid-template-columns: 1fr; }
-  footer .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+@media(max-width:1000px){
+  .footer-inner{grid-template-columns:1fr 1fr;gap:32px;}
+  .access-content{grid-template-columns:1fr;gap:36px;}
 }
-@media (max-width: 640px) {
-  .container { padding: 0 20px; }
-  nav { padding: 0 20px; }
-  nav ul { display: none; }
-  .page-hero { padding: 120px 0 60px; }
-  .page-hero h1 { font-size: 28px; }
-  .message .container { grid-template-columns: 1fr; gap: 40px; }
-  .message-photo { max-width: 200px; }
-  .company-table th { display: block; padding-bottom: 4px; }
-  .company-table td { display: block; padding-top: 0; padding-bottom: 20px; }
-  .access-content { grid-template-columns: 1fr; gap: 32px; }
-  .final-cta .btn-group { flex-direction: column; align-items: center; }
-  nav { padding: 0 12px 0 16px; gap: 8px; overflow: visible; }
-  nav .nav-right { gap: 8px; }
-  nav .nav-cta { padding: 8px 14px; font-size: 11px; }
-  nav .nav-cta .nav-cta-full { display: none; }
-  nav .nav-cta .nav-cta-short { display: inline; }
-  nav .lang-switch { display: none; }
-  footer .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+@media(max-width:860px){
+  nav ul{display:none;}
+  nav .nav-cta{display:none;}
+  nav .lang{display:none;}
+  .hamb{display:block;}
+  .hero{padding:120px 24px 56px;}
+  .hero-foot{grid-template-columns:1fr;gap:26px;align-items:start;}
+  .person .container,.person.rev .container{grid-template-columns:1fr;gap:30px;}
+  .person.rev .p-photo{order:0;}
+  .p-photo{max-width:280px;}
 }
-
-/* ===== NAV DROPDOWN ===== */
-nav ul li { position: relative; }
-.nav-dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%; padding-top: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 8px 32px rgba(0,94,255,.12);
-  border: 1px solid rgba(0,94,255,.08);
-  min-width: 200px;
-  padding: 8px 0;
-  z-index: 200;
-  white-space: nowrap;
-}
-.nav-dropdown-menu::before {
-  content: '';
-  position: absolute;
-  top: 6px; left: 50%; transform: translateX(-50%);
-  width: 10px; height: 10px;
-  background: #fff;
-  border-left: 1px solid rgba(0,94,255,.08);
-  border-top: 1px solid rgba(0,94,255,.08);
-  transform: translateX(-50%) rotate(45deg);
-}
-.nav-dropdown-menu a {
-  display: block;
-  padding: 10px 20px;
-  font-size: 13px;
-  font-weight: 600;
-  color: #3C4B64;
-  text-decoration: none;
-  transition: color .15s, background .15s;
-}
-.nav-dropdown-menu a:hover {
-  color: #005EFF;
-  background: rgba(0,94,255,.04);
-}
-nav ul li:hover .nav-dropdown-menu { display: block; }
-.nav-dropdown-trigger { cursor: default; }
-.nav-dropdown-trigger::after {
-  content: ' ▾';
-  font-size: 10px;
-  opacity: .6;
+@media(max-width:560px){
+  .container{padding:0 22px;}
+  nav{padding:0 10px 0 18px;height:60px;}
+  .mmenu{top:60px;}
+  .company-table th{display:block;padding:18px 0 4px;width:auto;}
+  .company-table td{display:block;padding:0 0 18px;}
+  .final .actions{flex-direction:column;align-items:center;}
 }
 </style>
 <!-- Meta Pixel Code -->
@@ -331,37 +231,54 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
 </head>
 <body>
 
-<!-- ===== NAV ===== -->
-<nav>
-  <a href="index.html" class="logo">Tech<span>Worker</span></a>
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="logo">Tech<i>Worker</i></a>
   <ul>
     <li><a href="index.html">ホーム</a></li>
     <li><a href="index.html#services">サービス</a></li>
     <li><a href="cases.html">実績</a></li>
+    <li><a href="library/">資料</a></li>
     <li><a href="news.html">ニュース</a></li>
-    <li><a href="company.html">会社概要</a></li>
+    <li><a href="company.html" class="active">会社概要</a></li>
   </ul>
   <div class="nav-right">
-    <a href="contact.html" class="nav-cta"><span class="nav-cta-full">お問い合わせ</span><span class="nav-cta-short">相談</span></a>
-    <span class="lang-switch"><span style="color:var(--tw-electric);font-weight:700;">JP</span> / <a href="en/company.html" style="color:var(--tw-slate);text-decoration:none;font-weight:700;">EN</a></span>
+    <a href="contact.html" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
+    <span class="lang"><span class="cur">JP</span> / <a href="en/index.html">EN</a></span>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
-<!-- ===== PAGE HERO ===== -->
-<section class="page-hero">
-  <div class="container">
-    <span class="label">Company</span>
-    <h1>会社概要</h1>
-    <p class="subtitle">株式会社TechWorker</p>
-  </div>
-</section>
+<!-- MOBILE MENU -->
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="index.html">ホーム</a>
+  <a href="index.html#services">サービス</a>
+  <a href="cases.html">実績</a>
+  <a href="library/">資料ダウンロード</a>
+  <a href="news.html">ニュース</a>
+  <a href="company.html">会社概要</a>
+  <a href="contact.html" class="m-cta">無料相談を申し込む</a>
+  <a href="en/index.html" class="m-lang">English ↗</a>
+</div>
 
-<!-- ===== COMPANY INFO ===== -->
-<section class="company-info">
+<!-- HERO -->
+<header class="hero">
+  <div class="tag">Company <span>会社概要</span></div>
+  <h1>会社概要</h1>
+  <div class="hero-foot">
+    <p><strong>株式会社TechWorker</strong>は、企業の業務文脈をAIが理解できる形に変換する「コンテキスト整理」の専門企業です。上場企業を含む37社・2,500名のご支援を重ねてきました。</p>
+    <div class="hero-actions">
+      <a href="contact.html" class="btn">無料相談 <i>→</i></a>
+      <a href="library/" class="btn btn--ghost">活用事例集をもらう</a>
+    </div>
+  </div>
+</header>
+
+<!-- COMPANY INFO -->
+<section class="company" id="company">
   <div class="container">
-    <span class="label">Corporate Information</span>
-    <h2>基本情報</h2>
-    <table class="company-table">
+    <div class="sec-head rv"><span class="tag">Corporate Information <span>基本情報</span></span><h2>基本情報</h2></div>
+    <table class="company-table rv">
       <tr><th>会社名</th><td>株式会社TechWorker</td></tr>
       <tr><th>代表取締役</th><td>古野 光太朗</td></tr>
       <tr><th>取締役</th><td>山本 敏行（Chatwork創業者）</td></tr>
@@ -382,85 +299,81 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
   </div>
 </section>
 
-<!-- ===== MESSAGE ===== -->
-<section class="message" id="message">
-  <div class="container">
-    <div class="message-photo"><img src="assets/ceo-portrait.jpg" alt="古野光太朗 - TechWorker代表取締役" style="width:100%;height:100%;object-fit:cover;object-position:50% 30%;transform:scale(2);transform-origin:50% 30%;border-radius:12px;"></div>
-    <div class="message-text">
-      <span class="label">Message</span>
-      <h2>古野光太朗</h2>
-      <p class="role">株式会社TechWorker 代表取締役　<a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" style="color:var(--tw-electric);text-decoration:none;font-weight:700;font-size:13px;"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" style="vertical-align:-1px;margin-right:2px;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a></p>
+<!-- MESSAGE (CEO) -->
+<section class="person" id="message">
+  <div class="container rv">
+    <div class="p-photo"><img src="assets/ceo-portrait.jpg" alt="古野光太朗 - TechWorker代表取締役" style="object-position:50% 30%;transform:scale(2);transform-origin:50% 30%;"></div>
+    <div class="p-text">
+      <span class="tag">Message <span>代表メッセージ</span></span>
+      <h2>古野 光太朗</h2>
+      <p class="role">株式会社TechWorker 代表取締役　<a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" style="vertical-align:-1px;margin-right:2px;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a></p>
       <blockquote>
-        生成AIの性能は、日々進化しています。<br>しかし、それを業務で使いこなせている企業は、まだ多くありません。<br><br>
-        原因はシンプルです。<br>社内の業務知識、判断基準、暗黙のルール ── いわば「コンテキスト」が、AIに渡せる形で整理されていないのです。<br><br>
+        生成AIの性能は、日々進化しています。しかし、それを業務で使いこなせている企業は、まだ多くありません。<br><br>
+        原因はシンプルです。社内の業務知識、判断基準、暗黙のルール、いわば「コンテキスト」が、AIに渡せる形で整理されていないのです。<br><br>
         <strong>私たちはこの「コンテキスト整理」を専門とし、上場企業を含む37社・2,500名のご支援を重ねてまいりました。</strong><br><br>
-        AIツールを販売する会社ではありません。<br>貴社の業務が、AIによって本質的に変わる ── その状態をつくることが、私たちの仕事です。
+        AIツールを売る会社ではありません。貴社の仕事そのものが、AIで根本から変わる。その状態をつくることが、私たちの仕事です。
       </blockquote>
     </div>
   </div>
 </section>
 
-<!-- ===== DIRECTOR ===== -->
-<section class="director">
-  <div class="container">
-    <div class="director-photo"><img src="assets/director-yamamoto.jpg" alt="山本敏行 - TechWorker取締役" style="width:100%;height:100%;object-fit:cover;border-radius:12px;"></div>
-    <div class="director-text">
-      <span class="label">Director</span>
+<!-- DIRECTOR -->
+<section class="person rev">
+  <div class="container rv">
+    <div class="p-photo"><img src="assets/director-yamamoto.jpg" alt="山本敏行 - TechWorker取締役"></div>
+    <div class="p-text">
+      <span class="tag">Director <span>取締役</span></span>
       <h2>山本 敏行</h2>
       <p class="role">株式会社TechWorker 取締役<br>Chatwork株式会社 創業者 / Power Angels CEO / 日本エンジェル投資家協会 代表理事</p>
       <blockquote>
-        私はChatworkというITツールを創業し、非IT業界に届けることに挑みました。<br>
-        2018年にCEOを共同創業者の弟に譲り、翌2019年に東証マザーズへ上場。時価総額は550億円を超えました。<br><br>
-        その経験を通じて確信したことがあります。<br>
-        <strong>テクノロジーがどれだけ優れていても、現場の業務文脈とつなぐ存在がいなければ、企業の中で使われることはありません。</strong><br><br>
-        今、生成AIという新たなテクノロジーで同じことが起きています。<br>
-        TechWorkerは、その翻訳者として日本企業のAI活用を進めていきます。
+        私はChatworkというITツールを創業し、非IT業界に届けることに挑みました。2018年にCEOを共同創業者の弟に譲り、翌2019年に東証マザーズへ上場しました（時価総額500億円超）。<br><br>
+        その経験を通じて確信したことがあります。<strong>テクノロジーがどれだけ優れていても、現場の業務文脈とつなぐ存在がいなければ、企業の中で使われることはありません。</strong><br><br>
+        今、生成AIという新たなテクノロジーで同じことが起きています。TechWorkerは、その橋渡し役として日本企業のAI活用を進めていきます。
       </blockquote>
     </div>
   </div>
 </section>
 
-<!-- ===== ACCESS ===== -->
+<!-- ACCESS -->
 <section class="access" id="access">
   <div class="container">
-    <span class="label">Access</span>
-    <h2>アクセス</h2>
-    <div class="access-content">
+    <div class="sec-head rv"><span class="tag">Access <span>アクセス</span></span><h2>アクセス</h2></div>
+    <div class="access-content rv">
       <div class="access-info">
         <div class="address-block">
           <span class="postal">〒169-0051</span><br>
           東京都新宿区西早稲田一丁目22番3号<br>
-          <span style="font-size:13px;color:var(--tw-slate);">東京メトロ東西線 早稲田駅 徒歩5分</span>
+          <span class="station">東京メトロ東西線 早稲田駅 徒歩5分</span>
         </div>
-        <a href="https://maps.google.com/?q=東京都新宿区西早稲田一丁目22番3号" target="_blank" rel="noopener noreferrer" class="btn btn--outline" style="padding:12px 28px;font-size:13px;">Google Maps で開く</a>
+        <a href="https://maps.google.com/?q=東京都新宿区西早稲田一丁目22番3号" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">Google Maps で開く <i>→</i></a>
       </div>
       <div class="access-map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.6!2d139.7195!3d35.7078!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188d2b6e0a5555%3A0x0!2z5p2x5Lqs6YO95paw5a6_5Yy66KW_5pep56iy55Sw5LiA5LiB55uu77yS77yS55Wq77yT5Y-3!5e0!3m2!1sja!2sjp!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.6!2d139.7195!3d35.7078!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188d2b6e0a5555%3A0x0!2z5p2x5Lqs6YO95paw5a6_5Yy66KW_5pep56iy55Sw5LiA5LiB55uu77yS77yS55Wq77yT5Y-3!5e0!3m2!1sja!2sjp!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="株式会社TechWorker 所在地"></iframe>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== FINAL CTA ===== -->
-<section class="final-cta" id="contact">
+<!-- FINAL CTA -->
+<section class="final" id="contact">
   <div class="container">
     <h2>AIの導入、止まっていませんか。</h2>
-    <p>まずは30分、お話をお聞かせください。</p>
-    <div class="btn-group">
-      <a href="contact.html" class="btn btn--white">無料相談に申し込む</a>
-      <a href="contact.html?type=document" class="btn" style="background:transparent;border:2px solid var(--tw-paper);">資料を請求する</a>
+    <p>まずは30分、お話をお聞かせください。<br>現状の課題を整理し、最適な始め方をその場でご提案します。</p>
+    <div class="actions">
+      <a href="contact.html" class="btn btn--on-blue">無料相談に申し込む</a>
+      <a href="library/" class="btn btn--on-blue-ghost">活用事例集をもらう（無料）</a>
     </div>
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
+<!-- FOOTER -->
 <footer>
   <div class="container">
     <div class="footer-inner">
       <div class="footer-brand">
-        <div class="logo">Tech<span>Worker</span></div>
+        <div class="logo">Tech<i>Worker</i></div>
         <p>企業向け生成AIコンサルティング<br>株式会社TechWorker</p>
-        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:13px;font-weight:700;color:var(--tw-slate);text-decoration:none;transition:color .2s;"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
       </div>
       <div class="footer-col">
         <h4>サービス</h4>
@@ -477,75 +390,46 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
         <a href="contact.html">無料相談</a>
         <a href="contact.html?type=document">資料請求</a>
         <a href="privacy.html">プライバシーポリシー</a>
-        <p style="margin-top:12px;">〒169-0051<br>東京都新宿区西早稲田一丁目22番3号</p>
+        <p>〒169-0051<br>東京都新宿区西早稲田一丁目22番3号</p>
       </div>
     </div>
-  </div>
-  <div class="container">
-    <p class="copyright">&copy; 2026 TechWorker Inc. All rights reserved.</p>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
   </div>
 </footer>
 
 <script>
-/* ===== SCROLL REVEAL ===== */
+/* nav shadow on scroll */
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>40);},{passive:true});
+
+/* mobile menu */
 (function(){
-  const reveals = document.querySelectorAll(
-    '.page-hero, .company-info, .message-photo, .message-text, .access, .final-cta'
-  );
-  /* Initial hidden state */
-  const style = document.createElement('style');
-  style.textContent = `
-    .reveal { opacity: 0; transform: translateY(40px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
-    .reveal-left.visible { opacity: 1; transform: translateX(0); }
-    .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
-    .reveal-right.visible { opacity: 1; transform: translateX(0); }
-  `;
-  document.head.appendChild(style);
-
-  reveals.forEach(function(el){
-    el.classList.add('reveal');
-  });
-
-  /* Special: message photo slides from left, text from right */
-  document.querySelectorAll('.message-photo').forEach(function(el){
-    el.classList.remove('reveal');
-    el.classList.add('reveal-left');
-  });
-  document.querySelectorAll('.message-text').forEach(function(el){
-    el.classList.remove('reveal');
-    el.classList.add('reveal-right');
-  });
-
-  var observer = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-
-  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(function(el){
-    observer.observe(el);
-  });
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(open){
+    document.body.classList.toggle('menu-open',open);
+    hamb.setAttribute('aria-expanded',open?'true':'false');
+    hamb.setAttribute('aria-label',open?'メニューを閉じる':'メニューを開く');
+    mmenu.setAttribute('aria-hidden',open?'false':'true');
+    document.body.style.overflow=open?'hidden':'';
+  }
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+  matchMedia('(min-width:861px)').addEventListener('change',function(e){if(e.matches)setMenu(false);});
 })();
 
-/* ===== PARALLAX ===== */
-(function(){
-  var parallaxEls = document.querySelectorAll('.final-cta h2');
-  window.addEventListener('scroll', function(){
-    parallaxEls.forEach(function(el){
-      var rect = el.getBoundingClientRect();
-      var center = rect.top + rect.height / 2;
-      var viewCenter = window.innerHeight / 2;
-      var offset = (center - viewCenter) * 0.05;
-      el.style.transform = 'translateY(' + offset + 'px)';
-    });
-  }, { passive: true });
-})();
+/* scroll reveal */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv,.rvg').forEach(function(el){io.observe(el);});
+
+/* smooth anchor offset */
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var id=this.getAttribute('href');if(id==='#'||id.length<2)return;
+    var t=document.querySelector(id);if(!t)return;e.preventDefault();
+    scrollTo({top:t.getBoundingClientRect().top+scrollY-80,behavior:'smooth'});
+  });
+});
 </script>
-
 </body>
 </html>
