@@ -4,20 +4,20 @@
 <meta charset="UTF-8">
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>News — TechWorker</title>
-<meta name="description" content="News, updates, and events from TechWorker — enterprise generative AI consulting. The latest announcements on putting AI to work.">
+<title>Company — TechWorker | Generative AI Consulting for Enterprises</title>
+<meta name="description" content="Company profile of TechWorker Inc. CEO Kotaro Furuno, Director Toshiyuki Yamamoto (founder of Chatwork). The context-engineering specialists who turn your company's operational context into a form AI can use.">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-<link rel="canonical" href="https://techworker.co.jp/en/news.html">
 <meta property="og:type" content="website">
-<meta property="og:locale" content="en_US">
-<meta property="og:title" content="News — TechWorker">
-<meta property="og:description" content="News, updates, and events from TechWorker — enterprise generative AI consulting.">
+<meta property="og:title" content="Company — TechWorker">
+<meta property="og:description" content="The context-engineering specialists who turn your company's operational context into a form AI can use. Company profile and leadership messages.">
 <meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
-<meta property="og:url" content="https://techworker.co.jp/en/news.html">
+<meta property="og:url" content="https://techworker.co.jp/en/company.html">
 <meta property="og:site_name" content="TechWorker">
+<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="News — TechWorker">
+<meta name="twitter:title" content="Company — TechWorker">
 <meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<link rel="canonical" href="https://techworker.co.jp/en/company.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -26,13 +26,13 @@
 :root{
   --ink:#0D1117; --paper:#F4F6F9; --paper-2:#ECEFF3; --white:#FBFCFD;
   --electric:#005EFF; --electric-dark:#003DAA;
-  --slate:#5A6677; --line:rgba(13,17,23,.12); --line-2:rgba(13,17,23,.20);
+  --slate:#4A5666; --line:rgba(13,17,23,.12); --line-2:rgba(13,17,23,.20);
   --emerald:#00B894; --violet:#7C3AED;
   --jp:'IBM Plex Sans JP','IBM Plex Sans',system-ui,sans-serif;
   --en:'IBM Plex Sans','IBM Plex Sans JP',system-ui,sans-serif;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{overflow-x:hidden;scroll-behavior:smooth;}
+html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:76px;}
 body{font-family:var(--jp);background:var(--paper);color:var(--ink);line-height:1.85;font-size:16px;-webkit-font-smoothing:antialiased;font-feature-settings:"palt" 1;overflow-x:hidden;}
 ::selection{background:var(--electric);color:var(--paper);}
 a{color:inherit;}
@@ -42,6 +42,9 @@ img{display:block;max-width:100%;}
 .container{max-width:1280px;margin:0 auto;padding:0 48px;width:100%;}
 .tag{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--electric);display:inline-flex;align-items:center;gap:11px;padding-left:14px;border-left:3px solid var(--electric);}
 .tag span{color:var(--slate);font-weight:500;letter-spacing:.02em;text-transform:none;font-size:13px;}
+.sec-head h2{font-family:var(--jp);font-weight:700;font-size:clamp(26px,3.4vw,42px);line-height:1.4;letter-spacing:-.02em;margin-top:22px;}
+.sec-head .lead{font-size:16px;color:var(--slate);line-height:2.05;margin-top:22px;max-width:62ch;}
+.sec-head .lead strong{color:var(--ink);font-weight:600;}
 .btn{font-family:var(--jp);font-size:14.5px;font-weight:600;color:var(--paper);background:var(--electric);text-decoration:none;border-radius:5px;padding:15px 30px;display:inline-flex;align-items:center;gap:11px;transition:background .25s,transform .25s;border:none;cursor:pointer;}
 .btn:hover{background:var(--electric-dark);transform:translateY(-1px);}
 .btn i{font-style:normal;transition:transform .25s;}
@@ -62,9 +65,10 @@ nav .logo{font-family:var(--en);font-weight:700;font-size:20px;letter-spacing:-.
 nav .logo i{font-style:normal;color:var(--electric);}
 nav ul{list-style:none;display:flex;gap:34px;}
 nav ul a{font-size:14px;font-weight:500;color:var(--ink);text-decoration:none;position:relative;}
-nav ul a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--electric);transition:width .28s cubic-bezier(.2,.8,.2,1);}
-nav ul a:hover::after,nav ul a.active::after{width:100%;}
 nav ul a.active{color:var(--electric);}
+nav ul a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--electric);transition:width .28s cubic-bezier(.2,.8,.2,1);}
+nav ul a:hover::after{width:100%;}
+nav ul a.active::after{width:100%;}
 nav .nav-right{display:flex;align-items:center;gap:18px;}
 nav .nav-cta{font-family:var(--jp);font-size:13.5px;font-weight:600;color:var(--paper);background:var(--electric);text-decoration:none;padding:10px 22px;border-radius:4px;transition:background .25s;}
 nav .nav-cta:hover{background:var(--electric-dark);}
@@ -90,34 +94,52 @@ body.menu-open .mmenu{transform:none;visibility:visible;}
 .mmenu .m-lang{margin-top:auto;border:none;font-family:var(--en);font-size:13px;color:var(--slate);}
 .mmenu .m-lang::after{content:none;}
 
-/* ===== PAGE HEAD ===== */
-.page-head{max-width:1280px;margin:0 auto;padding:160px 48px 0;}
-.page-head .crumb{font-family:var(--en);font-size:12px;color:var(--slate);margin-bottom:34px;letter-spacing:.02em;}
-.page-head .crumb a{color:var(--slate);text-decoration:none;transition:color .2s;}
-.page-head .crumb a:hover{color:var(--electric);}
-.page-head .crumb .sep{margin:0 9px;opacity:.5;}
-.page-head .crumb .cur{color:var(--ink);}
-.page-head h1{font-family:var(--jp);font-weight:700;font-size:clamp(32px,4.6vw,58px);line-height:1.24;letter-spacing:-.02em;margin-top:22px;}
-.page-head .lead{font-size:16px;color:var(--slate);line-height:2.05;margin-top:22px;max-width:60ch;}
+/* ===== HERO ===== */
+.hero{max-width:1280px;margin:0 auto;padding:168px 48px 70px;}
+.hero .tag{margin-bottom:40px;}
+.hero h1{font-family:var(--jp);font-weight:700;font-size:clamp(38px,6.4vw,90px);line-height:1.26;letter-spacing:-.02em;}
+.hero h1 .en{font-family:var(--en);font-weight:600;letter-spacing:-.01em;}
+.hero-foot{display:grid;grid-template-columns:1fr auto;gap:48px;align-items:end;margin-top:52px;padding-top:34px;border-top:1px solid var(--line);}
+.hero-foot p{font-size:16px;color:var(--slate);max-width:52ch;line-height:2.05;}
+.hero-foot p strong{color:var(--ink);font-weight:600;}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
 
-/* ===== NEWS LIST ===== */
-.news-section{padding:54px 0 110px;}
-.news-list{border-top:1px solid var(--line);}
-.news-row{display:grid;grid-template-columns:140px 110px 1fr auto;gap:28px;align-items:center;padding:26px 0;border-bottom:1px solid var(--line);text-decoration:none;transition:background .2s;}
-.news-row:hover{background:var(--paper-2);}
-.news-row .d{font-family:var(--en);font-size:14.5px;color:var(--slate);font-feature-settings:"tnum" 1;letter-spacing:.01em;}
-.news-row .tg{font-size:12px;font-weight:600;color:var(--electric);letter-spacing:.02em;}
-.news-row .tg.ev{color:var(--violet);}
-.news-row .tt{font-size:16px;font-weight:500;color:var(--ink);line-height:1.6;transition:color .2s,transform .25s cubic-bezier(.2,.8,.2,1);}
-.news-row:hover .tt{color:var(--electric);transform:translateX(5px);}
-.news-row .ar{font-family:var(--en);color:var(--electric);font-size:15px;opacity:0;transition:opacity .25s,transform .25s cubic-bezier(.2,.8,.2,1);transform:translateX(-4px);}
-.news-row:hover .ar{opacity:1;transform:none;}
+/* ===== COMPANY TABLE ===== */
+.company{padding:96px 0;}
+.company-table{margin-top:42px;max-width:760px;border-collapse:collapse;width:100%;}
+.company-table tr{border-bottom:1px solid var(--line);transition:background .2s;}
+.company-table tr:first-child{border-top:1px solid var(--line);}
+.company-table tr:hover{background:rgba(0,94,255,.03);}
+.company-table th{text-align:left;font-size:13px;font-weight:600;color:var(--slate);padding:20px 32px 20px 0;width:180px;vertical-align:top;}
+.company-table td{font-size:15px;padding:20px 0;line-height:1.85;}
 
-/* ===== RESOURCES CTA ===== */
-.news-cta{background:var(--electric);color:var(--paper);padding:96px 0;text-align:center;}
-.news-cta h2{font-family:var(--jp);font-weight:700;font-size:clamp(26px,3.4vw,42px);line-height:1.4;letter-spacing:-.02em;}
-.news-cta p{font-size:16px;color:rgba(244,246,249,.85);margin-top:18px;}
-.news-cta .actions{display:flex;gap:14px;justify-content:center;margin-top:36px;flex-wrap:wrap;}
+/* ===== PERSON (MESSAGE / DIRECTOR) ===== */
+.person{padding:90px 0;border-top:1px solid var(--line);}
+.person .container{display:grid;grid-template-columns:340px 1fr;gap:64px;align-items:start;}
+.person.rev .container{grid-template-columns:1fr 340px;}
+.person.rev .p-photo{order:2;}
+.p-photo{aspect-ratio:1/1;border-radius:6px;overflow:hidden;background:var(--paper-2);border:1px solid var(--line);}
+.p-photo img{width:100%;height:100%;object-fit:cover;}
+.p-text h2{font-family:var(--jp);font-weight:700;font-size:30px;letter-spacing:-.01em;margin-top:18px;}
+.p-text .role{font-size:13px;color:var(--slate);margin-top:8px;line-height:1.7;}
+.p-text .role a{color:var(--electric);text-decoration:none;font-weight:600;}
+.p-text blockquote{margin-top:26px;font-size:16px;line-height:2.1;color:#28313f;}
+.p-text blockquote strong{color:var(--ink);font-weight:600;}
+
+/* ===== ACCESS ===== */
+.access{padding:96px 0;border-top:1px solid var(--line);}
+.access-content{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-top:42px;}
+.access-info .address-block{font-size:15px;line-height:2;margin-bottom:26px;}
+.access-info .address-block .postal{font-family:var(--en);font-size:13px;color:var(--slate);font-feature-settings:"tnum" 1;}
+.access-info .address-block .station{font-size:13px;color:var(--slate);}
+.access-map{border-radius:6px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/10;background:var(--paper-2);}
+.access-map iframe{width:100%;height:100%;border:0;}
+
+/* ===== FINAL CTA ===== */
+.final{background:var(--electric);color:var(--paper);padding:104px 0;text-align:center;}
+.final h2{font-family:var(--jp);font-weight:700;font-size:clamp(28px,3.6vw,46px);line-height:1.4;letter-spacing:-.02em;}
+.final p{font-size:16px;color:rgba(244,246,249,.85);margin-top:18px;}
+.final .actions{display:flex;gap:14px;justify-content:center;margin-top:36px;flex-wrap:wrap;}
 
 /* ===== FOOTER ===== */
 footer{background:var(--white);border-top:1px solid var(--line);padding:64px 0 40px;}
@@ -133,18 +155,11 @@ footer{background:var(--white);border-top:1px solid var(--line);padding:64px 0 4
 .footer-col p{font-size:13px;color:var(--slate);line-height:1.7;margin-top:12px;}
 .copyright{text-align:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-family:var(--en);font-size:12px;color:var(--slate);}
 
-/* ===== reveal ===== */
+/* ===== reveal (progressive enhancement: visible without JS) ===== */
 html.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
 html.js .rv.show{opacity:1;transform:none;}
-html.js .rvg>*{opacity:0;transform:translateY(18px);}
-html.js .rvg.show>*{opacity:1;transform:none;transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1);}
-html.js .rvg.show>*:nth-child(1){transition-delay:.04s;}
-html.js .rvg.show>*:nth-child(2){transition-delay:.10s;}
-html.js .rvg.show>*:nth-child(3){transition-delay:.16s;}
-html.js .rvg.show>*:nth-child(4){transition-delay:.22s;}
-html.js .rvg.show>*:nth-child(5){transition-delay:.28s;}
 
-/* ===== focus visibility ===== */
+/* ===== focus visibility (keyboard) ===== */
 a:focus-visible,button:focus-visible{outline:2px solid var(--electric);outline-offset:3px;border-radius:3px;}
 :focus:not(:focus-visible){outline:none;}
 
@@ -152,11 +167,16 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--electric);outline-o
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto;}
   html.js .rv{opacity:1;transform:none;transition:none;}
-  html.js .rvg>*{opacity:1;transform:none;}
   *{animation-duration:.001ms!important;transition-duration:.001ms!important;}
 }
 
-/* ===== scrollbar ===== */
+/* ===== UI: hero orchestration ===== */
+@keyframes heroIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+html.js .hero .tag{animation:heroIn .7s .05s both cubic-bezier(.16,1,.3,1);}
+html.js .hero h1{animation:heroIn .8s .16s both cubic-bezier(.16,1,.3,1);}
+html.js .hero-foot{animation:heroIn .8s .42s both cubic-bezier(.16,1,.3,1);}
+
+/* ===== UI: custom scrollbar ===== */
 @media (pointer:fine){
   *{scrollbar-width:thin;scrollbar-color:#c3ccd8 transparent;}
   ::-webkit-scrollbar{width:12px;height:12px;}
@@ -165,29 +185,32 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--electric);outline-o
   ::-webkit-scrollbar-track{background:transparent;}
 }
 
+/* ===== UI: refined hover micro-interactions ===== */
+.btn:active{transform:translateY(0);}
+
 /* ===== RESPONSIVE ===== */
 @media(max-width:1000px){
   .footer-inner{grid-template-columns:1fr 1fr;gap:32px;}
+  .access-content{grid-template-columns:1fr;gap:36px;}
 }
 @media(max-width:860px){
   nav ul{display:none;}
   nav .nav-cta{display:none;}
   nav .lang{display:none;}
   .hamb{display:block;}
-  .page-head{padding:118px 24px 0;}
-  .news-row{grid-template-columns:104px 1fr;gap:6px 16px;}
-  .news-row .tg{display:none;}
-  .news-row .ar{display:none;}
+  .hero{padding:120px 24px 56px;}
+  .hero-foot{grid-template-columns:1fr;gap:26px;align-items:start;}
+  .person .container,.person.rev .container{grid-template-columns:1fr;gap:30px;}
+  .person.rev .p-photo{order:0;}
+  .p-photo{max-width:280px;}
 }
 @media(max-width:560px){
   .container{padding:0 22px;}
-  .page-head{padding:108px 22px 0;}
   nav{padding:0 10px 0 18px;height:60px;}
   .mmenu{top:60px;}
-}
-@media print{
-  body{background:#fff;color:#000;}
-  nav,.mmenu,.hamb,.news-cta{display:none;}
+  .company-table th{display:block;padding:18px 0 4px;width:auto;}
+  .company-table td{display:block;padding:0 0 18px;}
+  .final .actions{flex-direction:column;align-items:center;}
 }
 </style>
 <!-- Meta Pixel Code -->
@@ -217,8 +240,8 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
     <li><a href="index.html">Home</a></li>
     <li><a href="index.html#services">Services</a></li>
     <li><a href="cases.html">Case Studies</a></li>
-    <li><a href="news.html" class="active">News</a></li>
-    <li><a href="company.html">Company</a></li>
+    <li><a href="news.html">News</a></li>
+    <li><a href="company.html" class="active">Company</a></li>
   </ul>
   <div class="nav-right">
     <a href="contact.html" class="nav-cta"><span class="full">Free Consultation</span><span class="short">Contact</span></a>
@@ -238,35 +261,107 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
   <a href="../index.html" class="m-lang">日本語 ↗</a>
 </div>
 
-<!-- PAGE HEAD -->
-<header class="page-head">
-  <div class="crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span class="sep">/</span><span class="cur">News</span></div>
-  <div class="rv">
-    <span class="tag">News <span>Announcements &amp; Events</span></span>
-    <h1>News</h1>
-    <p class="lead">Announcements, events, and speaking engagements from TechWorker.</p>
+<!-- HERO -->
+<header class="hero">
+  <div class="tag">Company <span>Company Profile</span></div>
+  <h1>Company</h1>
+  <div class="hero-foot">
+    <p><strong>TechWorker Inc.</strong> is a context-engineering specialist that turns your company's operational context into a form AI can use. We have supported 37 companies and 2,500 professionals, including publicly listed enterprises.</p>
+    <div class="hero-actions">
+      <a href="contact.html" class="btn">Free Consultation <i>→</i></a>
+      <a href="contact.html?type=document" class="btn btn--ghost">Get the Case Study Pack</a>
+    </div>
   </div>
 </header>
 
-<!-- NEWS LIST -->
-<section class="news-section">
+<!-- COMPANY INFO -->
+<section class="company" id="company">
   <div class="container">
-    <div class="news-list rvg">
-      <a href="news/001.html" class="news-row"><span class="d">2026.03.20</span><span class="tg">Announcement</span><span class="tt">We published our Generative AI Use Cases white paper</span><span class="ar">→</span></a>
-      <a href="news/002.html" class="news-row"><span class="d">2026.03.14</span><span class="tg">Announcement</span><span class="tt">We refreshed our service lineup</span><span class="ar">→</span></a>
-      <a href="news/003.html" class="news-row"><span class="d">2026.02.28</span><span class="tg ev">Event</span><span class="tt">Free Webinar: The Pitfalls of AI Adoption</span><span class="ar">→</span></a>
-      <a href="news/004.html" class="news-row"><span class="d">2025.05.07</span><span class="tg ev">Event</span><span class="tt">CEO Kotaro Furuno delivered a keynote seminar at Sakura Internet Inc.</span><span class="ar">→</span></a>
+    <div class="sec-head rv"><span class="tag">Corporate Information <span>Corporate Information</span></span><h2>Corporate Information</h2></div>
+    <table class="company-table rv">
+      <tr><th>Company</th><td>TechWorker Inc.</td></tr>
+      <tr><th>CEO / Representative Director</th><td>Kotaro Furuno</td></tr>
+      <tr><th>Director</th><td>Toshiyuki Yamamoto (founder of Chatwork)</td></tr>
+      <tr><th>Founded</th><td>December 2023</td></tr>
+      <tr><th>Capital</th><td>¥500,000</td></tr>
+      <tr><th>Address</th><td>1-22-3 Nishiwaseda, Shinjuku-ku, Tokyo 169-0051, Japan</td></tr>
+      <tr>
+        <th>Business</th>
+        <td>
+          Generative AI consulting for enterprises<br>
+          Generative AI training and talent development<br>
+          Microsoft 365 Copilot adoption support<br>
+          AI development services
+        </td>
+      </tr>
+      <tr><th>Corporate Number</th><td>9011101105629</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- MESSAGE (CEO) -->
+<section class="person" id="message">
+  <div class="container rv">
+    <div class="p-photo"><img src="../assets/ceo-portrait.jpg" alt="Kotaro Furuno - CEO, TechWorker" style="object-position:50% 30%;transform:scale(2);transform-origin:50% 30%;"></div>
+    <div class="p-text">
+      <span class="tag">Message <span>Message from the CEO</span></span>
+      <h2>Kotaro Furuno</h2>
+      <p class="role">CEO / Representative Director, TechWorker Inc. <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" style="vertical-align:-1px;margin-right:2px;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a></p>
+      <blockquote>
+        Generative AI is advancing every single day. Yet very few companies are actually putting it to work in their operations.<br><br>
+        The reason is simple. A company's operational knowledge, decision criteria, and unwritten rules—its "context"—are not organized in a form that AI can use.<br><br>
+        <strong>We specialize in this "context engineering," and we have supported 37 companies and 2,500 professionals, including publicly listed enterprises.</strong><br><br>
+        We are not a company that sells AI tools. Our work is to create the state in which your business itself is fundamentally transformed by AI.
+      </blockquote>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="news-cta">
+<!-- DIRECTOR -->
+<section class="person rev">
+  <div class="container rv">
+    <div class="p-photo"><img src="../assets/director-yamamoto.jpg" alt="Toshiyuki Yamamoto - Director, TechWorker"></div>
+    <div class="p-text">
+      <span class="tag">Director <span>Director</span></span>
+      <h2>Toshiyuki Yamamoto</h2>
+      <p class="role">Director, TechWorker Inc.<br>Founder of Chatwork / CEO of Power Angels / Representative Director of the Japan Angel Investors Association</p>
+      <blockquote>
+        I founded Chatwork, an IT tool, and set out to bring it to non-IT industries. In 2018 I handed the CEO role to my co-founder and younger brother, and the following year, in 2019, the company was listed on the Tokyo Stock Exchange Mothers market (with a market cap of over ¥50 billion).<br><br>
+        Through that experience, I became certain of one thing. <strong>No matter how excellent the technology is, it will never be used inside a company without someone to bridge it to the realities of frontline operations.</strong><br><br>
+        The same thing is now happening with generative AI, a new technology. TechWorker will serve as that bridge and drive AI adoption across Japanese enterprises.
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section class="access" id="access">
   <div class="container">
-    <h2>Put AI to work, with real results.</h2>
-    <p>We'll hear out your current challenges and map the right starting point on the spot.<br>Early-stage, exploratory conversations are always welcome.</p>
+    <div class="sec-head rv"><span class="tag">Access <span>Access</span></span><h2>Access</h2></div>
+    <div class="access-content rv">
+      <div class="access-info">
+        <div class="address-block">
+          <span class="postal">169-0051</span><br>
+          1-22-3 Nishiwaseda, Shinjuku-ku, Tokyo, Japan<br>
+          <span class="station">5 min walk from Waseda Station (Tokyo Metro Tozai Line)</span>
+        </div>
+        <a href="https://maps.google.com/?q=1-22-3 Nishiwaseda, Shinjuku-ku, Tokyo" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">Open in Google Maps <i>→</i></a>
+      </div>
+      <div class="access-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.6!2d139.7195!3d35.7078!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188d2b6e0a5555%3A0x0!2z5p2x5Lqs6YO95paw5a6_5Yy66KW_5pep56iy55Sw5LiA5LiB55uu77yS77yS55Wq77yT5Y-3!5e0!3m2!1sja!2sjp!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="TechWorker Inc. location"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final" id="contact">
+  <div class="container">
+    <h2>Is your AI rollout stuck?</h2>
+    <p>Start with a 30-minute conversation.<br>We will help you frame your current challenges and propose the best way to begin, on the spot.</p>
     <div class="actions">
       <a href="contact.html" class="btn btn--on-blue">Book a Free Consultation</a>
+      <a href="contact.html?type=document" class="btn btn--on-blue-ghost">Get the Case Study Pack (Free)</a>
     </div>
   </div>
 </section>
@@ -277,7 +372,7 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
     <div class="footer-inner">
       <div class="footer-brand">
         <div class="logo">Tech<i>Worker</i></div>
-        <p>Enterprise Generative AI Consulting<br>TechWorker Inc.</p>
+        <p>Generative AI consulting for enterprises<br>TechWorker Inc.</p>
         <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
       </div>
       <div class="footer-col">
@@ -295,7 +390,7 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
         <a href="contact.html">Free Consultation</a>
         <a href="contact.html?type=document">Request Materials</a>
         <a href="privacy.html">Privacy Policy</a>
-        <p>1-22-3 Nishiwaseda, Shinjuku-ku,<br>Tokyo 169-0051, Japan</p>
+        <p>169-0051<br>1-22-3 Nishiwaseda, Shinjuku-ku, Tokyo, Japan</p>
       </div>
     </div>
     <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
@@ -326,6 +421,15 @@ addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>40)
 /* scroll reveal */
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.rv,.rvg').forEach(function(el){io.observe(el);});
+
+/* smooth anchor offset */
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var id=this.getAttribute('href');if(id==='#'||id.length<2)return;
+    var t=document.querySelector(id);if(!t)return;e.preventDefault();
+    scrollTo({top:t.getBoundingClientRect().top+scrollY-80,behavior:'smooth'});
+  });
+});
 </script>
 </body>
 </html>

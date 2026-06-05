@@ -1,514 +1,447 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="UTF-8">
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TechWorker — AI is the engine. Context is the fuel.</title>
-<meta name="description" content="TechWorker — 企業向け生成AIコンサルティング">
+<meta name="description" content="TechWorker turns your company's operational context into a form AI can use. We are the context-engineering specialists behind generative-AI results at 37+ companies and 2,500+ professionals, including TSE-listed enterprises.">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <meta property="og:type" content="website">
+<meta property="og:title" content="TechWorker — AI is the engine. Context is the fuel.">
+<meta property="og:description" content="Context-engineering specialists who turn your company's operational context into a form AI can use. Proven across 37+ companies and 2,500+ professionals.">
 <meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/en/">
 <meta property="og:site_name" content="TechWorker">
+<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TechWorker — AI is the engine. Context is the fuel.">
 <meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<link rel="canonical" href="https://techworker.co.jp/en/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Noto+Sans+JP:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ===== TOKENS ===== */
-:root {
-  --tw-black: #0D1117;
-  --tw-paper: #F4F6F9;
-  --tw-electric: #005EFF;
-  --tw-electric-dark: #003DAA;
-  --tw-slate: #3C4B64;
-  --tw-emerald: #00B894;
-  --tw-violet: #7C3AED;
+:root{
+  --ink:#0D1117; --paper:#F4F6F9; --paper-2:#ECEFF3; --white:#FBFCFD;
+  --electric:#005EFF; --electric-dark:#003DAA;
+  --slate:#4A5666; --line:rgba(13,17,23,.12); --line-2:rgba(13,17,23,.20);
+  --emerald:#00B894; --violet:#7C3AED;
+  --jp:'IBM Plex Sans JP','IBM Plex Sans',system-ui,sans-serif;
+  --en:'IBM Plex Sans','IBM Plex Sans JP',system-ui,sans-serif;
 }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:76px;}
+body{font-family:var(--jp);background:var(--paper);color:var(--ink);line-height:1.85;font-size:16px;-webkit-font-smoothing:antialiased;font-feature-settings:"palt" 1;overflow-x:hidden;}
+::selection{background:var(--electric);color:var(--paper);}
+a{color:inherit;}
+img{display:block;max-width:100%;}
 
-/* ===== RESET ===== */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; overflow-x: hidden; }
-body {
-  font-family: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
-  background: var(--tw-paper);
-  color: var(--tw-black);
-  line-height: 1.7;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
-
-/* ===== UTILITIES ===== */
-.container { max-width: 1200px; margin: 0 auto; padding: 0 40px; width: 100%; }
-.label {
-  font-size: 11px; font-weight: 600; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--tw-electric);
-  margin-bottom: 16px; display: block;
-}
-.label--light { color: var(--tw-paper); opacity: .6; }
-
-/* CTA Button */
-.btn {
-  display: inline-block; padding: 16px 40px;
-  background: var(--tw-electric); color: var(--tw-paper);
-  font-size: 15px; font-weight: 700; border-radius: 6px;
-  text-decoration: none; letter-spacing: .5px;
-  transition: background .2s;
-}
-.btn:hover { background: var(--tw-electric-dark); }
-.btn--outline {
-  background: transparent; color: var(--tw-electric);
-  border: 2px solid var(--tw-electric);
-}
-.btn--outline:hover { background: var(--tw-electric); color: var(--tw-paper); }
-.btn--white { background: var(--tw-paper); color: var(--tw-electric); }
-.btn--white:hover { background: #e8ecf2; }
+/* ===== SHARED ===== */
+.container{max-width:1280px;margin:0 auto;padding:0 48px;width:100%;}
+.tag{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--electric);display:inline-flex;align-items:center;gap:11px;padding-left:14px;border-left:3px solid var(--electric);}
+.tag span{color:var(--slate);font-weight:500;letter-spacing:.02em;text-transform:none;font-size:13px;}
+.sec-head h2{font-family:var(--jp);font-weight:700;font-size:clamp(26px,3.4vw,42px);line-height:1.4;letter-spacing:-.02em;margin-top:22px;}
+.sec-head .lead{font-size:16px;color:var(--slate);line-height:2.05;margin-top:22px;max-width:62ch;}
+.sec-head .lead strong{color:var(--ink);font-weight:600;}
+.btn{font-family:var(--jp);font-size:14.5px;font-weight:600;color:var(--paper);background:var(--electric);text-decoration:none;border-radius:5px;padding:15px 30px;display:inline-flex;align-items:center;gap:11px;transition:background .25s,transform .25s;border:none;cursor:pointer;}
+.btn:hover{background:var(--electric-dark);transform:translateY(-1px);}
+.btn i{font-style:normal;transition:transform .25s;}
+.btn:hover i{transform:translateX(4px);}
+.btn--ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line-2);}
+.btn--ghost:hover{background:transparent;border-color:var(--electric);color:var(--electric);}
+.btn--on-blue{background:var(--paper);color:var(--electric);}
+.btn--on-blue:hover{background:var(--white);}
+.btn--on-blue-ghost{background:transparent;color:var(--paper);border:1.5px solid rgba(244,246,249,.5);}
+.btn--on-blue-ghost:hover{background:rgba(244,246,249,.1);border-color:var(--paper);}
 
 /* ===== NAV ===== */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(244,246,249,.92); backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0,94,255,.08);
-  padding: 0 40px; height: 64px;
-  display: flex; align-items: center; justify-content: space-between;
-}
-nav .logo { font-size: 18px; font-weight: 800; color: var(--tw-black); text-decoration: none; }
-nav .logo span { color: var(--tw-electric); }
-nav ul { list-style: none; display: flex; gap: 32px; }
-nav ul a {
-  font-size: 13px; font-weight: 600; color: var(--tw-slate);
-  text-decoration: none; letter-spacing: .5px; transition: color .2s;
-}
-nav ul a:hover { color: var(--tw-electric); }
-nav .nav-right { display: flex; align-items: center; gap: 16px; }
-nav .nav-cta {
-  font-size: 13px; font-weight: 700; padding: 8px 24px;
-  background: var(--tw-electric); color: var(--tw-paper);
-  border-radius: 5px; text-decoration: none; transition: background .2s;
-}
-nav .nav-cta:hover { background: var(--tw-electric-dark); }
-nav .lang-switch {
-  font-size: 13px; font-weight: 700; color: var(--tw-slate);
-  text-decoration: none; transition: color .2s;
-}
-nav .lang-switch:hover { color: var(--tw-electric); }
-nav .lang-current {
-  font-size: 13px; font-weight: 700; color: var(--tw-electric);
-}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:68px;background:rgba(244,246,249,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transition:box-shadow .3s,height .3s cubic-bezier(.2,.8,.2,1),background .3s;}
+nav.scrolled{box-shadow:0 1px 16px rgba(0,94,255,.06);height:58px;background:rgba(244,246,249,.92);}
+nav .logo{transition:font-size .3s cubic-bezier(.2,.8,.2,1);}
+nav.scrolled .logo{font-size:18px;}
+nav .logo{font-family:var(--en);font-weight:700;font-size:20px;letter-spacing:-.01em;text-decoration:none;color:var(--ink);}
+nav .logo i{font-style:normal;color:var(--electric);}
+nav ul{list-style:none;display:flex;gap:34px;}
+nav ul a{font-size:14px;font-weight:500;color:var(--ink);text-decoration:none;position:relative;}
+nav ul a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--electric);transition:width .28s cubic-bezier(.2,.8,.2,1);}
+nav ul a:hover::after{width:100%;}
+nav .nav-right{display:flex;align-items:center;gap:18px;}
+nav .nav-cta{font-family:var(--jp);font-size:13.5px;font-weight:600;color:var(--paper);background:var(--electric);text-decoration:none;padding:10px 22px;border-radius:4px;transition:background .25s;}
+nav .nav-cta:hover{background:var(--electric-dark);}
+nav .nav-cta .short{display:none;}
+nav .lang{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.04em;}
+nav .lang a{color:var(--slate);text-decoration:none;}
+nav .lang .cur{color:var(--electric);}
 
-/* ===== 01: HERO ===== */
-.hero {
-  min-height: 100vh; display: flex; align-items: center;
-  padding-top: 64px;
-  background: linear-gradient(135deg, var(--tw-paper) 60%, rgba(0,94,255,.04) 100%);
-}
-.hero .container {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
-}
-.hero-text h1 {
-  font-size: clamp(36px, 5vw, 56px); font-weight: 800;
-  line-height: 1.2; margin-bottom: 24px;
-}
-.hero-text h1 em { font-style: normal; color: var(--tw-electric); }
-.hero-text p {
-  font-size: 18px; color: var(--tw-slate); line-height: 1.8;
-  margin-bottom: 40px; max-width: 520px;
-}
-.hero-text .btn-group { display: flex; gap: 16px; }
-.hero-visual { display: flex; justify-content: center; align-items: center; }
-.hero-kpi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.hero-kpi {
-  background: rgba(0,94,255,.04); border-radius: 12px;
-  padding: 32px; text-align: center;
-  border: 1px solid rgba(0,94,255,.08);
-}
-.hero-kpi .num {
-  font-size: clamp(40px, 6vw, 64px); font-weight: 800;
-  color: var(--tw-electric); line-height: 1;
-  display: block; margin-bottom: 8px;
-}
-.hero-kpi .unit { font-size: 14px; font-weight: 600; color: var(--tw-slate); }
+/* hamburger */
+.hamb{display:none;width:44px;height:44px;border:none;background:none;cursor:pointer;position:relative;margin-left:2px;}
+.hamb span{position:absolute;left:11px;width:22px;height:2px;background:var(--ink);transition:transform .3s,opacity .2s;}
+.hamb span:nth-child(1){top:15px;} .hamb span:nth-child(2){top:21px;} .hamb span:nth-child(3){top:27px;}
+body.menu-open .hamb span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+body.menu-open .hamb span:nth-child(2){opacity:0;}
+body.menu-open .hamb span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+/* mobile menu panel */
+.mmenu{position:fixed;inset:68px 0 0;z-index:45;background:var(--paper);transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);visibility:hidden;display:flex;flex-direction:column;padding:18px 24px 40px;}
+body.menu-open .mmenu{transform:none;visibility:visible;}
+.mmenu a{font-size:19px;font-weight:600;color:var(--ink);text-decoration:none;padding:20px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;}
+.mmenu a::after{content:"→";color:var(--electric);font-family:var(--en);}
+.mmenu .m-cta{margin-top:28px;background:var(--electric);color:var(--paper);justify-content:center;border-radius:5px;border:none;padding:17px;}
+.mmenu .m-cta::after{content:none;}
+.mmenu .m-lang{margin-top:auto;border:none;font-family:var(--en);font-size:13px;color:var(--slate);}
+.mmenu .m-lang::after{content:none;}
 
-/* ===== 02: NEWS ===== */
-.news { padding: 80px 0; background: #fff; }
-.news h2 {
-  font-size: 24px; font-weight: 800; margin-bottom: 40px;
-  display: flex; align-items: center; gap: 16px;
-}
-.news h2 a {
-  font-size: 13px; font-weight: 600; color: var(--tw-electric);
-  text-decoration: none; margin-left: auto;
-}
-.news-list { display: flex; flex-direction: column; }
-.news-item {
-  display: flex; align-items: baseline; gap: 24px;
-  padding: 20px 0;
-  border-bottom: 1px solid rgba(0,94,255,.06);
-}
-.news-item:first-child { border-top: 1px solid rgba(0,94,255,.06); }
-.news-date { font-size: 13px; font-weight: 600; color: var(--tw-slate); white-space: nowrap; }
-.news-tag {
-  font-size: 11px; font-weight: 700; letter-spacing: 1px;
-  padding: 3px 10px; border-radius: 3px;
-  background: rgba(0,94,255,.06); color: var(--tw-electric);
-  white-space: nowrap;
-}
-.news-tag--event { background: rgba(0,184,148,.08); color: var(--tw-emerald); }
-.news-tag--media { background: rgba(124,58,237,.08); color: var(--tw-violet); }
-.news-title {
-  font-size: 14px; color: var(--tw-black);
-  text-decoration: none; transition: color .2s;
-}
-.news-title:hover { color: var(--tw-electric); }
+/* ===== HERO ===== */
+.hero{max-width:1280px;margin:0 auto;padding:168px 48px 70px;}
+.hero .tag{margin-bottom:40px;}
+.hero h1{font-family:var(--jp);font-weight:700;font-size:clamp(38px,6.4vw,90px);line-height:1.26;letter-spacing:-.02em;}
+.hero h1 .en{font-family:var(--en);font-weight:600;letter-spacing:-.01em;}
+.hero h1 .u{background:linear-gradient(transparent 80%,var(--electric) 80%,var(--electric) 91%,transparent 91%);}
+.hero-foot{display:grid;grid-template-columns:1fr auto;gap:48px;align-items:end;margin-top:52px;padding-top:34px;border-top:1px solid var(--line);}
+.hero-foot p{font-size:16px;color:var(--slate);max-width:48ch;line-height:2.05;}
+.hero-foot p strong{color:var(--ink);font-weight:600;}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
 
-/* ===== 03: MACRO ===== */
-.macro {
-  padding: 120px 0;
-  background: var(--tw-electric);
-  color: var(--tw-paper);
-  position: relative; overflow: hidden;
-}
-.macro::before {
-  content: ''; position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(244,246,249,.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(244,246,249,.04) 1px, transparent 1px);
-  background-size: 56px 56px;
-}
-.macro .container { position: relative; z-index: 1; }
-.macro h2 {
-  font-size: clamp(28px, 4vw, 44px); font-weight: 800;
-  line-height: 1.3; margin-bottom: 24px; max-width: 800px;
-}
-.macro .lead {
-  font-size: 17px; line-height: 2; max-width: 760px;
-  margin-bottom: 60px; opacity: .9;
-}
-.macro-stats {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
-  margin-bottom: 60px;
-}
-.macro-stat {
-  background: rgba(244,246,249,.08); border-radius: 12px;
-  padding: 32px 24px; text-align: center;
-  border: 1px solid rgba(244,246,249,.1);
-}
-.macro-stat .num {
-  font-size: clamp(36px, 5vw, 56px); font-weight: 800;
-  display: block; line-height: 1; margin-bottom: 12px;
-}
-.macro-stat .desc { font-size: 13px; line-height: 1.6; opacity: .8; }
-.macro-logos {
-  display: flex; gap: 48px; align-items: center;
-  padding-top: 40px; border-top: 1px solid rgba(244,246,249,.12);
-}
-.macro-logos span { font-size: 13px; opacity: .5; font-weight: 600; }
-.macro-logo-item { font-size: 15px; font-weight: 700; opacity: .7; letter-spacing: .5px; }
-.macro-bottom {
-  margin-top: 60px; padding: 40px;
-  background: rgba(244,246,249,.06); border-radius: 12px;
-  border: 1px solid rgba(244,246,249,.1);
-}
-.macro-bottom p { font-size: 20px; font-weight: 700; line-height: 1.8; }
+/* ===== FIGURES BAND ===== */
+.figures{max-width:1280px;margin:0 auto;padding:24px 48px 86px;}
+.figures .row{display:grid;grid-template-columns:repeat(4,1fr);}
+.fig{padding:30px 28px 26px;border-left:1px solid var(--line);}
+.fig:first-child{border-left:none;padding-left:0;}
+.fig .n{font-family:var(--en);font-weight:600;font-size:clamp(44px,5vw,72px);line-height:1;letter-spacing:-.03em;font-feature-settings:"tnum" 1;}
+.fig .n sub{font-size:.4em;vertical-align:baseline;font-weight:600;}
+.fig:nth-child(1) .n,.fig:nth-child(3) .n{color:var(--electric);}
+.fig .l{font-size:13px;color:var(--slate);margin-top:13px;}
 
-/* ===== 04: PROBLEM ===== */
-.problem { padding: 120px 0; }
-.problem h2 {
-  font-size: clamp(28px, 4vw, 40px); font-weight: 800;
-  margin-bottom: 60px; text-align: center;
-}
-.problem-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
-  margin-bottom: 60px;
-}
-.problem-card {
-  background: #fff; border-radius: 12px; padding: 36px;
-  border: 1px solid rgba(0,94,255,.06);
-  display: flex; gap: 20px; align-items: flex-start;
-}
-.problem-card .icon {
-  width: 40px; height: 40px; border-radius: 8px;
-  background: rgba(0,94,255,.06); flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--tw-electric); font-weight: 800; font-size: 18px;
-}
-.problem-card p { font-size: 15px; color: var(--tw-slate); line-height: 1.8; }
-.problem-answer {
-  text-align: center; max-width: 700px; margin: 0 auto;
-  padding: 48px; background: #fff; border-radius: 16px;
-  border-left: 4px solid var(--tw-electric);
-}
-.problem-answer p { font-size: 18px; font-weight: 600; line-height: 1.9; }
-.problem-answer em { font-style: normal; color: var(--tw-electric); font-weight: 800; }
+/* ===== AI TOOLS STRIP ===== */
+.tools{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--white);}
+.tools .container{padding-top:40px;padding-bottom:40px;display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center;}
+.tools .tools-lead{max-width:200px;}
+.tools .tools-lead .t{font-size:14px;font-weight:600;line-height:1.7;}
+.tools .tools-lead .s{font-size:12px;color:var(--slate);margin-top:6px;}
+.tools .tools-grid{display:flex;flex-wrap:wrap;gap:14px 30px;align-items:center;}
+.tool-item{display:inline-flex;align-items:center;gap:10px;}
+.tool-item img{width:24px;height:24px;object-fit:contain;}
+.tool-item span{font-size:14px;font-weight:500;color:var(--ink);}
 
-/* ===== 05: APPROACH ===== */
-.approach { padding: 120px 0; background: #fff; }
-.approach h2 {
-  font-size: clamp(28px, 4vw, 40px); font-weight: 800; margin-bottom: 16px;
-}
-.approach .lead {
-  font-size: 16px; color: var(--tw-slate); max-width: 680px;
-  line-height: 1.9; margin-bottom: 60px;
-}
-.strength-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-.strength-card {
-  padding: 40px; border-radius: 12px;
-  background: var(--tw-paper);
-  border: 1px solid rgba(0,94,255,.06);
-}
-.strength-card .num {
-  font-size: 48px; font-weight: 800; color: var(--tw-electric);
-  line-height: 1; margin-bottom: 20px;
-}
-.strength-card h3 { font-size: 18px; font-weight: 800; margin-bottom: 12px; }
-.strength-card p { font-size: 14px; color: var(--tw-slate); line-height: 1.8; }
+/* ===== NEWS ===== */
+.news{padding:90px 0;}
+.news .news-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:14px;}
+.news .news-top a{font-family:var(--en);font-size:13px;font-weight:600;color:var(--electric);text-decoration:none;letter-spacing:.02em;}
+.news .news-top a:hover{text-decoration:underline;}
+.news-list{border-top:1px solid var(--line);}
+.news-row{display:grid;grid-template-columns:130px 96px 1fr;gap:24px;align-items:center;padding:22px 0;border-bottom:1px solid var(--line);text-decoration:none;transition:background .2s;}
+.news-row:hover{background:var(--paper-2);}
+.news-row .d{font-family:var(--en);font-size:14px;color:var(--slate);font-feature-settings:"tnum" 1;}
+.news-row .tg{font-size:12px;font-weight:600;color:var(--electric);}
+.news-row .tg.ev{color:var(--violet);}
+.news-row .tt{font-size:15px;font-weight:500;color:var(--ink);line-height:1.6;}
+.news-row:hover .tt{color:var(--electric);}
 
-/* ===== 06: SERVICES ===== */
-.services { padding: 120px 0; }
-.services h2 {
-  font-size: clamp(28px, 4vw, 40px); font-weight: 800; margin-bottom: 16px;
-}
-.services .lead {
-  font-size: 16px; color: var(--tw-slate); margin-bottom: 60px; max-width: 600px;
-}
-.service-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-.service-card {
-  background: #fff; border-radius: 16px; overflow: hidden;
-  border: 1px solid rgba(0,94,255,.06);
-  display: flex; flex-direction: column;
-}
-.service-card-header {
-  padding: 36px 32px 24px;
-  border-bottom: 1px solid rgba(0,94,255,.06);
-}
-.service-card-header .program-num {
-  font-size: 11px; font-weight: 700; color: var(--tw-electric);
-  letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px;
-}
-.service-card-header h3 { font-size: 20px; font-weight: 800; line-height: 1.4; margin-bottom: 12px; }
-.service-card-header .tagline { font-size: 14px; color: var(--tw-slate); line-height: 1.7; }
-.service-card-body {
-  padding: 24px 32px 36px; flex: 1;
-  display: flex; flex-direction: column; gap: 16px;
-}
-.service-meta {
-  display: flex; justify-content: space-between;
-  font-size: 13px; color: var(--tw-slate);
-  padding: 8px 0; border-bottom: 1px solid rgba(0,94,255,.04);
-}
-.service-meta .key { font-weight: 600; }
-.service-meta .val { font-weight: 700; color: var(--tw-black); }
-.service-card-quote {
-  margin-top: auto; padding-top: 16px;
-  font-size: 14px; font-weight: 600; color: var(--tw-electric);
-  border-left: 3px solid var(--tw-electric); padding-left: 12px;
-}
+/* ===== MACRO ===== */
+.macro{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:96px 0;}
+.macro h2 .mk{color:var(--electric);}
+.macro .lead{margin-top:22px;font-size:16px;color:#28313f;line-height:2.05;max-width:70ch;}
+.macro .lead strong{color:var(--ink);font-weight:600;}
+.macro-impact{display:grid;grid-template-columns:auto 1fr;gap:70px;align-items:center;margin-top:52px;padding-top:50px;border-top:1px solid var(--line);}
+.mi-stat{flex-shrink:0;}
+.mi-n{font-family:var(--en);font-weight:700;font-size:clamp(104px,15vw,210px);line-height:.86;letter-spacing:-.06em;color:var(--electric);}
+.mi-n .pct{font-size:.4em;font-weight:600;vertical-align:super;margin-left:4px;letter-spacing:-.02em;}
+.mi-cap{font-size:14.5px;color:#28313f;line-height:1.75;margin-top:18px;max-width:32ch;font-weight:500;}
+.mi-cap .src{display:inline-block;margin-top:12px;font-family:var(--en);font-size:11px;letter-spacing:.08em;color:var(--slate);border:1px solid var(--line-2);border-radius:3px;padding:3px 9px;}
+.mi-body p{font-size:16px;color:#28313f;line-height:2.05;margin-bottom:18px;}
+.mi-body p:last-child{margin-bottom:0;}
+.mi-body strong{color:var(--ink);font-weight:700;}
+.macro-bottom{margin-top:54px;padding-top:38px;border-top:2px solid var(--ink);}
+.macro-bottom p{font-family:var(--jp);font-weight:700;font-size:clamp(20px,2.8vw,32px);line-height:1.55;letter-spacing:-.02em;}
+.macro-bottom .mk2{color:var(--electric);}
 
-/* ===== 07: RESULTS ===== */
-.results {
-  padding: 120px 0;
-  background: var(--tw-electric); color: var(--tw-paper);
-  position: relative; overflow: hidden;
-}
-.results::before {
-  content: ''; position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(244,246,249,.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(244,246,249,.04) 1px, transparent 1px);
-  background-size: 56px 56px;
-}
-.results .container { position: relative; z-index: 1; }
-.results h2 {
-  font-size: clamp(28px, 4vw, 40px); font-weight: 800; margin-bottom: 60px;
-}
-.results-kpi {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
-  margin-bottom: 80px;
-}
-.results-kpi-card { text-align: center; padding: 24px; }
-.results-kpi-card .num {
-  font-size: clamp(48px, 7vw, 72px); font-weight: 800;
-  line-height: 1; margin-bottom: 8px;
-}
-.results-kpi-card .unit { font-size: 14px; opacity: .7; font-weight: 600; }
-.case-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
-.case-card {
-  background: rgba(244,246,249,.06); border-radius: 12px;
-  padding: 36px; border: 1px solid rgba(244,246,249,.1);
-}
-.case-card .industry {
-  font-size: 11px; font-weight: 600; letter-spacing: 2px;
-  text-transform: uppercase; opacity: .5; margin-bottom: 16px;
-}
-.case-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 12px; line-height: 1.5; }
-.case-card p { font-size: 14px; opacity: .8; line-height: 1.8; }
+/* ===== PROBLEM ===== */
+.problem{padding:96px 0;}
+.problem-grid{margin-top:50px;border-top:1px solid var(--line);}
+.problem-row{display:grid;grid-template-columns:84px 1fr;gap:8px;padding:28px 0;border-bottom:1px solid var(--line);align-items:baseline;}
+.problem-row .pn{font-family:var(--en);font-weight:600;font-size:22px;color:var(--electric);letter-spacing:-.02em;}
+.problem-row p{font-size:17px;line-height:1.7;color:var(--ink);font-weight:500;}
+.problem-answer{margin-top:50px;background:var(--electric-dark);color:var(--paper);padding:48px 52px;border-radius:4px;}
+.problem-answer p{font-family:var(--jp);font-weight:500;font-size:clamp(17px,2vw,21px);line-height:1.95;letter-spacing:-.01em;}
+.problem-answer em{font-style:normal;color:#fff;font-weight:700;background:linear-gradient(transparent 82%,rgba(255,255,255,.32) 82%,rgba(255,255,255,.32) 92%,transparent 92%);padding:0 .02em;}
 
-/* ===== 08: FLOW ===== */
-.flow { padding: 120px 0; background: #fff; }
-.flow h2 {
-  font-size: clamp(28px, 4vw, 40px); font-weight: 800;
-  margin-bottom: 60px; text-align: center;
-}
-.flow-steps {
-  display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;
-  max-width: 1100px; margin: 0 auto;
-}
-.flow-step { text-align: center; position: relative; }
-.flow-step::after {
-  content: ''; position: absolute;
-  top: 32px; right: -8px;
-  width: 16px; height: 2px;
-  background: var(--tw-electric); opacity: .3;
-}
-.flow-step:last-child::after { display: none; }
-.flow-step .step-num {
-  width: 64px; height: 64px; border-radius: 50%;
-  background: rgba(0,94,255,.06);
-  display: inline-flex; align-items: center; justify-content: center;
-  font-size: 24px; font-weight: 800; color: var(--tw-electric);
-  margin-bottom: 20px;
-}
-.flow-step h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
-.flow-step p { font-size: 13px; color: var(--tw-slate); line-height: 1.7; }
+/* ===== APPROACH ===== */
+.approach{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:96px 0;}
+.approach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:56px;border-top:1px solid var(--line);}
+.approach-col{padding:36px 30px 10px;border-left:1px solid var(--line);}
+.approach-col:first-child{border-left:none;padding-left:0;}
+.approach-col .an{font-family:var(--en);font-weight:600;font-size:18px;color:var(--electric);letter-spacing:.04em;}
+.approach-col h3{font-family:var(--jp);font-weight:700;font-size:19px;line-height:1.5;margin:16px 0 12px;letter-spacing:-.01em;}
+.approach-col p{font-size:14px;color:var(--slate);line-height:1.95;}
 
-/* ===== 09: MESSAGE ===== */
-.message { padding: 120px 0; }
-.message .container {
-  display: grid; grid-template-columns: 30% 1fr; gap: 80px; align-items: start;
-}
-.message-photo {
-  aspect-ratio: 1/1; background: rgba(0,94,255,.04);
-  border-radius: 12px; overflow: hidden;
-  border: 1px solid rgba(0,94,255,.08);
-}
-.message-text h2 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
-.message-text .role { font-size: 14px; color: var(--tw-slate); margin-bottom: 32px; }
-.message-text blockquote {
-  font-size: 16px; line-height: 2.2; color: var(--tw-slate);
-  border: none; padding: 0; margin: 0;
-}
-.message-text blockquote strong { color: var(--tw-black); font-weight: 700; }
+/* ===== RESULTS STATEMENT ===== */
+.results-st{padding:96px 0 70px;}
+.results-st h2{font-family:var(--jp);font-weight:700;font-size:clamp(26px,3.4vw,44px);line-height:1.4;letter-spacing:-.02em;margin-top:22px;}
+.results-st h2 .mk{color:var(--electric);}
 
-/* ===== 10: FAQ ===== */
-.faq { padding: 120px 0; background: #fff; }
-.faq h2 {
-  font-size: clamp(28px, 4vw, 40px); font-weight: 800;
-  margin-bottom: 60px; text-align: center;
-}
-.faq-list {
-  max-width: 760px; margin: 0 auto;
-  display: flex; flex-direction: column; gap: 20px;
-}
-.faq-item {
-  background: var(--tw-paper); border-radius: 12px;
-  padding: 32px; border: 1px solid rgba(0,94,255,.06);
-}
-.faq-item .q {
-  font-size: 15px; font-weight: 700; margin-bottom: 12px;
-  display: flex; gap: 12px;
-}
-.faq-item .q::before {
-  content: 'Q'; font-weight: 800; color: var(--tw-electric); flex-shrink: 0;
-}
-.faq-item .a {
-  font-size: 14px; color: var(--tw-slate); line-height: 1.8; padding-left: 24px;
-}
+/* ===== HOME CASE ===== */
+.hcase{padding-bottom:30px;}
+.hcase-top{display:grid;grid-template-columns:auto 1fr;gap:60px;align-items:center;padding:46px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.hcase-num .s{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);}
+.hcase-num .big{display:flex;align-items:baseline;gap:8px;margin-top:6px;}
+.hcase-num .big b{font-family:var(--en);font-weight:600;font-size:clamp(56px,7vw,92px);line-height:1;color:var(--electric);letter-spacing:-.03em;}
+.hcase-num .big i{font-style:normal;font-size:22px;font-weight:600;}
+.hcase-num .desc{font-size:13px;color:var(--slate);margin-top:6px;}
+.hcase-meta .mtag{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.hcase-meta .badge{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.12em;color:var(--paper);background:var(--electric);padding:4px 10px;border-radius:3px;}
+.hcase-meta .ind{font-size:13px;color:var(--slate);font-weight:500;}
+.hcase-meta h3{font-family:var(--jp);font-weight:700;font-size:clamp(22px,2.6vw,32px);line-height:1.4;letter-spacing:-.02em;}
+.hcase-meta .co{font-size:14px;color:var(--slate);margin-top:8px;}
+.hcase-ba{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid var(--line);}
+.hcase-ba > div{padding:38px 40px 38px 0;}
+.hcase-ba > div:last-child{padding-left:48px;border-left:1px solid var(--line);}
+.hcase-ba .col-l{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.14em;color:var(--slate);margin-bottom:14px;}
+.hcase-ba .col-l.aft{color:var(--electric);}
+.hcase-ba p{font-size:15px;color:#28313f;line-height:1.95;}
+.hcase-ba ul{list-style:none;}
+.hcase-ba li{display:flex;gap:12px;align-items:flex-start;padding:7px 0;font-size:15px;line-height:1.7;}
+.hcase-ba li svg{flex-shrink:0;margin-top:5px;color:var(--electric);}
+.hcase-others{padding:46px 0 0;}
+.hcase-others .ogrid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);}
+.ocard{padding:30px 28px;border-left:1px solid var(--line);text-decoration:none;display:block;transition:background .2s;}
+.ocard:first-child{border-left:none;padding-left:0;}
+.ocard .oi{font-size:12px;color:var(--slate);font-weight:500;}
+.ocard strong{display:block;font-size:16px;font-weight:600;line-height:1.5;margin:10px 0;color:var(--ink);}
+.ocard .om{font-family:var(--en);font-size:13px;font-weight:600;color:var(--electric);}
+.ocard:hover strong{color:var(--electric);}
+.hcase-others .more{text-align:center;margin-top:42px;}
 
-/* ===== 11: COMPANY ===== */
-.company { padding: 100px 0; }
-.company h2 {
-  font-size: clamp(28px, 4vw, 40px); font-weight: 800;
-  margin-bottom: 48px;
-}
-.company-table {
-  width: 100%; max-width: 760px; border-collapse: collapse;
-}
-.company-table tr { border-bottom: 1px solid rgba(0,94,255,.06); }
-.company-table th {
-  text-align: left; padding: 20px 32px 20px 0;
-  font-size: 14px; font-weight: 700; color: var(--tw-slate);
-  white-space: nowrap; width: 160px; vertical-align: top;
-}
-.company-table td {
-  padding: 20px 0; font-size: 14px; line-height: 1.8;
-}
+/* ===== VOICE / CLIENTS ===== */
+.voice{padding:96px 0;border-top:1px solid var(--line);}
+.clients{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:42px;padding:26px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.clients-label{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);padding-left:12px;border-left:3px solid var(--electric);}
+.client-name{font-family:var(--jp);font-weight:700;font-size:19px;letter-spacing:-.01em;}
+.clients-more{font-size:13px;color:var(--slate);}
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:42px;}
+.voice-card{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:28px 30px 26px;display:flex;flex-direction:column;}
+.voice-card::before{content:"\201C";font-family:var(--en);font-size:52px;line-height:0;height:26px;color:var(--electric);opacity:.28;display:block;}
+.voice-card p{font-family:var(--jp);font-weight:600;font-size:15.5px;line-height:1.95;letter-spacing:-.01em;color:var(--ink);flex:1;margin-top:6px;}
+.voice-card footer{margin-top:22px;padding-top:18px;border-top:1px solid var(--line);}
+.v-person{display:flex;align-items:center;gap:12px;}
+.v-avatar{width:42px;height:42px;border-radius:8px;background:var(--paper-2);border:1px solid var(--line-2);color:var(--electric);font-family:var(--jp);font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.voice-card .vrole{display:block;font-weight:700;font-size:14px;}
+.voice-card .vco{display:block;font-size:12px;color:var(--slate);margin-top:2px;line-height:1.45;}
+.v-service{display:inline-block;margin-top:14px;font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.03em;color:var(--slate);padding:4px 11px;border:1px solid var(--line);border-radius:4px;}
+.v-service b{color:var(--electric);font-weight:600;}
 
-/* ===== 12: FINAL CTA ===== */
-.final-cta {
-  padding: 120px 0;
-  background: var(--tw-electric); color: var(--tw-paper);
-  text-align: center;
-  position: relative; overflow: hidden;
-}
-.final-cta::before {
-  content: ''; position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(244,246,249,.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(244,246,249,.04) 1px, transparent 1px);
-  background-size: 56px 56px;
-}
-.final-cta .container { position: relative; z-index: 1; }
-.final-cta h2 {
-  font-size: clamp(28px, 4vw, 44px); font-weight: 800; margin-bottom: 16px;
-}
-.final-cta p { font-size: 17px; opacity: .8; margin-bottom: 40px; }
-.final-cta .btn-group { display: flex; gap: 16px; justify-content: center; }
+/* ===== SERVICES ===== */
+.services{padding:96px 0;background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.svc-overview{margin-top:46px;max-width:560px;border:1px solid var(--line);background:var(--white);padding:34px 36px;border-radius:4px;}
+.svc-overview .sn{font-family:var(--en);font-weight:600;font-size:16px;color:var(--electric);}
+.svc-overview h3{font-family:var(--jp);font-weight:700;font-size:22px;margin:10px 0 12px;letter-spacing:-.01em;}
+.svc-overview p{font-size:14.5px;color:var(--slate);line-height:1.95;}
+.svc-overview a{display:inline-block;margin-top:18px;font-family:var(--en);font-size:13px;font-weight:600;color:var(--electric);text-decoration:none;}
+.svc-overview a:hover{text-decoration:underline;}
+.programs-label{display:block;font-family:var(--en);font-size:13px;font-weight:600;letter-spacing:.06em;color:var(--slate);margin:56px 0 22px;text-transform:uppercase;}
+.svc-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.svc-c{background:var(--white);border:1px solid var(--line);border-radius:4px;padding:30px 28px;display:flex;flex-direction:column;transition:border-color .25s,transform .25s;}
+.svc-c:hover{border-color:var(--electric);transform:translateY(-3px);}
+.svc-c .pnum{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.1em;color:var(--electric);text-transform:uppercase;}
+.svc-c h3{font-family:var(--jp);font-weight:700;font-size:19px;line-height:1.5;margin:12px 0;letter-spacing:-.01em;}
+.svc-c .tl{font-size:13.5px;color:var(--slate);line-height:1.85;padding-bottom:20px;border-bottom:1px solid var(--line);margin-bottom:18px;}
+.svc-meta{display:grid;grid-template-columns:54px 1fr;gap:6px 12px;font-size:13px;margin-bottom:6px;}
+.svc-meta .k{color:var(--slate);font-weight:600;}
+.svc-meta .v{color:var(--ink);line-height:1.6;}
+.svc-c .q{margin-top:auto;padding-top:20px;font-family:var(--jp);font-weight:600;font-size:13.5px;color:var(--ink);line-height:1.7;border-top:1px solid var(--line);margin-top:20px;}
+.svc-consult{margin-top:40px;background:var(--electric-dark);color:var(--paper);border-radius:8px;padding:42px 46px;display:grid;grid-template-columns:1fr auto;gap:36px;align-items:center;}
+.svc-consult h3{font-family:var(--jp);font-weight:700;font-size:clamp(20px,2.4vw,28px);line-height:1.5;letter-spacing:-.01em;color:var(--paper);}
+.svc-consult p{font-size:14.5px;color:rgba(244,246,249,.82);margin-top:12px;line-height:1.9;max-width:52ch;}
+.svc-consult .btn{background:var(--paper);color:var(--electric);white-space:nowrap;}
+.svc-consult .btn:hover{background:#fff;}
+
+/* ===== FLOW ===== */
+.flow{padding:96px 0;}
+.flow-steps{display:grid;grid-template-columns:repeat(5,1fr);margin-top:50px;border-top:1px solid var(--line);}
+.flow-step{padding:32px 22px 10px;border-left:1px solid var(--line);}
+.flow-step:first-child{border-left:none;padding-left:0;}
+.flow-step .sn{font-family:var(--en);font-weight:600;font-size:15px;color:var(--paper);background:var(--electric);width:30px;height:30px;border-radius:5px;display:flex;align-items:center;justify-content:center;}
+.flow-step h3{font-family:var(--jp);font-weight:700;font-size:16px;margin:16px 0 10px;letter-spacing:-.01em;}
+.flow-step p{font-size:13px;color:var(--slate);line-height:1.85;}
+
+/* ===== MESSAGE / DIRECTOR ===== */
+.person{padding:90px 0;border-top:1px solid var(--line);}
+.person .container{display:grid;grid-template-columns:340px 1fr;gap:64px;align-items:start;}
+.person.rev .container{grid-template-columns:1fr 340px;}
+.person.rev .p-photo{order:2;}
+.p-photo{aspect-ratio:1/1;border-radius:6px;overflow:hidden;background:var(--paper-2);border:1px solid var(--line);}
+.p-photo img{width:100%;height:100%;object-fit:cover;}
+.p-text h2{font-family:var(--jp);font-weight:700;font-size:30px;letter-spacing:-.01em;margin-top:18px;}
+.p-text .role{font-size:13px;color:var(--slate);margin-top:8px;line-height:1.7;}
+.p-text .role a{color:var(--electric);text-decoration:none;font-weight:600;}
+.p-text blockquote{margin-top:26px;font-size:16px;line-height:2.1;color:#28313f;}
+.p-text blockquote strong{color:var(--ink);font-weight:600;}
+
+/* ===== FAQ ===== */
+.faq{padding:96px 0;background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.faq-list{margin-top:46px;border-top:1px solid var(--line);}
+.faq-item{border-bottom:1px solid var(--line);}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:24px 0;cursor:pointer;font-family:var(--jp);font-weight:600;font-size:16px;color:var(--ink);width:100%;text-align:left;background:none;border:none;line-height:1.6;}
+.faq-q .ar{flex-shrink:0;width:22px;height:22px;position:relative;}
+.faq-q .ar::before,.faq-q .ar::after{content:"";position:absolute;background:var(--electric);transition:transform .3s;}
+.faq-q .ar::before{top:10px;left:3px;width:16px;height:2px;}
+.faq-q .ar::after{top:3px;left:10px;width:2px;height:16px;}
+.faq-item.open .faq-q .ar::after{transform:scaleY(0);}
+.faq-a{overflow:hidden;max-height:0;transition:max-height .35s ease,padding .35s ease;}
+.faq-a p{font-size:14.5px;color:var(--slate);line-height:1.95;padding-bottom:0;}
+.faq-item.open .faq-a{padding-bottom:24px;}
+
+/* ===== COMPANY ===== */
+.company{padding:96px 0;}
+.company-table{margin-top:40px;max-width:640px;border-collapse:collapse;width:100%;}
+.company-table tr{border-bottom:1px solid var(--line);}
+.company-table tr:first-child{border-top:1px solid var(--line);}
+.company-table th{text-align:left;font-size:13px;font-weight:600;color:var(--slate);padding:18px 0;width:160px;vertical-align:top;}
+.company-table td{font-size:15px;padding:18px 0;line-height:1.7;}
+.company .more{margin-top:34px;}
+
+/* ===== RESOURCES BAND ===== */
+.resources-band{padding:96px 0;border-top:1px solid var(--line);}
+.rb-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:46px;}
+.rb-card{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--line);border-radius:6px;padding:34px 34px 30px;text-decoration:none;color:inherit;transition:border-color .25s,transform .25s,box-shadow .25s;position:relative;overflow:hidden;}
+.rb-card::after{content:"";position:absolute;top:0;left:0;height:3px;width:0;background:var(--electric);transition:width .35s cubic-bezier(.2,.8,.2,1);}
+.rb-card:hover{border-color:var(--electric);transform:translateY(-3px);box-shadow:0 18px 44px rgba(13,17,23,.07);}
+.rb-card:hover::after{width:100%;}
+.rb-kind{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);padding-left:12px;border-left:3px solid var(--electric);align-self:flex-start;}
+.rb-card h3{font-family:var(--jp);font-weight:700;font-size:21px;line-height:1.5;margin:16px 0 12px;letter-spacing:-.01em;}
+.rb-card p{font-size:14px;color:var(--slate);line-height:1.9;}
+.rb-dl{margin-top:auto;padding-top:20px;font-family:var(--jp);font-weight:700;font-size:14px;color:var(--electric);display:inline-flex;align-items:center;gap:8px;}
+.rb-dl i{font-style:normal;transition:transform .25s;}
+.rb-card:hover .rb-dl i{transform:translateY(3px);}
+.rb-inside-label{display:block;font-family:var(--en);font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin:20px 0 9px;}
+.rb-inside{list-style:none;margin-bottom:4px;}
+.rb-inside li{font-size:13px;color:#28313f;line-height:1.55;padding:5px 0 5px 20px;position:relative;}
+.rb-inside li::before{content:"";position:absolute;left:2px;top:11px;width:8px;height:2px;background:var(--electric);}
+
+/* ===== FINAL CTA ===== */
+.final{background:var(--electric);color:var(--paper);padding:104px 0;text-align:center;}
+.final h2{font-family:var(--jp);font-weight:700;font-size:clamp(28px,3.6vw,46px);line-height:1.4;letter-spacing:-.02em;}
+.final p{font-size:16px;color:rgba(244,246,249,.85);margin-top:18px;}
+.final .actions{display:flex;gap:14px;justify-content:center;margin-top:36px;flex-wrap:wrap;}
 
 /* ===== FOOTER ===== */
-footer {
-  padding: 60px 0 40px;
-  background: #fff;
-  border-top: 1px solid rgba(0,94,255,.06);
-}
-footer .footer-inner {
-  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px;
-  align-items: start;
-}
-footer .footer-brand .logo { font-size: 18px; font-weight: 800; margin-bottom: 12px; color: var(--tw-black); }
-footer .footer-brand .logo span { color: var(--tw-electric); }
-footer .footer-brand p { font-size: 13px; color: var(--tw-slate); line-height: 1.7; }
-footer .footer-col h4 {
-  font-size: 12px; font-weight: 700; letter-spacing: 2px;
-  text-transform: uppercase; color: var(--tw-slate); opacity: .5; margin-bottom: 16px;
-}
-footer .footer-col a {
-  display: block; font-size: 13px; color: var(--tw-slate);
-  text-decoration: none; margin-bottom: 10px; transition: color .2s;
-}
-footer .footer-col a:hover { color: var(--tw-electric); }
-footer .footer-col p {
-  font-size: 13px; color: var(--tw-slate); line-height: 1.7;
-}
-footer .copyright {
-  text-align: center; margin-top: 40px; padding-top: 24px;
-  border-top: 1px solid rgba(0,94,255,.06);
-  font-size: 12px; color: var(--tw-slate); opacity: .4;
+footer{background:var(--white);border-top:1px solid var(--line);padding:64px 0 40px;}
+.footer-inner{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;}
+.footer-brand .logo{font-family:var(--en);font-size:19px;font-weight:700;color:var(--ink);}
+.footer-brand .logo i{font-style:normal;color:var(--electric);}
+.footer-brand p{font-size:13px;color:var(--slate);line-height:1.7;margin-top:12px;}
+.footer-brand .x{display:inline-flex;align-items:center;gap:7px;margin-top:16px;font-size:13px;font-weight:600;color:var(--slate);text-decoration:none;}
+.footer-brand .x:hover{color:var(--electric);}
+.footer-col h4{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:16px;}
+.footer-col a{display:block;font-size:13px;color:var(--slate);text-decoration:none;margin-bottom:10px;}
+.footer-col a:hover{color:var(--electric);}
+.footer-col p{font-size:13px;color:var(--slate);line-height:1.7;margin-top:12px;}
+.copyright{text-align:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-family:var(--en);font-size:12px;color:var(--slate);}
+
+/* ===== reveal (progressive enhancement: visible without JS) ===== */
+html.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+html.js .rv.show{opacity:1;transform:none;}
+
+/* ===== focus visibility (keyboard) ===== */
+a:focus-visible,button:focus-visible,.faq-q:focus-visible{outline:2px solid var(--electric);outline-offset:3px;border-radius:3px;}
+:focus:not(:focus-visible){outline:none;}
+
+/* ===== reduced motion ===== */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  html.js .rv{opacity:1;transform:none;transition:none;}
+  html.js .rvg>*{opacity:1;transform:none;}
+  *{animation-duration:.001ms!important;transition-duration:.001ms!important;}
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 1024px) {
-  .hero .container { grid-template-columns: 1fr; gap: 40px; }
-  .hero-kpi-grid { grid-template-columns: repeat(4, 1fr); }
-  .macro-stats { grid-template-columns: repeat(2, 1fr); }
-  .strength-grid { grid-template-columns: 1fr; }
-  .service-cards { grid-template-columns: 1fr; }
-  .results-kpi { grid-template-columns: repeat(2, 1fr); }
-  .case-grid { grid-template-columns: 1fr; }
-  .flow-steps { grid-template-columns: 1fr; }
-  .flow-step::after { display: none; }
-  .message .container { grid-template-columns: 1fr; }
-  .message-photo { max-width: 300px; }
-  footer .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+/* ===== UI: hero orchestration ===== */
+@keyframes heroIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+@keyframes drawLine{to{background-size:100% 100%;}}
+html.js .hero .tag{animation:heroIn .7s .05s both cubic-bezier(.16,1,.3,1);}
+html.js .hero h1{animation:heroIn .8s .16s both cubic-bezier(.16,1,.3,1);}
+html.js .hero-foot{animation:heroIn .8s .42s both cubic-bezier(.16,1,.3,1);}
+html.js .hero h1 .u{background-repeat:no-repeat;background-size:0% 100%;animation:drawLine .7s .8s forwards cubic-bezier(.16,1,.3,1);}
+
+/* ===== UI: staggered group reveal ===== */
+html.js .rvg>*{opacity:0;transform:translateY(18px);}
+html.js .rvg.show>*{opacity:1;transform:none;transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1);}
+html.js .rvg.show>*:nth-child(1){transition-delay:.04s;}
+html.js .rvg.show>*:nth-child(2){transition-delay:.12s;}
+html.js .rvg.show>*:nth-child(3){transition-delay:.20s;}
+html.js .rvg.show>*:nth-child(4){transition-delay:.28s;}
+html.js .rvg.show>*:nth-child(5){transition-delay:.36s;}
+
+/* ===== UI: custom scrollbar ===== */
+@media (pointer:fine){
+  *{scrollbar-width:thin;scrollbar-color:#c3ccd8 transparent;}
+  ::-webkit-scrollbar{width:12px;height:12px;}
+  ::-webkit-scrollbar-thumb{background:#c3ccd8;border-radius:10px;border:3px solid var(--paper);}
+  ::-webkit-scrollbar-thumb:hover{background:#9aa7b8;}
+  ::-webkit-scrollbar-track{background:transparent;}
 }
-@media (max-width: 640px) {
-  .container { padding: 0 20px; }
-  nav { padding: 0 20px; }
-  nav ul { display: none; }
-  .hero-kpi-grid { grid-template-columns: 1fr 1fr; }
-  .problem-grid { grid-template-columns: 1fr; }
-  .hero-text .btn-group { flex-direction: column; }
-  .final-cta .btn-group { flex-direction: column; align-items: center; }
-  .news-item { flex-wrap: wrap; gap: 8px; }
+
+/* ===== UI: refined hover micro-interactions ===== */
+.btn:active{transform:translateY(0);}
+.news-row .tt{transition:color .2s,transform .25s cubic-bezier(.2,.8,.2,1);}
+.news-row:hover .tt{transform:translateX(5px);}
+.svc-c{position:relative;overflow:hidden;}
+.svc-c::after{content:"";position:absolute;top:0;left:0;height:3px;width:0;background:var(--electric);transition:width .35s cubic-bezier(.2,.8,.2,1);}
+.svc-c:hover::after{width:100%;}
+.ocard strong{transition:color .2s,transform .25s cubic-bezier(.2,.8,.2,1);}
+.ocard:hover strong{transform:translateX(4px);}
+.tool-item{transition:transform .2s ease;}
+.tool-item:hover{transform:translateY(-2px);}
+.company-table tr{transition:background .2s;}
+.company-table tr:hover{background:rgba(0,94,255,.03);}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1000px){
+  .footer-inner{grid-template-columns:1fr 1fr;gap:32px;}
+  .approach-grid{grid-template-columns:1fr;}
+  .approach-col{border-left:none;border-top:1px solid var(--line);padding:30px 0 6px;}
+  .svc-cards{grid-template-columns:1fr;}
+  .voice-grid{grid-template-columns:1fr;}
+  .svc-consult{grid-template-columns:1fr;gap:24px;padding:32px 26px;}
+  .rb-grid{grid-template-columns:1fr;}
+  .flow-steps{grid-template-columns:1fr 1fr;}
+  .flow-step{border-left:none;border-top:1px solid var(--line);padding:26px 0 6px;}
+}
+@media(max-width:860px){
+  nav ul{display:none;}
+  nav .nav-cta{display:none;}
+  nav .lang{display:none;}
+  .hamb{display:block;}
+  .hero{padding:120px 24px 56px;}
+  .hero-foot{grid-template-columns:1fr;gap:26px;align-items:start;}
+  .figures{padding:14px 24px 64px;}
+  .figures .row{grid-template-columns:1fr 1fr;}
+  .fig{padding:22px 0;}
+  .fig:nth-child(even){padding-left:22px;border-left:1px solid var(--line);}
+  .fig:nth-child(odd){border-left:none;}
+  .fig:nth-child(n+3){border-top:1px solid var(--line);}
+  .macro-impact{grid-template-columns:1fr;gap:28px;}
+  .mi-n{font-size:clamp(88px,26vw,150px);}
+  .tools .container{grid-template-columns:1fr;gap:22px;}
+  .news-row{grid-template-columns:96px 1fr;gap:8px 16px;}
+  .news-row .tg{display:none;}
+  .hcase-top{grid-template-columns:1fr;gap:28px;}
+  .hcase-ba{grid-template-columns:1fr;}
+  .hcase-ba > div{padding:28px 0;}
+  .hcase-ba > div:last-child{border-left:none;border-top:1px solid var(--line);padding-left:0;}
+  .hcase-others .ogrid{grid-template-columns:1fr;}
+  .ocard{border-left:none;border-top:1px solid var(--line);padding:26px 0;}
+  .ocard:first-child{border-top:none;}
+  .person .container,.person.rev .container{grid-template-columns:1fr;gap:30px;}
+  .person.rev .p-photo{order:0;}
+  .p-photo{max-width:280px;}
+}
+@media(max-width:560px){
+  .container{padding:0 22px;}
+  nav{padding:0 10px 0 18px;height:60px;}
+  .mmenu{top:60px;}
+  .problem-row{grid-template-columns:54px 1fr;}
+  .problem-answer{padding:34px 26px;}
+  .flow-steps{grid-template-columns:1fr;}
 }
 </style>
 <!-- Meta Pixel Code -->
@@ -531,427 +464,488 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
 </head>
 <body>
 
-<!-- ===== NAV ===== -->
-<nav>
-  <a href="index.html" class="logo">Tech<span>Worker</span></a>
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="logo">Tech<i>Worker</i></a>
   <ul>
-    <li><a href="index.html">HOME</a></li>
-    <li><a href="news.html">NEWS</a></li>
-    <li><a href="index.html#results">Results</a></li>
-    <li><a href="../company.html">Company</a></li>
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="cases.html">Case Studies</a></li>
+    <li><a href="news.html">News</a></li>
+    <li><a href="company.html">Company</a></li>
   </ul>
   <div class="nav-right">
-    <a href="contact.html" class="nav-cta">Contact Us</a>
-    <a href="../index.html" class="lang-switch">JP</a>
-    <span class="lang-current">EN</span>
+    <a href="contact.html" class="nav-cta"><span class="full">Free Consultation</span><span class="short">Contact</span></a>
+    <span class="lang"><a href="../index.html">JP</a> / <span class="cur">EN</span></span>
+    <button class="hamb" id="hamb" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
-<!-- ===== 01: HERO ===== -->
-<section class="hero">
-  <div class="container">
-    <div class="hero-text">
-      <span class="label">Enterprise AI Consulting</span>
-      <h1>AI is the <em>engine</em>.<br>Context is the <em>fuel</em>.</h1>
-      <p>Deploying AI tools alone does not make AI work.<br>We transform your business context into a format AI can understand and act on.<br>That is what we do.</p>
-      <div class="btn-group">
-        <a href="contact.html" class="btn">Book a Free Consultation</a>
-        <a href="contact.html?type=document" class="btn btn--outline">Request Materials</a>
-      </div>
+<!-- MOBILE MENU -->
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="index.html">Home</a>
+  <a href="index.html#services">Services</a>
+  <a href="cases.html">Case Studies</a>
+  <a href="news.html">News</a>
+  <a href="company.html">Company</a>
+  <a href="contact.html" class="m-cta">Book a Free Consultation</a>
+  <a href="../index.html" class="m-lang">日本語 ↗</a>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="tag">Enterprise AI <span>Turn your company's context into AI power</span></div>
+  <h1>AI is the <span class="en">engine</span>.<br><span class="u">Context</span> is the fuel.</h1>
+  <div class="hero-foot">
+    <p><strong>Deploying tools alone does not make AI work.</strong> Our job is to shape your operational context into a form AI can use. We have delivered results across 37 companies and 2,500 professionals, including publicly listed enterprises.</p>
+    <div class="hero-actions">
+      <a href="contact.html?type=document" class="btn" onclick="fbq('track','Lead');">Request the 2026 AI Use-Case Report <i>↓</i></a>
+      <a href="contact.html" class="btn btn--ghost">Free Consultation</a>
     </div>
-    <div class="hero-visual">
-      <div class="hero-kpi-grid">
-        <div class="hero-kpi">
-          <span class="num">37</span>
-          <span class="unit">Companies Served</span>
-        </div>
-        <div class="hero-kpi">
-          <span class="num">2,500</span>
-          <span class="unit">Training Participants</span>
-        </div>
-        <div class="hero-kpi">
-          <span class="num">300+</span>
-          <span class="unit">Webinar Attendees</span>
-        </div>
-        <div class="hero-kpi">
-          <span class="num">7</span>
-          <span class="unit">Industries Covered</span>
-        </div>
-      </div>
+  </div>
+</header>
+
+<!-- FIGURES -->
+<section class="figures">
+  <div class="row rvg">
+    <div class="fig"><div class="n">37<sub>+</sub></div><div class="l">Companies served (incl. listed enterprises)</div></div>
+    <div class="fig"><div class="n">2,500<sub>+</sub></div><div class="l">Training participants</div></div>
+    <div class="fig"><div class="n">300<sub>+</sub></div><div class="l">Webinar attendees</div></div>
+    <div class="fig"><div class="n">7<sub>+</sub></div><div class="l">Industries covered</div></div>
+  </div>
+</section>
+
+<!-- AI TOOLS -->
+<section class="tools">
+  <div class="container">
+    <div class="tools-lead">
+      <div class="t">Compatible with every<br>major AI service</div>
+      <div class="s">Multi-AI support, with no dependence on any single tool</div>
+    </div>
+    <div class="tools-grid">
+      <div class="tool-item"><img src="../assets/logos/claude.svg" alt="Claude"><span>Claude</span></div>
+      <div class="tool-item"><img src="../assets/logos/chatgpt.png" alt="ChatGPT"><span>ChatGPT</span></div>
+      <div class="tool-item"><img src="../assets/logos/copilot.webp" alt="Microsoft Copilot"><span>Microsoft Copilot</span></div>
+      <div class="tool-item"><img src="../assets/logos/gemini.svg" alt="Gemini"><span>Gemini</span></div>
+      <div class="tool-item"><img src="../assets/logos/perplexity.png" alt="Perplexity"><span>Perplexity</span></div>
+      <div class="tool-item"><img src="../assets/logos/notion.png" alt="Notion AI"><span>Notion AI</span></div>
+      <div class="tool-item"><img src="../assets/logos/github-copilot.png" alt="GitHub Copilot"><span>GitHub Copilot</span></div>
     </div>
   </div>
 </section>
 
-<!-- ===== 02: NEWS ===== -->
+<!-- NEWS -->
 <section class="news" id="news">
   <div class="container">
-    <h2>
-      <span class="label" style="margin:0">News</span>
-      Updates
-      <a href="news.html">View all &rarr;</a>
-    </h2>
-    <div class="news-list">
-      <div class="news-item">
-        <span class="news-date">2026.03.20</span>
-        <span class="news-tag">Announcement</span>
-        <a href="news/001.html" class="news-title">Published our Generative AI Use Cases White Paper</a>
-      </div>
-      <div class="news-item">
-        <span class="news-date">2026.03.14</span>
-        <span class="news-tag">Announcement</span>
-        <a href="news/002.html" class="news-title">Refreshed our service lineup</a>
-      </div>
-      <div class="news-item">
-        <span class="news-date">2026.02.28</span>
-        <span class="news-tag news-tag--event">Event</span>
-        <a href="news/003.html" class="news-title">Free webinar: "The Pitfalls of AI Adoption"</a>
-      </div>
-      <div class="news-item">
-        <span class="news-date">2025.05.07</span>
-        <span class="news-tag news-tag--event">Event</span>
-        <a href="news/004.html" class="news-title">CEO Furuno delivered a keynote seminar at Sakura Internet Inc.</a>
-      </div>
+    <div class="news-top rv">
+      <div class="sec-head"><span class="tag">News <span>Updates</span></span></div>
+      <a href="news.html">View all →</a>
+    </div>
+    <div class="news-list rvg">
+      <a href="news/001.html" class="news-row"><span class="d">2026.03.20</span><span class="tg">Announcement</span><span class="tt">We published our generative-AI use-case white paper</span></a>
+      <a href="news/002.html" class="news-row"><span class="d">2026.03.14</span><span class="tg">Announcement</span><span class="tt">We refreshed our service lineup</span></a>
+      <a href="news/003.html" class="news-row"><span class="d">2026.02.28</span><span class="tg ev">Event</span><span class="tt">Free webinar: "The Pitfalls of AI Adoption"</span></a>
+      <a href="news/004.html" class="news-row"><span class="d">2025.05.07</span><span class="tg ev">Event</span><span class="tt">CEO Furuno spoke as guest lecturer at an in-house seminar for Sakura Internet Inc.</span></a>
     </div>
   </div>
 </section>
 
-<!-- ===== 03: MACRO ===== -->
+<!-- MACRO -->
 <section class="macro" id="macro">
   <div class="container">
-    <span class="label label--light">Why Now</span>
-    <h2>The companies building AI<br>are now investing heavily in adoption support.</h2>
-    <p class="lead">
-      In February 2026, OpenAI announced plans to hire hundreds of deployment consultants and launched major partnerships with McKinsey, BCG, Accenture, and Capgemini. Anthropic committed $100M to build a partner network, mobilizing over 45,000 specialists.<br><br>
-      Why are the companies that build AI pouring billions into "adoption support"? The answer is clear. <strong>Tools alone do not drive enterprise AI adoption.</strong>
-    </p>
-
-    <div class="macro-stats">
-      <div class="macro-stat">
-        <span class="num">95%</span>
-        <span class="desc">of generative AI PoCs<br>stall at the pilot stage</span>
+    <div class="sec-head rv">
+      <span class="tag">Why Now <span>Why act now</span></span>
+      <h2>OpenAI and Anthropic alike.<br>The very companies that built AI are now moving into <span class="mk">adoption support</span>.</h2>
+    </div>
+    <div class="macro-impact rv">
+      <div class="mi-stat">
+        <div class="mi-n">95<span class="pct">%</span></div>
+        <div class="mi-cap">About 95% of enterprise generative-AI initiatives stall without ever producing results.<span class="src">Source: MIT, 2025</span></div>
       </div>
-      <div class="macro-stat">
-        <span class="num">74%</span>
-        <span class="desc">of AI investments show<br>no ROI after 2 years</span>
-      </div>
-      <div class="macro-stat">
-        <span class="num">1.8%</span>
-        <span class="desc">actual adoption rate<br>of Microsoft Copilot</span>
-      </div>
-      <div class="macro-stat">
-        <span class="num">67%</span>
-        <span class="desc">AI success rate for companies<br>that work with external partners</span>
+      <div class="mi-body">
+        <p>No one understands this reality better than the model developers themselves. In 2026, <strong>OpenAI is hiring hundreds of deployment consultants</strong> and has formed major partnerships with the likes of McKinsey, BCG, and Accenture. <strong>Anthropic, too, has partnered with leading consulting firms</strong> and is rapidly building out a large-scale partner network.</p>
+        <p>Why are the very creators of AI investing so heavily in "adoption support"? The answer is simple. <strong>The tools are already more than capable enough.</strong></p>
       </div>
     </div>
-
-
-    <div class="macro-bottom">
-      <p>AI tool capabilities are already world-class.<br>What is missing is the design that feeds your business context into AI.</p>
+    <div class="macro-bottom rv">
+      <p>What separates success from failure is not the performance of the AI.<br>It is the <span class="mk2">adoption design</span> that feeds your business context into AI.</p>
     </div>
   </div>
 </section>
 
-<!-- ===== 04: PROBLEM ===== -->
+<!-- PROBLEM -->
 <section class="problem" id="problem">
   <div class="container">
-    <span class="label">The Problem</span>
-    <h2>Does this sound familiar?</h2>
-    <div class="problem-grid">
-      <div class="problem-card">
-        <div class="icon">1</div>
-        <p>You subscribed to ChatGPT or Copilot,<br>but only a handful of employees actually use it.</p>
-      </div>
-      <div class="problem-card">
-        <div class="icon">2</div>
-        <p>The PoC is done.<br>But there is no clear path to company-wide rollout.</p>
-      </div>
-      <div class="problem-card">
-        <div class="icon">3</div>
-        <p>Leadership is pushing AI adoption,<br>but teams on the ground don't know where to start.</p>
-      </div>
-      <div class="problem-card">
-        <div class="icon">4</div>
-        <p>The tools are deployed.<br>But working hours have not decreased.</p>
-      </div>
+    <div class="sec-head rv"><span class="tag">The Problem <span>Challenges</span></span><h2>Does any of this sound familiar?</h2></div>
+    <div class="problem-grid rvg">
+      <div class="problem-row"><span class="pn">01</span><p>You signed up for ChatGPT or Copilot, but only a handful of employees actually use it.</p></div>
+      <div class="problem-row"><span class="pn">02</span><p>The PoC is complete — yet there is no clear path to company-wide rollout.</p></div>
+      <div class="problem-row"><span class="pn">03</span><p>Leadership is championing AI, but teams on the ground don't know where to start.</p></div>
+      <div class="problem-row"><span class="pn">04</span><p>The tools are deployed, but working hours haven't gone down.</p></div>
     </div>
-    <div class="problem-answer">
-      <p>In most cases, the root cause is not the tool itself.<br>It is that your organization's business knowledge, decision criteria, and workflows<br>have not been structured in a way AI can consume.<br>We call this <em>"Context Engineering."</em></p>
+    <div class="problem-answer rv">
+      <p>In most cases, the reason AI fails to deliver is not the tool. The root cause is that your organization's operational knowledge, decision criteria, and decision-making processes have never been put into a form AI can use. We call solving this <em>"context engineering."</em></p>
     </div>
   </div>
 </section>
 
-<!-- ===== 05: APPROACH ===== -->
+<!-- APPROACH -->
 <section class="approach" id="approach">
   <div class="container">
-    <span class="label">Our Approach</span>
-    <h2>Context Engineering &mdash; The Foundation of AI Adoption</h2>
-    <p class="lead">
-      Operations manuals, tacit knowledge, decision criteria, internal terminology, approval workflows.
-      These are all "context." Humans share them intuitively, but AI cannot consume them as-is.
-      TechWorker is a team of specialists that transforms this context into structures AI can understand and leverage.
-    </p>
-    <div class="strength-grid">
-      <div class="strength-card">
-        <div class="num">01</div>
-        <h3>Deep Expertise in<br>Context Engineering</h3>
-        <p>We have developed a proprietary methodology for transforming business workflows, knowledge, and decision-making into AI-ready structures.</p>
-      </div>
-      <div class="strength-card">
-        <div class="num">02</div>
-        <h3>Starting at JPY 300K/mo.<br>Flexible contracts.</h3>
-        <p>Scale up only after you see results. No large upfront investment required. Our engagement model is designed to minimize risk.</p>
-      </div>
-      <div class="strength-card">
-        <div class="num">03</div>
-        <h3>37 Companies, 2,500 People.<br>Proven track record.</h3>
-        <p>Our framework delivers results across industries: pharmaceuticals, construction, chemicals, food & beverage, IT, entertainment, and more.</p>
-      </div>
+    <div class="sec-head rv">
+      <span class="tag">Our Approach <span>Our strengths</span></span>
+      <h2>Context engineering is<br>the foundation of the AI era.</h2>
+      <p class="lead">Operations manuals, tacit knowledge, decision criteria, internal terminology, approval workflows — these are all "context." People share them naturally with one another, but you cannot hand them to AI as-is. We are a team of specialists who shape that context into a form AI can understand and put to work.</p>
+    </div>
+    <div class="approach-grid rvg">
+      <div class="approach-col"><div class="an">01</div><h3>Deep expertise in context engineering</h3><p>A proprietary method for shaping operational knowledge, decision criteria, and unwritten rules into a form AI can use. Before choosing a tool, we start with the context.</p></div>
+      <div class="approach-col"><div class="an">02</div><h3>End-to-end support for major AI tools, from rollout to adoption</h3><p>For Microsoft Copilot, Claude Code, ChatGPT, Gemini, and more, we handle everything from tool selection and setup to security design and lasting adoption. We are not tied to any single tool.</p></div>
+      <div class="approach-col"><div class="an">03</div><h3>A proven track record across 37 companies and 2,500 professionals</h3><p>A versatile framework that has delivered results regardless of industry — pharmaceuticals, construction, chemicals, food, IT, entertainment, and beyond.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ===== 06: SERVICES ===== -->
-<section class="services" id="services">
+<!-- RESULTS STATEMENT + CASE -->
+<section class="results-st" id="results">
   <div class="container">
-    <span class="label">Services</span>
-    <h2>AI Adoption Programs</h2>
-    <p class="lead">From deploying individual tools to designing organization-wide AI strategy. Three programs tailored to your stage of adoption.</p>
-
-    <div class="service-cards">
-      <div class="service-card">
-        <div class="service-card-header">
-          <div class="program-num">Program 01</div>
-          <h3>AI Quick Start:<br>Transform Your Workflows</h3>
-          <p class="tagline">Build a custom AI connected to your internal data and improve multiple workflows in 3 months.</p>
-        </div>
-        <div class="service-card-body">
-          <div class="service-meta"><span class="key">For</span><span class="val">SMBs & Mid-market (Executives / Dept. Heads)</span></div>
-          <div class="service-meta"><span class="key">Scope</span><span class="val">AI workflow design per business function / Internal data integration</span></div>
-          <div class="service-meta"><span class="key">Duration</span><span class="val">3 months minimum</span></div>
-          <div class="service-meta"><span class="key">Monthly</span><span class="val">From JPY 300K</span></div>
-          <div class="service-card-quote">"Prove AI's ROI on the workflows that matter most."</div>
-        </div>
+    <div class="rv"><span class="tag">Results <span>Case studies</span></span>
+    <h2>37 companies, 2,500 professionals.<br>We have delivered <span class="mk">results</span> across every industry.</h2></div>
+  </div>
+  <div class="container hcase">
+    <div class="hcase-top rv">
+      <div class="hcase-num">
+        <div class="s">Ideation Time</div>
+        <div class="big"><b>1</b><i>hour</i></div>
+        <div class="desc">From idea generation to convergence, fully completed</div>
       </div>
-
-      <div class="service-card">
-        <div class="service-card-header">
-          <div class="program-num">Program 02</div>
-          <h3>Run Your Department<br>Entirely on AI</h3>
-          <p class="tagline">Embed AI into your department's workflows and achieve lasting adoption over 6 months.</p>
-        </div>
-        <div class="service-card-body">
-          <div class="service-meta"><span class="key">For</span><span class="val">Mid-market (Executives / DX Leads / Dept. Heads)</span></div>
-          <div class="service-meta"><span class="key">Scope</span><span class="val">Department-wide AI deployment / Data structuring / Workflow redesign</span></div>
-          <div class="service-meta"><span class="key">Duration</span><span class="val">6 months+</span></div>
-          <div class="service-meta"><span class="key">Monthly</span><span class="val">From JPY 500K</span></div>
-          <div class="service-card-quote">"The data advantage is irreversible. In six months, competitors can't catch up."</div>
-        </div>
+      <div class="hcase-meta">
+        <div class="mtag"><span class="badge">PICKUP</span><span class="ind">Chemicals / Materials</span></div>
+        <h3>Reinventing new-materials ideation</h3>
+        <div class="co">TSE Prime-listed diversified chemical manufacturer</div>
       </div>
-
-      <div class="service-card">
-        <div class="service-card-header">
-          <div class="program-num">Program 03</div>
-          <h3>Transform Your Entire<br>Organization with AI</h3>
-          <p class="tagline">Deploy AI department by department and build a company-wide AI-driven operating model.</p>
-        </div>
-        <div class="service-card-body">
-          <div class="service-meta"><span class="key">For</span><span class="val">Listed / Enterprise (C-suite / DX Division / Dept. Heads)</span></div>
-          <div class="service-meta"><span class="key">Scope</span><span class="val">Department-level AI rollout plans / Phased implementation / KPI alignment</span></div>
-          <div class="service-meta"><span class="key">Duration</span><span class="val">3 months+ (PoC to Full Contract)</span></div>
-          <div class="service-meta"><span class="key">Pricing</span><span class="val">Contact us</span></div>
-          <div class="service-card-quote">"Your strategic partner for going all-in on AI."</div>
-        </div>
+    </div>
+    <div class="hcase-ba rv">
+      <div>
+        <div class="col-l">Before</div>
+        <p>Finding applications for new materials depended on researchers' experience and intuition — a success rate of just 3 in 1,000. Combining speed and scale was nearly impossible.</p>
       </div>
+      <div>
+        <div class="col-l aft">After</div>
+        <ul>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Established a method that takes ideation from generation to convergence in one hour</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>A business-model patent application is now pending</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>AI surfaced new applications the company could not have reached on its own</li>
+        </ul>
+      </div>
+    </div>
+    <div class="hcase-others rv">
+      <div class="ogrid">
+        <a href="cases.html" class="ocard"><span class="oi">Pharma / Healthcare</span><strong>Major cut in research outsourcing costs</strong><span class="om">Millions of yen saved per year</span></a>
+        <a href="cases.html" class="ocard"><span class="oi">IT / Cloud</span><strong>Sakura Internet — company-wide AI training for 300 staff</strong><span class="om">300 people using AI independently</span></a>
+        <a href="cases.html" class="ocard"><span class="oi">Construction / Real Estate</span><strong>Company-wide AI adoption support</strong><span class="om">Phased rollout across multiple divisions</span></a>
+      </div>
+      <div class="more"><a href="cases.html" class="btn btn--ghost">View more case studies <i>→</i></a></div>
     </div>
   </div>
 </section>
 
-<!-- ===== 07: RESULTS ===== -->
-<section class="results" id="results">
+<!-- VOICE / CLIENTS -->
+<section class="voice" id="voice">
   <div class="container">
-    <span class="label label--light">Results</span>
-    <h2>37 companies. 2,500 professionals.<br>Proven results across industries.</h2>
-
-    <div class="results-kpi">
-      <div class="results-kpi-card">
-        <span class="num">37+</span>
-        <span class="unit">Companies Served</span>
-      </div>
-      <div class="results-kpi-card">
-        <span class="num">2,500+</span>
-        <span class="unit">Training Participants</span>
-      </div>
-      <div class="results-kpi-card">
-        <span class="num">300+</span>
-        <span class="unit">Webinar Attendees</span>
-      </div>
-      <div class="results-kpi-card">
-        <span class="num">7+</span>
-        <span class="unit">Industries Covered</span>
-      </div>
+    <div class="sec-head rv"><span class="tag">Voice <span>Client voices</span></span><h2>Real voices from the field.</h2></div>
+    <div class="clients rv">
+      <span class="clients-label">Client</span>
+      <span class="client-name">Sakura Internet Inc.</span>
+      <span class="clients-more">…and 37 companies in total, including publicly listed enterprises, that we have supported.</span>
     </div>
-
-    <div class="case-grid">
-      <div class="case-card">
-        <div class="industry">IT / Cloud</div>
-        <h3>Sakura Internet, Inc.</h3>
-        <p>Delivered generative AI training to all 300 employees. Designed the program so every team member understands how to apply AI to their own workflows.</p>
-      </div>
-      <div class="case-card">
-        <div class="industry">Chemicals / Materials (TSE Prime Listed)</div>
-        <h3>New Materials AI Ideation</h3>
-        <p>Integrated AI into the R&D process. Redesigned the ideation workflow for new materials, resulting in patent applications.</p>
-      </div>
-      <div class="case-card">
-        <div class="industry">Construction / Real Estate (TSE Prime Listed)</div>
-        <h3>Company-wide AI Adoption</h3>
-        <p>Providing ongoing support for multi-department AI deployment. Partnering to achieve lasting AI adoption across the entire organization.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 08: FLOW ===== -->
-<section class="flow" id="flow">
-  <div class="container">
-    <span class="label">Flow</span>
-    <h2>How It Works</h2>
-    <div class="flow-steps">
-      <div class="flow-step">
-        <div class="step-num">1</div>
-        <h3>Free Consultation</h3>
-        <p>A 30-minute call to<br>understand your current challenges</p>
-      </div>
-      <div class="flow-step">
-        <div class="step-num">2</div>
-        <h3>Assessment & Proposal</h3>
-        <p>We diagnose your AI readiness<br>and recommend the right program</p>
-      </div>
-      <div class="flow-step">
-        <div class="step-num">3</div>
-        <h3>Contract & Kickoff</h3>
-        <p>Flexible monthly engagement<br>starting at JPY 300K/mo</p>
-      </div>
-      <div class="flow-step">
-        <div class="step-num">4</div>
-        <h3>Deploy & Support</h3>
-        <p>From Context Engineering<br>to adoption support, end-to-end</p>
-      </div>
-      <div class="flow-step">
-        <div class="step-num">5</div>
-        <h3>Measure & Scale</h3>
-        <p>KPI-driven impact assessment<br>and roadmap for next steps</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 09: MESSAGE ===== -->
-<section class="message" id="message">
-  <div class="container">
-    <div class="message-photo"><img src="../assets/ceo-portrait.jpg" alt="Kotaro Furuno - CEO, TechWorker Inc." style="width:100%;height:100%;object-fit:cover;object-position:50% 30%;transform:scale(2);transform-origin:50% 30%;border-radius:12px;"></div>
-    <div class="message-text">
-      <span class="label">Message</span>
-      <h2>Kotaro Furuno</h2>
-      <p class="role">CEO, TechWorker Inc.　<a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" style="color:var(--tw-electric);text-decoration:none;font-weight:700;font-size:13px;"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" style="vertical-align:-1px;margin-right:2px;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a></p>
-      <blockquote>
-        Generative AI is evolving every day.<br>Yet few companies are truly leveraging it in their day-to-day operations.<br><br>
-        The reason is simple.<br>Business knowledge, decision criteria, and unwritten rules &mdash; the organizational "context" &mdash; have not been structured in a way AI can consume.<br><br>
-        <strong>We specialize in this "Context Engineering" and have supported over 37 companies &mdash; including publicly listed enterprises &mdash; and 2,500 professionals.</strong><br><br>
-        We are not a tool vendor.<br>Our job is to create the conditions where AI fundamentally transforms how your business operates.
+    <div class="voice-grid rvg">
+      <blockquote class="voice-card">
+        <p>The search for new-material applications used to rely on experience and intuition; now we get multiple ideas in an hour. The breadth of thinking we could never reach on our own has clearly expanded.</p>
+        <footer>
+          <div class="v-person"><span class="v-avatar">C</span><div><span class="vrole">Manager, R&D Division</span><span class="vco">TSE Prime-listed diversified chemical manufacturer</span></div></div>
+          <span class="v-service"><b>Engagement</b>: Generative-AI consulting (R&D)</span>
+        </footer>
+      </blockquote>
+      <blockquote class="voice-card">
+        <p>Market research we used to outsource is now something we can run in-house. Outsourcing costs dropped, but more than that, the very speed of our decision-making has changed.</p>
+        <footer>
+          <div class="v-person"><span class="v-avatar">P</span><div><span class="vrole">DX Promotion Dept.</span><span class="vco">Major foreign-affiliated pharmaceutical company</span></div></div>
+          <span class="v-service"><b>Engagement</b>: Generative-AI consulting + in-house training</span>
+        </footer>
+      </blockquote>
+      <blockquote class="voice-card">
+        <p>They helped us untangle the personalized, scattered decision criteria and operational knowledge, one piece at a time, into a form AI can use. With our once-fragmented assumptions aligned, our teams now operate from the same page — and that, above all, is the real value.</p>
+        <footer>
+          <div class="v-person"><span class="v-avatar">M</span><div><span class="vrole">General Manager, Corporate Planning</span><span class="vco">Mid-sized manufacturer</span></div></div>
+          <span class="v-service"><b>Engagement</b>: Generative-AI consulting (context engineering)</span>
+        </footer>
       </blockquote>
     </div>
   </div>
 </section>
 
-<!-- ===== 10: FAQ ===== -->
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="sec-head rv"><span class="tag">Services <span>Services</span></span><h2>What we do</h2><p class="lead">We connect generative AI to results for your business.</p></div>
+    <div class="svc-overview rv">
+      <div class="sn">01</div>
+      <h3>Generative-AI consulting</h3>
+      <p>Hands-on support for your AI adoption — from context engineering and workflow design to lasting adoption across your organization, all in one engagement.</p>
+      <a href="#programs">See program details →</a>
+    </div>
+    <span class="programs-label" id="programs">Generative-AI consulting — program details</span>
+    <div class="svc-cards rvg">
+      <div class="svc-c">
+        <div class="pnum">Program 01</div>
+        <h3>AI Quick Start: transform your workflows first</h3>
+        <p class="tl">A custom, company-specific AI connected to your internal data, improving multiple workflows in three months.</p>
+        <div class="svc-meta"><span class="k">For</span><span class="v">SMBs to mid-market (executives / department heads)</span></div>
+        <div class="svc-meta"><span class="k">Scope</span><span class="v">AI workflow design per function / internal data integration</span></div>
+        <div class="svc-meta"><span class="k">Duration</span><span class="v">3 months minimum</span></div>
+        <div class="q">"We prove AI's return on investment on the work in front of you first."</div>
+      </div>
+      <div class="svc-c">
+        <div class="pnum">Program 02</div>
+        <h3>Run your whole department on AI</h3>
+        <p class="tl">Embed AI-powered workflows department by department, with lasting adoption built over six months.</p>
+        <div class="svc-meta"><span class="k">For</span><span class="v">Mid-market (executives / DX leads / department heads)</span></div>
+        <div class="svc-meta"><span class="k">Scope</span><span class="v">Department-level AI rollout / internal data structuring / workflow redesign</span></div>
+        <div class="svc-meta"><span class="k">Duration</span><span class="v">6 months+</span></div>
+        <div class="q">"The data advantage is irreversible. In six months, competitors can't catch up."</div>
+      </div>
+      <div class="svc-c">
+        <div class="pnum">Program 03</div>
+        <h3>Adoption design to make your whole company AI-driven</h3>
+        <p class="tl">Roll out AI department by department to build a company-wide, AI-driven operating model.</p>
+        <div class="svc-meta"><span class="k">For</span><span class="v">Listed / large enterprises (C-suite / DX division heads / department heads)</span></div>
+        <div class="svc-meta"><span class="k">Scope</span><span class="v">Department-level rollout plans / phased implementation / alignment to business KPIs</span></div>
+        <div class="svc-meta"><span class="k">Duration</span><span class="v">3 months+ (PoC → full contract)</span></div>
+        <div class="q">Your design partner for going all-in on AI across the entire company.</div>
+      </div>
+    </div>
+    <div class="svc-consult rv">
+      <div>
+        <h3>The right plan depends on where your company stands.</h3>
+        <p>Pricing, timelines, and approach all start with a free consultation. We listen to your current challenges and map out the best way to begin, on the spot. Even exploratory inquiries are welcome.</p>
+      </div>
+      <a href="contact.html" class="btn">Book a free consultation <i>→</i></a>
+    </div>
+  </div>
+</section>
+
+<!-- FLOW -->
+<section class="flow" id="flow">
+  <div class="container">
+    <div class="sec-head rv"><span class="tag">Flow <span>How it works</span></span><h2>How it works</h2></div>
+    <div class="flow-steps rvg">
+      <div class="flow-step"><div class="sn">1</div><h3>Free consultation</h3><p>A 30-minute call to understand your current challenges</p></div>
+      <div class="flow-step"><div class="sn">2</div><h3>Assessment &amp; proposal</h3><p>We assess your AI-adoption stage and recommend the right program</p></div>
+      <div class="flow-step"><div class="sn">3</div><h3>Contract &amp; kickoff</h3><p>We start flexibly, tailored to your needs</p></div>
+      <div class="flow-step"><div class="sn">4</div><h3>Rollout &amp; partnership</h3><p>End-to-end, from context engineering to lasting adoption</p></div>
+      <div class="flow-step"><div class="sn">5</div><h3>Measure &amp; scale</h3><p>We measure impact against KPIs and decide the next steps</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MESSAGE (CEO) -->
+<section class="person" id="message">
+  <div class="container rv">
+    <div class="p-photo"><img src="../assets/ceo-portrait.jpg" alt="Kotaro Furuno - CEO, TechWorker Inc." style="object-position:50% 30%;transform:scale(2);transform-origin:50% 30%;"></div>
+    <div class="p-text">
+      <span class="tag">Message <span>From our CEO</span></span>
+      <h2>Kotaro Furuno</h2>
+      <p class="role">CEO, TechWorker Inc. <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" style="vertical-align:-1px;margin-right:2px;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a></p>
+      <blockquote>
+        Generative AI improves every single day. Yet few companies have truly learned to put it to work in their operations.<br><br>
+        The reason is simple. A company's operational knowledge, decision criteria, and unwritten rules — its "context" — have never been organized into a form that can be handed to AI.<br><br>
+        <strong>We specialize in this context engineering, and we have supported 37 companies, including publicly listed enterprises, and 2,500 professionals.</strong><br><br>
+        We are not a company that sells AI tools. Our job is to create the conditions in which the work itself is fundamentally transformed by AI.
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- DIRECTOR -->
+<section class="person rev">
+  <div class="container rv">
+    <div class="p-photo"><img src="../assets/director-yamamoto.jpg" alt="Toshiyuki Yamamoto - Director, TechWorker Inc."></div>
+    <div class="p-text">
+      <span class="tag">Director <span>Director</span></span>
+      <h2>Toshiyuki Yamamoto</h2>
+      <p class="role">Director, TechWorker Inc.<br>Founder of Chatwork Inc. / CEO of Power Angels / Representative Director, Japan Angel Investors Association</p>
+      <blockquote>
+        I founded Chatwork, an IT tool, and set out to bring it to non-IT industries. In 2018 I handed the CEO role to my younger brother and co-founder, and the following year, in 2019, we listed on the Tokyo Stock Exchange Mothers market (with a market capitalization of over ¥50 billion).<br><br>
+        That experience taught me one thing for certain. <strong>No matter how excellent the technology, it will never be used inside a company without someone to connect it to the real context of the work on the ground.</strong><br><br>
+        The same thing is now happening with generative AI, a new technology. TechWorker will serve as that bridge, advancing AI adoption across Japanese enterprises.
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
 <section class="faq" id="faq">
   <div class="container">
-    <span class="label">FAQ</span>
-    <h2>Frequently Asked Questions</h2>
-    <div class="faq-list">
-      <div class="faq-item">
-        <div class="q">Most of our employees have no AI expertise. Is that a problem?</div>
-        <div class="a">Not at all. We provide end-to-end support from training to workflow implementation. No prior AI knowledge is required.</div>
-      </div>
-      <div class="faq-item">
-        <div class="q">Which AI tools do you support?</div>
-        <div class="a">We support all major platforms including Claude, ChatGPT, and Microsoft Copilot. We are tool-agnostic.</div>
-      </div>
-      <div class="faq-item">
-        <div class="q">What is the minimum contract period?</div>
-        <div class="a">Tool Deployment starts from 1 month. Adoption Consulting engagements start from 6 months.</div>
-      </div>
-      <div class="faq-item">
-        <div class="q">Are government subsidies available?</div>
-        <div class="a">Our programs qualify for Japan's Human Resource Development Subsidy (DX Reskilling Course). We have experience helping clients apply. Contact us for details.</div>
-      </div>
-      <div class="faq-item">
-        <div class="q">Can you work with large enterprises?</div>
-        <div class="a">Absolutely. Our client portfolio includes TSE Prime-listed companies among our 37 engagements. We handle organization-wide design and deployment.</div>
-      </div>
+    <div class="sec-head rv"><span class="tag">FAQ <span>Frequently asked questions</span></span><h2>Frequently asked questions</h2></div>
+    <div class="faq-list rv">
+      <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false">Most of our employees have no AI expertise. Is that a problem?<span class="ar"></span></button><div class="faq-a"><p>Not at all. We support you end-to-end, from training through to workflow implementation. No specialist knowledge is required.</p></div></div>
+      <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false">Which AI tools do you support?<span class="ar"></span></button><div class="faq-a"><p>We support all major tools, including Claude, ChatGPT, and Microsoft Copilot. We are not tied to any single tool.</p></div></div>
+      <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false">What is the minimum contract period?<span class="ar"></span></button><div class="faq-a"><p>Adoption support starts from three months, and hands-on consulting engagements start from six months.</p></div></div>
+      <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false">Can we use government subsidies?<span class="ar"></span></button><div class="faq-a"><p>Our programs qualify for Japan's Human Resource Development Subsidy (DX Reskilling Course). We have a track record of helping clients apply, so please feel free to ask.</p></div></div>
+      <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false">Can you work with large enterprises?<span class="ar"></span></button><div class="faq-a"><p>Yes. Our 37 engagements include TSE Prime-listed companies, and we handle organization-wide design and rollout.</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- ===== 11: COMPANY ===== -->
+<!-- COMPANY -->
 <section class="company" id="company">
   <div class="container">
-    <span class="label">Company</span>
-    <h2>Company Overview</h2>
-    <table class="company-table">
-      <tr><th>Company Name</th><td>TechWorker Inc.</td></tr>
+    <div class="sec-head rv"><span class="tag">Company <span>Company overview</span></span><h2>Company overview</h2></div>
+    <table class="company-table rv">
+      <tr><th>Company name</th><td>TechWorker Inc.</td></tr>
       <tr><th>CEO</th><td>Kotaro Furuno</td></tr>
       <tr><th>Founded</th><td>December 2023</td></tr>
-      <tr><th>Capital</th><td>JPY 500,000</td></tr>
-      <tr><th>Address</th><td>〒169-0051<br>東京都新宿区西早稲田一丁目22番3号</td></tr>
-      <tr><th>Business</th><td>Enterprise Generative AI Consulting<br>Generative AI Training & Talent Development<br>Microsoft 365 Copilot Adoption Support<br>AI Custom Development</td></tr>
-      <tr><th>Corporate No.</th><td>9011101105629</td></tr>
+      <tr><th>Address</th><td>1-22-3 Nishiwaseda, Shinjuku-ku, Tokyo</td></tr>
     </table>
+    <div class="more rv"><a href="company.html" class="btn btn--ghost">Learn more <i>→</i></a></div>
   </div>
 </section>
 
-<!-- ===== 12: FINAL CTA ===== -->
-<section class="final-cta" id="contact">
+<!-- RESOURCES BAND -->
+<section class="resources-band" id="resources-dl">
   <div class="container">
-    <h2>Is your AI adoption stalled?</h2>
-    <p>Let us start with a 30-minute conversation.</p>
-    <div class="btn-group">
-      <a href="contact.html" class="btn btn--white">Book a Free Consultation</a>
-      <a href="contact.html?type=document" class="btn" style="background:transparent;border:2px solid var(--tw-paper);">Request Materials</a>
+    <div class="sec-head rv">
+      <span class="tag">Free Resources <span>Free resources</span></span>
+      <h2>We share field-tested insights, free of charge.</h2>
+    </div>
+    <div class="rb-grid rvg">
+      <a href="contact.html?type=document" class="rb-card" onclick="fbq('track','Lead');">
+        <span class="rb-kind">Use-case report</span>
+        <h3>2026 Generative-AI Use-Case Report</h3>
+        <p>A single report that answers "how did other companies actually get results?" with concrete numbers — ready to use as evidence for internal proposals and approvals.</p>
+        <span class="rb-inside-label">What's inside</span>
+        <ul class="rb-inside"><li>Real examples by industry — chemicals, pharma, IT, construction, and more</li><li>The "challenge → action → result (with numbers)" of each case</li><li>The common patterns shared by companies that get results</li></ul>
+        <span class="rb-dl">Request for free <i>↓</i></span>
+      </a>
+      <a href="contact.html?type=document" class="rb-card" onclick="fbq('track','Lead');">
+        <span class="rb-kind">Security</span>
+        <h3>Claude Code for the enterprise:<br>a practical security &amp; setup guide</h3>
+        <p>A report to clear the "we want to use it, but IT keeps blocking it" hurdle. We lay out the design for safe, company-wide rollout in the language of management.</p>
+        <span class="rb-inside-label">What's inside</span>
+        <ul class="rb-inside"><li>The three biggest generative-AI risks, and how to counter them</li><li>Five principles for a secure setup</li><li>A 10-point checklist before company-wide rollout</li></ul>
+        <span class="rb-dl">Request for free <i>↓</i></span>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
+<!-- FINAL CTA -->
+<section class="final" id="cta">
+  <div class="container">
+    <h2>Get your AI to the point where it delivers.</h2>
+    <p>We don't stop at deploying the tools. With methods honed across 37 companies and 2,500 professionals,<br>we partner with you in earnest until your teams are producing real results.</p>
+    <div class="actions">
+      <a href="contact.html" class="btn btn--on-blue">Book a free consultation</a>
+      <a href="contact.html?type=document" class="btn btn--on-blue-ghost" onclick="fbq('track','Lead');">Request the 2026 AI Use-Case Report</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
   <div class="container">
     <div class="footer-inner">
       <div class="footer-brand">
-        <div class="logo">Tech<span>Worker</span></div>
-        <p>Enterprise Generative AI Consulting<br>TechWorker Inc.</p>
-        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:13px;font-weight:700;color:var(--tw-slate);text-decoration:none;transition:color .2s;"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+        <div class="logo">Tech<i>Worker</i></div>
+        <p>Enterprise generative-AI consulting<br>TechWorker Inc.</p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
       </div>
       <div class="footer-col">
-        <h4>Menu</h4>
+        <h4>Services</h4>
+        <a href="index.html#services">Generative-AI consulting</a>
+      </div>
+      <div class="footer-col">
+        <h4>Site</h4>
         <a href="news.html">News</a>
-        <a href="#approach">Our Strengths</a>
-        <a href="#services">Services</a>
-        <a href="#results">Results</a>
-        <a href="#company">Company</a>
+        <a href="cases.html">Case Studies</a>
+        <a href="company.html">Company</a>
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
         <a href="contact.html">Free Consultation</a>
         <a href="contact.html?type=document">Request Materials</a>
-        <p style="margin-top:12px;">〒169-0051<br>東京都新宿区西早稲田一丁目22番3号</p>
+        <a href="privacy.html">Privacy Policy</a>
+        <p>1-22-3 Nishiwaseda<br>Shinjuku-ku, Tokyo 169-0051</p>
       </div>
     </div>
-  </div>
-  <div class="container">
-    <p class="copyright">&copy; 2026 TechWorker Inc. All rights reserved.</p>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
   </div>
 </footer>
 
+<script>
+/* nav shadow on scroll */
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>40);},{passive:true});
+
+/* mobile menu */
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(open){
+    document.body.classList.toggle('menu-open',open);
+    hamb.setAttribute('aria-expanded',open?'true':'false');
+    hamb.setAttribute('aria-label',open?'Close menu':'Open menu');
+    mmenu.setAttribute('aria-hidden',open?'false':'true');
+    document.body.style.overflow=open?'hidden':'';
+  }
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+  matchMedia('(min-width:861px)').addEventListener('change',function(e){if(e.matches)setMenu(false);});
+})();
+
+/* FAQ accordion (keyboard-accessible buttons) */
+document.querySelectorAll('.faq-item').forEach(function(item){
+  var q=item.querySelector('.faq-q'),a=item.querySelector('.faq-a');
+  q.addEventListener('click',function(){
+    var open=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(o){o.classList.remove('open');o.querySelector('.faq-a').style.maxHeight='0';o.querySelector('.faq-q').setAttribute('aria-expanded','false');});
+    if(!open){item.classList.add('open');a.style.maxHeight=(a.scrollHeight+24)+'px';q.setAttribute('aria-expanded','true');}
+  });
+});
+
+addEventListener('resize',function(){var o=document.querySelector('.faq-item.open .faq-a');if(o)o.style.maxHeight=(o.scrollHeight+24)+'px';},{passive:true});
+
+/* scroll reveal */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv,.rvg').forEach(function(el){io.observe(el);});
+
+/* count-up for figures */
+function countUp(el){
+  var raw=el.textContent.trim();var suf='';var t=raw;
+  if(t.indexOf('%')>-1){suf='%';t=t.replace('%','');}
+  var dec=t.indexOf('.')>-1;
+  var target=parseFloat(t.replace(/,/g,''));if(isNaN(target))return;
+  var hasPlus=el.querySelector('sub')?'+':'';
+  var start=null,dur=1500;
+  function step(ts){if(!start)start=ts;var p=Math.min((ts-start)/dur,1);var e=1-Math.pow(1-p,3);var v=e*target;
+    var out=dec?v.toFixed(1):Math.round(v).toLocaleString();
+    el.innerHTML=out+suf+(hasPlus?'<sub>+</sub>':'');
+    if(p<1)requestAnimationFrame(step);}
+  requestAnimationFrame(step);
+}
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){countUp(e.target);io2.unobserve(e.target);}});},{threshold:.6});
+  document.querySelectorAll('.fig .n').forEach(function(el){io2.observe(el);});
+}
+
+/* smooth anchor offset */
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var id=this.getAttribute('href');if(id==='#'||id.length<2)return;
+    var t=document.querySelector(id);if(!t)return;e.preventDefault();
+    scrollTo({top:t.getBoundingClientRect().top+scrollY-80,behavior:'smooth'});
+  });
+});
+</script>
 </body>
 </html>

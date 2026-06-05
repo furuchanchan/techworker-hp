@@ -1,156 +1,244 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="UTF-8">
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free webinar: The Pitfalls of AI Adoption — TechWorker</title>
-<meta name="description" content="TechWorker — 企業向け生成AIコンサルティング">
+<title>Free Webinar: The Pitfalls of AI Adoption — TechWorker</title>
+<meta name="description" content="A free webinar for companies that have adopted generative AI tools but aren't seeing results. We break down the most common failure patterns and how to solve them. Online, March 28, 2026.">
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
-<meta property="og:type" content="website">
+<link rel="canonical" href="https://techworker.co.jp/en/news/003.html">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Free Webinar: The Pitfalls of AI Adoption — TechWorker">
+<meta property="og:description" content="A free webinar on why adopting tools alone doesn't deliver results — and what to do about it.">
 <meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/en/news/003.html">
 <meta property="og:site_name" content="TechWorker">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Webinar: The Pitfalls of AI Adoption — TechWorker">
 <meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Noto+Sans+JP:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --tw-black: #0D1117;
-  --tw-paper: #F4F6F9;
-  --tw-electric: #005EFF;
-  --tw-electric-dark: #003DAA;
-  --tw-slate: #3C4B64;
-  --tw-emerald: #00B894;
-  --tw-violet: #7C3AED;
+/* ===== TOKENS ===== */
+:root{
+  --ink:#0D1117; --paper:#F4F6F9; --paper-2:#ECEFF3; --white:#FBFCFD;
+  --electric:#005EFF; --electric-dark:#003DAA;
+  --slate:#5A6677; --line:rgba(13,17,23,.12); --line-2:rgba(13,17,23,.20);
+  --emerald:#00B894; --violet:#7C3AED;
+  --jp:'IBM Plex Sans JP','IBM Plex Sans',system-ui,sans-serif;
+  --en:'IBM Plex Sans','IBM Plex Sans JP',system-ui,sans-serif;
 }
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; overflow-x: hidden; }
-body { overflow-x: hidden;
-  font-family: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
-  background: var(--tw-paper);
-  color: var(--tw-black);
-  line-height: 1.7;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-}
-.container { max-width: 1200px; margin: 0 auto; padding: 0 40px; width: 100%; }
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(244,246,249,.92); backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0,94,255,.08);
-  padding: 0 40px; height: 64px;
-  display: flex; align-items: center; justify-content: space-between;
-}
-nav .logo { font-size: 18px; font-weight: 800; color: var(--tw-black); text-decoration: none; }
-nav .logo span { color: var(--tw-electric); }
-nav ul { list-style: none; display: flex; gap: 32px; }
-nav ul a { font-size: 13px; font-weight: 600; color: var(--tw-slate); text-decoration: none; letter-spacing: .5px; transition: color .2s; }
-nav ul a:hover { color: var(--tw-electric); }
-nav .nav-cta { font-size: 13px; font-weight: 700; padding: 8px 24px; background: var(--tw-electric); color: var(--tw-paper); border-radius: 5px; text-decoration: none; transition: background .2s; }
-nav .nav-cta:hover { background: var(--tw-electric-dark); }
-nav .nav-right { display: flex; align-items: center; gap: 16px; }
-nav .lang-switch { font-size: 13px; font-weight: 700; color: var(--tw-slate); text-decoration: none; transition: color .2s; }
-nav .lang-switch:hover { color: var(--tw-electric); }
-nav .lang-current { font-size: 13px; font-weight: 700; color: var(--tw-electric); }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{overflow-x:hidden;scroll-behavior:smooth;}
+body{font-family:var(--jp);background:var(--paper);color:var(--ink);line-height:1.85;font-size:16px;-webkit-font-smoothing:antialiased;font-feature-settings:"palt" 1;overflow-x:hidden;}
+::selection{background:var(--electric);color:var(--paper);}
+a{color:inherit;}
+img{display:block;max-width:100%;}
 
-.article-header { padding: 120px 0 0; background: #fff; }
-.article-header .breadcrumb { font-size: 13px; color: var(--tw-slate); margin-bottom: 24px; padding-top: 20px; }
-.article-header .breadcrumb a { color: var(--tw-slate); text-decoration: none; transition: color .2s; }
-.article-header .breadcrumb a:hover { color: var(--tw-electric); }
-.article-header .breadcrumb .sep { margin: 0 8px; opacity: .4; }
-.article-header .breadcrumb .current { color: var(--tw-black); }
-.article-hero { width: 100%; aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden; margin: 24px 0 32px; }
-.article-hero .hero-bg { width: 100%; height: 100%; position: relative; }
-.hero-003 { background: linear-gradient(135deg, #00B894 0%, #006B52 60%, #0D1117 100%); }
-.hero-003::after { content: ''; position: absolute; top: 10%; left: 60%; width: 40%; height: 80%; border: 2px solid rgba(244,246,249,.1); border-radius: 4px; transform: rotate(15deg); }
-.article-meta { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
-.article-date { font-size: 13px; font-weight: 600; color: var(--tw-slate); }
-.news-tag { font-size: 11px; font-weight: 700; letter-spacing: 1px; padding: 4px 14px; border-radius: 100px; }
-.news-tag--event { background: rgba(0,184,148,.08); color: var(--tw-emerald); }
-.article-header h1 { font-size: clamp(28px, 3.5vw, 40px); font-weight: 800; line-height: 1.4; max-width: 800px; padding-bottom: 40px; }
+/* ===== SHARED ===== */
+.container{max-width:1280px;margin:0 auto;padding:0 48px;width:100%;}
+.tag{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--electric);display:inline-flex;align-items:center;gap:11px;padding-left:14px;border-left:3px solid var(--electric);}
+.tag span{color:var(--slate);font-weight:500;letter-spacing:.02em;text-transform:none;font-size:13px;}
+.tag.ev{color:var(--violet);border-left-color:var(--violet);}
+.btn{font-family:var(--jp);font-size:14.5px;font-weight:600;color:var(--paper);background:var(--electric);text-decoration:none;border-radius:5px;padding:15px 30px;display:inline-flex;align-items:center;gap:11px;transition:background .25s,transform .25s;border:none;cursor:pointer;}
+.btn:hover{background:var(--electric-dark);transform:translateY(-1px);}
+.btn i{font-style:normal;transition:transform .25s;}
+.btn:hover i{transform:translateX(4px);}
+.btn--ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line-2);}
+.btn--ghost:hover{background:transparent;border-color:var(--electric);color:var(--electric);}
+.btn--on-blue{background:var(--paper);color:var(--electric);}
+.btn--on-blue:hover{background:var(--white);}
+.btn--on-blue-ghost{background:transparent;color:var(--paper);border:1.5px solid rgba(244,246,249,.5);}
+.btn--on-blue-ghost:hover{background:rgba(244,246,249,.1);border-color:var(--paper);}
 
-.article-body-wrap { padding: 60px 0 48px; }
-.article-body { max-width: 760px; margin: 0 auto; }
-.article-body h2 { font-size: 20px; font-weight: 800; margin: 48px 0 16px; padding-left: 16px; border-left: 3px solid var(--tw-electric); }
-.article-body h2:first-child { margin-top: 0; }
-.article-body p { font-size: 15px; color: var(--tw-slate); line-height: 2; margin-bottom: 32px; }
-.article-body ul { margin: 0 0 32px 20px; font-size: 15px; color: var(--tw-slate); line-height: 2; }
-.article-body li { margin-bottom: 4px; }
-.article-body .info-box {
-  background: #fff; border-radius: 10px; padding: 28px 32px;
-  border: 1px solid rgba(0,94,255,.06); margin-bottom: 32px;
+/* ===== NAV ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:68px;background:rgba(244,246,249,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transition:box-shadow .3s,height .3s cubic-bezier(.2,.8,.2,1),background .3s;}
+nav.scrolled{box-shadow:0 1px 16px rgba(0,94,255,.06);height:58px;background:rgba(244,246,249,.92);}
+nav .logo{transition:font-size .3s cubic-bezier(.2,.8,.2,1);}
+nav.scrolled .logo{font-size:18px;}
+nav .logo{font-family:var(--en);font-weight:700;font-size:20px;letter-spacing:-.01em;text-decoration:none;color:var(--ink);}
+nav .logo i{font-style:normal;color:var(--electric);}
+nav ul{list-style:none;display:flex;gap:34px;}
+nav ul a{font-size:14px;font-weight:500;color:var(--ink);text-decoration:none;position:relative;}
+nav ul a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--electric);transition:width .28s cubic-bezier(.2,.8,.2,1);}
+nav ul a:hover::after,nav ul a.active::after{width:100%;}
+nav ul a.active{color:var(--electric);}
+nav .nav-right{display:flex;align-items:center;gap:18px;}
+nav .nav-cta{font-family:var(--jp);font-size:13.5px;font-weight:600;color:var(--paper);background:var(--electric);text-decoration:none;padding:10px 22px;border-radius:4px;transition:background .25s;}
+nav .nav-cta:hover{background:var(--electric-dark);}
+nav .nav-cta .short{display:none;}
+nav .lang{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.04em;}
+nav .lang a{color:var(--slate);text-decoration:none;}
+nav .lang .cur{color:var(--electric);}
+
+/* hamburger */
+.hamb{display:none;width:44px;height:44px;border:none;background:none;cursor:pointer;position:relative;margin-left:2px;}
+.hamb span{position:absolute;left:11px;width:22px;height:2px;background:var(--ink);transition:transform .3s,opacity .2s;}
+.hamb span:nth-child(1){top:15px;} .hamb span:nth-child(2){top:21px;} .hamb span:nth-child(3){top:27px;}
+body.menu-open .hamb span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+body.menu-open .hamb span:nth-child(2){opacity:0;}
+body.menu-open .hamb span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+.mmenu{position:fixed;inset:68px 0 0;z-index:45;background:var(--paper);transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);visibility:hidden;display:flex;flex-direction:column;padding:18px 24px 40px;}
+body.menu-open .mmenu{transform:none;visibility:visible;}
+.mmenu a{font-size:19px;font-weight:600;color:var(--ink);text-decoration:none;padding:20px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;}
+.mmenu a::after{content:"→";color:var(--electric);font-family:var(--en);}
+.mmenu .m-cta{margin-top:28px;background:var(--electric);color:var(--paper);justify-content:center;border-radius:5px;border:none;padding:17px;}
+.mmenu .m-cta::after{content:none;}
+.mmenu .m-lang{margin-top:auto;border:none;font-family:var(--en);font-size:13px;color:var(--slate);}
+.mmenu .m-lang::after{content:none;}
+
+/* ===== ARTICLE HEAD ===== */
+.art-head{max-width:1280px;margin:0 auto;padding:150px 48px 0;}
+.art-head .crumb{font-family:var(--en);font-size:12px;color:var(--slate);margin-bottom:40px;letter-spacing:.02em;}
+.art-head .crumb a{color:var(--slate);text-decoration:none;transition:color .2s;}
+.art-head .crumb a:hover{color:var(--electric);}
+.art-head .crumb .sep{margin:0 9px;opacity:.5;}
+.art-head .crumb .cur{color:var(--ink);}
+.art-head .a-meta{display:flex;align-items:center;gap:18px;margin:22px 0 18px;}
+.art-head .a-date{font-family:var(--en);font-size:14px;color:var(--slate);font-feature-settings:"tnum" 1;letter-spacing:.01em;}
+.art-head .a-cat{font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--electric);}
+.art-head .a-cat.ev{color:var(--violet);}
+.art-head h1{font-family:var(--jp);font-weight:700;font-size:clamp(28px,4vw,50px);line-height:1.34;letter-spacing:-.02em;max-width:24ch;}
+.art-rule{max-width:1280px;margin:46px auto 0;padding:0 48px;}
+.art-rule hr{border:none;border-top:1px solid var(--line);}
+
+/* ===== ARTICLE BODY ===== */
+.art-wrap{padding:54px 0 70px;}
+.art-body{max-width:760px;margin:0 auto;}
+.art-body p{font-size:16px;color:#28313f;line-height:2.05;margin-bottom:30px;}
+.art-body p:last-child{margin-bottom:0;}
+.art-body p strong{color:var(--ink);font-weight:600;}
+.art-body a{color:var(--electric);text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);transition:border-color .2s;}
+.art-body a:hover{border-color:var(--electric);}
+.art-body h2{font-family:var(--jp);font-weight:700;font-size:22px;line-height:1.5;letter-spacing:-.01em;margin:48px 0 18px;padding-left:16px;border-left:3px solid var(--electric);}
+.art-body h2:first-child{margin-top:0;}
+.art-body ul{list-style:none;margin:0 0 30px;}
+.art-body li{position:relative;font-size:16px;color:#28313f;line-height:1.95;padding:6px 0 6px 24px;}
+.art-body li::before{content:"";position:absolute;left:0;top:16px;width:7px;height:7px;background:var(--electric);border-radius:1px;}
+.art-body .info-box{margin:0 0 30px;border:1px solid var(--line);background:var(--white);border-radius:6px;padding:8px 28px;}
+.art-body .info-table{width:100%;border-collapse:collapse;}
+.art-body .info-table tr{border-bottom:1px solid var(--line);}
+.art-body .info-table tr:last-child{border-bottom:none;}
+.art-body .info-table th{text-align:left;font-size:13px;font-weight:600;color:var(--slate);padding:16px 18px 16px 0;width:118px;vertical-align:top;white-space:nowrap;}
+.art-body .info-table td{font-size:15px;color:var(--ink);padding:16px 0;line-height:1.7;}
+.art-body .quote-box{margin:0 0 30px;border-left:3px solid var(--electric);background:var(--paper-2);padding:24px 28px;border-radius:0 6px 6px 0;}
+.art-body .quote-box p{margin:0;font-family:var(--jp);font-weight:500;font-size:16px;line-height:1.95;color:var(--ink);}
+.art-body .a-link{font-size:14px;}
+
+/* article CTA */
+.art-cta{max-width:760px;margin:48px auto 0;background:var(--electric-dark);color:var(--paper);border-radius:8px;padding:40px 44px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;}
+.art-cta h3{font-family:var(--jp);font-weight:700;font-size:clamp(18px,2.2vw,24px);line-height:1.5;letter-spacing:-.01em;color:var(--paper);}
+.art-cta p{font-size:14px;color:rgba(244,246,249,.82);margin-top:10px;line-height:1.9;max-width:46ch;}
+.art-cta .btn{background:var(--paper);color:var(--electric);white-space:nowrap;}
+.art-cta .btn:hover{background:var(--white);}
+
+/* back to list */
+.back-list{max-width:760px;margin:46px auto 0;padding-top:32px;border-top:1px solid var(--line);}
+.back-list a{display:inline-flex;align-items:center;gap:9px;font-family:var(--jp);font-size:14.5px;font-weight:600;color:var(--electric);text-decoration:none;transition:gap .2s;}
+.back-list a:hover{gap:13px;}
+
+/* prev/next pager */
+.pager{max-width:760px;margin:0 auto;padding:40px 0;display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.pager-card{display:block;text-decoration:none;color:inherit;padding:26px 28px;background:var(--white);border:1px solid var(--line);border-radius:8px;transition:border-color .25s,transform .25s,box-shadow .25s;}
+.pager-card:hover{border-color:var(--electric);transform:translateY(-3px);box-shadow:0 14px 34px rgba(13,17,23,.07);}
+.pager-label{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--electric);display:block;margin-bottom:10px;}
+.pager-title{font-size:15px;font-weight:600;line-height:1.55;color:var(--ink);transition:color .2s;}
+.pager-card:hover .pager-title{color:var(--electric);}
+.pager-date{font-family:var(--en);font-size:12px;color:var(--slate);margin-top:9px;font-feature-settings:"tnum" 1;}
+.pager-next{text-align:right;}
+.pager-placeholder{visibility:hidden;}
+
+/* related */
+.related{padding:60px 0 96px;border-top:1px solid var(--line);}
+.related .container{max-width:1280px;}
+.related h2{font-family:var(--jp);font-weight:700;font-size:clamp(22px,2.6vw,30px);line-height:1.4;letter-spacing:-.02em;margin-top:18px;}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:40px;border-top:1px solid var(--line);}
+.related-card{display:block;text-decoration:none;color:inherit;padding:30px 28px 30px 0;border-bottom:1px solid var(--line);border-left:1px solid var(--line);padding-left:28px;transition:background .2s;}
+.related-card:first-child{border-left:none;padding-left:0;}
+.related-card:hover{background:var(--paper-2);}
+.related-card .rc-meta{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
+.related-card .rc-date{font-family:var(--en);font-size:13px;color:var(--slate);font-feature-settings:"tnum" 1;}
+.related-card .rc-cat{font-size:11px;font-weight:600;letter-spacing:.04em;color:var(--electric);}
+.related-card .rc-cat.ev{color:var(--violet);}
+.related-card .rc-title{font-size:15px;font-weight:600;line-height:1.6;color:var(--ink);transition:color .2s,transform .25s cubic-bezier(.2,.8,.2,1);}
+.related-card:hover .rc-title{color:var(--electric);transform:translateX(4px);}
+
+/* ===== FOOTER ===== */
+footer{background:var(--white);border-top:1px solid var(--line);padding:64px 0 40px;}
+.footer-inner{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;}
+.footer-brand .logo{font-family:var(--en);font-size:19px;font-weight:700;color:var(--ink);}
+.footer-brand .logo i{font-style:normal;color:var(--electric);}
+.footer-brand p{font-size:13px;color:var(--slate);line-height:1.7;margin-top:12px;}
+.footer-brand .x{display:inline-flex;align-items:center;gap:7px;margin-top:16px;font-size:13px;font-weight:600;color:var(--slate);text-decoration:none;}
+.footer-brand .x:hover{color:var(--electric);}
+.footer-col h4{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:16px;}
+.footer-col a{display:block;font-size:13px;color:var(--slate);text-decoration:none;margin-bottom:10px;}
+.footer-col a:hover{color:var(--electric);}
+.footer-col p{font-size:13px;color:var(--slate);line-height:1.7;margin-top:12px;}
+.copyright{text-align:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-family:var(--en);font-size:12px;color:var(--slate);}
+
+/* ===== reveal ===== */
+html.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+html.js .rv.show{opacity:1;transform:none;}
+html.js .rvg>*{opacity:0;transform:translateY(18px);}
+html.js .rvg.show>*{opacity:1;transform:none;transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1);}
+html.js .rvg.show>*:nth-child(1){transition-delay:.04s;}
+html.js .rvg.show>*:nth-child(2){transition-delay:.12s;}
+html.js .rvg.show>*:nth-child(3){transition-delay:.20s;}
+
+/* ===== focus visibility ===== */
+a:focus-visible,button:focus-visible{outline:2px solid var(--electric);outline-offset:3px;border-radius:3px;}
+:focus:not(:focus-visible){outline:none;}
+
+/* ===== reduced motion ===== */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  html.js .rv{opacity:1;transform:none;transition:none;}
+  html.js .rvg>*{opacity:1;transform:none;}
+  *{animation-duration:.001ms!important;transition-duration:.001ms!important;}
 }
-.article-body .info-table {
-  width: 100%; border-collapse: collapse;
-}
-.article-body .info-table th {
-  text-align: left; padding: 12px 24px 12px 0;
-  font-size: 14px; font-weight: 700; color: var(--tw-slate);
-  white-space: nowrap; width: 120px; vertical-align: top;
-  border-bottom: 1px solid rgba(0,94,255,.06);
-}
-.article-body .info-table td {
-  padding: 12px 0; font-size: 14px; line-height: 1.8; color: var(--tw-slate);
-  border-bottom: 1px solid rgba(0,94,255,.06);
+
+/* ===== scrollbar ===== */
+@media (pointer:fine){
+  *{scrollbar-width:thin;scrollbar-color:#c3ccd8 transparent;}
+  ::-webkit-scrollbar{width:12px;height:12px;}
+  ::-webkit-scrollbar-thumb{background:#c3ccd8;border-radius:10px;border:3px solid var(--paper);}
+  ::-webkit-scrollbar-thumb:hover{background:#9aa7b8;}
+  ::-webkit-scrollbar-track{background:transparent;}
 }
 
-.back-to-list { max-width: 760px; margin: 0 auto; padding: 32px 0 0; border-top: 1px solid rgba(0,94,255,.06); }
-.back-to-list a { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--tw-electric); text-decoration: none; transition: opacity .2s; }
-.back-to-list a:hover { opacity: .7; }
-
-.article-pager { max-width: 760px; margin: 0 auto; padding: 40px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-.pager-card { display: block; text-decoration: none; color: inherit; padding: 24px; background: #fff; border-radius: 10px; border: 1px solid rgba(0,94,255,.06); transition: border-color .2s, box-shadow .2s; }
-.pager-card:hover { border-color: var(--tw-electric); box-shadow: 0 4px 16px rgba(0,94,255,.06); }
-.pager-card .pager-label { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--tw-electric); margin-bottom: 8px; display: block; }
-.pager-card .pager-title { font-size: 14px; font-weight: 700; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.pager-card .pager-date { font-size: 12px; color: var(--tw-slate); opacity: .5; margin-top: 8px; }
-.pager-card.pager-next { text-align: right; }
-
-.related-news { padding: 60px 0 80px; border-top: 1px solid rgba(0,94,255,.06); }
-.related-news .section-label { font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--tw-electric); margin-bottom: 8px; display: block; }
-.related-news h2 { font-size: 24px; font-weight: 800; margin-bottom: 32px; }
-.related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.related-card { display: block; text-decoration: none; color: inherit; background: #fff; border-radius: 10px; overflow: hidden; transition: transform .25s ease, box-shadow .25s ease; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
-.related-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,94,255,.07); }
-.related-card-thumb { width: 100%; aspect-ratio: 16 / 9; position: relative; overflow: hidden; }
-.related-card-thumb .thumb-bg { width: 100%; height: 100%; }
-.thumb-001 { background: linear-gradient(135deg, #005EFF 0%, #003DAA 60%, #0D1117 100%); }
-.thumb-002 { background: linear-gradient(135deg, #F4F6F9 0%, #b8d4ff 50%, #005EFF 100%); }
-.thumb-004 { background: linear-gradient(135deg, #7C3AED 0%, #4C1D95 60%, #0D1117 100%); }
-.related-card-body { padding: 16px 20px 20px; }
-.related-card-date { font-size: 11px; font-weight: 600; color: var(--tw-slate); opacity: .5; margin-bottom: 6px; }
-.related-card-title { font-size: 14px; font-weight: 700; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-
-footer { padding: 60px 0 40px; background: #fff; border-top: 1px solid rgba(0,94,255,.06); }
-footer .footer-inner { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; align-items: start; }
-footer .footer-brand .logo { font-size: 18px; font-weight: 800; margin-bottom: 12px; color: var(--tw-black); }
-footer .footer-brand .logo span { color: var(--tw-electric); }
-footer .footer-brand p { font-size: 13px; color: var(--tw-slate); line-height: 1.7; }
-footer .footer-col h4 { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--tw-slate); opacity: .5; margin-bottom: 16px; }
-footer .footer-col a { display: block; font-size: 13px; color: var(--tw-slate); text-decoration: none; margin-bottom: 10px; transition: color .2s; }
-footer .footer-col a:hover { color: var(--tw-electric); }
-footer .footer-col p { font-size: 13px; color: var(--tw-slate); line-height: 1.7; }
-footer .copyright { text-align: center; margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(0,94,255,.06); font-size: 12px; color: var(--tw-slate); opacity: .4; }
-
-@media (max-width: 1024px) {
-  .related-grid { grid-template-columns: repeat(2, 1fr); }
-  .related-grid .related-card:nth-child(3) { display: none; }
-  footer .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+/* ===== RESPONSIVE ===== */
+@media(max-width:1000px){
+  .footer-inner{grid-template-columns:1fr 1fr;gap:32px;}
+  .related-grid{grid-template-columns:1fr;}
+  .related-card{border-left:none;padding-left:0;}
 }
-@media (max-width: 640px) {
-  .container { padding: 0 16px; }
-  nav { padding: 0 12px 0 16px; gap: 8px; }
-  nav ul { display: none; }
-  .article-pager { grid-template-columns: 1fr; }
-  .pager-card.pager-next { text-align: left; }
-  .related-grid { grid-template-columns: 1fr; }
-  .related-grid .related-card:nth-child(3) { display: block; }
-  footer .footer-inner { grid-template-columns: 1fr; gap: 32px; }
-  .article-meta { flex-wrap: wrap; gap: 8px; }
-  .article-hero { border-radius: 8px; }
-  .article-body .info-box { padding: 20px; }
-  .article-body .info-table th { width: 80px; padding-right: 12px; font-size: 13px; }
-  .article-body .info-table td { font-size: 13px; }
+@media(max-width:860px){
+  nav ul{display:none;}
+  nav .nav-cta{display:none;}
+  nav .lang{display:none;}
+  .hamb{display:block;}
+  .art-head{padding:118px 24px 0;}
+  .art-rule{padding:0 24px;}
+  .art-cta{grid-template-columns:1fr;gap:22px;padding:30px 26px;}
+  .pager{grid-template-columns:1fr;}
+  .pager-next{text-align:left;}
+  .pager-placeholder{display:none;}
+}
+@media(max-width:560px){
+  .container{padding:0 22px;}
+  .art-head{padding:108px 22px 0;}
+  .art-rule{padding:0 22px;}
+  nav{padding:0 10px 0 18px;height:60px;}
+  .mmenu{top:60px;}
+  .art-head .info-table th{width:96px;}
+}
+@media print{
+  body{background:#fff;color:#000;}
+  nav,.mmenu,.hamb,.art-cta,.pager,.related{display:none;}
 }
 </style>
 <!-- Meta Pixel Code -->
@@ -173,162 +261,199 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
 </head>
 <body>
 
-<nav>
-  <a href="../index.html" class="logo">Tech<span>Worker</span></a>
+<!-- NAV -->
+<nav id="nav">
+  <a href="../index.html" class="logo">Tech<i>Worker</i></a>
   <ul>
-    <li><a href="../index.html">HOME</a></li>
-    <li><a href="../news.html">NEWS</a></li>
-    <li><a href="../index.html#results">Results</a></li>
-    <li><a href="../../company.html">Company</a></li>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../index.html#services">Services</a></li>
+    <li><a href="../cases.html">Case Studies</a></li>
+    <li><a href="../news.html">News</a></li>
+    <li><a href="../company.html">Company</a></li>
   </ul>
   <div class="nav-right">
-    <a href="../contact.html" class="nav-cta">Contact Us</a>
-    <a href="../../news/003.html" class="lang-switch">JP</a>
-    <span class="lang-current">EN</span>
+    <a href="../contact.html" class="nav-cta"><span class="full">Free Consultation</span><span class="short">Contact</span></a>
+    <span class="lang"><a href="../../index.html">JP</a> / <span class="cur">EN</span></span>
+    <button class="hamb" id="hamb" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
-<section class="article-header">
-  <div class="container">
-    <div class="breadcrumb">
-      <a href="../index.html">Home</a><span class="sep">/</span><a href="../news.html">News</a><span class="sep">/</span><span class="current">Webinar</span>
-    </div>
-    <div class="article-meta">
-      <span class="article-date">2026.02.28</span>
-      <span class="news-tag news-tag--event">Event</span>
-    </div>
-    <h1>Free webinar: "The Pitfalls of AI Adoption"</h1>
+<!-- MOBILE MENU -->
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="../index.html">Home</a>
+  <a href="../index.html#services">Services</a>
+  <a href="../cases.html">Case Studies</a>
+  <a href="../news.html">News</a>
+  <a href="../company.html">Company</a>
+  <a href="../contact.html" class="m-cta">Book a Free Consultation</a>
+  <a href="../../index.html" class="m-lang">日本語 ↗</a>
+</div>
+
+<!-- ARTICLE HEAD -->
+<header class="art-head">
+  <div class="crumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><a href="../news.html">News</a><span class="sep">/</span><span class="cur">Webinar</span></div>
+  <span class="tag ev">Event <span>Event</span></span>
+  <div class="a-meta">
+    <span class="a-date">2026.02.28</span>
+    <span class="a-cat ev">Event</span>
   </div>
+  <h1>Free Webinar: The Pitfalls of AI Adoption</h1>
+</header>
+<div class="art-rule"><hr></div>
+
+<!-- ARTICLE BODY -->
+<section class="art-wrap">
   <div class="container">
-    <div class="article-hero">
-      <div class="hero-bg hero-003"></div>
-    </div>
-  </div>
-</section>
+    <div class="art-body rv">
 
-<section class="article-body-wrap">
-  <div class="container">
-    <div class="article-body">
+      <p>TechWorker Inc. is hosting a free webinar, "The Pitfalls of AI Adoption: Why Deploying Tools Alone Won't Deliver Results," for business leaders and DX (digital transformation) managers.</p>
 
-      <p>TechWorker Inc. is hosting a free webinar titled "The Pitfalls of AI Adoption -- Why Deploying Tools Alone Does Not Deliver Results" for executives, DX leaders, and IT department heads.</p>
-
-      <h2>Event Details</h2>
+      <h2>Event Overview</h2>
 
       <div class="info-box">
         <table class="info-table">
-          <tr><th>Title</th><td>The Pitfalls of AI Adoption -- Why Deploying Tools Alone Does Not Deliver Results</td></tr>
-          <tr><th>Date</th><td>March 28, 2026 (Sat) 14:00 - 15:30 JST</td></tr>
+          <tr><th>Title</th><td>The Pitfalls of AI Adoption: Why Deploying Tools Alone Won't Deliver Results</td></tr>
+          <tr><th>Date &amp; Time</th><td>Saturday, March 28, 2026, 14:00 – 15:30 (JST)</td></tr>
           <tr><th>Format</th><td>Online (Zoom)</td></tr>
           <tr><th>Fee</th><td>Free</td></tr>
-          <tr><th>Capacity</th><td>100 seats (first-come, first-served)</td></tr>
-          <tr><th>Audience</th><td>Executives, DX leaders, IT department heads</td></tr>
+          <tr><th>Capacity</th><td>100 attendees (first come, first served)</td></tr>
+          <tr><th>Audience</th><td>Business leaders, DX managers, and IT department heads</td></tr>
           <tr><th>Speaker</th><td>Kotaro Furuno (CEO, TechWorker Inc.)</td></tr>
         </table>
       </div>
 
-      <h2>What You Will Learn</h2>
+      <h2>What We'll Cover</h2>
 
-      <p>Companies that deploy generative AI tools but fail to see results share common patterns. In this webinar, we will present the five most frequent failure patterns identified across our 37-company portfolio, along with practical solutions for each.</p>
+      <p>Companies that have adopted generative AI tools yet aren't seeing results tend to share the same patterns. Drawing on our experience supporting 37 companies, this webinar organizes the most common failure patterns into five categories and walks through concrete solutions for each.</p>
 
       <ul>
-        <li>Pattern 1: Over-investing in tool selection while under-investing in post-deployment design</li>
-        <li>Pattern 2: Usage concentrated among a few AI-savvy employees, with no organization-wide adoption</li>
-        <li>Pattern 3: Testing with generic prompts that fail to address company-specific workflows</li>
-        <li>Pattern 4: Completing a PoC but never integrating AI into production workflows</li>
-        <li>Pattern 5: Vague success metrics that make it impossible to demonstrate ROI to leadership</li>
+        <li>Failure pattern 1: Spending too much time choosing a tool while neglecting the design of how it's actually used after rollout.</li>
+        <li>Failure pattern 2: Only a handful of AI-literate employees use it, and adoption never spreads across the organization.</li>
+        <li>Failure pattern 3: Experimenting with generic prompts that can't be applied to the company's own specific workflows.</li>
+        <li>Failure pattern 4: Stopping at a satisfying PoC without ever embedding AI into day-to-day operations.</li>
+        <li>Failure pattern 5: Success metrics so vague that ROI can't be explained to leadership.</li>
       </ul>
 
       <h2>Who Should Attend</h2>
 
       <ul>
-        <li>Organizations that deployed ChatGPT or Copilot but see low utilization rates</li>
-        <li>DX leaders planning company-wide AI rollout but uncertain about the approach</li>
-        <li>Teams that completed a PoC but lack a clear path to the next stage</li>
-        <li>Executives who need to justify AI investment outcomes to the board</li>
+        <li>You've rolled out ChatGPT or Copilot, but usage rates are low.</li>
+        <li>You're considering a company-wide AI rollout but aren't sure how to approach it.</li>
+        <li>You've completed a PoC but can't see the next step.</li>
+        <li>You need to report the results of your AI investment to leadership.</li>
       </ul>
 
       <h2>How to Register</h2>
 
-      <p>To register for the webinar, please submit your details through our contact form. A Zoom link will be sent to registered participants by the day before the event.</p>
+      <p>To attend the webinar, please register via our <a href="../contact.html">contact form</a>. We'll email the Zoom link to registrants by the day before the event.</p>
 
     </div>
 
-    <div class="back-to-list">
-      <a href="../news.html">&larr; Back to news</a>
+    <!-- CTA -->
+    <div class="art-cta rv">
+      <div>
+        <h3>Register for the webinar or get in touch here.</h3>
+        <p>We welcome registrations, of course — but we're also happy to discuss the specific challenges you're facing. Feel free to reach out.</p>
+      </div>
+      <a href="../contact.html" class="btn">Register / Free Consultation <i>→</i></a>
     </div>
 
-    <div class="article-pager">
-      <a href="002.html" class="pager-card pager-prev">
+    <div class="back-list">
+      <a href="../news.html">← Back to News</a>
+    </div>
+
+    <div class="pager">
+      <a href="002.html" class="pager-card">
         <span class="pager-label">Prev</span>
-        <div class="pager-title">Refreshed our service lineup</div>
+        <div class="pager-title">We've refreshed our service lineup</div>
         <div class="pager-date">2026.03.14</div>
       </a>
       <a href="004.html" class="pager-card pager-next">
         <span class="pager-label">Next</span>
-        <div class="pager-title">CEO Furuno delivered a keynote seminar at Sakura Internet Inc.</div>
+        <div class="pager-title">CEO Kotaro Furuno delivered a keynote seminar at Sakura Internet Inc.</div>
         <div class="pager-date">2025.05.07</div>
       </a>
     </div>
   </div>
 </section>
 
-<section class="related-news">
+<!-- RELATED -->
+<section class="related">
   <div class="container">
-    <span class="section-label">Related</span>
+    <span class="tag">Related <span>Related News</span></span>
     <h2>Related News</h2>
-    <div class="related-grid">
+    <div class="related-grid rvg">
       <a href="001.html" class="related-card">
-        <div class="related-card-thumb"><div class="thumb-bg thumb-001"></div></div>
-        <div class="related-card-body">
-          <div class="related-card-date">2026.03.20</div>
-          <div class="related-card-title">Published our Generative AI Use Cases White Paper</div>
-        </div>
+        <div class="rc-meta"><span class="rc-date">2026.03.20</span><span class="rc-cat">News</span></div>
+        <div class="rc-title">We've published a generative AI case-study white paper</div>
       </a>
       <a href="002.html" class="related-card">
-        <div class="related-card-thumb"><div class="thumb-bg thumb-002"></div></div>
-        <div class="related-card-body">
-          <div class="related-card-date">2026.03.14</div>
-          <div class="related-card-title">Refreshed our service lineup</div>
-        </div>
+        <div class="rc-meta"><span class="rc-date">2026.03.14</span><span class="rc-cat">News</span></div>
+        <div class="rc-title">We've refreshed our service lineup</div>
       </a>
       <a href="004.html" class="related-card">
-        <div class="related-card-thumb"><div class="thumb-bg thumb-004"></div></div>
-        <div class="related-card-body">
-          <div class="related-card-date">2025.05.07</div>
-          <div class="related-card-title">CEO Furuno delivered a keynote seminar at Sakura Internet Inc.</div>
-        </div>
+        <div class="rc-meta"><span class="rc-date">2025.05.07</span><span class="rc-cat ev">Event</span></div>
+        <div class="rc-title">CEO Kotaro Furuno delivered a keynote seminar at Sakura Internet Inc.</div>
       </a>
     </div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div class="container">
     <div class="footer-inner">
       <div class="footer-brand">
-        <div class="logo">Tech<span>Worker</span></div>
+        <div class="logo">Tech<i>Worker</i></div>
         <p>Enterprise Generative AI Consulting<br>TechWorker Inc.</p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
       </div>
       <div class="footer-col">
-        <h4>Menu</h4>
+        <h4>Services</h4>
+        <a href="../index.html#services">Generative AI Consulting</a>
+      </div>
+      <div class="footer-col">
+        <h4>Site</h4>
         <a href="../news.html">News</a>
-        <a href="../index.html#approach">Our Strengths</a>
-        <a href="../index.html#services">Services</a>
-        <a href="../index.html#results">Results</a>
-        <a href="../index.html#company">Company</a>
+        <a href="../cases.html">Case Studies</a>
+        <a href="../company.html">Company</a>
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
         <a href="../contact.html">Free Consultation</a>
         <a href="../contact.html?type=document">Request Materials</a>
-        <p style="margin-top:12px;">〒169-0051<br>東京都新宿区西早稲田一丁目22番3号</p>
+        <a href="../privacy.html">Privacy Policy</a>
+        <p>1-22-3 Nishiwaseda, Shinjuku-ku, Tokyo 169-0051, Japan</p>
       </div>
     </div>
-  </div>
-  <div class="container">
-    <p class="copyright">&copy; 2026 TechWorker Inc. All rights reserved.</p>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
   </div>
 </footer>
 
+<script>
+/* nav shadow on scroll */
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>40);},{passive:true});
+
+/* mobile menu */
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(open){
+    document.body.classList.toggle('menu-open',open);
+    hamb.setAttribute('aria-expanded',open?'true':'false');
+    hamb.setAttribute('aria-label',open?'メニューを閉じる':'メニューを開く');
+    mmenu.setAttribute('aria-hidden',open?'false':'true');
+    document.body.style.overflow=open?'hidden':'';
+  }
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+  matchMedia('(min-width:861px)').addEventListener('change',function(e){if(e.matches)setMenu(false);});
+})();
+
+/* scroll reveal */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv,.rvg').forEach(function(el){io.observe(el);});
+</script>
 </body>
 </html>
