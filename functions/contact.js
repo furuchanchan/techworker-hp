@@ -49,6 +49,10 @@ async function sendSlackNotification(data, webhookUrl) {
     return;
   }
   const type = INQUIRY_MAP[data.inquiry_type] || data.inquiry_type || '-';
+  const pages = data.intent_pages || '';
+  const hot = /training|cases|library|pricing|料金|研修|事例/i.test(pages) ? '🔥 高インテント — ' : '';
+  const utm = (data.intent_utm && data.intent_utm.replace(/\|/g, '')) ? `\nUTM: ${data.intent_utm}` : '';
+  const intentText = `${hot}*行動シグナル*\n流入元: ${data.intent_referrer || '(direct)'}\nランディング: ${data.intent_landing || '-'}\n閲覧経路: ${pages || '-'}\n訪問回数: ${data.intent_visits || '1'}回目${utm}`;
   const payload = {
     text: `HP問い合わせ: ${data.name || '(名前なし)'} / ${data.company || '(会社名なし)'}`,
     blocks: [
@@ -72,6 +76,10 @@ async function sendSlackNotification(data, webhookUrl) {
       {
         type: 'section',
         text: { type: 'mrkdwn', text: `*相談内容*\n${data.message || '-'}` },
+      },
+      {
+        type: 'section',
+        text: { type: 'mrkdwn', text: intentText },
       },
       {
         type: 'context',
