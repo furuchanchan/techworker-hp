@@ -2,6 +2,15 @@
 <html lang="ja" class="no-js">
 <head>
 <meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XYR3K7F5SC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XYR3K7F5SC');
+</script>
+
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>お問い合わせ — TechWorker</title>
@@ -547,6 +556,7 @@ async function handleSubmit(e){
     if(!res.ok)throw new Error('server error');
 
     if(typeof fbq==='function'){fbq('track','Lead');}
+    if(typeof gtag==='function'){gtag('event','generate_lead',{inquiry_type:type,source:'HP本体'});}
 
     form.style.display='none';
     thanks.classList.add('show');
