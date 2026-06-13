@@ -21,7 +21,7 @@ if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_vi
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>トークンマキシングとは｜AIの出力品質を最大化する「惜しまず使う」戦略【2026年】 — TechWorker</title>
-<meta name="description" content="トークンマキシング（token maxing）= トークンをケチらず最大限使って出力品質を最大化する戦略。大規模コンテキスト・深い推論・マルチエージェントの活用法と、コスト最適化との使い分けを解説します。">
+<meta name="description" content="トークンマキシング（token maxing）とは、トークンを惜しまず最大限使って出力品質を最大化する戦略。大規模コンテキスト・深い推論・マルチエージェントの活用法と、コスト最適化との使い分けを解説します。">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="canonical" href="https://techworker.co.jp/media/token-maxing.html">
 <meta property="og:type" content="article">
@@ -35,7 +35,7 @@ if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_vi
 <meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="article.css">
 <script type="application/ld+json">
 {
@@ -43,31 +43,43 @@ if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_vi
   "@type":"Article",
   "headline":"トークンマキシングとは｜AIの出力品質を最大化する「惜しまず使う」戦略【2026年】",
   "description":"トークンマキシング（token maxing）を、大規模コンテキスト・深い推論・マルチエージェントの観点から解説し、コスト最適化との使い分けを示す。",
-  "datePublished":"2026-06-13",
-  "dateModified":"2026-06-13",
-  "inLanguage":"ja",
+  "datePublished":"2026-06-13","dateModified":"2026-06-13","inLanguage":"ja",
   "author":{"@type":"Person","name":"古野光太朗","jobTitle":"株式会社TechWorker 代表取締役","url":"https://x.com/koutarou_furuno"},
   "publisher":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"},
   "mainEntityOfPage":{"@type":"WebPage","@id":"https://techworker.co.jp/media/token-maxing.html"}
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},
+    {"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},
+    {"@type":"ListItem","position":3,"name":"トークンマキシングとは","item":"https://techworker.co.jp/media/token-maxing.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"トークンマキシングはコストが心配では？","acceptedAnswer":{"@type":"Answer","text":"すべてに使うのではなく、品質が金額を上回る局面に限定します。他はmax_tokensやBatch APIで絞り、トークンマネジメントと併用するのが正解です。"}},
+    {"@type":"Question","name":"「深く考えさせる」とは具体的に何ですか？","acceptedAnswer":{"@type":"Answer","text":"2026年のClaudeは固定の思考トークン量ではなく、adaptive thinkingとeffort（low/medium/high/xhigh/max）で思考の深さを指定します。難しい仕事ほどeffortを上げます。"}},
+    {"@type":"Question","name":"本当に100万トークンも使えるのですか？","acceptedAnswer":{"@type":"Answer","text":"はい。Opus 4.8などは100万トークンのコンテキストを標準料金で提供しており、長文に対する追加料金はありません。"}},
+    {"@type":"Question","name":"マルチエージェントは難しそうです。","acceptedAnswer":{"@type":"Answer","text":"役割を分けて並列に走らせるだけでも、網羅性とクロスチェックの効果が出ます。まずは調査・レビューなど観点の分担から始めるのが実践的です。"}}
+  ]
+}
+</script>
 <!-- Meta Pixel Code -->
 <script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1264057945446029');
-fbq('track', 'PageView');
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel Code -->
 </head>
 <body>
+<div class="progress" id="progress"></div>
 
 <nav id="nav">
   <a href="../index.html" class="logo">Tech<i>Worker</i></a>
@@ -86,143 +98,156 @@ fbq('track', 'PageView');
   </div>
 </nav>
 <div class="mmenu" id="mmenu" aria-hidden="true">
-  <a href="../index.html">ホーム</a>
-  <a href="../index.html#services">サービス</a>
-  <a href="../cases.html">実績</a>
-  <a href="index.html">メディア</a>
-  <a href="../news.html">ニュース</a>
-  <a href="../company.html">会社概要</a>
-  <a href="../contact.html" class="m-cta">無料相談を申し込む</a>
-  <a href="../en/index.html" class="m-lang">English ↗</a>
+  <a href="../index.html">ホーム</a><a href="../index.html#services">サービス</a><a href="../cases.html">実績</a><a href="index.html">メディア</a><a href="../news.html">ニュース</a><a href="../company.html">会社概要</a>
+  <a href="../contact.html" class="m-cta">無料相談を申し込む</a><a href="../en/index.html" class="m-lang">English ↗</a>
 </div>
 
 <header class="art-head">
-  <div class="crumb" aria-label="パンくず"><a href="../index.html">ホーム</a><span class="sep">/</span><a href="index.html">メディア</a><span class="sep">/</span><span class="cur">トークンマキシング</span></div>
-  <span class="tag">Token Strategy <span>トークン戦略</span></span>
-  <div class="a-meta">
-    <span class="a-date">2026.06.13</span>
-    <span class="a-cat">品質最大化</span>
-  </div>
+  <nav class="crumb" aria-label="パンくず"><a href="../index.html">ホーム</a><span class="sep">/</span><a href="index.html">メディア</a><span class="sep">/</span>トークンマキシング</nav>
+  <div class="kicker">Token Strategy</div>
   <h1>トークンマキシングとは｜AIの出力品質を最大化する「惜しまず使う」戦略</h1>
+  <p class="dek">トークンをケチるほど成果が落ちる仕事がある。いつ振り切り、いつ絞るのか——2026年のClaudeで実践する、品質最大化の考え方。</p>
+  <div class="a-meta">
+    <span class="av">古</span><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.06.13</span><span class="dot">·</span><span>最終更新 2026.06.13</span><span class="dot">·</span><span>読了 7分</span>
+  </div>
 </header>
-<div class="art-rule"><hr></div>
 
-<section class="art-wrap">
-  <div class="container">
-    <div class="art-body rv">
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次">
+    <div class="toc-h">目次</div>
+    <a href="#s1">トークンマキシングとは</a>
+    <a href="#s2">なぜ今「マキシング」なのか</a>
+    <a href="#s3">振り切る4つの手法</a>
+    <a href="#s4">いつ振り切り、いつ絞るか</a>
+    <a href="#faq">よくある質問</a>
+  </nav>
 
-      <div class="lede">
-        <div class="lede-h">この記事の要点</div>
-        <ul>
-          <li>トークンマキシング = トークンをケチらず最大限使い、出力の品質・精度を最大化する戦略。<a href="token-management.html">トークンマネジメント</a>（コスト最小化）の対極。</li>
-          <li>手段は ①大規模コンテキスト（最大100万トークン）②深い推論（adaptive thinking・effort）③マルチエージェント ④反復・自己検証。</li>
-          <li>「判断ミスのコスト ＞ トークン代」の局面で振り切る。重要な意思決定・調査・本番品質の仕事で効く。</li>
-        </ul>
-      </div>
-
-      <h2>トークンマキシングとは？</h2>
-      <p><strong>トークンマキシング（token maxing）とは、あえてトークンを多く投入することで、AIの出力の質・精度を最大化する戦略</strong>です。トークンを「絞る」コスト最適化（トークンマネジメント）の、ちょうど逆の発想です。モデルが賢くなった2026年では、コンテキスト・推論・反復にトークンを惜しみなく投じるほど成果（ROI）が伸びる局面が増えました。</p>
-
-      <h2>なぜ今「マキシング」なのか？</h2>
-      <p>理由は単純で、<strong>多くの重要な仕事では「間違いの手戻りコスト」がトークン代を大きく上回るから</strong>です。重要な意思決定の調査、大規模なコード改修、精度が問われる分析——こうした仕事でトークンをケチって精度を落とすより、惜しみなく使って一発で正確に仕上げる方が、結果的に安く・速くなります。2026年のモデルは100万トークンのコンテキストを標準料金（長文の追加料金なし）で扱え、深く推論させることもできるため、「振り切る」選択肢が現実的になりました。</p>
-
-      <h2>トークンを「振り切る」4つの手法</h2>
-      <h3>① 大規模コンテキストに全部入れる</h3>
-      <p>関連資料を要約して削るのではなく、<strong>最大100万トークンのコンテキストにそのまま入れて判断させる</strong>方法です。情報を間引くと判断材料が欠けますが、全文を渡せばAIが文脈ごと理解できます。Opus 4.8などは100万トークンを標準料金で提供します。</p>
-      <h3>② 深く推論させる（extended / adaptive thinking）</h3>
-      <p>2026年のClaudeは固定の「思考予算」ではなく、<strong>adaptive thinking と effort（low〜max）で思考の深さを調整</strong>します。難問・長期タスクほど effort を上げる（high / xhigh / max）と精度が上がります。深く考えさせるほどトークンは増えますが、それが品質に直結します。</p>
-      <h3>③ マルチエージェントで並列に走らせる</h3>
-      <p>1体のAIで順番に処理するのではなく、<strong>複数のAIを観点を分けて並列に動かす</strong>方法です。網羅性とクロスチェックが効き、調査やレビューの品質が上がります。</p>
-      <h3>④ 反復・自己検証のループを回す</h3>
-      <p>一度の出力で終わらせず、<strong>「生成→検証→改善」を繰り返す</strong>。トークンは余計にかかりますが、人間のレビュー工数を肩代わりし、成果物の完成度を引き上げます。</p>
-
-      <h2>いつマキシングし、いつマネジメントするのか？</h2>
-      <p>すべてに振り切るのではありません。<strong>「絞る（マネジメント）↔ 振り切る（マキシング）」を局面で使い分ける</strong>のが、トークン戦略の核心です。</p>
-      <div class="tbl-wrap">
-        <table>
-          <tr><th>局面</th><th>取るべき戦略</th></tr>
-          <tr><td>大量・単純・反復の処理</td><td>マネジメント（効率重視）</td></tr>
-          <tr><td>重要な意思決定・調査・本番品質</td><td>マキシング（品質重視）</td></tr>
-          <tr><td>判断ミスのコスト ＞ トークン代</td><td>マキシング</td></tr>
-          <tr><td>トークン代 ＞ 得られる成果</td><td>マネジメント</td></tr>
-        </table>
-      </div>
-
-      <div class="quote-box"><p>「AIはエンジンだ。コンテキストは燃料だ。」——重要な仕事ほど、燃料（トークン）を惜しまず注ぐ。当社が支援する現場でも、勝負どころで振り切れる組織ほど、AIから得る成果が大きくなっています。<br>［要・実データ：御社支援先での品質向上・工数削減の実績を挿入］</p></div>
-
-      <h2>よくある質問（FAQ）</h2>
-      <div class="faq"><div class="q">Q. コストが心配です。</div><p class="a">すべてに使うのではなく「品質が金額を上回る局面」に限定します。他はmax_tokensやBatch APIで絞る——つまり<a href="token-management.html">トークンマネジメント</a>と併用するのが正解です。</p></div>
-      <div class="faq"><div class="q">Q. 「深く考えさせる」とは具体的に何ですか？</div><p class="a">2026年のClaudeは固定の思考トークン量ではなく、adaptive thinking と effort（low / medium / high / xhigh / max）で思考の深さを指定します。難しい仕事ほど effort を上げます。</p></div>
-      <div class="faq"><div class="q">Q. 本当に100万トークンも使えるのですか？</div><p class="a">はい。Opus 4.8などは100万トークンのコンテキストを標準料金で提供しており、長文に対する追加料金はありません。</p></div>
-      <div class="faq"><div class="q">Q. マルチエージェントは難しそうです。</div><p class="a">役割を分けて並列に走らせるだけでも、網羅性とクロスチェックの効果が出ます。まずは「調査」「レビュー」など観点の分担から始めるのが実践的です。</p></div>
-
+  <article class="art-body rv">
+    <div class="lede">
+      <div class="lede-h">この記事の要点</div>
+      <ul>
+        <li>トークンマキシング＝トークンを惜しまず最大限使い、出力品質を最大化する戦略。<a href="token-management.html">トークンマネジメント</a>（コスト最小化）の対極。</li>
+        <li>手段は ①大規模コンテキスト（最大100万トークン）②深い推論（adaptive thinking・effort）③マルチエージェント ④反復・自己検証。</li>
+        <li>「判断ミスの手戻りコスト ＞ トークン代」の局面で振り切る。重要な意思決定・調査・本番品質で効く。</li>
+      </ul>
     </div>
 
-    <div class="art-cta rv">
-      <div>
-        <h3>「どこで絞り、どこで振り切るか」を一緒に設計します。</h3>
-        <p>コストと品質、両取りのトークン戦略を、上場企業含む37社・2,500名の支援知見をもとに整理します。検討段階のご相談だけでも歓迎です。</p>
+    <h2 id="s1">トークンマキシングとは？</h2>
+    <p class="answer">トークンを惜しまず最大限使い、AIの出力品質を最大化する戦略。コストを絞る「トークンマネジメント」の対極にある考え方だ。</p>
+    <p>トークンとは、AIが文章を処理するときの最小単位です。マネジメントが「いかに少ないトークンで回すか」を追うのに対し、マキシングは「いかに多く投じて質を上げるか」を追います。モデルが賢くなった2026年では、コンテキスト・推論・反復にトークンを投じるほど成果（ROI）が伸びる局面が明確に増えました。</p>
+
+    <h2 id="s2">なぜ今「マキシング」なのか？</h2>
+    <p class="answer">多くの重要な仕事では、間違いの手戻りコストがトークン代を大きく上回るからだ。</p>
+    <p>重要な意思決定の調査、大規模なコード改修、精度が問われる分析——こうした仕事では、トークンをケチって精度を落とすより、惜しみなく使って一発で正確に仕上げる方が、結果的に安く・速くなります。2026年のモデルは100万トークンのコンテキストを<strong>標準料金（長文の追加料金なし）</strong>で扱え、深く推論させることもできるため、「振り切る」選択肢が現実的になりました。</p>
+    <div class="stat"><span class="n">100万</span><span class="l">Opus 4.8 等が標準料金で扱えるコンテキスト・トークン数（長文プレミアムなし）</span></div>
+
+    <h2 id="s3">トークンを「振り切る」4つの手法</h2>
+    <p class="answer">大規模コンテキスト・深い推論・マルチエージェント・反復検証の4つで、品質側に振り切る。</p>
+    <ol>
+      <li><strong>大規模コンテキストに全部入れる。</strong>要約で情報を削るのではなく、関連資料を最大100万トークンのコンテキストにそのまま渡して判断させる。</li>
+      <li><strong>深く推論させる（adaptive thinking）。</strong>2026年のClaudeは固定の思考予算でなく effort（low〜max）で深さを調整する。難問ほど high / xhigh / max に上げる。</li>
+      <li><strong>マルチエージェントで並列に走らせる。</strong>観点を分けて複数のAIを同時に動かし、網羅性とクロスチェックを効かせる。</li>
+      <li><strong>反復・自己検証のループを回す。</strong>一度で終わらせず「生成→検証→改善」を繰り返し、人間のレビュー工数を肩代わりさせる。</li>
+    </ol>
+    <div class="mini-dash">
+      <div class="md-top"><span class="dot"></span>エージェント実行のトークン内訳 ※サンプル画面</div>
+      <div class="md-kpis">
+        <div class="md-kpi"><div class="k">投入トークン</div><div class="v">1.2<em>M</em></div></div>
+        <div class="md-kpi"><div class="k">うち推論(thinking)</div><div class="v">38<em>%</em></div></div>
+        <div class="md-kpi"><div class="k">並列エージェント</div><div class="v">5</div></div>
       </div>
-      <a href="../contact.html" class="btn">無料で相談する <i>→</i></a>
+      <div class="md-chart">
+        <div class="md-bars">
+          <div class="bar" style="height:30%"></div><div class="bar" style="height:46%"></div><div class="bar" style="height:58%"></div><div class="bar hi" style="height:80%"></div><div class="bar hi" style="height:100%"></div>
+        </div>
+        <div class="md-xax"><span>調査</span><span>設計</span><span>実装</span><span>検証</span><span>仕上げ</span></div>
+      </div>
+    </div>
+    <p class="fig-cap">図：トークンを「どこに振り切るか」を可視化する運用イメージ（サンプル）。検証・仕上げに厚く投じるほど品質が安定する。</p>
+
+    <h2 id="s4">いつ振り切り、いつ絞るのか？</h2>
+    <p class="answer">判断ミスの手戻りコストがトークン代を上回る局面で振り切り、それ以外は絞る。</p>
+    <p>すべてに振り切るのではありません。<strong>「絞る（マネジメント）↔ 振り切る（マキシング）」を局面で使い分ける</strong>のが、トークン戦略の核心です。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>局面</th><th>取るべき戦略</th><th>理由</th></tr>
+        <tr><td>大量・単純・反復の処理</td><td>マネジメント</td><td>1件あたりの価値が小さい</td></tr>
+        <tr><td>重要な意思決定・調査・本番品質</td><td>マキシング</td><td>精度がそのまま成果になる</td></tr>
+        <tr><td>判断ミス ＞ トークン代</td><td>マキシング</td><td>手戻りの方が高くつく</td></tr>
+        <tr><td>トークン代 ＞ 得られる成果</td><td>マネジメント</td><td>投資が回収できない</td></tr>
+      </table>
     </div>
 
-    <div class="back-list"><a href="index.html">← メディア一覧に戻る</a></div>
-  </div>
-</section>
+    <div class="quote-box"><p>AIはエンジンだ。コンテキストは燃料だ。勝負どころでは、燃料を惜しまない。</p></div>
+    <p>上場企業を含む37社・2,500名の支援を通じて見えてきたのは、ここぞの場面で振り切れる組織ほど、AIから得る成果が大きくなるという傾向です。重要なのは「いつ振り切り、いつ絞るか」を、業務文脈に合わせて設計することです。</p>
 
-<section class="related">
-  <div class="container">
-    <span class="tag">Related <span>関連記事</span></span>
-    <h2>関連記事</h2>
-    <div class="related-grid">
-      <a href="token-management.html" class="related-card">
-        <span class="rc-cat">トークン戦略</span>
-        <div class="rc-title">トークンマネジメントとは｜生成AIのコストを最大90%下げる実践ガイド</div>
-      </a>
-      <a href="../cases.html" class="related-card">
-        <span class="rc-cat">実績</span>
-        <div class="rc-title">生成AI導入・研修の支援実績（37社・2,500名）</div>
-      </a>
-    </div>
-  </div>
-</section>
+    <h2 id="faq">よくある質問</h2>
+    <div class="faq"><div class="q">トークンマキシングはコストが心配では？</div><p class="a">すべてに使うのではなく「品質が金額を上回る局面」に限定します。他はmax_tokensやBatch APIで絞り、<a href="token-management.html">トークンマネジメント</a>と併用するのが正解です。</p></div>
+    <div class="faq"><div class="q">「深く考えさせる」とは具体的に何ですか？</div><p class="a">2026年のClaudeは固定の思考トークン量ではなく、adaptive thinking と effort（low / medium / high / xhigh / max）で思考の深さを指定します。難しい仕事ほど effort を上げます。</p></div>
+    <div class="faq"><div class="q">本当に100万トークンも使えるのですか？</div><p class="a">はい。Opus 4.8などは100万トークンのコンテキストを標準料金で提供しており、長文に対する追加料金はありません。</p></div>
+    <div class="faq"><div class="q">マルチエージェントは難しそうです。</div><p class="a">役割を分けて並列に走らせるだけでも、網羅性とクロスチェックの効果が出ます。まずは調査・レビューなど観点の分担から始めるのが実践的です。</p></div>
+  </article>
+</div>
 
-<div class="author">
-  <div class="av">古</div>
+<div class="author"><div class="inner">
+  <span class="av">古</span>
   <div>
     <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役</span></div>
     <p>上場企業を含む37社・2,500名の生成AI導入・研修を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
   </div>
-</div>
+</div></div>
 
-<footer>
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <div class="logo">Tech<i>Worker</i></div>
-        <p>企業向け生成AIコンサルティング<br>株式会社TechWorker</p>
-        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
-      </div>
-      <div class="footer-col"><h4>サービス</h4><a href="../index.html#services">生成AIコンサル</a></div>
-      <div class="footer-col"><h4>サイト</h4><a href="index.html">メディア</a><a href="../news.html">ニュース</a><a href="../cases.html">実績</a><a href="../company.html">会社概要</a></div>
-      <div class="footer-col"><h4>Contact</h4><a href="../contact.html">無料相談</a><a href="../contact.html?type=document">資料請求</a><a href="../privacy.html">プライバシーポリシー</a></div>
-    </div>
-    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>「どこで絞り、どこで振り切るか」を一緒に設計します。</h3>
+    <p>コストと品質、両取りのトークン戦略を、上場企業含む37社・2,500名の支援知見をもとに整理します。検討段階のご相談だけでも歓迎です。</p>
   </div>
-</footer>
+  <a href="../contact.html" class="btn">無料で相談する <i>→</i></a>
+</div></div>
+
+<div class="back-list"><a href="index.html">← メディア一覧に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="token-management.html" class="related-card"><span class="rc-cat">Token Strategy</span><div class="rc-title">トークンマネジメントとは｜生成AIのコストを最大90%下げる実践ガイド</div></a>
+    <a href="../cases.html" class="related-card"><span class="rc-cat">実績</span><div class="rc-title">生成AI導入・研修の支援実績（37社・2,500名）</div></a>
+  </div>
+</div></section>
+
+<footer><div class="container">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo">Tech<i>Worker</i></div>
+      <p>企業向け生成AIコンサルティング<br>株式会社TechWorker</p>
+      <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+    </div>
+    <div class="footer-col"><h4>サービス</h4><a href="../index.html#services">生成AIコンサル</a></div>
+    <div class="footer-col"><h4>サイト</h4><a href="index.html">メディア</a><a href="../news.html">ニュース</a><a href="../cases.html">実績</a><a href="../company.html">会社概要</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="../contact.html">無料相談</a><a href="../contact.html?type=document">資料請求</a><a href="../privacy.html">プライバシーポリシー</a></div>
+  </div>
+  <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+</div></footer>
 
 <script>
 var nav=document.getElementById('nav');
-addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>40);},{passive:true});
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
 (function(){
   var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
-  function setMenu(open){document.body.classList.toggle('menu-open',open);hamb.setAttribute('aria-expanded',open?'true':'false');mmenu.setAttribute('aria-hidden',open?'false':'true');document.body.style.overflow=open?'hidden':'';}
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
   hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
   mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
   addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
 })();
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
 </script>
 </body>
 </html>

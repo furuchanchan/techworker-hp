@@ -21,12 +21,12 @@ if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_vi
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>トークンマネジメントとは｜生成AIのコストを最大90%下げる実践ガイド【2026年】 — TechWorker</title>
-<meta name="description" content="トークンマネジメント（生成AIのコスト最適化）を実務目線で解説。プロンプトキャッシュ・モデル使い分け・Batch APIの3つで無駄を削る方法と、2026年の最新モデル別料金をまとめました。">
+<meta name="description" content="トークンマネジメント（生成AIのコスト最適化）を実務目線で解説。プロンプトキャッシュ・モデル使い分け・Batch API・出力制御の4つで無駄を削る方法と、2026年の最新モデル別料金をまとめました。">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="canonical" href="https://techworker.co.jp/media/token-management.html">
 <meta property="og:type" content="article">
 <meta property="og:title" content="トークンマネジメントとは｜生成AIのコストを最大90%下げる実践ガイド【2026年】">
-<meta property="og:description" content="プロンプトキャッシュ・モデル使い分け・Batch APIで生成AIのコストを下げる実践ガイド。2026年の最新モデル別料金つき。">
+<meta property="og:description" content="プロンプトキャッシュ・モデル使い分け・Batch API・出力制御で生成AIのコストを下げる実践ガイド。2026年の最新モデル別料金つき。">
 <meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
 <meta property="og:url" content="https://techworker.co.jp/media/token-management.html">
 <meta property="og:site_name" content="TechWorker">
@@ -35,39 +35,51 @@ if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_vi
 <meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="article.css">
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
   "@type":"Article",
   "headline":"トークンマネジメントとは｜生成AIのコストを最大90%下げる実践ガイド【2026年】",
-  "description":"トークンマネジメント（生成AIのコスト最適化）を、プロンプトキャッシュ・モデル使い分け・Batch APIの観点から実務目線で解説する。",
-  "datePublished":"2026-06-13",
-  "dateModified":"2026-06-13",
-  "inLanguage":"ja",
+  "description":"トークンマネジメント（生成AIのコスト最適化）を、プロンプトキャッシュ・モデル使い分け・Batch API・出力制御の観点から実務目線で解説する。",
+  "datePublished":"2026-06-13","dateModified":"2026-06-13","inLanguage":"ja",
   "author":{"@type":"Person","name":"古野光太朗","jobTitle":"株式会社TechWorker 代表取締役","url":"https://x.com/koutarou_furuno"},
   "publisher":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"},
   "mainEntityOfPage":{"@type":"WebPage","@id":"https://techworker.co.jp/media/token-management.html"}
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},
+    {"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},
+    {"@type":"ListItem","position":3,"name":"トークンマネジメントとは","item":"https://techworker.co.jp/media/token-management.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"プロンプトキャッシュはどれくらい効きますか？","acceptedAnswer":{"@type":"Answer","text":"キャッシュからの読み出しは通常入力の約0.1倍（およそ90%安）です。同じ前提（システムプロンプト・長い資料）を繰り返し使うワークフローほど効果が大きくなります。"}},
+    {"@type":"Question","name":"とにかく安いモデルに変えればいいですか？","acceptedAnswer":{"@type":"Answer","text":"品質要件次第です。単純な分類はHaiku 4.5、推論や本番品質が要る処理はOpus 4.8、と「タスクで使い分ける」のが正解です。安いモデルで品質が落ちては本末転倒です。"}},
+    {"@type":"Question","name":"Batch APIの注意点は？","acceptedAnswer":{"@type":"Answer","text":"即時応答ではない点です。料金は50%オフになりますが非同期処理のため、チャットのようなリアルタイム用途には向きません。夜間バッチなど即時性が不要な処理に適しています。"}},
+    {"@type":"Question","name":"「トークンマキシング」とは何が違いますか？","acceptedAnswer":{"@type":"Answer","text":"マネジメントは効率・コスト最小化。マキシングは品質最大化のためにあえてトークンを多く使う戦略です。両者は対であり、局面で使い分けます。"}}
+  ]
+}
+</script>
 <!-- Meta Pixel Code -->
 <script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1264057945446029');
-fbq('track', 'PageView');
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel Code -->
 </head>
 <body>
+<div class="progress" id="progress"></div>
 
 <nav id="nav">
   <a href="../index.html" class="logo">Tech<i>Worker</i></a>
@@ -86,146 +98,171 @@ fbq('track', 'PageView');
   </div>
 </nav>
 <div class="mmenu" id="mmenu" aria-hidden="true">
-  <a href="../index.html">ホーム</a>
-  <a href="../index.html#services">サービス</a>
-  <a href="../cases.html">実績</a>
-  <a href="index.html">メディア</a>
-  <a href="../news.html">ニュース</a>
-  <a href="../company.html">会社概要</a>
-  <a href="../contact.html" class="m-cta">無料相談を申し込む</a>
-  <a href="../en/index.html" class="m-lang">English ↗</a>
+  <a href="../index.html">ホーム</a><a href="../index.html#services">サービス</a><a href="../cases.html">実績</a><a href="index.html">メディア</a><a href="../news.html">ニュース</a><a href="../company.html">会社概要</a>
+  <a href="../contact.html" class="m-cta">無料相談を申し込む</a><a href="../en/index.html" class="m-lang">English ↗</a>
 </div>
 
 <header class="art-head">
-  <div class="crumb" aria-label="パンくず"><a href="../index.html">ホーム</a><span class="sep">/</span><a href="index.html">メディア</a><span class="sep">/</span><span class="cur">トークンマネジメント</span></div>
-  <span class="tag">Token Strategy <span>トークン戦略</span></span>
-  <div class="a-meta">
-    <span class="a-date">2026.06.13</span>
-    <span class="a-cat">コスト最適化</span>
-  </div>
+  <nav class="crumb" aria-label="パンくず"><a href="../index.html">ホーム</a><span class="sep">/</span><a href="index.html">メディア</a><span class="sep">/</span>トークンマネジメント</nav>
+  <div class="kicker">Token Strategy</div>
   <h1>トークンマネジメントとは｜生成AIのコストを最大90%下げる実践ガイド</h1>
+  <p class="dek">同じ仕事でも、トークンの使い方次第で請求額は何倍も変わる。プロンプトキャッシュ・モデル使い分け・Batch APIで無駄を削る——2026年のClaudeで実践する、コスト最小化の考え方。</p>
+  <div class="a-meta">
+    <span class="av">古</span><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.06.13</span><span class="dot">·</span><span>最終更新 2026.06.13</span><span class="dot">·</span><span>読了 7分</span>
+  </div>
 </header>
-<div class="art-rule"><hr></div>
 
-<section class="art-wrap">
-  <div class="container">
-    <div class="art-body rv">
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次">
+    <div class="toc-h">目次</div>
+    <a href="#s1">トークンマネジメントとは</a>
+    <a href="#s2">なぜトークン管理が重要か</a>
+    <a href="#s3">コストを下げる4つの手法</a>
+    <a href="#s4">モデル別の料金（2026年）</a>
+    <a href="#s5">いつ絞り、いつ振り切るか</a>
+    <a href="#faq">よくある質問</a>
+  </nav>
 
-      <div class="lede">
-        <div class="lede-h">この記事の要点</div>
-        <ul>
-          <li>トークンは生成AIの「課金・処理の最小単位」。入力・出力トークン量に比例してコストが増える。</li>
-          <li>最も効くのは ①プロンプトキャッシュ（読み出しは通常入力の約1/10＝最大約90%減）②モデルの使い分け ③Batch API（50%オフ）。</li>
-          <li>本質は「いつ絞り、いつ振り切るか」の設計。品質を最大化する<a href="token-maxing.html">トークンマキシング</a>と対で使い分ける。</li>
-        </ul>
-      </div>
-
-      <h2>トークンマネジメントとは？</h2>
-      <p><strong>トークンマネジメントとは、生成AIが扱う「トークン」の使用量を管理し、コストと処理速度を最適化すること</strong>です。トークンとは、AIが文章を処理するときの最小単位（おおよそ単語や文字のかたまり）で、生成AIのAPIは入力トークンと出力トークンの量に応じて課金されます。したがって、無駄なトークンを削ることは、そのままコスト削減に直結します。</p>
-
-      <h2>なぜトークン管理が重要なのか？</h2>
-      <p>生成AIのコストは突き詰めると「トークン単価 × 使用量」です。使えば使うほど増えるため、放置すると無駄が積み上がります。たとえば、同じ長い資料を毎回まるごと送信する、不要な会話履歴を毎リクエストに含める、必要以上に長い出力を生成させる——こうした積み重ねが請求額を押し上げます。逆に言えば、<strong>「同じ処理をいかに少ないトークンで回すか」を設計するだけで、品質を落とさずにコストを大きく下げられます。</strong></p>
-
-      <h2>トークンコストを下げる5つの実践策</h2>
-      <h3>① プロンプトキャッシュを使う</h3>
-      <p>システムプロンプトや長い参照資料など「毎回同じ前提」をキャッシュする機能です。Anthropicの公式仕様では、<strong>キャッシュからの読み出しは通常の入力トークンの約0.1倍（およそ90%安）</strong>。書き込みは1.25倍（5分有効）かかりますが、同じ前提を2回以上使うワークフローなら元が取れます。最小キャッシュ単位は約1,024〜4,096トークン（モデル依存）です。</p>
-      <h3>② モデルを使い分ける</h3>
-      <p>すべてを最上位モデルで処理する必要はありません。単純な分類や要約は安価なモデル、推論や本番品質が要る処理は上位モデル、と<strong>タスクに応じて使い分ける</strong>のがトークンマネジメントの基本です（料金は下表）。</p>
-      <h3>③ Batch API（バッチ処理）を使う</h3>
-      <p>即時応答が不要な処理（大量の分類・要約・データ整形など）は、非同期のバッチ処理にすると<strong>50%オフ</strong>になります。多くは1時間以内、最大24時間で完了します。</p>
-      <h3>④ 出力トークンを制御する</h3>
-      <p>出力にも課金されます。最大出力量（max_tokens）の上限設定や「簡潔に答える」指示で、無駄に長い出力を防ぎます。</p>
-      <h3>⑤ 使用量をモニタリングする</h3>
-      <p>入力・出力・キャッシュ読み書きのトークン数は計測できます。どこで無駄が出ているかを可視化して初めて、削るべき場所が分かります。</p>
-
-      <h2>モデル別の料金はいくら？（2026年）</h2>
-      <p>主要なClaudeモデルの料金（100万トークンあたり、2026年時点の公式価格）です。用途に対して過剰なモデルを使っていないか、まずここを確認します。</p>
-      <div class="tbl-wrap">
-        <table>
-          <tr><th>モデル</th><th>コンテキスト</th><th>入力 / 100万</th><th>出力 / 100万</th><th>主な用途</th></tr>
-          <tr><td>Haiku 4.5</td><td>20万</td><td>$1</td><td>$5</td><td>分類・抽出など軽量・高速処理</td></tr>
-          <tr><td>Sonnet 4.6</td><td>100万</td><td>$3</td><td>$15</td><td>速度と品質のバランス・量産</td></tr>
-          <tr><td>Opus 4.8</td><td>100万</td><td>$5</td><td>$25</td><td>高度な推論・本番品質</td></tr>
-          <tr><td>Fable 5</td><td>100万</td><td>$10</td><td>$50</td><td>最難関タスク向け最上位</td></tr>
-        </table>
-      </div>
-      <p>出典：Anthropic公式の料金体系（2026年）。同じ処理でも、Haikuで足りるものをOpusで回せば5倍のコストになります。</p>
-
-      <div class="quote-box"><p>当社が支援する現場では、「とりあえず最上位モデルで全部」という状態からの見直しだけで、品質を維持したままコストが大きく下がるケースが大半です。<br>［要・実データ：御社支援先での平均コスト削減率を挿入］</p></div>
-
-      <h2>よくある質問（FAQ）</h2>
-      <div class="faq"><div class="q">Q. プロンプトキャッシュはどれくらい効きますか？</div><p class="a">キャッシュからの読み出しは通常入力の約1/10のコストです。同じ前提（システムプロンプト・長い資料）を繰り返し使うワークフローほど効果が大きくなります。</p></div>
-      <div class="faq"><div class="q">Q. とにかく安いモデルに変えればいいですか？</div><p class="a">品質要件次第です。単純な分類はHaiku、推論や本番品質が要る処理はOpus、と「タスクで使い分ける」のが正解です。安いモデルで品質が落ちては本末転倒です。</p></div>
-      <div class="faq"><div class="q">Q. Batch APIの注意点は？</div><p class="a">即時応答ではない点です（多くは1時間以内、最大24時間）。チャットのようなリアルタイム用途には向きません。夜間バッチ等に適しています。</p></div>
-      <div class="faq"><div class="q">Q. 「トークンマキシング」とは何が違いますか？</div><p class="a">マネジメントは効率・コスト最小化。マキシングは品質最大化のためにあえてトークンを多く使う戦略です。両者は対であり、局面で使い分けます（→<a href="token-maxing.html">トークンマキシングとは</a>）。</p></div>
-
+  <article class="art-body rv">
+    <div class="lede">
+      <div class="lede-h">この記事の要点</div>
+      <ul>
+        <li>トークンマネジメント＝生成AIが扱うトークン量を管理し、品質を保ちながらコストを最小化する戦略。<a href="token-maxing.html">トークンマキシング</a>（品質最大化）の対極。</li>
+        <li>最も効くのは ①プロンプトキャッシュ（読み出しは通常入力の約0.1倍＝最大約90%減）②モデルの使い分け ③Batch API（50%オフ）④出力制御。</li>
+        <li>本質は「いつ絞り、いつ振り切るか」の設計。コストを絞るマネジメントと、品質に振り切る<a href="token-maxing.html">マキシング</a>を局面で使い分ける。</li>
+      </ul>
     </div>
 
-    <div class="art-cta rv">
-      <div>
-        <h3>生成AIのコスト設計、社内活用に迷ったら。</h3>
-        <p>「どのモデルを・どこに・どう使うか」を、上場企業含む37社・2,500名の支援知見をもとに整理します。検討段階のご相談だけでも歓迎です。</p>
+    <h2 id="s1">トークンマネジメントとは？</h2>
+    <p class="answer">生成AIが扱う「トークン」の使用量を管理し、品質を保ちながらコストと処理速度を最適化する戦略だ。</p>
+    <p>トークンとは、AIが文章を処理するときの最小単位（おおよそ単語や文字のかたまり）で、生成AIのAPIは<strong>入力トークンと出力トークンの量に応じて課金</strong>されます。したがって、無駄なトークンを削ることは、そのままコスト削減に直結します。品質を最大化する<a href="token-maxing.html">トークンマキシング</a>とは逆向きの、コスト最小化の発想です。</p>
+
+    <h2 id="s2">なぜトークン管理が重要なのか？</h2>
+    <p class="answer">コストは「トークン単価 × 使用量」で決まり、放置すると無駄が積み上がるからだ。</p>
+    <p>生成AIのコストは突き詰めると「トークン単価 × 使用量」です。使えば使うほど増えるため、放置すると無駄が積み上がります。たとえば、同じ長い資料を毎回まるごと送信する、不要な会話履歴を毎リクエストに含める、必要以上に長い出力を生成させる——こうした積み重ねが請求額を押し上げます。逆に言えば、<strong>「同じ処理をいかに少ないトークンで回すか」を設計するだけで、品質を落とさずにコストを大きく下げられます。</strong></p>
+
+    <h2 id="s3">トークンコストを下げる4つの手法</h2>
+    <p class="answer">プロンプトキャッシュ・モデル使い分け・Batch API・出力制御の4つで、コストを削る。</p>
+    <ol>
+      <li><strong>プロンプトキャッシュを使う。</strong>システムプロンプトや長い参照資料など「毎回同じ前提」をキャッシュする。Anthropicの公式仕様では、キャッシュからの読み出しは通常入力トークンの約0.1倍（およそ90%安）。書き込みは1.25倍（5分有効）・2倍（1時間有効）かかるが、同じ前提を2回以上使うワークフローなら元が取れる。</li>
+      <li><strong>モデルを使い分ける。</strong>すべてを最上位モデルで処理する必要はない。単純な分類や要約は安価なモデル、推論や本番品質が要る処理は上位モデル、とタスクに応じて使い分ける（料金は下表）。</li>
+      <li><strong>Batch API（バッチ処理）を使う。</strong>即時応答が不要な処理（大量の分類・要約・データ整形など）は、非同期のバッチ処理にすると50%オフになる。リアルタイム用途には向かないが、夜間バッチには最適。</li>
+      <li><strong>出力トークンを制御する。</strong>出力にも課金される。最大出力量（max_tokens）の上限設定や「簡潔に答える」指示で、無駄に長い出力を防ぐ。あわせて使用量をモニタリングし、どこで無駄が出ているかを可視化する。</li>
+    </ol>
+    <div class="mini-dash">
+      <div class="md-top"><span class="dot"></span>モデル別 月間コストの内訳 ※サンプル画面</div>
+      <div class="md-kpis">
+        <div class="md-kpi"><div class="k">月間コスト</div><div class="v">$<em>2.4</em>k</div></div>
+        <div class="md-kpi"><div class="k">キャッシュ読込比率</div><div class="v">61<em>%</em></div></div>
+        <div class="md-kpi"><div class="k">Batch処理比率</div><div class="v">44<em>%</em></div></div>
       </div>
-      <a href="../contact.html" class="btn">無料で相談する <i>→</i></a>
+      <div class="md-chart">
+        <div class="md-bars">
+          <div class="bar hi" style="height:100%"></div><div class="bar" style="height:54%"></div><div class="bar" style="height:28%"></div><div class="bar" style="height:18%"></div>
+        </div>
+        <div class="md-xax"><span>見直し前</span><span>+キャッシュ</span><span>+使い分け</span><span>+Batch</span></div>
+      </div>
+    </div>
+    <p class="fig-cap">図：施策を重ねるごとにコストが下がる運用イメージ（サンプル）。キャッシュ・使い分け・Batchを積み上げるほど請求額が圧縮される。</p>
+
+    <h2 id="s4">モデル別の料金はいくら？（2026年）</h2>
+    <p class="answer">用途に過剰なモデルを使っていないか、まず料金表で確認するのが出発点だ。</p>
+    <p>主要なClaudeモデルの料金（100万トークンあたり、2026年時点の公式価格）です。Fable 5・Opus 4.8・Sonnet 4.6 は100万トークンのコンテキストを<strong>標準料金（長文の追加料金なし）</strong>で扱えます。用途に対して過剰なモデルを使っていないか、まずここを確認します。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>モデル</th><th>コンテキスト</th><th>入力 / 100万</th><th>出力 / 100万</th><th>主な用途</th></tr>
+        <tr><td>Haiku 4.5</td><td>20万</td><td>$1</td><td>$5</td><td>分類・抽出など軽量・高速処理</td></tr>
+        <tr><td>Sonnet 4.6</td><td>100万</td><td>$3</td><td>$15</td><td>速度と品質のバランス・量産</td></tr>
+        <tr><td>Opus 4.8</td><td>100万</td><td>$5</td><td>$25</td><td>高度な推論・本番品質</td></tr>
+        <tr><td>Fable 5</td><td>100万</td><td>$10</td><td>$50</td><td>最難関タスク向け最上位</td></tr>
+      </table>
+    </div>
+    <p>出典：Anthropic公式の料金体系（2026年）。同じ処理でも、Haiku 4.5 で足りるものを Fable 5 で回せば10倍のコストになります。</p>
+    <div class="stat"><span class="n">約90%</span><span class="l">プロンプトキャッシュ読み出し時のコスト削減幅（通常入力の約0.1倍／Anthropic公式仕様）</span></div>
+
+    <h2 id="s5">いつ絞り、いつ振り切るのか？</h2>
+    <p class="answer">1件あたりの価値が小さい処理は絞り、精度が成果を左右する局面は振り切る。</p>
+    <p>すべてを絞ればいいわけではありません。<strong>「絞る（マネジメント）↔ 振り切る（<a href="token-maxing.html">マキシング</a>）」を局面で使い分ける</strong>のが、トークン戦略の核心です。コストを削るべき場所と、品質に投資すべき場所を業務文脈に合わせて切り分けます。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>局面</th><th>取るべき戦略</th><th>理由</th></tr>
+        <tr><td>大量・単純・反復の処理</td><td>マネジメント</td><td>1件あたりの価値が小さい</td></tr>
+        <tr><td>即時性が不要な一括処理</td><td>マネジメント（Batch）</td><td>50%オフで回収しやすい</td></tr>
+        <tr><td>重要な意思決定・調査・本番品質</td><td>マキシング</td><td>精度がそのまま成果になる</td></tr>
+        <tr><td>判断ミス ＞ トークン代</td><td>マキシング</td><td>手戻りの方が高くつく</td></tr>
+      </table>
     </div>
 
-    <div class="back-list"><a href="index.html">← メディア一覧に戻る</a></div>
-  </div>
-</section>
+    <div class="quote-box"><p>「とりあえず最上位モデルで全部」をやめ、絞る所と振り切る所を分けるだけで、品質を保ったままコストは大きく下がる。</p></div>
+    <p>上場企業を含む37社・2,500名の支援を通じて見えてきたのは、コスト見直しの最初の一手が「最上位モデルへの一律依存をやめること」だという傾向です。重要なのは、どこを絞り・どこに投資するかを業務文脈に合わせて設計し、<a href="token-maxing.html">トークンマキシング</a>と対で運用することです。</p>
 
-<section class="related">
-  <div class="container">
-    <span class="tag">Related <span>関連記事</span></span>
-    <h2>関連記事</h2>
-    <div class="related-grid">
-      <a href="token-maxing.html" class="related-card">
-        <span class="rc-cat">トークン戦略</span>
-        <div class="rc-title">トークンマキシングとは｜AIの出力品質を最大化する「惜しまず使う」戦略</div>
-      </a>
-      <a href="../cases.html" class="related-card">
-        <span class="rc-cat">実績</span>
-        <div class="rc-title">生成AI導入・研修の支援実績（37社・2,500名）</div>
-      </a>
-    </div>
-  </div>
-</section>
+    <h2 id="faq">よくある質問</h2>
+    <div class="faq"><div class="q">プロンプトキャッシュはどれくらい効きますか？</div><p class="a">キャッシュからの読み出しは通常入力の約0.1倍（およそ90%安）のコストです。同じ前提（システムプロンプト・長い資料）を繰り返し使うワークフローほど効果が大きくなります。</p></div>
+    <div class="faq"><div class="q">とにかく安いモデルに変えればいいですか？</div><p class="a">品質要件次第です。単純な分類は Haiku 4.5、推論や本番品質が要る処理は Opus 4.8、と「タスクで使い分ける」のが正解です。安いモデルで品質が落ちては本末転倒で、ここは<a href="token-maxing.html">トークンマキシング</a>の発想と使い分けます。</p></div>
+    <div class="faq"><div class="q">Batch APIの注意点は？</div><p class="a">即時応答ではない点です。料金は50%オフになりますが非同期処理のため、チャットのようなリアルタイム用途には向きません。夜間バッチなど即時性が不要な処理に適しています。</p></div>
+    <div class="faq"><div class="q">「トークンマキシング」とは何が違いますか？</div><p class="a">マネジメントは効率・コスト最小化。マキシングは品質最大化のためにあえてトークンを多く使う戦略です。両者は対であり、局面で使い分けます（→<a href="token-maxing.html">トークンマキシングとは</a>）。</p></div>
+  </article>
+</div>
 
-<div class="author">
-  <div class="av">古</div>
+<div class="author"><div class="inner">
+  <span class="av">古</span>
   <div>
     <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役</span></div>
     <p>上場企業を含む37社・2,500名の生成AI導入・研修を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
   </div>
-</div>
+</div></div>
 
-<footer>
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <div class="logo">Tech<i>Worker</i></div>
-        <p>企業向け生成AIコンサルティング<br>株式会社TechWorker</p>
-        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
-      </div>
-      <div class="footer-col"><h4>サービス</h4><a href="../index.html#services">生成AIコンサル</a></div>
-      <div class="footer-col"><h4>サイト</h4><a href="index.html">メディア</a><a href="../news.html">ニュース</a><a href="../cases.html">実績</a><a href="../company.html">会社概要</a></div>
-      <div class="footer-col"><h4>Contact</h4><a href="../contact.html">無料相談</a><a href="../contact.html?type=document">資料請求</a><a href="../privacy.html">プライバシーポリシー</a></div>
-    </div>
-    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>生成AIのコスト設計、社内活用に迷ったら。</h3>
+    <p>「どのモデルを・どこに・どう使うか」を、上場企業含む37社・2,500名の支援知見をもとに整理します。検討段階のご相談だけでも歓迎です。</p>
   </div>
-</footer>
+  <a href="../contact.html" class="btn">無料で相談する <i>→</i></a>
+</div></div>
+
+<div class="back-list"><a href="index.html">← メディア一覧に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="token-maxing.html" class="related-card"><span class="rc-cat">Token Strategy</span><div class="rc-title">トークンマキシングとは｜AIの出力品質を最大化する「惜しまず使う」戦略</div></a>
+    <a href="../cases.html" class="related-card"><span class="rc-cat">実績</span><div class="rc-title">生成AI導入・研修の支援実績（37社・2,500名）</div></a>
+  </div>
+</div></section>
+
+<footer><div class="container">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo">Tech<i>Worker</i></div>
+      <p>企業向け生成AIコンサルティング<br>株式会社TechWorker</p>
+      <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+    </div>
+    <div class="footer-col"><h4>サービス</h4><a href="../index.html#services">生成AIコンサル</a></div>
+    <div class="footer-col"><h4>サイト</h4><a href="index.html">メディア</a><a href="../news.html">ニュース</a><a href="../cases.html">実績</a><a href="../company.html">会社概要</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="../contact.html">無料相談</a><a href="../contact.html?type=document">資料請求</a><a href="../privacy.html">プライバシーポリシー</a></div>
+  </div>
+  <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+</div></footer>
 
 <script>
 var nav=document.getElementById('nav');
-addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>40);},{passive:true});
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
 (function(){
   var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
-  function setMenu(open){document.body.classList.toggle('menu-open',open);hamb.setAttribute('aria-expanded',open?'true':'false');mmenu.setAttribute('aria-hidden',open?'false':'true');document.body.style.overflow=open?'hidden':'';}
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
   hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
   mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
   addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
 })();
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
 </script>
 </body>
 </html>
