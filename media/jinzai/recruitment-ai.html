@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3V34NWXVCJ');
+</script>
+<!-- TW intent tracker (first-party, sessionStorage only) -->
+<script>
+(function(){try{var ss=sessionStorage,ls=localStorage;
+if(!ss.getItem('tw_landing')){ss.setItem('tw_landing',location.pathname);ss.setItem('tw_ref',document.referrer||'');var q=new URLSearchParams(location.search);ss.setItem('tw_utm',['utm_source','utm_medium','utm_campaign'].map(function(k){return q.get(k)||'';}).join('|'));}
+var p=JSON.parse(ss.getItem('tw_pages')||'[]');if(p[p.length-1]!==location.pathname){p.push(location.pathname);ss.setItem('tw_pages',JSON.stringify(p.slice(-20)));}
+if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_visits')||'0',10)+1));ss.setItem('tw_counted','1');}
+}catch(e){}})();
+</script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人材紹介・人材派遣の生成AI活用とは｜CA・RA業務が変わる場面と始め方【2026】 — TechWorker</title>
+<meta name="description" content="人材紹介・人材派遣・採用支援・スカウト媒体で働く人が、自社の人材ビジネスに生成AIをどう使うか。候補者ソーシング・スカウト文・職務経歴書の要約・求人票・面談記録・推薦文など、CA・RA業務の各場面でのAI活用、スモールスタートの始め方、個人情報・公平性・最終判断などの注意点を整理します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/jinzai/recruitment-ai.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人材紹介・人材派遣の生成AI活用とは｜CA・RA業務が変わる場面と始め方【2026】">
+<meta property="og:description" content="人材ビジネスで生成AIをどう使うかの全体像。候補者ソーシング・スカウト文・職務経歴書の要約・求人票・面談記録・推薦文でのAI活用、始め方、使う前の注意点を実務目線で整理します。">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/media/jinzai/recruitment-ai.html">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="人材紹介・人材派遣の生成AI活用とは｜CA・RA業務が変わる場面と始め方【2026】">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../article.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"人材紹介・人材派遣の生成AI活用とは｜CA・RA業務が変わる場面と始め方【2026】",
+  "description":"人材紹介・派遣・採用支援・スカウト媒体で働く人が、自社の人材ビジネスに生成AIをどう使うかの全体像。候補者ソーシング・スカウト文・職務経歴書の要約・求人票・面談記録・推薦文でのAI活用、スモールスタートの始め方、個人情報・公平性・最終判断の注意点を整理する。",
+  "datePublished":"2026-04-14","dateModified":"2026-04-14","inLanguage":"ja",
+  "author":{"@type":"Person","name":"古野光太朗","jobTitle":"株式会社TechWorker 代表取締役","url":"https://x.com/koutarou_furuno"},
+  "publisher":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"},
+  "mainEntityOfPage":{"@type":"WebPage","@id":"https://techworker.co.jp/media/jinzai/recruitment-ai.html"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},
+    {"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},
+    {"@type":"ListItem","position":3,"name":"人材","item":"https://techworker.co.jp/media/jinzai/"},
+    {"@type":"ListItem","position":4,"name":"人材紹介・人材派遣の生成AI活用とは","item":"https://techworker.co.jp/media/jinzai/recruitment-ai.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"人材紹介・派遣の現場で、生成AIはまず何に使うのが効果的ですか？","acceptedAnswer":{"@type":"Answer","text":"最初は「下書きを書く」「長い文章を要約する」といった、人が必ず最後に確認する作業から始めるのが効果的です。スカウト文の初稿、職務経歴書の要約、面談メモの整形などは、効果が見えやすく失敗してもリカバリしやすいため、スモールスタートに向いています。"}},
+    {"@type":"Question","name":"候補者や企業の個人情報を生成AIに入力しても大丈夫ですか？","acceptedAnswer":{"@type":"Answer","text":"利用するサービスの規約と自社の個人情報の取り扱い方針を必ず確認してください。入力したデータが学習に使われない設定の法人向けサービスを選ぶ、個人を特定する情報はマスキングしてから入力する、といった運用ルールを先に決めることが前提になります。"}},
+    {"@type":"Question","name":"AIに任せると、CAやRAの仕事はなくなりますか？","acceptedAnswer":{"@type":"Answer","text":"なくなりません。AIが担うのは下書きや要約・整理といった準備作業で、候補者との信頼関係づくり、見極め、最終的な推薦判断は人にしかできない領域です。AIで準備を速くした分、候補者・企業と向き合う時間を増やすのが本来の使い方です。"}},
+    {"@type":"Question","name":"生成AIの出力をそのまま候補者や求人企業に送ってよいですか？","acceptedAnswer":{"@type":"Answer","text":"そのまま送るのは避けてください。生成AIは事実と異なる内容（ハルシネーション）を自然な文章で出力することがあります。経歴・スキル・求人条件などの事実は元データと照合し、必ず人が確認・修正してから送る運用にします。"}}
+  ]
+}
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <a href="../../index.html" class="logo">Tech<i>Worker</i></a>
+  <ul>
+    <li><a href="../../index.html">ホーム</a></li>
+    <li><a href="../../index.html#services">サービス</a></li>
+    <li><a href="../../cases.html">実績</a></li>
+    <li><a href="../index.html" class="active">メディア</a></li>
+    <li><a href="../../news.html">ニュース</a></li>
+    <li><a href="../../company.html">会社概要</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="../../contact.html" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
+    <span class="lang"><span class="cur">JP</span> / <a href="../../en/index.html">EN</a></span>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="../../index.html">ホーム</a><a href="../../index.html#services">サービス</a><a href="../../cases.html">実績</a><a href="../index.html">メディア</a><a href="../../news.html">ニュース</a><a href="../../company.html">会社概要</a>
+  <a href="../../contact.html" class="m-cta">無料相談を申し込む</a><a href="../../en/index.html" class="m-lang">English ↗</a>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">人材</a><span class="sep">/</span>人材紹介・人材派遣の生成AI活用とは</nav>
+  <div class="kicker">人材業界 × AI</div>
+  <h1>人材紹介・人材派遣の生成AI活用とは｜CA・RA業務が変わる場面と始め方</h1>
+  <p class="dek">候補者ソーシング、スカウト文、職務経歴書の要約、求人票、面談記録、推薦文——人材ビジネスの一日は「書く・読む・まとめる」で埋まっている。その準備作業に生成AIを入れると、CA・RAの時間はどこに戻ってくるのか。全体像と始め方を、2026年の実務を前提に整理する。</p>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.04.14</span><span class="dot">·</span><span>最終更新 2026.04.14</span><span class="dot">·</span><span>読了 9分</span>
+  </div>
+</header>
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次">
+    <div class="art-toc-inner">
+      <div class="toc-h">目次</div>
+      <a href="#s1">何に使えるのか（全体像）</a>
+      <a href="#s2">CA・RA業務はどう変わるか</a>
+      <a href="#s3">まず何から始めるか</a>
+      <a href="#s4">使う前に押さえる注意点</a>
+      <a href="#faq">よくある質問</a>
+    </div>
+  </nav>
+
+  <article class="art-body rv">
+    <div class="lede">
+      <div class="lede-h">この記事の要点</div>
+      <ul>
+        <li>人材業界の生成AI活用とは、人材紹介・派遣・採用支援といった<strong>自社の人材ビジネスそのものを生成AIで速く・厚くする</strong>こと。社員のAI研修の話ではなく、CA・RAの日々の業務が対象。</li>
+        <li>効きどころは「書く・読む・まとめる」が多い準備作業——スカウト文の初稿、職務経歴書の要約、求人票の整形、面談記録、推薦文の下書き。<strong>人が最後に確認する前提</strong>でAIに任せる。</li>
+        <li>始め方は、効果が見えやすい1業務から小さく試す。使う前に、個人情報の扱い・公平性／バイアス・ハルシネーション・人の最終判断の4点を必ず押さえる。</li>
+      </ul>
+    </div>
+
+    <h2 id="s1">人材業界で生成AIは何に使えるのか？</h2>
+    <p class="answer">候補者ソーシングからスカウト文、要約、求人票、面談記録、推薦文まで、人材ビジネスの「書く・読む・まとめる」準備作業を速くできる。</p>
+    <p>人材紹介・人材派遣・採用支援の仕事は、突き詰めると<strong>大量の文章を読み、書き、まとめる</strong>作業の連続です。求職者の職務経歴書を読み込み、企業の求人票を理解し、スカウト文を書き、面談を記録し、推薦文をまとめる。生成AIが最も効くのは、まさにこの文章まわりの準備作業です。AIに任せられるのは「下書き」と「要約・整理」であって、見極めや関係づくりといった人にしかできない部分は残ります。「AIはエンジンだ。コンテキストは燃料だ」という言い方をすれば、求職者・求人・自社の判断基準というコンテキストを渡すほど、AIは現場で使える出力を返します。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>業務場面</th><th>AIの使い方</th><th>期待できること</th></tr>
+        <tr><td>候補者ソーシング</td><td>求人要件から検索キーワード・想定ターゲット像を言語化して下書き</td><td>探し始めの当たりを早くつける</td></tr>
+        <tr><td>スカウト文</td><td>候補者の経歴と求人の魅力を踏まえた初稿を生成</td><td>一斉送信の量産でなく一人ずつの初稿づくりを時短</td></tr>
+        <tr><td>職務経歴書の要約</td><td>長い経歴を要点・強み・確認したい点に整理</td><td>読み込みの時間を短縮し見落としを減らす</td></tr>
+        <tr><td>求人票・JDの作成</td><td>企業ヒアリングメモから求人票の素案を整形</td><td>たたき台を早く出し企業との往復を減らす</td></tr>
+        <tr><td>面談記録</td><td>面談メモや文字起こしを要点・次アクションに整形</td><td>記録の手間を減らし対話に集中する</td></tr>
+        <tr><td>推薦文</td><td>経歴と求人要件の合致点を踏まえた推薦コメントの下書き</td><td>推薦の質を保ちつつ作成を時短</td></tr>
+      </table>
+    </div>
+    <div class="callout"><p>共通するのは「ゼロから書く」を「直して仕上げる」に変えること。白紙からの執筆をAIの初稿に置き換えるだけで、一件あたりの所要時間は大きく変わる。最後に人が確認・修正する前提は崩さない。</p></div>
+
+    <h2 id="s2">CA・RA業務のどこが、どう変わるのか？</h2>
+    <p class="answer">下書きと要約をAIに任せ、CA・RAは候補者・企業と向き合う時間に振り直せる。仕事は減るのではなく中身が変わる。</p>
+    <p>生成AIを入れて変わるのは「作業の中身」です。これまでCA（キャリアアドバイザー）やRA（リクルーティングアドバイザー）が時間を使ってきた文章の準備が短くなり、その分を見極め・関係づくり・候補者体験（CX）の向上に回せます。下のbefore/afterは、AIなしとAIありで一日の使い方がどう変わるかのイメージです。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>場面</th><th>AIなしのCAの一日</th><th>AIありのCAの一日</th></tr>
+        <tr><td>朝</td><td>新着の職務経歴書を一件ずつ読み込む</td><td>AI要約で要点を把握し、気になる候補者を深く読む</td></tr>
+        <tr><td>午前</td><td>スカウト文を一人ずつ白紙から書く</td><td>AI初稿を一人ずつ手直し、刺さる一文を自分で足す</td></tr>
+        <tr><td>面談後</td><td>記憶を頼りに面談メモを清書する</td><td>文字起こしをAIで整形し、見極めの所感を加える</td></tr>
+        <tr><td>夕方</td><td>推薦文を一から書き、求人票を整える</td><td>下書きを仕上げ、空いた時間で候補者へ追加連絡</td></tr>
+        <tr><td>一日の重心</td><td>書類づくりに追われる</td><td>人と向き合う対話・見極めに時間が戻る</td></tr>
+      </table>
+    </div>
+    <div class="quote-box"><p>AIが奪うのは作業であって、仕事ではない。空いた時間を候補者と企業に返せるかどうかが、これからのCA・RAの差になる。</p></div>
+    <p>人材ビジネスのオペレーション全体で見ると、AIが入る場面は一つではありません。下は、人材紹介の一連の流れのどこにAIが入るかを俯瞰したマップ（サンプル）です。数値は実在のものではなく、活用の広がりをイメージするための例です。</p>
+    <div class="mini-dash">
+      <div class="md-top"><span class="dot"></span>人材紹介オペレーション AI活用マップ（※サンプル・数値はイメージ）</div>
+      <div class="md-kpis">
+        <div class="md-kpi"><div class="k">AIが下書き・要約を担える場面</div><div class="v"><em>6</em> 工程</div></div>
+        <div class="md-kpi"><div class="k">人の最終判断が必須の工程</div><div class="v"><em>全</em> 工程</div></div>
+        <div class="md-kpi"><div class="k">まず試すおすすめ工程</div><div class="v"><em>2</em> 箇所</div></div>
+      </div>
+      <div class="md-chart">
+        <div class="md-bars">
+          <div class="bar hi" style="height:62%"></div>
+          <div class="bar hi" style="height:86%"></div>
+          <div class="bar" style="height:40%"></div>
+          <div class="bar hi" style="height:74%"></div>
+          <div class="bar" style="height:50%"></div>
+          <div class="bar hi" style="height:80%"></div>
+        </div>
+        <div class="md-xax"><span>ソーシング</span><span>スカウト</span><span>面談</span><span>記録要約</span><span>求人票</span><span>推薦</span></div>
+      </div>
+    </div>
+    <p class="fig-cap">※サンプル。棒の高さは「AIで準備を時短しやすい度合い」のイメージであり、実測値ではありません。青が濃い工程ほど下書き・要約の効果が出やすい場面の例です。</p>
+
+    <h2 id="s3">まず何から始めるか（スモールスタート）</h2>
+    <p class="answer">効果が見えやすく失敗してもリカバリしやすい1業務に絞り、人が必ず最後に確認する形で小さく試す。</p>
+    <p>いきなり全業務に広げようとすると、ルールも品質も追いつかず止まります。人材業界での生成AI活用は、<strong>一番痛い・一番多い作業を一つだけ選んで試す</strong>のが現実的です。次の順番で進めると、現場が無理なく使い始められます。</p>
+    <ol>
+      <li><strong>痛い作業を一つ選ぶ。</strong>「スカウト文の初稿づくり」「職務経歴書の要約」など、件数が多く時間を食っている作業を一つに絞る。</li>
+      <li><strong>入力ルールを先に決める。</strong>個人を特定する情報はマスキングする、入力データが学習に使われない法人向けサービスを使う、といった取り扱いルールを先に決める。</li>
+      <li><strong>型（プロンプト）をつくる。</strong>「誰に・何を・どんなトーンで」を埋めるだけで使える指示文の雛形を用意し、現場が毎回ゼロから書かなくて済むようにする。</li>
+      <li><strong>人が確認して送る。</strong>AIの出力は必ずCA・RAが読み、事実とトーンを直してから候補者・企業に届ける。出しっぱなしにしない。</li>
+      <li><strong>効果を測って広げる。</strong>一件あたりの所要時間や着手のしやすさが変わったかを確かめ、手応えがあれば次の業務へ広げる。</li>
+    </ol>
+    <div class="callout"><p>最初の一歩は「AIに正解を出させる」ことではなく「AIに下書きを出させて、人が仕上げる」流れを現場に根づかせること。完璧な自動化を狙うより、確認込みで速くなる体験を一つ作るほうが定着する。</p></div>
+
+    <h2 id="s4">使う前に押さえる注意点（個人情報・公平性・最終判断）</h2>
+    <p class="answer">候補者の個人情報、公平性／バイアス、ハルシネーション、人の最終判断——この4点を運用ルールに落としてから使う。</p>
+    <p>人材ビジネスは、人の経歴・評価・将来を扱う仕事です。便利さだけで導入すると、信頼を損なうリスクがあります。使い始める前に、最低限この4つを社内のルールとして決めておきます。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>論点</th><th>何が問題になりうるか</th><th>運用での備え</th></tr>
+        <tr><td>個人情報の扱い</td><td>候補者・企業の情報が外部に渡る／学習に使われる懸念</td><td>入力データが学習に使われない法人向けサービスを選び、特定情報はマスキング。利用規約と自社方針を先に確認</td></tr>
+        <tr><td>公平性／バイアス</td><td>性別・年齢・出身などで不利な扱いが生まれる懸念</td><td>選考・推薦の最終判断はAIに委ねず人が行う。AIは候補の整理・下書きまでにとどめる</td></tr>
+        <tr><td>ハルシネーション</td><td>経歴やスキルなど事実と異なる内容を自然な文章で生成</td><td>経歴・条件などの事実は元データと必ず照合し、人が確認・修正してから送る</td></tr>
+        <tr><td>人の最終判断</td><td>AI任せで見極めや責任の所在があいまいになる</td><td>候補者への連絡・推薦・採否に関わる判断は必ず人が担い、AIは準備役と位置づける</td></tr>
+      </table>
+    </div>
+    <p>言い換えると、生成AIは<strong>候補者と向き合う前の準備を速くする道具</strong>であって、見極めや推薦の判断を肩代わりするものではありません。この線引きを最初にチームで合意できているかどうかが、現場が安心してAIを使えるかの分かれ目になります。なお、こうした「自社の業務文脈をAIが扱える形に整える」設計こそが活用の土台です。上場企業を含む37社・2,500名の生成AI支援を通じても、ルールと型を先に整えた現場ほど活用が止まらず広がる、という傾向が見えています。具体的な業務別の使い方は、<a href="ai-scouting.html">AIスカウト</a>や<a href="ai-matching.html">AIマッチング</a>の記事もあわせてご覧ください。</p>
+
+    <h2 id="faq">よくある質問</h2>
+    <div class="faq"><div class="q">人材紹介・派遣の現場で、生成AIはまず何に使うのが効果的ですか？</div><p class="a">最初は「下書きを書く」「長い文章を要約する」といった、人が必ず最後に確認する作業から始めるのが効果的です。スカウト文の初稿、職務経歴書の要約、面談メモの整形などは、効果が見えやすく失敗してもリカバリしやすいため、スモールスタートに向いています。詳しい使い方は<a href="ai-scouting.html">AIスカウト</a>の記事もご覧ください。</p></div>
+    <div class="faq"><div class="q">候補者や企業の個人情報を生成AIに入力しても大丈夫ですか？</div><p class="a">利用するサービスの規約と自社の個人情報の取り扱い方針を必ず確認してください。入力したデータが学習に使われない設定の法人向けサービスを選ぶ、個人を特定する情報はマスキングしてから入力する、といった運用ルールを先に決めることが前提になります。</p></div>
+    <div class="faq"><div class="q">AIに任せると、CAやRAの仕事はなくなりますか？</div><p class="a">なくなりません。AIが担うのは下書きや要約・整理といった準備作業で、候補者との信頼関係づくり、見極め、最終的な推薦判断は人にしかできない領域です。AIで準備を速くした分、候補者・企業と向き合う時間を増やすのが本来の使い方です。</p></div>
+    <div class="faq"><div class="q">生成AIの出力をそのまま候補者や求人企業に送ってよいですか？</div><p class="a">そのまま送るのは避けてください。生成AIは事実と異なる内容（ハルシネーション）を自然な文章で出力することがあります。経歴・スキル・求人条件などの事実は元データと照合し、必ず人が確認・修正してから送る運用にします。</p></div>
+  </article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役</span></div>
+    <p>上場企業を含む37社・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>人材ビジネスの「どこにAIを入れるか」を一緒に設計します。</h3>
+    <p>候補者ソーシングからスカウト・要約・推薦まで、人材紹介・派遣・採用支援の業務に生成AIをどう接続するか。上場企業を含む37社・2,500名の支援知見をもとに、スモールスタートの設計から運用ルールづくりまで伴走します。検討段階のご相談だけでも歓迎です。</p>
+  </div>
+  <a href="../../contact.html" class="btn">AI活用の相談をする <i>→</i></a>
+</div></div>
+
+<div class="back-list"><a href="index.html">← メディア（人材）に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="ai-scouting.html" class="related-card"><span class="rc-cat">スカウト</span><div class="rc-title">AIスカウトとは｜返信される候補者ソーシングとスカウト文の作り方</div></a>
+    <a href="ai-matching.html" class="related-card"><span class="rc-cat">マッチング</span><div class="rc-title">AIマッチングとは｜求人と候補者の精度を上げる人材紹介のAI活用</div></a>
+  </div>
+</div></section>
+
+<footer><div class="container">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo">Tech<i>Worker</i></div>
+      <p>企業向け生成AIコンサルティング<br>株式会社TechWorker</p>
+      <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+    </div>
+    <div class="footer-col"><h4>サービス</h4><a href="../../index.html#services">生成AIコンサル</a><a href="../../training.html">生成AI研修</a></div>
+    <div class="footer-col"><h4>サイト</h4><a href="../index.html">メディア</a><a href="../../news.html">ニュース</a><a href="../../cases.html">実績</a><a href="../../company.html">会社概要</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="../../contact.html">無料相談</a><a href="../../contact.html?type=document">資料請求</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+  </div>
+  <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+</div></footer>
+
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+</body>
+</html>
