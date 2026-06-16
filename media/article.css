@@ -117,6 +117,27 @@ body.menu-open .mmenu{transform:none;visibility:visible;}
 /* pull quote */
 .art-body .quote-box{margin:38px 0;border-left:2px solid var(--line-2);padding:6px 0 6px 26px;}
 .art-body .quote-box p{margin:0;font-size:21px;font-weight:600;line-height:1.6;letter-spacing:-.01em;color:var(--ink);}
+/* sample tool-UI mock: 指示→AIの下書き（実製品UIモック / v6） */
+.ui-mock{margin:0 0 8px;border:1px solid var(--line-2);border-radius:12px;background:var(--white);overflow:hidden;}
+.ui-mock .um-bar{display:flex;align-items:center;gap:6px;padding:12px 16px;border-bottom:1px solid var(--line);}
+.ui-mock .um-bar .um-dot{width:9px;height:9px;border-radius:50%;background:var(--line-2);}
+.ui-mock .um-bar .um-name{margin-left:8px;font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--slate);}
+.ui-mock .um-row{padding:16px 18px;}
+.ui-mock .um-row + .um-row{border-top:1px solid var(--line);}
+.ui-mock .um-label{font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-bottom:9px;display:flex;align-items:center;gap:8px;}
+.ui-mock .um-label::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--slate);}
+.ui-mock .um-label.ai{color:var(--electric);}
+.ui-mock .um-label.ai::before{background:var(--electric);}
+.ui-mock .um-text{font-size:14px;line-height:1.85;color:var(--ink-soft);white-space:pre-line;}
+.ui-mock .um-text.prompt{color:var(--slate);}
+/* before / after example cards */
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0 0 8px;}
+.ba-card{border:1px solid var(--line-2);border-radius:10px;padding:18px 20px;background:var(--white);}
+.ba-card .ba-tag{font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;display:block;}
+.ba-card.before .ba-tag{color:var(--slate);}
+.ba-card.after .ba-tag{color:var(--electric);}
+.ba-card .ba-body{font-size:14px;line-height:1.85;color:var(--ink-soft);}
+@media(max-width:560px){.ba-grid{grid-template-columns:1fr;}}
 /* FAQ (FAQPage) */
 .art-body .faq{border-bottom:1px solid var(--line);padding:22px 0;}
 .art-body .faq .q{font-weight:600;font-size:16.5px;color:var(--ink);margin-bottom:9px;}
