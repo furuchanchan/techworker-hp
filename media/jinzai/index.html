@@ -128,11 +128,27 @@ fbq('init','1264057945446029');fbq('track','PageView');
 .jz-feature .idx-feature{margin-bottom:0;}
 .jz-latest{margin-top:64px;padding-bottom:100px;}
 
+/* latest = 均一なリスト行（2カラムカードの高さ不揃い＝凸凹を解消） */
+.jz-list{border-top:1px solid var(--line-2);}
+.jz-list a{display:grid;grid-template-columns:176px minmax(0,1fr) 24px;gap:28px;align-items:start;padding:26px 4px;border-bottom:1px solid var(--line);text-decoration:none;color:inherit;transition:background .2s;}
+.jz-list a:hover{background:var(--white);}
+.jz-list .l-side{display:flex;flex-direction:column;gap:7px;padding-top:3px;}
+.jz-list .l-cat{font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);}
+.jz-list .l-date{font-family:var(--en);font-size:12px;color:var(--slate);font-feature-settings:"tnum" 1;}
+.jz-list .l-title{font-family:var(--jp);font-weight:700;font-size:18px;line-height:1.55;letter-spacing:-.01em;color:var(--ink);transition:color .2s;}
+.jz-list a:hover .l-title{color:var(--electric);}
+.jz-list .l-desc{font-size:14px;color:var(--slate);line-height:1.75;margin-top:8px;}
+.jz-list .l-arrow{font-family:var(--en);color:var(--electric);font-size:17px;justify-self:end;align-self:center;transition:transform .2s;}
+.jz-list a:hover .l-arrow{transform:translateX(4px);}
+
 @media(max-width:880px){
   .jz-hero{padding:108px 24px 0;}
   .jz-sec{padding:0 24px;}
   .jz-seg-grid,.jz-cat-grid{grid-template-columns:1fr;}
   .jz-seg-card{border-left:none;padding-left:0;}
+  .jz-list a{grid-template-columns:1fr;gap:9px;padding:22px 2px;}
+  .jz-list .l-side{flex-direction:row;align-items:center;gap:12px;}
+  .jz-list .l-arrow{display:none;}
 }
 </style>
 </head>
@@ -229,24 +245,21 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <!-- latest articles -->
 <section class="jz-sec jz-latest">
   <div class="jz-sec-h">新着記事</div>
-  <div class="idx-grid rv">
-    <a href="recruitment-ai.html" class="idx-card">
-      <span class="ic-cat">全体像 / Overview</span>
-      <div class="ic-title">人材紹介・人材派遣の生成AI活用とは｜CA・RA業務が変わる場面と始め方【2026】</div>
-      <div class="ic-desc">人材ビジネスのどの業務に生成AIが効くのかを業務フローで整理。何から始めればよいかと、現場に定着させる進め方を解説します。</div>
-      <div class="jz-meta"><span>読了 8分</span><span class="dot">·</span><span>2026.04.08</span></div>
+  <div class="jz-list rv">
+    <a href="recruitment-ai.html">
+      <div class="l-side"><span class="l-cat">全体像 / Overview</span><span class="l-date">2026.04.08 · 読了8分</span></div>
+      <div class="l-main"><div class="l-title">人材紹介・人材派遣の生成AI活用とは｜CA・RA業務が変わる場面と始め方</div><div class="l-desc">人材ビジネスのどの業務に生成AIが効くのかを業務フローで整理。何から始めればよいかと、現場に定着させる進め方を解説します。</div></div>
+      <span class="l-arrow">→</span>
     </a>
-    <a href="ai-scouting.html" class="idx-card">
-      <span class="ic-cat">ソーシング / Sourcing</span>
-      <div class="ic-title">生成AIでスカウト・候補者ソーシングを効率化する｜返信率を高める文面と運用【2026】</div>
-      <div class="ic-desc">候補者要件の言語化からスカウト文面の個別最適化まで。送って終わりにしないソーシングの設計と運用をまとめます。</div>
-      <div class="jz-meta"><span>読了 9分</span><span class="dot">·</span><span>2026.04.15</span></div>
+    <a href="ai-scouting.html">
+      <div class="l-side"><span class="l-cat">ソーシング / Sourcing</span><span class="l-date">2026.04.15 · 読了9分</span></div>
+      <div class="l-main"><div class="l-title">生成AIでスカウト・候補者ソーシングを効率化する｜返信率を高める文面と運用</div><div class="l-desc">候補者要件の言語化からスカウト文面の個別最適化まで。送って終わりにしないソーシングの設計と運用をまとめます。</div></div>
+      <span class="l-arrow">→</span>
     </a>
-    <a href="ai-matching.html" class="idx-card">
-      <span class="ic-cat">マッチング / Matching</span>
-      <div class="ic-title">生成AIで人材マッチングの精度を上げる｜求人票・候補者要件・推薦コメントの最適化【2026】</div>
-      <div class="ic-desc">求人票と職務経歴書の突合、要件適合の整理、推薦コメントの下書きまで。マッチング精度を底上げする使い方を整理します。</div>
-      <div class="jz-meta"><span>読了 9分</span><span class="dot">·</span><span>2026.04.22</span></div>
+    <a href="ai-matching.html">
+      <div class="l-side"><span class="l-cat">マッチング / Matching</span><span class="l-date">2026.04.22 · 読了9分</span></div>
+      <div class="l-main"><div class="l-title">生成AIで人材マッチングの精度を上げる｜求人票・候補者要件・推薦コメントの最適化</div><div class="l-desc">求人票と職務経歴書の突合、要件適合の整理、推薦コメントの下書きまで。マッチング精度を底上げする使い方を整理します。</div></div>
+      <span class="l-arrow">→</span>
     </a>
   </div>
 </section>
