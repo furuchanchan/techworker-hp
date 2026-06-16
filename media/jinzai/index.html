@@ -113,6 +113,27 @@ fbq('init','1264057945446029');fbq('track','PageView');
 .jz-map table a{color:var(--electric);text-decoration:none;border-bottom:1px solid rgba(0,94,255,.28);}
 .jz-map table a:hover{border-bottom-color:var(--electric);}
 
+/* hero 数字ストリップ（v6: 特大数字で裏付け） */
+.jz-stats{display:flex;flex-wrap:wrap;margin-top:40px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.jz-stats .st{padding:20px 34px 20px 0;margin-right:34px;border-right:1px solid var(--line);}
+.jz-stats .st:last-child{border-right:none;margin-right:0;padding-right:0;}
+.jz-stats .st-n{font-family:var(--en);font-weight:700;font-size:clamp(30px,4.5vw,42px);letter-spacing:-.03em;color:var(--electric);line-height:1;font-feature-settings:"tnum" 1;}
+.jz-stats .st-n em{font-style:normal;font-size:.45em;color:var(--ink);margin-left:3px;letter-spacing:0;}
+.jz-stats .st-l{font-size:12.5px;color:var(--slate);margin-top:10px;}
+
+/* 業務フロー × AI（4段・順序付きカラム。フローチャートではない） */
+.jz-flow .fl-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);}
+.jz-flow .fl{display:flex;flex-direction:column;padding:22px 22px 24px;border-bottom:1px solid var(--line);border-left:1px solid var(--line);}
+.jz-flow .fl:first-child{border-left:none;padding-left:0;}
+.jz-flow .fl:last-child{padding-right:0;}
+.jz-flow .fl-n{font-family:var(--en);font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--electric);font-feature-settings:"tnum" 1;}
+.jz-flow .fl-stage{font-family:var(--jp);font-weight:700;font-size:15.5px;color:var(--ink);margin:9px 0 10px;line-height:1.45;}
+.jz-flow .fl-use{font-size:13px;color:var(--slate);line-height:1.75;}
+.jz-flow .fl-link{margin-top:auto;padding-top:14px;font-size:12px;font-weight:600;color:var(--electric);text-decoration:none;}
+.jz-flow .fl-link:hover{text-decoration:underline;}
+@media(max-width:880px){.jz-flow .fl-grid{grid-template-columns:1fr 1fr;}.jz-flow .fl{border-left:none;padding:18px 0;}}
+@media(max-width:560px){.jz-flow .fl-grid{grid-template-columns:1fr;}.jz-stats .st{padding:16px 0;margin-right:26px;}}
+
 /* categories — tag-label style (left border, restrained) */
 .jz-cat{margin-top:64px;}
 .jz-cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
@@ -182,6 +203,11 @@ fbq('init','1264057945446029');fbq('track','PageView');
     <a href="recruitment-ai.html" class="btn">記事を読む <i>→</i></a>
     <a href="../../contact.html" class="ghost">無料相談 <i>→</i></a>
   </div>
+  <div class="jz-stats">
+    <div class="st"><div class="st-n">37<em>社</em></div><div class="st-l">生成AI導入・支援の実績</div></div>
+    <div class="st"><div class="st-n">2,500<em>名</em></div><div class="st-l">研修・育成の受講者</div></div>
+    <div class="st"><div class="st-n">4<em>領域</em></div><div class="st-l">ソーシング〜社内ナレッジ</div></div>
+  </div>
 </header>
 
 <!-- reader segments -->
@@ -207,16 +233,33 @@ fbq('init','1264057945446029');fbq('track','PageView');
 </section>
 
 <!-- where AI fits in the recruitment workflow -->
-<section class="jz-sec jz-map">
+<section class="jz-sec jz-map jz-flow">
   <div class="jz-sec-h">人材ビジネスのどの業務にAIが効くか</div>
-  <div class="tbl-wrap">
-    <table>
-      <tr><th>業務フェーズ</th><th>生成AIが効く場面</th><th>関連記事</th></tr>
-      <tr><td>ソーシング・スカウト</td><td>候補者要件の言語化、スカウト文面の個別最適化、母集団の絞り込み補助</td><td><a href="ai-scouting.html">スカウト効率化</a></td></tr>
-      <tr><td>選考・マッチング</td><td>求人票と職務経歴書の突合、要件適合の整理、推薦コメントの下書き</td><td><a href="ai-matching.html">マッチング精度</a></td></tr>
-      <tr><td>面談・候補者体験</td><td>面談記録の要約、候補者への連絡文の整え、フォロー漏れの可視化</td><td><a href="recruitment-ai.html">全体像と始め方</a></td></tr>
-      <tr><td>社内ナレッジ</td><td>求人・候補者・企業情報の整理、CA／RA間の知見の共有</td><td><a href="recruitment-ai.html">業務フロー設計</a></td></tr>
-    </table>
+  <div class="fl-grid">
+    <div class="fl">
+      <div class="fl-n">01</div>
+      <div class="fl-stage">ソーシング・スカウト</div>
+      <div class="fl-use">候補者要件の言語化、スカウト文面の個別最適化、母集団の絞り込み補助。</div>
+      <a href="ai-scouting.html" class="fl-link">スカウト効率化 →</a>
+    </div>
+    <div class="fl">
+      <div class="fl-n">02</div>
+      <div class="fl-stage">選考・マッチング</div>
+      <div class="fl-use">求人票と職務経歴書の突合、要件適合の整理、推薦コメントの下書き。</div>
+      <a href="ai-matching.html" class="fl-link">マッチング精度 →</a>
+    </div>
+    <div class="fl">
+      <div class="fl-n">03</div>
+      <div class="fl-stage">面談・候補者体験</div>
+      <div class="fl-use">面談記録の要約、候補者への連絡文の整え、フォロー漏れの可視化。</div>
+      <a href="recruitment-ai.html" class="fl-link">全体像と始め方 →</a>
+    </div>
+    <div class="fl">
+      <div class="fl-n">04</div>
+      <div class="fl-stage">社内ナレッジ</div>
+      <div class="fl-use">求人・候補者・企業情報の整理、CA／RA間の知見の共有。</div>
+      <a href="recruitment-ai.html" class="fl-link">業務フロー設計 →</a>
+    </div>
   </div>
 </section>
 
