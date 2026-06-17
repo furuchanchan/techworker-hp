@@ -31,7 +31,7 @@ function computeIntent(data) {
   if (nTraining) { score += Math.min(nTraining * 3, 6); reasons.push(`研修ページ${nTraining}回`); }
   if (nCases)    { score += Math.min(nCases * 2, 4);     reasons.push(`実績/事例${nCases}回`); }
   if (nLP)       { score += Math.min(nLP * 2, 4);        reasons.push(`シミュLP${nLP}回`); }
-  if (isDiag)    { score += 4;                           reasons.push('セキュリティ診断を実施'); }
+  if (isDiag)    { score += 4;                           reasons.push('AI活用度診断を実施'); }
   if (nLibrary)  { score += Math.min(nLibrary, 2);       reasons.push(`資料DL${nLibrary}回`); }
   if (nMedia)    { score += 1;                           reasons.push('メディア閲覧'); }
   if (visits >= 3)      { score += 3; reasons.push(`${visits}回目の訪問`); }
@@ -46,7 +46,7 @@ function computeIntent(data) {
 
 async function saveToNotion(data, apiKey) {
   const msg = ((data.diag_score != null)
-    ? `【🛡️セキュリティ診断 ${data.diag_score}/${data.diag_max || 14}・${data.diag_band || ''}】\n${data.diag_answers || ''}\n${data.message || ''}`
+    ? `【📊AI活用度診断 ${data.diag_band || ''}（${data.diag_score}/${data.diag_max || 100}）】\n${data.diag_answers || ''}\n${data.message || ''}`
     : (data.message || '')).trim().slice(0, 1900);
   const properties = {
     'お名前':     { title:     [{ text: { content: data.name    || '' } }] },
@@ -120,7 +120,7 @@ async function sendSlackNotification(data, webhookUrl) {
       },
       ...(data.diag_score != null ? [{
         type: 'section',
-        text: { type: 'mrkdwn', text: `*🛡️ セキュリティ診断結果*\nスコア: ${data.diag_score}/${data.diag_max || 14}（${data.diag_band || '-'}）${data.diag_answers ? '\n' + data.diag_answers : ''}` },
+        text: { type: 'mrkdwn', text: `*📊 AI活用度診断結果*\n成熟度: ${data.diag_band || '-'}（${data.diag_score}/${data.diag_max || 100}）${data.diag_answers ? '\n' + data.diag_answers : ''}` },
       }] : []),
       {
         type: 'section',

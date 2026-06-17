@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3V34NWXVCJ');
+</script>
+<!-- TW intent tracker (first-party, sessionStorage only) -->
+<script>
+(function(){try{var ss=sessionStorage,ls=localStorage;
+if(!ss.getItem('tw_landing')){ss.setItem('tw_landing',location.pathname);ss.setItem('tw_ref',document.referrer||'');var q=new URLSearchParams(location.search);ss.setItem('tw_utm',['utm_source','utm_medium','utm_campaign'].map(function(k){return q.get(k)||'';}).join('|'));}
+var p=JSON.parse(ss.getItem('tw_pages')||'[]');if(p[p.length-1]!==location.pathname){p.push(location.pathname);ss.setItem('tw_pages',JSON.stringify(p.slice(-20)));}
+if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_visits')||'0',10)+1));ss.setItem('tw_counted','1');}
+}catch(e){}})();
+</script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>生成AI活用 成熟度診断｜12問で自社のAI活用レベルを可視化 — TechWorker</title>
+<meta name="description" content="戦略・人材・業務適用・コンテキスト整理・基盤・ガバナンスの6軸で、自社の生成AI活用レベルを5分で診断。MIT CISR・Gartnerの成熟度モデルを参考に、レーダーチャートで強みと課題を可視化し、優先的に取り組むべきテーマと次の一手を提示します。無料・登録不要で結果表示。">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/ai-assessment.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="生成AI活用 成熟度診断 — TechWorker">
+<meta property="og:description" content="6軸12問で自社の生成AI活用レベルを5分で診断。レーダーチャートで強み・課題を可視化し、次の一手を提示します。無料・登録不要。">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/ai-assessment.html">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="生成AI活用 成熟度診断 — TechWorker">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0D1117; --paper:#F4F6F9; --paper-2:#ECEFF3; --white:#FBFCFD;
+  --electric:#005EFF; --electric-dark:#003DAA;
+  --slate:#4A5666; --line:rgba(13,17,23,.12); --line-2:rgba(13,17,23,.20);
+  --emerald:#00B894; --amber:#C77A14; --red:#D14343;
+  --jp:'IBM Plex Sans JP','IBM Plex Sans',system-ui,sans-serif;
+  --en:'IBM Plex Sans','IBM Plex Sans JP',system-ui,sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:84px;}
+body{font-family:var(--jp);background:var(--paper);color:var(--ink);line-height:1.85;font-size:16px;-webkit-font-smoothing:antialiased;font-feature-settings:"palt" 1;overflow-x:hidden;}
+::selection{background:var(--electric);color:var(--paper);}
+a{color:inherit;}
+.container{max-width:840px;margin:0 auto;padding:0 24px;width:100%;}
+.tag{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--electric);display:inline-flex;align-items:center;gap:11px;padding-left:14px;border-left:3px solid var(--electric);}
+.tag span{color:var(--slate);font-weight:500;letter-spacing:.02em;text-transform:none;font-size:13px;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:68px;background:rgba(244,246,249,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+nav .logo{font-family:var(--en);font-weight:700;font-size:20px;letter-spacing:-.01em;text-decoration:none;color:var(--ink);}
+nav .logo i{font-style:normal;color:var(--electric);}
+nav ul{list-style:none;display:flex;gap:32px;}
+nav ul a{font-size:14px;font-weight:500;color:var(--ink);text-decoration:none;}
+nav ul a:hover{color:var(--electric);}
+nav .nav-right{display:flex;align-items:center;gap:18px;}
+nav .nav-cta{font-family:var(--jp);font-size:13.5px;font-weight:600;color:var(--paper);background:var(--electric);text-decoration:none;padding:10px 22px;border-radius:4px;}
+nav .nav-cta:hover{background:var(--electric-dark);}
+.hamb{display:none;width:44px;height:44px;border:none;background:none;cursor:pointer;position:relative;}
+.hamb span{position:absolute;left:11px;width:22px;height:2px;background:var(--ink);transition:transform .3s,opacity .2s;}
+.hamb span:nth-child(1){top:15px;}.hamb span:nth-child(2){top:21px;}.hamb span:nth-child(3){top:27px;}
+body.menu-open .hamb span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+body.menu-open .hamb span:nth-child(2){opacity:0;}
+body.menu-open .hamb span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+.mmenu{position:fixed;inset:68px 0 0;z-index:45;background:var(--paper);transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);visibility:hidden;display:flex;flex-direction:column;padding:18px 24px 40px;}
+body.menu-open .mmenu{transform:none;visibility:visible;}
+.mmenu a{font-size:19px;font-weight:600;color:var(--ink);text-decoration:none;padding:20px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;}
+.mmenu a::after{content:"→";color:var(--electric);}
+.mmenu .m-cta{margin-top:28px;background:var(--electric);color:var(--paper);justify-content:center;border-radius:5px;padding:17px;}
+.mmenu .m-cta::after{content:none;}
+
+/* HEADER */
+.dc-head{padding:130px 0 30px;text-align:center;}
+.dc-head .tag{justify-content:center;margin-bottom:24px;}
+.dc-head h1{font-family:var(--jp);font-weight:700;font-size:clamp(28px,4.2vw,46px);line-height:1.32;letter-spacing:-.02em;}
+.dc-head h1 em{font-style:normal;color:var(--electric);}
+.dc-head p{font-size:16px;color:var(--slate);line-height:1.9;margin:20px auto 0;max-width:58ch;}
+.dc-meta{display:inline-flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:26px;}
+.dc-meta span{font-size:12.5px;font-weight:600;color:var(--slate);border:1px solid var(--line);border-radius:20px;padding:7px 16px;background:var(--white);display:inline-flex;align-items:center;gap:7px;}
+.dc-meta span svg{color:var(--electric);}
+
+/* INTRO start */
+.intro-start{padding:6px 0 30px;text-align:center;}
+.intro-cta{display:inline-flex;align-items:center;gap:11px;padding:18px 42px;background:var(--electric);color:var(--paper);font-family:var(--jp);font-size:16.5px;font-weight:600;border:none;border-radius:9px;cursor:pointer;transition:background .25s,transform .25s,box-shadow .25s;box-shadow:0 16px 36px -20px rgba(0,94,255,.6);}
+.intro-cta:hover{background:var(--electric-dark);transform:translateY(-2px);}
+.intro-cta i{font-style:normal;}
+.intro-note{font-size:12.5px;color:var(--slate);margin-top:16px;}
+.resume-bar{display:none;margin:0 auto 22px;max-width:520px;background:rgba(0,94,255,.05);border:1px solid rgba(0,94,255,.25);border-radius:10px;padding:14px 18px;align-items:center;justify-content:space-between;gap:14px;text-align:left;}
+.resume-bar.show{display:flex;}
+.resume-bar p{font-size:13px;color:#28313f;line-height:1.6;}
+.resume-bar p b{color:var(--electric);}
+.resume-bar button{flex-shrink:0;font-family:var(--jp);font-size:13px;font-weight:600;color:var(--paper);background:var(--electric);border:none;border-radius:6px;padding:9px 16px;cursor:pointer;}
+
+/* preview teaser */
+.teaser{padding:4px 0 92px;}
+.teaser-card{max-width:620px;margin:0 auto;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:30px 30px 26px;text-align:center;}
+.teaser-card h4{font-size:13px;font-weight:700;letter-spacing:.02em;margin-bottom:6px;}
+.teaser-card .ts{font-size:12.5px;color:var(--slate);line-height:1.8;margin-bottom:20px;}
+.teaser-dims{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
+.teaser-dims span{font-size:12px;font-weight:600;color:var(--slate);background:var(--paper);border:1px solid var(--line);border-radius:7px;padding:7px 13px;}
+.teaser-dims span b{color:var(--electric);font-family:var(--en);margin-right:6px;}
+
+/* ASSESS STEPS */
+.assess{display:none;padding:96px 0 130px;}
+.assess.show{display:block;}
+.step{display:none;animation:fadeUp .4s ease;}
+.step.active{display:block;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+.step-head{margin-bottom:24px;}
+.step-eyebrow{display:flex;align-items:center;gap:13px;margin-bottom:14px;}
+.step-eyebrow .num{font-family:var(--en);font-weight:700;font-size:13px;color:var(--paper);background:var(--electric);width:42px;height:42px;border-radius:9px;display:flex;align-items:center;justify-content:center;letter-spacing:-.02em;flex-shrink:0;}
+.step-eyebrow .et{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);}
+.step-eyebrow .ec{font-family:var(--jp);font-size:19px;font-weight:700;letter-spacing:-.01em;color:var(--ink);line-height:1.3;}
+.step-head .sub{font-size:13.5px;color:var(--slate);padding-left:55px;line-height:1.7;}
+.q-block{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:24px 24px 20px;margin-bottom:14px;}
+.q-block h3{font-family:var(--jp);font-weight:700;font-size:16.5px;line-height:1.6;letter-spacing:-.01em;margin-bottom:15px;}
+.q-block h3 .qn{font-family:var(--en);color:var(--electric);font-size:13px;margin-right:9px;}
+.opts{display:grid;gap:9px;}
+.opt{display:flex;align-items:center;gap:13px;padding:13px 16px;border:1px solid var(--line);border-radius:9px;cursor:pointer;transition:border-color .18s,background .18s;font-size:14.5px;color:var(--ink);line-height:1.5;}
+.opt:hover{border-color:var(--line-2);}
+.opt input{appearance:none;width:20px;height:20px;border:2px solid var(--line-2);border-radius:50%;flex-shrink:0;position:relative;transition:border-color .18s;}
+.opt input:checked{border-color:var(--electric);}
+.opt input:checked::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--electric);}
+.opt:has(input:checked){border-color:var(--electric);background:rgba(0,94,255,.04);}
+.step-nav{display:flex;align-items:center;justify-content:space-between;margin-top:18px;}
+.step-back{font-size:13.5px;font-weight:600;color:var(--slate);background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:7px;padding:8px 4px;}
+.step-back:hover{color:var(--electric);}
+.step-back.hidden{visibility:hidden;}
+.step-next{font-family:var(--jp);font-size:14.5px;font-weight:600;color:var(--paper);background:var(--electric);border:none;border-radius:8px;padding:12px 28px;cursor:pointer;display:inline-flex;align-items:center;gap:9px;transition:background .2s,opacity .2s;}
+.step-next:disabled{opacity:.4;cursor:not-allowed;}
+.step-next:not(:disabled):hover{background:var(--electric-dark);}
+.step-next i{font-style:normal;}
+
+/* PROGRESS BAR (fixed) */
+.progress{position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(251,252,253,.94);backdrop-filter:blur(8px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .35s cubic-bezier(.2,.8,.2,1);}
+body.assessing .progress{transform:none;}
+.progress-inner{max-width:840px;margin:0 auto;padding:11px 24px 13px;}
+.progress-meta{display:flex;justify-content:space-between;align-items:center;font-size:11.5px;font-weight:600;color:var(--slate);margin-bottom:7px;}
+.progress-meta .pl{font-family:var(--en);letter-spacing:.04em;}
+.progress-meta .pr{color:var(--electric);}
+.progress-track{height:7px;background:var(--paper-2);border-radius:4px;overflow:hidden;}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--electric),#3D86FF);border-radius:4px;transition:width .45s cubic-bezier(.2,.8,.2,1);}
+
+/* RESULT */
+.result{display:none;padding:96px 0 90px;}
+.result.show{display:block;}
+.result-hero{text-align:center;margin-bottom:14px;}
+.result-hero .rk{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);}
+.result-hero h2{font-family:var(--jp);font-weight:700;font-size:clamp(24px,3.4vw,32px);letter-spacing:-.02em;margin:6px 0 0;}
+
+.report{background:var(--white);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 30px 70px -44px rgba(13,17,23,.32);}
+/* level band */
+.lv-band{padding:32px 36px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;border-bottom:1px solid var(--line);}
+.lv-ring{width:138px;height:138px;border-radius:50%;flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;background:conic-gradient(var(--lvc) calc(var(--pct)*1%),var(--paper-2) 0);}
+.lv-ring::after{content:"";position:absolute;inset:11px;border-radius:50%;background:var(--white);}
+.lv-ring .inner{position:relative;z-index:1;text-align:center;}
+.lv-ring .pv{font-family:var(--en);font-weight:700;font-size:38px;letter-spacing:-.03em;line-height:1;color:var(--lvc);}
+.lv-ring .pv s{text-decoration:none;font-size:19px;}
+.lv-ring .pl{font-size:11px;color:var(--slate);margin-top:3px;letter-spacing:.02em;}
+.lv-info .lt{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--lvc);}
+.lv-info h3{font-family:var(--jp);font-weight:700;font-size:25px;letter-spacing:-.02em;margin:4px 0 9px;color:var(--ink);}
+.lv-info .ld{font-size:14px;color:#28313f;line-height:1.85;}
+/* level steps mini */
+.lv-scale{display:flex;gap:6px;margin-top:16px;}
+.lv-scale .ls{flex:1;text-align:center;font-size:10.5px;font-weight:600;color:var(--slate);}
+.lv-scale .ls .bar{height:6px;border-radius:3px;background:var(--paper-2);margin-bottom:6px;}
+.lv-scale .ls.on .bar{background:var(--lvc);}
+.lv-scale .ls.on{color:var(--lvc);}
+
+/* radar */
+.radar-wrap{padding:30px 36px 24px;border-bottom:1px solid var(--line);}
+.radar-wrap h4{font-size:14px;font-weight:700;margin-bottom:4px;text-align:center;}
+.radar-wrap .rsub{font-size:12px;color:var(--slate);text-align:center;margin-bottom:8px;}
+#radar{display:block;width:100%;max-width:460px;height:auto;margin:0 auto;}
+.radar-legend{display:flex;gap:20px;justify-content:center;margin-top:6px;flex-wrap:wrap;}
+.radar-legend span{font-size:12px;color:var(--slate);display:inline-flex;align-items:center;gap:8px;}
+.radar-legend .sw{width:22px;height:0;border-top:3px solid var(--electric);display:inline-block;}
+.radar-legend .sw.t{border-top:2px dashed var(--slate);}
+
+/* benchmark */
+.bench{padding:22px 36px;border-bottom:1px solid var(--line);display:flex;gap:14px;align-items:flex-start;background:rgba(0,94,255,.03);}
+.bench svg{flex-shrink:0;color:var(--electric);margin-top:3px;}
+.bench p{font-size:13.5px;color:#28313f;line-height:1.85;}
+.bench p b{color:var(--electric);}
+.bench p .src{color:var(--slate);font-size:11.5px;}
+
+/* priority themes */
+.themes{padding:28px 36px;border-bottom:1px solid var(--line);}
+.themes h4{font-size:15px;font-weight:700;margin-bottom:4px;}
+.themes .th-sub{font-size:12.5px;color:var(--slate);margin-bottom:18px;}
+.theme{display:flex;gap:16px;padding:18px 0;border-top:1px solid var(--line);}
+.theme:first-of-type{border-top:none;}
+.theme .tr{font-family:var(--en);font-weight:700;font-size:13px;color:var(--paper);background:var(--amber);width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.theme .td h5{font-size:15px;font-weight:700;margin-bottom:5px;}
+.theme .td .tp{font-size:13px;color:var(--slate);line-height:1.8;margin-bottom:8px;}
+.theme .td .ta{font-size:13px;color:#28313f;line-height:1.8;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:11px 14px;}
+.theme .td .ta b{color:var(--electric);}
+
+/* breakdown bars */
+.breakdown{padding:26px 36px 30px;}
+.breakdown h4{font-size:14px;font-weight:700;margin-bottom:18px;}
+.bd-row{display:grid;grid-template-columns:128px 1fr 42px;gap:14px;align-items:center;margin-bottom:13px;}
+.bd-row .bn{font-size:13px;font-weight:600;color:var(--ink);}
+.bd-track{height:9px;background:var(--paper-2);border-radius:5px;overflow:hidden;}
+.bd-fill{height:100%;border-radius:5px;width:0;transition:width .7s cubic-bezier(.2,.8,.2,1);}
+.bd-fill.lo{background:var(--red);}.bd-fill.mi{background:var(--amber);}.bd-fill.hi{background:var(--electric);}.bd-fill.tp{background:var(--emerald);}
+.bd-row .bp{font-family:var(--en);font-size:13px;font-weight:700;color:var(--slate);text-align:right;}
+
+/* LEAD */
+.lead{padding:32px 36px 36px;background:var(--paper);border-top:1px solid var(--line);}
+.lead h3{font-family:var(--jp);font-weight:700;font-size:19px;line-height:1.55;letter-spacing:-.01em;margin-bottom:8px;}
+.lead .lead-sub{font-size:13.5px;color:var(--slate);line-height:1.85;margin-bottom:24px;}
+.fg{margin-bottom:16px;}
+.fg label{display:block;font-size:13.5px;font-weight:600;margin-bottom:8px;}
+.fg label .req{color:var(--electric);font-size:11.5px;margin-left:6px;}
+.fg label .opt2{color:var(--slate);font-size:11.5px;margin-left:6px;font-weight:500;}
+.fg input,.fg textarea{width:100%;padding:13px 15px;font-size:15px;font-family:inherit;border:1px solid var(--line);border-radius:7px;background:var(--white);color:var(--ink);transition:border-color .2s,box-shadow .2s;}
+.fg input:focus,.fg textarea:focus{outline:none;border-color:var(--electric);box-shadow:0 0 0 3px rgba(0,94,255,.12);}
+.fg.invalid input,.fg.invalid textarea{border-color:var(--red);box-shadow:0 0 0 3px rgba(209,67,67,.10);}
+.field-error{display:none;color:var(--red);font-size:12.5px;margin-top:6px;}
+.fg.invalid .field-error{display:block;}
+.fg textarea{resize:vertical;min-height:80px;}
+.lead-cb{display:flex;align-items:flex-start;gap:11px;margin:4px 0 20px;}
+.lead-cb input{width:18px;height:18px;margin-top:3px;accent-color:var(--electric);flex-shrink:0;}
+.lead-cb label{font-size:13px;color:var(--slate);line-height:1.7;}
+.lead-cb a{color:var(--electric);font-weight:600;text-decoration:none;}
+.reassure2{list-style:none;margin:0 0 22px;padding:16px 18px;background:var(--white);border:1px solid var(--line);border-radius:8px;}
+.reassure2 li{display:flex;gap:10px;font-size:13px;color:#28313f;line-height:1.7;padding:4px 0;}
+.reassure2 li svg{flex-shrink:0;margin-top:4px;color:var(--electric);}
+.lead-submit{width:100%;padding:16px;background:var(--electric);color:var(--paper);font-family:var(--jp);font-size:15.5px;font-weight:600;border:none;border-radius:7px;cursor:pointer;transition:background .25s,transform .25s;}
+.lead-submit:hover{background:var(--electric-dark);transform:translateY(-1px);}
+.result-actions{text-align:center;margin-top:22px;}
+.restart{font-size:13px;font-weight:600;color:var(--slate);background:none;border:none;cursor:pointer;text-decoration:underline;text-underline-offset:3px;}
+.restart:hover{color:var(--electric);}
+
+/* THANKS */
+.thanks{display:none;text-align:center;padding:56px 30px;}
+.thanks.show{display:block;}
+.thanks .ic{width:72px;height:72px;border-radius:50%;background:rgba(0,94,255,.08);display:inline-flex;align-items:center;justify-content:center;margin-bottom:22px;}
+.thanks .ic svg{width:36px;height:36px;color:var(--electric);}
+.thanks h3{font-family:var(--jp);font-weight:700;font-size:23px;margin-bottom:12px;}
+.thanks p{font-size:14.5px;color:var(--slate);line-height:1.9;max-width:46ch;margin:0 auto 26px;}
+.thanks .tbtn{display:inline-flex;align-items:center;gap:9px;padding:15px 32px;background:var(--electric);color:var(--paper);font-weight:600;border-radius:7px;text-decoration:none;font-size:15px;}
+.thanks .tbtn:hover{background:var(--electric-dark);}
+
+/* WHY */
+.why{padding:0 0 80px;}
+.why-card{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:30px 32px;}
+.why-card h4{font-size:15px;font-weight:700;margin-bottom:10px;}
+.why-card p{font-size:13.5px;color:var(--slate);line-height:1.9;}
+.why-card p b{color:var(--electric);}
+.why-card .proof{display:flex;flex-wrap:wrap;gap:22px;margin-top:18px;padding-top:18px;border-top:1px solid var(--line);}
+.why-card .proof div{font-size:13px;color:var(--slate);}
+.why-card .proof b{font-family:var(--en);font-size:22px;font-weight:700;color:var(--electric);letter-spacing:-.02em;display:block;}
+
+/* FOOTER */
+footer{background:var(--white);border-top:1px solid var(--line);padding:56px 0 36px;}
+footer .container{max-width:1180px;}
+.footer-inner{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px;}
+.footer-brand .logo{font-family:var(--en);font-size:18px;font-weight:700;color:var(--ink);}
+.footer-brand .logo i{font-style:normal;color:var(--electric);}
+.footer-brand p{font-size:13px;color:var(--slate);line-height:1.7;margin-top:12px;}
+.footer-col h4{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:14px;}
+.footer-col a{display:block;font-size:13px;color:var(--slate);text-decoration:none;margin-bottom:10px;}
+.footer-col a:hover{color:var(--electric);}
+.copyright{text-align:center;margin-top:42px;padding-top:22px;border-top:1px solid var(--line);font-family:var(--en);font-size:12px;color:var(--slate);}
+
+@media(max-width:860px){
+  nav{padding:0 14px 0 18px;}nav ul,nav .nav-cta{display:none;}.hamb{display:block;}
+  .lv-band{grid-template-columns:1fr;text-align:center;gap:20px;justify-items:center;}
+  .lv-scale{width:100%;max-width:360px;}
+  .footer-inner{grid-template-columns:1fr 1fr;gap:28px;}
+}
+@media(max-width:560px){
+  .dc-head{padding:108px 0 24px;}
+  .q-block,.lv-band,.radar-wrap,.bench,.themes,.breakdown,.lead{padding-left:20px;padding-right:20px;}
+  .step-head .sub{padding-left:0;}
+  .fg input,.fg textarea{font-size:16px;}
+  .bd-row{grid-template-columns:96px 1fr 38px;gap:10px;}
+  .bd-row .bn{font-size:12px;}
+  .theme .td .ta{font-size:12.5px;}
+}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"生成AI活用 成熟度診断","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"description":"戦略・人材・業務適用・コンテキスト整理・基盤・ガバナンスの6軸12問で、自社の生成AI活用の成熟度をレーダーチャートで可視化する無料の自己診断ツール。MIT CISR・Gartnerの成熟度モデルを参考に設計。","provider":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"},"url":"https://techworker.co.jp/ai-assessment.html"}
+</script>
+<!-- Meta Pixel -->
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1264057945446029');fbq('track','PageView');</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="logo">Tech<i>Worker</i></a>
+  <ul>
+    <li><a href="index.html">ホーム</a></li>
+    <li><a href="index.html#services">サービス</a></li>
+    <li><a href="cases.html">実績</a></li>
+    <li><a href="media/">メディア</a></li>
+    <li><a href="library/">資料</a></li>
+    <li><a href="news.html">ニュース</a></li>
+    <li><a href="company.html">会社概要</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="contact.html" class="nav-cta">無料相談</a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="index.html">ホーム</a>
+  <a href="index.html#services">サービス</a>
+  <a href="cases.html">実績</a>
+  <a href="media/">メディア</a>
+  <a href="library/">資料ダウンロード</a>
+  <a href="news.html">ニュース</a>
+  <a href="company.html">会社概要</a>
+  <a href="contact.html" class="m-cta">無料相談を申し込む</a>
+</div>
+
+<!-- HEADER / INTRO -->
+<header class="dc-head" id="intro">
+  <div class="container">
+    <span class="tag">Maturity Assessment <span>生成AI活用 成熟度診断</span></span>
+    <h1>自社の生成AI活用、<br><em>いま、どのレベルか。</em></h1>
+    <p>導入はもう当たり前。差がつくのは「使いこなし」です。戦略・人材・業務適用・コンテキスト整理・基盤・ガバナンスの6軸で、自社の成熟度をその場でスコア化。MIT CISR／Gartnerの成熟度モデルを参考に、強みと課題をレーダーチャートで可視化します。</p>
+    <div class="dc-meta">
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>所要 約5分</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>無料・登録不要で結果表示</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>全12問・6軸</span>
+    </div>
+  </div>
+</header>
+
+<section class="intro-start" id="introStart">
+  <div class="container">
+    <div class="resume-bar" id="resumeBar">
+      <p>前回の回答が残っています。<b><span id="resumePct">0</span>%</b> まで完了。続きから再開できます。</p>
+      <button type="button" id="resumeBtn">続きから再開</button>
+    </div>
+    <button type="button" class="intro-cta" id="startBtn">診断をはじめる <i>→</i></button>
+    <p class="intro-note">途中保存に対応。回答内容は結果表示にのみ使用し、連絡先の入力は任意です。</p>
+  </div>
+</section>
+
+<!-- TEASER -->
+<section class="teaser" id="teaser">
+  <div class="container">
+    <div class="teaser-card">
+      <h4>診断する6つの軸</h4>
+      <p class="ts">回答後、6軸のレーダーチャートと成熟度レベル（Lv1〜4）、優先的に取り組むべきテーマと「次の一手」をその場で表示します。</p>
+      <div class="teaser-dims">
+        <span><b>01</b>戦略・経営</span>
+        <span><b>02</b>人材・スキル</span>
+        <span><b>03</b>業務適用</span>
+        <span><b>04</b>コンテキスト整理</span>
+        <span><b>05</b>データ・基盤</span>
+        <span><b>06</b>ガバナンス</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ASSESSMENT -->
+<section class="assess" id="assess">
+  <div class="container" id="stepsWrap"></div>
+</section>
+
+<!-- RESULT -->
+<section class="result" id="result">
+  <div class="container">
+    <div class="result-hero">
+      <div class="rk">Your Result</div>
+      <h2>あなたの会社の生成AI成熟度</h2>
+    </div>
+    <div class="report">
+      <!-- level band -->
+      <div class="lv-band" id="lvBand">
+        <div class="lv-ring" id="lvRing"><div class="inner"><div class="pv" id="pctVal">0<s>%</s></div><div class="pl">成熟度スコア</div></div></div>
+        <div class="lv-info">
+          <div class="lt" id="lvTag">—</div>
+          <h3 id="lvName">—</h3>
+          <div class="ld" id="lvDesc"></div>
+          <div class="lv-scale" id="lvScale"></div>
+        </div>
+      </div>
+      <!-- radar -->
+      <div class="radar-wrap">
+        <h4>6軸スコアマップ</h4>
+        <p class="rsub">塗りつぶし＝あなたの会社／点線＝全社活用ライン（Lv3の目安）</p>
+        <svg id="radar" viewBox="0 0 440 372" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="6軸の成熟度レーダーチャート"></svg>
+        <div class="radar-legend">
+          <span><i class="sw"></i>あなたの会社</span>
+          <span><i class="sw t"></i>全社活用ライン（Lv3目安）</span>
+        </div>
+      </div>
+      <!-- benchmark -->
+      <div class="bench">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+        <p id="benchText"></p>
+      </div>
+      <!-- priority themes -->
+      <div class="themes">
+        <h4>優先的に取り組むべきテーマ</h4>
+        <p class="th-sub">スコアの低い軸から、最初に着手すると効果が大きい順に表示しています。</p>
+        <div id="themeList"></div>
+      </div>
+      <!-- breakdown -->
+      <div class="breakdown">
+        <h4>軸ごとのスコア</h4>
+        <div id="bdList"></div>
+      </div>
+      <!-- LEAD -->
+      <div class="lead" id="leadWrap">
+        <h3>この結果をもとに、改善ロードマップと無料相談をお送りします。</h3>
+        <p class="lead-sub">診断スコアをふまえ、貴社が最初に着手すべきテーマと進め方を、上場企業を含む37社・2,500名の支援知見をもとにご提案します。検討段階のご相談だけでも歓迎です。</p>
+        <form id="leadForm" novalidate>
+          <div class="fg"><label>お名前<span class="req">必須</span></label><input type="text" name="name" placeholder="山田 太郎" required></div>
+          <div class="fg"><label>会社名<span class="req">必須</span></label><input type="text" name="company" placeholder="株式会社○○○○" required></div>
+          <div class="fg"><label>会社メールアドレス<span class="req">必須</span></label><input type="email" name="email" placeholder="taro@example.co.jp" required></div>
+          <div class="fg"><label>ご質問・補足<span class="opt2">任意</span></label><textarea name="message" placeholder="特に気になっている点があればお書きください（任意）"></textarea></div>
+          <ul class="reassure2">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span><strong>売り込みは一切しません。</strong>1営業日以内にご返信します。</span></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>ご相談は30分・オンライン・準備不要です。</span></li>
+          </ul>
+          <div class="lead-cb"><input type="checkbox" id="pp" required><label for="pp"><a href="privacy.html" target="_blank">プライバシーポリシー</a>に同意の上、送信してください。</label></div>
+          <button type="submit" class="lead-submit">改善ロードマップと無料相談を受け取る</button>
+        </form>
+        <div class="thanks" id="thanks">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17L4 12"/></svg></div>
+          <h3>送信ありがとうございます</h3>
+          <p>診断結果をふまえ、担当者より1営業日以内にご連絡いたします。あわせて資料もご覧いただけます。</p>
+          <a href="library/" class="tbtn">資料を見る <i style="font-style:normal">→</i></a>
+        </div>
+        <div class="result-actions">
+          <button type="button" class="restart" id="restartBtn">もう一度診断する</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why" id="why">
+  <div class="container">
+    <div class="why-card">
+      <h4>なぜ「成熟度」で見るのか</h4>
+      <p>生成AIの導入はすでに<b>87%</b>の企業が進めています（PwC Japan 2026）。それでも成果に差がつくのは、ツールの有無ではなく「活用の深さ」——戦略・人材・コンテキスト整備・ガバナンスがどこまで噛み合っているかだからです。私たちは「AIはエンジン、コンテキストは燃料」を軸に、診断で見えた弱点に対して、社内知識をAIに渡せる形に整える基盤づくりから研修・定着までを伴走します。</p>
+      <div class="proof"><div><b>37社</b>支援企業数</div><div><b>2,500名</b>研修受講者数</div><div><b>75%</b>最大経費助成率（中小）</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">Tech<i>Worker</i></div>
+        <p>企業向け生成AIコンサルティング<br>株式会社TechWorker</p>
+      </div>
+      <div class="footer-col"><h4>サイト</h4><a href="index.html#services">サービス</a><a href="media/">メディア</a><a href="cases.html">実績</a><a href="company.html">会社概要</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="contact.html">無料相談</a><a href="library/">資料ダウンロード</a><a href="privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- PROGRESS BAR -->
+<div class="progress" id="progress">
+  <div class="progress-inner">
+    <div class="progress-meta"><span class="pl" id="progLabel">STEP 1 / 6</span><span class="pr" id="progRemain">あと12問</span></div>
+    <div class="progress-track"><div class="progress-fill" id="progFill"></div></div>
+  </div>
+</div>
+
+<script>
+/* mobile menu */
+(function(){var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});})();
+
+/* =========================================================
+   生成AI活用 成熟度診断  (6 dimensions x 2 questions = 12)
+   各選択肢スコア = 選択肢index (0..3) / 次元max=6 / 全体max=36
+   ========================================================= */
+var DIMS=[
+ {key:'strategy',short:'戦略・経営',full:'戦略・経営コミットメント',sub:'経営の本気度・全社方針・投資',
+  low:'経営の旗振りが弱く、投資判断や全社方針が現場任せになりがちです。',
+  act:'まず経営層と「どこにAIを効かせるか」を言語化。AI活用戦略・ロードマップの設計から伴走します。',
+  qs:[
+   {q:'生成AI活用について、経営レベルの方針・目標はありますか？',o:['特にない（現場任せ）','議論はあるが明文化されていない','全社方針・ロードマップがある','KPIと予算が紐づき経営が推進している']},
+   {q:'生成AI推進の責任者・体制は？',o:['いない','情シス等が兼務で対応','専任の担当・推進チームがある','役員直下で全社横断の推進体制がある']}
+  ]},
+ {key:'people',short:'人材・スキル',full:'人材・スキルと定着',sub:'現場の使いこなしと教育',
+  low:'一部の詳しい人だけが使い、現場全体への定着が進んでいません。',
+  act:'役職・職種別の生成AI研修で、「使える人だけ」から「全員が日常業務で使う」状態へ引き上げます。',
+  qs:[
+   {q:'現場で生成AIを日常的に使えている人は、どのくらいいますか？',o:['ほとんどいない（一部の詳しい人だけ）','2〜3割','半分以上','ほぼ全員が日常業務で使う']},
+   {q:'社員へのAIスキル教育・研修は？',o:['特に実施していない','自己学習に任せている','部分的に研修を実施','体系的な教育プログラムがあり継続更新']}
+  ]},
+ {key:'usecase',short:'業務適用',full:'業務適用・ユースケース',sub:'業務への定着と効果測定',
+  low:'PoCや個人利用に留まり、業務の成果に結びついていません。',
+  act:'成果が出る業務を特定し、ユースケース開発から効果測定・横展開まで伴走します。',
+  qs:[
+   {q:'生成AIは業務にどこまで組み込まれていますか？',o:['試している程度（個人利用・PoC前）','一部部署でPoC・試験導入','複数業務に定着して使われている','基幹業務に組み込まれ成果が出ている']},
+   {q:'活用の効果を測定していますか？',o:['していない','感覚的に効果を感じる程度','一部業務で時短・品質を計測','全社でKPIとして定量管理している']}
+  ]},
+ {key:'context',short:'コンテキスト',full:'コンテキスト整理',sub:'社内知識をAIに渡せているか',
+  low:'社内の知識・規程・過去案件がAIに渡せる形になっておらず、出力の質が頭打ちです。',
+  act:'「AIはエンジン、コンテキストは燃料」。社内ナレッジをAIが参照できる形に整える基盤づくりを支援します。',
+  qs:[
+   {q:'社内の知識・規程・過去資料を、AIが参照できる形にしていますか？',o:['していない（各所に散在・属人化）','一部の資料を都度プロンプトに貼る','よく使う知識を整理・テンプレ化','社内ナレッジをAIが検索・参照できる基盤(RAG等)がある']},
+   {q:'良いプロンプトや活用ノウハウは共有されていますか？',o:['属人的（個人に閉じている）','一部で口頭共有','テンプレ・事例集として共有','全社で蓄積・改善される仕組みがある']}
+  ]},
+ {key:'data',short:'データ・基盤',full:'データ・基盤／ツール',sub:'全社のツール環境とデータ整備',
+  low:'全社共通のAI環境やデータ整備が追いついていません。',
+  act:'セキュアな全社AI環境と、業務データに安全に接続できる基盤を設計します。',
+  qs:[
+   {q:'全社に提供している生成AIツール環境は？',o:['個人が無料版を各自利用','一部に有料ツールを配布','全社で法人向けツールを契約・提供','業務システム・データと連携した環境を整備']},
+   {q:'業務データへのアクセス・整備状況は？',o:['データが整理されておらず使いにくい','必要な時に手作業で集めている','主要データは整備されアクセスできる','AIから安全にデータ連携できる仕組みがある']}
+  ]},
+ {key:'governance',short:'ガバナンス',full:'ガバナンス・セキュリティ',sub:'ルール・情報漏えい対策・責任体制',
+  low:'利用ルールや情報漏えい対策が未整備で、全社展開のブレーキになっています。',
+  act:'AI利用ガイドライン・レビュー基準・責任体制の整備を支援し、安全に全社展開できる土台をつくります。',
+  qs:[
+   {q:'生成AIの利用ルール・ガイドラインは？',o:['ない','口頭・暗黙の了解のみ','全社ガイドラインがある','ガイドライン＋運用・点検まで回っている']},
+   {q:'情報漏えい・著作権・出力チェックの体制は？',o:['特に決めていない','注意喚起レベル','機密区分やレビュー基準がある','監査ログ・責任体制まで整備']}
+  ]}
+];
+var DIM_MAX=6, TOTAL_MAX=DIMS.length*DIM_MAX;
+
+var LEVELS=[
+ {min:0, cls:'l1', color:'var(--red)',     tag:'Aware / Experiment', name:'Lv1 認知・実験期',
+  desc:'生成AIは個人が試している段階。全社の方針もルールも、これからつくっていくフェーズです。',
+  bench:'日本企業の業務でのAI利用率は<b>55.2%</b>（米90.6%・独90.3%）。<b>多くの企業がこの地点から動き出しています。</b><span class="src">出典：総務省 情報通信白書 2025</span>'},
+ {min:26, cls:'l2', color:'var(--amber)',   tag:'Pilot', name:'Lv2 試行・部分導入期',
+  desc:'一部の部署でPoCやツール導入が始まったものの、効果は限定的で横展開はこれから。最も多くの企業が滞留する地点です。',
+  bench:'世界基準でも企業の約<b>34%</b>がこの段階に滞留しています。次の分水嶺は<b>Lv3（全社活用）</b>——ここを超えられるかどうかで成果が分かれます。<span class="src">出典：MIT CISR 2024</span>'},
+ {min:51, cls:'l3', color:'var(--electric)',tag:'Operational', name:'Lv3 全社活用期',
+  desc:'業務にAIが定着し、コンテキスト整備とガバナンスが回り始めています。成果を出す企業の仲間入りをするフェーズです。',
+  bench:'<b>Lv3（全社活用）に到達する企業は約3割。</b>この段階を超えた企業だけが、業界平均を上回る財務成果を出しています。<span class="src">出典：MIT CISR 2024</span>'},
+ {min:79, cls:'l4', color:'var(--emerald)', tag:'Transformational', name:'Lv4 変革・先進期',
+  desc:'基幹業務や意思決定にAIが組み込まれ、事業成果を生んでいる先進ゾーン。トップ層に位置しています。',
+  bench:'この段階に到達した企業は世界でわずか<b>7%</b>。明確なトップ層です。ここからは優位性を「商用化」する段階に入ります。<span class="src">出典：MIT CISR 2024</span>'}
+];
+function levelFor(pct){var L=LEVELS[0];for(var i=0;i<LEVELS.length;i++){if(pct>=LEVELS[i].min)L=LEVELS[i];}return L;}
+
+/* ---------- build steps ---------- */
+var answers={}; // {dimIdx_qIdx: value}
+(function buildSteps(){
+  var w=document.getElementById('stepsWrap'),h='';
+  DIMS.forEach(function(d,di){
+    h+='<div class="step" data-step="'+di+'">'
+      +'<div class="step-head"><div class="step-eyebrow"><span class="num">'+('0'+(di+1))+'</span>'
+      +'<div><div class="et">STEP '+(di+1)+' / '+DIMS.length+'</div><div class="ec">'+d.full+'</div></div></div>'
+      +'<div class="sub">'+d.sub+'</div></div>';
+    d.qs.forEach(function(qq,qi){
+      h+='<div class="q-block"><h3><span class="qn">Q'+(qi+1)+'</span>'+qq.q+'</h3><div class="opts">';
+      qq.o.forEach(function(op,v){h+='<label class="opt"><input type="radio" name="d'+di+'q'+qi+'" value="'+v+'"><span>'+op+'</span></label>';});
+      h+='</div></div>';
+    });
+    h+='<div class="step-nav"><button type="button" class="step-back'+(di===0?' hidden':'')+'" data-back>'
+      +'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>戻る</button>'
+      +'<button type="button" class="step-next" data-next disabled>'+(di===DIMS.length-1?'結果を見る':'次へ')+' <i>→</i></button></div>';
+    h+='</div>';
+  });
+  w.innerHTML=h;
+})();
+
+var cur=0, TOTAL_Q=DIMS.length*2;
+function stepAnswered(di){return answers['d'+di+'q0']!=null&&answers['d'+di+'q1']!=null;}
+function answeredCount(){var n=0;for(var k in answers)if(answers[k]!=null)n++;return n;}
+
+function updateProgress(){
+  var done=answeredCount();
+  var pct=Math.round(done/TOTAL_Q*100);
+  document.getElementById('progFill').style.width=pct+'%';
+  document.getElementById('progLabel').textContent='STEP '+(cur+1)+' / '+DIMS.length;
+  var rem=TOTAL_Q-done;
+  document.getElementById('progRemain').textContent=rem>0?('あと'+rem+'問で結果が出ます'):'結果を見られます';
+}
+function refreshNextBtn(){
+  var s=document.querySelector('.step[data-step="'+cur+'"]');
+  if(s)s.querySelector('[data-next]').disabled=!stepAnswered(cur);
+}
+function showStep(i,scroll){
+  cur=i;
+  document.querySelectorAll('.step').forEach(function(s){s.classList.toggle('active',+s.dataset.step===i);});
+  refreshNextBtn();updateProgress();saveState();
+  if(scroll!==false)window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* persistence */
+function saveState(){try{sessionStorage.setItem('tw_assess',JSON.stringify({a:answers,c:cur}));}catch(e){}}
+function loadState(){try{var s=JSON.parse(sessionStorage.getItem('tw_assess')||'null');return (s&&s.a)?s:null;}catch(e){return null;}}
+function clearState(){try{sessionStorage.removeItem('tw_assess');}catch(e){}}
+
+/* answer handling */
+document.getElementById('stepsWrap').addEventListener('change',function(e){
+  var inp=e.target;if(inp.type!=='radio')return;
+  var m=inp.name.match(/^d(\d+)q(\d+)$/);if(!m)return;
+  answers[inp.name]=parseInt(inp.value,10);
+  refreshNextBtn();updateProgress();saveState();
+  // auto-advance when both questions of this step are answered
+  if(stepAnswered(cur)){
+    var atLast=cur===DIMS.length-1;
+    setTimeout(function(){ atLast?finish():showStep(cur+1); },420);
+  }
+});
+document.getElementById('stepsWrap').addEventListener('click',function(e){
+  var nx=e.target.closest('[data-next]'), bk=e.target.closest('[data-back]');
+  if(nx){ if(!stepAnswered(cur))return; cur===DIMS.length-1?finish():showStep(cur+1); }
+  if(bk){ showStep(Math.max(0,cur-1)); }
+});
+
+/* start / resume */
+function beginAssessment(stepIdx){
+  document.getElementById('intro').style.display='none';
+  document.getElementById('introStart').style.display='none';
+  document.getElementById('teaser').style.display='none';
+  document.getElementById('assess').classList.add('show');
+  document.body.classList.add('assessing');
+  // restore radio UI from answers
+  for(var k in answers){if(answers[k]!=null){var el=document.querySelector('input[name="'+k+'"][value="'+answers[k]+'"]');if(el)el.checked=true;}}
+  showStep(stepIdx||0);
+  if(typeof gtag==='function')gtag('event','assessment_start');
+  if(typeof fbq==='function')fbq('trackCustom','AssessmentStart');
+}
+document.getElementById('startBtn').addEventListener('click',function(){answers={};clearState();beginAssessment(0);});
+(function initResume(){
+  var s=loadState();if(!s)return;
+  var done=0;for(var k in s.a)if(s.a[k]!=null)done++;
+  if(done<1||done>=TOTAL_Q)return; // nothing partial to resume
+  answers=s.a;
+  document.getElementById('resumePct').textContent=Math.round(done/TOTAL_Q*100);
+  document.getElementById('resumeBar').classList.add('show');
+  document.getElementById('resumeBtn').addEventListener('click',function(){
+    // jump to first unanswered step
+    var target=0;for(var i=0;i<DIMS.length;i++){if(!(answers['d'+i+'q0']!=null&&answers['d'+i+'q1']!=null)){target=i;break;}target=i;}
+    beginAssessment(Math.min(target,DIMS.length-1));
+  });
+})();
+
+/* ---------- radar ---------- */
+function buildRadar(pcts){
+  var cx=220, cy=176, R=118, N=DIMS.length;
+  function pt(frac,i){var a=(-90+i*(360/N))*Math.PI/180;return [cx+R*frac*Math.cos(a),cy+R*frac*Math.sin(a)];}
+  function poly(fracs){return fracs.map(function(f,i){var p=pt(f,i);return p[0].toFixed(1)+','+p[1].toFixed(1);}).join(' ');}
+  var svg='';
+  // grid rings
+  [0.25,0.5,0.75,1].forEach(function(r){
+    svg+='<polygon points="'+poly(DIMS.map(function(){return r;}))+'" fill="none" stroke="rgba(13,17,23,.10)" stroke-width="1"/>';
+  });
+  // axes
+  for(var i=0;i<N;i++){var p=pt(1,i);svg+='<line x1="'+cx+'" y1="'+cy+'" x2="'+p[0].toFixed(1)+'" y2="'+p[1].toFixed(1)+'" stroke="rgba(13,17,23,.10)" stroke-width="1"/>';}
+  // target (Lv3) line at 0.67
+  svg+='<polygon points="'+poly(DIMS.map(function(){return 0.67;}))+'" fill="none" stroke="#4A5666" stroke-width="2" stroke-dasharray="5 4" opacity=".8"/>';
+  // user polygon
+  var uf=pcts.map(function(p){return Math.max(p/100,0.02);});
+  svg+='<polygon points="'+poly(uf)+'" fill="rgba(0,94,255,.16)" stroke="#005EFF" stroke-width="2.5" stroke-linejoin="round"/>';
+  // user dots
+  uf.forEach(function(f,i){var p=pt(f,i);svg+='<circle cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="3.6" fill="#005EFF"/>';});
+  // labels
+  for(var j=0;j<N;j++){
+    var lp=pt(1.17,j),x=lp[0],y=lp[1],anchor='middle',dy=0;
+    if(x>cx+6)anchor='start';else if(x<cx-6)anchor='end';
+    if(y<cy-30)dy=-4;else if(y>cy+30)dy=12;else dy=4;
+    svg+='<text x="'+x.toFixed(1)+'" y="'+(y+dy).toFixed(1)+'" text-anchor="'+anchor+'" font-family="IBM Plex Sans JP,sans-serif" font-size="12.5" font-weight="600" fill="#0D1117">'+DIMS[j].short+'</text>';
+    svg+='<text x="'+x.toFixed(1)+'" y="'+(y+dy+15).toFixed(1)+'" text-anchor="'+anchor+'" font-family="IBM Plex Sans,sans-serif" font-size="11" font-weight="700" fill="#4A5666">'+pcts[j]+'%</text>';
+  }
+  document.getElementById('radar').innerHTML=svg;
+}
+
+/* ---------- finish & render result ---------- */
+function finish(){
+  // compute
+  var dimScore=DIMS.map(function(d,di){return (answers['d'+di+'q0']||0)+(answers['d'+di+'q1']||0);});
+  var dimPct=dimScore.map(function(s){return Math.round(s/DIM_MAX*100);});
+  var total=dimScore.reduce(function(a,b){return a+b;},0);
+  var pct=Math.round(total/TOTAL_MAX*100);
+  var L=levelFor(pct);
+
+  // level band
+  var ring=document.getElementById('lvRing');
+  ring.style.setProperty('--pct',pct);ring.style.setProperty('--lvc',L.color);
+  document.getElementById('lvBand').style.setProperty('--lvc',L.color);
+  document.getElementById('pctVal').innerHTML=pct+'<s>%</s>';
+  document.getElementById('lvTag').textContent=L.tag;
+  document.getElementById('lvName').textContent=L.name;
+  document.getElementById('lvDesc').textContent=L.desc;
+  // scale
+  document.getElementById('lvScale').innerHTML=LEVELS.map(function(x){
+    var on=x.cls===L.cls;return '<div class="ls'+(on?' on':'')+'"><div class="bar"></div>'+x.name.split(' ')[0]+'</div>';
+  }).join('');
+
+  // radar
+  buildRadar(dimPct);
+
+  // benchmark
+  document.getElementById('benchText').innerHTML=L.bench;
+
+  // priority themes: lowest dims (pct<70), up to 3, at least 1
+  var order=DIMS.map(function(d,i){return {i:i,pct:dimPct[i]};}).sort(function(a,b){return a.pct-b.pct;});
+  var themes=order.filter(function(o){return o.pct<70;}).slice(0,3);
+  if(themes.length===0)themes=order.slice(0,1);
+  document.getElementById('themeList').innerHTML=themes.map(function(o,idx){
+    var d=DIMS[o.i];
+    return '<div class="theme"><div class="tr">'+(idx+1)+'</div><div class="td"><h5>'+d.full+'　<span style="font-family:var(--en);font-weight:700;color:var(--slate);font-size:13px">'+o.pct+'%</span></h5>'
+      +'<div class="tp">'+d.low+'</div><div class="ta"><b>次の一手：</b>'+d.act+'</div></div></div>';
+  }).join('');
+
+  // breakdown bars
+  document.getElementById('bdList').innerHTML=DIMS.map(function(d,i){
+    var p=dimPct[i],c=p<34?'lo':p<60?'mi':p<80?'hi':'tp';
+    return '<div class="bd-row"><div class="bn">'+d.full+'</div><div class="bd-track"><div class="bd-fill '+c+'" data-w="'+p+'"></div></div><div class="bp">'+p+'%</div></div>';
+  }).join('');
+
+  // stash for lead
+  window.__diag={
+    score:pct,max:100,band:L.name,
+    answers:'【総合】'+L.name+'（'+pct+'%）\n'+DIMS.map(function(d,i){return d.full+': '+dimPct[i]+'%';}).join(' / ')
+      +'\n回答: '+DIMS.map(function(d,i){return d.short+'['+(answers['d'+i+'q0']||0)+','+(answers['d'+i+'q1']||0)+']';}).join(' ')
+  };
+
+  // reveal
+  document.body.classList.remove('assessing');
+  document.getElementById('assess').classList.remove('show');
+  document.getElementById('result').classList.add('show');
+  clearState();
+  window.scrollTo({top:0,behavior:'smooth'});
+  // animate bars after paint
+  setTimeout(function(){document.querySelectorAll('.bd-fill').forEach(function(el){el.style.width=el.dataset.w+'%';});},120);
+  if(typeof gtag==='function')gtag('event','assessment_complete',{score:pct,level:L.name});
+  if(typeof fbq==='function')fbq('trackCustom','AssessmentComplete',{score:pct,level:L.name});
+}
+
+document.getElementById('restartBtn').addEventListener('click',function(){
+  answers={};clearState();
+  document.getElementById('result').classList.remove('show');
+  document.querySelectorAll('#stepsWrap input[type=radio]').forEach(function(r){r.checked=false;});
+  document.getElementById('leadForm').style.display='';
+  document.getElementById('thanks').classList.remove('show');
+  beginAssessment(0);
+});
+
+/* ---------- lead form ---------- */
+(function(){var lf=document.getElementById('leadForm');
+function val(el){var g=el.closest('.fg');if(!g)return true;var v=(el.value||'').trim();var err='';
+  if(el.required&&!v)err='入力してください。';
+  else if(el.type==='email'&&v&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v))err='メールアドレスの形式をご確認ください。';
+  var m=g.querySelector('.field-error');
+  if(err){g.classList.add('invalid');if(!m){m=document.createElement('div');m.className='field-error';g.appendChild(m);}m.textContent=err;return false;}
+  g.classList.remove('invalid');if(m)m.textContent='';return true;}
+lf.querySelectorAll('input,textarea').forEach(function(el){el.addEventListener('blur',function(){if((el.value||'').trim()||el.required)val(el);});el.addEventListener('input',function(){var g=el.closest('.fg');if(g&&g.classList.contains('invalid'))val(el);});});
+
+lf.addEventListener('submit',async function(e){
+  e.preventDefault();
+  var ok=true;lf.querySelectorAll('input[required],textarea[required]').forEach(function(el){if(!val(el))ok=false;});
+  if(!document.getElementById('pp').checked)ok=false;
+  if(!ok){var bad=lf.querySelector('.fg.invalid');if(bad)bad.scrollIntoView({behavior:'smooth',block:'center'});return;}
+  var btn=lf.querySelector('.lead-submit');btn.disabled=true;btn.style.opacity='.7';btn.textContent='送信中...';
+  try{
+    var fd=new FormData(lf),data=Object.fromEntries(fd.entries());
+    data.inquiry_type='consultation';data.source='AI活用度診断';
+    var d=window.__diag||{};data.diag_score=d.score;data.diag_max=d.max;data.diag_band=d.band;data.diag_answers=d.answers;
+    try{var ss=sessionStorage;
+      data.intent_referrer=ss.getItem('tw_ref')||document.referrer||'(direct)';
+      data.intent_landing=ss.getItem('tw_landing')||location.pathname;
+      data.intent_utm=ss.getItem('tw_utm')||'';
+      data.intent_pages=(JSON.parse(ss.getItem('tw_pages')||'[]')).join(' > ');
+      data.intent_visits=localStorage.getItem('tw_visits')||'1';
+    }catch(_){}
+    var res=await fetch('/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+    if(!res.ok)throw new Error('server');
+    if(typeof fbq==='function')fbq('track','Lead');
+    if(typeof gtag==='function')gtag('event','generate_lead',{inquiry_type:'consultation',source:'AI活用度診断'});
+    lf.style.display='none';document.querySelector('.result-actions').style.display='none';
+    document.getElementById('thanks').classList.add('show');
+    document.getElementById('thanks').scrollIntoView({behavior:'smooth',block:'center'});
+  }catch(err){btn.disabled=false;btn.style.opacity='1';btn.textContent='改善ロードマップと無料相談を受け取る';alert('送信に失敗しました。お手数ですが、しばらく経ってから再度お試しください。');}
+});})();
+</script>
+</body>
+</html>
