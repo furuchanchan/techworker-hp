@@ -11,11 +11,47 @@ const INQUIRY_MAP = {
   document:     '資料請求',
 };
 
+// ===== Intent scoring =====
+// 既存の sessionStorage 計測(intent_pages / intent_visits / source 等)を
+// スコア化し、高意図リードを Slack で優先表示する。
+function computeIntent(data) {
+  const pages   = (data.intent_pages || '').toLowerCase();
+  const visits  = parseInt(data.intent_visits || '1', 10) || 1;
+  const reasons = [];
+  let score = 0;
+  const occ = (re) => (pages.match(re) || []).length;
+
+  const nTraining = occ(/training/g);
+  const nCases    = occ(/cases/g);
+  const nLP       = occ(/launch-simulation/g);
+  const nLibrary  = occ(/library/g);
+  const nMedia    = occ(/\/media/g);
+  const isDiag    = /診断|security-check|diagnos/i.test((data.source || '') + ' ' + pages) || data.diag_score != null;
+
+  if (nTraining) { score += Math.min(nTraining * 3, 6); reasons.push(`研修ページ${nTraining}回`); }
+  if (nCases)    { score += Math.min(nCases * 2, 4);     reasons.push(`実績/事例${nCases}回`); }
+  if (nLP)       { score += Math.min(nLP * 2, 4);        reasons.push(`シミュLP${nLP}回`); }
+  if (isDiag)    { score += 4;                           reasons.push('セキュリティ診断を実施'); }
+  if (nLibrary)  { score += Math.min(nLibrary, 2);       reasons.push(`資料DL${nLibrary}回`); }
+  if (nMedia)    { score += 1;                           reasons.push('メディア閲覧'); }
+  if (visits >= 3)      { score += 3; reasons.push(`${visits}回目の訪問`); }
+  else if (visits === 2){ score += 1; reasons.push('再訪問'); }
+  if (/301名以上|101-300名|51-100名/.test(data.company_size || '')) { score += 1; reasons.push('中堅〜大企業'); }
+
+  let emoji = '', label = '通常', priority = 'normal';
+  if (score >= 8)      { emoji = '🔥🔥🔥'; label = '最優先リード'; priority = 'hot'; }
+  else if (score >= 4) { emoji = '🔥';     label = '高インテント'; priority = 'warm'; }
+  return { score, emoji, label, priority, reasons };
+}
+
 async function saveToNotion(data, apiKey) {
+  const msg = ((data.diag_score != null)
+    ? `【🛡️セキュリティ診断 ${data.diag_score}/${data.diag_max || 14}・${data.diag_band || ''}】\n${data.diag_answers || ''}\n${data.message || ''}`
+    : (data.message || '')).trim().slice(0, 1900);
   const properties = {
     'お名前':     { title:     [{ text: { content: data.name    || '' } }] },
     '会社名':     { rich_text: [{ text: { content: data.company || '' } }] },
-    '相談内容':   { rich_text: [{ text: { content: data.message || '' } }] },
+    '相談内容':   { rich_text: [{ text: { content: msg } }] },
     'ステータス': { select:    { name: '未対応' } },
   };
   if (data.email)        properties['メール']         = { email:        data.email };
@@ -50,15 +86,20 @@ async function sendSlackNotification(data, webhookUrl) {
   }
   const type = INQUIRY_MAP[data.inquiry_type] || data.inquiry_type || '-';
   const pages = data.intent_pages || '';
-  const hot = /training|cases|library|pricing|料金|研修|事例/i.test(pages) ? '🔥 高インテント — ' : '';
+  const intent = computeIntent(data);
   const utm = (data.intent_utm && data.intent_utm.replace(/\|/g, '')) ? `\nUTM: ${data.intent_utm}` : '';
-  const intentText = `${hot}*行動シグナル*\n流入元: ${data.intent_referrer || '(direct)'}\nランディング: ${data.intent_landing || '-'}\n閲覧経路: ${pages || '-'}\n訪問回数: ${data.intent_visits || '1'}回目${utm}`;
+  const intentText = `*行動シグナル*\n流入元: ${data.intent_referrer || '(direct)'}\nランディング: ${data.intent_landing || '-'}\n閲覧経路: ${pages || '-'}\n訪問回数: ${data.intent_visits || '1'}回目${utm}`;
+  const headerText = `${intent.emoji ? intent.emoji + ' ' + intent.label + '｜' : ''}問い合わせ: ${data.name || '(名前なし)'}`;
   const payload = {
-    text: `HP問い合わせ: ${data.name || '(名前なし)'} / ${data.company || '(会社名なし)'}`,
+    text: `${intent.emoji ? intent.emoji + ' ' : ''}HP問い合わせ: ${data.name || '(名前なし)'} / ${data.company || '(会社名なし)'}`,
     blocks: [
       {
         type: 'header',
-        text: { type: 'plain_text', text: `HP問い合わせ: ${data.name || '(名前なし)'}` },
+        text: { type: 'plain_text', text: headerText },
+      },
+      {
+        type: 'section',
+        text: { type: 'mrkdwn', text: `*インテントスコア: ${intent.score}* ${intent.emoji} ${intent.label}${intent.reasons.length ? `\n→ ${intent.reasons.join('・')}` : ''}` },
       },
       {
         type: 'section',
@@ -77,6 +118,10 @@ async function sendSlackNotification(data, webhookUrl) {
         type: 'section',
         text: { type: 'mrkdwn', text: `*相談内容*\n${data.message || '-'}` },
       },
+      ...(data.diag_score != null ? [{
+        type: 'section',
+        text: { type: 'mrkdwn', text: `*🛡️ セキュリティ診断結果*\nスコア: ${data.diag_score}/${data.diag_max || 14}（${data.diag_band || '-'}）${data.diag_answers ? '\n' + data.diag_answers : ''}` },
+      }] : []),
       {
         type: 'section',
         text: { type: 'mrkdwn', text: intentText },
