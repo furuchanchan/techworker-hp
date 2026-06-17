@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3V34NWXVCJ');
+</script>
+<!-- TW intent tracker (first-party, sessionStorage only) -->
+<script>
+(function(){try{var ss=sessionStorage,ls=localStorage;
+if(!ss.getItem('tw_landing')){ss.setItem('tw_landing',location.pathname);ss.setItem('tw_ref',document.referrer||'');var q=new URLSearchParams(location.search);ss.setItem('tw_utm',['utm_source','utm_medium','utm_campaign'].map(function(k){return q.get(k)||'';}).join('|'));}
+var p=JSON.parse(ss.getItem('tw_pages')||'[]');if(p[p.length-1]!==location.pathname){p.push(location.pathname);ss.setItem('tw_pages',JSON.stringify(p.slice(-20)));}
+if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_visits')||'0',10)+1));ss.setItem('tw_counted','1');}
+}catch(e){}})();
+</script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>士業の生成AI活用とは｜税理士・社労士・行政書士の実務が変わる場面と始め方 — TechWorker</title>
+<meta name="description" content="税理士・社会保険労務士・行政書士・司法書士・弁護士・公認会計士など、士業の事務所が自分たちの実務に生成AIをどう使うか。記帳の補助・申請書類のドラフト・契約書チェック・相談の論点整理・議事録・調査の下調べなど、業務の各場面でのAI活用、スモールスタートの始め方、守秘義務・独占業務・有資格者の最終判断などの注意点を整理します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/shigyo/shigyo-ai.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="士業の生成AI活用とは｜税理士・社労士・行政書士の実務が変わる場面と始め方">
+<meta property="og:description" content="士業の事務所が生成AIをどう使うかの全体像。記帳の補助・申請書類のドラフト・契約書チェック・相談の論点整理・調査の下調べでのAI活用、始め方、守秘義務・独占業務・最終判断の注意点を実務目線で整理します。">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/media/shigyo/shigyo-ai.html">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="士業の生成AI活用とは｜税理士・社労士・行政書士の実務が変わる場面と始め方">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../article.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"士業の生成AI活用とは｜税理士・社労士・行政書士の実務が変わる場面と始め方",
+  "description":"税理士・社会保険労務士・行政書士・司法書士・弁護士・公認会計士など、士業の事務所が自分たちの実務に生成AIをどう使うかの全体像。記帳の補助・申請書類のドラフト・契約書チェック・相談の論点整理・調査の下調べでのAI活用、スモールスタートの始め方、守秘義務・独占業務・有資格者の最終判断の注意点を整理する。",
+  "datePublished":"2026-04-18","dateModified":"2026-04-18","inLanguage":"ja",
+  "image":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630},
+  "author":{"@type":"Person","name":"古野光太朗","jobTitle":"株式会社TechWorker 代表取締役","url":"https://techworker.co.jp/company.html","image":"https://techworker.co.jp/assets/author-furuno.jpg","sameAs":["https://x.com/koutarou_furuno"],"affiliation":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"}},
+  "publisher":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/","logo":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630}},
+  "mainEntityOfPage":{"@type":"WebPage","@id":"https://techworker.co.jp/media/shigyo/shigyo-ai.html"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},
+    {"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},
+    {"@type":"ListItem","position":3,"name":"士業","item":"https://techworker.co.jp/media/shigyo/"},
+    {"@type":"ListItem","position":4,"name":"士業の生成AI活用とは","item":"https://techworker.co.jp/media/shigyo/shigyo-ai.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"士業の現場で、生成AIはまず何に使うのが効果的ですか？","acceptedAnswer":{"@type":"Answer","text":"最初は「下書きを書く」「長い文章を要約する」「論点を整理する」といった、有資格者が必ず最後に確認する作業から始めるのが効果的です。顧問先への通知文の初稿、議事録の整形、相談の論点整理、調査の下調べなどは、効果が見えやすく失敗してもリカバリしやすいため、スモールスタートに向いています。"}},
+    {"@type":"Question","name":"顧客情報や守秘義務との関係はどう整理すればよいですか？","acceptedAnswer":{"@type":"Answer","text":"弁護士法・税理士法などの守秘義務と、自社の個人情報の取り扱い方針を必ず確認してください。入力したデータが学習に使われない設定の法人向けサービスを選ぶ、個人や法人を特定する情報はマスキングしてから入力する、機微な情報は入力しない、といった運用ルールを使い始める前に決めることが前提になります。"}},
+    {"@type":"Question","name":"AIに任せると、有資格者の仕事はなくなりますか？","acceptedAnswer":{"@type":"Answer","text":"なくなりません。AIが担うのは下書きや要約・整理・調査の下調べといった準備作業で、法的・税務的な判断、申請の最終確定、署名押印、顧客への責任ある回答は有資格者にしかできない領域です。AIで準備を速くした分、判断と顧客対応に時間を充てるのが本来の使い方です。"}},
+    {"@type":"Question","name":"生成AIの出力（条文・通達・判例）はそのまま使ってよいですか？","acceptedAnswer":{"@type":"Answer","text":"そのまま使うのは避けてください。生成AIは存在しない条番号・通達・判例を自然な文章で出力すること（ハルシネーション）があります。条文・通達・判例などの根拠は必ず原典で確認し、有資格者が内容を検証・修正してから書面や回答に用いる運用にします。"}}
+  ]
+}
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <a href="../index.html" class="logo">Tech<i>Worker</i><span class="m-tag">Media</span></a>
+  <ul>
+    <li><a href="../index.html">記事一覧</a></li>
+    <li><a href="index.html" class="active">AI×士業</a></li>
+    <li><a href="../../index.html">TechWorkerとは</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="../../contact.html" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="../index.html">記事一覧</a>
+  <a href="index.html">AI×士業</a>
+  <a href="../../index.html">TechWorkerとは</a>
+  <a href="../../cases.html">導入事例</a>
+  <a href="../../contact.html" class="m-cta">無料相談を申し込む</a>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">士業</a><span class="sep">/</span>士業の生成AI活用とは</nav>
+  <div class="kicker">士業 × AI</div>
+  <h1>士業の生成AI活用とは｜税理士・社労士・行政書士の実務が変わる場面と始め方</h1>
+  <p class="dek">記帳、申請書類、契約書チェック、相談対応、議事録、調査の下調べ——士業の一日は「読む・書く・調べる・まとめる」で埋まっている。その準備作業に生成AIを入れると、有資格者の時間はどこに戻ってくるのか。税理士・社労士・行政書士など複数の士業を例に、全体像と始め方を実務目線で整理する。</p>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.04.18</span><span class="dot">·</span><span>最終更新 2026.04.18</span><span class="dot">·</span><span>読了 9分</span>
+  </div>
+</header>
+
+<img class="art-cover" src="../../assets/media/covers/shigyo-ai.svg" alt="" width="340" height="200" loading="lazy">
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次">
+    <div class="art-toc-inner">
+      <div class="toc-h">目次</div>
+      <a href="#s1">何に使えるのか（全体像）</a>
+      <a href="#s2">士業の業務はどこが変わるか</a>
+      <a href="#s3">まず何から始めるか</a>
+      <a href="#s4">使う前に押さえる注意点</a>
+      <a href="#faq">よくある質問</a>
+    </div>
+  </nav>
+
+  <article class="art-body rv">
+    <div class="lede">
+      <div class="lede-h">この記事の要点</div>
+      <ul>
+        <li>士業の生成AI活用とは、税理士・社労士・行政書士をはじめとする<strong>事務所の実務そのものを生成AIで速く・厚くする</strong>こと。社員のAI研修やリスキリングの話ではなく、書面作成・申請・調査・相談対応・記帳といった日々の業務が対象。</li>
+        <li>効きどころは「読む・書く・調べる・まとめる」が多い準備作業——記帳・データ入力の補助、申請書類の下書き、契約書・規程のチェック補助、相談の論点整理、議事録・通知文、調査の下調べ。<strong>最終確認・判断・責任は有資格者が担う前提</strong>でAIに任せる。</li>
+        <li>始め方は、効果が見えやすい1業務から小さく試す。使う前に、守秘義務・独占業務／有資格者の最終責任・条文や通達のハルシネーション・顧客情報の4点を必ず押さえる。</li>
+      </ul>
+    </div>
+
+    <h2 id="s1">士業の生成AIは何に使えるのか？</h2>
+    <p class="answer">記帳の補助から申請書類の下書き、契約書チェック、論点整理、議事録、調査の下調べまで、士業の準備作業を速くできる。</p>
+    <p>税理士・社会保険労務士・行政書士・司法書士・弁護士・公認会計士・弁理士——名称も独占業務も異なりますが、日々の仕事を突き詰めると<strong>大量の文章や数字を読み、書き、調べ、まとめる</strong>作業の連続です。資料を読み込み、申請書類を作り、契約や規程をチェックし、相談の論点を整理し、議事録や通知文を書く。生成AIが最も効くのは、まさにこの準備作業です。AIに任せられるのは「下書き」と「要約・整理・下調べ」であって、法的・税務的な判断や申請の最終確定、顧客への責任ある回答といった<strong>有資格者にしかできない部分は残ります</strong>。「AIはエンジンだ。コンテキストは燃料だ」という言い方をすれば、案件の事実関係・事務所の判断基準・過去の書式というコンテキストを渡すほど、AIは現場で使える出力を返します。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>業務場面</th><th>AIの使い方</th><th>期待できること</th></tr>
+        <tr><td>記帳・データ入力の補助</td><td>仕訳の候補出し、摘要の整形、領収書情報の項目整理を下書き</td><td>入力の当たりを早くつけ、確認に集中する</td></tr>
+        <tr><td>申請書類・届出のドラフト</td><td>ヒアリングメモから申請書類・届出の素案・添付資料の一覧を整形</td><td>たたき台を早く出し、記載漏れの確認を効率化</td></tr>
+        <tr><td>契約書・規程のチェック補助</td><td>条項の論点・抜け漏れの観点・気になる箇所を一覧化</td><td>レビューの見落としを減らし、確認の起点を作る</td></tr>
+        <tr><td>相談の論点整理</td><td>相談内容を争点・確認事項・必要資料に分解して整理</td><td>面談前の準備を短縮し、対話に集中する</td></tr>
+        <tr><td>議事録・通知文</td><td>面談メモや文字起こしを議事録・顧客向け通知文に整形</td><td>清書の手間を減らし、本来の業務に時間を戻す</td></tr>
+        <tr><td>調査の下調べ</td><td>論点に対する一次的な調べ物・調査の切り口の洗い出し</td><td>調査の入口を早くする（根拠は必ず原典で確認）</td></tr>
+      </table>
+    </div>
+    <div class="callout"><p>共通するのは「ゼロから書く・一から調べる」を「直して仕上げる・裏を取る」に変えること。白紙からの作業をAIの初稿に置き換えるだけで、一件あたりの所要時間は大きく変わる。最終確認・判断は必ず有資格者が行う前提は崩さない。</p></div>
+
+    <h2 id="s2">税理士・社労士・行政書士など、業務はどこが変わるのか？</h2>
+    <p class="answer">下書きと要約・調べ物の入口をAIに任せ、有資格者は判断と顧客対応に時間を振り直せる。仕事は減るのではなく中身が変わる。</p>
+    <p>生成AIを入れて変わるのは「作業の中身」です。これまで有資格者や事務所スタッフが時間を使ってきた書面の準備や調べ物の入口が短くなり、その分を判断・確認・顧客との対話に回せます。士業ごとに扱う業務は違っても、変わり方の構図は共通です。下は士業別に「どの場面でAIが効くか」を整理した例です。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>士業</th><th>AIが効きやすい準備作業の例</th><th>有資格者が握り続ける部分</th></tr>
+        <tr><td>税理士</td><td>仕訳候補の下書き、顧問先への通知文の整形、相談の論点整理</td><td>税務判断・申告内容の確定・税務代理</td></tr>
+        <tr><td>社会保険労務士</td><td>就業規則・規程案のたたき台、手続きの必要書類の洗い出し、議事録</td><td>申請の最終確定・労務判断・代理提出</td></tr>
+        <tr><td>行政書士</td><td>許認可申請書類の素案、添付資料リストの整理、案内文の作成</td><td>申請内容の確定・要件の最終確認</td></tr>
+        <tr><td>司法書士・弁護士</td><td>契約書チェックの観点出し、相談の論点整理、調査の下調べ</td><td>法的判断・条文や判例の確認・最終的な回答</td></tr>
+      </table>
+    </div>
+    <p>たとえば顧問先への通知文は、税理士事務所が毎月くり返す作業の代表格です。制度改正や手続きの案内を、専門用語のまま送ると顧問先に伝わりにくい——そんなときに、要点を渡して「経営者に伝わる言葉への言い換え」だけをAIに任せると、清書の時間を内容の確認に回せます。下は、専門的な通知文をわかりやすく言い換えさせるときの指示と下書きのイメージです。</p>
+    <div class="ui-mock">
+      <div class="um-bar"><span class="um-dot"></span><span class="um-dot"></span><span class="um-dot"></span><span class="um-name">AI ASSISTANT — 使い方の例</span></div>
+      <div class="um-row">
+        <div class="um-label">あなたの指示（税理士／社労士 等）</div>
+        <div class="um-text prompt">次の制度改正の要点を、顧問先の経営者向けに、専門用語をかみ砕いた案内文に言い換えて。やること・期限・問い合わせ先を箇条書きで。
+【要点】電子帳簿保存法の電子取引データの保存要件について、保存方法と検索要件の対応が必要。対応の準備を進めてほしい。</div>
+      </div>
+      <div class="um-row">
+        <div class="um-label ai">AIの下書き</div>
+        <div class="um-text">いつもお世話になっております。電子取引データの保存ルールについて、対応のお願いです。
+
+メールやネットで受け取った請求書・領収書などのデータは、紙に印刷した控えだけでなく、データのままで決められた形で保存しておく必要があります。あとから探せるように整理しておくこともポイントです。
+
+【お願いしたいこと】
+・電子で受け取った請求書・領収書をデータのまま保存
+・日付・取引先・金額で探せる形に整理
+
+【目安】
+・できるだけ早めに保存の運用を開始
+
+ご不明な点は当事務所までお問い合わせください。</div>
+      </div>
+    </div>
+    <p class="fig-cap">図：要点を渡し、顧客向けの言い換えの下書きだけをAIに作らせる例。制度内容の正確さ・最終的な記載の可否は、必ず有資格者が確認してから送ります。最終確認は有資格者が行うことが前提です。</p>
+    <div class="quote-box"><p>AIが奪うのは作業であって、士業の仕事ではない。空いた時間を顧客との対話と判断に返せるかどうかが、これからの事務所の差になる。</p></div>
+    <p>事務所のオペレーション全体で見ると、AIが入る場面は一つではありません。下は、士業事務所のどの業務にAIが入りうるかを俯瞰したマップ（サンプル）です。数値は実在のものではなく、活用の広がりをイメージするための例です。</p>
+    <div class="mini-dash">
+      <div class="md-top"><span class="dot"></span>士業事務所のAI活用マップ（※サンプル・数値はイメージ）</div>
+      <div class="md-kpis">
+        <div class="md-kpi"><div class="k">AIが下書き・要約を担える場面</div><div class="v"><em>6</em> 業務</div></div>
+        <div class="md-kpi"><div class="k">有資格者の最終判断が必須の業務</div><div class="v"><em>全</em> 業務</div></div>
+        <div class="md-kpi"><div class="k">まず試すおすすめ業務</div><div class="v"><em>2</em> 箇所</div></div>
+      </div>
+      <div class="md-chart">
+        <div class="md-bars">
+          <div class="bar hi" style="height:58%"></div>
+          <div class="bar hi" style="height:82%"></div>
+          <div class="bar" style="height:44%"></div>
+          <div class="bar hi" style="height:76%"></div>
+          <div class="bar" style="height:50%"></div>
+          <div class="bar hi" style="height:70%"></div>
+        </div>
+        <div class="md-xax"><span>記帳補助</span><span>通知文</span><span>契約チェック</span><span>論点整理</span><span>申請書類</span><span>調査下調べ</span></div>
+      </div>
+    </div>
+    <p class="fig-cap">※サンプル。棒の高さは「AIで準備を時短しやすい度合い」のイメージであり、実測値ではありません。青が濃い業務ほど下書き・要約の効果が出やすい場面の例です。</p>
+
+    <h2 id="s3">まず何から始めるか（スモールスタート）</h2>
+    <p class="answer">効果が見えやすく失敗してもリカバリしやすい1業務に絞り、有資格者が必ず最後に確認する形で小さく試す。</p>
+    <p>いきなり全業務に広げようとすると、ルールも品質も追いつかず止まります。士業での生成AI活用は、<strong>一番痛い・一番多い作業を一つだけ選んで試す</strong>のが現実的です。次の順番で進めると、事務所が無理なく使い始められます。守秘義務に関わる仕事だからこそ、入力ルールを先に決める順番が重要です。</p>
+    <ol>
+      <li><strong>痛い業務を一つ選ぶ。</strong>「顧問先への通知文づくり」「議事録の整形」「申請書類の素案づくり」など、件数が多く時間を食っている作業を一つに絞る。</li>
+      <li><strong>守秘義務に配慮した入力ルールを先に決める。</strong>顧客・法人を特定する情報はマスキングする、入力データが学習に使われない法人向けサービスを使う、機微な情報は入力しない、といった取り扱いルールを先に決める。</li>
+      <li><strong>型（プロンプト）をつくる。</strong>「誰に・何を・どんな形式で」を埋めるだけで使える指示文の雛形を用意し、毎回ゼロから書かなくて済むようにする。</li>
+      <li><strong>有資格者が確認して仕上げる。</strong>AIの出力は必ず有資格者が読み、事実・根拠・表現を確認・修正してから書面や回答にする。出しっぱなしにしない。</li>
+      <li><strong>効果を測って広げる。</strong>一件あたりの所要時間や着手のしやすさが変わったかを確かめ、手応えがあれば次の業務へ広げる。</li>
+    </ol>
+    <div class="callout"><p>最初の一歩は「AIに正解を出させる」ことではなく「AIに下書きを出させて、有資格者が仕上げる」流れを事務所に根づかせること。完璧な自動化を狙うより、確認込みで速くなる体験を一つ作るほうが定着する。書面・文書づくりから始めたい場合は、<a href="document-drafting.html">士業の書面・文書作成のAI活用</a>もあわせてご覧ください。</p></div>
+
+    <h2 id="s4">使う前に押さえる注意点（守秘義務・独占業務・最終判断）</h2>
+    <p class="answer">守秘義務、独占業務と有資格者の最終責任、条文や通達のハルシネーション、顧客情報——この4点を運用ルールに落としてから使う。</p>
+    <p>士業は、顧客の財産・権利・将来を左右する判断を扱う仕事です。便利さだけで導入すると、守秘義務違反や誤った書面につながるリスクがあります。使い始める前に、最低限この4つを事務所のルールとして決めておきます。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>論点</th><th>何が問題になりうるか</th><th>運用での備え</th></tr>
+        <tr><td>守秘義務</td><td>顧客・案件の情報が外部に渡る／学習に使われる懸念（弁護士法・税理士法等の秘密保持）</td><td>入力データが学習に使われない法人向けサービスを選び、特定情報はマスキング。機微な情報は入力しない。利用規約と職業上の守秘義務を先に確認</td></tr>
+        <tr><td>独占業務・有資格者の最終責任</td><td>法的・税務判断や申請の確定をAIに代替させ、非弁・非税理士行為や責任の所在のあいまい化が生じる懸念</td><td>判断・署名押印・申請の最終確定は必ず有資格者が行う。AIは下書き・整理・下調べまでにとどめ、独占業務を侵さない</td></tr>
+        <tr><td>ハルシネーション（条文・通達の捏造）</td><td>存在しない条番号・通達・判例を自然な文章で生成する</td><td>条文・通達・判例などの根拠は必ず原典で確認し、有資格者が検証・修正してから書面や回答に用いる</td></tr>
+        <tr><td>顧客情報・個人情報</td><td>個人情報・マイナンバー等の機微情報が外部に渡る懸念</td><td>機微な情報は入力しない運用を基本とし、自社の個人情報の取り扱い方針と法令を先に確認する</td></tr>
+      </table>
+    </div>
+    <p>言い換えると、生成AIは<strong>士業の判断の前の準備を速くする道具</strong>であって、法的・税務的な判断や申請の確定、顧客への責任ある回答を肩代わりするものではありません。この線引きを最初に事務所で合意できているかどうかが、安心してAIを使えるかの分かれ目になります。なお、こうした「自社の業務文脈をAIが扱える形に整える」設計こそが活用の土台です。上場企業を含む37社・2,500名の生成AI支援を通じても、ルールと型を先に整えた現場ほど活用が止まらず広がる、という傾向が見えています。具体的な業務別の使い方は、<a href="document-drafting.html">書面・文書作成</a>や<a href="client-advisory.html">相談対応・調査</a>の記事もあわせてご覧ください。</p>
+
+    <h2 id="faq">よくある質問</h2>
+    <div class="faq"><div class="q">士業の現場で、生成AIはまず何に使うのが効果的ですか？</div><p class="a">最初は「下書きを書く」「長い文章を要約する」「論点を整理する」といった、有資格者が必ず最後に確認する作業から始めるのが効果的です。顧問先への通知文の初稿、議事録の整形、相談の論点整理、調査の下調べなどは、効果が見えやすく失敗してもリカバリしやすいため、スモールスタートに向いています。詳しい使い方は<a href="client-advisory.html">相談対応・調査のAI活用</a>の記事もご覧ください。</p></div>
+    <div class="faq"><div class="q">顧客情報や守秘義務との関係はどう整理すればよいですか？</div><p class="a">弁護士法・税理士法などの守秘義務と、自社の個人情報の取り扱い方針を必ず確認してください。入力したデータが学習に使われない設定の法人向けサービスを選ぶ、個人や法人を特定する情報はマスキングしてから入力する、機微な情報は入力しない、といった運用ルールを使い始める前に決めることが前提になります。</p></div>
+    <div class="faq"><div class="q">AIに任せると、有資格者の仕事はなくなりますか？</div><p class="a">なくなりません。AIが担うのは下書きや要約・整理・調査の下調べといった準備作業で、法的・税務的な判断、申請の最終確定、署名押印、顧客への責任ある回答は有資格者にしかできない領域です。AIで準備を速くした分、判断と顧客対応に時間を充てるのが本来の使い方です。</p></div>
+    <div class="faq"><div class="q">生成AIの出力（条文・判例）はそのまま使ってよいですか？</div><p class="a">そのまま使うのは避けてください。生成AIは存在しない条番号・通達・判例を自然な文章で出力すること（ハルシネーション）があります。条文・通達・判例などの根拠は必ず原典で確認し、有資格者が内容を検証・修正してから書面や回答に用いる運用にします。書面づくりでの注意点は<a href="document-drafting.html">書面・文書作成のAI活用</a>もご覧ください。</p></div>
+  </article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役</span></div>
+    <p>上場企業を含む37社・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>士業事務所の「どこにAIを入れるか」を一緒に設計します。</h3>
+    <p>記帳の補助から書面ドラフト・契約チェック・相談の論点整理まで、士業の実務に生成AIをどう接続するか。守秘義務や有資格者の最終責任に配慮した運用ルールづくりから、スモールスタートの設計まで伴走します。上場企業を含む37社・2,500名の支援知見をもとに、検討段階のご相談だけでも歓迎です。</p>
+  </div>
+  <a href="../../contact.html" class="btn">AI活用の相談をする <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="../../training.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">生成AI法人研修（主要ツール全対応）</a>　／　<a href="../../contact.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">無料相談</a></p>
+<div class="back-list"><a href="index.html">← メディア（士業）に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="document-drafting.html" class="related-card"><span class="rc-cat">書面・文書作成</span><div class="rc-title">生成AIで士業の書面・文書作成を効率化する｜契約書・申請書類・通知文のドラフトと注意点</div></a>
+    <a href="client-advisory.html" class="related-card"><span class="rc-cat">相談対応・調査</span><div class="rc-title">生成AIで士業の相談対応・調査を速くする｜論点整理・一次回答ドラフト・社内ナレッジ</div></a>
+  </div>
+</div></section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">Tech<i>Worker</i><span class="m-tag">Media</span></div>
+        <p>生成AI活用の実践知をお届けするメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+      </div>
+      <div class="footer-col"><h4>メディア</h4><a href="../index.html">記事一覧</a><a href="index.html">AI×士業</a></div>
+      <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../index.html#services">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="../../contact.html">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+</body>
+</html>
