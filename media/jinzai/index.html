@@ -169,6 +169,19 @@ fbq('init','1264057945446029');fbq('track','PageView');
 .jz-list .l-arrow{font-family:var(--en);color:var(--electric);font-size:17px;justify-self:end;align-self:center;transition:transform .2s;}
 .jz-list a:hover .l-arrow{transform:translateX(4px);}
 
+/* 記事カード（ブランドSVGカバー付き＝メディアらしい一覧） */
+.jz-articles{margin-top:56px;}
+.jz-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.jz-cards>a{display:block;text-decoration:none;color:inherit;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--white);transition:border-color .2s,transform .25s cubic-bezier(.2,.8,.2,1);}
+.jz-cards>a:hover{border-color:var(--line-2);transform:translateY(-3px);}
+.jz-cards .cv{display:block;width:100%;height:auto;border-bottom:1px solid var(--line);}
+.jz-cards .cd{padding:16px 18px 18px;}
+.jz-cards .c-cat{font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);}
+.jz-cards .c-title{font-family:var(--jp);font-weight:700;font-size:16px;line-height:1.5;letter-spacing:-.01em;color:var(--ink);margin:9px 0 0;transition:color .2s;}
+.jz-cards>a:hover .c-title{color:var(--electric);}
+.jz-cards .c-meta{font-family:var(--en);font-size:11.5px;color:var(--slate);margin-top:11px;font-feature-settings:"tnum" 1;}
+@media(max-width:880px){.jz-cards{grid-template-columns:1fr;}}
+
 @media(max-width:880px){
   .jz-hero{padding:108px 24px 0;}
   .jz-sec{padding:0 24px;}
@@ -239,35 +252,33 @@ fbq('init','1264057945446029');fbq('track','PageView');
   </div>
 </section>
 
-<!-- featured article -->
-<section class="jz-sec jz-feature">
-  <div class="jz-sec-h">注目記事</div>
-  <a href="recruitment-ai.html" class="idx-feature rv">
-    <span class="f-cat">全体像 / 業界動向</span>
-    <div class="f-title">人材紹介・人材派遣の生成AI活用とは｜CA・RA業務が変わる場面と始め方</div>
-    <div class="f-desc">候補者ソーシングからマッチング・候補者体験まで、人材ビジネスのどこに生成AIが効くのかを業務フロー単位で整理。何から始め、どう現場に定着させるかまでをまとめた2026年版の実践ガイドです。</div>
-    <div class="jz-meta"><span>全体像・業界動向</span><span class="dot">·</span><span>読了 8分</span><span class="dot">·</span><span>2026.04.08</span></div>
-  </a>
-</section>
-
-<!-- latest articles -->
-<section class="jz-sec jz-latest">
+<!-- articles -->
+<section class="jz-sec jz-articles">
   <div class="jz-sec-h">新着記事</div>
-  <div class="jz-list rv">
+  <div class="jz-cards rv">
     <a href="recruitment-ai.html">
-      <div class="l-side"><span class="l-cat">全体像 / Overview</span><span class="l-date">2026.04.08 · 読了8分</span></div>
-      <div class="l-main"><div class="l-title">人材紹介・人材派遣の生成AI活用とは｜CA・RA業務が変わる場面と始め方</div><div class="l-desc">人材ビジネスのどの業務に生成AIが効くのかを業務フローで整理。何から始めればよいかと、現場に定着させる進め方を解説します。</div></div>
-      <span class="l-arrow">→</span>
+      <img class="cv" src="../../assets/media/covers/recruitment-ai.svg" alt="" width="340" height="200" loading="lazy">
+      <div class="cd">
+        <div class="c-cat">全体像 / Overview</div>
+        <div class="c-title">人材紹介・派遣の生成AI活用とは｜CA・RA業務が変わる場面と始め方</div>
+        <div class="c-meta">2026.04.08 · 読了8分</div>
+      </div>
     </a>
     <a href="ai-scouting.html">
-      <div class="l-side"><span class="l-cat">ソーシング / Sourcing</span><span class="l-date">2026.04.15 · 読了9分</span></div>
-      <div class="l-main"><div class="l-title">生成AIでスカウト・候補者ソーシングを効率化する｜返信率を高める文面と運用</div><div class="l-desc">候補者要件の言語化からスカウト文面の個別最適化まで。送って終わりにしないソーシングの設計と運用をまとめます。</div></div>
-      <span class="l-arrow">→</span>
+      <img class="cv" src="../../assets/media/covers/ai-scouting.svg" alt="" width="340" height="200" loading="lazy">
+      <div class="cd">
+        <div class="c-cat">ソーシング / Sourcing</div>
+        <div class="c-title">生成AIでスカウト・候補者ソーシングを効率化する｜返信率を高める文面と運用</div>
+        <div class="c-meta">2026.04.15 · 読了9分</div>
+      </div>
     </a>
     <a href="ai-matching.html">
-      <div class="l-side"><span class="l-cat">マッチング / Matching</span><span class="l-date">2026.04.22 · 読了9分</span></div>
-      <div class="l-main"><div class="l-title">生成AIで人材マッチングの精度を上げる｜求人票・候補者要件・推薦コメントの最適化</div><div class="l-desc">求人票と職務経歴書の突合、要件適合の整理、推薦コメントの下書きまで。マッチング精度を底上げする使い方を整理します。</div></div>
-      <span class="l-arrow">→</span>
+      <img class="cv" src="../../assets/media/covers/ai-matching.svg" alt="" width="340" height="200" loading="lazy">
+      <div class="cd">
+        <div class="c-cat">マッチング / Matching</div>
+        <div class="c-title">生成AIで人材マッチングの精度を上げる｜求人票・候補者要件・推薦コメントの最適化</div>
+        <div class="c-meta">2026.04.22 · 読了9分</div>
+      </div>
     </a>
   </div>
 </section>
