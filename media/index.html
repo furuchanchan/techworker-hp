@@ -80,6 +80,19 @@ fbq('init','1264057945446029');fbq('track','PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel Code -->
+<style>
+/* media index: cover-image cards (visual list) */
+.feat-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+.feat-cards>a{display:block;text-decoration:none;color:inherit;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--white);transition:border-color .2s,transform .25s cubic-bezier(.2,.8,.2,1);}
+.feat-cards>a:hover{border-color:var(--line-2);transform:translateY(-3px);}
+.feat-cards .cv{display:block;width:100%;height:auto;border-bottom:1px solid var(--line);}
+.feat-cards .cd{padding:18px 20px 20px;}
+.feat-cards .c-cat{font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);}
+.feat-cards .c-title{font-family:var(--jp);font-weight:700;font-size:17px;line-height:1.5;letter-spacing:-.01em;color:var(--ink);margin:9px 0 8px;transition:color .2s;}
+.feat-cards>a:hover .c-title{color:var(--electric);}
+.feat-cards .c-desc{font-size:13.5px;color:var(--slate);line-height:1.75;}
+@media(max-width:880px){.feat-cards{grid-template-columns:1fr;}}
+</style>
 </head>
 <body>
 
@@ -113,30 +126,42 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
 <section class="idx-wrap">
   <div style="font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--slate);margin:0 0 24px;">特集 — 業界別メディア</div>
-  <div class="idx-grid rv">
-    <a href="jinzai/" class="idx-card">
-      <span class="ic-cat">特集 · AI × 人材</span>
-      <div class="ic-title">生成AI×人材メディア｜ソーシング・スカウト・マッチングの実践知</div>
-      <div class="ic-desc">人材紹介・派遣・採用支援の現場で、生成AIをどう業務に使うか。候補者ソーシング・スカウト文・マッチング・CA／RA業務効率化を、上場企業を含む37社・2,500名の支援知見をもとに発信する特集メディアです。</div>
+  <div class="feat-cards rv">
+    <a href="jinzai/">
+      <img class="cv" src="../assets/media/covers/feature-jinzai.svg" alt="" width="340" height="200" loading="lazy">
+      <div class="cd">
+        <span class="c-cat">特集 · AI × 人材</span>
+        <div class="c-title">生成AI×人材メディア｜ソーシング・スカウト・マッチングの実践知</div>
+        <div class="c-desc">人材紹介・派遣・採用支援の現場で、生成AIをどう業務に使うか。候補者ソーシング・スカウト文・マッチング・CA／RA業務効率化を、上場企業を含む37社・2,500名の支援知見をもとに発信する特集メディアです。</div>
+      </div>
     </a>
-    <a href="shigyo/" class="idx-card">
-      <span class="ic-cat">特集 · AI × 士業</span>
-      <div class="ic-title">生成AI×士業メディア｜書面作成・相談対応・調査の実践知</div>
-      <div class="ic-desc">税理士・社労士・行政書士・司法書士・弁護士など、士業事務所の実務に生成AIをどう組み込むか。書面作成・申請・相談対応・調査を、上場企業を含む37社・2,500名の支援知見をもとに発信する特集メディアです。</div>
+    <a href="shigyo/">
+      <img class="cv" src="../assets/media/covers/feature-shigyo.svg" alt="" width="340" height="200" loading="lazy">
+      <div class="cd">
+        <span class="c-cat">特集 · AI × 士業</span>
+        <div class="c-title">生成AI×士業メディア｜書面作成・相談対応・調査の実践知</div>
+        <div class="c-desc">税理士・社労士・行政書士・司法書士・弁護士など、士業事務所の実務に生成AIをどう組み込むか。書面作成・申請・相談対応・調査を、上場企業を含む37社・2,500名の支援知見をもとに発信する特集メディアです。</div>
+      </div>
     </a>
   </div>
 
   <div style="font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--slate);margin:56px 0 24px;">記事 — トークン戦略</div>
-  <div class="idx-grid rv">
-    <a href="token-maxing.html" class="idx-card">
-      <span class="ic-cat">Token Strategy</span>
-      <div class="ic-title">トークンマキシングとは｜AIの出力品質を最大化する「惜しまず使う」戦略</div>
-      <div class="ic-desc">トークンをケチるほど成果が落ちる仕事がある。大規模コンテキスト・深い推論・マルチエージェントで品質に振り切る手法と、コスト最適化との使い分けを、2026年のClaudeを前提に解説します。</div>
+  <div class="feat-cards rv">
+    <a href="token-maxing.html">
+      <img class="cv" src="../assets/media/covers/token-maxing.svg" alt="" width="340" height="200" loading="lazy">
+      <div class="cd">
+        <span class="c-cat">Token Strategy</span>
+        <div class="c-title">トークンマキシングとは｜AIの出力品質を最大化する「惜しまず使う」戦略</div>
+        <div class="c-desc">トークンをケチるほど成果が落ちる仕事がある。大規模コンテキスト・深い推論・マルチエージェントで品質に振り切る手法と、コスト最適化との使い分けを、2026年のClaudeを前提に解説します。</div>
+      </div>
     </a>
-    <a href="token-management.html" class="idx-card">
-      <span class="ic-cat">Token Strategy</span>
-      <div class="ic-title">トークンマネジメントとは｜生成AIのコストを最大90%下げる実践ガイド</div>
-      <div class="ic-desc">プロンプトキャッシュ・モデル使い分け・Batch APIで生成AIのコストを下げる実践ガイド。2026年の最新モデル別料金つきで、どこを絞るかを具体的に示します。</div>
+    <a href="token-management.html">
+      <img class="cv" src="../assets/media/covers/token-management.svg" alt="" width="340" height="200" loading="lazy">
+      <div class="cd">
+        <span class="c-cat">Token Strategy</span>
+        <div class="c-title">トークンマネジメントとは｜生成AIのコストを最大90%下げる実践ガイド</div>
+        <div class="c-desc">プロンプトキャッシュ・モデル使い分け・Batch APIで生成AIのコストを下げる実践ガイド。2026年の最新モデル別料金つきで、どこを絞るかを具体的に示します。</div>
+      </div>
     </a>
   </div>
 </section>
