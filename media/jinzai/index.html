@@ -147,7 +147,14 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
 .jz-feature{margin-top:64px;}
 .jz-feature .idx-feature{margin-bottom:0;}
-.jz-latest{margin-top:64px;padding-bottom:100px;}
+.jz-latest{margin-top:56px;}
+/* このメディアについて（運営・実績・相談を最下部に控えめに集約） */
+.jz-about{margin-top:72px;padding:40px 0 104px;border-top:1px solid var(--line);}
+.jz-about .ab-body{max-width:66ch;}
+.jz-about .ab-body p{font-size:14.5px;color:var(--slate);line-height:1.95;}
+.jz-about .ab-body p+p{margin-top:12px;}
+.jz-about .ab-body a{color:var(--electric);text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);}
+.jz-about .ab-body a:hover{border-bottom-color:var(--electric);}
 
 /* latest = 均一なリスト行（2カラムカードの高さ不揃い＝凸凹を解消） */
 .jz-list{border-top:1px solid var(--line-2);}
@@ -198,43 +205,12 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <header class="jz-hero">
   <span class="kicker">For the Recruitment &amp; Staffing Industry</span>
   <h1>人材業界のための生成AI活用</h1>
-  <p class="lead">人材紹介・人材派遣・採用支援の現場で、生成AIをどう業務に使うか。候補者ソーシングからマッチング・候補者体験（CX）まで——上場企業を含む37社・2,500名の生成AI支援知見をもとに、人材ビジネスそのものを強くする実践知を発信します。</p>
-  <div class="jz-cta">
-    <a href="recruitment-ai.html" class="btn">記事を読む <i>→</i></a>
-    <a href="../../contact.html" class="ghost">無料相談 <i>→</i></a>
-  </div>
-  <div class="jz-stats">
-    <div class="st"><div class="st-n">37<em>社</em></div><div class="st-l">生成AI導入・支援の実績</div></div>
-    <div class="st"><div class="st-n">2,500<em>名</em></div><div class="st-l">研修・育成の受講者</div></div>
-    <div class="st"><div class="st-n">4<em>領域</em></div><div class="st-l">ソーシング〜社内ナレッジ</div></div>
-  </div>
+  <p class="lead">人材紹介・派遣・採用支援の現場で、生成AIをどう業務に使うか。候補者ソーシング、スカウト、マッチング、CA・RA業務まで——実務に根ざした活用法を解説するメディアです。</p>
 </header>
 
-<!-- reader segments -->
-<section class="jz-sec jz-seg">
-  <div class="jz-sec-h">こんな方に向けて</div>
-  <div class="jz-seg-grid">
-    <div class="jz-seg-card">
-      <span class="seg-n">For Leadership</span>
-      <div class="seg-t">人材紹介会社の経営・マネージャー</div>
-      <div class="seg-d">どの業務にAIを効かせ、CA・RAの生産性と紹介決定をどう伸ばすかの判断材料を。</div>
-    </div>
-    <div class="jz-seg-card">
-      <span class="seg-n">For CA / RA</span>
-      <div class="seg-t">CA・RA／キャリアコンサルタント</div>
-      <div class="seg-d">スカウト文面・職務経歴書の読み込み・推薦コメント作成を、日々の業務で速く正確に。</div>
-    </div>
-    <div class="jz-seg-card">
-      <span class="seg-n">For RPO / Staffing</span>
-      <div class="seg-t">採用支援・RPO・派遣の事業責任者</div>
-      <div class="seg-d">求人票・候補者要件・面談記録の整理を仕組み化し、提供サービスの質を底上げする。</div>
-    </div>
-  </div>
-</section>
-
-<!-- where AI fits in the recruitment workflow -->
+<!-- themes -->
 <section class="jz-sec jz-map jz-flow">
-  <div class="jz-sec-h">人材ビジネスのどの業務にAIが効くか</div>
+  <div class="jz-sec-h">扱うテーマ</div>
   <div class="fl-grid">
     <div class="fl">
       <div class="fl-n">01</div>
@@ -263,24 +239,13 @@ fbq('init','1264057945446029');fbq('track','PageView');
   </div>
 </section>
 
-<!-- categories -->
-<section class="jz-sec jz-cat">
-  <div class="jz-sec-h">カテゴリ</div>
-  <div class="jz-cat-grid">
-    <div class="jz-cat-item"><div class="ct-name">全体像・業界動向</div><div class="ct-en">Overview</div></div>
-    <div class="jz-cat-item"><div class="ct-name">ソーシング・スカウト</div><div class="ct-en">Sourcing</div></div>
-    <div class="jz-cat-item"><div class="ct-name">マッチング</div><div class="ct-en">Matching</div></div>
-    <div class="jz-cat-item"><div class="ct-name">CA・RA業務効率化</div><div class="ct-en">Productivity</div></div>
-  </div>
-</section>
-
 <!-- featured article -->
 <section class="jz-sec jz-feature">
   <div class="jz-sec-h">注目記事</div>
   <a href="recruitment-ai.html" class="idx-feature rv">
     <span class="f-cat">全体像 / 業界動向</span>
     <div class="f-title">人材紹介・人材派遣の生成AI活用とは｜CA・RA業務が変わる場面と始め方</div>
-    <div class="f-desc">候補者ソーシングからマッチング・候補者体験まで、人材ビジネスのどこに生成AIが効くのかを業務フロー単位で整理。何から始めればよいかを、上場企業を含む37社・2,500名の生成AI支援知見をもとにまとめた2026年版の実践ガイドです。</div>
+    <div class="f-desc">候補者ソーシングからマッチング・候補者体験まで、人材ビジネスのどこに生成AIが効くのかを業務フロー単位で整理。何から始め、どう現場に定着させるかまでをまとめた2026年版の実践ガイドです。</div>
     <div class="jz-meta"><span>全体像・業界動向</span><span class="dot">·</span><span>読了 8分</span><span class="dot">·</span><span>2026.04.08</span></div>
   </a>
 </section>
@@ -304,6 +269,15 @@ fbq('init','1264057945446029');fbq('track','PageView');
       <div class="l-main"><div class="l-title">生成AIで人材マッチングの精度を上げる｜求人票・候補者要件・推薦コメントの最適化</div><div class="l-desc">求人票と職務経歴書の突合、要件適合の整理、推薦コメントの下書きまで。マッチング精度を底上げする使い方を整理します。</div></div>
       <span class="l-arrow">→</span>
     </a>
+  </div>
+</section>
+
+<!-- about this media -->
+<section class="jz-sec jz-about">
+  <div class="jz-sec-h">このメディアについて</div>
+  <div class="ab-body">
+    <p>「人材業界向け生成AI活用」は、企業の生成AI導入・活用を支援する<a href="../../index.html">株式会社TechWorker</a>が運営するメディアです。人材紹介・派遣・採用支援の現場で、生成AIを実務にどう組み込むかを、上場企業を含む37社・2,500名の支援で得た知見をもとに発信しています。</p>
+    <p>生成AI活用についてのご相談は <a href="../../contact.html">無料相談</a> から承っています。</p>
   </div>
 </section>
 
