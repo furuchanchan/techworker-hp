@@ -91,6 +91,32 @@ fbq('init','1264057945446029');fbq('track','PageView');
 .feat-cards .c-title{font-family:var(--jp);font-weight:700;font-size:17px;line-height:1.5;letter-spacing:-.01em;color:var(--ink);margin:9px 0 8px;transition:color .2s;}
 .feat-cards>a:hover .c-title{color:var(--electric);}
 .feat-cards .c-desc{font-size:13.5px;color:var(--slate);line-height:1.75;}
+/* v6 covers: real product UI / dashboard / editorial type — ink base, blue as a whisper */
+.feat-cards .cov{height:188px;border-bottom:1px solid var(--line);overflow:hidden;}
+.cov-dash{background:var(--white);padding:16px 18px;display:flex;flex-direction:column;gap:11px;}
+.cov-dash .cov-top{font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--slate);display:flex;align-items:center;gap:7px;}
+.cov-dash .cov-dot{width:6px;height:6px;border-radius:50%;background:var(--electric);}
+.cov-dash .cov-smp{margin-left:auto;font-weight:400;letter-spacing:0;text-transform:none;opacity:.7;}
+.cov-dash .cov-kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.cov-dash .k-l{font-size:10.5px;color:var(--slate);}
+.cov-dash .k-v{font-family:var(--en);font-weight:700;font-size:19px;color:var(--ink);letter-spacing:-.02em;margin-top:2px;font-feature-settings:"tnum" 1;}
+.cov-dash .k-v em{font-style:normal;color:var(--electric);}
+.cov-dash .cov-bars{display:flex;align-items:flex-end;gap:6px;height:36px;margin-top:auto;}
+.cov-dash .cov-bars i{flex:1;background:var(--paper-2);border-radius:2px 2px 0 0;}
+.cov-dash .cov-bars i.hi{background:var(--electric);}
+.cov-app{background:var(--white);display:flex;flex-direction:column;}
+.cov-app .cov-bar{display:flex;align-items:center;gap:8px;padding:11px 14px;border-bottom:1px solid var(--line);}
+.cov-app .cov-tab{font-family:var(--en);font-size:11px;color:var(--ink);font-weight:600;}
+.cov-app .cov-ai{margin-left:auto;font-family:var(--en);font-size:9px;font-weight:700;letter-spacing:.07em;color:var(--electric);border:1px solid rgba(0,94,255,.4);border-radius:4px;padding:2px 7px;}
+.cov-app .cov-doc{padding:18px 16px;display:flex;flex-direction:column;gap:11px;}
+.cov-app .cov-doc .l{height:7px;border-radius:3px;background:var(--paper-2);}
+.cov-app .cov-doc .l.hl{background:rgba(0,94,255,.2);}
+.cov-app .cov-doc .l.short{width:52%;}
+.cov-type{background:var(--paper);padding:20px;display:flex;flex-direction:column;justify-content:center;}
+.cov-type .t-kicker{font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-bottom:10px;}
+.cov-type .t-head{font-family:var(--jp);font-weight:700;font-size:25px;line-height:1.3;letter-spacing:-.03em;color:var(--ink);}
+.cov-type .t-head em{font-style:normal;color:var(--electric);}
+.cov-type .t-foot{font-family:var(--en);font-size:11px;color:var(--slate);margin-top:12px;padding-top:10px;border-top:1px solid var(--line);}
 @media(max-width:880px){.feat-cards{grid-template-columns:1fr;}}
 </style>
 </head>
@@ -128,7 +154,14 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <div style="font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--slate);margin:0 0 24px;">特集 — 業界別メディア</div>
   <div class="feat-cards rv">
     <a href="jinzai/">
-      <img class="cv" src="../assets/media/covers/feature-jinzai.svg" alt="" width="340" height="200" loading="lazy">
+      <div class="cov cov-dash">
+        <div class="cov-top"><span class="cov-dot"></span>候補者対応ダッシュボード<span class="cov-smp">※サンプル</span></div>
+        <div class="cov-kpis">
+          <div><div class="k-l">スカウト返信率</div><div class="k-v"><em>+34</em>%</div></div>
+          <div><div class="k-l">面談化リード</div><div class="k-v"><em>2.4</em>x</div></div>
+        </div>
+        <div class="cov-bars"><i style="height:42%"></i><i style="height:60%"></i><i style="height:48%"></i><i class="hi" style="height:82%"></i><i style="height:66%"></i><i style="height:74%"></i></div>
+      </div>
       <div class="cd">
         <span class="c-cat">特集 · AI × 人材</span>
         <div class="c-title">生成AI×人材メディア｜ソーシング・スカウト・マッチングの実践知</div>
@@ -136,7 +169,10 @@ fbq('init','1264057945446029');fbq('track','PageView');
       </div>
     </a>
     <a href="shigyo/">
-      <img class="cv" src="../assets/media/covers/feature-shigyo.svg" alt="" width="340" height="200" loading="lazy">
+      <div class="cov cov-app">
+        <div class="cov-bar"><span class="cov-tab">契約書ドラフト</span><span class="cov-ai">AI 補完</span></div>
+        <div class="cov-doc"><span class="l"></span><span class="l"></span><span class="l hl"></span><span class="l"></span><span class="l short"></span></div>
+      </div>
       <div class="cd">
         <span class="c-cat">特集 · AI × 士業</span>
         <div class="c-title">生成AI×士業メディア｜書面作成・相談対応・調査の実践知</div>
@@ -148,7 +184,14 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <div style="font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--slate);margin:56px 0 24px;">記事 — トークン戦略</div>
   <div class="feat-cards rv">
     <a href="token-maxing.html">
-      <img class="cv" src="../assets/media/covers/token-maxing.svg" alt="" width="340" height="200" loading="lazy">
+      <div class="cov cov-dash">
+        <div class="cov-top"><span class="cov-dot"></span>出力品質モニタ<span class="cov-smp">※サンプル</span></div>
+        <div class="cov-kpis">
+          <div><div class="k-l">品質スコア</div><div class="k-v"><em>+28</em>%</div></div>
+          <div><div class="k-l">手戻り率</div><div class="k-v"><em>-58</em>%</div></div>
+        </div>
+        <div class="cov-bars"><i style="height:32%"></i><i style="height:46%"></i><i style="height:58%"></i><i style="height:70%"></i><i style="height:84%"></i><i class="hi" style="height:96%"></i></div>
+      </div>
       <div class="cd">
         <span class="c-cat">Token Strategy</span>
         <div class="c-title">トークンマキシングとは｜AIの出力品質を最大化する「惜しまず使う」戦略</div>
@@ -156,7 +199,14 @@ fbq('init','1264057945446029');fbq('track','PageView');
       </div>
     </a>
     <a href="token-management.html">
-      <img class="cv" src="../assets/media/covers/token-management.svg" alt="" width="340" height="200" loading="lazy">
+      <div class="cov cov-dash">
+        <div class="cov-top"><span class="cov-dot"></span>トークンコスト推移<span class="cov-smp">※サンプル</span></div>
+        <div class="cov-kpis">
+          <div><div class="k-l">コスト削減</div><div class="k-v"><em>-90</em>%</div></div>
+          <div><div class="k-l">キャッシュ率</div><div class="k-v"><em>76</em>%</div></div>
+        </div>
+        <div class="cov-bars"><i class="hi" style="height:96%"></i><i style="height:78%"></i><i style="height:60%"></i><i style="height:46%"></i><i style="height:34%"></i><i style="height:26%"></i></div>
+      </div>
       <div class="cd">
         <span class="c-cat">Token Strategy</span>
         <div class="c-title">トークンマネジメントとは｜生成AIのコストを最大90%下げる実践ガイド</div>
