@@ -161,6 +161,11 @@ body.menu-open .mmenu{transform:none;visibility:visible;}
 .form-checkbox label a{color:var(--electric);text-decoration:none;font-weight:600;}
 .form-checkbox label a:hover{text-decoration:underline;}
 
+/* ===== INLINE VALIDATION ===== */
+.form-group.invalid input,.form-group.invalid select,.form-group.invalid textarea{border-color:#E5484D;box-shadow:0 0 0 3px rgba(229,72,77,.10);}
+.field-error{display:none;color:#E5484D;font-size:12.5px;margin-top:7px;line-height:1.5;}
+.form-group.invalid .field-error{display:block;}
+
 /* ===== REASSURANCE MICROCOPY ===== */
 .reassure{list-style:none;margin:24px 0 22px;padding:22px 24px;background:var(--white);border:1px solid var(--line);border-radius:6px;}
 .reassure li{display:flex;align-items:flex-start;gap:11px;font-size:13.5px;color:#28313f;line-height:1.7;padding:5px 0;}
@@ -537,6 +542,34 @@ if(params.get('type')){
     applyInquiryType(params.get('type'));
   }
 }
+
+/* inline validation — real-time feedback on blur to reduce mid-form drop-off */
+(function(){
+  var form=document.getElementById('contactForm');
+  if(!form)return;
+  function fieldError(el){
+    var v=(el.value||'').trim();
+    if(el.required && !v) return '入力してください。';
+    if(el.type==='email' && v && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return 'メールアドレスの形式をご確認ください。';
+    return '';
+  }
+  function validate(el){
+    var group=el.closest('.form-group');
+    if(!group)return true;
+    var err=fieldError(el);
+    var msg=group.querySelector('.field-error');
+    if(err){
+      group.classList.add('invalid');
+      if(!msg){msg=document.createElement('div');msg.className='field-error';group.appendChild(msg);}
+      msg.textContent=err;el.setAttribute('aria-invalid','true');return false;
+    }
+    group.classList.remove('invalid');el.removeAttribute('aria-invalid');if(msg)msg.textContent='';return true;
+  }
+  form.querySelectorAll('.form-group input,.form-group select,.form-group textarea').forEach(function(el){
+    el.addEventListener('blur',function(){if((el.value||'').trim()||el.required)validate(el);});
+    el.addEventListener('input',function(){var g=el.closest('.form-group');if(g&&g.classList.contains('invalid'))validate(el);});
+  });
+})();
 
 /* Form submit — POSTs JSON to /contact (Cloudflare Pages Function → Notion + Slack), fires fbq Lead */
 async function handleSubmit(e){
