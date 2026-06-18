@@ -92,7 +92,14 @@ body.menu-open .mmenu{transform:none;visibility:visible;}
 .intro-cta{display:inline-flex;align-items:center;gap:11px;padding:19px 46px;background:var(--electric);color:var(--paper);font-family:var(--jp);font-size:17px;font-weight:600;border:none;border-radius:10px;cursor:pointer;transition:background .25s,transform .25s,box-shadow .25s;box-shadow:0 16px 36px -20px rgba(0,94,255,.6);}
 .intro-cta:hover{background:var(--electric-dark);transform:translateY(-2px);}
 .intro-cta i{font-style:normal;}
-.intro-note{font-size:12.5px;color:var(--slate);margin-top:16px;}
+.intro-note{font-size:12.5px;color:var(--slate);margin-top:16px;max-width:48ch;margin-left:auto;margin-right:auto;line-height:1.7;}
+.intro-field{max-width:420px;margin:0 auto 18px;text-align:left;}
+.intro-field label{display:block;font-size:13px;font-weight:600;margin-bottom:7px;color:var(--ink);}
+.intro-field input{width:100%;padding:15px 16px;font-size:16px;font-family:inherit;border:1px solid var(--line);border-radius:10px;background:var(--white);color:var(--ink);transition:border-color .2s,box-shadow .2s;}
+.intro-field input:focus{outline:none;border-color:var(--electric);box-shadow:0 0 0 3px rgba(0,94,255,.12);}
+.intro-field.invalid input{border-color:var(--red);box-shadow:0 0 0 3px rgba(209,67,67,.10);}
+.co-error{display:none;color:var(--red);font-size:12.5px;margin-top:6px;}
+.intro-field.invalid .co-error{display:block;}
 .resume-bar{display:none;margin:0 auto 22px;max-width:520px;background:rgba(0,94,255,.05);border:1px solid rgba(0,94,255,.25);border-radius:10px;padding:14px 18px;align-items:center;justify-content:space-between;gap:14px;text-align:left;}
 .resume-bar.show{display:flex;}
 .resume-bar p{font-size:13px;color:#28313f;line-height:1.6;}
@@ -142,7 +149,7 @@ body.menu-open .mmenu{transform:none;visibility:visible;}
 /* PROGRESS BAR (fixed) */
 .progress{position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(251,252,253,.94);backdrop-filter:blur(8px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .35s cubic-bezier(.2,.8,.2,1);}
 body.assessing .progress{transform:none;}
-body.assessing .why,body.assessing footer,body.assessing .sources{display:none;}
+body.assessing .why,body.assessing footer,body.assessing .sources,body.assessing .method{display:none;}
 .progress-inner{max-width:760px;margin:0 auto;padding:11px 24px 13px;}
 .progress-meta{display:flex;justify-content:space-between;align-items:center;font-size:11.5px;font-weight:600;color:var(--slate);margin-bottom:7px;}
 .progress-meta .pl{font-family:var(--en);letter-spacing:.04em;}
@@ -270,6 +277,20 @@ body.assessing .why,body.assessing footer,body.assessing .sources{display:none;}
 .src-list li span{display:block;color:var(--slate);font-size:12.5px;margin-top:3px;}
 .src-note{font-size:12px;color:var(--slate);line-height:1.7;margin-top:18px;}
 
+/* METHODOLOGY */
+.method{padding:0 0 36px;}
+.method-card{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:30px 32px;}
+.method-card>h4{font-size:15px;font-weight:700;margin-bottom:10px;}
+.method-card>p{font-size:13.5px;color:var(--slate);line-height:1.9;}
+.method-card>p b{color:var(--ink);}
+.map-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 26px;margin:18px 0 14px;}
+.map-row{display:flex;align-items:center;gap:9px;font-size:13px;padding:9px 0;border-bottom:1px solid var(--line);}
+.map-row .mq{font-weight:600;color:var(--ink);white-space:nowrap;}
+.map-row .ma{color:var(--electric);font-weight:700;}
+.map-row .mp{color:var(--slate);}
+.method-note{font-size:12px;color:var(--slate);line-height:1.7;}
+@media(max-width:560px){.map-grid{grid-template-columns:1fr;}.method-card{padding:24px 20px;}}
+
 /* FOOTER */
 footer{background:var(--white);border-top:1px solid var(--line);padding:56px 0 36px;}
 footer .container{max-width:1180px;}
@@ -300,7 +321,7 @@ footer .container{max-width:1180px;}
 }
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"生成AI活用 かんたん診断","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"description":"6つの質問に答えるだけで、自社の生成AI活用がいまどのレベルかが約1分でわかる無料の自己診断ツール。現在地と、いちばん効く「次の一手」をその場で表示します。","provider":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"},"url":"https://techworker.co.jp/ai-assessment.html"}
+{"@context":"https://schema.org","@type":"WebApplication","name":"生成AI活用 かんたん診断","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"description":"6つの質問に答えるだけで、自社の生成AI活用がいまどのレベルかが約1分でわかる無料の自己診断ツール。Microsoftが公開する公式のAI成熟度モデル(Agentic AI adoption maturity model)を土台に、MIT CISR・NISTも参考に設計。現在地と、いちばん効く「次の一手」をその場で表示します。","provider":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"},"url":"https://techworker.co.jp/ai-assessment.html"}
 </script>
 <!-- Meta Pixel -->
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1264057945446029');fbq('track','PageView');</script>
@@ -355,8 +376,13 @@ footer .container{max-width:1180px;}
       <p>前回の回答が残っています。<b><span id="resumePct">0</span>%</b> まで完了。続きから再開できます。</p>
       <button type="button" id="resumeBtn">続きから再開</button>
     </div>
+    <div class="intro-field" id="coField">
+      <label for="coName">会社名</label>
+      <input type="text" id="coName" placeholder="株式会社○○○○" autocomplete="organization" maxlength="80">
+      <div class="co-error">会社名を入力してください。</div>
+    </div>
     <button type="button" class="intro-cta" id="startBtn">診断をはじめる（無料） <i>→</i></button>
-    <p class="intro-note">回答内容は結果の表示にのみ使います。連絡先の入力は任意です。</p>
+    <p class="intro-note">会社名は、結果のパーソナライズに使います。回答内容は結果の表示にのみ使用します。</p>
   </div>
 </section>
 
@@ -460,10 +486,35 @@ footer .container{max-width:1180px;}
   </div>
 </section>
 
+<!-- METHODOLOGY -->
+<section class="method" id="method">
+  <div class="container">
+    <div class="method-card">
+      <h4>この診断の考え方（フレームワーク）</h4>
+      <p>本診断は、<b>Microsoftが公開する公式のAI成熟度モデル「Agentic AI adoption maturity model」</b>（CMM準拠の5段階 × 5つの能力の柱）を土台に、日本企業向けに6つの設問へ再構成したものです。レベル区分はMicrosoftの5段階（Initial〜Efficient）に対応し、各設問はモデルの「能力の柱」に紐づいています。</p>
+      <div class="map-grid">
+        <div class="map-row"><span class="mq">① 会社としての方針</span><span class="ma">→</span><span class="mp">AI戦略／事業戦略</span></div>
+        <div class="map-row"><span class="mq">② 現場への浸透</span><span class="ma">→</span><span class="mp">組織・カルチャー</span></div>
+        <div class="map-row"><span class="mq">③ 業務での成果</span><span class="ma">→</span><span class="mp">事業戦略</span></div>
+        <div class="map-row"><span class="mq">④ 自社情報の活用</span><span class="ma">→</span><span class="mp">テクノロジー・データ</span></div>
+        <div class="map-row"><span class="mq">⑤ 環境・ツール</span><span class="ma">→</span><span class="mp">テクノロジー・データ</span></div>
+        <div class="map-row"><span class="mq">⑥ ルール・安全対策</span><span class="ma">→</span><span class="mp">AIガバナンス・セキュリティ</span></div>
+      </div>
+      <p class="method-note">レベルと成果の関係づけには MIT CISR の実証研究（成熟度が高い企業ほど業績が高い）を、ガバナンス領域では NIST AI RMF を参考にしています。出典は下部に記載。</p>
+    </div>
+  </div>
+</section>
+
 <!-- SOURCES -->
 <section class="sources" id="sources">
   <div class="container">
-    <h4 class="src-h">参考にした主な調査・統計</h4>
+    <h4 class="src-h">準拠したフレームワーク</h4>
+    <ul class="src-list">
+      <li><a href="https://learn.microsoft.com/en-us/agents/adoption-maturity-model/" target="_blank" rel="noopener">Microsoft「Agentic AI adoption maturity model」</a><span>本診断の5段階（これから〜最適化）と6項目は、Microsoft公式のAI成熟度モデル（CMM準拠の5レベル×5つの能力の柱）に対応。</span></li>
+      <li><a href="https://cisr.mit.edu/publication/2025_0801_EnterpriseAIMaturityUpdate_WoernerSebastianWeillKaganer" target="_blank" rel="noopener">MIT CISR「Enterprise AI Maturity Model」（2025）</a><span>成熟度が高い企業ほど成長率・利益率が業界平均を上回るという実証研究。レベルと成果の関係づけに参照。</span></li>
+      <li><a href="https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.100-1.pdf" target="_blank" rel="noopener">NIST「AI Risk Management Framework (AI RMF 1.0)」</a><span>ガバナンス・安全対策の評価観点（Govern / Map / Measure / Manage）の裏付けに参照。</span></li>
+    </ul>
+    <h4 class="src-h" style="margin-top:28px;">参考にした主な調査・統計</h4>
     <ul class="src-list">
       <li><a href="https://www.soumu.go.jp/johotsusintokei/whitepaper/ja/r07/html/nd112220.html" target="_blank" rel="noopener">総務省「情報通信白書 令和7年版」（2025）</a><span>業務で生成AIを使う日本企業は55.2%、活用方針を定める企業は49.7%。</span></li>
       <li><a href="https://www.ipa.go.jp/digital/chousa/dx-trend/tbl5kb0000001mn2-att/dx-trend-2025.pdf" target="_blank" rel="noopener">IPA（情報処理推進機構）「DX動向2025」</a><span>生成AIに前向きな日本企業は5割弱。部署の業務プロセスへの組み込みは限定的。</span></li>
@@ -543,24 +594,29 @@ var QUESTIONS=[
 ];
 var TOTAL_Q=QUESTIONS.length, OPT_MAX=3, TOTAL_MAX=TOTAL_Q*OPT_MAX;
 
+/* 段階は Microsoft「Agentic AI adoption maturity model」(CMM準拠の5段階) に対応 */
 var LEVELS=[
- {min:0, cls:'l1', color:'var(--red)',     tag:'Stage 1', name:'これから期',
-  desc:'生成AIはまだ個人が試している段階。会社としての動きは、これからつくっていくフェーズです。ここがスタートラインです。',
-  bench:'生成AIの活用方針を「まだ決めていない」会社は約半数（<b>50.9%</b>）。動き出すのはこれからという会社が多く、<b>いま始めれば十分に先行できます。</b><span class="src">出典：東京商工リサーチ「生成AIに関するアンケート」2025（有効回答6,645社）</span>'},
- {min:25, cls:'l2', color:'var(--amber)',   tag:'Stage 2', name:'試行期',
-  desc:'一部の部署や人が使い始めたものの、成果や全社への広がりはこれから。いちばん多くの会社が足踏みする段階です。',
-  bench:'実際に生成AIを「活用している」会社は約<b>2割（17.3%）</b>にとどまり、多くの会社が“試したけれど定着しない”この段階で足踏みします。<b>次の一歩は「現場で毎日使う」状態づくりです。</b><span class="src">出典：帝国データバンク「生成AIの活用状況調査」2024（有効回答4,705社）</span>'},
- {min:50, cls:'l3', color:'var(--electric)',tag:'Stage 3', name:'定着期',
-  desc:'現場に生成AIが根づき始め、成果が見えてきています。ルールと仕組みが回り始めるフェーズです。',
-  bench:'業務で生成AIを使う日本企業は<b>55.2%</b>まで増えた一方、部署の業務プロセスに組み込めている会社はまだ少数です。ここまで来ると、AIは「便利ツール」から<b>「会社の戦力」</b>に変わります。<span class="src">出典：総務省「情報通信白書 令和7年版」2025／IPA「DX動向2025」</span>'},
- {min:75, cls:'l4', color:'var(--emerald)', tag:'Stage 4', name:'成果期',
-  desc:'主要な業務に生成AIが組み込まれ、成果を生んでいる先進ゾーン。トップ層に位置しています。',
-  bench:'AIから明確な事業成果（利益への貢献）を出せている“ハイパフォーマー”は、世界でも約<b>6%</b>。<b>あなたはそのトップ層に近い位置にいます。</b>次は、その強みを競争優位として広げる段階です。<span class="src">出典：McKinsey「The State of AI」2025（世界105カ国・1,993名）</span>'}
+ {min:0, cls:'l1', color:'var(--red)', tag:'Microsoft: Lv100 Initial', name:'これから期', short:'これから',
+  desc:'生成AIはまだ個人が試している段階で、会社としての動きはこれから。Microsoftの成熟度モデルでいう「Initial（初期）」にあたります。ここがスタートラインです。',
+  bench:'生成AIの活用方針を「まだ決めていない」会社は約半数（<b>50.9%</b>）。動き出すのはこれからという会社が多く、<b>いま始めれば十分に先行できます。</b><span class="src">出典：東京商工リサーチ 2025（有効回答6,645社）</span>'},
+ {min:20, cls:'l2', color:'var(--amber)', tag:'Microsoft: Lv200 Repeatable', name:'試行期', short:'試行',
+  desc:'一部の部署や人が使い始め、同じ使い方を繰り返せるようになってきた段階。Microsoftの「Repeatable（反復可能）」にあたります。多くの会社がここで足踏みします。',
+  bench:'実際に生成AIを「活用している」会社は約<b>2割（17.3%）</b>。多くがこの手前で足踏みします。<b>次の一歩は「現場で毎日使う」状態づくりです。</b><span class="src">出典：帝国データバンク 2024（有効回答4,705社）</span>'},
+ {min:40, cls:'l3', color:'var(--electric)', tag:'Microsoft: Lv300 Defined', name:'定着期', short:'定着',
+  desc:'使い方が標準化され、複数の業務にAIが定着し始めた段階。Microsoftの「Defined（定義済み）」にあたります。成果が見え始めるフェーズです。',
+  bench:'業務で生成AIを使う日本企業は<b>55.2%</b>まで増えた一方、業務プロセスに組み込めている会社はまだ少数。研究では<b>この段階を越えた企業ほど業績が高い</b>傾向が示されています。<span class="src">出典：総務省 情報通信白書2025／MIT CISR 2025</span>'},
+ {min:60, cls:'l4', color:'#0E8F6E', tag:'Microsoft: Lv400 Capable', name:'全社活用期', short:'全社活用',
+  desc:'部署をまたいで全社的にAIを使いこなし、ガバナンスも回り始めた段階。Microsoftの「Capable（高い能力）」にあたります。成果を出す企業の仲間入りです。',
+  bench:'ここまで来ると、AIは「便利ツール」から<b>「会社の戦力」</b>に。MIT CISRの実証研究では、<b>業務への組み込みが進む企業ほど成長率・利益率が業界平均を上回る</b>ことが示されています。<span class="src">出典：MIT CISR「Enterprise AI Maturity Model」2025</span>'},
+ {min:80, cls:'l5', color:'var(--emerald)', tag:'Microsoft: Lv500 Efficient', name:'最適化・変革期', short:'最適化',
+  desc:'基幹業務や意思決定にAIが組み込まれ、継続的に成果を生んでいる先進ゾーン。Microsoftの「Efficient（最適化）＝エージェントファースト企業」にあたります。',
+  bench:'AIから明確な事業成果（利益貢献）を出せている“ハイパフォーマー”は世界でも約<b>6%</b>。<b>あなたはそのトップ層に近い位置にいます。</b><span class="src">出典：McKinsey「The State of AI」2025（世界105カ国・1,993名）</span>'}
 ];
 function levelFor(pct){var L=LEVELS[0];for(var i=0;i<LEVELS.length;i++){if(pct>=LEVELS[i].min)L=LEVELS[i];}return L;}
 
 /* ---------- build steps (1 question per step) ---------- */
 var answers={}; // {q0..q5: value}
+var companyName='';
 (function buildSteps(){
   var w=document.getElementById('stepsWrap'),h='';
   QUESTIONS.forEach(function(d,di){
@@ -626,12 +682,24 @@ function beginAssessment(stepIdx){
   if(typeof gtag==='function')gtag('event','assessment_start');
   if(typeof fbq==='function')fbq('trackCustom','AssessmentStart');
 }
-document.getElementById('startBtn').addEventListener('click',function(){answers={};clearState();beginAssessment(0);});
+(function(){var co=document.getElementById('coName'),f=document.getElementById('coField');
+  if(co){var saved='';try{saved=sessionStorage.getItem('tw_assess_co')||'';}catch(e){}if(saved){co.value=saved;companyName=saved;}
+  co.addEventListener('input',function(){f.classList.remove('invalid');});
+  co.addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('startBtn').click();});}
+})();
+document.getElementById('startBtn').addEventListener('click',function(){
+  var co=document.getElementById('coName'),f=document.getElementById('coField');
+  var v=(co.value||'').trim();
+  if(!v){f.classList.add('invalid');co.focus();return;}
+  companyName=v;try{sessionStorage.setItem('tw_assess_co',v);}catch(e){}
+  answers={};clearState();beginAssessment(0);
+});
 (function initResume(){
   var s=loadState();if(!s)return;
   var done=0;for(var k in s.a)if(s.a[k]!=null)done++;
   if(done<1||done>=TOTAL_Q)return;
   answers=s.a;
+  try{companyName=sessionStorage.getItem('tw_assess_co')||companyName;}catch(e){}
   document.getElementById('resumePct').textContent=Math.round(done/TOTAL_Q*100);
   document.getElementById('resumeBar').classList.add('show');
   document.getElementById('resumeBtn').addEventListener('click',function(){
@@ -656,11 +724,14 @@ function finish(){
   document.getElementById('lvTag').textContent=L.tag;
   document.getElementById('lvName').textContent=L.name;
   document.getElementById('lvDesc').textContent=L.desc;
-  // 4-stage gauge: done = past stages, on = current
+  // personalize with company name
+  var rh=document.querySelector('.result-hero h2');if(rh)rh.textContent=(companyName||'あなたの会社')+'の生成AI活用度';
+  var cf=document.querySelector('#leadForm input[name=company]');if(cf&&companyName)cf.value=companyName;
+  // maturity gauge: done = past stages, on = current
   var curIdx=LEVELS.indexOf(L);
   document.getElementById('lvScale').innerHTML=LEVELS.map(function(x,xi){
     var c=xi<curIdx?'done':(xi===curIdx?'on':'');
-    return '<div class="ls'+(c?' '+c:'')+'"><div class="bar"></div>'+x.name+'</div>';
+    return '<div class="ls'+(c?' '+c:'')+'"><div class="bar"></div>'+(x.short||x.name)+'</div>';
   }).join('');
 
   // benchmark
