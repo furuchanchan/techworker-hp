@@ -142,7 +142,7 @@ body.menu-open .mmenu{transform:none;visibility:visible;}
 /* PROGRESS BAR (fixed) */
 .progress{position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(251,252,253,.94);backdrop-filter:blur(8px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .35s cubic-bezier(.2,.8,.2,1);}
 body.assessing .progress{transform:none;}
-body.assessing .why,body.assessing footer{display:none;}
+body.assessing .why,body.assessing footer,body.assessing .sources{display:none;}
 .progress-inner{max-width:760px;margin:0 auto;padding:11px 24px 13px;}
 .progress-meta{display:flex;justify-content:space-between;align-items:center;font-size:11.5px;font-weight:600;color:var(--slate);margin-bottom:7px;}
 .progress-meta .pl{font-family:var(--en);letter-spacing:.04em;}
@@ -259,6 +259,16 @@ body.assessing .why,body.assessing footer{display:none;}
 .why-card .proof{display:flex;flex-wrap:wrap;gap:22px;margin-top:18px;padding-top:18px;border-top:1px solid var(--line);}
 .why-card .proof div{font-size:13px;color:var(--slate);}
 .why-card .proof b{font-family:var(--en);font-size:22px;font-weight:700;color:var(--electric);letter-spacing:-.02em;display:block;}
+
+/* SOURCES */
+.sources{padding:0 0 72px;}
+.sources .src-h{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:16px;}
+.src-list{list-style:none;display:grid;gap:13px;}
+.src-list li{font-size:13.5px;color:#28313f;line-height:1.7;padding-left:16px;border-left:2px solid var(--line);}
+.src-list li a{color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.28);}
+.src-list li a:hover{border-bottom-color:var(--electric);}
+.src-list li span{display:block;color:var(--slate);font-size:12.5px;margin-top:3px;}
+.src-note{font-size:12px;color:var(--slate);line-height:1.7;margin-top:18px;}
 
 /* FOOTER */
 footer{background:var(--white);border-top:1px solid var(--line);padding:56px 0 36px;}
@@ -444,9 +454,24 @@ footer .container{max-width:1180px;}
   <div class="container">
     <div class="why-card">
       <h4>差がつくのは「ツールの有無」ではありません</h4>
-      <p>生成AIの導入そのものは、もう多くの企業が進めています。それでも成果に差がつくのは、<b>使いこなしの深さ</b>——現場への浸透、自社の情報をAIに渡せているか、安心して使えるルールがあるか、がどこまで噛み合っているかです。私たちは「AIはエンジン、コンテキストは燃料」を軸に、診断で見えた弱点に対して、社内の知識をAIに渡せる形に整える基盤づくりから、研修・定着までを伴走します。</p>
+      <p>業務で生成AIを使う日本企業は5割を超えました（総務省 2025）。それでも「活用できている」と言える会社は2割前後にとどまります（帝国データバンク 2024）。<b>差がつくのは「ツールの有無」ではなく「使いこなしの深さ」</b>——現場への浸透、自社の情報をAIに渡せているか、安心して使えるルールがあるか、がどこまで噛み合っているかです。私たちは「AIはエンジン、コンテキストは燃料」を軸に、診断で見えた弱点に対して、社内の知識をAIに渡せる形に整える基盤づくりから、研修・定着までを伴走します。</p>
       <div class="proof"><div><b>37社</b>支援企業数</div><div><b>2,500名</b>研修受講者数</div><div><b>1営業日</b>以内に返信</div></div>
     </div>
+  </div>
+</section>
+
+<!-- SOURCES -->
+<section class="sources" id="sources">
+  <div class="container">
+    <h4 class="src-h">参考にした主な調査・統計</h4>
+    <ul class="src-list">
+      <li><a href="https://www.soumu.go.jp/johotsusintokei/whitepaper/ja/r07/html/nd112220.html" target="_blank" rel="noopener">総務省「情報通信白書 令和7年版」（2025）</a><span>業務で生成AIを使う日本企業は55.2%、活用方針を定める企業は49.7%。</span></li>
+      <li><a href="https://www.ipa.go.jp/digital/chousa/dx-trend/tbl5kb0000001mn2-att/dx-trend-2025.pdf" target="_blank" rel="noopener">IPA（情報処理推進機構）「DX動向2025」</a><span>生成AIに前向きな日本企業は5割弱。部署の業務プロセスへの組み込みは限定的。</span></li>
+      <li><a href="https://www.tdb.co.jp/resource/files/assets/d4b8e8ee91d1489c9a2abd23a4bb5219/ed8435fc5bfc428c807c0568f5ecf53a/p240802.pdf" target="_blank" rel="noopener">帝国データバンク「生成AIの活用状況調査」（2024・4,705社）</a><span>生成AIを「活用している」企業は17.3%、「活用しておらず予定もない」は48.4%。</span></li>
+      <li><a href="https://www.tsr-net.co.jp/data/detail/1201667_1527.html" target="_blank" rel="noopener">東京商工リサーチ「生成AIに関するアンケート」（2025・6,645社）</a><span>活用を推進している企業は25.2%、方針未決定は50.9%。</span></li>
+      <li><a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank" rel="noopener">McKinsey「The State of AI」（2025・世界105カ国/1,993名）</a><span>AIで明確な事業成果を出す“ハイパフォーマー”は約6%。</span></li>
+    </ul>
+    <p class="src-note">本診断のレベル区分と参考値は、上記の公的機関・調査をもとに作成しています。数値は各調査時点のものです。</p>
   </div>
 </section>
 
@@ -521,16 +546,16 @@ var TOTAL_Q=QUESTIONS.length, OPT_MAX=3, TOTAL_MAX=TOTAL_Q*OPT_MAX;
 var LEVELS=[
  {min:0, cls:'l1', color:'var(--red)',     tag:'Stage 1', name:'これから期',
   desc:'生成AIはまだ個人が試している段階。会社としての動きは、これからつくっていくフェーズです。ここがスタートラインです。',
-  bench:'国内企業の業務での生成AI活用は、まだ広がり始めたばかり。<b>多くの会社が、この地点から一歩を踏み出しています。</b><span class="src">参考：総務省 情報通信白書 2025</span>'},
+  bench:'生成AIの活用方針を「まだ決めていない」会社は約半数（<b>50.9%</b>）。動き出すのはこれからという会社が多く、<b>いま始めれば十分に先行できます。</b><span class="src">出典：東京商工リサーチ「生成AIに関するアンケート」2025（有効回答6,645社）</span>'},
  {min:25, cls:'l2', color:'var(--amber)',   tag:'Stage 2', name:'試行期',
   desc:'一部の部署や人が使い始めたものの、成果や全社への広がりはこれから。いちばん多くの会社が足踏みする段階です。',
-  bench:'「導入はした、でも成果が出ない」——もっとも多くの会社がつまずくのがこの段階です。<b>次の一歩は“現場で毎日使う”状態をつくること。</b>'},
+  bench:'実際に生成AIを「活用している」会社は約<b>2割（17.3%）</b>にとどまり、多くの会社が“試したけれど定着しない”この段階で足踏みします。<b>次の一歩は「現場で毎日使う」状態づくりです。</b><span class="src">出典：帝国データバンク「生成AIの活用状況調査」2024（有効回答4,705社）</span>'},
  {min:50, cls:'l3', color:'var(--electric)',tag:'Stage 3', name:'定着期',
   desc:'現場に生成AIが根づき始め、成果が見えてきています。ルールと仕組みが回り始めるフェーズです。',
-  bench:'ここまで来ると、AIは「一部の便利ツール」から「会社の戦力」に変わります。<b>あとは弱い項目を埋めれば、成果はさらに伸びます。</b>'},
+  bench:'業務で生成AIを使う日本企業は<b>55.2%</b>まで増えた一方、部署の業務プロセスに組み込めている会社はまだ少数です。ここまで来ると、AIは「便利ツール」から<b>「会社の戦力」</b>に変わります。<span class="src">出典：総務省「情報通信白書 令和7年版」2025／IPA「DX動向2025」</span>'},
  {min:75, cls:'l4', color:'var(--emerald)', tag:'Stage 4', name:'成果期',
   desc:'主要な業務に生成AIが組み込まれ、成果を生んでいる先進ゾーン。トップ層に位置しています。',
-  bench:'ここまで到達している会社はごくわずか。<b>次は、その強みを“競争優位”として広げていく段階です。</b>'}
+  bench:'AIから明確な事業成果（利益への貢献）を出せている“ハイパフォーマー”は、世界でも約<b>6%</b>。<b>あなたはそのトップ層に近い位置にいます。</b>次は、その強みを競争優位として広げる段階です。<span class="src">出典：McKinsey「The State of AI」2025（世界105カ国・1,993名）</span>'}
 ];
 function levelFor(pct){var L=LEVELS[0];for(var i=0;i<LEVELS.length;i++){if(pct>=LEVELS[i].min)L=LEVELS[i];}return L;}
 
