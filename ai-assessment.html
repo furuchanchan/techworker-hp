@@ -214,6 +214,24 @@ body.assessing .why,body.assessing footer,body.assessing .sources,body.assessing
 .theme .td .ta{font-size:13.5px;color:#28313f;line-height:1.85;background:var(--paper);border:1px solid var(--line);border-radius:9px;padding:12px 15px;}
 .theme .td .ta b{color:var(--electric);}
 
+/* AI REPORT */
+.ai-report{padding:28px 36px 30px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,rgba(0,94,255,.05),rgba(0,94,255,0) 60%);}
+.ai-head{display:flex;align-items:center;gap:11px;margin-bottom:14px;}
+.ai-badge{font-family:var(--en);font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--paper);background:var(--electric);border-radius:6px;padding:3px 9px;}
+.ai-head h4{font-size:15px;font-weight:700;}
+.ai-loading{display:flex;align-items:center;gap:11px;font-size:13.5px;color:var(--slate);padding:10px 0;}
+.ai-spin{width:16px;height:16px;border:2px solid var(--line-2);border-top-color:var(--electric);border-radius:50%;animation:aispin .7s linear infinite;display:inline-block;flex-shrink:0;}
+@keyframes aispin{to{transform:rotate(360deg);}}
+.ai-summary{font-size:14.5px;color:#28313f;line-height:1.95;background:var(--white);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-bottom:18px;}
+.ai-cases h5{font-size:14px;font-weight:700;margin-bottom:12px;}
+.ai-case{display:flex;gap:13px;padding:14px 0;border-top:1px solid var(--line);}
+.ai-case:first-of-type{border-top:none;}
+.ai-case .ic{flex-shrink:0;width:28px;height:28px;border-radius:7px;background:rgba(0,94,255,.08);color:var(--electric);font-family:var(--en);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;}
+.ai-case .ct b{font-size:14.5px;font-weight:700;display:block;margin-bottom:3px;}
+.ai-case .ct span{font-size:13.5px;color:var(--slate);line-height:1.8;}
+.ai-disclaim{font-size:11.5px;color:var(--slate);line-height:1.7;margin-top:16px;}
+@media(max-width:560px){.ai-report{padding-left:20px;padding-right:20px;}}
+
 /* LEAD */
 .lead{padding:34px 36px 38px;background:linear-gradient(180deg,rgba(0,94,255,.045),rgba(0,94,255,0) 70%),var(--paper);border-top:2px solid var(--electric);}
 .lead .lead-k{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--electric);margin-bottom:10px;}
@@ -382,7 +400,7 @@ footer .container{max-width:1180px;}
       <div class="co-error">会社名を入力してください。</div>
     </div>
     <button type="button" class="intro-cta" id="startBtn">診断をはじめる（無料） <i>→</i></button>
-    <p class="intro-note">会社名は、結果のパーソナライズに使います。回答内容は結果の表示にのみ使用します。</p>
+    <p class="intro-note">会社名は、結果のパーソナライズと、業界に合った活用事例の提示に使います。回答内容は結果の表示にのみ使用します。</p>
   </div>
 </section>
 
@@ -439,6 +457,19 @@ footer .container{max-width:1180px;}
         <h4>あなたが次にやると効く、3つのこと</h4>
         <p class="th-sub">いちばん伸びしろが大きい項目から順に表示しています。</p>
         <div id="themeList"></div>
+      </div>
+      <!-- AI REPORT: 御社の状況 + 業界での活用事例 -->
+      <div class="ai-report" id="aiReport" hidden>
+        <div class="ai-head"><span class="ai-badge">AI</span><h4 id="aiTitle">御社の状況と、業界での活用事例</h4></div>
+        <div class="ai-loading" id="aiLoading"><span class="ai-spin" aria-hidden="true"></span><span>会社名と回答をもとに、AIが分析しています…</span></div>
+        <div class="ai-body" id="aiBody" hidden>
+          <div class="ai-summary" id="aiSummary"></div>
+          <div class="ai-cases">
+            <h5 id="aiCasesH">業界でよくある生成AI活用事例</h5>
+            <div id="aiCaseList"></div>
+          </div>
+          <p class="ai-disclaim">※ 業界は会社名から推定し、活用事例は一般的な例です。御社固有の状況は無料相談で詳しくお伺いします。</p>
+        </div>
       </div>
       <!-- LEAD -->
       <div class="lead" id="leadWrap">
@@ -767,8 +798,31 @@ function finish(){
   clearState();
   window.scrollTo({top:0,behavior:'smooth'});
   setTimeout(function(){document.querySelectorAll('.bd-fill').forEach(function(el){el.style.width=el.dataset.w+'%';});},120);
+  // AI report（会社名→御社の状況＋業界での活用事例）。backend/キー未設定時は自動で非表示
+  try{ fetchAIReport({ company:companyName, levelName:L.name, pct:pct, dims:QUESTIONS.map(function(d,i){return {theme:d.theme,pct:pcts[i]};}) }); }catch(e){}
   if(typeof gtag==='function')gtag('event','assessment_complete',{score:pct,level:L.name});
   if(typeof fbq==='function')fbq('trackCustom','AssessmentComplete',{score:pct,level:L.name});
+}
+
+function esc(s){return (s||'').toString().replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function fetchAIReport(payload){
+  var box=document.getElementById('aiReport'),loading=document.getElementById('aiLoading'),body=document.getElementById('aiBody');
+  if(!box)return;
+  box.hidden=false;loading.style.display='';body.hidden=true;
+  if(window.__turnstileToken)payload.turnstileToken=window.__turnstileToken;
+  fetch('/assess',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+    .then(function(r){return r.ok?r.json():null;})
+    .then(function(d){
+      if(!d||!d.ok){box.hidden=true;return;}
+      document.getElementById('aiSummary').textContent=d.summary||'';
+      var ind=(d.industry||'').trim();
+      document.getElementById('aiCasesH').textContent=(ind&&ind!=='業種共通'?ind+'で':'')+'よくある生成AI活用事例';
+      document.getElementById('aiCaseList').innerHTML=(d.useCases||[]).map(function(u,i){
+        return '<div class="ai-case"><div class="ic">'+(i+1)+'</div><div class="ct"><b>'+esc(u.title)+'</b><span>'+esc(u.detail)+'</span></div></div>';
+      }).join('');
+      loading.style.display='none';body.hidden=false;
+    })
+    .catch(function(){box.hidden=true;});
 }
 
 document.getElementById('restartBtn').addEventListener('click',function(){
