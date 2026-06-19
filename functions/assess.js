@@ -10,9 +10,10 @@ const CORS = {
 };
 const JSON_HEADERS = { ...CORS, 'Content-Type': 'application/json; charset=utf-8' };
 
-// 速さと品質のバランス重視。最高品質なら 'claude-opus-4-8'、最速なら 'claude-haiku-4-5' に変更可。
-const MODEL = 'claude-sonnet-4-6';
-const MAX_TOKENS = 1500;
+// 速度優先で最速の Haiku 4.5。文章の練度を上げたいなら 'claude-sonnet-4-6'（やや遅いが高品質）、
+// 最高品質なら 'claude-opus-4-8'（最も遅い）に変更可。
+const MODEL = 'claude-haiku-4-5';
+const MAX_TOKENS = 1200;
 
 function json(obj, status) {
   return new Response(JSON.stringify(obj), { status: status || 200, headers: JSON_HEADERS });
