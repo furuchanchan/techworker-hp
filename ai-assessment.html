@@ -140,6 +140,7 @@ body.menu-open .mmenu{transform:none;visibility:visible;}
 .opt input:checked{border-color:var(--electric);}
 .opt input:checked::after{content:"";position:absolute;inset:4px;border-radius:50%;background:var(--electric);}
 .opt:has(input:checked){border-color:var(--electric);background:rgba(0,94,255,.06);}
+.opt:has(input:focus-visible){border-color:var(--electric);box-shadow:0 0 0 3px rgba(0,94,255,.25);}
 .step-nav{display:flex;align-items:center;justify-content:space-between;margin-top:20px;}
 .step-back{font-size:13.5px;font-weight:600;color:var(--slate);background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:7px;padding:8px 4px;}
 .step-back:hover{color:var(--electric);}
@@ -219,9 +220,16 @@ body.assessing .why,body.assessing footer,body.assessing .sources,body.assessing
 .ai-head{display:flex;align-items:center;gap:11px;margin-bottom:14px;}
 .ai-badge{font-family:var(--en);font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--paper);background:var(--electric);border-radius:6px;padding:3px 9px;}
 .ai-head h4{font-size:15px;font-weight:700;}
-.ai-loading{display:flex;align-items:center;gap:11px;font-size:13.5px;color:var(--slate);padding:10px 0;}
+.ai-loading{padding:6px 0 4px;}
+.ai-load-row{display:flex;align-items:center;gap:11px;font-size:13.5px;color:var(--slate);margin-bottom:16px;}
+.ai-load-row small{opacity:.75;}
 .ai-spin{width:16px;height:16px;border:2px solid var(--line-2);border-top-color:var(--electric);border-radius:50%;animation:aispin .7s linear infinite;display:inline-block;flex-shrink:0;}
 @keyframes aispin{to{transform:rotate(360deg);}}
+.sk{background:linear-gradient(90deg,var(--paper-2) 25%,#e6ebf2 37%,var(--paper-2) 63%);background-size:400% 100%;animation:sksh 1.3s ease infinite;border-radius:9px;}
+@keyframes sksh{0%{background-position:100% 0}100%{background-position:0 0}}
+.sk-box{height:92px;margin-bottom:16px;}
+.sk-line{height:44px;margin-bottom:10px;}
+.sk-line.short{width:65%;}
 .ai-summary{font-size:14.5px;color:#28313f;line-height:1.95;background:var(--white);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-bottom:18px;}
 .ai-cases h5{font-size:14px;font-weight:700;margin-bottom:12px;}
 .ai-case{display:flex;gap:13px;padding:14px 0;border-top:1px solid var(--line);}
@@ -329,12 +337,16 @@ footer .container{max-width:1180px;}
 }
 @media(max-width:560px){
   .dc-head{padding:106px 0 22px;}
-  .q-block,.lv-band,.bench,.themes,.breakdown,.lead{padding-left:20px;padding-right:20px;}
+  .q-block,.lv-band,.bench,.themes,.breakdown,.lead,.ai-report{padding-left:20px;padding-right:20px;}
   .q-block h3{font-size:17.5px;}
   .opt{font-size:15px;}
   .fg input,.fg textarea{font-size:16px;}
-  .bd-row{grid-template-columns:92px 1fr 38px;gap:10px;}
-  .bd-row .bn{font-size:12px;}
+  /* 5段階ゲージ: ラベルを1行固定で潰れ・折返しを防ぐ */
+  .lv-scale{gap:5px;align-items:flex-start;}
+  .lv-scale .ls{font-size:10px;letter-spacing:-.02em;line-height:1.2;min-width:0;white-space:nowrap;}
+  /* 6項目バー: ラベルを1行固定（長いテーマ名でも崩れない） */
+  .bd-row{grid-template-columns:84px 1fr 34px;gap:10px;}
+  .bd-row .bn{font-size:11.5px;letter-spacing:-.03em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   .theme .td .ta{font-size:13px;}
 }
 </style>
@@ -410,7 +422,7 @@ footer .container{max-width:1180px;}
     <div class="teaser-card">
       <h4>診断でわかること</h4>
       <div class="flow">
-        <div class="flow-row"><div class="fi">1</div><div class="ft"><b>いまのレベル</b><span>4段階のどこにいるか、ひと目でわかります。</span></div></div>
+        <div class="flow-row"><div class="fi">1</div><div class="ft"><b>いまのレベル</b><span>5段階のどこにいるか、ひと目でわかります。</span></div></div>
         <div class="flow-row"><div class="fi">2</div><div class="ft"><b>6項目の現在地</b><span>方針・現場・成果・情報活用・環境・安全対策、どこが強くてどこが弱いか。</span></div></div>
         <div class="flow-row"><div class="fi">3</div><div class="ft"><b>次の一手</b><span>いま動くといちばん効く改善を、3つにしぼって表示します。</span></div></div>
       </div>
@@ -461,14 +473,18 @@ footer .container{max-width:1180px;}
       <!-- AI REPORT: 御社の状況 + 業界での活用事例 -->
       <div class="ai-report" id="aiReport" hidden>
         <div class="ai-head"><span class="ai-badge">AI</span><h4 id="aiTitle">御社の状況と、業界での活用事例</h4></div>
-        <div class="ai-loading" id="aiLoading"><span class="ai-spin" aria-hidden="true"></span><span>会社名と回答をもとに、AIが分析しています…</span></div>
+        <div class="ai-loading" id="aiLoading" aria-live="polite">
+          <div class="ai-load-row"><span class="ai-spin" aria-hidden="true"></span><span>御社の業界に合わせて、AIが分析しています<small>（最大20秒ほど）</small></span></div>
+          <div class="sk sk-box"></div>
+          <div class="sk sk-line"></div><div class="sk sk-line"></div><div class="sk sk-line short"></div>
+        </div>
         <div class="ai-body" id="aiBody" hidden>
           <div class="ai-summary" id="aiSummary"></div>
           <div class="ai-cases">
             <h5 id="aiCasesH">業界でよくある生成AI活用事例</h5>
             <div id="aiCaseList"></div>
           </div>
-          <p class="ai-disclaim">※ 業界は会社名から推定し、活用事例は一般的な例です。御社固有の状況は無料相談で詳しくお伺いします。</p>
+          <p class="ai-disclaim">※「御社の状況」はご回答いただいた診断スコアにもとづく分析、業界・活用事例は会社名からの推定にもとづく一般例です。実際の状況とは異なる場合があります。詳しくは無料相談で確認します。</p>
         </div>
       </div>
       <!-- LEAD -->
@@ -481,10 +497,10 @@ footer .container{max-width:1180px;}
           <div class="gtx"><b>お送りするもの：御社向け 改善ロードマップ（A4・1枚）</b><span>診断結果の解説＋優先テーマ＋最初の30日でやることを、シンプルにまとめます。</span></div>
         </div>
         <form id="leadForm" novalidate>
-          <div class="fg"><label>お名前<span class="req">必須</span></label><input type="text" name="name" placeholder="山田 太郎" required></div>
-          <div class="fg"><label>会社名<span class="req">必須</span></label><input type="text" name="company" placeholder="株式会社○○○○" required></div>
-          <div class="fg"><label>会社メールアドレス<span class="req">必須</span></label><input type="email" name="email" placeholder="taro@example.co.jp" required></div>
-          <div class="fg"><label>ご質問・補足<span class="opt2">任意</span></label><textarea name="message" placeholder="特に気になっている点があればお書きください（任意）"></textarea></div>
+          <div class="fg"><label for="lf-name">お名前<span class="req">必須</span></label><input id="lf-name" type="text" name="name" placeholder="山田 太郎" autocomplete="name" required aria-required="true"></div>
+          <div class="fg"><label for="lf-company">会社名<span class="req">必須</span></label><input id="lf-company" type="text" name="company" placeholder="株式会社○○○○" autocomplete="organization" required aria-required="true"></div>
+          <div class="fg"><label for="lf-email">会社メールアドレス<span class="req">必須</span></label><input id="lf-email" type="email" name="email" placeholder="taro@example.co.jp" autocomplete="email" required aria-required="true"></div>
+          <div class="fg"><label for="lf-message">ご質問・補足<span class="opt2">任意</span></label><textarea id="lf-message" name="message" placeholder="特に気になっている点があればお書きください（任意）"></textarea></div>
           <ul class="reassure2">
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span><strong>売り込みは一切しません。</strong>1営業日以内にご返信します。</span></li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>まずは資料だけ受け取る、でも大丈夫です。相談は任意です。</span></li>
@@ -687,18 +703,23 @@ function saveState(){try{sessionStorage.setItem('tw_assess',JSON.stringify({a:an
 function loadState(){try{var s=JSON.parse(sessionStorage.getItem('tw_assess')||'null');return (s&&s.a)?s:null;}catch(e){return null;}}
 function clearState(){try{sessionStorage.removeItem('tw_assess');}catch(e){}}
 
-/* answer handling — auto-advance on select */
-document.getElementById('stepsWrap').addEventListener('change',function(e){
+/* answer handling — ポインタ選択でのみ自動送り（キーボードは矢印で全選択肢→Enterで前進） */
+var advTimer=null, finished=false;
+function scheduleAdvance(){ clearTimeout(advTimer); var atLast=cur===TOTAL_Q-1; advTimer=setTimeout(function(){ atLast?finish():showStep(cur+1); },360); }
+var _sw=document.getElementById('stepsWrap');
+_sw.addEventListener('change',function(e){
   var inp=e.target;if(inp.type!=='radio')return;
   var m=inp.name.match(/^q(\d+)$/);if(!m)return;
   answers[inp.name]=parseInt(inp.value,10);
   updateProgress();saveState();
-  var atLast=cur===TOTAL_Q-1;
-  setTimeout(function(){ atLast?finish():showStep(cur+1); },360);
 });
-document.getElementById('stepsWrap').addEventListener('click',function(e){
+_sw.addEventListener('click',function(e){
   var bk=e.target.closest('[data-back]');
-  if(bk){ showStep(Math.max(0,cur-1)); }
+  if(bk){ clearTimeout(advTimer); showStep(Math.max(0,cur-1)); return; }
+  if(e.target.closest('.opt')&&answers['q'+cur]!=null){ scheduleAdvance(); }
+});
+_sw.addEventListener('keydown',function(e){
+  if(e.key==='Enter'&&e.target.closest('.opt')&&answers['q'+cur]!=null){ e.preventDefault(); scheduleAdvance(); }
 });
 
 /* start / resume */
@@ -741,6 +762,7 @@ document.getElementById('startBtn').addEventListener('click',function(){
 
 /* ---------- finish & render result ---------- */
 function finish(){
+  if(finished)return; finished=true;
   var scores=QUESTIONS.map(function(d,di){return answers['q'+di]||0;});
   var pcts=scores.map(function(s){return Math.round(s/OPT_MAX*100);});
   var total=scores.reduce(function(a,b){return a+b;},0);
@@ -764,6 +786,9 @@ function finish(){
     var c=xi<curIdx?'done':(xi===curIdx?'on':'');
     return '<div class="ls'+(c?' '+c:'')+'"><div class="bar"></div>'+(x.short||x.name)+'</div>';
   }).join('');
+  // 感動の山場（AIレポート）をレベル直下へ引き上げ、生成中スケルトンを即可視化する
+  var _aiR=document.getElementById('aiReport'),_lb=document.getElementById('lvBand');
+  if(_aiR&&_lb&&_lb.nextElementSibling!==_aiR){ _lb.insertAdjacentElement('afterend',_aiR); }
 
   // benchmark
   document.getElementById('benchText').innerHTML=L.bench;
@@ -774,15 +799,24 @@ function finish(){
     return '<div class="bd-row"><div class="bn">'+d.theme+'</div><div class="bd-track"><div class="bd-fill '+c+'" data-w="'+p+'"></div></div><div class="bp">'+p+'%</div></div>';
   }).join('');
 
-  // priority themes: lowest scores first, up to 3 (pct<70), at least 1
+  // priority themes: lowest scores first (pct<70)。全項目高スコア時は祝意＋発展提案に切替（満点で「未整備」表示の矛盾を防ぐ）
   var order=QUESTIONS.map(function(d,i){return {i:i,pct:pcts[i]};}).sort(function(a,b){return a.pct-b.pct;});
-  var themes=order.filter(function(o){return o.pct<70;}).slice(0,3);
-  if(themes.length===0)themes=order.slice(0,1);
-  document.getElementById('themeList').innerHTML=themes.map(function(o,idx){
-    var d=QUESTIONS[o.i];
-    return '<div class="theme"><div class="tr">'+(idx+1)+'</div><div class="td"><h5>'+d.theme+'</h5>'
-      +'<div class="tp">'+d.pain+'</div><div class="ta"><b>次の一手：</b>'+d.act+'</div></div></div>';
-  }).join('');
+  var weak=order.filter(function(o){return o.pct<70;}).slice(0,3);
+  window.__weak=weak;window.__order=order;
+  var _th=document.querySelector('.themes h4'), _ths=document.querySelector('.themes .th-sub');
+  if(weak.length===0){
+    if(_th)_th.textContent='全項目が高水準です';
+    if(_ths)_ths.textContent='現状維持にとどまらず、さらに一段上のAI活用へ。';
+    document.getElementById('themeList').innerHTML='<div class="theme"><div class="tr">★</div><div class="td"><h5>次のステージへ</h5><div class="tp">6項目すべてが高水準で、土台は十分に整っています。</div><div class="ta"><b>次の一手：</b>全社展開の高度化・ガバナンス強化・成果の横展開で、AIを競争優位に変える段階です。無料相談でご一緒します。</div></div></div>';
+  }else{
+    if(_th)_th.textContent='あなたが次にやると効く、3つのこと';
+    if(_ths)_ths.textContent='いちばん伸びしろが大きい項目から順に表示しています。';
+    document.getElementById('themeList').innerHTML=weak.map(function(o,idx){
+      var d=QUESTIONS[o.i];
+      return '<div class="theme"><div class="tr">'+(idx+1)+'</div><div class="td"><h5>'+d.theme+'</h5>'
+        +'<div class="tp">'+d.pain+'</div><div class="ta"><b>次の一手：</b>'+d.act+'</div></div></div>';
+    }).join('');
+  }
 
   // stash for lead (keeps the /contact contract: diag_score/diag_max/diag_band/diag_answers)
   window.__diag={
@@ -798,35 +832,55 @@ function finish(){
   clearState();
   window.scrollTo({top:0,behavior:'smooth'});
   setTimeout(function(){document.querySelectorAll('.bd-fill').forEach(function(el){el.style.width=el.dataset.w+'%';});},120);
-  // AI report（会社名→御社の状況＋業界での活用事例）。backend/キー未設定時は自動で非表示
-  try{ fetchAIReport({ company:companyName, levelName:L.name, pct:pct, dims:QUESTIONS.map(function(d,i){return {theme:d.theme,pct:pcts[i]};}) }); }catch(e){}
+  // AI report（会社名→御社の状況＋業界事例）。失敗時もフォールバックを必ず表示
+  var _fbSrc=(window.__weak&&window.__weak.length?window.__weak:order).slice(0,3);
+  var _fbCases=_fbSrc.map(function(o){var d=QUESTIONS[o.i];return {title:d.theme,detail:d.act};});
+  try{ fetchAIReport({ company:companyName, levelName:L.name, pct:pct, dims:QUESTIONS.map(function(d,i){return {theme:d.theme,pct:pcts[i]};}) }, {levelName:L.name, fallbackCases:_fbCases}); }catch(e){}
   if(typeof gtag==='function')gtag('event','assessment_complete',{score:pct,level:L.name});
   if(typeof fbq==='function')fbq('trackCustom','AssessmentComplete',{score:pct,level:L.name});
 }
 
 function esc(s){return (s||'').toString().replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
-function fetchAIReport(payload){
+function renderCases(list){
+  return (list||[]).slice(0,3).map(function(u,i){
+    return '<div class="ai-case"><div class="ic">'+(i+1)+'</div><div class="ct"><b>'+esc(u.title)+'</b><span>'+esc(u.detail)+'</span></div></div>';
+  }).join('');
+}
+function fetchAIReport(payload, fb){
+  fb=fb||{};
   var box=document.getElementById('aiReport'),loading=document.getElementById('aiLoading'),body=document.getElementById('aiBody');
   if(!box)return;
-  box.hidden=false;loading.style.display='';body.hidden=true;
+  box.hidden=false;loading.style.display='';body.hidden=true;box.setAttribute('aria-busy','true');
+  // 待機メッセージを段階送り（10〜15秒の沈黙＝「固まって見える」を防ぐ）
+  var msgs=['御社の業界を推定しています…','診断スコアを読み解いています…','御社向けの示唆をまとめています…','業界の活用事例を整えています（あと少し）…'];
+  var msgEl=loading.querySelector('.ai-load-row span:last-child'), mi=0;
+  var msgT=setInterval(function(){ mi=Math.min(mi+1,msgs.length-1); if(msgEl)msgEl.innerHTML=msgs[mi]+'<small>（最大20秒ほど）</small>'; },3200);
+  // クライアント側タイムアウト（サーバ25秒＋少し）。無限スピナーを防ぐ
+  var ac=new AbortController(); var to=setTimeout(function(){try{ac.abort();}catch(e){}},28000);
   if(window.__turnstileToken)payload.turnstileToken=window.__turnstileToken;
-  fetch('/assess',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+  function done(){ clearTimeout(to); clearInterval(msgT); loading.style.display='none'; body.hidden=false; box.setAttribute('aria-busy','false'); }
+  function showFallback(){
+    document.getElementById('aiSummary').textContent='今回はAIによる個別分析を表示できませんでした。'+(fb.levelName?('御社の現在地は「'+fb.levelName+'」です。'):'')+'診断結果をふまえた御社向けの「次の一手」は、無料相談で詳しくお渡しします。';
+    document.getElementById('aiCasesH').textContent='まず取り組むと効果が出やすいこと';
+    document.getElementById('aiCaseList').innerHTML=renderCases(fb.fallbackCases);
+    done();
+  }
+  fetch('/assess',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),signal:ac.signal})
     .then(function(r){return r.ok?r.json():null;})
     .then(function(d){
-      if(!d||!d.ok){box.hidden=true;return;}
+      if(!d||!d.ok){ showFallback(); return; }
       document.getElementById('aiSummary').textContent=d.summary||'';
       var ind=(d.industry||'').trim();
       document.getElementById('aiCasesH').textContent=(ind&&ind!=='業種共通'?ind+'で':'')+'よくある生成AI活用事例';
-      document.getElementById('aiCaseList').innerHTML=(d.useCases||[]).map(function(u,i){
-        return '<div class="ai-case"><div class="ic">'+(i+1)+'</div><div class="ct"><b>'+esc(u.title)+'</b><span>'+esc(u.detail)+'</span></div></div>';
-      }).join('');
-      loading.style.display='none';body.hidden=false;
+      document.getElementById('aiCaseList').innerHTML=renderCases(d.useCases);
+      if(window.__diag){window.__diag.ai_industry=ind;window.__diag.ai_summary=(d.summary||'').slice(0,600);}
+      done();
     })
-    .catch(function(){box.hidden=true;});
+    .catch(function(){ showFallback(); });
 }
 
 document.getElementById('restartBtn').addEventListener('click',function(){
-  answers={};clearState();
+  answers={};clearState();finished=false;
   document.getElementById('result').classList.remove('show');
   document.querySelectorAll('#stepsWrap input[type=radio]').forEach(function(r){r.checked=false;});
   document.getElementById('leadForm').style.display='';
