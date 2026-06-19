@@ -41,7 +41,7 @@ if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_vi
   --ink:#0D1117; --paper:#F4F6F9; --paper-2:#ECEFF3; --white:#FBFCFD;
   --electric:#005EFF; --electric-dark:#003DAA;
   --slate:#4A5666; --line:rgba(13,17,23,.12); --line-2:rgba(13,17,23,.20);
-  --emerald:#00B894; --amber:#C77A14; --red:#D14343;
+  --emerald:#00B894; --emerald-dark:#006B52; --electric-soft:#5B8DEF; --electric-lite:#9FBEF6;
   --jp:'IBM Plex Sans JP','IBM Plex Sans',system-ui,sans-serif;
   --en:'IBM Plex Sans','IBM Plex Sans JP',system-ui,sans-serif;
 }
@@ -97,8 +97,8 @@ body.menu-open .mmenu{transform:none;visibility:visible;}
 .intro-field label{display:block;font-size:13px;font-weight:600;margin-bottom:7px;color:var(--ink);}
 .intro-field input{width:100%;padding:15px 16px;font-size:16px;font-family:inherit;border:1px solid var(--line);border-radius:10px;background:var(--white);color:var(--ink);transition:border-color .2s,box-shadow .2s;}
 .intro-field input:focus{outline:none;border-color:var(--electric);box-shadow:0 0 0 3px rgba(0,94,255,.12);}
-.intro-field.invalid input{border-color:var(--red);box-shadow:0 0 0 3px rgba(209,67,67,.10);}
-.co-error{display:none;color:var(--red);font-size:12.5px;margin-top:6px;}
+.intro-field.invalid input{border-color:var(--slate);box-shadow:0 0 0 3px rgba(74,86,102,.16);}
+.co-error{display:none;color:var(--slate);font-weight:600;font-size:12.5px;margin-top:6px;}
 .intro-field.invalid .co-error{display:block;}
 .dc-head p b{color:var(--ink);font-weight:700;}
 
@@ -217,7 +217,7 @@ body.assessing .why,body.assessing footer,body.assessing .sources,body.assessing
 .bd-row .bn{font-size:13.5px;font-weight:600;color:var(--ink);}
 .bd-track{height:10px;background:var(--paper-2);border-radius:5px;overflow:hidden;}
 .bd-fill{height:100%;border-radius:5px;width:0;transition:width .7s cubic-bezier(.2,.8,.2,1);}
-.bd-fill.lo{background:var(--red);}.bd-fill.mi{background:var(--amber);}.bd-fill.hi{background:var(--electric);}.bd-fill.tp{background:var(--emerald);}
+.bd-fill.lo{background:var(--electric-lite);}.bd-fill.mi{background:var(--electric-soft);}.bd-fill.hi{background:var(--electric);}.bd-fill.tp{background:var(--emerald);}
 .bd-row .bp{font-family:var(--en);font-size:13px;font-weight:700;color:var(--slate);text-align:right;}
 
 /* priority themes */
@@ -273,8 +273,8 @@ body.assessing .why,body.assessing footer,body.assessing .sources,body.assessing
 .fg label .opt2{color:var(--slate);font-size:11.5px;margin-left:6px;font-weight:500;}
 .fg input,.fg textarea{width:100%;padding:14px 15px;font-size:15px;font-family:inherit;border:1px solid var(--line);border-radius:8px;background:var(--white);color:var(--ink);transition:border-color .2s,box-shadow .2s;}
 .fg input:focus,.fg textarea:focus{outline:none;border-color:var(--electric);box-shadow:0 0 0 3px rgba(0,94,255,.12);}
-.fg.invalid input,.fg.invalid textarea{border-color:var(--red);box-shadow:0 0 0 3px rgba(209,67,67,.10);}
-.field-error{display:none;color:var(--red);font-size:12.5px;margin-top:6px;}
+.fg.invalid input,.fg.invalid textarea{border-color:var(--slate);box-shadow:0 0 0 3px rgba(74,86,102,.16);}
+.field-error{display:none;color:var(--slate);font-weight:600;font-size:12.5px;margin-top:6px;}
 .fg.invalid .field-error{display:block;}
 .fg textarea{resize:vertical;min-height:80px;}
 .lead-cb{display:flex;align-items:flex-start;gap:11px;margin:4px 0 20px;}
@@ -667,19 +667,19 @@ var TOTAL_Q=QUESTIONS.length, OPT_MAX=3, TOTAL_MAX=TOTAL_Q*OPT_MAX;
 
 /* 段階は Microsoft「Agentic AI adoption maturity model」(CMM準拠の5段階) に対応 */
 var LEVELS=[
- {min:0, cls:'l1', color:'var(--red)', tag:'Microsoft: Lv100 Initial', name:'これから期', short:'これから',
+ {min:0, cls:'l1', color:'var(--slate)', tag:'Microsoft: Lv100 Initial', name:'これから期', short:'これから',
   desc:'生成AIはまだ個人が試している段階で、会社としての動きはこれから。Microsoftの成熟度モデルでいう「Initial（初期）」にあたります。ここがスタートラインです。',
   bench:'生成AIの活用方針を「まだ決めていない」会社は約半数（<b>50.9%</b>）。動き出すのはこれからという会社が多く、<b>いま始めれば十分に先行できます。</b><span class="src">出典：東京商工リサーチ 2025（有効回答6,645社）</span>'},
- {min:20, cls:'l2', color:'var(--amber)', tag:'Microsoft: Lv200 Repeatable', name:'試行期', short:'試行',
+ {min:20, cls:'l2', color:'var(--electric)', tag:'Microsoft: Lv200 Repeatable', name:'試行期', short:'試行',
   desc:'一部の部署や人が使い始め、同じ使い方を繰り返せるようになってきた段階。Microsoftの「Repeatable（反復可能）」にあたります。多くの会社がここで足踏みします。',
   bench:'実際に生成AIを「活用している」会社は約<b>2割（17.3%）</b>。多くがこの手前で足踏みします。<b>次の一歩は「現場で毎日使う」状態づくりです。</b><span class="src">出典：帝国データバンク 2024（有効回答4,705社）</span>'},
  {min:40, cls:'l3', color:'var(--electric)', tag:'Microsoft: Lv300 Defined', name:'定着期', short:'定着',
   desc:'使い方が標準化され、複数の業務にAIが定着し始めた段階。Microsoftの「Defined（定義済み）」にあたります。成果が見え始めるフェーズです。',
   bench:'業務で生成AIを使う日本企業は<b>55.2%</b>まで増えた一方、業務プロセスに組み込めている会社はまだ少数。研究では<b>この段階を越えた企業ほど業績が高い</b>傾向が示されています。<span class="src">出典：総務省 情報通信白書2025／MIT CISR 2025</span>'},
- {min:60, cls:'l4', color:'#0E8F6E', tag:'Microsoft: Lv400 Capable', name:'全社活用期', short:'全社活用',
+ {min:60, cls:'l4', color:'var(--electric-dark)', tag:'Microsoft: Lv400 Capable', name:'全社活用期', short:'全社活用',
   desc:'部署をまたいで全社的にAIを使いこなし、ガバナンスも回り始めた段階。Microsoftの「Capable（高い能力）」にあたります。成果を出す企業の仲間入りです。',
   bench:'ここまで来ると、AIは「便利ツール」から<b>「会社の戦力」</b>に。MIT CISRの実証研究では、<b>業務への組み込みが進む企業ほど成長率・利益率が業界平均を上回る</b>ことが示されています。<span class="src">出典：MIT CISR「Enterprise AI Maturity Model」2025</span>'},
- {min:80, cls:'l5', color:'var(--emerald)', tag:'Microsoft: Lv500 Efficient', name:'最適化・変革期', short:'最適化',
+ {min:80, cls:'l5', color:'var(--emerald-dark)', tag:'Microsoft: Lv500 Efficient', name:'最適化・変革期', short:'最適化',
   desc:'基幹業務や意思決定にAIが組み込まれ、継続的に成果を生んでいる先進ゾーン。Microsoftの「Efficient（最適化）＝エージェントファースト企業」にあたります。',
   bench:'AIから明確な事業成果（利益貢献）を出せている“ハイパフォーマー”は世界でも約<b>6%</b>。<b>あなたはそのトップ層に近い位置にいます。</b><span class="src">出典：McKinsey「The State of AI」2025（世界105カ国・1,993名）</span>'}
 ];
