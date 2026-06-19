@@ -136,6 +136,43 @@ body.menu-open .mmenu{transform:none;visibility:visible;}
 .flow-row .ft b{font-size:14.5px;font-weight:700;display:block;margin-bottom:2px;}
 .flow-row .ft span{font-size:13px;color:var(--slate);line-height:1.7;}
 
+/* HERO PRODUCT PREVIEW（実ダッシュボード風・得られる結果の見本） */
+.hp-card{max-width:600px;margin:0 auto;background:var(--white);border:1px solid var(--line);border-radius:16px;box-shadow:0 30px 60px -38px rgba(13,17,23,.30);overflow:hidden;}
+.hp-cap{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--slate);padding:13px 20px;border-bottom:1px solid var(--line);background:var(--paper);}
+.hp-body{padding:24px 24px 22px;}
+.hp-top{display:flex;align-items:center;gap:22px;margin-bottom:4px;}
+.hp-ring{position:relative;width:108px;height:108px;flex-shrink:0;}
+.hp-ring svg{width:108px;height:108px;display:block;}
+.hp-ringtxt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.hp-ringtxt b{font-family:var(--en);font-weight:700;font-size:30px;letter-spacing:-.03em;color:var(--electric);line-height:1;}
+.hp-ringtxt b s{text-decoration:none;font-size:15px;}
+.hp-ringtxt span{font-size:10px;color:var(--slate);margin-top:3px;}
+.hp-lv{min-width:0;}
+.hp-lvtag{font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.1em;color:var(--electric);}
+.hp-lvname{font-family:var(--jp);font-weight:700;font-size:22px;letter-spacing:-.02em;margin:2px 0 12px;}
+.hp-gauge{display:flex;gap:5px;}
+.hp-gauge i{height:6px;flex:1;border-radius:3px;background:var(--paper-2);}
+.hp-gauge i.d{background:var(--electric);opacity:.4;}
+.hp-gauge i.on{background:var(--electric);}
+.hp-gaugelabels{display:flex;gap:5px;margin-top:6px;}
+.hp-gaugelabels span{flex:1;text-align:center;font-size:9px;color:var(--slate);}
+.hp-gaugelabels span.on{color:var(--electric);font-weight:700;}
+.hp-bars{display:grid;gap:9px;margin-top:22px;padding-top:20px;border-top:1px solid var(--line);}
+.hp-brow{display:grid;grid-template-columns:104px 1fr 34px;align-items:center;gap:12px;}
+.hp-brow>span{font-size:12px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.hp-track{height:8px;background:var(--paper-2);border-radius:4px;overflow:hidden;}
+.hp-track i{display:block;height:100%;border-radius:4px;}
+.hp-track i.lo{background:var(--electric-lite);}
+.hp-track i.mi{background:var(--electric-soft);}
+.hp-track i.tp{background:var(--emerald);}
+.hp-brow>b{font-family:var(--en);font-size:12px;font-weight:700;color:var(--slate);text-align:right;}
+.hp-ai{display:flex;gap:10px;align-items:flex-start;margin-top:18px;padding:14px 16px;background:linear-gradient(180deg,rgba(0,94,255,.05),rgba(0,94,255,0) 70%);border:1px solid var(--line);border-radius:11px;}
+.hp-aibadge{flex-shrink:0;font-family:var(--en);font-size:10px;font-weight:700;color:var(--paper);background:var(--electric);border-radius:5px;padding:2px 7px;}
+.hp-aitext{font-size:12px;color:#28313f;line-height:1.7;}
+.hp-aitext b{color:var(--ink);}
+.hp-note{text-align:center;font-size:13px;color:var(--slate);margin-top:18px;}
+@media(max-width:560px){.hp-top{gap:16px;}.hp-ring,.hp-ring svg{width:92px;height:92px;}.hp-ringtxt b{font-size:26px;}.hp-brow{grid-template-columns:84px 1fr 32px;gap:10px;}.hp-brow>span{font-size:11px;}.hp-body{padding:20px 18px 18px;}.hp-gaugelabels{display:none;}.hp-gauge{margin-bottom:2px;}}
+
 /* ASSESS STEPS */
 .assess{display:none;padding:96px 0 130px;}
 .assess.show{display:block;}
@@ -445,16 +482,36 @@ footer .container{max-width:1180px;}
 </section>
 
 <!-- WHAT YOU GET -->
+<!-- HERO PRODUCT PREVIEW（得られる結果の実物見本／v6: real product UI + dashboard） -->
 <section class="teaser" id="teaser">
   <div class="container">
-    <div class="teaser-card">
-      <h4>診断でわかること</h4>
-      <div class="flow">
-        <div class="flow-row"><div class="fi">1</div><div class="ft"><b>いまのレベル（5段階）</b><span>Microsoftの成熟度モデルに沿って、自社の現在地をその場で判定。</span></div></div>
-        <div class="flow-row"><div class="fi">2</div><div class="ft"><b>強み・弱みと次の一手</b><span>6項目の現在地と、いま動くといちばん効く改善を表示します。</span></div></div>
-        <div class="flow-row"><div class="fi">3</div><div class="ft"><b>あなたの業界での生成AI活用事例</b><span>選んだ業界でよくある・効果が出やすい使い方を、具体的にご提案します。</span></div></div>
+    <div class="hp-card">
+      <div class="hp-cap">結果プレビュー（サンプル）</div>
+      <div class="hp-body">
+        <div class="hp-top">
+          <div class="hp-ring">
+            <svg viewBox="0 0 120 120" aria-hidden="true">
+              <circle cx="60" cy="60" r="52" fill="none" stroke="var(--paper-2)" stroke-width="10"/>
+              <circle cx="60" cy="60" r="52" fill="none" stroke="var(--electric)" stroke-width="10" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="124" transform="rotate(-90 60 60)"/>
+            </svg>
+            <div class="hp-ringtxt"><b>62<s>%</s></b><span>活用度スコア</span></div>
+          </div>
+          <div class="hp-lv">
+            <div class="hp-lvtag">MICROSOFT: LV300 DEFINED</div>
+            <div class="hp-lvname">定着期</div>
+            <div class="hp-gauge"><i class="d"></i><i class="d"></i><i class="on"></i><i></i><i></i></div>
+            <div class="hp-gaugelabels"><span>これから</span><span>試行</span><span class="on">定着</span><span>全社</span><span>最適化</span></div>
+          </div>
+        </div>
+        <div class="hp-bars">
+          <div class="hp-brow"><span>会社としての方針</span><div class="hp-track"><i class="lo" style="width:33%"></i></div><b>33%</b></div>
+          <div class="hp-brow"><span>現場への浸透</span><div class="hp-track"><i class="mi" style="width:50%"></i></div><b>50%</b></div>
+          <div class="hp-brow"><span>業務での成果</span><div class="hp-track"><i class="tp" style="width:83%"></i></div><b>83%</b></div>
+        </div>
+        <div class="hp-ai"><span class="hp-aibadge">AI</span><span class="hp-aitext"><b>製造業</b>でよくある活用事例：見積・提案書の下書き自動化／問い合わせの一次対応／設計ナレッジの検索…</span></div>
       </div>
     </div>
+    <p class="hp-note">回答すると、こんな結果がその場で出ます。</p>
   </div>
 </section>
 
