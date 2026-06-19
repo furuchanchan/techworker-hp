@@ -167,7 +167,7 @@ body.menu-open .mmenu{transform:none;visibility:visible;}
 /* PROGRESS BAR (fixed) */
 .progress{position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(251,252,253,.94);backdrop-filter:blur(8px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .35s cubic-bezier(.2,.8,.2,1);}
 body.assessing .progress{transform:none;}
-body.assessing .why,body.assessing footer,body.assessing .sources,body.assessing .method{display:none;}
+body.assessing footer,body.assessing .refs{display:none;}
 .progress-inner{max-width:760px;margin:0 auto;padding:11px 24px 13px;}
 .progress-meta{display:flex;justify-content:space-between;align-items:center;font-size:11.5px;font-weight:600;color:var(--slate);margin-bottom:7px;}
 .progress-meta .pl{font-family:var(--en);letter-spacing:.04em;}
@@ -319,6 +319,22 @@ body.assessing .why,body.assessing footer,body.assessing .sources,body.assessing
 .src-list li a:hover{border-bottom-color:var(--electric);}
 .src-list li span{display:block;color:var(--slate);font-size:12.5px;margin-top:3px;}
 .src-note{font-size:12px;color:var(--slate);line-height:1.7;margin-top:18px;}
+
+/* 根拠（折りたたみ）*/
+.refs{padding:36px 0 64px;}
+.refbox{max-width:760px;margin:0 auto;border:1px solid var(--line);border-radius:12px;background:var(--white);}
+.refbox>summary{list-style:none;cursor:pointer;padding:16px 20px;font-size:13.5px;font-weight:600;color:var(--slate);display:flex;align-items:center;gap:10px;}
+.refbox>summary::-webkit-details-marker{display:none;}
+.refbox>summary::before{content:"＋";color:var(--electric);font-weight:700;flex-shrink:0;}
+.refbox[open]>summary::before{content:"−";}
+.refbox>summary:hover{color:var(--electric);}
+.refbody{padding:2px 20px 20px;border-top:1px solid var(--line);}
+.refbody p{font-size:13px;color:var(--slate);line-height:1.9;margin:14px 0 12px;}
+.refbody p b{color:var(--ink);}
+.reflist{list-style:none;display:grid;gap:9px;margin:0;padding:0;}
+.reflist li{font-size:12.5px;line-height:1.55;}
+.reflist a{color:var(--electric);text-decoration:none;border-bottom:1px solid rgba(0,94,255,.28);}
+.reflist a:hover{border-bottom-color:var(--electric);}
 
 /* METHODOLOGY */
 .method{padding:0 0 36px;}
@@ -488,12 +504,6 @@ footer .container{max-width:1180px;}
         <p class="bd-sub">回答から、項目ごとの達成度を出しています。色が濃いほど進んでいます。</p>
         <div id="bdList"></div>
       </div>
-      <!-- priority themes -->
-      <div class="themes">
-        <h4>あなたが次にやると効く、3つのこと</h4>
-        <p class="th-sub">いちばん伸びしろが大きい項目から順に表示しています。</p>
-        <div id="themeList"></div>
-      </div>
       <!-- AI REPORT: 御社の状況 + 業界での活用事例 -->
       <div class="ai-report" id="aiReport" hidden>
         <div class="ai-head"><span class="ai-badge">AI</span><h4 id="aiTitle">御社の状況と、業界での活用事例</h4></div>
@@ -546,54 +556,25 @@ footer .container{max-width:1180px;}
   </div>
 </section>
 
-<!-- WHY -->
-<section class="why" id="why">
+<!-- 根拠（フレームワーク・出典）：普段は折りたたみ -->
+<section class="refs" id="refs">
   <div class="container">
-    <div class="why-card">
-      <h4>差がつくのは「ツールの有無」ではありません</h4>
-      <p>業務で生成AIを使う日本企業は5割を超えました（総務省 2025）。それでも「活用できている」と言える会社は2割前後にとどまります（帝国データバンク 2024）。<b>差がつくのは「ツールの有無」ではなく「使いこなしの深さ」</b>——現場への浸透、自社の情報をAIに渡せているか、安心して使えるルールがあるか、がどこまで噛み合っているかです。私たちは「AIはエンジン、コンテキストは燃料」を軸に、診断で見えた弱点に対して、社内の知識をAIに渡せる形に整える基盤づくりから、研修・定着までを伴走します。</p>
-      <div class="proof"><div><b>37社</b>支援企業数</div><div><b>2,500名</b>研修受講者数</div><div><b>1営業日</b>以内に返信</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- METHODOLOGY -->
-<section class="method" id="method">
-  <div class="container">
-    <div class="method-card">
-      <h4>この診断の考え方（フレームワーク）</h4>
-      <p>本診断は、<b>Microsoftが公開する公式のAI成熟度モデル「Agentic AI adoption maturity model」</b>（CMM準拠の5段階 × 5つの能力の柱）を土台に、日本企業向けに6つの設問へ再構成したものです。レベル区分はMicrosoftの5段階（Initial〜Efficient）に対応し、各設問はモデルの「能力の柱」に紐づいています。</p>
-      <div class="map-grid">
-        <div class="map-row"><span class="mq">① 会社としての方針</span><span class="ma">→</span><span class="mp">AI戦略／事業戦略</span></div>
-        <div class="map-row"><span class="mq">② 現場への浸透</span><span class="ma">→</span><span class="mp">組織・カルチャー</span></div>
-        <div class="map-row"><span class="mq">③ 業務での成果</span><span class="ma">→</span><span class="mp">事業戦略</span></div>
-        <div class="map-row"><span class="mq">④ 自社情報の活用</span><span class="ma">→</span><span class="mp">テクノロジー・データ</span></div>
-        <div class="map-row"><span class="mq">⑤ 環境・ツール</span><span class="ma">→</span><span class="mp">テクノロジー・データ</span></div>
-        <div class="map-row"><span class="mq">⑥ ルール・安全対策</span><span class="ma">→</span><span class="mp">AIガバナンス・セキュリティ</span></div>
+    <details class="refbox">
+      <summary>この診断の根拠（準拠フレームワーク・参考データ）</summary>
+      <div class="refbody">
+        <p>本診断は <b>Microsoft 公式のAI成熟度モデル「Agentic AI adoption maturity model」</b>（CMM準拠の5段階×5つの能力の柱）を土台に、日本企業向けに6設問へ再構成しています。レベルと成果の関係づけには MIT CISR の実証研究、ガバナンスは NIST AI RMF を参考にしています。数値は各調査時点のものです。</p>
+        <ul class="reflist">
+          <li><a href="https://learn.microsoft.com/en-us/agents/adoption-maturity-model/" target="_blank" rel="noopener">Microsoft「Agentic AI adoption maturity model」</a></li>
+          <li><a href="https://cisr.mit.edu/publication/2025_0801_EnterpriseAIMaturityUpdate_WoernerSebastianWeillKaganer" target="_blank" rel="noopener">MIT CISR「Enterprise AI Maturity Model」（2025）</a></li>
+          <li><a href="https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.100-1.pdf" target="_blank" rel="noopener">NIST「AI Risk Management Framework (AI RMF 1.0)」</a></li>
+          <li><a href="https://www.soumu.go.jp/johotsusintokei/whitepaper/ja/r07/html/nd112220.html" target="_blank" rel="noopener">総務省「情報通信白書 令和7年版」（2025）</a></li>
+          <li><a href="https://www.ipa.go.jp/digital/chousa/dx-trend/tbl5kb0000001mn2-att/dx-trend-2025.pdf" target="_blank" rel="noopener">IPA「DX動向2025」</a></li>
+          <li><a href="https://www.tdb.co.jp/resource/files/assets/d4b8e8ee91d1489c9a2abd23a4bb5219/ed8435fc5bfc428c807c0568f5ecf53a/p240802.pdf" target="_blank" rel="noopener">帝国データバンク「生成AIの活用状況調査」（2024）</a></li>
+          <li><a href="https://www.tsr-net.co.jp/data/detail/1201667_1527.html" target="_blank" rel="noopener">東京商工リサーチ「生成AIに関するアンケート」（2025）</a></li>
+          <li><a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank" rel="noopener">McKinsey「The State of AI」（2025）</a></li>
+        </ul>
       </div>
-      <p class="method-note">レベルと成果の関係づけには MIT CISR の実証研究（成熟度が高い企業ほど業績が高い）を、ガバナンス領域では NIST AI RMF を参考にしています。出典は下部に記載。</p>
-    </div>
-  </div>
-</section>
-
-<!-- SOURCES -->
-<section class="sources" id="sources">
-  <div class="container">
-    <h4 class="src-h">準拠したフレームワーク</h4>
-    <ul class="src-list">
-      <li><a href="https://learn.microsoft.com/en-us/agents/adoption-maturity-model/" target="_blank" rel="noopener">Microsoft「Agentic AI adoption maturity model」</a><span>本診断の5段階（これから〜最適化）と6項目は、Microsoft公式のAI成熟度モデル（CMM準拠の5レベル×5つの能力の柱）に対応。</span></li>
-      <li><a href="https://cisr.mit.edu/publication/2025_0801_EnterpriseAIMaturityUpdate_WoernerSebastianWeillKaganer" target="_blank" rel="noopener">MIT CISR「Enterprise AI Maturity Model」（2025）</a><span>成熟度が高い企業ほど成長率・利益率が業界平均を上回るという実証研究。レベルと成果の関係づけに参照。</span></li>
-      <li><a href="https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.100-1.pdf" target="_blank" rel="noopener">NIST「AI Risk Management Framework (AI RMF 1.0)」</a><span>ガバナンス・安全対策の評価観点（Govern / Map / Measure / Manage）の裏付けに参照。</span></li>
-    </ul>
-    <h4 class="src-h" style="margin-top:28px;">参考にした主な調査・統計</h4>
-    <ul class="src-list">
-      <li><a href="https://www.soumu.go.jp/johotsusintokei/whitepaper/ja/r07/html/nd112220.html" target="_blank" rel="noopener">総務省「情報通信白書 令和7年版」（2025）</a><span>業務で生成AIを使う日本企業は55.2%、活用方針を定める企業は49.7%。</span></li>
-      <li><a href="https://www.ipa.go.jp/digital/chousa/dx-trend/tbl5kb0000001mn2-att/dx-trend-2025.pdf" target="_blank" rel="noopener">IPA（情報処理推進機構）「DX動向2025」</a><span>生成AIに前向きな日本企業は5割弱。部署の業務プロセスへの組み込みは限定的。</span></li>
-      <li><a href="https://www.tdb.co.jp/resource/files/assets/d4b8e8ee91d1489c9a2abd23a4bb5219/ed8435fc5bfc428c807c0568f5ecf53a/p240802.pdf" target="_blank" rel="noopener">帝国データバンク「生成AIの活用状況調査」（2024・4,705社）</a><span>生成AIを「活用している」企業は17.3%、「活用しておらず予定もない」は48.4%。</span></li>
-      <li><a href="https://www.tsr-net.co.jp/data/detail/1201667_1527.html" target="_blank" rel="noopener">東京商工リサーチ「生成AIに関するアンケート」（2025・6,645社）</a><span>活用を推進している企業は25.2%、方針未決定は50.9%。</span></li>
-      <li><a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank" rel="noopener">McKinsey「The State of AI」（2025・世界105カ国/1,993名）</a><span>AIで明確な事業成果を出す“ハイパフォーマー”は約6%。</span></li>
-    </ul>
-    <p class="src-note">本診断のレベル区分と参考値は、上記の公的機関・調査をもとに作成しています。数値は各調査時点のものです。</p>
+    </details>
   </div>
 </section>
 
@@ -834,24 +815,10 @@ function finish(){
     return '<div class="bd-row"><div class="bn">'+d.theme+'</div><div class="bd-track"><div class="bd-fill '+c+'" data-w="'+p+'"></div></div><div class="bp">'+p+'%</div></div>';
   }).join('');
 
-  // priority themes: lowest scores first (pct<70)。全項目高スコア時は祝意＋発展提案に切替（満点で「未整備」表示の矛盾を防ぐ）
+  // 弱い項目（pct<70）を算出。AIレポートのフォールバック事例に使う（静的セクションは廃止し簡素化）
   var order=QUESTIONS.map(function(d,i){return {i:i,pct:pcts[i]};}).sort(function(a,b){return a.pct-b.pct;});
   var weak=order.filter(function(o){return o.pct<70;}).slice(0,3);
   window.__weak=weak;window.__order=order;
-  var _th=document.querySelector('.themes h4'), _ths=document.querySelector('.themes .th-sub');
-  if(weak.length===0){
-    if(_th)_th.textContent='全項目が高水準です';
-    if(_ths)_ths.textContent='現状維持にとどまらず、さらに一段上のAI活用へ。';
-    document.getElementById('themeList').innerHTML='<div class="theme"><div class="tr">★</div><div class="td"><h5>次のステージへ</h5><div class="tp">6項目すべてが高水準で、土台は十分に整っています。</div><div class="ta"><b>次の一手：</b>全社展開の高度化・ガバナンス強化・成果の横展開で、AIを競争優位に変える段階です。無料相談でご一緒します。</div></div></div>';
-  }else{
-    if(_th)_th.textContent='あなたが次にやると効く、3つのこと';
-    if(_ths)_ths.textContent='いちばん伸びしろが大きい項目から順に表示しています。';
-    document.getElementById('themeList').innerHTML=weak.map(function(o,idx){
-      var d=QUESTIONS[o.i];
-      return '<div class="theme"><div class="tr">'+(idx+1)+'</div><div class="td"><h5>'+d.theme+'</h5>'
-        +'<div class="tp">'+d.pain+'</div><div class="ta"><b>次の一手：</b>'+d.act+'</div></div></div>';
-    }).join('');
-  }
 
   // stash for lead (keeps the /contact contract: diag_score/diag_max/diag_band/diag_answers)
   window.__diag={
