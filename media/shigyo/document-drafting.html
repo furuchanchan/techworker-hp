@@ -115,11 +115,53 @@ fbq('init','1264057945446029');fbq('track','PageView');
   </div>
 </header>
 
-<div class="art-cover-v6 acf-app">
-  <div class="af-side"><div class="s w85"></div><div class="s on"></div><div class="s w70"></div><div class="s"></div><div class="s w85"></div></div>
-  <div class="af-main">
-    <div class="af-bar"><span class="af-tab">契約書ドラフト.doc</span><span class="af-ai">AI 補完</span></div>
-    <div class="af-doc"><span class="l"></span><span class="l w90"></span><span class="l hl"></span><span class="l w75"></span><span class="l w60"></span></div>
+<style>
+/* document-drafting cover: 下書き→清書 before/after */
+.dd-cv{display:flex;flex-direction:column;padding:22px 26px 24px;background:var(--white);}
+.dd-cv-head{font-family:var(--jp);font-size:14px;font-weight:600;color:var(--ink);letter-spacing:.01em;margin:0 0 18px;}
+.dd-cv-head .dd-cv-note{font-family:var(--en);font-size:10.5px;font-weight:500;color:var(--slate);letter-spacing:.04em;margin-left:8px;}
+.dd-cv-cols{display:grid;grid-template-columns:1fr 1fr;column-gap:0;}
+.dd-col{padding:2px 26px;}
+.dd-col-l{padding-left:2px;}
+.dd-col-r{border-left:1px solid var(--line);}
+.dd-lbl{font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--slate);margin:0 0 14px;}
+.dd-lines{display:flex;flex-direction:column;gap:11px;}
+/* 下書き: 雑然・不揃い・グレー */
+.dd-r{height:8px;border-radius:4px;background:var(--paper-2);}
+.dd-col-l .dd-r{background:rgba(13,17,23,.13);opacity:.72;}
+.dd-col-l .dd-r:nth-child(1){width:62%;margin-left:0;}
+.dd-col-l .dd-r:nth-child(2){width:88%;margin-left:9px;height:7px;}
+.dd-col-l .dd-r:nth-child(3){width:44%;margin-left:0;}
+.dd-col-l .dd-r:nth-child(4){width:79%;margin-left:14px;height:9px;}
+.dd-col-l .dd-r:nth-child(5){width:55%;margin-left:5px;}
+/* 清書: 整然・左揃え・均一 */
+.dd-col-r .dd-r{background:rgba(13,17,23,.16);width:100%;}
+.dd-col-r .dd-r:nth-child(5){width:68%;}
+.dd-col-r .dd-r.dd-hl{background:rgba(0,94,255,.12);width:100%;}
+@media(max-width:640px){
+  .dd-cv{padding:18px 18px 20px;}
+  .dd-col{padding:2px 16px;}
+  .dd-cv-head{font-size:13px;margin-bottom:14px;}
+  .dd-lines{gap:9px;}
+}
+</style>
+<div class="art-cover-v6">
+  <div class="dd-cv">
+    <p class="dd-cv-head">下書きを、整える<span class="dd-cv-note">※サンプル</span></p>
+    <div class="dd-cv-cols">
+      <div class="dd-col dd-col-l">
+        <p class="dd-lbl">下書き</p>
+        <div class="dd-lines">
+          <div class="dd-r"></div><div class="dd-r"></div><div class="dd-r"></div><div class="dd-r"></div><div class="dd-r"></div>
+        </div>
+      </div>
+      <div class="dd-col dd-col-r">
+        <p class="dd-lbl">AI整形後</p>
+        <div class="dd-lines">
+          <div class="dd-r"></div><div class="dd-r"></div><div class="dd-r dd-hl"></div><div class="dd-r"></div><div class="dd-r"></div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

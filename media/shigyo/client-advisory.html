@@ -115,11 +115,53 @@ fbq('init','1264057945446029');fbq('track','PageView');
   </div>
 </header>
 
-<div class="art-cover-v6 acf-app">
-  <div class="af-side"><div class="s w70"></div><div class="s"></div><div class="s on w85"></div><div class="s"></div><div class="s w70"></div></div>
-  <div class="af-main">
-    <div class="af-bar"><span class="af-tab">相談メモ → 論点整理</span><span class="af-ai">AI 整理</span></div>
-    <div class="af-doc"><span class="l w75"></span><span class="l hl w90"></span><span class="l"></span><span class="l hl w60"></span><span class="l w75"></span></div>
+<style>
+/* article-specific cover: 相談文 → 論点整理 の変換UI（input→output） */
+.ca-cover{padding:0;}
+.ca-in{padding:18px 24px 16px;}
+.ca-in-head{display:flex;align-items:baseline;gap:9px;margin-bottom:13px;}
+.ca-in-head .ca-from{font-family:var(--jp);font-size:12px;font-weight:600;color:var(--slate);}
+.ca-in-head .ca-meta{font-family:var(--en);font-size:11px;color:var(--slate);opacity:.62;letter-spacing:.01em;}
+.ca-memo{display:flex;flex-direction:column;gap:9px;}
+.ca-memo .ml{height:9px;border-radius:4px;background:var(--paper-2);}
+.ca-memo .ml.a{width:96%;}.ca-memo .ml.b{width:88%;}.ca-memo .ml.c{width:62%;}
+/* divider with caption */
+.ca-div{position:relative;height:1px;background:var(--line);margin:2px 0;}
+.ca-div span{position:absolute;left:24px;top:50%;transform:translateY(-50%);background:var(--white);padding:0 10px 0 0;font-family:var(--en);font-size:10.5px;letter-spacing:.04em;color:var(--slate);display:inline-flex;align-items:center;gap:7px;white-space:nowrap;}
+.ca-div span .ca-arr{color:var(--electric);font-weight:700;}
+.ca-div span .ca-jp{font-family:var(--jp);}
+/* organized output */
+.ca-out{padding:18px 24px 20px;background:var(--paper);}
+.ca-out-head{font-family:var(--jp);font-size:12px;font-weight:600;color:var(--ink-soft);margin-bottom:14px;}
+.ca-out-head .ca-tag{font-family:var(--en);font-size:9.5px;font-weight:700;letter-spacing:.05em;color:var(--electric);border:1px solid rgba(0,94,255,.4);border-radius:4px;padding:2px 7px;margin-left:9px;vertical-align:1px;}
+.ca-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px;}
+.ca-list li{display:flex;align-items:center;gap:11px;min-width:0;}
+.ca-list .ca-no{flex:none;font-family:var(--en);font-size:12px;font-weight:700;color:var(--ink);width:14px;text-align:right;font-feature-settings:"tnum" 1;}
+.ca-list .ca-dot{flex:none;width:6px;height:6px;border-radius:50%;background:var(--electric);}
+.ca-list .ca-row{flex:1;min-width:0;height:9px;border-radius:4px;background:var(--white);border:1px solid var(--line);}
+.ca-list li.r1 .ca-row{width:auto;}
+.ca-list li.r2 .ca-row{margin-right:18%;}
+.ca-list li.r3 .ca-row{margin-right:34%;}
+@media(max-width:560px){
+  .ca-in{padding:15px 18px 13px;}
+  .ca-out{padding:15px 18px 17px;}
+  .ca-div span{left:18px;}
+  .ca-list .ca-no{font-size:11px;}
+}
+</style>
+<div class="art-cover-v6 ca-cover">
+  <div class="ca-in">
+    <div class="ca-in-head"><span class="ca-from">顧客からの相談メモ</span><span class="ca-meta">事実・要望・前提が混在</span></div>
+    <div class="ca-memo"><span class="ml a"></span><span class="ml b"></span><span class="ml c"></span></div>
+  </div>
+  <div class="ca-div"><span><span class="ca-arr">↓</span><span class="ca-jp">論点を整理</span></span></div>
+  <div class="ca-out">
+    <div class="ca-out-head">AIが整理した論点<span class="ca-tag">AI 下書き</span></div>
+    <ol class="ca-list">
+      <li class="r1"><span class="ca-no">1.</span><span class="ca-dot"></span><span class="ca-row"></span></li>
+      <li class="r2"><span class="ca-no">2.</span><span class="ca-dot"></span><span class="ca-row"></span></li>
+      <li class="r3"><span class="ca-no">3.</span><span class="ca-dot"></span><span class="ca-row"></span></li>
+    </ol>
   </div>
 </div>
 

@@ -115,11 +115,49 @@ fbq('init','1264057945446029');fbq('track','PageView');
   </div>
 </header>
 
-<div class="art-cover-v6 acf-app">
-  <div class="af-side"><div class="s on w85"></div><div class="s"></div><div class="s w70"></div><div class="s"></div><div class="s w85"></div></div>
-  <div class="af-main">
-    <div class="af-bar"><span class="af-tab">スカウト文 — 田中様</span><span class="af-ai">AI 下書き</span></div>
-    <div class="af-doc"><span class="l w90"></span><span class="l"></span><span class="l hl w75"></span><span class="l"></span><span class="l w60"></span></div>
+<style>
+/* ai-scouting cover — scout message composer (mail / Linear style) */
+.sc-cv{max-width:720px;margin:26px auto 0;background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;font-family:var(--jp);box-shadow:0 1px 0 rgba(13,17,23,.02)}
+.sc-cv__top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 18px;border-bottom:1px solid var(--line)}
+.sc-cv__to{display:flex;align-items:baseline;gap:8px;min-width:0}
+.sc-cv__lbl{font-family:var(--en);font-size:11px;color:var(--slate);letter-spacing:.02em;flex:none}
+.sc-cv__name{font-size:14px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sc-cv__badge{flex:none;font-size:11px;font-weight:600;color:var(--electric);padding:3px 9px;border:1px solid var(--electric);border-radius:999px;letter-spacing:.01em}
+.sc-cv__body{padding:16px 18px 6px}
+.sc-cv__subj{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:13px}
+.sc-cv__lines{display:flex;flex-direction:column;gap:9px}
+.sc-cv__ln{height:7px;border-radius:4px;background:var(--paper-2)}
+.sc-cv__ln.is-ai{background:rgba(0,94,255,.14)}
+.sc-cv__w95{width:95%}.sc-cv__w88{width:88%}.sc-cv__w72{width:72%}.sc-cv__w60{width:60%}.sc-cv__w46{width:46%}
+.sc-cv__foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 18px 15px}
+.sc-cv__hint{font-size:11px;color:var(--slate)}
+.sc-cv__send{font-family:var(--en);font-size:12px;font-weight:600;color:var(--ink-soft);padding:7px 18px;border:1px solid var(--line-2);border-radius:9px;background:var(--paper)}
+@media(max-width:560px){
+  .sc-cv__top{flex-wrap:wrap}
+  .sc-cv__hint{display:none}
+  .sc-cv__foot{justify-content:flex-end}
+}
+</style>
+<div class="art-cover-v6">
+  <div class="sc-cv" role="img" aria-label="AIが下書きした候補者向けスカウト文の作成画面（サンプル）">
+    <div class="sc-cv__top">
+      <div class="sc-cv__to"><span class="sc-cv__lbl">To</span><span class="sc-cv__name">田中さん宛 スカウト</span></div>
+      <span class="sc-cv__badge">AI 下書き</span>
+    </div>
+    <div class="sc-cv__body">
+      <div class="sc-cv__subj">件名：立ち上げ期の新規開拓のご経験について <span style="color:var(--slate);font-weight:400">※サンプル</span></div>
+      <div class="sc-cv__lines">
+        <div class="sc-cv__ln sc-cv__w88"></div>
+        <div class="sc-cv__ln is-ai sc-cv__w95"></div>
+        <div class="sc-cv__ln is-ai sc-cv__w72"></div>
+        <div class="sc-cv__ln sc-cv__w60"></div>
+        <div class="sc-cv__ln sc-cv__w46"></div>
+      </div>
+    </div>
+    <div class="sc-cv__foot">
+      <span class="sc-cv__hint">青ハイライト＝AIが補完した部分。送信前に人が確認</span>
+      <span class="sc-cv__send">送信</span>
+    </div>
   </div>
 </div>
 

@@ -115,14 +115,80 @@ fbq('init','1264057945446029');fbq('track','PageView');
   </div>
 </header>
 
-<div class="art-cover-v6 acf-dash">
-  <div class="af-top"><span class="af-dot"></span>マッチング精度モニタ<span class="af-smp">※サンプル・数値はイメージ</span></div>
-  <div class="af-kpis">
-    <div><div class="af-k-l">推薦の通過率</div><div class="af-k-v"><em>+28</em>%</div></div>
-    <div><div class="af-k-l">要件適合スコア</div><div class="af-k-v"><em>92</em>点</div></div>
-    <div><div class="af-k-l">マッチ確認の時短</div><div class="af-k-v"><em>3.1</em>x</div></div>
+<style>
+.mt-cv{max-width:var(--measure);margin:32px auto 4px;border:1px solid var(--line);border-radius:14px;background:var(--white);overflow:hidden;font-family:var(--jp);}
+.mt-head{display:flex;align-items:baseline;gap:10px;padding:15px 20px 13px;border-bottom:1px solid var(--line);flex-wrap:wrap;}
+.mt-title{font-size:13.5px;font-weight:600;color:var(--ink);letter-spacing:.01em;}
+.mt-sub{font-family:var(--en);font-size:11px;color:var(--slate);}
+.mt-smp{margin-left:auto;font-family:var(--en);font-size:10.5px;color:var(--slate);letter-spacing:.02em;}
+.mt-scroll{width:100%;}
+.mt-tbl{width:100%;border-collapse:collapse;font-size:13px;}
+.mt-tbl th,.mt-tbl td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap;}
+.mt-tbl thead th{font-family:var(--en);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--slate);background:var(--paper);}
+.mt-tbl thead th.mt-c,.mt-tbl td.mt-c{text-align:center;}
+.mt-tbl thead th.mt-fit,.mt-tbl td.mt-fit{text-align:right;}
+.mt-name{font-weight:600;color:var(--ink);font-size:13.5px;}
+.mt-role{display:block;font-family:var(--en);font-size:10.5px;font-weight:400;color:var(--slate);margin-top:2px;letter-spacing:.01em;}
+.mt-mark{font-family:var(--en);font-size:14px;font-weight:600;color:var(--ink-soft);}
+.mt-mark.g{color:var(--ink);}
+.mt-mark.m{color:var(--slate);}
+.mt-mark.b{color:var(--slate);opacity:.55;}
+.mt-tbl tbody tr.mt-best{background:rgba(0,94,255,.08);}
+.mt-best .mt-name{color:var(--electric);}
+.mt-best .mt-mark.g{color:var(--electric);}
+.mt-pct{font-family:var(--en);font-weight:600;font-size:13px;color:var(--ink-soft);font-feature-settings:"tnum" 1;}
+.mt-best .mt-pct{color:var(--electric);}
+.mt-pct .mt-note{font-family:var(--en);font-weight:400;font-size:10px;color:var(--slate);margin-left:6px;letter-spacing:.01em;}
+.mt-tbl tbody tr:last-child td{border-bottom:none;}
+@media(max-width:560px){
+  .mt-scroll{overflow-x:hidden;}
+  .mt-tbl{font-size:12px;}
+  .mt-tbl th,.mt-tbl td{padding:10px 9px;}
+  .mt-pct .mt-note{display:block;margin-left:0;margin-top:2px;}
+}
+</style>
+<div class="art-cover-v6 mt-cv">
+  <div class="mt-head">
+    <span class="mt-title">候補者 × 求人 適合マトリクス</span>
+    <span class="mt-sub">SaaS法人営業 / req-2041</span>
+    <span class="mt-smp">※サンプル・実在の候補者ではありません</span>
   </div>
-  <div class="af-bars"><i style="height:50%"></i><i style="height:66%"></i><i class="hi" style="height:88%"></i><i style="height:72%"></i><i style="height:60%"></i><i style="height:80%"></i><i style="height:68%"></i></div>
+  <div class="mt-scroll">
+    <table class="mt-tbl">
+      <thead>
+        <tr>
+          <th>候補者</th>
+          <th class="mt-c">経験</th>
+          <th class="mt-c">スキル</th>
+          <th class="mt-c">勤務条件</th>
+          <th class="mt-fit">適合度</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="mt-best">
+          <td><span class="mt-name">田中さん</span><span class="mt-role">無形商材 法人営業 5年</span></td>
+          <td class="mt-c"><span class="mt-mark g">◎</span></td>
+          <td class="mt-c"><span class="mt-mark g">◎</span></td>
+          <td class="mt-c"><span class="mt-mark g">○</span></td>
+          <td class="mt-fit"><span class="mt-pct">92%<span class="mt-note">※サンプル</span></span></td>
+        </tr>
+        <tr>
+          <td><span class="mt-name">佐藤さん</span><span class="mt-role">SaaS カスタマーサクセス 3年</span></td>
+          <td class="mt-c"><span class="mt-mark">○</span></td>
+          <td class="mt-c"><span class="mt-mark g">◎</span></td>
+          <td class="mt-c"><span class="mt-mark m">△</span></td>
+          <td class="mt-fit"><span class="mt-pct">71%</span></td>
+        </tr>
+        <tr>
+          <td><span class="mt-name">鈴木さん</span><span class="mt-role">人材サービス 法人営業 2年</span></td>
+          <td class="mt-c"><span class="mt-mark m">△</span></td>
+          <td class="mt-c"><span class="mt-mark">○</span></td>
+          <td class="mt-c"><span class="mt-mark g">◎</span></td>
+          <td class="mt-fit"><span class="mt-pct">58%</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <div class="art-layout">

@@ -115,14 +115,62 @@ fbq('init','1264057945446029');fbq('track','PageView');
   </div>
 </header>
 
-<div class="art-cover-v6 acf-dash">
-  <div class="af-top"><span class="af-dot"></span>士業事務所 業務ダッシュボード<span class="af-smp">※サンプル・数値はイメージ</span></div>
-  <div class="af-kpis">
-    <div><div class="af-k-l">書面作成の時短</div><div class="af-k-v"><em>2.6</em>x</div></div>
-    <div><div class="af-k-l">調査の下調べ時間</div><div class="af-k-v"><em>-45</em>%</div></div>
-    <div><div class="af-k-l">相談一次対応</div><div class="af-k-v"><em>+30</em>%</div></div>
+<style>
+.sh-cover{max-width:var(--measure);margin:32px auto 4px;border:1px solid var(--line);border-radius:14px;background:var(--white);padding:18px 20px 16px;font-family:var(--jp);overflow:hidden;}
+.sh-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:0 2px 12px;border-bottom:1px solid var(--line);flex-wrap:wrap;}
+.sh-title{font-size:14px;font-weight:600;color:var(--ink);letter-spacing:-.01em;}
+.sh-meta{font-family:var(--en);font-size:11px;font-weight:500;color:var(--slate);font-feature-settings:"tnum" 1;}
+.sh-meta b{color:var(--electric);font-weight:600;}
+.sh-list{list-style:none;margin:4px 0 0;padding:0;}
+.sh-row{display:flex;align-items:center;gap:13px;padding:11px 4px;border-bottom:1px solid var(--line);}
+.sh-row:last-child{border-bottom:none;}
+.sh-box{flex:none;width:17px;height:17px;border-radius:5px;border:1.5px solid var(--line-2);box-sizing:border-box;display:flex;align-items:center;justify-content:center;}
+.sh-row.done .sh-box{border-color:var(--electric);background:var(--electric);}
+.sh-box svg{display:block;}
+.sh-task{flex:1 1 auto;min-width:0;font-size:14.5px;color:var(--ink-soft);line-height:1.5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sh-row.done .sh-task{color:var(--slate);}
+.sh-tag{flex:none;font-family:var(--en);font-size:10.5px;font-weight:500;color:var(--slate);letter-spacing:.01em;padding:3px 9px;border:1px solid var(--line);border-radius:999px;white-space:nowrap;}
+.sh-row.done .sh-tag{color:var(--electric);border-color:rgba(0,94,255,.30);}
+.sh-foot{margin-top:12px;padding-top:11px;border-top:1px solid var(--line);font-size:11.5px;color:var(--slate);line-height:1.5;}
+@media(max-width:560px){
+  .sh-task{font-size:13.5px;white-space:normal;}
+  .sh-tag{display:none;}
+  .sh-cover{padding:16px 16px 14px;}
+}
+</style>
+<div class="art-cover-v6 sh-cover" role="img" aria-label="士業事務所の業務チェックリスト。記帳データの整理と相談の一次回答はAIの下書きで完了、申請書類・契約書チェック・調査の下調べは確認待ちのサンプル表示。">
+  <div class="sh-head">
+    <span class="sh-title">事務所の今日のタスク</span>
+    <span class="sh-meta"><b>2</b> / 5 下書き完了 <span aria-hidden="true">·</span> ※サンプル</span>
   </div>
-  <div class="af-bars"><i style="height:48%"></i><i style="height:64%"></i><i style="height:54%"></i><i class="hi" style="height:86%"></i><i style="height:72%"></i><i style="height:80%"></i><i style="height:62%"></i></div>
+  <ul class="sh-list">
+    <li class="sh-row done">
+      <span class="sh-box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2L4.7 8.4L9.5 3.4" stroke="var(--white)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span class="sh-task">記帳データの整理</span>
+      <span class="sh-tag">AIが下書き</span>
+    </li>
+    <li class="sh-row">
+      <span class="sh-box" aria-hidden="true"></span>
+      <span class="sh-task">申請書類のドラフト</span>
+      <span class="sh-tag">確認待ち</span>
+    </li>
+    <li class="sh-row">
+      <span class="sh-box" aria-hidden="true"></span>
+      <span class="sh-task">契約書のチェック</span>
+      <span class="sh-tag">有資格者が判断</span>
+    </li>
+    <li class="sh-row done">
+      <span class="sh-box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2L4.7 8.4L9.5 3.4" stroke="var(--white)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span class="sh-task">相談の一次回答</span>
+      <span class="sh-tag">AIが下書き</span>
+    </li>
+    <li class="sh-row">
+      <span class="sh-box" aria-hidden="true"></span>
+      <span class="sh-task">調査の下調べ</span>
+      <span class="sh-tag">原典で要確認</span>
+    </li>
+  </ul>
+  <div class="sh-foot">AIが下書きを用意し、最終確認と判断は有資格者が握る。※サンプル・タスク名はイメージです。</div>
 </div>
 
 <div class="art-layout">
