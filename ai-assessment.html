@@ -705,7 +705,8 @@ function clearState(){try{sessionStorage.removeItem('tw_assess');}catch(e){}}
 
 /* answer handling — ポインタ選択でのみ自動送り（キーボードは矢印で全選択肢→Enterで前進） */
 var advTimer=null, finished=false;
-function scheduleAdvance(){ clearTimeout(advTimer); var atLast=cur===TOTAL_Q-1; advTimer=setTimeout(function(){ atLast?finish():showStep(cur+1); },360); }
+/* 360ms後に前進。answersはchange(clickのバブリング後に発火)で入るため、判定はタイマー発火時に行う */
+function scheduleAdvance(){ clearTimeout(advTimer); advTimer=setTimeout(function(){ if(answers['q'+cur]==null)return; (cur===TOTAL_Q-1)?finish():showStep(cur+1); },360); }
 var _sw=document.getElementById('stepsWrap');
 _sw.addEventListener('change',function(e){
   var inp=e.target;if(inp.type!=='radio')return;
@@ -716,10 +717,10 @@ _sw.addEventListener('change',function(e){
 _sw.addEventListener('click',function(e){
   var bk=e.target.closest('[data-back]');
   if(bk){ clearTimeout(advTimer); showStep(Math.max(0,cur-1)); return; }
-  if(e.target.closest('.opt')&&answers['q'+cur]!=null){ scheduleAdvance(); }
+  if(e.target.closest('.opt')){ scheduleAdvance(); } // ポインタ選択→前進（answersはタイマー発火時に確定済み）
 });
 _sw.addEventListener('keydown',function(e){
-  if(e.key==='Enter'&&e.target.closest('.opt')&&answers['q'+cur]!=null){ e.preventDefault(); scheduleAdvance(); }
+  if(e.key==='Enter'&&e.target.closest('.opt')){ e.preventDefault(); scheduleAdvance(); }
 });
 
 /* start / resume */
