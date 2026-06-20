@@ -114,10 +114,22 @@ body.menu-open .mmenu{transform:none;visibility:visible;}
 .hero h1{font-family:var(--jp);font-weight:700;font-size:clamp(38px,6.4vw,90px);line-height:1.26;letter-spacing:-.02em;}
 .hero h1 .en{font-family:var(--en);font-weight:600;letter-spacing:-.01em;}
 .hero h1 .u{background:linear-gradient(transparent 80%,var(--electric) 80%,var(--electric) 91%,transparent 91%);}
-.hero-foot{display:grid;grid-template-columns:1fr auto;gap:48px;align-items:end;margin-top:52px;padding-top:34px;border-top:1px solid var(--line);}
-.hero-foot p{font-size:16px;color:var(--slate);max-width:48ch;line-height:2.05;}
+.hero-foot{display:grid;grid-template-columns:1.04fr .96fr;gap:52px;align-items:center;margin-top:52px;padding-top:34px;border-top:1px solid var(--line);}
+.hero-foot p{font-size:16px;color:var(--slate);max-width:46ch;line-height:2.05;}
 .hero-foot p strong{color:var(--ink);font-weight:600;}
-.hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;}
+.hero-visual{border:1px solid var(--line-2);border-radius:14px;overflow:hidden;background:var(--white);box-shadow:0 30px 60px -40px rgba(13,17,23,.3);}
+.hvd-wrap{padding:38px 38px 32px;font-family:var(--jp);}
+.hvd-eq{display:flex;align-items:baseline;flex-wrap:nowrap;column-gap:12px;margin-bottom:24px;}
+.hvd-term{display:flex;flex-direction:column;}
+.hvd-term .hvd-jp{font-size:clamp(20px,5.4vw,26px);font-weight:700;letter-spacing:-.015em;color:var(--ink);line-height:1.04;white-space:nowrap;}
+.hvd-term .hvd-en{font-family:var(--en);font-size:9.5px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-top:9px;white-space:nowrap;}
+.hvd-op{font-family:var(--en);font-weight:400;font-size:19px;color:var(--line-2);line-height:1;align-self:center;flex-shrink:0;margin-bottom:15px;}
+.hvd-term.is-result .hvd-jp{color:var(--electric);}
+.hvd-term.is-result .hvd-en{color:var(--electric);opacity:.78;}
+.hvd-note{margin:0;padding-left:15px;border-left:2px solid var(--electric);font-size:13.5px;line-height:1.78;color:var(--slate);}
+.hvd-note b{color:var(--ink);font-weight:600;}
+@media (max-width:1000px){.hvd-wrap{padding:32px 28px 30px;}}
 
 /* ===== FIGURES BAND ===== */
 .figures{max-width:1280px;margin:0 auto;padding:24px 48px 86px;}
@@ -335,12 +347,6 @@ body.menu-open .mmenu{transform:none;visibility:visible;}
 .rb-inside li{font-size:13px;color:#28313f;line-height:1.55;padding:5px 0 5px 20px;position:relative;}
 .rb-inside li::before{content:"";position:absolute;left:2px;top:11px;width:8px;height:2px;background:var(--electric);}
 
-/* ===== FINAL CTA ===== */
-.final{background:var(--electric);color:var(--paper);padding:104px 0;text-align:center;}
-.final h2{font-family:var(--jp);font-weight:700;font-size:clamp(28px,3.6vw,46px);line-height:1.4;letter-spacing:-.02em;}
-.final p{font-size:16px;color:rgba(244,246,249,.85);margin-top:18px;}
-.final .actions{display:flex;gap:14px;justify-content:center;margin-top:36px;flex-wrap:wrap;}
-
 /* ===== FOOTER ===== */
 footer{background:var(--white);border-top:1px solid var(--line);padding:64px 0 40px;}
 .footer-inner{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;}
@@ -413,6 +419,7 @@ html.js .rvg.show>*:nth-child(5){transition-delay:.36s;}
 
 /* ===== RESPONSIVE ===== */
 @media(max-width:1000px){
+  .hero-foot{grid-template-columns:1fr;gap:30px;align-items:start;}
   .footer-inner{grid-template-columns:1fr 1fr;gap:32px;}
   .approach-grid{grid-template-columns:1fr;}
   .approach-col{border-left:none;border-top:1px solid var(--line);padding:30px 0 6px;}
@@ -614,11 +621,25 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
   <div class="tag">Enterprise AI <span>企業の文脈を、AIの力に変える</span></div>
   <h1>AIは<span class="en">engine</span>。<br><span class="u">コンテキスト</span>は燃料だ。</h1>
   <div class="hero-foot">
-    <p><strong>ツールを入れただけでは、AIは動きません。</strong>貴社の業務の文脈を、AIが扱える形に整える。それが、私たちの仕事です。上場企業を含む37社・2,500名の現場で、成果を出してきました。</p>
-    <div class="hero-actions">
-      <a href="library/" class="btn">2026年版 活用事例集をもらう <i>↓</i></a>
-      <a href="ai-assessment.html" class="btn btn--ghost">AI活用度を診断（無料・5分）<i>→</i></a>
-      <a href="contact.html" class="btn btn--ghost">無料相談</a>
+    <div class="hf-text">
+      <p><strong>ツールを入れただけでは、AIは動きません。</strong>貴社の業務の文脈を、AIが扱える形に整える。それが、私たちの仕事です。上場企業を含む37社・2,500名の現場で、成果を出してきました。</p>
+      <div class="hero-actions">
+        <a href="library/" class="btn">2026年版 活用事例集をもらう <i>↓</i></a>
+        <a href="ai-assessment.html" class="btn btn--ghost">AI活用度を診断（無料・5分）<i>→</i></a>
+        <a href="contact.html" class="btn btn--ghost">無料相談</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hvd-wrap">
+        <div class="hvd-eq">
+          <div class="hvd-term"><span class="hvd-jp">コンテキスト</span><span class="hvd-en">Context / Fuel</span></div>
+          <span class="hvd-op">&times;</span>
+          <div class="hvd-term"><span class="hvd-jp">AI</span><span class="hvd-en">Engine</span></div>
+          <span class="hvd-op">=</span>
+          <div class="hvd-term is-result"><span class="hvd-jp">成果</span><span class="hvd-en">Outcome</span></div>
+        </div>
+        <p class="hvd-note">ツールを入れただけでは、AIは動かない。<br><b>業務の文脈</b>をAIが扱える形に整えて、はじめて現場で<b>成果</b>になる。</p>
+      </div>
     </div>
   </div>
 </header>
@@ -1014,18 +1035,6 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
         <ul class="rb-inside"><li>生成AIの3大リスクと、その対策</li><li>安全なセットアップ 5原則</li><li>全社展開前の 10項目チェックリスト</li></ul>
         <span class="rb-dl">無料でダウンロード <i>↓</i></span>
       </a>
-    </div>
-  </div>
-</section>
-
-<!-- FINAL CTA -->
-<section class="final" id="cta">
-  <div class="container">
-    <h2>AIを、成果が出る状態に。</h2>
-    <p>ツールを入れて終わり、にはしません。37社・2,500名の支援で培った手法で、<br>現場が成果を出すところまで、本気で伴走します。</p>
-    <div class="actions">
-      <a href="contact.html" class="btn btn--on-blue">無料相談に申し込む</a>
-      <a href="library/" class="btn btn--on-blue-ghost">2026年版 活用事例集をもらう</a>
     </div>
   </div>
 </section>
