@@ -47,7 +47,7 @@ if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_vi
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:84px;}
-body{font-family:var(--jp);background:var(--paper);color:var(--ink);line-height:1.85;font-size:16px;-webkit-font-smoothing:antialiased;font-feature-settings:"palt" 1;overflow-x:hidden;}
+body{font-family:var(--jp);background:radial-gradient(820px 460px at 50% -120px,rgba(0,94,255,.05),rgba(0,94,255,0) 72%) no-repeat,var(--paper);color:var(--ink);line-height:1.85;font-size:16px;-webkit-font-smoothing:antialiased;font-feature-settings:"palt" 1;overflow-x:hidden;}
 ::selection{background:var(--electric);color:var(--paper);}
 a{color:inherit;}
 .container{max-width:760px;margin:0 auto;padding:0 24px;width:100%;}
@@ -172,6 +172,57 @@ body.menu-open .mmenu{transform:none;visibility:visible;}
 .hp-aitext b{color:var(--ink);}
 .hp-note{text-align:center;font-size:13px;color:var(--slate);margin-top:18px;}
 @media(max-width:560px){.hp-top{gap:16px;}.hp-ring,.hp-ring svg{width:92px;height:92px;}.hp-ringtxt b{font-size:26px;}.hp-brow{grid-template-columns:84px 1fr 32px;gap:10px;}.hp-brow>span{font-size:11px;}.hp-body{padding:20px 18px 18px;}.hp-gaugelabels{display:none;}.hp-gauge{margin-bottom:2px;}}
+
+/* EDITORIAL STATEMENT（Anthropic流: 大胆タイポ＋余白） */
+.ed-statement{padding:64px 0 56px;}
+.ed-statement .container{max-width:760px;}
+.eds-kicker{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);margin-bottom:18px;}
+.eds-h{font-family:var(--jp);font-weight:700;font-size:clamp(26px,4.2vw,42px);line-height:1.34;letter-spacing:-.025em;}
+.eds-h em{font-style:normal;border-bottom:3px solid var(--electric);padding-bottom:2px;}
+.eds-sub{font-size:16px;line-height:1.95;color:var(--slate);margin-top:24px;max-width:52ch;}
+
+/* HOW IT WORKS（3つの製品ビネット・矢印/レール無し） */
+.how{padding:8px 0 60px;}
+.how-h{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);text-align:center;margin-bottom:24px;}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.how-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:20px 18px;box-shadow:0 20px 44px -36px rgba(13,17,23,.26);}
+.how-num{font-family:var(--en);font-weight:700;font-size:12px;color:var(--electric);}
+.how-cap{font-family:var(--jp);font-weight:700;font-size:15px;margin:2px 0 16px;}
+.how-ui{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px;min-height:120px;display:flex;flex-direction:column;justify-content:center;}
+.mc-chips{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
+.mc-chip{font-size:10.5px;font-weight:600;color:var(--slate);background:var(--white);border:1px solid var(--line);border-radius:7px;padding:9px 6px;text-align:center;}
+.mc-chip.on{color:var(--electric);border-color:var(--electric);background:rgba(0,94,255,.05);}
+.mq-q{font-size:11.5px;font-weight:700;color:var(--ink);margin-bottom:9px;line-height:1.4;}
+.mq-opt{display:flex;align-items:center;gap:8px;font-size:10.5px;color:var(--slate);background:var(--white);border:1px solid var(--line);border-radius:7px;padding:8px 9px;margin-bottom:6px;}
+.mq-opt:last-child{margin-bottom:0;}
+.mq-opt .r{width:12px;height:12px;border-radius:50%;border:2px solid var(--line-2);flex-shrink:0;}
+.mq-opt.on{border-color:var(--electric);color:var(--ink);}
+.mq-opt.on .r{border-color:var(--electric);background:radial-gradient(circle,var(--electric) 0 3px,transparent 3px);}
+.mr{display:flex;align-items:center;gap:12px;}
+.mr-ring{width:48px;height:48px;flex-shrink:0;position:relative;}
+.mr-ring svg{width:48px;height:48px;display:block;}
+.mr-ring b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--en);font-weight:700;font-size:13px;color:var(--electric);}
+.mr-lv{font-family:var(--jp);font-weight:700;font-size:13.5px;}
+.mr-bars{margin-top:10px;display:grid;gap:5px;}
+.mr-bar{height:6px;border-radius:3px;background:var(--paper-2);overflow:hidden;}
+.mr-bar i{display:block;height:100%;background:var(--electric);border-radius:3px;}
+.mr-bar i.g{background:var(--emerald);}
+
+/* FRAMEWORK BAND（準拠フレームワーク・trust band） */
+.fw-band{padding:0 0 72px;}
+.fw-band .container{max-width:760px;text-align:center;}
+.fwb-label{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-bottom:18px;}
+.fwb-marks{display:flex;align-items:center;justify-content:center;gap:22px;flex-wrap:wrap;}
+.fwb-marks>span:not(.sep){font-family:var(--en);font-weight:700;font-size:clamp(16px,2.4vw,21px);letter-spacing:-.01em;color:var(--ink);opacity:.82;}
+.fwb-marks .sep{width:1px;height:18px;background:var(--line-2);}
+.fwb-note{font-size:13px;color:var(--slate);line-height:1.85;margin:18px auto 0;max-width:46ch;}
+
+@media(max-width:680px){
+  .how-grid{grid-template-columns:1fr;gap:14px;}
+  .how-ui{min-height:0;}
+  .ed-statement{padding:46px 0 38px;}
+  .fwb-marks{gap:16px;}
+}
 
 /* ASSESS STEPS */
 .assess{display:none;padding:96px 0 130px;}
@@ -483,7 +534,7 @@ footer .container{max-width:1180px;}
 
 <!-- WHAT YOU GET -->
 <!-- HERO PRODUCT PREVIEW（得られる結果の実物見本／v6: real product UI + dashboard） -->
-<section class="teaser" id="teaser">
+<section class="teaser intro-only" id="teaser">
   <div class="container">
     <div class="hp-card">
       <div class="hp-cap">結果プレビュー（サンプル）</div>
@@ -512,6 +563,45 @@ footer .container{max-width:1180px;}
       </div>
     </div>
     <p class="hp-note">回答すると、こんな結果がその場で出ます。</p>
+  </div>
+</section>
+
+<!-- EDITORIAL STATEMENT（Anthropic流の大胆タイポ） -->
+<section class="ed-statement intro-only">
+  <div class="container">
+    <p class="eds-kicker">なぜ「成熟度」で見るのか</p>
+    <h2 class="eds-h">AIツールは、もう十分に強い。<br><em>差がつくのは、使いこなしの深さだ。</em></h2>
+    <p class="eds-sub">同じツールを入れても、成果には差が出ます。鍵は、現場への浸透・自社情報の渡し方・安心して使えるルール——その「深さ」。この診断は、あなたの会社の深さを5段階で可視化します。</p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS（3つの製品ビネット／Linear・Stripe流） -->
+<section class="how intro-only">
+  <div class="container">
+    <h3 class="how-h">3ステップ・約1分</h3>
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-num">01</div><div class="how-cap">業界を選ぶ</div>
+        <div class="how-ui"><div class="mc-chips"><span class="mc-chip on">製造業</span><span class="mc-chip">建設・不動産</span><span class="mc-chip">IT・通信</span><span class="mc-chip">小売・EC</span></div></div>
+      </div>
+      <div class="how-card">
+        <div class="how-num">02</div><div class="how-cap">6問に答える</div>
+        <div class="how-ui"><div class="mq-q">生成AIをどう使うか方針は？</div><div class="mq-opt"><span class="r"></span>まだ決まっていない</div><div class="mq-opt on"><span class="r"></span>会社としての方針がある</div></div>
+      </div>
+      <div class="how-card">
+        <div class="how-num">03</div><div class="how-cap">結果と業界事例</div>
+        <div class="how-ui"><div class="mr"><div class="mr-ring"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="20" fill="none" stroke="var(--paper-2)" stroke-width="5"/><circle cx="24" cy="24" r="20" fill="none" stroke="var(--electric)" stroke-width="5" stroke-linecap="round" stroke-dasharray="125.6" stroke-dashoffset="48" transform="rotate(-90 24 24)"/></svg><b>62</b></div><div class="mr-lv">定着期</div></div><div class="mr-bars"><div class="mr-bar"><i style="width:55%"></i></div><div class="mr-bar"><i class="g" style="width:85%"></i></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FRAMEWORK BAND（準拠フレームワーク／trust band） -->
+<section class="fw-band intro-only">
+  <div class="container">
+    <p class="fwb-label">準拠するフレームワーク</p>
+    <div class="fwb-marks"><span>Microsoft</span><span class="sep"></span><span>MIT CISR</span><span class="sep"></span><span>NIST</span></div>
+    <p class="fwb-note">Microsoft公式のAI成熟度モデルを土台に、MIT CISRの実証研究・NIST AI RMFを参考に設計しています。</p>
   </div>
 </section>
 
@@ -791,7 +881,7 @@ _sw.addEventListener('keydown',function(e){
 function beginAssessment(stepIdx){
   document.getElementById('intro').style.display='none';
   document.getElementById('introStart').style.display='none';
-  document.getElementById('teaser').style.display='none';
+  document.querySelectorAll('.intro-only').forEach(function(e){e.style.display='none';});
   document.getElementById('industryPick').classList.remove('show');
   document.getElementById('assess').classList.add('show');
   document.body.classList.add('assessing');
@@ -804,7 +894,7 @@ function beginAssessment(stepIdx){
 function openIndustryPick(){
   document.getElementById('intro').style.display='none';
   document.getElementById('introStart').style.display='none';
-  document.getElementById('teaser').style.display='none';
+  document.querySelectorAll('.intro-only').forEach(function(e){e.style.display='none';});
   document.getElementById('industryPick').classList.add('show');
   window.scrollTo({top:0,behavior:'smooth'});
 }
