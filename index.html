@@ -147,7 +147,11 @@ body.menu-open .mmenu{transform:none;visibility:visible;}
 .tools .tools-lead{max-width:200px;}
 .tools .tools-lead .t{font-size:14px;font-weight:600;line-height:1.7;}
 .tools .tools-lead .s{font-size:12px;color:var(--slate);margin-top:6px;}
-.tools .tools-grid{display:flex;flex-wrap:wrap;gap:14px 30px;align-items:center;}
+.tools .tools-grid{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);}
+.tools .tools-track{display:flex;align-items:center;width:max-content;animation:toolsMarquee 34s linear infinite;}
+.tools .tools-track .tool-item{margin-right:46px;}
+.tools:hover .tools-track{animation-play-state:paused;}
+@keyframes toolsMarquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 .tool-item{display:inline-flex;align-items:center;gap:10px;}
 .tool-item img{width:24px;height:24px;object-fit:contain;}
 .tool-item span{font-size:14px;font-weight:500;color:var(--ink);}
@@ -384,6 +388,14 @@ html.js .hero .tag{animation:heroIn .7s .05s both cubic-bezier(.16,1,.3,1);}
 html.js .hero h1{animation:heroIn .8s .16s both cubic-bezier(.16,1,.3,1);}
 html.js .hero-foot{animation:heroIn .8s .42s both cubic-bezier(.16,1,.3,1);}
 html.js .hero h1 .u{background-repeat:no-repeat;background-size:0% 100%;animation:drawLine .7s .8s forwards cubic-bezier(.16,1,.3,1);}
+@keyframes eqIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+html.js .hvd-eq>*{opacity:0;animation:eqIn .55s both cubic-bezier(.16,1,.3,1);}
+html.js .hvd-eq>*:nth-child(1){animation-delay:.95s;}
+html.js .hvd-eq>*:nth-child(2){animation-delay:1.06s;}
+html.js .hvd-eq>*:nth-child(3){animation-delay:1.16s;}
+html.js .hvd-eq>*:nth-child(4){animation-delay:1.27s;}
+html.js .hvd-eq>*:nth-child(5){animation-delay:1.37s;}
+html.js .hvd-note{opacity:0;animation:eqIn .6s 1.55s both cubic-bezier(.16,1,.3,1);}
 
 /* ===== UI: staggered group reveal ===== */
 html.js .rvg>*{opacity:0;transform:translateY(18px);}
@@ -414,6 +426,8 @@ html.js .rvg.show>*:nth-child(5){transition-delay:.36s;}
 .ocard:hover strong{transform:translateX(4px);}
 .tool-item{transition:transform .2s ease;}
 .tool-item:hover{transform:translateY(-2px);}
+.svc-overview,.svc-c,.ocard,.voice-card{transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s ease;}
+.svc-overview:hover,.svc-c:hover,.ocard:hover,.voice-card:hover{transform:translateY(-4px);box-shadow:0 22px 44px -28px rgba(13,17,23,.30);}
 .company-table tr{transition:background .2s;}
 .company-table tr:hover{background:rgba(0,94,255,.03);}
 
@@ -589,7 +603,7 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
   <a href="index.html" class="logo">Tech<i>Worker</i></a>
   <ul>
     <li><a href="index.html" class="active">ホーム</a></li>
-    <li><a href="#services">サービス</a></li>
+    <li><a href="services.html">サービス</a></li>
     <li><a href="cases.html">実績</a></li>
     <li><a href="media/">メディア</a></li>
     <li><a href="library/">資料</a></li>
@@ -606,7 +620,7 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
 <!-- MOBILE MENU -->
 <div class="mmenu" id="mmenu" aria-hidden="true">
   <a href="index.html">ホーム</a>
-  <a href="index.html#services">サービス</a>
+  <a href="services.html">サービス</a>
   <a href="cases.html">実績</a>
   <a href="media/">メディア</a>
   <a href="library/">資料ダウンロード</a>
@@ -624,9 +638,8 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
     <div class="hf-text">
       <p><strong>ツールを入れただけでは、AIは動きません。</strong>貴社の業務の文脈を、AIが扱える形に整える。それが、私たちの仕事です。上場企業を含む37社・2,500名の現場で、成果を出してきました。</p>
       <div class="hero-actions">
-        <a href="library/" class="btn">2026年版 活用事例集をもらう <i>↓</i></a>
+        <a href="contact.html" class="btn">無料相談 <i>→</i></a>
         <a href="ai-assessment.html" class="btn btn--ghost">AI活用度を診断（無料・5分）<i>→</i></a>
-        <a href="contact.html" class="btn btn--ghost">無料相談</a>
       </div>
     </div>
     <div class="hero-visual" aria-hidden="true">
@@ -662,13 +675,22 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
       <div class="s">特定ツールに依存しない、マルチAI対応</div>
     </div>
     <div class="tools-grid">
-      <div class="tool-item"><img src="assets/logos/claude.svg" alt="Claude"><span>Claude</span></div>
-      <div class="tool-item"><img src="assets/logos/chatgpt.png" alt="ChatGPT"><span>ChatGPT</span></div>
-      <div class="tool-item"><img src="assets/logos/copilot.webp" alt="Microsoft Copilot"><span>Microsoft Copilot</span></div>
-      <div class="tool-item"><img src="assets/logos/gemini.svg" alt="Gemini"><span>Gemini</span></div>
-      <div class="tool-item"><img src="assets/logos/perplexity.png" alt="Perplexity"><span>Perplexity</span></div>
-      <div class="tool-item"><img src="assets/logos/notion.png" alt="Notion AI"><span>Notion AI</span></div>
-      <div class="tool-item"><img src="assets/logos/github-copilot.png" alt="GitHub Copilot"><span>GitHub Copilot</span></div>
+      <div class="tools-track">
+        <div class="tool-item"><img src="assets/logos/claude.svg" alt="Claude"><span>Claude</span></div>
+        <div class="tool-item"><img src="assets/logos/chatgpt.png" alt="ChatGPT"><span>ChatGPT</span></div>
+        <div class="tool-item"><img src="assets/logos/copilot.webp" alt="Microsoft Copilot"><span>Microsoft Copilot</span></div>
+        <div class="tool-item"><img src="assets/logos/gemini.svg" alt="Gemini"><span>Gemini</span></div>
+        <div class="tool-item"><img src="assets/logos/perplexity.png" alt="Perplexity"><span>Perplexity</span></div>
+        <div class="tool-item"><img src="assets/logos/notion.png" alt="Notion AI"><span>Notion AI</span></div>
+        <div class="tool-item"><img src="assets/logos/github-copilot.png" alt="GitHub Copilot"><span>GitHub Copilot</span></div>
+        <div class="tool-item" aria-hidden="true"><img src="assets/logos/claude.svg" alt=""><span>Claude</span></div>
+        <div class="tool-item" aria-hidden="true"><img src="assets/logos/chatgpt.png" alt=""><span>ChatGPT</span></div>
+        <div class="tool-item" aria-hidden="true"><img src="assets/logos/copilot.webp" alt=""><span>Microsoft Copilot</span></div>
+        <div class="tool-item" aria-hidden="true"><img src="assets/logos/gemini.svg" alt=""><span>Gemini</span></div>
+        <div class="tool-item" aria-hidden="true"><img src="assets/logos/perplexity.png" alt=""><span>Perplexity</span></div>
+        <div class="tool-item" aria-hidden="true"><img src="assets/logos/notion.png" alt=""><span>Notion AI</span></div>
+        <div class="tool-item" aria-hidden="true"><img src="assets/logos/github-copilot.png" alt=""><span>GitHub Copilot</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -684,10 +706,6 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
       <a href="news/005.html" class="news-row"><span class="d">2026.06.06</span><span class="tg">お知らせ</span><span class="tt">ホームページをアップデートしました</span></a>
       <a href="news/008.html" class="news-row"><span class="d">2026.04.20</span><span class="tg">お知らせ</span><span class="tt">生成AI×士業メディアの運用を開始しました</span></a>
       <a href="news/007.html" class="news-row"><span class="d">2026.04.10</span><span class="tg">お知らせ</span><span class="tt">生成AI×人材メディアの運用を開始しました</span></a>
-      <a href="news/001.html" class="news-row"><span class="d">2026.03.20</span><span class="tg">お知らせ</span><span class="tt">生成AI活用事例ホワイトペーパーを公開しました</span></a>
-      <a href="news/002.html" class="news-row"><span class="d">2026.03.14</span><span class="tg">お知らせ</span><span class="tt">サービスラインナップを刷新しました</span></a>
-      <a href="news/003.html" class="news-row"><span class="d">2026.02.28</span><span class="tg ev">イベント</span><span class="tt">「AI導入の落とし穴」無料ウェビナー開催のお知らせ</span></a>
-      <a href="news/004.html" class="news-row"><span class="d">2025.05.07</span><span class="tg ev">イベント</span><span class="tt">さくらインターネット株式会社の社内セミナーに代表・古野が講師として登壇しました</span></a>
     </div>
   </div>
 </section>
@@ -705,7 +723,7 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
         <div class="mi-cap">企業の生成AI導入の約95%が、成果につながらないまま止まっている。<span class="src">出典：MIT, 2025</span></div>
       </div>
       <div class="mi-body">
-        <p>この現実を、誰よりも知っているのが開発元です。2026年、<strong>OpenAIは数百名規模の導入コンサルタントを採用</strong>し、McKinsey・BCG・Accentureらと大型提携。<strong>Anthropicも大手コンサルティングファームと提携し</strong>、大規模なパートナー網の構築を進めています。</p>
+        <p>この現実を最もよく知るのが、開発元です。2026年、<strong>OpenAIは導入コンサルタントを数百名規模で採用</strong>。<strong>Anthropicも大手コンサルと提携</strong>し、導入支援の網を広げています。</p>
         <p>なぜ、AIをつくる当事者そのものが「導入支援」にこれほど投資するのか。答えは明快です。<strong>ツールは、もう十分に高性能だから。</strong></p>
       </div>
     </div>
@@ -749,7 +767,7 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
     <div class="sec-head rv">
       <span class="tag">Our Approach <span>私たちの強み</span></span>
       <h2>「コンテキスト整理」こそ、<br>AI時代の土台になる。</h2>
-      <p class="lead">業務マニュアル、暗黙知、判断基準、社内用語、承認フロー。これらはすべて「コンテキスト」です。人と人なら自然に共有できますが、AIにはそのままでは渡せません。私たちは、この「コンテキスト」をAIが理解し、使いこなせる形に整える専門家集団です。</p>
+      <p class="lead">業務マニュアル、暗黙知、判断基準、社内用語、承認フロー——これらはすべて「コンテキスト」。人どうしなら自然に共有できても、AIにはそのまま渡せません。私たちは、それをAIが使いこなせる形に整える専門家です。</p>
     </div>
     <style>
     .v6fig-cp{--v6card:#fff;--v6ink:#16181D;--v6muted:#878E99;--v6hair:#ECEEF1;--v6hair2:#E2E4E9;--v6soft2:#FAFBFC;--v6blue:#005EFF;--v6bluesoft:#EFF3FF;--v6green:#1A8F5E;--v6greensoft:#E9F6EF;color:var(--v6ink);line-height:1.6;letter-spacing:.003em;font-feature-settings:normal;margin:0 auto 40px;max-width:560px}
@@ -775,7 +793,7 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
     </div>
     <div class="approach-grid rvg">
       <div class="approach-col"><div class="an">01</div><h3>コンテキスト整理の専門性</h3><p>業務知識・判断基準・暗黙のルールを、AIが扱える形に整える独自の手法。ツールを選ぶ前に、まず「文脈」から整えます。</p></div>
-      <div class="approach-col"><div class="an">02</div><h3>主要AIツールを、<br>導入から定着まで一貫対応</h3><p>Microsoft Copilot・Claude Code・ChatGPT・Gemini など、ツール選定からセットアップ・セキュリティ設計・社内定着まで丸ごと支援。特定ツールに依存しません。</p></div>
+      <div class="approach-col"><div class="an">02</div><h3>主要AIツールを、<br>導入から定着まで一貫対応</h3><p>ツール選定からセットアップ、セキュリティ設計、社内定着まで一貫支援。特定のツールに依存しません。</p></div>
       <div class="approach-col"><div class="an">03</div><h3>37社・2,500名の支援実績</h3><p>製薬・建設・化学・食品・IT・エンタメなど、業種を問わず成果を出してきた汎用フレームワークです。</p></div>
     </div>
   </div>
@@ -836,21 +854,21 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
     </div>
     <div class="voice-grid rvg">
       <blockquote class="voice-card">
-        <p>経験と勘に頼っていた新素材の用途探索が、1時間で何案も出てくる。自社だけでは届かなかった発想の幅が、明らかに広がりました。</p>
+        <p>経験と勘に頼っていた用途探索が、1時間で何案も出てくる。自社だけでは届かなかった発想の幅が、広がりました。</p>
         <footer>
           <div class="v-person"><span class="v-avatar">化</span><div><span class="vrole">研究開発本部 マネージャー</span><span class="vco">東証プライム上場・総合化学メーカー</span></div></div>
           <span class="v-service"><b>ご利用</b>：生成AIコンサル（R&D領域）</span>
         </footer>
       </blockquote>
       <blockquote class="voice-card">
-        <p>外部に頼っていた市場リサーチを、自社で回せるようになりました。外注コストが下がっただけでなく、意思決定のスピードそのものが変わったと感じています。</p>
+        <p>外注していた市場リサーチを、自社で回せるように。コストが下がっただけでなく、意思決定のスピードそのものが変わりました。</p>
         <footer>
           <div class="v-person"><span class="v-avatar">薬</span><div><span class="vrole">DX推進部 ご担当</span><span class="vco">外資系大手製薬企業</span></div></div>
           <span class="v-service"><b>ご利用</b>：生成AIコンサル＋社内研修</span>
         </footer>
       </blockquote>
       <blockquote class="voice-card">
-        <p>属人化して煩雑だった社内の判断基準や業務知識を、AIが扱える形に一つずつ整理してもらえました。バラバラだった「前提」が揃い、現場が同じ目線で動けるようになったことが、何よりの価値です。</p>
+        <p>属人化していた判断基準や業務知識を、AIが扱える形に整理。バラバラだった「前提」が揃い、現場が同じ目線で動けるようになりました。</p>
         <footer>
           <div class="v-person"><span class="v-avatar">経</span><div><span class="vrole">経営企画部 部長</span><span class="vco">中堅メーカー</span></div></div>
           <span class="v-service"><b>ご利用</b>：生成AIコンサル（コンテキスト整理）</span>
@@ -874,13 +892,13 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
       <div class="svc-overview">
         <div class="sn">02</div>
         <h3>Claude Code 法人研修</h3>
-        <p>Claude Code を「個人スキル」から「組織の武器」へ。4回完結で、貴社専用の運用設計図（CLAUDE.md・カスタムエージェント）を移植する法人研修。人材開発支援助成金（最大75%）に対応しています。</p>
+        <p>Claude Code を「個人スキル」から「組織の武器」へ。4回完結で貴社専用の運用設計（CLAUDE.md・カスタムエージェント）を移植。人材開発支援助成金（最大75%）対応。</p>
         <a href="training.html">研修プログラムを見る →</a>
       </div>
       <div class="svc-overview">
         <div class="sn">03</div>
         <h3>生活者デジタルツインリサーチ</h3>
-        <p>発売前の意思決定を、社内に眠る過去調査・レビュー・VoCを根拠とした生活者の反応で支援。コンセプト・価格・パッケージ・訴求を、外部調査に出す前に検証し、会議で使える判断メモにします。</p>
+        <p>発売前の意思決定を、社内に眠る過去調査・レビュー・VoCから再現した生活者の反応で支援。外部調査に出す前に、会議で使える判断メモにします。</p>
         <a href="launch-simulation/">サービスを見る →</a>
       </div>
     </div>
