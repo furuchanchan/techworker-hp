@@ -20,18 +20,18 @@ if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_vi
 </script>
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>人材業界向け生成AIメディア｜TechWorker</title>
+<title>人材AIラボ｜人材業界の生成AI実務メディア</title>
 <meta name="description" content="人材紹介・人材派遣・採用支援/RPOの現場で、生成AIを業務にどう使うか。候補者ソーシング・スカウト・マッチング・CA／RA業務効率化を、上場企業を含む37社・2,500名の生成AI支援知見をもとに発信する業界特化メディアです。">
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
 <link rel="canonical" href="https://techworker.co.jp/media/jinzai/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="人材業界向け生成AIメディア｜TechWorker">
+<meta property="og:title" content="人材AIラボ｜人材業界の生成AI実務メディア">
 <meta property="og:description" content="人材紹介・派遣・採用支援の現場で生成AIをどう業務に使うか。ソーシングからマッチング・候補者体験まで、業界特化で発信。">
 <meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
 <meta property="og:url" content="https://techworker.co.jp/media/jinzai/">
 <meta property="og:site_name" content="TechWorker">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="人材業界向け生成AIメディア｜TechWorker">
+<meta name="twitter:title" content="人材AIラボ｜人材業界の生成AI実務メディア">
 <meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -196,12 +196,10 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <body>
 
 <nav id="nav">
-  <a href="../index.html" class="logo">Tech<i>Worker</i><span class="m-tag">Media</span></a>
+  <a href="index.html" class="logo">人材AI<i>ラボ</i></a>
   <ul>
-    <li><a href="../index.html">記事一覧</a></li>
-    <li><a href="index.html" class="active">AI×人材</a></li>
-    <li><a href="../shigyo/">AI×士業</a></li>
-    <li><a href="../../index.html">TechWorkerとは</a></li>
+    <li><a href="index.html">記事一覧</a></li>
+    <li><a href="index.html#about">このメディアについて</a></li>
   </ul>
   <div class="nav-right">
     <a href="../../contact.html" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
@@ -209,11 +207,8 @@ fbq('init','1264057945446029');fbq('track','PageView');
   </div>
 </nav>
 <div class="mmenu" id="mmenu" aria-hidden="true">
-  <a href="../index.html">記事一覧</a>
-  <a href="index.html">AI×人材</a>
-  <a href="../shigyo/">AI×士業</a>
-  <a href="../../index.html">TechWorkerとは</a>
-  <a href="../../cases.html">導入事例</a>
+  <a href="index.html">記事一覧</a>
+  <a href="index.html#about">このメディアについて</a>
   <a href="../../contact.html" class="m-cta">無料相談を申し込む</a>
 </div>
 
@@ -222,6 +217,55 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <h1>人材業界のための生成AI活用</h1>
   <p class="lead">人材紹介・派遣・採用支援の現場で、生成AIをどう業務に使うか。候補者ソーシング、スカウト、マッチング、CA・RA業務まで——実務に根ざした活用法を解説するメディアです。</p>
 </header>
+
+<style>
+/* jinzai portal hero — candidate network (v6: ink/paper, electric whisper, hairlines) */
+.jz-cover{max-width:1100px;margin:34px auto 4px;padding:0 48px;width:100%;}
+.jz-cover__panel{border:1px solid var(--line-2);border-radius:14px;overflow:hidden;background:var(--white);}
+.jz-cover__panel svg{display:block;width:100%;height:auto;}
+.jz-net-link{stroke:var(--line-2);stroke-width:1;fill:none;}
+.jz-net-link.is-on{stroke:var(--electric);stroke-width:1.5;opacity:.55;}
+.jz-net-node{fill:var(--white);stroke:var(--ink);stroke-width:1.5;}
+.jz-net-node.is-soft{stroke:var(--slate);}
+.jz-net-hub{fill:var(--electric);stroke:var(--electric);}
+.jz-net-ring{fill:none;stroke:var(--electric);stroke-width:1;opacity:.28;}
+@media(max-width:880px){.jz-cover{padding:0 24px;}}
+</style>
+<div class="jz-cover">
+  <div class="jz-cover__panel">
+    <svg viewBox="0 0 1100 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="候補者ネットワーク">
+      <defs>
+        <pattern id="jzgrid" width="44" height="44" patternUnits="userSpaceOnUse">
+          <path d="M44 0H0V44" fill="none" stroke="rgba(13,17,23,.05)" stroke-width="1"/>
+        </pattern>
+      </defs>
+      <rect x="0" y="0" width="1100" height="360" fill="url(#jzgrid)"/>
+      <!-- connecting lines: hub (560,180) → candidate nodes -->
+      <line class="jz-net-link is-on" x1="560" y1="180" x2="300" y2="92"/>
+      <line class="jz-net-link"       x1="560" y1="180" x2="208" y2="206"/>
+      <line class="jz-net-link is-on" x1="560" y1="180" x2="372" y2="288"/>
+      <line class="jz-net-link"       x1="560" y1="180" x2="628" y2="300"/>
+      <line class="jz-net-link is-on" x1="560" y1="180" x2="820" y2="246"/>
+      <line class="jz-net-link"       x1="560" y1="180" x2="892" y2="120"/>
+      <line class="jz-net-link"       x1="560" y1="180" x2="700" y2="74"/>
+      <!-- faint candidate-to-candidate hairlines (network feel) -->
+      <line class="jz-net-link" x1="300" y1="92"  x2="208" y2="206" opacity=".5"/>
+      <line class="jz-net-link" x1="820" y1="246" x2="892" y2="120" opacity=".5"/>
+      <!-- ring around hub -->
+      <circle class="jz-net-ring" cx="560" cy="180" r="34"/>
+      <!-- candidate nodes -->
+      <circle class="jz-net-node"        cx="300" cy="92"  r="9"/>
+      <circle class="jz-net-node is-soft" cx="208" cy="206" r="7"/>
+      <circle class="jz-net-node"        cx="372" cy="288" r="8"/>
+      <circle class="jz-net-node is-soft" cx="628" cy="300" r="7"/>
+      <circle class="jz-net-node"        cx="820" cy="246" r="9"/>
+      <circle class="jz-net-node is-soft" cx="892" cy="120" r="7"/>
+      <circle class="jz-net-node"        cx="700" cy="74"  r="8"/>
+      <!-- central hub -->
+      <circle class="jz-net-hub" cx="560" cy="180" r="13"/>
+    </svg>
+  </div>
+</div>
 
 <!-- themes -->
 <section class="jz-sec jz-map jz-flow">
@@ -310,7 +354,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 </section>
 
 <!-- about this media -->
-<section class="jz-sec jz-about">
+<section class="jz-sec jz-about" id="about">
   <div class="jz-sec-h">このメディアについて</div>
   <div class="ab-body">
     <p>「人材業界向け生成AI活用」は、企業の生成AI導入・活用を支援する<a href="../../index.html">株式会社TechWorker</a>が運営するメディアです。人材紹介・派遣・採用支援の現場で、生成AIを実務にどう組み込むかを、上場企業を含む37社・2,500名の支援で得た知見をもとに発信しています。</p>
@@ -322,11 +366,11 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <div class="container">
     <div class="footer-inner">
       <div class="footer-brand">
-        <div class="logo">Tech<i>Worker</i><span class="m-tag">Media</span></div>
+        <div class="logo">人材AI<i>ラボ</i></div>
         <p>生成AI活用の実践知をお届けするメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
         <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
       </div>
-      <div class="footer-col"><h4>メディア</h4><a href="../index.html">記事一覧</a><a href="index.html">AI×人材</a><a href="../shigyo/">AI×士業</a></div>
+      <div class="footer-col"><h4>人材AIラボ</h4><a href="index.html">記事一覧</a><a href="index.html#about">このメディアについて</a></div>
       <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../index.html#services">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
       <div class="footer-col"><h4>Contact</h4><a href="../../contact.html">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
     </div>

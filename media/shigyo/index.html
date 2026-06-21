@@ -20,18 +20,18 @@ if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_vi
 </script>
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>士業向け生成AIメディア｜TechWorker</title>
+<title>士業AIジャーナル｜士業事務所の生成AI実務メディア</title>
 <meta name="description" content="税理士・社会保険労務士・行政書士・司法書士・弁護士など、士業事務所の実務で生成AIをどう使うか。書面・文書作成、申請・手続き、相談対応、調査の下調べを、上場企業を含む37社・2,500名の生成AI支援知見をもとに発信する士業特化メディアです。">
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
 <link rel="canonical" href="https://techworker.co.jp/media/shigyo/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="士業向け生成AIメディア｜TechWorker">
+<meta property="og:title" content="士業AIジャーナル｜士業事務所の生成AI実務メディア">
 <meta property="og:description" content="士業事務所の実務で生成AIをどう業務に使うか。書面作成から申請・相談対応・調査まで、士業特化で発信。">
 <meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
 <meta property="og:url" content="https://techworker.co.jp/media/shigyo/">
 <meta property="og:site_name" content="TechWorker">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="士業向け生成AIメディア｜TechWorker">
+<meta name="twitter:title" content="士業AIジャーナル｜士業事務所の生成AI実務メディア">
 <meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -196,12 +196,10 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <body>
 
 <nav id="nav">
-  <a href="../index.html" class="logo">Tech<i>Worker</i><span class="m-tag">Media</span></a>
+  <a href="index.html" class="logo">士業AI<i>ジャーナル</i></a>
   <ul>
-    <li><a href="../index.html">記事一覧</a></li>
-    <li><a href="../jinzai/">AI×人材</a></li>
-    <li><a href="index.html" class="active">AI×士業</a></li>
-    <li><a href="../../index.html">TechWorkerとは</a></li>
+    <li><a href="index.html">記事一覧</a></li>
+    <li><a href="index.html#about">このメディアについて</a></li>
   </ul>
   <div class="nav-right">
     <a href="../../contact.html" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
@@ -209,11 +207,8 @@ fbq('init','1264057945446029');fbq('track','PageView');
   </div>
 </nav>
 <div class="mmenu" id="mmenu" aria-hidden="true">
-  <a href="../index.html">記事一覧</a>
-  <a href="../jinzai/">AI×人材</a>
-  <a href="index.html">AI×士業</a>
-  <a href="../../index.html">TechWorkerとは</a>
-  <a href="../../cases.html">導入事例</a>
+  <a href="index.html">記事一覧</a>
+  <a href="index.html#about">このメディアについて</a>
   <a href="../../contact.html" class="m-cta">無料相談を申し込む</a>
 </div>
 
@@ -222,6 +217,78 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <h1>士業のための生成AI活用</h1>
   <p class="lead">税理士・社労士・行政書士・司法書士・弁護士など、士業事務所の実務で生成AIをどう使うか。書面・文書作成、申請・手続き、相談対応、調査の下調べまで——資格者の判断を残したまま、日々の準備作業を速くする活用法を解説するメディアです。</p>
 </header>
+
+<style>
+/* ===== shigyo portal geometric hero (書面の構造化 / v6 ink·paper, hairline, blue as a whisper) ===== */
+.sj-cover{max-width:1100px;margin:48px auto 0;padding:0 48px;}
+.sj-doc{border:1px solid var(--line-2);border-radius:14px;background:var(--white);overflow:hidden;display:grid;grid-template-columns:1.15fr 1fr;}
+.sj-pane{padding:26px 30px 28px;min-width:0;}
+.sj-pane+.sj-pane{border-left:1px solid var(--line);}
+.sj-eyebrow{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px;}
+.sj-kind{font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);}
+.sj-stamp{font-family:var(--en);font-size:9.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--electric);border:1px solid rgba(0,94,255,.34);border-radius:999px;padding:3px 10px;}
+/* document title field */
+.sj-titleline{font-family:var(--jp);font-weight:700;font-size:15px;color:var(--ink);letter-spacing:-.01em;padding-bottom:14px;margin-bottom:6px;border-bottom:1.5px solid var(--line-2);}
+/* clause rows — a stack of lines, some highlighted to signal AI-structured */
+.sj-clauses{list-style:none;margin:0;padding:0;}
+.sj-cl{display:flex;align-items:center;gap:11px;padding:9px 0;border-bottom:1px solid var(--line);}
+.sj-cl:last-child{border-bottom:none;}
+.sj-no{flex:none;font-family:var(--en);font-size:10.5px;font-weight:600;color:var(--slate);font-feature-settings:"tnum" 1;width:20px;}
+.sj-bars{flex:1 1 auto;display:flex;flex-direction:column;gap:5px;min-width:0;}
+.sj-bar{height:6px;border-radius:3px;background:var(--paper-2);}
+.sj-bar.s{width:62%;}
+.sj-cl.hot .sj-no{color:var(--electric);}
+.sj-cl.hot .sj-bar{background:rgba(0,94,255,.16);}
+.sj-cl.hot .sj-bar.lead{background:var(--electric);}
+/* field = value rows (right pane) */
+.sj-fields{list-style:none;margin:0;padding:0;}
+.sj-fld{display:grid;grid-template-columns:84px 1fr;gap:14px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line);}
+.sj-fld:last-child{border-bottom:none;}
+.sj-flabel{font-family:var(--jp);font-size:12px;font-weight:600;color:var(--slate);}
+.sj-fval{height:8px;border-radius:4px;background:var(--paper-2);}
+.sj-fld.hot .sj-flabel{color:var(--ink);}
+.sj-fld.hot .sj-fval{background:var(--electric);}
+.sj-fld.hot .sj-fval.half{background:rgba(0,94,255,.34);width:58%;}
+.sj-caption{max-width:1100px;margin:14px auto 0;padding:0 48px;font-family:var(--en);font-size:11.5px;color:var(--slate);letter-spacing:.01em;}
+.sj-caption b{color:var(--electric);font-weight:600;}
+@media(max-width:880px){
+  .sj-cover,.sj-caption{padding:0 24px;}
+  .sj-doc{grid-template-columns:1fr;}
+  .sj-pane+.sj-pane{border-left:none;border-top:1px solid var(--line);}
+}
+</style>
+<div class="sj-cover">
+  <div class="sj-doc art-cover-v6" role="img" aria-label="書面の構造化。契約書・申請書の条項や項目が行として並び、生成AIが整理した一部の条項と項目がElectric Blueでハイライトされている図。">
+    <div class="sj-pane">
+      <div class="sj-eyebrow">
+        <span class="sj-kind">Contract / 契約書</span>
+        <span class="sj-stamp">AI Structured</span>
+      </div>
+      <div class="sj-titleline">業務委託契約書（案）</div>
+      <ul class="sj-clauses">
+        <li class="sj-cl"><span class="sj-no">01</span><span class="sj-bars"><span class="sj-bar"></span><span class="sj-bar s"></span></span></li>
+        <li class="sj-cl hot"><span class="sj-no">02</span><span class="sj-bars"><span class="sj-bar lead"></span><span class="sj-bar s"></span></span></li>
+        <li class="sj-cl"><span class="sj-no">03</span><span class="sj-bars"><span class="sj-bar"></span><span class="sj-bar s"></span></span></li>
+        <li class="sj-cl hot"><span class="sj-no">04</span><span class="sj-bars"><span class="sj-bar lead"></span><span class="sj-bar s"></span></span></li>
+        <li class="sj-cl"><span class="sj-no">05</span><span class="sj-bars"><span class="sj-bar"></span><span class="sj-bar s"></span></span></li>
+      </ul>
+    </div>
+    <div class="sj-pane">
+      <div class="sj-eyebrow">
+        <span class="sj-kind">Application / 申請書</span>
+        <span class="sj-stamp">Fields</span>
+      </div>
+      <ul class="sj-fields">
+        <li class="sj-fld hot"><span class="sj-flabel">申請区分</span><span class="sj-fval half"></span></li>
+        <li class="sj-fld"><span class="sj-flabel">提出先</span><span class="sj-fval"></span></li>
+        <li class="sj-fld hot"><span class="sj-flabel">添付書類</span><span class="sj-fval"></span></li>
+        <li class="sj-fld"><span class="sj-flabel">期限</span><span class="sj-fval half" style="width:46%"></span></li>
+        <li class="sj-fld"><span class="sj-flabel">備考</span><span class="sj-fval"></span></li>
+      </ul>
+    </div>
+  </div>
+  <p class="sj-caption">AIが書面の条項と項目を<b>構造化</b>し、最終確認と判断は有資格者が握る。</p>
+</div>
 
 <!-- themes -->
 <section class="jz-sec jz-map jz-flow">
@@ -286,7 +353,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 </section>
 
 <!-- about this media -->
-<section class="jz-sec jz-about">
+<section class="jz-sec jz-about" id="about">
   <div class="jz-sec-h">このメディアについて</div>
   <div class="ab-body">
     <p>「士業向け生成AI活用」は、企業の生成AI導入・活用を支援する<a href="../../index.html">株式会社TechWorker</a>が運営するメディアです。税理士・社会保険労務士・行政書士・司法書士・弁護士など、士業事務所の実務に生成AIをどう組み込むかを、上場企業を含む37社・2,500名の支援で得た知見をもとに発信しています。</p>
@@ -298,11 +365,11 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <div class="container">
     <div class="footer-inner">
       <div class="footer-brand">
-        <div class="logo">Tech<i>Worker</i><span class="m-tag">Media</span></div>
+        <div class="logo">士業AI<i>ジャーナル</i></div>
         <p>生成AI活用の実践知をお届けするメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
         <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
       </div>
-      <div class="footer-col"><h4>メディア</h4><a href="../index.html">記事一覧</a><a href="../jinzai/">AI×人材</a><a href="index.html">AI×士業</a></div>
+      <div class="footer-col"><h4>士業AIジャーナル</h4><a href="index.html">記事一覧</a><a href="index.html#about">このメディアについて</a></div>
       <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../index.html#services">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
       <div class="footer-col"><h4>Contact</h4><a href="../../contact.html">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
     </div>
