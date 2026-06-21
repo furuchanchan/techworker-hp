@@ -241,7 +241,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--electric);outline-o
 /* TOC floats in the left margin only when there's room for it (>=1200px); below that the reading column stays centered and the TOC hides */
 @media(max-width:1199px){.art-toc{display:none;}}
 @media(max-width:880px){
-  #nav ul,#nav .nav-cta,#nav .lang{display:none;}.hamb{display:block;}
+  #nav ul,#nav .lang{display:none;}.hamb{display:block;}
+  #nav .nav-cta{padding:8px 14px;font-size:12.5px;}#nav .nav-cta .full{display:none;}#nav .nav-cta .short{display:inline;}
   .art-layout{display:block;padding:28px 24px 60px;}
   .art-head{padding:108px 24px 0;}.author,.art-cta,.back-list,.related .container{padding-left:24px;padding-right:24px;}
   .art-cover{width:calc(100% - 48px);margin-top:24px;}
