@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3V34NWXVCJ');
+</script>
+<!-- TW intent tracker (first-party, sessionStorage only) -->
+<script>
+(function(){try{var ss=sessionStorage,ls=localStorage;
+if(!ss.getItem('tw_landing')){ss.setItem('tw_landing',location.pathname);ss.setItem('tw_ref',document.referrer||'');var q=new URLSearchParams(location.search);ss.setItem('tw_utm',['utm_source','utm_medium','utm_campaign'].map(function(k){return q.get(k)||'';}).join('|'));}
+var p=JSON.parse(ss.getItem('tw_pages')||'[]');if(p[p.length-1]!==location.pathname){p.push(location.pathname);ss.setItem('tw_pages',JSON.stringify(p.slice(-20)));}
+if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_visits')||'0',10)+1));ss.setItem('tw_counted','1');}
+}catch(e){}})();
+</script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>面談メモ・候補者面談の議事録を生成AIで構造化する｜CA業務の時短【2026】 — TechWorker</title>
+<meta name="description" content="候補者面談の録音やメモを生成AIで構造化し、面談 議事録づくりを時短する方法。候補者 面談 要約から推薦材料・次アクションへ整理する型、ATS/CRMへのつなぎ方、録音同意と個人情報の注意までCA/RA向けに実践解説します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/jinzai/ai-interview-notes.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面談メモ・候補者面談の議事録を生成AIで構造化する｜CA業務の時短【2026】">
+<meta property="og:description" content="候補者面談の録音やメモを生成AIで要点・確認事項・推薦材料・次アクションへ構造化し、CA/RAの記録業務を軽くする。ATS/CRMへのつなぎ方、録音同意・個人情報の注意まで実践的に解説します。">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/media/jinzai/ai-interview-notes.html">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="面談メモ・候補者面談の議事録を生成AIで構造化する｜CA業務の時短【2026】">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../article.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"面談メモ・候補者面談の議事録を生成AIで構造化する",
+  "description":"候補者面談の録音やメモを生成AIで要点・確認事項・推薦材料・次アクションへ構造化し、CA/RAの記録業務を時短する方法を、ATS/CRMへのつなぎ方・録音同意・個人情報の注意とあわせて実践的に解説する。",
+  "datePublished":"2026-06-18","dateModified":"2026-06-18","inLanguage":"ja",
+  "image":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630},
+  "author":{"@type":"Person","name":"古野光太朗","jobTitle":"株式会社TechWorker 代表取締役","url":"https://techworker.co.jp/company.html","image":"https://techworker.co.jp/assets/author-furuno.jpg","sameAs":["https://x.com/koutarou_furuno"],"affiliation":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"}},
+  "publisher":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/","logo":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630}},
+  "mainEntityOfPage":{"@type":"WebPage","@id":"https://techworker.co.jp/media/jinzai/ai-interview-notes.html"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},
+    {"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},
+    {"@type":"ListItem","position":3,"name":"人材","item":"https://techworker.co.jp/media/jinzai/"},
+    {"@type":"ListItem","position":4,"name":"面談メモを生成AIで構造化する","item":"https://techworker.co.jp/media/jinzai/ai-interview-notes.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"面談の録音を生成AIに渡してもよいですか？","acceptedAnswer":{"@type":"Answer","text":"録音は本人への事前同意が前提です。何のために録音し、どのツールで処理し、どこに保存するかを候補者に説明し、同意を得てから扱います。利用する生成AIのデータ取り扱い方針（学習に使われないか等）を先に確認し、機微な情報まで無防備に渡さない線引きを決めておくことが大切です。"}},
+    {"@type":"Question","name":"AIが作った議事録はそのまま使えますか？","acceptedAnswer":{"@type":"Answer","text":"下書きとして使い、人が確認してから使います。生成AIは要点・確認事項・推薦材料・次アクションへ整理する作業を高速化しますが、聞き取りの誤りや事実の取り違えが残ることがあります。固有名詞・数値・本人の発言の引用は必ず人が照合し、評価や推薦の判断は人が握ります。"}},
+    {"@type":"Question","name":"メモが断片的でも構造化できますか？","acceptedAnswer":{"@type":"Answer","text":"できます。むしろ断片メモの整理こそ生成AIが得意な領域です。箇条書きや走り書きを渡し、出力してほしい項目（要約・スキル・懸念・次アクションなど）の型をあらかじめ指定すると、抜けや重複が整理されます。足りない情報はAIに補わせず、確認事項として残すのが安全です。"}},
+    {"@type":"Question","name":"構造化した面談記録はどこに残すべきですか？","acceptedAnswer":{"@type":"Answer","text":"普段使っているATS/CRMの候補者レコードに、決まった項目で残すのが基本です。生成AIの出力をそのまま貼るのではなく、自社で必要な項目（推薦材料・確認事項・次アクションなど）に合わせて整形してから登録します。項目をそろえておくと、後から検索・推薦・引き継ぎがしやすくなります。人材マッチングの精度向上の観点もあわせてご覧ください。"}}
+  ]
+}
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <a href="../index.html" class="logo">Tech<i>Worker</i><span class="m-tag">Media</span></a>
+  <ul>
+    <li><a href="../index.html">記事一覧</a></li>
+    <li><a href="index.html" class="active">AI×人材</a></li>
+    <li><a href="../shigyo/">AI×士業</a></li>
+    <li><a href="../../index.html">TechWorkerとは</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="../../contact.html" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="../index.html">記事一覧</a>
+  <a href="index.html">AI×人材</a>
+  <a href="../shigyo/">AI×士業</a>
+  <a href="../../index.html">TechWorkerとは</a>
+  <a href="../../cases.html">導入事例</a>
+  <a href="../../contact.html" class="m-cta">無料相談を申し込む</a>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">人材</a><span class="sep">/</span>面談メモを生成AIで構造化する</nav>
+  <div class="kicker">面談記録 / Interview Notes</div>
+  <h1>面談メモ・候補者面談の議事録を生成AIで構造化する</h1>
+  <p class="dek">候補者面談の録音やメモから、要点・推薦材料・次アクションを構造化する。記録に溶けていた時間を候補者と向き合う時間へ——CA／RAの面談記録を、生成AIでどう軽くするかを2026年の実践を前提に整理する。</p>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.06.18</span><span class="dot">·</span><span>最終更新 2026.06.18</span><span class="dot">·</span><span>読了 8分</span>
+  </div>
+</header>
+
+<style>
+/* ai-interview-notes cover — interview memo → structured fields */
+.iv-cv{max-width:720px;margin:26px auto 0;background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;font-family:var(--jp);box-shadow:0 1px 0 rgba(13,17,23,.02)}
+.iv-cv__top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 18px;border-bottom:1px solid var(--line)}
+.iv-cv__ttl{display:flex;align-items:baseline;gap:8px;min-width:0}
+.iv-cv__lbl{font-family:var(--en);font-size:11px;color:var(--slate);letter-spacing:.02em;flex:none}
+.iv-cv__name{font-size:14px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.iv-cv__badge{flex:none;font-size:11px;font-weight:600;color:var(--electric);padding:3px 9px;border:1px solid var(--electric);border-radius:999px;letter-spacing:.01em}
+.iv-cv__cols{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}
+.iv-cv__col{background:var(--white);padding:15px 18px}
+.iv-cv__ch{font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:11px}
+.iv-cv__fld{margin-bottom:12px}
+.iv-cv__fk{font-size:11px;color:var(--slate);margin-bottom:6px}
+.iv-cv__lines{display:flex;flex-direction:column;gap:6px}
+.iv-cv__ln{height:7px;border-radius:4px;background:var(--paper-2)}
+.iv-cv__ln.is-ai{background:rgba(0,94,255,.14)}
+.iv-cv__w95{width:95%}.iv-cv__w82{width:82%}.iv-cv__w70{width:70%}.iv-cv__w58{width:58%}.iv-cv__w44{width:44%}
+.iv-cv__foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px 14px;border-top:1px solid var(--line)}
+.iv-cv__hint{font-size:11px;color:var(--slate)}
+.iv-cv__smp{font-family:var(--en);font-size:11px;color:var(--slate)}
+@media(max-width:560px){
+  .iv-cv__cols{grid-template-columns:1fr}
+  .iv-cv__hint{display:none}
+  .iv-cv__foot{justify-content:flex-end}
+}
+</style>
+<div class="art-cover-v6">
+  <div class="iv-cv" role="img" aria-label="面談メモが要約・スキル・懸念・次アクションのフィールドにAIで構造化される様子（サンプル）">
+    <div class="iv-cv__top">
+      <div class="iv-cv__ttl"><span class="iv-cv__lbl">面談記録</span><span class="iv-cv__name">候補者 田中さん／一次面談</span></div>
+      <span class="iv-cv__badge">AI 構造化</span>
+    </div>
+    <div class="iv-cv__cols">
+      <div class="iv-cv__col">
+        <div class="iv-cv__ch">メモ（入力）</div>
+        <div class="iv-cv__lines">
+          <div class="iv-cv__ln iv-cv__w82"></div>
+          <div class="iv-cv__ln iv-cv__w95"></div>
+          <div class="iv-cv__ln iv-cv__w70"></div>
+          <div class="iv-cv__ln iv-cv__w58"></div>
+        </div>
+      </div>
+      <div class="iv-cv__col">
+        <div class="iv-cv__ch">構造化された項目</div>
+        <div class="iv-cv__fld"><div class="iv-cv__fk">要約</div><div class="iv-cv__lines"><div class="iv-cv__ln is-ai iv-cv__w95"></div></div></div>
+        <div class="iv-cv__fld"><div class="iv-cv__fk">スキル</div><div class="iv-cv__lines"><div class="iv-cv__ln is-ai iv-cv__w70"></div></div></div>
+        <div class="iv-cv__fld"><div class="iv-cv__fk">懸念</div><div class="iv-cv__lines"><div class="iv-cv__ln iv-cv__w58"></div></div></div>
+        <div class="iv-cv__fld" style="margin-bottom:0"><div class="iv-cv__fk">次アクション</div><div class="iv-cv__lines"><div class="iv-cv__ln is-ai iv-cv__w44"></div></div></div>
+      </div>
+    </div>
+    <div class="iv-cv__foot">
+      <span class="iv-cv__hint">青ハイライト＝AIが構造化・補完した項目。確認は人が行う</span>
+      <span class="iv-cv__smp">※サンプル</span>
+    </div>
+  </div>
+</div>
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次">
+    <div class="art-toc-inner">
+      <div class="toc-h">目次</div>
+      <a href="#s1">面談メモの構造化とは</a>
+      <a href="#s2">記録をどう構造化するか</a>
+      <a href="#s3">ATS/CRMへのつなぎ方</a>
+      <a href="#s4">個人情報・録音同意の注意</a>
+      <a href="#faq">よくある質問</a>
+    </div>
+  </nav>
+
+  <article class="art-body rv">
+    <div class="lede">
+      <div class="lede-h">この記事の要点</div>
+      <ul>
+        <li>面談メモの構造化＝録音や走り書きを、<strong>要点・確認事項・推薦材料・次アクションという決まった型へ整理する</strong>こと。生成AIで時短されるのは「書き起こし・整形」であって、評価や推薦の判断は人が握る。</li>
+        <li>質を決めるのは「どの項目で記録するか」という型。出力してほしいフィールドを先に指定し、AIは下書き、固有名詞・数値・発言の引用は人が照合する二段構えにする。</li>
+        <li>整形した記録はATS/CRMの候補者レコードへ、項目をそろえて残す。録音は事前同意が前提で、機微情報の扱いと利用ツールのデータ方針を先に決めてから運用に乗せる。</li>
+      </ul>
+    </div>
+
+    <h2 id="s1">面談メモを生成AIで構造化するとは？何が変わるのか</h2>
+    <p class="answer">録音や走り書きを、要点・確認事項・推薦材料・次アクションの決まった型へ自動整理することです。</p>
+    <p>候補者面談のあと、CA／RAの多くは記録に時間を取られています。話したことを思い出しながらメモを整え、推薦に使える材料を拾い直し、次にやることを書き出す——この一連の作業は、面談そのものと同じくらい時間を食います。面談メモの構造化とは、この記録作業を生成AIに任せることです。録音の文字起こしや断片的なメモを渡し、<strong>要約・確認したい点・推薦材料・次アクションといった決まった項目へ整理させる</strong>。結果として、記録に溶けていた時間が、次の候補者と向き合う時間に変わります。</p>
+    <p>ここで核心になるのが、AIに「どんな型で出してほしいか」を渡すことです。「AIはエンジンだ。コンテキストは燃料だ」という考え方で言えば、面談記録の質は、何を記録の型として渡すか——つまり<strong>出力してほしいフィールドの設計</strong>でほぼ決まります。漠然と「議事録にして」と頼むと、当たり外れの大きい要約しか返りません。逆に「要約・スキル・懸念・次アクションの4項目で」と型を渡せば、毎回そろった形で記録が積み上がります。時短されるのは「書く時間」であって、「何を聞き、どう評価するか」というCA／RAの中核はむしろ手元に残ります。</p>
+    <div class="callout"><p>構造化で増やすべきは「記録の量」ではなく「次の一手につながる記録の質」。型を決めずに丸投げした瞬間、AIの議事録は読み返さない長文の山になる。</p></div>
+
+    <h2 id="s2">面談記録をどう構造化するか？</h2>
+    <p class="answer">録音やメモを渡す前に出力する項目を決め、要点・確認事項・推薦材料・次アクションへ整理させます。</p>
+    <p>構造化には型があります。先に出力してほしい項目を決め、その型に沿ってAIに整理させ、最後に人が事実を確認する——この順番を守ると、記録の質が安定します。次の5ステップで、人が判断すべきところは人が握ったまま、整理だけをAIに任せます。</p>
+    <ol>
+      <li><strong>出力する項目を先に決める。</strong>要約・確認したい点・推薦材料・次アクションなど、自社で必要なフィールドを定義する。ここが記録の質の8割を決める。</li>
+      <li><strong>録音やメモを渡す。</strong>文字起こしや走り書きを入力し、指定した項目に沿って整理させる。足りない情報は補わせず「確認事項」に回す。</li>
+      <li><strong>推薦材料を言語化させる。</strong>面談で見えた強み・経験を、求人にどう効くかの観点で抜き出させる。最終的な推薦判断は人が行う。</li>
+      <li><strong>確認事項と次アクションを分ける。</strong>未確認の点（年収・時期など）と、こちらが次にやること（書類依頼・社内共有など）を別項目で出させる。</li>
+      <li><strong>人が事実確認して仕上げる。</strong>固有名詞・数値・本人の発言の引用に誤りがないかを照合してから保存する。記録の確定は人の責任で行う。</li>
+    </ol>
+    <div class="ui-mock">
+      <div class="um-bar"><span class="um-dot"></span><span class="um-dot"></span><span class="um-dot"></span><span class="um-name">AI ASSISTANT — 使い方の例</span></div>
+      <div class="um-row">
+        <div class="um-label">あなたの指示（CA／RA）</div>
+        <div class="um-text prompt">次の面談メモを4項目で整理して。
+【メモ】法人営業7年／SaaS新規開拓を立ち上げ期から推進。マネジメントは未経験で関心あり。転職時期は半年以内を希望。年収は要確認。
+【出力】①要約②強み（推薦材料）③確認事項④次アクション
+事実を足さず、未確認は確認事項へ。</div>
+      </div>
+      <div class="um-row">
+        <div class="um-label ai">AIの下書き（構造化）</div>
+        <div class="um-text">①要約：法人営業7年。SaaS新規開拓を立ち上げ期から推進。マネジメントは未経験だが関心あり。
+②強み：ゼロからの新規開拓の実行力。立ち上げ期の経験。
+③確認事項：希望年収（未確認）／マネジメント志向の度合い。
+④次アクション：職務経歴書の依頼／半年以内の求人をピックアップ。</div>
+      </div>
+    </div>
+    <p class="fig-cap">図：メモと「出力してほしい4項目」を渡し、整理だけをAIに作らせる例。固有名詞・数値・発言の正確さは必ず人が確認します。</p>
+    <p>次に、生成AIを使うときの「素のメモ」と「構造化された記録」の違いを対比で整理します。多くの差は、記録の形がそろっているかどうかから生まれます。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>観点</th><th>素のメモ</th><th>構造化された記録</th></tr>
+        <tr><td>形式</td><td>時系列の走り書き・話した順のまま</td><td>要約・強み・確認事項・次アクションで固定</td></tr>
+        <tr><td>推薦への転用</td><td>毎回メモを読み返して材料を拾い直す</td><td>推薦材料が項目として抜き出されている</td></tr>
+        <tr><td>抜け漏れ</td><td>確認し忘れが後から発覚しやすい</td><td>「確認事項」に未確認が明示される</td></tr>
+        <tr><td>引き継ぎ</td><td>書いた本人しか文脈が分からない</td><td>項目が同じで誰でも読み解ける</td></tr>
+        <tr><td>検索性</td><td>自由文で後から探しにくい</td><td>項目がそろい後から検索・比較しやすい</td></tr>
+      </table>
+    </div>
+    <p>ただし、すべてをAIに任せてよいわけではありません。整理してよい範囲と、人が必ず握る範囲を最初に線引きしておくと、便利さと安全さを両立できます。下の表は、面談記録のどこをAIに任せ、どこを人が確定させるかの目安です。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>作業</th><th>AIに任せてよい範囲</th><th>人が必ず行う範囲</th></tr>
+        <tr><td>文字起こし・整形</td><td>録音の書き起こし・項目への整理</td><td>聞き取り誤り・固有名詞の照合</td></tr>
+        <tr><td>要約</td><td>長いメモの要点抽出・重複の整理</td><td>趣旨のズレ・誇張の有無の確認</td></tr>
+        <tr><td>推薦材料の抽出</td><td>強み・経験の候補出し</td><td>推薦するかどうかの最終判断</td></tr>
+        <tr><td>評価・所見</td><td>—（任せない）</td><td>合否・評価・所見は人が記述</td></tr>
+      </table>
+    </div>
+    <div class="callout"><p>AIに任せるのは「整理」まで。聞き取りの誤りや事実の取り違えは残りうるため、固有名詞・数値・発言の引用と、評価・推薦の判断は必ず人が握る。</p></div>
+
+    <h2 id="s3">ATS/CRMや推薦コメントへどうつなげるか？</h2>
+    <p class="answer">出力を貼るだけにせず、ATS/CRMの決まった項目へ整形して残し、推薦コメントの素材として再利用します。</p>
+    <p>構造化した記録は、作って終わりでは意味がありません。価値が出るのは、普段使っているATS/CRMの候補者レコードに、決まった項目で残してからです。生成AIの出力をそのまま貼り付けるのではなく、自社で必要な項目（推薦材料・確認事項・次アクションなど）に合わせて整形してから登録します。項目をそろえておくと、後から検索・比較・引き継ぎがしやすくなり、別の求人が出たときにも「この候補者は何が強みだったか」をすぐ引き出せます。</p>
+    <ol>
+      <li><strong>レコードの項目に合わせて整形する。</strong>AIの出力を、ATS/CRM側のフィールド（要約・強み・確認事項など）に対応づけてから登録する。</li>
+      <li><strong>推薦コメントの素材として再利用する。</strong>抜き出した推薦材料を、求人企業へ出す推薦コメントの下書きに転用する。仕上げと送信は人が行う。</li>
+      <li><strong>次アクションをタスク化する。</strong>「次アクション」項目を、書類依頼や社内共有といった実際のタスクへ落として取りこぼしを防ぐ。</li>
+    </ol>
+    <p>面談記録を起点に、推薦コメントやマッチングへどう運ぶかは<a href="ai-matching.html">生成AIで人材マッチングの精度を上げる</a>で、候補者一人ひとりへのスカウト文づくりは<a href="ai-scouting.html">生成AIでスカウト・候補者ソーシングを効率化する</a>で扱います。母集団形成から候補者対応まで、CA／RA業務全体への生成AIの組み込み方は<a href="recruitment-ai.html">人材紹介・人材派遣の生成AI活用</a>を起点にご覧ください。下は、面談記録の運用状態を一目で把握するためのダッシュボードのイメージです。</p>
+    <div class="mini-dash" aria-label="面談記録の運用ダッシュボード（サンプル）">
+      <div class="md-top"><span class="dot"></span>面談記録ダッシュボード（※サンプル・数値はイメージ）</div>
+      <div class="md-kpis">
+        <div class="md-kpi"><div class="k">1件あたり記録時間</div><div class="v">—</div></div>
+        <div class="md-kpi"><div class="k">確認事項の記入率</div><div class="v"><em>—</em></div></div>
+        <div class="md-kpi"><div class="k">レコード登録率</div><div class="v"><em>—</em></div></div>
+      </div>
+      <div class="md-chart">
+        <div class="md-bars">
+          <div class="bar" style="height:84%"></div>
+          <div class="bar" style="height:70%"></div>
+          <div class="bar" style="height:60%"></div>
+          <div class="bar" style="height:52%"></div>
+          <div class="bar hi" style="height:44%"></div>
+          <div class="bar hi" style="height:36%"></div>
+        </div>
+        <div class="md-xax"><span>週1</span><span>週2</span><span>週3</span><span>週4</span><span>週5</span><span>週6</span></div>
+      </div>
+    </div>
+    <p class="fig-cap">※サンプル。実際の数値は装っていません。記録の型を整え運用に乗せたとき、1件あたりの記録時間が下がっていくイメージです。</p>
+    <p>上場企業を含む37社・2,500名の生成AI支援を通じて見えてきたのは、<strong>個々の議事録をうまく書かせることより、記録の型をチームでそろえて運用に乗せるほうが、結果として記録の時短と質が安定して両立する</strong>という傾向です。型さえ共有すれば、誰が面談しても同じ粒度の記録が積み上がります。</p>
+
+    <h2 id="s4">個人情報・録音同意で気をつけることは？</h2>
+    <p class="answer">録音は本人への事前同意が前提。機微情報の扱いと利用ツールのデータ方針を先に決めてから運用します。</p>
+    <p>面談記録に生成AIを使うときは、便利さの前に押さえるべき一般的な注意があります。扱うのは候補者の個人情報であり、録音にはとくに配慮が要ります。次の3点を最初に決めてから運用に乗せると、安心して使い続けられます。</p>
+    <ol>
+      <li><strong>録音は事前同意を得てから。</strong>何のために録音し、どのツールで処理し、どこに保存するかを候補者に説明し、同意を得たうえで行う。同意がない録音はしない。</li>
+      <li><strong>機微情報の扱いを線引きする。</strong>健康・家族・信条など仕事に直接関わらない機微な情報は、記録やAIへの入力の範囲を絞る。「便利だから」を理由に無防備に渡さない。</li>
+      <li><strong>利用ツールのデータ方針を先に確認する。</strong>入力した内容が学習に使われないか、保存先や保持期間はどうか——利用する生成AIのデータ取り扱い方針と自社ルールを確認してから使う。</li>
+    </ol>
+    <div class="callout"><p>判断基準はシンプル。「この記録の取り方とAIへの渡し方を、候補者本人に説明できるか」。説明できないやり方は採らない。法的な要否は自社の規程・専門家の確認を前提に。</p></div>
+    <p>これらは一般的な注意であり、具体的な運用ルールは自社の規程や専門家の確認を前提に決めるのが安全です。<strong>個人情報の線引きを最初に引いておくこと</strong>が、面談記録でAIを長く使い続けるための前提になります。安全な使い方の設計や、チームでの運用ルールづくりに迷う場合は、<a href="../../contact.html">人材ビジネスのAI活用相談</a>でご一緒できます。生成AIの基本的な使い方を組織で底上げしたい場合は<a href="../../training.html">生成AI法人研修</a>も入口になります。</p>
+
+    <h2 id="faq">よくある質問</h2>
+    <div class="faq"><div class="q">面談の録音を生成AIに渡してもよいですか？</div><p class="a">録音は本人への事前同意が前提です。何のために録音し、どのツールで処理し、どこに保存するかを候補者に説明し、同意を得てから扱います。利用する生成AIのデータ取り扱い方針（学習に使われないか等）を先に確認し、機微な情報まで無防備に渡さない線引きを決めておくことが大切です。</p></div>
+    <div class="faq"><div class="q">AIが作った議事録はそのまま使えますか？</div><p class="a">下書きとして使い、人が確認してから使います。生成AIは要点・確認事項・推薦材料・次アクションへ整理する作業を高速化しますが、聞き取りの誤りや事実の取り違えが残ることがあります。固有名詞・数値・本人の発言の引用は必ず人が照合し、評価や推薦の判断は人が握ります。</p></div>
+    <div class="faq"><div class="q">メモが断片的でも構造化できますか？</div><p class="a">できます。むしろ断片メモの整理こそ生成AIが得意な領域です。箇条書きや走り書きを渡し、出力してほしい項目（要約・スキル・懸念・次アクションなど）の型をあらかじめ指定すると、抜けや重複が整理されます。足りない情報はAIに補わせず、確認事項として残すのが安全です。</p></div>
+    <div class="faq"><div class="q">構造化した面談記録はどこに残すべきですか？</div><p class="a">普段使っているATS/CRMの候補者レコードに、決まった項目で残すのが基本です。生成AIの出力をそのまま貼るのではなく、自社で必要な項目（推薦材料・確認事項・次アクションなど）に合わせて整形してから登録します。項目をそろえておくと、後から検索・推薦・引き継ぎがしやすくなります。<a href="ai-matching.html">人材マッチングの精度向上</a>の観点もあわせてご覧ください。</p></div>
+  </article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役</span></div>
+    <p>上場企業を含む37社・2,500名の生成AI導入・研修を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。人材ビジネスの面談記録・スカウト・マッチング業務へのAI実装も支援領域。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>「記録に追われる面談」から「候補者と向き合う面談」へ。</h3>
+    <p>面談メモの構造化、推薦材料の抽出、ATS/CRMへのつなぎ込みまで、人材ビジネスの記録業務に生成AIを組み込む方法を、上場企業含む37社・2,500名の支援知見をもとにご一緒します。検討段階のご相談だけでも歓迎です。</p>
+  </div>
+  <a href="../../contact.html" class="btn">AI活用を相談する <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="../../training.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">生成AI法人研修（主要ツール全対応）</a>　／　<a href="../../contact.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">無料相談</a></p>
+<div class="back-list"><a href="index.html">← メディア（人材）に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="recruitment-ai.html" class="related-card"><span class="rc-cat">採用業務</span><div class="rc-title">人材紹介・人材派遣の生成AI活用とは｜CA・RA業務が変わる場面と始め方</div></a>
+    <a href="ai-matching.html" class="related-card"><span class="rc-cat">マッチング</span><div class="rc-title">生成AIで人材マッチングの精度を上げる｜求人票・候補者要件・推薦コメントの最適化</div></a>
+    <a href="ai-scouting.html" class="related-card"><span class="rc-cat">スカウト</span><div class="rc-title">生成AIでスカウト・候補者ソーシングを効率化する｜返信率を高める文面と運用</div></a>
+    <a href="index.html" class="related-card"><span class="rc-cat">メディア</span><div class="rc-title">人材業界向けの生成AI活用｜ソーシング・採用・マッチングの実践知</div></a>
+  </div>
+</div></section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">Tech<i>Worker</i><span class="m-tag">Media</span></div>
+        <p>生成AI活用の実践知をお届けするメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+      </div>
+      <div class="footer-col"><h4>メディア</h4><a href="../index.html">記事一覧</a><a href="index.html">AI×人材</a><a href="../shigyo/">AI×士業</a></div>
+      <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../index.html#services">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="../../contact.html">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+</body>
+</html>
