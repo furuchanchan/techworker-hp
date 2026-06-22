@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3V34NWXVCJ');
+</script>
+<!-- TW intent tracker (first-party, sessionStorage only) -->
+<script>
+(function(){try{var ss=sessionStorage,ls=localStorage;
+if(!ss.getItem('tw_landing')){ss.setItem('tw_landing',location.pathname);ss.setItem('tw_ref',document.referrer||'');var q=new URLSearchParams(location.search);ss.setItem('tw_utm',['utm_source','utm_medium','utm_campaign'].map(function(k){return q.get(k)||'';}).join('|'));}
+var p=JSON.parse(ss.getItem('tw_pages')||'[]');if(p[p.length-1]!==location.pathname){p.push(location.pathname);ss.setItem('tw_pages',JSON.stringify(p.slice(-20)));}
+if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_visits')||'0',10)+1));ss.setItem('tw_counted','1');}
+}catch(e){}})();
+</script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>生成AIで候補者スクリーニング・書類選考を効率化する｜見極めの精度と速度【2026】 — TechWorker</title>
+<meta name="description" content="人材紹介・派遣・採用支援の候補者スクリーニングで生成AIをどう使うか。大量の応募・職務経歴書の下読みと整理を高速化し、書類選考AIで要件適合を素早く見極める方法、公平性や個人情報で守るべき線引きまでを、上場企業を含む37社・2,500名の支援知見をもとに実践的に解説します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/jinzai/ai-screening.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="生成AIで候補者スクリーニング・書類選考を効率化する｜見極めの精度と速度【2026】">
+<meta property="og:description" content="大量の応募・職務経歴書の下読みと整理を高速化し、書類選考AIで要件適合を素早く見極める方法、公平性や個人情報で守るべき線引きまで。人材ビジネスのスクリーニングに生成AIをどう組み込むかを実践的に解説します。">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/media/jinzai/ai-screening.html">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="生成AIで候補者スクリーニング・書類選考を効率化する｜見極めの精度と速度【2026】">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../article.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"生成AIで候補者スクリーニング・書類選考を効率化する｜見極めの精度と速度【2026】",
+  "description":"人材紹介・派遣・採用支援の候補者スクリーニングにおける生成AI活用を、書類選考の高速化・要件適合の見極め・公平性と個人情報の線引き・やってはいけないことの観点から実践的に解説する。",
+  "datePublished":"2026-06-19","dateModified":"2026-06-19","inLanguage":"ja",
+  "image":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630},
+  "author":{"@type":"Person","name":"古野光太朗","jobTitle":"株式会社TechWorker 代表取締役","url":"https://techworker.co.jp/company.html","image":"https://techworker.co.jp/assets/author-furuno.jpg","sameAs":["https://x.com/koutarou_furuno"],"affiliation":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"}},
+  "publisher":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/","logo":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630}},
+  "mainEntityOfPage":{"@type":"WebPage","@id":"https://techworker.co.jp/media/jinzai/ai-screening.html"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},
+    {"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},
+    {"@type":"ListItem","position":3,"name":"人材","item":"https://techworker.co.jp/media/jinzai/"},
+    {"@type":"ListItem","position":4,"name":"候補者スクリーニングを効率化する","item":"https://techworker.co.jp/media/jinzai/ai-screening.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"生成AIの判定だけで候補者を不合格にしてもよいですか？","acceptedAnswer":{"@type":"Answer","text":"避けるべきです。生成AIは大量の書類の下読みと要件適合の整理に使い、合否の最終判断は人が行うのが前提です。AIの出力はあくまで下読みの結果であり、見落としや偏りが含まれる可能性があるため、特に不合格の判断は人が経歴に当たって確認します。"}},
+    {"@type":"Question","name":"書類選考でAIを使うと、見極めの精度は落ちませんか？","acceptedAnswer":{"@type":"Answer","text":"使い方次第です。AIに渡す求人要件と評価観点が曖昧なまま使えば精度は落ちます。逆に、必須・歓迎条件や評価軸を明確に言語化して渡せば、人による読み込みのばらつきを減らし、確認すべき点を漏らさず洗い出す助けになります。精度を決めるのは渡す要件と候補者情報の質です。"}},
+    {"@type":"Question","name":"応募者の属性で評価を変えるのは問題ありませんか？","acceptedAnswer":{"@type":"Answer","text":"性別・年齢・国籍などの保護属性に基づいて評価や合否を変えるのは差別につながり、避けるべきです。スクリーニングは職務経歴・スキル・実績・要件適合といった仕事に直接関わる情報に基づいて行います。生成AIに渡す情報の範囲も、この基準で線引きし、属性に関する情報は評価の根拠にしません。採用業務全体での生成AI活用の観点もあわせてご覧ください。"}},
+    {"@type":"Question","name":"候補者の職務経歴書を、そのまま生成AIに入力してよいですか？","acceptedAnswer":{"@type":"Answer","text":"利用するツールのデータ取り扱い方針と自社のルールを先に確認してから決めます。個人を特定できる情報をどこまで入力してよいかは、ツールが入力データを学習に使うか、どこに保存されるかで変わります。安全な範囲とマスキングのルールを決めてから運用に乗せるのが前提です。"}}
+  ]
+}
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <a href="index.html" class="logo">人材AI<i>ラボ</i></a>
+  <ul>
+    <li><a href="index.html">記事一覧</a></li>
+    <li><a href="index.html#about">このメディアについて</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="../../contact.html" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="index.html">記事一覧</a>
+  <a href="index.html#about">このメディアについて</a>
+  <a href="../../contact.html" class="m-cta">無料相談を申し込む</a>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">人材</a><span class="sep">/</span>候補者スクリーニングを効率化する</nav>
+  <div class="kicker">スクリーニング / Screening</div>
+  <h1>生成AIで候補者スクリーニング・書類選考を効率化する</h1>
+  <p class="dek">大量の応募と職務経歴書を、要件適合で素早く整理する——最終判断は人が握ったまま、下読みと整理の手間を生成AIで圧縮する。人材紹介・派遣・採用支援のCA／RAが、見極めの精度と速度を両立させるための実践を、2026年を前提に整理する。</p>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.06.19</span><span class="dot">·</span><span>最終更新 2026.06.19</span><span class="dot">·</span><span>読了 8分</span>
+  </div>
+</header>
+
+<style>
+/* ai-screening cover — applicant shortlisting (résumé list → filtered) */
+.sn-cv{max-width:720px;margin:26px auto 0;background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;font-family:var(--jp);box-shadow:0 1px 0 rgba(13,17,23,.02)}
+.sn-cv__top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 18px;border-bottom:1px solid var(--line)}
+.sn-cv__ttl{font-size:13px;font-weight:600;color:var(--ink)}
+.sn-cv__badge{flex:none;font-size:11px;font-weight:600;color:var(--electric);padding:3px 9px;border:1px solid var(--electric);border-radius:999px;letter-spacing:.01em}
+.sn-cv__body{padding:14px 18px 8px;display:flex;flex-direction:column;gap:10px}
+.sn-cv__row{display:flex;align-items:center;gap:12px}
+.sn-cv__mark{flex:none;width:16px;height:16px;border-radius:5px;border:1.5px solid var(--line-2);background:var(--paper)}
+.sn-cv__mark.is-pass{border-color:var(--electric);background:var(--electric)}
+.sn-cv__lines{flex:1;display:flex;flex-direction:column;gap:6px;min-width:0}
+.sn-cv__ln{height:6px;border-radius:3px;background:var(--paper-2)}
+.sn-cv__row.is-pass .sn-cv__ln{background:rgba(0,94,255,.16)}
+.sn-cv__w92{width:92%}.sn-cv__w80{width:80%}.sn-cv__w64{width:64%}.sn-cv__w50{width:50%}
+.sn-cv__foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 18px 15px;border-top:1px solid var(--line);margin-top:6px}
+.sn-cv__hint{font-size:11px;color:var(--slate)}
+.sn-cv__cnt{font-family:var(--en);font-size:12px;font-weight:600;color:var(--ink-soft)}
+@media(max-width:560px){.sn-cv__hint{display:none}.sn-cv__foot{justify-content:flex-end}}
+</style>
+<div class="art-cover-v6">
+  <div class="sn-cv" role="img" aria-label="AIが要件適合で候補者を絞り込んだ書類選考の画面（サンプル）">
+    <div class="sn-cv__top">
+      <div class="sn-cv__ttl">応募者 書類選考 <span style="color:var(--slate);font-weight:400">※サンプル</span></div>
+      <span class="sn-cv__badge">AI 要件適合で整理</span>
+    </div>
+    <div class="sn-cv__body">
+      <div class="sn-cv__row is-pass"><span class="sn-cv__mark is-pass"></span><div class="sn-cv__lines"><div class="sn-cv__ln sn-cv__w92"></div><div class="sn-cv__ln sn-cv__w64"></div></div></div>
+      <div class="sn-cv__row is-pass"><span class="sn-cv__mark is-pass"></span><div class="sn-cv__lines"><div class="sn-cv__ln sn-cv__w80"></div><div class="sn-cv__ln sn-cv__w50"></div></div></div>
+      <div class="sn-cv__row"><span class="sn-cv__mark"></span><div class="sn-cv__lines"><div class="sn-cv__ln sn-cv__w64"></div></div></div>
+      <div class="sn-cv__row"><span class="sn-cv__mark"></span><div class="sn-cv__lines"><div class="sn-cv__ln sn-cv__w80"></div></div></div>
+    </div>
+    <div class="sn-cv__foot">
+      <span class="sn-cv__hint">青＝要件に合致した候補。合否の最終判断は人が行う</span>
+      <span class="sn-cv__cnt">2 / 4 を要確認に</span>
+    </div>
+  </div>
+</div>
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次">
+    <div class="art-toc-inner">
+      <div class="toc-h">目次</div>
+      <a href="#s1">生成AIで何が効率化されるのか</a>
+      <a href="#s2">書類選考をどう速くするか</a>
+      <a href="#s3">要件適合をどう見極めるか</a>
+      <a href="#s4">やってはいけないこと</a>
+      <a href="#faq">よくある質問</a>
+    </div>
+  </nav>
+
+  <article class="art-body rv">
+    <div class="lede">
+      <div class="lede-h">この記事の要点</div>
+      <ul>
+        <li>生成AIスクリーニング＝合否をAIに任せる仕組みではなく、<strong>大量の応募・職務経歴書の下読みと整理を圧縮し、人が見極めに使える時間を増やす</strong>ための道具。効率化の正体は「下読みの単価を下げること」。</li>
+        <li>速度を上げる鍵は、求人要件と評価観点の言語化。<strong>必須・歓迎条件と評価軸を明確に渡すほど</strong>、読み込みのばらつきが減り、確認すべき点を漏らさず洗い出せる。最終判断は人が握る。</li>
+        <li>公平性・属性差別・個人情報は越えてはいけない線。属性を評価の根拠にしない、AIの判定だけで不合格にしない、機微情報を無防備に渡さない——この3点が前提になる。</li>
+      </ul>
+    </div>
+
+    <aside class="inline-dx-cta" style="margin:6px 0 40px;border:1px solid var(--line-2);border-radius:12px;background:var(--white);padding:22px 26px;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
+  <div style="flex:1;min-width:240px;">
+    <div style="font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);">診断ツール ・ 無料 ・ 5分</div>
+    <div style="font-family:var(--jp);font-weight:700;font-size:16.5px;color:var(--ink);line-height:1.55;margin-top:8px;">自社の生成AI活用度を診断する</div>
+    <div style="font-size:13.5px;color:var(--slate);line-height:1.8;margin-top:5px;">Microsoftの成熟度モデルに沿って現在地を可視化し、業界別の活用事例と次の一手をその場で提示します。</div>
+  </div>
+  <a href="../../ai-assessment.html" class="btn" style="white-space:nowrap;flex:none;color:var(--paper);border-bottom:none;">無料で診断する <i>&rarr;</i></a>
+</aside>
+      <h2 id="s1">生成AIで何が効率化されるのか？</h2>
+    <p class="answer">大量の応募・職務経歴書の下読みと整理。合否を出す仕事ではなく、人が見極める前の準備を圧縮する。</p>
+    <p>スクリーニングには長年ジレンマがありました。応募が増えるほど一人ひとりの経歴を丁寧に読みたいが、時間は有限で、結局は冒頭だけ流し読みして判断してしまう。その結果、要件に合う候補者を見落としたり、読み手によって評価がばらついたりする。生成AIが変えるのはこの構図です。<strong>長い職務経歴書から、求人との合致点・確認したい点を素早く抽出し、整理した状態でCA／RAに渡せる</strong>ようになり、「丁寧に読む」と「数をさばく」が両立し始めます。</p>
+    <p>ここで核心になるのが、AIに何を渡すかです。「AIはエンジンだ。コンテキストは燃料だ」という考え方で言えば、スクリーニングの質は、求人の必須・歓迎条件、評価したい観点、そして候補者の経歴情報——つまり<strong>渡したコンテキストの精度</strong>でほぼ決まります。要件が曖昧なまま「この人を評価して」と投げても、当たり障りのない出力しか返りません。効率化されるのは「下読みと整理の時間」であって、「誰を通すかを決める仕事」はむしろCA／RAの中核として残ります。</p>
+    <div class="callout"><p>生成AIで増やすべきは「処理した書類の枚数」ではなく「一人ひとりの見極めに割ける時間」。合否そのものをAIに委ねた瞬間、スクリーニングは公平性もリスクも制御できない装置になる。</p></div>
+
+    <h2 id="s2">書類選考をどう速くするか？</h2>
+    <p class="answer">要件と評価観点を先に言語化し、下読み・要約・整理だけをAIに任せ、判断は人が握る。</p>
+    <p>書類選考の時間は、読むこと自体より「読んだあと、どう整理して判断するか」に溶けています。求人要件を評価観点に落とす作業、長い経歴から確認点を拾う作業、複数候補を同じ物差しで並べる作業——ここを生成AIで圧縮すると、同じ時間でより多くの候補者に、より深く向き合えるようになります。次の5ステップで、人が判断すべきところは人が握ったまま、下読みと整理だけをAIに任せます。</p>
+    <ol>
+      <li><strong>求人要件を評価観点に分解する。</strong>JDの必須・歓迎条件を、書類で確認できる評価軸（経験年数・担当領域・実績の種類など）に落とす。ここが選考の精度の土台になる。</li>
+      <li><strong>候補者情報を構造化して渡す。</strong>職務経歴書を、要約せず要点の構造に整理してAIに渡す。属性に関する情報は評価の根拠から外しておく。</li>
+      <li><strong>合致点と確認点を抽出させる。</strong>各候補について、要件に合う点・面談で確かめたい点・情報が不足している点を一覧化させ、読み込み時間を短縮する。</li>
+      <li><strong>同じ物差しで整理させる。</strong>評価観点ごとに候補者を並べる仮説を出させる。順位づけそのものではなく、人が比較しやすい整理が目的。</li>
+      <li><strong>人が経歴に当たって判断する。</strong>とくに不合格寄りの判断は、AIの出力を鵜呑みにせず人が経歴を確認して決める。合否の責任は人が持つ。</li>
+    </ol>
+    <div class="ui-mock">
+      <div class="um-bar"><span class="um-dot"></span><span class="um-dot"></span><span class="um-dot"></span><span class="um-name">AI ASSISTANT — 使い方の例</span></div>
+      <div class="um-row">
+        <div class="um-label">あなたの指示（CA／RA）</div>
+        <div class="um-text prompt">次の職務経歴書を、求人要件に照らして下読みして。
+【求人】SaaSの法人営業／必須：法人新規開拓3年以上　歓迎：立ち上げ期の経験
+【出してほしい】合致点／面談で確認したい点／情報が不足している点
+合否は出さず、属性（年齢・性別等）には触れないで。</div>
+      </div>
+      <div class="um-row">
+        <div class="um-label ai">AIの下読み結果</div>
+        <div class="um-text">合致点：法人新規開拓を7年、SaaSで一人称推進の記載あり（必須を満たす）。立ち上げ期に開拓フローを設計した経験あり（歓迎に合致）。
+確認したい点：直近2年の役割が管理寄りか、現場で開拓を継続しているか。
+不足している点：実績の定量（達成率・規模）が読み取れない。面談で確認を推奨。</div>
+      </div>
+    </div>
+    <p class="fig-cap">図：要件と「出してほしい観点」を渡し、下読みと整理だけをAIに作らせる例。合否・属性の扱いは指示で制御し、最終判断は人が行います。</p>
+    <p>次に、書類選考で「AIに任せる範囲」と「人が握る範囲」を対比で整理します。多くの失敗は、この線引きを間違えて、本来人が持つべき判断までAIに委ねてしまうことに起因します。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>工程</th><th>AIに任せる範囲</th><th>人が握る範囲</th></tr>
+        <tr><td>要件の定義</td><td>評価観点への分解案を出す</td><td>必須・歓迎条件と評価軸の確定</td></tr>
+        <tr><td>下読み</td><td>長い経歴の要約・合致点の抽出</td><td>抽出結果が妥当かの確認</td></tr>
+        <tr><td>確認点の洗い出し</td><td>面談で確かめる点・不足情報の列挙</td><td>どこを深掘りするかの取捨</td></tr>
+        <tr><td>候補の整理</td><td>観点ごとに並べる仮説の提示</td><td>誰を通すかの最終判断</td></tr>
+        <tr><td>合否</td><td>（任せない）</td><td>合否の決定と説明責任</td></tr>
+      </table>
+    </div>
+    <div class="ba-grid">
+      <div class="ba-card before">
+        <span class="ba-tag">Before — 流し読みの選考</span>
+        <div class="ba-body">経歴の冒頭と直近の社名だけ見て判断。読み手によって評価がぶれ、要件に合う候補者を見落とすことがある。</div>
+      </div>
+      <div class="ba-card after">
+        <span class="ba-tag">After — 整理された下読み</span>
+        <div class="ba-body">全候補が同じ観点で「合致点・確認点・不足点」に整理済み。人は見極めと面談準備に時間を使える。</div>
+      </div>
+    </div>
+    <p class="fig-cap">図：同じ書類選考でも、下読みが整理されているかで、人が見極めに割ける時間が変わる（例）。</p>
+
+    <h2 id="s3">要件適合をどう見極めるか？</h2>
+    <p class="answer">適合は「キーワード一致」ではなく、経験の中身が要件にどう効くかで判断し、根拠を残す。</p>
+    <p>要件適合の見極めで陥りやすいのが、キーワードの有無だけで判断することです。職務経歴書に求人と同じ単語があるかではなく、その人の経験の中身が、求める役割にどう効くか——ここを読むのが見極めの本質です。生成AIは、各候補について「要件のどの項目を、経歴のどの記述が満たしているか」を対応づけて示すのが得意で、人が根拠を持って判断する助けになります。下は、要件適合を観点ごとに整理して把握するためのダッシュボードのイメージです。</p>
+    <div class="mini-dash" aria-label="書類選考スクリーニングのダッシュボード（サンプル）">
+      <div class="md-top"><span class="dot"></span>書類選考スクリーニング（※サンプル・数値はイメージ）</div>
+      <div class="md-kpis">
+        <div class="md-kpi"><div class="k">今週の応募</div><div class="v">—</div></div>
+        <div class="md-kpi"><div class="k">要確認に整理</div><div class="v"><em>—</em></div></div>
+        <div class="md-kpi"><div class="k">下読み時間</div><div class="v"><em>—</em></div></div>
+      </div>
+      <div class="md-chart">
+        <div class="md-bars">
+          <div class="bar" style="height:44%"></div>
+          <div class="bar" style="height:56%"></div>
+          <div class="bar" style="height:50%"></div>
+          <div class="bar" style="height:66%"></div>
+          <div class="bar hi" style="height:80%"></div>
+          <div class="bar hi" style="height:90%"></div>
+        </div>
+        <div class="md-xax"><span>週1</span><span>週2</span><span>週3</span><span>週4</span><span>週5</span><span>週6</span></div>
+      </div>
+    </div>
+    <p class="fig-cap">※サンプル。実際の数値は装っていません。要件適合で整理された候補の割合や、下読みにかかる時間の推移を週次で追うイメージです。</p>
+    <p>見極めの精度を安定させるには、どの観点で適合を見るかを先に決めておくことが効きます。観点が定まっていれば、生成AIへの指示が安定し、CA／RAごとの当たり外れも減ります。下の表は、適合を見る観点と、その根拠となる情報源、AIへの渡し方の対応です。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>適合を見る観点</th><th>主な情報源</th><th>AIへの渡し方</th></tr>
+        <tr><td>必須要件の充足</td><td>職務経歴書・JD</td><td>要件と経歴を対応づけさせる</td></tr>
+        <tr><td>実績の中身・再現性</td><td>レジュメの実績記述</td><td>定量・役割を抽出し誇張させない</td></tr>
+        <tr><td>不足・要確認の論点</td><td>経歴の空白・曖昧な記述</td><td>面談で確かめる点として列挙</td></tr>
+        <tr><td>歓迎要件との接点</td><td>経歴の周辺経験</td><td>仮説として渡し断定させない</td></tr>
+      </table>
+    </div>
+    <p>注意したいのは、AIの整理はあくまで「根拠の候補」だということです。要件を満たすと示された記述が、その役割に実際に効くかどうかは人が読んで確かめます。上場企業を含む37社・2,500名の生成AI支援を通じて見えてきたのは、<strong>個々の判定を当てにいくより、評価観点と確認の型をチームで共有する仕組みを作るほうが、選考の質が安定して上がっていく</strong>という傾向です。スクリーニングを通った候補者を、その後どの求人にどう推薦まで運ぶかは<a href="ai-matching.html">生成AIで候補者マッチングを高度化する</a>で、関心を持った候補者への声かけは<a href="ai-scouting.html">生成AIでスカウト・候補者ソーシングを効率化する</a>で、母集団形成や採用業務全体への展開は<a href="recruitment-ai.html">人材ビジネスの採用業務に生成AIを使う</a>でそれぞれ扱います。</p>
+    <div class="quote-box"><p>適合の見極めで速くすべきは「読むこと」ではない。「読んだあとに考えること」に時間を残すことだ。</p></div>
+
+    <h2 id="s4">やってはいけないことは？</h2>
+    <p class="answer">AIの判定だけで合否を出す、属性で評価を変える、機微情報を無防備に渡す——この3つは避ける。</p>
+    <p>生成AIはスクリーニングを強力にする一方で、使い方を誤ると、公平性とコンプライアンスの両面で重いリスクを招きます。とくに次の3つは、効率化どころか、候補者への不利益や法令・媒体規約違反につながります。</p>
+    <ol>
+      <li><strong>AIの判定だけで合否を出す。</strong>とくに不合格をAIの出力のまま確定させること。下読みには見落としや偏りが含まれうる。合否、なかでも落とす判断は人が経歴に当たって決める。</li>
+      <li><strong>属性に基づく評価。</strong>性別・年齢・国籍などの保護属性で評価や合否を変えること。差別につながり、法令・媒体規約の双方に反する。AIに渡す情報も仕事に関わる情報に限り、属性は根拠にしない。</li>
+      <li><strong>機微情報の無防備な入力。</strong>候補者の個人情報を、データ取り扱い方針を確認しないままツールに入力すること。学習利用や保存先を把握し、マスキングと入力範囲のルールを先に決める。</li>
+    </ol>
+    <div class="callout"><p>判断基準はシンプル。「この合否の理由を、候補者本人に説明できるか」。説明できない根拠や、AIがそう言ったから、で落とす選考はしてはいけない。</p></div>
+    <p>もう一つ忘れてはいけないのが、選考の一貫性です。同じ要件の求人なら、誰が見ても同じ観点で評価される状態を保つこと——生成AIは観点を揃える助けになりますが、観点そのものを決め、運用するのは人とルールの仕事です。<strong>「便利だから」を理由に、判断の責任までAIに預けない</strong>。この線引きを最初に引いておくことが、スクリーニングでAIを長く使い続けるための前提になります。安全な使い方の設計や、チームでの運用ルールづくりに迷う場合は、<a href="../../contact.html">人材ビジネスのAI活用相談</a>でご一緒できます。</p>
+
+    <h2 id="faq">よくある質問</h2>
+    <div class="faq"><div class="q">生成AIの判定だけで候補者を不合格にしてもよいですか？</div><p class="a">避けるべきです。生成AIは大量の書類の下読みと要件適合の整理に使い、合否の最終判断は人が行うのが前提です。AIの出力はあくまで下読みの結果であり、見落としや偏りが含まれる可能性があるため、特に不合格の判断は人が経歴に当たって確認します。</p></div>
+    <div class="faq"><div class="q">書類選考でAIを使うと、見極めの精度は落ちませんか？</div><p class="a">使い方次第です。AIに渡す求人要件と評価観点が曖昧なまま使えば精度は落ちます。逆に、必須・歓迎条件や評価軸を明確に言語化して渡せば、人による読み込みのばらつきを減らし、確認すべき点を漏らさず洗い出す助けになります。精度を決めるのは渡す要件と候補者情報の質です。</p></div>
+    <div class="faq"><div class="q">応募者の属性で評価を変えるのは問題ありませんか？</div><p class="a">性別・年齢・国籍などの保護属性に基づいて評価や合否を変えるのは差別につながり、避けるべきです。スクリーニングは職務経歴・スキル・実績・要件適合といった仕事に直接関わる情報に基づいて行います。生成AIに渡す情報の範囲も、この基準で線引きし、属性に関する情報は評価の根拠にしません。<a href="recruitment-ai.html">採用業務全体での生成AI活用</a>の観点もあわせてご覧ください。</p></div>
+    <div class="faq"><div class="q">候補者の職務経歴書を、そのまま生成AIに入力してよいですか？</div><p class="a">利用するツールのデータ取り扱い方針と自社のルールを先に確認してから決めます。個人を特定できる情報をどこまで入力してよいかは、ツールが入力データを学習に使うか、どこに保存されるかで変わります。安全な範囲とマスキングのルールを決めてから運用に乗せるのが前提です。</p></div>
+  </article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役</span></div>
+    <p>上場企業を含む37社・2,500名の生成AI導入・研修を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。人材ビジネスのスクリーニング・ソーシング・マッチング業務へのAI実装も支援領域。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>「流し読みの選考」から「根拠を持った見極め」へ。</h3>
+    <p>書類選考の下読みと整理の効率化、要件適合の見極め、公平性と個人情報を守る運用設計まで、人材ビジネスの現場に生成AIを組み込む方法を、上場企業含む37社・2,500名の支援知見をもとにご一緒します。検討段階のご相談だけでも歓迎です。</p>
+  </div>
+  <a href="../../contact.html" class="btn">AI活用を相談する <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="../../training.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">生成AI法人研修（主要ツール全対応）</a>　／　<a href="../../contact.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">無料相談</a>　／　<a href="../../library/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">事例集（無料DL）</a></p>
+<div class="back-list"><a href="index.html">← メディア（人材）に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="recruitment-ai.html" class="related-card"><span class="rc-cat">採用業務</span><div class="rc-title">人材ビジネスの採用業務に生成AIを使う｜求人票・母集団形成・候補者対応</div></a>
+    <a href="ai-matching.html" class="related-card"><span class="rc-cat">マッチング</span><div class="rc-title">生成AIで候補者マッチングを高度化する｜推薦精度と提案スピードの両立</div></a>
+    <a href="ai-scouting.html" class="related-card"><span class="rc-cat">ソーシング</span><div class="rc-title">生成AIでスカウト・候補者ソーシングを効率化する｜返信率を高める文面と運用</div></a>
+    <a href="index.html" class="related-card"><span class="rc-cat">メディア</span><div class="rc-title">人材業界向けの生成AI活用｜ソーシング・採用・マッチングの実践知</div></a>
+  </div>
+</div></section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">人材AI<i>ラボ</i></div>
+        <p>生成AI活用の実践知をお届けするメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+      </div>
+      <div class="footer-col"><h4>人材AIラボ</h4><a href="index.html">記事一覧</a><a href="index.html#about">このメディアについて</a></div>
+      <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../index.html#services">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="../../contact.html">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+</body>
+</html>
