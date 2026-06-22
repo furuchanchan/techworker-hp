@@ -396,7 +396,7 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
             <div class="form-group">
               <label>会社規模<span class="optional">任意</span></label>
               <div class="select-wrapper">
-                <select name="company_size">
+                <select name="company_size" aria-label="会社規模">
                   <option value="" disabled selected>選択してください</option>
                   <option value="1-10名">1〜10名</option>
                   <option value="11-50名">11〜50名</option>
@@ -409,7 +409,7 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
             <div class="form-group">
               <label>ご用件<span class="optional">任意</span></label>
               <div class="select-wrapper">
-                <select id="inquiryTypeSelect" onchange="updateInquiryType(this)">
+                <select id="inquiryTypeSelect" onchange="updateInquiryType(this)" aria-label="ご用件">
                   <option value="consultation" selected>無料相談（30分のヒアリング）</option>
                   <option value="document">資料請求（生成AI活用事例集）</option>
                   <option value="other">その他（取材・提携等）</option>
