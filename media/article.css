@@ -162,6 +162,23 @@ body.menu-open .mmenu{transform:none;visibility:visible;}
 .mini-dash .md-xax{display:flex;justify-content:space-between;font-family:var(--en);font-size:10px;color:var(--slate);margin-top:8px;font-feature-settings:"tnum" 1;}
 .fig-cap{font-size:12px;color:var(--slate);margin:8px 0 30px;}
 
+/* ===== concept comparison chart (導入前→後の相対バー・定性・数値非掲載) ===== */
+.cmp-chart{margin:8px 0 8px;border:1px solid var(--line-2);border-radius:12px;background:var(--white);padding:22px 24px;}
+.cmp-chart .cc-top{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--slate);display:flex;align-items:center;gap:8px;margin-bottom:18px;}
+.cmp-chart .cc-top .dot{width:7px;height:7px;border-radius:50%;background:var(--electric);flex:none;}
+.cmp-chart .cc-row{display:grid;grid-template-columns:74px 1fr;gap:14px;align-items:center;margin:11px 0;}
+.cmp-chart .cc-lab{font-size:12.5px;color:var(--slate);}
+.cmp-chart .cc-stack{display:flex;height:30px;border-radius:6px;overflow:hidden;}
+.cmp-chart .cc-stack i{display:block;height:100%;}
+.cmp-chart .cc-stack i.s-a{background:rgba(13,17,23,.13);}
+.cmp-chart .cc-stack i.s-b{background:var(--electric);}
+.cmp-chart .cc-legend{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:16px;font-size:12.5px;color:var(--slate);}
+.cmp-chart .cc-legend span{display:inline-flex;align-items:center;gap:8px;}
+.cmp-chart .cc-legend i{width:11px;height:11px;border-radius:3px;flex:none;}
+.cmp-chart .cc-legend i.s-a{background:rgba(13,17,23,.13);}
+.cmp-chart .cc-legend i.s-b{background:var(--electric);}
+.cmp-chart .cc-cap{font-size:12px;color:var(--slate);line-height:1.7;margin-top:14px;}
+
 /* author */
 .author{max-width:var(--measure);margin:0 auto;padding:0;}
 .author .inner{display:flex;gap:18px;align-items:flex-start;border-top:1px solid var(--line);padding-top:28px;}

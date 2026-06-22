@@ -127,7 +127,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 .ct-cv__face{flex:none;width:26px;height:26px;border-radius:50%;border:1.5px solid rgba(13,17,23,.4)}
 .ct-cv__track{flex:1;height:7px;border-radius:4px;background:var(--paper-2);position:relative;overflow:hidden}
 .ct-cv__fill{position:absolute;inset:0 auto 0 0;background:var(--electric);border-radius:4px}
-.ct-cv__pct{font-family:var(--en);font-size:11px;color:var(--slate);width:30px;text-align:right}
+.ct-cv__pct{font-family:var(--jp);font-size:10.5px;font-weight:600;color:var(--slate);width:34px;text-align:right;white-space:nowrap}
 .ct-cv__foot{padding:12px 18px 14px;border-top:1px solid var(--line);font-size:11px;color:var(--slate)}
 @media(max-width:560px){.ct-cv__body{grid-template-columns:1fr;gap:18px}}
 </style>
@@ -145,9 +145,9 @@ fbq('init','1264057945446029');fbq('track','PageView');
         <div class="ct-cv__c-l ct-cv__w60"></div>
       </div>
       <div class="ct-cv__rows">
-        <div class="ct-cv__row"><span class="ct-cv__face"></span><span class="ct-cv__track"><span class="ct-cv__fill" style="width:72%"></span></span><span class="ct-cv__pct">—</span></div>
-        <div class="ct-cv__row"><span class="ct-cv__face"></span><span class="ct-cv__track"><span class="ct-cv__fill" style="width:48%"></span></span><span class="ct-cv__pct">—</span></div>
-        <div class="ct-cv__row"><span class="ct-cv__face"></span><span class="ct-cv__track"><span class="ct-cv__fill" style="width:60%"></span></span><span class="ct-cv__pct">—</span></div>
+        <div class="ct-cv__row"><span class="ct-cv__face"></span><span class="ct-cv__track"><span class="ct-cv__fill" style="width:72%"></span></span><span class="ct-cv__pct">高め</span></div>
+        <div class="ct-cv__row"><span class="ct-cv__face"></span><span class="ct-cv__track"><span class="ct-cv__fill" style="width:48%"></span></span><span class="ct-cv__pct">低め</span></div>
+        <div class="ct-cv__row"><span class="ct-cv__face"></span><span class="ct-cv__track"><span class="ct-cv__fill" style="width:60%"></span></span><span class="ct-cv__pct">中</span></div>
       </div>
     </div>
     <div class="ct-cv__foot">青＝各ツインの受容性の方向性。数値はイメージで、絶対値ではなく相対比較に使う（※サンプル）。</div>
@@ -242,27 +242,14 @@ fbq('init','1264057945446029');fbq('track','PageView');
       </div>
     </div>
     <p class="fig-cap">図：同じ商品でも、機能の列挙か生活者の文脈への翻訳かで受け止め方が変わる（例）。どちらが効くかはツインで傾向を見て、本調査で確かめます。</p>
-    <p>こうして集めた反応の方向性は、ダッシュボードで案ごとに俯瞰すると判断がぶれにくくなります。下は、複数案の受容性を並べて見るイメージです。</p>
-    <div class="mini-dash" aria-label="訴求案の受容性ダッシュボード（サンプル）">
-      <div class="md-top"><span class="dot"></span>訴求案の受容性ダッシュボード（※サンプル・数値はイメージ）</div>
-      <div class="md-kpis">
-        <div class="md-kpi"><div class="k">検証した訴求案</div><div class="v">—</div></div>
-        <div class="md-kpi"><div class="k">前向きな反応</div><div class="v"><em>—</em></div></div>
-        <div class="md-kpi"><div class="k">誤解リスクの論点</div><div class="v"><em>—</em></div></div>
-      </div>
-      <div class="md-chart">
-        <div class="md-bars">
-          <div class="bar" style="height:44%"></div>
-          <div class="bar hi" style="height:80%"></div>
-          <div class="bar" style="height:52%"></div>
-          <div class="bar" style="height:48%"></div>
-          <div class="bar hi" style="height:72%"></div>
-          <div class="bar" style="height:40%"></div>
-        </div>
-        <div class="md-xax"><span>案A</span><span>案B</span><span>案C</span><span>案D</span><span>案E</span><span>案F</span></div>
-      </div>
-    </div>
-    <p class="fig-cap">※サンプル。実際の数値は装っていません。訴求案ごとの反応の方向性を並べ、有望なものを本調査へ送るイメージです。</p>
+    <p>こうして集めた反応の方向性を活かす鍵は、AIにテスト設計・集計を任せ、人が受容性の解釈と改善に時間を回すことです。下は、受容性検証にかける時間の使われ方が、AI活用でどう変わるかのイメージです。</p>
+    <figure class="cmp-chart" aria-label="受容性検証にかける時間の使われ方（AI活用前後のイメージ）">
+      <figcaption class="cc-top"><span class="dot"></span>受容性検証にかける時間の使われ方（イメージ）</figcaption>
+      <div class="cc-row"><span class="cc-lab">AI活用前</span><div class="cc-stack"><i class="s-a" style="width:80%"></i><i class="s-b" style="width:20%"></i></div></div>
+      <div class="cc-row"><span class="cc-lab">AI活用後</span><div class="cc-stack"><i class="s-a" style="width:35%"></i><i class="s-b" style="width:65%"></i></div></div>
+      <div class="cc-legend"><span><i class="s-a"></i>テスト設計・集計（AIが圧縮）</span><span><i class="s-b"></i>受容性の解釈・改善（人の判断）</span></div>
+      <div class="cc-cap">※イメージ図です。実測値ではなく、AIがテスト設計・集計を圧縮し、受容性の解釈と改善に時間を回せる方向を表しています。シミュレーションはリアル調査の置換でなく仮説検証の加速です。</div>
+    </figure>
 
     <h2 id="s4">結果をどう読むのか？</h2>
     <p class="answer">スコアの絶対値ではなく、案どうしの相対差と「なぜその反応か」の理由を読む。</p>

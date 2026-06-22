@@ -265,26 +265,14 @@ fbq('init','1264057945446029');fbq('track','PageView');
         <tr><td>条件</td><td>柔軟に対応できる方</td><td><strong>must:</strong> 週2出社が可能 ／ <strong>want:</strong> 年収600万以上を希望</td></tr>
       </table>
     </div>
-    <p>このmust/want構造を持っておくと、候補者ごとに「mustを何項目満たしているか」「wantをどれだけ満たすか」をAIに一次評価させ、スコアの形で並べられます。注意したいのは、<strong>スコアは並び替えの補助線であって合否そのものではない</strong>こと。AIが何を根拠にそのスコアを付けたかを必ず添えさせ、CA・RAが中身を読んで判断します。下は候補者スコアリングのイメージです。</p>
-    <div class="mini-dash">
-      <div class="md-top"><span class="dot"></span>候補者スコアリング（※サンプル・実在データではありません）</div>
-      <div class="md-kpis">
-        <div class="md-kpi"><div class="k">要件 must 充足</div><div class="v"><em>4</em>/5</div></div>
-        <div class="md-kpi"><div class="k">要件 want 充足</div><div class="v"><em>3</em>/6</div></div>
-        <div class="md-kpi"><div class="k">総合スコア</div><div class="v"><em>72</em></div></div>
-      </div>
-      <div class="md-chart">
-        <div class="md-bars">
-          <div class="bar hi" style="height:88%"></div>
-          <div class="bar" style="height:46%"></div>
-          <div class="bar hi" style="height:74%"></div>
-          <div class="bar" style="height:38%"></div>
-          <div class="bar hi" style="height:80%"></div>
-        </div>
-        <div class="md-xax"><span>スキル</span><span>経験年数</span><span>志向</span><span>条件</span><span>カルチャー</span></div>
-      </div>
-    </div>
-    <p class="fig-cap">観点ごとの充足度を可視化したサンプル。AIは充足度と根拠を出すところまで。最終的にこの候補者を推すかはCA・RAが判断する。</p>
+    <p>このmust/want構造を持っておくと、候補者ごとに「mustを何項目満たしているか」「wantをどれだけ満たすか」をAIに一次評価させ、スコアの形で並べられます。注意したいのは、<strong>スコアは並び替えの補助線であって合否そのものではない</strong>こと。AIが何を根拠にそのスコアを付けたかを必ず添えさせ、CA・RAが中身を読んで判断します。下は、マッチング業務にかける時間の使われ方が、AI導入でどう変わるかのイメージです。</p>
+    <figure class="cmp-chart" aria-label="マッチング業務にかける時間の使われ方（導入前後のイメージ）">
+      <figcaption class="cc-top"><span class="dot"></span>マッチング業務の時間の使われ方（イメージ）</figcaption>
+      <div class="cc-row"><span class="cc-lab">AI導入前</span><div class="cc-stack"><i class="s-a" style="width:79%"></i><i class="s-b" style="width:21%"></i></div></div>
+      <div class="cc-row"><span class="cc-lab">AI導入後</span><div class="cc-stack"><i class="s-a" style="width:35%"></i><i class="s-b" style="width:65%"></i></div></div>
+      <div class="cc-legend"><span><i class="s-a"></i>突合・整理（AIが圧縮）</span><span><i class="s-b"></i>推薦の見極め・提案（人の判断）</span></div>
+      <div class="cc-cap">※イメージ図です。実測値ではなく、AIが要件と経歴の突合・整理を圧縮し、人が推薦の見極めと提案に時間を回せる——その方向を表しています。</div>
+    </figure>
     <div class="quote-box"><p>マッチングの精度は、AIを賢くすることではなく、要件を構造にすることで上がる。</p></div>
 
     <h2 id="s4">推薦コメントを最適化する</h2>

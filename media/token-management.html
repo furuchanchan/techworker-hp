@@ -159,21 +159,13 @@ fbq('init','1264057945446029');fbq('track','PageView');
       <li><strong>Batch API（バッチ処理）を使う。</strong>即時応答が不要な処理（大量の分類・要約・データ整形など）は、非同期のバッチ処理にすると50%オフになる。リアルタイム用途には向かないが、夜間バッチには最適。</li>
       <li><strong>出力トークンを制御する。</strong>出力にも課金される。最大出力量（max_tokens）の上限設定や「簡潔に答える」指示で、無駄に長い出力を防ぐ。あわせて使用量をモニタリングし、どこで無駄が出ているかを可視化する。</li>
     </ol>
-    <div class="mini-dash">
-      <div class="md-top"><span class="dot"></span>モデル別 月間コストの内訳 ※サンプル画面</div>
-      <div class="md-kpis">
-        <div class="md-kpi"><div class="k">月間コスト</div><div class="v">$<em>2.4</em>k</div></div>
-        <div class="md-kpi"><div class="k">キャッシュ読込比率</div><div class="v">61<em>%</em></div></div>
-        <div class="md-kpi"><div class="k">Batch処理比率</div><div class="v">44<em>%</em></div></div>
-      </div>
-      <div class="md-chart">
-        <div class="md-bars">
-          <div class="bar hi" style="height:100%"></div><div class="bar" style="height:54%"></div><div class="bar" style="height:28%"></div><div class="bar" style="height:18%"></div>
-        </div>
-        <div class="md-xax"><span>見直し前</span><span>+キャッシュ</span><span>+使い分け</span><span>+Batch</span></div>
-      </div>
-    </div>
-    <p class="fig-cap">図：施策を重ねるごとにコストが下がる運用イメージ（サンプル）。キャッシュ・使い分け・Batchを積み上げるほど請求額が圧縮される。</p>
+    <figure class="cmp-chart" aria-label="最適化前と最適化後の、トークンコストの内訳の違い（イメージ）">
+      <figcaption class="cc-top"><span class="dot"></span>トークンコストの内訳（イメージ）</figcaption>
+      <div class="cc-row"><span class="cc-lab">最適化前</span><div class="cc-stack"><i class="s-a" style="width:80%"></i><i class="s-b" style="width:20%"></i></div></div>
+      <div class="cc-row"><span class="cc-lab">最適化後</span><div class="cc-stack"><i class="s-a" style="width:35%"></i><i class="s-b" style="width:65%"></i></div></div>
+      <div class="cc-legend"><span><i class="s-a"></i>削れる無駄な消費</span><span><i class="s-b"></i>同じ成果を低コストで</span></div>
+      <div class="cc-cap">※イメージ図です。実測値ではなく、キャッシュやモデルの使い分けで無駄な消費が減り、同じ成果を低コストで出せる——その配分の変化の方向を表しています。</div>
+    </figure>
 
     <h2 id="s4">モデル別の料金はいくら？（2026年）</h2>
     <p class="answer">用途に過剰なモデルを使っていないか、まず料金表で確認するのが出発点だ。</p>

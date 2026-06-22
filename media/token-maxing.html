@@ -78,6 +78,11 @@ fbq('init','1264057945446029');fbq('track','PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel Code -->
+<style>
+@media(max-width:600px){
+  footer a{display:inline-block;padding-top:7px;padding-bottom:7px;}
+}
+</style>
 </head>
 <body>
 <div class="progress" id="progress"></div>
@@ -101,6 +106,8 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <a href="../cases.html">導入事例</a>
   <a href="../contact.html" class="m-cta">無料相談を申し込む</a>
 </div>
+
+<main>
 
 <header class="art-head">
   <nav class="crumb" aria-label="パンくず"><a href="../index.html">ホーム</a><span class="sep">/</span><a href="index.html">メディア</a><span class="sep">/</span>トークンマキシング</nav>
@@ -159,21 +166,13 @@ fbq('init','1264057945446029');fbq('track','PageView');
       <li><strong>マルチエージェントで並列に走らせる。</strong>観点を分けて複数のAIを同時に動かし、網羅性とクロスチェックを効かせる。</li>
       <li><strong>反復・自己検証のループを回す。</strong>一度で終わらせず「生成→検証→改善」を繰り返し、人間のレビュー工数を肩代わりさせる。</li>
     </ol>
-    <div class="mini-dash">
-      <div class="md-top"><span class="dot"></span>エージェント実行のトークン内訳 ※サンプル画面</div>
-      <div class="md-kpis">
-        <div class="md-kpi"><div class="k">投入トークン</div><div class="v">1.2<em>M</em></div></div>
-        <div class="md-kpi"><div class="k">うち推論(thinking)</div><div class="v">38<em>%</em></div></div>
-        <div class="md-kpi"><div class="k">並列エージェント</div><div class="v">5</div></div>
-      </div>
-      <div class="md-chart">
-        <div class="md-bars">
-          <div class="bar" style="height:30%"></div><div class="bar" style="height:46%"></div><div class="bar" style="height:58%"></div><div class="bar hi" style="height:80%"></div><div class="bar hi" style="height:100%"></div>
-        </div>
-        <div class="md-xax"><span>調査</span><span>設計</span><span>実装</span><span>検証</span><span>仕上げ</span></div>
-      </div>
-    </div>
-    <p class="fig-cap">図：トークンを「どこに振り切るか」を可視化する運用イメージ（サンプル）。検証・仕上げに厚く投じるほど品質が安定する。</p>
+    <figure class="cmp-chart" aria-label="トークンをケチった場合と惜しまず使った場合の、仕事の仕上がり方の違い（イメージ）">
+      <figcaption class="cc-top"><span class="dot"></span>やり直しと完成度の関係（イメージ）</figcaption>
+      <div class="cc-row"><span class="cc-lab">ケチって使う</span><div class="cc-stack"><i class="s-a" style="width:80%"></i><i class="s-b" style="width:20%"></i></div></div>
+      <div class="cc-row"><span class="cc-lab">惜しまず使う</span><div class="cc-stack"><i class="s-a" style="width:35%"></i><i class="s-b" style="width:65%"></i></div></div>
+      <div class="cc-legend"><span><i class="s-a"></i>手戻り・作り直し</span><span><i class="s-b"></i>狙った品質で一発完了</span></div>
+      <div class="cc-cap">※イメージ図です。実測値ではなく、トークンを惜しまず使うほど手戻りが減り、狙った品質で仕上がる——その配分の変化の方向を表しています。</div>
+    </figure>
 
     <h2 id="s4">いつ振り切り、いつ絞るのか？</h2>
     <p class="answer">判断ミスの手戻りコストがトークン代を上回る局面で振り切り、それ以外は絞る。</p>
@@ -225,6 +224,8 @@ fbq('init','1264057945446029');fbq('track','PageView');
     <a href="../cases.html" class="related-card"><span class="rc-cat">実績</span><div class="rc-title">生成AI導入・研修の支援実績（37社・2,500名）</div></a>
   </div>
 </div></section>
+
+</main>
 
 <footer>
   <div class="container">
