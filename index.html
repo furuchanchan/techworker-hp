@@ -490,8 +490,14 @@ html.js .rvg.show>*:nth-child(5){transition-delay:.36s;}
 /* ===== Floating DX assessment CTA ===== */
 .dxfab{position:fixed;right:24px;bottom:24px;z-index:40;font-family:var(--jp);}
 .dxfab-body{position:relative;width:300px;background:var(--white);border:1px solid var(--line-2);border-radius:14px;box-shadow:0 24px 50px -22px rgba(13,17,23,.35);padding:18px;display:flex;flex-direction:column;gap:10px;}
-.dxfab-lead{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:var(--slate);letter-spacing:.01em;margin-bottom:2px;}
-.dxfab-dot{width:7px;height:7px;border-radius:50%;background:var(--electric);flex-shrink:0;box-shadow:0 0 0 4px rgba(0,94,255,.12);}
+.dxfab-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:11px;}
+.dxfab-chip{font-size:11px;font-weight:600;color:var(--slate);background:var(--paper-2);border-radius:999px;padding:4px 10px;line-height:1.4;}
+.dxfab-chip.lead{color:var(--electric);background:rgba(0,94,255,.09);}
+.dxfab-h{font-size:15.5px;font-weight:700;line-height:1.5;letter-spacing:-.01em;color:var(--ink);margin-bottom:7px;}
+.dxfab-note{font-size:11.5px;line-height:1.6;color:var(--slate);margin-bottom:13px;}
+.dxfab-btn-text{display:flex;flex-direction:column;align-items:flex-start;gap:2px;line-height:1.25;}
+.dxfab-btn-main{font-size:14.5px;font-weight:700;}
+.dxfab-btn-sub{font-size:11px;font-weight:500;color:rgba(251,252,253,.88);}
 .dxfab-btn{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:14px;font-weight:600;padding:12px 16px;border-radius:9px;text-decoration:none;transition:transform .2s,box-shadow .2s,background .2s;}
 .dxfab-btn i{font-style:normal;transition:transform .2s;}
 .dxfab-btn:hover i{transform:translateX(3px);}
@@ -1064,14 +1070,19 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
 </footer>
 
 <!-- Floating DX assessment CTA -->
-<div class="dxfab" id="dxfab" data-state="open" aria-label="DX推進の再診断・無料相談">
+<div class="dxfab" id="dxfab" data-state="open" aria-label="DX推進度の無料セルフ診断ツール（約1分）">
   <div class="dxfab-body">
     <button class="dxfab-min" id="dxfabMin" type="button" aria-label="閉じる">×</button>
-    <div class="dxfab-lead"><span class="dxfab-dot"></span>貴社のDX推進を再評価します</div>
-    <a href="ai-assessment.html" class="dxfab-btn dxfab-btn--primary">DX推進を再診断する <i>→</i></a>
-    <a href="contact.html" class="dxfab-btn dxfab-btn--ghost">無料相談 <i>→</i></a>
+    <div class="dxfab-chips"><span class="dxfab-chip lead">約1分</span><span class="dxfab-chip">6問だけ</span><span class="dxfab-chip">登録不要</span></div>
+    <div class="dxfab-h">貴社のDX推進度を、<br>その場でセルフ診断。</div>
+    <div class="dxfab-note">面談ではありません。6つの質問に答えると、AIがその場で結果を出します。</div>
+    <a href="ai-assessment.html" class="dxfab-btn dxfab-btn--primary">
+      <span class="dxfab-btn-text"><span class="dxfab-btn-main">無料ツールで診断する</span><span class="dxfab-btn-sub">6問・約1分・登録不要</span></span>
+      <i>→</i>
+    </a>
+    <a href="contact.html" class="dxfab-btn dxfab-btn--ghost">無料面談で相談する<i>→</i></a>
   </div>
-  <button class="dxfab-open" id="dxfabOpen" type="button" aria-label="DX診断を開く"><span class="dxfab-pulse"></span>DX診断</button>
+  <button class="dxfab-open" id="dxfabOpen" type="button" aria-label="約1分のDX診断ツールを開く"><span class="dxfab-pulse"></span>1分でDX診断</button>
 </div>
 <script>
 (function(){
