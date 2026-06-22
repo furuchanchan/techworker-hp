@@ -30,6 +30,9 @@ if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_vi
 <meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
 <meta property="og:url" content="https://techworker.co.jp/news.html">
 <link rel="canonical" href="https://techworker.co.jp/news.html">
+<link rel="alternate" hreflang="ja" href="https://techworker.co.jp/news.html">
+<link rel="alternate" hreflang="en" href="https://techworker.co.jp/en/news.html">
+<link rel="alternate" hreflang="x-default" href="https://techworker.co.jp/news.html">
 <meta property="og:site_name" content="TechWorker">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ニュース — TechWorker">
@@ -201,6 +204,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--electric);outline-o
   nav{padding:0 10px 0 18px;height:60px;}
   .mmenu{top:60px;}
 }
+@media(max-width:600px){
+  footer a{display:inline-block;padding-top:7px;padding-bottom:7px;}
+}
 @media print{
   body{background:#fff;color:#000;}
   nav,.mmenu,.hamb,.news-cta{display:none;}
@@ -325,6 +331,8 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
   <a href="en/index.html" class="m-lang">English ↗</a>
 </div>
 
+<main>
+
 <!-- PAGE HEAD -->
 <header class="page-head">
   <div class="crumb" aria-label="パンくず"><a href="index.html">ホーム</a><span class="sep">/</span><span class="cur">ニュース</span></div>
@@ -362,6 +370,8 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
     </div>
   </div>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer>

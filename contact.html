@@ -30,6 +30,9 @@ if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_vi
 <meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
 <meta property="og:url" content="https://techworker.co.jp/contact.html">
 <link rel="canonical" href="https://techworker.co.jp/contact.html">
+<link rel="alternate" hreflang="ja" href="https://techworker.co.jp/contact.html">
+<link rel="alternate" hreflang="en" href="https://techworker.co.jp/en/contact.html">
+<link rel="alternate" hreflang="x-default" href="https://techworker.co.jp/contact.html">
 <meta property="og:site_name" content="TechWorker">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="お問い合わせ | TechWorker">
@@ -277,6 +280,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   .form-group input,.form-group select,.form-group textarea{font-size:16px;}
   .footer-inner{grid-template-columns:1fr;gap:32px;}
 }
+@media(max-width:600px){
+  footer a{display:inline-block;padding-top:7px;padding-bottom:7px;}
+}
 </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -333,6 +339,8 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
   <a href="en/contact.html" class="m-lang">English ↗</a>
 </div>
 
+<main>
+
 <!-- PAGE HEADER -->
 <section class="page-header">
   <div class="container">
@@ -354,7 +362,7 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
       <a href="https://calendar.app.google/eP4murMZBHoeecGT8" target="_blank" rel="noopener" class="btn" style="white-space:nowrap;" onclick="try{if(typeof fbq==='function')fbq('track','Lead',{content_name:'booking'});if(typeof gtag==='function')gtag('event','generate_lead',{inquiry_type:'booking',source:'HP本体'});}catch(e){}">日程を選んで予約する <i>&rarr;</i></a>
     </div>
     <div class="book-proof" style="display:flex;flex-wrap:wrap;align-items:center;gap:9px 16px;margin:0 0 16px;padding:13px 18px;border:1px solid var(--line);border-radius:10px;background:var(--white);font-size:13px;color:var(--slate);line-height:1.7;">
-      <span style="font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--electric);">Trusted by</span>
+      <span style="font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--electric);">Trusted by</span>
       <span><strong style="color:var(--ink);">さくらインターネット株式会社</strong> ほか、上場企業を含む <strong style="color:var(--ink);">37社・2,500名</strong> の生成AI活用を支援</span>
     </div>
     <div class="book-or">または、下のフォームから（資料請求・取材・その他のご相談も）</div>
@@ -368,27 +376,27 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
 
           <div class="form-group">
             <label>お名前<span class="required">必須</span></label>
-            <input type="text" name="name" placeholder="山田 太郎" required>
+            <input type="text" name="name" placeholder="山田 太郎" aria-label="お名前" required>
           </div>
 
           <div class="form-group">
             <label>会社名<span class="required">必須</span></label>
-            <input type="text" name="company" placeholder="株式会社○○○○" required>
+            <input type="text" name="company" placeholder="株式会社○○○○" aria-label="会社名" required>
           </div>
 
           <div class="form-group">
             <label>メールアドレス<span class="required">必須</span></label>
-            <input type="email" name="email" placeholder="sample@example.com" required>
+            <input type="email" name="email" placeholder="sample@example.com" aria-label="メールアドレス" required>
           </div>
 
           <div class="form-row">
             <div class="form-group">
               <label>役職<span class="optional">任意</span></label>
-              <input type="text" name="position" placeholder="部長 / マネージャー 等">
+              <input type="text" name="position" placeholder="部長 / マネージャー 等" aria-label="役職">
             </div>
             <div class="form-group">
               <label>部署<span class="optional">任意</span></label>
-              <input type="text" name="department" placeholder="経営企画部 / DX推進室 等">
+              <input type="text" name="department" placeholder="経営企画部 / DX推進室 等" aria-label="部署">
             </div>
           </div>
 
@@ -420,7 +428,7 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
 
           <div class="form-group" id="consultationField">
             <label id="messageLabel">お問い合わせ内容<span class="required">必須</span></label>
-            <textarea name="message" id="messageInput" placeholder="現在のAI活用状況やお困りごとをお聞かせください" required></textarea>
+            <textarea name="message" id="messageInput" placeholder="現在のAI活用状況やお困りごとをお聞かせください" aria-label="お問い合わせ内容" required></textarea>
           </div>
 
           <ul class="reassure">
@@ -483,6 +491,8 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
     </div>
   </div>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer>
