@@ -209,6 +209,14 @@ body.menu-open .mmenu{transform:none;visibility:visible;}
 .thank-you .back-link{display:block;font-size:13px;color:var(--electric);text-decoration:none;margin-top:18px;font-weight:600;}
 .thank-you .back-link:hover{text-decoration:underline;}
 
+/* ===== BOOKING CTA (Google Calendar appointment) ===== */
+.book-cta{border:1px solid var(--line-2);border-radius:12px;background:var(--white);padding:30px 34px;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;margin-bottom:16px;box-shadow:0 18px 40px -30px rgba(13,17,23,.4);}
+.book-cta .bk-ey{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);}
+.book-cta h2{font-family:var(--jp);font-weight:700;font-size:clamp(20px,2.6vw,26px);line-height:1.45;letter-spacing:-.01em;margin-top:10px;}
+.book-cta p{font-size:14.5px;color:var(--slate);line-height:1.9;margin-top:10px;max-width:56ch;}
+.book-or{text-align:center;font-size:13px;color:var(--slate);margin:4px 0 38px;}
+@media(max-width:560px){.book-cta{grid-template-columns:1fr;gap:18px;padding:26px;}}
+
 /* ===== FOOTER ===== */
 footer{background:var(--white);border-top:1px solid var(--line);padding:64px 0 40px;}
 .footer-inner{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;}
@@ -326,6 +334,16 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
 <!-- CONTACT FORM -->
 <section class="contact-section">
   <div class="container">
+    <div class="book-cta">
+      <div>
+        <div class="bk-ey">Fastest route ・ 30-min online ・ Free</div>
+        <h2>Pick a time and book your consultation</h2>
+        <p>No back-and-forth over scheduling — just choose an open slot and you're booked. No prep, fully online.</p>
+      </div>
+      <a href="https://calendar.app.google/eP4murMZBHoeecGT8" target="_blank" rel="noopener" class="btn" style="white-space:nowrap;" onclick="try{if(typeof fbq==='function')fbq('track','Lead',{content_name:'booking'});if(typeof gtag==='function')gtag('event','generate_lead',{inquiry_type:'booking',source:'HP_EN'});}catch(e){}">Book a time <i>&rarr;</i></a>
+    </div>
+    <div class="book-or">Or use the form below (document requests, press, and other inquiries)</div>
+
     <div class="contact-layout">
       <!-- FORM -->
       <div>
