@@ -739,6 +739,198 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
   </div></div>
 </section>
 
+<!-- ===== PRODUCT GLIMPSE: 眠っているデータ → 新規事業の種（dashboard, namespaced .nbd-*） ===== -->
+<style>
+/* self-contained dashboard — local token mapping to LP palette, no collision with existing CSS */
+.nbd-sec{border-top:1px solid var(--line);background:var(--paper);}
+.nbd{--nbd-white:#FBFCFD;--nbd-blue:#005EFF;--nbd-blued:#003DAA;--nbd-ink:#11161D;--nbd-paper2:#ECEFF3;--nbd-line:rgba(17,22,29,.12);--nbd-line2:rgba(17,22,29,.20);--nbd-slate:#5A6677;padding:clamp(38px,5vw,68px) 0 clamp(40px,5vw,72px);}
+.nbd-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:clamp(22px,3vw,34px);}
+.nbd-head .l{max-width:640px;}
+.nbd-kick{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--nbd-blue);display:inline-flex;align-items:center;gap:10px;margin-bottom:14px;}
+.nbd-kick::before{content:"";width:24px;height:1.5px;background:var(--nbd-blue);display:block;}
+.nbd-head h2{font-family:var(--jp);font-weight:700;font-size:clamp(23px,3vw,38px);line-height:1.32;letter-spacing:-.02em;color:var(--nbd-ink);margin:0;border:0;padding:0;}
+.nbd-head h2 .b{color:var(--nbd-blue);}
+.nbd-head .d{font-size:14.5px;color:var(--nbd-slate);line-height:1.85;margin:14px 0 0;max-width:560px;}
+/* panel */
+.nbd-panel{background:var(--nbd-white);border:1px solid var(--nbd-line);border-radius:16px;box-shadow:0 30px 60px -38px rgba(17,22,29,.42),0 8px 22px -18px rgba(17,22,29,.30);overflow:hidden;width:100%;}
+.nbd-bar{height:44px;display:flex;align-items:center;gap:14px;padding:0 18px;border-bottom:1px solid var(--nbd-line);background:var(--nbd-paper2);}
+.nbd-bar .lights{display:flex;gap:7px;}
+.nbd-bar .lights i{width:10px;height:10px;border-radius:50%;background:var(--nbd-line2);display:block;}
+.nbd-addr{flex:1;height:24px;border-radius:7px;background:var(--nbd-white);border:1px solid var(--nbd-line);display:flex;align-items:center;gap:7px;padding:0 11px;font-family:var(--en);font-size:11.5px;color:var(--nbd-slate);letter-spacing:.01em;max-width:380px;}
+.nbd-addr i.lock{width:9px;height:9px;border:1.4px solid var(--nbd-slate);border-radius:2px;display:block;opacity:.65;flex:none;}
+.nbd-bar .ctrl{display:flex;gap:6px;margin-left:auto;}
+.nbd-bar .ctrl i{width:7px;height:7px;border-radius:50%;border:1.4px solid var(--nbd-line2);display:block;}
+.nbd-top{padding:18px 24px 0;}
+.nbd-eyebrow{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;}
+.nbd-apptitle{display:flex;align-items:center;gap:11px;min-width:0;}
+.nbd-apptitle .ic{width:24px;height:24px;border-radius:7px;background:var(--nbd-ink);display:flex;align-items:center;justify-content:center;flex:none;}
+.nbd-apptitle .ic b{width:9px;height:9px;border:2px solid var(--nbd-white);border-radius:2px;border-top-color:var(--nbd-blue);border-left-color:var(--nbd-blue);transform:rotate(-45deg);display:block;}
+.nbd-apptitle h3{font-family:var(--jp);font-weight:600;font-size:14.5px;letter-spacing:-.01em;color:var(--nbd-ink);margin:0;}
+.nbd-apptitle .path{font-family:var(--en);font-size:11px;color:var(--nbd-slate);font-weight:400;}
+.nbd-live{display:inline-flex;align-items:center;gap:6px;font-family:var(--en);font-size:11px;font-weight:600;color:var(--nbd-blue);background:rgba(0,94,255,.07);padding:5px 11px;border-radius:99px;letter-spacing:.02em;flex:none;}
+.nbd-live .pulse{width:6px;height:6px;border-radius:50%;background:var(--nbd-blue);position:relative;}
+.nbd-live .pulse::after{content:"";position:absolute;inset:-3px;border-radius:50%;border:1.5px solid var(--nbd-blue);opacity:.5;animation:nbdPulse 2s ease-out infinite;}
+@keyframes nbdPulse{0%{transform:scale(.7);opacity:.6}100%{transform:scale(1.7);opacity:0}}
+.nbd-metrics{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--nbd-line);border-bottom:1px solid var(--nbd-line);}
+.nbd-metric{padding:16px 24px;border-right:1px solid var(--nbd-line);}
+.nbd-metric:last-child{border-right:none;}
+.nbd-metric .mlabel{font-family:var(--jp);font-size:11.5px;font-weight:500;color:var(--nbd-slate);margin-bottom:8px;letter-spacing:.01em;}
+.nbd-metric .mval{font-family:var(--en);font-weight:700;font-size:clamp(24px,2.4vw,30px);letter-spacing:-.02em;color:var(--nbd-ink);line-height:1;display:flex;align-items:baseline;gap:5px;font-feature-settings:"tnum" 1;}
+.nbd-metric .mval .u{font-size:14px;font-weight:600;color:var(--nbd-slate);}
+.nbd-spark{margin-top:10px;height:24px;width:100%;display:block;}
+.nbd-thead{display:grid;grid-template-columns:2fr .9fr 1fr 1.1fr;padding:13px 24px 9px;gap:14px;font-family:var(--jp);font-size:10.5px;font-weight:600;color:var(--nbd-slate);letter-spacing:.04em;}
+.nbd-thead .r{text-align:right;}
+.nbd-row{display:grid;grid-template-columns:2fr .9fr 1fr 1.1fr;padding:13px 24px;gap:14px;align-items:center;border-top:1px solid var(--nbd-line);}
+.nbd-row.focus{background:linear-gradient(90deg,rgba(0,94,255,.045),rgba(0,94,255,0));}
+.nbd-src{display:flex;align-items:center;gap:12px;min-width:0;}
+.nbd-src .si{width:30px;height:30px;border-radius:8px;background:var(--nbd-paper2);display:flex;align-items:center;justify-content:center;flex:none;border:1px solid var(--nbd-line);}
+.nbd-src .si svg{width:15px;height:15px;display:block;}
+.nbd-src .meta{min-width:0;}
+.nbd-src .nm{font-family:var(--jp);font-size:13.5px;font-weight:600;color:var(--nbd-ink);line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.nbd-src .sb{font-family:var(--en);font-size:10.5px;color:var(--nbd-slate);font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.nbd-vol{font-family:var(--en);font-size:13.5px;font-weight:500;color:var(--nbd-slate);text-align:right;letter-spacing:-.01em;}
+.nbd-score{display:flex;align-items:center;gap:10px;justify-content:flex-end;}
+.nbd-score .track{flex:1;max-width:72px;height:5px;border-radius:99px;background:var(--nbd-paper2);overflow:hidden;}
+.nbd-score .fill{height:100%;border-radius:99px;background:var(--nbd-blue);}
+.nbd-score .fill.mut{background:var(--nbd-line2);}
+.nbd-score .sv{font-family:var(--en);font-size:13px;font-weight:700;color:var(--nbd-ink);letter-spacing:-.02em;min-width:28px;text-align:right;}
+.nbd-score .sv.mut{color:var(--nbd-slate);font-weight:600;}
+.nbd-stat{display:flex;justify-content:flex-end;}
+.nbd-tag{font-family:var(--jp);font-size:11px;font-weight:600;padding:5px 11px;border-radius:7px;white-space:nowrap;letter-spacing:.01em;}
+.nbd-tag.seed{color:var(--nbd-blued);background:rgba(0,94,255,.09);border:1px solid rgba(0,94,255,.16);}
+.nbd-tag.rev{color:var(--nbd-slate);background:var(--nbd-paper2);border:1px solid var(--nbd-line);}
+.nbd-tag.que{color:var(--nbd-slate);background:transparent;border:1px solid var(--nbd-line2);}
+.nbd-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 24px;border-top:1px solid var(--nbd-line);background:var(--nbd-paper2);}
+.nbd-foot .pf-l{display:flex;align-items:center;gap:9px;font-family:var(--jp);font-size:11.5px;color:var(--nbd-slate);font-weight:500;}
+.nbd-foot .pf-l .gen{width:15px;height:15px;border-radius:50%;border:1.6px solid var(--nbd-blue);border-top-color:transparent;animation:nbdSpin 1.4s linear infinite;flex:none;}
+@keyframes nbdSpin{to{transform:rotate(360deg)}}
+.nbd-foot .pf-r{font-family:var(--en);font-size:11px;color:var(--nbd-slate);font-weight:500;letter-spacing:.01em;}
+.nbd-foot .pf-r b{color:var(--nbd-ink);font-weight:600;}
+.nbd-annot{display:flex;align-items:flex-start;gap:12px;margin-top:16px;padding:0 2px;}
+.nbd-annot .ai{width:32px;height:32px;border-radius:9px;background:var(--nbd-ink);display:flex;align-items:center;justify-content:center;flex:none;margin-top:1px;}
+.nbd-annot .ai svg{width:16px;height:16px;display:block;}
+.nbd-annot .atx{font-family:var(--jp);font-size:13px;line-height:1.6;color:var(--nbd-slate);}
+.nbd-annot .atx b{color:var(--nbd-ink);font-weight:600;}
+.nbd-annot .atx .hl{color:var(--nbd-blue);font-weight:600;}
+.nbd-annot .atx .smp{color:var(--nbd-slate);font-size:12px;}
+@media(max-width:760px){
+  .nbd-thead,.nbd-row{grid-template-columns:1.7fr 1fr 1.1fr;padding-left:16px;padding-right:16px;gap:12px;}
+  .nbd-thead .colvol,.nbd-row .nbd-vol{display:none;}
+  .nbd-top{padding:16px 16px 0;}
+  .nbd-metric{padding:13px 16px;}
+  .nbd-src .sb{display:none;}
+  .nbd-bar{padding:0 14px;}
+  .nbd-foot{padding:13px 16px;}
+  .nbd-foot .pf-r{display:none;}
+}
+@media(max-width:420px){
+  .nbd-metrics{grid-template-columns:1fr 1fr;}
+  .nbd-metric:nth-child(3){display:none;}
+}
+</style>
+<section class="nbd-sec">
+  <div class="wrap"><div class="col nbd">
+    <div class="nbd-head">
+      <div class="l">
+        <span class="nbd-kick">How it works ／ 仕組み</span>
+        <h2>眠っている社内データを、<br/>生成AIが<span class="b">新規事業の種</span>に変える。</h2>
+        <p class="d">過去の調査・顧客の声・議事録・技術文献——散らばったデータ資産をAIが横断し、事業性スコアで候補化します。外注やゼロからの構築に頼らず、有望な種から検証に入れます。</p>
+      </div>
+    </div>
+
+    <div class="nbd-panel" role="img" aria-label="社内データ資産を生成AIがスコアリングし、新規事業の種を抽出するダッシュボードのプレビュー">
+      <div class="nbd-bar">
+        <div class="lights"><i></i><i></i><i></i></div>
+        <div class="nbd-addr"><i class="lock"></i>app.techworker.co.jp/discovery</div>
+        <div class="ctrl"><i></i><i></i></div>
+      </div>
+      <div class="nbd-top">
+        <div class="nbd-eyebrow">
+          <div class="nbd-apptitle">
+            <div class="ic"><b></b></div>
+            <div>
+              <h3>事業の種ディスカバリー</h3>
+              <div class="path">Knowledge assets / scored opportunities</div>
+            </div>
+          </div>
+          <span class="nbd-live"><span class="pulse"></span>SCORING</span>
+        </div>
+      </div>
+      <div class="nbd-metrics">
+        <div class="nbd-metric">
+          <div class="mlabel">解析したデータ資産</div>
+          <div class="mval">1,284<span class="u">件</span></div>
+          <svg class="nbd-spark" viewBox="0 0 110 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,18 14,16 26,17 38,12 50,13 62,9 74,10 86,6 98,5 110,3" fill="none" stroke="#5A6677" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity=".55"/></svg>
+        </div>
+        <div class="nbd-metric">
+          <div class="mlabel">事業の種 候補</div>
+          <div class="mval" style="color:#005EFF">38<span class="u" style="color:#005EFF;opacity:.7">件</span></div>
+          <svg class="nbd-spark" viewBox="0 0 110 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,19 14,18 26,15 38,16 50,11 62,12 74,8 86,7 98,4 110,2" fill="none" stroke="#005EFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="110" cy="2" r="2.2" fill="#005EFF"/></svg>
+        </div>
+        <div class="nbd-metric">
+          <div class="mlabel">平均 事業性スコア</div>
+          <div class="mval">7.6<span class="u">/10</span></div>
+          <svg class="nbd-spark" viewBox="0 0 110 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,13 14,14 26,12 38,13 50,10 62,11 74,9 86,9 98,7 110,8" fill="none" stroke="#5A6677" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity=".55"/></svg>
+        </div>
+      </div>
+      <div class="nbd-thead">
+        <div class="col">データ資産</div>
+        <div class="r colvol">容量</div>
+        <div class="r">事業性スコア</div>
+        <div class="r">ステータス</div>
+      </div>
+      <div class="nbd-row focus">
+        <div class="nbd-src"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="#005EFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5h18M3 12h18M3 17.5h11"/></svg></div><div class="meta"><div class="nm">過去の市場調査レポート</div><div class="sb">Market research · 312 docs</div></div></div>
+        <div class="nbd-vol">2.4&nbsp;GB</div>
+        <div class="nbd-score"><span class="track"><span class="fill" style="width:92%"></span></span><span class="sv">9.2</span></div>
+        <div class="nbd-stat"><span class="nbd-tag seed">新規事業の種</span></div>
+      </div>
+      <div class="nbd-row">
+        <div class="nbd-src"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="#5A6677" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-3.8-.8L3 20.5l1.4-4.1A8.4 8.4 0 1 1 21 11.5Z"/></svg></div><div class="meta"><div class="nm">顧客の声 / VoC ログ</div><div class="sb">Voice of customer · 8,910 件</div></div></div>
+        <div class="nbd-vol">5.1&nbsp;GB</div>
+        <div class="nbd-score"><span class="track"><span class="fill" style="width:84%"></span></span><span class="sv">8.4</span></div>
+        <div class="nbd-stat"><span class="nbd-tag seed">新規事業の種</span></div>
+      </div>
+      <div class="nbd-row">
+        <div class="nbd-src"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="#5A6677" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-5-5H8Z"/><path d="M14 3v5h5M8.5 13h7M8.5 16.5h7"/></svg></div><div class="meta"><div class="nm">議事録・社内ナレッジ</div><div class="sb">Meeting notes · 1,447 件</div></div></div>
+        <div class="nbd-vol">1.8&nbsp;GB</div>
+        <div class="nbd-score"><span class="track"><span class="fill" style="width:71%"></span></span><span class="sv">7.1</span></div>
+        <div class="nbd-stat"><span class="nbd-tag rev">検証中</span></div>
+      </div>
+      <div class="nbd-row">
+        <div class="nbd-src"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="#5A6677" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 7.5 12 12l9-4.5L12 3Z"/><path d="M3 12l9 4.5L21 12M3 16.5 12 21l9-4.5"/></svg></div><div class="meta"><div class="nm">特許・技術文献アーカイブ</div><div class="sb">R&amp;D corpus · 624 件</div></div></div>
+        <div class="nbd-vol">3.3&nbsp;GB</div>
+        <div class="nbd-score"><span class="track"><span class="fill mut" style="width:48%"></span></span><span class="sv mut">4.8</span></div>
+        <div class="nbd-stat"><span class="nbd-tag que">キュー待ち</span></div>
+      </div>
+      <div class="nbd-foot">
+        <div class="pf-l"><span class="gen"></span>生成AIが残り 246 件を解析中…</div>
+        <div class="pf-r">最終同期 <b>2分前</b></div>
+      </div>
+    </div>
+
+    <div class="nbd-annot">
+      <div class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="#FBFCFD" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.4"/></svg></div>
+      <div class="atx"><b>AI が抽出：</b>眠っていた調査資料・顧客の声から、<span class="hl">事業性の高い新規事業の種を3件</span>提案しました。<span class="smp">（画面はサンプル。実装時に実データへ差し替え）</span></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- CLIENTS / 導入企業 -->
+<style>
+.nb-clients{border-top:1px solid var(--line);background:var(--paper);}
+.nb-clients-in{padding:18px 0;font-size:14px;color:var(--ink);line-height:1.85;}
+.nb-clients-lab{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-right:16px;white-space:nowrap;}
+.nb-clients-names b{font-weight:700;}
+.nb-clients-names .nbc-more{color:var(--slate);}
+</style>
+<section class="nb-clients">
+  <div class="wrap"><div class="col nb-clients-in">
+    <span class="nb-clients-lab">導入企業</span>
+    <span class="nb-clients-names"><b>さくらインターネット</b>／東証プライム上場 総合化学メーカー（匿名）<span class="nbc-more"> ほか、上場企業を含む 37社・2,500名</span></span>
+  </div></div>
+</section>
+
 <!-- AI TOOLS STRIP (homepage parity) -->
 <style>
 .nb-tools{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff;}
@@ -959,6 +1151,14 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
       </div>
     </div>
 
+    <style>
+    @media(max-width:760px){
+      .cases-wrap .case-track{flex-direction:column;overflow-x:visible;scroll-snap-type:none;}
+      .cases-wrap .case-card{flex-basis:auto;width:100%;}
+      .cases-wrap::after{display:none;}
+      #cases .cases-hint{display:none;}
+    }
+    </style>
     <div class="cases-wrap rv">
       <div class="case-track" id="caseTrack">
         <div class="case-card named">
@@ -1007,7 +1207,7 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
         </div>
       </div>
     </div>
-    <p class="fit-note rv" style="margin-top:20px;">※ さくらインターネット様以外は、守秘義務により業種のみの掲載とさせていただいています。</p>
+    <p class="fit-note rv" style="margin-top:20px;">※ さくらインターネット様以外は守秘により業種のみ掲載。製造・化学・製薬・建設・IT など、上場企業を含む37社を支援してきました。</p>
   </div></div>
 </section>
 
@@ -1072,6 +1272,49 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
           <li>次フェーズ合意形成（稟議）に使える材料</li>
         </ul>
       </div>
+    </div>
+
+    <div class="rv" style="margin-top:64px;">
+      <div class="midcta-head" style="margin-bottom:22px;"><div class="mk">COMPARE</div><h3>コンサル・SIer・研修と、<span class="b">何が違うか</span></h3></div>
+      <div class="cmp">
+        <div class="cr head">
+          <div class="cc">比較項目</div>
+          <div class="cc">総合コンサル / SIer</div>
+          <div class="cc">一般のAI研修</div>
+          <div class="cc rec">TechWorker</div>
+        </div>
+        <div class="cr">
+          <div class="cc" data-h="比較項目"><span class="rl">立ち上げ方</span></div>
+          <div class="cc no" data-h="コンサル/SIer">ゼロから・外注前提</div>
+          <div class="cc no" data-h="一般のAI研修">座学・使い方が中心</div>
+          <div class="cc rec" data-h="TechWorker"><span class="yes">社内データを掘り起こして活用</span></div>
+        </div>
+        <div class="cr">
+          <div class="cc" data-h="比較項目"><span class="rl">スピード・コスト</span></div>
+          <div class="cc no" data-h="コンサル/SIer">大型・長期・高コスト</div>
+          <div class="cc no" data-h="一般のAI研修">単発で終わりがち</div>
+          <div class="cc rec" data-h="TechWorker"><span class="yes">小さく速く・外注より安く</span></div>
+        </div>
+        <div class="cr">
+          <div class="cc" data-h="比較項目"><span class="rl">手元に残るもの</span></div>
+          <div class="cc no" data-h="コンサル/SIer">報告書・スライド</div>
+          <div class="cc no" data-h="一般のAI研修">研修資料</div>
+          <div class="cc rec" data-h="TechWorker"><span class="yes">動く型（評価プロンプト・運用ルール）</span></div>
+        </div>
+        <div class="cr">
+          <div class="cc" data-h="比較項目"><span class="rl">どこまで伴走</span></div>
+          <div class="cc no" data-h="コンサル/SIer">提案・構築まで</div>
+          <div class="cc no" data-h="一般のAI研修">使い方まで</div>
+          <div class="cc rec" data-h="TechWorker"><span class="yes">検証・PoC・チーム定着まで</span></div>
+        </div>
+        <div class="cr">
+          <div class="cc" data-h="比較項目"><span class="rl">新規事業の実績</span></div>
+          <div class="cc no" data-h="コンサル/SIer">ファーム次第</div>
+          <div class="cc no" data-h="一般のAI研修">限定的</div>
+          <div class="cc rec" data-h="TechWorker"><span class="yes">新素材で特許出願中・37社2,500名</span></div>
+        </div>
+      </div>
+      <p class="fit-note" style="margin-top:16px;">※「総合コンサル/SIer」「一般のAI研修」は当社の一般的な見立てで、特定企業を指すものではありません。</p>
     </div>
   </div></div>
 </section>
@@ -1296,7 +1539,7 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
     <div class="frow">
       <div>
         <a href="/" class="brand"><span class="mk">TechWorker</span></a>
-        <p class="ft">社内に眠るデータ資産を、新規事業の武器に。生成AIで早く・安く立ち上げる、新規事業フェーズ特化の活用支援。37社・2,500名の知見。<br/><br/>代表取締役: 古野 光太朗<br/>運営: <a href="https://techworker.co.jp" style="color:var(--blue);">株式会社TechWorker</a></p>
+        <p class="ft">社内に眠るデータ資産を、新規事業の武器に。生成AIで早く・安く立ち上げる、新規事業フェーズ特化の活用支援。37社・2,500名の知見。<br/><br/>代表取締役: 古野 光太朗<br/>運営: <a href="https://techworker.co.jp" style="color:var(--blue);">株式会社TechWorker</a><br/>所在地: 〒169-0051 東京都新宿区西早稲田1-22-3 ／ 設立: 2023年12月</p>
       </div>
       <div>
         <h5>Menu</h5>
