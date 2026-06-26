@@ -160,65 +160,207 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <a href="../../new-business.html" class="m-cta">無料相談を申し込む</a>
 </div>
 
-<header class="jz-hero">
-  <span class="kicker">For New Business Development</span>
-  <h1>次の新規事業は、<br><span style="color:var(--electric)">社内データ</span>に<br>眠っている。</h1>
-  <p style="margin-top:18px;font-family:var(--jp);font-weight:600;font-size:clamp(18px,2.3vw,24px);line-height:1.55;letter-spacing:-.01em;color:var(--ink);max-width:30ch;">それを生成AIで掘り起こし、<span style="color:var(--electric)">早く・安く</span>立ち上げる。</p>
-  <p class="lead">過去の調査・顧客の声・社内ナレッジなど、眠ったままのデータ資産を新規事業の武器に。外注やゼロからの構築に頼りません。総合化学メーカーの新素材探索で特許出願中、37社・2,500名の知見をもとに。</p>
-  <div class="jz-stats">
-    <div class="st"><div class="st-n">37<em>社</em></div><div class="st-l">上場企業を含む支援実績</div></div>
-    <div class="st"><div class="st-n">2,500<em>名</em></div><div class="st-l">生成AIの導入・研修支援</div></div>
-  </div>
-</header>
+<!-- ===== HERO (Cand 2: split editorial typography + real dashboard) — namespaced .nbh-* ===== -->
+<style>
+/* new-business hero — scoped, no collision with jz-* / article.css */
+.nbh{max-width:1180px;margin:0 auto;padding:104px 48px 8px;display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,1.2fr);gap:54px;align-items:center;}
+.nbh-copy .kicker{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--electric);display:flex;align-items:center;gap:10px;margin-bottom:24px;}
+.nbh-copy .kicker::before{content:"";width:26px;height:1.5px;background:var(--electric);display:block;}
+.nbh-copy h1{font-family:var(--jp);font-weight:700;font-size:clamp(38px,4.4vw,60px);line-height:1.16;letter-spacing:-.025em;color:var(--ink);margin:0 0 24px;}
+.nbh-copy h1 .hl{color:var(--electric);}
+.nbh-claim{font-family:var(--jp);font-weight:600;font-size:clamp(17px,1.5vw,21px);line-height:1.6;letter-spacing:-.005em;color:var(--ink);margin:0 0 20px;}
+.nbh-claim .hl{color:var(--electric);}
+.nbh-sub{font-family:var(--jp);font-weight:400;font-size:14.5px;line-height:1.85;color:var(--slate);max-width:31em;margin:0 0 30px;}
+.nbh-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.nbh-proof{display:flex;align-items:baseline;gap:8px;}
+.nbh-proof .num{font-family:var(--en);font-weight:700;font-size:25px;letter-spacing:-.02em;color:var(--electric);line-height:1;font-feature-settings:"tnum" 1;}
+.nbh-proof .lbl{font-family:var(--jp);font-size:12.5px;font-weight:500;color:var(--slate);}
+.nbh-div{width:1px;height:26px;background:var(--line-2);}
+.nbh-badge{display:inline-flex;align-items:center;gap:7px;font-family:var(--jp);font-size:12px;font-weight:500;color:var(--slate);padding:6px 12px;border:1px solid var(--line);border-radius:99px;background:var(--white);}
+.nbh-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--electric);flex:none;}
 
-<!-- geometric hero: digital twin motif -->
-<section class="tw-cover">
-  <div class="tw-panel">
-    <svg viewBox="0 0 1100 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="生活者デジタルツイン：実在の生活者を、AIがデータ化された鏡像として再現する">
-      <rect width="1100" height="360" fill="#FBFCFD"/>
-      <!-- blueprint grid (whisper) -->
-      <g stroke="#11161D" stroke-opacity=".045" stroke-width="1">
-        <line x1="220" y1="0" x2="220" y2="360"/><line x1="440" y1="0" x2="440" y2="360"/>
-        <line x1="660" y1="0" x2="660" y2="360"/><line x1="880" y1="0" x2="880" y2="360"/>
-        <line x1="0" y1="90" x2="1100" y2="90"/><line x1="0" y1="180" x2="1100" y2="180"/><line x1="0" y1="270" x2="1100" y2="270"/>
-      </g>
-      <!-- corner brackets -->
-      <g stroke="#005EFF" stroke-width="2" fill="none">
-        <path d="M40 78 V40 H78"/><path d="M1022 40 H1060 V78"/>
-        <path d="M40 282 V320 H78"/><path d="M1060 320 H1022 V282"/>
-      </g>
-      <text x="74" y="64" fill="#005EFF" font-family="'IBM Plex Sans','Helvetica Neue',Arial,sans-serif" font-size="13" font-weight="600" letter-spacing="2.6">DIGITAL TWIN</text>
-      <!-- mirror divider -->
-      <line x1="550" y1="96" x2="550" y2="288" stroke="#005EFF" stroke-width="1.6" stroke-dasharray="4 6"/>
-      <text x="550" y="312" fill="#5A6677" font-family="'IBM Plex Sans','Helvetica Neue',Arial,sans-serif" font-size="11" letter-spacing="1.5" text-anchor="middle">MIRROR</text>
-      <!-- LEFT: real consumer persona silhouette (ink, abstract) -->
-      <g fill="none" stroke="#11161D" stroke-opacity=".55" stroke-width="2">
-        <circle cx="330" cy="150" r="34"/>
-        <path d="M276 254 a54 54 0 0 1 108 0"/>
-      </g>
-      <text x="330" y="296" fill="#5A6677" font-family="'IBM Plex Sans','Helvetica Neue',Arial,sans-serif" font-size="12" letter-spacing="1" text-anchor="middle">実在の生活者</text>
-      <!-- RIGHT: data-fied twin (electric panel: attribute bars + score) -->
-      <g>
-        <circle cx="770" cy="150" r="34" fill="#005EFF" fill-opacity=".12" stroke="#005EFF" stroke-width="1.6"/>
-        <circle cx="770" cy="150" r="6" fill="#005EFF"/>
-      </g>
-      <g fill="#005EFF">
-        <rect x="700" y="206" width="170" height="9" rx="4.5" opacity=".5"/>
-        <rect x="700" y="224" width="128" height="9" rx="4.5" opacity=".32"/>
-        <rect x="700" y="242" width="150" height="9" rx="4.5"/>
-      </g>
-      <!-- score chip -->
-      <g>
-        <rect x="700" y="262" width="60" height="20" rx="10" fill="#005EFF" fill-opacity=".12" stroke="#005EFF" stroke-opacity=".4"/>
-        <text x="730" y="276" fill="#005EFF" font-family="'IBM Plex Sans','Helvetica Neue',Arial,sans-serif" font-size="11" font-weight="600" letter-spacing=".5" text-anchor="middle">SCORE</text>
-      </g>
-      <text x="770" y="296" fill="#5A6677" font-family="'IBM Plex Sans','Helvetica Neue',Arial,sans-serif" font-size="12" letter-spacing="1" text-anchor="middle">データ化されたツイン</text>
-      <!-- linkage dots across the mirror -->
-      <g fill="#005EFF" opacity=".55"><circle cx="430" cy="150" r="3"/><circle cx="470" cy="150" r="3"/><circle cx="510" cy="150" r="3"/><circle cx="590" cy="150" r="3"/><circle cx="630" cy="150" r="3"/><circle cx="670" cy="150" r="3"/></g>
-    </svg>
-  </div>
-  <p class="tw-cap">図：実在の生活者を、属性・志向のデータとしてAIが再現した「ツイン」に写し取る——というメディアの考え方（イメージ）。</p>
-</section>
+/* right — real dashboard */
+.nbh-pwrap{display:flex;flex-direction:column;gap:14px;min-width:0;}
+.nbh-panel{background:var(--white);border:1px solid var(--line);border-radius:16px;box-shadow:0 30px 60px -38px rgba(17,22,29,.42),0 8px 22px -18px rgba(17,22,29,.30);overflow:hidden;width:100%;}
+.nbh-bar{height:42px;display:flex;align-items:center;gap:14px;padding:0 16px;border-bottom:1px solid var(--line);background:var(--paper-2);}
+.nbh-bar .lights{display:flex;gap:7px;}
+.nbh-bar .lights i{width:10px;height:10px;border-radius:50%;background:var(--line-2);display:block;}
+.nbh-addr{flex:1;height:23px;border-radius:7px;background:var(--white);border:1px solid var(--line);display:flex;align-items:center;gap:7px;padding:0 11px;font-family:var(--en);font-size:11.5px;color:var(--slate);letter-spacing:.01em;max-width:340px;}
+.nbh-addr i.lock{width:9px;height:9px;border:1.4px solid var(--slate);border-radius:2px;display:block;opacity:.65;flex:none;}
+.nbh-bar .ctrl{display:flex;gap:6px;margin-left:auto;}
+.nbh-bar .ctrl i{width:7px;height:7px;border-radius:50%;border:1.4px solid var(--line-2);display:block;}
+.nbh-top{padding:17px 22px 0;}
+.nbh-eyebrow{display:flex;align-items:center;justify-content:space-between;margin-bottom:13px;}
+.nbh-apptitle{display:flex;align-items:center;gap:10px;min-width:0;}
+.nbh-apptitle .ic{width:23px;height:23px;border-radius:7px;background:var(--ink);display:flex;align-items:center;justify-content:center;flex:none;}
+.nbh-apptitle .ic b{width:9px;height:9px;border:2px solid var(--white);border-radius:2px;border-top-color:var(--electric);border-left-color:var(--electric);transform:rotate(-45deg);display:block;}
+.nbh-apptitle h3{font-family:var(--jp);font-weight:600;font-size:14px;letter-spacing:-.01em;color:var(--ink);margin:0;}
+.nbh-apptitle .path{font-family:var(--en);font-size:11px;color:var(--slate);font-weight:400;}
+.nbh-live{display:inline-flex;align-items:center;gap:6px;font-family:var(--en);font-size:11px;font-weight:600;color:var(--electric);background:rgba(0,94,255,.07);padding:4px 10px;border-radius:99px;letter-spacing:.02em;flex:none;}
+.nbh-live .pulse{width:6px;height:6px;border-radius:50%;background:var(--electric);position:relative;}
+.nbh-live .pulse::after{content:"";position:absolute;inset:-3px;border-radius:50%;border:1.5px solid var(--electric);opacity:.5;animation:nbhpl 2s ease-out infinite;}
+@keyframes nbhpl{0%{transform:scale(.7);opacity:.6}100%{transform:scale(1.7);opacity:0}}
+.nbh-metrics{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.nbh-metric{padding:14px 22px;border-right:1px solid var(--line);}
+.nbh-metric:last-child{border-right:none;}
+.nbh-metric .mlabel{font-family:var(--jp);font-size:11px;font-weight:500;color:var(--slate);margin-bottom:7px;letter-spacing:.01em;}
+.nbh-metric .mval{font-family:var(--en);font-weight:700;font-size:25px;letter-spacing:-.02em;color:var(--ink);line-height:1;display:flex;align-items:baseline;gap:5px;font-feature-settings:"tnum" 1;}
+.nbh-metric .mval .u{font-size:13px;font-weight:600;color:var(--slate);}
+.nbh-spark{margin-top:9px;height:22px;width:100%;display:block;}
+.nbh-thead{display:grid;grid-template-columns:1.85fr .82fr .92fr 1.05fr;padding:12px 22px 9px;gap:12px;font-family:var(--jp);font-size:10.5px;font-weight:600;color:var(--slate);letter-spacing:.04em;}
+.nbh-thead .r{text-align:right;}
+.nbh-row{display:grid;grid-template-columns:1.85fr .82fr .92fr 1.05fr;padding:11px 22px;gap:12px;align-items:center;border-top:1px solid var(--line);}
+.nbh-row.focus{background:linear-gradient(90deg,rgba(0,94,255,.045),rgba(0,94,255,0));}
+.nbh-src{display:flex;align-items:center;gap:11px;min-width:0;}
+.nbh-src .si{width:28px;height:28px;border-radius:8px;background:var(--paper-2);display:flex;align-items:center;justify-content:center;flex:none;border:1px solid var(--line);}
+.nbh-src .si svg{width:14px;height:14px;display:block;}
+.nbh-src .meta{min-width:0;}
+.nbh-src .nm{font-family:var(--jp);font-size:13px;font-weight:600;color:var(--ink);line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.nbh-src .sb{font-family:var(--en);font-size:10.5px;color:var(--slate);font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.nbh-vol{font-family:var(--en);font-size:13px;font-weight:500;color:var(--slate);text-align:right;letter-spacing:-.01em;}
+.nbh-score{display:flex;align-items:center;gap:9px;justify-content:flex-end;}
+.nbh-score .track{flex:1;max-width:64px;height:5px;border-radius:99px;background:var(--paper-2);overflow:hidden;}
+.nbh-score .fill{height:100%;border-radius:99px;background:var(--electric);}
+.nbh-score .fill.mut{background:var(--line-2);}
+.nbh-score .sv{font-family:var(--en);font-size:12.5px;font-weight:700;color:var(--ink);letter-spacing:-.02em;min-width:26px;text-align:right;}
+.nbh-score .sv.mut{color:var(--slate);font-weight:600;}
+.nbh-stat{display:flex;justify-content:flex-end;}
+.nbh-tag{font-family:var(--jp);font-size:11px;font-weight:600;padding:4px 10px;border-radius:7px;white-space:nowrap;letter-spacing:.01em;}
+.nbh-tag.seed{color:var(--electric-dark);background:rgba(0,94,255,.09);border:1px solid rgba(0,94,255,.16);}
+.nbh-tag.rev{color:var(--slate);background:var(--paper-2);border:1px solid var(--line);}
+.nbh-tag.que{color:var(--slate);background:transparent;border:1px solid var(--line-2);}
+.nbh-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 22px;border-top:1px solid var(--line);background:var(--paper-2);}
+.nbh-foot .pf-l{display:flex;align-items:center;gap:9px;font-family:var(--jp);font-size:11.5px;color:var(--slate);font-weight:500;}
+.nbh-foot .pf-l .gen{width:15px;height:15px;border-radius:50%;border:1.6px solid var(--electric);border-top-color:transparent;animation:nbhspin 1.4s linear infinite;flex:none;}
+@keyframes nbhspin{to{transform:rotate(360deg)}}
+.nbh-foot .pf-r{font-family:var(--en);font-size:11px;color:var(--slate);font-weight:500;letter-spacing:.01em;}
+.nbh-foot .pf-r b{color:var(--ink);font-weight:600;}
+/* annotation: caption row UNDER the panel (no overlap with data rows) */
+.nbh-annot{display:flex;align-items:flex-start;gap:11px;padding:0 4px;}
+.nbh-annot .ai{width:30px;height:30px;border-radius:9px;background:var(--ink);display:flex;align-items:center;justify-content:center;flex:none;margin-top:1px;}
+.nbh-annot .ai svg{width:15px;height:15px;display:block;}
+.nbh-annot .atx{font-family:var(--jp);font-size:12.5px;line-height:1.55;color:var(--slate);}
+.nbh-annot .atx b{color:var(--ink);font-weight:600;}
+.nbh-annot .atx .hl{color:var(--electric);font-weight:600;}
+
+@media(max-width:980px){
+  .nbh{grid-template-columns:1fr;gap:38px;padding:96px 24px 4px;}
+  .nbh-sub{max-width:48em;}
+}
+@media(max-width:700px){
+  .nbh{padding:88px 24px 4px;gap:30px;}
+  .nbh-copy h1{font-size:clamp(31px,8.4vw,42px);}
+  .nbh-claim{font-size:17px;}
+  .nbh-metric{padding:12px 15px;}
+  .nbh-metric .mval{font-size:21px;}
+  .nbh-thead,.nbh-row{grid-template-columns:1.7fr 1fr 1.05fr;padding-left:15px;padding-right:15px;}
+  .nbh-thead .colvol,.nbh-row .nbh-vol{display:none;}
+  .nbh-top{padding:15px 15px 0;}
+  .nbh-src .sb{display:none;}
+  .nbh-foot{padding:12px 15px;}
+  .nbh-foot .pf-r{display:none;}
+}
+@media(max-width:380px){
+  .nbh-metrics{grid-template-columns:1fr 1fr;}
+  .nbh-metric:nth-child(3){display:none;}
+}
+</style>
+
+<main class="nbh">
+  <!-- LEFT: editorial -->
+  <section class="nbh-copy">
+    <span class="kicker">For New Business Development</span>
+    <h1>次の新規事業は、<br><span class="hl">社内データ</span>に<br>眠っている。</h1>
+    <p class="nbh-claim">それを生成AIで掘り起こし、<br><span class="hl">早く・安く</span>立ち上げる。</p>
+    <p class="nbh-sub">過去の調査・顧客の声・社内ナレッジなど、眠ったままのデータ資産を新規事業の武器に。外注やゼロからの構築に頼りません。総合化学メーカーの新素材探索で特許出願中、37社・2,500名の知見をもとに。</p>
+    <div class="nbh-meta">
+      <div class="nbh-proof"><span class="num">37</span><span class="lbl">社の知見</span></div>
+      <div class="nbh-div"></div>
+      <div class="nbh-proof"><span class="num">2,500</span><span class="lbl">名の現場知</span></div>
+      <span class="nbh-badge"><span class="dot"></span>新素材探索で特許出願中</span>
+    </div>
+  </section>
+
+  <!-- RIGHT: real dashboard -->
+  <section class="nbh-pwrap">
+    <div class="nbh-panel" role="img" aria-label="社内データ資産を生成AIがスコアリングし、新規事業の種を抽出するダッシュボードのプレビュー">
+      <div class="nbh-bar">
+        <div class="lights"><i></i><i></i><i></i></div>
+        <div class="nbh-addr"><i class="lock"></i>app.shinki-ai-lab.jp/discovery</div>
+        <div class="ctrl"><i></i><i></i></div>
+      </div>
+      <div class="nbh-top">
+        <div class="nbh-eyebrow">
+          <div class="nbh-apptitle">
+            <div class="ic"><b></b></div>
+            <div>
+              <h3>事業の種ディスカバリー</h3>
+              <div class="path">Knowledge assets / scored opportunities</div>
+            </div>
+          </div>
+          <span class="nbh-live"><span class="pulse"></span>SCORING</span>
+        </div>
+      </div>
+      <div class="nbh-metrics">
+        <div class="nbh-metric">
+          <div class="mlabel">解析したデータ資産</div>
+          <div class="mval">1,284<span class="u">件</span></div>
+          <svg class="nbh-spark" viewBox="0 0 110 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,18 14,16 26,17 38,12 50,13 62,9 74,10 86,6 98,5 110,3" fill="none" stroke="#5A6677" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity=".55"/></svg>
+        </div>
+        <div class="nbh-metric">
+          <div class="mlabel">事業の種 候補</div>
+          <div class="mval" style="color:var(--electric)">38<span class="u" style="color:var(--electric);opacity:.7">件</span></div>
+          <svg class="nbh-spark" viewBox="0 0 110 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,19 14,18 26,15 38,16 50,11 62,12 74,8 86,7 98,4 110,2" fill="none" stroke="#005EFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="110" cy="2" r="2.2" fill="#005EFF"/></svg>
+        </div>
+        <div class="nbh-metric">
+          <div class="mlabel">平均 事業性スコア</div>
+          <div class="mval">7.6<span class="u">/10</span></div>
+          <svg class="nbh-spark" viewBox="0 0 110 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,13 14,14 26,12 38,13 50,10 62,11 74,9 86,9 98,7 110,8" fill="none" stroke="#5A6677" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity=".55"/></svg>
+        </div>
+      </div>
+      <div class="nbh-thead">
+        <div class="col">データ資産</div>
+        <div class="r colvol">容量</div>
+        <div class="r">事業性スコア</div>
+        <div class="r">ステータス</div>
+      </div>
+      <div class="nbh-row focus">
+        <div class="nbh-src"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="#005EFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5h18M3 12h18M3 17.5h11"/></svg></div><div class="meta"><div class="nm">過去の市場調査レポート</div><div class="sb">Market research · 312 docs</div></div></div>
+        <div class="nbh-vol">2.4&nbsp;GB</div>
+        <div class="nbh-score"><span class="track"><span class="fill" style="width:92%"></span></span><span class="sv">9.2</span></div>
+        <div class="nbh-stat"><span class="nbh-tag seed">新規事業の種</span></div>
+      </div>
+      <div class="nbh-row">
+        <div class="nbh-src"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="#5A6677" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-3.8-.8L3 20.5l1.4-4.1A8.4 8.4 0 1 1 21 11.5Z"/></svg></div><div class="meta"><div class="nm">顧客の声 / VoC ログ</div><div class="sb">Voice of customer · 8,910 件</div></div></div>
+        <div class="nbh-vol">5.1&nbsp;GB</div>
+        <div class="nbh-score"><span class="track"><span class="fill" style="width:84%"></span></span><span class="sv">8.4</span></div>
+        <div class="nbh-stat"><span class="nbh-tag seed">新規事業の種</span></div>
+      </div>
+      <div class="nbh-row">
+        <div class="nbh-src"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="#5A6677" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-5-5H8Z"/><path d="M14 3v5h5M8.5 13h7M8.5 16.5h7"/></svg></div><div class="meta"><div class="nm">議事録・社内ナレッジ</div><div class="sb">Meeting notes · 1,447 件</div></div></div>
+        <div class="nbh-vol">1.8&nbsp;GB</div>
+        <div class="nbh-score"><span class="track"><span class="fill" style="width:71%"></span></span><span class="sv">7.1</span></div>
+        <div class="nbh-stat"><span class="nbh-tag rev">検証中</span></div>
+      </div>
+      <div class="nbh-row">
+        <div class="nbh-src"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="#5A6677" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 7.5 12 12l9-4.5L12 3Z"/><path d="M3 12l9 4.5L21 12M3 16.5 12 21l9-4.5"/></svg></div><div class="meta"><div class="nm">特許・技術文献アーカイブ</div><div class="sb">R&amp;D corpus · 624 件</div></div></div>
+        <div class="nbh-vol">3.3&nbsp;GB</div>
+        <div class="nbh-score"><span class="track"><span class="fill mut" style="width:48%"></span></span><span class="sv mut">4.8</span></div>
+        <div class="nbh-stat"><span class="nbh-tag que">キュー待ち</span></div>
+      </div>
+      <div class="nbh-foot">
+        <div class="pf-l"><span class="gen"></span>生成AIが残り 246 件を解析中…</div>
+        <div class="pf-r">最終同期 <b>2分前</b></div>
+      </div>
+    </div>
+
+    <!-- annotation under panel (no overlap) -->
+    <div class="nbh-annot">
+      <div class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="#FBFCFD" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.4"/></svg></div>
+      <div class="atx"><b>AI が抽出：</b>眠っていた調査資料・顧客の声から、<span class="hl">事業性の高い新規事業の種を3件</span>提案しました。<span style="color:var(--slate)">（画面はサンプル。実装時に実データへ差し替え）</span></div>
+    </div>
+  </section>
+</main>
 
 <!-- themes -->
 <section class="jz-sec jz-flow">
