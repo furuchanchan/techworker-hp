@@ -622,17 +622,15 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
 .hero .wrap{position:relative;z-index:1;}
 </style>
 <style>
-.nb-walls{margin:50px 0 0;}
-.nb-walls-cap{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin:0 0 16px;display:flex;align-items:center;gap:10px;}
-.nb-walls-cap::before{content:"";width:22px;height:1px;background:var(--blue);}
-.nb-walls-track{display:flex;align-items:stretch;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;}
-.nb-walls-track .nb-stage{flex:1 1 0;min-width:0;padding:22px 10px;text-align:center;font-family:var(--jp);font-weight:700;font-size:14.5px;color:var(--ink);display:flex;align-items:center;justify-content:center;}
-.nb-walls-track .nb-wall{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 16px;background:linear-gradient(180deg,rgba(0,94,255,.07),rgba(0,94,255,0));border-left:1px solid var(--line);border-right:1px solid var(--line);}
-.nb-walls-track .nb-wall .wn{font-family:var(--jp);font-weight:700;font-size:13px;color:var(--blue);white-space:nowrap;}
-.nb-walls-track .nb-wall .we{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--slate);margin-top:5px;text-transform:uppercase;white-space:nowrap;}
-.nb-walls-note{font-size:13.5px;color:var(--slate);line-height:1.95;margin:18px 0 0;max-width:780px;}
-.nb-walls-note b{color:var(--ink);font-weight:700;} .nb-walls-note .bl{color:var(--blue);font-weight:600;}
-@media(max-width:760px){.nb-walls-track{flex-direction:column;}.nb-walls-track .nb-wall{border-left:0;border-right:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:11px;}.nb-walls-track .nb-wall .we{display:inline;margin:0 0 0 8px;}}
+.nb-real{margin:48px 0 0;border-top:2px solid var(--ink);padding-top:30px;display:grid;grid-template-columns:auto 1fr;gap:clamp(26px,5vw,68px);align-items:center;}
+.nb-real-num{font-family:var(--en);font-weight:800;font-size:clamp(46px,7vw,82px);letter-spacing:-.03em;line-height:1;color:var(--ink);white-space:nowrap;}
+.nb-real-num .ar{color:var(--slate-2);margin:0 .1em;font-weight:500;}
+.nb-real-num em{font-style:normal;color:var(--blue);}
+.nb-real-cap{font-size:13px;color:var(--slate);line-height:1.8;margin-top:14px;max-width:300px;}
+.nb-real-cap b{color:var(--ink);font-weight:700;}
+.nb-real-note{font-size:15px;color:var(--slate);line-height:2;margin:0;max-width:600px;}
+.nb-real-note b{color:var(--ink);font-weight:700;} .nb-real-note .bl{color:var(--blue);font-weight:600;}
+@media(max-width:760px){.nb-real{grid-template-columns:1fr;gap:20px;}.nb-real-cap{max-width:none;}}
 </style>
 </head>
 <body>
@@ -802,18 +800,12 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
       <p>新規事業に効くのは、汎用のAI研修ではありません。<span class="b">①不確実性を減らす検証 ②現場に最適化した打ち手 ③チームに残る型</span>。この3つを、37社・2,500名への支援と、<span class="ib">総合化学メーカーの新素材探索（特許出願中）</span>で実証してきました。</p>
     </div>
 
-    <div class="nb-walls rv">
-      <div class="nb-walls-cap">新規事業に立ちはだかる、3つの壁</div>
-      <div class="nb-walls-track">
-        <div class="nb-stage">研究</div>
-        <div class="nb-wall"><span class="wn">魔の川</span><span class="we">Devil River</span></div>
-        <div class="nb-stage">開発</div>
-        <div class="nb-wall"><span class="wn">死の谷</span><span class="we">Valley of Death</span></div>
-        <div class="nb-stage">事業化</div>
-        <div class="nb-wall"><span class="wn">ダーウィンの海</span><span class="we">Darwinian Sea</span></div>
-        <div class="nb-stage">市場</div>
+    <div class="nb-real rv">
+      <div>
+        <div class="nb-real-num">1,000<span class="ar">→</span><em>3</em></div>
+        <div class="nb-real-cap">いわゆる<b>「千三つ」</b>。新規事業で形になるのは、構想1,000のうち3つとも言われます。</div>
       </div>
-      <p class="nb-walls-note">研究から市場までには〈魔の川〉〈死の谷〉〈ダーウィンの海〉という壁があり、新規事業は <b>「千三つ」</b>とも言われます。1,000の構想のうち、事業として残るのはわずか3つ。その多くは、初期の見極めの甘さで死の谷の手前に沈みます。<span class="bl">生成AIは、壁の手前で検証の速さと確かさを引き上げ、勝てない筋を早めに見切る——撤退判断の質そのものを高めることに効きます。</span></p>
+      <p class="nb-real-note">多くは<b>PoC止まり</b>で事業化に進めず、<b>撤退の判断</b>も先延ばしになって、時間と予算だけが溶けていく。<span class="bl">生成AIは、その手前の「検証」を速く・確かにして、勝てない筋を早く見切ることに効きます。</span></p>
     </div>
   </div></div>
 </section>
