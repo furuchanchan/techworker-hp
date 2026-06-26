@@ -160,108 +160,165 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <a href="../../new-business.html" class="m-cta">無料相談を申し込む</a>
 </div>
 
-<!-- ===== HERO (editorial / featured-article — namespaced .nbh-*) ===== -->
+<!-- ===== HERO (magazine cover × knowledge-DB graph — namespaced .nbm-) ===== -->
 <style>
-/* media-top hero — content-forward editorial. scoped, no collision with jz-* / article.css */
-.nbh{max-width:1180px;margin:0 auto;padding:104px 48px 8px;display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,1.06fr);gap:clamp(40px,5vw,64px);align-items:center;}
-.nbh-copy .kicker{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--electric);display:flex;align-items:center;gap:10px;margin-bottom:24px;}
-.nbh-copy .kicker::before{content:"";width:26px;height:1.5px;background:var(--electric);display:block;}
-.nbh-copy h1{font-family:var(--jp);font-weight:700;font-size:clamp(38px,4.4vw,60px);line-height:1.16;letter-spacing:-.025em;color:var(--ink);margin:0 0 24px;}
-.nbh-copy h1 .hl{color:var(--electric);}
-.nbh-claim{font-family:var(--jp);font-weight:600;font-size:clamp(17px,1.5vw,21px);line-height:1.6;letter-spacing:-.005em;color:var(--ink);margin:0 0 20px;}
-.nbh-claim .hl{color:var(--electric);}
-.nbh-sub{font-family:var(--jp);font-weight:400;font-size:14.5px;line-height:1.85;color:var(--slate);max-width:31em;margin:0 0 30px;}
-.nbh-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
-.nbh-proof{display:flex;align-items:baseline;gap:8px;}
-.nbh-proof .num{font-family:var(--en);font-weight:700;font-size:25px;letter-spacing:-.02em;color:var(--electric);line-height:1;font-feature-settings:"tnum" 1;}
-.nbh-proof .lbl{font-family:var(--jp);font-size:12.5px;font-weight:500;color:var(--slate);}
-.nbh-div{width:1px;height:26px;background:var(--line-2);}
-.nbh-badge{display:inline-flex;align-items:center;gap:7px;font-family:var(--jp);font-size:12px;font-weight:500;color:var(--slate);padding:6px 12px;border:1px solid var(--line);border-radius:99px;background:var(--white);}
-.nbh-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--electric);flex:none;}
+/* media-top hero — dark magazine cover. scoped .nbm-*, no collision with jz-* / .nbh-* / article.css.
+   uses real-file tokens (--ink/--electric/--paper/--slate/--jp/--en/--line/--white). */
+.nbm{position:relative;margin:0;padding:0;background:var(--paper);} /* light wrapper so the dark panel sits on paper */
+.nbm-panel{position:relative;overflow:hidden;color:var(--white);
+  /* ink-based dark gradient (NOT pure black); depth via gradient + grain + glow */
+  background:linear-gradient(165deg,#141C27 0%,#10171F 52%,#0C1219 100%);
+  border-radius:0 0 30px 30px;
+  box-shadow:0 50px 90px -56px rgba(17,22,29,.7);
+  padding:128px 56px 30px;min-height:760px;display:flex;flex-direction:column;}
+/* soft fade so the dark panel resolves cleanly into the light body below */
+.nbm-panel::after{content:"";position:absolute;left:0;right:0;bottom:0;height:90px;pointer-events:none;z-index:1;
+  background:linear-gradient(180deg,transparent,rgba(12,18,25,.0) 30%,rgba(12,18,25,.55));}
+.nbm-grain{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.5;mix-blend-mode:overlay;z-index:1;}
+.nbm-glow{position:absolute;right:-6%;top:-10%;width:760px;height:680px;z-index:0;pointer-events:none;filter:blur(6px);
+  background:radial-gradient(closest-side,rgba(0,94,255,.2),transparent 66%);}
+.nbm-glow2{position:absolute;right:22%;bottom:-20%;width:560px;height:460px;z-index:0;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(0,94,255,.1),transparent 70%);}
+/* knowledge-graph canvas + html labels live in the right portion, under content */
+.nbm-graph{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;}
+.nbm-graphlabels{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;overflow:hidden;}
 
-/* right — FEATURED article card (editorial, content-forward) */
-.nbh-feat{display:block;text-decoration:none;color:inherit;background:var(--white);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 30px 60px -40px rgba(17,22,29,.34),0 8px 22px -20px rgba(17,22,29,.22);transition:border-color .25s,transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s;}
-.nbh-feat:hover{border-color:var(--line-2);transform:translateY(-3px);box-shadow:0 40px 70px -42px rgba(17,22,29,.42),0 12px 26px -20px rgba(17,22,29,.26);}
-/* editorial cover zone — quiet magazine treatment (no brackets/grid/nodes) */
-.nbh-cover{position:relative;background:var(--paper-2);border-bottom:1px solid var(--line);padding:30px 34px 30px;overflow:hidden;min-height:226px;}
-.nbh-cover .issue{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--slate);display:flex;align-items:center;gap:10px;}
-.nbh-cover .issue b{color:var(--electric);font-weight:600;}
-.nbh-cover .bigword{position:relative;z-index:2;font-family:var(--jp);font-weight:700;font-size:clamp(29px,3.4vw,40px);line-height:1.22;letter-spacing:-.02em;color:var(--ink);margin:18px 0 0;max-width:8.5em;}
-.nbh-cover .bigword .b{color:var(--electric);}
-.nbh-cover .rule{position:relative;z-index:2;width:54px;height:2px;background:var(--electric);margin-top:20px;border-radius:2px;}
-.nbh-cover .sheets{position:absolute;right:22px;bottom:20px;width:128px;height:128px;pointer-events:none;z-index:1;}
-/* card body */
-.nbh-feat-body{padding:24px 26px 26px;}
-.nbh-feat .ftag{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--electric);display:flex;align-items:center;gap:9px;}
-.nbh-feat .ftag .star{width:13px;height:13px;display:block;}
-.nbh-feat .ftitle{font-family:var(--jp);font-weight:700;font-size:clamp(19px,2vw,23px);line-height:1.5;letter-spacing:-.01em;color:var(--ink);margin:13px 0 0;transition:color .2s;}
-.nbh-feat:hover .ftitle{color:var(--electric);}
-.nbh-feat .fdek{font-family:var(--jp);font-weight:400;font-size:14px;line-height:1.8;color:var(--slate);margin:12px 0 0;}
-.nbh-feat .ffoot{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:20px;padding-top:16px;border-top:1px solid var(--line);}
-.nbh-feat .fmeta{font-family:var(--en);font-size:11.5px;color:var(--slate);font-feature-settings:"tnum" 1;}
-.nbh-feat .fread{font-family:var(--jp);font-size:13.5px;font-weight:600;color:var(--electric);display:inline-flex;align-items:center;gap:7px;}
-.nbh-feat .fread .ar{transition:transform .25s;}
-.nbh-feat:hover .fread .ar{transform:translateX(4px);}
+/* top masthead row — issue framing (NO wordmark, to avoid dup with fixed nav logo) */
+.nbm-top{position:relative;z-index:4;display:flex;align-items:center;justify-content:space-between;gap:18px;border-bottom:1px solid rgba(255,255,255,.12);padding-bottom:20px;}
+.nbm-issue{display:flex;align-items:center;gap:11px;}
+.nbm-issue .lv{width:6px;height:6px;border-radius:50%;background:var(--electric);box-shadow:0 0 10px 1px rgba(0,94,255,.8);flex:none;}
+.nbm-issue .ik{font-family:var(--en);font-weight:600;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#8C9DB3;}
+.nbm-issue .ik b{color:#fff;font-weight:700;}
+.nbm-vol{font-family:var(--en);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#7E8DA1;text-align:right;line-height:1.7;}
+.nbm-vol b{color:#fff;font-weight:700;}
 
+/* mid — left copy (graph fills right via absolute canvas) */
+.nbm-mid{position:relative;z-index:4;flex:1;display:flex;align-items:center;}
+.nbm-col{width:57%;display:flex;flex-direction:column;justify-content:center;padding-right:22px;}
+.nbm-k{font-family:var(--en);font-size:12.5px;letter-spacing:.24em;text-transform:uppercase;color:#86B2FF;font-weight:600;}
+.nbm h1{font-family:var(--jp);font-weight:700;font-size:clamp(34px,4vw,52px);line-height:1.13;letter-spacing:-.03em;color:#fff;margin:18px 0 0;max-width:24ch;}
+.nbm h1 .em{color:#7FB0FF;}
+.nbm-thesis{font-family:var(--jp);font-weight:400;font-size:clamp(15px,1.3vw,18px);color:#AFBED0;line-height:1.55;margin-top:22px;max-width:34ch;letter-spacing:-.005em;}
+.nbm-ctas{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap;}
+.nbm-cta{font-family:var(--jp);font-weight:600;font-size:15px;border-radius:11px;padding:14px 24px;display:inline-flex;align-items:center;gap:9px;text-decoration:none;transition:transform .18s ease,box-shadow .18s ease;border:1px solid transparent;white-space:nowrap;cursor:pointer;}
+.nbm-cta:hover{transform:translateY(-2px);}
+.nbm-cta.pri{background:var(--electric);color:var(--white);box-shadow:0 14px 30px -12px rgba(0,94,255,.85);}
+.nbm-cta.pri:hover{box-shadow:0 20px 40px -12px rgba(0,94,255,.95);}
+.nbm-cta.gho{background:rgba(255,255,255,.04);color:#E4EBF3;border:1px solid rgba(255,255,255,.16);}
+.nbm-cta.gho:hover{background:rgba(255,255,255,.09);}
+.nbm-cta .ar{transition:transform .18s ease;}
+.nbm-cta:hover .ar{transform:translateX(3px);}
+
+/* knowledge-graph meta + legend */
+.nbm-kgmeta{position:absolute;right:0;top:78px;z-index:4;text-align:right;font-family:var(--en);}
+.nbm-kgmeta .kt{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#6F8197;font-weight:600;display:flex;align-items:center;gap:8px;justify-content:flex-end;}
+.nbm-kgmeta .kt .lv{width:6px;height:6px;border-radius:50%;background:var(--electric);box-shadow:0 0 8px 1px rgba(0,94,255,.8);}
+.nbm-kgmeta .kn{font-size:13px;color:#AEBED0;margin-top:6px;letter-spacing:.04em;}
+.nbm-kgmeta .kn b{color:#fff;font-weight:600;}
+.nbm-kgmeta .kn .sd{color:#86B2FF;font-weight:600;}
+.nbm-legend{position:absolute;right:0;bottom:96px;z-index:4;display:flex;flex-direction:column;gap:7px;align-items:flex-end;}
+.nbm-legend .lg{display:flex;align-items:center;gap:8px;font-size:11px;color:#8294A8;font-family:var(--en);letter-spacing:.04em;}
+.nbm-legend .lg .sw{width:8px;height:8px;border-radius:50%;}
+.nbm-legend .lg .sw.src{background:#5A6B82;}
+.nbm-legend .lg .sw.topic{background:#9FB4CE;}
+.nbm-legend .lg .sw.seed{background:var(--electric);box-shadow:0 0 8px 1px rgba(0,94,255,.7);}
+
+/* graph node labels (HTML over canvas) */
+.nbm-node{position:absolute;transform:translate(-50%,-50%);text-align:center;pointer-events:none;white-space:nowrap;}
+.nbm-node .nl{font-family:var(--jp);font-size:12px;font-weight:600;line-height:1.2;}
+.nbm-node .ns{font-family:var(--en);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;margin-top:1px;}
+.nbm-node.src .nl{color:#8A9CB0;font-weight:500;font-size:11px;}
+.nbm-node.src .ns{color:#5C6E83;}
+.nbm-node.topic .nl{color:#C8D5E4;}
+.nbm-node.topic .ns{color:#6F8197;}
+.nbm-node.seed .nl{color:#fff;font-size:13px;}
+.nbm-node.seed .ns{color:#86B2FF;}
+
+/* bottom — theme index (探索/構想/検証/PoC/定着) */
+.nbm-bottom{position:relative;z-index:4;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;border-top:1px solid rgba(255,255,255,.12);padding-top:20px;}
+.nbm-feat{display:flex;gap:clamp(18px,2.6vw,30px);}
+.nbm-feat .f{display:flex;flex-direction:column;gap:5px;}
+.nbm-feat .f .fn{font-family:var(--en);font-size:11px;color:#5E6E83;letter-spacing:.1em;}
+.nbm-feat .f .fl{font-family:var(--jp);font-size:15px;font-weight:600;color:#CFDAE7;}
+.nbm-feat .f.on .fl{color:#fff;}
+.nbm-feat .f.on .fn{color:var(--electric);}
+.nbm-read{font-family:var(--en);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6F8197;text-decoration:none;}
+.nbm-read:hover{color:#9FB3CC;}
+
+@media(prefers-reduced-motion:reduce){.nbm-graph{}}
+
+/* tablet */
 @media(max-width:980px){
-  .nbh{grid-template-columns:1fr;gap:38px;padding:96px 24px 4px;}
-  .nbh-sub{max-width:48em;}
+  .nbm-panel{padding:112px 32px 26px;min-height:0;}
+  .nbm-col{width:62%;}
+  .nbm-kgmeta{top:70px;}
 }
+/* mobile ≤700: hide graph, single column, vertical stack, no overflow */
 @media(max-width:700px){
-  .nbh{padding:88px 24px 4px;gap:30px;}
-  .nbh-copy h1{font-size:clamp(31px,8.4vw,42px);}
-  .nbh-claim{font-size:17px;}
-  .nbh-cover{padding:26px 24px 24px;}
-  .nbh-cover .bigword{font-size:clamp(27px,7.6vw,34px);}
-  .nbh-cover .sheets{width:150px;height:150px;right:-26px;bottom:-38px;}
-  .nbh-feat-body{padding:22px 22px 24px;}
+  .nbm-panel{padding:96px 22px 30px;min-height:0;border-radius:0 0 22px 22px;}
+  .nbm-graph,.nbm-graphlabels,.nbm-kgmeta,.nbm-legend{display:none;}
+  .nbm-col{width:100%;padding-right:0;}
+  .nbm h1{font-size:clamp(30px,8.2vw,40px);max-width:none;}
+  .nbm-thesis{font-size:15px;max-width:none;}
+  .nbm-mid{padding:26px 0 6px;}
+  .nbm-vol{font-size:10.5px;}
+  .nbm-bottom{flex-direction:column;align-items:flex-start;gap:16px;}
+  .nbm-feat{flex-wrap:wrap;gap:16px;}
 }
 </style>
 
-<main class="nbh">
-  <!-- LEFT: editorial copy -->
-  <section class="nbh-copy">
-    <span class="kicker">For New Business Development</span>
-    <h1>次の新規事業は、<br><span class="hl">社内データ</span>に<br>眠っている。</h1>
-    <p class="nbh-claim">それを生成AIで掘り起こし、<br><span class="hl">早く・安く</span>立ち上げる。</p>
-    <p class="nbh-sub">過去の調査・顧客の声・社内ナレッジなど、眠ったままのデータ資産を新規事業の武器に。外注やゼロからの構築に頼りません。総合化学メーカーの新素材探索で特許出願中、37社・2,500名の知見をもとに。</p>
-    <div class="nbh-meta">
-      <div class="nbh-proof"><span class="num">37</span><span class="lbl">社の知見</span></div>
-      <div class="nbh-div"></div>
-      <div class="nbh-proof"><span class="num">2,500</span><span class="lbl">名の現場知</span></div>
-      <span class="nbh-badge"><span class="dot"></span>新素材探索で特許出願中</span>
-    </div>
-  </section>
+<!-- grain filter (scoped id) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <filter id="nbmGrain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+</svg>
 
-  <!-- RIGHT: featured article -->
-  <a class="nbh-feat" href="digital-twin.html" aria-label="注目の記事：生活者デジタルツインとは｜AIで顧客を再現し発売前に検証する">
-    <div class="nbh-cover" aria-hidden="true">
-      <div class="issue"><span>新規事業AIラボ</span><b>／ Featured</b></div>
-      <div class="bigword">顧客を、データで<br><span class="b">再現</span>する。</div>
-      <div class="rule"></div>
-      <svg class="sheets" viewBox="0 0 188 188" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="46" y="34" width="112" height="142" rx="10" fill="#FBFCFD" stroke="#11161D" stroke-opacity=".09"/>
-        <rect x="28" y="24" width="112" height="142" rx="10" fill="#FBFCFD" stroke="#11161D" stroke-opacity=".13"/>
-        <g stroke="#5A6677" stroke-opacity=".45" stroke-width="2" stroke-linecap="round">
-          <line x1="46" y1="50" x2="104" y2="50"/><line x1="46" y1="66" x2="118" y2="66"/><line x1="46" y1="82" x2="98" y2="82"/>
-        </g>
-        <g stroke="#005EFF" stroke-width="2" stroke-linecap="round"><line x1="46" y1="104" x2="118" y2="104"/></g>
-        <g stroke="#5A6677" stroke-opacity=".4" stroke-width="2" stroke-linecap="round">
-          <line x1="46" y1="120" x2="110" y2="120"/><line x1="46" y1="136" x2="118" y2="136"/>
-        </g>
-      </svg>
+<section class="nbm" aria-label="新規事業AIラボ メディアトップ">
+  <div class="nbm-panel">
+    <div class="nbm-glow"></div><div class="nbm-glow2"></div>
+    <canvas class="nbm-graph" id="nbmKg" aria-hidden="true"></canvas>
+    <div class="nbm-graphlabels" id="nbmKgLabels" aria-hidden="true"></div>
+    <svg class="nbm-grain" preserveAspectRatio="none" aria-hidden="true"><rect width="100%" height="100%" filter="url(#nbmGrain)"/></svg>
+
+    <div class="nbm-top">
+      <div class="nbm-issue"><span class="lv"></span><span class="ik">Issue — <b>新規事業 × 生成AI</b></span></div>
+      <div class="nbm-vol"><b>VOL.01</b> — 検証 / Validation<br>2026 — Quarterly Edition</div>
     </div>
-    <div class="nbh-feat-body">
-      <div class="ftag"><svg class="star" viewBox="0 0 24 24" fill="none" stroke="#005EFF" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.6L20.5 9.4l-4.3 4.1 1 6L12 16.9 6.8 19.5l1-6L3.5 9.4l5.9-.8L12 3Z"/></svg>注目の記事 ／ Featured</div>
-      <div class="ftitle">生活者デジタルツインとは｜AIで顧客を再現し、発売前に検証する</div>
-      <p class="fdek">AIで顧客・生活者を再現し、新商品や施策をローンチ前に検証する手法。仕組み・従来調査との違い・使いどころと限界までを、実装の知見から解説します。</p>
-      <div class="ffoot">
-        <span class="fmeta">基礎 / Foundation · 2026.06.18 · 読了9分</span>
-        <span class="fread">記事を読む<span class="ar">→</span></span>
+
+    <div class="nbm-kgmeta" aria-hidden="true">
+      <div class="kt"><span class="lv"></span>Knowledge Graph</div>
+      <div class="kn"><b>1,284</b> nodes · <span class="sd">38 seeds</span></div>
+    </div>
+
+    <div class="nbm-mid">
+      <div class="nbm-col">
+        <span class="nbm-k">The Thesis</span>
+        <h1>次の新規事業は、<br><span class="em">社内データ</span>に、眠っている。</h1>
+        <p class="nbm-thesis">それを生成AIで掘り起こし、早く・安く立ち上げる。眠った調査・顧客の声・社内ナレッジを、事業の種へ。</p>
+        <div class="nbm-ctas">
+          <a class="nbm-cta pri" href="digital-twin.html">記事を読む <span class="ar">→</span></a>
+          <a class="nbm-cta gho" href="../../new-business.html">無料で相談</a>
+        </div>
       </div>
     </div>
-  </a>
-</main>
+
+    <div class="nbm-legend" aria-hidden="true">
+      <div class="lg"><span class="sw src"></span>データソース</div>
+      <div class="lg"><span class="sw topic"></span>論点・テーマ</div>
+      <div class="lg"><span class="sw seed"></span>新規事業の種</div>
+    </div>
+
+    <div class="nbm-bottom">
+      <div class="nbm-feat">
+        <div class="f"><span class="fn">01</span><span class="fl">探索</span></div>
+        <div class="f"><span class="fn">02</span><span class="fl">構想</span></div>
+        <div class="f on"><span class="fn">03</span><span class="fl">検証</span></div>
+        <div class="f"><span class="fn">04</span><span class="fl">PoC</span></div>
+        <div class="f"><span class="fn">05</span><span class="fl">定着</span></div>
+      </div>
+      <a class="nbm-read" href="#about">Read the issue →</a>
+    </div>
+  </div>
+</section>
 
 <!-- themes -->
 <section class="jz-sec jz-flow">
@@ -378,6 +435,138 @@ addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30)
 })();
 var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:.06,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+
+<!-- ===== knowledge-DB graph for .nbm hero (scoped, self-contained) ===== -->
+<script>
+(function(){
+  var canvas=document.getElementById('nbmKg');
+  var labels=document.getElementById('nbmKgLabels');
+  if(!canvas||!labels) return;                 // hero absent (e.g. hidden) -> no-op
+  var hero=canvas.parentElement;               // .nbm-panel
+  var ctx=canvas.getContext('2d');
+  if(!ctx) return;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var dpr=Math.min(window.devicePixelRatio||1,2), W,H;
+
+  // 3-layer knowledge graph: source -> topic -> seed (semantic, not random)
+  var NODES=[
+    {id:'s1',l:'市場調査',s:'Research',layer:'src',x:0.875,y:0.15},
+    {id:'s2',l:'顧客の声',s:'VoC',layer:'src',x:0.915,y:0.33},
+    {id:'s3',l:'議事録',s:'Minutes',layer:'src',x:0.895,y:0.51},
+    {id:'s4',l:'社内ナレッジ',s:'Knowledge',layer:'src',x:0.905,y:0.69},
+    {id:'s5',l:'特許・技術文献',s:'Patents',layer:'src',x:0.875,y:0.86},
+    {id:'s6',l:'問い合わせ',s:'Inquiries',layer:'src',x:0.80,y:0.24},
+    {id:'s7',l:'解約理由',s:'Churn',layer:'src',x:0.79,y:0.61},
+    {id:'s8',l:'営業日報',s:'Sales Logs',layer:'src',x:0.83,y:0.78},
+    {id:'t1',l:'探索',s:'Explore',layer:'topic',x:0.71,y:0.18},
+    {id:'t2',l:'構想',s:'Shape',layer:'topic',x:0.62,y:0.33},
+    {id:'t3',l:'市場検証',s:'Validation',layer:'topic',x:0.72,y:0.45},
+    {id:'t4',l:'PMF',s:'Prod-Mkt Fit',layer:'topic',x:0.63,y:0.58},
+    {id:'t5',l:'PoC',s:'Proof',layer:'topic',x:0.74,y:0.70},
+    {id:'t6',l:'定着',s:'Embed',layer:'topic',x:0.66,y:0.84},
+    {id:'t7',l:'課題仮説',s:'Hypothesis',layer:'topic',x:0.80,y:0.37},
+    {id:'o1',l:'新素材探索',s:'Seed · Materials',layer:'seed',x:0.555,y:0.22},
+    {id:'o2',l:'新規事業の種',s:'Seed · Candidate',layer:'seed',x:0.55,y:0.48},
+    {id:'o3',l:'横展開の機会',s:'Seed · Expansion',layer:'seed',x:0.56,y:0.73}
+  ];
+  var idx={}; NODES.forEach(function(n){ idx[n.id]=n; });
+  var EDGES=[
+    ['s1','t1'],['s1','t3'],['s6','t1'],['s6','t7'],['s2','t7'],['s2','t3'],
+    ['s2','t4'],['s7','t4'],['s7','t6'],['s3','t2'],['s3','t7'],['s4','t2'],
+    ['s4','t6'],['s8','t5'],['s8','t3'],['s5','t1'],['s5','t5'],['s3','t5'],
+    ['t1','t2'],['t2','t3'],['t3','t4'],['t4','t5'],['t5','t6'],['t7','t3'],
+    ['t7','t2'],['t1','t7'],
+    ['t1','o1'],['t2','o1'],['t7','o1'],
+    ['t2','o2'],['t3','o2'],['t4','o2'],['t7','o2'],
+    ['t4','o3'],['t5','o3'],['t6','o3'],['t3','o3']
+  ];
+
+  function layout(){
+    var r=hero.getBoundingClientRect();
+    W=r.width; H=r.height;
+    canvas.width=W*dpr; canvas.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+    // clear the masthead/meta zone at the top so graph labels never collide with VOL/Knowledge-Graph chips
+    var gx0=0.455*W, gx1=1.0*W, gy0=Math.max(0.085*H,205), gy1=0.91*H;
+    NODES.forEach(function(n){
+      n.bx=gx0+n.x*(gx1-gx0); n.by=gy0+n.y*(gy1-gy0);
+      n.px=n.bx; n.py=n.by;
+      n.ph=Math.random()*Math.PI*2;
+      n.driftA=4+Math.random()*5; n.driftS=0.0004+Math.random()*0.0006;
+    });
+  }
+  layout();
+
+  function labelOffset(n){ return n.layer==='seed'?20:(n.layer==='topic'?17:14); }
+  function buildLabels(){
+    labels.innerHTML='';
+    NODES.forEach(function(n){
+      var d=document.createElement('div');
+      d.className='nbm-node '+n.layer;
+      n._anchor=(n.bx>0.86*W)?'right':'center';
+      if(n._anchor==='right'){ d.style.transform='translate(-100%,-50%)'; }
+      var off=labelOffset(n);
+      d.style.left=n.px+'px'; d.style.top=(n.py-off)+'px';
+      d.innerHTML='<div class="nl">'+n.l+'</div><div class="ns">'+n.s+'</div>';
+      n._el=d; labels.appendChild(d);
+    });
+  }
+  buildLabels();
+
+  var packets=EDGES.map(function(e){ return {a:e[0],b:e[1],t:Math.random(),spd:0.0024+Math.random()*0.0042}; });
+  function nodeR(n){ return n.layer==='seed'?6.5:(n.layer==='topic'?4.2:2.8); }
+
+  var t0=performance.now(), raf;
+  function frame(now){
+    var T=now-t0;
+    ctx.clearRect(0,0,W,H);
+    NODES.forEach(function(n){
+      n.px=n.bx+Math.sin(T*n.driftS+n.ph)*n.driftA;
+      n.py=n.by+Math.cos(T*n.driftS*0.8+n.ph)*n.driftA*0.7;
+    });
+    EDGES.forEach(function(e){
+      var a=idx[e[0]],b=idx[e[1]], toSeed=(b.layer==='seed'||a.layer==='seed');
+      ctx.beginPath(); ctx.moveTo(a.px,a.py); ctx.lineTo(b.px,b.py);
+      ctx.strokeStyle=toSeed?'rgba(0,94,255,0.22)':'rgba(120,150,200,0.13)';
+      ctx.lineWidth=toSeed?1.1:0.8; ctx.stroke();
+    });
+    packets.forEach(function(p){
+      if(!reduce){ p.t+=p.spd; if(p.t>1) p.t-=1; }
+      var a=idx[p.a],b=idx[p.b], x=a.px+(b.px-a.px)*p.t, y=a.py+(b.py-a.py)*p.t;
+      var toSeed=(b.layer==='seed'||a.layer==='seed');
+      ctx.beginPath(); ctx.arc(x,y,toSeed?1.7:1.3,0,Math.PI*2);
+      ctx.fillStyle=toSeed?'rgba(127,176,255,0.95)':'rgba(150,180,230,0.6)'; ctx.fill();
+    });
+    NODES.forEach(function(n){
+      var r=nodeR(n);
+      if(n.layer==='seed'){
+        var pulse=0.5+0.5*Math.sin(T*0.004+n.ph), halo=r+6+pulse*7;
+        var g=ctx.createRadialGradient(n.px,n.py,r*0.5,n.px,n.py,halo);
+        g.addColorStop(0,'rgba(0,94,255,'+(0.30+0.18*pulse).toFixed(3)+')');
+        g.addColorStop(1,'rgba(0,94,255,0)');
+        ctx.beginPath(); ctx.arc(n.px,n.py,halo,0,Math.PI*2); ctx.fillStyle=g; ctx.fill();
+      }
+      var tw=n.layer==='seed'?1:(0.65+0.35*Math.sin(T*0.0016+n.ph));
+      ctx.beginPath(); ctx.arc(n.px,n.py,r,0,Math.PI*2);
+      if(n.layer==='seed'){ ctx.fillStyle='rgba(0,94,255,0.95)'; }
+      else if(n.layer==='topic'){ ctx.fillStyle='rgba(159,180,206,'+(0.5+0.5*tw).toFixed(3)+')'; }
+      else { ctx.fillStyle='rgba(95,110,131,'+(0.45+0.5*tw).toFixed(3)+')'; }
+      ctx.fill();
+      if(n.layer!=='src'){
+        ctx.beginPath(); ctx.arc(n.px,n.py,r+2.4,0,Math.PI*2);
+        ctx.strokeStyle=n.layer==='seed'?'rgba(127,176,255,0.5)':'rgba(159,180,206,0.25)';
+        ctx.lineWidth=1; ctx.stroke();
+      }
+      if(n._el){ var off=labelOffset(n); n._el.style.left=n.px+'px'; n._el.style.top=(n.py-off)+'px'; }
+    });
+    if(!reduce){ raf=requestAnimationFrame(frame); }
+  }
+  if(!reduce){ raf=requestAnimationFrame(frame); }
+  else { frame(performance.now()); }   // static single frame
+
+  var rt;
+  window.addEventListener('resize',function(){ clearTimeout(rt); rt=setTimeout(function(){ layout(); buildLabels(); if(reduce) frame(performance.now()); },150); });
+})();
 </script>
 </body>
 </html>
