@@ -352,6 +352,33 @@
   .cta-alt a { color: var(--accent-2); font-weight: 600; }
   .cta-alt a:hover { text-decoration: underline; }
 
+  /* real-answers sample */
+  .sample-q { margin: 0 0 32px; border: 1px solid var(--line); border-radius: 4px; background: #fff; box-shadow: var(--shadow-sm); overflow: hidden; }
+  .sample-q-row { display: grid; grid-template-columns: 44px 1.1fr 1fr; gap: 16px; padding: 15px 22px; border-bottom: 1px solid var(--line); align-items: baseline; }
+  .sample-q-row:last-child { border-bottom: none; }
+  .sample-q-row .qn { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.1em; }
+  .sample-q-row .ja { font-size: 14px; color: var(--text); }
+  .sample-q-row .en { font-size: 13px; color: var(--text-dim); }
+  @media (max-width: 720px){ .sample-q-row { grid-template-columns: 40px 1fr; } .sample-q-row .en { grid-column: 2; } }
+  .sample-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 760px){ .sample-grid { grid-template-columns: 1fr; } }
+  .sample-card { background: #fff; border: 1px solid var(--line); border-left: 2px solid var(--accent); border-radius: 4px; padding: 24px 26px; box-shadow: var(--shadow-sm); transition: box-shadow .2s, transform .2s; }
+  .sample-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+  .sample-meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 6px; }
+  .sample-meta .sm-demo { font-family: var(--mono); font-size: 13px; font-weight: 600; color: var(--text); letter-spacing: 0.02em; }
+  .sample-meta .sm-tags { display: flex; gap: 6px; }
+  .sample-meta i { font-style: normal; font-family: var(--mono); font-size: 10px; padding: 3px 8px; border-radius: 2px; letter-spacing: 0.04em; }
+  .sample-meta .tag-inc { background: var(--bg-2); color: var(--text-dim); }
+  .sample-meta .tag-pos { background: rgba(31,122,85,.1); color: var(--success); }
+  .sample-meta .tag-neg { background: rgba(192,57,43,.08); color: #b23b30; }
+  .sample-meta .tag-neu { background: var(--bg-2); color: var(--text-faint); }
+  .sample-sub { font-family: var(--mono); font-size: 11px; color: var(--text-faint); letter-spacing: 0.03em; margin-bottom: 14px; }
+  .sample-ja { font-size: 15px; color: var(--text); line-height: 1.75; margin: 0 0 10px; }
+  .sample-en { font-size: 13.5px; color: var(--text-dim); line-height: 1.7; margin: 0; padding-top: 10px; border-top: 1px dashed var(--line); }
+  .sample-en::before { content: "EN "; font-family: var(--mono); font-size: 9px; color: var(--text-faint); letter-spacing: 0.15em; }
+  .sample-cta { margin-top: 32px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .sample-note { font-family: var(--mono); font-size: 12px; color: var(--text-faint); letter-spacing: 0.02em; line-height: 1.6; }
+
   .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.in { opacity: 1; transform: none; }
 </style>
@@ -365,6 +392,7 @@
     <a href="#approach">Approach</a>
     <a href="#method">Method</a>
     <a href="#use">Use</a>
+    <a href="#sample">Sample</a>
     <a href="#participate">Participate</a>
   </div>
   <div class="nav-right">
@@ -622,8 +650,57 @@ seg = ds.<span class="f">filter</span>(<span class="k">lambda</span> r: r[<span 
   </div>
 </section>
 
+<!-- ============ REAL ANSWERS SAMPLE ============ -->
+<section class="block" id="sample">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Real answers</span>
+      <h2>See what real answers look like.</h2>
+      <p class="lead">The synthetic panel is free and instant. When a decision rides on it, you ask real Japanese respondents — and this is what comes back: anonymized, structured, with English translations. Below is a live sample from an actual survey (N=115).</p>
+    </div>
+
+    <div class="sample-q reveal">
+      <div class="sample-q-row"><span class="qn">Q1</span><span class="ja">お金を使うこと（消費）に対してどう思いますか？</span><span class="en">How do you feel about spending money?</span></div>
+      <div class="sample-q-row"><span class="qn">Q2</span><span class="ja">消費をするのはどの時間帯が多いですか？</span><span class="en">What time of day do you usually spend?</span></div>
+      <div class="sample-q-row"><span class="qn">Q3</span><span class="ja">日常生活における消費活動の特徴を教えてください</span><span class="en">Describe your consumption habits in daily life.</span></div>
+    </div>
+
+    <div class="sample-grid reveal">
+      <div class="sample-card">
+        <div class="sample-meta"><span class="sm-demo">60 · Female · Aichi</span><span class="sm-tags"><i class="tag-inc">Under ¥2M</i><i class="tag-pos">Positive</i></span></div>
+        <div class="sample-sub">Part-time worker · shops in the daytime</div>
+        <p class="sample-ja">基本は節約、衣服には流行があるし、家電も当たり外れがあるので安さ優先。ただ、友人とランチに行ったり、ご近所づきあいには、必要以上にケチりたくない。話題のお店に一度は行く、どうしても食べたいものは少々高くても食べる、くらいの贅沢はする</p>
+        <p class="sample-en">Basically saving, prioritizing cheapness for clothes due to trends and for appliances due to hit or miss. However, I don't want to be stingy with lunches with friends or neighborhood relations. I allow myself small luxuries like going to trendy restaurants once or eating what I really want even if it's a bit expensive.</p>
+      </div>
+      <div class="sample-card">
+        <div class="sample-meta"><span class="sm-demo">35 · Male · Aichi</span><span class="sm-tags"><i class="tag-inc">¥10–12M</i><i class="tag-pos">Positive</i></span></div>
+        <div class="sample-sub">Company employee (technical) · mornings &amp; daytime</div>
+        <p class="sample-ja">コスパを重視し、事前に口コミを調べてから購入します。</p>
+        <p class="sample-en">Focus on cost performance and check reviews before purchasing.</p>
+      </div>
+      <div class="sample-card">
+        <div class="sample-meta"><span class="sm-demo">25 · Male · Shiga</span><span class="sm-tags"><i class="tag-inc">¥2–4M</i><i class="tag-neu">Neutral</i></span></div>
+        <div class="sample-sub">Company employee (other) · daytime &amp; night</div>
+        <p class="sample-ja">推し活</p>
+        <p class="sample-en">Supporting my favorite idols/creators (oshi-katsu)</p>
+      </div>
+      <div class="sample-card">
+        <div class="sample-meta"><span class="sm-demo">60 · Female · Hiroshima</span><span class="sm-tags"><i class="tag-inc">¥4–6M</i><i class="tag-neg">Negative</i></span></div>
+        <div class="sample-sub">Part-time worker · shops in the morning</div>
+        <p class="sample-ja">常にお金の計算をしながら買う</p>
+        <p class="sample-en">Always buy while calculating money</p>
+      </div>
+    </div>
+
+    <div class="sample-cta reveal">
+      <a class="btn-primary" href="real-survey-sample.csv" download>Download the sample <span class="arrow">↓</span></a>
+      <span class="sample-note">115 real respondents · anonymized · Japanese + English · demographics + 3 questions (CSV)</span>
+    </div>
+  </div>
+</section>
+
 <!-- ============ PARTICIPATE ============ -->
-<section class="block" id="participate">
+<section class="block alt" id="participate">
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">Participate</span>
