@@ -1,10 +1,31 @@
 const DATABASE_ID  = 'e6ed3221-1c4f-460d-a15a-b9d18aa677c7';
 
-const CORS = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'Content-Type',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
-};
+// 自サイトのオリジンのみ許可（スパム・他サイトからの不正POST対策）
+const ALLOWED_ORIGINS = new Set([
+  'https://techworker.co.jp',
+  'https://www.techworker.co.jp',
+]);
+
+// リクエスト Origin が許可リストにあればその値を反映（無ければ ACAO を付けずブラウザ側で遮断）
+function corsHeaders(request) {
+  const origin = request.headers.get('Origin') || '';
+  const h = {
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Vary': 'Origin',
+  };
+  if (ALLOWED_ORIGINS.has(origin)) h['Access-Control-Allow-Origin'] = origin;
+  return h;
+}
+
+// サーバ側でも送信元を検証（CORSはブラウザ越しのみ。Origin/Referer で他サイト発を弾く）
+function isAllowedSource(request) {
+  const origin = request.headers.get('Origin');
+  if (origin) return ALLOWED_ORIGINS.has(origin);
+  // 同一オリジンPOSTで Origin が省略される場合は Referer のオリジンで判定
+  const ref = request.headers.get('Referer') || '';
+  try { return ALLOWED_ORIGINS.has(new URL(ref).origin); } catch { return false; }
+}
 
 const INQUIRY_MAP = {
   consultation: '無料相談',
@@ -146,11 +167,20 @@ async function sendSlackNotification(data, webhookUrl) {
   }
 }
 
-export async function onRequestOptions() {
-  return new Response(null, { status: 204, headers: CORS });
+export async function onRequestOptions({ request }) {
+  return new Response(null, { status: 204, headers: corsHeaders(request) });
 }
 
 export async function onRequestPost({ request, env }) {
+  const CORS = corsHeaders(request);
+
+  // 他サイト・不明な送信元からのPOSTを拒否
+  if (!isAllowedSource(request)) {
+    return new Response(JSON.stringify({ error: 'Forbidden' }), {
+      status: 403, headers: { ...CORS, 'Content-Type': 'application/json' },
+    });
+  }
+
   let data;
   try {
     data = await request.json();
@@ -160,8 +190,22 @@ export async function onRequestPost({ request, env }) {
     });
   }
 
-  // Debug: log which env vars are available
-  console.log('ENV check - NOTION_API_KEY:', !!env.NOTION_API_KEY, 'SLACK_WEBHOOK_URL:', !!env.SLACK_WEBHOOK_URL);
+  // ハニーポット: 人間には見えない隠しフィールド(website / hp)が埋まっていればbotとみなし、
+  // 成功を装って黙って破棄（保存・通知しない）
+  if ((data.website && String(data.website).trim()) || (data.hp && String(data.hp).trim())) {
+    return new Response(JSON.stringify({ success: true }), {
+      status: 200, headers: { ...CORS, 'Content-Type': 'application/json' },
+    });
+  }
+
+  // 必須項目チェック: 名前・メールが両方空なら無効（空リードの混入を防ぐ）
+  const hasName  = data.name  && String(data.name).trim();
+  const hasEmail = data.email && String(data.email).trim();
+  if (!hasName && !hasEmail) {
+    return new Response(JSON.stringify({ error: 'Missing required fields' }), {
+      status: 400, headers: { ...CORS, 'Content-Type': 'application/json' },
+    });
+  }
 
   if (!env.NOTION_API_KEY) {
     return new Response(JSON.stringify({ error: 'NOTION_API_KEY not configured' }), {

@@ -28,11 +28,11 @@ if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_vi
 <meta property="og:title" content="お問い合わせ | TechWorker">
 <meta property="og:description" content="無料相談・資料請求を承っております。検討段階のご相談だけでも歓迎です。">
 <meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
-<meta property="og:url" content="https://techworker.co.jp/contact.html">
-<link rel="canonical" href="https://techworker.co.jp/contact.html">
-<link rel="alternate" hreflang="ja" href="https://techworker.co.jp/contact.html">
-<link rel="alternate" hreflang="en" href="https://techworker.co.jp/en/contact.html">
-<link rel="alternate" hreflang="x-default" href="https://techworker.co.jp/contact.html">
+<meta property="og:url" content="https://techworker.co.jp/contact">
+<link rel="canonical" href="https://techworker.co.jp/contact">
+<link rel="alternate" hreflang="ja" href="https://techworker.co.jp/contact">
+<link rel="alternate" hreflang="en" href="https://techworker.co.jp/en/contact">
+<link rel="alternate" hreflang="x-default" href="https://techworker.co.jp/contact">
 <meta property="og:site_name" content="TechWorker">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="お問い合わせ | TechWorker">
@@ -373,6 +373,10 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
         <span class="form-section-label">Inquiry Form</span>
         <form id="contactForm" onsubmit="handleSubmit(event)">
           <input type="hidden" id="inquiryType" name="inquiry_type" value="consultation">
+          <!-- ハニーポット: 人間には不可視。botが埋めるとサーバ側で破棄される -->
+          <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;">
+            <label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+          </div>
 
           <div class="form-group">
             <label>お名前<span class="required">必須</span></label>

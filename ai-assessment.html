@@ -23,12 +23,12 @@ if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_vi
 <title>生成AI活用 かんたん診断｜6問・約1分で自社のレベルがわかる — TechWorker</title>
 <meta name="description" content="6つの質問に答えるだけで、自社の生成AI活用がいまどのレベルかが約1分でわかります。現在地と、いちばん効く「次の一手」をその場で表示。むずかしい知識は不要・無料・登録不要。">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-<link rel="canonical" href="https://techworker.co.jp/ai-assessment.html">
+<link rel="canonical" href="https://techworker.co.jp/ai-assessment">
 <meta property="og:type" content="website">
 <meta property="og:title" content="生成AI活用 かんたん診断｜6問・約1分 — TechWorker">
 <meta property="og:description" content="6問・約1分で、自社の生成AI活用がいまどのレベルかがわかります。現在地と「次の一手」をその場で表示。無料・登録不要。">
 <meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
-<meta property="og:url" content="https://techworker.co.jp/ai-assessment.html">
+<meta property="og:url" content="https://techworker.co.jp/ai-assessment">
 <meta property="og:site_name" content="TechWorker">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="生成AI活用 かんたん診断｜6問・約1分 — TechWorker">
@@ -657,6 +657,10 @@ footer .container{max-width:1180px;}
           <div class="gtx"><b>お送りするもの：御社向け 改善ロードマップ（A4・1枚）</b><span>診断結果の解説＋優先テーマ＋最初の30日でやることを、シンプルにまとめます。</span></div>
         </div>
         <form id="leadForm" novalidate>
+          <!-- ハニーポット: 人間には不可視。botが埋めるとサーバ側で破棄される -->
+          <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;">
+            <label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+          </div>
           <div class="fg"><label for="lf-name">お名前<span class="req">必須</span></label><input id="lf-name" type="text" name="name" placeholder="山田 太郎" autocomplete="name" required aria-required="true"></div>
           <div class="fg"><label for="lf-company">会社名<span class="req">必須</span></label><input id="lf-company" type="text" name="company" placeholder="株式会社○○○○" autocomplete="organization" required aria-required="true"></div>
           <div class="fg"><label for="lf-email">会社メールアドレス<span class="req">必須</span></label><input id="lf-email" type="email" name="email" placeholder="taro@example.co.jp" autocomplete="email" required aria-required="true"></div>

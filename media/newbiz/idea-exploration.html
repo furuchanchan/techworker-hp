@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3V34NWXVCJ');
+</script>
+<!-- TW intent tracker (first-party, sessionStorage only) -->
+<script>
+(function(){try{var ss=sessionStorage,ls=localStorage;
+if(!ss.getItem('tw_landing')){ss.setItem('tw_landing',location.pathname);ss.setItem('tw_ref',document.referrer||'');var q=new URLSearchParams(location.search);ss.setItem('tw_utm',['utm_source','utm_medium','utm_campaign'].map(function(k){return q.get(k)||'';}).join('|'));}
+var p=JSON.parse(ss.getItem('tw_pages')||'[]');if(p[p.length-1]!==location.pathname){p.push(location.pathname);ss.setItem('tw_pages',JSON.stringify(p.slice(-20)));}
+if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_visits')||'0',10)+1));ss.setItem('tw_counted','1');}
+}catch(e){}})();
+</script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新規事業の種を社内データ・特許から探す｜市場機会を発見する生成AI活用【2026】 — TechWorker</title>
+<meta name="description" content="大企業の新規事業・R&D部門が、社内データ・特許・技術文献・顧客の声から新規事業の種を探す実践ガイド。生成AIによる横断・要約・仮説化の手順、比較表、探索フェーズでやってはいけないこと（裏取り欠如・ハルシネーション妄信）を、上場企業を含む37社・2,500名の支援知見をもとに整理します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/newbiz/idea-exploration">
+<meta property="og:type" content="article">
+<meta property="og:title" content="新規事業の種を社内データ・特許から探す｜市場機会を発見する生成AI活用">
+<meta property="og:description" content="種は社内に眠っている——特許・技術文献・顧客の声・過去提案。生成AIで横断・要約・仮説化を速くする手順と、探索フェーズでやってはいけないことを整理する実践ガイド。">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/media/newbiz/idea-exploration">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="新規事業の種を社内データ・特許から探す｜市場機会を発見する生成AI活用">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../article.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"新規事業の種を社内データ・特許から探す｜生成AIで市場機会を発見",
+  "description":"大企業の新規事業・R&D部門が、社内データ・特許・技術文献・顧客の声から新規事業の種を探す実践ガイド。生成AIによる横断・要約・仮説化の手順と、探索フェーズでやってはいけないこと（裏取り欠如・ハルシネーション妄信）を整理する。",
+  "datePublished":"2026-07-01","dateModified":"2026-07-04","inLanguage":"ja",
+  "image":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630},
+  "author":{"@type":"Person","name":"古野光太朗","jobTitle":"株式会社TechWorker 代表取締役","url":"https://techworker.co.jp/company.html","image":"https://techworker.co.jp/assets/author-furuno.jpg","sameAs":["https://x.com/koutarou_furuno"],"affiliation":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"}},
+  "publisher":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/","logo":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630}},
+  "mainEntityOfPage":{"@type":"WebPage","@id":"https://techworker.co.jp/media/newbiz/idea-exploration.html"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},
+    {"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},
+    {"@type":"ListItem","position":3,"name":"新規事業AIラボ","item":"https://techworker.co.jp/media/newbiz/"},
+    {"@type":"ListItem","position":4,"name":"新規事業の種を社内データ・特許から探す","item":"https://techworker.co.jp/media/newbiz/idea-exploration.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"新規事業の種は、結局どこにあるのですか？","acceptedAnswer":{"@type":"Answer","text":"多くの場合、社外ではなく社内に眠っています。過去に出願・保有している特許、研究開発部門が蓄積してきた技術文献、営業やカスタマーサポートに寄せられる顧客の声、過去に提案されては通らなかった新規事業案。これらを横断的に見直すだけで、既存事業の延長では見えなかった市場機会が見つかることが少なくありません。探索フェーズの第一歩は、外部リサーチの前に社内資産の棚卸しです。"}},
+    {"@type":"Question","name":"生成AIは新規事業の種を自動で見つけてくれますか？","acceptedAnswer":{"@type":"Answer","text":"見つけてはくれません。生成AIが得意なのは、大量の特許・技術文献・顧客の声を横断的に読み込み、要約し、仮説の形に言語化する作業です。どの技術に事業性があるか、どの顧客の声が本質的な課題かを判断するのは、事業側の知見を持つ人間の役割です。AIは探索を速くする道具であり、意思決定の主体ではありません。"}},
+    {"@type":"Question","name":"AIが出した仮説をそのまま新規事業案として提案してよいですか？","acceptedAnswer":{"@type":"Answer","text":"そのまま提案するのは避けてください。生成AIは存在しない市場データや、実際にはない特許の関連性をもっともらしく示すことがあります（ハルシネーション）。AIが出した仮説は一次案として受け取り、根拠となる特許・文献・数値は必ず原典にあたって確認したうえで、社内提案や稟議の資料に落とし込んでください。"}},
+    {"@type":"Question","name":"探索フェーズの次は何をすればよいですか？","acceptedAnswer":{"@type":"Answer","text":"探索で見つけた種を、事業アイデアの形に発散・収束させるアイディエーションのフェーズに進みます。特許・技術文献・顧客の声から拾い上げた複数の仮説を、生成AIを使って事業モデルの形に構造化し、優先順位をつけていく段階です。探索と構想は行き来しながら進めるのが実務的です。"}}
+  ]
+}
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <a href="index.html" class="logo">新規事業<i>AIラボ</i></a>
+  <ul>
+    <li><a href="index.html">記事一覧</a></li>
+    <li><a href="index.html#about">このメディアについて</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="../../new-business.html" class="nav-cta"><span class="full">新規事業の相談</span><span class="short">相談</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="index.html">記事一覧</a>
+  <a href="index.html#about">このメディアについて</a>
+  <a href="../../new-business.html" class="m-cta">新規事業の相談を申し込む</a>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">新規事業AIラボ</a><span class="sep">/</span>種を社内データ・特許から探す</nav>
+  <div class="kicker">Exploration（探索）</div>
+  <h1>新規事業の種を社内データ・特許から探す｜生成AIで市場機会を発見</h1>
+  <p class="dek">新規事業の種は、外にではなく社内に眠っている——特許、技術文献、顧客の声、過去に通らなかった提案。生成AIで横断・要約・仮説化を速くする探し方と、抜け漏れ・ハルシネーション妄信という探索フェーズならではの落とし穴を、大企業の新規事業・R&D部門向けに整理する。</p>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.01</span><span class="dot">·</span><span>最終更新 2026.07.04</span><span class="dot">·</span><span>読了 8分</span>
+  </div>
+</header>
+
+<style>
+/* article-specific cover: 社内データ4種 → AIの横断スキャン → 仮説の変換UI */
+.ie-cover{padding:0;}
+.ie-in{padding:18px 24px 16px;}
+.ie-in-head{display:flex;align-items:baseline;gap:9px;margin-bottom:13px;}
+.ie-in-head .ie-from{font-family:var(--jp);font-size:12px;font-weight:600;color:var(--slate);}
+.ie-in-head .ie-meta{font-family:var(--en);font-size:11px;color:var(--slate);opacity:.62;letter-spacing:.01em;}
+.ie-src{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;}
+.ie-src .ie-card{border:1px solid var(--line);border-radius:8px;padding:10px 11px 11px;background:var(--paper);}
+.ie-src .ie-card .ic-l{font-family:var(--en);font-size:9.5px;font-weight:600;letter-spacing:.05em;color:var(--slate);text-transform:uppercase;}
+.ie-src .ie-card .ic-row{margin-top:8px;height:7px;border-radius:4px;background:var(--paper-2);}
+.ie-src .ie-card .ic-row.b{width:78%;margin-top:6px;}
+/* divider with caption */
+.ie-div{position:relative;height:1px;background:var(--line);margin:2px 0;}
+.ie-div span{position:absolute;left:24px;top:50%;transform:translateY(-50%);background:var(--white);padding:0 10px 0 0;font-family:var(--en);font-size:10.5px;letter-spacing:.04em;color:var(--slate);display:inline-flex;align-items:center;gap:7px;white-space:nowrap;}
+.ie-div span .ie-arr{color:var(--electric);font-weight:700;}
+.ie-div span .ie-jp{font-family:var(--jp);}
+/* organized output */
+.ie-out{padding:18px 24px 20px;background:var(--paper);}
+.ie-out-head{font-family:var(--jp);font-size:12px;font-weight:600;color:var(--ink-soft);margin-bottom:14px;}
+.ie-out-head .ie-tag{font-family:var(--en);font-size:9.5px;font-weight:700;letter-spacing:.05em;color:var(--electric);border:1px solid rgba(0,94,255,.4);border-radius:4px;padding:2px 7px;margin-left:9px;vertical-align:1px;}
+.ie-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px;}
+.ie-list li{display:flex;align-items:center;gap:11px;min-width:0;}
+.ie-list .ie-no{flex:none;font-family:var(--en);font-size:12px;font-weight:700;color:var(--ink);width:14px;text-align:right;font-feature-settings:"tnum" 1;}
+.ie-list .ie-dot{flex:none;width:6px;height:6px;border-radius:50%;background:var(--electric);}
+.ie-list .ie-row{flex:1;min-width:0;height:9px;border-radius:4px;background:var(--white);border:1px solid var(--line);}
+.ie-list li.r1 .ie-row{width:auto;}
+.ie-list li.r2 .ie-row{margin-right:16%;}
+.ie-list li.r3 .ie-row{margin-right:32%;}
+@media(max-width:560px){
+  .ie-in{padding:15px 18px 13px;}
+  .ie-out{padding:15px 18px 17px;}
+  .ie-div span{left:18px;}
+  .ie-src{grid-template-columns:repeat(2,1fr);}
+  .ie-list .ie-no{font-size:11px;}
+}
+</style>
+<div class="art-cover-v6 ie-cover">
+  <div class="ie-in">
+    <div class="ie-in-head"><span class="ie-from">社内に眠る4つの情報源</span><span class="ie-meta">断片化・未接続</span></div>
+    <div class="ie-src">
+      <div class="ie-card"><div class="ic-l">特許</div><div class="ic-row"></div><div class="ic-row b"></div></div>
+      <div class="ie-card"><div class="ic-l">技術文献</div><div class="ic-row"></div><div class="ic-row b"></div></div>
+      <div class="ie-card"><div class="ic-l">顧客の声</div><div class="ic-row"></div><div class="ic-row b"></div></div>
+      <div class="ie-card"><div class="ic-l">過去提案</div><div class="ic-row"></div><div class="ic-row b"></div></div>
+    </div>
+  </div>
+  <div class="ie-div"><span><span class="ie-arr">↓</span><span class="ie-jp">横断・要約・仮説化</span></span></div>
+  <div class="ie-out">
+    <div class="ie-out-head">AIが見つけた市場機会の仮説<span class="ie-tag">AI 下書き</span></div>
+    <ol class="ie-list">
+      <li class="r1"><span class="ie-no">1.</span><span class="ie-dot"></span><span class="ie-row"></span></li>
+      <li class="r2"><span class="ie-no">2.</span><span class="ie-dot"></span><span class="ie-row"></span></li>
+      <li class="r3"><span class="ie-no">3.</span><span class="ie-dot"></span><span class="ie-row"></span></li>
+    </ol>
+  </div>
+</div>
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次">
+    <div class="art-toc-inner">
+      <div class="toc-h">目次</div>
+      <a href="#s1">新規事業の「種」はどこにあるか</a>
+      <a href="#s2">生成AIで探索を速くする手順</a>
+      <a href="#s3">やってはいけないこと</a>
+      <a href="#s4">使いどころと限界</a>
+      <a href="#faq">よくある質問</a>
+    </div>
+  </nav>
+
+  <article class="art-body rv">
+    <div class="lede">
+      <div class="lede-h">この記事の要点</div>
+      <ul>
+        <li>新規事業の種は、多くの場合<strong>社内にすでに存在している</strong>——特許、技術文献、顧客の声、過去に通らなかった提案。まず社外より社内の棚卸しから始める。</li>
+        <li>生成AIが効くのは、これら断片化した情報源を<strong>横断的に読み込み、要約し、仮説の形に言語化する</strong>作業。事業性の判断と優先順位づけは事業側の人間が担う。</li>
+        <li>探索フェーズ特有の落とし穴は<strong>抜け漏れ（探索範囲の偏り）とハルシネーション妄信</strong>。AIの仮説は一次案として受け取り、根拠は必ず原典で裏取りする。</li>
+      </ul>
+    </div>
+
+    <aside class="inline-dx-cta" style="margin:6px 0 40px;border:1px solid var(--line-2);border-radius:12px;background:var(--white);padding:22px 26px;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
+  <div style="flex:1;min-width:240px;">
+    <div style="font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);">診断ツール ・ 無料 ・ 5分</div>
+    <div style="font-family:var(--jp);font-weight:700;font-size:16.5px;color:var(--ink);line-height:1.55;margin-top:8px;">自社の生成AI活用度を診断する</div>
+    <div style="font-size:13.5px;color:var(--slate);line-height:1.8;margin-top:5px;">Microsoftの成熟度モデルに沿って現在地を可視化し、業界別の活用事例と次の一手をその場で提示します。</div>
+  </div>
+  <a href="../../ai-assessment.html" class="btn" style="white-space:nowrap;flex:none;color:var(--paper);border-bottom:none;">無料で診断する <i>&rarr;</i></a>
+</aside>
+    <h2 id="s1">新規事業の「種」はどこにあるか？</h2>
+    <p class="answer">多くの場合、社外ではなく社内に眠っている。特許・技術文献・顧客の声・過去提案の4つが主な情報源になる。</p>
+    <p>「新規事業の種を探す」と聞くと、市場調査会社のレポートを読み込んだり、海外のスタートアップ事例を漁ったりする作業を思い浮かべるかもしれません。しかし実際には、事業性のある種の多くは<strong>すでに社内に存在している</strong>ことが少なくありません。研究開発部門が出願してそのまま眠っている特許、社内にしか蓄積されていない技術文献、営業やカスタマーサポートに日々寄せられる顧客の声、そして過去に誰かが提案したものの通らなかった新規事業案。これらは部門ごとに分断され、互いにつながらないまま社内のどこかに存在しています。</p>
+    <p>探索フェーズの本質的な難しさは、情報がないことではなく、<strong>情報が断片化していて横断的に見られないこと</strong>にあります。特許は知財部門、技術文献は研究開発部門、顧客の声は営業・CS部門、過去提案は各事業部の引き出しの中——これらを一人の人間が全て読み込み、共通点を見つけ出すのは現実的ではありません。ここに、生成AIが最も効果を発揮する余地があります。4つの情報源それぞれについて、何を探すべきかを整理すると次のようになります。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>情報源</th><th>探すべきもの</th><th>典型的な保有部門</th></tr>
+        <tr><td>特許</td><td>事業化されていない技術・応用先が限定的な権利</td><td>知財部門・研究開発部門</td></tr>
+        <tr><td>技術文献</td><td>社内研究・実験で得られた知見のうち製品化未着手のもの</td><td>研究開発部門・技術本部</td></tr>
+        <tr><td>顧客の声</td><td>既存製品への要望の裏にある、まだ満たされていない課題</td><td>営業部門・カスタマーサポート</td></tr>
+        <tr><td>過去提案</td><td>タイミングやリソースの都合で通らなかった事業案</td><td>新規事業部門・各事業部</td></tr>
+      </table>
+    </div>
+    <div class="callout"><p>探索の第一歩は外部リサーチではなく社内資産の棚卸し。特許・技術文献・顧客の声・過去提案という「すでにあるもの」を横断して見直すだけで、既存事業の延長では見えなかった市場機会が浮かび上がることが多い。</p></div>
+
+    <h2 id="s2">生成AIで探索を速くする手順</h2>
+    <p class="answer">情報源ごとに読み込ませ、横断的に要約・関連づけさせ、市場機会の仮説として言語化させる。3ステップで進める。</p>
+    <p>社内に散らばる4つの情報源を横断的に見直す作業は、人手だけで行うと膨大な時間がかかります。生成AIを使うと、この前さばきを大幅に速くできます。ポイントは、いきなり「新規事業のアイデアを出して」と丸投げするのではなく、<strong>情報源ごとの読み込み → 横断的な関連づけ → 仮説の言語化</strong>という順番で段階的に進めることです。</p>
+    <ol>
+      <li><strong>情報源ごとに読み込ませ、要約させる。</strong>特許群・技術文献・顧客の声・過去提案を、それぞれ生成AIに読み込ませ、要点と技術的・事業的な特徴を要約させる。</li>
+      <li><strong>横断的に関連づけさせる。</strong>異なる情報源の要約同士を突き合わせ、「この特許とこの顧客の声は関係しているのでは」といった接点を洗い出させる。</li>
+      <li><strong>市場機会の仮説として言語化させる。</strong>見つかった接点を、誰のどんな課題を解決しうるかという仮説の形に整理させる。結論や優先順位は事業側の人間が判断する。</li>
+    </ol>
+    <p>情報源×AIの使い方×アウトプットの対応を整理すると、次のようになります。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>情報源</th><th>生成AIの使い方</th><th>アウトプット</th></tr>
+        <tr><td>特許群</td><td>出願概要・請求項を横断的に要約し、応用先が限定的なものを抽出</td><td>未活用特許の一覧と応用可能性メモ</td></tr>
+        <tr><td>技術文献</td><td>研究レポート・実験記録から製品化されていない知見を抽出</td><td>技術シーズの要約と応用領域の仮説</td></tr>
+        <tr><td>顧客の声</td><td>問い合わせ・要望・クレームを分類し、頻出する未解決課題を抽出</td><td>顧客課題の優先度付きリスト</td></tr>
+        <tr><td>過去提案</td><td>過去の新規事業案を要約し、通らなかった理由を分類</td><td>再検討価値のある提案の絞り込みメモ</td></tr>
+      </table>
+    </div>
+    <div class="ui-mock">
+      <div class="um-bar"><span class="um-dot"></span><span class="um-dot"></span><span class="um-dot"></span><span class="um-name">AI ASSISTANT — 使い方の例</span></div>
+      <div class="um-row">
+        <div class="um-label">あなたの指示（新規事業担当）</div>
+        <div class="um-text prompt">次の特許要約リストと顧客要望リストを見比べて、両方に関係しそうな接点を洗い出して。結論は出さず、「この技術とこの課題が関係しているかもしれない」という仮説の候補まで。
+【特許要約】計測精度を高めるセンサー処理技術（現状は自社の検査工程向けにのみ利用）
+【顧客要望】設備の稼働状況を遠隔から把握したいという要望が複数の既存顧客から継続的に寄せられている</div>
+      </div>
+      <div class="um-row">
+        <div class="um-label ai">AIの下書き</div>
+        <div class="um-text">【接点の仮説】
+・検査工程向けのセンサー処理技術は、設備の稼働状況を高精度に検知する用途に転用できる可能性がある
+・顧客が求めているのは「稼働状況の見える化」であり、既存特許の計測精度がその実現に寄与しうる
+
+【確認したい前提】
+・現状の特許がセンサーハードウェア込みか、処理アルゴリズムのみを対象にしているか
+・遠隔からのデータ取得に必要な通信・設置コストの見立て
+※市場性・事業化の可否は未検証の仮説段階です。事業側での裏取りと検証が前提となります。</div>
+      </div>
+    </div>
+    <p class="fig-cap">図：異なる社内情報源をAIに横断的に照合させ、接点の仮説を洗い出させる例。ここで出てくるのはあくまで仮説候補であり、事業性の判断・優先順位づけは人間が行います。</p>
+
+    <h2 id="s3">探索フェーズでやってはいけないこと</h2>
+    <p class="answer">探索範囲が偏ったまま結論を出すことと、AIが出した仮説や数値をそのまま裏取りせず使うこと。</p>
+    <p>探索フェーズを生成AIで速くする取り組みが逆効果になるのは、次の2つのパターンです。1つ目は、<strong>特定の部門・特定の情報源だけを読み込ませて「これが新規事業の種だ」と結論づけてしまう抜け漏れ</strong>です。研究開発部門の技術文献だけを見て、顧客の声や過去提案と突き合わせないまま進めると、技術起点で見栄えの良い仮説ができても、実際の顧客課題とずれた種を選んでしまうリスクがあります。4つの情報源をなるべく横断的に見る設計を最初に組んでおくことが重要です。</p>
+    <p>2つ目は、<strong>AIが出した仮説・関連づけ・数値をそのまま鵜呑みにしてしまうハルシネーション妄信</strong>です。生成AIは、実際には存在しない特許の関連性や、根拠のない市場規模の数値をもっともらしく提示することがあります。探索段階の仮説は、あくまで「確認する価値があるかもしれない候補」であり、事業提案や稟議資料に転記する前に、特許の原文・技術文献の出典・顧客の声の実データを必ず人が確認する必要があります。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>落とし穴</th><th>何が起こるか</th><th>避け方</th></tr>
+        <tr><td>探索範囲の抜け漏れ</td><td>特定部門の情報源だけで結論づけ、技術起点・顧客起点の偏りが生じる</td><td>特許・技術文献・顧客の声・過去提案を横断する設計を最初に組む</td></tr>
+        <tr><td>ハルシネーション妄信</td><td>存在しない関連性や根拠のない数値をそのまま事業提案に転記してしまう</td><td>AIの仮説は候補として扱い、原典（特許原文・実データ）を人が確認する</td></tr>
+      </table>
+    </div>
+    <div class="callout"><p>探索フェーズでAIに任せてよいのは「横断して読み、要約し、接点の仮説を出す」まで。その仮説にどれだけ事業性があるか、裏取りが取れているかの判断は、事業側の知見を持つ人間にしか担えない。</p></div>
+    <p>これに加えて、特許・技術文献・顧客情報の中には社外秘・個人が特定されうる情報が含まれることがあります。生成AIに渡す前に、社内ルールに沿って扱ってよい情報の範囲を決めておくことも、探索フェーズを安全に進める前提になります。</p>
+
+    <h2 id="s4">使いどころと限界</h2>
+    <p class="answer">AIは横断・要約・仮説化の前さばきに使う。事業性の判断・優先順位づけ・裏取りは事業側の人間の役割として残る。</p>
+    <p>探索フェーズにおける生成AIの実体は、事業開発担当者や研究者が本来時間をかけて行っていた「社内の情報を横断的に読み込み、接点を見つける」作業を、速く・広くこなす前さばきです。「AIはエンジンだ。コンテキストは燃料だ。」という考え方の通り、特許・技術文献・顧客の声・過去提案という燃料が整理されているほど、AIが出す仮説の質は上がります。逆に、燃料となる社内データが整理されていなければ、どれだけ高性能なAIを使っても探索の質は上がりません。</p>
+    <div class="quote-box"><p>新規事業の種探しの質は、AIを賢くすることではなく、社内に眠る特許・技術文献・顧客の声・過去提案をAIが横断できる形に整えることで底上げされる。</p></div>
+    <p>これは、上場企業を含む37社・2,500名の生成AI活用支援で繰り返し見てきた「AIに探索を広く速くやらせ、事業性の判断は人が残す」使い方の典型です。探索フェーズで見つけた種は、次のアイディエーションのフェーズで事業アイデアの形に発散・収束させていきます。新規事業への生成AI活用の全体像は<a href="shinkijigyo-ai.html">新規事業×生成AIの記事</a>、探索した種を事業アイデアに構造化する具体的な手順は<a href="ideation.html">アイディエーションの記事</a>もあわせてご覧ください。TechWorkerでは、社内データを起点にした新規事業の探索から定着までを、<a href="../../new-business.html">生成AI活用の設計支援</a>として伴走しています。</p>
+
+    <h2 id="faq">よくある質問</h2>
+    <div class="faq"><div class="q">新規事業の種は、結局どこにあるのですか？</div><p class="a">多くの場合、社外ではなく社内に眠っています。過去に出願・保有している特許、研究開発部門が蓄積してきた技術文献、営業やカスタマーサポートに寄せられる顧客の声、過去に提案されては通らなかった新規事業案。これらを横断的に見直すだけで、既存事業の延長では見えなかった市場機会が見つかることが少なくありません。探索フェーズの第一歩は、外部リサーチの前に社内資産の棚卸しです。</p></div>
+    <div class="faq"><div class="q">生成AIは新規事業の種を自動で見つけてくれますか？</div><p class="a">見つけてはくれません。生成AIが得意なのは、大量の特許・技術文献・顧客の声を横断的に読み込み、要約し、仮説の形に言語化する作業です。どの技術に事業性があるか、どの顧客の声が本質的な課題かを判断するのは、事業側の知見を持つ人間の役割です。AIは探索を速くする道具であり、意思決定の主体ではありません。</p></div>
+    <div class="faq"><div class="q">AIが出した仮説をそのまま新規事業案として提案してよいですか？</div><p class="a">そのまま提案するのは避けてください。生成AIは存在しない市場データや、実際にはない特許の関連性をもっともらしく示すことがあります（ハルシネーション）。AIが出した仮説は一次案として受け取り、根拠となる特許・文献・数値は必ず原典にあたって確認したうえで、社内提案や稟議の資料に落とし込んでください。</p></div>
+    <div class="faq"><div class="q">探索フェーズの次は何をすればよいですか？</div><p class="a">探索で見つけた種を、事業アイデアの形に発散・収束させるアイディエーションのフェーズに進みます。特許・技術文献・顧客の声から拾い上げた複数の仮説を、生成AIを使って事業モデルの形に構造化し、優先順位をつけていく段階です。探索と構想は行き来しながら進めるのが実務的です。次工程は<a href="ideation.html">アイディエーションの記事</a>をご覧ください。</p></div>
+  </article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役</span></div>
+    <p>上場企業を含む37社・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。大企業の新規事業・R&D部門における探索から定着までのAI活用も支援している。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>社内に眠る新規事業の種を、生成AIで見つけ出します。</h3>
+    <p>特許・技術文献・顧客の声・過去提案の横断整理から、市場機会の仮説化まで。事業性の判断と裏取りは貴社の手元に残したまま、上場企業を含む37社・2,500名の支援知見をもとに、探索フェーズの前さばきを設計します。検討段階のご相談だけでも歓迎です。</p>
+  </div>
+  <a href="../../new-business.html" class="btn">新規事業の相談をする <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="../../training.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">生成AI法人研修（主要ツール全対応）</a>　／　<a href="../../new-business.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">新規事業の相談</a>　／　<a href="../../library/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">事例集（無料DL）</a></p>
+<div class="back-list"><a href="index.html">← メディア（新規事業AIラボ）に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="shinkijigyo-ai.html" class="related-card"><span class="rc-cat">全体像</span><div class="rc-title">新規事業×生成AI｜探索から定着まで速く進める</div></a>
+    <a href="ideation.html" class="related-card"><span class="rc-cat">構想</span><div class="rc-title">生成AIでアイディエーション｜発散から収束</div></a>
+    <a href="index.html" class="related-card"><span class="rc-cat">メディア</span><div class="rc-title">新規事業AIラボ｜大企業の新規事業・R&Dを生成AIで前に進める</div></a>
+  </div>
+</div></section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">新規事業<i>AIラボ</i></div>
+        <p>生成AI活用の実践知をお届けするメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+      </div>
+      <div class="footer-col"><h4>新規事業AIラボ</h4><a href="index.html">記事一覧</a><a href="index.html#about">このメディアについて</a></div>
+      <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../index.html#services">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="../../new-business.html">新規事業の相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+</body>
+</html>

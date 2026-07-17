@@ -3,23 +3,36 @@
 //   ANTHROPIC_API_KEY (必須・未設定なら課金ゼロで安全にフォールバック)
 //   TURNSTILE_SECRET  (任意・設定するとbot検証を強制し公開エンドポイントの乱用を防止)
 
-const CORS = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'Content-Type',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
-};
-const JSON_HEADERS = { ...CORS, 'Content-Type': 'application/json; charset=utf-8' };
+// 自サイトのオリジンのみ許可（API課金を伴うため他サイトからの乱用を防ぐ）
+const ALLOWED_ORIGINS = new Set([
+  'https://techworker.co.jp',
+  'https://www.techworker.co.jp',
+]);
+
+function corsHeaders(request) {
+  const origin = request.headers.get('Origin') || '';
+  const h = {
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Vary': 'Origin',
+  };
+  if (ALLOWED_ORIGINS.has(origin)) h['Access-Control-Allow-Origin'] = origin;
+  return h;
+}
+
+function isAllowedSource(request) {
+  const origin = request.headers.get('Origin');
+  if (origin) return ALLOWED_ORIGINS.has(origin);
+  const ref = request.headers.get('Referer') || '';
+  try { return ALLOWED_ORIGINS.has(new URL(ref).origin); } catch { return false; }
+}
 
 // 感動体験のため品質最優先で Opus 4.8。速さ優先に戻すなら 'claude-sonnet-4-6'（速い）/ 'claude-haiku-4-5'（最速）。
 const MODEL = 'claude-opus-4-8';
 const MAX_TOKENS = 1600;
 
-function json(obj, status) {
-  return new Response(JSON.stringify(obj), { status: status || 200, headers: JSON_HEADERS });
-}
-
-export async function onRequestOptions() {
-  return new Response(null, { status: 204, headers: CORS });
+export async function onRequestOptions({ request }) {
+  return new Response(null, { status: 204, headers: corsHeaders(request) });
 }
 
 async function verifyTurnstile(token, secret, ip) {
@@ -37,6 +50,15 @@ async function verifyTurnstile(token, secret, ip) {
 }
 
 export async function onRequestPost({ request, env }) {
+  const JSON_HEADERS = { ...corsHeaders(request), 'Content-Type': 'application/json; charset=utf-8' };
+  const json = (obj, status) =>
+    new Response(JSON.stringify(obj), { status: status || 200, headers: JSON_HEADERS });
+
+  // 他サイト・不明な送信元からのPOSTを拒否（API課金の乱用防止）
+  if (!isAllowedSource(request)) {
+    return json({ error: 'Forbidden' }, 403);
+  }
+
   let data;
   try {
     data = await request.json();

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3V34NWXVCJ');
+</script>
+<!-- TW intent tracker (first-party, sessionStorage only) -->
+<script>
+(function(){try{var ss=sessionStorage,ls=localStorage;
+if(!ss.getItem('tw_landing')){ss.setItem('tw_landing',location.pathname);ss.setItem('tw_ref',document.referrer||'');var q=new URLSearchParams(location.search);ss.setItem('tw_utm',['utm_source','utm_medium','utm_campaign'].map(function(k){return q.get(k)||'';}).join('|'));}
+var p=JSON.parse(ss.getItem('tw_pages')||'[]');if(p[p.length-1]!==location.pathname){p.push(location.pathname);ss.setItem('tw_pages',JSON.stringify(p.slice(-20)));}
+if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_visits')||'0',10)+1));ss.setItem('tw_counted','1');}
+}catch(e){}})();
+</script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>生成AIでアイディエーション｜発散から収束まで事業コンセプトを作る【2026】 — TechWorker</title>
+<meta name="description" content="大企業の新規事業チームが生成AIでアイディエーションを行う実践ガイド。切り口を広げる「発散」と、事業コンセプトに絞る「収束」の両輪をどう回すか。評価軸（市場性・自社適合・実現性・独自性）による比較表と、最終判断は人が担うという前提を、上場企業を含む37社・2,500名の支援知見をもとに整理します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/newbiz/ideation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="生成AIでアイディエーション｜発散から収束まで事業コンセプトを作る">
+<meta property="og:description" content="切り口を広げる「発散」と、事業コンセプトに絞る「収束」。生成AIは発散の量と収束の観点出しに効くが、最終判断は人が担う。新規事業のアイディエーションを速く・広く回す実践ガイド。">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/media/newbiz/ideation">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="生成AIでアイディエーション｜発散から収束まで事業コンセプトを作る">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../article.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"生成AIでアイディエーション｜発散から収束まで事業コンセプトを作る",
+  "description":"大企業の新規事業チームが生成AIでアイディエーションを行う実践ガイド。切り口を広げる「発散」と、事業コンセプトに絞る「収束」の両輪をどう回すか。評価軸（市場性・自社適合・実現性・独自性）による比較表と、最終判断は人が担うという前提を整理する。",
+  "datePublished":"2026-07-01","dateModified":"2026-07-01","inLanguage":"ja",
+  "image":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630},
+  "author":{"@type":"Person","name":"古野光太朗","jobTitle":"株式会社TechWorker 代表取締役","url":"https://techworker.co.jp/company.html","image":"https://techworker.co.jp/assets/author-furuno.jpg","sameAs":["https://x.com/koutarou_furuno"],"affiliation":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"}},
+  "publisher":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/","logo":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630}},
+  "mainEntityOfPage":{"@type":"WebPage","@id":"https://techworker.co.jp/media/newbiz/ideation.html"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},
+    {"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},
+    {"@type":"ListItem","position":3,"name":"新規事業AIラボ","item":"https://techworker.co.jp/media/newbiz/"},
+    {"@type":"ListItem","position":4,"name":"生成AIでアイディエーション","item":"https://techworker.co.jp/media/newbiz/ideation.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"アイディエーションに生成AIを使うと、担当者の発想力は不要になりますか？","acceptedAnswer":{"@type":"Answer","text":"不要にはなりません。生成AIが効くのは、切り口を広げる発散の「量」と、コンセプトに絞る収束の「観点出し」です。どのアイデアが自社にとって筋がよいか、どこまでリスクを取るかという最終判断は、事業の当事者である人が担います。AIは選択肢を増やす道具であり、選ぶ責任は担当者とチームに残ります。"}},
+    {"@type":"Question","name":"発散のフェーズで、AIにどこまでアイデアを出させてよいですか？","acceptedAnswer":{"@type":"Answer","text":"件数の上限を決めずに、切り口（顧客・技術・チャネル・課題領域など）を変えながら広く出させるのが効果的です。ただし出てきた案の実現可能性や事実関係をAIは保証しません。有望に見える案ほど、社内データや外部情報で裏取りしてから次の収束フェーズに進めてください。"}},
+    {"@type":"Question","name":"収束の評価軸は、市場性・自社適合・実現性・独自性の4つで固定すべきですか？","acceptedAnswer":{"@type":"Answer","text":"この4軸は出発点として汎用性が高いですが、固定である必要はありません。事業のフェーズや業界特性に応じて、法規制対応や既存アセットとの親和性といった軸を追加・入れ替えるのが実務的です。重要なのは軸を先に決めてからアイデアを並べることで、後出しの評価基準で案を絞ると納得感が失われます。"}},
+    {"@type":"Question","name":"アイディエーションの次に何をすればよいですか？","acceptedAnswer":{"@type":"Answer","text":"収束で絞り込んだ事業コンセプトは、そのまま企画書にせず、まず仮説として検証するフェーズに進めます。生活者の反応を安価に見積もる、社内外の一次情報で裏取りするといった検証を経てから、PoC設計・稟議に進むのが着実な流れです。詳しくは検証・PoCの記事もあわせてご覧ください。"}}
+  ]
+}
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <a href="index.html" class="logo">新規事業<i>AIラボ</i></a>
+  <ul>
+    <li><a href="index.html">記事一覧</a></li>
+    <li><a href="index.html#about">このメディアについて</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="../../new-business.html" class="nav-cta"><span class="full">新規事業の相談</span><span class="short">相談</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="index.html">記事一覧</a>
+  <a href="index.html#about">このメディアについて</a>
+  <a href="../../new-business.html" class="m-cta">新規事業の相談を申し込む</a>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">新規事業AIラボ</a><span class="sep">/</span>生成AIでアイディエーション</nav>
+  <div class="kicker">Ideation（構想）</div>
+  <h1>生成AIでアイディエーション｜発散から収束まで事業コンセプトを作る</h1>
+  <p class="dek">切り口を広げる「発散」と、事業コンセプトに絞る「収束」——アイディエーションはこの両輪でできている。生成AIは発散の量を稼ぎ、収束の観点出しを助けるが、どのアイデアに賭けるかという最終判断は人が下す。大企業の新規事業チームが、生成AIでアイディエーションを速く・広く回すための実務を整理する。</p>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.01</span><span class="dot">·</span><span>最終更新 2026.07.01</span><span class="dot">·</span><span>読了 8分</span>
+  </div>
+</header>
+
+<style>
+/* article-specific cover: 発散(1→多)→収束(多→1) の変換UI */
+.id-cover{padding:0;}
+.id-in{padding:18px 24px 16px;}
+.id-in-head{display:flex;align-items:baseline;gap:9px;margin-bottom:13px;}
+.id-in-head .id-from{font-family:var(--jp);font-size:12px;font-weight:600;color:var(--slate);}
+.id-in-head .id-meta{font-family:var(--en);font-size:11px;color:var(--slate);opacity:.62;letter-spacing:.01em;}
+.id-fan{display:flex;flex-direction:column;gap:7px;}
+.id-fan .fl{height:9px;border-radius:4px;background:var(--paper-2);}
+.id-fan .fl.a{width:40%;}.id-fan .fl.b{width:58%;}.id-fan .fl.c{width:72%;}.id-fan .fl.d{width:52%;}.id-fan .fl.e{width:34%;}
+.id-div{position:relative;height:1px;background:var(--line);margin:2px 0;}
+.id-div span{position:absolute;left:24px;top:50%;transform:translateY(-50%);background:var(--white);padding:0 10px 0 0;font-family:var(--en);font-size:10.5px;letter-spacing:.04em;color:var(--slate);display:inline-flex;align-items:center;gap:7px;white-space:nowrap;}
+.id-div span .id-arr{color:var(--electric);font-weight:700;}
+.id-div span .id-jp{font-family:var(--jp);}
+.id-out{padding:18px 24px 20px;background:var(--paper);}
+.id-out-head{font-family:var(--jp);font-size:12px;font-weight:600;color:var(--ink-soft);margin-bottom:14px;}
+.id-out-head .id-tag{font-family:var(--en);font-size:9.5px;font-weight:700;letter-spacing:.05em;color:var(--electric);border:1px solid rgba(0,94,255,.4);border-radius:4px;padding:2px 7px;margin-left:9px;vertical-align:1px;}
+.id-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px;}
+.id-list li{display:flex;align-items:center;gap:11px;min-width:0;}
+.id-list .id-no{flex:none;font-family:var(--en);font-size:12px;font-weight:700;color:var(--ink);width:14px;text-align:right;font-feature-settings:"tnum" 1;}
+.id-list .id-dot{flex:none;width:6px;height:6px;border-radius:50%;background:var(--electric);}
+.id-list .id-row{flex:1;min-width:0;height:9px;border-radius:4px;background:var(--white);border:1px solid var(--line);}
+.id-list li.r1 .id-row{width:auto;}
+.id-list li.r2 .id-row{margin-right:44%;}
+@media(max-width:560px){
+  .id-in{padding:15px 18px 13px;}
+  .id-out{padding:15px 18px 17px;}
+  .id-div span{left:18px;}
+  .id-list .id-no{font-size:11px;}
+}
+</style>
+<div class="art-cover-v6 id-cover">
+  <div class="id-in">
+    <div class="id-in-head"><span class="id-from">発散：切り口を広げる</span><span class="id-meta">顧客・技術・チャネル別に案出し</span></div>
+    <div class="id-fan"><span class="fl a"></span><span class="fl b"></span><span class="fl c"></span><span class="fl d"></span><span class="fl e"></span></div>
+  </div>
+  <div class="id-div"><span><span class="id-arr">↓</span><span class="id-jp">評価軸で収束</span></span></div>
+  <div class="id-out">
+    <div class="id-out-head">絞り込んだ事業コンセプト<span class="id-tag">AI 下書き</span></div>
+    <ol class="id-list">
+      <li class="r1"><span class="id-no">1.</span><span class="id-dot"></span><span class="id-row"></span></li>
+      <li class="r2"><span class="id-no">2.</span><span class="id-dot"></span><span class="id-row"></span></li>
+    </ol>
+  </div>
+</div>
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次">
+    <div class="art-toc-inner">
+      <div class="toc-h">目次</div>
+      <a href="#s1">アイディエーションで生成AIは何ができるか</a>
+      <a href="#s2">発散：切り口を広げる</a>
+      <a href="#s3">収束：事業コンセプトに絞る</a>
+      <a href="#s4">人がやるべき判断</a>
+      <a href="#faq">よくある質問</a>
+    </div>
+  </nav>
+
+  <article class="art-body rv">
+    <div class="lede">
+      <div class="lede-h">この記事の要点</div>
+      <ul>
+        <li>アイディエーションは<strong>発散（切り口を広げる）</strong>と<strong>収束（コンセプトに絞る）</strong>の両輪。片方だけでは事業の種は育たない。</li>
+        <li>生成AIが効くのは、発散フェーズの<strong>案出しの量</strong>と、収束フェーズの<strong>評価の観点出し</strong>。切り口を変えながら広く出し、決めた評価軸で並べ替える使い方が実務的。</li>
+        <li>どのアイデアに賭けるか、どこまでリスクを取るかという<strong>最終判断は人</strong>が行う。AIは選択肢を増やす道具であり、選ぶ責任は事業の当事者に残る。</li>
+      </ul>
+    </div>
+
+    <aside class="inline-dx-cta" style="margin:6px 0 40px;border:1px solid var(--line-2);border-radius:12px;background:var(--white);padding:22px 26px;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
+  <div style="flex:1;min-width:240px;">
+    <div style="font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);">診断ツール ・ 無料 ・ 5分</div>
+    <div style="font-family:var(--jp);font-weight:700;font-size:16.5px;color:var(--ink);line-height:1.55;margin-top:8px;">自社の生成AI活用度を診断する</div>
+    <div style="font-size:13.5px;color:var(--slate);line-height:1.8;margin-top:5px;">Microsoftの成熟度モデルに沿って現在地を可視化し、業界別の活用事例と次の一手をその場で提示します。</div>
+  </div>
+  <a href="../../ai-assessment.html" class="btn" style="white-space:nowrap;flex:none;color:var(--paper);border-bottom:none;">無料で診断する <i>&rarr;</i></a>
+</aside>
+    <h2 id="s1">アイディエーションで生成AIは何ができるか？（発散→収束）</h2>
+    <p class="answer">発散フェーズでは切り口を広げる案出しの量を、収束フェーズでは評価の観点出しを担う。決めるのは人。</p>
+    <p>「生成AIでアイディエーション」と聞くと、AIに「新規事業のアイデアを出して」と投げれば事業コンセプトが完成すると考えがちです。しかし新規事業のアイディエーションは、実際には性質の異なる二つの作業でできています。一つは<strong>発散</strong>——顧客・技術・チャネル・課題領域など、切り口を変えながらアイデアの数と幅を広げる作業。もう一つは<strong>収束</strong>——広げた案を評価軸で並べ、事業コンセプトに絞り込む作業です。生成AIが力を発揮するのはこの両方ですが、担う役割は対照的です。発散では「量」を、収束では「観点」を出す道具として使うと、アイディエーションの前半戦が大きく速くなります。</p>
+    <p>重要なのは、AIが出す発散の案も収束の評価軸も、あくまで<strong>たたき台</strong>だという前提です。切り口の広さや評価の切れ味はAIに任せられますが、どの案が自社にとって筋がよいか、どこまでのリスクを取れるかという判断は、事業の当事者にしか下せません。発散と収束それぞれで、AIの役割と人の役割を整理すると次のようになります。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>フェーズ</th><th>生成AIの使い方</th><th>人の役割</th></tr>
+        <tr><td>発散（切り口を広げる）</td><td>顧客・技術・チャネル別に案出しの数と幅を広げる</td><td>切り口自体の妥当性を判断し、抜けている視点を補う</td></tr>
+        <tr><td>収束（コンセプトに絞る）</td><td>評価軸を提案し、案を軸ごとに整理・比較する</td><td>評価軸の重み付けを決め、最終候補を選ぶ</td></tr>
+      </table>
+    </div>
+    <div class="callout"><p>発散はAIに「広げさせる」、収束はAIに「並べさせる」。どちらのフェーズでも、最後にどのアイデアを残すかは人が決める。この役割分担が、アイディエーションに生成AIを入れる前提になる。</p></div>
+
+    <h2 id="s2">発散：切り口を広げる（手順）</h2>
+    <p class="answer">1つの切り口で終わらせず、顧客・技術・チャネルなど複数の切り口を変えながら案の数と幅を広げること。</p>
+    <p>発散フェーズで陥りやすい失敗は、最初に思いついた切り口だけでアイデアを出し続けてしまうことです。「既存顧客の困りごとから」という一つの切り口だけで20案出しても、似た方向性のアイデアが重複するだけで、事業の種としての幅は広がりません。生成AIを使う利点は、切り口そのものを変える発想を大量に、かつ短時間で試せることです。手順は次の4段階です。</p>
+    <ol>
+      <li><strong>切り口を複数用意する。</strong>顧客起点、技術起点（社内の技術資産・特許）、チャネル起点、課題領域起点など、性質の異なる切り口を3〜5個決める。</li>
+      <li><strong>切り口ごとに案を広げる。</strong>各切り口でAIに案出しをさせ、件数の上限を決めずに幅を優先する。同じ切り口内での重複は許容し、まず量を確保する。</li>
+      <li><strong>案の裏取りをする。</strong>有望に見える案ほど、社内データや外部の一次情報で事実関係を確認する。AIが出す市場規模や競合情報は不正確なことがあるため鵜呑みにしない。</li>
+      <li><strong>切り口の抜けを補う。</strong>出てきた案を俯瞰し、まだ触れていない切り口（規制・パートナー起点など）がないかを人が判断して追加する。</li>
+    </ol>
+    <div class="ui-mock">
+      <div class="um-bar"><span class="um-dot"></span><span class="um-dot"></span><span class="um-dot"></span><span class="um-name">AI ASSISTANT — 使い方の例</span></div>
+      <div class="um-row">
+        <div class="um-label">あなたの指示（事業開発担当）</div>
+        <div class="um-text prompt">当社は法人向けに業務システムを提供している（詳細は別途共有した社内資料を参照）。この技術資産・顧客基盤を起点に、新規事業の切り口を「既存顧客の未充足ニーズ」「保有データの他業界転用」「チャネル・販路の再活用」の3つに分けて、それぞれ5案ずつ、幅を優先してラフに出して。件数は目安、似た方向でも構わない。</div>
+      </div>
+      <div class="um-row">
+        <div class="um-label ai">AIの下書き</div>
+        <div class="um-text">【既存顧客の未充足ニーズ】
+・導入後の運用支援を月額サービス化
+・利用データを踏まえた業務改善レポート提供
+（他3案）
+
+【保有データの他業界転用】
+・業務データの匿名化ベンチマーク提供
+・類似業種向けテンプレート事業
+（他3案）
+
+【チャネル・販路の再活用】
+・既存営業網での周辺サービス販売
+・パートナー企業との共同商品
+（他3案）
+※市場規模・競合状況は概算です。有望案は一次情報で裏取りしてください。</div>
+      </div>
+    </div>
+    <p class="fig-cap">図：切り口を変えて幅を広げる案出しの例。市場規模や競合情報の数値はAIの概算であり、有望な案ほど社内データや外部の一次情報で裏取りしてから収束フェーズに進めます。</p>
+    <p>発散フェーズのゴールは「良い1案」を見つけることではなく、収束フェーズで比較に値する<strong>選択肢の束</strong>を作ることです。ここで幅を絞りすぎると、収束フェーズでの比較そのものが機能しなくなります。新規事業の種そのものを社内データや特許から広く探す方法は<a href="idea-exploration.html">探索の記事</a>で扱っているので、発散の材料集めとあわせてご覧ください。</p>
+
+    <h2 id="s3">収束：事業コンセプトに絞る</h2>
+    <p class="answer">市場性・自社適合・実現性・独自性などの評価軸を先に決め、その軸で発散した案を並べて比較すること。</p>
+    <p>発散で広げた案の束を前に、勘や声の大きさで絞り込んでしまうと、後から「なぜこの案を選んだのか」を説明できなくなります。収束フェーズで生成AIが効くのは、評価軸を提案し、案をその軸ごとに整理・比較する作業です。代表的な評価軸は<strong>市場性・自社適合・実現性・独自性</strong>の4つですが、事業のフェーズや業界特性に応じて軸を追加・入れ替えても構いません。重要なのは、評価軸を先に決めてからアイデアを並べる順序です。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>評価軸</th><th>見るポイント</th><th>AIの使い方</th></tr>
+        <tr><td>市場性</td><td>想定市場の大きさと成長性</td><td>公開情報から市場規模の当たりをつけ、要出典で整理</td></tr>
+        <tr><td>自社適合</td><td>既存の技術・顧客基盤・チャネルとの重なり</td><td>社内資産とのマッチ度を案ごとに言語化</td></tr>
+        <tr><td>実現性</td><td>必要な投資・体制・期間の妥当性</td><td>実現までの論点・前提条件をチェックリスト化</td></tr>
+        <tr><td>独自性</td><td>競合が容易に模倣できない差別化要素</td><td>類似の既存事業・サービスとの違いを比較整理</td></tr>
+      </table>
+    </div>
+    <p>4軸で発散案を並べると、次のような比較表ができます。ここでの点数はAIが出す一次評価であり、最終的な重み付けと合否判断は人が行います。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>事業コンセプト案</th><th>市場性</th><th>自社適合</th><th>実現性</th><th>独自性</th></tr>
+        <tr><td>案A：運用支援の月額サービス化</td><td>中</td><td>高</td><td>高</td><td>中</td></tr>
+        <tr><td>案B：業務データの他業界転用</td><td>高</td><td>中</td><td>低</td><td>高</td></tr>
+        <tr><td>案C：チャネル再活用の周辺商品</td><td>低</td><td>高</td><td>高</td><td>低</td></tr>
+      </table>
+    </div>
+    <div class="callout"><p>比較表の点数はAIが出す一次評価にすぎない。市場性の数値は裏取り前の概算、自社適合や実現性は社内事情を知る人でなければ正しく判定できない。表は「議論の土台」であって「結論」ではない。</p></div>
+    <p>この比較表をたたき台に、経営層や事業部が議論する土台ができます。収束の出力をそのまま企画書にせず、絞り込んだコンセプトを仮説として扱い、次の検証フェーズに進めることが重要です。生活者の反応を安価に見積もる方法は<a href="idea-validation.html">検証の記事</a>で扱っています。</p>
+
+    <h2 id="s4">人がやるべき判断</h2>
+    <p class="answer">どの案に賭けるか、どこまでリスクを取るかという最終判断は、事業の当事者である人が担う。</p>
+    <div class="callout"><p>生成AIは発散の量と収束の観点出しに効くが、「この事業に会社のリソースを投じるべきか」という意思決定はAIの仕事ではない。評価軸の重み付け、社内政治や競合動向を踏まえた判断、そして最終的にどの案を残すかの決定は、事業の当事者にしか下せない。AIが作った比較表を鵜呑みにして機械的に上位案を選ぶことは、収束の意味を失わせる。</p></div>
+    <p>アイディエーションにおける生成AIの役割は、発散の幅と収束の観点出しを速くすることに限られます。市場性や自社適合の評価にAIの一次案を使うのは有効ですが、その数値の裏取り、評価軸の重み付け、そして最終的にどの事業コンセプトに賭けるかという判断は、事業開発の担当者と経営層が担う領域です。土台になるのは、社内の技術資産・顧客データ・過去の事業検討をAIが扱える形に整えておくことで、発散の質と収束の説得力の両方が上がります。TechWorkerでは、新規事業の文脈をAIが扱える形に整える<a href="../../new-business.html">生成AI活用の設計支援</a>を行っています。</p>
+
+    <h2 id="faq">よくある質問</h2>
+    <div class="faq"><div class="q">アイディエーションに生成AIを使うと、担当者の発想力は不要になりますか？</div><p class="a">不要にはなりません。生成AIが効くのは、切り口を広げる発散の「量」と、コンセプトに絞る収束の「観点出し」です。どのアイデアが自社にとって筋がよいか、どこまでリスクを取るかという最終判断は、事業の当事者である人が担います。AIは選択肢を増やす道具であり、選ぶ責任は担当者とチームに残ります。</p></div>
+    <div class="faq"><div class="q">発散のフェーズで、AIにどこまでアイデアを出させてよいですか？</div><p class="a">件数の上限を決めずに、切り口（顧客・技術・チャネル・課題領域など）を変えながら広く出させるのが効果的です。ただし出てきた案の実現可能性や事実関係をAIは保証しません。有望に見える案ほど、社内データや外部情報で裏取りしてから次の収束フェーズに進めてください。</p></div>
+    <div class="faq"><div class="q">収束の評価軸は、市場性・自社適合・実現性・独自性の4つで固定すべきですか？</div><p class="a">この4軸は出発点として汎用性が高いですが、固定である必要はありません。事業のフェーズや業界特性に応じて、法規制対応や既存アセットとの親和性といった軸を追加・入れ替えるのが実務的です。重要なのは軸を先に決めてからアイデアを並べることで、後出しの評価基準で案を絞ると納得感が失われます。</p></div>
+    <div class="faq"><div class="q">アイディエーションの次に何をすればよいですか？</div><p class="a">収束で絞り込んだ事業コンセプトは、そのまま企画書にせず、まず仮説として検証するフェーズに進めます。生活者の反応を安価に見積もる、社内外の一次情報で裏取りするといった検証を経てから、PoC設計・稟議に進むのが着実な流れです。詳しくは<a href="idea-validation.html">検証</a>・<a href="poc-design.html">PoC</a>の記事もあわせてご覧ください。</p></div>
+  </article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役</span></div>
+    <p>上場企業を含む37社・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。大企業の新規事業・R&amp;D部門におけるアイディエーション・検証・PoC設計への生成AI活用も支援している。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>新規事業のアイディエーションを、生成AIで底上げします。</h3>
+    <p>発散フェーズの切り口出し、収束フェーズの評価軸設計と比較表づくりまで。最終判断を事業の当事者の手元に残したまま、上場企業を含む37社・2,500名の支援知見をもとに、貴社の新規事業の進め方に合わせて伴走します。検討段階のご相談だけでも歓迎です。</p>
+  </div>
+  <a href="../../new-business.html" class="btn">無料で相談する <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="../../training.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">生成AI法人研修（主要ツール全対応）</a>　／　<a href="../../new-business.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">新規事業の相談</a>　／　<a href="../../library/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">事例集（無料DL）</a></p>
+<div class="back-list"><a href="index.html">← メディア（新規事業AIラボ）に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="shinkijigyo-ai.html" class="related-card"><span class="rc-cat">全体像</span><div class="rc-title">新規事業 × 生成AI｜探索から定着まで速く進める</div></a>
+    <a href="idea-exploration.html" class="related-card"><span class="rc-cat">探索</span><div class="rc-title">新規事業の種を社内データ・特許から探す</div></a>
+    <a href="idea-validation.html" class="related-card"><span class="rc-cat">検証</span><div class="rc-title">アイデアを生活者デジタルツインで発売前検証</div></a>
+  </div>
+</div></section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">新規事業<i>AIラボ</i></div>
+        <p>生成AI活用の実践知をお届けするメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+      </div>
+      <div class="footer-col"><h4>新規事業AIラボ</h4><a href="index.html">記事一覧</a><a href="index.html#about">このメディアについて</a></div>
+      <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../index.html#services">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="../../new-business.html">新規事業の相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+</body>
+</html>

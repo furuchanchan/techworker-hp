@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3V34NWXVCJ');
+</script>
+<!-- TW intent tracker (first-party, sessionStorage only) -->
+<script>
+(function(){try{var ss=sessionStorage,ls=localStorage;
+if(!ss.getItem('tw_landing')){ss.setItem('tw_landing',location.pathname);ss.setItem('tw_ref',document.referrer||'');var q=new URLSearchParams(location.search);ss.setItem('tw_utm',['utm_source','utm_medium','utm_campaign'].map(function(k){return q.get(k)||'';}).join('|'));}
+var p=JSON.parse(ss.getItem('tw_pages')||'[]');if(p[p.length-1]!==location.pathname){p.push(location.pathname);ss.setItem('tw_pages',JSON.stringify(p.slice(-20)));}
+if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_visits')||'0',10)+1));ss.setItem('tw_counted','1');}
+}catch(e){}})();
+</script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新規事業チームに生成AIを定着させる｜立ち上げの推進体制【2026】 — TechWorker</title>
+<meta name="description" content="新規事業・インキュベーションチームに生成AIを定着させる実践ガイド。ツール導入と定着の違い、定着を阻む壁と越え方、推進体制・運用設計、研修・伴走の位置づけを、上場企業を含む37社・2,500名の支援知見をもとに整理します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/newbiz/team-adoption">
+<meta property="og:type" content="article">
+<meta property="og:title" content="新規事業チームに生成AIを定着させる｜立ち上げの推進体制">
+<meta property="og:description" content="ツール導入と定着は別物。立ち上げ期の新規事業チームに生成AIを定着させる壁と越え方、推進体制・運用設計、研修・伴走の位置づけを整理する実践ガイド。">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/media/newbiz/team-adoption">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="新規事業チームに生成AIを定着させる｜立ち上げの推進体制">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../article.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"新規事業チームに生成AIを定着させる｜立ち上げの推進体制",
+  "description":"新規事業・インキュベーションチームに生成AIを定着させる実践ガイド。ツール導入と定着の違い、定着を阻む壁と越え方、推進体制・運用設計、研修・伴走の位置づけを整理する。",
+  "datePublished":"2026-07-01","dateModified":"2026-07-01","inLanguage":"ja",
+  "image":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630},
+  "author":{"@type":"Person","name":"古野光太朗","jobTitle":"株式会社TechWorker 代表取締役","url":"https://techworker.co.jp/company.html","image":"https://techworker.co.jp/assets/author-furuno.jpg","sameAs":["https://x.com/koutarou_furuno"],"affiliation":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"}},
+  "publisher":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/","logo":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630}},
+  "mainEntityOfPage":{"@type":"WebPage","@id":"https://techworker.co.jp/media/newbiz/team-adoption.html"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},
+    {"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},
+    {"@type":"ListItem","position":3,"name":"新規事業AIラボ","item":"https://techworker.co.jp/media/newbiz/"},
+    {"@type":"ListItem","position":4,"name":"新規事業チームに生成AIを定着させる","item":"https://techworker.co.jp/media/newbiz/team-adoption.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"生成AIツールを導入すれば、定着まで自然に進みますか？","acceptedAnswer":{"@type":"Answer","text":"進みません。ツール導入はアカウントが配られた状態にすぎず、定着は日々の業務プロセスに生成AIが組み込まれ、使うことが当たり前になっている状態です。多くの新規事業チームでは、導入直後は使われても数週間で利用が落ち込みます。定着には、業務への埋め込み・推進役の配置・型化の3点をセットで設計する必要があります。"}},
+    {"@type":"Question","name":"新規事業チームは既存事業の部署より定着させやすいですか？","acceptedAnswer":{"@type":"Answer","text":"環境としては有利ですが、自動的に定着するわけではありません。少人数で意思決定が速く、既存の業務フローに縛られないため、生成AIを前提にした型を最初から組みやすいという利点があります。一方でメンバーの入れ替わりが多く、成功パターンが個人の頭の中に留まりやすいという弱点もあります。型化して残す仕組みがなければ、有利さは活かせません。"}},
+    {"@type":"Question","name":"定着の推進役は専任でなければいけませんか？","acceptedAnswer":{"@type":"Answer","text":"立ち上げ期の小規模チームでは専任である必要はありません。重要なのは、誰かが明確に推進役として役割を持ち、活用状況の見える化・型のアップデート・相談対応を継続して担うことです。兼務でも、責任の所在が曖昧なまま「みんなでなんとなく使う」状態を避けられれば、定着は進みます。"}},
+    {"@type":"Question","name":"研修を一度実施すれば定着しますか？","acceptedAnswer":{"@type":"Answer","text":"一度の研修だけでは定着しにくいのが実情です。研修は使い方を知るきっかけにはなりますが、定着は現場の業務に即した型を作り、実際の案件で使いながら磨き込む伴走があって初めて進みます。TechWorkerでは研修に加えて、立ち上げ期の実務に伴走しながら型を定着させる支援を行っています。"}}
+  ]
+}
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <a href="index.html" class="logo">新規事業<i>AIラボ</i></a>
+  <ul>
+    <li><a href="index.html">記事一覧</a></li>
+    <li><a href="index.html#about">このメディアについて</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="../../new-business.html" class="nav-cta"><span class="full">新規事業の相談</span><span class="short">相談</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="index.html">記事一覧</a>
+  <a href="index.html#about">このメディアについて</a>
+  <a href="../../new-business.html" class="m-cta">新規事業の相談を申し込む</a>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">新規事業AIラボ</a><span class="sep">/</span>チームに定着させる</nav>
+  <div class="kicker">定着 / Adoption</div>
+  <h1>新規事業チームに生成AIを定着させる｜立ち上げの推進体制</h1>
+  <p class="dek">生成AIツールを導入しても、使われなくなる新規事業チームは少なくない。定着とはツールが配布された状態ではなく、業務に埋め込まれ、使うことが当たり前になった状態を指す。立ち上げ期の少人数チームだからこそ組める推進体制と運用設計、研修・伴走の位置づけを整理する。</p>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.01</span><span class="dot">·</span><span>最終更新 2026.07.01</span><span class="dot">·</span><span>読了 8分</span>
+  </div>
+</header>
+
+<style>
+/* article-specific cover: 導入 → 定着 の状態遷移（before/after） */
+.ta-cover{padding:0;}
+.ta-in{padding:18px 24px 16px;}
+.ta-in-head{display:flex;align-items:baseline;gap:9px;margin-bottom:13px;}
+.ta-in-head .ta-from{font-family:var(--jp);font-size:12px;font-weight:600;color:var(--slate);}
+.ta-in-head .ta-meta{font-family:var(--en);font-size:11px;color:var(--slate);opacity:.62;letter-spacing:.01em;}
+.ta-week{display:flex;align-items:flex-end;gap:8px;height:44px;}
+.ta-week i{display:block;flex:1;border-radius:3px 3px 0 0;background:var(--paper-2);}
+.ta-week i.w1{height:88%;background:rgba(0,94,255,.55);}
+.ta-week i.w2{height:52%;}
+.ta-week i.w3{height:30%;}
+.ta-week i.w4{height:16%;}
+.ta-div{position:relative;height:1px;background:var(--line);margin:2px 0;}
+.ta-div span{position:absolute;left:24px;top:50%;transform:translateY(-50%);background:var(--white);padding:0 10px 0 0;font-family:var(--en);font-size:10.5px;letter-spacing:.04em;color:var(--slate);display:inline-flex;align-items:center;gap:7px;white-space:nowrap;}
+.ta-div span .ta-arr{color:var(--electric);font-weight:700;}
+.ta-div span .ta-jp{font-family:var(--jp);}
+.ta-out{padding:18px 24px 20px;background:var(--paper);}
+.ta-out-head{font-family:var(--jp);font-size:12px;font-weight:600;color:var(--ink-soft);margin-bottom:14px;}
+.ta-out-head .ta-tag{font-family:var(--en);font-size:9.5px;font-weight:700;letter-spacing:.05em;color:var(--electric);border:1px solid rgba(0,94,255,.4);border-radius:4px;padding:2px 7px;margin-left:9px;vertical-align:1px;}
+.ta-week2{display:flex;align-items:flex-end;gap:8px;height:44px;}
+.ta-week2 i{display:block;flex:1;border-radius:3px 3px 0 0;background:var(--electric);}
+.ta-week2 i.w1{height:72%;}
+.ta-week2 i.w2{height:78%;}
+.ta-week2 i.w3{height:83%;}
+.ta-week2 i.w4{height:90%;}
+.ta-cap{display:flex;justify-content:space-between;margin-top:9px;font-family:var(--en);font-size:9.5px;color:var(--slate);letter-spacing:.02em;}
+@media(max-width:560px){
+  .ta-in{padding:15px 18px 13px;}
+  .ta-out{padding:15px 18px 17px;}
+  .ta-div span{left:18px;}
+}
+</style>
+<div class="art-cover-v6 ta-cover">
+  <div class="ta-in">
+    <div class="ta-in-head"><span class="ta-from">推進役なしで導入した場合</span><span class="ta-meta">週次アクティブ利用（イメージ）</span></div>
+    <div class="ta-week"><i class="w1"></i><i class="w2"></i><i class="w3"></i><i class="w4"></i></div>
+    <div class="ta-cap"><span>W1</span><span>W2</span><span>W3</span><span>W4</span></div>
+  </div>
+  <div class="ta-div"><span><span class="ta-arr">↓</span><span class="ta-jp">推進体制・型化で定着</span></span></div>
+  <div class="ta-out">
+    <div class="ta-out-head">推進体制を組んだ場合<span class="ta-tag">定着シナリオ</span></div>
+    <div class="ta-week2"><i class="w1"></i><i class="w2"></i><i class="w3"></i><i class="w4"></i></div>
+    <div class="ta-cap"><span>W1</span><span>W2</span><span>W3</span><span>W4</span></div>
+  </div>
+</div>
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次">
+    <div class="art-toc-inner">
+      <div class="toc-h">目次</div>
+      <a href="#s1">生成AIを定着させる意味</a>
+      <a href="#s2">定着の壁と越え方</a>
+      <a href="#s3">推進体制・運用設計</a>
+      <a href="#s4">研修・伴走の位置づけ</a>
+      <a href="#faq">よくある質問</a>
+    </div>
+  </nav>
+
+  <article class="art-body rv">
+    <div class="lede">
+      <div class="lede-h">この記事の要点</div>
+      <ul>
+        <li><strong>ツール導入と定着は別物。</strong>アカウントを配っただけでは使われなくなる。定着とは、業務プロセスに生成AIが埋め込まれ、使うことが当たり前になっている状態を指す。</li>
+        <li>定着を進めるには、<strong>誰かが業務に埋め込み、推進役として運用を回す</strong>ことが要る。ツールを渡すだけの「後は現場任せ」では定着しない。</li>
+        <li>新規事業の<strong>立ち上げ期こそ型化のタイミング。</strong>成功パターンをドキュメント化して繰り返せる形にしておくと、案件が増えるほど複利で効いてくる。</li>
+      </ul>
+    </div>
+
+    <aside class="inline-dx-cta" style="margin:6px 0 40px;border:1px solid var(--line-2);border-radius:12px;background:var(--white);padding:22px 26px;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
+  <div style="flex:1;min-width:240px;">
+    <div style="font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);">診断ツール ・ 無料 ・ 5分</div>
+    <div style="font-family:var(--jp);font-weight:700;font-size:16.5px;color:var(--ink);line-height:1.55;margin-top:8px;">自社の生成AI活用度を診断する</div>
+    <div style="font-size:13.5px;color:var(--slate);line-height:1.8;margin-top:5px;">Microsoftの成熟度モデルに沿って現在地を可視化し、業界別の活用事例と次の一手をその場で提示します。</div>
+  </div>
+  <a href="../../ai-assessment.html" class="btn" style="white-space:nowrap;flex:none;color:var(--paper);border-bottom:none;">無料で診断する <i>&rarr;</i></a>
+</aside>
+    <h2 id="s1">立ち上げチームに生成AIを定着させる意味</h2>
+    <p class="answer">定着とはツールが配布された状態ではなく、業務プロセスに生成AIが組み込まれ、使うことが当たり前になっている状態を指す。</p>
+    <p>新規事業・インキュベーションチームで「生成AIを導入した」という報告を聞くと、多くの場合はアカウントを配り、簡単な使い方を共有したところまでを指しています。しかしこれは<strong>導入</strong>であって<strong>定着</strong>ではありません。導入直後の数週間は物珍しさもあって使われますが、業務に埋め込む仕掛けがなければ、数週間から数か月で利用は静かに落ち込みます。定着とは、誰かに促されなくても、企画書のたたき台づくりにも、市場調査の下調べにも、議事録の整理にも、生成AIを使うのが当たり前になっている状態のことです。</p>
+    <p>新規事業チームで定着が特に重要なのは、<strong>立ち上げ期こそ型化の複利が効く</strong>タイミングだからです。既存事業のように確立した業務フローがない分、生成AIを前提にした型を最初から組み込みやすい。ここで型化しておけば、案件が増えるほど、メンバーが入れ替わるほど、その型が生きてきます。逆に「なんとなく各自が使う」状態のまま進むと、成功パターンは個人の頭の中に留まり、メンバーが変わるたびに一から手探りになります。定着させる意味は、ツールの利用率を上げることではなく、<strong>チームの再現性を上げる</strong>ことにあります。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>状態</th><th>何が起きているか</th><th>特徴</th></tr>
+        <tr><td>導入だけ</td><td>アカウントが配られ、使い方の説明を受けた状態</td><td>数週間で利用が落ち込みやすい</td></tr>
+        <tr><td>属人的な利用</td><td>一部の得意なメンバーだけが日常的に使っている</td><td>その人が抜けるとノウハウも失われる</td></tr>
+        <tr><td>定着</td><td>業務プロセスに組み込まれ、使うことが前提になっている</td><td>型が残り、新メンバーにも引き継げる</td></tr>
+      </table>
+    </div>
+    <div class="callout"><p>定着の判定基準は「使った人がいるか」ではなく「使わない理由がないか」。企画書・調査・議事録づくりのどこかで生成AIを使わない方が不自然、という状態になって初めて定着したと言える。</p></div>
+
+    <h2 id="s2">定着の壁と越え方</h2>
+    <p class="answer">定着を阻む壁は「時間がない」「効果が見えない」「型がない」の3つ。それぞれに対処法をセットで組み込む。</p>
+    <p>新規事業チームへの生成AI定着を進めようとすると、決まって同じような壁にぶつかります。共通するのは、壁の正体を放置したまま「もっと使いましょう」と呼びかけるだけでは越えられないという点です。壁ごとに、具体的な越え方を組み込む必要があります。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>壁</th><th>何が起きているか</th><th>越え方</th></tr>
+        <tr><td>立ち上げ期は時間がない</td><td>目先の企画・調査・資料作成に追われ、新しいやり方を試す余白がない</td><td>既にやっている業務の中に生成AIを差し込む。新しい作業を増やさない設計にする</td></tr>
+        <tr><td>効果が見えない</td><td>使った・使わないの手応えが個人の感覚に留まり、チームで共有されない</td><td>「浮いた時間」「たたき台の初速」など、簡単に測れる指標を最初に1つ決める</td></tr>
+        <tr><td>型がなく毎回ゼロから</td><td>プロンプトも進め方も個人の工夫任せで、うまくいった型が残らない</td><td>うまくいった使い方をその場でドキュメント化し、次の案件で再利用できる形にする</td></tr>
+        <tr><td>推進役が不在</td><td>「みんなで使おう」の掛け声だけで、誰も運用の面倒を見ていない</td><td>兼務でよいので推進役を明確に置き、型のアップデートと相談対応を担わせる</td></tr>
+      </table>
+    </div>
+    <p>この4つの壁は独立しているようで連動しています。推進役が不在だと型は生まれず、型がないと効果は測りにくく、効果が見えないと「時間がない」を言い訳に利用が止まります。逆に言えば、<strong>推進役を置くこと</strong>が他の3つの壁を越える起点になります。</p>
+    <div class="ui-mock">
+      <div class="um-bar"><span class="um-dot"></span><span class="um-dot"></span><span class="um-dot"></span><span class="um-name">新規事業チーム — 型化の例</span></div>
+      <div class="um-row">
+        <div class="um-label">推進役からチームへの共有メモ（例）</div>
+        <div class="um-text prompt">今週、A社向け企画書の市場規模推計でAIに使ったプロンプトを型として残します。次回から同じ構成でOKです。
+
+【型】市場規模を「対象顧客数×利用率×客単価」に分解して提示。各数値の出典候補も併記させる。数値は必ず一次情報で裏取りしてから資料に反映する。</div>
+      </div>
+      <div class="um-row">
+        <div class="um-label ai">チームの反応</div>
+        <div class="um-text">前回は毎回ゼロから聞き方を考えていたが、型があるとすぐ使える。次の案件でも同じ型を試し、うまくいけばテンプレート集に追加する。</div>
+      </div>
+    </div>
+    <p class="fig-cap">図：うまくいった使い方をその場でメモ化し、次の案件に引き継ぐ運用の例。型は完成品ではなく、案件を重ねるたびに更新していくものとして扱う。</p>
+
+    <h2 id="s3">推進体制・運用設計</h2>
+    <p class="answer">推進役・型の置き場所・振り返りの機会の3点を最初にセットで決める。専任である必要はなく、兼務でも役割を明確にすることが重要。</p>
+    <p>立ち上げ期の少人数チームで、専任の推進担当を置くのは現実的でないことが多いはずです。重要なのは専任かどうかではなく、<strong>推進役という役割が明確に存在すること</strong>です。役割が曖昧なまま「みんなで使おう」とすると、誰も型のアップデートに責任を持たず、属人的な利用のまま止まります。最低限、次の3点を最初に決めておくことが、運用設計の土台になります。</p>
+    <ol>
+      <li><strong>推進役を1人決める。</strong>企画担当やPMの兼務でよい。役割は「使い方の相談を受ける」「型を更新する」「利用状況を把握する」の3つに絞る。</li>
+      <li><strong>型の置き場所を1つに決める。</strong>うまくいったプロンプトや進め方を、各自のメモではなく、チーム共通のドキュメントに集約する。探せない型は存在しないのと同じ。</li>
+      <li><strong>振り返りの機会を定例化する。</strong>週次や隔週のミーティングの冒頭5分でよいので、「今週うまくいった使い方」を共有する時間を作る。</li>
+    </ol>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>運用設計の要素</th><th>立ち上げ期の最小構成</th><th>チームが拡大したら</th></tr>
+        <tr><td>推進役</td><td>企画担当・PMが兼務で担当</td><td>専任または複数人のワーキンググループ化</td></tr>
+        <tr><td>型の置き場所</td><td>共有ドキュメント1本に集約</td><td>案件種別ごとにテンプレート集を整理</td></tr>
+        <tr><td>振り返り</td><td>週次ミーティング冒頭5分</td><td>月次で型の棚卸しと改廃を行う会を設定</td></tr>
+        <tr><td>新メンバーへの引き継ぎ</td><td>型のドキュメントを読んでもらう</td><td>オンボーディング資料として正式に組み込む</td></tr>
+      </table>
+    </div>
+    <div class="callout"><p>推進体制は完璧である必要はない。専任1人・ドキュメント1本・週5分の振り返りという最小構成でも、役割と置き場所が明確であれば定着は動き出す。完璧な体制を待って何も始めないことの方が損失が大きい。</p></div>
+    <p>この最小構成は、<a href="poc-design.html">PoCの設計</a>を進める段階でも活きてきます。PoCで積み上がる仮説検証の記録や資料づくりの型を、定着の仕組みの中で残しておけば、次の新規事業案件に立ち上げ当初から使い回せるからです。新規事業と生成AIの全体像は<a href="shinkijigyo-ai.html">探索から定着までの記事</a>もあわせてご覧ください。</p>
+
+    <h2 id="s4">研修・伴走の位置づけ</h2>
+    <p class="answer">研修は使い方を知るきっかけに過ぎない。定着は現場の実務に即した型を作り、実案件で磨き込む伴走があって進む。</p>
+    <p>「研修を一度実施すれば定着する」という期待は、実務ではあまり成立しません。研修は生成AIの使い方や考え方を知るきっかけとして価値がありますが、それだけでは<strong>自分たちの業務にどう当てはめるか</strong>までは埋まりません。定着に効くのは、研修で得た知識を、実際の案件で使いながら型に落とし込んでいく伴走の期間です。座学と実践の間にあるこのギャップを埋める設計が要ります。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>フェーズ</th><th>目的</th><th>関わり方</th></tr>
+        <tr><td>研修</td><td>生成AIの基本的な使い方・考え方を共有する</td><td>短期集中で全員の前提知識を揃える</td></tr>
+        <tr><td>伴走</td><td>実際の案件で使いながら、自チームに合った型を作る</td><td>実務に沿って継続的に併走し、型を磨き込む</td></tr>
+        <tr><td>自走</td><td>推進役を中心にチームだけで運用を回せるようになる</td><td>外部の関与を減らし、型のアップデートを内製化する</td></tr>
+      </table>
+    </div>
+    <p>TechWorkerは、上場企業を含む<strong>37社・2,500名</strong>の生成AI導入・活用を支援してきた中で、研修だけで終わらせず、立ち上げ期の実務に伴走しながら型を定着させる進め方を重ねてきました。新規事業チームの立ち上げ期は、意思決定が速く、生成AIを前提にした型を最初から組み込みやすい一方で、日々の業務に追われて仕組み化が後回しになりやすい時期でもあります。研修で前提を揃え、伴走で自チームの型に育てる——この2段構えが、定着を「その場限りの盛り上がり」で終わらせないための現実的な進め方です。</p>
+    <div class="quote-box"><p>定着は、研修の完成度ではなく、実案件で型を磨いた回数で決まる。</p></div>
+    <p>推進体制を組み、型を残し、研修と伴走をセットで設計する——ここまでを立ち上げ期に仕込んでおけば、新規事業チームは案件が増えるほど、メンバーが入れ替わるほど、生成AI活用の再現性を積み上げていけます。TechWorkerでは、新規事業・インキュベーションチームの<a href="../../new-business.html">立ち上げ期の定着支援</a>を、研修と実務伴走の両面から行っています。</p>
+
+    <h2 id="faq">よくある質問</h2>
+    <div class="faq"><div class="q">生成AIツールを導入すれば、定着まで自然に進みますか？</div><p class="a">進みません。ツール導入はアカウントが配られた状態にすぎず、定着は日々の業務プロセスに生成AIが組み込まれ、使うことが当たり前になっている状態です。多くの新規事業チームでは、導入直後は使われても数週間で利用が落ち込みます。定着には、業務への埋め込み・推進役の配置・型化の3点をセットで設計する必要があります。</p></div>
+    <div class="faq"><div class="q">新規事業チームは既存事業の部署より定着させやすいですか？</div><p class="a">環境としては有利ですが、自動的に定着するわけではありません。少人数で意思決定が速く、既存の業務フローに縛られないため、生成AIを前提にした型を最初から組みやすいという利点があります。一方でメンバーの入れ替わりが多く、成功パターンが個人の頭の中に留まりやすいという弱点もあります。型化して残す仕組みがなければ、有利さは活かせません。</p></div>
+    <div class="faq"><div class="q">定着の推進役は専任でなければいけませんか？</div><p class="a">立ち上げ期の小規模チームでは専任である必要はありません。重要なのは、誰かが明確に推進役として役割を持ち、活用状況の見える化・型のアップデート・相談対応を継続して担うことです。兼務でも、責任の所在が曖昧なまま「みんなでなんとなく使う」状態を避けられれば、定着は進みます。</p></div>
+    <div class="faq"><div class="q">研修を一度実施すれば定着しますか？</div><p class="a">一度の研修だけでは定着しにくいのが実情です。研修は使い方を知るきっかけにはなりますが、定着は現場の業務に即した型を作り、実際の案件で使いながら磨き込む伴走があって初めて進みます。TechWorkerでは研修に加えて、立ち上げ期の実務に伴走しながら型を定着させる支援を行っています。</p></div>
+  </article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役</span></div>
+    <p>上場企業を含む37社・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。大企業の新規事業・インキュベーションチームの立ち上げ期における生成AI定着・推進体制づくりも支援している。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>新規事業チームへの生成AI定着を、伴走で仕組み化します。</h3>
+    <p>推進体制の設計、型の整備、研修と実務伴走のセット提供まで。立ち上げ期だからこそ組める再現性の高い型を、上場企業を含む37社・2,500名の支援知見をもとに、貴社のチームに合わせて設計します。検討段階のご相談だけでも歓迎です。</p>
+  </div>
+  <a href="../../new-business.html" class="btn">無料で相談する <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="../../training.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">生成AI法人研修（主要ツール全対応）</a>　／　<a href="../../new-business.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">新規事業の相談</a>　／　<a href="../../library/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">事例集（無料DL）</a></p>
+<div class="back-list"><a href="index.html">← メディア（新規事業AIラボ）に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="shinkijigyo-ai.html" class="related-card"><span class="rc-cat">全体像</span><div class="rc-title">新規事業 × 生成AI｜探索から定着まで速く進める</div></a>
+    <a href="poc-design.html" class="related-card"><span class="rc-cat">PoC</span><div class="rc-title">稟議が通る新規事業PoCの設計</div></a>
+    <a href="index.html" class="related-card"><span class="rc-cat">メディア</span><div class="rc-title">新規事業AIラボ｜大企業の新規事業・R&amp;Dを生成AIで前に進める</div></a>
+  </div>
+</div></section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">新規事業<i>AIラボ</i></div>
+        <p>生成AI活用の実践知をお届けするメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+      </div>
+      <div class="footer-col"><h4>新規事業AIラボ</h4><a href="index.html">記事一覧</a><a href="index.html#about">このメディアについて</a></div>
+      <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../index.html#services">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="../../new-business.html">新規事業の相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+</body>
+</html>
