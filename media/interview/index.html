@@ -27,12 +27,12 @@ if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_vi
 <meta property="og:type" content="website">
 <meta property="og:title" content="AIインタビュー・ラボ｜「なぜ」を聞いて意思決定に変える定性調査メディア">
 <meta property="og:description" content="AIインタビュー（AIモデレート定性調査）で顧客・現場の「なぜ」を速く深く聞き、意思決定に使う実務知を発信。商品企画・マーケティング・リサーチ・CX/VOC担当向け。">
-<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:image" content="https://techworker.co.jp/media/interview/covers/portal.png">
 <meta property="og:url" content="https://techworker.co.jp/media/interview/">
 <meta property="og:site_name" content="AIインタビュー・ラボ">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AIインタビュー・ラボ｜「なぜ」を聞いて意思決定に変える定性調査メディア">
-<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta name="twitter:image" content="https://techworker.co.jp/media/interview/covers/portal.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -120,8 +120,10 @@ fbq('init','1264057945446029');fbq('track','PageView');
 .lb-feat-lead .read .ar{transition:transform .25s;}
 .lb-feat-lead:hover .read .ar{transform:translateX(4px);}
 .lb-stack{margin-top:28px;border-top:1px solid var(--line);}
-.lb-stack a{display:block;padding:16px 10px;margin:0 -10px;border-bottom:1px solid var(--line);text-decoration:none;color:inherit;transition:background .18s;}
+.lb-stack a{display:flex;align-items:flex-start;gap:16px;padding:16px 10px;margin:0 -10px;border-bottom:1px solid var(--line);text-decoration:none;color:inherit;transition:background .18s;}
 .lb-stack a:hover{background:var(--white);}
+.lb-stack .thumb{display:block;width:132px;height:auto;flex:none;aspect-ratio:1200/630;object-fit:cover;border:1px solid var(--line);border-radius:8px;background:var(--white);margin-top:2px;}
+.lb-stack .txt{flex:1;min-width:0;}
 .lb-stack .top{display:flex;align-items:center;gap:14px;}
 .lb-stack .date{font-family:var(--en);font-size:11.5px;color:var(--slate);font-feature-settings:"tnum" 1;}
 .lb-stack .t{display:block;font-family:var(--jp);font-weight:700;font-size:15px;line-height:1.55;color:var(--ink);margin-top:7px;transition:color .18s;}
@@ -131,8 +133,10 @@ fbq('init','1264057945446029');fbq('track','PageView');
 /* 3) 記事一覧（行テーブル） */
 .lb-index{margin-top:88px;}
 .lb-rows{border-top:1px solid var(--line);}
-.lb-rows a{display:grid;grid-template-columns:104px 148px minmax(0,1fr) auto;gap:20px;align-items:baseline;padding:19px 12px;margin:0 -12px;border-bottom:1px solid var(--line);text-decoration:none;color:inherit;transition:background .18s;}
+.lb-rows a{display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:20px;align-items:center;padding:15px 12px;margin:0 -12px;border-bottom:1px solid var(--line);text-decoration:none;color:inherit;transition:background .18s;}
 .lb-rows a:hover{background:var(--white);}
+.lb-rows .thumb{display:block;width:110px;height:auto;aspect-ratio:1200/630;object-fit:cover;border:1px solid var(--line);border-radius:8px;background:var(--white);}
+.lb-rows .txt{display:grid;grid-template-columns:104px 128px minmax(0,1fr);gap:20px;align-items:baseline;min-width:0;}
 .lb-rows .date{font-family:var(--en);font-size:12.5px;color:var(--slate);font-feature-settings:"tnum" 1;letter-spacing:.02em;}
 .lb-rows .t{font-family:var(--jp);font-weight:600;font-size:15.5px;line-height:1.6;color:var(--ink);transition:color .18s;}
 .lb-rows a:hover .t{color:var(--electric);}
@@ -172,8 +176,11 @@ fbq('init','1264057945446029');fbq('track','PageView');
   .lb-mast-grid{grid-template-columns:1fr;gap:36px;padding-bottom:36px;}
   .lb-mast h1{font-size:clamp(38px,10.5vw,52px);}
   .lb-feat{grid-template-columns:1fr;gap:26px;}
+  .lb-stack .thumb{width:90px;}
   .lb-index{margin-top:64px;}
-  .lb-rows a{display:flex;flex-wrap:wrap;gap:8px 16px;padding:17px 12px;}
+  .lb-rows a{grid-template-columns:80px minmax(0,1fr);gap:14px;padding:14px 12px;}
+  .lb-rows .thumb{width:80px;}
+  .lb-rows .txt{display:flex;flex-wrap:wrap;gap:5px 14px;align-items:baseline;}
   .lb-rows .t{flex-basis:100%;}
   .lb-rows .ar{display:none;}
   .lb-themes{margin-top:72px;}
@@ -271,19 +278,28 @@ fbq('init','1264057945446029');fbq('track','PageView');
       </a>
       <div class="lb-stack">
         <a href="depth-interview.html">
-          <span class="top"><span class="lb-chip">デプス</span><span class="date">2026.07.23</span></span>
-          <span class="t">デプスインタビューをAIで行う｜設計・実査・分析の実務</span>
-          <span class="d">1対1で深く聞く調査をAIで並行実施する。設計から分析までの進め方。</span>
+          <img class="thumb" src="covers/depth-interview.png" alt="デプスインタビューをAIで行う｜設計・実査・分析の実務" width="1200" height="630" loading="lazy">
+          <span class="txt">
+            <span class="top"><span class="lb-chip">デプス</span><span class="date">2026.07.23</span></span>
+            <span class="t">デプスインタビューをAIで行う｜設計・実査・分析の実務</span>
+            <span class="d">1対1で深く聞く調査をAIで並行実施する。設計から分析までの進め方。</span>
+          </span>
         </a>
         <a href="interview-analysis.html">
-          <span class="top"><span class="lb-chip">分析</span><span class="date">2026.07.23</span></span>
-          <span class="t">インタビュー分析を生成AIで速くする｜発話データを判断材料に変える</span>
-          <span class="d">発話を構造化し、示唆と根拠（引用元）を結びつける生成AI分析の実務。</span>
+          <img class="thumb" src="covers/interview-analysis.png" alt="インタビュー分析を生成AIで速くする｜発話データを判断材料に変える" width="1200" height="630" loading="lazy">
+          <span class="txt">
+            <span class="top"><span class="lb-chip">分析</span><span class="date">2026.07.23</span></span>
+            <span class="t">インタビュー分析を生成AIで速くする｜発話データを判断材料に変える</span>
+            <span class="d">発話を構造化し、示唆と根拠（引用元）を結びつける生成AI分析の実務。</span>
+          </span>
         </a>
         <a href="voc-interview.html">
-          <span class="top"><span class="lb-chip">VoC</span><span class="date">2026.07.23</span></span>
-          <span class="t">解約理由・VoCをAIインタビューで深掘りする｜数字では見えない離反の理由</span>
-          <span class="d">スコアの裏にある本当の離反理由を、一人ずつの発話から特定する。</span>
+          <img class="thumb" src="covers/voc-interview.png" alt="解約理由・VoCをAIインタビューで深掘りする｜数字では見えない離反の理由" width="1200" height="630" loading="lazy">
+          <span class="txt">
+            <span class="top"><span class="lb-chip">VoC</span><span class="date">2026.07.23</span></span>
+            <span class="t">解約理由・VoCをAIインタビューで深掘りする｜数字では見えない離反の理由</span>
+            <span class="d">スコアの裏にある本当の離反理由を、一人ずつの発話から特定する。</span>
+          </span>
         </a>
       </div>
     </div>
@@ -295,27 +311,39 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <div class="lb-sh"><span class="h">記事一覧</span><span class="ln"></span></div>
   <div class="lb-rows">
     <a href="ai-interview.html">
-      <span class="date">2026.07.23</span>
-      <span class="lb-chip">基礎</span>
-      <span class="t">AIインタビューとは｜アンケートより深く、従来インタビューより速い定性調査</span>
+      <img class="thumb" src="covers/ai-interview.png" alt="AIインタビューとは｜アンケートより深く、従来インタビューより速い定性調査" width="1200" height="630" loading="lazy">
+      <span class="txt">
+        <span class="date">2026.07.23</span>
+        <span class="lb-chip">基礎</span>
+        <span class="t">AIインタビューとは｜アンケートより深く、従来インタビューより速い定性調査</span>
+      </span>
       <span class="ar">&rarr;</span>
     </a>
     <a href="depth-interview.html">
-      <span class="date">2026.07.23</span>
-      <span class="lb-chip">デプス</span>
-      <span class="t">デプスインタビューをAIで行う｜設計・実査・分析の実務</span>
+      <img class="thumb" src="covers/depth-interview.png" alt="デプスインタビューをAIで行う｜設計・実査・分析の実務" width="1200" height="630" loading="lazy">
+      <span class="txt">
+        <span class="date">2026.07.23</span>
+        <span class="lb-chip">デプス</span>
+        <span class="t">デプスインタビューをAIで行う｜設計・実査・分析の実務</span>
+      </span>
       <span class="ar">&rarr;</span>
     </a>
     <a href="interview-analysis.html">
-      <span class="date">2026.07.23</span>
-      <span class="lb-chip">分析</span>
-      <span class="t">インタビュー分析を生成AIで速くする｜発話データを判断材料に変える</span>
+      <img class="thumb" src="covers/interview-analysis.png" alt="インタビュー分析を生成AIで速くする｜発話データを判断材料に変える" width="1200" height="630" loading="lazy">
+      <span class="txt">
+        <span class="date">2026.07.23</span>
+        <span class="lb-chip">分析</span>
+        <span class="t">インタビュー分析を生成AIで速くする｜発話データを判断材料に変える</span>
+      </span>
       <span class="ar">&rarr;</span>
     </a>
     <a href="voc-interview.html">
-      <span class="date">2026.07.23</span>
-      <span class="lb-chip">VoC</span>
-      <span class="t">解約理由・VoCをAIインタビューで深掘りする｜数字では見えない離反の理由</span>
+      <img class="thumb" src="covers/voc-interview.png" alt="解約理由・VoCをAIインタビューで深掘りする｜数字では見えない離反の理由" width="1200" height="630" loading="lazy">
+      <span class="txt">
+        <span class="date">2026.07.23</span>
+        <span class="lb-chip">VoC</span>
+        <span class="t">解約理由・VoCをAIインタビューで深掘りする｜数字では見えない離反の理由</span>
+      </span>
       <span class="ar">&rarr;</span>
     </a>
   </div>
