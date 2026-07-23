@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3V34NWXVCJ');
+</script>
+<!-- TW intent tracker (first-party, sessionStorage only) -->
+<script>
+(function(){try{var ss=sessionStorage,ls=localStorage;
+if(!ss.getItem('tw_landing')){ss.setItem('tw_landing',location.pathname);ss.setItem('tw_ref',document.referrer||'');var q=new URLSearchParams(location.search);ss.setItem('tw_utm',['utm_source','utm_medium','utm_campaign'].map(function(k){return q.get(k)||'';}).join('|'));}
+var p=JSON.parse(ss.getItem('tw_pages')||'[]');if(p[p.length-1]!==location.pathname){p.push(location.pathname);ss.setItem('tw_pages',JSON.stringify(p.slice(-20)));}
+if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_visits')||'0',10)+1));ss.setItem('tw_counted','1');}
+}catch(e){}})();
+</script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>デプスインタビューをAIで行う｜設計・実査・分析の実務【2026】 — AIインタビュー・ラボ</title>
+<meta name="description" content="デプスインタビューをAIで行う実務を解説。1対1で「なぜ」を掘る定性調査のやり方、従来手法のボトルネック、AIモデレートで設計・実査・分析がどう変わるか、質の高い質問ガイドの作り方まで、リサーチ・商品企画・マーケ担当向けに実践的にまとめます。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/interview/depth-interview">
+<meta property="og:type" content="article">
+<meta property="og:title" content="デプスインタビューをAIで行う｜設計・実査・分析の実務【2026】">
+<meta property="og:description" content="1対1で「なぜ」を掘るデプスインタビューを、AIモデレートでどう設計・実査・分析するか。従来のボトルネックと実務手順を解説します。">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/media/interview/depth-interview">
+<meta property="og:site_name" content="AIインタビュー・ラボ">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="デプスインタビューをAIで行う｜設計・実査・分析の実務【2026】">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../article.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"デプスインタビューをAIで行う｜設計・実査・分析の実務【2026】",
+  "description":"1対1で「なぜ」を掘るデプスインタビューのやり方と、AIモデレートで設計・実査・分析がどう変わるかを実務目線で解説する。従来手法のボトルネック、質の高い質問ガイドの作り方、対面との使い分けまで。",
+  "datePublished":"2026-07-23","dateModified":"2026-07-23","inLanguage":"ja",
+  "image":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630},
+  "author":{"@type":"Person","name":"古野光太朗","jobTitle":"株式会社TechWorker 代表取締役","url":"https://techworker.co.jp/company.html","image":"https://techworker.co.jp/assets/author-furuno.jpg","sameAs":["https://x.com/koutarou_furuno"],"affiliation":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"}},
+  "publisher":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/","logo":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630}},
+  "mainEntityOfPage":{"@type":"WebPage","@id":"https://techworker.co.jp/media/interview/depth-interview"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},
+    {"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},
+    {"@type":"ListItem","position":3,"name":"AIインタビュー・ラボ","item":"https://techworker.co.jp/media/interview/"},
+    {"@type":"ListItem","position":4,"name":"デプスインタビューをAIで行う","item":"https://techworker.co.jp/media/interview/depth-interview"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"AIのインタビューで本音は引き出せますか？","acceptedAnswer":{"@type":"Answer","text":"引き出せる場面は多くあります。相手が人ではないことで、かえって率直に話しやすいと感じる回答者もいますし、声で答える形式は選択式アンケートより語りの量と文脈が残ります。ただし、沈黙の意味や場の空気まで読み取る必要があるテーマでは、熟練モデレーターによる対面が向くこともあります。目的に応じた使い分けが前提です。"}},
+    {"@type":"Question","name":"何人くらいに聞けばよいですか？","acceptedAnswer":{"@type":"Answer","text":"一律の正解人数はありません。定性調査では、新しい人に聞いても新しい発見が増えなくなる「飽和」を目安に人数を考えるのが一般的です。対象者の条件が絞れているほど少ない人数で飽和に近づき、条件が広いほど多くの声が必要になります。まず小さく聞き始め、発見が増え続けているかを見ながら追加していくのが実務的です。"}},
+    {"@type":"Question","name":"対面のデプスインタビューとはどう使い分けますか？","acceptedAnswer":{"@type":"Answer","text":"「なぜ」の仮説を広く集めたい、多くの対象者に短期間で聞きたい、地理的に散らばった相手に聞きたい場面はAIが向きます。一方、繊細なテーマで信頼関係の構築から必要な場合や、表情・沈黙・その場の反応まで観察したい場合は対面が向きます。AIで広く聞いて論点を絞り、重要な相手にだけ対面で深く聞く組み合わせも有効です。"}},
+    {"@type":"Question","name":"逐語録（トランスクリプト）は必要ですか？","acceptedAnswer":{"@type":"Answer","text":"発言を根拠として遡れる状態にしておくことは必要です。従来は録音から逐語録を起こす作業が大きな負担でしたが、AIインタビューでは回答が音声とテキストの両方で記録されるため、書き起こし作業そのものが実質的に不要になります。重要なのは逐語録という形式ではなく、分析の結論から元の発言・原音声に遡れる導線を保つことです。"}}
+  ]
+}
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <a href="index.html" class="logo">AIインタビュー<i>・ラボ</i></a>
+  <ul>
+    <li><a href="index.html">記事一覧</a></li>
+    <li><a href="index.html#about">このメディアについて</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://coesignal.techworker.co.jp/" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="index.html">記事一覧</a>
+  <a href="index.html#about">このメディアについて</a>
+  <a href="https://coesignal.techworker.co.jp/" class="m-cta">無料相談を申し込む</a>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIインタビュー・ラボ</a><span class="sep">/</span>デプスインタビュー</nav>
+  <div class="kicker">デプスインタビュー / Depth Interview</div>
+  <h1>デプスインタビューをAIで行う</h1>
+  <p class="dek">行動の「なぜ」は、アンケートの選択肢からは出てこない。1対1で深く聞くデプスインタビューを、AIモデレートでどう設計し、実査し、分析するか——モデレーター確保や逐語録に追われてきたリサーチ・商品企画・マーケ担当のために、2026年の実務を整理する。</p>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.23</span><span class="dot">·</span><span>最終更新 2026.07.23</span><span class="dot">·</span><span>読了 9分</span>
+  </div>
+</header>
+
+<style>
+/* depth-interview cover — one question guide, parallel voice answers with AI probes */
+.di-cv{max-width:720px;margin:26px auto 0;background:var(--white);border:1px solid var(--line-2);border-radius:14px;overflow:hidden;font-family:var(--jp);box-shadow:0 1px 0 rgba(13,17,23,.02)}
+.di-cv__top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 18px;border-bottom:1px solid var(--line)}
+.di-cv__tab{font-family:var(--en);font-size:12px;font-weight:600;color:var(--ink)}
+.di-cv__badge{flex:none;font-family:var(--en);font-size:10px;font-weight:700;letter-spacing:.06em;color:var(--electric);padding:3px 9px;border:1px solid rgba(0,94,255,.4);border-radius:5px}
+.di-cv__body{padding:20px 22px 22px;display:grid;grid-template-columns:200px 1fr;gap:22px;align-items:center}
+.di-cv__card{border:1px solid rgba(0,94,255,.28);border-radius:10px;padding:16px}
+.di-cv__c-lbl{font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--electric);margin-bottom:11px}
+.di-cv__c-l{height:7px;border-radius:4px;background:var(--paper-2);margin-bottom:8px}
+.di-cv__c-l.hl{background:rgba(0,94,255,.5)}
+.di-cv__w80{width:80%}.di-cv__w95{width:95%}.di-cv__w60{width:60%}
+.di-cv__rows{display:flex;flex-direction:column;gap:13px}
+.di-cv__row{display:flex;align-items:center;gap:11px}
+.di-cv__face{flex:none;width:26px;height:26px;border-radius:50%;border:1.5px solid rgba(13,17,23,.4)}
+.di-cv__wave{flex:1;display:flex;align-items:center;gap:3px;height:22px}
+.di-cv__wave i{flex:1;background:var(--electric);border-radius:2px;opacity:.75}
+.di-cv__wave i:nth-child(odd){opacity:.45}
+.di-cv__tag{font-family:var(--jp);font-size:10.5px;font-weight:600;color:var(--slate);width:58px;text-align:right;white-space:nowrap}
+.di-cv__foot{padding:12px 18px 14px;border-top:1px solid var(--line);font-size:11px;color:var(--slate)}
+@media(max-width:560px){.di-cv__body{grid-template-columns:1fr;gap:18px}}
+</style>
+<div class="art-cover-v6">
+  <div class="di-cv" role="img" aria-label="一つの質問ガイドをもとに、複数の回答者が同時並行で声で答え、AIが一人ずつ聞き返す画面（サンプル）">
+    <div class="di-cv__top">
+      <span class="di-cv__tab">Depth Interview — AI Moderated</span>
+      <span class="di-cv__badge">SAMPLE</span>
+    </div>
+    <div class="di-cv__body">
+      <div class="di-cv__card">
+        <div class="di-cv__c-lbl">質問ガイド</div>
+        <div class="di-cv__c-l hl di-cv__w80"></div>
+        <div class="di-cv__c-l di-cv__w95"></div>
+        <div class="di-cv__c-l di-cv__w60"></div>
+      </div>
+      <div class="di-cv__rows">
+        <div class="di-cv__row"><span class="di-cv__face"></span><span class="di-cv__wave"><i style="height:8px"></i><i style="height:16px"></i><i style="height:11px"></i><i style="height:19px"></i><i style="height:7px"></i><i style="height:14px"></i><i style="height:18px"></i><i style="height:9px"></i><i style="height:15px"></i><i style="height:6px"></i></span><span class="di-cv__tag">回答中</span></div>
+        <div class="di-cv__row"><span class="di-cv__face"></span><span class="di-cv__wave"><i style="height:12px"></i><i style="height:6px"></i><i style="height:17px"></i><i style="height:10px"></i><i style="height:19px"></i><i style="height:8px"></i><i style="height:13px"></i><i style="height:16px"></i><i style="height:7px"></i><i style="height:11px"></i></span><span class="di-cv__tag">深掘り中</span></div>
+        <div class="di-cv__row"><span class="di-cv__face"></span><span class="di-cv__wave"><i style="height:9px"></i><i style="height:14px"></i><i style="height:7px"></i><i style="height:12px"></i><i style="height:18px"></i><i style="height:10px"></i><i style="height:6px"></i><i style="height:15px"></i><i style="height:12px"></i><i style="height:8px"></i></span><span class="di-cv__tag">完了</span></div>
+      </div>
+    </div>
+    <div class="di-cv__foot">一つの質問ガイドをもとに、複数の回答者が同時並行で声で答え、AIが一人ずつ聞き返す（※サンプル画面イメージ）。</div>
+  </div>
+</div>
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次">
+    <div class="art-toc-inner">
+      <div class="toc-h">目次</div>
+      <a href="#s1">デプスインタビューとは</a>
+      <a href="#s2">従来手法のボトルネック</a>
+      <a href="#s3">AIで何が変わるか</a>
+      <a href="#s4">質の高い設計の作り方</a>
+      <a href="#faq">よくある質問</a>
+    </div>
+  </nav>
+
+  <article class="art-body rv">
+    <div class="lede">
+      <div class="lede-h">この記事の要点</div>
+      <ul>
+        <li>デプスインタビューは<strong>1対1で「なぜ」を深く掘る定性調査</strong>。行動の背景・迷い・文脈はアンケートの選択肢からは出てこないため、今も代替の利かない手法。</li>
+        <li>従来のボトルネックは<strong>モデレーター確保・日程調整・1日に聞ける人数の限界・逐語録と分析の工数</strong>。AIモデレートでは同時並行・24時間の実査が可能になり、人の仕事は「問いの設計」と「解釈・判断」に移る。</li>
+        <li>質を決めるのは設計。<strong>意思決定の問いを一文に絞り、対象者条件・質問ガイド・深掘りポイントを決め、パイロットで磨いてから本番</strong>に入る。</li>
+      </ul>
+    </div>
+
+    <aside class="inline-dx-cta" style="margin:6px 0 40px;border:1px solid var(--line-2);border-radius:12px;background:var(--white);padding:22px 26px;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
+  <div style="flex:1;min-width:240px;">
+    <div style="font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);">無料体験 ・ 登録不要 ・ 5分</div>
+    <div style="font-family:var(--jp);font-weight:700;font-size:16.5px;color:var(--ink);line-height:1.55;margin-top:8px;">5分でAIインタビューを体験（登録不要・無料）</div>
+    <div style="font-size:13.5px;color:var(--slate);line-height:1.8;margin-top:5px;">回答者としてURLを開き、声で答えるとAIが聞き返す——本記事で扱う体験をそのまま試せます（マイクを使用します）。</div>
+  </div>
+  <a href="https://coesignal.techworker.co.jp/" class="btn" style="white-space:nowrap;flex:none;color:var(--paper);border-bottom:none;">無料で体験する <i>&rarr;</i></a>
+</aside>
+      <h2 id="s1">デプスインタビューとは？なぜ今も必要か？</h2>
+    <p class="answer">1対1で「なぜ」を深く掘る定性調査。行動の背景・迷い・文脈は、アンケートの選択肢では出てこない。</p>
+    <p>デプスインタビュー（深層面接）とは、対象者と1対1で向き合い、行動や選択の背後にある「なぜ」を深く掘り下げる定性調査の手法です。グループインタビューと違って他人の目がないため、周囲に合わせた発言に流れにくく、一人の語りを時間をかけて追いかけられます。<strong>購入をやめた本当の理由、乗り換えたときの迷い、口には出しにくい不満</strong>——こうした「本人もうまく言語化していないこと」を、対話の往復の中から引き出すのがデプスインタビューの仕事です。</p>
+    <p>アンケートで代替できないのは、アンケートが「用意された選択肢への反応」しか集められないからです。選択肢を作った時点で、作り手の仮説の外にある答えは拾えません。デプスインタビューは逆に、<strong>仮説の外にある答えに出会うための手法</strong>です。新規事業の顧客理解、解約理由の深掘り、コンセプト開発の前段など、「何を聞くべきかすらまだ固まっていない」局面で最も力を発揮します。だからこそ、調査の自動化が進んだ2026年でも、デプスインタビューそのものの必要性は変わっていません。変わったのは、それを実施する方法です。</p>
+    <div class="callout"><p>アンケートは「どれくらいの人がそうか」を測る道具。デプスインタビューは「なぜそうなのか」を知る道具。問いの種類が違うので、どちらかで代用はできない。</p></div>
+
+    <h2 id="s2">従来のデプスインタビューは何がボトルネックか？</h2>
+    <p class="answer">モデレーター確保・日程調整・1日に聞ける人数の限界・逐語録と分析の工数が、実施の壁になる。</p>
+    <p>デプスインタビューが有効だと分かっていても、実務では「重い」手法として敬遠されがちでした。ボトルネックは大きく4つあります。</p>
+    <ol>
+      <li><strong>モデレーターの確保。</strong>深掘りの質はモデレーターの技量に大きく依存します。社内に熟練者がいなければ外部に依頼することになり、その分の調整と費用が発生します。</li>
+      <li><strong>日程調整の負担。</strong>対象者・モデレーター・会議室（またはオンラインの枠）の予定を一人ずつ合わせる必要があり、リクルートから実査開始までに時間がかかります。</li>
+      <li><strong>1日に聞ける人数の限界。</strong>1対1で時間をかけて聞く以上、モデレーター1人が1日にこなせる人数はごくわずかです。対象者を増やすほど、実査期間は線形に延びます。</li>
+      <li><strong>逐語録と分析の工数。</strong>実査が終わっても、録音からの書き起こし、発言の整理、示唆の抽出という後工程が控えています。この工程が重いために、せっかくの語りが十分に活用されないまま終わることもあります。</li>
+    </ol>
+    <p>結果として何が起きるかというと、<strong>「聞けば分かるはずのことを、聞かずに決める」</strong>という意思決定です。デプスインタビューを回すコストが高いために、本来は語りを聞いてから決めるべき論点が、担当者の推測やアンケートの数字だけで進んでしまう。ボトルネックの本質は、個々の作業の重さそのものよりも、この「聞かない意思決定」を常態化させてしまう点にあります。</p>
+    <div class="quote-box"><p>デプスインタビューの最大のコストは、実査の費用ではない。「重いから今回はやめておこう」と、聞かずに決めてしまうことだ。</p></div>
+
+    <h2 id="s3">AIでデプスインタビューはどう変わるか？</h2>
+    <p class="answer">AIがモデレートし、同時並行・24時間の実査が可能に。人の仕事は問いの設計と解釈・判断に移る。</p>
+    <p>AIインタビューでは、モデレーターの役割をAIが担います。回答者は配布されたURLを開き、自分の都合のよい時間に、声で（またはテキストで）質問に答えます。AIは回答の内容を受けて、<strong>「それはどんな場面でしたか」「なぜそう感じたのですか」と一人ずつ聞き返し、語りを深掘り</strong>していきます。人間のモデレーターが1日数人ずつ逐次こなしていた実査が、同時並行かつ24時間で回るようになります。従来手法との違いを整理すると次の通りです。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>観点</th><th>従来のデプスインタビュー</th><th>AIインタビュー</th></tr>
+        <tr><td>実査の進め方</td><td>モデレーターが1対1で逐次実施</td><td>AIがモデレートし、複数の回答者と同時並行</td></tr>
+        <tr><td>実施時間</td><td>全員の予定を合わせて日程調整</td><td>回答者の都合のよい時間に24時間実施可能</td></tr>
+        <tr><td>深掘り</td><td>モデレーターの技量に依存</td><td>設計した深掘りポイントに沿ってAIが聞き返す</td></tr>
+        <tr><td>記録</td><td>録音から逐語録を書き起こす</td><td>回答が音声とテキストでそのまま残る</td></tr>
+        <tr><td>人の役割</td><td>実査・書き起こし・分析の実務全般</td><td>問いの設計と、結果の解釈・判断に集中</td></tr>
+      </table>
+    </div>
+    <p>実務の流れはシンプルで、<strong>設計（問いと質問ガイドを作る）→ URL配布 → 実査（回答者が声で答え、AIが聞き返す）→ 横断分析</strong>という一本の流れになります。実査中のやり取りは、たとえば次のようなイメージです。</p>
+    <div class="ui-mock">
+      <div class="um-bar"><span class="um-dot"></span><span class="um-dot"></span><span class="um-dot"></span><span class="um-name">AI INTERVIEW — 実査中のやり取りの例</span></div>
+      <div class="um-row">
+        <div class="um-label ai">AIの質問</div>
+        <div class="um-text">直近1か月で、夕食の準備が負担に感じた日のことを教えてください。その日、実際にはどうされましたか？</div>
+      </div>
+      <div class="um-row">
+        <div class="um-label">回答者（声で回答）</div>
+        <div class="um-text prompt">残業で帰りが遅くなった日ですね。作る気力がなくて、結局コンビニで済ませました。ちょっと罪悪感はあったんですけど…</div>
+      </div>
+      <div class="um-row">
+        <div class="um-label ai">AIの聞き返し（深掘り）</div>
+        <div class="um-text">「罪悪感」という言葉が出ましたが、それは何に対する罪悪感でしたか？　差し支えなければ、そのときの気持ちをもう少し聞かせてください。</div>
+      </div>
+    </div>
+    <p class="fig-cap">図：AIが回答者の言葉を拾って聞き返す例。深掘りの観点は事前に人が設計します（※やり取りはサンプル）。</p>
+    <p>重要なのは、AIに置き換わるのは「実査のオペレーション」であって、調査の中核ではないという点です。<strong>何を意思決定するためにこの調査をやるのか、誰に何を聞くのか、どこを深掘りさせるのか——問いの設計は人の仕事として残ります</strong>。そして上がってきた語りをどう解釈し、事業の判断につなぐかも人の仕事です。AIは実査と整理を圧縮し、人がこの2つに時間を使えるようにする道具だと捉えるのが正確です。</p>
+    <p>具体例として、TechWorkerのAIインタビュープラットフォーム<a href="https://coesignal.techworker.co.jp/">CoeSignal</a>では、AIが一人ずつ深掘りするインタビューをURL配布で実施し（回答は声・テキストどちらも可。リアルタイム通話ではないため、回答者は自分のペースで話せます）、設計・実査・分析・納品までが一つの流れになっています。成果物は発言の羅列ではなく、<strong>結論・反証・次の検証・引用元・許諾済みの原音声に遡れる「判断メモ」</strong>の形で受け取れます。配布先は自社の顧客や社員のほか、Managed Researchでは提携ネットワーク100万人以上からの対象者の募集にも対応しており、自社で使うEnterprise Controlと依頼して任せるManaged Researchの2形態から選べます。</p>
+
+    <h2 id="s4">質の高いインタビュー設計はどう作るか？</h2>
+    <p class="answer">意思決定の問いを一文に絞り、対象者条件・質問ガイド・深掘り点を決め、パイロットで磨いて本番へ。</p>
+    <p>実査をAIに任せられるようになった分、成否はほぼ設計で決まります。実務の手順は次の6ステップです。</p>
+    <ol>
+      <li><strong>意思決定の問いを一文にする。</strong>「この調査が終わったら、何を決められるようになっていたいか」を一文で書く。例：「解約者は何をきっかけに離脱を決めているかを知り、次の改善の優先順位を決める」。これが書けない調査は、聞く前に設計をやり直します。</li>
+      <li><strong>対象者条件を決める。</strong>問いに答えられるのは誰か。「直近半年以内に解約した人」「週3回以上自炊する人」のように、行動ベースで条件を絞ります。</li>
+      <li><strong>質問ガイドを設計する。</strong>導入（話しやすい事実の質問）から始め、具体的な行動・場面の質問を経て、理由や感情に踏み込む順に並べます。1問1論点を守り、聞きたいことを詰め込みすぎないこと。</li>
+      <li><strong>深掘りポイントを指定する。</strong>どの回答が出たらどこを掘るか（例：「面倒」という言葉が出たら、何の工程が面倒なのかを具体化する）を事前に決めておきます。AIモデレートでは、この指定がそのまま深掘りの質になります。</li>
+      <li><strong>パイロットを回す。</strong>本番の前に少人数で試し、質問の伝わり方・回答の出方・深掘りの効き方を確かめて、ガイドを修正します。</li>
+      <li><strong>本番の実査に入る。</strong>途中で語りの傾向を見ながら、必要に応じて対象者を追加します。</li>
+    </ol>
+    <p>設計の質を最も左右するのが、個々の質問の立て方です。原則は「<strong>意見ではなく、実際にあった行動と場面を聞く</strong>」こと。人は自分の未来の行動や一般論を語るのは苦手ですが、実際にあった出来事は具体的に話せます。</p>
+    <div class="ba-grid">
+      <div class="ba-card before">
+        <span class="ba-tag">悪い質問の例 — 意見・仮定を聞く</span>
+        <div class="ba-body">「この機能は便利だと思いますか？」「こんなサービスがあったら使いたいですか？」——はい／いいえで終わり、社交辞令的な肯定に流れやすい。</div>
+      </div>
+      <div class="ba-card after">
+        <span class="ba-tag">よい質問の例 — 行動・場面を聞く</span>
+        <div class="ba-body">「最近◯◯で困った場面を教えてください。そのとき、実際にはどうしましたか？」——実在の出来事から、本人の言葉で文脈と理由が出てくる。</div>
+      </div>
+    </div>
+    <p class="fig-cap">図：質問の立て方の一般的な原則。仮定への意見ではなく、実際の行動と場面から聞き始める（例）。</p>
+    <p>もう一つの原則は、<strong>誘導しないこと</strong>です。「やっぱり価格が理由ですか？」のように答えを先回りする聞き方は、その方向の回答を引き出してしまいます。深掘りは「なぜ」「具体的には」「そのとき何を」で掘るのが基本です。AIモデレートの場合も同じで、質問ガイドに誘導的な文言が入っていれば、AIはそれを忠実に再現してしまいます。設計段階でのレビュー（パイロットでの確認）が、そのまま調査全体の信頼性になります。</p>
+    <div class="callout"><p>チェックの基準はシンプル。「この質問は、相手が実際に経験したことを聞いているか？　それとも、こちらの仮説への同意を求めているか？」。後者が混ざっていたら設計に戻る。</p></div>
+    <p>AIインタビューの全体像は<a href="ai-interview.html">AIインタビューとは</a>で、集めた語りを示唆に変える工程は<a href="interview-analysis.html">インタビュー分析をAIで行う</a>で扱っています。自社のテーマでの設計に迷う場合は、<a href="https://coesignal.techworker.co.jp/">CoeSignalの無料相談</a>でご一緒できます。</p>
+
+    <h2 id="faq">よくある質問</h2>
+    <div class="faq"><div class="q">AIのインタビューで本音は引き出せますか？</div><p class="a">引き出せる場面は多くあります。相手が人ではないことで、かえって率直に話しやすいと感じる回答者もいますし、声で答える形式は選択式アンケートより語りの量と文脈が残ります。ただし、沈黙の意味や場の空気まで読み取る必要があるテーマでは、熟練モデレーターによる対面が向くこともあります。目的に応じた使い分けが前提です。</p></div>
+    <div class="faq"><div class="q">何人くらいに聞けばよいですか？</div><p class="a">一律の正解人数はありません。定性調査では、新しい人に聞いても新しい発見が増えなくなる「飽和」を目安に人数を考えるのが一般的です。対象者の条件が絞れているほど少ない人数で飽和に近づき、条件が広いほど多くの声が必要になります。まず小さく聞き始め、発見が増え続けているかを見ながら追加していくのが実務的です。</p></div>
+    <div class="faq"><div class="q">対面のデプスインタビューとはどう使い分けますか？</div><p class="a">「なぜ」の仮説を広く集めたい、多くの対象者に短期間で聞きたい、地理的に散らばった相手に聞きたい場面はAIが向きます。一方、繊細なテーマで信頼関係の構築から必要な場合や、表情・沈黙・その場の反応まで観察したい場合は対面が向きます。AIで広く聞いて論点を絞り、重要な相手にだけ対面で深く聞く組み合わせも有効です。</p></div>
+    <div class="faq"><div class="q">逐語録（トランスクリプト）は必要ですか？</div><p class="a">発言を根拠として遡れる状態にしておくことは必要です。従来は録音から逐語録を起こす作業が大きな負担でしたが、AIインタビューでは回答が音声とテキストの両方で記録されるため、書き起こし作業そのものが実質的に不要になります。重要なのは逐語録という形式ではなく、分析の結論から元の発言・原音声に遡れる導線を保つことです。</p></div>
+  </article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役</span></div>
+    <p>上場企業を含む37社・2,500名の生成AI導入・研修を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。AIインタビューによる定性調査の設計・実査・分析も支援領域。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>「なぜ」を聞かずに決める前に、一度聞きに行く。</h3>
+    <p>AIが一人ずつ深掘りするインタビューで、設計から実査・分析・納品までを一つの流れで。デプスインタビューの導入検討・調査設計のご相談だけでも歓迎です。</p>
+  </div>
+  <a href="https://coesignal.techworker.co.jp/" class="btn">CoeSignalに導入・調査を相談する <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="https://coesignal.techworker.co.jp/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">CoeSignal 公式サイト（AIインタビュープラットフォーム）</a>　／　<a href="../../contact.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">無料相談</a></p>
+<div class="back-list"><a href="index.html">← AIインタビュー・ラボ（記事一覧）に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="ai-interview.html" class="related-card"><span class="rc-cat">基礎</span><div class="rc-title">AIインタビューとは｜仕組み・できること・従来調査との違い</div></a>
+    <a href="interview-analysis.html" class="related-card"><span class="rc-cat">分析</span><div class="rc-title">インタビュー分析をAIで行う｜語りを示唆に変える実務</div></a>
+    <a href="voc-interview.html" class="related-card"><span class="rc-cat">VoC</span><div class="rc-title">VoC（顧客の声）をAIインタビューで集める・活かす</div></a>
+    <a href="index.html" class="related-card"><span class="rc-cat">メディア</span><div class="rc-title">AIインタビュー・ラボ｜記事一覧</div></a>
+  </div>
+</div></section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">AIインタビュー<i>・ラボ</i></div>
+        <p>AIインタビューで、一人ずつの「なぜ」を聞きに行く。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+      </div>
+      <div class="footer-col"><h4>メディア</h4><a href="index.html">記事一覧</a><a href="ai-interview.html">AIインタビューとは</a><a href="depth-interview.html">デプスインタビュー</a></div>
+      <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../index.html#services">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="../../contact.html">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+</body>
+</html>

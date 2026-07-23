@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3V34NWXVCJ');
+</script>
+<!-- TW intent tracker (first-party, sessionStorage only) -->
+<script>
+(function(){try{var ss=sessionStorage,ls=localStorage;
+if(!ss.getItem('tw_landing')){ss.setItem('tw_landing',location.pathname);ss.setItem('tw_ref',document.referrer||'');var q=new URLSearchParams(location.search);ss.setItem('tw_utm',['utm_source','utm_medium','utm_campaign'].map(function(k){return q.get(k)||'';}).join('|'));}
+var p=JSON.parse(ss.getItem('tw_pages')||'[]');if(p[p.length-1]!==location.pathname){p.push(location.pathname);ss.setItem('tw_pages',JSON.stringify(p.slice(-20)));}
+if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_visits')||'0',10)+1));ss.setItem('tw_counted','1');}
+}catch(e){}})();
+</script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>インタビュー分析を生成AIで速くする｜発話データを判断材料に変える【2026】 — AIインタビュー・ラボ</title>
+<meta name="description" content="インタビューや自由回答の分析に生成AIを使うと、逐語録化・コーディング・横断比較といった重い工程が速くなり、人は問いの設定と解釈に集中できます。AI要約を鵜呑みにしないための設計、根拠に遡れるレポートの型まで、定性調査の分析を意思決定につなげる方法を実践的に解説します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/interview/interview-analysis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="インタビュー分析を生成AIで速くする｜発話データを判断材料に変える【2026】">
+<meta property="og:description" content="逐語録化・コーディング・横断比較を生成AIで速くし、人は問いと解釈に集中する。AI要約を鵜呑みにしない設計と、根拠に遡れるレポートの型まで実践的に解説します。">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/media/interview/interview-analysis">
+<meta property="og:site_name" content="AIインタビュー・ラボ">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="インタビュー分析を生成AIで速くする｜発話データを判断材料に変える【2026】">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../article.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"インタビュー分析を生成AIで速くする｜発話データを判断材料に変える【2026】",
+  "description":"インタビューや自由回答の分析に生成AIを使うと、逐語録化・コーディング・横断比較といった重い工程が速くなり、人は問いの設定と解釈に集中できる。AI要約を鵜呑みにしないための設計、根拠に遡れるレポートの型まで、定性調査の分析を意思決定につなげる方法を実践的に解説する。",
+  "datePublished":"2026-07-23","dateModified":"2026-07-23","inLanguage":"ja",
+  "image":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630},
+  "author":{"@type":"Person","name":"古野光太朗","jobTitle":"株式会社TechWorker 代表取締役","url":"https://techworker.co.jp/company.html","image":"https://techworker.co.jp/assets/author-furuno.jpg","sameAs":["https://x.com/koutarou_furuno"],"affiliation":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"}},
+  "publisher":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/","logo":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630}},
+  "mainEntityOfPage":{"@type":"WebPage","@id":"https://techworker.co.jp/media/interview/interview-analysis"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},
+    {"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},
+    {"@type":"ListItem","position":3,"name":"AIインタビュー・ラボ","item":"https://techworker.co.jp/media/interview/"},
+    {"@type":"ListItem","position":4,"name":"インタビュー分析を生成AIで速くする","item":"https://techworker.co.jp/media/interview/interview-analysis"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"文字起こしだけAIに任せるのと、分析までAIを使うのは何が違いますか？","acceptedAnswer":{"@type":"Answer","text":"文字起こしは発話をテキストにする工程で、そこで止めると、読む・分類する・比べるという一番重い作業がまるごと人に残ります。分析までAIを使うと、テーマの抽出、複数インタビューの横断比較、示唆と発言の紐付けまで下書きが揃った状態から始められます。人の仕事が「ゼロから読み解く」から「AIの下書きを検証して仕上げる」に変わる、という違いです。"}},
+    {"@type":"Question","name":"何件くらいのインタビューから、AIによる横断分析の価値が出ますか？","acceptedAnswer":{"@type":"Answer","text":"一概に何件以上という基準はありません。数件でも、逐語録化や要約の下書きが速くなる価値はあります。一方で、複数の対象者を横断して「共通するテーマ」「割れている論点」を洗い出す使い方は、人手では読み比べがつらくなる件数ほど効きます。件数で線を引くより、「全件を人が精読しきれるか」を目安に、しきれない規模になったら横断分析を組み込むのが現実的です。"}},
+    {"@type":"Question","name":"インタビューの発話データをAIに渡すとき、セキュリティはどう考えればいいですか？","acceptedAnswer":{"@type":"Answer","text":"発話データは個人の語りそのものなので、一般のテキスト以上に慎重に扱います。基本は、利用するツールの学習利用の有無とデータ保管方針を先に確認すること、個人を特定できる情報は渡す前に処理すること、社内の規程に沿ってアクセス範囲を絞ることです。組織的に運用するなら、CoeSignalのようにSSO・権限管理・監査ログ・データ管理を備え、NDAや個別契約に対応するEnterprise Control前提の環境を選ぶ方法もあります。"}},
+    {"@type":"Question","name":"既存のアンケート自由回答の分析にも、同じ方法は使えますか？","acceptedAnswer":{"@type":"Answer","text":"使えます。自由回答はインタビューより一件あたりの文脈は薄いものの、件数が多く人手で読み切れないという同じ課題を抱えています。テーマ抽出・横断比較・原文への紐付けという型はそのまま適用でき、むしろ件数が多いぶんAIの効果が出やすい領域です。ただし短い回答ほどAIが文脈を補って解釈しがちなので、示唆から原文に戻って確かめる運用はインタビュー以上に大切になります。"}}
+  ]
+}
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <a href="index.html" class="logo">AIインタビュー<i>・ラボ</i></a>
+  <ul>
+    <li><a href="index.html">記事一覧</a></li>
+    <li><a href="index.html#about">このメディアについて</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://coesignal.techworker.co.jp/" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="index.html">記事一覧</a>
+  <a href="index.html#about">このメディアについて</a>
+  <a href="https://coesignal.techworker.co.jp/" class="m-cta">無料相談を申し込む</a>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIインタビュー・ラボ</a><span class="sep">/</span>インタビュー分析を生成AIで速くする</nav>
+  <div class="kicker">分析 / Analysis</div>
+  <h1>インタビュー分析を生成AIで速くする——発話データを判断材料に変える</h1>
+  <p class="dek">逐語録の山を前に手が止まる分析から、根拠に遡れる判断材料づくりへ。生成AIが速くする工程、人が残すべき仕事、AI要約を鵜呑みにしない設計、意思決定につながるレポートの型を整理する。</p>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.23</span><span class="dot">·</span><span>最終更新 2026.07.23</span><span class="dot">·</span><span>読了 8分</span>
+  </div>
+</header>
+
+<style>
+/* interview-analysis cover — 発話データ → 根拠に遡れる判断メモ (Linear/Stripe style panel) */
+.ia-cv{max-width:720px;margin:26px auto 0;background:var(--white);border:1px solid var(--line-2);border-radius:14px;overflow:hidden;font-family:var(--jp);box-shadow:0 1px 0 rgba(13,17,23,.02)}
+.ia-cv__top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 18px;border-bottom:1px solid var(--line)}
+.ia-cv__tab{font-family:var(--en);font-size:12px;font-weight:600;color:var(--ink)}
+.ia-cv__badge{flex:none;font-family:var(--en);font-size:10px;font-weight:700;letter-spacing:.06em;color:var(--electric);padding:3px 9px;border:1px solid rgba(0,94,255,.4);border-radius:5px}
+.ia-cv__grid{display:grid;grid-template-columns:1fr 1px 1fr;align-items:stretch}
+.ia-cv__col{padding:22px 22px 24px}
+.ia-cv__div{background:var(--line)}
+.ia-cv__lbl{font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:14px}
+.ia-cv__lines{display:flex;flex-direction:column;gap:10px}
+.ia-cv__utt{display:flex;align-items:center;gap:9px}
+.ia-cv__spk{font-family:var(--en);font-size:9.5px;font-weight:600;letter-spacing:.04em;color:var(--slate);width:34px;flex:none}
+.ia-cv__bar{height:7px;border-radius:4px;background:var(--paper-2);flex:1}
+.ia-cv__bar.w70{max-width:70%}.ia-cv__bar.w90{max-width:90%}.ia-cv__bar.w55{max-width:55%}.ia-cv__bar.w80{max-width:80%}.ia-cv__bar.w62{max-width:62%}
+.ia-cv__memo{display:flex;flex-direction:column;gap:10px}
+.ia-cv__row{display:flex;align-items:center;gap:9px}
+.ia-cv__k{font-family:var(--jp);font-size:10.5px;font-weight:600;color:var(--ink);width:58px;flex:none}
+.ia-cv__v{height:7px;border-radius:4px;background:rgba(0,94,255,.16);flex:1}
+.ia-cv__v.w70{max-width:70%}.ia-cv__v.w90{max-width:90%}.ia-cv__v.w55{max-width:55%}.ia-cv__v.w80{max-width:80%}
+.ia-cv__chip{align-self:flex-start;margin-top:5px;font-family:var(--jp);font-size:11px;font-weight:600;color:var(--electric);border:1px solid rgba(0,94,255,.4);background:rgba(0,94,255,.08);border-radius:999px;padding:3px 11px}
+.ia-cv__foot{padding:12px 18px 14px;border-top:1px solid var(--line);font-size:11px;color:var(--slate)}
+@media(max-width:560px){
+  .ia-cv__grid{grid-template-columns:1fr}
+  .ia-cv__div{height:1px;width:auto}
+}
+</style>
+<div class="art-cover-v6">
+  <div class="ia-cv" role="img" aria-label="読み切れない発話データを、結論・根拠・反証・次の検証で構成された判断メモへ整える画面（サンプル）">
+    <div class="ia-cv__top">
+      <span class="ia-cv__tab">Interview Analysis</span>
+      <span class="ia-cv__badge">SAMPLE</span>
+    </div>
+    <div class="ia-cv__grid">
+      <div class="ia-cv__col">
+        <div class="ia-cv__lbl">発話データ（逐語録）</div>
+        <div class="ia-cv__lines">
+          <div class="ia-cv__utt"><span class="ia-cv__spk">Q</span><span class="ia-cv__bar w62"></span></div>
+          <div class="ia-cv__utt"><span class="ia-cv__spk">A</span><span class="ia-cv__bar w90"></span></div>
+          <div class="ia-cv__utt"><span class="ia-cv__spk">A</span><span class="ia-cv__bar w80"></span></div>
+          <div class="ia-cv__utt"><span class="ia-cv__spk">Q</span><span class="ia-cv__bar w55"></span></div>
+          <div class="ia-cv__utt"><span class="ia-cv__spk">A</span><span class="ia-cv__bar w70"></span></div>
+        </div>
+      </div>
+      <div class="ia-cv__div"></div>
+      <div class="ia-cv__col">
+        <div class="ia-cv__lbl">判断メモ</div>
+        <div class="ia-cv__memo">
+          <div class="ia-cv__row"><span class="ia-cv__k">結論</span><span class="ia-cv__v w90"></span></div>
+          <div class="ia-cv__row"><span class="ia-cv__k">根拠</span><span class="ia-cv__v w80"></span></div>
+          <div class="ia-cv__row"><span class="ia-cv__k">反証</span><span class="ia-cv__v w70"></span></div>
+          <div class="ia-cv__row"><span class="ia-cv__k">次の検証</span><span class="ia-cv__v w55"></span></div>
+          <span class="ia-cv__chip">引用元の発言に遡れる</span>
+        </div>
+      </div>
+    </div>
+    <div class="ia-cv__foot">青＝発言の引用に紐づいた記述。中身はイメージ（※サンプル）。</div>
+  </div>
+</div>
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次">
+    <div class="art-toc-inner">
+      <div class="toc-h">目次</div>
+      <a href="#s1">なぜ分析は大変か</a>
+      <a href="#s2">AIが速くする工程</a>
+      <a href="#s3">鵜呑みにしない設計</a>
+      <a href="#s4">レポートの型</a>
+      <a href="#faq">よくある質問</a>
+    </div>
+  </nav>
+
+  <article class="art-body rv">
+    <div class="lede">
+      <div class="lede-h">この記事の要点</div>
+      <ul>
+        <li>インタビュー分析が重いのは、逐語録化・コーディング・切片化・統合という<strong>多段の手作業が積み重なるうえ、解釈が担当者に属人化しやすい</strong>から。件数が増えるほど「読み切れない」が常態化する。</li>
+        <li>生成AIが速くするのは<strong>文字起こし・要約・テーマ抽出・横断比較・引用元の紐付け</strong>という下ごしらえの工程。問いの設定・解釈・意思決定は人の中核として残る。</li>
+        <li>AI要約は便利なぶん、<strong>ハルシネーション・少数意見の均し込み・確証バイアス</strong>という落とし穴がある。反証を必ず残し、示唆から原文・原音声へ遡れる状態を保ち、人が最終確認する設計が前提。</li>
+      </ul>
+    </div>
+
+    <aside class="inline-dx-cta" style="margin:6px 0 40px;border:1px solid var(--line-2);border-radius:12px;background:var(--white);padding:22px 26px;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
+  <div style="flex:1;min-width:240px;">
+    <div style="font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);">体験デモ ・ 無料 ・ 5分</div>
+    <div style="font-family:var(--jp);font-weight:700;font-size:16.5px;color:var(--ink);line-height:1.55;margin-top:8px;">5分でAIインタビューを体験（登録不要・無料）</div>
+    <div style="font-size:13.5px;color:var(--slate);line-height:1.8;margin-top:5px;">AIが一人ずつ深掘りするインタビューを、回答者の立場で体験できます。マイクを使い、声で答えるだけです。</div>
+  </div>
+  <a href="https://coesignal.techworker.co.jp/" class="btn" style="white-space:nowrap;flex:none;color:var(--paper);border-bottom:none;">無料で体験する <i>&rarr;</i></a>
+</aside>
+      <h2 id="s1">インタビュー分析はなぜ大変なのか？</h2>
+    <p class="answer">逐語録化から統合まで多段の手作業が積み重なり、しかも解釈が担当者一人の頭の中に閉じやすいから。</p>
+    <p>定性調査の分析は、話を聞き終えてからが本番です。従来の進め方では、録音を<strong>逐語録に起こし、発言に意味のラベルを付け（コーディング）、文脈ごとに切り出し（切片化）、カードを並べ替えて構造化する（KJ法などの統合作業）</strong>という工程を、一件ずつ人手で積み上げてきました。1時間のインタビューでも逐語録は数十ページになり、それが5件、10件と重なると、全件を精読して比較すること自体が難しくなります。レポート提出が調査の数週間後になり、その間に意思決定のタイミングを逃す——リサーチやマーケの現場でよくある光景です。</p>
+    <p>もう一つの問題が属人化です。どの発言を重く見るか、どの文脈で解釈するかは、分析した担当者の経験と関心に依存します。同じ逐語録から別の人が別の結論を導くことは珍しくなく、<strong>「なぜその示唆になったのか」を後から第三者が検証しにくい</strong>のが、従来のインタビュー分析の構造的な弱点でした。工数の重さと解釈のブラックボックス化。この二つが、せっかく集めた発話データを判断材料として使い切れない原因になっています。</p>
+    <div class="callout"><p>分析が重いと、調査は「実施すること」が目的化する。発話データが判断材料に変わらないまま、逐語録がフォルダに眠る——これが一番もったいない失敗パターン。</p></div>
+
+    <h2 id="s2">生成AIはインタビュー分析のどこを速くするか？</h2>
+    <p class="answer">文字起こし・要約・テーマ抽出・横断比較・引用元の紐付けという下ごしらえ。問いの設定と解釈は人に残る。</p>
+    <p>生成AIが得意なのは、分析の「下ごしらえ」にあたる工程です。音声の文字起こし、一件ごとの要約、複数インタビューを横断したテーマの抽出、対象者間で共通する論点と割れている論点の整理、そして<strong>抽出した示唆がどの発言に基づくかの紐付け</strong>まで、人手なら数日かかっていた作業の下書きが短時間で揃います。逆に、何を明らかにするために聞くのかという問いの設定、下書きをどう解釈するか、その解釈をどう意思決定に使うかは、AIに任せられない人の仕事です。工程ごとに整理すると次のようになります。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>工程</th><th>従来の進め方</th><th>生成AIで変わること</th><th>人に残る仕事</th></tr>
+        <tr><td>逐語録化</td><td>録音を聞きながら手で起こす</td><td>自動文字起こしで下書きが揃う</td><td>固有名詞・聞き取りの確認</td></tr>
+        <tr><td>要約・コーディング</td><td>精読して意味のラベルを付ける</td><td>要約とテーマの下書きを生成</td><td>ラベルの妥当性を判断する</td></tr>
+        <tr><td>横断比較</td><td>全件を読み比べて共通点を探す</td><td>共通テーマと割れる論点を抽出</td><td>どの論点を重く見るか決める</td></tr>
+        <tr><td>根拠の紐付け</td><td>引用探しに手間がかかり省略されがち</td><td>示唆と発言の対応を保持できる</td><td>引用が文脈通りかを確かめる</td></tr>
+        <tr><td>解釈・意思決定</td><td>担当者の頭の中で完結</td><td>—（AIの領域ではない）</td><td>問いを立て、判断し、動く</td></tr>
+      </table>
+    </div>
+    <p>この分担が回ると、分析にかける時間の使われ方が変わります。下ごしらえに費やしていた時間が圧縮され、発言の解釈と打ち手の設計——本来やりたかった仕事——に時間を回せるようになります。</p>
+    <figure class="cmp-chart" aria-label="インタビュー分析にかける時間の使われ方（AI活用前後のイメージ・サンプル）">
+      <figcaption class="cc-top"><span class="dot"></span>分析にかける時間の使われ方（※サンプル）</figcaption>
+      <div class="cc-row"><span class="cc-lab">AI活用前</span><div class="cc-stack"><i class="s-a" style="width:75%"></i><i class="s-b" style="width:25%"></i></div></div>
+      <div class="cc-row"><span class="cc-lab">AI活用後</span><div class="cc-stack"><i class="s-a" style="width:30%"></i><i class="s-b" style="width:70%"></i></div></div>
+      <div class="cc-legend"><span><i class="s-a"></i>逐語録化・整理・引用探し（AIが圧縮）</span><span><i class="s-b"></i>解釈・打ち手の設計（人の判断）</span></div>
+      <div class="cc-cap">※サンプル（イメージ図）です。実測値ではなく、AIが下ごしらえを圧縮し、解釈と意思決定に時間を回せる方向を表しています。</div>
+    </figure>
+    <p>インタビューの実施そのものからAIに任せる選択肢や、聞き方の設計については<a href="ai-interview.html">AIインタビューとは｜AIが一人ずつ深掘りする定性調査の新しい選択肢</a>と<a href="depth-interview.html">デプスインタビューのやり方</a>で扱っています。分析だけをAI化する場合も、実査から一気通貫にする場合も、この工程分担の考え方は同じです。</p>
+
+    <h2 id="s3">AI要約を鵜呑みにしないためにどうするか？</h2>
+    <p class="answer">反証を必ず残し、示唆から原文・原音声へ遡れる状態を保ち、人が最終確認する。この三つを運用に組み込む。</p>
+    <p>生成AIの要約は流暢です。流暢だからこそ、注意すべき癖を先に押さえておく必要があります。</p>
+    <ol>
+      <li><strong>ハルシネーション。</strong>AIは言っていないことを、もっともらしく補って要約することがある。要約単体では気づけないため、元の発言と突き合わせられる形になっていないと検証のしようがない。</li>
+      <li><strong>少数意見の均し込み。</strong>要約は多数派の論調に寄りやすく、一人だけが語った鋭い違和感——定性調査で一番価値のある発見であることが多い——が「その他の意見」に埋もれる。</li>
+      <li><strong>確証バイアスの増幅。</strong>「この仮説を裏付ける発言を探して」と頼めば、AIは従順に裏付けだけを集めてくる。都合のよい引用が並んだレポートは、会議では強く見えて、判断としては脆い。</li>
+    </ol>
+    <p>対策は運用の設計で打てます。第一に、<strong>結論と一緒に反証——仮説に合わない発言・割れている論点——を必ず残させる</strong>こと。第二に、<strong>どの示唆も引用元の発言、さらには原文・原音声まで遡れる状態</strong>を保つこと。第三に、AIの出力はあくまで下書きと位置づけ、<strong>人が原文と突き合わせて最終確認してから外に出す</strong>こと。この三点が揃うと、AI要約は「速いが怪しいもの」から「速くて検証可能なもの」に変わります。</p>
+    <p>この考え方を製品として設計しているのが、TechWorkerのAIインタビューサービス<strong>CoeSignal</strong>です。AIが一人ずつ深掘りするインタビューを、回答者がURLを開いて声で答える形で実施し、設計・実査・分析・納品までを一つの流れで扱います。成果物は「根拠に遡れる判断メモ」——結論・反証・次の検証・引用元で構成され、<strong>示唆から回答全文、許諾済みの原音声まで戻れる</strong>つくりです。AIの下書きを担当者が確認してから納品する運用も、ここで述べた設計をそのまま実装したものです。実際のレポート画面は<a href="https://research.techworker.co.jp/" target="_blank" rel="noopener noreferrer">公開サンプル</a>で確認できます。</p>
+    <div class="quote-box"><p>AIの要約が信用できるかどうかは、モデルの賢さではなく「原文に戻れるか」で決まる。遡れない示唆は、どれほど流暢でも判断材料にならない。</p></div>
+
+    <h2 id="s4">分析を意思決定につなげるレポートの型は？</h2>
+    <p class="answer">結論→根拠→反証→次の検証、の順で書く。会議の「本当にそう言ってた？」に引用と音声で答えられる形にする。</p>
+    <p>分析の出口はレポートです。そしてレポートの価値は、読み物としての完成度ではなく、<strong>会議でそのまま判断材料になるか</strong>で決まります。発言の抜粋を並べただけの資料は「で、どうする？」に答えられず、逆に結論だけの資料は「本当にそう言ってたの？」に答えられません。両方に耐える型が、次の四段構成です。</p>
+    <div class="ui-mock">
+      <div class="um-bar"><span class="um-dot"></span><span class="um-dot"></span><span class="um-dot"></span><span class="um-name">判断メモの型 — 構成例（※サンプル）</span></div>
+      <div class="um-row">
+        <div class="um-label">1. 結論</div>
+        <div class="um-text">この調査から言えることを一文で。「誰が・何に・なぜつまずいているか」を、意思決定者が10秒で掴める粒度で書く。</div>
+      </div>
+      <div class="um-row">
+        <div class="um-label">2. 根拠</div>
+        <div class="um-text">結論を支える発言の引用。誰の・どの文脈の発言かを添え、原文に遡れるようにしておく。</div>
+      </div>
+      <div class="um-row">
+        <div class="um-label">3. 反証</div>
+        <div class="um-text">結論に合わない発言・割れている論点を隠さず書く。反証があるレポートほど、結論の信頼性は上がる。</div>
+      </div>
+      <div class="um-row">
+        <div class="um-label">4. 次の検証</div>
+        <div class="um-text">この結論を確かめるために次に何を調べるか。分析を「終わり」でなく「次の一手」につなげる。</div>
+      </div>
+    </div>
+    <p class="fig-cap">図：意思決定につながる判断メモの四段構成（※サンプル）。結論から書き始め、根拠・反証・次の検証で支える。</p>
+    <p>この型の肝は3と4にあります。反証を明記したレポートは、会議で反論が出たときに「その論点は把握済みで、だからこの結論です」と返せます。次の検証まで書いてあれば、レポートは棚に眠らず、次の調査や施策の起点になります。そして全体を貫く条件が、<strong>どの記述も引用と原音声に戻れること</strong>。「本当にそう言ってた？」と聞かれた瞬間に発言そのものを示せるレポートは、それだけで社内の信頼を勝ち取ります。顧客の声を継続的に判断材料へ変える仕組みづくりは<a href="voc-interview.html">VoC（顧客の声）をAIインタビューで集める・活かす</a>でも扱っています。</p>
+    <div class="callout"><p>チェックは一つで足りる。「このレポートの任意の一文について、元の発言をその場で示せるか」。示せない一文は、削るか、仮説と明記する。</p></div>
+
+    <h2 id="faq">よくある質問</h2>
+    <div class="faq"><div class="q">文字起こしだけAIに任せるのと、分析までAIを使うのは何が違いますか？</div><p class="a">文字起こしは発話をテキストにする工程で、そこで止めると、読む・分類する・比べるという一番重い作業がまるごと人に残ります。分析までAIを使うと、テーマの抽出、複数インタビューの横断比較、示唆と発言の紐付けまで下書きが揃った状態から始められます。人の仕事が「ゼロから読み解く」から「AIの下書きを検証して仕上げる」に変わる、という違いです。</p></div>
+    <div class="faq"><div class="q">何件くらいのインタビューから、AIによる横断分析の価値が出ますか？</div><p class="a">一概に何件以上という基準はありません。数件でも、逐語録化や要約の下書きが速くなる価値はあります。一方で、複数の対象者を横断して「共通するテーマ」「割れている論点」を洗い出す使い方は、人手では読み比べがつらくなる件数ほど効きます。件数で線を引くより、「全件を人が精読しきれるか」を目安に、しきれない規模になったら横断分析を組み込むのが現実的です。</p></div>
+    <div class="faq"><div class="q">インタビューの発話データをAIに渡すとき、セキュリティはどう考えればいいですか？</div><p class="a">発話データは個人の語りそのものなので、一般のテキスト以上に慎重に扱います。基本は、利用するツールの学習利用の有無とデータ保管方針を先に確認すること、個人を特定できる情報は渡す前に処理すること、社内の規程に沿ってアクセス範囲を絞ることです。組織的に運用するなら、CoeSignalのようにSSO・権限管理・監査ログ・データ管理を備え、NDAや個別契約に対応するEnterprise Control前提の環境を選ぶ方法もあります。</p></div>
+    <div class="faq"><div class="q">既存のアンケート自由回答の分析にも、同じ方法は使えますか？</div><p class="a">使えます。自由回答はインタビューより一件あたりの文脈は薄いものの、件数が多く人手で読み切れないという同じ課題を抱えています。テーマ抽出・横断比較・原文への紐付けという型はそのまま適用でき、むしろ件数が多いぶんAIの効果が出やすい領域です。ただし短い回答ほどAIが文脈を補って解釈しがちなので、示唆から原文に戻って確かめる運用はインタビュー以上に大切になります。</p></div>
+  </article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役</span></div>
+    <p>上場企業を含む37社・2,500名の生成AI導入・研修を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。AIインタビューサービスCoeSignalを通じ、発話データを根拠に遡れる判断材料へ変える定性調査の仕組みづくりも支援領域。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>読み切れない発話データを、根拠に遡れる判断材料へ。</h3>
+    <p>CoeSignalは、AIが一人ずつ深掘りするAIインタビューを、設計・実査・分析・納品まで一つの流れで提供します。成果物は結論・反証・次の検証・引用元で構成された判断メモ。インタビュー分析の効率化や定性調査の設計に関するご相談だけでも歓迎です。</p>
+  </div>
+  <a href="https://coesignal.techworker.co.jp/" class="btn">導入・調査の無料相談をする <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="https://coesignal.techworker.co.jp/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">CoeSignal 公式サイト（AIインタビュー）</a>　／　<a href="https://research.techworker.co.jp/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">サンプルレポートを見る</a>　／　<a href="../../contact.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">無料相談</a></p>
+<div class="back-list"><a href="index.html">← AIインタビュー・ラボ（記事一覧）に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="ai-interview.html" class="related-card"><span class="rc-cat">基礎</span><div class="rc-title">AIインタビューとは｜AIが一人ずつ深掘りする定性調査の新しい選択肢</div></a>
+    <a href="depth-interview.html" class="related-card"><span class="rc-cat">実査</span><div class="rc-title">デプスインタビューのやり方｜設計から分析までをAIで速くする</div></a>
+    <a href="voc-interview.html" class="related-card"><span class="rc-cat">VoC</span><div class="rc-title">VoC（顧客の声）をAIインタビューで集める・活かす</div></a>
+  </div>
+</div></section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">AIインタビュー<i>・ラボ</i></div>
+        <p>AIインタビューで、声を判断材料に。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+      </div>
+      <div class="footer-col"><h4>メディア</h4><a href="index.html">記事一覧</a><a href="ai-interview.html">AIインタビューとは</a><a href="depth-interview.html">デプスインタビュー</a><a href="voc-interview.html">VoC活用</a></div>
+      <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../index.html#services">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="../../contact.html">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+</body>
+</html>
