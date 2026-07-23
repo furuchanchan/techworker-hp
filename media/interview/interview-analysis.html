@@ -35,7 +35,7 @@ if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_vi
 <meta name="twitter:image" content="https://techworker.co.jp/media/interview/covers/interview-analysis.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../article.css">
 <link rel="stylesheet" href="lab.css">
 <script type="application/ld+json">
@@ -85,7 +85,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <div class="progress" id="progress"></div>
 
 <nav id="nav">
-  <a href="index.html" class="logo">AIインタビュー<i>・ラボ</i></a>
+  <a href="index.html" class="cs-logo"><img src="brand/coesignal-logo.svg" alt="CoeSignal" height="26"><span class="lab-tag">AIインタビュー・ラボ</span></a>
   <ul>
     <li><a href="index.html">記事一覧</a></li>
     <li><a href="index.html#about">このメディアについて</a></li>
@@ -215,6 +215,9 @@ fbq('init','1264057945446029');fbq('track','PageView');
     <p>この三点が揃うと、AI要約は「速いが怪しいもの」から「速くて検証可能なもの」に変わります。</p>
     <p>この考え方を製品として設計しているのが、TechWorkerのAIインタビューサービス<strong>CoeSignal</strong>です。AIが一人ずつ深掘りするインタビューを、回答者がURLを開いて声で答える形で実施し、設計・実査・分析・納品までを一つの流れで扱います。</p>
     <p>成果物は「根拠に遡れる判断メモ」——結論・反証・次の検証・引用元で構成され、<strong>示唆から回答全文、許諾済みの原音声まで戻れる</strong>つくりです。AIの下書きを担当者が確認してから納品する運用も、ここで述べた設計をそのまま実装したものです。実際のレポート画面は<a href="https://research.techworker.co.jp/" target="_blank" rel="noopener noreferrer">公開サンプル</a>で確認できます。</p>
+    <p>実際の共有レポート画面では、各示唆に回答人数と引用元が並び、そこから元の発言まで遡れます。</p>
+    <div class="product-shot"><div class="ps-bar">CoeSignal — 根拠付き調査レポート<span class="r">実際のプロダクト画面・内容はデモデータ</span></div><img src="product-ui/coesignal-report.png" alt="CoeSignalの共有レポート画面。示唆から回答人数と元発言へ戻れる" loading="lazy" width="1200"></div>
+    <p class="fig-cap">図：CoeSignalの共有レポート画面（実際のプロダクト画面・内容はデモデータ）。示唆ごとに回答人数と引用元が付き、原文へ戻って検証できます。</p>
     <div class="quote-box"><p>AIの要約が信用できるかどうかは、モデルの賢さではなく「原文に戻れるか」で決まる。遡れない示唆は、どれほど流暢でも判断材料にならない。</p></div>
 
     <h2 id="s4">分析を意思決定につなげるレポートの型は？</h2>
@@ -276,7 +279,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <a href="https://coesignal.techworker.co.jp/" class="btn">導入・調査の無料相談をする <i>→</i></a>
 </div></div>
 
-<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="https://coesignal.techworker.co.jp/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">CoeSignal 公式サイト（AIインタビュー）</a>　／　<a href="https://research.techworker.co.jp/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">サンプルレポートを見る</a>　／　<a href="../../contact.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">無料相談</a></p>
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="https://coesignal.techworker.co.jp/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(15,107,77,.3);">CoeSignal 公式サイト（AIインタビュー）</a>　／　<a href="https://research.techworker.co.jp/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(15,107,77,.3);">サンプルレポートを見る</a>　／　<a href="https://coesignal.techworker.co.jp/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(15,107,77,.3);">無料相談</a></p>
 <div class="back-list"><a href="index.html">← AIインタビュー・ラボ（記事一覧）に戻る</a></div>
 
 <section class="related"><div class="container">
@@ -292,13 +295,13 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <div class="container">
     <div class="footer-inner">
       <div class="footer-brand">
-        <div class="logo">AIインタビュー<i>・ラボ</i></div>
+        <div class="cs-logo"><img src="brand/coesignal-logo.svg" alt="CoeSignal" height="26"><span class="lab-tag">AIインタビュー・ラボ</span></div>
         <p>AIインタビューで、声を判断材料に。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
         <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
       </div>
       <div class="footer-col"><h4>メディア</h4><a href="index.html">記事一覧</a><a href="ai-interview.html">AIインタビューとは</a><a href="depth-interview.html">デプスインタビュー</a><a href="voc-interview.html">VoC活用</a></div>
       <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../index.html#services">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
-      <div class="footer-col"><h4>Contact</h4><a href="../../contact.html">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="https://coesignal.techworker.co.jp/">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
     </div>
     <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
   </div>

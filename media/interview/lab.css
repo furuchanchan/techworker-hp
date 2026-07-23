@@ -1,21 +1,41 @@
 /* AIインタビュー・ラボ — vertical refinements. Loads AFTER ../article.css.
-   目的: 日本企業の読者向けの走査性（結論の即視認・章の区切り・表の可読性）。
-   v6準拠: インク基調・青は差し色・上端アクセントバー禁止・mono大文字乱用禁止。 */
+   目的1: CoeSignalブランドへの全面整合（coesignal.techworker.co.jp の lp.css と同一パレット・Noto Sans JP）。
+   article.cssのCSS変数をここで上書きし、ナビ/ボタン/結論チップ/表/カードを一括でCoeSignal配色にする。
+   目的2: 日本企業の読者向けの走査性（結論の即視認・章の区切り・表の可読性）。 */
+
+/* ===== 0) CoeSignal brand override（lp.cssのパレット準拠） ===== */
+:root{
+  --ink:#15201c;            /* CoeSignal ink（墨緑） */
+  --ink-soft:#34463f;       /* CoeSignal ink-2 */
+  --slate:#667085;          /* CoeSignal muted */
+  --electric:#0f6b4d;       /* CoeSignal primary（深緑）— 旧electricの全用途を置換 */
+  --electric-dark:#0a4d38;  /* CoeSignal primary dark */
+  --paper:#f7f8f7;          /* 背景（LPのsoftに寄せた紙色） */
+  --paper-2:#eaf4ef;        /* CoeSignal blue-soft（淡緑） */
+  --white:#ffffff;          /* カード面はLP同様の純白 */
+  --line:rgba(21,32,28,.10);
+  --line-2:rgba(21,32,28,.18);
+  --cream:#f5f1e8;          /* CoeSignal cream */
+  --signal:#d96b4b;         /* CoeSignal signal（橙）— ごく小さな差し色専用 */
+  --jp:'Noto Sans JP',system-ui,sans-serif;
+  --en:'Noto Sans JP','IBM Plex Sans',system-ui,sans-serif;
+}
+::selection{background:var(--electric);color:#fff;}
 
 /* ===== 1) answer-first: 結論を一目で ===== */
 .art-body .answer{background:var(--white);border:1px solid var(--line-2);border-radius:12px;padding:20px 24px;margin:20px 0 32px;font-size:17px;font-weight:500;line-height:1.9;color:var(--ink);}
-.art-body .answer::before{content:"結論";display:inline-block;font-family:var(--jp);font-size:11.5px;font-weight:700;color:var(--electric);border:1px solid rgba(0,94,255,.35);border-radius:5px;padding:1px 9px;margin-right:12px;vertical-align:2px;}
+.art-body .answer::before{content:"結論";display:inline-block;font-family:var(--jp);font-size:11.5px;font-weight:700;color:var(--electric);border:1px solid rgba(15,107,77,.4);border-radius:5px;padding:1px 9px;margin-right:12px;vertical-align:2px;background:var(--paper-2);}
 
 /* ===== 2) 章の区切り: 番号＋ヘアラインで「どこにいるか」を常に示す ===== */
 .art-body{counter-reset:labsec;}
 .art-body h2{counter-increment:labsec;margin-top:88px;padding-top:34px;border-top:1px solid var(--line);}
-.art-body h2::before{content:counter(labsec,decimal-leading-zero);display:block;font-family:var(--en);font-size:13px;font-weight:600;letter-spacing:.06em;color:var(--electric);margin-bottom:10px;font-feature-settings:"tnum" 1;}
+.art-body h2::before{content:counter(labsec,decimal-leading-zero);display:block;font-family:var(--en);font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--electric);margin-bottom:10px;font-feature-settings:"tnum" 1;}
 .art-body h2:first-of-type{margin-top:56px;}
 
 /* ===== 3) 表: カード化＋ゼブラで行を追いやすく ===== */
 .art-body .tbl-wrap{border:1px solid var(--line-2);border-radius:12px;background:var(--white);margin:0 0 12px;}
 .art-body table{font-size:14.5px;}
-.art-body table th{padding:14px 18px;}
+.art-body table th{padding:14px 18px;background:var(--paper-2);}
 .art-body table td{padding:14px 18px;}
 .art-body tbody tr:nth-child(even) td{background:var(--paper);}
 .art-body table tr:last-child td:first-child{border-radius:0 0 0 12px;}
@@ -37,3 +57,15 @@
 /* ===== 7) 記事カバー画像のサムネイル（関連記事・一覧で「瞬間的にわかる」） ===== */
 .rc-thumb{width:100%;aspect-ratio:1200/630;border:1px solid var(--line);border-radius:10px;margin-bottom:14px;overflow:hidden;background:var(--white);}
 .rc-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+
+/* ===== 8) CoeSignalロゴのナビ/フッター用ロックアップ ===== */
+.cs-logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;}
+.cs-logo img{height:26px;width:auto;display:block;}
+.cs-logo .lab-tag{font-family:var(--jp);font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--electric);border:1px solid rgba(15,107,77,.4);border-radius:5px;padding:2px 8px;background:var(--paper-2);white-space:nowrap;}
+
+/* ===== 9) 実プロダクト画面の掲載枠（LPと同じ「実際の画面」提示様式） ===== */
+.product-shot{border:1px solid var(--line-2);border-radius:14px;overflow:hidden;background:var(--white);box-shadow:0 10px 30px rgba(21,32,28,.06);margin:8px 0 8px;}
+.product-shot img{width:100%;height:auto;display:block;}
+.product-shot .ps-bar{display:flex;align-items:center;gap:8px;padding:11px 16px;border-bottom:1px solid var(--line);font-size:11.5px;font-weight:700;color:var(--slate);}
+.product-shot .ps-bar::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--electric);}
+.product-shot .ps-bar .r{margin-left:auto;font-weight:500;color:var(--slate);}

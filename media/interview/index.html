@@ -35,8 +35,9 @@ if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_vi
 <meta name="twitter:image" content="https://techworker.co.jp/media/interview/covers/portal.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../article.css">
+<link rel="stylesheet" href="lab.css">
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -107,9 +108,10 @@ fbq('init','1264057945446029');fbq('track','PageView');
 /* 2) featured */
 .lb-feat-sec{margin-top:56px;}
 .lb-feat{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);gap:clamp(28px,3.5vw,56px);align-items:center;}
-.lb-feat-cover{display:block;position:relative;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--white);box-shadow:0 30px 60px -42px rgba(17,22,29,.34),0 8px 22px -20px rgba(17,22,29,.18);transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s,border-color .25s;}
-.lb-feat-cover:hover{transform:translateY(-3px);border-color:var(--line-2);box-shadow:0 42px 72px -44px rgba(17,22,29,.42),0 12px 26px -20px rgba(17,22,29,.22);}
-.lb-feat-cover svg{display:block;width:100%;height:auto;}
+.lb-feat-cover{display:block;position:relative;text-decoration:none;transition:transform .3s cubic-bezier(.2,.8,.2,1);}
+.lb-feat-cover:hover{transform:translateY(-3px);}
+.lb-feat-cover .product-shot{margin:0;transition:box-shadow .3s,border-color .25s;}
+.lb-feat-cover:hover .product-shot{border-color:var(--line-2);box-shadow:0 24px 48px rgba(21,32,28,.12);}
 .lb-feat-lead{display:block;text-decoration:none;color:inherit;}
 .lb-feat-lead h2{font-family:var(--jp);font-weight:700;font-size:clamp(24px,2.6vw,33px);line-height:1.34;letter-spacing:-.022em;color:var(--ink);margin:12px 0 0;transition:color .2s;}
 .lb-feat-lead:hover h2{color:var(--electric);}
@@ -148,7 +150,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 .lb-about .copy{font-family:var(--jp);font-weight:700;font-size:clamp(28px,3.4vw,42px);line-height:1.42;letter-spacing:-.03em;color:var(--ink);}
 .lb-about .body p{font-size:14px;color:var(--slate);line-height:1.95;}
 .lb-about .body p+p{margin-top:14px;}
-.lb-about .body a{color:var(--electric);text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);}
+.lb-about .body a{color:var(--electric);text-decoration:none;border-bottom:1px solid rgba(15,107,77,.3);}
 .lb-about .body a:hover{border-bottom-color:var(--electric);}
 .lb-about .site{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-family:var(--jp);font-size:14px;font-weight:600;color:var(--electric);text-decoration:none;}
 .lb-about .site .ar{transition:transform .2s;}
@@ -183,7 +185,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <body>
 
 <nav id="nav">
-  <a href="index.html" class="logo">AIインタビュー<i>・ラボ</i></a>
+  <a href="index.html" class="cs-logo"><img src="brand/coesignal-logo.svg" alt="CoeSignal" height="26"><span class="lab-tag">AIインタビュー・ラボ</span></a>
   <ul>
     <li><a href="index.html">記事一覧</a></li>
     <li><a href="index.html#about">このメディアについて</a></li>
@@ -222,38 +224,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <div class="lb-sh"><span class="h">特集</span><span class="ln"></span></div>
   <div class="lb-feat">
     <a class="lb-feat-cover" href="ai-interview.html" aria-label="特集記事を読む：AIインタビューとは">
-      <svg viewBox="0 0 680 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AIインタビュー画面のイメージ（発話例はサンプル）">
-        <rect width="680" height="400" fill="#FBFAF7"/>
-        <rect x="24" y="18" width="632" height="352" rx="12" fill="#FFFFFF" stroke="#E5E7EA"/>
-        <circle cx="48" cy="42" r="4" fill="#E5E7EA"/><circle cx="62" cy="42" r="4" fill="#E5E7EA"/><circle cx="76" cy="42" r="4" fill="#E5E7EA"/>
-        <text x="160" y="46" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="2" fill="#5A6677">COESIGNAL — AI INTERVIEW</text>
-        <text x="632" y="46" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="10" fill="#9AA6B4">※サンプル</text>
-        <line x1="24" y1="58" x2="656" y2="58" stroke="#E5E7EA"/>
-        <!-- question -->
-        <text x="52" y="90" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600" letter-spacing="2" fill="#005EFF">Q</text>
-        <text x="72" y="90" font-family="'IBM Plex Sans JP', sans-serif" font-size="15" font-weight="600" fill="#11161D">このサービスを続けるか、迷った瞬間はありましたか？</text>
-        <!-- respondent (voice) bubble -->
-        <rect x="52" y="112" width="440" height="86" rx="12" fill="#F4F4F1"/>
-        <text x="70" y="134" font-family="'IBM Plex Sans JP', sans-serif" font-size="10" font-weight="600" fill="#5A6677">回答者（音声で回答）</text>
-        <g fill="#9AA6B4">
-          <rect x="70" y="148" width="3" height="10" rx="1.5"/><rect x="76" y="144" width="3" height="18" rx="1.5"/>
-          <rect x="82" y="140" width="3" height="26" rx="1.5"/><rect x="88" y="146" width="3" height="14" rx="1.5"/>
-          <rect x="94" y="142" width="3" height="22" rx="1.5"/><rect x="100" y="148" width="3" height="10" rx="1.5"/>
-        </g>
-        <text x="116" y="156" font-family="'IBM Plex Sans JP', sans-serif" font-size="13.5" fill="#11161D">「更新のタイミングで一度迷いました。機能というより、</text>
-        <text x="116" y="180" font-family="'IBM Plex Sans JP', sans-serif" font-size="13.5" fill="#11161D">社内で使う人が増えなかったのが大きくて……」</text>
-        <!-- AI probing bubble -->
-        <rect x="188" y="222" width="440" height="86" rx="12" fill="#EEF4FF" stroke="rgba(0,94,255,.22)"/>
-        <text x="206" y="244" font-family="'IBM Plex Sans JP', sans-serif" font-size="10" font-weight="600" fill="#005EFF">AIの深掘り質問</text>
-        <text x="206" y="268" font-family="'IBM Plex Sans JP', sans-serif" font-size="13.5" fill="#11161D">「使う人が増えなかった」とのことですが、最初に</text>
-        <text x="206" y="292" font-family="'IBM Plex Sans JP', sans-serif" font-size="13.5" fill="#11161D">想定と違ったのは、どの場面でしたか？</text>
-        <!-- input bar -->
-        <rect x="52" y="326" width="576" height="30" rx="15" fill="#FFFFFF" stroke="#E5E7EA"/>
-        <circle cx="70" cy="341" r="8" fill="#005EFF"/>
-        <path d="M70 337.5a2 2 0 0 1 2 2v2.6a2 2 0 1 1-4 0v-2.6a2 2 0 0 1 2-2zm-3.6 4.8a3.6 3.6 0 0 0 7.2 0M70 345.9v1.6" stroke="#FFFFFF" stroke-width="1.1" fill="none" stroke-linecap="round"/>
-        <text x="88" y="345" font-family="'IBM Plex Sans JP', sans-serif" font-size="11" fill="#5A6677">声で回答できます（テキスト回答も可）</text>
-        <text x="340" y="390" text-anchor="middle" font-family="'IBM Plex Sans JP', sans-serif" font-size="10" fill="#9AA6B4">※画面・質問・発話例はすべてサンプルです</text>
-      </svg>
+      <div class="product-shot"><div class="ps-bar">CoeSignal — 根拠付き調査レポート<span class="r">実際のプロダクト画面・内容はデモデータ</span></div><img src="product-ui/coesignal-report.png" alt="CoeSignalの共有レポート画面。示唆から回答人数と元発言へ戻れる" loading="eager"></div>
     </a>
     <a class="lb-feat-lead" href="ai-interview.html">
       <span class="lb-chip">基礎</span>
@@ -360,13 +331,13 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <div class="container">
     <div class="footer-inner">
       <div class="footer-brand">
-        <div class="logo">AIインタビュー<i>・ラボ</i></div>
+        <div class="cs-logo"><img src="brand/coesignal-logo.svg" alt="CoeSignal" height="26"><span class="lab-tag">AIインタビュー・ラボ</span></div>
         <p>「なぜ」を聞いて、意思決定に変える。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
         <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
       </div>
       <div class="footer-col"><h4>AIインタビュー・ラボ</h4><a href="index.html">記事一覧</a><a href="ai-interview.html">AIインタビューとは</a><a href="depth-interview.html">デプスインタビュー</a><a href="interview-analysis.html">インタビュー分析</a><a href="voc-interview.html">解約理由・VoC深掘り</a></div>
       <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../index.html#services">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
-      <div class="footer-col"><h4>Contact</h4><a href="https://coesignal.techworker.co.jp/" target="_blank" rel="noopener noreferrer">CoeSignal 公式サイト</a><a href="../../contact.html">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="https://coesignal.techworker.co.jp/" target="_blank" rel="noopener noreferrer">CoeSignal 公式サイト</a><a href="https://coesignal.techworker.co.jp/">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
     </div>
     <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
   </div>
