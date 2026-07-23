@@ -1,0 +1,35 @@
+/* AIインタビュー・ラボ — vertical refinements. Loads AFTER ../article.css.
+   目的: 日本企業の読者向けの走査性（結論の即視認・章の区切り・表の可読性）。
+   v6準拠: インク基調・青は差し色・上端アクセントバー禁止・mono大文字乱用禁止。 */
+
+/* ===== 1) answer-first: 結論を一目で ===== */
+.art-body .answer{background:var(--white);border:1px solid var(--line-2);border-radius:12px;padding:20px 24px;margin:20px 0 32px;font-size:17px;font-weight:500;line-height:1.9;color:var(--ink);}
+.art-body .answer::before{content:"結論";display:inline-block;font-family:var(--jp);font-size:11.5px;font-weight:700;color:var(--electric);border:1px solid rgba(0,94,255,.35);border-radius:5px;padding:1px 9px;margin-right:12px;vertical-align:2px;}
+
+/* ===== 2) 章の区切り: 番号＋ヘアラインで「どこにいるか」を常に示す ===== */
+.art-body{counter-reset:labsec;}
+.art-body h2{counter-increment:labsec;margin-top:88px;padding-top:34px;border-top:1px solid var(--line);}
+.art-body h2::before{content:counter(labsec,decimal-leading-zero);display:block;font-family:var(--en);font-size:13px;font-weight:600;letter-spacing:.06em;color:var(--electric);margin-bottom:10px;font-feature-settings:"tnum" 1;}
+.art-body h2:first-of-type{margin-top:56px;}
+
+/* ===== 3) 表: カード化＋ゼブラで行を追いやすく ===== */
+.art-body .tbl-wrap{border:1px solid var(--line-2);border-radius:12px;background:var(--white);margin:0 0 12px;}
+.art-body table{font-size:14.5px;}
+.art-body table th{padding:14px 18px;}
+.art-body table td{padding:14px 18px;}
+.art-body tbody tr:nth-child(even) td{background:var(--paper);}
+.art-body table tr:last-child td:first-child{border-radius:0 0 0 12px;}
+.art-body table tr:last-child td:last-child{border-radius:0 0 12px 0;}
+
+/* ===== 4) FAQ: Qマークで質問を立たせる ===== */
+.art-body .faq .q{display:flex;gap:12px;align-items:baseline;}
+.art-body .faq .q::before{content:"Q";font-family:var(--en);font-weight:700;font-size:15px;color:var(--electric);flex:none;}
+.art-body .faq .a{padding-left:27px;}
+
+/* ===== 5) 本文リズム: 拾い読みでも筋が通るように ===== */
+.art-body>p{margin-bottom:26px;}
+.art-body h3{margin-top:44px;font-size:18.5px;}
+.art-body h3::before{content:"";display:inline-block;width:8px;height:8px;background:var(--electric);border-radius:2px;margin-right:10px;vertical-align:1px;}
+
+/* ===== 6) 記事末尾の関連サービス行を落ち着かせる ===== */
+.rel-svc{border-top:1px solid var(--line);padding-top:22px;}
