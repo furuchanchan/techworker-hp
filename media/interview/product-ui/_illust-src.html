@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#15201c;--ink-2:#34463f;--muted:#667085;--line:#dfe3ea;--paper:#ffffff;--soft:#f5f6f8;--green:#0f6b4d;--green-dark:#0a4d38;--green-soft:#eaf4ef;--cream:#f5f1e8;--signal:#d96b4b;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#888;font-family:'Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased;}
+.app{width:1200px;height:500px;background:var(--soft);display:flex;overflow:hidden;}
+/* ===== sidebar（実プロダクトのワークスペース画面準拠の簡略イラスト） ===== */
+.side{width:230px;background:var(--paper);border-right:1px solid var(--line);padding:22px 18px;display:flex;flex-direction:column;gap:6px;flex:none;}
+.side .logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:18px;color:var(--ink);margin-bottom:20px;}
+.side .logo img{height:30px;width:auto;}
+.side .item{display:flex;align-items:center;gap:11px;font-size:14px;font-weight:500;color:var(--ink-2);padding:10px 12px;border-radius:9px;}
+.side .item .ic{width:16px;height:16px;border:1.8px solid var(--muted);border-radius:4px;flex:none;opacity:.75;}
+.side .item.on{background:var(--green-soft);color:var(--green-dark);font-weight:700;}
+.side .item.on .ic{border-color:var(--green);opacity:1;}
+.side .sep{height:1px;background:var(--line);margin:14px 0;}
+.side .foot{margin-top:auto;font-size:12px;color:var(--muted);line-height:1.7;}
+/* ===== main ===== */
+.main{flex:1;display:flex;flex-direction:column;min-width:0;}
+.topbar{height:58px;background:var(--paper);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;padding:0 26px;font-size:13.5px;color:var(--muted);flex:none;}
+.topbar b{color:var(--ink);font-weight:700;}
+.topbar .badge{margin-left:auto;font-size:12px;font-weight:700;color:var(--green-dark);background:var(--green-soft);border-radius:20px;padding:5px 14px;}
+.body{flex:1;padding:28px 32px;overflow:hidden;}
+.h1{font-size:24px;font-weight:900;color:var(--ink);letter-spacing:-.01em;}
+.sub{font-size:13px;color:var(--muted);margin-top:6px;}
+/* cards */
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px 24px;box-shadow:0 4px 14px rgba(21,32,28,.05);}
+.chip{display:inline-block;font-size:12px;font-weight:700;border-radius:6px;padding:3px 11px;}
+.chip.g{color:#fff;background:var(--green);}
+.chip.o{color:var(--muted);border:1.5px solid var(--line);}
+.chip.s{color:var(--signal);border:1.5px solid rgba(217,107,75,.45);}
+.row{display:flex;align-items:center;gap:12px;}
+.l{height:10px;border-radius:5px;background:var(--soft);}
+.l.g{background:var(--green-soft);}
+/* report variant */
+.rep-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:18px;margin-top:22px;}
+.memo-rows{display:flex;flex-direction:column;gap:16px;margin-top:16px;}
+.memo-rows .row .l{flex:1;}
+.play{display:flex;align-items:center;gap:12px;background:var(--soft);border-radius:10px;padding:12px 16px;margin-top:16px;font-size:13.5px;color:var(--ink-2);}
+.play .btn{width:34px;height:34px;border-radius:50%;background:var(--green);flex:none;position:relative;}
+.play .btn::after{content:"";position:absolute;left:13px;top:10px;border-left:11px solid #fff;border-top:7px solid transparent;border-bottom:7px solid transparent;}
+.vbar{display:flex;align-items:center;gap:4px;height:22px;flex:1;}
+.vbar i{display:block;width:4px;border-radius:2px;background:var(--green);opacity:.85;}
+.vbar i:nth-child(odd){background:rgba(21,32,28,.25);}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.kpi{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px;}
+.kpi .k{font-size:12px;color:var(--muted);}
+.kpi .v{font-size:26px;font-weight:900;color:var(--ink);margin-top:4px;}
+.kpi .v em{font-style:normal;color:var(--green);}
+/* voc variant */
+.voc-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:18px;margin-top:22px;}
+.rlist{display:flex;flex-direction:column;gap:12px;margin-top:14px;}
+.rrow{display:flex;align-items:center;gap:12px;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 16px;font-size:13.5px;color:var(--ink-2);}
+.rrow .av{width:28px;height:28px;border-radius:50%;background:var(--green-soft);color:var(--green-dark);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none;}
+.rrow .st{margin-left:auto;font-size:12px;font-weight:700;color:var(--green-dark);background:var(--green-soft);border-radius:14px;padding:3px 11px;white-space:nowrap;}
+.rrow .st.w{color:var(--muted);background:var(--soft);}
+.bub{background:var(--paper);border:1.5px solid var(--line);border-radius:13px;padding:14px 18px;font-size:14px;line-height:1.7;color:var(--ink-2);}
+.bub.q{border-color:rgba(15,107,77,.5);}
+.bub .tg{display:flex;align-items:center;gap:7px;font-size:11px;font-weight:700;color:var(--muted);margin-bottom:6px;}
+.bub .tg::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--muted);}
+.bub.q .tg{color:var(--green);}
+.bub.q .tg::before{background:var(--green);}
+.thread{display:flex;flex-direction:column;gap:12px;margin-top:14px;}
+.thread .ind{margin-left:30px;}
+</style>
+</head>
+<body>
+
+<!-- A: 分析記事用 — 根拠付き調査レポート（イラスト） -->
+<div class="app" id="i-report">
+  <div class="side">
+    <div class="logo"><img src="/Users/koutaroufuruno/Projects/techworker-hp/media/interview/brand/coesignal-mark.svg" alt="">CoeSignal</div>
+    <div class="item"><span class="ic"></span>スペース</div>
+    <div class="item on"><span class="ic"></span>調査レポート</div>
+    <div class="item"><span class="ic"></span>回答データ</div>
+    <div class="item"><span class="ic"></span>全調査チャット</div>
+    <div class="sep"></div>
+    <div class="foot">図はイメージです。<br>数値・内容はサンプル。</div>
+  </div>
+  <div class="main">
+    <div class="topbar">スペース <span>›</span> <b>新料金プランの受容性調査</b><span class="badge">レポート完成</span></div>
+    <div class="body">
+      <div class="h1">根拠に遡れる判断メモ</div>
+      <div class="sub">結論だけで終わらせない。反証・次の検証・引用元までを一枚に。</div>
+      <div class="rep-grid">
+        <div class="card">
+          <div class="row"><span class="chip g">結論</span><span style="font-size:14.5px;font-weight:700;color:var(--ink);">条件付きで進める</span></div>
+          <div class="memo-rows">
+            <div class="row"><span class="chip o">根拠</span><span class="l" style="flex:1"></span></div>
+            <div class="row"><span class="chip s">反証</span><span class="l" style="flex:.8"></span></div>
+            <div class="row"><span class="chip o">次の検証</span><span class="l" style="flex:.6"></span></div>
+          </div>
+          <div class="play"><span class="btn"></span><span>引用元の発言を再生</span><span class="vbar"><i style="height:8px"></i><i style="height:16px"></i><i style="height:20px"></i><i style="height:11px"></i><i style="height:18px"></i><i style="height:7px"></i><i style="height:14px"></i><i style="height:9px"></i></span></div>
+        </div>
+        <div>
+          <div class="kpis">
+            <div class="kpi"><div class="k">回答</div><div class="v"><em>20</em>件</div></div>
+            <div class="kpi"><div class="k">深掘り質問</div><div class="v">58問</div></div>
+          </div>
+          <div class="card" style="margin-top:14px;">
+            <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:12px;">示唆 → 元発言へ</div>
+            <div class="memo-rows" style="margin-top:0;">
+              <div class="row"><span class="l g" style="flex:1"></span></div>
+              <div class="row"><span class="l" style="flex:.85"></span></div>
+              <div class="row"><span class="l" style="flex:.7"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- B: VoC記事用 — 解約理由インタビューの実施ボード（イラスト） -->
+<div class="app" id="i-voc" style="height:530px;">
+  <div class="side">
+    <div class="logo"><img src="/Users/koutaroufuruno/Projects/techworker-hp/media/interview/brand/coesignal-mark.svg" alt="">CoeSignal</div>
+    <div class="item"><span class="ic"></span>スペース</div>
+    <div class="item on"><span class="ic"></span>実査モニター</div>
+    <div class="item"><span class="ic"></span>調査レポート</div>
+    <div class="item"><span class="ic"></span>全調査チャット</div>
+    <div class="sep"></div>
+    <div class="foot">図はイメージです。<br>内容はサンプル。</div>
+  </div>
+  <div class="main">
+    <div class="topbar">スペース <span>›</span> <b>解約理由インタビュー</b><span class="badge">実査中</span></div>
+    <div class="body">
+      <div class="h1">URLを配るだけで、深掘りが同時並行で進む</div>
+      <div class="sub">回答者は都合のよい時間に声で回答。AIが一人ずつ聞き返します。</div>
+      <div class="voc-grid">
+        <div>
+          <div style="font-size:12px;font-weight:700;color:var(--muted);margin-top:4px;">回答の状況</div>
+          <div class="rlist">
+            <div class="rrow"><span class="av">A</span>解約済みユーザー<span class="st">回答完了</span></div>
+            <div class="rrow"><span class="av">B</span>解約済みユーザー<span class="st">回答完了</span></div>
+            <div class="rrow"><span class="av">C</span>休眠ユーザー<span class="st w">回答中</span></div>
+            <div class="rrow"><span class="av">D</span>休眠ユーザー<span class="st w">未回答</span></div>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:12px;font-weight:700;color:var(--muted);margin-top:4px;">深掘りの例（回答者A）</div>
+          <div class="thread">
+            <div class="bub q"><span class="tg">AIの質問</span>使うのをやめようと思った、最初のきっかけは？</div>
+            <div class="bub ind"><span class="tg">回答者（声で回答）</span>「料金というより、社内で使う人が増えなくて……」</div>
+            <div class="bub q ind" style="margin-left:60px;"><span class="tg">AIの深掘り</span>使う人が増えなかったのは、どの場面からですか？</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
