@@ -88,9 +88,22 @@ fbq('init','1264057945446029');fbq('track','PageView');
 .lb-mast-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,.55fr);gap:clamp(32px,5vw,88px);align-items:end;padding-bottom:44px;border-bottom:1px solid var(--line-2);}
 .lb-kicker{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--electric);display:inline-flex;align-items:center;gap:9px;}
 .lb-kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--electric);}
-.lb-mast h1{font-family:var(--jp);font-weight:700;font-size:clamp(44px,6vw,72px);line-height:1.12;letter-spacing:-.045em;color:var(--ink);margin-top:22px;}
+.lb-mast h1{font-family:var(--jp);font-weight:900;font-size:clamp(38px,4.5vw,56px);line-height:1.22;letter-spacing:-.03em;color:var(--ink);margin-top:22px;}
 .lb-mast h1 .nb{display:inline-block;}
+.lb-mast h1 em{font-style:normal;color:var(--electric);}
 .lb-def{font-size:15.5px;color:var(--slate);line-height:1.9;margin-top:20px;max-width:46ch;}
+/* 回答者アバターのモザイク（プロダクトと同一のイラスト・装飾） */
+.lb-mast-right{display:flex;flex-direction:column;gap:28px;min-width:0;}
+.lb-faces{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;padding-bottom:8px;}
+.lb-faces .fc{width:100%;aspect-ratio:1;border-radius:50%;border:1px solid var(--line);overflow:hidden;background:var(--paper-2);}
+.lb-faces .fc:nth-child(3n){background:var(--cream);}
+.lb-faces .fc:nth-child(3n+2){background:#fff;}
+.lb-faces .fc:nth-child(even){transform:translateY(7px);}
+.lb-faces .fc img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
+.lb-faces-cap{display:flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;color:var(--electric);margin-top:2px;}
+.lb-faces-cap::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--electric);flex:none;}
+.lb-faces-cap .w{display:inline-flex;align-items:center;gap:3px;height:14px;margin-left:2px;}
+.lb-faces-cap .w i{display:block;width:3px;border-radius:2px;background:var(--electric);}
 .lb-util{display:flex;flex-direction:column;}
 .lb-util a{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px 2px;border-top:1px solid var(--line);text-decoration:none;font-family:var(--jp);font-size:14px;font-weight:600;color:var(--ink);transition:color .18s;}
 .lb-util a:last-child{border-bottom:1px solid var(--line);}
@@ -207,15 +220,38 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <header class="lb-wrap lb-mast">
   <div class="lb-mast-grid">
     <div>
-      <span class="lb-kicker"><span class="dot"></span>AI-Moderated Research Lab</span>
-      <h1><span class="nb">AIインタビュー</span><span class="nb">・ラボ</span></h1>
-      <p class="lb-def">「なぜ」をAIインタビューで聞き、意思決定に変える——事業会社の商品企画・マーケティング・リサーチ・CX担当のための定性調査の実践メディアです。</p>
+      <span class="lb-kicker"><span class="dot"></span>AIインタビュー・ラボ — AI-Moderated Research Lab</span>
+      <h1><span class="nb">大量のインタビューを、</span><span class="nb"><em>高速に。</em></span></h1>
+      <p class="lb-def">AIが顧客・現場の声を一人ずつ深掘りする「AIインタビュー」。アンケートでは見えない「なぜ」を、意思決定の根拠に変える——商品企画・マーケティング・リサーチ・CX担当のための実践メディアです。</p>
     </div>
-    <nav class="lb-util" aria-label="ユーティリティ">
-      <a href="#about">このメディアについて <span class="ar">&rarr;</span></a>
-      <a href="https://coesignal.techworker.co.jp/">CoeSignalを5分で体験 <span class="ar">&rarr;</span></a>
-      <a href="https://coesignal.techworker.co.jp/">導入・調査の相談 <span class="ar">&rarr;</span></a>
-    </nav>
+    <div class="lb-mast-right">
+      <div class="lb-faces" aria-hidden="true">
+        <span class="fc"><img src="avatars/f30-2.svg" alt="" loading="eager"></span>
+        <span class="fc"><img src="avatars/m20-0.svg" alt="" loading="eager"></span>
+        <span class="fc"><img src="avatars/f50-6.svg" alt="" loading="eager"></span>
+        <span class="fc"><img src="avatars/m40-2.svg" alt="" loading="eager"></span>
+        <span class="fc"><img src="avatars/f20-0.svg" alt="" loading="eager"></span>
+        <span class="fc"><img src="avatars/m30-6.svg" alt="" loading="eager"></span>
+        <span class="fc"><img src="avatars/m50-0.svg" alt="" loading="eager"></span>
+        <span class="fc"><img src="avatars/f40-2.svg" alt="" loading="eager"></span>
+        <span class="fc"><img src="avatars/m30-0.svg" alt="" loading="eager"></span>
+        <span class="fc"><img src="avatars/f20-6.svg" alt="" loading="eager"></span>
+        <span class="fc"><img src="avatars/m40-6.svg" alt="" loading="eager"></span>
+        <span class="fc"><img src="avatars/f30-0.svg" alt="" loading="eager"></span>
+        <span class="fc"><img src="avatars/f40-0.svg" alt="" loading="eager"></span>
+        <span class="fc"><img src="avatars/m20-2.svg" alt="" loading="eager"></span>
+        <span class="fc"><img src="avatars/f50-0.svg" alt="" loading="eager"></span>
+        <span class="fc"><img src="avatars/m50-6.svg" alt="" loading="eager"></span>
+        <span class="fc"><img src="avatars/f20-2.svg" alt="" loading="eager"></span>
+        <span class="fc"><img src="avatars/m30-2.svg" alt="" loading="eager"></span>
+      </div>
+      <div class="lb-faces-cap">一人ひとりに、AIが同時並行で深掘り<span class="w"><i style="height:6px"></i><i style="height:12px"></i><i style="height:9px"></i><i style="height:14px"></i><i style="height:7px"></i></span></div>
+      <nav class="lb-util" aria-label="ユーティリティ">
+        <a href="#about">このメディアについて <span class="ar">&rarr;</span></a>
+        <a href="https://coesignal.techworker.co.jp/">CoeSignalを5分で体験 <span class="ar">&rarr;</span></a>
+        <a href="https://coesignal.techworker.co.jp/">導入・調査の相談 <span class="ar">&rarr;</span></a>
+      </nav>
+    </div>
   </div>
 </header>
 
