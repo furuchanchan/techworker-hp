@@ -87,30 +87,38 @@ fbq('init','1264057945446029');fbq('track','PageView');
    v6トークン: インク基調 / 青は差し色 / IBM Plexゴシック / ヘアライン罫。 ===== */
 .lb-wrap{max-width:1180px;margin:0 auto;padding:0 48px;}
 
-/* 1) masthead */
+/* 1) masthead — 縦積み構成: どの幅でも崩れない（固定サイズ円のflex折返し） */
 .lb-mast{padding-top:104px;}
-.lb-mast-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,.55fr);gap:clamp(32px,5vw,88px);align-items:center;padding-bottom:36px;border-bottom:1px solid var(--line-2);}
 .lb-kicker{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--electric);display:inline-flex;align-items:center;gap:9px;}
 .lb-kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--electric);}
-.lb-mast h1{font-family:var(--jp);font-weight:900;font-size:clamp(38px,4.5vw,56px);line-height:1.22;letter-spacing:-.03em;color:var(--ink);margin-top:22px;}
+.lb-mast h1{font-family:var(--jp);font-weight:900;font-size:clamp(38px,4.5vw,60px);line-height:1.2;letter-spacing:-.03em;color:var(--ink);margin-top:20px;}
 .lb-mast h1 .nb{display:inline-block;}
 .lb-mast h1 em{font-style:normal;color:var(--electric);}
-.lb-def{font-size:15.5px;color:var(--slate);line-height:1.9;margin-top:20px;max-width:46ch;}
-/* 回答者アバターのモザイク（プロダクトと同一のイラスト・装飾） */
-.lb-mast-right{display:flex;flex-direction:column;gap:22px;min-width:0;}
-.lb-faces{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;padding-bottom:8px;}
-.lb-faces .fc{width:100%;aspect-ratio:1;border-radius:50%;border:1px solid var(--line);overflow:hidden;background:var(--paper-2);}
-.lb-faces .fc:nth-child(3n){background:var(--cream);}
-.lb-faces .fc:nth-child(3n+2){background:#fff;}
-.lb-faces .fc:nth-child(even){transform:translateY(7px);}
+.lb-def{font-size:15.5px;color:var(--slate);line-height:1.9;margin-top:18px;max-width:62ch;}
+/* 回答者アバターの帯: 円は固定サイズ（clamp）・flexで折返すだけ＝伸縮で歪まない */
+.lb-faces{display:flex;flex-wrap:wrap;gap:clamp(10px,1.6vw,18px);margin-top:38px;}
+.lb-faces .fc{position:relative;width:clamp(62px,7vw,96px);aspect-ratio:1;flex:none;}
+.lb-faces .fc .av{display:block;width:100%;height:100%;border-radius:50%;border:1px solid var(--line);overflow:hidden;background:var(--paper-2);}
+.lb-faces .fc:nth-child(3n) .av{background:var(--cream);}
+.lb-faces .fc:nth-child(3n+2) .av{background:#fff;}
 .lb-faces .fc img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
-.lb-faces-cap{display:flex;align-items:center;gap:9px;white-space:nowrap;font-size:12.5px;font-weight:700;color:var(--electric);margin-top:2px;}
+/* 喋ってる風の吹き出し（CSSのみ・時間差で数人ずつ点灯） */
+.fc .say{position:absolute;top:-8px;right:-4px;display:flex;gap:3px;align-items:center;background:#fff;border:1.5px solid rgba(15,107,77,.45);border-radius:10px 10px 10px 3px;padding:4px 7px;box-shadow:0 2px 8px rgba(21,32,28,.10);opacity:0;transform:scale(.5);transform-origin:bottom left;animation:lb-say 10.5s infinite;animation-delay:var(--sayo,0s);pointer-events:none;}
+.fc .say i{width:4px;height:4px;border-radius:50%;background:var(--electric);animation:lb-dot .9s ease-in-out infinite;}
+.fc .say i:nth-child(2){animation-delay:.15s;}
+.fc .say i:nth-child(3){animation-delay:.3s;}
+@keyframes lb-say{0%,3%{opacity:0;transform:scale(.5)}7%,18%{opacity:1;transform:scale(1)}23%,100%{opacity:0;transform:scale(.5)}}
+@keyframes lb-dot{0%,100%{transform:translateY(0);opacity:.45}50%{transform:translateY(-2px);opacity:1}}
+.lb-faces-cap{display:flex;align-items:center;gap:9px;white-space:nowrap;font-size:12.5px;font-weight:700;color:var(--electric);margin-top:18px;}
 .lb-faces-cap::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--electric);flex:none;}
-.lb-faces-cap .w{display:inline-flex;align-items:center;gap:3px;height:14px;margin-left:2px;}
-.lb-faces-cap .w i{display:block;width:3px;border-radius:2px;background:var(--electric);}
-.lb-util{display:flex;flex-direction:column;}
+.lb-faces-cap .w{display:inline-flex;align-items:flex-end;gap:3px;height:14px;margin-left:2px;}
+.lb-faces-cap .w i{display:block;width:3px;border-radius:2px;background:var(--electric);transform-origin:bottom;animation:lb-wave 1.15s ease-in-out infinite;}
+.lb-faces-cap .w i:nth-child(2){animation-delay:.12s}.lb-faces-cap .w i:nth-child(3){animation-delay:.24s}.lb-faces-cap .w i:nth-child(4){animation-delay:.36s}.lb-faces-cap .w i:nth-child(5){animation-delay:.48s}
+@keyframes lb-wave{0%,100%{transform:scaleY(.45)}50%{transform:scaleY(1.1)}}
+@media (prefers-reduced-motion:reduce){.fc .say{animation:none;opacity:0;}.lb-faces-cap .w i{animation:none;}}
+/* ユーティリティ: 広い幅は横3列・狭い幅は縦積み（gridの列数が変わるだけ） */
+.lb-util{display:grid;grid-template-columns:repeat(3,1fr);column-gap:44px;margin-top:30px;border-bottom:1px solid var(--line-2);padding-bottom:26px;}
 .lb-util a{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px 2px;border-top:1px solid var(--line);text-decoration:none;font-family:var(--jp);font-size:14px;font-weight:600;color:var(--ink);transition:color .18s;}
-.lb-util a:last-child{border-bottom:1px solid var(--line);}
 .lb-util a .ar{font-family:var(--en);color:var(--slate);flex:none;transition:transform .2s,color .2s;}
 .lb-util a:hover{color:var(--electric);}
 .lb-util a:hover .ar{color:var(--electric);transform:translateX(3px);}
@@ -184,7 +192,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 @media(max-width:880px){
   .lb-wrap{padding:0 22px;}
   .lb-mast{padding-top:100px;}
-  .lb-mast-grid{grid-template-columns:1fr;gap:36px;padding-bottom:36px;}
+  .lb-util{grid-template-columns:1fr;column-gap:0;}
   .lb-mast h1{font-size:clamp(38px,10.5vw,52px);}
   .lb-feat{grid-template-columns:1fr;gap:26px;}
   .lb-index{margin-top:64px;}
@@ -222,41 +230,35 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
 <!-- 1) masthead -->
 <header class="lb-wrap lb-mast">
-  <div class="lb-mast-grid">
-    <div>
-      <span class="lb-kicker"><span class="dot"></span>AIインタビュー・ラボ — AI-Moderated Research Lab</span>
-      <h1><span class="nb">大量のインタビューを、</span><span class="nb"><em>高速に。</em></span></h1>
-      <p class="lb-def">AIが顧客・現場の声を一人ずつ深掘りする「AIインタビュー」。アンケートでは見えない「なぜ」を、意思決定の根拠に変える——商品企画・マーケティング・リサーチ・CX担当のための実践メディアです。</p>
-    </div>
-    <div class="lb-mast-right">
-      <div class="lb-faces" aria-hidden="true">
-        <span class="fc"><img src="avatars/f30-2.svg" alt="" loading="eager"></span>
-        <span class="fc"><img src="avatars/m20-0.svg" alt="" loading="eager"></span>
-        <span class="fc"><img src="avatars/f50-6.svg" alt="" loading="eager"></span>
-        <span class="fc"><img src="avatars/m40-2.svg" alt="" loading="eager"></span>
-        <span class="fc"><img src="avatars/f20-0.svg" alt="" loading="eager"></span>
-        <span class="fc"><img src="avatars/m30-6.svg" alt="" loading="eager"></span>
-        <span class="fc"><img src="avatars/m50-0.svg" alt="" loading="eager"></span>
-        <span class="fc"><img src="avatars/f40-2.svg" alt="" loading="eager"></span>
-        <span class="fc"><img src="avatars/m30-0.svg" alt="" loading="eager"></span>
-        <span class="fc"><img src="avatars/f20-6.svg" alt="" loading="eager"></span>
-        <span class="fc"><img src="avatars/m40-6.svg" alt="" loading="eager"></span>
-        <span class="fc"><img src="avatars/f30-0.svg" alt="" loading="eager"></span>
-        <span class="fc"><img src="avatars/f40-0.svg" alt="" loading="eager"></span>
-        <span class="fc"><img src="avatars/m20-2.svg" alt="" loading="eager"></span>
-        <span class="fc"><img src="avatars/f50-0.svg" alt="" loading="eager"></span>
-        <span class="fc"><img src="avatars/m50-6.svg" alt="" loading="eager"></span>
-        <span class="fc"><img src="avatars/f20-2.svg" alt="" loading="eager"></span>
-        <span class="fc"><img src="avatars/m30-2.svg" alt="" loading="eager"></span>
-      </div>
-      <div class="lb-faces-cap">AIが同時並行で、一人ずつ深掘り<span class="w"><i style="height:6px"></i><i style="height:12px"></i><i style="height:9px"></i><i style="height:14px"></i><i style="height:7px"></i></span></div>
-      <nav class="lb-util" aria-label="ユーティリティ">
-        <a href="#about">このメディアについて <span class="ar">&rarr;</span></a>
-        <a href="https://coesignal.techworker.co.jp/">CoeSignalを5分で体験 <span class="ar">&rarr;</span></a>
-        <a href="https://coesignal.techworker.co.jp/">導入・調査の相談 <span class="ar">&rarr;</span></a>
-      </nav>
-    </div>
+  <span class="lb-kicker"><span class="dot"></span>AIインタビュー・ラボ — AI-Moderated Research Lab</span>
+  <h1><span class="nb">大量のインタビューを、</span><span class="nb"><em>高速に。</em></span></h1>
+  <p class="lb-def">AIが顧客・現場の声を一人ずつ深掘りする「AIインタビュー」。アンケートでは見えない「なぜ」を、意思決定の根拠に変える——商品企画・マーケティング・リサーチ・CX担当のための実践メディアです。</p>
+  <div class="lb-faces" aria-hidden="true">
+    <span class="fc" style="--sayo:0s"><span class="av"><img src="avatars/f30-2.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
+    <span class="fc" style="--sayo:5.8s"><span class="av"><img src="avatars/m20-0.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
+    <span class="fc" style="--sayo:2.9s"><span class="av"><img src="avatars/f50-6.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
+    <span class="fc" style="--sayo:8.6s"><span class="av"><img src="avatars/m40-2.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
+    <span class="fc" style="--sayo:1.2s"><span class="av"><img src="avatars/f20-0.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
+    <span class="fc" style="--sayo:7.1s"><span class="av"><img src="avatars/m30-6.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
+    <span class="fc" style="--sayo:4.0s"><span class="av"><img src="avatars/m50-0.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
+    <span class="fc" style="--sayo:9.5s"><span class="av"><img src="avatars/f40-2.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
+    <span class="fc" style="--sayo:0.6s"><span class="av"><img src="avatars/m30-0.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
+    <span class="fc" style="--sayo:6.5s"><span class="av"><img src="avatars/f20-6.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
+    <span class="fc" style="--sayo:3.4s"><span class="av"><img src="avatars/m40-6.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
+    <span class="fc" style="--sayo:10.1s"><span class="av"><img src="avatars/f30-0.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
+    <span class="fc" style="--sayo:1.9s"><span class="av"><img src="avatars/f40-0.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
+    <span class="fc" style="--sayo:7.8s"><span class="av"><img src="avatars/m20-2.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
+    <span class="fc" style="--sayo:4.7s"><span class="av"><img src="avatars/f50-0.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
+    <span class="fc" style="--sayo:9.0s"><span class="av"><img src="avatars/m50-6.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
+    <span class="fc" style="--sayo:2.3s"><span class="av"><img src="avatars/f20-2.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
+    <span class="fc" style="--sayo:5.3s"><span class="av"><img src="avatars/m30-2.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
   </div>
+  <div class="lb-faces-cap">AIが同時並行で、一人ずつ深掘り<span class="w"><i style="height:6px"></i><i style="height:12px"></i><i style="height:9px"></i><i style="height:14px"></i><i style="height:7px"></i></span></div>
+  <nav class="lb-util" aria-label="ユーティリティ">
+    <a href="#about">このメディアについて <span class="ar">&rarr;</span></a>
+    <a href="https://coesignal.techworker.co.jp/">CoeSignalを5分で体験 <span class="ar">&rarr;</span></a>
+    <a href="https://coesignal.techworker.co.jp/">導入・調査の相談 <span class="ar">&rarr;</span></a>
+  </nav>
 </header>
 
 <!-- 2) featured -->
