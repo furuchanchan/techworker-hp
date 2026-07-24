@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3V34NWXVCJ');
+</script>
+<!-- TW intent tracker (first-party, sessionStorage only) -->
+<script>
+(function(){try{var ss=sessionStorage,ls=localStorage;
+if(!ss.getItem('tw_landing')){ss.setItem('tw_landing',location.pathname);ss.setItem('tw_ref',document.referrer||'');var q=new URLSearchParams(location.search);ss.setItem('tw_utm',['utm_source','utm_medium','utm_campaign'].map(function(k){return q.get(k)||'';}).join('|'));}
+var p=JSON.parse(ss.getItem('tw_pages')||'[]');if(p[p.length-1]!==location.pathname){p.push(location.pathname);ss.setItem('tw_pages',JSON.stringify(p.slice(-20)));}
+if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_visits')||'0',10)+1));ss.setItem('tw_counted','1');}
+}catch(e){}})();
+</script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2時間のインタビューで「分身」はできるか｜スタンフォード「1,000人のエージェント」研究を読む【2026】 — AIインタビュー・ラボ</title>
+<meta name="description" content="2時間のAIインタビューから作った生成エージェントは、本人の代わりに答えられるのか。スタンフォード主導の研究「Generative Agent Simulations of 1,000 People」（arXivプレプリント）を原典に沿って読み解く研究ノート。話題の「85%」が本当は何を意味するのか、なぜインタビューが人口統計やサーベイより効いたのか、そして何がまだできないのかを、数値の定義から整理する。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/interview/interview-agents">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2時間のインタビューで「分身」はできるか｜スタンフォード「1,000人のエージェント」研究を読む【2026】">
+<meta property="og:description" content="2時間のAIインタビューから作った生成エージェントは、本人の代わりに答えられるのか。話題の「85%」の正確な定義から、行動予測の限界まで、原典に沿って読み解く研究ノート。">
+<meta property="og:image" content="https://techworker.co.jp/media/interview/covers/interview-agents-cs.png">
+<meta property="og:url" content="https://techworker.co.jp/media/interview/interview-agents">
+<meta property="og:site_name" content="AIインタビュー・ラボ">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="2時間のインタビューで「分身」はできるか｜スタンフォード「1,000人のエージェント」研究を読む【2026】">
+<meta name="twitter:image" content="https://techworker.co.jp/media/interview/covers/interview-agents-cs.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../article.css">
+<link rel="stylesheet" href="lab.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"2時間のインタビューで「分身」はできるか｜スタンフォード「1,000人のエージェント」研究を読む【2026】",
+  "description":"スタンフォード主導の研究「Generative Agent Simulations of 1,000 People」（arXiv:2411.10109・プレプリント）を原典に沿って読み解く研究ノート。2時間のAIインタビューから作った生成エージェントの一致度「85%」の正確な定義、人口統計・サーベイとの比較、行動予測の限界と倫理設計までを整理する。",
+  "datePublished":"2026-07-24","dateModified":"2026-07-24","inLanguage":"ja",
+  "image":{"@type":"ImageObject","url":"https://techworker.co.jp/media/interview/covers/interview-agents-cs.png","width":1200,"height":630},
+  "author":{"@type":"Person","name":"古野光太朗","jobTitle":"株式会社TechWorker 代表取締役","url":"https://techworker.co.jp/company.html","image":"https://techworker.co.jp/assets/author-furuno.jpg","sameAs":["https://x.com/koutarou_furuno"],"affiliation":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"}},
+  "publisher":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/","logo":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630}},
+  "mainEntityOfPage":{"@type":"WebPage","@id":"https://techworker.co.jp/media/interview/interview-agents.html"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},
+    {"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},
+    {"@type":"ListItem","position":3,"name":"AIインタビュー・ラボ","item":"https://techworker.co.jp/media/interview/"},
+    {"@type":"ListItem","position":4,"name":"「1,000人のエージェント」研究を読む","item":"https://techworker.co.jp/media/interview/interview-agents.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"自分の会社の顧客でも、同じような「エージェント」を作れるのですか？","acceptedAnswer":{"@type":"Answer","text":"現時点では研究段階の手法と考えるべきです。この研究は1人あたり2時間の音声インタビューという厚いデータを前提にしており、しかも著者らはIRB（研究倫理審査委員会）と長期にわたり協議したうえで、参加者がいつでも自分のデータを撤回できる権利と、審査制の2段階アクセスという倫理設計を組み込んでいます。顧客の発話データから「分身」を作って本人の代わりに答えさせる行為は、本人の同意・撤回権・利用範囲の設計なしには成立しません。商用の場面でこの研究から持ち帰るべきは「エージェントを作る技術」よりも「深いインタビューデータの情報価値」のほうです。"}},
+    {"@type":"Question","name":"エージェントが人の代わりに答えられるなら、インタビュー調査は要らなくなるのでは？","acceptedAnswer":{"@type":"Answer","text":"この研究が示しているのはむしろ逆です。エージェントの一致度を最も高めたのは、人口統計プロフィール（0.71）でもペルソナ文（0.70）でもサーベイ回答一式（0.76）でもなく、2時間のインタビュー（0.85）でした。つまり、シミュレーションの品質は入力となるインタビューデータの質で決まります。良い深掘りインタビューを取る仕事は、この技術が進むほど価値が上がる側にあります。またNN/g（ニールセン・ノーマン・グループ）が論じるとおり、AIによるシミュレーションは人間を対象とする調査の補完であって代替ではない、というのが実務側の慎重な整理です。"}},
+    {"@type":"Question","name":"「85%で本人を再現した」という紹介記事を見ましたが、正しいのですか？","acceptedAnswer":{"@type":"Answer","text":"不正確です。85%（正確には0.85）は「85%の質問に正答した」という意味ではありません。総合的社会調査（GSS）177問に対するエージェントの生の的中率は68.85%です。一方、本人が2週間後に同じ質問に再回答したときの自己一致率は81.25%で、人間自身も約19%は答えがブレます。この自己一致率を天井（分母）として正規化した相対スコアが0.85です。「本人の再現性の85%まで迫った」が正しい読み方で、「人格を85%再現」でも「85%の質問に正答」でもありません。"}},
+    {"@type":"Question","name":"エージェントは、態度や意見だけでなく行動まで予測できるのですか？","acceptedAnswer":{"@type":"Answer","text":"行動予測は、この研究の明確な弱点です。実際の金銭がかかった経済ゲーム（独裁者ゲームなど5種）では、インタビューベースのエージェントの正規化相関は0.66にとどまり、人口統計情報だけで作ったエージェントと統計的に有意な差がありませんでした。つまり、態度・価値観の予測ではインタビューの上乗せ効果が大きい一方、インセンティブが絡む行動の予測ではその上乗せが消えます。「意見は写せても、行動はまだ写せない」というのが2026年時点の到達点です。"}}
+  ]
+}
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <a href="index.html" class="cs-logo"><img src="brand/coesignal-logo.svg" alt="CoeSignal" height="26"><span class="lab-tag">AIインタビュー・ラボ</span></a>
+  <ul>
+    <li><a href="index.html">記事一覧</a></li>
+    <li><a href="index.html#about">このメディアについて</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://coesignal.techworker.co.jp/" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="index.html">記事一覧</a>
+  <a href="index.html#about">このメディアについて</a>
+  <a href="https://coesignal.techworker.co.jp/" class="m-cta">無料相談を申し込む</a>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIインタビュー・ラボ</a><span class="sep">/</span>「1,000人のエージェント」研究を読む</nav>
+  <div class="kicker">研究ノート / Research Note</div>
+  <h1>2時間のインタビューで「分身」はできるか｜スタンフォード「1,000人のエージェント」研究を読む</h1>
+  <p class="dek">2時間のインタビューを丸ごとAIに渡すと、本人の代わりにアンケートへ答える「生成エージェント」が作れる——そんな研究が2024年秋に公開され、「85%の一致」という数字だけがひとり歩きしている。スタンフォード主導の「Generative Agent Simulations of 1,000 People」を原典に沿って読み、85%が本当は何を意味するのか、なぜインタビューが効いたのか、何がまだできないのかを整理する。</p>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.24</span><span class="dot">·</span><span>最終更新 2026.07.24</span><span class="dot">·</span><span>読了 12分</span>
+  </div>
+</header>
+
+<img class="art-cover" src="covers/interview-agents-cs.png" alt="2時間のインタビューで「分身」はできるか｜スタンフォード「1,000人のエージェント」研究を読む" width="1200" height="630" fetchpriority="high">
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次">
+    <div class="art-toc-inner">
+      <div class="toc-h">目次</div>
+      <a href="#s1">この研究は何をしたのか</a>
+      <a href="#s2">「85%」は何を意味するのか</a>
+      <a href="#s3">なぜインタビューが効いたのか</a>
+      <a href="#s4">何がまだできないのか</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#refs">参考文献</a>
+    </div>
+  </nav>
+
+  <article class="art-body rv">
+    <div class="lede">
+      <div class="lede-h">この記事の要点</div>
+      <ul>
+        <li>スタンフォード主導のチームが、米国の1,052名に<strong>AIインタビュアーによる2時間の音声インタビュー</strong>を行い、そのトランスクリプトだけで一人ひとりの「生成エージェント」を構築した（arXivプレプリント・2024年11月公開）。</li>
+        <li>話題の「85%」は<strong>「85%の質問に正答」ではない</strong>。生の的中率は68.85%で、本人自身が2週間後に再回答したときの一致率81.25%を天井とした正規化スコアが0.85——「本人のブレの範囲にどこまで迫ったか」の数字だ。</li>
+        <li>人口統計0.71・ペルソナ文0.70・サーベイ回答一式0.76に対し、インタビューは0.85。<strong>2時間の対話はサーベイの束より情報量が多い</strong>ことを示した一方、実金銭の経済ゲームでは0.66にとどまり、行動予測ではインタビューの上乗せが消える。</li>
+      </ul>
+    </div>
+
+    <div class="callout"><p>本記事は、原典（arXivプレプリント）と一次ソースに基づく研究解説です。筆者はAIインタビューのプラットフォーム（CoeSignal）を提供する事業者でもあるため、利害と重なる論点——「インタビューデータの価値」——については、原典の数値と定義に忠実であることを最優先に書いています。出典はすべて<a href="#refs">参考文献</a>に挙げました。</p></div>
+
+    <h2 id="s1">この研究は何をしたのか？</h2>
+    <p class="answer">米国の1,052名それぞれに、GPT-4oベースのAIインタビュアーが2時間の音声インタビューを実施。そのトランスクリプトを丸ごとプロンプトに入れて一人ひとりの「生成エージェント」を作り、本人が答えた社会調査・性格検査・行動実験にエージェントがどこまで一致した回答をするかを検証した。</p>
+    <p>正式な書誌から確認します。論文はPark et al.「Generative Agent Simulations of 1,000 People」（<a href="https://arxiv.org/abs/2411.10109" target="_blank" rel="noopener noreferrer">arXiv:2411.10109</a>）。2024年11月に公開された<strong>arXivプレプリント</strong>で、本記事執筆時点（2026年7月）で査読付きジャーナルへの掲載は確認できていません。スタンフォード大学が主導し、Google DeepMindの研究者（Cai、Morrisら）が共著に入っています。「Googleの研究」と紹介する記事を見かけますが、主導はスタンフォードです。なお2026年には内容を改訂したv3が公開され、タイトルも「LLM Agents Grounded in Self-Reports…」に改題されています（v3の数値は<a href="#s4">後述</a>）。</p>
+    <p>手法の骨格は3段階です。</p>
+    <div class="ui-mock" role="img" aria-label="研究の流れ：2時間のAIインタビュー、トランスクリプトからのエージェント構築、本人との一致度検証の3段階">
+      <div class="um-bar"><span class="um-dot"></span><span class="um-dot"></span><span class="um-dot"></span><span class="um-name">STUDY PIPELINE — Park et al. (arXiv:2411.10109)</span></div>
+      <div class="um-row">
+        <div class="um-label ai">STEP 1 — 2時間のAIインタビュー</div>
+        <div class="um-text">米国の1,052名（層化サンプルで約1,000人の縮図を構成）に、GPT-4oベースのAIインタビュアーが音声で2時間のインタビューを実施。スタンフォードのAmerican Voices Projectの半構造化プロトコルに沿って、人生史・価値観・仕事・健康などを聞き、回答に応じて動的に深掘りする。トランスクリプトは平均6,491語。</div>
+      </div>
+      <div class="um-row">
+        <div class="um-label ai">STEP 2 — エージェント構築</div>
+        <div class="um-text">インタビューのトランスクリプトを丸ごとLLMのプロンプトに入れ、「この人物として答えよ」と指示するだけで生成エージェントを構築。ファインチューニング（モデルの再学習）は行っていない。</div>
+      </div>
+      <div class="um-row">
+        <div class="um-label ai">STEP 3 — 本人との一致度検証</div>
+        <div class="um-text">本人とエージェントの双方が、総合的社会調査（GSS）177問・ビッグファイブ性格検査・実金銭の経済ゲーム・有名な行動実験5本に回答。本人には2週間後に同じ質問へ再回答してもらい、「本人自身のブレ」も測定したうえで一致度を比較する。主要な分析は事前登録済み。</div>
+      </div>
+    </div>
+    <p class="fig-cap">図：研究の流れ（筆者作成。内容はarXiv:2411.10109に基づく）。</p>
+    <p>設計として見事なのは、検証の物差しに「本人の再回答」を入れた点です。人間は2週間経つと同じ質問にも同じようには答えません。エージェントを「本人の1回目の回答」とだけ比べると、この人間側の揺らぎがすべてエージェントの誤りとして計上されてしまう。本人自身の再現性を測っておくことで、「エージェントはどこまで迫れたか」を公平に評価できる枠組みになっています。そしてこの設計こそが、次章の「85%」の正体につながります。</p>
+
+    <h2 id="s2">「85%」は何を意味するのか？</h2>
+    <p class="answer">「85%の質問に正答した」ではない。GSS 177問に対するエージェントの生の的中率は68.85%。本人が2週間後に再回答したときの自己一致率が81.25%で、この「人間自身のブレの天井」を分母にした正規化スコアが0.85。つまり「本人の再現性の85%まで迫った」という相対値だ。</p>
+    <p>この研究の紹介記事で最も多い誤解が、「85%で本人を再現」という要約です。数字を分解すると、意味はかなり違って見えます。</p>
+    <div class="tbl-wrap" id="tbl-85">
+      <table>
+        <tr><th>数値</th><th>定義</th><th>読み方</th></tr>
+        <tr><td><strong>68.85%</strong></td><td>GSS 177問に対して、エージェントの回答が本人の回答と一致した割合（生の的中率）</td><td>「85%正答」ではなく、素の一致は約69%</td></tr>
+        <tr><td><strong>81.25%</strong></td><td>本人自身が2週間後に同じ177問へ再回答したとき、1回目の自分と一致した割合（自己一致率）</td><td>人間自身も約19%は答えがブレる——これが理論上の天井</td></tr>
+        <tr><td><strong>0.85</strong></td><td>68.85% ÷ 81.25%。自己一致率を天井とした正規化スコア</td><td>「本人の再現性の85%まで迫った」という相対値</td></tr>
+      </table>
+    </div>
+    <p class="fig-cap">表：「85%」の分解（GSS＝General Social Survey・総合的社会調査。数値はarXiv:2411.10109より）。</p>
+    <p>誤解を招きやすい数字ですが、正規化そのものは合理的な設計です。本人ですら2週間後に19%ブレる質問群で、エージェントに100%を要求するのは物差しとして成立しません。「人間の再現性」という達成可能な天井に対して85%——これが研究の主張の正確な形です。</p>
+    <div class="callout"><p>むしろこの研究の隠れた発見は、<strong>「人間自身も2週間で約19%答えが変わる」</strong>という事実のほうかもしれない。私たちが「本人の意見」と呼んでいるものは、思っているより揺らぐ。調査データを扱うすべての人にとって、エージェントの精度以前に覚えておく価値のある数字だ。</p></div>
+    <p>付け加えると、この0.85はGSSという「態度・価値観を問う調査」での成績です。性格検査（ビッグファイブ）では正規化相関0.80と同水準でしたが、行動が絡むタスクでは大きく下がります。その話は<a href="#s4">第4章</a>で扱います。</p>
+
+    <h2 id="s3">なぜ「インタビュー」が効いたのか？</h2>
+    <p class="answer">同じエージェントを人口統計プロフィールで作ると0.71、ペルソナ文で作ると0.70、サーベイ回答一式を丸ごと与えても0.76。2時間のインタビュー（0.85）はそのすべてを上回った。深掘りされた発話は、属性やアンケートの束よりも人を写す情報量が多い——これがこの研究の核心的な比較だ。</p>
+    <p>この研究の価値は「エージェントが作れた」ことよりも、<strong>何を入力にすると人がよく写るのか</strong>を同一条件で比較した点にあります。著者らはインタビュー以外の入力でも同じ枠組みのエージェントを作り、GSSでの正規化スコアを比べました。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>エージェントの入力データ</th><th>正規化スコア（GSS）</th></tr>
+        <tr><td>人口統計プロフィール（年齢・性別・人種・政治的立場など）</td><td>0.71</td></tr>
+        <tr><td>ペルソナ文（本人・知人が書いた人物描写）</td><td>0.70</td></tr>
+        <tr><td>サーベイ回答一式（GSS以外の複数の調査回答を丸ごと投入）</td><td>0.76</td></tr>
+        <tr><td><strong>2時間のインタビューのトランスクリプト</strong></td><td><strong>0.85</strong></td></tr>
+      </table>
+    </div>
+    <p class="fig-cap">表：入力データ別の一致度比較（数値はarXiv:2411.10109より）。</p>
+    <p>注目すべきはサーベイとの比較です。複数の調査回答を丸ごと与えた0.76より、2時間の対話の0.85が上——つまり<strong>構造化された質問の束より、深掘りされた自由な語りのほうが、人を予測する情報を多く含んでいた</strong>ことになります。しかもインタビューは頑健で、トランスクリプトをランダムに80%削っても0.79を保ち、削られた状態でもなおサーベイ一式を上回りました。</p>
+    <p>もうひとつ、公平性の観点でも興味深い結果が出ています。人口統計ベースのエージェントは、政治的立場や人種によって予測性能に偏りが出やすい——属性のステレオタイプで答えてしまう——のに対し、インタビューベースではこの偏りが縮小しました。たとえば政治イデオロギー間のGSS性能差は12.35%から7.85%に縮んでいます。属性で人を推測するのではなく、本人の語りに接地することが、精度だけでなく公平性にも効いたわけです（ただし補足資料では、強くリベラルな参加者や非異性愛の参加者で性能が高く出る別種の偏りも報告されており、偏りが消えたわけではありません）。</p>
+    <div class="quote-box"><p>属性は人を「分類」する。サーベイは人を「集計」する。2時間の対話だけが、人を「記述」していた——数値が示しているのは、そういうことだ。</p></div>
+    <p>定性調査の実務に引きつけるなら、この比較は「良いデプスインタビュー1本の情報量」を初めて定量的に示したデータと読めます。当メディアが扱ってきた<a href="depth-interview.html">デプスインタビューの設計・実査</a>や<a href="interview-analysis.html">発話データの分析</a>の価値の根拠が、シミュレーション研究の側から裏書きされた格好です。ただし、だからといって万能ではない。次章で「できないこと」を見ます。</p>
+
+    <h2 id="s4">何がまだできないのか？</h2>
+    <p class="answer">実金銭の経済ゲームでは0.66で、人口統計だけのエージェントと有意差なし——行動予測ではインタビューの上乗せが消える。サンプルの偏り・倫理設計の重さも残る。著者ら自身が対抗研究を引用し、実務界（NN/g）も「補完であって代替ではない」と整理している。</p>
+    <h3>行動予測では、インタビューの優位が消える</h3>
+    <p>態度・価値観（GSS 0.85）と性格（ビッグファイブ 0.80）で高い一致を示したエージェントは、実際の金銭がかかった経済ゲーム（独裁者ゲームや公共財ゲームなど）では正規化相関0.66にとどまりました。しかも重要なのは絶対値より比較で、<strong>人口統計だけで作ったエージェントと統計的に有意な差がなかった</strong>。つまり、2時間の語りが持つ豊かな情報は、意見を写すことには効いても、インセンティブが絡む行動の予測には（少なくともこの検証では）上乗せをもたらしませんでした。「意見は写せても、行動はまだ写せない」が正確な現在地です。</p>
+    <p>一方で、集団レベルの再現には見どころがあります。有名な行動実験5本の追試では、エージェント集団は人間の参加者集団が再現できた4本を同じく再現し、人間が再現に失敗した1本では同じく失敗しました（効果量の相関はr=0.98）。個人の行動は写せなくても、集団としての実験結果のパターンはなぞれる——この非対称は、応用の形を考えるうえで示唆的です。</p>
+    <h3>数値はバージョンで動いている——v3の最新値</h3>
+    <p>本記事でここまで挙げた数値は2024年公開のv1のものです。2026年6月に公開された改訂版（v3）では評価設計が更新され、ホールドアウトしたGSS質問での一致度として、インタビューのみ83%・サーベイのみ82%・併用86%・人口統計のみ74%という数値が報告されています。v1とv3では測り方が異なるため、<strong>両者の数値を無注記に混ぜて引用することはできません</strong>。v3ではインタビューとサーベイの差が縮み、併用が最良という、より穏当な絵になっている点は正直に書いておきます。</p>
+    <h3>倫理設計の重さは、手法の一部である</h3>
+    <p>見落とされがちですが、著者らはIRB（研究倫理審査委員会）と長期にわたって協議し、参加者が自分のデータをいつでも撤回できる権利と、研究目的を審査したうえでアクセスを許可する2段階の公開方式を設計しています（コードは<a href="https://github.com/joonspk-research/genagents" target="_blank" rel="noopener noreferrer">GitHubで公開</a>）。公開直後には、MIT Technology Reviewが本人になりすますディープフェイク的濫用への懸念を<a href="https://www.technologyreview.com/2024/11/26/1107309/we-need-to-start-wrestling-with-the-ethics-of-ai-agents/" target="_blank" rel="noopener noreferrer">報じました</a>。2時間の語りから「分身」が作れるという事実は、それ自体が新しいリスクです。この倫理設計の重さを省いた「手軽な応用」は、この研究の再現とは呼べません。</p>
+    <h3>「補完であって代替ではない」——実務側の整理</h3>
+    <p>研究コミュニティの内部にも慎重論があります。著者ら自身が、Wang et al.「LLMs cannot replace human participants…」——LLMはアイデンティティ集団を代弁できず人間の調査参加者を置き換えられない、とする対抗研究——を引用したうえで議論を展開しています。実務側では、UXリサーチの老舗NN/g（ニールセン・ノーマン・グループ）が2025年の論考で、<a href="https://www.nngroup.com/articles/ai-simulations-studies/" target="_blank" rel="noopener noreferrer">AIシミュレーションは人間を対象とする調査の補完であって代替ではない</a>と整理しました。仮説出しや調査設計の予行には使えても、実在の顧客の声を聞く工程は置き換わらない、というのが2026年時点の穏当な結論です。</p>
+    <p>産業側の動きも一応記しておくと、筆頭著者のParkらはこの研究を基盤にSimile社を創業し、2026年2月にシリーズAで1億ドルを調達したと報道されています（二次情報・報道ベース）。研究の商用化は始まっていますが、上記の限界と倫理設計が前提であることに変わりはありません。</p>
+    <div class="callout"><p>この研究が証明したのは「調査が要らなくなる未来」ではなく、<strong>良いインタビューデータの情報価値</strong>だ。シミュレーションの品質は入力の質で決まる——だとすれば、深く聞く技術の価値は、この技術が進むほど上がっていく。</p></div>
+
+    <h2 id="faq">よくある質問</h2>
+    <div class="faq"><div class="q">自分の会社の顧客でも、同じような「エージェント」を作れるのですか？</div><p class="a">現時点では研究段階の手法と考えるべきです。この研究は1人あたり2時間の音声インタビューという厚いデータを前提にしており、しかも著者らはIRB（研究倫理審査委員会）と長期にわたり協議したうえで、参加者がいつでも自分のデータを撤回できる権利と、審査制の2段階アクセスという倫理設計を組み込んでいます。顧客の発話データから「分身」を作って本人の代わりに答えさせる行為は、本人の同意・撤回権・利用範囲の設計なしには成立しません。商用の場面でこの研究から持ち帰るべきは「エージェントを作る技術」よりも「深いインタビューデータの情報価値」のほうです。</p></div>
+    <div class="faq"><div class="q">エージェントが人の代わりに答えられるなら、インタビュー調査は要らなくなるのでは？</div><p class="a">この研究が示しているのはむしろ逆です。エージェントの一致度を最も高めたのは、人口統計プロフィール（0.71）でもペルソナ文（0.70）でもサーベイ回答一式（0.76）でもなく、2時間のインタビュー（0.85）でした。つまり、シミュレーションの品質は入力となるインタビューデータの質で決まります。良い深掘りインタビューを取る仕事は、この技術が進むほど価値が上がる側にあります。またNN/g（ニールセン・ノーマン・グループ）が論じるとおり、AIによるシミュレーションは人間を対象とする調査の補完であって代替ではない、というのが実務側の慎重な整理です。</p></div>
+    <div class="faq"><div class="q">「85%で本人を再現した」という紹介記事を見ましたが、正しいのですか？</div><p class="a">不正確です。85%（正確には0.85）は「85%の質問に正答した」という意味ではありません。総合的社会調査（GSS）177問に対するエージェントの生の的中率は68.85%です。一方、本人が2週間後に同じ質問に再回答したときの自己一致率は81.25%で、人間自身も約19%は答えがブレます。この自己一致率を天井（分母）として正規化した相対スコアが0.85です。「本人の再現性の85%まで迫った」が正しい読み方で、「人格を85%再現」でも「85%の質問に正答」でもありません。</p></div>
+    <div class="faq"><div class="q">エージェントは、態度や意見だけでなく行動まで予測できるのですか？</div><p class="a">行動予測は、この研究の明確な弱点です。実際の金銭がかかった経済ゲーム（独裁者ゲームなど5種）では、インタビューベースのエージェントの正規化相関は0.66にとどまり、人口統計情報だけで作ったエージェントと統計的に有意な差がありませんでした。つまり、態度・価値観の予測ではインタビューの上乗せ効果が大きい一方、インセンティブが絡む行動の予測ではその上乗せが消えます。「意見は写せても、行動はまだ写せない」というのが2026年時点の到達点です。</p></div>
+
+    <h2 id="refs">参考文献</h2>
+    <ul>
+      <li>Park, J. S. et al. (2024). "Generative Agent Simulations of 1,000 People." arXiv:2411.10109（プレプリント。2026年にv3へ改訂・改題「LLM Agents Grounded in Self-Reports…」）. <a href="https://arxiv.org/abs/2411.10109" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/2411.10109</a></li>
+      <li>genagents — 研究コード・審査制データアクセス（GitHub）. <a href="https://github.com/joonspk-research/genagents" target="_blank" rel="noopener noreferrer">https://github.com/joonspk-research/genagents</a></li>
+      <li>MIT Technology Review (2024-11-26). "We need to start wrestling with the ethics of AI agents." <a href="https://www.technologyreview.com/2024/11/26/1107309/we-need-to-start-wrestling-with-the-ethics-of-ai-agents/" target="_blank" rel="noopener noreferrer">technologyreview.com</a></li>
+      <li>Budiu, R. / Nielsen Norman Group (2025). "AI Simulations of User Research." <a href="https://www.nngroup.com/articles/ai-simulations-studies/" target="_blank" rel="noopener noreferrer">nngroup.com</a></li>
+      <li>Wang, A. et al. "Large language models cannot replace human participants because they cannot portray identity groups."（原論文の著者らが引用する対抗研究）</li>
+      <li>Simile社のシリーズA調達（2026年2月・1億ドル）は複数メディアの報道に基づく二次情報。</li>
+    </ul>
+  </article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役</span></div>
+    <p>上場企業を含む37社・2,500名の生成AI導入・研修を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。AIが顧客や現場の声を一人ずつ深掘りするAIインタビュープラットフォームを提供し、定性調査の設計から根拠に遡れる判断メモづくりまでを支援している。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>「深く聞くこと」の価値を、自社の調査で。</h3>
+    <p>この研究が示したのは、深掘りされたインタビューデータの情報量でした。AIが顧客や現場の声を一人ずつ深掘りする定性調査について、検討段階のご相談だけでも歓迎です。</p>
+  </div>
+  <a href="https://coesignal.techworker.co.jp/" class="btn">AIインタビューを相談する <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="https://coesignal.techworker.co.jp/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(15,107,77,.3);">公式サイト</a>　／　<a href="https://research.techworker.co.jp/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(15,107,77,.3);">実際のレポートサンプル</a>　／　<a href="https://coesignal.techworker.co.jp/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(15,107,77,.3);">無料相談</a></p>
+<div class="back-list"><a href="index.html">← AIインタビュー・ラボ（記事一覧）に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="depth-interview.html" class="related-card"><div class="rc-thumb"><img src="covers/depth-interview-cs.png" alt="デプスインタビューをAIで行う｜設計・実査・分析の実務" loading="lazy"></div><span class="rc-cat">基礎</span><div class="rc-title">デプスインタビューをAIで行う｜設計・実査・分析の実務</div></a>
+    <a href="interview-analysis.html" class="related-card"><div class="rc-thumb"><img src="covers/interview-analysis-cs.png" alt="インタビュー分析を生成AIで速くする｜発話データを判断材料に変える" loading="lazy"></div><span class="rc-cat">分析</span><div class="rc-title">インタビュー分析を生成AIで速くする｜発話データを判断材料に変える</div></a>
+    <a href="ai-interview.html" class="related-card"><div class="rc-thumb"><img src="covers/ai-interview-cs.png" alt="AIインタビューとは｜アンケートより深く、従来インタビューより速い定性調査" loading="lazy"></div><span class="rc-cat">基礎</span><div class="rc-title">AIインタビューとは｜アンケートより深く、従来インタビューより速い定性調査</div></a>
+    <a href="index.html" class="related-card"><div class="rc-thumb"><img src="covers/portal-cs.png" alt="AIインタビュー・ラボ｜AIインタビューの実践知を届けるメディア" loading="lazy"></div><span class="rc-cat">ポータル</span><div class="rc-title">AIインタビュー・ラボ（記事一覧）｜AIインタビューの実践知</div></a>
+  </div>
+</div></section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="cs-logo"><img src="brand/coesignal-logo.svg" alt="CoeSignal" height="26"><span class="lab-tag">AIインタビュー・ラボ</span></div>
+        <p>声を、意思決定へ。AIインタビューで定性調査を速く、深く。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+      </div>
+      <div class="footer-col"><h4>メディア</h4><a href="index.html">記事一覧</a><a href="ai-interview.html">AIインタビューとは</a><a href="depth-interview.html">デプスインタビュー</a></div>
+      <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../index.html#services">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="https://coesignal.techworker.co.jp/">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+</body>
+</html>

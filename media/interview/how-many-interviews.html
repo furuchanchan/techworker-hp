@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3V34NWXVCJ');
+</script>
+<!-- TW intent tracker (first-party, sessionStorage only) -->
+<script>
+(function(){try{var ss=sessionStorage,ls=localStorage;
+if(!ss.getItem('tw_landing')){ss.setItem('tw_landing',location.pathname);ss.setItem('tw_ref',document.referrer||'');var q=new URLSearchParams(location.search);ss.setItem('tw_utm',['utm_source','utm_medium','utm_campaign'].map(function(k){return q.get(k)||'';}).join('|'));}
+var p=JSON.parse(ss.getItem('tw_pages')||'[]');if(p[p.length-1]!==location.pathname){p.push(location.pathname);ss.setItem('tw_pages',JSON.stringify(p.slice(-20)));}
+if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_visits')||'0',10)+1));ss.setItem('tw_counted','1');}
+}catch(e){}})();
+</script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>インタビューは何人に聞けば十分か｜「12人で飽和」の研究から最新レビューまで【2026】 — AIインタビュー・ラボ</title>
+<meta name="description" content="インタビューは何人に聞けば十分か。「12人で飽和」の出どころであるGuestら2006年の実験から、9〜17件と報告した2022年のレビュー、コード飽和と意味飽和の区別、Information Power、飽和概念への批判まで、主要研究を原典に沿って整理する研究ノート。実務でサンプルサイズを決めるための指針も示す。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/interview/how-many-interviews">
+<meta property="og:type" content="article">
+<meta property="og:title" content="インタビューは何人に聞けば十分か｜「12人で飽和」の研究から最新レビューまで【2026】">
+<meta property="og:description" content="「12人で飽和」はどこから来たのか。原典のGuestら2006年から最新レビュー・批判研究まで、インタビューのサンプルサイズ研究を公平に整理する研究ノート。">
+<meta property="og:image" content="https://techworker.co.jp/media/interview/covers/how-many-interviews-cs.png">
+<meta property="og:url" content="https://techworker.co.jp/media/interview/how-many-interviews">
+<meta property="og:site_name" content="AIインタビュー・ラボ">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="インタビューは何人に聞けば十分か｜「12人で飽和」の研究から最新レビューまで【2026】">
+<meta name="twitter:image" content="https://techworker.co.jp/media/interview/covers/how-many-interviews-cs.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../article.css">
+<link rel="stylesheet" href="lab.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"インタビューは何人に聞けば十分か｜「12人で飽和」の研究から最新レビューまで【2026】",
+  "description":"インタビューのサンプルサイズはどう決めるべきか。「12人で飽和」の出どころであるGuestら2006年の実験、9〜17件と報告したHennink & Kaiser 2022年のレビュー、コード飽和と意味飽和の区別、Information Power、飽和概念への批判まで、主要研究を原典に沿って整理する研究ノート。",
+  "datePublished":"2026-07-24","dateModified":"2026-07-24","inLanguage":"ja",
+  "image":{"@type":"ImageObject","url":"https://techworker.co.jp/media/interview/covers/how-many-interviews-cs.png","width":1200,"height":630},
+  "author":{"@type":"Person","name":"古野光太朗","jobTitle":"株式会社TechWorker 代表取締役","url":"https://techworker.co.jp/company.html","image":"https://techworker.co.jp/assets/author-furuno.jpg","sameAs":["https://x.com/koutarou_furuno"],"affiliation":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"}},
+  "publisher":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/","logo":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630}},
+  "mainEntityOfPage":{"@type":"WebPage","@id":"https://techworker.co.jp/media/interview/how-many-interviews"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},
+    {"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},
+    {"@type":"ListItem","position":3,"name":"AIインタビュー・ラボ","item":"https://techworker.co.jp/media/interview/"},
+    {"@type":"ListItem","position":4,"name":"インタビューは何人に聞けば十分か","item":"https://techworker.co.jp/media/interview/how-many-interviews"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"インタビューは12人で十分なのですか？","acceptedAnswer":{"@type":"Answer","text":"条件次第です。「12人で飽和」の出どころであるGuestらの2006年研究は、同質な集団に、狭い目的で、構造化されたガイドを使って聞くという条件下の結果でした。著者自身が、12件を汎用のサンプルサイズとして使うべきではないと警告しています。多様な集団や複数拠点にまたがる調査、意味の深い理解を目指す調査では、より多くの件数が必要になることが後続研究で示されています。"}},
+    {"@type":"Question","name":"最新の研究では何件と言われていますか？","acceptedAnswer":{"@type":"Answer","text":"Hennink & Kaiser（2022）が飽和を実証的に検証した23論文をレビューした結果では、実データに基づく研究はインタビュー9〜17件、フォーカスグループ4〜8回で飽和に達していました。ただしレビュー著者自身が、対象研究は同質な集団・狭い目的に偏っていると明記しており、この範囲を万能の推奨値として扱うことはできません。何を「飽和」と数えるかでも答えは変わり、同じ25件のデータでコード飽和は9件、意味飽和は16〜24件という研究もあります。"}},
+    {"@type":"Question","name":"多様な集団や複数拠点の調査では何件必要ですか？","acceptedAnswer":{"@type":"Answer","text":"Hagaman & Wutich（2017）は4つの調査サイト・132名のデータで検証し、単一サイトの同質な集団なら16件以下で飽和に達する一方、サイトを横断するメタテーマの特定には20〜40件が必要だったと報告しています。セグメントが複数ある調査は、セグメントごとに飽和を考える必要があるため、必要な総数は増えます。"}},
+    {"@type":"Question","name":"AIインタビューで大人数に聞けるようになった今、飽和の考え方は変わりますか？","acceptedAnswer":{"@type":"Answer","text":"「何件で情報が出尽くすか」という飽和の性質そのものは、聞き手がAIになっても変わりません。変わったのはコスト構造です。Geiecke & JaravelやChopra & Haalandのワーキングペーパー（いずれも査読前）は、AIによる大人数の定性調査が技術的・経済的に可能になったことを示していますが、「飽和論が無効になった」と主張する査読済み研究は現時点で確認できていません。人数を増やせるようになった今も、目的・集団の同質性・求める深さから必要数を考える枠組みは有効です。"}}
+  ]
+}
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <a href="index.html" class="cs-logo"><img src="brand/coesignal-logo.svg" alt="CoeSignal" height="26"><span class="lab-tag">AIインタビュー・ラボ</span></a>
+  <ul>
+    <li><a href="index.html">記事一覧</a></li>
+    <li><a href="index.html#about">このメディアについて</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://coesignal.techworker.co.jp/" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="index.html">記事一覧</a>
+  <a href="index.html#about">このメディアについて</a>
+  <a href="https://coesignal.techworker.co.jp/" class="m-cta">無料相談を申し込む</a>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIインタビュー・ラボ</a><span class="sep">/</span>インタビューは何人に聞けば十分か</nav>
+  <div class="kicker">研究ノート / Research Note</div>
+  <h1>インタビューは何人に聞けば十分か｜「12人で飽和」の研究から最新レビューまで</h1>
+  <p class="dek">定性調査の設計で必ず出る問い、「何人に聞けば十分か」。よく引かれる「12人で飽和」という答えには、はっきりした出どころと、あまり知られていない前提条件がある。原典のGuestら（2006）から、飽和研究を集計した2022年のレビュー、コード飽和と意味飽和の区別、そして飽和概念そのものへの批判まで、主要研究を原典に沿って公平に整理する。</p>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.24</span><span class="dot">·</span><span>最終更新 2026.07.24</span><span class="dot">·</span><span>読了 12分</span>
+  </div>
+</header>
+
+<img class="art-cover" src="covers/how-many-interviews-cs.png" alt="インタビューは何人に聞けば十分か｜「12人で飽和」の研究から最新レビューまで" width="1200" height="630" fetchpriority="high">
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次">
+    <div class="art-toc-inner">
+      <div class="toc-h">目次</div>
+      <a href="#s1">「12人で飽和」の出どころ</a>
+      <a href="#s2">最新の研究は何件と言うか</a>
+      <a href="#s3">「飽和」だけでは決まらない</a>
+      <a href="#s4">実務での人数の決め方</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#refs">参考文献</a>
+    </div>
+  </nav>
+
+  <article class="art-body rv">
+    <div class="lede">
+      <div class="lede-h">この記事の要点</div>
+      <ul>
+        <li>「12人で飽和」の出どころはGuestら（2006）の実験。ただしこれは<strong>同質な集団・狭い目的・構造化ガイド</strong>という条件下の結果で、著者自身が「12件を汎用のサンプルサイズとして使うな」と警告している。</li>
+        <li>飽和を実証検証した23論文のレビュー（Hennink & Kaiser 2022）では<strong>インタビュー9〜17件</strong>で飽和という報告が並ぶ。一方で「コードが出尽くす」のは9件でも「意味を理解し切る」には<strong>16〜24件</strong>という研究があり、何を飽和と数えるかで答えは変わる。</li>
+        <li>結論として、人数は固定の数字では決まらない。<strong>目的の広さ×集団の同質性×求める深さ</strong>から見積もるのが、研究の到達点に忠実な決め方だ。</li>
+      </ul>
+    </div>
+
+    <h2 id="s1">「12人で飽和」はどこから来たのか？</h2>
+    <p class="answer">出どころはGuest, Bunce & Johnson（2006）。西アフリカでの60件の深層インタビューを順に分析したところ、新しいテーマの出現は最初の12件以内でほぼ止まり、メタテーマの基本要素は6件時点で出そろっていた——という実験結果だ。ただし著者自身が、この数字の一般化に強い条件を付けている。</p>
+    <p>定性調査のサンプルサイズ論で最も引用される論文のひとつが、Guest, Bunce & Johnson（2006）<a href="https://journals.sagepub.com/doi/10.1177/1525822X05279903" target="_blank" rel="noopener noreferrer">“How Many Interviews Are Enough?”</a>（Field Methods 18(1), 59-82）です。著者らは西アフリカで実施した<strong>60件の深層インタビュー</strong>を順番にコード化し、「新しいテーマは何件目まで出続けるのか」を実際に数えました。飽和（saturation）——それ以上聞いても新しい情報がほとんど出なくなる点——を、印象論ではなくデータで検証した先駆的な研究です。</p>
+    <p>結果は明快でした。分析全体で特定された114のテーマのうち、<strong>70%が最初の6件</strong>で、<strong>92%が12件以内</strong>で出現していたのです（70%という数値はGuest本人による2020年の論文で言及されているものです。二次情報では最初の6件についてより高い割合が引用されることがありますが、原典に基づく値は70%です）。テーマを束ねる上位概念であるメタテーマも、その基本要素は6件時点で出そろっていました。「12人で飽和」というフレーズは、この研究から来ています。</p>
+    <figure class="cmp-chart" aria-label="Guestら2006年研究におけるテーマ出現の累積（全114テーマ）">
+      <figcaption class="cc-top"><span class="dot"></span>テーマ出現の累積（Guestら 2006・全114テーマ）</figcaption>
+      <div class="cc-row"><span class="cc-lab">最初の6件</span><div class="cc-stack"><i class="s-b" style="width:70%"></i><i class="s-a" style="width:30%"></i></div></div>
+      <div class="cc-row"><span class="cc-lab">12件以内</span><div class="cc-stack"><i class="s-b" style="width:92%"></i><i class="s-a" style="width:8%"></i></div></div>
+      <div class="cc-row"><span class="cc-lab">全60件</span><div class="cc-stack"><i class="s-b" style="width:100%"></i></div></div>
+      <div class="cc-legend"><span><i class="s-b"></i>出現済みテーマの割合（70%・92%・100%）</span><span><i class="s-a"></i>未出現</span></div>
+      <div class="cc-cap">※Guest, Bunce & Johnson (2006) の分析結果より作図。114テーマの70%が最初の6件で、92%が12件以内で出現した（70%はGuest本人の2020年論文に基づく数値）。</div>
+    </figure>
+    <p class="fig-cap">図：Guestら（2006）におけるテーマ出現の累積。</p>
+    <h3>見落とされがちな前提条件——著者自身の警告</h3>
+    <p>問題は、このフレーズが一人歩きするとき、研究の<strong>前提条件</strong>が抜け落ちることです。Guestらの実験は、次の3条件がそろった調査でした。</p>
+    <ul>
+      <li><strong>同質な集団</strong>——回答者は属性・経験が近い人たちに絞られていた。</li>
+      <li><strong>狭い目的</strong>——調査の問いが明確で範囲が限定されていた。</li>
+      <li><strong>構造化されたガイド</strong>——全員に同じ質問群を同じ聞き方で尋ねていた。</li>
+    </ul>
+    <p>そして重要なのは、<strong>著者ら自身が「12件を汎用のサンプルサイズとして使うべきではない」と警告している</strong>ことです。条件が変われば必要な件数は変わる——原典はそう言っているのに、引用される過程で「定性は12人でいい」という無条件の経験則に変形してしまった。これが「12人で飽和」をめぐる実態です。</p>
+    <div class="callout"><p>「12人で飽和」は誤りではないが、無条件でもない。<strong>同質な集団に、狭い問いを、同じ聞き方で</strong>——この3条件がそろったときの結果であり、原著者自身が数字の一般化を戒めている。</p></div>
+
+    <h2 id="s2">最新の研究は何件と言っているのか？</h2>
+    <p class="answer">飽和を実証検証した23論文を集計したHennink & Kaiser（2022）のレビューでは、インタビュー9〜17件・フォーカスグループ4〜8回で飽和という報告が並ぶ。ただし対象研究は同質集団・狭い目的に偏っており、さらに「コード飽和」と「意味飽和」を区別すると答えは9件から16〜24件まで広がる。</p>
+    <p>2006年の研究から15年あまり、飽和を実データで検証する研究は着実に積み上がりました。その到達点を集計したのが、Hennink & Kaiser（2022）<a href="https://pubmed.ncbi.nlm.nih.gov/34785096/" target="_blank" rel="noopener noreferrer">“Sample sizes for saturation in qualitative research: A systematic review of empirical tests”</a>（Social Science & Medicine 292）です。飽和を実証的に検証した<strong>23本の論文</strong>を体系的にレビューした結果、実データに基づく研究では<strong>インタビュー9〜17件、フォーカスグループ4〜8回</strong>で飽和に達していました。</p>
+    <p>Guestらの「12件」は、この9〜17件のレンジのほぼ中央に収まります。つまり2006年の結果は、後続研究によっておおむね追認されたと言えます。ただしここでも同じ注意書きが付きます。レビュー著者自身が明記しているとおり、<strong>対象となった研究は同質な集団・狭い目的の調査に偏っている</strong>のです。9〜17件は「そういう条件の調査で観察された範囲」であって、あらゆる定性調査への推奨値ではありません。</p>
+    <h3>「全部聞いた」と「全部理解した」は別物——コード飽和と意味飽和</h3>
+    <p>もうひとつ、答えを一つの数字に丸められない理由があります。<strong>何をもって「飽和」とするか</strong>で、必要な件数が変わるのです。Hennink, Kaiser & Marconi（2017）<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9359070/" target="_blank" rel="noopener noreferrer">“Code Saturation Versus Meaning Saturation”</a>（Qualitative Health Research 27(4)）は、25件のHIV患者インタビューを分析し、飽和を2種類に分けて測定しました。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>飽和の種類</th><th>意味</th><th>到達に必要だった件数</th></tr>
+        <tr><td>コード飽和</td><td>新しいトピック（コード）が出なくなる——「もう聞くことがない」</td><td><strong>9件</strong>（この時点で新規コードの91%を特定）</td></tr>
+        <tr><td>意味飽和</td><td>各トピックの意味・ニュアンスを理解し切る——「もう学ぶことがない」</td><td><strong>16〜24件</strong></td></tr>
+      </table>
+    </div>
+    <p class="fig-cap">表：コード飽和と意味飽和（Hennink, Kaiser & Marconi 2017 に基づく）。</p>
+    <p>9件で話題の一覧は出そろう。しかし、それぞれの話題が回答者にとって<strong>どういう意味を持つのか</strong>を理解し切るには16〜24件かかった——という結果です。「全部聞いた」と「全部理解した」は別物であり、テーマの一覧が欲しい調査と、意味の深い理解が欲しい調査では、必要な人数がほぼ2倍違うことになります。</p>
+    <p>さらにGuest自身も、Guest, Namey & Chen（2020）<a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0232076" target="_blank" rel="noopener noreferrer">“A simple method to assess and report thematic saturation in qualitative research”</a>（PLOS ONE 15(5)）で、飽和の判定基準を定式化したうえで<strong>「基準の置き方で答えが変わる」</strong>ことを示しています。新規情報の閾値を5%以下とするなら6〜7件で全テーマの約78〜82%を捕捉できる一方、閾値を0%（新規情報が完全にゼロ）まで厳しくすると11〜14件で87〜89%になる。「何件で十分か」は、「どこまで拾えれば十分とするか」の関数なのです。</p>
+
+    <h2 id="s3">「飽和」だけでは人数は決まらないのか？</h2>
+    <p class="answer">決まらない。サンプルサイズは情報の濃さで決まるとするInformation Powerの枠組み、多サイト調査では20〜40件必要という実証、そして飽和概念そのものへの理論的批判——いずれも「飽和したか」だけを基準にすることの限界を示している。</p>
+    <p>ここまでの研究は「飽和に何件かかるか」を測るものでした。しかし研究コミュニティには、その問いの立て方自体を問い直す流れがあります。3つ紹介します。</p>
+    <h3>① Information Power——人数ではなく「情報の濃さ」で決める</h3>
+    <p>Malterudら（2016）<a href="https://pubmed.ncbi.nlm.nih.gov/26613970/" target="_blank" rel="noopener noreferrer">“Sample Size in Qualitative Interview Studies: Guided by Information Power”</a>（Qualitative Health Research 26(13)）は、サンプルサイズは固定の数字ではなく<strong>サンプルが持つ情報の濃さ（Information Power）</strong>で決まる、という枠組みを提案しました。情報の濃いサンプルなら少人数で足り、薄いサンプルなら多人数が要る。濃さを決める要因は5つです。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>決定要因</th><th>少人数で済む方向</th><th>多人数が要る方向</th></tr>
+        <tr><td>目的の広さ</td><td>狭く限定された問い</td><td>広く探索的な問い</td></tr>
+        <tr><td>サンプルの特異性</td><td>目的に強く合致した対象者</td><td>条件の緩い対象者</td></tr>
+        <tr><td>理論の使用</td><td>確立した理論を適用する</td><td>理論なしで探索する</td></tr>
+        <tr><td>対話の質</td><td>深く強い対話が取れている</td><td>浅く弱い対話</td></tr>
+        <tr><td>分析戦略</td><td>個別事例の深い分析</td><td>ケース横断の全体分析</td></tr>
+      </table>
+    </div>
+    <p class="fig-cap">表：Information Powerの5つの決定要因（Malterud et al. 2016 に基づく）。</p>
+    <h3>② 多サイト・多セグメントなら20〜40件——Hagaman & Wutich（2017）</h3>
+    <p>Guestらの実験が「単一の同質集団」だったのに対し、Hagaman & Wutich（2017）<a href="https://eric.ed.gov/?id=EJ1137557" target="_blank" rel="noopener noreferrer">“How Many Interviews Are Enough to Identify Metathemes in Multisited and Cross-cultural Research?”</a>（Field Methods 29(1)）は、<strong>4つの調査サイト・132名</strong>のデータで同じ問いを検証しました。結果、単一サイトの同質な集団であれば16件以下で飽和に達する一方、<strong>サイトを横断するメタテーマの特定には20〜40件が必要</strong>でした。対象が多様になれば、必要な件数はGuestらの「12件」を大きく超える——条件依存性が実証された形です。</p>
+    <h3>③ そもそも「飽和」は万能の基準か——Braun & Clarke（2021）の批判</h3>
+    <p>より根本的な批判もあります。テーマ分析の方法論で知られるBraun & Clarke（2021）<a href="https://www.tandfonline.com/doi/abs/10.1080/2159676X.2019.1704846" target="_blank" rel="noopener noreferrer">“To saturate or not to saturate?”</a>（Qualitative Research in Sport, Exercise and Health 13(2)）は、テーマはデータの中に埋まっていて「発見」されるものではなく、<strong>研究者が解釈を通じて「生成」するもの</strong>だと論じます。この立場に立つと、「テーマが出尽くしたら終わり」という飽和の発想は、少なくとも彼らの提唱するリフレクシブ・テーマ分析とは整合しません。飽和は特定の分析観に結びついた基準であって、すべての定性調査に当てはまる普遍のものさしではない——という指摘です。</p>
+    <div class="callout"><p>「飽和したか」は有用な問いだが、唯一の問いではない。<strong>目的の広さ・対象の多様性・分析の立場</strong>によっては、飽和という基準自体が馴染まないことを、研究は正面から示している。</p></div>
+
+    <h2 id="s4">実務では、人数をどう決めればよいのか？</h2>
+    <p class="answer">固定の数字から入らず、「意思決定の問いの広さ」「対象集団の同質性」「求める理解の深さ」の3つから見積もる。研究が示すレンジを条件付きで使えば、根拠を説明できるサンプルサイズ設計になる。</p>
+    <p>ここまでの研究を、実務の意思決定に使える形に整理します。重要なのは、どの数字にも<strong>条件が付いている</strong>ことです。自分の調査がどの条件に当てはまるかを先に判定し、それから対応するレンジを参照する——この順番なら、研究の到達点に忠実なまま人数を決められます。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>調査の条件</th><th>研究が示す目安</th><th>根拠</th></tr>
+        <tr><td>同質な集団 × 狭い問い × 構造化した聞き方で、テーマの一覧を得たい</td><td>9〜17件で飽和という実証報告が並ぶ（12件はその中央付近）</td><td>Guest et al. 2006 / Hennink & Kaiser 2022</td></tr>
+        <tr><td>各テーマの意味・ニュアンスまで理解し切りたい</td><td>コード飽和（9件）では足りず、16〜24件</td><td>Hennink, Kaiser & Marconi 2017</td></tr>
+        <tr><td>複数のセグメント・拠点・文化を横断して共通テーマを見たい</td><td>20〜40件</td><td>Hagaman & Wutich 2017</td></tr>
+        <tr><td>探索的な広い問い／理論なし／対話が浅くなりそう</td><td>固定数でなくInformation Powerの5要因で増減を見積もる</td><td>Malterud et al. 2016</td></tr>
+        <tr><td>リフレクシブ・テーマ分析など、解釈を生成する立場の分析</td><td>飽和を基準にしない。分析の目的と解釈の十分さで判断する</td><td>Braun & Clarke 2021</td></tr>
+      </table>
+    </div>
+    <p class="fig-cap">表：調査の条件別に見たサンプルサイズの目安（各研究の報告値に基づく整理）。</p>
+    <p>使い方の例を挙げます。「解約者はなぜ辞めたのか」を、単一プロダクトの直近解約者という同質な集団に、構造化した聞き方で尋ねるなら、実証研究のレンジ（9〜17件）が最初の目安になります。そこから「理由の背後にある感情や文脈まで理解したい」なら16〜24件側へ、「プラン別・業界別の違いも見たい」ならセグメントごとに飽和を考えて20〜40件側へ、と条件に応じて補正していく。<strong>数字を先に決めるのではなく、条件を先に決める</strong>のがこの表の使い方です。</p>
+    <h3>「多く聞くコスト」が下がった今、飽和論はどうなるか</h3>
+    <p>最後に、AIとの接続に触れます。Geiecke & Jaravel（CEPR DP19705）やChopra & Haaland（SSRN 4572954）といった近年のワーキングペーパー——いずれも<strong>査読前のワーキングペーパー</strong>です——は、AIが聞き手を務めることで、従来は不可能だった大人数への定性インタビューが技術的・経済的に可能になったことを示しています。当メディアの運営元が提供するCoeSignalのようなAIインタビューの仕組みでも、数十名規模の深掘りを短期間で回せるようになりました。</p>
+    <p>では「何人で十分か」という問いは消えたのか。そうではありません。<strong>「飽和論が無効になった」と主張する査読済み研究は、現時点で確認できていません。</strong>同質な集団への狭い問いなら、大人数に聞いても新しいテーマが序盤以降ほとんど増えないという構造は変わらない。変わったのは、意味飽和（16〜24件）や多サイト調査（20〜40件）といった「従来はコストが壁だった適正規模」に、ためらわず届くようになったことです。人数を増やせるようになった今こそ、<strong>目的×同質性×深さから必要数を見積もる</strong>という研究の枠組みが、過剰にも過少にもならない設計の拠り所になります。</p>
+    <div class="callout"><p>AIで「多く聞くこと」は安くなった。しかし「何人で十分か」の答えは、今も昔も<strong>調査の条件</strong>が決める。安くなったのは、条件が求める適正規模まで届くコストである。</p></div>
+
+    <h2 id="faq">よくある質問</h2>
+    <div class="faq"><div class="q">インタビューは12人で十分なのですか？</div><p class="a">条件次第です。「12人で飽和」の出どころであるGuestらの2006年研究は、同質な集団に、狭い目的で、構造化されたガイドを使って聞くという条件下の結果でした。著者自身が、12件を汎用のサンプルサイズとして使うべきではないと警告しています。多様な集団や複数拠点にまたがる調査、意味の深い理解を目指す調査では、より多くの件数が必要になることが後続研究で示されています。</p></div>
+    <div class="faq"><div class="q">最新の研究では何件と言われていますか？</div><p class="a">Hennink & Kaiser（2022）が飽和を実証的に検証した23論文をレビューした結果では、実データに基づく研究はインタビュー9〜17件、フォーカスグループ4〜8回で飽和に達していました。ただしレビュー著者自身が、対象研究は同質な集団・狭い目的に偏っていると明記しており、この範囲を万能の推奨値として扱うことはできません。何を「飽和」と数えるかでも答えは変わり、同じ25件のデータでコード飽和は9件、意味飽和は16〜24件という研究もあります。</p></div>
+    <div class="faq"><div class="q">多様な集団や複数拠点の調査では何件必要ですか？</div><p class="a">Hagaman & Wutich（2017）は4つの調査サイト・132名のデータで検証し、単一サイトの同質な集団なら16件以下で飽和に達する一方、サイトを横断するメタテーマの特定には20〜40件が必要だったと報告しています。セグメントが複数ある調査は、セグメントごとに飽和を考える必要があるため、必要な総数は増えます。</p></div>
+    <div class="faq"><div class="q">AIインタビューで大人数に聞けるようになった今、飽和の考え方は変わりますか？</div><p class="a">「何件で情報が出尽くすか」という飽和の性質そのものは、聞き手がAIになっても変わりません。変わったのはコスト構造です。Geiecke & JaravelやChopra & Haalandのワーキングペーパー（いずれも査読前）は、AIによる大人数の定性調査が技術的・経済的に可能になったことを示していますが、「飽和論が無効になった」と主張する査読済み研究は現時点で確認できていません。人数を増やせるようになった今も、目的・集団の同質性・求める深さから必要数を考える枠組みは有効です。</p></div>
+
+    <h2 id="refs">参考文献</h2>
+    <ol style="font-size:13.5px;line-height:1.9;color:var(--slate);padding-left:1.4em;">
+      <li style="margin-bottom:10px;">Guest, G., Bunce, A., & Johnson, L. (2006). How Many Interviews Are Enough? An Experiment with Data Saturation and Variability. <em>Field Methods</em>, 18(1), 59-82. <a href="https://journals.sagepub.com/doi/10.1177/1525822X05279903" target="_blank" rel="noopener noreferrer">journals.sagepub.com</a></li>
+      <li style="margin-bottom:10px;">Hennink, M., & Kaiser, B. N. (2022). Sample sizes for saturation in qualitative research: A systematic review of empirical tests. <em>Social Science & Medicine</em>, 292, 114523. <a href="https://pubmed.ncbi.nlm.nih.gov/34785096/" target="_blank" rel="noopener noreferrer">pubmed.ncbi.nlm.nih.gov</a></li>
+      <li style="margin-bottom:10px;">Hennink, M. M., Kaiser, B. N., & Marconi, V. C. (2017). Code Saturation Versus Meaning Saturation: How Many Interviews Are Enough? <em>Qualitative Health Research</em>, 27(4), 591-608. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9359070/" target="_blank" rel="noopener noreferrer">pmc.ncbi.nlm.nih.gov</a></li>
+      <li style="margin-bottom:10px;">Malterud, K., Siersma, V. D., & Guassora, A. D. (2016). Sample Size in Qualitative Interview Studies: Guided by Information Power. <em>Qualitative Health Research</em>, 26(13), 1753-1760. <a href="https://pubmed.ncbi.nlm.nih.gov/26613970/" target="_blank" rel="noopener noreferrer">pubmed.ncbi.nlm.nih.gov</a></li>
+      <li style="margin-bottom:10px;">Hagaman, A. K., & Wutich, A. (2017). How Many Interviews Are Enough to Identify Metathemes in Multisited and Cross-cultural Research? <em>Field Methods</em>, 29(1), 23-41. <a href="https://eric.ed.gov/?id=EJ1137557" target="_blank" rel="noopener noreferrer">eric.ed.gov</a></li>
+      <li style="margin-bottom:10px;">Guest, G., Namey, E., & Chen, M. (2020). A simple method to assess and report thematic saturation in qualitative research. <em>PLOS ONE</em>, 15(5), e0232076. <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0232076" target="_blank" rel="noopener noreferrer">journals.plos.org</a></li>
+      <li style="margin-bottom:10px;">Braun, V., & Clarke, V. (2021). To saturate or not to saturate? Questioning data saturation as a useful concept for thematic analysis and sample-size rationales. <em>Qualitative Research in Sport, Exercise and Health</em>, 13(2), 201-216. <a href="https://www.tandfonline.com/doi/abs/10.1080/2159676X.2019.1704846" target="_blank" rel="noopener noreferrer">tandfonline.com</a></li>
+      <li style="margin-bottom:10px;">Geiecke, F., & Jaravel, X. Conversations at Scale: Robust AI-led Interviews with a Simple Open-Source Platform. CEPR Discussion Paper DP19705.（査読前のワーキングペーパー）<a href="https://cepr.org/publications/dp19705" target="_blank" rel="noopener noreferrer">cepr.org</a></li>
+      <li style="margin-bottom:10px;">Chopra, F., & Haaland, I. Conducting Qualitative Interviews with AI. SSRN Working Paper 4572954.（査読前のワーキングペーパー）<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4572954" target="_blank" rel="noopener noreferrer">papers.ssrn.com</a></li>
+    </ol>
+  </article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役</span></div>
+    <p>上場企業を含む37社・2,500名の生成AI導入・研修を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。AIが顧客や現場の声を一人ずつ深掘りするAIインタビュープラットフォーム「CoeSignal」を提供し、定性調査の設計から根拠に遡れる判断メモづくりまでを支援している。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>サンプルサイズの設計から、ご一緒します。</h3>
+    <p>CoeSignalは、AIが顧客や現場の声を一人ずつ深掘りするAIインタビュープラットフォームです。「声を、意思決定へ。」——調査の目的に合った人数設計から実査・分析・判断メモまでを一つの流れでご一緒します。検討段階のご相談だけでも歓迎です。</p>
+  </div>
+  <a href="https://coesignal.techworker.co.jp/" class="btn">CoeSignalに導入・調査を相談する <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="https://coesignal.techworker.co.jp/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(15,107,77,.3);">CoeSignal 公式サイト</a>　／　<a href="https://research.techworker.co.jp/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(15,107,77,.3);">実際のレポートサンプル</a>　／　<a href="https://coesignal.techworker.co.jp/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(15,107,77,.3);">無料相談</a></p>
+<div class="back-list"><a href="index.html">← AIインタビュー・ラボ（記事一覧）に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="sample-study.html" class="related-card"><div class="rc-thumb"><img src="covers/sample-study-cs.png" alt="AIインタビュー20名で何が分かるか｜サンプル調査「音声広告の受容性」の分析ノート" loading="lazy"></div><span class="rc-cat">分析ノート</span><div class="rc-title">AIインタビュー20名で何が分かるか｜サンプル調査「音声広告の受容性」の分析ノート</div></a>
+    <a href="depth-interview.html" class="related-card"><div class="rc-thumb"><img src="covers/depth-interview-cs.png" alt="デプスインタビューをAIで行う｜設計・実査・分析の実務" loading="lazy"></div><span class="rc-cat">デプス</span><div class="rc-title">デプスインタビューをAIで行う｜設計・実査・分析の実務</div></a>
+    <a href="interview-analysis.html" class="related-card"><div class="rc-thumb"><img src="covers/interview-analysis-cs.png" alt="インタビュー分析を生成AIで速くする｜発話データを判断材料に変える" loading="lazy"></div><span class="rc-cat">分析</span><div class="rc-title">インタビュー分析を生成AIで速くする｜発話データを判断材料に変える</div></a>
+    <a href="index.html" class="related-card"><div class="rc-thumb"><img src="covers/portal-cs.png" alt="AIインタビュー・ラボ｜AIインタビューの実践知を届けるメディア" loading="lazy"></div><span class="rc-cat">ポータル</span><div class="rc-title">AIインタビュー・ラボ（記事一覧）｜AIインタビューの実践知</div></a>
+  </div>
+</div></section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="cs-logo"><img src="brand/coesignal-logo.svg" alt="CoeSignal" height="26"><span class="lab-tag">AIインタビュー・ラボ</span></div>
+        <p>声を、意思決定へ。AIインタビューで定性調査を速く、深く。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+      </div>
+      <div class="footer-col"><h4>メディア</h4><a href="index.html">記事一覧</a><a href="ai-interview.html">AIインタビューとは</a><a href="depth-interview.html">デプスインタビュー</a></div>
+      <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../index.html#services">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="https://coesignal.techworker.co.jp/">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+</body>
+</html>
