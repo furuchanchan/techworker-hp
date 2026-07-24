@@ -96,19 +96,16 @@ fbq('init','1264057945446029');fbq('track','PageView');
 .lb-mast h1 em{font-style:normal;color:var(--electric);}
 .lb-def{font-size:15.5px;color:var(--slate);line-height:1.9;margin-top:18px;max-width:62ch;}
 /* 回答者アバターの帯: 円は固定サイズ（clamp）・flexで折返すだけ＝伸縮で歪まない */
-.lb-faces{display:flex;flex-wrap:wrap;gap:clamp(10px,1.6vw,18px);margin-top:38px;}
+.lb-faces{display:flex;flex-wrap:wrap;column-gap:clamp(10px,1.6vw,18px);row-gap:clamp(20px,2.2vw,28px);margin-top:44px;}
 .lb-faces .fc{position:relative;width:clamp(62px,7vw,96px);aspect-ratio:1;flex:none;}
 .lb-faces .fc .av{display:block;width:100%;height:100%;border-radius:50%;border:1px solid var(--line);overflow:hidden;background:var(--paper-2);}
 .lb-faces .fc:nth-child(3n) .av{background:var(--cream);}
 .lb-faces .fc:nth-child(3n+2) .av{background:#fff;}
 .lb-faces .fc img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
-/* 喋ってる風の吹き出し（CSSのみ・時間差で数人ずつ点灯） */
-.fc .say{position:absolute;top:-8px;right:-4px;display:flex;gap:3px;align-items:center;background:#fff;border:1.5px solid rgba(15,107,77,.45);border-radius:10px 10px 10px 3px;padding:4px 7px;box-shadow:0 2px 8px rgba(21,32,28,.10);opacity:0;transform:scale(.5);transform-origin:bottom left;animation:lb-say 10.5s infinite;animation-delay:var(--sayo,0s);pointer-events:none;}
-.fc .say i{width:4px;height:4px;border-radius:50%;background:var(--electric);animation:lb-dot .9s ease-in-out infinite;}
-.fc .say i:nth-child(2){animation-delay:.15s;}
-.fc .say i:nth-child(3){animation-delay:.3s;}
-@keyframes lb-say{0%,3%{opacity:0;transform:scale(.5)}7%,18%{opacity:1;transform:scale(1)}23%,100%{opacity:0;transform:scale(.5)}}
-@keyframes lb-dot{0%,100%{transform:translateY(0);opacity:.45}50%{transform:translateY(-2px);opacity:1}}
+/* 喋ってる風の吹き出し（CSSのみ・時間差で数人ずつ・円の真上センター＝端でもはみ出さない） */
+.fc .say{position:absolute;left:50%;bottom:calc(100% - 2px);z-index:3;white-space:nowrap;font-size:11px;font-weight:700;line-height:1;color:var(--ink-soft);background:#fff;border:1.5px solid rgba(15,107,77,.45);border-radius:10px;padding:6px 10px;box-shadow:0 2px 8px rgba(21,32,28,.10);opacity:0;transform:translateX(-50%) scale(.5);transform-origin:bottom center;animation:lb-say 10.5s infinite;animation-delay:var(--sayo,0s);pointer-events:none;}
+.fc .say::after{content:"";position:absolute;left:50%;bottom:-4.5px;width:7px;height:7px;background:#fff;border-right:1.5px solid rgba(15,107,77,.45);border-bottom:1.5px solid rgba(15,107,77,.45);transform:translateX(-50%) rotate(45deg);}
+@keyframes lb-say{0%,3%{opacity:0;transform:translateX(-50%) scale(.5)}7%,18%{opacity:1;transform:translateX(-50%) scale(1)}23%,100%{opacity:0;transform:translateX(-50%) scale(.5)}}
 .lb-faces-cap{display:flex;align-items:center;gap:9px;white-space:nowrap;font-size:12.5px;font-weight:700;color:var(--electric);margin-top:18px;}
 .lb-faces-cap::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--electric);flex:none;}
 .lb-faces-cap .w{display:inline-flex;align-items:flex-end;gap:3px;height:14px;margin-left:2px;}
@@ -234,24 +231,24 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <h1><span class="nb">大量のインタビューを、</span><span class="nb"><em>高速に。</em></span></h1>
   <p class="lb-def">AIが顧客・現場の声を一人ずつ深掘りする「AIインタビュー」。アンケートでは見えない「なぜ」を、意思決定の根拠に変える——商品企画・マーケティング・リサーチ・CX担当のための実践メディアです。</p>
   <div class="lb-faces" aria-hidden="true">
-    <span class="fc" style="--sayo:0s"><span class="av"><img src="avatars/f30-2.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
-    <span class="fc" style="--sayo:5.8s"><span class="av"><img src="avatars/m20-0.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
-    <span class="fc" style="--sayo:2.9s"><span class="av"><img src="avatars/f50-6.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
-    <span class="fc" style="--sayo:8.6s"><span class="av"><img src="avatars/m40-2.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
-    <span class="fc" style="--sayo:1.2s"><span class="av"><img src="avatars/f20-0.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
-    <span class="fc" style="--sayo:7.1s"><span class="av"><img src="avatars/m30-6.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
-    <span class="fc" style="--sayo:4.0s"><span class="av"><img src="avatars/m50-0.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
-    <span class="fc" style="--sayo:9.5s"><span class="av"><img src="avatars/f40-2.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
-    <span class="fc" style="--sayo:0.6s"><span class="av"><img src="avatars/m30-0.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
-    <span class="fc" style="--sayo:6.5s"><span class="av"><img src="avatars/f20-6.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
-    <span class="fc" style="--sayo:3.4s"><span class="av"><img src="avatars/m40-6.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
-    <span class="fc" style="--sayo:10.1s"><span class="av"><img src="avatars/f30-0.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
-    <span class="fc" style="--sayo:1.9s"><span class="av"><img src="avatars/f40-0.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
-    <span class="fc" style="--sayo:7.8s"><span class="av"><img src="avatars/m20-2.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
-    <span class="fc" style="--sayo:4.7s"><span class="av"><img src="avatars/f50-0.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
-    <span class="fc" style="--sayo:9.0s"><span class="av"><img src="avatars/m50-6.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
-    <span class="fc" style="--sayo:2.3s"><span class="av"><img src="avatars/f20-2.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
-    <span class="fc" style="--sayo:5.3s"><span class="av"><img src="avatars/m30-2.svg" alt="" loading="eager" width="96" height="96"></span><span class="say"><i></i><i></i><i></i></span></span>
+    <span class="fc" style="--sayo:0s"><span class="av"><img src="avatars/f30-2.svg" alt="" loading="eager" width="96" height="96"></span><span class="say">なんとなく安心で</span></span>
+    <span class="fc" style="--sayo:5.8s"><span class="av"><img src="avatars/m20-0.svg" alt="" loading="eager" width="96" height="96"></span><span class="say">実はやめようと…</span></span>
+    <span class="fc" style="--sayo:2.9s"><span class="av"><img src="avatars/f50-6.svg" alt="" loading="eager" width="96" height="96"></span><span class="say">朝の通勤中に</span></span>
+    <span class="fc" style="--sayo:8.6s"><span class="av"><img src="avatars/m40-2.svg" alt="" loading="eager" width="96" height="96"></span><span class="say">決め手は口コミ</span></span>
+    <span class="fc" style="--sayo:1.2s"><span class="av"><img src="avatars/f20-0.svg" alt="" loading="eager" width="96" height="96"></span><span class="say">最初は半信半疑</span></span>
+    <span class="fc" style="--sayo:7.1s"><span class="av"><img src="avatars/m30-6.svg" alt="" loading="eager" width="96" height="96"></span><span class="say">置きっぱなしです</span></span>
+    <span class="fc" style="--sayo:4.0s"><span class="av"><img src="avatars/m50-0.svg" alt="" loading="eager" width="96" height="96"></span><span class="say">値段より手間かな</span></span>
+    <span class="fc" style="--sayo:9.5s"><span class="av"><img src="avatars/f40-2.svg" alt="" loading="eager" width="96" height="96"></span><span class="say">気づいたら検索</span></span>
+    <span class="fc" style="--sayo:0.6s"><span class="av"><img src="avatars/m30-0.svg" alt="" loading="eager" width="96" height="96"></span><span class="say">週1回くらい</span></span>
+    <span class="fc" style="--sayo:6.5s"><span class="av"><img src="avatars/f20-6.svg" alt="" loading="eager" width="96" height="96"></span><span class="say">家族に勧められて</span></span>
+    <span class="fc" style="--sayo:3.4s"><span class="av"><img src="avatars/m40-6.svg" alt="" loading="eager" width="96" height="96"></span><span class="say">更新月に迷った</span></span>
+    <span class="fc" style="--sayo:10.1s"><span class="av"><img src="avatars/f30-0.svg" alt="" loading="eager" width="96" height="96"></span><span class="say">サポートが決め手</span></span>
+    <span class="fc" style="--sayo:1.9s"><span class="av"><img src="avatars/f40-0.svg" alt="" loading="eager" width="96" height="96"></span><span class="say">なぜかと言うと…</span></span>
+    <span class="fc" style="--sayo:7.8s"><span class="av"><img src="avatars/m20-2.svg" alt="" loading="eager" width="96" height="96"></span><span class="say">ここだけの話…</span></span>
+    <span class="fc" style="--sayo:4.7s"><span class="av"><img src="avatars/f50-0.svg" alt="" loading="eager" width="96" height="96"></span><span class="say">比べてから決めた</span></span>
+    <span class="fc" style="--sayo:9.0s"><span class="av"><img src="avatars/m50-6.svg" alt="" loading="eager" width="96" height="96"></span><span class="say">ながら聴きです</span></span>
+    <span class="fc" style="--sayo:2.3s"><span class="av"><img src="avatars/f20-2.svg" alt="" loading="eager" width="96" height="96"></span><span class="say">音で選んでます</span></span>
+    <span class="fc" style="--sayo:5.3s"><span class="av"><img src="avatars/m30-2.svg" alt="" loading="eager" width="96" height="96"></span><span class="say">言えなかったけど…</span></span>
   </div>
   <div class="lb-faces-cap">AIが同時並行で、一人ずつ深掘り<span class="w"><i style="height:6px"></i><i style="height:12px"></i><i style="height:9px"></i><i style="height:14px"></i><i style="height:7px"></i></span></div>
   <nav class="lb-util" aria-label="ユーティリティ">
