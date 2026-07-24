@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3V34NWXVCJ');
+</script>
+<!-- TW intent tracker (first-party, sessionStorage only) -->
+<script>
+(function(){try{var ss=sessionStorage,ls=localStorage;
+if(!ss.getItem('tw_landing')){ss.setItem('tw_landing',location.pathname);ss.setItem('tw_ref',document.referrer||'');var q=new URLSearchParams(location.search);ss.setItem('tw_utm',['utm_source','utm_medium','utm_campaign'].map(function(k){return q.get(k)||'';}).join('|'));}
+var p=JSON.parse(ss.getItem('tw_pages')||'[]');if(p[p.length-1]!==location.pathname){p.push(location.pathname);ss.setItem('tw_pages',JSON.stringify(p.slice(-20)));}
+if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_visits')||'0',10)+1));ss.setItem('tw_counted','1');}
+}catch(e){}})();
+</script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIインタビュー20名で何が分かるか｜サンプル調査「音声広告の受容性」の分析ノート【2026】 — AIインタビュー・ラボ</title>
+<meta name="description" content="AIインタビューは20名で何が分かるのか。CoeSignalが公開しているサンプル調査「音声広告の受容性」（※架空データによる公開デモ）を素材に、設計→実査→4つの発見→判断メモまで、分析が実際どう進むかを一段ずつ解説する分析ノート。進め方・構造は実際の納品と同一です。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/interview/sample-study">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AIインタビュー20名で何が分かるか｜サンプル調査「音声広告の受容性」の分析ノート【2026】">
+<meta property="og:description" content="AIインタビューは20名で何が分かるのか。公開サンプル調査「音声広告の受容性」を素材に、設計→発見→判断メモまで、分析の進み方を一段ずつ解説します。">
+<meta property="og:image" content="https://techworker.co.jp/media/interview/covers/sample-study-cs.png">
+<meta property="og:url" content="https://techworker.co.jp/media/interview/sample-study">
+<meta property="og:site_name" content="AIインタビュー・ラボ">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AIインタビュー20名で何が分かるか｜サンプル調査「音声広告の受容性」の分析ノート【2026】">
+<meta name="twitter:image" content="https://techworker.co.jp/media/interview/covers/sample-study-cs.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../article.css">
+<link rel="stylesheet" href="lab.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"AIインタビュー20名で何が分かるか｜サンプル調査「音声広告の受容性」の分析ノート【2026】",
+  "description":"CoeSignalが公開しているサンプル調査「音声広告の受容性」（架空データによる公開デモ）を素材に、AIインタビューの分析が設計→実査→発見→判断メモへとどう進むかを一段ずつ解説する分析ノート。進め方・構造は実際の納品と同一。",
+  "datePublished":"2026-07-23","dateModified":"2026-07-23","inLanguage":"ja",
+  "image":{"@type":"ImageObject","url":"https://techworker.co.jp/media/interview/covers/sample-study-cs.png","width":1200,"height":630},
+  "author":{"@type":"Person","name":"古野光太朗","jobTitle":"株式会社TechWorker 代表取締役","url":"https://techworker.co.jp/company.html","image":"https://techworker.co.jp/assets/author-furuno.jpg","sameAs":["https://x.com/koutarou_furuno"],"affiliation":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"}},
+  "publisher":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/","logo":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630}},
+  "mainEntityOfPage":{"@type":"WebPage","@id":"https://techworker.co.jp/media/interview/sample-study.html"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},
+    {"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},
+    {"@type":"ListItem","position":3,"name":"AIインタビュー・ラボ","item":"https://techworker.co.jp/media/interview/"},
+    {"@type":"ListItem","position":4,"name":"AIインタビュー20名で何が分かるか","item":"https://techworker.co.jp/media/interview/sample-study.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"n=20の定性調査は信頼できるのですか？","acceptedAnswer":{"@type":"Answer","text":"「何を信頼するか」によります。20名の定性調査から取り出せるのは、割合や市場規模ではなく「理由の構造」——なぜそう行動するのか、どこで気持ちが動くのか、という打ち手の方向です。このサンプル調査でも、数値を一般化する代わりに、反証と限界を明記したうえで「条件付きGO＋次の検証」という判断に落としています。定量的な出稿判断が必要な場面では、追加の定量検証と組み合わせるのが正しい使い方です。"}},
+    {"@type":"Question","name":"架空データのサンプルを分析しても意味がないのでは？","acceptedAnswer":{"@type":"Answer","text":"データが架空である一方、分析の進め方——一文の問いの設計、n=23から検査・監査を経て有効20に絞る品質プロセス、発見から判断メモ（結論・根拠・反証・限界・次の検証）への構造化——は実際の納品と同一です。本記事の目的は数値そのものではなく、この「進み方」を事前に確かめられることにあります。実物の共有レポートは公開されているサンプルで確認できます。"}},
+    {"@type":"Question","name":"この調査はどのくらいの期間・工数で実施されたのですか？","acceptedAnswer":{"@type":"Answer","text":"実査期間は2026年7月1日から7月8日までの7日間です。AIによる音声デプスインタビューは非同期方式のため、日程調整やモデレーターの稼働は発生せず、回答者は都合のよい時間にURLを開いて答えます。1件あたりの回答時間は平均11分でした。集まった23件には19項目の自動検査とAIによる監査が実施され、人による確認を経て有効回答20件が確定しています。"}},
+    {"@type":"Question","name":"自社のテーマで実施しても、同じ形式のレポートになりますか？","acceptedAnswer":{"@type":"Answer","text":"なります。このサンプル調査の構成——調査概要と品質プロセス、テーマ別の発見、引用元の発言、判断メモ（結論・根拠・反証・限界・次の検証）——は、テーマにかかわらず共通の型です。自社の顧客リストへのURL配布でも、提携パネル連携での回答者確保でも、成果物は同じ「根拠に遡れる判断メモ」の形式でまとまります。"}}
+  ]
+}
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <a href="index.html" class="cs-logo"><img src="brand/coesignal-logo.svg" alt="CoeSignal" height="26"><span class="lab-tag">AIインタビュー・ラボ</span></a>
+  <ul>
+    <li><a href="index.html">記事一覧</a></li>
+    <li><a href="index.html#about">このメディアについて</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://coesignal.techworker.co.jp/" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="index.html">記事一覧</a>
+  <a href="index.html#about">このメディアについて</a>
+  <a href="https://coesignal.techworker.co.jp/" class="m-cta">無料相談を申し込む</a>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIインタビュー・ラボ</a><span class="sep">/</span>サンプル調査の分析ノート</nav>
+  <div class="kicker">分析ノート / Analysis Note</div>
+  <h1>AIインタビュー20名で何が分かるか｜サンプル調査「音声広告の受容性」の分析ノート</h1>
+  <p class="dek">「n=20の定性調査で、何がどこまで決められるのか」。この問いに答えるいちばんの近道は、実際の調査がどう進んだかを一段ずつ見ることだ。CoeSignalが公開しているサンプル調査「音声広告の受容性調査 — 鍵は音量ではなく『語り口』」を素材に、設計・品質管理・4つの発見・判断メモまで、分析の舞台裏を歩いて見せる。</p>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.23</span><span class="dot">·</span><span>最終更新 2026.07.23</span><span class="dot">·</span><span>読了 10分</span>
+  </div>
+</header>
+
+<img class="art-cover" src="covers/sample-study-cs.png" alt="AIインタビュー20名で何が分かるか｜サンプル調査「音声広告の受容性」の分析ノート" width="1200" height="630" fetchpriority="high">
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次">
+    <div class="art-toc-inner">
+      <div class="toc-h">目次</div>
+      <a href="#s1">何をどう聞いたのか</a>
+      <a href="#s2">20名から見えたこと</a>
+      <a href="#s3">発見が「判断」になるまで</a>
+      <a href="#s4">この分析ノートの持ち帰り</a>
+      <a href="#faq">よくある質問</a>
+    </div>
+  </nav>
+
+  <article class="art-body rv">
+    <div class="lede">
+      <div class="lede-h">この記事の要点</div>
+      <ul>
+        <li>素材は、CoeSignalが公開しているサンプル調査「音声広告の受容性調査」。n=23の回答に自動検査とAI監査をかけ、<strong>有効n=20</strong>に絞ったAI音声デプスインタビュー（非同期・平均11分）だ。</li>
+        <li>20名の発話から<strong>4つの発見</strong>——「ながら聴取」が基本形（18/20）、想起は「語り口」で決まる、スキップの主因は繰り返し、広告体験は課金・離脱まで動かす——が立ち上がる過程を追う。</li>
+        <li>着地は「条件付きGO」という<strong>判断メモ</strong>。結論だけでなく、根拠3点・反証・限界・次の検証を1枚に残す構造が、n=20の定性を意思決定に使える形にする。</li>
+      </ul>
+    </div>
+
+    <div class="callout"><p>本記事で扱う調査は、公開デモ用のサンプル（<strong>架空データ</strong>）です。回答内容・数値はすべて架空ですが、<strong>分析の進め方・構造は実際の納品と同一</strong>です。実物の共有レポートは<a href="https://research.techworker.co.jp/">公開サンプルレポート</a>で確認できます。</p></div>
+
+    <aside class="inline-dx-cta" style="margin:6px 0 40px;border:1px solid var(--line-2);border-radius:12px;background:var(--white);padding:22px 26px;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
+  <div style="flex:1;min-width:240px;">
+    <div style="font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);">無料体験 ・ 登録不要 ・ 5分</div>
+    <div style="font-family:var(--jp);font-weight:700;font-size:16.5px;color:var(--ink);line-height:1.55;margin-top:8px;">5分でAIインタビューを体験（登録不要・無料）</div>
+    <div style="font-size:13.5px;color:var(--slate);line-height:1.8;margin-top:5px;">回答者としてマイクで答えるだけ。AIがどこまで聞き返してくるかを、読む前にまず体験できます。</div>
+  </div>
+  <a href="https://coesignal.techworker.co.jp/" class="btn" style="white-space:nowrap;flex:none;color:var(--paper);border-bottom:none;">無料で体験する <i>&rarr;</i></a>
+</aside>
+      <h2 id="s1">この調査は何をどう聞いたのか？</h2>
+    <p class="answer">「音声広告への出稿を拡大すべきか」という一文の問いを立て、音声コンテンツを週1回以上聴く20-50代に、AIが声で聞く非同期のデプスインタビュー（平均11分）で答えてもらった。</p>
+    <p>AIインタビューの調査は、長い調査票からは始まりません。起点は<strong>一文の「意思決定の問い」</strong>です。このサンプル調査であれば「音声広告への出稿を拡大すべきか」。この一文が決まると、誰に聞くべきか（音声コンテンツを日常的に聴いている人）、何を聞くべきか（聴き方・広告の記憶・スキップの瞬間）が芋づる式に定まります。</p>
+    <p>設計の全体は次のとおりです。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>項目</th><th>内容</th></tr>
+        <tr><td>調査名</td><td>音声広告の受容性調査 — 鍵は音量ではなく「語り口」</td></tr>
+        <tr><td>問い</td><td>音声広告への出稿を拡大すべきか</td></tr>
+        <tr><td>手法</td><td>AI音声デプスインタビュー（非同期・平均11分）</td></tr>
+        <tr><td>対象</td><td>20-50代・音声コンテンツを週1回以上聴取・全国</td></tr>
+        <tr><td>実査期間</td><td>2026年7月1日〜7月8日（7日間）</td></tr>
+        <tr><td>有効回答</td><td>n=20（回収23件から品質検査で3件除外）</td></tr>
+      </table>
+    </div>
+    <p class="fig-cap">表：サンプル調査の概要（※公開デモ用のサンプル調査・架空データ）。</p>
+    <p>非同期方式なので、回答者は都合のよい時間にURLを開き、画面の質問に声で答えます。日程調整もモデレーターの稼働も発生しないため、20名規模の深い聞き取りが7日間で回り切ります。仕組みそのものの解説は<a href="ai-interview.html">AIインタビューとは</a>に譲り、ここでは分析の進み方に集中します。</p>
+    <h3>n=23が有効n=20になるまで——品質のプロセス</h3>
+    <p>見落とされがちですが、分析の質は「分析の前」に決まります。このサンプル調査では、回収された全23件に対して<strong>19項目の自動検査とAIによる監査</strong>が実施され、基準を満たさない3件が除外候補になりました。最終的な除外は<strong>人による確認で確定</strong>し、有効回答はn=20。機械が広く網をかけ、人が最終判断する二段構えです。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>段階</th><th>件数</th><th>何をしたか</th></tr>
+        <tr><td>回収</td><td>23件</td><td>非同期のAI音声インタビューで実査（平均11分）</td></tr>
+        <tr><td>自動検査</td><td>23件全件</td><td>19項目の自動検査＋AI監査で回答品質をチェック</td></tr>
+        <tr><td>除外</td><td>3件</td><td>除外候補を人による確認で確定</td></tr>
+        <tr><td>有効回答</td><td>20件</td><td>以降の分析はこの20件のみを対象にする</td></tr>
+      </table>
+    </div>
+    <p class="fig-cap">表：品質管理のプロセス（※サンプル調査の実施内容）。</p>
+    <p>回答者の属性は、提携パネルとの連携により回答者ごとに<strong>12種類の登録属性</strong>（性別・年代・地域・職業・年収等）として取得されています。一方で、生年月日や郵便番号といった原値は保存しない設計です。深掘りに必要な文脈は持ち、個人の特定に近づくデータは持たない——この線引きも、分析の前に固めておく仕事です。</p>
+    <div class="callout"><p>「n=20」は小さく見える。しかしこの20は、23件から検査と監査で絞り込まれた20だ。定性調査の信頼は人数の多さではなく、<strong>1件1件が本当に分析に値するか</strong>から始まる。</p></div>
+
+    <h2 id="s2">20名から何が見えたのか？</h2>
+    <p class="answer">発見は4つ。「ながら聴取」がほぼ全員の基本形（18/20）、想起される広告は「語り口」で決まる、スキップの主因は同じ広告の繰り返し、そして広告体験の質は課金・離脱の判断まで動かす。</p>
+    <p>有効20件の発話を横断的に読むと、ばらばらの体験談が4つのテーマに収束していきます。ここが定性分析の中心です。まず全体像を、テーマ別の言及数で示します。</p>
+    <figure class="cmp-chart" aria-label="テーマ別の言及数（有効n=20・公開サンプル調査の架空データ）">
+      <figcaption class="cc-top"><span class="dot"></span>テーマ別の言及数（有効n=20）</figcaption>
+      <div class="cc-row"><span class="cc-lab">ながら聴取が基本形</span><div class="cc-stack"><i class="s-b" style="width:90%"></i><i class="s-a" style="width:10%"></i></div></div>
+      <div class="cc-row"><span class="cc-lab">直近1ヶ月で広告を想起</span><div class="cc-stack"><i class="s-b" style="width:80%"></i><i class="s-a" style="width:20%"></i></div></div>
+      <div class="cc-row"><span class="cc-lab">想起の理由は「語り口」</span><div class="cc-stack"><i class="s-b" style="width:45%"></i><i class="s-a" style="width:55%"></i></div></div>
+      <div class="cc-row"><span class="cc-lab">スキップ主因は繰り返し</span><div class="cc-stack"><i class="s-b" style="width:50%"></i><i class="s-a" style="width:50%"></i></div></div>
+      <div class="cc-row"><span class="cc-lab">課金・離脱まで影響</span><div class="cc-stack"><i class="s-b" style="width:15%"></i><i class="s-a" style="width:85%"></i></div></div>
+      <div class="cc-legend"><span><i class="s-b"></i>言及した人数（20名中：上から18名・16名・9名・10名・3名）</span><span><i class="s-a"></i>それ以外</span></div>
+      <div class="cc-cap">※公開サンプル調査（架空データ）の集計です。「想起の理由は『語り口』」は、広告を想起できた16名のうち9名が理由として挙げたもの。</div>
+    </figure>
+    <p class="fig-cap">図：テーマ別の言及数（※公開サンプル調査・架空データ）。</p>
+    <h3>発見① 「ながら聴取」がほぼ全員の基本形（20名中18名）</h3>
+    <p>20名中18名にとって、音声コンテンツは「何かをしながら」聴くものでした。通勤・家事・作業との同時行動が基本形で、聴取時間は朝と夜に二極化しています。画面を見つめる広告と違い、音声広告は<strong>手も目も塞がっている人</strong>に届く——このリーチの再現性が、後の判断の土台になります。</p>
+    <div class="quote-box"><p>「運転しながらなので、ながら聴きですね。朝の8時からだいたい30分です」</p></div>
+    <p class="fig-cap">回答者R-001の発言より（※公開サンプル調査・架空データ）。</p>
+    <h3>発見② 想起される広告は「語り口」で決まる（16名中9名が理由に）</h3>
+    <p>直近1ヶ月で音声広告を想起できたのは20名中16名。ここで興味深いのは想起の中身ではなく<strong>理由</strong>です。16名のうち9名が「番組と地続きの話し方」を想起の理由に挙げました。音量やインパクトではなく、語り口。調査名の副題「鍵は音量ではなく『語り口』」は、この発見から来ています。</p>
+    <div class="quote-box"><p>「声のトーンが番組と地続きだと、広告って気づかずに聴いてます。この前も気づいたら商品名を検索していました」</p></div>
+    <p class="fig-cap">回答者R-012の発言より（※公開サンプル調査・架空データ）。</p>
+    <h3>発見③ スキップ衝動の主因は「同じ広告の繰り返し」（20名中10名）</h3>
+    <p>半数の10名が、スキップしたくなる瞬間として「同じ広告の繰り返し」を挙げました。「同じフレーズを何回も繰り返すやつですね。あれが来ると手が伸びます」（R-003）。広告そのものへの拒否ではなく、<strong>反復への疲労</strong>が主因である点が重要です。クリエイティブと配信ローテーションの設計で回避できる種類の問題だからです。</p>
+    <h3>発見④ 広告体験の質は、課金・離脱の判断まで動かす（20名中3名）</h3>
+    <p>少数ですが見逃せないのが、広告体験がサービスへの態度そのものを変えた3名です。良い広告が「そのアプリの有料プランに入りました」（R-007）という課金を生んだ例があり、逆に悪い体験が広告排除のための課金を生んだ例、離脱に至った例もありました。言及数は3/20と小さいものの、広告が単なる認知施策ではなく<strong>事業のKPIに直結する体験</strong>であることを示す声として、判断メモに残す価値があります。</p>
+
+    <h2 id="s3">発見はどうやって「判断」になるのか？</h2>
+    <p class="answer">発見を並べるだけでは判断にならない。問いに対する結論と、根拠・反証・限界・次の検証を1枚に構造化した「判断メモ」に落として、初めて意思決定に使える。</p>
+    <p>ここが、このサンプル調査でいちばん見てほしい箇所です。4つの発見は、それ自体では「興味深い読み物」にすぎません。冒頭の問い——音声広告への出稿を拡大すべきか——に答える形に組み替えて、初めて分析は仕事になります。サンプル調査の判断メモは、次の構造でまとまっています。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>判断メモの要素</th><th>このサンプル調査での中身</th></tr>
+        <tr><td>問い</td><td>音声広告への出稿を拡大すべきか</td></tr>
+        <tr><td>結論</td><td><strong>条件付きGO</strong></td></tr>
+        <tr><td>根拠①</td><td>リーチの再現性——「ながら聴取」が基本形（18/20）</td></tr>
+        <tr><td>根拠②</td><td>クリエイティブで差がつく——想起理由に「語り口」（想起16名中9名）</td></tr>
+        <tr><td>根拠③</td><td>スキップはローテーション設計で回避可——主因は繰り返し（10/20）</td></tr>
+        <tr><td>反証</td><td>想起の多くは商品カテゴリ止まりで、ブランド名までは限られる</td></tr>
+        <tr><td>限界</td><td>n=20・提携パネル経由・都市部在住者中心。定量的な出稿判断には追加検証が必要</td></tr>
+        <tr><td>次の検証</td><td>番組トーンと地続きの「会話調」クリエイティブ2案で想起率のA/B検証</td></tr>
+      </table>
+    </div>
+    <p class="fig-cap">表：判断メモの構造（※公開サンプル調査・架空データ。構造は実際の納品と同一）。</p>
+    <h3>なぜ「反証」と「限界」を残すのか</h3>
+    <p>注目してほしいのは、結論の隣に<strong>結論に不利な情報が並んでいる</strong>ことです。反証はこうです。想起できた16名は多いが、その多くは「音声広告を聴いた」という商品カテゴリの記憶止まりで、ブランド名まで言える人は限られる。「広告は流れているが、何の広告かは覚えていない」（R-008）という声が、GOの熱を一段冷まします。</p>
+    <p>限界も明記されています。n=20であること、提携パネル経由であること、都市部在住者中心であること。だから「出稿を拡大すべきか」への答えは無条件のGOではなく<strong>条件付きGO</strong>になり、条件の中身が「次の検証」——会話調クリエイティブ2案での想起率A/B検証——として具体化されます。</p>
+    <div class="quote-box"><p>反証と限界を消したレポートは、きれいに見えて信用できない。判断メモの信頼は、結論の強さではなく「不利な情報まで載っている」ことから生まれる。</p></div>
+    <p>結論・根拠・反証・限界・次の検証がひとつながりになり、すべての要素から引用元の発言に遡れる——この形が「根拠に遡れる判断メモ」です。実物がどう見えるかは<a href="https://research.techworker.co.jp/">公開サンプルレポート</a>で確認できます。発話データから示唆への落とし方の一般論は<a href="interview-analysis.html">インタビュー分析の方法</a>で扱っています。</p>
+
+    <h2 id="s4">この分析ノートから何を持ち帰れるか？</h2>
+    <p class="answer">n=20の定性でも「打ち手の方向」と「次に検証すべきこと」までは決められる。決められないのは数値の一般化。この線引きを守ることが、定性調査を意思決定に使う条件になる。</p>
+    <p>サンプル調査を一段ずつ歩いてきて、見えたことを整理します。20名のAIインタビューで決められたのは次の3つでした。</p>
+    <ul>
+      <li><strong>打ち手の方向。</strong>音声広告は「音量」ではなく「語り口」で戦う——番組と地続きの会話調が想起をつくる。</li>
+      <li><strong>回避すべき失敗。</strong>スキップの主因は繰り返し。配信ローテーションの設計で潰せる。</li>
+      <li><strong>次の一手。</strong>会話調クリエイティブ2案で想起率のA/B検証。何を検証すれば無条件GOに進めるかが特定された。</li>
+    </ul>
+    <p>逆に、決めなかったこともはっきりしています。「音声広告経由の想起率は市場全体で何%か」といった<strong>数値の一般化</strong>は、n=20・提携パネル経由という限界の中では行わない。この誠実な線引きがあるからこそ、条件付きGOという結論が社内で通用します。</p>
+    <h3>自社でやるなら——3ステップ</h3>
+    <p>この型は、テーマを入れ替えればそのまま自社の調査に使えます。</p>
+    <ol>
+      <li><strong>問いを一文にする。</strong>「〜すべきか」で終わる意思決定の問いを1つに絞る。問いが二文以上になるなら、調査を分ける。</li>
+      <li><strong>20名規模で聞く。</strong>自社リストへのURL配布か、提携パネル連携で対象条件に合う回答者を確保し、非同期のAIインタビューで実査する。品質検査で絞り込む前提で、少し多めに集める。</li>
+      <li><strong>判断メモまで落とす。</strong>発見の列挙で止めず、結論・根拠・反証・限界・次の検証の1枚に構造化する。反証が見つからなかったら、探し方を疑う。</li>
+    </ol>
+    <div class="callout"><p>定性調査の成果物は「分かったこと」ではなく<strong>「決められたこと」</strong>で測る。n=20で市場は測れないが、次に打つ手と、次に検証すべきことは決められる。</p></div>
+
+    <h2 id="faq">よくある質問</h2>
+    <div class="faq"><div class="q">n=20の定性調査は信頼できるのですか？</div><p class="a">「何を信頼するか」によります。20名の定性調査から取り出せるのは、割合や市場規模ではなく「理由の構造」——なぜそう行動するのか、どこで気持ちが動くのか、という打ち手の方向です。このサンプル調査でも、数値を一般化する代わりに、反証と限界を明記したうえで「条件付きGO＋次の検証」という判断に落としています。定量的な出稿判断が必要な場面では、追加の定量検証と組み合わせるのが正しい使い方です。</p></div>
+    <div class="faq"><div class="q">架空データのサンプルを分析しても意味がないのでは？</div><p class="a">データが架空である一方、分析の進め方——一文の問いの設計、n=23から検査・監査を経て有効20に絞る品質プロセス、発見から判断メモ（結論・根拠・反証・限界・次の検証）への構造化——は実際の納品と同一です。本記事の目的は数値そのものではなく、この「進み方」を事前に確かめられることにあります。実物の共有レポートは公開されているサンプルで確認できます。</p></div>
+    <div class="faq"><div class="q">この調査はどのくらいの期間・工数で実施されたのですか？</div><p class="a">実査期間は2026年7月1日から7月8日までの7日間です。AIによる音声デプスインタビューは非同期方式のため、日程調整やモデレーターの稼働は発生せず、回答者は都合のよい時間にURLを開いて答えます。1件あたりの回答時間は平均11分でした。集まった23件には19項目の自動検査とAIによる監査が実施され、人による確認を経て有効回答20件が確定しています。</p></div>
+    <div class="faq"><div class="q">自社のテーマで実施しても、同じ形式のレポートになりますか？</div><p class="a">なります。このサンプル調査の構成——調査概要と品質プロセス、テーマ別の発見、引用元の発言、判断メモ（結論・根拠・反証・限界・次の検証）——は、テーマにかかわらず共通の型です。自社の顧客リストへのURL配布でも、提携パネル連携での回答者確保でも、成果物は同じ「根拠に遡れる判断メモ」の形式でまとまります。</p></div>
+  </article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役</span></div>
+    <p>上場企業を含む37社・2,500名の生成AI導入・研修を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。AIが顧客や現場の声を一人ずつ深掘りするAIインタビュープラットフォーム「CoeSignal」を提供し、定性調査の設計から根拠に遡れる判断メモづくりまでを支援している。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>この分析ノートの型を、自社の問いで。</h3>
+    <p>CoeSignalは、AIが顧客や現場の声を一人ずつ深掘りするAIインタビュープラットフォームです。「声を、意思決定へ。」——設計から実査・分析・判断メモまでを一つの流れでご一緒します。検討段階のご相談だけでも歓迎です。</p>
+  </div>
+  <a href="https://coesignal.techworker.co.jp/" class="btn">CoeSignalに導入・調査を相談する <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="https://coesignal.techworker.co.jp/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(15,107,77,.3);">CoeSignal 公式サイト</a>　／　<a href="https://research.techworker.co.jp/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(15,107,77,.3);">実際のレポートサンプル</a>　／　<a href="https://coesignal.techworker.co.jp/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(15,107,77,.3);">無料相談</a></p>
+<div class="back-list"><a href="index.html">← AIインタビュー・ラボ（記事一覧）に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="ai-interview.html" class="related-card"><div class="rc-thumb"><img src="covers/ai-interview-cs.png" alt="AIインタビューとは｜アンケートより深く、従来インタビューより速い定性調査" loading="lazy"></div><span class="rc-cat">基礎</span><div class="rc-title">AIインタビューとは｜アンケートより深く、従来インタビューより速い定性調査</div></a>
+    <a href="interview-analysis.html" class="related-card"><div class="rc-thumb"><img src="covers/interview-analysis-cs.png" alt="インタビュー分析の方法｜発話データを示唆に変える手順とAI活用" loading="lazy"></div><span class="rc-cat">分析</span><div class="rc-title">インタビュー分析の方法｜発話データを示唆に変える手順とAI活用</div></a>
+    <a href="voc-interview.html" class="related-card"><div class="rc-thumb"><img src="covers/voc-interview-cs.png" alt="VOC・解約理由をAIインタビューで掘る｜「料金が高い」の先にある本音" loading="lazy"></div><span class="rc-cat">VOC</span><div class="rc-title">VOC・解約理由をAIインタビューで掘る｜「料金が高い」の先にある本音</div></a>
+    <a href="index.html" class="related-card"><div class="rc-thumb"><img src="covers/portal-cs.png" alt="AIインタビュー・ラボ｜AIインタビューの実践知を届けるメディア" loading="lazy"></div><span class="rc-cat">ポータル</span><div class="rc-title">AIインタビュー・ラボ（記事一覧）｜AIインタビューの実践知</div></a>
+  </div>
+</div></section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="cs-logo"><img src="brand/coesignal-logo.svg" alt="CoeSignal" height="26"><span class="lab-tag">AIインタビュー・ラボ</span></div>
+        <p>声を、意思決定へ。AIインタビューで定性調査を速く、深く。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+      </div>
+      <div class="footer-col"><h4>メディア</h4><a href="index.html">記事一覧</a><a href="ai-interview.html">AIインタビューとは</a><a href="depth-interview.html">デプスインタビュー</a></div>
+      <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../index.html#services">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="https://coesignal.techworker.co.jp/">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+</body>
+</html>

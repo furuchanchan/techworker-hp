@@ -44,7 +44,7 @@ if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_vi
   "@type":"Article",
   "headline":"解約理由・VoCをAIインタビューで深掘りする｜数字では見えない離反の理由【2026】",
   "description":"解約アンケートの選択肢集計では分からない離反の理由を、AIインタビューで声から深掘りする方法。解約理由の調査設計、聞くべき問い、VoCをプロダクト・CS改善につなげる進め方を実践的に解説する。",
-  "datePublished":"2026-07-23","dateModified":"2026-07-23","inLanguage":"ja",
+  "datePublished":"2026-07-21","dateModified":"2026-07-21","inLanguage":"ja",
   "image":{"@type":"ImageObject","url":"https://techworker.co.jp/media/interview/covers/voc-interview-cs.png","width":1200,"height":630},
   "author":{"@type":"Person","name":"古野光太朗","jobTitle":"株式会社TechWorker 代表取締役","url":"https://techworker.co.jp/company.html","image":"https://techworker.co.jp/assets/author-furuno.jpg","sameAs":["https://x.com/koutarou_furuno"],"affiliation":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"}},
   "publisher":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/","logo":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630}},
@@ -107,7 +107,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <h1>解約理由・VoCをAIインタビューで深掘りする</h1>
   <p class="dek">数字では見えない離反の理由を、声で聞く。解約アンケートの集計で止まらないVoC分析のやり方。</p>
   <div class="a-meta">
-    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.23</span><span class="dot">·</span><span>最終更新 2026.07.23</span><span class="dot">·</span><span>読了 9分</span>
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.21</span><span class="dot">·</span><span>最終更新 2026.07.21</span><span class="dot">·</span><span>読了 9分</span>
   </div>
 </header>
 
@@ -159,6 +159,20 @@ fbq('init','1264057945446029');fbq('track','PageView');
       </table>
     </div>
     <div class="callout"><p>選択肢の集計は「どの理由が多いか」の分布を教えてくれるが、「なぜそうなったか」は教えてくれない。分布は打ち手の優先順位づけに、理由の深掘りは打ち手の中身の設計に使う。両方必要で、欠けているのはたいてい後者だ。</p></div>
+    <p>この「集約」と「分解」の差を模式図にすると、次のようになります。選択肢では一つの棒に見えていた「料金」が、深掘りすると別々の打ち手につながる複数の理由に分かれていきます。</p>
+    <figure class="cmp-chart" aria-label="同じ解約者の声の見え方 — 選択肢集計 vs 深掘り後（架空の例）">
+      <figcaption class="cc-top"><span class="dot"></span>同じ解約者の声の見え方 — 選択肢集計 vs 深掘り後（※架空の例）</figcaption>
+      <div style="font-size:12px;font-weight:700;color:var(--ink);margin:0 0 2px;">解約アンケートの選択肢</div>
+      <div class="cc-row" style="grid-template-columns:186px 1fr"><span class="cc-lab">料金が高い</span><div class="cc-stack"><i class="s-a" style="width:58%"></i></div></div>
+      <div class="cc-row" style="grid-template-columns:186px 1fr"><span class="cc-lab">その他・特になし</span><div class="cc-stack"><i class="s-a" style="width:23%"></i></div></div>
+      <div style="font-size:12px;font-weight:700;color:var(--ink);margin:18px 0 2px;">深掘り後の再分類</div>
+      <div class="cc-row" style="grid-template-columns:186px 1fr"><span class="cc-lab">社内に利用が広がらなかった</span><div class="cc-stack"><i class="s-b" style="width:44%"></i></div></div>
+      <div class="cc-row" style="grid-template-columns:186px 1fr"><span class="cc-lab">価値を実感する前に更新月が来た</span><div class="cc-stack"><i class="s-b" style="width:33%"></i></div></div>
+      <div class="cc-row" style="grid-template-columns:186px 1fr"><span class="cc-lab">運用の担当者が変わった</span><div class="cc-stack"><i class="s-b" style="width:21%"></i></div></div>
+      <div class="cc-legend"><span><i class="s-a"></i>選択肢の集計（最後のきっかけ）</span><span><i class="s-b"></i>深掘りで見えた理由</span></div>
+      <div class="cc-cap">図：架空の例。選択肢では「料金」に集約されていた声が、深掘りすると導入後の定着や体験の問題に分解される——という、定性調査で繰り返し観察される構図を模式化したもの。</div>
+    </figure>
+    <p>実データでの分析の進め方は<a href="sample-study.html">サンプル調査「音声広告の受容性」の分析ノート</a>で、声を集めてから再分類するまでの工程を追って示しています。</p>
 
     <h2 id="s2">解約理由をインタビューで聞くと何が分かるのか？</h2>
     <p class="answer">離反に至る時系列が言葉で残る。最初のつまずき、乗り換え先の決め手、そして「戻る条件」まで下りて聞ける。</p>
@@ -289,6 +303,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
     <a href="ai-interview.html" class="related-card"><div class="rc-thumb"><img src="covers/ai-interview-cs.png" alt="AIインタビューとは｜AIが一人ずつ声で深掘りする定性調査の新しいかたち" loading="lazy"></div><span class="rc-cat">基礎</span><div class="rc-title">AIインタビューとは｜AIが一人ずつ声で深掘りする定性調査の新しいかたち</div></a>
     <a href="depth-interview.html" class="related-card"><div class="rc-thumb"><img src="covers/depth-interview-cs.png" alt="デプスインタビューのやり方｜一往復で終わらせず本音まで下りる問いの設計" loading="lazy"></div><span class="rc-cat">聞き方</span><div class="rc-title">デプスインタビューのやり方｜一往復で終わらせず本音まで下りる問いの設計</div></a>
     <a href="interview-analysis.html" class="related-card"><div class="rc-thumb"><img src="covers/interview-analysis-cs.png" alt="インタビュー分析の進め方｜声を横断して判断につなげる" loading="lazy"></div><span class="rc-cat">分析</span><div class="rc-title">インタビュー分析の進め方｜声を横断して判断につなげる</div></a>
+    <a href="sample-study.html" class="related-card"><div class="rc-thumb"><img src="covers/sample-study-cs.png" alt="AIインタビュー20名で何が分かるか｜サンプル調査「音声広告の受容性」の分析ノート" loading="lazy"></div><span class="rc-cat">分析ノート</span><div class="rc-title">AIインタビュー20名で何が分かるか｜サンプル調査「音声広告の受容性」の分析ノート</div></a>
   </div>
 </div></section>
 
