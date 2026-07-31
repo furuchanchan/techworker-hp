@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3V34NWXVCJ');
+</script>
+<!-- TW intent tracker (first-party, sessionStorage only) -->
+<script>
+(function(){try{var ss=sessionStorage,ls=localStorage;
+if(!ss.getItem('tw_landing')){ss.setItem('tw_landing',location.pathname);ss.setItem('tw_ref',document.referrer||'');var q=new URLSearchParams(location.search);ss.setItem('tw_utm',['utm_source','utm_medium','utm_campaign'].map(function(k){return q.get(k)||'';}).join('|'));}
+var p=JSON.parse(ss.getItem('tw_pages')||'[]');if(p[p.length-1]!==location.pathname){p.push(location.pathname);ss.setItem('tw_pages',JSON.stringify(p.slice(-20)));}
+if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_visits')||'0',10)+1));ss.setItem('tw_counted','1');}
+}catch(e){}})();
+</script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>社内AIインタビューの活用事例10選｜国内7社・海外3社の公開事例に学ぶ【2026】 — AIインタビュー・ラボ</title>
+<meta name="description" content="従業員にAIがインタビューする取り組みは既に実装段階にあります。SHIFT約5,200人・トリドール（丸亀製麺）約3万人など国内7社・海外3社の公開事例を一次情報リンク付きで整理し、共通する成功パターンと導入時の注意点（匿名性・評価利用との線引き・人の役割）を解説します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/interview/internal-interview-cases">
+<meta property="og:type" content="article">
+<meta property="og:title" content="社内AIインタビューの活用事例10選｜国内7社・海外3社の公開事例に学ぶ【2026】">
+<meta property="og:description" content="SHIFT約5,200人・トリドール約3万人・豪CPL2,700人——従業員にAIがインタビューする公開事例10件を一次情報リンク付きで整理。共通する成功パターンと導入時の注意点を解説します。">
+<meta property="og:image" content="https://techworker.co.jp/media/interview/covers/internal-interview-cases-cs.png">
+<meta property="og:url" content="https://techworker.co.jp/media/interview/internal-interview-cases">
+<meta property="og:site_name" content="AIインタビュー・ラボ">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="社内AIインタビューの活用事例10選｜国内7社・海外3社の公開事例に学ぶ【2026】">
+<meta name="twitter:image" content="https://techworker.co.jp/media/interview/covers/internal-interview-cases-cs.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../article.css">
+<link rel="stylesheet" href="lab.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"社内AIインタビューの活用事例10選｜国内7社・海外3社の公開事例に学ぶ【2026】",
+  "description":"従業員にAIがインタビューする取り組みの公開事例10件（国内7社・海外3社）を一次情報リンク付きで整理。SHIFT約5,200人・トリドール約3万人などの実装例から、共通する成功パターンと導入時の注意点（匿名性・評価利用との線引き・人の役割）を解説する。",
+  "datePublished":"2026-07-30","dateModified":"2026-07-30","inLanguage":"ja",
+  "image":{"@type":"ImageObject","url":"https://techworker.co.jp/media/interview/covers/internal-interview-cases-cs.png","width":1200,"height":630},
+  "author":{"@type":"Person","name":"古野光太朗","jobTitle":"株式会社TechWorker 代表取締役","url":"https://techworker.co.jp/company.html","image":"https://techworker.co.jp/assets/author-furuno.jpg","sameAs":["https://x.com/koutarou_furuno"],"affiliation":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"}},
+  "publisher":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/","logo":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630}},
+  "mainEntityOfPage":{"@type":"WebPage","@id":"https://techworker.co.jp/media/interview/internal-interview-cases.html"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},
+    {"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},
+    {"@type":"ListItem","position":3,"name":"AIインタビュー・ラボ","item":"https://techworker.co.jp/media/interview/"},
+    {"@type":"ListItem","position":4,"name":"社内AIインタビューの活用事例10選","item":"https://techworker.co.jp/media/interview/internal-interview-cases.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"従業員サーベイ（ES調査）と社内AIインタビューは何が違いますか？","acceptedAnswer":{"@type":"Answer","text":"サーベイは決まった設問への一往復の回答で、分布は分かりますが理由までは残りません。AIインタビューは回答に応じて追質問し、「なぜそう感じたか」を言葉のまま集めてから構造化します。SHIFTの公開事例では、低スコアで退職者を捉える割合が従来のES調査の約3倍になったと報告されており、スコアの背景にある文脈まで拾えることが差になっています。両者は置き換えではなく、分布の把握と理由の深掘りで役割を分けて併用するのが実務的です。"}},
+    {"@type":"Question","name":"社員はAI相手に本音を話しますか？","acceptedAnswer":{"@type":"Answer","text":"公開事例の範囲では、話される傾向が示されています。SHIFTでは対話を有用とした社員が79%、AIとの1on1実施率は約95%と公表されています。トリドールの取り組みは雑談から入って心理的安全性をつくる設計、ココボイスのPoCは匿名アプリ上で対話する設計で、いずれも話しやすさを仕組み側で担保しています。ただし、回答が誰にどう見えるかの説明が曖昧なままだと発言は慎重になるため、匿名性と利用目的の明示が前提条件になります。"}},
+    {"@type":"Question","name":"何人規模の会社から使えますか？","acceptedAnswer":{"@type":"Answer","text":"公開事例の対象規模は、サイボウズのワークショップの約50人から、トリドール（丸亀製麺）の約3万人まで幅があります。トリドールは3回のPoCで600人超の声を反映してから対象を広げ、ココボイスも一部社員から全社員へ展開しています。最初から全社導入する必要はなく、部署や拠点を絞った小規模な検証から始めて、聞き方と結果の使い方を固めてから広げる進め方が事例の共通パターンです。"}},
+    {"@type":"Question","name":"昇格や評価にAI面接の結果をそのまま使ってよいですか？","acceptedAnswer":{"@type":"Answer","text":"自動で確定させる設計は避けるべきです。日本管財の事例はAI面接の結果を評点・ランク・出現率のレポートとして扱うもので、評価用途では「なぜその評価になったか」を説明できることと、人による最終判断を挟むことが必須になります。エンゲージメント目的で集めた声を本人の同意なく評価に転用すると、以後の回答から本音が消えるため、目的と利用範囲の線引きを先に明文化しておくことが導入の前提です。"}}
+  ]
+}
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <a href="index.html" class="cs-logo"><img src="brand/coesignal-logo.svg" alt="CoeSignal" height="26"><span class="lab-tag">AIインタビュー・ラボ</span></a>
+  <ul>
+    <li><a href="index.html">記事一覧</a></li>
+    <li><a href="index.html#about">このメディアについて</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://coesignal.techworker.co.jp/" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="index.html">記事一覧</a>
+  <a href="index.html#about">このメディアについて</a>
+  <a href="https://coesignal.techworker.co.jp/" class="m-cta">無料相談を申し込む</a>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIインタビュー・ラボ</a><span class="sep">/</span>社内AIインタビューの活用事例10選</nav>
+  <div class="kicker">活用事例 / Case Studies</div>
+  <h1>社内AIインタビューの活用事例10選</h1>
+  <p class="dek">「従業員にAIがインタビューする」は既に実装段階。国内7社・海外3社の公開事例を一次情報リンク付きで整理する。</p>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.30</span><span class="dot">·</span><span>最終更新 2026.07.30</span><span class="dot">·</span><span>読了 12分</span>
+  </div>
+</header>
+
+<img class="art-cover" src="covers/internal-interview-cases-cs.png" alt="社内AIインタビューの活用事例10選｜国内7社・海外3社の公開事例に学ぶ【2026】" width="1200" height="630" fetchpriority="high">
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次">
+    <div class="art-toc-inner">
+      <div class="toc-h">目次</div>
+      <a href="#s1">社内AIインタビューとは</a>
+      <a href="#s2">国内の公開事例7選</a>
+      <a href="#s3">海外の公開事例3選</a>
+      <a href="#s4">共通する成功パターン</a>
+      <a href="#s5">導入時の注意点</a>
+      <a href="#s6">CoeSignalの位置づけ</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#refs">参考文献</a>
+    </div>
+  </nav>
+
+  <article class="art-body rv">
+    <div class="lede">
+      <div class="lede-h">この記事の要点</div>
+      <ul>
+        <li>「従業員にAIがインタビューする」取り組みは、SHIFT<strong>約5,200人</strong>・トリドール（丸亀製麺）<strong>約3万人</strong>・豪CPL<strong>2,700人</strong>など、既に全社員規模の公開事例がある。</li>
+        <li>成果を分けるのは回答数ではなく<strong>構造化</strong>。自由な発言をテーマ・リスク・合意対立・アクションに整理し、経営が動ける形にした事例が結果を出している。</li>
+        <li>共通するのは<strong>AIと人の役割分担</strong>。AIが全員から一貫して聞き、人は経営判断・個別フォロー・実装テーマの選定に集中する。評価用途では人による最終判断が必須になる。</li>
+      </ul>
+    </div>
+
+    <div class="callout"><p>本記事は各社の公開情報（プレスリリース・公式記事）を元に構成した<strong>市場事例の整理</strong>です。各取り組みは各社独自またはそれぞれのツールによるもので、当社サービスの導入事例ではありません。出典はすべて<a href="#refs">記事末尾の参考文献</a>から一次情報を確認できます。</p></div>
+
+    <h2 id="s1">社内AIインタビューとは何か？</h2>
+    <p class="answer">AIが社員一人ひとりと対話して深掘りし、回答を構造化する取り組み。国内外で公開事例が既に10件ある。</p>
+    <p>従業員サーベイは多くの会社が実施しています。しかし決まった設問への一往復の回答では、スコアの分布は分かっても「なぜそのスコアなのか」は残りません。自由記述欄を設けても、書く負荷が高いために多くは空欄か一言で終わります。</p>
+    <p>この「一往復の壁」を越える手段として広がり始めたのが、<strong>AIが社員一人ひとりにインタビューする</strong>取り組みです。AIが回答に応じて「それはいつ頃からですか」「具体的にはどの場面ですか」と追質問し、集まった発言をテーマや論点に構造化して、人事や経営に渡します。サーベイの置き換えではなく、サーベイでは拾えない「理由」と「文脈」を全員から集める仕組みです。</p>
+    <h3>本記事での「類似度」の見方</h3>
+    <p>一口に「社内AI活用」と言っても中身は幅があるため、本記事では各事例に類似度ラベルを付けて整理します。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>類似度</th><th>意味</th></tr>
+        <tr><td>A＝同型</td><td>AIが社員と直接対話・追質問し、複数人の回答を構造化・可視化する</td></tr>
+        <tr><td>B＝近接</td><td>インタビュー自体は人が行い、AIが記録・分析・構造化を担う</td></tr>
+        <tr><td>C＝参考</td><td>AIが直接インタビューするが、主目的は人材評価</td></tr>
+      </table>
+    </div>
+    <p>AIインタビューという手法そのものの仕組み（追質問の設計・構造化の考え方）は、<a href="ai-interview.html">AIインタビューとは</a>で基礎から解説しています。本記事は「社内向け」に絞り、公開事例10件を順に見ていきます。</p>
+
+    <h2 id="s2">国内ではどんな公開事例があるか？（7選）</h2>
+    <p class="answer">SHIFT約5,200人・トリドール約3万人など、全社員規模の運用例が既に国内で公開されている。</p>
+    <p>まず10事例の全体を一覧で示します。国内7件・海外3件、いずれも各社が公開している一次情報に基づきます。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>企業・取り組み</th><th>対象規模</th><th>類似度</th><th>公開されている成果の要点</th></tr>
+        <tr><td>SHIFT「mentai」</td><td>約5,200人</td><td>A</td><td>114種の悩み要因を可視化。対話を有用とした社員79%・AIとの1on1実施率約95%</td></tr>
+        <tr><td>トリドールHD／丸亀製麺</td><td>約3万人（全店舗従業員）</td><td>A</td><td>8言語対応。外国人スタッフの定着率向上につながったと公表（改善幅は非公開）</td></tr>
+        <tr><td>サイボウズ「いどばたシステム」</td><td>約50人</td><td>A</td><td>ワークショップ参加者約50人の本音を5分で可視化</td></tr>
+        <tr><td>共立コンピューターサービス「ココボイス」PoC</td><td>一部社員→全社員に展開</td><td>A</td><td>匿名アプリ上でAIが本音を深掘りし、経営陣へレポート</td></tr>
+        <tr><td>PeopleX（自社検証）</td><td>入社1・3・6カ月の入社者</td><td>A</td><td>面談リードタイムを大幅短縮と公表（定量値は未公表）</td></tr>
+        <tr><td>富士通「AImインタビュー分析アプリ」</td><td>12用途50件超で検証</td><td>B</td><td>30分のインタビューを約3分で構造化、従来比15%の工数</td></tr>
+        <tr><td>日本管財HD／日本管財</td><td>係長級→課長級の昇格審査</td><td>C</td><td>小論文を対話型AI面接に置換。試験から結果確認までを短縮</td></tr>
+        <tr><td>CPL「Lee」（豪）</td><td>2,700人（全従業員）</td><td>A</td><td>四半期ごとの継続対話を2年間運用。参加が継続的に増加</td></tr>
+        <tr><td>Judo Bank「JEDI」（豪）</td><td>毎週のウェルビーイング確認</td><td>A</td><td>回答を37の論点に分類しリアルタイムダッシュボード化</td></tr>
+        <tr><td>Burns &amp; McDonnell × Qualtrics（米）</td><td>自由回答へのAI追質問</td><td>A</td><td>同機能の初期導入群では従来手法より最大40%多く価値ある洞察（※単社の数値ではない）</td></tr>
+      </table>
+    </div>
+
+    <h3>1. SHIFT「mentai」——約5,200人と対話し、114種の悩み要因を可視化（類似度A）</h3>
+    <p>ソフトウェアテストのSHIFTが公開している「mentai」は、AIメンターが社員一人ひとりと<strong>約10分</strong>対話し、悩みや言語化されていない感情を深掘りする取り組みです。回答はタグ化・定量化され、人事・管理職の介入につながります。</p>
+    <p>公開されている数字が具体的です。<strong>約5,200人</strong>と対話して<strong>114種の悩み要因</strong>を可視化し、対話を有用とした社員は<strong>79%</strong>、フィードバックを有用とした社員は<strong>75%</strong>。AIとの1on1の実施率は<strong>約95%</strong>に達しています。人による1on1を全社員に同じ頻度・同じ品質で行うのは現実的に難しいため、「全員と定期的に対話する」部分をAIが担う構図です。</p>
+    <p>注目すべきは離職予兆に関する報告で、<strong>低スコアで退職者を捉える割合が従来のES調査の約3倍</strong>になったとしています。設問固定のサーベイより、対話で深掘りしたスコアのほうが退職リスクを早く捉えた、という結果です。</p>
+
+    <h3>2. トリドールHD／丸亀製麺——約3万人を対象に、8言語で幸福度を可視化（類似度A）</h3>
+    <p>丸亀製麺を運営するトリドールホールディングスの「ハピネススコアインタビュー」は、AIが全店舗従業員を対象に<strong>音声で対話</strong>し、幸福度や潜在的な不満を可視化する取り組みです。対象は<strong>約3万人</strong>。いきなり本題に入らず<strong>雑談から入って心理的安全性をつくる</strong>設計が公表されています。</p>
+    <p>進め方も参考になります。全体展開の前に<strong>3回のPoCを実施し、600人超の声を反映</strong>してから広げています。飲食の現場はPCの前に座る仕事ではなく、多国籍のスタッフが働く環境です。<strong>8言語対応</strong>により、外国人スタッフの定着率向上につながったと公表されています（改善幅は非公開）。</p>
+    <p>「デスクレスの現場・数万人・多言語」という、従来の面談やサーベイが最も届きにくかった領域で運用されている点が、この事例の意味です。</p>
+
+    <h3>3. サイボウズ「いどばたシステム」——約50人の本音を5分で可視化（類似度A）</h3>
+    <p>サイボウズが公開している「いどばたシステム」は、AIチャットで社員の意見を集め、<strong>重要論点・合意点・対立点を即時抽出する</strong>ワークショップです。<strong>約50人の本音を5分で可視化</strong>したとされています。</p>
+    <p>この事例の面白さは、継続的なサーベイではなく「その場の議論」への適用である点です。50人が一斉に発言すれば、通常は声の大きい人の意見が場を支配します。全員がAIに並行して話し、AIが論点と対立軸を整理することで、「全員が発言し、かつ構造化されて返ってくる」会議が成立します。数百人規模の組織でなくても、1つの会議体から始められる型として参考になります。</p>
+
+    <h3>4. 共立コンピューターサービス「ココボイス」PoC——匿名対話で本音を経営陣へ（類似度A）</h3>
+    <p>アイティフォーが提供する「ココボイス」は、<strong>匿名のスマホアプリ上で生成AIが社員と対話して本音を深掘り</strong>し、AIが分析・レポート化して経営陣に届けるサービスです。共立コンピューターサービスでのPoCは、一部社員から始めて<strong>全社員へ展開</strong>されています。</p>
+    <p>提供会社は2025年のPoC全体で<strong>約300人規模</strong>を検証し、不満だけでなく<strong>前向きな改善アイデアも引き出せた</strong>と公表しています。「本音を聞く＝不満を集める」と思われがちですが、匿名で深掘りすると建設的な提案も出てくる、という報告は導入を検討する側にとって示唆があります。匿名性を仕組みで担保している点も、後述する導入時の注意点の観点で参照価値があります。</p>
+
+    <h3>5. PeopleX——入社後フォロー面談をAI化し、人事は要フォロー者に集中（類似度A）</h3>
+    <p>HRのPeopleXは、<strong>入社1・3・6カ月のフォローアップ面談をAIが実施</strong>する自社検証を公開しています。AIが面談を行い、入社者の状態をスコア化・構造化。面談のリードタイムを<strong>大幅に短縮した</strong>と公表しています（定量値は未公表）。</p>
+    <p>ポイントは人事の時間の使い途が変わることです。全入社者との面談日程調整と実施をAIが担うことで、人事は<strong>スコアが示す「要フォロー者」への個別対応</strong>に集中できます。オンボーディングは「全員に同じタイミングで聞く」ことに価値がある領域で、AIインタビューの型と噛み合いのよいユースケースです。</p>
+
+    <h3>6. 富士通「AImインタビュー分析アプリ」——30分の記録を約3分で構造化（類似度B）</h3>
+    <p>富士通の「AImインタビュー分析アプリ」は、類似度Bの事例です。インタビュー自体は人が行い、その文字起こしを<strong>生成AIが7項目に構造化</strong>します。<strong>30分のインタビューを約3分で約1,800字に構造化し、工数は従来比15%</strong>（＝85%削減）。<strong>12用途50件超</strong>で検証し、社内展開されています。</p>
+    <p>「AIが聞く」事例ではありませんが、社内インタビュー活用のボトルネックが実査ではなく<strong>後工程（文字起こしと整理）</strong>にあること、そこをAIが桁違いに圧縮できることを、具体的な数字で示した事例として並べる価値があります。聞くのはAIでも人でも、構造化の工程が回らなければ声は活用されません。</p>
+
+    <h3>7. 日本管財HD——昇格試験の小論文を対話型AI面接に置換（類似度C）</h3>
+    <p>日本管財ホールディングス／日本管財は、<strong>係長級から課長級への昇格審査</strong>で、小論文を対話型AI面接に置き換えると公表しています。<strong>2025年9月に試験導入、2026年4月に本導入</strong>。評点・ランク・出現率をレポート化し、試験から結果確認までの期間を短縮するとしています。</p>
+    <p>これは類似度C——主目的が人材評価の事例です。エンゲージメント把握とは目的が異なりますが、「AIが社員に直接インタビューする」ことが評価という重い用途でも制度に組み込まれ始めた事実を示しています。同時に、評価用途には固有の論点が伴います。AIの評点をそのまま合否にする設計は、<strong>評価理由の説明責任</strong>と<strong>人による最終判断</strong>を欠くと成立しません。この線引きは<a href="#s5">導入時の注意点</a>で改めて扱います。</p>
+
+    <h2 id="s3">海外ではどんな公開事例があるか？（3選）</h2>
+    <p class="answer">豪CPLは2,700人と四半期ごとに2年間対話。米ではQualtricsがサーベイにAI追質問機能を組み込んだ。</p>
+    <p>海外では、単発の実験ではなく<strong>継続運用</strong>のフェーズに入った事例が公開されています。</p>
+
+    <h3>8. CPL「Lee」（豪）——2,700人の全従業員と四半期ごとに対話、2年間運用（類似度A）</h3>
+    <p>オーストラリアの障害福祉サービス企業CPLは、<strong>2,700人の全従業員</strong>に会話型AI「Lee」を展開しています。入社時から退職時まで、<strong>四半期ごとに継続対話</strong>する設計で、<strong>2年間</strong>運用されています。</p>
+    <p>公開情報で示されているのは、従業員・管理職・取締役会の<strong>参加が継続的に増加</strong>している点です。この種の仕組みは初回の回答率より「2年目も答えてもらえるか」が難しく、聞かれた声が実際に使われている実感がなければ参加は減っていきます。従業員だけでなく管理職・取締役会の関与まで増えているという報告は、聞きっぱなしにしない運用が回っていることの傍証です。福祉という感情労働の現場で、退職時までのライフサイクル全体を対話でカバーしている点も特徴です。</p>
+
+    <h3>9. Judo Bank「JEDI」（豪）——毎週のパルス確認をAIが深掘り、37論点に分類（類似度A）</h3>
+    <p>オーストラリアのJudo Bankの「JEDI」は、<strong>毎週SMSでウェルビーイングを確認</strong>し、気になる回答には会話型AI「EVE」が<strong>理由を深掘り</strong>する仕組みです。回答は<strong>37の論点に分類</strong>され、リアルタイムダッシュボードに反映されます。</p>
+    <p>この事例が示すのは「頻度と深さの両立」です。毎週聞くパルスサーベイは変化を早く捉えられる一方、設問を絞るため理由が分かりません。スコアの変化をトリガーにAIが会話で理由を聞きに行くことで、高頻度の定点観測と深掘りが1つの仕組みに収まっています。自由な発言を固定の論点体系（37論点）に落としてダッシュボード化する構造化の設計も、そのまま参考になります。</p>
+
+    <h3>10. Burns &amp; McDonnell × Qualtrics——曖昧な自由回答にその場でAIが追質問（米・類似度A）</h3>
+    <p>米エンジニアリング企業Burns &amp; McDonnellは、QualtricsのConversational Feedback（会話型フィードバック）を利用しています。従業員サーベイの自由回答が曖昧なとき、<strong>AIがその場で追質問</strong>して具体化する機能です。</p>
+    <p>Qualtricsは、同機能の<strong>初期導入群では従来手法より最大40%多く価値ある洞察を取得</strong>したと公表しています。注意が必要なのは、この40%は<strong>初期導入群全体の結果であり、Burns &amp; McDonnell単社の改善率ではない</strong>点です。既存サーベイ製品側が「一往復で終わらせない」方向に機能を拡張してきたこと自体が、社内の声の収集がインタビュー型に寄っていく流れを示しています。</p>
+
+    <h2 id="s4">10事例に共通する成功パターンは何か？</h2>
+    <p class="answer">規模でなく構造化が成果を分ける。全員に聞き、AIが整理し、人が判断に集中する役割分担が共通する。</p>
+    <p>10件を横断すると、成果を出している取り組みには3つの共通点があります。</p>
+    <h3>パターン1：「全員に聞く」は既に現実的</h3>
+    <p>SHIFT約5,200人、トリドール約3万人、CPL2,700人。かつて「全社員との面談」は物理的に不可能でしたが、AIが聞き手になることで、規模の制約は公開事例のレベルで既に外れています。サンプリングした一部の声ではなく全員の声を前提に設計できることは、「聞かれなかった人がいない」という納得感の面でも効いてきます。</p>
+    <h3>パターン2：成果は回答数ではなく構造化で決まる</h3>
+    <p>各事例が成果として公表しているのは「何人が答えたか」ではありません。SHIFTは114種の悩み要因への<strong>タグ化</strong>、サイボウズは<strong>重要論点・合意点・対立点の抽出</strong>、Judo Bankは<strong>37論点への分類とダッシュボード化</strong>、富士通は<strong>7項目への構造化</strong>。つまり、自由な発言をテーマ・リスク・合意対立・アクションへ構造化し、<strong>経営が動ける形にする</strong>ところまでが成果物です。集めた声が議事録のまま眠る設計では、規模を上げても意思決定は変わりません。</p>
+    <h3>パターン3：AIだけで完結させない</h3>
+    <p>どの事例も、AIの役割は「全員から一貫した品質で聞き、整理する」ところまでです。SHIFTでは可視化された悩みに人事・管理職が介入し、PeopleXでは人事が要フォロー者への対応に集中し、ココボイスではレポートを受けた経営陣が動きます。<strong>AIが聞き、人が判断しフォローする</strong>——この役割分担を崩して「AIが答えまで出してくれる」と期待した設計は、10件の公開事例のどれとも違う姿です。</p>
+    <div class="callout"><p>3つをまとめると、社内AIインタビューの型は「全員に聞ける規模 × 経営が動ける構造化 × 人が判断に集中する役割分担」。ツール選定より先に、この3点を自社でどう成立させるかを設計するのが順番として正しい。</p></div>
+
+    <h2 id="s5">導入時に何に気をつけるべきか？</h2>
+    <p class="answer">匿名性の設計、評価利用との線引き、人による最終判断。この3つを導入前に決めることが分かれ目になる。</p>
+    <p>事例が示すのは可能性だけではありません。社内の声を扱う以上、設計を誤ると「本音を聞く仕組み」が「本音が消える仕組み」に変わります。導入前に決めておくべき論点は3つです。</p>
+    <h3>1. 匿名性と開示範囲を先に明文化する</h3>
+    <p>回答が誰にどう見えるのかが曖昧なままだと、社員の発言は慎重になります。ココボイスが匿名アプリという形を取り、トリドールが雑談から入って心理的安全性をつくる設計を公表しているのは、この論点への各社なりの答えです。匿名で集めて集計・要約で経営に渡すのか、記名で個別フォローにつなげるのか——どちらにも合理性がありますが、<strong>回答者に事前に明示されていること</strong>が絶対条件です。途中でルールを変えると信頼は戻りません。</p>
+    <h3>2. エンゲージメント目的と評価目的を混ぜない</h3>
+    <p>「率直に話してほしい」と言って集めた声が人事評価に使われるなら、誰も率直には話しません。組織課題の把握を目的とする仕組みと、日本管財の事例のような評価を目的とする仕組みは、<strong>目的・データの流れ・本人への説明を別立て</strong>にすべきです。1つの仕組みに両方を載せる設計は、どちらの目的も損ないます。</p>
+    <h3>3. 評価用途では説明責任と人の最終判断を外さない</h3>
+    <p>昇格審査のような評価用途にAI面接を使う場合、AIの分析結果を<strong>人事上の最終判断として自動利用する前提にしない</strong>ことが必須です。本人に「なぜその評価か」を説明できること、レポートを踏まえて人が最終判断を下すプロセスを制度に組み込むこと。この2つを欠いたまま自動化だけを進めると、制度への納得感が崩れ、訴求力のあった「短縮」の効果も帳消しになります。</p>
+
+    <h2 id="s6">CoeSignalはこの流れの中でどこに位置づくか？</h2>
+    <p class="answer">事例の中心は組織サーベイ領域。CoeSignalは同じ仕組みを業務実態の把握とAI活用テーマの発見に使う。</p>
+    <p>ここまでの10事例の中心は、従業員エンゲージメント・離職予兆・組織課題・オンボーディング・昇格審査——つまり<strong>人事・組織領域</strong>でした。「AIが社員一人ひとりに聞き、構造化して経営に渡す」というアプローチ自体は、これらの公開事例によって既に実証されつつあります。</p>
+    <p>当社が提供するAIインタビュープラットフォーム「CoeSignal」は、この実証済みの「AIによる社員理解」の仕組みを、<strong>業務の実態把握と、AI活用・業務改善テーマの発見・優先順位づけ</strong>に向ける設計です。エンゲージメントスコアの代わりに、「どの業務に時間が溶けているか」「どこで手作業と待ちが発生しているか」「現場は何から自動化してほしいか」を全員から声で集め、改善テーマとして構造化します。組織の状態を測る社内AIインタビューに対して、<strong>業務とAI活用の打ち手を決めるための社内AIインタビュー</strong>、という位置づけです。</p>
+    <p>なお、社内調査で気になりやすい音声データの扱いについて、CoeSignalの社内調査では<strong>音声を保存しません</strong>。文字起こし後に音声は削除する方針を公開しています。</p>
+    <div class="product-shot"><div class="ps-bar">CoeSignal — ワークスペース画面<span class="r">実際のプロダクト画面・内容はデモデータ</span></div><img src="product-ui/coesignal-workspace-home.png" alt="CoeSignalのワークスペース画面。社内調査を作成し、回答状況と構造化された結果を確認する" loading="lazy" width="1200"></div>
+    <p class="fig-cap">図：CoeSignalのワークスペース画面（内容はデモデータ）。調査の作成から回答の構造化までを1つの画面で扱う。</p>
+    <p>社内調査そのものの設計——誰に何を聞くか、匿名性をどう扱うか、音声データをどう扱うか——は、<a href="employee-voice.html">従業員の本音をAIインタビューで聞く</a>で詳しく扱っています。</p>
+
+    <h2 id="faq">よくある質問</h2>
+    <div class="faq"><div class="q">従業員サーベイ（ES調査）と社内AIインタビューは何が違いますか？</div><p class="a">サーベイは決まった設問への一往復の回答で、分布は分かりますが理由までは残りません。AIインタビューは回答に応じて追質問し、「なぜそう感じたか」を言葉のまま集めてから構造化します。SHIFTの公開事例では、低スコアで退職者を捉える割合が従来のES調査の約3倍になったと報告されており、スコアの背景にある文脈まで拾えることが差になっています。両者は置き換えではなく、分布の把握と理由の深掘りで役割を分けて併用するのが実務的です。</p></div>
+    <div class="faq"><div class="q">社員はAI相手に本音を話しますか？</div><p class="a">公開事例の範囲では、話される傾向が示されています。SHIFTでは対話を有用とした社員が79%、AIとの1on1実施率は約95%と公表されています。トリドールの取り組みは雑談から入って心理的安全性をつくる設計、ココボイスのPoCは匿名アプリ上で対話する設計で、いずれも話しやすさを仕組み側で担保しています。ただし、回答が誰にどう見えるかの説明が曖昧なままだと発言は慎重になるため、匿名性と利用目的の明示が前提条件になります。</p></div>
+    <div class="faq"><div class="q">何人規模の会社から使えますか？</div><p class="a">公開事例の対象規模は、サイボウズのワークショップの約50人から、トリドール（丸亀製麺）の約3万人まで幅があります。トリドールは3回のPoCで600人超の声を反映してから対象を広げ、ココボイスも一部社員から全社員へ展開しています。最初から全社導入する必要はなく、部署や拠点を絞った小規模な検証から始めて、聞き方と結果の使い方を固めてから広げる進め方が事例の共通パターンです。</p></div>
+    <div class="faq"><div class="q">昇格や評価にAI面接の結果をそのまま使ってよいですか？</div><p class="a">自動で確定させる設計は避けるべきです。日本管財の事例はAI面接の結果を評点・ランク・出現率のレポートとして扱うもので、評価用途では「なぜその評価になったか」を説明できることと、人による最終判断を挟むことが必須になります。エンゲージメント目的で集めた声を本人の同意なく評価に転用すると、以後の回答から本音が消えるため、目的と利用範囲の線引きを先に明文化しておくことが導入の前提です。</p></div>
+
+    <h2 id="refs">参考文献</h2>
+    <p>本文で取り上げた事例の一次情報は以下のとおりです（本文での登場順）。</p>
+    <ul>
+      <li>SHIFT AI「mentai」導入事例. <a href="https://ai.shiftinc.jp/example/002/" target="_blank" rel="noopener noreferrer">公式サイト（SHIFT AI）</a></li>
+      <li>SHIFT公式note「mentai」に関する記事. <a href="https://note.shiftinc.jp/n/n55f91a6ca923" target="_blank" rel="noopener noreferrer">記事ページ（SHIFT公式note）</a></li>
+      <li>アルサーガパートナーズ プレスリリース（トリドールHD／丸亀製麺「ハピネススコアインタビュー」）. <a href="https://www.arsaga.jp/news/pressrelease-ai-interview-package-official-release-20260414/" target="_blank" rel="noopener noreferrer">プレスリリース（アルサーガパートナーズ）</a></li>
+      <li>サイボウズ「AIツールと私たちの働き方」（いどばたシステム）. <a href="https://cybozu.co.jp/recruit/workplace/ai-tools.html" target="_blank" rel="noopener noreferrer">公式サイト（サイボウズ）</a></li>
+      <li>アイティフォー「ココボイス」プレスリリース. <a href="https://prtimes.jp/main/html/rd/p/000000138.000060050.html" target="_blank" rel="noopener noreferrer">プレスリリース（PR TIMES）</a></li>
+      <li>アイティフォー ニュースリリース（ココボイス・共立コンピューターサービスPoC）. <a href="https://www.itfor.co.jp/news/document.html?id=20260206-3d2cc428&amp;year=2026" target="_blank" rel="noopener noreferrer">公式サイト（アイティフォー）</a></li>
+      <li>PeopleX セミナー告知（入社後フォローアップ面談のAI化・自社検証）. <a href="https://peoplex.jp/seminar/20260623/" target="_blank" rel="noopener noreferrer">公式サイト（PeopleX）</a></li>
+      <li>富士通公式note「AImインタビュー分析アプリ」. <a href="https://note.com/fujitsu_pr/n/n380bd58fbc53" target="_blank" rel="noopener noreferrer">記事ページ（富士通公式note）</a></li>
+      <li>日本管財ホールディングス ニュースリリース（昇格試験へのAI面接導入）. <a href="https://www.nkanzaihd.co.jp/news/20260424%E2%91%A0/" target="_blank" rel="noopener noreferrer">公式サイト（日本管財HD）</a></li>
+      <li>Evolved Thinking, Customer Story: CPL「Lee」. <a href="https://evolvedthinking.com/customers/cpl" target="_blank" rel="noopener noreferrer">事例ページ（Evolved Thinking）</a></li>
+      <li>Evolved Thinking, Blog: Judo Bank「JEDI」. <a href="https://evolvedthinking.com/blog/judo-bank-jedi" target="_blank" rel="noopener noreferrer">記事ページ（Evolved Thinking）</a></li>
+      <li>Qualtrics, X4 2026 発表（Conversational Feedbackを含む新EX機能）. <a href="https://www.qualtrics.com/news/new-ex-capabilities-x4-2026/" target="_blank" rel="noopener noreferrer">ニュースページ（Qualtrics）</a></li>
+    </ul>
+  </article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役</span></div>
+    <p>上場企業を含む37社・2,500名の生成AI導入・研修を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。AIが社員や顧客の声を一人ずつ深掘りするAIインタビュープラットフォーム「CoeSignal」を提供し、社内調査の設計から根拠に遡れる判断メモづくりまでを支援している。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>「全員に聞く」を、自社の業務改善に。</h3>
+    <p>公開事例が示すのは、AIが社員一人ひとりに聞く仕組みが既に実装段階にあること。その仕組みを業務実態の把握とAI活用テーマの発見に向ける社内調査の設計を、上場企業含む37社・2,500名のAI支援知見をもとにご一緒します。検討段階のご相談も歓迎です。</p>
+  </div>
+  <a href="https://coesignal.techworker.co.jp/" class="btn">CoeSignalの導入・調査相談へ <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="https://coesignal.techworker.co.jp/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(15,107,77,.3);">CoeSignal 公式サイト（AIインタビュープラットフォーム）</a>　／　<a href="https://coesignal.techworker.co.jp/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(15,107,77,.3);">無料相談</a></p>
+<div class="back-list"><a href="index.html">← AIインタビュー・ラボ（記事一覧）に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="employee-voice.html" class="related-card"><div class="rc-thumb"><img src="covers/employee-voice-cs.png" alt="従業員の本音をAIインタビューで聞く｜社内調査の設計・匿名性・音声の扱い" loading="lazy"></div><span class="rc-cat">社内の声</span><div class="rc-title">従業員の本音をAIインタビューで聞く｜社内調査の設計・匿名性・音声の扱い</div></a>
+    <a href="ai-interview.html" class="related-card"><div class="rc-thumb"><img src="covers/ai-interview-cs.png" alt="AIインタビューとは｜アンケートより深く、従来インタビューより速い定性調査" loading="lazy"></div><span class="rc-cat">基礎</span><div class="rc-title">AIインタビューとは｜アンケートより深く、従来インタビューより速い定性調査</div></a>
+    <a href="honesty-with-ai.html" class="related-card"><div class="rc-thumb"><img src="covers/honesty-with-ai-cs.png" alt="人はAIに本音を話すのか｜「機械相手だと話しやすい」研究の実像と限界" loading="lazy"></div><span class="rc-cat">研究ノート</span><div class="rc-title">人はAIに本音を話すのか｜「機械相手だと話しやすい」研究の実像と限界</div></a>
+  </div>
+</div></section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="cs-logo"><img src="brand/coesignal-logo.svg" alt="CoeSignal" height="26"><span class="lab-tag">AIインタビュー・ラボ</span></div>
+        <p>一人ずつの声を、意思決定に。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+      </div>
+      <div class="footer-col"><h4>メディア</h4><a href="index.html">記事一覧</a><a href="ai-interview.html">AIインタビューとは</a><a href="interview-analysis.html">インタビュー分析</a></div>
+      <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../index.html#services">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="https://coesignal.techworker.co.jp/">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+</body>
+</html>

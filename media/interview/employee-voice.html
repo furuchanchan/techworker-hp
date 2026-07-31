@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3V34NWXVCJ');
+</script>
+<!-- TW intent tracker (first-party, sessionStorage only) -->
+<script>
+(function(){try{var ss=sessionStorage,ls=localStorage;
+if(!ss.getItem('tw_landing')){ss.setItem('tw_landing',location.pathname);ss.setItem('tw_ref',document.referrer||'');var q=new URLSearchParams(location.search);ss.setItem('tw_utm',['utm_source','utm_medium','utm_campaign'].map(function(k){return q.get(k)||'';}).join('|'));}
+var p=JSON.parse(ss.getItem('tw_pages')||'[]');if(p[p.length-1]!==location.pathname){p.push(location.pathname);ss.setItem('tw_pages',JSON.stringify(p.slice(-20)));}
+if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_visits')||'0',10)+1));ss.setItem('tw_counted','1');}
+}catch(e){}})();
+</script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>従業員の本音をAIインタビューで聞く｜社内調査の設計・匿名性・音声の扱い【2026】 — AIインタビュー・ラボ</title>
+<meta name="description" content="従業員の本音をAIインタビューで聞く方法を実務目線で解説。サーベイだけでは実態がつかめない理由、社内調査の設計、匿名性の5つの設計原則、音声の扱い、深掘りの線引き、定点運用まで、経営企画・人事・情シス・AI推進担当向けにまとめます。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/interview/employee-voice">
+<meta property="og:type" content="article">
+<meta property="og:title" content="従業員の本音をAIインタビューで聞く｜社内調査の設計・匿名性・音声の扱い【2026】">
+<meta property="og:description" content="サーベイのスコアは取れても「なぜ」は分からない。従業員の本音をAIインタビューで聞くための設計・匿名性・音声の扱い・運用を解説します。">
+<meta property="og:image" content="https://techworker.co.jp/media/interview/covers/employee-voice-cs.png">
+<meta property="og:url" content="https://techworker.co.jp/media/interview/employee-voice">
+<meta property="og:site_name" content="AIインタビュー・ラボ">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="従業員の本音をAIインタビューで聞く｜社内調査の設計・匿名性・音声の扱い【2026】">
+<meta name="twitter:image" content="https://techworker.co.jp/media/interview/covers/employee-voice-cs.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../article.css">
+<link rel="stylesheet" href="lab.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"従業員の本音をAIインタビューで聞く｜社内調査の設計・匿名性・音声の扱い【2026】",
+  "description":"従業員の本音をAIインタビューで聞く方法を実務目線で解説する。サーベイだけでは実態がつかめない理由、社内調査の設計、匿名性の5つの設計原則、音声の扱い、深掘りの線引き、定点運用まで。",
+  "datePublished":"2026-07-27","dateModified":"2026-07-27","inLanguage":"ja",
+  "image":{"@type":"ImageObject","url":"https://techworker.co.jp/media/interview/covers/employee-voice-cs.png","width":1200,"height":630},
+  "author":{"@type":"Person","name":"古野光太朗","jobTitle":"株式会社TechWorker 代表取締役","url":"https://techworker.co.jp/company.html","image":"https://techworker.co.jp/assets/author-furuno.jpg","sameAs":["https://x.com/koutarou_furuno"],"affiliation":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"}},
+  "publisher":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/","logo":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630}},
+  "mainEntityOfPage":{"@type":"WebPage","@id":"https://techworker.co.jp/media/interview/employee-voice"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},
+    {"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},
+    {"@type":"ListItem","position":3,"name":"AIインタビュー・ラボ","item":"https://techworker.co.jp/media/interview/"},
+    {"@type":"ListItem","position":4,"name":"従業員の本音をAIインタビューで聞く","item":"https://techworker.co.jp/media/interview/employee-voice"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"従業員は本当のことを話してくれますか？","acceptedAnswer":{"@type":"Answer","text":"話してもらえるかどうかは、聞き方の道具よりも、情報の取り扱いを先に示せているかで決まります。匿名の範囲・音声の扱い・評価に使わないことを実施前に明示し、聞いた結果を回答者に返す運用が回っていれば、対面では出にくい声が集まります。なお、機械相手のほうが開示が増えるという研究と、差がないという研究の両方があり、道具だけで本音が保証されるわけではありません。"}},
+    {"@type":"Question","name":"結果を人事評価に使ってもよいですか？","acceptedAnswer":{"@type":"Answer","text":"使わないことを推奨します。回答が評価や処遇に影響しうると回答者が感じた時点で、聞こえてくるのは本音ではなく「評価者に見せてよい答え」に変わります。一度でも評価に流用すれば、以降のすべての社内調査の回答の質が下がります。実態把握と評価は目的が異なる別の営みとして、線引きを文書で明言しておくのが実務的です。"}},
+    {"@type":"Question","name":"何人から始めるべきですか？","acceptedAnswer":{"@type":"Answer","text":"最初から全社に配る必要はありません。課題意識が明確な1部署・1テーマから小さく始め、情報の取り扱いの示し方と結果の返し方まで一巡させてから広げるのが実務的です。ただし少人数の組織では、属性を掛け合わせた集計から個人が推測されうるため、集計の単位を粗くするなど、規模が小さいときほど匿名性の設計に注意が必要です。"}},
+    {"@type":"Question","name":"従業員サーベイと置き換えるものですか？","acceptedAnswer":{"@type":"Answer","text":"置き換えではなく併用です。サーベイは全体のスコアと推移を定量で押さえる道具、インタビューはスコアの背景にある「なぜ」を語りで押さえる道具で、問いの種類が違います。サーベイで気になる変化を見つけ、その論点をAIインタビューで深掘りする、という往復が実務では最も機能します。"}}
+  ]
+}
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <a href="index.html" class="cs-logo"><img src="brand/coesignal-logo.svg" alt="CoeSignal" height="26"><span class="lab-tag">AIインタビュー・ラボ</span></a>
+  <ul>
+    <li><a href="index.html">記事一覧</a></li>
+    <li><a href="index.html#about">このメディアについて</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://coesignal.techworker.co.jp/" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="index.html">記事一覧</a>
+  <a href="index.html#about">このメディアについて</a>
+  <a href="https://coesignal.techworker.co.jp/" class="m-cta">無料相談を申し込む</a>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIインタビュー・ラボ</a><span class="sep">/</span>従業員の本音を聞く</nav>
+  <div class="kicker">社内の声 / Employee Voice</div>
+  <h1>従業員の本音をAIインタビューで聞く</h1>
+  <p class="dek">エンゲージメントサーベイのスコアは毎回取れている。それでも、現場で何が起きているかは分からないまま——。AIインタビューを社内に向けるとき、何を設計し、匿名性と音声をどう扱い、どう運用するか。経営企画・人事・情シス・AI推進担当のために、限界も含めて実務を整理する。</p>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.27</span><span class="dot">·</span><span>最終更新 2026.07.27</span><span class="dot">·</span><span>読了 10分</span>
+  </div>
+</header>
+
+<img class="art-cover" src="covers/employee-voice-cs.png" alt="従業員の本音をAIインタビューで聞く｜社内調査の設計・匿名性・音声の扱い【2026】" width="1200" height="630" fetchpriority="high">
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次">
+    <div class="art-toc-inner">
+      <div class="toc-h">目次</div>
+      <a href="#s1">サーベイだけでは足りない理由</a>
+      <a href="#s2">社内向けAIインタビューとは</a>
+      <a href="#s3">何に使えるか</a>
+      <a href="#s4">匿名性の設計</a>
+      <a href="#s5">深掘りの線引き</a>
+      <a href="#s6">定点運用</a>
+      <a href="#faq">よくある質問</a>
+    </div>
+  </nav>
+
+  <article class="art-body rv">
+    <div class="lede">
+      <div class="lede-h">この記事の要点</div>
+      <ul>
+        <li>サーベイのスコアは「どれくらいか」を示すが「なぜか」を示さない。自由記述は<strong>書く負荷が高く、掘り返せず、声の大きい人に偏る</strong>ため、経営が知りたい実態には届きにくい。</li>
+        <li>社内向けAIインタビューは、<strong>全員に・同じ深さで・非同期に聞き、発言を構造化して経営に届ける</strong>手法。評価に使わない線引きが、1on1や人事面談との決定的な違い。</li>
+        <li>成否を分けるのは匿名性の設計。<strong>匿名の範囲・音声の扱い・集計の単位・評価に使わない宣言・結果の還元</strong>の5つを、聞き始める前に示せるかがすべての土台になる。</li>
+      </ul>
+    </div>
+
+    <p>経営会議で「現場のリアルな声」が話題になるたび、出てくる材料はいつも同じではないでしょうか。半年前のサーベイのスコア、誰かが又聞きしたエピソード、そして数人へのヒアリングの記録。ヒアリングの内容を報告すると、返ってくるのは決まって「それは一部の意見では？」という一言で、議論はそこで止まる——。経営と現場の距離は、聞く意思の問題ではなく、聞く手段の問題であることが少なくありません。この記事では、AIインタビューを従業員に向けるという選択肢について、設計・匿名性・音声の扱い・運用までを、うまくいかないパターンも含めて実務目線で解説します。</p>
+
+    <h2 id="s1">なぜ従業員サーベイだけでは実態がつかめないのか？</h2>
+    <p class="answer">スコアは取れても「なぜ」が残らない。自由記述は書く負荷が高く、掘り返せず、声の大きい人に偏るため。</p>
+    <p>従業員サーベイは、組織の状態を定点で測る道具として広く定着しています。スコアの推移が見えること自体に価値はありますが、経営が知りたいのは「エンゲージメントが下がった」という事実ではなく、「なぜ下がったのか」「どこで何が起きているのか」です。そして、この「なぜ」を拾う役割を期待されている自由記述欄が、実務では機能しにくい構造を抱えています。</p>
+    <ol>
+      <li><strong>書く負荷が高い。</strong>業務の合間に、自分の考えを整理して文章にする作業は重労働です。結果として自由記述は空欄か、「特にありません」「もう少し評価してほしい」といった短文が並びます。話せば10分出てくる内容も、書くとなると3行で終わるのが普通です。</li>
+      <li><strong>掘り返せない。</strong>「ツールが使いにくい」と書かれていても、どのツールの、どの操作が、どんな場面で使いにくいのかをその場で聞き返すことができません。深掘りできない一往復の回答は、施策に落とせる粒度になりません。</li>
+      <li><strong>点数の解釈が割れる。</strong>5段階の「3」は、満足なのか、諦めなのか、関心がないのか。同じ数字の裏に別の状態が混ざっているのに、集計するとひとつの平均値に均されてしまいます。</li>
+      <li><strong>声の大きい人に偏る。</strong>自由記述をしっかり書くのは、もともと発信に慣れた一部の人です。会議で発言する人、目安箱に投書する人も同じ顔ぶれになりがちで、静かな大多数の実感は、どの経路からも上がってきません。</li>
+    </ol>
+    <p>この構造を補うために少人数ヒアリングを行っても、今度は別の壁に当たります。聞ける人数が限られるため、どれだけ深い語りが取れても<strong>「それは一部の意見では」という反論に答えられない</strong>のです。深さを取ると広さを失い、広さを取ると深さを失う。従業員の声をめぐる調査は、長くこのトレードオフの中にありました。</p>
+    <div class="quote-box"><p>スコアは「どれくらいか」に答える。語りは「なぜか」に答える。経営判断に必要なのは両方なのに、従来の道具はどちらか片方しか取れなかった。</p></div>
+
+    <h2 id="s2">社内向けAIインタビューとは何か？</h2>
+    <p class="answer">全員に・同じ深さで・非同期に聞き、発言を構造化する手法。評価に使わない線引きが1on1や面談との違い。</p>
+    <p>AIインタビューは、AIがモデレーター役を務めるインタビュー手法です。回答者は配布されたURLを開き、自分の都合のよい時間に、声またはテキストで質問に答えます。AIは回答の内容を受けて「それはどの業務でのことですか」「そのとき実際はどうしましたか」と一人ずつ聞き返し、語りを深めていきます。この仕組みを顧客ではなく<strong>自社の従業員に向ける</strong>のが、社内向けAIインタビューです。</p>
+    <p>サーベイと少人数ヒアリングのトレードオフに対して、この手法は「深さと広さを同時に取る」という答え方をします。深掘りの往復があるため一人ひとりの語りには文脈が残り、同時並行で実施できるため対象を全員に広げられます。しかも発言はテキストとして構造化されるので、「どのテーマが何人から語られたか」という横断集計まで一気に到達できます。「一部の意見では」という反論に、人数と原文の両方で答えられるようになるということです。</p>
+    <p>実査中のやり取りは、たとえば次のようなイメージです。</p>
+    <div class="ui-mock">
+      <div class="um-bar"><span class="um-dot"></span><span class="um-dot"></span><span class="um-dot"></span><span class="um-name">AI INTERVIEW — 社内調査でのやり取りの例</span></div>
+      <div class="um-row">
+        <div class="um-label ai">AIの質問</div>
+        <div class="um-text">直近1か月の業務の中で、時間を取られていると感じる作業があれば教えてください。</div>
+      </div>
+      <div class="um-row">
+        <div class="um-label">回答者（声で回答）</div>
+        <div class="um-text prompt">月末の報告書作成ですね。複数のシステムから数字を拾って転記するんですが、毎回ほぼ丸一日かかっていて…</div>
+      </div>
+      <div class="um-row">
+        <div class="um-label ai">AIの聞き返し（深掘り）</div>
+        <div class="um-text">丸一日のうち、どの工程に最も時間がかかっていますか？　数字を探す時間、転記する時間、確認する時間など、内訳を教えてください。</div>
+      </div>
+    </div>
+    <p class="fig-cap">図：業務実態を聞く社内インタビューの例。深掘りの観点は事前に人が設計します（※やり取りはサンプル）。</p>
+    <h3>1on1や人事評価面談との違い</h3>
+    <p>「社内の声を聞く場なら、1on1や面談で十分では」という疑問には、構造の違いで答えられます。1on1は上司と部下という関係の中の対話です。関係そのものが評価とつながっている以上、そこで語られる内容には、意識するかどうかにかかわらずフィルターがかかります。上司のマネジメントへの違和感を、その上司本人に話せる人は多くありません。人事評価面談は、そもそも評価の場です。</p>
+    <p>社内向けAIインタビューが機能する条件は、この2つと明確に切り分けることです。すなわち、<strong>個人を評価するためではなく、組織の実態を知るために聞き、結果を評価・処遇に使わない</strong>という線引きを最初に宣言する。この線引きがあってはじめて、上司には言えない種類の声が集まります。逆に言えば、線引きなしに導入すれば「新しい監視の道具」と受け取られて終わります。この点は後述する匿名性の設計に直結します。</p>
+    <p>ところで「人はAIに対して率直になれるのか」という問いには、研究の世界でも議論があります。機械相手のほうが開示が増えるという研究と、差がないという研究の両方があり、単純な結論は出ていません。研究の実像は<a href="honesty-with-ai.html">人はAIに本音を話すのか</a>で詳しく扱っているので、導入判断の前に一読をおすすめします。本記事の立場はシンプルで、<strong>本音が出るかどうかは道具ではなく、情報の取り扱いの設計で決まる</strong>というものです。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>観点</th><th>従業員サーベイ</th><th>1on1・面談</th><th>少人数ヒアリング</th><th>社内AIインタビュー</th></tr>
+        <tr><td>得られるもの</td><td>スコアと短い自由記述</td><td>関係の中での対話</td><td>深い語り（数人分）</td><td>深い語り（全員分）＋横断集計</td></tr>
+        <tr><td>「なぜ」の深掘り</td><td>できない（一往復）</td><td>できるが評価関係が影響</td><td>できる</td><td>できる（設計した観点で聞き返す）</td></tr>
+        <tr><td>声の偏り</td><td>記述は書く人に偏る</td><td>上司に言える範囲に偏る</td><td>選ばれた数人に限られる</td><td>全員に同じ深さで聞ける</td></tr>
+        <tr><td>規模と工数</td><td>大規模・低工数</td><td>相手ごとに時間が必要</td><td>人数に比例して増大</td><td>同時並行・非同期で実施</td></tr>
+        <tr><td>評価との関係</td><td>切り離して運用</td><td>評価と地続き</td><td>運用次第</td><td>評価に使わない線引きが前提</td></tr>
+      </table>
+    </div>
+    <p class="fig-cap">表：従業員の声を聞く手段の比較。置き換えではなく、問いの種類に応じた使い分けが前提です。</p>
+
+    <h2 id="s3">社内AIインタビューは何に使えるか？</h2>
+    <p class="answer">業務の実態把握・技能の承継・制度やツール導入前後の本音・経営方針の浸透度の把握などに使える。</p>
+    <p>社内向けAIインタビューの用途は「不満を集める」ことではありません。組織の中にあるのに経営から見えていない情報を、語りとして取り出すことです。実務で成立しやすい用途は次の4つです。</p>
+    <ol>
+      <li><strong>業務の実態把握。</strong>どの部署の、どの工程に、どれだけ時間がかかっているか。業務改善やAI導入の優先順位を決めるとき、実態は現場の頭の中にしかありません。全員に「時間を取られている作業」を聞き、工程まで深掘りすれば、改善対象のロングリストが現場の言葉で手に入ります。</li>
+      <li><strong>技能の承継。</strong>ベテランの判断は本人にとって当たり前すぎて、マニュアルには残りません。「その判断をするとき、何を見ていますか」「例外だと気づくのはどんなときですか」と場面ベースで聞き返すことで、暗黙知を語りとして記録できます。退職や異動の前に打てる、数少ない手のひとつです。</li>
+      <li><strong>制度・ツール導入前後の本音。</strong>新しい人事制度やシステムの導入前に懸念を聞き、導入後に実際の使われ方を聞く。説明会の質疑応答では手が挙がらなくても、一人ずつ非同期で聞けば、設計者が想定していなかった運用上のつまずきが具体的に出てきます。</li>
+      <li><strong>経営方針の浸透度。</strong>方針やパーパスが「言葉として知られているか」ではなく「自分の業務の言葉で語れるか」を聞く。スローガンの認知率ではなく、現場の解釈のばらつきそのものが見えるのが、選択式調査との違いです。</li>
+    </ol>
+    <p>社内AIインタビューは特殊な取り組みではなくなりつつあり、国内でも数千人〜数万人規模で実施された公開事例が出ています。具体的な取り組みは<a href="internal-interview-cases.html">社内AIインタビューの活用事例10選</a>にまとめているので、自社に近いテーマを探す際はそちらを参照してください。</p>
+    <div class="callout"><p>用途を選ぶ基準はひとつ。「その答えは現場の頭の中にしかないか？」。データベースを叩けば分かることを人に聞くのは失礼で、人の頭の中にしかないことをデータで推測するのは遠回り。</p></div>
+
+    <h2 id="s4">匿名性をどう設計するか？</h2>
+    <p class="answer">匿名の範囲・音声の扱い・集計の単位・評価に使わない宣言・結果の還元。5つを聞く前に明示する。</p>
+    <p>社内調査の成否を分ける最大の変数が、この匿名性の設計です。前提として押さえておくべきなのは、<strong>技術的に匿名であることと、回答者が匿名だと信じられることは別物</strong>だという点です。仕組み上は名前と回答が切り離されていても、「声で答えるなら、声で誰か分かるのではないか」「書き方の癖でばれるのではないか」という不安が残っていれば、出てくるのは当たり障りのない回答だけです。匿名性は、技術仕様ではなく回答者との約束として設計する必要があります。実務では次の5つを、<strong>聞き始める前に</strong>明示します。</p>
+    <ol>
+      <li><strong>匿名の範囲を先に明示する。</strong>「誰が何を見られるのか」を具体的に書きます。回答が誰の名前と紐づくのか・紐づかないのか、集計結果を見るのは誰か、原文を読めるのは誰か。「匿名です」の一言ではなく、情報の流れを示すことが信頼の土台になります。</li>
+      <li><strong>音声の保存有無と削除タイミングを先に明示する。</strong>声で答える形式では、音声データの扱いが最大の不安要素になります。録音が残るのか、いつ消えるのか、誰が聞けるのか。ここを曖昧にしたまま実施してはいけません。参考までに、AIインタビュープラットフォームのCoeSignalは、社内調査では音声を保存せず、文字に起こした時点で音声を削除する仕様になっています（社外向け調査では、同意を取得の上で扱いが異なります）。自社で使うツールが音声をどう扱うかは、導入前に必ず確認し、その内容をそのまま回答者への案内に書くべきです。</li>
+      <li><strong>個人が特定されうる集計を出さない。</strong>技術的に匿名でも、「営業部・入社2年目・女性」のような属性の掛け合わせで絞れば、少人数部署では個人がほぼ特定できてしまいます。部署の人数が少ない場合は集計の単位を粗くする、属性の掛け合わせ集計を出さない、といった出力側のルールを先に決めておきます。</li>
+      <li><strong>評価・処遇に使わないことを明言する。</strong>前の章で触れた線引きを、口頭ではなく文書で宣言します。「回答内容は人事評価・処遇の判断に一切使用しない」という一文があるかないかで、回答の率直さは変わります。そして当然、この約束は破ってはいけません。一度の例外が、以降のすべての社内調査を無効にします。</li>
+      <li><strong>聞いた結果「何が変わったか」を回答者に返す。</strong>匿名性の設計は、聞くときだけでなく聞いた後まで含みます。答えたのに何も起きない・何も知らされない経験は、「どうせ聞くだけ」という学習になり、次回の回答の質を確実に下げます。集計結果の共有と、そこから決まった打ち手の報告までを、調査の一部として最初から計画に入れます。</li>
+    </ol>
+    <p>この5つを案内文に落とすと、伝わり方は大きく変わります。</p>
+    <div class="ba-grid">
+      <div class="ba-card before">
+        <span class="ba-tag">不安が残る案内の例 — 扱いが見えない</span>
+        <div class="ba-body">「匿名で実施しますので、率直なご意見をお聞かせください。」——匿名の範囲も、音声の扱いも、結果の使い道も分からない。回答者は最も安全な「当たり障りのない答え」を選ぶ。</div>
+      </div>
+      <div class="ba-card after">
+        <span class="ba-tag">信頼される案内の例 — 情報の流れを示す</span>
+        <div class="ba-body">「回答は氏名と切り離して集計します。音声は文字化した時点で削除されます。原文を閲覧するのは事務局2名のみで、人事評価には一切使用しません。結果と決定した施策は全員に共有します。」</div>
+      </div>
+    </div>
+    <p class="fig-cap">図：実施案内の書き方の対比（※一般的な架空例）。約束を具体的に書けるかどうかが、回答の質を決めます。</p>
+    <p>順番も含めて設計の一部です。調査の依頼を出してから質問に答える、という順番ではなく、<strong>情報の取り扱いを最初に示してから協力を依頼する</strong>。この順番を守った社内展開では、反対はほとんど出なくなります。逆に、取り扱いの説明を後回しにした展開は、調査の中身がどれだけ良くても「何に使われるか分からない」という一点で止まります。</p>
+    <p>なお、匿名の範囲・聞く目的・深掘りの方針は、調査を作る段階で決め切っておくものです。設計画面上で質問と一緒に管理しておくと、案内文との食い違いを防げます。</p>
+    <div class="product-shot"><div class="ps-bar">CoeSignal — 調査設計画面<span class="r">実際のプロダクト画面・内容はデモデータ</span></div><img src="product-ui/coesignal-study-editor.png" alt="CoeSignalの調査設計画面。聞く目的・対象条件・深掘り方針を一画面で編集する" loading="lazy" width="1200"></div>
+    <p class="fig-cap">図：調査設計画面の例（実際のプロダクト画面。表示内容はデモデータ）。目的・対象・深掘り方針をここで決め切ってから配布します。</p>
+
+    <h2 id="s5">深掘りはどこで止めるべきか？</h2>
+    <p class="answer">特定個人への評価や健康状態など、踏み込むべきでない話題を決め、AIにも停止の線引きを設計しておく。</p>
+    <p>AIインタビューの強みは、回答を受けてさらに聞き返す深掘りにあります。しかし社内調査では、この強みをそのまま使ってはいけない領域があります。<strong>顧客調査では美点である「どこまでも掘る」が、社内では事故になりうる</strong>——これが社内向け設計の固有の論点です。</p>
+    <p>踏み込むべきでない典型は、次のような話題です。</p>
+    <ul>
+      <li><strong>特定個人への評価・非難。</strong>「上司のマネジメントに課題を感じる」という声は組織の実態ですが、「では、その上司の具体的にどんな言動が」と個人の特定に向かって掘り進めるべきではありません。組織課題として聞き、個人攻撃の記録にしない線引きが必要です。</li>
+      <li><strong>健康状態・家庭の事情などの機微な情報。</strong>業務負荷の話題から、本人の体調や家庭の話に流れていくことがあります。本人が自発的に語るのは自由ですが、AIの側からそこを深掘りする設計にしてはいけません。</li>
+    </ul>
+    <p>実務では、これを「AIの良識に期待する」のではなく、設計として書き込みます。すなわち、<strong>深掘りする観点を指定するのと同じ粒度で、深掘りしない話題と、その話題が出たときの振る舞い（受け止めて、それ以上掘らずに次の質問へ進む）を指定する</strong>ということです。深掘りの設計とは、アクセルの設計であると同時にブレーキの設計でもあります。</p>
+    <div class="callout"><p>判断基準はこう置ける。「この深掘りは、組織の実態を知るために必要か？　それとも個人の事情に踏み込んでいるだけか？」。後者に近づく話題は、設計段階で停止側に振り分けておく。</p></div>
+
+    <h2 id="s6">単発で終わらせないためにどう運用するか？</h2>
+    <p class="answer">四半期などの定点化で差分を見る。前回結果を文脈に、施策前後の変化を比較する運用に育てていく。</p>
+    <p>社内調査は、一度きりの実施では価値の半分しか出ません。単発の調査で分かるのは「今どうか」だけですが、経営が知りたいのは多くの場合「変わったか」だからです。運用として考えるべきは次の3点です。</p>
+    <ol>
+      <li><strong>定点化する。</strong>四半期・半期など、サーベイと同じように周期を決めて聞きます。周期があることで、回答者側にも「聞かれて終わりではなく、継続的に声を届ける経路」として定着します。</li>
+      <li><strong>前回の結果を文脈にして差分を聞く。</strong>2回目以降は、ゼロから聞き直すのではなく「前回はこういう声が多かったが、その後どうか」を文脈に置けます。同じ質問への答えの変化、前回挙がった課題のその後、新しく生まれた課題——差分に焦点を当てることで、回ごとの結果が点ではなく線になります。</li>
+      <li><strong>施策の前後で比較する。</strong>制度変更やツール導入の前に聞き、浸透したはずの時期にもう一度聞く。施策の効果を、利用率のような行動データだけでなく、現場の語りの変化として確かめられます。打ち手の検証まで含めてはじめて、調査は経営のループに組み込まれます。</li>
+    </ol>
+    <p>そして、このループを回し続ける燃料が、前章までに述べた「結果の還元」です。聞く→まとめる→返す→変える→また聞く。この循環が一周するたびに、回答の質と率直さは上がっていきます。逆にどこかで還元が途切れれば、次の回から集まるのは沈黙です。</p>
+    <h3>まず何をすべきか</h3>
+    <p>この記事を閉じたあとの最初の一歩は、次の3つです。</p>
+    <ol>
+      <li><strong>目的と情報の取り扱いを1枚にまとめる。</strong>何を知るために聞くのか、匿名の範囲、音声の扱い、評価に使わない宣言、結果の返し方。この1枚が書けない段階で配布してはいけません。</li>
+      <li><strong>1部署・1テーマでパイロットを回す。</strong>課題意識が明確な部署で小さく始め、案内の伝わり方・回答の出方・深掘りの効き方を確かめます。</li>
+      <li><strong>結果を返してから広げる。</strong>パイロットの結果と、そこから決めた打ち手を回答者に共有する。この一巡の実績が、全社展開時の最強の説明材料になります。</li>
+    </ol>
+    <p>AIインタビューという手法自体の全体像は<a href="ai-interview.html">AIインタビューとは</a>で扱っています。ツール選定の段階であれば、CoeSignalの社内ヒアリング支援もご検討ください。経営企画・情シス・人事の社内調査向けに、匿名で1人10〜20分のインタビューを実施でき、100人の大規模ヒアリングも1週間で実施できます。報告書は結論と反対意見をまとめた形で受け取れ、回答全文の共有画面まで遡れるため、「一部の意見では」という指摘に原文で答えられます。社内稟議用資料の組み合わせにも対応しています。</p>
+
+    <h2 id="faq">よくある質問</h2>
+    <div class="faq"><div class="q">従業員は本当のことを話してくれますか？</div><p class="a">話してもらえるかどうかは、聞き方の道具よりも、情報の取り扱いを先に示せているかで決まります。匿名の範囲・音声の扱い・評価に使わないことを実施前に明示し、聞いた結果を回答者に返す運用が回っていれば、対面では出にくい声が集まります。なお、機械相手のほうが開示が増えるという研究と、差がないという研究の両方があり、道具だけで本音が保証されるわけではありません。</p></div>
+    <div class="faq"><div class="q">結果を人事評価に使ってもよいですか？</div><p class="a">使わないことを推奨します。回答が評価や処遇に影響しうると回答者が感じた時点で、聞こえてくるのは本音ではなく「評価者に見せてよい答え」に変わります。一度でも評価に流用すれば、以降のすべての社内調査の回答の質が下がります。実態把握と評価は目的が異なる別の営みとして、線引きを文書で明言しておくのが実務的です。</p></div>
+    <div class="faq"><div class="q">何人から始めるべきですか？</div><p class="a">最初から全社に配る必要はありません。課題意識が明確な1部署・1テーマから小さく始め、情報の取り扱いの示し方と結果の返し方まで一巡させてから広げるのが実務的です。ただし少人数の組織では、属性を掛け合わせた集計から個人が推測されうるため、集計の単位を粗くするなど、規模が小さいときほど匿名性の設計に注意が必要です。</p></div>
+    <div class="faq"><div class="q">従業員サーベイと置き換えるものですか？</div><p class="a">置き換えではなく併用です。サーベイは全体のスコアと推移を定量で押さえる道具、インタビューはスコアの背景にある「なぜ」を語りで押さえる道具で、問いの種類が違います。サーベイで気になる変化を見つけ、その論点をAIインタビューで深掘りする、という往復が実務では最も機能します。</p></div>
+  </article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役</span></div>
+    <p>上場企業を含む37社・2,500名の生成AI導入・研修を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。AIインタビューによる定性調査の設計・実査・分析も支援領域。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>現場の声を、推測ではなく語りで経営に届ける。</h3>
+    <p>CoeSignalの社内ヒアリング支援は、経営企画・情シス・人事の社内調査向け。匿名・1人10〜20分で、100人規模のヒアリングも1週間で実施できます。社内調査の設計・匿名性の設計のご相談だけでも歓迎です。</p>
+  </div>
+  <a href="https://coesignal.techworker.co.jp/" class="btn">CoeSignalに社内調査を相談する <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="https://coesignal.techworker.co.jp/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(15,107,77,.3);">CoeSignal 公式サイト（AIインタビュープラットフォーム）</a>　／　<a href="https://coesignal.techworker.co.jp/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(15,107,77,.3);">無料相談</a></p>
+<div class="back-list"><a href="index.html">← AIインタビュー・ラボ（記事一覧）に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="internal-interview-cases.html" class="related-card"><div class="rc-thumb"><img src="covers/internal-interview-cases-cs.png" alt="社内AIインタビューの活用事例10選｜国内7社・海外3社の公開事例に学ぶ" loading="lazy"></div><span class="rc-cat">活用事例</span><div class="rc-title">社内AIインタビューの活用事例10選｜国内7社・海外3社の公開事例に学ぶ</div></a>
+    <a href="honesty-with-ai.html" class="related-card"><div class="rc-thumb"><img src="covers/honesty-with-ai-cs.png" alt="人はAIに本音を話すのか｜「機械相手だと話しやすい」研究の実像と限界" loading="lazy"></div><span class="rc-cat">研究ノート</span><div class="rc-title">人はAIに本音を話すのか｜「機械相手だと話しやすい」研究の実像と限界</div></a>
+    <a href="ai-interview.html" class="related-card"><div class="rc-thumb"><img src="covers/ai-interview-cs.png" alt="AIインタビューとは｜アンケートより深く、従来インタビューより速い定性調査" loading="lazy"></div><span class="rc-cat">基礎</span><div class="rc-title">AIインタビューとは｜アンケートより深く、従来インタビューより速い定性調査</div></a>
+  </div>
+</div></section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="cs-logo"><img src="brand/coesignal-logo.svg" alt="CoeSignal" height="26"><span class="lab-tag">AIインタビュー・ラボ</span></div>
+        <p>AIインタビューで、一人ずつの「なぜ」を聞きに行く。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+      </div>
+      <div class="footer-col"><h4>メディア</h4><a href="index.html">記事一覧</a><a href="ai-interview.html">AIインタビューとは</a><a href="depth-interview.html">デプスインタビュー</a></div>
+      <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../index.html#services">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="https://coesignal.techworker.co.jp/">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+</body>
+</html>
