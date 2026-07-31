@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3V34NWXVCJ');
+</script>
+<!-- TW intent tracker (first-party, sessionStorage only) -->
+<script>
+(function(){try{var ss=sessionStorage,ls=localStorage;
+if(!ss.getItem('tw_landing')){ss.setItem('tw_landing',location.pathname);ss.setItem('tw_ref',document.referrer||'');var q=new URLSearchParams(location.search);ss.setItem('tw_utm',['utm_source','utm_medium','utm_campaign'].map(function(k){return q.get(k)||'';}).join('|'));}
+var p=JSON.parse(ss.getItem('tw_pages')||'[]');if(p[p.length-1]!==location.pathname){p.push(location.pathname);ss.setItem('tw_pages',JSON.stringify(p.slice(-20)));}
+if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_visits')||'0',10)+1));ss.setItem('tw_counted','1');}
+}catch(e){}})();
+</script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>「AI面接」と「AIインタビュー」の違い｜採用と市場調査で混同しないための整理【2026】 — AIインタビュー・ラボ</title>
+<meta name="description" content="「AI面接」と「AIインタビュー」は名前が似ているだけの別物。採用選考で候補者を評価するAI面接と、市場調査・組織調査で「なぜ」を聞くAIインタビューの違いを、30秒の切り分けチェックと目的・対象者・評価するもの・導入部門・留意点の比較表で整理します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/interview/ai-mensetsu-vs-ai-interview">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「AI面接」と「AIインタビュー」の違い｜採用と市場調査で混同しないための整理【2026】">
+<meta property="og:description" content="採用選考の「AI面接」と定性調査の「AIインタビュー」は別物。30秒の切り分けチェックと比較表で、探している系統を最初に確定させる。">
+<meta property="og:image" content="https://techworker.co.jp/media/interview/covers/ai-mensetsu-vs-ai-interview-cs.png">
+<meta property="og:url" content="https://techworker.co.jp/media/interview/ai-mensetsu-vs-ai-interview">
+<meta property="og:site_name" content="AIインタビュー・ラボ">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="「AI面接」と「AIインタビュー」の違い｜採用と市場調査で混同しないための整理【2026】">
+<meta name="twitter:image" content="https://techworker.co.jp/media/interview/covers/ai-mensetsu-vs-ai-interview-cs.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../article.css">
+<link rel="stylesheet" href="lab.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"「AI面接」と「AIインタビュー」の違い｜採用と市場調査で混同しないための整理【2026】",
+  "description":"採用選考で候補者を評価する「AI面接」と、市場調査・組織調査で「なぜ」を聞く定性調査の「AIインタビュー」を正面から切り分ける。30秒の切り分けチェック、目的・対象者・評価するもの・導入部門・留意点の比較表、紛らわしい呼称の整理、それぞれの代表的な利用シーンまで。",
+  "datePublished":"2026-07-28","dateModified":"2026-07-28","inLanguage":"ja",
+  "image":{"@type":"ImageObject","url":"https://techworker.co.jp/media/interview/covers/ai-mensetsu-vs-ai-interview-cs.png","width":1200,"height":630},
+  "author":{"@type":"Person","name":"古野光太朗","jobTitle":"株式会社TechWorker 代表取締役","url":"https://techworker.co.jp/company.html","image":"https://techworker.co.jp/assets/author-furuno.jpg","sameAs":["https://x.com/koutarou_furuno"],"affiliation":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"}},
+  "publisher":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/","logo":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630}},
+  "mainEntityOfPage":{"@type":"WebPage","@id":"https://techworker.co.jp/media/interview/ai-mensetsu-vs-ai-interview"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},
+    {"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},
+    {"@type":"ListItem","position":3,"name":"AIインタビュー・ラボ","item":"https://techworker.co.jp/media/interview/"},
+    {"@type":"ListItem","position":4,"name":"AI面接とAIインタビューの違い","item":"https://techworker.co.jp/media/interview/ai-mensetsu-vs-ai-interview"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"「AI面接」と「AIインタビュー」に正式な定義の区別はありますか？","acceptedAnswer":{"@type":"Answer","text":"業界で統一された定義はありません。ただし実務上は、採用選考で候補者を評価する仕組みを「AI面接」、市場調査・組織調査でAIがモデレーターとして深掘りする定性調査を「AIインタビュー」と呼ぶ使い分けが定着しつつあります。迷ったら、相手を「候補者」と呼ぶか「顧客・社員」と呼ぶか、結果で合否が決まるかどうかで判断するのが確実です。"}},
+    {"@type":"Question","name":"AI面接ツールで市場調査もできますか？","acceptedAnswer":{"@type":"Answer","text":"設計思想が異なるため、基本的には向きません。AI面接ツールは評価基準に沿って候補者一人ひとりを測るための仕組みで、市場調査に必要な「答えに応じた深掘り」「複数人の発言の横断分析」「率直に話せる匿名性の設計」は別の要件です。逆に、定性調査向けのAIインタビューは個人の合否評価を目的とした設計になっていません。目的に合った系統の中から選ぶことが先決です。"}},
+    {"@type":"Question","name":"採用や人事の領域でAIインタビュー（定性調査型）を使う場面はありますか？","acceptedAnswer":{"@type":"Answer","text":"あります。ただし選考ではなく「声を聞く」用途です。内定辞退の理由、入社後のオンボーディングのつまずき、従業員の本音の把握などは、合否を付けない定性調査の領分で、AIインタビューが機能します。一方、候補者の合否評価に関わる用途は、AI面接ツールと人による最終判断の領域です。"}},
+    {"@type":"Question","name":"CoeSignalは採用選考のAI面接に使えますか？","acceptedAnswer":{"@type":"Answer","text":"CoeSignalは市場調査・組織調査のためのAIインタビュープラットフォームで、候補者の合否評価を目的とした採用選考ツールではありません。対象は顧客・ユーザー・社員の声を聞き、意思決定の材料に変える用途です。従業員調査や辞退理由の把握など、個別のテーマで使えるかどうかは無料相談でご確認ください。"}}
+  ]
+}
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <a href="index.html" class="cs-logo"><img src="brand/coesignal-logo.svg" alt="CoeSignal" height="26"><span class="lab-tag">AIインタビュー・ラボ</span></a>
+  <ul>
+    <li><a href="index.html">記事一覧</a></li>
+    <li><a href="index.html#about">このメディアについて</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://coesignal.techworker.co.jp/" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="index.html">記事一覧</a>
+  <a href="index.html#about">このメディアについて</a>
+  <a href="https://coesignal.techworker.co.jp/" class="m-cta">無料相談を申し込む</a>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIインタビュー・ラボ</a><span class="sep">/</span>AI面接とAIインタビューの違い</nav>
+  <div class="kicker">用語整理 / Disambiguation</div>
+  <h1>「AI面接」と「AIインタビュー」の違い</h1>
+  <p class="dek">「AIインタビュー」で検索すると、採用選考の「AI面接」と市場調査の「AIインタビュー」が同じ画面に混ざって並ぶ。名前は似ているが、目的も対象者も導入部門も別物だ。あなたが探しているのはどちらか——最初の30秒で切り分け、比較表でそれぞれの中身と留意点を確定させる。</p>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.28</span><span class="dot">·</span><span>最終更新 2026.07.28</span><span class="dot">·</span><span>読了 8分</span>
+  </div>
+</header>
+
+<img class="art-cover" src="covers/ai-mensetsu-vs-ai-interview-cs.png" alt="「AI面接」と「AIインタビュー」の違い｜採用と市場調査で混同しないための整理" width="1200" height="630" fetchpriority="high">
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次">
+    <div class="art-toc-inner">
+      <div class="toc-h">目次</div>
+      <a href="#s1">何が違うのか</a>
+      <a href="#s2">比較表で整理</a>
+      <a href="#s3">AI面接（採用選考）の現在</a>
+      <a href="#s4">AIインタビュー（調査）の用途</a>
+      <a href="#s5">混同が招く失敗</a>
+      <a href="#faq">よくある質問</a>
+    </div>
+  </nav>
+
+  <article class="art-body rv">
+    <div class="lede">
+      <div class="lede-h">この記事の要点</div>
+      <ul>
+        <li><strong>AI面接＝採用選考で候補者を評価する仕組み。AIインタビュー＝市場調査・組織調査で「なぜ」を聞く定性調査。</strong>「AIが人に質問する」形が同じだけの、別系統のサービス群。</li>
+        <li>切り分けの基準は2つで足りる。<strong>相手を「候補者」と呼ぶか「顧客・社員」と呼ぶか。結果で合否が決まるか、意思決定の材料になるか。</strong></li>
+        <li>混同すると、<strong>稟議の主語・比較すべき選択肢・確認すべき論点をすべて取り違える</strong>。検索の入口で系統を確定させてから比較検討に入る。</li>
+      </ul>
+    </div>
+
+    <aside class="inline-dx-cta" style="margin:6px 0 40px;border:1px solid var(--line-2);border-radius:12px;background:var(--white);padding:22px 26px;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
+  <div style="flex:1;min-width:240px;">
+    <div style="font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);">無料体験 ・ 登録不要 ・ 5分</div>
+    <div style="font-family:var(--jp);font-weight:700;font-size:16.5px;color:var(--ink);line-height:1.55;margin-top:8px;">「市場調査側」を探している方へ：5分でAIインタビューを体験（登録不要・無料）</div>
+    <div style="font-size:13.5px;color:var(--slate);line-height:1.8;margin-top:5px;">回答者としてURLを開き、声で答えるとAIが聞き返す——採用のAI面接とは別物の「調査のインタビュー」をそのまま試せます（マイクを使用します）。</div>
+  </div>
+  <a href="https://coesignal.techworker.co.jp/" class="btn" style="white-space:nowrap;flex:none;color:var(--paper);border-bottom:none;">無料で体験する <i>&rarr;</i></a>
+</aside>
+    <p>「AIインタビュー」や「AI面接 とは」で検索すると、採用選考ツールの比較記事と市場調査の解説記事が同じ検索結果に混ざって並びます。どちらも「AIが人に質問し、答えに応じて聞き返す」体験としては同じ形をしているため、読み進めてから「探していたのはこれではない」と気づく——この迷子は検索する側の問題ではなく、<strong>別物の2つが似た名前で呼ばれていること</strong>の問題です。この記事では採用選考の「AI面接」と定性調査の「AIインタビュー」を正面から切り分け、目的・対象者・評価するもの・導入部門・留意点の違いを比較表で整理します。30秒で自分の探している系統が確定し、次に見るべきものが分かる状態にすることがゴールです。</p>
+
+    <h2 id="s1">「AI面接」と「AIインタビュー」はどう違うのか？</h2>
+    <p class="answer">AI面接は採用選考で候補者を評価する仕組み。AIインタビューは市場調査・組織調査で「なぜ」を聞く定性調査。</p>
+    <p>まず、2つの言葉が指すものを一文ずつで確定させます。</p>
+    <ul>
+      <li><strong>AI面接</strong>——採用選考の文脈で、AIが応募者・候補者に質問し、回答をもとに評価を支援する仕組み。導入するのは人事・採用部門で、結果は合否や次の選考ステップの判断に使われます。</li>
+      <li><strong>AIインタビュー</strong>——市場調査・組織調査の文脈で、AIがモデレーターとして顧客・ユーザー・社員に質問し、答えに応じて深掘りする定性調査の手法。導入するのはマーケティング・商品企画・リサーチ・CX、組織調査であれば人事・経営企画で、結果は個人の評価ではなく、事業や組織の意思決定の材料になります。</li>
+    </ul>
+    <p>あなたが今どちらを探しているのかは、次のチェックで30秒あれば確定します。</p>
+    <div class="ui-mock">
+      <div class="um-bar"><span class="um-dot"></span><span class="um-dot"></span><span class="um-dot"></span><span class="um-name">30秒セルフチェック — あなたが探しているのはどちらか</span></div>
+      <div class="um-row">
+        <div class="um-label">採用の文脈なら</div>
+        <div class="um-text">相手を「応募者・候補者」と呼んでいる。知りたいのは「この人を次の選考に進めるべきか」。結果は個人の合否・評価に使う。——探しているのは<strong>「AI面接」（採用選考ツール）</strong>の系統です。</div>
+      </div>
+      <div class="um-row">
+        <div class="um-label ai">調査の文脈なら</div>
+        <div class="um-text">相手を「顧客・ユーザー・社員」と呼んでいる。知りたいのは「人々がなぜそう行動するのか」。結果は個人の評価ではなく、商品・施策・組織の意思決定に使う。——探しているのは<strong>「AIインタビュー」（定性調査）</strong>の系統です。</div>
+      </div>
+    </div>
+    <p class="fig-cap">図：30秒の切り分けチェック（本記事の整理）。「相手の呼び方」と「結果の使い途」の2点で系統が決まります。</p>
+    <p>混線が起きるのは、実査の見た目がほぼ同じだからです。どちらも対象者はURLやアプリを開き、AIの質問に答え、AIが内容に応じて追加の質問をします。違いは体験の形ではなく、<strong>その回答が何に使われるか</strong>にあります。片方は「一人を測る」ために使われ、もう片方は「多くの声を横断して理解する」ために使われる。この一点が、後述するとおり、ツールの設計・導入部門・確認すべき論点のすべてを分岐させます。</p>
+    <div class="callout"><p>迷ったら一問だけ自分に聞く。<strong>「この結果で、誰かの合否や評価が決まるか？」</strong>——決まるならAI面接、決まらず意思決定の材料になるならAIインタビュー。</p></div>
+
+    <h2 id="s2">比較表で見ると何が違うのか？</h2>
+    <p class="answer">目的・対象者・評価するもの・導入部門・成果物・留意点のすべてが異なる。同じなのは実査の形だけだ。</p>
+    <p>両者を同じ観点で並べると、重なる項目がほぼ無いことが分かります。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>観点</th><th>AI面接（採用選考）</th><th>AIインタビュー（市場調査・組織調査）</th></tr>
+        <tr><td>目的</td><td>候補者の選考・評価の支援</td><td>顧客・ユーザー・社員の「なぜ」の理解</td></tr>
+        <tr><td>対象者</td><td>応募者・候補者（昇格審査では社員）</td><td>顧客・ユーザー・見込み客・社員</td></tr>
+        <tr><td>評価・分析するもの</td><td>個人の資質・適性・回答内容（一人ずつの評価）</td><td>発言の内容・理由・文脈（横断でのパターン分析。個人の合否は付けない）</td></tr>
+        <tr><td>導入部門</td><td>人事・採用部門</td><td>マーケティング・商品企画・リサーチ・CX・経営企画・人事（組織調査）</td></tr>
+        <tr><td>成果物</td><td>候補者ごとの評価レポート</td><td>横断的な示唆をまとめた調査レポート・判断メモ</td></tr>
+        <tr><td>代表的な留意点</td><td>評価の説明責任・公平性・候補者体験への配慮</td><td>定性調査のため、代表性が必要な定量推定には向かない</td></tr>
+      </table>
+    </div>
+    <p>唯一紛らわしいのは、導入部門の両側に「人事」が登場する点です。ここも切り分けは単純で、<strong>候補者を選考するなら採用側、社員の声を（合否を付けずに）聞くなら調査側</strong>です。従業員の本音の把握や内定辞退理由のヒアリングは、人事が主導していても系統としてはAIインタビューに属します。</p>
+    <p>あわせて、検索中に見かける紛らわしい呼称も整理しておきます。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>見かける呼称</th><th>指していることが多いもの</th><th>系統</th></tr>
+        <tr><td>AI面接／AI面接官</td><td>AIが候補者に質問し、採用選考の評価を支援する仕組み</td><td>採用</td></tr>
+        <tr><td>Web面接／オンライン面接</td><td>人が行う面接をオンラインで実施する形態</td><td>採用</td></tr>
+        <tr><td>録画面接／動画選考</td><td>候補者が設問に動画で回答し、企業側が後から確認・評価する形態</td><td>採用</td></tr>
+        <tr><td>AIインタビュー／AIインタビュー調査</td><td>AIがモデレーターとして回答者を深掘りする定性調査</td><td>調査</td></tr>
+        <tr><td>AIデプスインタビュー</td><td>1対1の深掘り（<a href="depth-interview.html">デプスインタビュー</a>）をAIモデレートで行う手法</td><td>調査</td></tr>
+      </table>
+    </div>
+    <p class="fig-cap">表：呼称の整理（本記事の整理）。用語の使われ方は2026年7月時点の各社公式サイト・公開情報での一般的な用法に基づくもので、業界で統一された定義はありません。</p>
+
+    <h2 id="s3">AI面接（採用選考）はどこまで広がっているか？</h2>
+    <p class="answer">新卒・中途・アルバイト採用の初期選考が中心。国内では累計導入1,000社超の公表事例がある。</p>
+    <p>採用選考側の現在地を、各社が公式に公表している事実で確認します。</p>
+    <ul>
+      <li>株式会社タレントアンドアセスメントの公式プレスリリース（2026年3月17日付）によれば、同社の対話型AI面接サービス<strong>「SHaiN」は累計導入企業1,000社を突破</strong>しました。受検者はスマートフォン等で24時間365日、場所を選ばずAIと対話しながら面接を受けられるとしています。</li>
+      <li>株式会社ZENKIGENは2025年7月29日、採用DXサービス「harutaka」において対話型AI選考システム<strong>「harutaka AI面接」の提供開始</strong>を公表しました。応募者の回答に応じて質問を動的に生成する仕組みだとしています。</li>
+    </ul>
+    <p class="fig-cap">※いずれも2026年7月時点・各社公式サイトおよび公式プレスリリースで確認できる公表情報の紹介です。本メディアは市場調査側の専門メディアであり、採用選考ツールの優劣の評価は行いません。</p>
+    <p>利用シーンとしては、応募者数が多い初期選考、日程調整が難しい候補者への24時間対応、面接機会の地理的な制約の解消といった文脈で語られることが多い領域です。「多くの相手に、同じ品質で、都合のよい時間に聞く」というAIの強みの使い方自体は、調査側のAIインタビューと共通しています。</p>
+    <p>一方で、採用側に固有なのは<strong>評価用途の重さ</strong>です。結果が個人の合否に関わる以上、評価理由の説明責任と人による最終判断が、ツール選定と運用設計の中心論点になります。国内では昇格審査に対話型AI面接を組み込む公表事例も出ており、評価用途と傾聴用途の線引きは<a href="internal-interview-cases.html">社内AIインタビューの活用事例10選</a>で公開事例ベースで整理しています。</p>
+
+    <h2 id="s4">AIインタビュー（市場調査・組織調査）は何に使うのか？</h2>
+    <p class="answer">新商品検証・解約理由・VoC・従業員の本音など、「なぜ」を人の言葉で集める場面に使う。</p>
+    <p>調査側のAIインタビューは、アンケートでは掘れない「なぜ」を、従来のインタビューでは難しかった人数から集めるための手法です。回答者は配布されたURLを都合のよい時間に開き、声（またはテキスト）で答えます。AIは答えの内容を受けて「それはどんな場面でしたか」「なぜそう感じたのですか」と聞き返し、集まった発言を横断的に分析して意思決定の材料に変えます。仕組みの全体像は柱記事の<a href="ai-interview.html">AIインタビューとは</a>で基礎から解説しています。</p>
+    <p>代表的な用途と、本メディアでの解説記事の対応は次のとおりです。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>用途</th><th>誰に聞くか</th><th>詳しい解説</th></tr>
+        <tr><td>新商品・コンセプト検証</td><td>想定顧客・既存顧客</td><td><a href="ai-interview.html">AIインタビューとは</a></td></tr>
+        <tr><td>解約理由・VoC</td><td>解約者・既存顧客</td><td><a href="voc-interview.html">解約理由・VoCをAIインタビューで深掘りする</a></td></tr>
+        <tr><td>従業員の本音・組織調査</td><td>社員・現場スタッフ</td><td><a href="employee-voice.html">従業員の本音をAIインタビューで聞く</a></td></tr>
+        <tr><td>1対1の深掘り（デプス）</td><td>重要顧客・ベテラン社員</td><td><a href="depth-interview.html">デプスインタビューをAIで行う</a></td></tr>
+      </table>
+    </div>
+    <p>調査側にも、はっきりした限界があります。AIインタビューは定性調査であり、<strong>「市場の何%がそう思うか」という代表性が必要な定量推定や厳密な統計検定はアンケートの領分</strong>です。何人に聞けば十分かという人数設計の考え方は<a href="how-many-interviews.html">インタビューは何人に聞けば十分か</a>で扱っています。</p>
+    <p>具体例として、TechWorkerのAIインタビュープラットフォーム<a href="https://coesignal.techworker.co.jp/">CoeSignal</a>は、この「調査側」に属するサービスです。公式サイトの公開値では、深く聞ける人数を従来の5〜10名から30〜100名へ、調査にかかる期間を2〜3か月から1週間へ、という水準を掲げています。自社の管理画面から調査を組み立てる形と、設計から報告書までを任せるManaged Researchの2形態があり、料金や個別の調査条件は要問い合わせです。</p>
+
+    <h2 id="s5">混同すると何を間違えるのか？</h2>
+    <p class="answer">稟議の主語・比較すべき選択肢・確認すべき論点をすべて取り違える。最初に系統を確定させるのが先だ。</p>
+    <p>「名前が似ているだけなら実害はない」とはなりません。系統を取り違えたまま検討を進めると、次の3つを連鎖的に間違えます。</p>
+    <ol>
+      <li><strong>稟議の主語を間違える。</strong>採用ツールは人事・採用部門の予算と意思決定であり、調査は事業部門・マーケティング・リサーチの予算と意思決定です。系統を誤ると、社内で話を持ち込む先から違ってきます。</li>
+      <li><strong>比較対象を間違える。</strong>ツール比較はAI面接どうし、AIインタビューどうしで行うものです。系統をまたいだ比較表は、評価軸が噛み合わず、選定の材料になりません。</li>
+      <li><strong>確認すべき論点を間違える。</strong>採用側で確認すべきは評価の説明責任・公平性・候補者体験。調査側で確認すべきは調査設計の質・深掘りの精度・定性調査としての限界の明示です。チェックリストが丸ごと入れ替わります。</li>
+    </ol>
+    <p>典型的な迷子は、「AIインタビュー ツール」で検索して採用選考ツールの比較記事に着地し、市場調査の検討が一歩も進まないまま時間が過ぎるパターンです。逆に、採用担当者が調査側の解説を読み込んでも、知りたい選考実務には届きません。<strong>検索の入口で系統を確定させることが、検討の最短経路</strong>です。</p>
+    <h3>まず何をすべきか</h3>
+    <ol>
+      <li><strong>30秒チェックで系統を確定する。</strong>相手を「候補者」と呼ぶか「顧客・社員」と呼ぶか。結果で合否が決まるか。この2点で決まります。</li>
+      <li><strong>採用側なら、各社の公式サイトで一次情報を確認する。</strong>本記事で挙げた公表事実の先は、各社の公式情報が最も正確です。</li>
+      <li><strong>調査側なら、<a href="ai-interview.html">AIインタビューとは</a>から仕組みと限界を押さえる。</strong>検討が進んだら、テーマを1つに絞って小さく1本回し、成果物が意思決定に使えるかを確かめてから広げます。</li>
+    </ol>
+
+    <h2 id="faq">よくある質問</h2>
+    <div class="faq"><div class="q">「AI面接」と「AIインタビュー」に正式な定義の区別はありますか？</div><p class="a">業界で統一された定義はありません。ただし実務上は、採用選考で候補者を評価する仕組みを「AI面接」、市場調査・組織調査でAIがモデレーターとして深掘りする定性調査を「AIインタビュー」と呼ぶ使い分けが定着しつつあります。迷ったら、相手を「候補者」と呼ぶか「顧客・社員」と呼ぶか、結果で合否が決まるかどうかで判断するのが確実です。</p></div>
+    <div class="faq"><div class="q">AI面接ツールで市場調査もできますか？</div><p class="a">設計思想が異なるため、基本的には向きません。AI面接ツールは評価基準に沿って候補者一人ひとりを測るための仕組みで、市場調査に必要な「答えに応じた深掘り」「複数人の発言の横断分析」「率直に話せる匿名性の設計」は別の要件です。逆に、定性調査向けのAIインタビューは個人の合否評価を目的とした設計になっていません。目的に合った系統の中から選ぶことが先決です。</p></div>
+    <div class="faq"><div class="q">採用や人事の領域でAIインタビュー（定性調査型）を使う場面はありますか？</div><p class="a">あります。ただし選考ではなく「声を聞く」用途です。内定辞退の理由、入社後のオンボーディングのつまずき、従業員の本音の把握などは、合否を付けない定性調査の領分で、AIインタビューが機能します。一方、候補者の合否評価に関わる用途は、AI面接ツールと人による最終判断の領域です。</p></div>
+    <div class="faq"><div class="q">CoeSignalは採用選考のAI面接に使えますか？</div><p class="a">CoeSignalは市場調査・組織調査のためのAIインタビュープラットフォームで、候補者の合否評価を目的とした採用選考ツールではありません。対象は顧客・ユーザー・社員の声を聞き、意思決定の材料に変える用途です。従業員調査や辞退理由の把握など、個別のテーマで使えるかどうかは無料相談でご確認ください。</p></div>
+  </article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役</span></div>
+    <p>上場企業を含む37社・2,500名の生成AI導入・研修を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。AIが顧客や現場の声を一人ずつ深掘りするAIインタビュープラットフォーム「CoeSignal」を提供し、定性調査の設計から根拠に遡れる判断メモづくりまでを支援している。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>探しているのが「調査側」なら、ここから先はご一緒できます。</h3>
+    <p>CoeSignalは、AIが顧客や現場の声を一人ずつ深掘りするAIインタビュープラットフォームです。設計から実査・分析・判断メモまでを一つの流れで。「うちのテーマは調査側か」という切り分けのご相談だけでも歓迎です。</p>
+  </div>
+  <a href="https://coesignal.techworker.co.jp/" class="btn">CoeSignalに導入・調査を相談する <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="https://coesignal.techworker.co.jp/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(15,107,77,.3);">CoeSignal 公式サイト（AIインタビュープラットフォーム）</a>　／　<a href="https://coesignal.techworker.co.jp/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(15,107,77,.3);">無料相談</a></p>
+<div class="back-list"><a href="index.html">← AIインタビュー・ラボ（記事一覧）に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="ai-interview.html" class="related-card"><div class="rc-thumb"><img src="covers/ai-interview-cs.png" alt="AIインタビューとは｜仕組み・できること・従来調査との違い" loading="lazy"></div><span class="rc-cat">基礎</span><div class="rc-title">AIインタビューとは｜仕組み・できること・従来調査との違い</div></a>
+    <a href="internal-interview-cases.html" class="related-card"><div class="rc-thumb"><img src="covers/internal-interview-cases-cs.png" alt="社内AIインタビューの活用事例10選｜国内7社・海外3社の公開事例に学ぶ" loading="lazy"></div><span class="rc-cat">活用事例</span><div class="rc-title">社内AIインタビューの活用事例10選｜国内7社・海外3社の公開事例に学ぶ</div></a>
+    <a href="voc-interview.html" class="related-card"><div class="rc-thumb"><img src="covers/voc-interview-cs.png" alt="解約理由・VoCをAIインタビューで深掘りする" loading="lazy"></div><span class="rc-cat">VoC</span><div class="rc-title">解約理由・VoCをAIインタビューで深掘りする｜数字では見えない離反の理由</div></a>
+    <a href="employee-voice.html" class="related-card"><div class="rc-thumb"><img src="covers/employee-voice-cs.png" alt="従業員の本音をAIインタビューで聞く｜社内調査の設計・匿名性・音声の扱い" loading="lazy"></div><span class="rc-cat">社内調査</span><div class="rc-title">従業員の本音をAIインタビューで聞く｜社内調査の設計・匿名性・音声の扱い</div></a>
+    <a href="index.html" class="related-card"><div class="rc-thumb"><img src="covers/portal-cs.png" alt="AIインタビュー・ラボ｜記事一覧" loading="lazy"></div><span class="rc-cat">メディア</span><div class="rc-title">AIインタビュー・ラボ｜記事一覧</div></a>
+  </div>
+</div></section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="cs-logo"><img src="brand/coesignal-logo.svg" alt="CoeSignal" height="26"><span class="lab-tag">AIインタビュー・ラボ</span></div>
+        <p>声を、意思決定へ。AIインタビューで定性調査を速く、深く。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+      </div>
+      <div class="footer-col"><h4>メディア</h4><a href="index.html">記事一覧</a><a href="ai-interview.html">AIインタビューとは</a><a href="depth-interview.html">デプスインタビュー</a></div>
+      <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../index.html#services">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="https://coesignal.techworker.co.jp/">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+</body>
+</html>
