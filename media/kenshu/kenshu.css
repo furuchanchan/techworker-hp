@@ -17,9 +17,9 @@
 @keyframes kn-say{0%,3%{opacity:0;transform:translateX(-50%) scale(.5)}7%,18%{opacity:1;transform:translateX(-50%) scale(1)}23%,100%{opacity:0;transform:translateX(-50%) scale(.5)}}
 
 /* キャプション（「よく聞く声」の説明行） */
-.kn-voices-cap{display:flex;align-items:center;gap:9px;font-family:var(--jp);font-size:12.5px;font-weight:700;color:var(--electric);margin-top:16px;}
-.kn-voices-cap::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--electric);flex:none;}
+.kn-voices-cap{display:flex;align-items:baseline;flex-wrap:wrap;gap:2px 9px;font-family:var(--jp);font-size:12.5px;font-weight:700;line-height:1.75;color:var(--electric);margin-top:16px;word-break:keep-all;overflow-wrap:anywhere;}
+.kn-voices-cap::before{content:"";align-self:center;width:6px;height:6px;border-radius:50%;background:var(--electric);flex:none;}
 .kn-voices-cap .note{font-weight:500;color:var(--slate);}
 
 @media (prefers-reduced-motion:reduce){.kn-fc .say{animation:none;opacity:0;}}
-@media (max-width:640px){.kn-voices{row-gap:26px;}.kn-fc .say{font-size:10px;padding:5px 8px;}}
+@media (max-width:640px){.kn-voices{row-gap:26px;}.kn-fc .say{font-size:10px;padding:5px 8px;}.kn-voices-cap{font-size:12px;}}

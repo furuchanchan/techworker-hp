@@ -439,11 +439,11 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
 .kn-fc .say{position:absolute;left:50%;bottom:calc(100% - 2px);z-index:3;white-space:nowrap;font-family:'IBM Plex Sans JP','IBM Plex Sans',system-ui,sans-serif;font-size:11px;font-weight:700;line-height:1;color:#2A333F;background:#fff;border:1.5px solid rgba(0,94,255,.35);border-radius:10px;padding:6px 10px;box-shadow:0 2px 8px rgba(13,17,23,.10);opacity:0;transform:translateX(-50%) scale(.5);transform-origin:bottom center;animation:kn-say 10.5s infinite;animation-delay:var(--sayo,0s);pointer-events:none;}
 .kn-fc .say::after{content:"";position:absolute;left:50%;bottom:-4.5px;width:7px;height:7px;background:#fff;border-right:1.5px solid rgba(0,94,255,.35);border-bottom:1.5px solid rgba(0,94,255,.35);transform:translateX(-50%) rotate(45deg);}
 @keyframes kn-say{0%,3%{opacity:0;transform:translateX(-50%) scale(.5)}7%,18%{opacity:1;transform:translateX(-50%) scale(1)}23%,100%{opacity:0;transform:translateX(-50%) scale(.5)}}
-.kn-voices-cap{display:flex;align-items:center;gap:9px;font-family:'IBM Plex Sans JP','IBM Plex Sans',system-ui,sans-serif;font-size:12.5px;font-weight:700;color:#005EFF;margin-top:16px;}
-.kn-voices-cap::before{content:"";width:6px;height:6px;border-radius:50%;background:#005EFF;flex:none;}
+.kn-voices-cap{display:flex;align-items:baseline;flex-wrap:wrap;gap:2px 9px;font-family:'IBM Plex Sans JP','IBM Plex Sans',system-ui,sans-serif;font-size:12.5px;font-weight:700;line-height:1.75;color:#005EFF;margin-top:16px;word-break:keep-all;overflow-wrap:anywhere;}
+.kn-voices-cap::before{content:"";align-self:center;width:6px;height:6px;border-radius:50%;background:#005EFF;flex:none;}
 .kn-voices-cap .note{font-weight:500;color:#4A586C;}
 @media (prefers-reduced-motion:reduce){.kn-fc .say{animation:none;opacity:0;}}
-@media (max-width:640px){.kn-voices{row-gap:26px;}.kn-fc .say{font-size:10px;padding:5px 8px;}}
+@media (max-width:640px){.kn-voices{row-gap:26px;}.kn-fc .say{font-size:10px;padding:5px 8px;}.kn-voices-cap{font-size:12px;}}
 </style>
 </head>
 <body>
