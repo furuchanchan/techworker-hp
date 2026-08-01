@@ -22,4 +22,10 @@
 .kn-voices-cap .note{font-weight:500;color:var(--slate);}
 
 @media (prefers-reduced-motion:reduce){.kn-fc .say{animation:none;opacity:0;}}
-@media (max-width:640px){.kn-voices{row-gap:26px;}.kn-fc .say{font-size:10px;padding:5px 8px;}.kn-voices-cap{font-size:12px;}}
+/* モバイルは6人が1行に収まる幅へ（5+1の孤立行を作らない） */
+@media (max-width:640px){
+  .kn-voices{column-gap:8px;row-gap:26px;}
+  .kn-fc{width:clamp(38px,calc((100% - 46px)/6),58px);}
+  .kn-fc .say{font-size:10px;padding:5px 8px;}
+  .kn-voices-cap{font-size:12px;}
+}
