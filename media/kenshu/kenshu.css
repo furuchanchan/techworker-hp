@@ -51,3 +51,22 @@
   .kn-take-av{width:46px;height:46px;}
   .kn-take p{font-size:14px;}
 }
+
+/* --- サイドノート（本文の右余白に並走する短い一言） ---
+   使い方: <aside class="kn-side">
+             <img src="avatars/f30-0.svg" alt="" width="34" height="34">
+             <div><div class="r">経理の視点</div><p>短い一言（1文）。</p></div>
+           </aside>
+   広い画面では本文の右余白へ浮かせ、本文の流れを一切止めない（長文記事の定番手法）。
+   1320px未満では本文内に収め、左ヘアラインで body から区別する。
+   .kn-take（上下ヘアライン・本文幅）とは形を変えて、同じ形の連続を避ける。 */
+.kn-side{display:flex;gap:11px;align-items:flex-start;margin:24px 0;padding:2px 0 2px 15px;border-left:1px solid var(--line-2);}
+.kn-side img{flex:none;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:#F7F4EC;object-fit:cover;object-position:center top;}
+.kn-side .r{font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--electric);line-height:1.4;}
+.kn-side p{margin:5px 0 0;font-size:13px;line-height:1.85;color:var(--slate);}
+.kn-side p em{font-style:normal;font-weight:600;color:var(--ink-soft);}
+@media(min-width:1320px){
+  .kn-side{float:right;clear:right;width:230px;margin:6px -278px 28px 48px;padding:13px 0 0;border-left:none;border-top:1px solid var(--line-2);gap:10px;}
+  .kn-side img{width:32px;height:32px;}
+  .kn-side p{font-size:12.5px;line-height:1.8;}
+}

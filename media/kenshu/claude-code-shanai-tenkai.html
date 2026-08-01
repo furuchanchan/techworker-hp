@@ -206,6 +206,10 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
     <h2 id="s1">Claude Codeの社内展開で、情シスは何を押さえるべきか？</h2>
     <p class="answer">論点はアカウント・データ取扱い・設定配布・利用ルール・監査・展開順序の6つ。この順に決めれば抜けなく設計できる。</p>
+    <aside class="kn-side">
+      <img src="avatars/f40-0.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">情シスの視点</div><p>聞かれるのはいつも同じ3つ。データの扱い、権限、ログ。</p></div>
+    </aside>
     <p>Claude Codeは、ターミナルやIDEから使うエージェント型のコーディングツールです。チャット画面にテキストを打つだけのAIと違い、リポジトリのファイルを読み、編集し、コマンドを実行するところまで踏み込みます。だから社内展開の設計も「入力してよい情報のルールを決めて終わり」にはなりません。誰のアカウントで使うのか、送信されたコードはどう扱われるのか、端末ごとの設定をどう統一するのか、利用状況をどう監査するのか——展開前に決めるべき論点を、先に地図として持っておきます。</p>
     <div class="tbl-wrap">
       <table>
@@ -261,6 +265,10 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
     <h2 id="s4">設定はどう標準化し、全社に配布するか？</h2>
     <p class="answer">managed-settings.jsonを配布すれば、ユーザーが上書きできないポリシーを全端末に強制できる。優先順位は管理設定が最上位。</p>
+    <aside class="kn-side">
+      <img src="avatars/m30-0.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">IT管理者の視点</div><p>各自に設定させると、環境がバラバラになって支援できなくなる。</p></div>
+    </aside>
     <p>Claude Codeの設定は階層構造になっており、どの層に何を書くかで「会社が強制する部分」と「チーム・個人に委ねる部分」を切り分けられます。公式ドキュメント（2026年8月時点）が定める階層は次のとおりです。</p>
     <div class="tbl-wrap">
       <table>
@@ -307,6 +315,10 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
     <h2 id="s7">全社展開はどの順番で進めるか？</h2>
     <p class="answer">パイロットで設定と運用を固めてから全社へ広げる。監査を先に有効化しておくことが、統制と定着を両立させる鍵になる。</p>
+    <aside class="kn-side">
+      <img src="avatars/f50-6.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">推進担当の視点</div><p>全社に一斉展開しようとして止まった。<em>順番を決める</em>ほうが速い。</p></div>
+    </aside>
     <p>ここまでの論点を、実行の順番に並べ直します。一斉開放は統制も定着も中途半端になります。次の5段階で進めるのが現実的です。</p>
     <ol>
       <li><strong>契約とデータ方針を決める。</strong>Team／Enterprise／Console／クラウド経由のいずれかを選び、ZDRの要否、機密リポジトリの扱いを法務・セキュリティと合意する。</li>
