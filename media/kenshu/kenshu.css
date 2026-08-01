@@ -29,3 +29,25 @@
   .kn-fc .say{font-size:10px;padding:5px 8px;}
   .kn-voices-cap{font-size:12px;}
 }
+
+/* --- 視点（本文の節目に1人ぶんの読み手の視点を添える） ---
+   使い方: <aside class="kn-take">
+             <img class="kn-take-av" src="avatars/m40-0.svg" alt="" width="56" height="56">
+             <div class="kn-take-body">
+               <div class="kn-take-role">推進担当の視点</div>
+               <p>本文への短い反応（1〜2文）。</p>
+             </div>
+           </aside>
+   枠で囲わず上下のヘアラインだけで区切る（v6: ベタ塗り・カード化を避ける）。 */
+.kn-take{display:flex;gap:16px;align-items:flex-start;margin:38px 0;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.kn-take-av{flex:none;width:56px;height:56px;border-radius:50%;border:1px solid var(--line);background:#F7F4EC;object-fit:cover;object-position:center top;}
+.kn-take-body{min-width:0;}
+.kn-take-role{display:flex;align-items:center;gap:7px;font-family:var(--en);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--electric);}
+.kn-take-role::before{content:"";width:14px;height:1px;background:var(--electric);flex:none;}
+.kn-take p{margin:7px 0 0;font-size:14.5px;line-height:1.9;color:var(--ink-soft);}
+.kn-take p em{font-style:normal;font-weight:700;color:var(--ink);}
+@media (max-width:640px){
+  .kn-take{gap:13px;margin:30px 0;padding:17px 0;}
+  .kn-take-av{width:46px;height:46px;}
+  .kn-take p{font-size:14px;}
+}

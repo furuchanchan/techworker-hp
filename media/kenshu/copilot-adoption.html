@@ -194,7 +194,15 @@ fbq('init','1264057945446029');fbq('track','PageView');
     </div>
     <p>この4点を自社だけで整えるか、外部の定着支援サービスと組んで整えるかは、社内の推進リソース次第です。外部に任せる場合の選び方は<a href="copilot-support-comparison.html">Copilot定着支援サービスの比較</a>で整理しています。以下では、自社で設計する場合の中核となる「チャンピオン制度」「部門別プロンプト集」「利用率KPI」の3つを順に見ていきます。</p>
 
-    <h2 id="s3">チャンピオン制度と部門別プロンプト集はどう設計するか？</h2>
+    
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/m30-2.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">推進担当の視点</div>
+        <p>「一部の熱心な人が勝手に広げてくれる」と期待していたが、<em>広がる経路を設計しない限り横には広がらない</em>。チャンピオンを任命するのは属人化ではなく、その経路を作る仕事だと理解した。</p>
+      </div>
+    </aside>
+<h2 id="s3">チャンピオン制度と部門別プロンプト集はどう設計するか？</h2>
     <p class="answer">部門ごとに業務が分かる推進者を置き、その部門の頻出業務に絞ったプロンプト集を整備する。全社一律の配布では動かない。</p>
     <p><strong>チャンピオン制度</strong>は、部門ごとに推進者（チャンピオン）を公式に任命する仕組みです。設計の要点は3つあります。第一に選び方。ITスキルの高さではなく、<strong>その部門の業務を理解していて、同僚から相談されやすい人</strong>を選びます。Copilotの操作は覚えられますが、業務の翻訳力と社内の信頼は後から付けられません。第二に役割の明文化。週次でうまい使い方を部門内に共有する、プロンプト集を更新する、つまずきを吸い上げて事務局に渡す——この3つを役割として書き出します。第三に公式化。兼務前提になるため、推進活動に使う時間を業務時間として認め、評価にも反映させます。「善意のボランティア」に頼った推進は、その人の異動と同時に止まります。</p>
     <p>これはTechWorker独自の発明ではなく、Microsoft自身が実践している型です。Microsoftは社内推進コミュニティ「Copilot Champs Community」を運営し、同僚同士で学び合う仕組みを全社展開の柱に据えていることを公式ブログ（Microsoft Inside Track）で公開しています。またMicrosoft Learnの公式トレーニング（MS-4007）でも、ユーザーエネーブルメントの枠組みに沿って導入計画を作る方法が提供されています。推進者を置いて横に広げるやり方は、提供元自身が採用している標準的な進め方です。</p>
@@ -247,7 +255,15 @@ fbq('init','1264057945446029');fbq('track','PageView');
     </div>
     <p>経営への報告では、Copilot Dashboardの「Copilot assisted hours」（Copilotが支援した推定時間）が説得材料になります。ただしこの値はMicrosoftの調査に基づく係数を使った推計であり、Microsoft Learn自身が「精密な計算ではなく概算」と明記しています。社内資料では必ず「推計値」と添えて使ってください。また「うちの利用率は高いのか低いのか」という問いには、Copilot Dashboardの内部ベンチマーク（社内の類似グループとの比較）と外部ベンチマーク（類似企業との比較）機能で答えられます。外部の記事にある断片的な数値を合格ラインにするより、自社データの傾向と公式ベンチマークで判断する方が確かです。</p>
 
-    <h2 id="s5">定着支援は何から始めて、90日で何をやるか？</h2>
+    
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/f40-0.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">情シスの視点</div>
+        <p>利用率を見ていないから離脱に気づけない、という指摘が刺さった。<em>まず測る仕組みだけ先に置く</em>。打ち手はそのあとでも間に合う。</p>
+      </div>
+    </aside>
+<h2 id="s5">定着支援は何から始めて、90日で何をやるか？</h2>
     <p class="answer">最初の30日で測定と体制、次の30日で部門展開、最後の30日で定着判定。90日で改善ループを一巡させる。</p>
     <p>4つの対策を一度に全社へ広げようとすると、どれも中途半端に終わります。実務では90日を3つの区切りに分け、「測る→広げる→判定して改める」の順で一巡させるのが着実です。</p>
     <div class="tbl-wrap">
@@ -332,7 +348,7 @@ addEventListener('scroll',function(){var h=document.documentElement;var d=h.scro
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
   document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
 })();
-var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
 </script>
 </body>
