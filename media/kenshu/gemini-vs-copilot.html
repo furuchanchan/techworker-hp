@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3V34NWXVCJ');
+</script>
+<!-- TW intent tracker (first-party, sessionStorage only) -->
+<script>
+(function(){try{var ss=sessionStorage,ls=localStorage;
+if(!ss.getItem('tw_landing')){ss.setItem('tw_landing',location.pathname);ss.setItem('tw_ref',document.referrer||'');var q=new URLSearchParams(location.search);ss.setItem('tw_utm',['utm_source','utm_medium','utm_campaign'].map(function(k){return q.get(k)||'';}).join('|'));}
+var p=JSON.parse(ss.getItem('tw_pages')||'[]');if(p[p.length-1]!==location.pathname){p.push(location.pathname);ss.setItem('tw_pages',JSON.stringify(p.slice(-20)));}
+if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_visits')||'0',10)+1));ss.setItem('tw_counted','1');}
+}catch(e){}})();
+</script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GeminiとMicrosoft Copilotの違い｜ライセンス構造から選び方まで比較【2026】 — TechWorker</title>
+<meta name="description" content="GeminiとMicrosoft Copilotの最大の違いは、モデルの性能ではなく費用の出方です。Microsoft 365 Copilotは月額4,497円相当（年間契約・税別、2026年7月時点）の追加ライセンス、GeminiのAIアシスタントはGoogle Workspaceの各プランに同梱（Business Standard 1ユーザー月額1,600円）。稟議の立て方、選定の判断軸、両方ある会社の整理の仕方までを比較します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/kenshu/gemini-vs-copilot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GeminiとMicrosoft Copilotの違い｜ライセンス構造から選び方まで比較【2026】">
+<meta property="og:description" content="違いはモデルの優劣ではなく費用の出方。Copilotは追加ライセンス（月額4,497円相当）、GeminiはWorkspaceの各プランに同梱。稟議の立て方、選定軸、両方ある会社の整理まで比較。">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/media/kenshu/gemini-vs-copilot">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GeminiとMicrosoft Copilotの違い｜ライセンス構造から選び方まで比較【2026】">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../article.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "GeminiとMicrosoft Copilotの違い｜ライセンス構造から選び方まで比較【2026】",
+  "description": "GeminiとMicrosoft Copilotを法人導入の観点で比較する。最大の違いは費用の出方で、Microsoft 365 Copilotは月額4,497円相当（年間契約・税別、2026年7月時点の公表値）の追加ライセンスであるのに対し、GeminiのAIアシスタントはGoogle Workspaceの各プラン（Business Standard 1ユーザー月額1,600円など）に含まれる。この構造差が稟議の立て方をどう変えるか、選定の判断軸をどこに置くべきか、両方が社内にある場合にどう整理するかを解説する。",
+  "datePublished": "2026-08-01",
+  "dateModified": "2026-08-01",
+  "inLanguage": "ja",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://techworker.co.jp/assets/ogp.png",
+    "width": 1200,
+    "height": 630
+  },
+  "author": {
+    "@type": "Person",
+    "name": "古野光太朗",
+    "jobTitle": "株式会社TechWorker 代表取締役",
+    "url": "https://techworker.co.jp/company.html",
+    "image": "https://techworker.co.jp/assets/author-furuno.jpg",
+    "sameAs": [
+      "https://x.com/koutarou_furuno"
+    ],
+    "affiliation": {
+      "@type": "Organization",
+      "name": "株式会社TechWorker",
+      "url": "https://techworker.co.jp/"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "株式会社TechWorker",
+    "url": "https://techworker.co.jp/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://techworker.co.jp/assets/ogp.png",
+      "width": 1200,
+      "height": 630
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://techworker.co.jp/media/kenshu/gemini-vs-copilot"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://techworker.co.jp/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "メディア",
+      "item": "https://techworker.co.jp/media/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "AI研修・導入ラボ",
+      "item": "https://techworker.co.jp/media/kenshu/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "GeminiとMicrosoft Copilotの違い",
+      "item": "https://techworker.co.jp/media/kenshu/gemini-vs-copilot"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "GeminiとMicrosoft Copilotの一番大きな違いは何ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "費用の出方です。Microsoft 365 Copilotは月額4,497円相当（年間契約・税別、2026年7月時点の公表値）の追加ライセンスとして買う形が中心なのに対し、GeminiのAIアシスタントはGoogle Workspaceの各プランに含まれています。前者は「AIを買う稟議」が必要で、後者は「今の契約で使える範囲を決める」作業から始まります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "精度が高いのはどちらですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "モデルの優劣は短期間で入れ替わるため、選定の主軸には向きません。実務で効くのは、自社の文書・メール・表計算がどちらの基盤に置かれているかです。AIは手が届く範囲の情報しか使えないので、業務データがある側のほうが同じモデルでも役に立ちます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "両方導入している場合はどう整理しますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "全社員に両方を配るのではなく、業務単位で主戦場を決めます。日常業務は自社の主基盤側に寄せ、もう一方は特定業務や特定部門に限定する形が管理しやすくなります。ライセンスの重複は費用だけでなく、社員の迷いというコストも生みます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "選定の前に社内で決めておくことは何ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "対象業務、扱う情報の機微度、既存の基盤（Microsoft 365かGoogle Workspaceか）、運用を担う部署の4点です。この4つが決まらないまま製品比較を始めると、機能表の突き合わせに時間を使うだけで結論が出ません。"
+      }
+    }
+  ]
+}
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <a href="index.html" class="logo">AI研修・導入<i>ラボ</i></a>
+  <ul>
+    <li><a href="index.html">記事一覧</a></li>
+    <li><a href="index.html#about">このメディアについて</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="../../contact.html" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="index.html">記事一覧</a>
+  <a href="index.html#about">このメディアについて</a>
+  <a href="../../contact.html" class="m-cta">無料相談を申し込む</a>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a><span class="sep">/</span>GeminiとMicrosoft Copilotの違い</nav>
+  <div class="kicker">ツール選定 × 比較</div>
+  <h1>GeminiとMicrosoft Copilotの違い｜ライセンス構造から選び方まで比較</h1>
+  <p class="dek">「GeminiとCopilot、どちらがいいですか」という質問には、機能表では答えられない。2026年時点で決定的なのは、モデルの優劣ではなく費用の出方だ。Microsoft 365 Copilotは有償の追加ライセンスとして買うもの、GeminiのAIアシスタントはGoogle Workspaceの各プランに含まれるもの——この構造差が、稟議の立て方も、定着の課題も、研修の設計も変える。本記事は、両者を法人導入の実務で比較し、選定の判断軸を整理する。</p>
+  <div class="kn-voices" aria-hidden="true">
+    <span class="kn-fc" style="--sayo:0.0s"><span class="av"><img src="avatars/f40-2.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">どっちがいい？</span></span>
+    <span class="kn-fc" style="--sayo:6.3s"><span class="av"><img src="avatars/m30-0.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">両方ある</span></span>
+    <span class="kn-fc" style="--sayo:2.1s"><span class="av"><img src="avatars/f20-6.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">比較できない</span></span>
+    <span class="kn-fc" style="--sayo:8.4s"><span class="av"><img src="avatars/m50-6.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">費用が二重</span></span>
+    <span class="kn-fc" style="--sayo:4.2s"><span class="av"><img src="avatars/f30-2.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">決められない</span></span>
+  </div>
+  <div class="kn-voices-cap">研修・導入のご相談でよく挙がる声<span class="note">※ 実際の相談で挙がる論点をもとにした例です</span></div>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.08.01</span><span class="dot">·</span><span>最終更新 2026.08.01</span><span class="dot">·</span><span>読了 10分</span>
+  </div>
+</header>
+
+<style>
+/* gemini-vs-copilot cover — 費用の出方の対比: scoped gvc- */
+.gvc-cover{padding:24px 28px 22px;}
+.gvc-head{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);display:flex;align-items:center;gap:8px;margin-bottom:18px;flex-wrap:wrap;}
+.gvc-head .gvc-dot{width:7px;height:7px;border-radius:50%;background:var(--electric);flex:none;}
+.gvc-head .gvc-smp{margin-left:auto;font-family:var(--jp);font-weight:400;letter-spacing:0;text-transform:none;font-size:10.5px;opacity:.75;}
+.gvc-two{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line-2);border-radius:10px;overflow:hidden;}
+.gvc-col{padding:18px 20px 20px;min-width:0;}
+.gvc-col+.gvc-col{border-left:1px solid var(--line);}
+.gvc-brand{font-family:var(--jp);font-size:13.5px;font-weight:700;color:var(--ink);letter-spacing:-.01em;}
+.gvc-sub{font-family:var(--en);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-top:3px;}
+.gvc-stack{margin-top:16px;}
+.gvc-item{display:flex;align-items:center;gap:10px;padding:8px 0;}
+.gvc-tag{flex:0 0 74px;font-family:var(--jp);font-size:11px;font-weight:600;color:var(--ink-soft);}
+.gvc-box{flex:1;min-width:0;height:26px;border-radius:6px;display:flex;align-items:center;padding:0 11px;font-family:var(--en);font-size:11.5px;font-weight:600;font-feature-settings:"tnum" 1;}
+.gvc-box.base{background:var(--paper-2);color:var(--ink-soft);}
+.gvc-box.ai{background:var(--electric);color:var(--paper);}
+.gvc-box.inc{background:var(--paper-2);color:var(--ink-soft);border:1px solid rgba(0,94,255,.34);position:relative;}
+.gvc-box.inc::after{content:"Gemini 込み";position:absolute;right:10px;font-family:var(--jp);font-size:10px;font-weight:600;color:var(--electric);}
+.gvc-sum{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-family:var(--jp);font-size:11.5px;line-height:1.7;color:var(--slate);}
+.gvc-sum b{color:var(--ink);font-weight:700;}
+@media(max-width:640px){
+  .gvc-cover{padding:20px 18px 18px;}
+  .gvc-two{grid-template-columns:1fr;}
+  .gvc-col+.gvc-col{border-left:none;border-top:1px solid var(--line);}
+  .gvc-tag{flex-basis:64px;font-size:10.5px;}
+  .gvc-box.inc::after{display:none;}
+}
+</style>
+<div class="art-cover-v6 gvc-cover">
+  <div class="gvc-head"><span class="gvc-dot"></span>Gemini vs Copilot — 違いは性能ではなく費用の出方<span class="gvc-smp">2026年8月時点・Google Workspace公式料金ページ／Microsoft 365 Copilotの公表値（2026年7月時点）より</span></div>
+  <div class="gvc-two">
+    <div class="gvc-col">
+      <div class="gvc-brand">Microsoft 365 Copilot</div>
+      <div class="gvc-sub">Add-on / 追加ライセンス</div>
+      <div class="gvc-stack">
+        <div class="gvc-item"><span class="gvc-tag">基盤</span><div class="gvc-box base" role="img" aria-label="Microsoft 365の基本ライセンス">Microsoft 365</div></div>
+        <div class="gvc-item"><span class="gvc-tag">AI</span><div class="gvc-box ai" role="img" aria-label="Copilotは月額4,497円相当の追加ライセンス">＋ 4,497円 / 月・人</div></div>
+      </div>
+      <div class="gvc-sum"><b>AIを買う稟議</b>が必要。金額が見えるぶん、利用率が問われる。</div>
+    </div>
+    <div class="gvc-col">
+      <div class="gvc-brand">Google Workspace の Gemini</div>
+      <div class="gvc-sub">Included / プランに同梱</div>
+      <div class="gvc-stack">
+        <div class="gvc-item"><span class="gvc-tag">基盤</span><div class="gvc-box inc" role="img" aria-label="Google Workspace Business Standardは1ユーザー月額1,600円でGeminiを含む">1,600円 / 月・人</div></div>
+        <div class="gvc-item"><span class="gvc-tag">AI</span><div class="gvc-box base" role="img" aria-label="AI分の追加ライセンスは不要">追加ライセンスなし</div></div>
+      </div>
+      <div class="gvc-sum"><b>使える範囲を決める作業</b>から始まる。金額が見えないぶん、気づかれない。</div>
+    </div>
+  </div>
+</div>
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次">
+    <div class="art-toc-inner">
+      <div class="toc-h">目次</div>
+      <a href="#s1">本当の違いはどこにあるか</a>
+      <a href="#s2">費用構造を並べて見る</a>
+      <a href="#s3">精度で選べない理由</a>
+      <a href="#s4">定着と研修の課題の違い</a>
+      <a href="#s5">両方ある会社はどう整理するか</a>
+      <a href="#faq">よくある質問</a>
+    </div>
+  </nav>
+
+  <article class="art-body rv">
+    <div class="lede">
+      <div class="lede-h">この記事の要点</div>
+      <ul>
+        <li>2026年時点の決定的な違いは<strong>費用の出方</strong>。Microsoft 365 Copilotは月額4,497円相当（年間契約・税別、2026年7月時点の公表値）の<strong>追加ライセンス</strong>、GeminiのAIアシスタントはGoogle Workspaceの<strong>各プランに同梱</strong>（Business Standard 1ユーザー月額1,600円）。</li>
+        <li>選定軸を「どちらが賢いか」に置くと結論が出ない。実務で効くのは<strong>自社の文書・メール・表計算がどちらの基盤にあるか</strong>。AIは手が届く範囲の情報しか使えない。</li>
+        <li>両方が社内にある場合は、全社員に両方を配らない。<strong>業務単位で主戦場を決める</strong>。ライセンスの重複は費用だけでなく、社員の迷いというコストを生む。</li>
+      </ul>
+    </div>
+
+<aside class="inline-dx-cta" style="margin:6px 0 40px;border:1px solid var(--line-2);border-radius:12px;background:var(--white);padding:22px 26px;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
+  <div style="flex:1;min-width:240px;">
+    <div style="font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);">診断ツール ・ 無料 ・ 5分</div>
+    <div style="font-family:var(--jp);font-weight:700;font-size:16.5px;color:var(--ink);line-height:1.55;margin-top:8px;">自社の生成AI活用度を診断する</div>
+    <div style="font-size:13.5px;color:var(--slate);line-height:1.8;margin-top:5px;">成熟度モデルに沿って現在地を可視化し、業界別の活用事例と次の一手をその場で提示します。</div>
+  </div>
+  <a href="../../ai-assessment.html" class="btn" style="white-space:nowrap;flex:none;color:var(--paper);border-bottom:none;">無料で診断する <i>&rarr;</i></a>
+</aside>
+
+    <h2 id="s1">GeminiとCopilotの、本当の違いはどこにあるのか？</h2>
+    <p class="answer">モデルの性能ではなく費用の出方。片方は「AIを買う稟議」、もう片方は「使える範囲を決める作業」から始まる。</p>
+    <aside class="kn-side">
+      <img src="avatars/m40-0.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">情シスの視点</div><p>機能比較表を作ったが、決め手にならなかった。決め手は<em>どちらに自社のファイルがあるか</em>だった。</p></div>
+    </aside>
+    <p>「GeminiとCopilot、どちらがいいですか」という質問に、機能表では答えられません。生成AIのモデル性能は短期間で入れ替わり、比較表を作った翌月には前提が変わっているからです。2026年時点で企業の意思決定に効く違いは、もっと構造的なところにあります。<strong>ライセンスの入り方です。</strong></p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>観点</th><th>Microsoft 365 Copilot</th><th>Google Workspace の Gemini</th></tr>
+        <tr><td>AI機能の入り方</td><td>Microsoft 365に対する追加ライセンスとして購入する</td><td>Workspaceの各プランに含まれる</td></tr>
+        <tr><td>最初の意思決定</td><td>「AIに追加費用を払うか」の稟議</td><td>「どこまで開けて、どう使わせるか」の設計</td></tr>
+        <tr><td>費用の可視性</td><td>高い（明細に出る）</td><td>低い（プラン料金に溶けている）</td></tr>
+        <tr><td>導入直後の課題</td><td>配ったのに使われない（費用が問題化する）</td><td>あることに気づかれない（誰も問題視しない）</td></tr>
+        <tr><td>研修の説明責任</td><td>AI投資の効果を説明する</td><td>追加費用がないのに研修に払う理由を説明する</td></tr>
+      </table>
+    </div>
+    <p>この差は、プロジェクトの進み方を丸ごと変えます。Copilotは<strong>費用が見えるから止まりやすく、動き出せば推進力がある</strong>。Geminiは<strong>費用が見えないから始めやすく、放っておくと何も起きない</strong>。どちらが優れているかではなく、自社ではどちらの失敗が起きやすいかで備えを変えるべき、というのが実務的な読み方です。</p>
+
+    <h2 id="s2">費用構造を並べると、何が見えるか？</h2>
+    <p class="answer">Copilotは基盤＋AIの二階建て、GeminiはAI込みの一階建て。稟議で議論する金額の桁が変わる。</p>
+    <p>2026年8月時点の公開情報で、費用の出方を並べます。金額そのものより、<strong>どこに費用が乗るか</strong>を見てください。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>項目</th><th>Microsoft 365 Copilot</th><th>Google Workspace の Gemini</th></tr>
+        <tr><td>基盤ライセンス</td><td>Microsoft 365（既存契約）</td><td>Business Starter 800円／Standard 1,600円／Plus 2,500円（1ユーザー月額・年間プラン）</td></tr>
+        <tr><td>AI分の追加費用</td><td>月額4,497円相当（年間契約・税別／2026年7月時点の公表値）</td><td>追加ライセンスなし（各プランに Gemini AI アシスタントが含まれる）</td></tr>
+        <tr><td>エージェント内製の層</td><td>Copilot Studio（別途の費用体系）</td><td>Google Workspace Studio（提供範囲は公式ヘルプで要確認）</td></tr>
+        <tr><td>全社基盤に上げる場合</td><td>Microsoft側の該当サービスを別途検討</td><td>Gemini Enterprise（1シート月額21米ドルから／Standard・Plusは30米ドルから）</td></tr>
+        <tr><td>研修費</td><td>別建て（公開講座は1人1.4万〜7.7万円）</td><td>別建て（公開講座は1人あたり税込1万円台）</td></tr>
+      </table>
+    </div>
+    <p class="fig-cap">2026年8月時点・Google Workspace公式料金ページ（日本）およびGoogle Cloud公式ページ、Microsoft 365 Copilotの公表値（2026年7月時点）、各研修会社の公開価格より。価格・提供条件は改定されるため、検討時に必ず一次情報で確認してください。</p>
+    <p>ここから読み取れるのは、<strong>Geminiの側では「AI導入の是非」という論点がすでに消えている</strong>ということです。稟議に上げるのは研修費と定着支援費だけ。金額の規模が一桁小さくなるので通りやすい反面、「もう使えるのに、なぜお金をかけるのか」を説明する責任がこちらに移ります。それぞれの費用の組み立ては<a href="gemini-training-cost.html">Gemini研修の費用相場</a>と<a href="copilot-training-cost.html">Microsoft Copilot研修の費用相場</a>にまとめています。</p>
+
+
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/m20-2.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">経営企画の視点</div>
+        <p>ベンチマークのつもりで両方を並べたが、決めたのは<em>すでにどちらに業務が乗っているか</em>だった。移行コストのほうが大きい。</p>
+      </div>
+    </aside>
+<h2 id="s3">なぜ「精度が高いほう」で選べないのか？</h2>
+    <p class="answer">AIは手が届く範囲の情報しか使えない。同じモデルでも、業務データがある側のほうが役に立つ。</p>
+    <aside class="kn-side">
+      <img src="avatars/f20-0.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">現場マネージャーの視点</div><p>比較検証をしたが、差が出たのはモデルではなく<em>資料を読ませられたかどうか</em>だった。</p></div>
+    </aside>
+    <p>選定の場で「どちらのモデルが賢いか」を検証すると、たいてい決着がつきません。汎用的なお題では差が出ないか、出ても数か月で逆転するからです。実務で効く差は、別のところにあります。</p>
+    <div class="quote-box"><p>生成AIの価値は、モデルの賢さ×渡せる文脈の量で決まる。文書がGoogle ドライブにあるならGeminiのほうが文脈を持ち、SharePointにあるならCopilotのほうが文脈を持つ。同じモデルでも、届く範囲が違えば結果は変わる。</p></div>
+    <p>したがって、選定の判断軸は次の順で置くのが合理的です。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>優先度</th><th>判断軸</th><th>見るポイント</th></tr>
+        <tr><td>1</td><td>業務データの所在</td><td>日常の文書・メール・表計算が、どちらの基盤に置かれているか</td></tr>
+        <tr><td>2</td><td>費用の出方と稟議のしやすさ</td><td>追加ライセンスの稟議が通る組織か、通らない組織か</td></tr>
+        <tr><td>3</td><td>運用を担う体制</td><td>管理・展開・問い合わせ対応を誰が担当できるか</td></tr>
+        <tr><td>4</td><td>内製の見通し</td><td>将来エージェントを作る計画があるか、使うだけで十分か</td></tr>
+        <tr><td>5</td><td>モデルの性能</td><td>上の4つが同点だったときの最後の比較軸</td></tr>
+      </table>
+    </div>
+    <p>順番を逆にすると——つまりモデル性能から入ると——検証に時間を使ったあげく、結局「今使っている基盤のほうを選ぶ」という結論に戻ることになります。移行のコストは、性能差では埋まりません。</p>
+
+    <h2 id="s4">定着と研修の課題は、どう変わるのか？</h2>
+    <p class="answer">Copilotは「配ったのに使われない」、Geminiは「あることに気づかれない」。同じ研修では解けない。</p>
+    <p>どちらのツールでも「使われない」問題は起きますが、原因の入口が違うため、打ち手も変わります。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>フェーズ</th><th>Copilotで起きること</th><th>Geminiで起きること</th></tr>
+        <tr><td>導入直後</td><td>ライセンス配布の案内が出るので、存在は全員が知っている</td><td>配布イベントがなく、そもそも導入されたと認識されない</td></tr>
+        <tr><td>初期の壁</td><td>「高い割に使いこなせない」という不満が出る</td><td>「なんとなく触ったが一般的な回答しか返らない」で止まる</td></tr>
+        <tr><td>推進体制</td><td>投資の担当部署が自然に決まる</td><td>Workspaceの機能の1つに埋もれ、担当が決まらない</td></tr>
+        <tr><td>最初の打ち手</td><td>使いどころの提示と、利用率の可視化</td><td>あらためての告知と、業務データを渡せる状態づくり</td></tr>
+        <tr><td>研修の設計</td><td>投資対効果を示す構成が要る</td><td>「今日から何が変わるか」を業務の言葉で示す構成が要る</td></tr>
+      </table>
+    </div>
+    <p>研修会社に相談するときは、この違いを踏まえた提案が出てくるかを見てください。<strong>ツール名だけ差し替えた同じカリキュラムが出てきたら、定着まで面倒を見る設計にはなっていません。</strong>それぞれの詳細は<a href="gemini-adoption.html">Geminiが定着しない原因と対策</a>と<a href="copilot-adoption.html">Microsoft Copilotが定着しない原因と対策</a>で扱っています。</p>
+
+
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/f50-6.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">人事・研修企画の視点</div>
+        <p>両方あるからと全社員に両方を案内したら、<em>どちらも中途半端に触られて</em>終わった。決めるべきは配布先ではなく業務だった。</p>
+      </div>
+    </aside>
+<h2 id="s5">両方が社内にある会社は、どう整理するのか？</h2>
+    <p class="answer">全社員に両方を配らない。業務単位で主戦場を決め、もう一方は範囲を限定する。</p>
+    <aside class="kn-side">
+      <img src="avatars/m50-2.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">現場社員の視点</div><p>両方使えると言われても、どちらで書けばいいのか分からず、結局どちらも開かなくなった。</p></div>
+    </aside>
+    <p>Microsoft 365とGoogle Workspaceが混在している企業は珍しくありません。部門ごとに歴史的経緯で分かれている、買収でそうなった、開発部門だけ別、といったケースです。この状態で最も避けたいのは、<strong>「どちらも使えます」とだけ案内して現場に判断を投げること</strong>です。選択肢が2つある状態は、慣れていない人にとって選択肢がゼロの状態とほぼ同じ結果になります。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>整理の方針</th><th>具体的な決め方</th><th>期待できる効果</th></tr>
+        <tr><td>業務単位で主戦場を決める</td><td>「日常の文書作成は◯◯、議事録は△△」と業務ごとに1つに指定する</td><td>現場が迷わない。型（プロンプトやGem）も1本化できる</td></tr>
+        <tr><td>基盤に合わせる</td><td>その部門の業務ファイルが置かれている側を主に使う</td><td>AIが文脈を持てる。移行コストをかけずに効果が出る</td></tr>
+        <tr><td>もう一方は範囲を限定</td><td>特定業務・特定部門に絞り、全社配布はしない</td><td>ライセンスの重複と、学習コストの二重化を避けられる</td></tr>
+        <tr><td>研修も分けて設計</td><td>共通の考え方は合同、操作と型づくりは基盤ごとに分ける</td><td>受講者が自分の使う環境で演習できる</td></tr>
+      </table>
+    </div>
+    <div class="callout"><p>両方を残す判断そのものは間違いではない。問題は<strong>「どちらを使うか」を現場に決めさせること</strong>。会社として業務ごとの既定を決め、例外を認める——この形にすると、混在環境でも定着は進む。</p></div>
+    <p>TechWorkerの法人研修は、Gemini・Microsoft Copilot・Claude Codeなど主要な生成AIツールに横断で対応しています。どれか1つを売るのではなく、貴社の基盤と業務に合う組み合わせから設計するため、選定段階のご相談や、混在環境の整理からのご相談も承っています。導入の進め方は<a href="gemini-dounyu.html">Geminiの法人導入</a>、内製まで進む場合は<a href="gemini-gems.html">GemsとWorkspace Studioによる内製</a>を参考にしてください。</p>
+
+    <h2 id="faq">よくある質問</h2>
+    <div class="faq"><div class="q">GeminiとMicrosoft Copilotの一番大きな違いは何ですか？</div><p class="a">費用の出方です。Microsoft 365 Copilotは月額4,497円相当（年間契約・税別、2026年7月時点の公表値）の追加ライセンスとして買う形が中心なのに対し、GeminiのAIアシスタントはGoogle Workspaceの各プランに含まれています。前者は「AIを買う稟議」が必要で、後者は「今の契約で使える範囲を決める」作業から始まります。</p></div>
+    <div class="faq"><div class="q">精度が高いのはどちらですか？</div><p class="a">モデルの優劣は短期間で入れ替わるため、選定の主軸には向きません。実務で効くのは、自社の文書・メール・表計算がどちらの基盤に置かれているかです。AIは手が届く範囲の情報しか使えないので、業務データがある側のほうが同じモデルでも役に立ちます。</p></div>
+    <div class="faq"><div class="q">両方導入している場合はどう整理しますか？</div><p class="a">全社員に両方を配るのではなく、業務単位で主戦場を決めます。日常業務は自社の主基盤側に寄せ、もう一方は特定業務や特定部門に限定する形が管理しやすくなります。ライセンスの重複は費用だけでなく、社員の迷いというコストも生みます。</p></div>
+    <div class="faq"><div class="q">選定の前に社内で決めておくことは何ですか？</div><p class="a">対象業務、扱う情報の機微度、既存の基盤（Microsoft 365かGoogle Workspaceか）、運用を担う部署の4点です。この4つが決まらないまま製品比較を始めると、機能表の突き合わせに時間を使うだけで結論が出ません。</p></div>
+  </article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役</span></div>
+    <p>上場企業を含む37社・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>ツール選定から研修・定着まで、主要な生成AIに横断で対応します。</h3>
+    <p>TechWorkerの法人研修はGemini・Microsoft Copilot・Claude Codeなど主要な生成AIツールに対応。どれか1つを売るのではなく、貴社の基盤と業務に合う組み合わせから設計します。選定段階のご相談、両方が社内にある場合の整理も承ります。上場企業を含む37社・2,500名の支援知見がベースです。</p>
+  </div>
+  <a href="../../training.html" class="btn">法人研修の詳細を見る <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="../../training.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">生成AI法人研修（TechWorker）</a>　／　<a href="../../contact.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">無料相談</a>　／　<a href="../../library/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">事例集（無料DL）</a></p>
+<div class="back-list"><a href="index.html">← AI研修・導入ラボの記事一覧に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="gemini-training-cost.html" class="related-card"><span class="rc-cat">費用</span><div class="rc-title">Gemini研修の費用相場｜無料の公式教材からカスタム研修・助成金まで</div></a>
+    <a href="gemini-dounyu.html" class="related-card"><span class="rc-cat">導入</span><div class="rc-title">Geminiの法人導入｜Google Workspaceの管理設定から全社展開までの進め方</div></a>
+    <a href="copilot-support-comparison.html" class="related-card"><span class="rc-cat">選び方</span><div class="rc-title">Microsoft Copilot導入支援の選び方｜SIer・コンサル・研修会社の違いを比較</div></a>
+    <a href="copilot-bpr.html" class="related-card"><span class="rc-cat">BPR</span><div class="rc-title">Microsoft Copilot×業務プロセス改革（BPR）｜ツール研修で終わらせない導入設計</div></a>
+  </div>
+</div></section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">AI研修・導入<i>ラボ</i></div>
+        <p>AI研修・導入の実践知をお届けするメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+      </div>
+      <div class="footer-col"><h4>AI研修・導入ラボ</h4><a href="index.html">記事一覧</a><a href="index.html#about">このメディアについて</a></div>
+      <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../index.html#services">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="../../contact.html">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p style="max-width:860px;margin:26px auto 0;font-size:11.5px;line-height:1.9;color:var(--slate);opacity:.85;">本ページ・本研修は株式会社TechWorkerが独自に提供するものであり、Google LLC および Microsoft Corporationとの提携・後援・承認を受けたものではありません。Google、Google Workspace、Gemini、Google ドキュメント、Google スプレッドシート、Google ドライブ は Google LLC の商標です。Microsoft、Microsoft 365、Copilot、Copilot Studio は Microsoft グループ企業の商標です。</p>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+</body>
+</html>

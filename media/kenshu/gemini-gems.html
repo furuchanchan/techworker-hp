@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3V34NWXVCJ');
+</script>
+<!-- TW intent tracker (first-party, sessionStorage only) -->
+<script>
+(function(){try{var ss=sessionStorage,ls=localStorage;
+if(!ss.getItem('tw_landing')){ss.setItem('tw_landing',location.pathname);ss.setItem('tw_ref',document.referrer||'');var q=new URLSearchParams(location.search);ss.setItem('tw_utm',['utm_source','utm_medium','utm_campaign'].map(function(k){return q.get(k)||'';}).join('|'));}
+var p=JSON.parse(ss.getItem('tw_pages')||'[]');if(p[p.length-1]!==location.pathname){p.push(location.pathname);ss.setItem('tw_pages',JSON.stringify(p.slice(-20)));}
+if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_visits')||'0',10)+1));ss.setItem('tw_counted','1');}
+}catch(e){}})();
+</script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GemsとWorkspace Studioで業務を自動化する｜Geminiのエージェント内製【2026】 — TechWorker</title>
+<meta name="description" content="Geminiで「使う」から「作る」へ進む道は3層あります。Gem（役割と手順を固定した相談相手）、Google Workspace Studio（ノーコードで業務フローを自動化）、Gemini Enterprise（1シート月額21米ドルからの全社エージェント基盤）。それぞれ何ができて、誰が担当し、どんな研修が要るのかを、Gemini Notebook（旧NotebookLM）の使い分けも含めて整理します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/kenshu/gemini-gems">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GemsとWorkspace Studioで業務を自動化する｜Geminiのエージェント内製【2026】">
+<meta property="og:description" content="Gem・Google Workspace Studio・Gemini Enterpriseの3層で「使う」から「作る」へ。それぞれの守備範囲、Gemini Notebook（旧NotebookLM）との使い分け、作る人向け研修の設計までを整理。">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/media/kenshu/gemini-gems">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GemsとWorkspace Studioで業務を自動化する｜Geminiのエージェント内製【2026】">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../article.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "GemsとWorkspace Studioで業務を自動化する｜Geminiのエージェント内製【2026】",
+  "description": "Geminiでエージェントを内製する方法を3層で整理する。Gem（役割と手順を固定したカスタムAI）、Google Workspace Studio（プログラミングなしでGoogle Workspace全体の反復作業を自動化）、Gemini Enterprise（1シート月額21米ドルからの全社エージェント基盤）の守備範囲と使い分け、Gemini Notebook（旧NotebookLM）による根拠を限定した回答、内製を広げるときの品質・管理の論点、使う人と作る人を分けた研修設計までを解説する。",
+  "datePublished": "2026-07-31",
+  "dateModified": "2026-07-31",
+  "inLanguage": "ja",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://techworker.co.jp/assets/ogp.png",
+    "width": 1200,
+    "height": 630
+  },
+  "author": {
+    "@type": "Person",
+    "name": "古野光太朗",
+    "jobTitle": "株式会社TechWorker 代表取締役",
+    "url": "https://techworker.co.jp/company.html",
+    "image": "https://techworker.co.jp/assets/author-furuno.jpg",
+    "sameAs": [
+      "https://x.com/koutarou_furuno"
+    ],
+    "affiliation": {
+      "@type": "Organization",
+      "name": "株式会社TechWorker",
+      "url": "https://techworker.co.jp/"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "株式会社TechWorker",
+    "url": "https://techworker.co.jp/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://techworker.co.jp/assets/ogp.png",
+      "width": 1200,
+      "height": 630
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://techworker.co.jp/media/kenshu/gemini-gems"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://techworker.co.jp/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "メディア",
+      "item": "https://techworker.co.jp/media/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "AI研修・導入ラボ",
+      "item": "https://techworker.co.jp/media/kenshu/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Geminiのエージェント内製",
+      "item": "https://techworker.co.jp/media/kenshu/gemini-gems"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "GemとGemini Notebookはどう使い分けますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Gemは役割と手順を固定した相談相手を作る機能、Gemini Notebook（旧NotebookLM）は指定した資料の中だけで答えさせるための機能です。書き方や判断の型を配るならGem、社内規程やマニュアルに根拠を限定した回答が要るならGemini Notebook、という切り分けになります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Google Workspace Studioでは何ができますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Googleのヘルプでは、プログラミングの知識なしにGoogle Workspace全体の反復作業を自動化するツールとして案内されています。Geminiを使ったステップ、条件分岐、変数、テンプレートを組み合わせて業務フローを作れます。提供範囲や対応エディションは変更されるため、導入前に管理コンソールと公式ヘルプで最新の状態を確認してください。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Gemini Enterpriseは必要ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "全社のエージェントを一元管理したい、Workspace外のデータともつなぎたい、という段階で検討する選択肢です。Google Cloudの公式ページでは Business エディションが1シート月額21米ドルから、Standard / Plus エディションが1シート月額30米ドルからと案内されています（2026年8月時点）。まずはGemとStudioで足りるかを試してから判断するのが安全です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "内製の研修は誰を対象にすべきですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "「使う人」と「作る人」を分けます。全社員には型を使う研修、各部門の推進担当にはGemやフローを作って配る研修、という二層構成が現実的です。作る人を最初から広げすぎると、品質のばらつきと管理コストが同時に増えます。"
+      }
+    }
+  ]
+}
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <a href="index.html" class="logo">AI研修・導入<i>ラボ</i></a>
+  <ul>
+    <li><a href="index.html">記事一覧</a></li>
+    <li><a href="index.html#about">このメディアについて</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="../../contact.html" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="index.html">記事一覧</a>
+  <a href="index.html#about">このメディアについて</a>
+  <a href="../../contact.html" class="m-cta">無料相談を申し込む</a>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a><span class="sep">/</span>Geminiのエージェント内製</nav>
+  <div class="kicker">エージェント内製 × 研修設計</div>
+  <h1>GemsとWorkspace Studioで業務を自動化する｜Geminiのエージェント内製</h1>
+  <p class="dek">生成AIの社内活用が一巡すると、必ず「毎回同じことを説明している」という不満が出る。そこから先が内製のフェーズだ。Geminiには、Gemで役割を固定する、Google Workspace Studioで業務フローそのものを自動化する、Gemini Enterpriseで全社のエージェントを一元管理する、という3つの層がある。本記事は、それぞれが何を担当するのかを公式情報で確認したうえで、どの層から着手すべきか、誰にどんな研修が要るのかを整理する。</p>
+  <div class="kn-voices" aria-hidden="true">
+    <span class="kn-fc" style="--sayo:0.0s"><span class="av"><img src="avatars/m20-6.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">作れるの？</span></span>
+    <span class="kn-fc" style="--sayo:6.3s"><span class="av"><img src="avatars/f30-6.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">誰が作る？</span></span>
+    <span class="kn-fc" style="--sayo:2.1s"><span class="av"><img src="avatars/m40-2.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">管理が心配</span></span>
+    <span class="kn-fc" style="--sayo:8.4s"><span class="av"><img src="avatars/f20-2.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">手作業が多い</span></span>
+    <span class="kn-fc" style="--sayo:4.2s"><span class="av"><img src="avatars/m50-0.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">内製したい</span></span>
+  </div>
+  <div class="kn-voices-cap">研修・導入のご相談でよく挙がる声<span class="note">※ 実際の相談で挙がる論点をもとにした例です</span></div>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.31</span><span class="dot">·</span><span>最終更新 2026.07.31</span><span class="dot">·</span><span>読了 10分</span>
+  </div>
+</header>
+
+<style>
+/* gemini-gems cover — 内製の3層（Gem / Studio / Enterprise）: scoped ggm- */
+.ggm-cover{padding:24px 28px 22px;}
+.ggm-head{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);display:flex;align-items:center;gap:8px;margin-bottom:18px;flex-wrap:wrap;}
+.ggm-head .ggm-dot{width:7px;height:7px;border-radius:50%;background:var(--electric);flex:none;}
+.ggm-head .ggm-smp{margin-left:auto;font-family:var(--jp);font-weight:400;letter-spacing:0;text-transform:none;font-size:10.5px;opacity:.75;}
+.ggm-stack{border:1px solid var(--line-2);border-radius:10px;overflow:hidden;}
+.ggm-layer{display:grid;grid-template-columns:132px minmax(0,1fr) 92px;gap:18px;align-items:center;padding:15px 20px;border-bottom:1px solid var(--line);}
+.ggm-layer:last-child{border-bottom:none;}
+.ggm-t{min-width:0;}
+.ggm-n{font-family:var(--en);font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);}
+.ggm-name{font-family:var(--jp);font-size:14px;font-weight:700;color:var(--ink);margin-top:3px;letter-spacing:-.01em;}
+.ggm-d{font-family:var(--jp);font-size:11.5px;color:var(--slate);line-height:1.7;}
+.ggm-who{font-family:var(--jp);font-size:11px;font-weight:600;color:var(--ink-soft);text-align:right;line-height:1.5;}
+.ggm-bar{display:flex;gap:3px;margin-top:7px;}
+.ggm-seg{height:5px;border-radius:3px;background:var(--paper-2);flex:1;}
+.ggm-seg.on{background:var(--electric);}
+.ggm-seg.mid{background:rgba(0,94,255,.34);}
+.ggm-cap{margin-top:13px;font-family:var(--jp);font-size:11px;line-height:1.7;color:var(--slate);}
+.ggm-cap b{color:var(--electric);font-weight:600;}
+@media(max-width:640px){
+  .ggm-cover{padding:20px 18px 18px;}
+  .ggm-layer{grid-template-columns:1fr;gap:6px;padding:14px 16px;}
+  .ggm-who{text-align:left;}
+}
+</style>
+<div class="art-cover-v6 ggm-cover">
+  <div class="ggm-head"><span class="ggm-dot"></span>Build with Gemini — 内製は3層で考える<span class="ggm-smp">2026年8月時点・Google公式ヘルプおよびGoogle Cloud公式ページの記載より</span></div>
+  <div class="ggm-stack" role="img" aria-label="内製の3層。Gemは型の共有、Workspace Studioは業務フローの自動化、Gemini Enterpriseは全社のエージェント基盤。">
+    <div class="ggm-layer">
+      <div class="ggm-t">
+        <div class="ggm-n">Layer 01</div>
+        <div class="ggm-name">Gem</div>
+        <div class="ggm-bar"><span class="ggm-seg on"></span><span class="ggm-seg"></span><span class="ggm-seg"></span></div>
+      </div>
+      <div class="ggm-d">役割・前提・出力形式を固定した相談相手を作り、共有する。今日から始められる層。</div>
+      <div class="ggm-who">各部門の<br>推進担当</div>
+    </div>
+    <div class="ggm-layer">
+      <div class="ggm-t">
+        <div class="ggm-n">Layer 02</div>
+        <div class="ggm-name">Workspace Studio</div>
+        <div class="ggm-bar"><span class="ggm-seg on"></span><span class="ggm-seg mid"></span><span class="ggm-seg"></span></div>
+      </div>
+      <div class="ggm-d">プログラミングなしで、Workspace全体の反復作業を自動化する。運用ルールが要る層。</div>
+      <div class="ggm-who">推進担当＋<br>情シス</div>
+    </div>
+    <div class="ggm-layer">
+      <div class="ggm-t">
+        <div class="ggm-n">Layer 03</div>
+        <div class="ggm-name">Gemini Enterprise</div>
+        <div class="ggm-bar"><span class="ggm-seg on"></span><span class="ggm-seg mid"></span><span class="ggm-seg mid"></span></div>
+      </div>
+      <div class="ggm-d">全社のエージェントを一元管理し、Workspace外のデータともつなぐ。別建て契約の層。</div>
+      <div class="ggm-who">情シス・<br>データ基盤</div>
+    </div>
+  </div>
+  <p class="ggm-cap">下の層から順に上がる。<b>いきなり最上層から始めた組織は、使う人が育つ前に管理対象だけが増える。</b></p>
+</div>
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次">
+    <div class="art-toc-inner">
+      <div class="toc-h">目次</div>
+      <a href="#s1">内製の3層を分ける</a>
+      <a href="#s2">Gemで何を型にするか</a>
+      <a href="#s3">Gemini Notebookとの使い分け</a>
+      <a href="#s4">Workspace Studioの守備範囲</a>
+      <a href="#s5">全社基盤に上げるか、作る人をどう育てるか</a>
+      <a href="#faq">よくある質問</a>
+    </div>
+  </nav>
+
+  <article class="art-body rv">
+    <div class="lede">
+      <div class="lede-h">この記事の要点</div>
+      <ul>
+        <li>Geminiで「使う」から「作る」へ進む道は3層ある。<strong>Gem</strong>（役割と手順を固定した相談相手）、<strong>Google Workspace Studio</strong>（プログラミングなしでWorkspace全体の反復作業を自動化）、<strong>Gemini Enterprise</strong>（全社のエージェント基盤・1シート月額21米ドルから）。</li>
+        <li><strong>Gemini Notebook</strong>（2026年にNotebookLMから改称）は別の役割。「指定した資料の中だけで答えさせる」担当なので、型を配るGemとは用途で切り分ける。</li>
+        <li>研修は<strong>「使う人」と「作る人」を分ける</strong>。作る人を最初から広げすぎると、品質のばらつきと管理コストが同時に増える。</li>
+      </ul>
+    </div>
+
+<aside class="inline-dx-cta" style="margin:6px 0 40px;border:1px solid var(--line-2);border-radius:12px;background:var(--white);padding:22px 26px;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
+  <div style="flex:1;min-width:240px;">
+    <div style="font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);">診断ツール ・ 無料 ・ 5分</div>
+    <div style="font-family:var(--jp);font-weight:700;font-size:16.5px;color:var(--ink);line-height:1.55;margin-top:8px;">自社の生成AI活用度を診断する</div>
+    <div style="font-size:13.5px;color:var(--slate);line-height:1.8;margin-top:5px;">成熟度モデルに沿って現在地を可視化し、業界別の活用事例と次の一手をその場で提示します。</div>
+  </div>
+  <a href="../../ai-assessment.html" class="btn" style="white-space:nowrap;flex:none;color:var(--paper);border-bottom:none;">無料で診断する <i>&rarr;</i></a>
+</aside>
+
+    <h2 id="s1">「作る」に進むとき、何を3層に分けるのか？</h2>
+    <p class="answer">型を配るGem、業務フローを自動化するWorkspace Studio、全社基盤のGemini Enterprise。担当も費用も別物。</p>
+    <aside class="kn-side">
+      <img src="avatars/f50-0.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">推進担当の視点</div><p>「エージェントを作りたい」の中身が、部署によって全然違うものを指していた。</p></div>
+    </aside>
+    <p>生成AIの社内活用が一巡すると、必ず同じ不満が出ます。「毎回同じ前提を説明している」「人によって出てくる品質が違う」。ここから先が内製のフェーズですが、<strong>「エージェントを作る」という言葉が指す対象は3つあり、必要な体制も費用も別物です</strong>。まず分けます。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>層</th><th>何を作るか</th><th>誰が担当するか</th><th>追加費用</th></tr>
+        <tr><td>Gem</td><td>役割・前提・出力形式を固定したカスタム版のGemini。共有して使い回す</td><td>各部門の推進担当（非エンジニアで可）</td><td>Workspaceの契約範囲内</td></tr>
+        <tr><td>Google Workspace Studio</td><td>複数ステップの業務フロー。条件分岐や変数を使った自動化</td><td>推進担当＋情シス（運用ルールが要る）</td><td>提供範囲・対応エディションは公式ヘルプで要確認</td></tr>
+        <tr><td>Gemini Enterprise</td><td>全社のエージェントを一元管理する基盤。Workspace外のデータとも接続</td><td>情シス・データ基盤の担当</td><td>別建て契約（1シート月額21米ドルから）</td></tr>
+      </table>
+    </div>
+    <p class="fig-cap">2026年8月時点・Google公式ヘルプおよびGoogle Cloud公式ページの記載より。提供内容・価格は改定されるため、検討時に必ず公式情報で確認してください。</p>
+    <p>順番は<strong>下から</strong>です。最上層から入った組織は、たいてい同じ失敗をします——立派な基盤が用意され、管理対象は増え、しかし現場で日常的にAIを使う人が育っていない。Gemを部門に配って回り始めてから、自動化フローに進み、それでも足りない範囲が明確になってから基盤を検討する。この順番なら、各段階で「何が足りないか」が実務の言葉で説明できます。</p>
+
+    <h2 id="s2">Gemでは、何を型にするのか？</h2>
+    <p class="answer">頻度が高く、成果物の形が決まっている業務から3〜5個。数を作らないことが定着の条件。</p>
+    <p>Gemは、役割・前提・出力形式・参照する資料をあらかじめ固定したGeminiのカスタム版です。作った本人だけでなく、チームで共有して使えます。効果が出るのは、次の条件を満たす業務です。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>Gemに向く業務</th><th>向かない業務</th></tr>
+        <tr><td>頻度が高い（週に何度も発生する）</td><td>年に数回しか発生しない</td></tr>
+        <tr><td>成果物の形が決まっている（議事録・報告・返信文など）</td><td>毎回アウトプットの形が違う</td></tr>
+        <tr><td>前提の説明が長い（自社の商品・ルール・体裁）</td><td>前提がほぼ不要な一般的な作業</td></tr>
+        <tr><td>品質のばらつきが問題になっている</td><td>担当者の判断そのものが価値になる業務</td></tr>
+      </table>
+    </div>
+    <p>実務でよく機能するのは、問い合わせ返信の下書き、議事録から決定事項と宿題を抜き出す整理、定型報告の構成づくり、社内文書の体裁チェックあたりです。<strong>重要なのは、最初から数を作らないこと</strong>。20個並べると、どれを使えばよいか分からなくなり、結局どれも使われません。3〜5個で運用を回し、更新の習慣ができてから増やします。</p>
+    <div class="callout"><p>Gemを作るのは「詳しい人」でなくてよい。<strong>その業務をよく知っていて、周りから質問されやすい人</strong>が作ったGemのほうが、実際には使われる。技術的な難所は情シスが引き取り、業務知識の部分は現場に持たせる分担が現実的。</p></div>
+
+
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/f40-6.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">部門マネージャーの視点</div>
+        <p>Gemを作るより、<em>作ったものを誰が更新するかを決めるほう</em>が難しかった。作りっぱなしは半年で古くなる。</p>
+      </div>
+    </aside>
+<h2 id="s3">Gemini Notebookとは、どう使い分けるのか？</h2>
+    <p class="answer">Gemは「型を配る」担当、Gemini Notebookは「根拠を資料の中に閉じる」担当。目的が違う。</p>
+    <aside class="kn-side">
+      <img src="avatars/m20-0.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">品質管理の視点</div><p>社内規程の質問に一般論で答えられるのが一番困る。<em>出典の範囲を縛れるか</em>が要件だった。</p></div>
+    </aside>
+    <p>2026年、<strong>NotebookLMは Gemini Notebook に改称されました</strong>（法人向けの NotebookLM Enterprise も Gemini Notebook Enterprise に）。機能の中心は変わっていません。指定した資料だけを情報源として、その範囲の中で回答させる——ここがGemとの決定的な違いです。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>比較軸</th><th>Gem</th><th>Gemini Notebook</th></tr>
+        <tr><td>主な役割</td><td>役割・手順・体裁を固定した相談相手</td><td>指定した資料の中だけで答える調査・要約の場</td></tr>
+        <tr><td>強み</td><td>書き方や判断の型を組織に配れる</td><td>回答の根拠を、渡した資料の範囲に限定できる</td></tr>
+        <tr><td>向く用途</td><td>下書き作成、整理、体裁チェック、定型業務の標準化</td><td>社内規程・マニュアル・議事録・調査資料の読み込みと確認</td></tr>
+        <tr><td>向かない用途</td><td>出典を厳密に限定したい照会業務</td><td>毎回同じ体裁で成果物を作らせる標準化</td></tr>
+      </table>
+    </div>
+    <p>実務では、この2つは競合しません。<strong>「社内規程に基づいて回答し、その根拠を示す」用途はGemini Notebook、「その回答を社外向けの文章に整える」用途はGem</strong>——のように、同じ業務の中で役割を分けて使うのが自然な形です。どちらを開けるかは管理コンソールの設定対象になるため、展開の段階設計は<a href="gemini-dounyu.html">Geminiの法人導入</a>と合わせて決めてください。</p>
+
+    <h2 id="s4">Workspace Studioは、どこまでを引き受けるのか？</h2>
+    <p class="answer">プログラミングなしでWorkspace全体の反復作業を自動化する層。運用ルールを先に決めるべき層でもある。</p>
+    <p><strong>Google Workspace Studio</strong> は、Googleのヘルプで「プログラミングの知識なしにGoogle Workspace全体の作業タスクを自動化する」ツールとして案内されています。Geminiを使ったステップ、条件分岐、変数、テンプレートを組み合わせて、複数手順の業務フローを作れます（サードパーティのビジネスアプリとの連携は限定的なプレビューとして案内されています）。Gemが「1回の相談の質」を上げるのに対し、Studioは<strong>手順そのものを人の手から外す</strong>層です。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>使い分けの目安</th><th>Gemで足りる</th><th>Studioが要る</th></tr>
+        <tr><td>作業の起点</td><td>人が「聞く」ことで始まる</td><td>条件がそろったら自動で始まってほしい</td></tr>
+        <tr><td>手順の数</td><td>1回のやり取りで完結する</td><td>受け取る→判定する→書く→通知する、と続く</td></tr>
+        <tr><td>ばらつきの原因</td><td>指示の書き方</td><td>手順の抜け漏れ・やり忘れ</td></tr>
+        <tr><td>必要な体制</td><td>各部門で完結できる</td><td>止まったとき誰が直すかを決めておく必要がある</td></tr>
+      </table>
+    </div>
+    <div class="callout"><p>自動化は、作るときより<strong>止まったときのコスト</strong>で評価する。「誰が気づき、誰が直し、止まっている間はどう回すか」——この3つが決まっていないフローは、業務に組み込むほど危うくなる。作る前に決めるのが定石。</p></div>
+    <p>提供範囲・対応エディション・利用条件は更新されるため、導入前に管理コンソールと公式ヘルプで最新の状態を確認してください。Microsoft側の同種の層（Copilot Studio）との考え方の違いは<a href="copilot-studio-training.html">Copilot Studio研修</a>と読み比べると整理しやすくなります。</p>
+
+
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/m30-0.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">情シスの視点</div>
+        <p>作れる人を一気に増やしたら、<em>誰が作ったか分からないフロー</em>が業務に入り込んだ。広げる順番の設計が先だった。</p>
+      </div>
+    </aside>
+<h2 id="s5">全社基盤に上げるべきか、作る人をどう育てるか？</h2>
+    <p class="answer">Gemini Enterpriseは足りなくなってから。研修は「使う人」と「作る人」を分けて設計する。</p>
+    <aside class="kn-side">
+      <img src="avatars/f30-0.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">人材開発の視点</div><p>全社員に「作れるようになる研修」を配ったが、実際に作り続けたのは各部門で1〜2人だった。</p></div>
+    </aside>
+    <p><strong>Gemini Enterprise</strong> は、全社のエージェントを一元的に管理し、Workspace外のデータともつなぐためのGoogle Cloud側の基盤です。公式ページでは、Business エディションが1シート月額21米ドルから、Standard / Plus エディションが1シート月額30米ドルからと案内され、30日間のトライアルも案内されています（2026年8月時点）。Standard / Plus 側では、データの所在地に関する要件への対応や、より広い管理・ガバナンス機能が挙げられています。</p>
+    <p>検討に進む判断材料は、機能の魅力ではなく<strong>足りなくなった具体的な事実</strong>です。次のどれかが実際に起きているなら、基盤の検討に意味があります。</p>
+    <ul>
+      <li>部門ごとに作ったGem・フローが増え、<strong>誰が何を作ったか把握できなくなった</strong>。</li>
+      <li>参照させたい業務データが<strong>Workspaceの外</strong>（基幹システム、データウェアハウスなど）にあり、都度の手作業が常態化している。</li>
+      <li>監査・データ所在地・アクセス制御について、<strong>Workspaceの設定だけでは答えられない要件</strong>が出てきた。</li>
+    </ul>
+    <p>逆に、これらがまだ起きていない段階で基盤から入ると、使う人が育つ前に管理対象だけが増えます。</p>
+    <p>最後に研修設計です。内製の研修でよくある失敗は、全社員に「作れるようになる研修」を配ることです。実際に作り続けるのは各部門で1〜2人。だから<strong>二層で設計します</strong>。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>対象</th><th>研修の中身</th><th>ゴール</th></tr>
+        <tr><td>使う人（全社員）</td><td>配られた型（Gem）の使い方、入れてよい情報の範囲、生成物の確認</td><td>日常業務で迷わず使える</td></tr>
+        <tr><td>作る人（部門の推進担当）</td><td>業務の切り出し方、Gemの設計、Studioでのフロー化、更新と運用のルール</td><td>自部門の型を自分で作り、直し続けられる</td></tr>
+      </table>
+    </div>
+    <p>TechWorkerでも、上場企業を含む37社・2,500名の支援を通じて、この二層構成のほうが内製が属人化せずに残る傾向を見てきました。<strong>作る人を最初から広げすぎない。そのかわり、作る人が孤立しない場を用意する</strong>——内製の成否は、ツールの機能より運用体制の設計で決まります。定着の全体像は<a href="gemini-adoption.html">Geminiが定着しない原因と対策</a>、費用の考え方は<a href="gemini-training-cost.html">Gemini研修の費用相場</a>にまとめています。</p>
+
+    <h2 id="faq">よくある質問</h2>
+    <div class="faq"><div class="q">GemとGemini Notebookはどう使い分けますか？</div><p class="a">Gemは役割と手順を固定した相談相手を作る機能、Gemini Notebook（旧NotebookLM）は指定した資料の中だけで答えさせるための機能です。書き方や判断の型を配るならGem、社内規程やマニュアルに根拠を限定した回答が要るならGemini Notebook、という切り分けになります。</p></div>
+    <div class="faq"><div class="q">Google Workspace Studioでは何ができますか？</div><p class="a">Googleのヘルプでは、プログラミングの知識なしにGoogle Workspace全体の反復作業を自動化するツールとして案内されています。Geminiを使ったステップ、条件分岐、変数、テンプレートを組み合わせて業務フローを作れます。提供範囲や対応エディションは変更されるため、導入前に管理コンソールと公式ヘルプで最新の状態を確認してください。</p></div>
+    <div class="faq"><div class="q">Gemini Enterpriseは必要ですか？</div><p class="a">全社のエージェントを一元管理したい、Workspace外のデータともつなぎたい、という段階で検討する選択肢です。Google Cloudの公式ページでは Business エディションが1シート月額21米ドルから、Standard / Plus エディションが1シート月額30米ドルからと案内されています（2026年8月時点）。まずはGemとStudioで足りるかを試してから判断するのが安全です。</p></div>
+    <div class="faq"><div class="q">内製の研修は誰を対象にすべきですか？</div><p class="a">「使う人」と「作る人」を分けます。全社員には型を使う研修、各部門の推進担当にはGemやフローを作って配る研修、という二層構成が現実的です。作る人を最初から広げすぎると、品質のばらつきと管理コストが同時に増えます。</p></div>
+  </article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役</span></div>
+    <p>上場企業を含む37社・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>GemとStudioの内製を、作る人の育成から支援します。</h3>
+    <p>TechWorkerは、全社員向けの「使う」研修と、推進担当向けの「作る」研修を分けて設計します。業務の切り出し方、Gemの設計、フローの運用ルール、品質の担保まで含めて伴走するので、内製が属人化せずに残ります。上場企業を含む37社・2,500名の支援知見をもとにご提案します。</p>
+  </div>
+  <a href="../../training.html" class="btn">法人研修の詳細を見る <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="../../training.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">生成AI法人研修（TechWorker）</a>　／　<a href="../../contact.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">無料相談</a>　／　<a href="../../library/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">事例集（無料DL）</a></p>
+<div class="back-list"><a href="index.html">← AI研修・導入ラボの記事一覧に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="gemini-adoption.html" class="related-card"><span class="rc-cat">定着</span><div class="rc-title">Geminiが定着しない原因と対策｜「もう入っている」のに使われない構造</div></a>
+    <a href="gemini-dounyu.html" class="related-card"><span class="rc-cat">導入</span><div class="rc-title">Geminiの法人導入｜Google Workspaceの管理設定から全社展開までの進め方</div></a>
+    <a href="copilot-studio-training.html" class="related-card"><span class="rc-cat">Copilot Studio</span><div class="rc-title">Copilot Studio研修とは｜業務エージェントを内製する学び方と進め方</div></a>
+    <a href="gemini-vs-copilot.html" class="related-card"><span class="rc-cat">比較</span><div class="rc-title">GeminiとMicrosoft Copilotの違い｜ライセンス構造から選び方まで比較</div></a>
+  </div>
+</div></section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">AI研修・導入<i>ラボ</i></div>
+        <p>AI研修・導入の実践知をお届けするメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+      </div>
+      <div class="footer-col"><h4>AI研修・導入ラボ</h4><a href="index.html">記事一覧</a><a href="index.html#about">このメディアについて</a></div>
+      <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../index.html#services">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="../../contact.html">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p style="max-width:860px;margin:26px auto 0;font-size:11.5px;line-height:1.9;color:var(--slate);opacity:.85;">本ページ・本研修は株式会社TechWorkerが独自に提供するものであり、Google LLC および Microsoft Corporationとの提携・後援・承認を受けたものではありません。Google、Google Workspace、Gemini、Google ドキュメント、Google スプレッドシート、Google ドライブ は Google LLC の商標です。Microsoft、Copilot、Copilot Studio は Microsoft グループ企業の商標です。</p>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+</body>
+</html>

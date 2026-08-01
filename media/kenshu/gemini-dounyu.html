@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3V34NWXVCJ');
+</script>
+<!-- TW intent tracker (first-party, sessionStorage only) -->
+<script>
+(function(){try{var ss=sessionStorage,ls=localStorage;
+if(!ss.getItem('tw_landing')){ss.setItem('tw_landing',location.pathname);ss.setItem('tw_ref',document.referrer||'');var q=new URLSearchParams(location.search);ss.setItem('tw_utm',['utm_source','utm_medium','utm_campaign'].map(function(k){return q.get(k)||'';}).join('|'));}
+var p=JSON.parse(ss.getItem('tw_pages')||'[]');if(p[p.length-1]!==location.pathname){p.push(location.pathname);ss.setItem('tw_pages',JSON.stringify(p.slice(-20)));}
+if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_visits')||'0',10)+1));ss.setItem('tw_counted','1');}
+}catch(e){}})();
+</script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geminiの法人導入｜Google Workspaceの管理設定から全社展開までの進め方【2026】 — TechWorker</title>
+<meta name="description" content="Geminiの法人導入は2026年、「買うか」ではなく「どう開けて、どう使わせるか」の作業になりました。GeminiのAIアシスタントはGoogle Workspaceの各プランに含まれます。Googleの公式プライバシーハブが示すデータの扱い（組織外に共有しない・モデル学習に使わない・人によるレビューをしない）、管理コンソールでの設定、パイロットの設計、全社展開でつまずく論点までを情シス視点で整理します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/kenshu/gemini-dounyu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Geminiの法人導入｜Google Workspaceの管理設定から全社展開までの進め方【2026】">
+<meta property="og:description" content="Geminiは各Workspaceプランに同梱。導入は「買うか」でなく「どう開けるか」の設計に変わった。公式プライバシーハブが示すデータの扱い、管理コンソール設定、パイロット設計、全社展開の論点を情シス視点で整理。">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/media/kenshu/gemini-dounyu">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Geminiの法人導入｜Google Workspaceの管理設定から全社展開までの進め方【2026】">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../article.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Geminiの法人導入｜Google Workspaceの管理設定から全社展開までの進め方【2026】",
+  "description": "Geminiの法人導入を情シス・DX推進の視点で解説。GeminiのAIアシスタントがGoogle Workspaceの各プランに含まれるようになった2026年の前提、Google公式の生成AIプライバシーハブが示すデータの扱い（組織外に共有しない・許可なくモデル学習に使わない・人によるレビューをしない）、個人Googleアカウントとの違い、管理コンソールで決めるオン/オフの範囲、Gemini Notebook（旧NotebookLM）の扱い、パイロットの設計と評価指標、全社展開でつまずく論点までを整理する。",
+  "datePublished": "2026-07-24",
+  "dateModified": "2026-07-24",
+  "inLanguage": "ja",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://techworker.co.jp/assets/ogp.png",
+    "width": 1200,
+    "height": 630
+  },
+  "author": {
+    "@type": "Person",
+    "name": "古野光太朗",
+    "jobTitle": "株式会社TechWorker 代表取締役",
+    "url": "https://techworker.co.jp/company.html",
+    "image": "https://techworker.co.jp/assets/author-furuno.jpg",
+    "sameAs": [
+      "https://x.com/koutarou_furuno"
+    ],
+    "affiliation": {
+      "@type": "Organization",
+      "name": "株式会社TechWorker",
+      "url": "https://techworker.co.jp/"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "株式会社TechWorker",
+    "url": "https://techworker.co.jp/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://techworker.co.jp/assets/ogp.png",
+      "width": 1200,
+      "height": 630
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://techworker.co.jp/media/kenshu/gemini-dounyu"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://techworker.co.jp/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "メディア",
+      "item": "https://techworker.co.jp/media/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "AI研修・導入ラボ",
+      "item": "https://techworker.co.jp/media/kenshu/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Geminiの法人導入",
+      "item": "https://techworker.co.jp/media/kenshu/gemini-dounyu"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Geminiを法人で使うには何を契約すればよいですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "2026年8月時点では、Google Workspaceの各プランに Gemini AI アシスタントが含まれています。すでにWorkspaceを使っている企業は、新たにAIライセンスを買うのではなく、管理コンソールで利用範囲を設計する作業から始まります。全社のエージェント基盤まで踏み込む場合は、Google Cloudの Gemini Enterprise（Businessエディションは1シート月額21米ドルから）が別建ての選択肢になります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "入力した社内情報がAIの学習に使われませんか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Googleは公式の生成AIプライバシーハブで、Google Workspaceの生成AI機能について、プロンプトと生成結果を組織外に共有せず、許可なく生成AIモデルの学習に使わず、人によるレビューも行わないと説明しています。ただし社員が個人のGoogleアカウントで使うGeminiは扱いが異なるため、業務利用は会社アカウントに寄せるルールが必要です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "情シスは管理コンソールで何を決めるのですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "大きくは、Gemini関連サービスをどの組織部門にオンにするか、Gemini Notebook（旧NotebookLM）などの関連サービスを開けるか、監査とアラートをどう見るか、の3点です。全社一律で開けるか、部門単位で段階的に開けるかは、パイロットの設計と合わせて決めます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "パイロットは何人・何か月でやるべきですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "一律の正解はありませんが、業務が近い1〜2部門・十数名規模で1〜2か月というのが動かしやすい単位です。人数より「何をもって成功とするか」を先に決めることが重要で、利用率だけでなく対象業務の所要時間や差し戻し回数など、業務側の指標を1つ置くと判断できます。"
+      }
+    }
+  ]
+}
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <a href="index.html" class="logo">AI研修・導入<i>ラボ</i></a>
+  <ul>
+    <li><a href="index.html">記事一覧</a></li>
+    <li><a href="index.html#about">このメディアについて</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="../../contact.html" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="index.html">記事一覧</a>
+  <a href="index.html#about">このメディアについて</a>
+  <a href="../../contact.html" class="m-cta">無料相談を申し込む</a>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a><span class="sep">/</span>Geminiの法人導入</nav>
+  <div class="kicker">情シス・DX推進 × 導入設計</div>
+  <h1>Geminiの法人導入｜Google Workspaceの管理設定から全社展開までの進め方</h1>
+  <p class="dek">「Geminiを導入したい」という相談は、2026年に入って中身が変わった。Google WorkspaceにAIアシスタントが含まれるようになり、多くの企業では稟議を上げる前から、社員のGmailとドキュメントに機能が存在している。だから導入プロジェクトの実体は「買う」ことではなく、どこまで開けるか、何を禁止するか、誰から使わせるかを決める設計作業になる。本記事は、情シス・DX推進が全社展開の前に押さえる論点を、Googleの公式ドキュメントで確認できる事実に絞って整理する。</p>
+  <div class="kn-voices" aria-hidden="true">
+    <span class="kn-fc" style="--sayo:0.0s"><span class="av"><img src="avatars/m40-0.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">設定が分からない</span></span>
+    <span class="kn-fc" style="--sayo:6.3s"><span class="av"><img src="avatars/f30-2.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">情報は大丈夫？</span></span>
+    <span class="kn-fc" style="--sayo:2.1s"><span class="av"><img src="avatars/m20-6.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">どこから開ける</span></span>
+    <span class="kn-fc" style="--sayo:8.4s"><span class="av"><img src="avatars/f50-0.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">誰に配る？</span></span>
+    <span class="kn-fc" style="--sayo:4.2s"><span class="av"><img src="avatars/m30-2.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">ルールがない</span></span>
+  </div>
+  <div class="kn-voices-cap">研修・導入のご相談でよく挙がる声<span class="note">※ 実際の相談で挙がる論点をもとにした例です</span></div>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.24</span><span class="dot">·</span><span>最終更新 2026.07.24</span><span class="dot">·</span><span>読了 10分</span>
+  </div>
+</header>
+
+<style>
+/* gemini-dounyu cover — 管理コンソール風の「開ける範囲」設計: scoped gdy- */
+.gdy-cover{padding:24px 28px 22px;}
+.gdy-head{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);display:flex;align-items:center;gap:8px;margin-bottom:18px;flex-wrap:wrap;}
+.gdy-head .gdy-dot{width:7px;height:7px;border-radius:50%;background:var(--electric);flex:none;}
+.gdy-head .gdy-smp{margin-left:auto;font-family:var(--jp);font-weight:400;letter-spacing:0;text-transform:none;font-size:10.5px;opacity:.75;}
+.gdy-ui{border:1px solid var(--line-2);border-radius:10px;overflow:hidden;display:grid;grid-template-columns:1.25fr 1fr;}
+.gdy-pane{padding:16px 20px 18px;min-width:0;}
+.gdy-pane+.gdy-pane{border-left:1px solid var(--line);}
+.gdy-kind{font-family:var(--en);font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-bottom:12px;}
+.gdy-svc{display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);}
+.gdy-svc:last-child{border-bottom:none;}
+.gdy-name{flex:1;min-width:0;font-family:var(--jp);font-size:12.5px;font-weight:600;color:var(--ink);}
+.gdy-scope{flex:none;font-family:var(--en);font-size:10.5px;color:var(--slate);letter-spacing:.02em;}
+.gdy-tg{flex:none;width:30px;height:17px;border-radius:9px;background:var(--paper-2);border:1px solid var(--line-2);position:relative;}
+.gdy-tg::after{content:"";position:absolute;top:2px;left:2px;width:11px;height:11px;border-radius:50%;background:var(--slate);opacity:.5;}
+.gdy-tg.on{background:rgba(0,94,255,.16);border-color:rgba(0,94,255,.34);}
+.gdy-tg.on::after{left:auto;right:2px;background:var(--electric);opacity:1;}
+.gdy-steps{list-style:none;margin:0;padding:0;}
+.gdy-step{display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:baseline;padding:9px 0;border-bottom:1px solid var(--line);}
+.gdy-step:last-child{border-bottom:none;}
+.gdy-sn{font-family:var(--en);font-size:11px;font-weight:600;color:var(--slate);font-feature-settings:"tnum" 1;}
+.gdy-sl{font-family:var(--jp);font-size:12.5px;font-weight:600;color:var(--slate);line-height:1.5;}
+.gdy-step.done .gdy-sn,.gdy-step.now .gdy-sn{color:var(--electric);}
+.gdy-step.done .gdy-sl,.gdy-step.now .gdy-sl{color:var(--ink);}
+.gdy-cap{margin-top:13px;padding-top:11px;border-top:1px solid var(--line);font-family:var(--jp);font-size:11px;line-height:1.7;color:var(--slate);}
+.gdy-cap b{color:var(--electric);font-weight:600;}
+@media(max-width:640px){
+  .gdy-cover{padding:20px 18px 18px;}
+  .gdy-ui{grid-template-columns:1fr;}
+  .gdy-pane+.gdy-pane{border-left:none;border-top:1px solid var(--line);}
+  .gdy-scope{display:none;}
+}
+</style>
+<div class="art-cover-v6 gdy-cover">
+  <div class="gdy-head"><span class="gdy-dot"></span>Gemini Rollout — 「買う」ではなく「開ける範囲を決める」<span class="gdy-smp">図はイメージ・設定名や画面は実際の管理コンソールと異なります</span></div>
+  <div class="gdy-ui" role="img" aria-label="左は生成AI関連サービスのオンオフ設定のイメージ、右は導入の段階リスト。図はイメージ。">
+    <div class="gdy-pane">
+      <div class="gdy-kind">Admin / 利用範囲の設計</div>
+      <div class="gdy-svc"><span class="gdy-name">Gemini AI アシスタント</span><span class="gdy-scope">全社</span><span class="gdy-tg on"></span></div>
+      <div class="gdy-svc"><span class="gdy-name">Gemini アプリ</span><span class="gdy-scope">全社</span><span class="gdy-tg on"></span></div>
+      <div class="gdy-svc"><span class="gdy-name">Gemini Notebook</span><span class="gdy-scope">先行3部門</span><span class="gdy-tg on"></span></div>
+      <div class="gdy-svc"><span class="gdy-name">外部アプリ連携</span><span class="gdy-scope">審査中</span><span class="gdy-tg"></span></div>
+    </div>
+    <div class="gdy-pane">
+      <div class="gdy-kind">Rollout / 展開の段階</div>
+      <ul class="gdy-steps">
+        <li class="gdy-step done"><span class="gdy-sn">01</span><span class="gdy-sl">データの扱いを確認</span></li>
+        <li class="gdy-step done"><span class="gdy-sn">02</span><span class="gdy-sl">利用ルールを決める</span></li>
+        <li class="gdy-step now"><span class="gdy-sn">03</span><span class="gdy-sl">パイロット部門で検証</span></li>
+        <li class="gdy-step"><span class="gdy-sn">04</span><span class="gdy-sl">研修・型の配布</span></li>
+        <li class="gdy-step"><span class="gdy-sn">05</span><span class="gdy-sl">全社展開と定着計測</span></li>
+      </ul>
+      <div class="gdy-cap">機能は<b>すでに契約に含まれている</b>。決めるのは、どこまで開けて、何を残すか。</div>
+    </div>
+  </div>
+</div>
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次">
+    <div class="art-toc-inner">
+      <div class="toc-h">目次</div>
+      <a href="#s1">2026年の導入は何が変わったか</a>
+      <a href="#s2">データの扱いをどう確認するか</a>
+      <a href="#s3">管理コンソールで決めること</a>
+      <a href="#s4">パイロットの設計</a>
+      <a href="#s5">全社展開でつまずく論点</a>
+      <a href="#faq">よくある質問</a>
+    </div>
+  </nav>
+
+  <article class="art-body rv">
+    <div class="lede">
+      <div class="lede-h">この記事の要点</div>
+      <ul>
+        <li>2026年8月時点、<strong>Gemini AI アシスタントはGoogle Workspaceの各プランに含まれる</strong>。導入プロジェクトの実体は「買う」ことではなく、<strong>どこまで開けて、何を禁止し、誰から使わせるか</strong>を決める設計作業になった。</li>
+        <li>データの扱いはGoogle公式の生成AIプライバシーハブが基準。Workspaceの生成AI機能について、<strong>プロンプトと生成結果を組織外に共有しない・許可なく生成AIモデルの学習に使わない・人によるレビューを行わない</strong>と説明されている。ただし<strong>社員の個人Googleアカウントで使うGeminiは扱いが異なる</strong>。</li>
+        <li>全社展開の失敗はほぼ、機能ではなく<strong>業務文脈の不足</strong>で起きる。Driveに業務データが載っていない部門では、同じ機能でも成果が出ない。</li>
+      </ul>
+    </div>
+
+<aside class="inline-dx-cta" style="margin:6px 0 40px;border:1px solid var(--line-2);border-radius:12px;background:var(--white);padding:22px 26px;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
+  <div style="flex:1;min-width:240px;">
+    <div style="font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);">診断ツール ・ 無料 ・ 5分</div>
+    <div style="font-family:var(--jp);font-weight:700;font-size:16.5px;color:var(--ink);line-height:1.55;margin-top:8px;">自社の生成AI活用度を診断する</div>
+    <div style="font-size:13.5px;color:var(--slate);line-height:1.8;margin-top:5px;">成熟度モデルに沿って現在地を可視化し、業界別の活用事例と次の一手をその場で提示します。</div>
+  </div>
+  <a href="../../ai-assessment.html" class="btn" style="white-space:nowrap;flex:none;color:var(--paper);border-bottom:none;">無料で診断する <i>&rarr;</i></a>
+</aside>
+
+    <h2 id="s1">2026年のGemini導入は、何を決める作業になったのか？</h2>
+    <p class="answer">「導入するか」はすでに終わっている。決めるのは開ける範囲・利用ルール・展開の順番の3つ。</p>
+    <aside class="kn-side">
+      <img src="avatars/f40-2.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">情シスの視点</div><p>稟議を書く前に、現場が先に使い始めていた。止めるのか、整えるのかを先に決める必要があった。</p></div>
+    </aside>
+    <p>数年前まで、生成AIの法人導入プロジェクトは「契約する／しない」から始まりました。2026年のGeminiは違います。Google Workspaceの各プランに Gemini AI アシスタントが含まれるため、<strong>多くの企業では稟議が起票される前から、社員のGmailとGoogle ドキュメントに機能が存在しています</strong>。情シスに相談が来る時点で、現場はすでに触っている。</p>
+    <p>この前提に立つと、導入プロジェクトで決めるべきことは3つに整理できます。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>決めること</th><th>具体的な論点</th><th>決めないと起きること</th></tr>
+        <tr><td>1. 開ける範囲</td><td>どの機能を、どの組織部門に、いつからオンにするか</td><td>部門ごとに使える機能が違う理由を説明できず、問い合わせが情シスに集中する</td></tr>
+        <tr><td>2. 利用ルール</td><td>入れてよい情報の範囲、個人アカウント利用の扱い、生成物の確認責任</td><td>「使ってはいけない気がする」で現場が自主規制し、使われないまま止まる</td></tr>
+        <tr><td>3. 展開の順番</td><td>どの部門から始め、何を見て次に進むか</td><td>全社一斉に開けて、成果が測れないまま「よく分からないもの」になる</td></tr>
+      </table>
+    </div>
+    <p>ここで効くのが順番です。<strong>2を決めずに1だけ実行すると、機能は開いているのに誰も踏み込まない状態になります</strong>。逆に1を止めたまま2を議論しても、現場はすでに使えるので実効性がありません。ルールを先に、範囲はその後に。これがGeminiの導入設計の基本形です。</p>
+
+    <h2 id="s2">情シスがまず確認すべきデータの扱いは？</h2>
+    <p class="answer">Workspaceの生成AI機能は、組織外に共有されず、許可なくモデル学習に使われず、人によるレビューも行われない。</p>
+    <p>「入力した社内情報がAIの学習に使われるのでは」という懸念は、Gemini導入の相談で最初に出る論点です。Googleは公式ヘルプの<strong>生成AIプライバシーハブ</strong>で、Google Workspaceの生成AI機能について次のように説明しています。</p>
+    <div class="quote-box"><p>Google Workspace の生成AI機能では、入力したプロンプトと生成された内容は組織外に共有されず、許可なく生成AIモデルの学習には使用されず、人によるレビューも行われない——というのが公式ヘルプに示されている扱いです（2026年8月時点・Google Workspace ヘルプ「生成 AI に関するプライバシー ハブ」より要約）。</p></div>
+    <p>ここで情シスが押さえるべきなのは、この保護が<strong>「会社のGoogle Workspaceアカウントで使ったとき」の話</strong>だという点です。社員が個人のGoogleアカウントでGeminiを使った場合、適用される規約もデータの扱いも別物になります。つまり実務上の論点は「Geminiは安全か」ではなく、<strong>「社員が業務情報をどのアカウントで扱っているか」</strong>です。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>確認する項目</th><th>なぜ確認するか</th><th>実務での置き方</th></tr>
+        <tr><td>会社アカウントでの利用に寄せられているか</td><td>個人アカウント利用は保護の前提が変わる</td><td>ブラウザのプロファイル分離、利用ルールへの明記、周知</td></tr>
+        <tr><td>入れてよい情報の線引き</td><td>「何がダメか」が曖昧だと現場が全面自主規制する</td><td>禁止する情報を列挙し、それ以外は原則可と書く</td></tr>
+        <tr><td>生成物の確認責任</td><td>誤りが残ったまま外部に出る事故を防ぐ</td><td>「対外文書は人が最終確認」を1行ルールにする</td></tr>
+        <tr><td>関連サービスの扱い</td><td>Gemini Notebookなどは別途オン/オフの対象</td><td>先行部門だけ開ける、など段階を決める</td></tr>
+      </table>
+    </div>
+    <div class="callout"><p>禁止事項だけを列挙したルールは、現場では「全部ダメ」と読まれる。<strong>禁止する情報を具体的に書き、それ以外は使ってよいと明記する</strong>——この書き方に変えるだけで、利用率が動くことがある。ルールは制限であると同時に、許可の表明でもある。</p></div>
+
+
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/m50-0.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">情報システム部門の視点</div>
+        <p>止める理由を探していたが、実際に必要だったのは<em>使ってよい範囲を明文化すること</em>だった。曖昧なままのほうがリスクが高い。</p>
+      </div>
+    </aside>
+<h2 id="s3">管理コンソールでは、何をオン・オフするのか？</h2>
+    <p class="answer">機能ごと・組織部門ごとにオン/オフを設計する。全社一律か段階かは、パイロットの設計とセットで決める。</p>
+    <aside class="kn-side">
+      <img src="avatars/m20-0.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">運用担当の視点</div><p>一斉に全部開けると、問い合わせが同じ週に集中する。段階に分ける理由は運用負荷のほうにもある。</p></div>
+    </aside>
+    <p>Google Workspaceの管理コンソールでは、生成AI関連のサービスを<strong>サービス単位・組織部門単位</strong>でオン/オフできます。実務で設計対象になるのは、おおむね次の層です（設定項目名や画面構成は更新されるため、実施前に必ず管理コンソールと公式ヘルプで最新の状態を確認してください）。</p>
+    <ul>
+      <li><strong>各アプリ内のGemini機能</strong>：Gmail・ドキュメント・スプレッドシート・スライド・Meet などに組み込まれたAIアシスタント。日常業務の入口になる層。</li>
+      <li><strong>Gemini アプリ</strong>：チャット形式で使う層。プランによってアクセスできるモデルや機能の範囲が異なる。</li>
+      <li><strong>Gemini Notebook（旧NotebookLM）</strong>：指定した資料の中だけで回答させる用途。2026年にNotebookLMから改称され、法人向けエディションも Gemini Notebook Enterprise となった。管理者側でユーザーごとにオン/オフできる。</li>
+      <li><strong>Google Workspace Studio</strong>：プログラミングなしでWorkspace全体の反復作業を自動化するツール。作る側の層にあたるため、開ける対象を絞る判断がしやすい。</li>
+    </ul>
+    <p>ここでの設計方針は<strong>「使う層は広く、作る層は狭く」</strong>です。日常業務のAIアシスタントは全社で開けても運用は破綻しませんが、自動化フローやエージェントを作れる層まで一気に全社へ開けると、品質のばらつきと管理対象の増加が同時に来ます。作る層の広げ方は<a href="gemini-gems.html">GemsとWorkspace Studioによる内製</a>で扱います。</p>
+    <p>なお、全社のエージェントを一元管理したい、Workspace外のデータ基盤ともつなぎたい、という段階になると、Google Cloud側の <strong>Gemini Enterprise</strong> が別建ての選択肢になります。公式ページでは Business エディションが1シート月額21米ドルから、Standard / Plus エディションが1シート月額30米ドルからと案内されています（2026年8月時点）。Workspaceの機能で足りるかを先に確かめてから検討する順番が安全です。</p>
+
+    <h2 id="s4">パイロットは、どう設計すれば判断材料になるのか？</h2>
+    <p class="answer">人数より「何をもって成功とするか」を先に決める。利用率に加えて業務側の指標を1つ置く。</p>
+    <p>パイロットでよくある失敗は、「まず使ってみましょう」で始めて、終わったときに何も判断できないことです。利用ログは残るが、それが良い数字なのか悪い数字なのか誰にも分からない。この状態を避けるには、開始前に評価の枠を作っておく必要があります。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>設計項目</th><th>決め方の目安</th><th>ありがちな失敗</th></tr>
+        <tr><td>対象</td><td>業務が近い1〜2部門・十数名。職種がばらけすぎない単位</td><td>各部門から1名ずつ集め、共通の題材が作れない</td></tr>
+        <tr><td>期間</td><td>1〜2か月。研修→実務適用→振り返りが1周する長さ</td><td>2週間で終え、日常業務に戻る前に評価してしまう</td></tr>
+        <tr><td>対象業務</td><td>頻度が高く、成果物の形が決まっている業務を2〜3個</td><td>「何に使ってもよい」で始め、活用が個人差に埋もれる</td></tr>
+        <tr><td>成功の定義</td><td>利用率＋業務側の指標1つ（所要時間・差し戻し回数など）</td><td>利用率だけを見て、業務が変わったかを説明できない</td></tr>
+        <tr><td>撤退・拡大の判断</td><td>何が起きたら全社展開に進むかを先に文章化</td><td>結果が出てから基準を作ることになり、判断が主観に流れる</td></tr>
+      </table>
+    </div>
+    <div class="callout"><p>業務側の指標は、精緻さより<strong>継続して取れること</strong>を優先する。所要時間の自己申告でも、同じ人が同じ方法で前後を比べれば判断材料になる。取れない指標を設計して測定が止まるほうが痛い。</p></div>
+
+
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/f20-2.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">DX推進の視点</div>
+        <p>パイロットは成功したのに全社では伸びなかった。差は機能ではなく、<em>その部門の業務データがDriveにあったかどうか</em>だった。</p>
+      </div>
+    </aside>
+<h2 id="s5">全社展開で、実際につまずくのはどこか？</h2>
+    <p class="answer">機能ではなく業務文脈で詰まる。Driveに業務データがない部門では、同じ機能でも成果が出ない。</p>
+    <aside class="kn-side">
+      <img src="avatars/f30-6.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">現場マネージャーの視点</div><p>紙とローカルのExcelで回している業務だと、AIに渡すものがそもそも無かった。</p></div>
+    </aside>
+    <p>パイロットが成功した企業が全社展開でつまずく理由は、ほとんどの場合ツール側にありません。<strong>AIは手が届く範囲の情報しか使えない</strong>——この当たり前が、部門によって残酷に効きます。ドキュメントとスプレッドシートで業務が回っている部門では、Geminiは最初から文脈を持っています。一方、紙とローカルファイル、あるいはWorkspace外の基幹システムで回っている部門では、同じ機能を開けても手ぶらのAIしか使えません。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>部門の状態</th><th>Geminiが使える範囲</th><th>先に手を打つこと</th></tr>
+        <tr><td>業務がDrive上のドキュメント・スプレッドシートで完結</td><td>要約・下書き・整形・分析まで自然に届く</td><td>型（Gem）の整備と共有に集中する</td></tr>
+        <tr><td>ファイルはあるがローカル・共有サーバーに散在</td><td>都度アップロードすれば使えるが手間で続かない</td><td>対象業務のファイルだけDriveへ移す（全移行はしない）</td></tr>
+        <tr><td>紙・基幹システム中心で電子ファイルが薄い</td><td>汎用的な文章作成にしか使えず、価値を実感しにくい</td><td>AI導入より先に業務の電子化。順番を入れ替えない</td></tr>
+      </table>
+    </div>
+    <p>この見極めを展開計画に反映すると、「全部門に同時に開けて、同じ研修を配る」という設計にはなりません。<strong>部門ごとに、Geminiが届く範囲を先に測ってから展開順を決める</strong>。これが、パイロットの成功を全社に持ち込むための実務的な作法です。</p>
+    <p>そしてもう1つ、全社展開の直後に必ず起きるのが「開けたのに使われない」問題です。Geminiは購入の実感を伴わずに配られるため、Copilotとは違う形で認知の壁が現れます。その構造と対策は<a href="gemini-adoption.html">Geminiが定着しない原因と対策</a>で扱います。費用と稟議の組み立ては<a href="gemini-training-cost.html">Gemini研修の費用相場</a>にまとめています。</p>
+
+    <h2 id="faq">よくある質問</h2>
+    <div class="faq"><div class="q">Geminiを法人で使うには何を契約すればよいですか？</div><p class="a">2026年8月時点では、Google Workspaceの各プランに Gemini AI アシスタントが含まれています。すでにWorkspaceを使っている企業は、新たにAIライセンスを買うのではなく、管理コンソールで利用範囲を設計する作業から始まります。全社のエージェント基盤まで踏み込む場合は、Google Cloudの Gemini Enterprise（Businessエディションは1シート月額21米ドルから）が別建ての選択肢になります。</p></div>
+    <div class="faq"><div class="q">入力した社内情報がAIの学習に使われませんか？</div><p class="a">Googleは公式の生成AIプライバシーハブで、Google Workspaceの生成AI機能について、プロンプトと生成結果を組織外に共有せず、許可なく生成AIモデルの学習に使わず、人によるレビューも行わないと説明しています。ただし社員が個人のGoogleアカウントで使うGeminiは扱いが異なるため、業務利用は会社アカウントに寄せるルールが必要です。</p></div>
+    <div class="faq"><div class="q">情シスは管理コンソールで何を決めるのですか？</div><p class="a">大きくは、Gemini関連サービスをどの組織部門にオンにするか、Gemini Notebook（旧NotebookLM）などの関連サービスを開けるか、監査とアラートをどう見るか、の3点です。全社一律で開けるか、部門単位で段階的に開けるかは、パイロットの設計と合わせて決めます。</p></div>
+    <div class="faq"><div class="q">パイロットは何人・何か月でやるべきですか？</div><p class="a">一律の正解はありませんが、業務が近い1〜2部門・十数名規模で1〜2か月というのが動かしやすい単位です。人数より「何をもって成功とするか」を先に決めることが重要で、利用率だけでなく対象業務の所要時間や差し戻し回数など、業務側の指標を1つ置くと判断できます。</p></div>
+  </article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役</span></div>
+    <p>上場企業を含む37社・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>Geminiの導入設計から定着までを、情シスと一緒に組み立てます。</h3>
+    <p>TechWorkerは、利用ルールの整備、パイロット設計、部門別の実務適用、定着支援までを一体で支援します。管理コンソールの設定だけで終わらせず、業務プロセスのどこに組み込むかまで踏み込むのが特徴です。上場企業を含む37社・2,500名の支援知見をもとに、貴社の環境に合わせてご提案します。</p>
+  </div>
+  <a href="../../training.html" class="btn">法人研修の詳細を見る <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="../../training.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">生成AI法人研修（TechWorker）</a>　／　<a href="../../contact.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">無料相談</a>　／　<a href="../../library/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">事例集（無料DL）</a></p>
+<div class="back-list"><a href="index.html">← AI研修・導入ラボの記事一覧に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="gemini-adoption.html" class="related-card"><span class="rc-cat">定着</span><div class="rc-title">Geminiが定着しない原因と対策｜「もう入っている」のに使われない構造</div></a>
+    <a href="gemini-gems.html" class="related-card"><span class="rc-cat">内製</span><div class="rc-title">GemsとWorkspace Studioで業務を自動化する｜Geminiのエージェント内製</div></a>
+    <a href="gemini-training-cost.html" class="related-card"><span class="rc-cat">費用</span><div class="rc-title">Gemini研修の費用相場｜無料の公式教材からカスタム研修・助成金まで</div></a>
+    <a href="claude-code-shanai-tenkai.html" class="related-card"><span class="rc-cat">社内展開</span><div class="rc-title">Claude Codeの社内展開｜セキュリティ・管理機能・配布設計</div></a>
+  </div>
+</div></section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">AI研修・導入<i>ラボ</i></div>
+        <p>AI研修・導入の実践知をお届けするメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+      </div>
+      <div class="footer-col"><h4>AI研修・導入ラボ</h4><a href="index.html">記事一覧</a><a href="index.html#about">このメディアについて</a></div>
+      <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../index.html#services">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="../../contact.html">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p style="max-width:860px;margin:26px auto 0;font-size:11.5px;line-height:1.9;color:var(--slate);opacity:.85;">本ページ・本研修は株式会社TechWorkerが独自に提供するものであり、Google LLCとの提携・後援・承認を受けたものではありません。Google、Google Workspace、Gemini、Google ドキュメント、Google スプレッドシート、Google ドライブ は Google LLC の商標です。</p>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+</body>
+</html>

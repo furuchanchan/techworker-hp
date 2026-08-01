@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3V34NWXVCJ');
+</script>
+<!-- TW intent tracker (first-party, sessionStorage only) -->
+<script>
+(function(){try{var ss=sessionStorage,ls=localStorage;
+if(!ss.getItem('tw_landing')){ss.setItem('tw_landing',location.pathname);ss.setItem('tw_ref',document.referrer||'');var q=new URLSearchParams(location.search);ss.setItem('tw_utm',['utm_source','utm_medium','utm_campaign'].map(function(k){return q.get(k)||'';}).join('|'));}
+var p=JSON.parse(ss.getItem('tw_pages')||'[]');if(p[p.length-1]!==location.pathname){p.push(location.pathname);ss.setItem('tw_pages',JSON.stringify(p.slice(-20)));}
+if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_visits')||'0',10)+1));ss.setItem('tw_counted','1');}
+}catch(e){}})();
+</script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geminiが定着しない原因と対策｜「もう入っている」のに使われない構造【2026】 — TechWorker</title>
+<meta name="description" content="GeminiはGoogle Workspaceの各プランに含まれるため、購入の意思決定を経ずに全社員の画面に現れます。その結果、Copilotで起きる「配ったのに使われない」ではなく「あることに気づかれない」が起きます。定着しない3つの原因を構造で分解し、推進体制・Gemによる型づくり・利用率の見方・研修の配置まで、実務に落とせる対策を整理します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/kenshu/gemini-adoption">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Geminiが定着しない原因と対策｜「もう入っている」のに使われない構造【2026】">
+<meta property="og:description" content="Geminiは買った実感がないまま全社員の画面に現れる。だから「配ったのに使われない」ではなく「あることに気づかれない」が起きる。原因を構造で分解し、型づくり・推進体制・利用率の見方まで整理。">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/media/kenshu/gemini-adoption">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Geminiが定着しない原因と対策｜「もう入っている」のに使われない構造【2026】">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../article.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Geminiが定着しない原因と対策｜「もう入っている」のに使われない構造【2026】",
+  "description": "Geminiが組織に定着しない原因と対策を解説。GeminiのAIアシスタントがGoogle Workspaceの各プランに含まれることで、購入の意思決定を伴わずに全社員の画面に機能が現れる——この構造から生まれる「あることに気づかれない」「Driveに業務文脈がない」「聞き方の型が共有されない」という3つの原因を分解し、推進体制の置き方、Gemによる業務別の型づくり、利用率指標の扱い方、研修の配置とフォロー設計までを整理する。",
+  "datePublished": "2026-07-27",
+  "dateModified": "2026-07-27",
+  "inLanguage": "ja",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://techworker.co.jp/assets/ogp.png",
+    "width": 1200,
+    "height": 630
+  },
+  "author": {
+    "@type": "Person",
+    "name": "古野光太朗",
+    "jobTitle": "株式会社TechWorker 代表取締役",
+    "url": "https://techworker.co.jp/company.html",
+    "image": "https://techworker.co.jp/assets/author-furuno.jpg",
+    "sameAs": [
+      "https://x.com/koutarou_furuno"
+    ],
+    "affiliation": {
+      "@type": "Organization",
+      "name": "株式会社TechWorker",
+      "url": "https://techworker.co.jp/"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "株式会社TechWorker",
+    "url": "https://techworker.co.jp/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://techworker.co.jp/assets/ogp.png",
+      "width": 1200,
+      "height": 630
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://techworker.co.jp/media/kenshu/gemini-adoption"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://techworker.co.jp/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "メディア",
+      "item": "https://techworker.co.jp/media/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "AI研修・導入ラボ",
+      "item": "https://techworker.co.jp/media/kenshu/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Geminiが定着しない原因と対策",
+      "item": "https://techworker.co.jp/media/kenshu/gemini-adoption"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Geminiが使われない一番の原因は何ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "「配られていない」ことではなく「あることに気づかれていない」ことです。GeminiはGoogle Workspaceの各プランに含まれるため、購入の意思決定を伴わずに全社員の画面に現れます。誰も導入を告知しないまま機能だけが存在している状態が起きやすく、まず認知の設計から必要になります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "利用率はどのくらいを目標にすべきですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "業種・職種で妥当な水準は変わるため、外部の平均値を目標に置く意味はあまりありません。自社の部門別・機能別の利用状況を可視化し、伸びしろの大きい部門から手を打つほうが実務的です。利用率は施策の効果を測る指標であって、目的そのものではありません。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "プロンプト集を配れば定着しますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "配るだけでは足りません。定着した組織に共通するのは、業務ごとに「これを使えばよい」という型が決まっていて、その型が更新され続けていることです。Geminiでは、その型をGemとして共有し、担当者が使い回せる状態にするところまで含めて設計します。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "研修は何回やればよいですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "回数より配置です。初回で全体像を渡し、その後に部門別の実務適用、数週間後にフォローを置く構成が機能しやすい形です。単発で終わると、日常業務に戻ったときに元の手順へ引き戻されます。"
+      }
+    }
+  ]
+}
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <a href="index.html" class="logo">AI研修・導入<i>ラボ</i></a>
+  <ul>
+    <li><a href="index.html">記事一覧</a></li>
+    <li><a href="index.html#about">このメディアについて</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="../../contact.html" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="index.html">記事一覧</a>
+  <a href="index.html#about">このメディアについて</a>
+  <a href="../../contact.html" class="m-cta">無料相談を申し込む</a>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a><span class="sep">/</span>Geminiが定着しない原因と対策</nav>
+  <div class="kicker">定着支援 × 利用率</div>
+  <h1>Geminiが定着しない原因と対策｜「もう入っている」のに使われない構造</h1>
+  <p class="dek">Microsoft Copilotの定着支援は「有償ライセンスを配ったのに使われない」という問題から始まる。Geminiは違う。買った実感がないまま、ある日から全社員のGmailとドキュメントに機能が現れる。だから「使われない」の中身も変わる——気づかれない、業務に結びつかない、聞き方が分からない。本記事は、Geminiに固有の定着しない構造を3つに分解し、それぞれに効く手を、研修設計と運用の両面から整理する。</p>
+  <div class="kn-voices" aria-hidden="true">
+    <span class="kn-fc" style="--sayo:0.0s"><span class="av"><img src="avatars/f20-0.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">気づいてない</span></span>
+    <span class="kn-fc" style="--sayo:6.3s"><span class="av"><img src="avatars/m30-6.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">使う人だけ使う</span></span>
+    <span class="kn-fc" style="--sayo:2.1s"><span class="av"><img src="avatars/f40-0.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">元に戻った</span></span>
+    <span class="kn-fc" style="--sayo:8.4s"><span class="av"><img src="avatars/m20-2.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">何に使うの？</span></span>
+    <span class="kn-fc" style="--sayo:4.2s"><span class="av"><img src="avatars/f50-2.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">研修したのに</span></span>
+  </div>
+  <div class="kn-voices-cap">研修・導入のご相談でよく挙がる声<span class="note">※ 実際の相談で挙がる論点をもとにした例です</span></div>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.27</span><span class="dot">·</span><span>最終更新 2026.07.27</span><span class="dot">·</span><span>読了 9分</span>
+  </div>
+</header>
+
+<style>
+/* gemini-adoption cover — 部門別の利用状況ダッシュボード（サンプル）: scoped gad- */
+.gad-cover{padding:24px 28px 22px;}
+.gad-head{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);display:flex;align-items:center;gap:8px;margin-bottom:18px;flex-wrap:wrap;}
+.gad-head .gad-dot{width:7px;height:7px;border-radius:50%;background:var(--electric);flex:none;}
+.gad-head .gad-smp{margin-left:auto;font-family:var(--jp);font-weight:400;letter-spacing:0;text-transform:none;font-size:10.5px;opacity:.75;}
+.gad-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line-2);border-radius:10px;overflow:hidden;}
+.gad-pane{padding:16px 20px 18px;min-width:0;}
+.gad-pane+.gad-pane{border-left:1px solid var(--line);}
+.gad-kind{font-family:var(--en);font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-bottom:14px;}
+.gad-row{display:flex;align-items:center;gap:10px;padding:6px 0;}
+.gad-lab{flex:0 0 88px;font-family:var(--jp);font-size:11.5px;font-weight:600;color:var(--ink-soft);}
+.gad-track{flex:1;min-width:0;height:16px;background:var(--paper-2);border-radius:4px;position:relative;}
+.gad-fill{position:absolute;top:0;left:0;height:100%;border-radius:4px;background:var(--electric);}
+.gad-fill.weak{background:rgba(0,94,255,.28);}
+.gad-pct{flex:0 0 40px;text-align:right;font-family:var(--en);font-size:11.5px;font-weight:600;color:var(--ink);font-feature-settings:"tnum" 1;}
+.gad-why{list-style:none;margin:0;padding:0;}
+.gad-item{padding:10px 0;border-bottom:1px solid var(--line);}
+.gad-item:last-child{border-bottom:none;}
+.gad-q{font-family:var(--jp);font-size:12.5px;font-weight:700;color:var(--ink);line-height:1.5;}
+.gad-a{font-family:var(--jp);font-size:11.5px;color:var(--slate);line-height:1.7;margin-top:4px;}
+.gad-cap{margin-top:12px;padding-top:11px;border-top:1px solid var(--line);font-family:var(--jp);font-size:11px;line-height:1.7;color:var(--slate);}
+.gad-cap b{color:var(--electric);font-weight:600;}
+@media(max-width:640px){
+  .gad-cover{padding:20px 18px 18px;}
+  .gad-grid{grid-template-columns:1fr;}
+  .gad-pane+.gad-pane{border-left:none;border-top:1px solid var(--line);}
+  .gad-lab{flex-basis:72px;font-size:10.5px;}
+}
+</style>
+<div class="art-cover-v6 gad-cover">
+  <div class="gad-head"><span class="gad-dot"></span>Gemini Adoption — 「入っている」と「使われている」の差<span class="gad-smp">※ サンプル・数値はイメージです（実データではありません）</span></div>
+  <div class="gad-grid">
+    <div class="gad-pane">
+      <div class="gad-kind">Usage / 部門別の週次利用率（サンプル）</div>
+      <div class="gad-row"><span class="gad-lab">マーケ</span><div class="gad-track" role="img" aria-label="マーケティング部門の利用率のサンプル表示"><span class="gad-fill" style="width:72%"></span></div><span class="gad-pct">72</span></div>
+      <div class="gad-row"><span class="gad-lab">営業</span><div class="gad-track" role="img" aria-label="営業部門の利用率のサンプル表示"><span class="gad-fill" style="width:48%"></span></div><span class="gad-pct">48</span></div>
+      <div class="gad-row"><span class="gad-lab">管理部門</span><div class="gad-track" role="img" aria-label="管理部門の利用率のサンプル表示"><span class="gad-fill weak" style="width:23%"></span></div><span class="gad-pct">23</span></div>
+      <div class="gad-row"><span class="gad-lab">製造・現場</span><div class="gad-track" role="img" aria-label="製造・現場部門の利用率のサンプル表示"><span class="gad-fill weak" style="width:9%"></span></div><span class="gad-pct">9</span></div>
+      <div class="gad-cap">同じ日に、同じ機能が、全社員に開いている。<b>差は機能ではなく設計</b>から生まれる。</div>
+    </div>
+    <div class="gad-pane">
+      <div class="gad-kind">Why / 使われない3つの理由</div>
+      <ul class="gad-why">
+        <li class="gad-item"><div class="gad-q">気づかれていない</div><div class="gad-a">買った実感がないまま画面に現れるため、誰も「導入された」と認識していない</div></li>
+        <li class="gad-item"><div class="gad-q">渡す情報がない</div><div class="gad-a">業務データがDrive上になく、AIが手ぶらのまま使われている</div></li>
+        <li class="gad-item"><div class="gad-q">聞き方が個人に閉じる</div><div class="gad-a">うまくいった指示が本人の中だけに残り、組織に広がらない</div></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次">
+    <div class="art-toc-inner">
+      <div class="toc-h">目次</div>
+      <a href="#s1">なぜGeminiは使われないのか</a>
+      <a href="#s2">3つの原因に分解する</a>
+      <a href="#s3">気づかれない問題への手</a>
+      <a href="#s4">型をGemで配る</a>
+      <a href="#s5">何を測り、研修をどこに置くか</a>
+      <a href="#faq">よくある質問</a>
+    </div>
+  </nav>
+
+  <article class="art-body rv">
+    <div class="lede">
+      <div class="lede-h">この記事の要点</div>
+      <ul>
+        <li>GeminiはGoogle Workspaceの各プランに含まれるため、<strong>購入の意思決定を伴わずに全社員の画面に現れる</strong>。だからCopilotの「配ったのに使われない」ではなく、<strong>「あることに気づかれない」</strong>が起きる。</li>
+        <li>使われない原因は3つに分解できる。①<strong>気づかれていない</strong> ②<strong>渡す情報がDriveにない</strong> ③<strong>聞き方が個人に閉じる</strong>。打ち手はそれぞれ違うので、混ぜて議論しない。</li>
+        <li>利用率は目的ではなく<strong>施策の効果を測る指標</strong>。外部の平均値を目標に置くより、自社の部門別・機能別の差を見て、伸びしろの大きいところから手を打つほうが実務的。</li>
+      </ul>
+    </div>
+
+<aside class="inline-dx-cta" style="margin:6px 0 40px;border:1px solid var(--line-2);border-radius:12px;background:var(--white);padding:22px 26px;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
+  <div style="flex:1;min-width:240px;">
+    <div style="font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);">診断ツール ・ 無料 ・ 5分</div>
+    <div style="font-family:var(--jp);font-weight:700;font-size:16.5px;color:var(--ink);line-height:1.55;margin-top:8px;">自社の生成AI活用度を診断する</div>
+    <div style="font-size:13.5px;color:var(--slate);line-height:1.8;margin-top:5px;">成熟度モデルに沿って現在地を可視化し、業界別の活用事例と次の一手をその場で提示します。</div>
+  </div>
+  <a href="../../ai-assessment.html" class="btn" style="white-space:nowrap;flex:none;color:var(--paper);border-bottom:none;">無料で診断する <i>&rarr;</i></a>
+</aside>
+
+    <h2 id="s1">なぜGeminiは「入っているのに使われない」のか？</h2>
+    <p class="answer">買った実感を伴わずに配られるため、導入の告知も、使う理由の説明も、誰も担当していない状態になる。</p>
+    <aside class="kn-side">
+      <img src="avatars/m50-6.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">推進担当の視点</div><p>「いつからうちはGeminiを使えるんですか」と聞かれて、半年前から使えると答えることになった。</p></div>
+    </aside>
+    <p>Microsoft 365 Copilotの定着支援は、たいてい「1人あたり月額数千円のライセンスを配ったのに利用率が上がらない」という切実な問題から始まります。金額が見えているので、誰かが必ず問題視する。Geminiはこの入口が違います。<strong>Google Workspaceの各プランに Gemini AI アシスタントが含まれるため、多くの企業では「導入した日」が存在しません。</strong></p>
+    <p>結果として、Copilotでは自動的に発生する次の3つが、Geminiでは誰の担当にもならないまま抜け落ちます。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>本来必要なこと</th><th>Copilotの場合</th><th>Geminiの場合</th></tr>
+        <tr><td>導入の告知</td><td>ライセンス配布と同時に必ず案内が出る</td><td>配布イベントがないため、告知そのものが発生しない</td></tr>
+        <tr><td>使う理由の説明</td><td>費用が見えるので「元を取る」動機が働く</td><td>追加費用がないため、使わなくても誰も困らない</td></tr>
+        <tr><td>推進の責任者</td><td>投資の担当部署が自然に決まる</td><td>「Workspaceの機能の1つ」に埋もれ、担当が決まらない</td></tr>
+      </table>
+    </div>
+    <p>つまり、Geminiの定着支援は<strong>「使わせる」より前に「導入したことにする」ところから始まります</strong>。すでに使える状態を、あらためて社内的に立ち上げ直す——遠回りに見えて、ここを飛ばした施策はほぼ機能しません。</p>
+    <div class="callout"><p>費用が発生しないことは、導入のハードルとしては有利に働き、定着のドライバーとしては不利に働く。<strong>この非対称性を理解しないまま「無料で使えるのだから広まるはず」と考えると、半年後に利用率9%の部門が残る。</strong></p></div>
+
+    <h2 id="s2">使われない原因を、どう分解するか？</h2>
+    <p class="answer">気づかれていない・渡す情報がない・聞き方が個人に閉じる、の3つ。打ち手がそれぞれ違う。</p>
+    <p>「使われていない」を1つの問題として扱うと、施策が総花的になります。実際には、部門ごとに詰まっている場所が違います。分解の基準は次の3つです。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>原因</th><th>現場に出るサイン</th><th>効く打ち手</th><th>効かない打ち手</th></tr>
+        <tr><td>① 気づかれていない</td><td>「うちは使えるんですか？」という質問が出る／管理職が存在を知らない</td><td>あらためての告知、管理職経由の周知、業務の場での実演</td><td>プロンプト集の配布（読む前提が成立していない）</td></tr>
+        <tr><td>② 渡す情報がない</td><td>触ってはみたが「一般的な回答しか返ってこない」で止まる</td><td>対象業務のファイルをDriveへ寄せる、参照させる資料を決める</td><td>研修の追加（渡すものがない状態は学習では解けない）</td></tr>
+        <tr><td>③ 聞き方が個人に閉じる</td><td>一部の社員だけが使いこなし、他は諦めている</td><td>業務別の型をGemとして共有、うまくいった指示を回収する場</td><td>個人の努力への期待（できる人はすでにやっている）</td></tr>
+      </table>
+    </div>
+    <p>この3つは<strong>順番に効きます</strong>。①が解けていない部門に③の型を配っても読まれず、②が解けていない部門に①の告知を打っても「使ってみたが役に立たなかった」という悪い第一印象を強めるだけです。部門ごとにどこで詰まっているかを見てから手を選ぶ——定着支援の実務は、施策の豊富さではなくこの見極めの精度で決まります。</p>
+
+
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/m40-6.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">情シスの視点</div>
+        <p>利用率の低い部門に研修を足していたが、<em>そこはDriveに業務ファイルが無い部門</em>だった。順番が逆だった。</p>
+      </div>
+    </aside>
+<h2 id="s3">「気づかれていない」に、どう手を打つか？</h2>
+    <p class="answer">告知を一度打って終わりにしない。管理職の口から、実際の業務の場で見せるのが最も効く。</p>
+    <aside class="kn-side">
+      <img src="avatars/f20-6.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">現場社員の視点</div><p>全社メールは読んでいない。上司が会議で使っているのを見て、はじめて自分も開いた。</p></div>
+    </aside>
+    <p>認知の施策で唯一やってはいけないのは、<strong>全社メール1通で済ませること</strong>です。すでに機能が存在しているぶん、社員の側に「新しく始まった」という感覚がありません。効くのは、業務の流れの中で目に入る形にすることです。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>打ち手</th><th>なぜ効くか</th><th>実施の目安</th></tr>
+        <tr><td>管理職から部門会議で伝える</td><td>「使ってよい」という許可が、上司の口から出ることに意味がある</td><td>推進担当が5分の説明素材を作り、管理職に配る</td></tr>
+        <tr><td>実際の業務で実演する</td><td>汎用デモではなく自部門の資料で見せると、自分ごとになる</td><td>部門ごとに1業務、10分の実演を1回</td></tr>
+        <tr><td>使っている人を可視化する</td><td>「隣の人が使っている」が最も強い動機になる</td><td>社内チャットで活用例を共有する場を常設</td></tr>
+        <tr><td>入口を業務側に置く</td><td>ツールから入らせず、業務手順書の中にリンクを置く</td><td>既存のマニュアル・手順書を改訂する</td></tr>
+      </table>
+    </div>
+    <div class="callout"><p>推進役を「AIに詳しい人」から選ぶと、現場との距離が開きやすい。<strong>その業務をよく知っていて、周りから質問されやすい人</strong>を選ぶほうが機能する。技術的な難所は情シスが引き取ればよい。</p></div>
+
+    <h2 id="s4">「聞き方」を、どう組織の資産にするか？</h2>
+    <p class="answer">うまくいった指示を個人の中に残さない。業務別の型をGemとして共有し、更新し続ける。</p>
+    <p>生成AIの活用が伸びる組織と止まる組織の差は、才能ではなく<strong>回収と共有の仕組み</strong>にあります。誰かが良い指示の書き方を見つけても、それが本人のチャット履歴に埋もれる限り、組織の力にはなりません。Geminiでこれを解く道具が <strong>Gem</strong> です。役割・前提・出力形式を固定したカスタム版を作り、共有して使い回せます。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>段階</th><th>やること</th><th>できていないと起きること</th></tr>
+        <tr><td>1. 回収</td><td>各部門から「うまくいった使い方」を月1回集める</td><td>ノウハウが異動と同時に消える</td></tr>
+        <tr><td>2. 型化</td><td>頻度の高い業務からGemに落とす（3〜5個で十分）</td><td>毎回ゼロから指示を書き、品質が人によって割れる</td></tr>
+        <tr><td>3. 配布</td><td>対象部門に共有し、使い方を1枚で説明する</td><td>作ったが使われないGemが増えていく</td></tr>
+        <tr><td>4. 更新</td><td>四半期に1度、実務の変化に合わせて手直しする</td><td>古い前提のまま使われ、誤りの温床になる</td></tr>
+      </table>
+    </div>
+    <p>ポイントは<strong>数を作らないこと</strong>です。最初から20個のGemを用意すると、どれを使えばよいか分からなくなり、結局どれも使われません。頻度が高く、成果物の形が決まっている業務から3〜5個。運用が回ってから増やします。作る側の体制をどう広げるかは<a href="gemini-gems.html">GemsとWorkspace Studioによる内製</a>で扱います。</p>
+
+
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/f30-0.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">人材開発の視点</div>
+        <p>利用率を目標にした瞬間、「とりあえず開く」が増えて数字だけ上がった。<em>測る対象を業務側に1つ置く</em>と、話が現実に戻った。</p>
+      </div>
+    </aside>
+<h2 id="s5">何を測り、研修をどこに置くのか？</h2>
+    <p class="answer">利用率は施策の効果測定。目的は業務側の変化。研修は初回・部門別・フォローの3点に配置する。</p>
+    <aside class="kn-side">
+      <img src="avatars/m30-2.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">経営の視点</div><p>「何％使われているか」より、「どの業務が実際に変わったか」を1つ言えるかどうかを見ている。</p></div>
+    </aside>
+    <p>利用率は測るべき指標ですが、目的ではありません。目的に置くと、開くだけの利用が増えて数字が実態から離れます。実務的な組み立ては次の2階建てです。</p>
+    <ul>
+      <li><strong>先行指標（週次で見る）</strong>：部門別の利用率、使われている機能の偏り、Gemの利用回数。施策が効いているかを早く知るために使う。</li>
+      <li><strong>成果指標（四半期で見る）</strong>：対象業務の所要時間、差し戻し・修正の回数、対応件数。ここが動かないなら、利用率が上がっても意味がない。</li>
+    </ul>
+    <p>そのうえで、研修は<strong>1回のイベントではなく3つの配置</strong>で考えます。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>配置</th><th>目的</th><th>やらないと起きること</th></tr>
+        <tr><td>初回（全体）</td><td>何ができるか、何をしてはいけないかの共通認識を作る</td><td>部門ごとに解釈が割れ、ルールの問い合わせが増える</td></tr>
+        <tr><td>部門別（実務適用）</td><td>自部門の業務・資料で演習し、型を作って持ち帰る</td><td>「便利そう」で終わり、業務が変わらない</td></tr>
+        <tr><td>フォロー（数週間後）</td><td>詰まった点を回収し、型を更新する</td><td>日常業務に戻ったところで元の手順に引き戻される</td></tr>
+      </table>
+    </div>
+    <p>TechWorkerでも、上場企業を含む37社・2,500名の支援を通じて、単発研修より「初回＋部門別＋フォロー」の3点配置のほうが活用が持続する傾向を一貫して見てきました。Geminiのように<strong>費用の痛みがないツールほど、放っておくと自然には広がりません</strong>。導入設計そのものは<a href="gemini-dounyu.html">Geminiの法人導入</a>、予算の考え方は<a href="gemini-training-cost.html">Gemini研修の費用相場</a>で扱っています。</p>
+
+    <h2 id="faq">よくある質問</h2>
+    <div class="faq"><div class="q">Geminiが使われない一番の原因は何ですか？</div><p class="a">「配られていない」ことではなく「あることに気づかれていない」ことです。GeminiはGoogle Workspaceの各プランに含まれるため、購入の意思決定を伴わずに全社員の画面に現れます。誰も導入を告知しないまま機能だけが存在している状態が起きやすく、まず認知の設計から必要になります。</p></div>
+    <div class="faq"><div class="q">利用率はどのくらいを目標にすべきですか？</div><p class="a">業種・職種で妥当な水準は変わるため、外部の平均値を目標に置く意味はあまりありません。自社の部門別・機能別の利用状況を可視化し、伸びしろの大きい部門から手を打つほうが実務的です。利用率は施策の効果を測る指標であって、目的そのものではありません。</p></div>
+    <div class="faq"><div class="q">プロンプト集を配れば定着しますか？</div><p class="a">配るだけでは足りません。定着した組織に共通するのは、業務ごとに「これを使えばよい」という型が決まっていて、その型が更新され続けていることです。Geminiでは、その型をGemとして共有し、担当者が使い回せる状態にするところまで含めて設計します。</p></div>
+    <div class="faq"><div class="q">研修は何回やればよいですか？</div><p class="a">回数より配置です。初回で全体像を渡し、その後に部門別の実務適用、数週間後にフォローを置く構成が機能しやすい形です。単発で終わると、日常業務に戻ったときに元の手順へ引き戻されます。</p></div>
+  </article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役</span></div>
+    <p>上場企業を含む37社・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>「入っているのに使われない」を、定着支援の設計から解きます。</h3>
+    <p>TechWorkerは、業務別プロンプトの型づくり、Gemの整備、推進担当の育成、フォロー会の運用までを一体で支援します。研修を起点にして、そこから先の定着を仕組みで支えるのが基本方針です。上場企業を含む37社・2,500名の支援知見をもとに、貴社の業務に合わせて設計します。</p>
+  </div>
+  <a href="../../training.html" class="btn">法人研修の詳細を見る <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="../../training.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">生成AI法人研修（TechWorker）</a>　／　<a href="../../contact.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">無料相談</a>　／　<a href="../../library/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">事例集（無料DL）</a></p>
+<div class="back-list"><a href="index.html">← AI研修・導入ラボの記事一覧に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="gemini-gems.html" class="related-card"><span class="rc-cat">内製</span><div class="rc-title">GemsとWorkspace Studioで業務を自動化する｜Geminiのエージェント内製</div></a>
+    <a href="gemini-dounyu.html" class="related-card"><span class="rc-cat">導入</span><div class="rc-title">Geminiの法人導入｜Google Workspaceの管理設定から全社展開までの進め方</div></a>
+    <a href="gemini-vs-copilot.html" class="related-card"><span class="rc-cat">比較</span><div class="rc-title">GeminiとMicrosoft Copilotの違い｜ライセンス構造から選び方まで比較</div></a>
+    <a href="copilot-adoption.html" class="related-card"><span class="rc-cat">Copilot</span><div class="rc-title">Microsoft Copilotが定着しない原因と対策｜利用率を上げる定着支援の設計</div></a>
+  </div>
+</div></section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">AI研修・導入<i>ラボ</i></div>
+        <p>AI研修・導入の実践知をお届けするメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+      </div>
+      <div class="footer-col"><h4>AI研修・導入ラボ</h4><a href="index.html">記事一覧</a><a href="index.html#about">このメディアについて</a></div>
+      <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../index.html#services">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="../../contact.html">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p style="max-width:860px;margin:26px auto 0;font-size:11.5px;line-height:1.9;color:var(--slate);opacity:.85;">本ページ・本研修は株式会社TechWorkerが独自に提供するものであり、Google LLC および Microsoft Corporationとの提携・後援・承認を受けたものではありません。Google、Google Workspace、Gemini、Google ドキュメント、Google スプレッドシート、Google ドライブ は Google LLC の商標です。Microsoft、Microsoft 365、Copilot は Microsoft グループ企業の商標です。</p>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+</body>
+</html>
