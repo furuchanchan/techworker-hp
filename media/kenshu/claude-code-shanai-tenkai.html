@@ -235,7 +235,15 @@ fbq('init','1264057945446029');fbq('track','PageView');
     <p>公式ドキュメントは、既存のクラウド契約を活かす経路——Amazon Bedrock、Google Cloud、Microsoft Foundry経由での利用——も案内しています。認証と課金をクラウド側に寄せたい組織の選択肢になります。さらに「野良利用」対策として、管理ポリシー設定の<strong>forceLoginMethod・forceLoginOrgUUID</strong>を配布すると、自社組織以外のアカウントでのログインを制限できます（公式ドキュメントより・2026年8月時点）。</p>
     <p>ツール自体の権限も承認制が土台です。Claude Codeは既定で読み取り専用として動作し、ファイル編集やコマンド実行には明示的な承認が求められます。ls・cat・git statusのような読み取り専用コマンドは承認なしで実行され、頻用する安全なコマンドはユーザー・リポジトリ・組織単位で許可リスト化できます。認証情報はmacOSでは暗号化されたKeychainに保存されます。この「既定は閉じていて、開ける範囲を組織が決める」構造が、社内展開の設計余地そのものです。導入手順そのものは<a href="claude-code-dounyu.html">Claude Codeの導入方法</a>で解説しています。</p>
 
-    <h2 id="s3">入力したコードやデータはどう扱われるのか？</h2>
+    
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/m40-0.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">情シスの視点</div>
+        <p>「入力したコードがどう扱われるか」を説明できないまま止めていた。<em>公式ドキュメントの記述で答えられる範囲</em>がはっきりすれば、判断は前に進む。</p>
+      </div>
+    </aside>
+<h2 id="s3">入力したコードやデータはどう扱われるのか？</h2>
     <p class="answer">商用プランでは入力したコードやプロンプトは既定で学習に使われない。サーバー側の保持は標準30日と公式に明記されている。</p>
     <p>情シスが経営や法務から必ず聞かれるのがこの論点です。Anthropicの公式ドキュメント（2026年8月時点）は、プラン別のポリシーを明記しています。要点は「商用プランなら既定で学習利用なし」「保持は標準30日」「ただし端末のローカル保存は自社の管理範囲」の3つです。</p>
     <div class="tbl-wrap">
@@ -282,7 +290,15 @@ fbq('init','1264057945446029');fbq('track','PageView');
     </ul>
     <div class="quote-box"><p>ルールは「禁止の羅列」ではなく「ここまでは安心して使っていい」という許可の宣言として書く。使ってよい範囲が明確なほど、現場の利用は速く、統制は効く。</p></div>
 
-    <h2 id="s6">利用状況はどう監査・モニタリングするか？</h2>
+    
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/f20-0.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">IT管理者の視点</div>
+        <p>配布して終わりにしていたが、見るべき指標を決めていなかった。<em>監査は制限ではなく、続けるための根拠づくり</em>だと考え方が変わった。</p>
+      </div>
+    </aside>
+<h2 id="s6">利用状況はどう監査・モニタリングするか？</h2>
     <p class="answer">OpenTelemetryのメトリクス出力と管理者向け分析ダッシュボードの2層で、利用量・コスト・定着度を継続的に監視できる。</p>
     <p>展開して終わりではなく、利用状況を数字で追える状態を先に作ります。公式に用意された監査手段は2層あります（Anthropic公式ドキュメントより・2026年8月時点）。</p>
     <p><strong>1層目はOpenTelemetryによるメトリクス出力</strong>です。環境変数CLAUDE_CODE_ENABLE_TELEMETRYを有効にすると、セッション数・トークン使用量・コスト（USD）・編集されたコード行数・コミット数などのメトリクスを、OTLP形式などで自社の監視基盤（Datadog、Grafana等のOpenTelemetry対応基盤）へ送れます。この設定自体をmanaged-settings.jsonのenvで全端末に固定すれば、監査基盤への出力を組織として強制できます。プロンプトや応答の本文、ツールの入出力は既定で記録されず（REDACTED）、含めるには明示的なオプトインが必要という設計も、公式ドキュメントに明記されています。</p>

@@ -228,7 +228,15 @@ fbq('init','1264057945446029');fbq('track','PageView');
     <p>コストの振れ幅を作るのはモデル選択とセッションの持ち方だ。Opusを常用し長いセッションを開きっぱなしにすれば膨らみ、Sonnet中心でこまめにコンテキストを切れば抑えられる。管理面では、Claude Consoleに<strong>Claude Code専用のワークスペース</strong>が自動作成され、ワークスペース単位の支出上限（スペンドリミット）とメンバー別の利用レポート（Claude Code Analytics API）が使える。つまり「青天井になるのでは」という稟議上の懸念には、公式の上限機能で答えられる。Bedrock / Google Cloud / Microsoft Foundry経由の場合は各クラウドの請求・予算管理に乗るため、既存のクラウド予算枠で処理したい会社はこの経路も選択肢になる。</p>
     <div class="callout"><p>予算の立て方はシンプルでいい。公表値の月150〜250ドル/人を仮置きし、パイロットの2〜4週間で自社の実測値に置き換える。実測が出た時点で「人数×実測単価×12カ月」に更新すれば、稟議の数字は自社データで裏づけられる。</p></div>
 
-    <h2 id="s3">どの規模・体制ならどれを選ぶべきか？</h2>
+    
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/f50-2.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">情シスの視点</div>
+        <p>Teamか従量かで迷っていたが、<em>使い方が違うメンバーを同じ契約に揃える必要はない</em>。日常利用と自動化を分けて考えると、悩みの半分は消えた。</p>
+      </div>
+    </aside>
+<h2 id="s3">どの規模・体制ならどれを選ぶべきか？</h2>
     <p class="answer">2〜10人の試験導入はTeam Premium、150人超や統制要件はEnterprise、CI/CD組み込みや自動化が主目的ならAPIを選ぶ。</p>
     <p>プランの優劣ではなく、組織の状態との相性で決める。判断の起点は「誰が・何人で・何のために使うか」の3点だ。下の表に典型パターンを整理した。</p>
     <div class="tbl-wrap">
@@ -260,7 +268,15 @@ fbq('init','1264057945446029');fbq('track','PageView');
     <div class="quote-box"><p>ライセンス費は氷山の一角だ。水面下の運用・教育・ガバナンスまで予算化して初めて、稟議の数字は現実になる。</p></div>
     <p>特に教育・定着は削られやすいが、ここを削ると利用率が伸びず、シート費だけが毎月出ていく最悪のパターンになる。展開時の運用ルールや教育設計は<a href="claude-code-shanai-tenkai.html">Claude Codeの社内展開</a>で詳しく扱っている。外部の研修を使う場合は、ツール操作の説明で終わらず、自社の業務・コードベースに引きつけた演習まで踏み込むものを選ぶ。TechWorkerの<a href="../../claude-code-training.html">Claude Code研修</a>もこの設計で提供している。</p>
 
-    <h2 id="s5">稟議に載せる費用対効果はどう組み立てるか？</h2>
+    
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/m30-2.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">経営企画の視点</div>
+        <p>稟議で詰まるのは金額ではなく根拠だった。<em>少人数の実測値を先に取る</em>——見積もりを立てる順序が逆だったと気づいた。</p>
+      </div>
+    </aside>
+<h2 id="s5">稟議に載せる費用対効果はどう組み立てるか？</h2>
     <p class="answer">捏造したROIでなく、パイロット実測×自社人件費の定性フレームで組む。再現可能なロジックが稟議を通す。</p>
     <p>「開発生産性が◯倍」といった出所の曖昧な数値を稟議に貼るのはやめたほうがいい。決裁者が一度でも根拠を突くと、提案全体の信頼が崩れる。代わりに、<strong>自社で再現可能なロジック</strong>を組む。手順は4つだ。</p>
     <ol>

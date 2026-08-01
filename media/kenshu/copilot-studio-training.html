@@ -219,7 +219,15 @@ fbq('init','1264057945446029');fbq('track','PageView');
     <p>社内データ接続には権限の仕組みが組み込まれています。SharePointやコネクタ経由の知識ソースはMicrosoft Entra IDの認証を使い、<strong>質問した本人がアクセスできる文書だけを根拠に回答する</strong>ため、部外秘の資料が別部門の社員への回答に混ざる構造になっていません。また、Copilot Studioで作ったエージェントは単体で使うほか、Microsoft 365 Copilotを自社データ・自社シナリオで拡張する形でも使えます。以上の仕様はいずれもMicrosoft Learnの公式ドキュメント（<a href="https://learn.microsoft.com/ja-jp/microsoft-copilot-studio/fundamentals-what-is-copilot-studio" target="_blank" rel="noopener noreferrer">Copilot Studio概要</a>・ナレッジソース・公開チャネルの各ページ、2026年時点）で確認できます。</p>
     <div class="callout"><p>押さえるべき本質は「チャットボット作成ツールの進化版」ではなく、<strong>社内の文書・データを根拠に動くAIを、業務部門が自分の手で作れる</strong>ようになったこと。作り手の枠がエンジニアから現場に広がった点が、研修テーマとしてCopilot Studioが浮上している理由になる。</p></div>
 
-    <h2 id="s2">なぜ「使う研修」の次に「作る研修」なのか？</h2>
+    
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/f20-0.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">業務部門の視点</div>
+        <p>「使う」で止まっていたのは、作れると思っていなかったから。<em>自分の部門の定型業務なら題材を出せる</em>——作る側に回る発想がなかった。</p>
+      </div>
+    </aside>
+<h2 id="s2">なぜ「使う研修」の次に「作る研修」なのか？</h2>
     <p class="answer">使い方研修の効果は個人の時短で止まりやすい。エージェントを作る段階に進むと、効果が業務の仕組みとして残る。</p>
     <p>多くの企業の生成AI研修は、プロンプトの書き方や活用例を学ぶ「使い方研修」から始まります。入口としては正しい一方で、そこで得られる効果は受講者個人の時短に紐づくため、使う人と使わない人の差が開き、異動や退職とともに消えていきます。エージェントは業務の側に組み込まれるので、作った人が異動しても動き続けます。この「効果がどこに残るか」の違いが、使う研修と作る研修の分かれ目です。段階を整理すると次のようになります。</p>
     <div class="tbl-wrap">
@@ -270,7 +278,15 @@ fbq('init','1264057945446029');fbq('track','PageView');
     <p class="fig-cap">図：社内FAQエージェントの回答イメージ（日数・条件はサンプル）。根拠となる文書を出典として示せるため、回答が正しいかの検証がしやすく、間違いに気づいたら元の文書を直せば回答も直る。</p>
     <p>なお、題材を個別に選ぶのではなく、業務プロセス全体のどこをAIエージェントに置き換えるかから設計したい場合は、<a href="copilot-bpr.html">CopilotによるBPR（業務プロセス再設計）の進め方</a>が参考になります。</p>
 
-    <h2 id="s4">内製に必要なスキルセットと学習ステップは？</h2>
+    
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/m40-0.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">情シスの視点</div>
+        <p>内製と聞くと開発体制の話に飛んでいたが、必要なのは業務理解とデータの置き場の整理だった。<em>作る前に決めるべきことの方が多い</em>。</p>
+      </div>
+    </aside>
+<h2 id="s4">内製に必要なスキルセットと学習ステップは？</h2>
     <p class="answer">中核はプログラミングではなく、指示設計・ナレッジ整備・会話設計・ガバナンスの4つ。順に積めば非エンジニアでも作れる。</p>
     <p>「内製」と聞くとプログラミング研修を想像しがちですが、Copilot Studioの画面操作そのものは数日で覚えられます。成果を左右するのは操作の外側にある、次の4つのスキルです。</p>
     <ul>
