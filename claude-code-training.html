@@ -1,0 +1,945 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3V34NWXVCJ');
+</script>
+<!-- TW intent tracker (first-party, sessionStorage only) -->
+<script>
+(function(){try{var ss=sessionStorage,ls=localStorage;
+if(!ss.getItem('tw_landing')){ss.setItem('tw_landing',location.pathname);ss.setItem('tw_ref',document.referrer||'');var q=new URLSearchParams(location.search);ss.setItem('tw_utm',['utm_source','utm_medium','utm_campaign'].map(function(k){return q.get(k)||'';}).join('|'));}
+var p=JSON.parse(ss.getItem('tw_pages')||'[]');if(p[p.length-1]!==location.pathname){p.push(location.pathname);ss.setItem('tw_pages',JSON.stringify(p.slice(-20)));}
+if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_visits')||'0',10)+1));ss.setItem('tw_counted','1');}
+}catch(e){}})();
+</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Claude Code研修｜エンジニア・非エンジニア両対応の法人研修 | 株式会社TechWorker</title>
+<meta name="description" content="Claude Codeを組織の戦力にする法人研修。エンジニア向けAI駆動開発と、非エンジニア向け業務ツール実装の2トラック。パイロット設計→研修→定着伴走→社内展開・ガバナンス設計まで。上場企業を含む37社・2,500名の生成AI研修実績。" />
+<link rel="canonical" href="https://techworker.co.jp/claude-code-training" />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Claude Code研修｜エンジニア・非エンジニア両対応の法人研修 | 株式会社TechWorker" />
+<meta property="og:description" content="コードを書くAIは、もう部下だ。エンジニア向けAI駆動開発と非エンジニア向け業務実装の2トラックで、研修で終わらせず定着まで伴走。37社・2,500名の研修実績。" />
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png" />
+<meta property="og:url" content="https://techworker.co.jp/claude-code-training" />
+<meta property="og:site_name" content="TechWorker" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Claude Code研修｜エンジニア・非エンジニア両対応の法人研修 | 株式会社TechWorker" />
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper:    #F4F6F9;
+    --paper-2:  #ECEFF4;
+    --ink:      #11161D;
+    --blue:     #005EFF;
+    --blue-deep:#003DAA;
+    --slate:    #4A586C;
+    --slate-2:  #586679;
+    --line:     rgba(17,22,29,0.14);
+    --line-soft:rgba(17,22,29,0.08);
+
+    --jp:    'IBM Plex Sans JP','IBM Plex Sans',system-ui,sans-serif;
+    --en:    'IBM Plex Sans','IBM Plex Sans JP',system-ui,sans-serif;
+    --mono:  'IBM Plex Sans','IBM Plex Sans JP',system-ui,sans-serif;
+
+    --mx: clamp(20px, 5vw, 96px);
+  }
+
+  * , *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--jp);
+    font-weight: 400;
+    line-height: 1.85;
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0; z-index: 1; pointer-events: none;
+    opacity: 0.32; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  }
+  img, svg { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; cursor: pointer; }
+  :focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 2px; }
+  .ib { font-weight: 700; color: var(--ink); }
+  .bb { font-weight: 700; color: var(--blue); }
+
+  .wrap { width: 100%; padding-left: var(--mx); padding-right: var(--mx); }
+  .col { max-width: 1280px; margin: 0 auto; }
+
+  section { position: relative; z-index: 2; }
+  .sec { padding: clamp(72px, 9vw, 130px) 0; }
+  .sec-head {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 0 48px;
+    align-items: start;
+    padding-top: 26px;
+    border-top: 2px solid var(--ink);
+    margin-bottom: clamp(40px, 5vw, 72px);
+  }
+  .sec-head .meta { font-family: var(--jp); font-weight: 500; font-size: 13px; letter-spacing: 0.14em; color: var(--slate); line-height: 1.95; }
+  .sec-head .meta .n { display:block; font-family: var(--mono); font-size: 13px; color: var(--blue); margin-bottom: 9px; letter-spacing: 0.04em; }
+  .h2 {
+    font-family: var(--jp);
+    font-weight: 700;
+    font-size: clamp(27px, 3.7vw, 47px);
+    line-height: 1.42;
+    letter-spacing: 0.01em;
+    margin: 0;
+    color: var(--ink);
+  }
+  .h2 .b { color: var(--blue); }
+  .lead {
+    margin: 22px 0 0;
+    font-size: clamp(15px, 1.3vw, 17px);
+    color: var(--slate);
+    max-width: 680px;
+    line-height: 2;
+  }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--jp);
+    font-weight: 700;
+    font-size: 15px;
+    padding: 15px 26px;
+    border: 1.5px solid transparent;
+    transition: background .18s, color .18s, border-color .18s;
+    white-space: nowrap;
+  }
+  .btn .ar { font-family: var(--mono); transition: transform .18s; }
+  .btn:hover .ar { transform: translateX(4px); }
+  .btn-blue { background: var(--blue); color: var(--paper); border-color: var(--blue); }
+  .btn-blue:hover { background: var(--blue-deep); border-color: var(--blue-deep); }
+  .btn-line { background: transparent; color: var(--ink); border-color: var(--ink); }
+  .btn-line:hover { color: var(--blue); border-color: var(--blue); }
+
+  .rv { opacity: 0; transform: translateY(24px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+  .rv.in { opacity: 1; transform: none; }
+
+  /* ============ HEADER ============ */
+  .hd {
+    position: sticky; top: 0; z-index: 40;
+    background: rgba(244,246,249,0.82);
+    backdrop-filter: saturate(160%) blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .hd .row { display: flex; align-items: center; justify-content: space-between; height: 66px; }
+  .brand { display: inline-flex; align-items: baseline; gap: 10px; }
+  .brand .mk {
+    font-family: var(--en); font-weight: 700; font-size: 17px; letter-spacing: -0.04em;
+    color: var(--ink); border-bottom: 3px solid var(--blue); line-height: 1.1; padding-bottom: 1px;
+  }
+  .brand .sub { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--slate-2); text-transform: uppercase; }
+  .hd nav { display: flex; gap: 28px; }
+  .hd nav a { font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; color: var(--slate); transition: color .15s; }
+  .hd nav a:hover { color: var(--blue); }
+  .hd .cta { font-family: var(--jp); font-weight: 700; font-size: 13px; color: var(--paper); background: var(--blue); padding: 10px 18px; display: inline-flex; gap: 8px; align-items: center; }
+  .hd .cta:hover { background: var(--blue-deep); }
+
+  /* ============ HERO ============ */
+  .hero { padding: clamp(48px, 7vw, 104px) 0 0; }
+  .hero-top { font-family: var(--jp); font-weight: 500; font-size: 13px; letter-spacing: 0.1em; color: var(--slate); display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .hero-top .tag { color: var(--blue); border: 1px solid var(--blue); padding: 5px 12px; font-weight: 600; }
+  .hero-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: end; margin-top: 40px; }
+  .hero h1 {
+    font-family: var(--jp);
+    font-weight: 700;
+    font-size: clamp(38px, 6.2vw, 80px);
+    line-height: 1.28;
+    letter-spacing: 0.01em;
+    margin: 0;
+  }
+  .hero h1 .b { color: var(--blue); }
+  .hero-claim {
+    margin-top: 30px;
+    font-family: var(--jp);
+    font-weight: 600;
+    font-size: clamp(17px, 1.7vw, 22px);
+    letter-spacing: 0.02em;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+  .hero-claim .b { color: var(--blue); }
+  .hero-sub { margin-top: 14px; font-size: 15px; color: var(--slate); line-height: 2; max-width: 560px; }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 34px; }
+  .hero-links { display: flex; gap: 22px; margin-top: 18px; flex-wrap: wrap; }
+  .hero-links a { font-family: var(--mono); font-size: 13px; color: var(--blue); border-bottom: 1px solid var(--blue); padding-bottom: 2px; }
+
+  .ledger { border-top: 2px solid var(--ink); }
+  .ledger .lr { display: grid; grid-template-columns: 108px 1fr; gap: 16px; align-items: baseline; padding: 15px 0; border-bottom: 1px solid var(--line); }
+  .ledger .lk { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: var(--slate-2); text-transform: uppercase; }
+  .ledger .lv { font-family: var(--jp); font-weight: 700; font-size: 15.5px; color: var(--ink); }
+
+  .proof { margin-top: clamp(48px, 6vw, 80px); border-top: 2px solid var(--ink); border-bottom: 1px solid var(--line); display: grid; grid-template-columns: repeat(4, 1fr); }
+  .proof .p { padding: 26px 28px 26px 0; border-right: 1px solid var(--line); }
+  .proof .p:last-child { border-right: 0; }
+  .proof .num { font-family: var(--en); font-weight: 700; font-size: clamp(28px, 3.2vw, 42px); letter-spacing: -0.03em; line-height: 1; color: var(--ink); }
+  .proof .num .u { font-size: 0.44em; color: var(--blue); margin-left: 4px; letter-spacing: 0; }
+  .proof .lb { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--slate); margin-top: 12px; }
+
+  /* ============ FACT STRIP ============ */
+  .factstrip { padding: clamp(28px, 4vw, 44px) 0; border-bottom: 1px solid var(--line); }
+  .factstrip .fs-lead { font-size: clamp(16px, 1.9vw, 21px); font-weight: 700; letter-spacing: -0.01em; line-height: 1.65; color: var(--ink); margin: 0 0 16px; }
+  .factstrip .fs-lead .fb { color: var(--blue); }
+  .factstrip ul { list-style: none; padding: 0; margin: 0 0 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 40px; max-width: 980px; }
+  .factstrip li { font-size: 14px; color: var(--ink); padding: 9px 0 9px 24px; border-top: 1px solid var(--line-soft); position: relative; line-height: 1.8; }
+  .factstrip li::before { content: "—"; position: absolute; left: 0; font-family: var(--mono); color: var(--blue); }
+  .factstrip .fs-src { font-size: 12px; color: var(--slate-2); margin: 10px 0 0; line-height: 1.7; }
+
+  /* ============ PROBLEM ============ */
+  .prob-list { display: grid; gap: 0; }
+  .prob {
+    display: grid; grid-template-columns: 200px 1fr; gap: 48px;
+    padding: 38px 0; border-bottom: 1px solid var(--line); align-items: start;
+  }
+  .prob:first-child { border-top: 1px solid var(--line); }
+  .prob .pn { font-family: var(--en); font-weight: 700; font-size: clamp(40px, 5vw, 66px); line-height: 0.9; color: rgba(0,94,255,0.30); letter-spacing: -0.03em; }
+  .prob h3 { font-family: var(--jp); font-weight: 700; font-size: clamp(19px, 2.1vw, 26px); margin: 0 0 14px; line-height: 1.45; }
+  .prob p { margin: 0; font-size: 15px; color: var(--slate); line-height: 2; max-width: 680px; }
+  .verdict { margin-top: 56px; display: grid; grid-template-columns: 200px 1fr; gap: 48px; }
+  .verdict .vk { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; color: var(--blue); text-transform: uppercase; }
+  .verdict p { margin: 0; font-family: var(--jp); font-weight: 600; font-size: clamp(18px, 2vw, 27px); line-height: 1.9; letter-spacing: 0.01em; }
+  .verdict p .b { color: var(--blue); }
+
+  /* ============ CURRICULUM TABLE ============ */
+  .trk { border-top: 2px solid var(--ink); }
+  .trk .tr { display: grid; grid-template-columns: 170px 1fr 1fr; border-bottom: 1px solid var(--line); }
+  .trk .tc { padding: 22px 24px 22px 0; font-size: 14px; color: var(--slate); line-height: 1.9; }
+  .trk .tc + .tc { padding-left: 24px; border-left: 1px solid var(--line-soft); }
+  .trk .tr.head .tc { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--slate-2); padding-top: 26px; padding-bottom: 18px; }
+  .trk .tr.head .tc .nm { display: block; font-family: var(--jp); font-weight: 700; font-size: clamp(16px, 1.6vw, 20px); color: var(--ink); letter-spacing: 0; text-transform: none; margin-top: 6px; line-height: 1.5; }
+  .trk .tr.head .tc .nm .b { color: var(--blue); }
+  .trk .rl { font-weight: 700; color: var(--ink); font-size: 13.5px; }
+  .trk .tc ul { list-style: none; padding: 0; margin: 0; }
+  .trk .tc li { padding: 4px 0 4px 18px; position: relative; }
+  .trk .tc li::before { content: "—"; position: absolute; left: 0; font-family: var(--mono); color: var(--blue); }
+  .trk .tc .goal { font-weight: 700; color: var(--ink); }
+  .trk-note { margin-top: 24px; font-size: 13px; color: var(--slate); line-height: 1.9; padding: 16px 20px; border: 1px solid var(--line); max-width: 880px; }
+  .trk-note b { color: var(--ink); font-weight: 700; }
+
+  /* ============ TERMINAL MOCK ============ */
+  .term { margin: 48px auto 0; max-width: 760px; }
+  .term .t-cap { font-size: 13px; color: var(--slate-2); font-weight: 600; margin: 0 0 12px; }
+  .term .t-win { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: #171C24; box-shadow: 0 24px 50px -34px rgba(17,22,29,0.35); }
+  .term .t-bar { display: flex; align-items: center; gap: 7px; padding: 11px 14px; background: #1E242E; border-bottom: 1px solid rgba(244,246,249,0.08); }
+  .term .t-bar i { width: 10px; height: 10px; border-radius: 50%; background: rgba(244,246,249,0.18); }
+  .term .t-bar .t-title { margin-left: 8px; font-family: var(--mono); font-size: 11px; color: rgba(244,246,249,0.45); letter-spacing: 0.06em; }
+  .term .t-body { padding: 20px 22px 24px; font-family: var(--mono); font-size: 13px; line-height: 2.05; color: rgba(244,246,249,0.86); }
+  .term .t-body .pr { color: #8FB8FF; }
+  .term .t-body .dim { color: rgba(244,246,249,0.42); }
+  .term .t-body .ok { color: #7ED8A8; }
+
+  /* ============ STRENGTH ============ */
+  .str { display: grid; grid-template-columns: 200px 1fr; gap: 48px; padding: 44px 0; border-bottom: 1px solid var(--line); align-items: start; }
+  .str:first-of-type { border-top: 1px solid var(--line); }
+  .str .sk { font-family: var(--mono); }
+  .str .sk .sn { font-family: var(--en); font-weight: 700; font-size: 44px; color: var(--blue); letter-spacing: -0.03em; line-height: 1; }
+  .str .sk .sl { font-size: 11px; letter-spacing: 0.12em; color: var(--slate-2); text-transform: uppercase; margin-top: 8px; display:block; }
+  .str h3 { font-family: var(--jp); font-weight: 700; font-size: clamp(20px, 2.3vw, 30px); margin: 0 0 16px; line-height: 1.4; }
+  .str p { font-size: 15px; color: var(--slate); line-height: 2; margin: 0 0 22px; max-width: 660px; }
+  .str ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; max-width: 640px; }
+  .str li { font-size: 14px; padding: 11px 0 11px 28px; border-top: 1px solid var(--line-soft); position: relative; color: var(--ink); }
+  .str li:first-child { border-top: 0; }
+  .str li::before { content: "→"; position: absolute; left: 0; font-family: var(--mono); color: var(--blue); }
+
+  /* ============ STEPS ============ */
+  .steps { border-top: 2px solid var(--ink); }
+  .step { display: grid; grid-template-columns: 88px 1fr 1fr; gap: 40px; padding: 36px 0; border-bottom: 1px solid var(--line); align-items: start; }
+  .step .stn { font-family: var(--en); font-weight: 700; font-size: 40px; color: var(--blue); letter-spacing: -0.03em; line-height: 1; }
+  .step .stn .sl { display: block; font-family: var(--mono); font-size: 10px; color: var(--slate-2); letter-spacing: 0.14em; margin-top: 6px; }
+  .step h4 { font-family: var(--jp); font-weight: 700; font-size: clamp(18px, 1.9vw, 24px); margin: 0 0 8px; }
+  .step .smeta { font-family: var(--mono); font-size: 11px; color: var(--slate); letter-spacing: 0.06em; margin-bottom: 12px; }
+  .step p { margin: 0; font-size: 14px; color: var(--slate); line-height: 1.95; }
+  .step .take { border-left: 2px solid var(--blue); padding-left: 18px; }
+  .step .take .tl { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--blue); text-transform: uppercase; margin-bottom: 10px; }
+  .step .take ul { list-style: none; padding: 0; margin: 0; }
+  .step .take li { font-size: 13.5px; color: var(--ink); padding: 5px 0; }
+  .step .take li::before { content: "— "; color: var(--blue); font-family: var(--mono); }
+
+  /* ============ FAQ ============ */
+  .faq { border-top: 2px solid var(--ink); max-width: 920px; }
+  .fq { border-bottom: 1px solid var(--line); }
+  .fq summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 18px; padding: 24px 0; font-weight: 700; font-size: 15.5px; }
+  .fq summary::-webkit-details-marker { display: none; }
+  .fq summary .q { font-family: var(--mono); color: var(--blue); font-weight: 700; flex: 0 0 auto; }
+  .fq summary .pl { margin-left: auto; font-family: var(--mono); color: var(--blue); font-size: 20px; transition: transform .2s; }
+  .fq[open] summary .pl { transform: rotate(45deg); }
+  .fq .a { padding: 0 0 26px 40px; font-size: 14.5px; color: var(--slate); line-height: 2; }
+
+  /* ============ ARTICLES ============ */
+  .arts { border-top: 2px solid var(--ink); max-width: 980px; }
+  .art { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; padding: 22px 0; border-bottom: 1px solid var(--line); transition: color .15s; }
+  .art:hover h3 { color: var(--blue); }
+  .art h3 { font-family: var(--jp); font-weight: 700; font-size: clamp(15.5px, 1.5vw, 18px); margin: 0 0 4px; line-height: 1.6; transition: color .15s; }
+  .art p { margin: 0; font-size: 13px; color: var(--slate); line-height: 1.7; }
+  .art .go { font-family: var(--mono); font-size: 16px; color: var(--blue); }
+
+  /* ============ CONTACT ============ */
+  .contact-grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 0; border: 1px solid var(--ink); }
+  .contact-grid .cl { padding: clamp(32px,4vw,48px); border-right: 1px solid var(--line); }
+  .contact-grid .cl .ck { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; color: var(--blue); text-transform: uppercase; }
+  .contact-grid .cl h3 { font-family: var(--jp); font-weight: 700; font-size: clamp(22px,2.3vw,30px); margin: 14px 0 28px; line-height: 1.55; }
+  .contact-grid .cl h3 .b { color: var(--blue); }
+  .contact-grid .cl ol { list-style: none; padding: 0; margin: 0; counter-reset: s; }
+  .contact-grid .cl li { display: grid; grid-template-columns: 34px 1fr; gap: 12px; padding: 14px 0; border-top: 1px solid var(--line-soft); font-size: 14px; color: var(--slate); align-items: start; }
+  .contact-grid .cl li::before { counter-increment: s; content: counter(s, decimal-leading-zero); font-family: var(--mono); font-size: 12px; color: var(--blue); padding-top: 3px; }
+  .contact-grid .cl .cnote { margin-top: 24px; font-size: 12px; color: var(--slate-2); line-height: 1.8; }
+  .contact-grid .cr2 { padding: clamp(32px,4vw,48px); }
+  .contact-grid .cr2 h3 { font-family: var(--jp); font-weight: 700; font-size: 21px; margin: 0 0 6px; }
+  .contact-grid .cr2 .as { font-family: var(--mono); font-size: 12px; color: var(--slate); margin: 0 0 28px; }
+  .fld { margin-bottom: 18px; }
+  .fld label { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; color: var(--ink); margin-bottom: 8px; text-transform: uppercase; }
+  .fld label .rq { color: var(--blue); margin-left: 6px; }
+  .fld input, .fld select { width: 100%; padding: 13px 14px; border: 1px solid var(--line); background: var(--paper-2); font-family: var(--jp); font-size: 14px; color: var(--ink); transition: border-color .15s, background .15s; }
+  .fld input:focus, .fld select:focus { outline: none; border-color: var(--blue); background: var(--paper); }
+  .submit { width: 100%; justify-content: center; margin-top: 8px; padding: 16px; }
+  .trust { margin-top: 16px; font-family: var(--mono); font-size: 11px; color: var(--slate-2); text-align: center; line-height: 1.7; }
+  .trust a { color: var(--blue); text-decoration: underline; }
+
+  /* ============ DISCLAIMER / FOOTER ============ */
+  .disclaimer { border-top: 1px solid var(--line); padding: 28px 0; }
+  .disclaimer p { margin: 0; font-size: 12px; color: var(--slate-2); line-height: 1.9; max-width: 880px; }
+  footer { border-top: 2px solid var(--ink); padding: clamp(48px,5vw,72px) 0 36px; position: relative; z-index: 2; }
+  footer .frow { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
+  footer .ft { font-family: var(--mono); font-size: 12px; color: var(--slate); line-height: 1.9; margin-top: 14px; max-width: 380px; }
+  footer h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); margin: 0 0 16px; }
+  footer ul { list-style: none; padding: 0; margin: 0; }
+  footer li { padding: 6px 0; }
+  footer li a { font-size: 13px; color: var(--slate); }
+  footer li a:hover { color: var(--blue); }
+  footer .legal { margin-top: 44px; padding-top: 24px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; font-family: var(--mono); font-size: 11px; color: var(--slate-2); flex-wrap: wrap; gap: 10px; }
+
+  /* ============ FLOATING CTA ============ */
+  .float { position: fixed; bottom: 20px; right: 20px; z-index: 50; display: flex; gap: 10px; opacity: 0; transform: translateY(16px); transition: opacity .25s, transform .25s; pointer-events: none; }
+  .float.show { opacity: 1; transform: none; pointer-events: auto; }
+  .float .btn { box-shadow: 0 10px 30px rgba(17,22,29,0.16); padding: 13px 20px; font-size: 14px; }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 1040px) {
+    .hero-grid { grid-template-columns: 1fr; align-items: start; }
+    .sec-head { grid-template-columns: 1fr; gap: 20px; }
+    .sec-head .meta { display: flex; gap: 16px; align-items: baseline; }
+    .sec-head .meta .n { display: inline; margin: 0; }
+    .prob, .verdict, .str { grid-template-columns: 1fr; gap: 16px; }
+    .str .sk { display: flex; align-items: baseline; gap: 14px; }
+    .str .sk .sl { margin-top: 0; }
+    .step { grid-template-columns: 1fr; gap: 16px; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact-grid .cl { border-right: 0; border-bottom: 1px solid var(--line); }
+    .factstrip ul { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 760px) {
+    .hd nav { display: none; }
+    .proof { grid-template-columns: 1fr 1fr; }
+    .proof .p:nth-child(2) { border-right: 0; }
+    .proof .p:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+    .trk .tr { grid-template-columns: 1fr; }
+    .trk .tr.head { display: none; }
+    .trk .tc { border-top: 1px solid var(--line-soft); padding: 14px 0; }
+    .trk .tc + .tc { padding-left: 0; border-left: 0; }
+    .trk .tc::before { content: attr(data-h); display: block; font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; color: var(--slate-2); text-transform: uppercase; margin-bottom: 6px; }
+    footer .frow { grid-template-columns: 1fr; gap: 28px; }
+    .float .btn.hide-sm { display: none; }
+  }
+</style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1264057945446029');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/" },
+    { "@type": "ListItem", "position": 2, "name": "生成AI法人研修", "item": "https://techworker.co.jp/training" },
+    { "@type": "ListItem", "position": 3, "name": "Claude Code研修", "item": "https://techworker.co.jp/claude-code-training" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "非エンジニアでも使えますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "使えます。Claude Codeは自然言語の指示で動くため、プログラミング知識を前提にしません。非エンジニア向けトラックでは、コードの書き方ではなく「自分の業務のどこを任せるか」から入り、研修内で実際に動く業務ツールを1つ作ります。TechWorker自身も非エンジニアを含む体制で日常的に運用しています。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "セキュリティや環境面が不安です。",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claude Codeはローカル環境で動作し、ファイルの変更やコマンドの実行前に許可を求める設計です（Claude公式製品ページより・2026年8月時点）。法人向けプランでは監査ログ等の管理機能も提供されています（Claude公式料金ページより・同時点）。研修では、貴社のセキュリティ要件に合わせた権限設計・利用ルールの整備までを扱います。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "期間と人数の目安は？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "カリキュラム例は、エンジニア向け2日・非エンジニア向け1日に、それぞれ約4週間の定着期間を加えた構成です。人数は5名程度の少人数から実施できます。いずれも一例であり、最終的な内容・日数は対象と目的に合わせて設計します。料金はお問い合わせください。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "助成金は使えますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "人材開発支援助成金の対象となり得ます。要件・申請可否は管轄労働局または社労士にご確認ください。カリキュラムを要件に合わせた構成で設計することは可能です。"
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="hd">
+  <div class="wrap"><div class="col row">
+    <a href="/" class="brand">
+      <span class="mk">TechWorker</span>
+      <span class="sub">Claude Code研修</span>
+    </a>
+    <nav>
+      <a href="#problem">課題</a>
+      <a href="#curriculum">カリキュラム</a>
+      <a href="#strength">差別化</a>
+      <a href="#steps">進め方</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a href="#cta" class="cta">無料相談 <span>→</span></a>
+  </div></div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap"><div class="col">
+    <div class="hero-top rv">
+      <span class="tag">法人向け Claude Code研修</span>
+      <span>エンジニア・非エンジニア 両対応 ／ カリキュラムは対象と目的に合わせて設計</span>
+    </div>
+
+    <div class="hero-grid">
+      <div>
+        <h1 class="rv">コードを書くAIは、<br />もう<span class="b">部下</span>だ。</h1>
+        <p class="hero-claim rv">問われているのは導入ではなく、<span class="b">使いこなす組織の設計</span>だ。</p>
+        <p class="hero-sub rv">Anthropic社のエージェント型コーディングツール「Claude Code」を、開発チームにも、業務部門にも。カリキュラムは対象と目的に合わせて設計します。上場企業を含む<span class="ib">37社・2,500名</span>の生成AI研修実績をベースに、導入から定着まで伴走します。</p>
+        <div class="hero-ctas rv">
+          <a class="btn btn-blue" href="#cta">無料相談（30分）<span class="ar">→</span></a>
+          <a class="btn btn-line" href="#curriculum">カリキュラム例を見る</a>
+        </div>
+        <div class="hero-links rv">
+          <a href="#strength">TechWorkerの差別化を見る</a>
+          <a href="#faq">FAQを見る</a>
+        </div>
+      </div>
+
+      <div class="rv">
+        <div class="ledger">
+          <div class="lr"><span class="lk">Target</span><span class="lv">エンジニア / 非エンジニア</span></div>
+          <div class="lr"><span class="lk">Curriculum</span><span class="lv">対象と目的に合わせ設計</span></div>
+          <div class="lr"><span class="lk">Record</span><span class="lv">上場企業含む 37社・2,500名</span></div>
+          <div class="lr"><span class="lk">Scope</span><span class="lv">パイロット設計 〜 定着伴走</span></div>
+          <div class="lr"><span class="lk">Format</span><span class="lv">オンライン / 訪問</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="proof rv">
+      <div class="p"><div class="num">37<span class="u">社</span></div><div class="lb">生成AI研修 支援企業数</div></div>
+      <div class="p"><div class="num">2,500<span class="u">名</span></div><div class="lb">研修受講者数</div></div>
+      <div class="p"><div class="num">2<span class="u">トラック</span></div><div class="lb">エンジニア / 非エンジニア</div></div>
+      <div class="p"><div class="num">4<span class="u">段階</span></div><div class="lb">相談→パイロット→研修→定着</div></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- FACT STRIP: Claude Codeとは -->
+<section class="factstrip">
+  <div class="wrap"><div class="col">
+    <p class="fs-lead rv">Claude Codeは、<span class="fb">ターミナルやIDEから指示するだけでコードを書き、実行し、検証するAI</span>。<br />開発の道具にとどまらず、業務ツールを「作れる側」に回るための道具でもある。</p>
+    <ul class="rv">
+      <li>ターミナル・IDE（VS Code / JetBrains）・Web・Slackなど複数の環境で動作</li>
+      <li>コードベース全体を把握し、複数ファイルにまたがる編集・テスト・PR作成まで実行</li>
+      <li>ローカル環境で動作し、ファイル変更やコマンド実行の前に許可を求める設計</li>
+      <li>法人プランでは監査ログ等の管理機能を提供。全ての有料プランにClaude Codeが含まれる</li>
+    </ul>
+    <p class="fs-src rv">出典: Claude公式製品ページおよび公式料金ページ（2026年8月時点）。機能・プラン内容は変更される場合があります。</p>
+  </div></div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem" class="sec">
+  <div class="wrap"><div class="col">
+    <div class="sec-head rv">
+      <div class="meta"><span class="n">§01</span>PROBLEM<br />課題提起</div>
+      <h2 class="h2">Claude Codeの組織展開、<br />止まるのはいつも<span class="b">この4つ</span>です</h2>
+    </div>
+
+    <div class="prob-list">
+      <div class="prob rv">
+        <div class="pn">01</div>
+        <div>
+          <h3>一部の個人利用で止まっている</h3>
+          <p>感度の高いエンジニアが個人アカウントで触っているが、チームの標準フローには乗っていない。<span class="ib">成果が属人化し、組織として再現できない。</span>使う人と使わない人の生産性差だけが開いていく。</p>
+        </div>
+      </div>
+      <div class="prob rv">
+        <div class="pn">02</div>
+        <div>
+          <h3>ガバナンスが不安で、会社として許可できない</h3>
+          <p>ソースコード・機密情報の扱い、実行権限、レビュー基準が未整備。情シス・セキュリティ部門が判断材料を持てず、<span class="ib">「一旦保留」のまま数ヶ月が過ぎている。</span></p>
+        </div>
+      </div>
+      <div class="prob rv">
+        <div class="pn">03</div>
+        <div>
+          <h3>「開発者のツール」で認識が止まり、非エンジニアに広がらない</h3>
+          <p>集計・文書生成・定型業務の自動化など、業務部門にこそ効く使い方があるのに、<span class="ib">エンジニア以外は自分ごとになっていない。</span>全社の生産性レバーが未着手のまま残る。</p>
+        </div>
+      </div>
+      <div class="prob rv">
+        <div class="pn">04</div>
+        <div>
+          <h3>研修をやっても、2週間で元に戻る</h3>
+          <p>1日研修の直後は盛り上がるが、業務に組み込む設計が無いため定着しない。<span class="ib">「良い話を聞いた」で終わり、業務フローは何も変わらない。</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="verdict rv">
+      <div class="vk">TechWorker<br />の見立て</div>
+      <p>4つとも、ツールの問題ではありません。<span class="b">対象業務の選定・運用ルール・定着の仕組み</span>という組織側の設計が無いことが原因です。研修はその設計とセットで初めて機能します。</p>
+    </div>
+  </div></div>
+</section>
+
+<!-- CURRICULUM -->
+<section id="curriculum" class="sec">
+  <div class="wrap"><div class="col">
+    <div class="sec-head rv">
+      <div class="meta"><span class="n">§02</span>CURRICULUM<br />カリキュラム例</div>
+      <h2 class="h2">エンジニアと非エンジニア、<br /><span class="b">2トラック</span>で設計します</h2>
+    </div>
+    <p class="lead rv" style="margin:-24px 0 40px;">同じツールでも、開発チームと業務部門では「任せる仕事」がまったく違います。だからトラックを分けます。以下は代表的な構成例で、最終的な内容・日数は対象と目的に合わせて設計します。</p>
+
+    <div class="trk rv">
+      <div class="tr head">
+        <div class="tc">項目</div>
+        <div class="tc">TRACK A<span class="nm"><span class="b">エンジニア向け</span>：AI駆動開発の実務</span></div>
+        <div class="tc">TRACK B<span class="nm"><span class="b">非エンジニア向け</span>：業務ツールを研修内で実装</span></div>
+      </div>
+      <div class="tr">
+        <div class="tc" data-h="項目"><span class="rl">対象</span></div>
+        <div class="tc" data-h="エンジニア向け">開発チーム・テックリード・SRE・DX推進のエンジニア</div>
+        <div class="tc" data-h="非エンジニア向け">企画・営業・人事・経理などの業務部門、DX推進担当</div>
+      </div>
+      <div class="tr">
+        <div class="tc" data-h="項目"><span class="rl">日数（例）</span></div>
+        <div class="tc" data-h="エンジニア向け">2日（半日×4回に分割可）＋ 定着期間 約4週間</div>
+        <div class="tc" data-h="非エンジニア向け">1日（半日×2回に分割可）＋ 定着期間 約4週間</div>
+      </div>
+      <div class="tr">
+        <div class="tc" data-h="項目"><span class="rl">内容（例）</span></div>
+        <div class="tc" data-h="エンジニア向け">
+          <ul>
+            <li>計画→実装→テスト→レビューをClaude Codeで回す実務演習</li>
+            <li>CLAUDE.md・カスタムコマンドの設計（自社リポジトリで実施）</li>
+            <li>サブエージェント活用・CI連携による自動化</li>
+            <li>AI生成コードのレビュー運用・品質基準の設計</li>
+          </ul>
+        </div>
+        <div class="tc" data-h="非エンジニア向け">
+          <ul>
+            <li>自部門の業務棚卸しと「任せる仕事」の選定</li>
+            <li>集計・文書生成・定型業務の自動化ツールを研修内で実装</li>
+            <li>安全に使うための権限・ルールの理解</li>
+            <li>翌日から業務で使うための運用設計</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tr">
+        <div class="tc" data-h="項目"><span class="rl">ゴール</span></div>
+        <div class="tc" data-h="エンジニア向け"><span class="goal">Claude Codeがチームの標準開発フローに乗り、レビュー基準込みで運用が回っている状態。</span></div>
+        <div class="tc" data-h="非エンジニア向け"><span class="goal">自分の業務で動くツールを研修内で1つ完成させ、翌日から業務で使っている状態。</span></div>
+      </div>
+      <div class="tr">
+        <div class="tc" data-h="項目"><span class="rl">持ち帰り</span></div>
+        <div class="tc" data-h="エンジニア向け">自社リポジトリ用CLAUDE.md／レビュー・運用ルール初版</div>
+        <div class="tc" data-h="非エンジニア向け">自分の業務で動くツール1本／部門ユースケース一覧</div>
+      </div>
+    </div>
+    <p class="trk-note rv">※ 日数・内容はいずれも<b>一例</b>です。対象・目的・開発環境・セキュリティ要件に合わせて設計します。料金は構成により異なるため、<b>お問い合わせください</b>。</p>
+
+    <div class="term rv">
+      <p class="t-cap">非エンジニアトラックの演習イメージ ── 自然言語の指示だけで業務ツールが動く（※図はイメージです）</p>
+      <div class="t-win">
+        <div class="t-bar"><i></i><i></i><i></i><span class="t-title">claude-code — 演習: 週次レポートの自動集計</span></div>
+        <div class="t-body">
+          <span class="pr">&gt;</span> 毎週の売上CSVを読み込んで、部門別の集計表と前週比コメントをつけたレポートを作って<br />
+          <span class="dim">売上データの形式を確認しています…</span><br />
+          <span class="dim">集計スクリプトを作成し、実行の許可を求めています…</span><br />
+          <span class="ok">✓ weekly_report.md を作成しました（部門別集計・前週比コメント付き）</span><br />
+          <span class="pr">&gt;</span> これを毎週月曜の朝に自動で動くようにして
+        </div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- STRENGTH -->
+<section id="strength" class="sec">
+  <div class="wrap"><div class="col">
+    <div class="sec-head rv">
+      <div class="meta"><span class="n">§03</span>STRENGTH<br />TechWorkerの差別化</div>
+      <h2 class="h2">研修で<span class="b">終わらせない</span>。<br />それがこの研修の設計思想です</h2>
+    </div>
+
+    <div class="str rv">
+      <div class="sk"><div class="sn">01</div><span class="sl">Pilot First</span></div>
+      <div>
+        <h3>研修の前に、パイロットを設計する</h3>
+        <p>いきなり全員に研修をしても定着しません。先に対象業務を選定し、<span class="ib">「何がどれだけ楽になれば成功か」</span>を定義してから、少人数で検証します。研修は、検証済みの勝ち筋を組織に広げるフェーズとして設計します。</p>
+        <ul>
+          <li>対象業務の選定と成果指標の定義</li>
+          <li>環境・権限・セキュリティ要件の事前整理</li>
+          <li>少人数パイロットでの実地検証</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="str rv">
+      <div class="sk"><div class="sn">02</div><span class="sl">Adoption &amp; Governance</span></div>
+      <div>
+        <h3>定着伴走から、社内展開・ガバナンス設計まで</h3>
+        <p>研修後の約4週間、実業務での運用をレビューし、つまずきを潰します。その先の<span class="ib">社内展開計画・利用ガイドライン・レビュー基準・権限設計</span>まで含めて、組織の仕組みとして残します。研修の熱が冷める前に、業務フローに固定します。</p>
+        <ul>
+          <li>定着期間の運用レビュー・質問対応</li>
+          <li>利用ガイドライン・レビュー基準の整備</li>
+          <li>他部門への展開計画とガバナンス設計</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="str rv">
+      <div class="sk"><div class="sn">03</div><span class="sl">BPR Perspective</span></div>
+      <div>
+        <h3>BPR視点で、エージェント化余地を診断する</h3>
+        <p>Claude Codeの価値は「今の業務を速くする」だけではありません。業務を棚卸しし、<span class="ib">どの業務をエージェントに任せ、どの業務を人が担うのか</span>を再設計する入口として研修を位置づけます。37社・2,500名の支援で蓄積した業務適用の実装知がベースです。</p>
+        <ul>
+          <li>業務棚卸しによるエージェント化余地の診断</li>
+          <li>費用対効果の高いユースケースからの着手順設計</li>
+          <li>研修後の業務再設計ロードマップ提案</li>
+        </ul>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- STEPS -->
+<section id="steps" class="sec">
+  <div class="wrap"><div class="col">
+    <div class="sec-head rv">
+      <div class="meta"><span class="n">§04</span>PROCESS<br />進め方</div>
+      <h2 class="h2">相談から定着まで、<br /><span class="b">4ステップ</span>で進めます</h2>
+    </div>
+
+    <div class="steps">
+      <div class="step rv">
+        <div class="stn">01<span class="sl">STEP</span></div>
+        <div>
+          <h4>無料相談</h4>
+          <div class="smeta">30分・オンライン</div>
+          <p>現状の利用状況・対象・目的をヒアリングし、この研修が合うかどうかの適合判定から始めます。合わない場合は、その旨をお伝えします。</p>
+        </div>
+        <div class="take">
+          <div class="tl">Output</div>
+          <ul><li>適合判定と推奨トラックのご提案</li></ul>
+        </div>
+      </div>
+
+      <div class="step rv">
+        <div class="stn">02<span class="sl">STEP</span></div>
+        <div>
+          <h4>パイロット設計</h4>
+          <div class="smeta">対象業務・環境の設計</div>
+          <p>対象業務・環境・権限・評価基準を設計し、少人数で検証します。セキュリティ要件の整理もここで行います。</p>
+        </div>
+        <div class="take">
+          <div class="tl">Output</div>
+          <ul><li>パイロット計画・成果指標</li><li>環境・権限の設計メモ</li></ul>
+        </div>
+      </div>
+
+      <div class="step rv">
+        <div class="stn">03<span class="sl">STEP</span></div>
+        <div>
+          <h4>研修実施</h4>
+          <div class="smeta">2トラック・実装型</div>
+          <p>エンジニア向け・非エンジニア向けのトラック別に実施。聞くだけの研修ではなく、研修内で実際に自分の業務を動かすところまで進めます。</p>
+        </div>
+        <div class="take">
+          <div class="tl">Output</div>
+          <ul><li>CLAUDE.md・運用ルール初版</li><li>動く業務ツール・ユースケース</li></ul>
+        </div>
+      </div>
+
+      <div class="step rv">
+        <div class="stn">04<span class="sl">STEP</span></div>
+        <div>
+          <h4>定着伴走</h4>
+          <div class="smeta">約4週間〜</div>
+          <p>実業務での運用をレビューし、定着を確認します。社内展開計画・ガイドライン・ガバナンス設計まで整えて、組織の仕組みとして引き渡します。</p>
+        </div>
+        <div class="take">
+          <div class="tl">Output</div>
+          <ul><li>利用ガイドライン・レビュー基準</li><li>社内展開ロードマップ</li></ul>
+        </div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="sec">
+  <div class="wrap"><div class="col">
+    <div class="sec-head rv">
+      <div class="meta"><span class="n">§05</span>FAQ<br />よくある質問</div>
+      <h2 class="h2">よくあるご質問</h2>
+    </div>
+
+    <div class="faq rv">
+      <details class="fq"><summary><span class="q">Q</span><span>非エンジニアでも使えますか？</span><span class="pl">+</span></summary><div class="a">使えます。Claude Codeは自然言語の指示で動くため、プログラミング知識を前提にしません。非エンジニア向けトラックでは、コードの書き方ではなく「自分の業務のどこを任せるか」から入り、研修内で実際に動く業務ツールを1つ作ります。TechWorker自身も非エンジニアを含む体制で日常的に運用しています。</div></details>
+      <details class="fq"><summary><span class="q">Q</span><span>セキュリティや環境面が不安です。</span><span class="pl">+</span></summary><div class="a">Claude Codeはローカル環境で動作し、ファイルの変更やコマンドの実行前に許可を求める設計です（Claude公式製品ページより・2026年8月時点）。法人向けプランでは監査ログ等の管理機能も提供されています（Claude公式料金ページより・同時点）。研修では、貴社のセキュリティ要件に合わせた権限設計・利用ルールの整備までを扱います。</div></details>
+      <details class="fq"><summary><span class="q">Q</span><span>期間と人数の目安は？</span><span class="pl">+</span></summary><div class="a">カリキュラム例は、エンジニア向け2日・非エンジニア向け1日に、それぞれ約4週間の定着期間を加えた構成です。人数は5名程度の少人数から実施できます。いずれも一例であり、最終的な内容・日数は対象と目的に合わせて設計します。料金はお問い合わせください。</div></details>
+      <details class="fq"><summary><span class="q">Q</span><span>助成金は使えますか？</span><span class="pl">+</span></summary><div class="a">人材開発支援助成金の対象となり得ます。要件・申請可否は管轄労働局または社労士にご確認ください。カリキュラムを要件に合わせた構成で設計することは可能です。</div></details>
+    </div>
+  </div></div>
+</section>
+
+<!-- ARTICLES -->
+<section id="articles" class="sec" style="padding-top:0;">
+  <div class="wrap"><div class="col">
+    <div class="sec-head rv">
+      <div class="meta"><span class="n">§06</span>ARTICLES<br />関連記事</div>
+      <h2 class="h2">検討に役立つ<span class="b">関連記事</span></h2>
+    </div>
+
+    <div class="arts rv">
+      <a class="art" href="media/kenshu/claude-code-dounyu.html">
+        <div><h3>Claude Codeの企業導入 ── 進め方と最初に決めること</h3><p>導入前の環境整理から、対象チームの選び方、最初の1ヶ月の進め方まで。</p></div>
+        <span class="go">→</span>
+      </a>
+      <a class="art" href="media/kenshu/claude-code-cost.html">
+        <div><h3>Claude Codeのコスト設計 ── 料金プランと運用コストの考え方</h3><p>プランの選び方と、組織利用でコストを管理するための設計。</p></div>
+        <span class="go">→</span>
+      </a>
+      <a class="art" href="media/kenshu/claude-code-hi-engineer.html">
+        <div><h3>非エンジニアのClaude Code活用 ── 業務部門での使いどころ</h3><p>集計・文書生成・定型業務の自動化。コードを書かない人のための実践ガイド。</p></div>
+        <span class="go">→</span>
+      </a>
+      <a class="art" href="media/kenshu/claude-code-shanai-tenkai.html">
+        <div><h3>Claude Codeの社内展開 ── 個人利用から組織標準にするまで</h3><p>ガイドライン・権限設計・展開計画。定着させる組織側の設計を解説。</p></div>
+        <span class="go">→</span>
+      </a>
+      <a class="art" href="media/kenshu/claude-code-hi-engineer.html">
+        <div><h3>非エンジニアのClaude Code活用 ── 業務部門で何ができるか</h3><p>開発職以外のメンバーが実務で使える範囲と、始め方を整理。</p></div>
+        <span class="go">→</span>
+      </a>
+    </div>
+  </div></div>
+</section>
+
+<!-- CONTACT -->
+<section id="cta" class="sec" style="padding-top:0;">
+  <div class="wrap"><div class="col">
+    <div class="sec-head rv">
+      <div class="meta"><span class="n">§07</span>CONTACT<br />無料相談</div>
+      <h2 class="h2">まずは<span class="b">無料相談</span>から。<br />適合判定だけでも構いません</h2>
+    </div>
+
+    <div class="contact-grid rv">
+      <div class="cl">
+        <div class="ck">How It Works</div>
+        <h3>申込から、<br /><span class="b">実施まで最短3日</span></h3>
+        <ol>
+          <li>フォーム送信（30秒）。ご希望の内容を選んでください</li>
+          <li>担当より日程調整のご連絡（オンライン／貴社訪問）</li>
+          <li>無料相談（30分）で現状と目的をヒアリング</li>
+          <li>結果をふまえ、パイロット・研修の構成をご提案（任意）</li>
+        </ol>
+        <p class="cnote">「まず資料だけ欲しい」も、フォームの希望項目から選べます。無理な営業はしません。合わない場合はその旨をお伝えします。</p>
+      </div>
+      <div class="cr2">
+        <h3>無料相談に申し込む</h3>
+        <p class="as">30秒で入力完了。担当より1営業日以内にご連絡します。</p>
+        <form id="ccTrainingForm" onsubmit="submitCcTraining(event)">
+          <div class="fld">
+            <label>ご希望の内容<span class="rq">必須</span></label>
+            <select name="offer" required>
+              <option value="">選択してください</option>
+              <option>無料相談で話を聞きたい</option>
+              <option>カリキュラムの詳細を知りたい</option>
+              <option>まず資料だけ欲しい</option>
+            </select>
+          </div>
+          <div class="fld"><label>会社名<span class="rq">必須</span></label><input type="text" name="company" placeholder="株式会社サンプル" required /></div>
+          <div class="fld"><label>お名前<span class="rq">必須</span></label><input type="text" name="name" placeholder="山田 太郎" required /></div>
+          <div class="fld"><label>会社メールアドレス<span class="rq">必須</span></label><input type="email" name="email" placeholder="taro@example.co.jp" required /></div>
+          <button type="submit" class="btn btn-blue submit">無料で申し込む<span class="ar">→</span></button>
+          <p class="trust">入力情報はご案内のみに利用します。<a href="privacy.html">プライバシーポリシー</a>に同意のうえ送信してください。</p>
+        </form>
+        <div id="ccTrainingThanks" style="display:none;">
+          <h3>送信が完了しました。</h3>
+          <p class="as">担当より1営業日以内にご連絡します。ありがとうございます。</p>
+        </div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- DISCLAIMER -->
+<section class="disclaimer">
+  <div class="wrap"><div class="col">
+    <p class="rv">本研修は株式会社TechWorkerが独自に提供するものであり、Anthropic PBCとの提携・後援・承認を受けたものではありません。Claude、Claude CodeはAnthropic PBCの商標です。本ページに記載のClaude Codeの機能・プランに関する情報は、Claude公式製品ページ・公式料金ページ（2026年8月時点）に基づきます。最新の情報は各公式ページをご確認ください。</p>
+  </div></div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap"><div class="col">
+    <div class="frow">
+      <div>
+        <a href="/" class="brand"><span class="mk">TechWorker</span></a>
+        <p class="ft">AIはエンジンだ。コンテキストは燃料だ。上場企業を含む37社・2,500名の研修実装実績を持つ、企業向け生成AIコンサルティング・研修事業者。<br /><br />代表取締役: 古野 光太朗<br />運営: <a href="https://techworker.co.jp" style="color:var(--blue);">株式会社TechWorker</a></p>
+      </div>
+      <div>
+        <h5>Program</h5>
+        <ul>
+          <li><a href="#problem">課題</a></li>
+          <li><a href="#curriculum">カリキュラム例</a></li>
+          <li><a href="#strength">差別化</a></li>
+          <li><a href="#steps">進め方</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="#cta">無料相談（30分）</a></li>
+          <li><a href="training.html">生成AI法人研修はこちら</a></li>
+          <li><a href="media/">オウンドメディア</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2026 TechWorker Inc. All rights reserved.</span>
+      <a href="privacy.html">プライバシーポリシー</a>
+    </div>
+  </div></div>
+</footer>
+
+<!-- FLOATING CTA -->
+<div class="float" id="floatCta">
+  <a class="btn btn-line hide-sm" href="#curriculum" style="background:var(--paper);">カリキュラム例</a>
+  <a class="btn btn-blue" href="#cta">無料相談 <span class="ar">→</span></a>
+</div>
+
+<script>
+  // reveal on scroll
+  (function () {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.rv').forEach(function (el) { io.observe(el); });
+  })();
+  // floating cta
+  (function () {
+    var fc = document.getElementById('floatCta');
+    var hero = document.querySelector('.hero');
+    var cta = document.getElementById('cta');
+    function onScroll() {
+      var past = window.scrollY > (hero ? hero.offsetHeight * 0.7 : 600);
+      var atForm = cta && cta.getBoundingClientRect().top < window.innerHeight;
+      if (past && !atForm) fc.classList.add('show'); else fc.classList.remove('show');
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
+
+<script>
+function submitCcTraining(e){
+  e.preventDefault();
+  var form=e.target;
+  var btn=form.querySelector('.submit');
+  var get=function(n){var el=form.querySelector('[name='+n+']');return el?el.value:'';};
+  var offer=get('offer');
+  var inquiry=(offer==='まず資料だけ欲しい')?'document':'consultation';
+  var payload={
+    name:get('name'),
+    company:get('company'),
+    email:get('email'),
+    inquiry_type:inquiry,
+    source:'Claude Code研修LP',
+    message:'【Claude Code研修LP】ご希望: '+(offer||'(未選択)')
+  };
+  var label=btn?btn.innerHTML:'';
+  if(btn){btn.disabled=true;btn.style.opacity='0.7';btn.innerHTML='<span>送信中...</span>';}
+  fetch('/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+  .then(function(res){if(!res.ok)throw new Error('server');return res.json();})
+  .then(function(){
+    if(typeof fbq==='function'){fbq('track','Lead');}
+    var thanks=document.getElementById('ccTrainingThanks');
+    form.style.display='none';
+    if(thanks){thanks.style.display='block';}
+    var ct=document.getElementById('cta');
+    if(window.scrollTo&&ct){window.scrollTo({top:ct.offsetTop-80,behavior:'smooth'});}
+  })
+  .catch(function(){
+    if(btn){btn.disabled=false;btn.style.opacity='1';btn.innerHTML=label;}
+    alert('送信に失敗しました。お手数ですが時間をおいて再度お試しください。');
+  });
+}
+</script>
+</body>
+</html>

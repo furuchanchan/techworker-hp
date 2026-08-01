@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3V34NWXVCJ');
+</script>
+<!-- TW intent tracker (first-party, sessionStorage only) -->
+<script>
+(function(){try{var ss=sessionStorage,ls=localStorage;
+if(!ss.getItem('tw_landing')){ss.setItem('tw_landing',location.pathname);ss.setItem('tw_ref',document.referrer||'');var q=new URLSearchParams(location.search);ss.setItem('tw_utm',['utm_source','utm_medium','utm_campaign'].map(function(k){return q.get(k)||'';}).join('|'));}
+var p=JSON.parse(ss.getItem('tw_pages')||'[]');if(p[p.length-1]!==location.pathname){p.push(location.pathname);ss.setItem('tw_pages',JSON.stringify(p.slice(-20)));}
+if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_visits')||'0',10)+1));ss.setItem('tw_counted','1');}
+}catch(e){}})();
+</script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Codeの社内展開｜セキュリティ・管理機能・配布設計【2026】 — TechWorker</title>
+<meta name="description" content="Claude Codeを全社展開する情シス向けに、アカウント・権限設計、データの取扱い（学習利用・保持期間）、managed-settings.jsonによる設定の強制配布、OpenTelemetryでの監査、段階展開の手順を、Anthropic公式ドキュメントで確認できた仕様のみで整理。論点マップ・社内ルール雛形・展開前チェックリスト付き。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/kenshu/claude-code-shanai-tenkai">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Claude Codeの社内展開｜セキュリティ・管理機能・配布設計【2026】">
+<meta property="og:description" content="アカウント・権限設計、学習利用・保持期間、managed-settings.jsonでの設定強制配布、OpenTelemetryでの監査、段階展開の手順。Anthropic公式ドキュメントで確認できた仕様のみで、情シス向けに整理します。">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/media/kenshu/claude-code-shanai-tenkai">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Codeの社内展開｜セキュリティ・管理機能・配布設計【2026】">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../article.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"Claude Codeの社内展開｜セキュリティ・管理機能・配布設計【2026】",
+  "description":"Claude Codeを全社展開する情シス向けガイド。アカウント・権限設計、データの取扱い（学習利用・保持期間）、managed-settings.jsonによる設定の強制配布、OpenTelemetryと分析ダッシュボードでの監査、段階展開の手順を、Anthropic公式ドキュメントで確認できた仕様のみで整理する。",
+  "datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"ja",
+  "image":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630},
+  "author":{"@type":"Person","name":"古野光太朗","jobTitle":"株式会社TechWorker 代表取締役","url":"https://techworker.co.jp/company.html","image":"https://techworker.co.jp/assets/author-furuno.jpg","sameAs":["https://x.com/koutarou_furuno"],"affiliation":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"}},
+  "publisher":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/","logo":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630}},
+  "mainEntityOfPage":{"@type":"WebPage","@id":"https://techworker.co.jp/media/kenshu/claude-code-shanai-tenkai"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},
+    {"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},
+    {"@type":"ListItem","position":3,"name":"AI研修・導入ラボ","item":"https://techworker.co.jp/media/kenshu/"},
+    {"@type":"ListItem","position":4,"name":"Claude Codeの社内展開","item":"https://techworker.co.jp/media/kenshu/claude-code-shanai-tenkai"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"社員がClaude Codeに入力したソースコードは、AIモデルの学習に使われますか？","acceptedAnswer":{"@type":"Answer","text":"Team・Enterprise・APIなどの商用プランでは、組織が明示的にオプトインしない限り、Claude Codeに送信されたコードやプロンプトを生成モデルの学習に使わないとAnthropicが公式に明記しています（Anthropic公式ドキュメントより・2026年8月時点）。一方、個人向けプラン（Free・Pro・Max）には学習利用を許可する設定が存在するため、業務利用は会社契約に統一することが前提になります。"}},
+    {"@type":"Question","name":"全社員のClaude Codeに同じセキュリティ設定を強制できますか？","acceptedAnswer":{"@type":"Answer","text":"できます。管理者が端末に配布するmanaged-settings.json（管理ポリシー設定）は設定の優先順位で最上位にあり、ユーザー側の設定では上書きできません。macOSでは /Library/Application Support/ClaudeCode/、Linux・WSLでは /etc/claude-code/ に配置し、MDMなどの資産管理ツールで配布します（Anthropic公式ドキュメントより・2026年8月時点）。"}},
+    {"@type":"Question","name":"利用状況やコストの監査ログは取得できますか？","acceptedAnswer":{"@type":"Answer","text":"取得できます。OpenTelemetry形式でセッション数・トークン使用量・コストなどのメトリクスを自社の監視基盤へ出力できるほか、Team・Enterpriseプランには管理者向けの分析ダッシュボードが用意されています。メトリクスにコードやプロンプトの本文は含まれないと公式に明記されています（2026年8月時点）。"}},
+    {"@type":"Question","name":"社員が個人アカウントで業務利用する「野良利用」はどう防ぎますか？","acceptedAnswer":{"@type":"Answer","text":"技術面では、管理ポリシー設定のforceLoginMethod・forceLoginOrgUUIDで、自社組織以外のアカウントでのログインを制限できます（Anthropic公式ドキュメントより・2026年8月時点）。あわせて、会社契約アカウントの発行、利用ルールの明文化、研修による周知をセットで進めると実効性が上がります。"}}
+  ]
+}
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <a href="index.html" class="logo">AI研修・導入<i>ラボ</i></a>
+  <ul>
+    <li><a href="index.html">記事一覧</a></li>
+    <li><a href="../../claude-code-training.html">Claude Code研修について</a></li>
+    <li><a href="../../index.html">TechWorkerとは</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="../../claude-code-training.html" class="nav-cta"><span class="full">研修の相談</span><span class="short">相談</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="index.html">記事一覧</a>
+  <a href="../../claude-code-training.html">Claude Code研修について</a>
+  <a href="../../index.html">TechWorkerとは</a>
+  <a href="../../claude-code-training.html" class="m-cta">研修の相談をする</a>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a><span class="sep">/</span>Claude Codeの社内展開</nav>
+  <div class="kicker">導入・展開</div>
+  <h1>Claude Codeの社内展開｜セキュリティ・管理機能・配布設計</h1>
+  <p class="dek">Claude Codeはファイル編集からコマンド実行まで踏み込むエージェント型ツールだ。だからこそ社内展開では、ブラウザ型チャットAIとは別の論点——アカウント統制、データの取扱い、設定の強制配布、監査——を先に設計する必要がある。情シスが押さえるべき論点を、Anthropic公式ドキュメントで確認できた仕様だけで整理する。</p>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.29</span><span class="dot">·</span><span>最終更新 2026.07.29</span><span class="dot">·</span><span>読了 9分</span>
+  </div>
+</header>
+
+<style>
+/* claude-code-shanai-tenkai cover — managed-settings.json エディタモック（scoped: te-） */
+.te-cover{padding:0;overflow:hidden;}
+.te-bar{display:flex;align-items:center;gap:8px;padding:12px 18px;border-bottom:1px solid var(--line);}
+.te-dot{width:10px;height:10px;border-radius:50%;background:#D5DAE2;flex:none;}
+.te-file{font-family:var(--en);font-size:11.5px;color:var(--slate);letter-spacing:.02em;margin-left:8px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.te-file b{color:var(--ink);font-weight:600;}
+.te-smp{margin-left:auto;flex:none;font-family:var(--jp);font-size:10.5px;color:var(--slate);}
+.te-body{display:flex;font-family:var(--en);font-size:12.5px;line-height:1.9;padding:16px 0 18px;}
+.te-ln{flex:none;width:44px;text-align:right;padding-right:14px;color:#B9C0CB;user-select:none;white-space:pre;}
+.te-code{flex:1;min-width:0;overflow-x:auto;padding-right:18px;white-space:pre;color:var(--ink-soft);}
+.te-code .k{color:var(--ink);font-weight:600;}
+.te-code .s{color:var(--electric);}
+.te-cap{padding:0 18px 14px;font-family:var(--jp);font-size:11.5px;color:var(--slate);border-top:1px solid var(--line);padding-top:12px;}
+@media(max-width:560px){.te-body{font-size:10.5px;}.te-ln{width:32px;padding-right:9px;}.te-smp{display:none;}}
+</style>
+<div class="art-cover-v6 te-cover">
+  <div class="te-bar">
+    <span class="te-dot"></span><span class="te-dot"></span><span class="te-dot"></span>
+    <span class="te-file">/Library/Application Support/ClaudeCode/ — <b>managed-settings.json</b></span>
+    <span class="te-smp">※サンプル・全社に強制配布する管理ポリシー設定</span>
+  </div>
+  <div class="te-body" role="img" aria-label="managed-settings.jsonのサンプル。permissionsのdenyで.envの読み取りとcurlコマンドを禁止し、forceLoginOrgUUIDで自社組織のみログインを許可する設定例">
+    <div class="te-ln"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</div>
+    <div class="te-code">{
+  <span class="k">"permissions"</span>: {
+    <span class="k">"deny"</span>: [
+      <span class="s">"Read(./.env)"</span>,
+      <span class="s">"Read(./secrets/**)"</span>,
+      <span class="s">"Bash(curl *)"</span>
+    ]
+  },
+  <span class="k">"forceLoginMethod"</span>: <span class="s">"claudeai"</span>,
+  <span class="k">"forceLoginOrgUUID"</span>: <span class="s">"xxxxxxxx-xxxx-xxxx"</span>
+}</div>
+  </div>
+  <div class="te-cap">図はイメージです。managed-settings.jsonはユーザー側の設定より常に優先され、上書きできません（Anthropic公式ドキュメントより・2026年8月時点）。</div>
+</div>
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次">
+    <div class="art-toc-inner">
+      <div class="toc-h">目次</div>
+      <a href="#s1">情シスが押さえる論点マップ</a>
+      <a href="#s2">アカウント・権限設計</a>
+      <a href="#s3">データの取扱い</a>
+      <a href="#s4">設定の標準化・配布</a>
+      <a href="#s5">利用ルールの雛形</a>
+      <a href="#s6">監査・モニタリング</a>
+      <a href="#s7">段階展開の設計</a>
+      <a href="#faq">よくある質問</a>
+    </div>
+  </nav>
+
+  <article class="art-body rv">
+    <div class="lede">
+      <div class="lede-h">この記事の要点</div>
+      <ul>
+        <li>Claude Codeの社内展開は、<strong>契約形態の選定 → データ取扱いの確認 → 設定の強制配布 → 利用ルール → 監査 → 段階展開</strong>の順で設計する。ブラウザ型チャットAIの展開とは論点が別物。</li>
+        <li>Team・Enterprise・APIなどの商用プランでは、入力したコードやプロンプトは<strong>既定でモデル学習に使われず、サーバー側の保持は標準30日</strong>（Anthropic公式ドキュメントより・2026年8月時点）。個人プラン混在の「野良利用」を潰すことが第一歩。</li>
+        <li>設定はmanaged-settings.json（管理ポリシー設定）で<strong>上書き不可の全社標準を強制</strong>でき、OpenTelemetryと管理者向けダッシュボードで利用状況・コストを監査できる。本記事は論点マップ・社内ルール雛形・展開前チェックリストを配布物として掲載する。</li>
+      </ul>
+    </div>
+
+    <aside class="inline-dx-cta" style="margin:6px 0 40px;border:1px solid var(--line-2);border-radius:12px;background:var(--white);padding:22px 26px;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
+  <div style="flex:1;min-width:240px;">
+    <div style="font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);">法人向け研修 ・ Claude Code</div>
+    <div style="font-family:var(--jp);font-weight:700;font-size:16.5px;color:var(--ink);line-height:1.55;margin-top:8px;">Claude Codeの社内展開を、研修で立ち上げる</div>
+    <div style="font-size:13.5px;color:var(--slate);line-height:1.8;margin-top:5px;">設定配布・利用ルールの設計からハンズオンまで、情シスと現場の両輪で伴走します。</div>
+  </div>
+  <a href="../../claude-code-training.html" class="btn" style="white-space:nowrap;flex:none;color:var(--paper);border-bottom:none;">研修の詳細を見る <i>&rarr;</i></a>
+</aside>
+
+    <h2 id="s1">Claude Codeの社内展開で、情シスは何を押さえるべきか？</h2>
+    <p class="answer">論点はアカウント・データ取扱い・設定配布・利用ルール・監査・展開順序の6つ。この順に決めれば抜けなく設計できる。</p>
+    <p>Claude Codeは、ターミナルやIDEから使うエージェント型のコーディングツールです。チャット画面にテキストを打つだけのAIと違い、リポジトリのファイルを読み、編集し、コマンドを実行するところまで踏み込みます。だから社内展開の設計も「入力してよい情報のルールを決めて終わり」にはなりません。誰のアカウントで使うのか、送信されたコードはどう扱われるのか、端末ごとの設定をどう統一するのか、利用状況をどう監査するのか——展開前に決めるべき論点を、先に地図として持っておきます。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>論点</th><th>確認すること</th><th>対応する公式機能・情報</th></tr>
+        <tr><td>アカウント・契約</td><td>個人プラン混在を許すか、会社契約に統一するか</td><td>Claude for Teams／Enterprise、Claude Console（API）、クラウド経由（Amazon Bedrock等）</td></tr>
+        <tr><td>データの取扱い</td><td>学習利用の有無、保持期間、端末のローカル保存</td><td>商用プランは既定で学習利用なし・標準保持30日、Zero Data Retention</td></tr>
+        <tr><td>権限・安全機構</td><td>どこまで自動実行を許すか</td><td>読み取り専用が既定の承認制、permissions（allow／deny／ask）、サンドボックス</td></tr>
+        <tr><td>設定の標準化・配布</td><td>全端末に同じポリシーを強制できるか</td><td>managed-settings.json（管理ポリシー設定）、MDMでの配布</td></tr>
+        <tr><td>監査・モニタリング</td><td>誰が・どれだけ・いくら使ったか</td><td>OpenTelemetryメトリクス、管理者向け分析ダッシュボード</td></tr>
+        <tr><td>展開の順序</td><td>一斉開放か、段階展開か</td><td>パイロット → 標準化 → 全社展開（本記事の手順）</td></tr>
+      </table>
+    </div>
+    <div class="callout"><p>本記事に記載した機能名・仕様は、すべてAnthropic公式ドキュメント（code.claude.com/docs）で確認できた内容のみです（2026年8月時点）。仕様は更新されるため、実際の展開時は必ず最新の公式ドキュメントを確認してください。</p></div>
+
+    <h2 id="s2">アカウントと権限はどう設計するか？</h2>
+    <p class="answer">会社契約（Team・Enterprise・API）に統一して一元管理する。統制要件が重い組織はSSO対応のEnterpriseが軸になる。</p>
+    <p>最初の分岐は契約形態です。個人向けプラン（Free・Pro・Max）は消費者向け規約で提供され、ユーザー自身の設定次第でデータが学習に使われる場合があります。業務コードを扱う以上、商用条項が適用され管理機能を持つ会社契約——Claude for Teams、Claude for Enterprise、またはClaude Console（API課金）——に統一するのが出発点です。Anthropic公式ドキュメント（2026年8月時点）に基づき、3つの選択肢を比較します。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>観点</th><th>Claude for Teams</th><th>Claude for Enterprise</th><th>Claude Console（API）</th></tr>
+        <tr><td>契約・請求</td><td>セルフサービス契約・一括請求</td><td>営業経由の契約・一括請求</td><td>API従量課金</td></tr>
+        <tr><td>管理機能</td><td>管理ダッシュボード・メンバー管理</td><td>SSO・ドメインキャプチャ・ロールベース権限・コンプライアンスAPI・管理ポリシー設定</td><td>メンバー招待・ロール割当（Claude Code用APIキーのみ発行できる「Claude Code」ロールあり）</td></tr>
+        <tr><td>利用分析</td><td>claude.ai上の分析ダッシュボード</td><td>同左＋Analytics API（Enterpriseのみ）</td><td>Consoleダッシュボード（利用状況・支出）</td></tr>
+        <tr><td>向く組織</td><td>小規模チームで早く始めたい</td><td>セキュリティ・コンプライアンス要件が重い</td><td>API基盤でコストを従量管理したい</td></tr>
+      </table>
+    </div>
+    <p>公式ドキュメントは、既存のクラウド契約を活かす経路——Amazon Bedrock、Google Cloud、Microsoft Foundry経由での利用——も案内しています。認証と課金をクラウド側に寄せたい組織の選択肢になります。さらに「野良利用」対策として、管理ポリシー設定の<strong>forceLoginMethod・forceLoginOrgUUID</strong>を配布すると、自社組織以外のアカウントでのログインを制限できます（公式ドキュメントより・2026年8月時点）。</p>
+    <p>ツール自体の権限も承認制が土台です。Claude Codeは既定で読み取り専用として動作し、ファイル編集やコマンド実行には明示的な承認が求められます。ls・cat・git statusのような読み取り専用コマンドは承認なしで実行され、頻用する安全なコマンドはユーザー・リポジトリ・組織単位で許可リスト化できます。認証情報はmacOSでは暗号化されたKeychainに保存されます。この「既定は閉じていて、開ける範囲を組織が決める」構造が、社内展開の設計余地そのものです。導入手順そのものは<a href="claude-code-dounyu.html">Claude Codeの導入方法</a>で解説しています。</p>
+
+    <h2 id="s3">入力したコードやデータはどう扱われるのか？</h2>
+    <p class="answer">商用プランでは入力したコードやプロンプトは既定で学習に使われない。サーバー側の保持は標準30日と公式に明記されている。</p>
+    <p>情シスが経営や法務から必ず聞かれるのがこの論点です。Anthropicの公式ドキュメント（2026年8月時点）は、プラン別のポリシーを明記しています。要点は「商用プランなら既定で学習利用なし」「保持は標準30日」「ただし端末のローカル保存は自社の管理範囲」の3つです。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>項目</th><th>公式ポリシー（商用プラン）</th></tr>
+        <tr><td>モデル学習への利用</td><td>Team・Enterprise・API・サードパーティ経由では、組織が明示的にオプトイン（Development Partner Program等）しない限り、コードやプロンプトを生成モデルの学習に使わない</td></tr>
+        <tr><td>サーバー側の保持期間</td><td>標準30日。Zero Data Retention（ZDR）はEnterprise向けに、適格性確認のうえ組織単位で有効化（標準Enterpriseに自動では含まれない）</td></tr>
+        <tr><td>端末のローカル保存</td><td>セッション記録が ~/.claude/projects/ に既定30日保存される。保存期間は設定（cleanupPeriodDays）で調整可能</td></tr>
+        <tr><td>フィードバック送信</td><td>/feedbackコマンドで送信した会話履歴（コード含む）は5年間保持。環境変数で無効化可能</td></tr>
+        <tr><td>運用テレメトリ</td><td>利用メトリクスにコード・プロンプト・ファイルパスは含まれない。環境変数でオプトアウト可能</td></tr>
+      </table>
+    </div>
+    <p>個人向けプラン（Free・Pro・Max）は事情が異なります。ユーザーが学習利用を許可する設定にしている場合、そのデータは新しいモデルの学習に使われ、保持期間も長くなります（公式ドキュメントより・2026年8月時点）。つまり「会社は商用プランだから安心」でも、社員が個人アカウントで業務コードを入力していれば統制の外です。契約の一本化とログイン制限（前節）をセットで設計する理由がここにあります。</p>
+    <div class="callout"><p>見落とされやすいのが端末側です。セッション記録はローカルにプレーンテキストで保存されるため、ディスク暗号化、退職・端末返却時のデータ消去、保存期間の設定は自社のエンドポイント管理の仕事になります。サーバー側のポリシー確認だけで安心しないことです。</p></div>
+
+    <h2 id="s4">設定はどう標準化し、全社に配布するか？</h2>
+    <p class="answer">managed-settings.jsonを配布すれば、ユーザーが上書きできないポリシーを全端末に強制できる。優先順位は管理設定が最上位。</p>
+    <p>Claude Codeの設定は階層構造になっており、どの層に何を書くかで「会社が強制する部分」と「チーム・個人に委ねる部分」を切り分けられます。公式ドキュメント（2026年8月時点）が定める階層は次のとおりです。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>スコープ（優先順）</th><th>ファイルの場所</th><th>適用範囲</th><th>社内展開での用途</th></tr>
+        <tr><td>1. 管理ポリシー</td><td>macOS: /Library/Application Support/ClaudeCode/<br>Linux・WSL: /etc/claude-code/<br>Windows: C:\Program Files\ClaudeCode\<br>のmanaged-settings.json</td><td>端末全体・上書き不可</td><td>情シスが強制するセキュリティポリシー</td></tr>
+        <tr><td>2. コマンドライン引数</td><td>—（起動時に指定）</td><td>そのセッションのみ</td><td>一時的な上書き</td></tr>
+        <tr><td>3. ローカル設定</td><td>リポジトリ内 .claude/settings.local.json</td><td>本人×該当リポジトリ（Git管理外）</td><td>個人の作業用調整</td></tr>
+        <tr><td>4. プロジェクト設定</td><td>リポジトリ内 .claude/settings.json</td><td>リポジトリの全員（Gitで共有）</td><td>チーム共通の許可ルール</td></tr>
+        <tr><td>5. ユーザー設定</td><td>~/.claude/settings.json</td><td>本人×全プロジェクト</td><td>個人の既定設定</td></tr>
+      </table>
+    </div>
+    <p>統制の要は最上位のmanaged-settings.jsonです。ここに書いたポリシーはユーザー側のどの設定でも上書きできないため、<strong>MDMやソフトウェア配布の仕組みで全端末に配置すれば、それが全社標準</strong>になります。書く内容の中心はpermissions（許可ルール）です。allow（許可）・deny（拒否）・ask（都度確認）でツールやコマンド単位の挙動を指定でき、たとえば「Read(./.env)」で認証情報ファイルの読み取りを、「Bash(curl *)」で外部への送信コマンドを組織として禁止できます。curlやwgetのようなWebからコンテンツを取得するコマンドは、そもそも既定で自動承認されない設計です（公式ドキュメントより・2026年8月時点）。</p>
+    <p>一方、チームごとの開発ルール——テストコマンドの許可、プロジェクト固有の環境変数など——はリポジトリの.claude/settings.jsonにコミットして共有します。公式ドキュメントも、承認済みの許可設定をバージョン管理で共有し、組織標準はmanaged settingsで強制する、という役割分担を推奨しています。「会社が守るべき線」と「チームが速く動くための線」を別の層に書けることが、この仕組みの設計上の価値です。</p>
+
+    <h2 id="s5">社内利用ルールには何を書くか？（雛形）</h2>
+    <p class="answer">対象アカウント・入力情報・権限設定・レビュー・報告の5点を最低限明文化する。雛形を土台に自社の機密区分へ合わせる。</p>
+    <p>技術的な統制（前節）と対になるのが、人が守る利用ルールです。ゼロから書き起こす必要はありません。以下を叩き台に、自社の情報区分・開発規程・既存のAI利用ポリシーへ接続してください。<strong>※以下は雛形（例）です。そのまま規程として使わず、自社の環境に合わせて調整してください。</strong></p>
+    <ul>
+      <li><strong>対象アカウント：</strong>会社が発行したTeam／Enterprise／Consoleアカウントのみ利用可。個人プランのアカウントで業務コード・業務情報を入力することを禁止する。</li>
+      <li><strong>入力してよい情報：</strong>自社リポジトリのコードおよび社内ドキュメントのうち、機密区分○以下。顧客から預かったコード・データは事前承認制とする。</li>
+      <li><strong>入力禁止情報：</strong>認証情報（APIキー・パスワード・秘密鍵）、顧客・従業員の個人情報、未公表の経営情報。</li>
+      <li><strong>権限設定：</strong>会社標準の管理ポリシー設定（managed-settings.json）を削除・回避しない。deny設定の変更は情シスの承認制とする。</li>
+      <li><strong>実行の承認：</strong>ファイル削除・外部送信を伴う操作は、内容を確認してから承認する。自動承認モードの利用は許可されたリポジトリに限る。</li>
+      <li><strong>MCPサーバー・拡張：</strong>外部ツール連携（MCPサーバー等）は会社が承認したもののみ導入可とする。</li>
+      <li><strong>成果物の扱い：</strong>AIが生成したコードは必ず人がレビューしてからマージする。ライセンス・脆弱性の確認は既存の開発プロセスに従う。</li>
+      <li><strong>インシデント報告：</strong>機密情報の誤入力や不審な挙動は○○（窓口）へ即時報告する。会話履歴を外部送信するコマンド（/feedback等）の利用は運用ルールに従う。</li>
+    </ul>
+    <div class="quote-box"><p>ルールは「禁止の羅列」ではなく「ここまでは安心して使っていい」という許可の宣言として書く。使ってよい範囲が明確なほど、現場の利用は速く、統制は効く。</p></div>
+
+    <h2 id="s6">利用状況はどう監査・モニタリングするか？</h2>
+    <p class="answer">OpenTelemetryのメトリクス出力と管理者向け分析ダッシュボードの2層で、利用量・コスト・定着度を継続的に監視できる。</p>
+    <p>展開して終わりではなく、利用状況を数字で追える状態を先に作ります。公式に用意された監査手段は2層あります（Anthropic公式ドキュメントより・2026年8月時点）。</p>
+    <p><strong>1層目はOpenTelemetryによるメトリクス出力</strong>です。環境変数CLAUDE_CODE_ENABLE_TELEMETRYを有効にすると、セッション数・トークン使用量・コスト（USD）・編集されたコード行数・コミット数などのメトリクスを、OTLP形式などで自社の監視基盤（Datadog、Grafana等のOpenTelemetry対応基盤）へ送れます。この設定自体をmanaged-settings.jsonのenvで全端末に固定すれば、監査基盤への出力を組織として強制できます。プロンプトや応答の本文、ツールの入出力は既定で記録されず（REDACTED）、含めるには明示的なオプトインが必要という設計も、公式ドキュメントに明記されています。</p>
+    <p><strong>2層目は管理者向けの分析ダッシュボード</strong>です。Team・Enterpriseプランではclaude.ai上のダッシュボードをAdmin・Ownerロールが閲覧でき、受け入れられたコード行数、提案の受け入れ率、日次アクティブユーザー・セッション数、上位利用者のリーダーボード、CSVエクスポートが提供されます。GitHub連携を有効化すると、マージされたPRのうちClaude Codeが関与したものを識別する貢献度メトリクス（公開ベータ）も使えます。Console（API）利用の場合はConsole側のダッシュボードで、ユーザー別の支出や利用状況を追えます。トークン消費とコストの設計は<a href="claude-code-cost.html">Claude Codeの料金・コスト管理</a>で詳しく扱っています。</p>
+    <div class="callout"><p>設定変更の監査も公式機能で可能です。セッション中の設定変更を監視・ブロックするConfigChangeフックが用意されており、「配布したポリシーが現場で書き換えられていないか」を仕組みで担保できます（公式ドキュメントより・2026年8月時点）。</p></div>
+
+    <h2 id="s7">全社展開はどの順番で進めるか？</h2>
+    <p class="answer">パイロットで設定と運用を固めてから全社へ広げる。監査を先に有効化しておくことが、統制と定着を両立させる鍵になる。</p>
+    <p>ここまでの論点を、実行の順番に並べ直します。一斉開放は統制も定着も中途半端になります。次の5段階で進めるのが現実的です。</p>
+    <ol>
+      <li><strong>契約とデータ方針を決める。</strong>Team／Enterprise／Console／クラウド経由のいずれかを選び、ZDRの要否、機密リポジトリの扱いを法務・セキュリティと合意する。</li>
+      <li><strong>パイロットチームで標準設定を作る。</strong>開発1〜2チーム＋情シスで小さく使い、permissionsのdeny／allowの標準セット、プロジェクト設定の書き方を実地で固める。</li>
+      <li><strong>管理ポリシーを配布する。</strong>固めた標準をmanaged-settings.jsonに落とし、MDM等で対象端末へ配布。ログイン制限（forceLoginOrgUUID）もここで適用する。</li>
+      <li><strong>監査を先に有効化する。</strong>OpenTelemetryの出力先とダッシュボードの閲覧体制を整えてから、招待範囲を広げる。数字が見えない状態で人数だけ増やさない。</li>
+      <li><strong>教育とセットで全社へ広げる。</strong>利用ルールの周知と操作研修を対にして展開する。エンジニア以外への広げ方は<a href="claude-code-hi-engineer.html">非エンジニアのClaude Code活用</a>、他社の進め方はClaude Codeの導入事例が参考になります。</li>
+    </ol>
+    <div style="border:1px solid var(--line-2);border-radius:12px;background:var(--white);padding:24px 28px;margin:26px 0;">
+      <div style="font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);margin-bottom:10px;">Deployment Checklist</div>
+      <div style="font-family:var(--jp);font-weight:700;font-size:15.5px;color:var(--ink);margin-bottom:12px;">展開前チェックリスト（※雛形）</div>
+      <ul style="list-style:none;padding:0;margin:0;font-size:14px;color:var(--ink-soft);line-height:2.15;">
+        <li>□ 契約形態を決めた（Teams／Enterprise／Console／クラウド経由）</li>
+        <li>□ 学習利用・保持期間のポリシーを確認し、社内に説明できる</li>
+        <li>□ 個人アカウントでの業務利用を禁止し、ログイン制限を設定した</li>
+        <li>□ permissionsのdeny／allow標準セットを定義した</li>
+        <li>□ managed-settings.jsonの配布経路（MDM等）を確認した</li>
+        <li>□ 端末側のローカル保存（暗号化・退職時の消去）を運用に組み込んだ</li>
+        <li>□ OpenTelemetry出力またはダッシュボードの閲覧体制を整えた</li>
+        <li>□ 利用ルールを文書化し、研修・周知の計画を立てた</li>
+      </ul>
+    </div>
+    <p>導入の初期設定・インストール手順から固めたい場合は、<a href="claude-code-dounyu.html">Claude Codeの導入方法</a>から読み進めてください。展開の設計と教育をまとめて外部の伴走で進めたい場合は、<a href="../../claude-code-training.html">TechWorkerのClaude Code研修</a>で情シス向けの設定設計と現場向けハンズオンを一体で提供しています。</p>
+
+    <h2 id="faq">よくある質問</h2>
+    <div class="faq"><div class="q">社員がClaude Codeに入力したソースコードは、AIモデルの学習に使われますか？</div><p class="a">Team・Enterprise・APIなどの商用プランでは、組織が明示的にオプトインしない限り、Claude Codeに送信されたコードやプロンプトを生成モデルの学習に使わないとAnthropicが公式に明記しています（Anthropic公式ドキュメントより・2026年8月時点）。一方、個人向けプラン（Free・Pro・Max）には学習利用を許可する設定が存在するため、業務利用は会社契約に統一することが前提になります。</p></div>
+    <div class="faq"><div class="q">全社員のClaude Codeに同じセキュリティ設定を強制できますか？</div><p class="a">できます。管理者が端末に配布するmanaged-settings.json（管理ポリシー設定）は設定の優先順位で最上位にあり、ユーザー側の設定では上書きできません。macOSでは /Library/Application Support/ClaudeCode/、Linux・WSLでは /etc/claude-code/ に配置し、MDMなどの資産管理ツールで配布します（Anthropic公式ドキュメントより・2026年8月時点）。</p></div>
+    <div class="faq"><div class="q">利用状況やコストの監査ログは取得できますか？</div><p class="a">取得できます。OpenTelemetry形式でセッション数・トークン使用量・コストなどのメトリクスを自社の監視基盤へ出力できるほか、Team・Enterpriseプランには管理者向けの分析ダッシュボードが用意されています。メトリクスにコードやプロンプトの本文は含まれないと公式に明記されています（2026年8月時点）。</p></div>
+    <div class="faq"><div class="q">社員が個人アカウントで業務利用する「野良利用」はどう防ぎますか？</div><p class="a">技術面では、管理ポリシー設定のforceLoginMethod・forceLoginOrgUUIDで、自社組織以外のアカウントでのログインを制限できます（Anthropic公式ドキュメントより・2026年8月時点）。あわせて、会社契約アカウントの発行、利用ルールの明文化、研修による周知をセットで進めると実効性が上がります。</p></div>
+  </article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役</span></div>
+    <p>上場企業を含む37社・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>Claude Codeの社内展開を、設計から定着まで伴走します。</h3>
+    <p>契約形態の選定、managed-settings.jsonの設計・配布、利用ルールの策定、現場向けハンズオン研修まで。上場企業を含む37社・2,500名の生成AI支援の知見をもとに、情シスと開発現場の両輪で立ち上げます。料金はお問い合わせください。検討段階のご相談も歓迎です。</p>
+  </div>
+  <a href="../../claude-code-training.html" class="btn">研修の相談をする <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="../../claude-code-training.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">Claude Code研修（法人向け）</a>　／　<a href="../../training.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">生成AI法人研修（主要ツール全対応）</a>　／　<a href="../../contact.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">無料相談</a></p>
+<div class="back-list"><a href="index.html">← 記事一覧（AI研修・導入ラボ）に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="claude-code-dounyu.html" class="related-card"><span class="rc-cat">導入</span><div class="rc-title">Claude Codeの導入方法｜インストールから初期設定・チーム展開まで</div></a>
+    <a href="claude-code-cost.html" class="related-card"><span class="rc-cat">コスト</span><div class="rc-title">Claude Codeの料金・コスト管理｜プラン選定とトークン消費の設計</div></a>
+    <a href="claude-code-hi-engineer.html" class="related-card"><span class="rc-cat">活用</span><div class="rc-title">非エンジニアのClaude Code活用｜エンジニア以外の部門への広げ方</div></a>
+  </div>
+</div></section>
+
+<p style="max-width:var(--measure);margin:34px auto 0;padding:0 20px;font-size:12px;color:var(--slate);line-height:1.9;">本研修（本記事）は株式会社TechWorkerが独自に提供するものであり、Anthropic PBCとの提携・後援・承認を受けたものではありません。Claude、Claude CodeはAnthropic PBCの商標です。</p>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">AI研修・導入<i>ラボ</i></div>
+        <p>生成AI導入・研修の実践知をお届けするメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+      </div>
+      <div class="footer-col"><h4>AI研修・導入ラボ</h4><a href="index.html">記事一覧</a><a href="../../claude-code-training.html">Claude Code研修について</a></div>
+      <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../index.html#services">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="../../contact.html">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+</body>
+</html>

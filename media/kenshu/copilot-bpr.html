@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3V34NWXVCJ');
+</script>
+<!-- TW intent tracker (first-party, sessionStorage only) -->
+<script>
+(function(){try{var ss=sessionStorage,ls=localStorage;
+if(!ss.getItem('tw_landing')){ss.setItem('tw_landing',location.pathname);ss.setItem('tw_ref',document.referrer||'');var q=new URLSearchParams(location.search);ss.setItem('tw_utm',['utm_source','utm_medium','utm_campaign'].map(function(k){return q.get(k)||'';}).join('|'));}
+var p=JSON.parse(ss.getItem('tw_pages')||'[]');if(p[p.length-1]!==location.pathname){p.push(location.pathname);ss.setItem('tw_pages',JSON.stringify(p.slice(-20)));}
+if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_visits')||'0',10)+1));ss.setItem('tw_counted','1');}
+}catch(e){}})();
+</script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Microsoft Copilot×業務プロセス改革（BPR）｜ツール研修で終わらせない導入設計【2026】 — TechWorker</title>
+<meta name="description" content="Microsoft Copilotの導入を「既存業務にAIを足す」で終わらせず、業務プロセス改革（BPR）として設計する方法。業務棚卸し→AI適用余地のマッピング→プロセス再設計→研修・定着の順序論を、ツール導入型との比較表・業務棚卸しテンプレート・営業/経理/人事/情シスの部門別適用余地マップ付きで解説します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/kenshu/copilot-bpr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Microsoft Copilot×業務プロセス改革（BPR）｜ツール研修で終わらせない導入設計【2026】">
+<meta property="og:description" content="「既存業務にCopilotを足す」と「業務プロセスを再設計してから組み込む」は成果の単位が違う。業務棚卸し→適用余地マッピング→プロセス再設計→研修・定着の順序論を、比較表・テンプレート・部門別マップ付きで整理します。">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/media/kenshu/copilot-bpr">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Microsoft Copilot×業務プロセス改革（BPR）｜ツール研修で終わらせない導入設計【2026】">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../article.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"Microsoft Copilot×業務プロセス改革（BPR）｜ツール研修で終わらせない導入設計【2026】",
+  "description":"Microsoft Copilotの導入を「既存業務にAIを足す」で終わらせず、業務プロセス改革（BPR）として設計する方法。業務棚卸し→AI適用余地のマッピング→プロセス再設計→研修・定着の順序論を、ツール導入型との比較表・業務棚卸しテンプレート・営業/経理/人事/情シスの部門別適用余地マップ付きで解説する。",
+  "datePublished":"2026-08-01","dateModified":"2026-08-01","inLanguage":"ja",
+  "image":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630},
+  "author":{"@type":"Person","name":"古野光太朗","jobTitle":"株式会社TechWorker 代表取締役","url":"https://techworker.co.jp/company.html","image":"https://techworker.co.jp/assets/author-furuno.jpg","sameAs":["https://x.com/koutarou_furuno"],"affiliation":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"}},
+  "publisher":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/","logo":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630}},
+  "mainEntityOfPage":{"@type":"WebPage","@id":"https://techworker.co.jp/media/kenshu/copilot-bpr"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},
+    {"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},
+    {"@type":"ListItem","position":3,"name":"AI研修・導入ラボ","item":"https://techworker.co.jp/media/kenshu/"},
+    {"@type":"ListItem","position":4,"name":"Microsoft Copilot×業務プロセス改革（BPR）","item":"https://techworker.co.jp/media/kenshu/copilot-bpr"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Copilotのライセンス導入とBPRの計画、どちらを先に進めるべきですか？","acceptedAnswer":{"@type":"Answer","text":"どちらかの完了を待つ必要はありません。全社のBPR計画が固まるのを待たず、対象業務を1つ選んで棚卸しと再設計を行い、その業務でMicrosoft Copilotを試すのが現実的です。小さく回した実例が、全社展開の計画づくりの根拠になります。"}},
+    {"@type":"Question","name":"業務棚卸しはどこまで細かく分解すべきですか？","acceptedAnswer":{"@type":"Answer","text":"アウトプット（成果物）単位で洗い出すのが目安です。「議事録を共有する」「月次報告書を提出する」のように、受け取り手が存在する単位で止めます。マウス操作やキー入力のような動作単位まで分解すると、棚卸し自体が終わらなくなります。"}},
+    {"@type":"Question","name":"先に操作研修だけを実施してしまいました。無駄になりますか？","acceptedAnswer":{"@type":"Answer","text":"無駄にはなりません。操作を知っていること自体は再設計後も土台になります。ただし操作研修だけでは日常業務が変わらないまま利用が減っていきやすいため、自部門の業務シナリオを教材にした研修と、定着を測って直す運用を後から接続してください。"}},
+    {"@type":"Question","name":"BPR型の導入には、大きな専任体制が必要ですか？","acceptedAnswer":{"@type":"Answer","text":"大組織は不要です。対象業務の現場担当者と、棚卸し・再設計を主導する推進役がいれば最小構成として成立します。部門横断の委員会を最初から作るより、1業務で成果の型を作ってから広げるほうが、社内の合意も得やすくなります。"}}
+  ]
+}
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <a href="index.html" class="logo">AI研修・導入<i>ラボ</i></a>
+  <ul>
+    <li><a href="index.html">記事一覧</a></li>
+    <li><a href="index.html#about">このメディアについて</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="../../contact.html" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="index.html">記事一覧</a>
+  <a href="index.html#about">このメディアについて</a>
+  <a href="../../contact.html" class="m-cta">無料相談を申し込む</a>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a><span class="sep">/</span>Microsoft Copilot×業務プロセス改革（BPR）</nav>
+  <div class="kicker">Microsoft Copilot × BPR</div>
+  <h1>Microsoft Copilot×業務プロセス改革（BPR）｜ツール研修で終わらせない導入設計</h1>
+  <p class="dek">Microsoft Copilot を全員に配り、操作研修をして、利用率を眺める——多くの導入がここで止まる。差がつくのは「既存業務にCopilotを足す」か「業務プロセスを再設計してから組み込む」かの分岐だ。業務棚卸しからAI適用余地のマッピング、プロセス再設計、研修・定着までの順序論を、部門別の再設計例とテンプレート付きで整理する。</p>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.08.01</span><span class="dot">·</span><span>最終更新 2026.08.01</span><span class="dot">·</span><span>読了 10分</span>
+  </div>
+</header>
+
+<style>
+/* copilot-bpr cover — 業務棚卸しボードのUIモックアップ（scoped: bp-） */
+.bp-cover{padding:0;}
+.bp-bar{display:flex;align-items:center;gap:7px;padding:12px 18px;border-bottom:1px solid var(--line);background:var(--paper);}
+.bp-dot{width:9px;height:9px;border-radius:50%;background:var(--paper-2);border:1px solid var(--line-2);flex:none;}
+.bp-name{margin-left:8px;font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--slate);text-transform:uppercase;}
+.bp-smp{margin-left:auto;font-family:var(--jp);font-size:11px;color:var(--slate);}
+.bp-table{display:grid;grid-template-columns:1.7fr .7fr 1.1fr 1.3fr;font-family:var(--jp);}
+.bp-th{font-size:11px;font-weight:600;letter-spacing:.02em;color:var(--slate);padding:11px 14px 9px;border-bottom:1px solid var(--line);background:var(--paper);}
+.bp-td{font-size:12.5px;color:var(--ink);padding:12px 14px;border-bottom:1px solid var(--line);display:flex;align-items:center;line-height:1.5;}
+.bp-td.mut{color:var(--slate);}
+.bp-table>.bp-td:nth-last-child(-n+4){border-bottom:none;}
+.bp-tag{display:inline-block;font-size:11px;font-weight:600;line-height:1;padding:5px 9px;border-radius:5px;background:var(--paper-2);color:var(--ink-soft);white-space:nowrap;}
+.bp-tag.hi{background:rgba(0,94,255,.12);color:var(--electric);}
+.bp-tag.act{background:var(--ink);color:var(--white);}
+@media(max-width:560px){
+  .bp-table{grid-template-columns:1.6fr .7fr 1.1fr;}
+  .bp-th:nth-child(4n),.bp-td:nth-child(4n){display:none;}
+  .bp-td{font-size:11.5px;padding:11px 10px;}
+  .bp-th{padding:10px 10px 8px;}
+  .bp-name{display:none;}
+}
+</style>
+<div class="art-cover-v6 bp-cover">
+  <div class="bp-bar"><span class="bp-dot"></span><span class="bp-dot"></span><span class="bp-dot"></span><span class="bp-name">Process Inventory — 業務棚卸しボード</span><span class="bp-smp">※サンプル（記入イメージ）</span></div>
+  <div class="bp-table" role="img" aria-label="業務棚卸しボードの記入イメージ。業務ごとに型とAI適用余地を判定し、次の一手を決めるサンプル画面">
+    <div class="bp-th">業務（アウトプット単位）</div><div class="bp-th">型</div><div class="bp-th">AI適用余地</div><div class="bp-th">次の一手</div>
+    <div class="bp-td">会議の議事録作成と共有</div><div class="bp-td mut">定型</div><div class="bp-td"><span class="bp-tag hi">高：要約・整形</span></div><div class="bp-td"><span class="bp-tag act">再設計して組み込む</span></div>
+    <div class="bp-td">月次報告書の初稿づくり</div><div class="bp-td mut">定型</div><div class="bp-td"><span class="bp-tag hi">高：初稿生成</span></div><div class="bp-td"><span class="bp-tag act">再設計して組み込む</span></div>
+    <div class="bp-td">申請内容の照合・差し戻し</div><div class="bp-td mut">半定型</div><div class="bp-td"><span class="bp-tag">中：例外の抽出</span></div><div class="bp-td"><span class="bp-tag">入口の形式を先に統一</span></div>
+    <div class="bp-td">顧客への提案条件の最終判断</div><div class="bp-td mut">判断</div><div class="bp-td"><span class="bp-tag">低：人が担う</span></div><div class="bp-td"><span class="bp-tag">対象外として明記</span></div>
+  </div>
+</div>
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次">
+    <div class="art-toc-inner">
+      <div class="toc-h">目次</div>
+      <a href="#s1">なぜ配るだけでは変わらないのか</a>
+      <a href="#s2">ツール導入型 vs BPR型</a>
+      <a href="#s3">進め方の順序（棚卸し→定着）</a>
+      <a href="#s4">部門別の適用余地マップ</a>
+      <a href="#s5">研修・定着の設計</a>
+      <a href="#faq">よくある質問</a>
+    </div>
+  </nav>
+
+  <article class="art-body rv">
+    <div class="lede">
+      <div class="lede-h">この記事の要点</div>
+      <ul>
+        <li>「Copilotを全員に配って操作研修をする」だけの導入は、個人の時短で止まりやすい。<strong>業務プロセスを再設計してから組み込むBPR型</strong>とは、成果の出る単位が違う。</li>
+        <li>順序は<strong>業務棚卸し→AI適用余地のマッピング→プロセス再設計→研修・定着</strong>。この記事では棚卸しテンプレートと、営業・経理・人事・情シスの部門別適用余地マップを掲載する。</li>
+        <li>研修は画面操作の教育ではなく「再設計後の業務手順」を教材にする。回り始めた定型部分は段階的にエージェント化し、人の時間を判断と例外対応に寄せていく。</li>
+      </ul>
+    </div>
+
+    <aside class="inline-dx-cta" style="margin:6px 0 40px;border:1px solid var(--line-2);border-radius:12px;background:var(--white);padding:22px 26px;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
+  <div style="flex:1;min-width:240px;">
+    <div style="font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);">診断ツール ・ 無料 ・ 5分</div>
+    <div style="font-family:var(--jp);font-weight:700;font-size:16.5px;color:var(--ink);line-height:1.55;margin-top:8px;">自社の生成AI活用度を診断する</div>
+    <div style="font-size:13.5px;color:var(--slate);line-height:1.8;margin-top:5px;">Microsoftの成熟度モデルに沿って現在地を可視化し、業界別の活用事例と次の一手をその場で提示します。</div>
+  </div>
+  <a href="../../ai-assessment.html" class="btn" style="white-space:nowrap;flex:none;color:var(--paper);border-bottom:none;">無料で診断する <i>&rarr;</i></a>
+</aside>
+
+    <h2 id="s1">なぜCopilotを配るだけでは業務が変わらないのか？</h2>
+    <p class="answer">既存業務にCopilotを足すだけでは、時短が個人技で止まり、プロセスの構造が変わらないからです。</p>
+    <p>Microsoft 365 Copilot は、Word・Excel・PowerPoint・Outlook・Teams といった日常のアプリに組み込まれて動くAIアシスタントです（<a href="https://learn.microsoft.com/ja-jp/microsoft-365/copilot/microsoft-365-copilot-overview" target="_blank" rel="noopener">Microsoft Learn「Microsoft 365 Copilot とは?」</a>）。使い慣れたアプリの中にAIが現れるからこそ、「ライセンスを配って操作を教えれば、あとは現場が使いこなす」という導入計画が立てられがちです。</p>
+    <p>ところが配布と操作研修だけで止めた場合、起きるのは<strong>個人単位のバラつき</strong>です。もともと文章仕事が多くITに慣れた人は自分の作業を速くし、そうでない人は数回試して元のやり方に戻る。業務の流れ——誰が何を受け取り、何を作り、誰に渡すか——は1ミリも変わっていないため、部門としてのリードタイムも品質も動きません。ムダな転記や多段の確認が残ったままなら、Copilotはその<strong>ムダを速くこなす道具</strong>にしかならないのです。</p>
+    <p>ここで参照したいのが、業務プロセス改革（BPR：ビジネスプロセス・リエンジニアリング）の考え方です。BPRはマイケル・ハマーとジェイムズ・チャンピーが1993年の著書『リエンジニアリング革命』で広めた概念で、既存手順の部分改善ではなく、「その業務はそもそも何のためにあるのか」から問い直して業務プロセスを根本から設計し直すアプローチを指します（参照：<a href="https://www.nri.com/jp/knowledge/glossary/bpr.html" target="_blank" rel="noopener">野村総合研究所 用語解説「BPR」</a>）。生成AIの登場は、この30年前のフレームワークに新しい前提を持ち込みました。「文章を書く・読む・まとめる・転記する」という、これまで人間がやる以外に選択肢のなかった工程を、プロセス設計の変数として扱えるようになったからです。</p>
+    <p>Microsoft自身も、公式の導入支援サイトで<a href="https://adoption.microsoft.com/en-us/copilot/success-kit/" target="_blank" rel="noopener">「Copilot Success Kit」</a>としてシナリオライブラリや定着計画のチェックリストを提供しており、業務シナリオを起点に計画して定着（Adoption）まで設計することを推奨しています。「配れば使われる」ではなく「どの業務でどう使うかを先に決める」——提供元の公式ガイダンス自体が、ツール配布型の導入を前提にしていません。</p>
+    <div class="callout"><p>Copilotが速くできるのは「工程」であって、「工程の並び」は変えてくれない。並びを変えるのはプロセス設計の仕事で、それをやるかやらないかが導入成果の分岐点になる。</p></div>
+
+    <h2 id="s2">ツール導入型とBPR型のCopilot導入は何が違うのか？</h2>
+    <p class="answer">前者は既存業務にAIを足す発想、後者は業務を再設計してから組み込む発想。成果の単位が個人と組織で分かれます。</p>
+    <p>両者の違いは、導入プロジェクトの初日に立てる「問い」からすでに分かれています。ツール導入型は「Copilotで何ができるか」から始まり、BPR型は「この業務はそもそもどうあるべきか」から始まる。以降のすべて——研修の教材、成果の測り方、定着の指標——がこの最初の問いに引っ張られます。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>比較軸</th><th>ツール導入型（既存業務＋Copilot）</th><th>BPR型（再設計×Copilot）</th></tr>
+        <tr><td>最初の問い</td><td>「Copilotで何ができるか」</td><td>「この業務はそもそもどうあるべきか」</td></tr>
+        <tr><td>対象の単位</td><td>個人の作業（メール・資料・議事録）</td><td>部門をまたぐ業務の流れ（受け取り→加工→受け渡し）</td></tr>
+        <tr><td>Copilotの位置づけ</td><td>既存手順を速くする補助ツール</td><td>再設計後の手順に最初から組み込まれた構成要素</td></tr>
+        <tr><td>研修の中身</td><td>画面操作と一般的なプロンプト例</td><td>自部門の業務シナリオと、再設計後の新しい手順</td></tr>
+        <tr><td>成果の見え方</td><td>個人の時短。人による差が大きい</td><td>業務単位のリードタイム・品質・引き継ぎやすさの変化</td></tr>
+        <tr><td>定着の測り方</td><td>利用率・ログイン数</td><td>新しいプロセスが標準として回っているか</td></tr>
+        <tr><td>陥りやすい結末</td><td>熱心な一部だけが使い続け、全体は元に戻る</td><td>設計に時間をかけすぎると現場が待ちくたびれる</td></tr>
+      </table>
+    </div>
+    <p>誤解のないように書くと、両者は二者択一ではありません。ツール導入型が「悪い」のではなく、<strong>そこで止まる</strong>ことが問題です。個人の時短はBPR型でも通過点として起きますし、逆にBPR型の弱点（設計に時間をかけすぎて止まる）は、対象業務を絞って小さく回すことで避けられます。順序と到達点の設計の問題であり、それを外部の支援会社に頼む場合の見極め方は<a href="copilot-support-comparison.html">Copilot導入支援会社の比較記事</a>で扱っています。</p>
+    <div class="quote-box"><p>ツールを入れて業務が変わるのではない。業務を変える設計の中に、ツールの席を用意する。</p></div>
+
+    <h2 id="s3">BPR型のCopilot導入はどの順序で進めるのか？</h2>
+    <p class="answer">業務棚卸し→適用余地のマッピング→プロセス再設計→研修・定着の順で進めます。順序の入れ替えが失敗の主因です。</p>
+    <p>BPR型と言っても、全社の業務を一斉に描き直す大規模プロジェクトを指すわけではありません。現実に機能するのは、対象部門を絞ったうえで次の4段階を順番どおりに回すことです。よくある失敗は順序の入れ替え——たとえば棚卸しをせずに研修から始める、再設計をせずにツールだけ配る——で、どの段階を飛ばしたかによって、止まり方まで予測できます。</p>
+    <ol>
+      <li><strong>業務棚卸し。</strong>対象部門の業務を「アウトプット単位」で洗い出す。誰から何を受け取り、何を作って、誰に渡すか。定型か判断かの区別と、詰まっている点（痛み）も添える。ここが以降すべての土台になる。</li>
+      <li><strong>AI適用余地のマッピング。</strong>棚卸した業務の一つずつに「Copilotで何がどこまで任せられるか」の仮説を付ける。文書の初稿・要約・整形は適用余地が大きく、責任を伴う判断や関係構築は人に残る。この段階では仮説でよく、正解を出そうとしない。</li>
+      <li><strong>プロセス再設計。</strong>適用余地の大きい業務について、工程の並びそのものを描き直す。「書く」工程を「AIの初稿を確認する」工程に置き換える、転記が必要だった入口の形式を揃える、確認の段数を減らす——AIを前提にすると外せる工程が見えてくる。</li>
+      <li><strong>研修・定着。</strong>再設計後の手順を教材にして研修し、新しいやり方を部門の標準にする。定着を測り、詰まった箇所は手順側を直す。研修が最後に来るのは、教える中身（新しい手順）が3までの工程で初めて確定するからだ。</li>
+    </ol>
+    <p>1の業務棚卸しには、次のテンプレートをそのまま使えます。1業務＝1行で、まずは対象部門の主要業務を書き出すところから始めてください。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>記入項目</th><th>書き方</th><th>記入例（※サンプル）</th></tr>
+        <tr><td>業務名</td><td>アウトプット（成果物）単位で書く</td><td>月次の営業会議資料の作成</td></tr>
+        <tr><td>頻度</td><td>毎日／毎週／毎月／不定期</td><td>毎月</td></tr>
+        <tr><td>インプット</td><td>誰から・何を受け取って始まるか</td><td>各担当の実績報告（形式バラバラ）</td></tr>
+        <tr><td>アウトプット</td><td>何を作り、誰に渡すか</td><td>会議資料一式を部長へ提出</td></tr>
+        <tr><td>使う場所・ツール</td><td>データや文書がどこにあるか</td><td>共有フォルダ＋チャットの過去ログ</td></tr>
+        <tr><td>型の区別</td><td>定型／半定型／判断のいずれか</td><td>半定型（構成は毎月同じ、中身の解釈は人）</td></tr>
+        <tr><td>痛み</td><td>詰まる点・時間を食う点を一言で</td><td>報告の形式がバラバラで転記が発生する</td></tr>
+        <tr><td>AI適用余地の仮説</td><td>初稿・要約・整形・照合など、任せられそうな部分</td><td>報告の要約と資料初稿。数値の最終確認は人</td></tr>
+      </table>
+    </div>
+    <div class="callout"><p>棚卸しのコツは「きれいに書こうとしない」こと。粗くても全業務が並ぶことに価値がある。精度はマッピングと再設計の段階で上げればよく、最初の一覧づくりに時間をかけすぎない。</p></div>
+
+    <h2 id="s4">部門別に見ると、AI適用余地はどこにあるのか？</h2>
+    <p class="answer">4部門とも「書く・転記する・確認する」の集中点が起点です。量の多い定型文書と照合作業から再設計します。</p>
+    <p>適用余地の大きい場所は、部門が違っても構造は共通しています。文書化・要約が集中する業務、転記・照合が集中する業務——この2つの集中点を見つけ、そこを起点に工程の並びを描き直す。以下は営業・経理・人事・情シスの4部門でそれを整理したマップです。自社の棚卸し結果と突き合わせる比較対象として使ってください。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>部門</th><th>文書化・要約の集中点</th><th>転記・照合の集中点</th><th>再設計の起点</th><th>Copilotの組み込み方</th></tr>
+        <tr><td>営業</td><td>商談メモ・提案書・報告資料</td><td>SFA/CRMへの活動入力</td><td>「議事録を書く」を「確認する」に置き換える</td><td>商談記録の要約・整形と提案書の初稿生成</td></tr>
+        <tr><td>経理</td><td>月次報告・監査対応の説明文書</td><td>申請書類の目視照合・差し戻し</td><td>入口（申請フォーマット）の形式統一が先</td><td>例外の抽出と報告書の定型部分の初稿</td></tr>
+        <tr><td>人事</td><td>求人票・評価文・研修案内・議事録</td><td>応募書類・回答の突き合わせ</td><td>文書の「型」を先に定義する</td><td>ヒアリングメモからの文書初稿と整形</td></tr>
+        <tr><td>情シス</td><td>手順書・FAQ・周知文</td><td>問い合わせの重複対応・記録</td><td>窓口の一本化とナレッジ整備が先</td><td>一次回答の下書きと手順書の更新支援</td></tr>
+      </table>
+    </div>
+    <p><strong>営業</strong>の再設計例。従来は、商談→記憶とメモから議事録を清書→SFAへ転記→提案書をゼロから作成→上長確認、という直列の流れでした。再設計後は、商談メモをCopilotが記録の型に整形→人は事実確認と所感の追記だけ→過去の提案文脈を渡して提案書の初稿を生成→人は顧客固有の論点と条件の判断に集中、という並びになります。ポイントは「議事録を書く」という工程自体を消し、「確認する」工程に置き換えたことです。SFAの入力項目をそのままにAIを足すのではなく、記録の型ごと見直すのが再設計です。</p>
+    <p><strong>経理</strong>は順序を間違えやすい部門です。各部門から形式のバラバラな申請が届き、目視で照合し、不備を差し戻す——この流れのままAIに読ませようとすると、形式のばらつきがそのまま精度の壁になります。先にやるべき再設計は<strong>入口の統一</strong>です。申請フォーマットを構造化された形式に揃えれば、照合の大半は機械的に済み、人は例外だけを見ればよくなる。そのうえで、月次報告書の定型部分の初稿づくりをCopilotに任せます。バラバラの入口を残したままAIを足すのは、順序が逆です。</p>
+    <p><strong>人事</strong>の集中点は、求人票・評価コメント・研修案内・面談議事録といった「都度ゼロから書く」文書群です。再設計の起点は、これらの文書の「型」を先に定義すること。型が決まれば、部門ヒアリングのメモから求人票の初稿を作る、面談メモを引き継ぎ用に整形するといった工程をCopilotに置き換えられます。人事は個人情報を扱う部門でもあるため、何を入力してよいか・何をマスキングするかの線引きを、再設計と同時にルール化しておきます。</p>
+    <p><strong>情シス</strong>は、自部門がAI活用の実験台になれる部門です。問い合わせがメール・チャット・口頭に分散し、同じ質問に都度答え、手順書は古いまま——という状態なら、再設計の起点は窓口の一本化とナレッジ（FAQ・手順書）の整備です。整備されたナレッジの上に一次回答の下書きを載せ、人はエスカレーションと改善に回る。この延長線上に、Microsoft Copilot Studio などを使った社内エージェント化があります。エージェントはナレッジの整備が済んでいるほど機能するため、ここでも順序が先です（エージェント内製の学び方は<a href="copilot-studio-training.html">Copilot Studio研修の記事</a>を参照）。</p>
+    <p>再設計後の業務でCopilotに渡す指示は、たとえば次のような形になります。一般的なプロンプト例ではなく、<strong>自社の記録の型</strong>が指示に埋め込まれている点が、再設計を経た使い方の特徴です。</p>
+    <div class="ui-mock">
+      <div class="um-bar"><span class="um-dot"></span><span class="um-dot"></span><span class="um-dot"></span><span class="um-name">COPILOT — 再設計後の手順での使い方（例）</span></div>
+      <div class="um-row">
+        <div class="um-label">あなたの指示（営業担当）</div>
+        <div class="um-text prompt">次の商談メモを、当社の商談記録の型（結論／顧客の課題／決裁の流れ／次アクション／期日）に整形して。推測で埋めず、メモにない項目は「未確認」と書いて。
+【商談メモ】情シス部長と面談。現行ツールの更新時期が来期。稟議は部長起案で役員会承認が必要とのこと。比較検討中の他社が1社。次回はデモを依頼された。</div>
+      </div>
+      <div class="um-row">
+        <div class="um-label ai">Copilotの下書き</div>
+        <div class="um-text">【結論】デモ依頼を獲得。来期の更新時期に向け比較検討フェーズ
+【顧客の課題】現行ツールの更新時期が来期に到来
+【決裁の流れ】部長起案→役員会承認
+【次アクション】デモの日程調整と実施
+【期日】未確認（次回打ち合わせで確認）</div>
+      </div>
+    </div>
+    <p class="fig-cap">図：再設計で定めた「記録の型」を指示に埋め込んだ例。出力は必ず人が事実と照合してから記録に残します。</p>
+
+    <h2 id="s5">研修と定着をどう設計すれば、ツール研修で終わらないのか？</h2>
+    <p class="answer">操作教育ではなく、再設計後の業務手順にCopilotを載せた自部門シナリオで研修し、定着を測って回します。</p>
+    <p>ここまでの順序論で、研修が最後に置かれている理由が見えてきます。研修は「Copilotの使い方を教える場」ではなく、<strong>再設計した新しい業務手順を、部門の標準として全員に配る場</strong>だからです。教える中身が確定するのは再設計の後であり、だから研修が先に来ることはありません。同じ「研修」という言葉でも、中身は次のように分かれます。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>比較軸</th><th>操作研修（ツール研修）</th><th>業務シナリオ研修（BPR型）</th></tr>
+        <tr><td>教材</td><td>機能の一覧と一般的なプロンプト例</td><td>自部門の業務と、再設計後の新しい手順書</td></tr>
+        <tr><td>演習</td><td>サンプル文書での練習</td><td>自分の実業務をその場でCopilotで進める</td></tr>
+        <tr><td>受講後の状態</td><td>「便利そうだ」で職場に戻る</td><td>翌日から使う手順が手元にある状態で戻る</td></tr>
+        <tr><td>定着の指標</td><td>利用率・受講完了率</td><td>新手順が標準として回っているか、詰まりはどこか</td></tr>
+        <tr><td>研修後の運用</td><td>個人の自主性に委ねる</td><td>詰まりを集めて手順側を直す改善サイクル</td></tr>
+      </table>
+    </div>
+    <p>定着のフェーズで見るべきは利用率ではなく、「新しい手順が回っているか」「回っていないなら、どの工程で詰まっているか」です。詰まりの原因が個人のスキルなら追加のフォローで解けますが、多くの場合は手順側の設計に原因があります。定着を測って手順を直す——この改善サイクルまでが導入設計の範囲です（定着が止まる典型パターンと対策は<a href="copilot-adoption.html">Copilot定着の記事</a>で詳しく扱っています）。</p>
+    <p>TechWorkerがCopilot導入支援で用いているのも、この<strong>BPR×研修×エージェント化</strong>の型です。業務棚卸しとプロセス再設計で「どの業務をどう変えるか」を確定し、研修で新しい手順を部門の標準にし、回り始めた定型部分を段階的にエージェントへ移していく。上場企業を含む37社・2,500名の生成AI支援を通じて見えているのは、操作研修単体よりも、手順の再設計とセットにした研修のほうが、受講後に使われ続けるという傾向です。研修の位置づけが「ツールの説明会」から「新しい働き方の初日」に変わるためです。</p>
+    <p>なお、要件を満たす研修設計であれば、人材開発支援助成金（事業展開等リスキリング支援コース）の対象になり得ます。経費助成は中小企業で最大75%・大企業で最大60%、1人あたり経費30万円が上限です。制度の事実関係と研修費用の考え方は<a href="copilot-training-cost.html">Copilot研修の費用相場の記事</a>で整理しています。</p>
+
+    <h2 id="faq">よくある質問</h2>
+    <div class="faq"><div class="q">Copilotのライセンス導入とBPRの計画、どちらを先に進めるべきですか？</div><p class="a">どちらかの完了を待つ必要はありません。全社のBPR計画が固まるのを待たず、対象業務を1つ選んで棚卸しと再設計を行い、その業務でMicrosoft Copilotを試すのが現実的です。小さく回した実例が、全社展開の計画づくりの根拠になります。</p></div>
+    <div class="faq"><div class="q">業務棚卸しはどこまで細かく分解すべきですか？</div><p class="a">アウトプット（成果物）単位で洗い出すのが目安です。「議事録を共有する」「月次報告書を提出する」のように、受け取り手が存在する単位で止めます。マウス操作やキー入力のような動作単位まで分解すると、棚卸し自体が終わらなくなります。</p></div>
+    <div class="faq"><div class="q">先に操作研修だけを実施してしまいました。無駄になりますか？</div><p class="a">無駄にはなりません。操作を知っていること自体は再設計後も土台になります。ただし操作研修だけでは日常業務が変わらないまま利用が減っていきやすいため、自部門の業務シナリオを教材にした研修と、定着を測って直す運用を後から接続してください。</p></div>
+    <div class="faq"><div class="q">BPR型の導入には、大きな専任体制が必要ですか？</div><p class="a">大組織は不要です。対象業務の現場担当者と、棚卸し・再設計を主導する推進役がいれば最小構成として成立します。部門横断の委員会を最初から作るより、1業務で成果の型を作ってから広げるほうが、社内の合意も得やすくなります。</p></div>
+  </article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役</span></div>
+    <p>上場企業を含む37社・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>Copilot導入を、業務プロセスの再設計から一緒に設計します。</h3>
+    <p>TechWorkerのMicrosoft Copilot対応 法人研修は、業務棚卸し・プロセス再設計とセットで研修を設計する伴走型です。上場企業を含む37社・2,500名の支援知見をもとに、どの業務から始めるかの選定から、研修・定着・エージェント化まで並走します。<a href="../../contact.html" style="color:inherit;text-decoration:underline;">無料相談</a>では検討段階の壁打ちだけでも歓迎です。</p>
+  </div>
+  <a href="../../training-copilot.html" class="btn">Microsoft Copilot対応の法人研修を見る <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="../../training-copilot.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">Microsoft Copilot対応の法人研修</a>　／　<a href="../../training.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">生成AI法人研修（主要ツール全対応）</a>　／　<a href="../../contact.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">無料相談</a></p>
+<div class="back-list"><a href="index.html">← AI研修・導入ラボに戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="copilot-training-cost.html" class="related-card"><span class="rc-cat">費用</span><div class="rc-title">Copilot研修の費用相場｜料金の内訳と助成金の考え方</div></a>
+    <a href="copilot-support-comparison.html" class="related-card"><span class="rc-cat">支援会社</span><div class="rc-title">Copilot導入支援会社の比較｜研修・伴走・内製化の選び方</div></a>
+    <a href="copilot-adoption.html" class="related-card"><span class="rc-cat">定着</span><div class="rc-title">Copilotが定着しない理由と対策｜利用率で終わらせない定着設計</div></a>
+    <a href="copilot-studio-training.html" class="related-card"><span class="rc-cat">エージェント</span><div class="rc-title">Copilot Studio研修とは｜業務エージェントを内製する学び方</div></a>
+  </div>
+</div></section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">AI研修・導入<i>ラボ</i></div>
+        <p>生成AI研修と導入設計の実践知をお届けするメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+      </div>
+      <div class="footer-col"><h4>AI研修・導入ラボ</h4><a href="index.html">記事一覧</a><a href="index.html#about">このメディアについて</a></div>
+      <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../index.html#services">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="../../contact.html">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p class="copyright" style="margin-bottom:10px;">本ページ・本研修は株式会社TechWorkerが独自に提供するものであり、Microsoft Corporationとの提携・後援・承認を受けたものではありません。Microsoft、Microsoft 365、CopilotはMicrosoftグループ企業の商標です。</p>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+</body>
+</html>

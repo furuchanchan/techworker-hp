@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3V34NWXVCJ');
+</script>
+<!-- TW intent tracker (first-party, sessionStorage only) -->
+<script>
+(function(){try{var ss=sessionStorage,ls=localStorage;
+if(!ss.getItem('tw_landing')){ss.setItem('tw_landing',location.pathname);ss.setItem('tw_ref',document.referrer||'');var q=new URLSearchParams(location.search);ss.setItem('tw_utm',['utm_source','utm_medium','utm_campaign'].map(function(k){return q.get(k)||'';}).join('|'));}
+var p=JSON.parse(ss.getItem('tw_pages')||'[]');if(p[p.length-1]!==location.pathname){p.push(location.pathname);ss.setItem('tw_pages',JSON.stringify(p.slice(-20)));}
+if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_visits')||'0',10)+1));ss.setItem('tw_counted','1');}
+}catch(e){}})();
+</script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI研修・導入ラボ｜生成AIの法人導入・研修・定着の実務メディア</title>
+<meta name="description" content="Microsoft CopilotやClaude Codeなどの生成AIツールを、法人でどう導入し、どう定着させるか。費用と稟議、支援会社の選び方、研修設計、定着支援、エージェント化までを、上場企業を含む37社・2,500名の生成AI支援知見をもとに発信する実務メディアです。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/kenshu/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AI研修・導入ラボ｜生成AIの法人導入・研修・定着の実務メディア">
+<meta property="og:description" content="Microsoft CopilotやClaude Codeの法人導入・研修・定着をどう進めるか。費用と稟議、支援会社の選び方、定着支援、エージェント化まで実務に根ざして発信。">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/media/kenshu/">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI研修・導入ラボ｜生成AIの法人導入・研修・定着の実務メディア">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../article.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"CollectionPage",
+  "name":"AI研修・導入ラボ",
+  "description":"Microsoft CopilotやClaude Codeなどの生成AIツールを、法人でどう導入し、どう定着させるか。費用と稟議、支援会社の選び方、研修設計、定着支援、エージェント化を、上場企業を含む37社・2,500名の生成AI支援知見をもとに発信する実務メディア。",
+  "url":"https://techworker.co.jp/media/kenshu/",
+  "inLanguage":"ja",
+  "isPartOf":{"@type":"WebSite","name":"TechWorker","url":"https://techworker.co.jp/"},
+  "publisher":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"},
+  "mainEntity":{
+    "@type":"ItemList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"url":"https://techworker.co.jp/media/kenshu/copilot-bpr.html","name":"Microsoft Copilot×業務プロセス改革（BPR）｜ツール研修で終わらせない導入設計【2026】"},
+      {"@type":"ListItem","position":2,"url":"https://techworker.co.jp/media/kenshu/copilot-studio-training.html","name":"Copilot Studio研修とは｜業務エージェントを内製する学び方と進め方【2026】"},
+      {"@type":"ListItem","position":3,"url":"https://techworker.co.jp/media/kenshu/claude-code-shanai-tenkai.html","name":"Claude Codeの社内展開｜セキュリティ・管理機能・配布設計【2026】"},
+      {"@type":"ListItem","position":4,"url":"https://techworker.co.jp/media/kenshu/copilot-adoption.html","name":"Microsoft Copilotが定着しない原因と対策｜利用率を上げる定着支援の設計【2026】"},
+      {"@type":"ListItem","position":5,"url":"https://techworker.co.jp/media/kenshu/claude-code-hi-engineer.html","name":"非エンジニアのClaude Code活用｜業務部門で何ができるか【2026】"},
+      {"@type":"ListItem","position":6,"url":"https://techworker.co.jp/media/kenshu/copilot-support-comparison.html","name":"Microsoft Copilot導入支援の選び方｜SIer・コンサル・研修会社の違いを比較【2026】"},
+      {"@type":"ListItem","position":7,"url":"https://techworker.co.jp/media/kenshu/claude-code-cost.html","name":"Claude Codeの料金を法人で考える｜Team・Enterprise・APIの選び方【2026】"},
+      {"@type":"ListItem","position":8,"url":"https://techworker.co.jp/media/kenshu/copilot-training-cost.html","name":"Microsoft Copilot研修の費用相場｜公開講座からカスタム研修・助成金まで【2026】"},
+      {"@type":"ListItem","position":9,"url":"https://techworker.co.jp/media/kenshu/claude-code-dounyu.html","name":"Claude Codeの法人導入｜パイロットから全社展開までの進め方【2026】"}
+    ]
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},
+    {"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},
+    {"@type":"ListItem","position":3,"name":"AI研修・導入ラボ","item":"https://techworker.co.jp/media/kenshu/"}
+  ]
+}
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<style>
+/* ===== KENSHU PORTAL (v6: ink/paper, IBM Plex gothic, hairline rules, blue as a whisper) ===== */
+.jz-wrap{max-width:1100px;margin:0 auto;padding:0 48px;width:100%;}
+
+/* hero */
+.jz-hero{max-width:1100px;margin:0 auto;padding:140px 48px 0;}
+.jz-hero .kicker{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--electric);}
+.jz-hero h1{font-family:var(--jp);font-weight:700;font-size:clamp(32px,5vw,58px);line-height:1.2;letter-spacing:-.03em;margin-top:18px;max-width:17ch;}
+.jz-hero .lead{font-size:18px;color:var(--slate);line-height:1.9;margin-top:24px;max-width:54ch;}
+.jz-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;}
+.jz-cta .ghost{font-family:var(--jp);font-size:14.5px;font-weight:600;color:var(--ink);text-decoration:none;border:1px solid var(--line-2);border-radius:7px;padding:13px 25px;display:inline-flex;align-items:center;gap:10px;transition:border-color .25s,color .25s;}
+.jz-cta .ghost:hover{border-color:var(--electric);color:var(--electric);}
+.jz-cta .ghost i{font-style:normal;transition:transform .25s;}
+.jz-cta .ghost:hover i{transform:translateX(4px);}
+
+/* section heading */
+.jz-sec{max-width:1100px;margin:0 auto;padding:0 48px;}
+.jz-sec-h{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--slate);margin-bottom:24px;}
+
+/* reader segments — hairline-bordered cards, no fill */
+.jz-seg{margin-top:64px;}
+.jz-seg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);}
+.jz-seg-card{padding:28px 28px 28px 0;border-bottom:1px solid var(--line);border-left:1px solid var(--line);padding-left:28px;}
+.jz-seg-card:first-child{border-left:none;padding-left:0;}
+.jz-seg-card .seg-n{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);}
+.jz-seg-card .seg-t{font-family:var(--jp);font-weight:700;font-size:18px;line-height:1.5;letter-spacing:-.01em;margin:12px 0 9px;color:var(--ink);}
+.jz-seg-card .seg-d{font-size:14px;color:var(--slate);line-height:1.8;}
+
+/* categories — tag-label style (left border, restrained) */
+.jz-cat{margin-top:64px;}
+.jz-cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.jz-cat-item{border-left:2px solid var(--electric);padding:6px 0 6px 16px;}
+.jz-cat-item .ct-name{font-family:var(--jp);font-weight:600;font-size:15px;color:var(--ink);}
+.jz-cat-item .ct-en{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-top:3px;}
+
+/* article meta row (read time / date) */
+.jz-meta{font-family:var(--en);font-size:12px;color:var(--slate);letter-spacing:.01em;font-feature-settings:"tnum" 1;margin-top:14px;display:flex;align-items:center;gap:9px;}
+.jz-meta .dot{opacity:.4;}
+
+.jz-latest{margin-top:64px;}
+/* このメディアについて（運営・実績・相談を最下部に控えめに集約） */
+.jz-about{margin-top:72px;padding:40px 0 48px;border-top:1px solid var(--line);}
+.jz-about .ab-body{max-width:66ch;}
+.jz-about .ab-body p{font-size:14.5px;color:var(--slate);line-height:1.95;}
+.jz-about .ab-body p+p{margin-top:12px;}
+.jz-about .ab-body a{color:var(--electric);text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);}
+.jz-about .ab-body a:hover{border-bottom-color:var(--electric);}
+
+/* 記事一覧 = 均一なリスト行（サムネ無し・高さ均一＝凸凹を出さない） */
+.jz-list{border-top:1px solid var(--line-2);}
+.jz-list a{display:grid;grid-template-columns:176px minmax(0,1fr) 24px;gap:28px;align-items:start;padding:26px 4px;border-bottom:1px solid var(--line);text-decoration:none;color:inherit;transition:background .2s;}
+.jz-list a:hover{background:var(--white);}
+.jz-list .l-side{display:flex;flex-direction:column;gap:7px;padding-top:3px;}
+.jz-list .l-cat{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);}
+.jz-list .l-date{font-family:var(--en);font-size:12px;color:var(--slate);font-feature-settings:"tnum" 1;}
+.jz-list .l-title{font-family:var(--jp);font-weight:700;font-size:18px;line-height:1.55;letter-spacing:-.01em;color:var(--ink);transition:color .2s;}
+.jz-list a:hover .l-title{color:var(--electric);}
+.jz-list .l-desc{font-size:14px;color:var(--slate);line-height:1.75;margin-top:8px;}
+.jz-list .l-arrow{font-family:var(--en);color:var(--electric);font-size:17px;justify-self:end;align-self:center;transition:transform .2s;}
+.jz-list a:hover .l-arrow{transform:translateX(4px);}
+
+/* 免責（フッター直上・控えめなヘアライン区切り） */
+.kn-legal{padding-bottom:96px;}
+.kn-legal p{font-size:12.5px;color:var(--slate);line-height:1.9;border-top:1px solid var(--line);padding-top:20px;max-width:76ch;}
+
+@media(max-width:880px){
+  .jz-hero{padding:108px 24px 0;}
+  .jz-sec{padding:0 24px;}
+  .jz-seg-grid,.jz-cat-grid{grid-template-columns:1fr;}
+  .jz-seg-card{border-left:none;padding-left:0;}
+  .jz-list a{grid-template-columns:1fr;gap:9px;padding:22px 2px;}
+  .jz-list .l-side{flex-direction:row;align-items:center;gap:12px;}
+  .jz-list .l-arrow{display:none;}
+}
+@media(max-width:600px){
+  footer a{display:inline-block;padding-top:7px;padding-bottom:7px;}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="logo">AI研修・導入<i>ラボ</i></a>
+  <ul>
+    <li><a href="index.html">記事一覧</a></li>
+    <li><a href="../../training-copilot.html">Copilot研修</a></li>
+    <li><a href="../../claude-code-training.html">Claude Code研修</a></li>
+    <li><a href="../../index.html">TechWorkerとは</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="../../contact.html" class="nav-cta"><span class="full">研修の相談</span><span class="short">相談</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="index.html">記事一覧</a>
+  <a href="../../training-copilot.html">Copilot研修</a>
+  <a href="../../claude-code-training.html">Claude Code研修</a>
+  <a href="../../index.html">TechWorkerとは</a>
+  <a href="../../contact.html" class="m-cta">研修について相談する</a>
+</div>
+
+<main>
+
+<header class="jz-hero">
+  <span class="kicker">AI Training &amp; Adoption Lab</span>
+  <h1>生成AIを、組織に定着させる</h1>
+  <p class="lead">Microsoft CopilotやClaude Codeなどの生成AIツールを、法人でどう導入し、どう定着させるか。費用と稟議、支援会社の選び方、研修設計、定着支援、エージェント化まで——導入の各段階を実務に根ざして解説するメディアです。</p>
+</header>
+
+<style>
+/* ===== kenshu portal hero — rollout console (v6: real-UI mock, ink/paper, hairline, blue as a whisper) ===== */
+.kn-cover{max-width:1100px;margin:48px auto 0;padding:0 48px;}
+.kn-ui{border:1px solid var(--line-2);border-radius:14px;background:var(--white);overflow:hidden;display:grid;grid-template-columns:1.15fr 1fr;}
+.kn-pane{padding:26px 30px 28px;min-width:0;}
+.kn-pane+.kn-pane{border-left:1px solid var(--line);}
+.kn-eyebrow{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px;}
+.kn-kind{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);}
+.kn-stamp{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--electric);border:1px solid rgba(0,94,255,.34);border-radius:999px;padding:3px 10px;}
+/* terminal window (pilot team) */
+.kn-term{border:1px solid var(--line-2);border-radius:10px;background:var(--white);overflow:hidden;}
+.kn-term-bar{display:flex;align-items:center;gap:6px;padding:9px 12px;border-bottom:1px solid var(--line);}
+.kn-dot{width:9px;height:9px;border-radius:50%;border:1px solid var(--line-2);}
+.kn-term-t{font-family:var(--mono);font-size:11px;color:var(--slate);margin-left:8px;}
+.kn-term-body{padding:15px 16px 17px;display:flex;flex-direction:column;gap:10px;}
+.kn-ln{display:flex;align-items:center;gap:10px;}
+.kn-ps{flex:none;font-family:var(--mono);font-size:12px;font-weight:600;color:var(--electric);width:12px;}
+.kn-ps.mute{color:var(--slate);opacity:.55;}
+.kn-tbar{height:6px;border-radius:3px;background:var(--paper-2);}
+.kn-ln.hot .kn-tbar{background:rgba(0,94,255,.16);}
+.kn-ln.hot .kn-tbar.lead{background:var(--electric);}
+.kn-cursor{flex:none;width:8px;height:13px;background:var(--electric);border-radius:2px;opacity:.85;}
+/* rollout steps (right pane) */
+.kn-steps{list-style:none;margin:0;padding:0;}
+.kn-step{display:grid;grid-template-columns:24px 1fr 84px;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line);}
+.kn-step:last-child{border-bottom:none;}
+.kn-sn{font-family:var(--en);font-size:11px;font-weight:600;color:var(--slate);font-feature-settings:"tnum" 1;}
+.kn-sl{font-family:var(--jp);font-size:12.5px;font-weight:600;color:var(--slate);}
+.kn-sb{height:8px;border-radius:4px;background:var(--paper-2);}
+.kn-step.done .kn-sn{color:var(--electric);}
+.kn-step.done .kn-sl{color:var(--ink);}
+.kn-step.done .kn-sb{background:var(--electric);}
+.kn-step.now .kn-sn{color:var(--electric);}
+.kn-step.now .kn-sl{color:var(--ink);}
+.kn-step.now .kn-sb{background:rgba(0,94,255,.34);width:58%;}
+.kn-caption{max-width:1100px;margin:14px auto 0;padding:0 48px;font-family:var(--en);font-size:11.5px;color:var(--slate);letter-spacing:.01em;}
+.kn-caption b{color:var(--electric);font-weight:600;}
+@media(max-width:880px){
+  .kn-cover,.kn-caption{padding:0 24px;}
+  .kn-ui{grid-template-columns:1fr;}
+  .kn-pane+.kn-pane{border-left:none;border-top:1px solid var(--line);}
+}
+</style>
+<div class="kn-cover">
+  <div class="kn-ui" role="img" aria-label="導入ロールアウトの画面イメージ。左はパイロットチームのターミナル、右はセキュリティ確認から全社展開までの段階リスト。図はイメージ。">
+    <div class="kn-pane">
+      <div class="kn-eyebrow">
+        <span class="kn-kind">Pilot / パイロット検証</span>
+        <span class="kn-stamp">Week 1</span>
+      </div>
+      <div class="kn-term">
+        <div class="kn-term-bar"><span class="kn-dot"></span><span class="kn-dot"></span><span class="kn-dot"></span><span class="kn-term-t">pilot-team — terminal</span></div>
+        <div class="kn-term-body">
+          <div class="kn-ln"><span class="kn-ps">&gt;</span><span class="kn-tbar" style="width:46%"></span></div>
+          <div class="kn-ln hot"><span class="kn-ps mute">·</span><span class="kn-tbar lead" style="width:72%"></span></div>
+          <div class="kn-ln hot"><span class="kn-ps mute">·</span><span class="kn-tbar" style="width:58%"></span></div>
+          <div class="kn-ln"><span class="kn-ps mute">·</span><span class="kn-tbar" style="width:64%"></span></div>
+          <div class="kn-ln"><span class="kn-ps">&gt;</span><span class="kn-tbar" style="width:30%"></span><span class="kn-cursor"></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="kn-pane">
+      <div class="kn-eyebrow">
+        <span class="kn-kind">Rollout / 展開設計</span>
+        <span class="kn-stamp">Plan</span>
+      </div>
+      <ul class="kn-steps">
+        <li class="kn-step done"><span class="kn-sn">01</span><span class="kn-sl">パイロット選定</span><span class="kn-sb"></span></li>
+        <li class="kn-step done"><span class="kn-sn">02</span><span class="kn-sl">セキュリティ確認</span><span class="kn-sb"></span></li>
+        <li class="kn-step now"><span class="kn-sn">03</span><span class="kn-sl">利用ルール策定</span><span class="kn-sb"></span></li>
+        <li class="kn-step"><span class="kn-sn">04</span><span class="kn-sl">研修・オンボーディング</span><span class="kn-sb"></span></li>
+        <li class="kn-step"><span class="kn-sn">05</span><span class="kn-sl">全社展開</span><span class="kn-sb"></span></li>
+      </ul>
+    </div>
+  </div>
+  <p class="kn-caption">パイロットから全社展開まで、導入を<b>段階</b>で設計し、定着まで見届ける。図はイメージ。</p>
+</div>
+
+<!-- reader segments -->
+<section class="jz-sec jz-seg">
+  <div class="jz-sec-h">読者セグメント</div>
+  <div class="jz-seg-grid">
+    <div class="jz-seg-card">
+      <div class="seg-n">01 / IT &amp; DX</div>
+      <div class="seg-t">情シス・DX推進</div>
+      <div class="seg-d">セキュリティ確認、管理機能、アカウント配布の設計など、全社展開の前に押さえる論点を扱います。</div>
+    </div>
+    <div class="jz-seg-card">
+      <div class="seg-n">02 / Business</div>
+      <div class="seg-t">経営・事業部門リーダー</div>
+      <div class="seg-d">投資判断と稟議の組み立て、プランの選び方、部門業務での活用範囲の見極めを扱います。</div>
+    </div>
+    <div class="jz-seg-card">
+      <div class="seg-n">03 / HR &amp; L&amp;D</div>
+      <div class="seg-t">人事・人材開発</div>
+      <div class="seg-d">研修設計、非エンジニアへの展開、定着までのオンボーディングと社内展開の運用を扱います。</div>
+    </div>
+  </div>
+</section>
+
+<!-- categories -->
+<section class="jz-sec jz-cat">
+  <div class="jz-sec-h">カテゴリ</div>
+  <div class="jz-cat-grid">
+    <div class="jz-cat-item">
+      <div class="ct-name">導入・展開</div>
+      <div class="ct-en">Deployment</div>
+    </div>
+    <div class="jz-cat-item">
+      <div class="ct-name">料金・稟議</div>
+      <div class="ct-en">Pricing &amp; Approval</div>
+    </div>
+    <div class="jz-cat-item">
+      <div class="ct-name">活用・研修</div>
+      <div class="ct-en">Enablement &amp; Training</div>
+    </div>
+    <div class="jz-cat-item">
+      <div class="ct-name">定着支援</div>
+      <div class="ct-en">Adoption</div>
+    </div>
+  </div>
+</section>
+
+<!-- articles -->
+<section class="jz-sec jz-latest">
+  <div class="jz-sec-h">記事一覧</div>
+  <div class="jz-list rv">
+    <a href="copilot-bpr.html">
+      <div class="l-side">
+        <div class="l-cat">業務改革 / BPR</div>
+        <div class="l-date">2026.08.01</div>
+      </div>
+      <div>
+        <div class="l-title">Microsoft Copilot×業務プロセス改革（BPR）｜ツール研修で終わらせない導入設計【2026】</div>
+        <div class="l-desc">既存業務にCopilotを足すのか、業務を再設計してから組み込むのか。順序の違いが成果を分ける理由を整理する。</div>
+      </div>
+      <div class="l-arrow">&rarr;</div>
+    </a>
+    <a href="copilot-studio-training.html">
+      <div class="l-side">
+        <div class="l-cat">エージェント化 / Agents</div>
+        <div class="l-date">2026.07.29</div>
+      </div>
+      <div>
+        <div class="l-title">Copilot Studio研修とは｜業務エージェントを内製する学び方と進め方【2026】</div>
+        <div class="l-desc">「使う」から「作る」へ。社内データを扱う業務エージェントを内製するために必要なスキルと段階を解説する。</div>
+      </div>
+      <div class="l-arrow">&rarr;</div>
+    </a>
+    <a href="claude-code-shanai-tenkai.html">
+      <div class="l-side">
+        <div class="l-cat">導入・展開 / Deploy</div>
+        <div class="l-date">2026.07.29</div>
+      </div>
+      <div>
+        <div class="l-title">Claude Codeの社内展開｜セキュリティ・管理機能・配布設計【2026】</div>
+        <div class="l-desc">セキュリティ確認、管理機能、アカウント配布の設計まで、情シスが全社展開の前に押さえる論点を整理する。</div>
+      </div>
+      <div class="l-arrow">&rarr;</div>
+    </a>
+    <a href="copilot-adoption.html">
+      <div class="l-side">
+        <div class="l-cat">定着支援 / Adoption</div>
+        <div class="l-date">2026.07.25</div>
+      </div>
+      <div>
+        <div class="l-title">Microsoft Copilotが定着しない原因と対策｜利用率を上げる定着支援の設計【2026】</div>
+        <div class="l-desc">入れたのに使われない原因を構造で分解し、推進体制・プロンプト整備・利用率KPIの設計まで落とし込む。</div>
+      </div>
+      <div class="l-arrow">&rarr;</div>
+    </a>
+    <a href="claude-code-hi-engineer.html">
+      <div class="l-side">
+        <div class="l-cat">活用・研修 / Enablement</div>
+        <div class="l-date">2026.07.25</div>
+      </div>
+      <div>
+        <div class="l-title">非エンジニアのClaude Code活用｜業務部門で何ができるか【2026】</div>
+        <div class="l-desc">業務部門でClaude Codeに何を任せられるか。非エンジニアの活用範囲と、研修設計の考え方を解説する。</div>
+      </div>
+      <div class="l-arrow">&rarr;</div>
+    </a>
+    <a href="copilot-support-comparison.html">
+      <div class="l-side">
+        <div class="l-cat">選び方 / Vendors</div>
+        <div class="l-date">2026.07.22</div>
+      </div>
+      <div>
+        <div class="l-title">Microsoft Copilot導入支援の選び方｜SIer・コンサル・研修会社の違いを比較【2026】</div>
+        <div class="l-desc">支援会社を3類型に整理し、自社の状況からどこに頼むべきかを判断できるようにする。問い合わせ前の確認事項つき。</div>
+      </div>
+      <div class="l-arrow">&rarr;</div>
+    </a>
+    <a href="claude-code-cost.html">
+      <div class="l-side">
+        <div class="l-cat">料金・稟議 / Pricing</div>
+        <div class="l-date">2026.07.22</div>
+      </div>
+      <div>
+        <div class="l-title">Claude Codeの料金を法人で考える｜Team・Enterprise・APIの選び方【2026】</div>
+        <div class="l-desc">Team・Enterprise・APIそれぞれの課金の考え方と、法人での選び方・稟議の組み立て方を解説する。</div>
+      </div>
+      <div class="l-arrow">&rarr;</div>
+    </a>
+    <a href="copilot-training-cost.html">
+      <div class="l-side">
+        <div class="l-cat">料金・費用 / Pricing</div>
+        <div class="l-date">2026.07.18</div>
+      </div>
+      <div>
+        <div class="l-title">Microsoft Copilot研修の費用相場｜公開講座からカスタム研修・助成金まで【2026】</div>
+        <div class="l-desc">公開講座からカスタム研修まで、形態別の費用構造を比較。見積もり前に押さえる確認事項と助成金の位置づけも。</div>
+      </div>
+      <div class="l-arrow">&rarr;</div>
+    </a>
+    <a href="claude-code-dounyu.html">
+      <div class="l-side">
+        <div class="l-cat">導入・展開 / Deploy</div>
+        <div class="l-date">2026.07.18</div>
+      </div>
+      <div>
+        <div class="l-title">Claude Codeの法人導入｜パイロットから全社展開までの進め方【2026】</div>
+        <div class="l-desc">パイロットの設計から評価、全社展開までの進め方を段階ごとに解説する。最初の一歩の置き方から。</div>
+      </div>
+      <div class="l-arrow">&rarr;</div>
+    </a>
+  </div>
+</section>
+
+<!-- training cta -->
+<section class="jz-sec" style="margin-top:64px;">
+  <aside class="inline-dx-cta" style="border:1px solid var(--line-2);border-radius:14px;background:var(--white);padding:30px 32px;display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
+    <div style="flex:1;min-width:260px;">
+      <div style="font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);">法人研修 ・ TechWorker</div>
+      <div style="font-family:var(--jp);font-weight:700;font-size:clamp(18px,2.4vw,22px);color:var(--ink);line-height:1.5;margin-top:9px;">研修を、自社の業務に合わせて設計する</div>
+      <div style="font-size:14px;color:var(--slate);line-height:1.85;margin-top:7px;max-width:54ch;">業務プロセスの見直しから研修・定着支援まで、TechWorkerが貴社の環境に合わせて設計します。上場企業を含む37社・2,500名の生成AI支援知見がベースです。料金・実施形式はお問い合わせください。</div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:14px;font-size:13.5px;">
+        <a href="../../training-copilot.html" style="color:var(--electric);">Microsoft Copilot対応の研修 &rarr;</a>
+        <a href="../../claude-code-training.html" style="color:var(--electric);">Claude Code研修 &rarr;</a>
+      </div>
+    </div>
+    <a href="../../contact.html" class="btn" style="white-space:nowrap;flex:none;color:var(--paper);border-bottom:none;">研修について相談する <i>&rarr;</i></a>
+  </aside>
+</section>
+
+<!-- about this media -->
+<section class="jz-sec jz-about" id="about">
+  <div class="jz-sec-h">このメディアについて</div>
+  <div class="ab-body">
+    <p>「AI研修・導入ラボ」は、企業の生成AI導入・活用を支援する<a href="../../index.html">株式会社TechWorker</a>が運営するメディアです。Microsoft CopilotやClaude Codeなどの生成AIツールの法人導入・研修・定着・社内展開を、上場企業を含む37社・2,500名の支援で得た知見をもとに発信しています。</p>
+    <p>研修のご相談は <a href="../../training-copilot.html">Microsoft Copilot対応の法人研修</a> または <a href="../../claude-code-training.html">Claude Code研修</a> のページから、その他のご相談は <a href="../../contact.html">無料相談</a> から承っています。</p>
+  </div>
+</section>
+
+<!-- disclaimer (フッター直上) -->
+<section class="jz-sec kn-legal">
+  <p>本メディアおよび本研修は株式会社TechWorkerが独自に企画・提供するものであり、Microsoft Corporation および Anthropic PBC との提携・後援・承認を受けたものではありません。Microsoft、Microsoft 365、Copilot、Copilot Studio は Microsoft グループ企業の商標です。Claude、Claude Code は Anthropic PBC の商標です。</p>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">AI研修・導入<i>ラボ</i></div>
+        <p>生成AIの法人導入と定着の実践知をお届けするメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+      </div>
+      <div class="footer-col"><h4>AI研修・導入ラボ</h4><a href="index.html">記事一覧</a><a href="index.html#about">このメディアについて</a></div>
+      <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../training-copilot.html">Copilot研修</a><a href="../../claude-code-training.html">Claude Code研修</a><a href="../../index.html#services">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="../../contact.html">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+</body>
+</html>
