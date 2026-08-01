@@ -105,6 +105,14 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <div class="kicker">面談記録 / Interview Notes</div>
   <h1>面談メモ・候補者面談の議事録を生成AIで構造化する</h1>
   <p class="dek">候補者面談の録音やメモから、要点・推薦材料・次アクションを構造化する。記録に溶けていた時間を候補者と向き合う時間へ——CA／RAの面談記録を、生成AIでどう軽くするかを2026年の実践を前提に整理する。</p>
+  <div class="kn-voices" aria-hidden="true">
+    <span class="kn-fc" style="--sayo:0.0s"><span class="av"><img src="../avatars/m20-6.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">メモが追いつかない</span></span>
+    <span class="kn-fc" style="--sayo:6.3s"><span class="av"><img src="../avatars/f40-0.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">後で読めない</span></span>
+    <span class="kn-fc" style="--sayo:2.1s"><span class="av"><img src="../avatars/m50-2.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">転記が二度手間</span></span>
+    <span class="kn-fc" style="--sayo:8.4s"><span class="av"><img src="../avatars/f30-0.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">同意はどうする</span></span>
+    <span class="kn-fc" style="--sayo:4.2s"><span class="av"><img src="../avatars/m40-6.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">要点が抜ける</span></span>
+  </div>
+  <div class="kn-voices-cap">現場でよく聞く声<span class="note">※ 実際のご相談で挙がる論点をもとにした例です</span></div>
   <div class="a-meta">
     <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.06.18</span><span class="dot">·</span><span>最終更新 2026.06.18</span><span class="dot">·</span><span>読了 8分</span>
   </div>
@@ -199,11 +207,23 @@ fbq('init','1264057945446029');fbq('track','PageView');
 </aside>
       <h2 id="s1">面談メモを生成AIで構造化するとは？何が変わるのか</h2>
     <p class="answer">録音や走り書きを、要点・確認事項・推薦材料・次アクションの決まった型へ自動整理することです。</p>
+    <aside class="kn-side">
+      <img src="../avatars/f20-2.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">若手CAの視点</div><p>面談の記憶は当日のうちに書かないと、細部から消える。</p></div>
+    </aside>
     <p>候補者面談のあと、CA／RAの多くは記録に時間を取られています。話したことを思い出しながらメモを整え、推薦に使える材料を拾い直し、次にやることを書き出す——この一連の作業は、面談そのものと同じくらい時間を食います。面談メモの構造化とは、この記録作業を生成AIに任せることです。録音の文字起こしや断片的なメモを渡し、<strong>要約・確認したい点・推薦材料・次アクションといった決まった項目へ整理させる</strong>。結果として、記録に溶けていた時間が、次の候補者と向き合う時間に変わります。</p>
     <p>ここで核心になるのが、AIに「どんな型で出してほしいか」を渡すことです。「AIはエンジンだ。コンテキストは燃料だ」という考え方で言えば、面談記録の質は、何を記録の型として渡すか——つまり<strong>出力してほしいフィールドの設計</strong>でほぼ決まります。漠然と「議事録にして」と頼むと、当たり外れの大きい要約しか返りません。逆に「要約・スキル・懸念・次アクションの4項目で」と型を渡せば、毎回そろった形で記録が積み上がります。時短されるのは「書く時間」であって、「何を聞き、どう評価するか」というCA／RAの中核はむしろ手元に残ります。</p>
     <div class="callout"><p>構造化で増やすべきは「記録の量」ではなく「次の一手につながる記録の質」。型を決めずに丸投げした瞬間、AIの議事録は読み返さない長文の山になる。</p></div>
 
-    <h2 id="s2">面談記録をどう構造化するか？</h2>
+    
+    <aside class="kn-take">
+      <img class="kn-take-av" src="../avatars/f50-6.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">CAの視点</div>
+        <p>面談中にメモを取ると、<em>相手の話を聞けなくなる</em>。そこが本当の損失だった。</p>
+      </div>
+    </aside>
+<h2 id="s2">面談記録をどう構造化するか？</h2>
     <p class="answer">録音やメモを渡す前に出力する項目を決め、要点・確認事項・推薦材料・次アクションへ整理させます。</p>
     <p>構造化には型があります。先に出力してほしい項目を決め、その型に沿ってAIに整理させ、最後に人が事実を確認する——この順番を守ると、記録の質が安定します。次の5ステップで、人が判断すべきところは人が握ったまま、整理だけをAIに任せます。</p>
     <ol>
@@ -256,6 +276,10 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
     <h2 id="s3">ATS/CRMや推薦コメントへどうつなげるか？</h2>
     <p class="answer">出力を貼るだけにせず、ATS/CRMの決まった項目へ整形して残し、推薦コメントの素材として再利用します。</p>
+    <aside class="kn-side">
+      <img src="../avatars/m40-2.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">RAの視点</div><p>推薦コメントに使うなら、<em>候補者の言い回し</em>を残しておく。</p></div>
+    </aside>
     <p>構造化した記録は、作って終わりでは意味がありません。価値が出るのは、普段使っているATS/CRMの候補者レコードに、決まった項目で残してからです。生成AIの出力をそのまま貼り付けるのではなく、自社で必要な項目（推薦材料・確認事項・次アクションなど）に合わせて整形してから登録します。項目をそろえておくと、後から検索・比較・引き継ぎがしやすくなり、別の求人が出たときにも「この候補者は何が強みだったか」をすぐ引き出せます。</p>
     <ol>
       <li><strong>レコードの項目に合わせて整形する。</strong>AIの出力を、ATS/CRM側のフィールド（要約・強み・確認事項など）に対応づけてから登録する。</li>
@@ -272,8 +296,20 @@ fbq('init','1264057945446029');fbq('track','PageView');
     </figure>
     <p>上場企業を含む37社・2,500名の生成AI支援を通じて見えてきたのは、<strong>個々の議事録をうまく書かせることより、記録の型をチームでそろえて運用に乗せるほうが、結果として記録の時短と質が安定して両立する</strong>という傾向です。型さえ共有すれば、誰が面談しても同じ粒度の記録が積み上がります。</p>
 
-    <h2 id="s4">個人情報・録音同意で気をつけることは？</h2>
+    
+    <aside class="kn-take">
+      <img class="kn-take-av" src="../avatars/m30-6.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">管理部の視点</div>
+        <p>録音は同意が前提。運用ルールを決めてから始める。</p>
+      </div>
+    </aside>
+<h2 id="s4">個人情報・録音同意で気をつけることは？</h2>
     <p class="answer">録音は本人への事前同意が前提。機微情報の扱いと利用ツールのデータ方針を先に決めてから運用します。</p>
+    <aside class="kn-side">
+      <img src="../avatars/f30-2.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">管理部の視点</div><p>ATSに入れる情報と、手元に置く情報を分けて考える。</p></div>
+    </aside>
     <p>面談記録に生成AIを使うときは、便利さの前に押さえるべき一般的な注意があります。扱うのは候補者の個人情報であり、録音にはとくに配慮が要ります。次の3点を最初に決めてから運用に乗せると、安心して使い続けられます。</p>
     <ol>
       <li><strong>録音は事前同意を得てから。</strong>何のために録音し、どのツールで処理し、どこに保存するかを候補者に説明し、同意を得たうえで行う。同意がない録音はしない。</li>

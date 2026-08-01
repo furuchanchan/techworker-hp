@@ -106,6 +106,14 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <div class="kicker">研究ノート / Research Note</div>
   <h1>2時間のインタビューで「分身」はできるか｜スタンフォード「1,000人のエージェント」研究を読む</h1>
   <p class="dek">2時間のインタビューを丸ごとAIに渡すと、本人の代わりにアンケートへ答える「生成エージェント」が作れる——そんな研究が2024年秋に公開され、「85%の一致」という数字だけがひとり歩きしている。スタンフォード主導の「Generative Agent Simulations of 1,000 People」を原典に沿って読み、85%が本当は何を意味するのか、なぜインタビューが効いたのか、何がまだできないのかを整理する。</p>
+  <div class="kn-voices" aria-hidden="true">
+    <span class="kn-fc" style="--sayo:0.0s"><span class="av"><img src="avatars/m50-2.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">分身が作れる？</span></span>
+    <span class="kn-fc" style="--sayo:6.3s"><span class="av"><img src="avatars/f40-0.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">2時間で？</span></span>
+    <span class="kn-fc" style="--sayo:2.1s"><span class="av"><img src="avatars/m20-6.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">85%の意味</span></span>
+    <span class="kn-fc" style="--sayo:8.4s"><span class="av"><img src="avatars/f30-6.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">実務で使える？</span></span>
+    <span class="kn-fc" style="--sayo:4.2s"><span class="av"><img src="avatars/m40-0.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">まだ早い？</span></span>
+  </div>
+  <div class="kn-voices-cap">調査の現場でよく聞く声<span class="note">※ 実際のご相談で挙がる論点をもとにした例です</span></div>
   <div class="a-meta">
     <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.17</span><span class="dot">·</span><span>最終更新 2026.07.17</span><span class="dot">·</span><span>読了 12分</span>
   </div>
@@ -140,6 +148,10 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
     <h2 id="s1">この研究は何をしたのか？</h2>
     <p class="answer">米国の1,052名それぞれに、GPT-4oベースのAIインタビュアーが2時間の音声インタビューを実施。そのトランスクリプトを丸ごとプロンプトに入れて一人ひとりの「生成エージェント」を作り、本人が答えた社会調査・性格検査・行動実験にエージェントがどこまで一致した回答をするかを検証した。</p>
+    <aside class="kn-side">
+      <img src="avatars/f50-2.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">商品企画の視点</div><p>2時間の対話からエージェントを作る、という発想自体が新しい。</p></div>
+    </aside>
     <p>正式な書誌から確認します。論文はPark et al.「Generative Agent Simulations of 1,000 People」（<a href="https://arxiv.org/abs/2411.10109" target="_blank" rel="noopener noreferrer">arXiv:2411.10109</a>）。2024年11月に公開された<strong>arXivプレプリント</strong>で、本記事執筆時点（2026年7月）で査読付きジャーナルへの掲載は確認できていません。スタンフォード大学が主導し、Google DeepMindの研究者（Cai、Morrisら）が共著に入っています。「Googleの研究」と紹介する記事を見かけますが、主導はスタンフォードです。なお2026年には内容を改訂したv3が公開され、タイトルも「LLM Agents Grounded in Self-Reports…」に改題されています（v3の数値は<a href="#s4">後述</a>）。</p>
     <p>手法の骨格は3段階です。</p>
     <div class="ui-mock" role="img" aria-label="研究の流れ：2時間のAIインタビュー、トランスクリプトからのエージェント構築、本人との一致度検証の3段階">
@@ -160,7 +172,15 @@ fbq('init','1264057945446029');fbq('track','PageView');
     <p class="fig-cap">図：研究の流れ（筆者作成。内容はarXiv:2411.10109に基づく）。</p>
     <p>設計として見事なのは、検証の物差しに「本人の再回答」を入れた点です。人間は2週間経つと同じ質問にも同じようには答えません。エージェントを「本人の1回目の回答」とだけ比べると、この人間側の揺らぎがすべてエージェントの誤りとして計上されてしまう。本人自身の再現性を測っておくことで、「エージェントはどこまで迫れたか」を公平に評価できる枠組みになっています。そしてこの設計こそが、次章の「85%」の正体につながります。</p>
 
-    <h2 id="s2">「85%」は何を意味するのか？</h2>
+    
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/f20-0.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">リサーチ担当の視点</div>
+        <p>85%という数字は、<em>何と比べた85%か</em>を見ないと意味を取り違える。</p>
+      </div>
+    </aside>
+<h2 id="s2">「85%」は何を意味するのか？</h2>
     <p class="answer">「85%の質問に正答した」ではない。GSS 177問に対するエージェントの生の的中率は68.85%。本人が2週間後に再回答したときの自己一致率が81.25%で、この「人間自身のブレの天井」を分母にした正規化スコアが0.85。つまり「本人の再現性の85%まで迫った」という相対値だ。</p>
     <p>この研究の紹介記事で最も多い誤解が、「85%で本人を再現」という要約です。数字を分解すると、意味はかなり違って見えます。</p>
     <div class="tbl-wrap" id="tbl-85">
@@ -178,6 +198,10 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
     <h2 id="s3">なぜ「インタビュー」が効いたのか？</h2>
     <p class="answer">同じエージェントを人口統計プロフィールで作ると0.71、ペルソナ文で作ると0.70、サーベイ回答一式を丸ごと与えても0.76。2時間のインタビュー（0.85）はそのすべてを上回った。深掘りされた発話は、属性やアンケートの束よりも人を写す情報量が多い——これがこの研究の核心的な比較だ。</p>
+    <aside class="kn-side">
+      <img src="avatars/m30-2.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">リサーチ担当の視点</div><p>アンケートではなく<em>語り</em>を土台にした点が効いている。</p></div>
+    </aside>
     <p>この研究の価値は「エージェントが作れた」ことよりも、<strong>何を入力にすると人がよく写るのか</strong>を同一条件で比較した点にあります。著者らはインタビュー以外の入力でも同じ枠組みのエージェントを作り、GSSでの正規化スコアを比べました。</p>
     <div class="tbl-wrap">
       <table>
@@ -194,8 +218,20 @@ fbq('init','1264057945446029');fbq('track','PageView');
     <div class="quote-box"><p>属性は人を「分類」する。サーベイは人を「集計」する。2時間の対話だけが、人を「記述」していた——数値が示しているのは、そういうことだ。</p></div>
     <p>定性調査の実務に引きつけるなら、この比較は「良いデプスインタビュー1本の情報量」を初めて定量的に示したデータと読めます。当メディアが扱ってきた<a href="depth-interview.html">デプスインタビューの設計・実査</a>や<a href="interview-analysis.html">発話データの分析</a>の価値の根拠が、シミュレーション研究の側から裏書きされた格好です。ただし、だからといって万能ではない。次章で「できないこと」を見ます。</p>
 
-    <h2 id="s4">何がまだできないのか？</h2>
+    
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/m50-6.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">マーケ責任者の視点</div>
+        <p>できないことのほうが実務では重要。期待値の置き方が変わる。</p>
+      </div>
+    </aside>
+<h2 id="s4">何がまだできないのか？</h2>
     <p class="answer">実金銭の経済ゲームでは0.66で、人口統計だけのエージェントと有意差なし——行動予測ではインタビューの上乗せが消える。サンプルの偏り・倫理設計の重さも残る。著者ら自身が対抗研究を引用し、実務界（NN/g）も「補完であって代替ではない」と整理している。</p>
+    <aside class="kn-side">
+      <img src="avatars/f40-2.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">マーケの視点</div><p>研究段階の話と、いま使える話は分けて読む。</p></div>
+    </aside>
     <h3>行動予測では、インタビューの優位が消える</h3>
     <p>態度・価値観（GSS 0.85）と性格（ビッグファイブ 0.80）で高い一致を示したエージェントは、実際の金銭がかかった経済ゲーム（独裁者ゲームや公共財ゲームなど）では正規化相関0.66にとどまりました。しかも重要なのは絶対値より比較で、<strong>人口統計だけで作ったエージェントと統計的に有意な差がなかった</strong>。つまり、2時間の語りが持つ豊かな情報は、意見を写すことには効いても、インセンティブが絡む行動の予測には（少なくともこの検証では）上乗せをもたらしませんでした。「意見は写せても、行動はまだ写せない」が正確な現在地です。</p>
     <p>一方で、集団レベルの再現には見どころがあります。有名な行動実験5本の追試では、エージェント集団は人間の参加者集団が再現できた4本を同じく再現し、人間が再現に失敗した1本では同じく失敗しました（効果量の相関はr=0.98）。個人の行動は写せなくても、集団としての実験結果のパターンはなぞれる——この非対称は、応用の形を考えるうえで示唆的です。</p>

@@ -105,6 +105,14 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <div class="kicker">Proof of Concept（PoC）</div>
   <h1>稟議が通る新規事業PoCの設計｜生成AIで高速に試す</h1>
   <p class="dek">PoCは「何を確かめれば進めてよいか」を先に決める作業から始まる。検証目的・検証項目・合否指標を固定し、生成AIでプロトタイプと検証を高速化しながら、稟議で通用する判断材料をつくる。大企業の新規事業・R&amp;Dチームが陥りやすい落とし穴とあわせて整理する。</p>
+  <div class="kn-voices" aria-hidden="true">
+    <span class="kn-fc" style="--sayo:0.0s"><span class="av"><img src="../avatars/m30-6.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">PoCが終わらない</span></span>
+    <span class="kn-fc" style="--sayo:6.3s"><span class="av"><img src="../avatars/f40-2.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">稟議が通らない</span></span>
+    <span class="kn-fc" style="--sayo:2.1s"><span class="av"><img src="../avatars/m50-2.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">評価基準が無い</span></span>
+    <span class="kn-fc" style="--sayo:8.4s"><span class="av"><img src="../avatars/f20-2.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">作って終わる</span></span>
+    <span class="kn-fc" style="--sayo:4.2s"><span class="av"><img src="../avatars/m40-6.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">次に進まない</span></span>
+  </div>
+  <div class="kn-voices-cap">現場でよく聞く声<span class="note">※ 実際のご相談で挙がる論点をもとにした例です</span></div>
   <div class="a-meta">
     <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.01</span><span class="dot">·</span><span>最終更新 2026.07.01</span><span class="dot">·</span><span>読了 9分</span>
   </div>
@@ -199,6 +207,10 @@ fbq('init','1264057945446029');fbq('track','PageView');
 </aside>
       <h2 id="s1">新規事業PoCで生成AIをどう使うか？</h2>
     <p class="answer">検証項目の洗い出し・プロトタイプの試作・検証結果の整理を速くする道具。何を検証するかの設計と意思決定は事業側が担う。</p>
+    <aside class="kn-side">
+      <img src="../avatars/f50-0.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">企画の視点</div><p>PoCが「作ってみた」で終わり、判断につながらない。</p></div>
+    </aside>
     <p>「新規事業のPoCに生成AI」と聞くと、AIがアイデアの良し悪しを判定してくれる仕組みを想像するかもしれません。しかし新規事業・R&amp;Dチームの現場で生成AIが担えるのは、判定そのものではなく<strong>判定材料をそろえるまでの準備作業</strong>です。検証目的から検証項目を洗い出し、検証用のプロトタイプ（画面・会話フロー・ドキュメント）を試作し、集まった結果を指標に沿って整理する——この一連の前さばきが速くなることで、事業責任者は「何を確かめたくて、結果はどうで、次にいくら投資すべきか」という本質的な判断に時間を使えます。「AIはエンジンだ。コンテキストは燃料だ」という考え方どおり、検証目的と事業仮説という燃料が明確なほど、AIが出すプロトタイプと整理案の質は上がります。</p>
     <p>PoCは新規事業の5フェーズ（探索・構想・検証・PoC・定着）のうち、<a href="../../new-business.html">アイデアの構想</a>を経て投資判断に近づく段階に位置します。工程ごとに、AIの使いどころと事業側の役割を分けると次のようになります。</p>
     <div class="tbl-wrap">
@@ -213,7 +225,15 @@ fbq('init','1264057945446029');fbq('track','PageView');
     </div>
     <div class="callout"><p>AIは「検証項目を洗い出し、プロトタイプの叩き台を速く作る」のが得意。一方で、何を検証するかの設計と、結果から進める／止めるを決める意思決定は事業側に残る領域。役割を分けることが、PoCにAIを入れる前提になる。</p></div>
 
-    <h2 id="s2">稟議・承認が通るPoC設計</h2>
+    
+    <aside class="kn-take">
+      <img class="kn-take-av" src="../avatars/f30-6.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">新規事業担当の視点</div>
+        <p>通る稟議は、<em>やめる条件</em>まで書いてあるものだった。</p>
+      </div>
+    </aside>
+<h2 id="s2">稟議・承認が通るPoC設計</h2>
     <p class="answer">検証目的×検証項目×合否指標をPoC着手前に固定すること。稟議で問われるのは完成度でなく判断材料の有無。</p>
     <p>PoCが稟議で止まる最大の理由は、プロトタイプの出来不出来ではありません。承認者が知りたいのは<strong>「何を確かめたくて、結果はどうで、次にいくら投資すべきか」</strong>という判断材料であり、それが用意されていないことがボトルネックになります。逆に言えば、検証目的・検証項目・合否指標をPoCの設計段階で固定し、結果をその指標に沿って報告する構成にできれば、稟議は通りやすくなります。以下は、検証目的ごとに、押さえるべき検証項目と合否指標を整理した例です。</p>
     <div class="tbl-wrap">
@@ -255,6 +275,10 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
     <h2 id="s3">高速プロトタイピングの進め方</h2>
     <p class="answer">生成AIで画面・会話フロー・提案書のたたき台を数日〜数週間で用意し、少人数レビューを重ねてから本検証に入ること。</p>
+    <aside class="kn-side">
+      <img src="../avatars/m40-0.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">新規事業担当の視点</div><p>速く作れる分、<em>何を確かめるのか</em>を先に決める必要がある。</p></div>
+    </aside>
     <p>検証目的と合否指標が決まれば、次は検証に使うプロトタイプの用意です。従来、新規事業のPoC用プロトタイプは外部ベンダーへの発注や数週間の開発工数を要し、それ自体が着手の壁になっていました。生成AIを使うと、画面モック・チャットボットの会話フロー・提案書ドラフトといった検証用の成果物を、社内のチームだけで高速に試作できます。重要なのは「完成品」を作ることではなく、<strong>合否指標を判定できる最小限の品質</strong>まで作り、検証に投入することです。</p>
     <ol>
       <li><strong>検証項目から必要な成果物を逆算する。</strong>合否指標を確かめるために、顧客に何を見せる・体験させる必要があるかを specify する。</li>
@@ -283,8 +307,20 @@ fbq('init','1264057945446029');fbq('track','PageView');
     <div class="quote-box"><p>PoCの価値は、プロトタイプの完成度ではなく、投資判断に使える証拠をどれだけ速く・安く集められるかで決まる。</p></div>
     <p>これは、上場企業を含む37社・2,500名の生成AI活用支援で繰り返し見てきた「検証のリードタイムを圧縮し、事業側が判断に集中できる時間を増やす」使い方の典型です。プロトタイピングと並行して、稟議書に載せる報告の型を先に決めておくと、検証結果を待たずに稟議のスケジュールを引けます。</p>
 
-    <h2 id="s4">PoCの落とし穴</h2>
+    
+    <aside class="kn-take">
+      <img class="kn-take-av" src="../avatars/m20-0.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">事業責任者の視点</div>
+        <p>落とし穴の多くは、始める前の設計で防げるものだった。</p>
+      </div>
+    </aside>
+<h2 id="s4">PoCの落とし穴</h2>
     <p class="answer">検証目的なき作り込み、合否指標の後付け、社内実証で終わらせる運用の3点が典型的な落とし穴になる。</p>
+    <aside class="kn-side">
+      <img src="../avatars/f40-6.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">経営企画の視点</div><p>評価指標がないPoCは、成功も失敗も判定できない。</p></div>
+    </aside>
     <p>PoCの取り組みが稟議で止まる、あるいは「やったはずなのに次に進めない」状態になるのは、決まってPoC設計の初期段階でのつまずきが原因です。生成AIで検証を速く回せるようになったからこそ、<strong>速く回した先に何を証明するのかが曖昧なまま突き進んでしまう</strong>リスクも高まります。新規事業・R&amp;Dチームが陥りやすい落とし穴を、次の表に整理します。</p>
     <div class="tbl-wrap">
       <table>

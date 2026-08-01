@@ -114,6 +114,14 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <div class="kicker">Token Strategy</div>
   <h1>トークンマキシングとは｜AIの出力品質を最大化する「惜しまず使う」戦略</h1>
   <p class="dek">トークンをケチるほど成果が落ちる仕事がある。いつ振り切り、いつ絞るのか——2026年のClaudeで実践する、品質最大化の考え方。</p>
+  <div class="kn-voices" aria-hidden="true">
+    <span class="kn-fc" style="--sayo:0.0s"><span class="av"><img src="avatars/m40-0.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">出力が浅い</span></span>
+    <span class="kn-fc" style="--sayo:6.3s"><span class="av"><img src="avatars/f30-6.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">品質が上がらない</span></span>
+    <span class="kn-fc" style="--sayo:2.1s"><span class="av"><img src="avatars/m20-2.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">コストが怖い</span></span>
+    <span class="kn-fc" style="--sayo:8.4s"><span class="av"><img src="avatars/f50-0.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">使い方が分からない</span></span>
+    <span class="kn-fc" style="--sayo:4.2s"><span class="av"><img src="avatars/m30-0.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">どこまで使う</span></span>
+  </div>
+  <div class="kn-voices-cap">現場でよく聞く声<span class="note">※ 実際のご相談で挙がる論点をもとにした例です</span></div>
   <div class="a-meta">
     <img class="av" src="../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.06.13</span><span class="dot">·</span><span>最終更新 2026.06.13</span><span class="dot">·</span><span>読了 7分</span>
   </div>
@@ -151,15 +159,31 @@ fbq('init','1264057945446029');fbq('track','PageView');
 </aside>
       <h2 id="s1">トークンマキシングとは？</h2>
     <p class="answer">トークンを惜しまず最大限使い、AIの出力品質を最大化する戦略。コストを絞る「トークンマネジメント」の対極にある考え方だ。</p>
+    <aside class="kn-side">
+      <img src="avatars/f20-6.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">エンジニアの視点</div><p>短く聞くほど良い、と思い込んでいた。</p></div>
+    </aside>
     <p>トークンとは、AIが文章を処理するときの最小単位です。マネジメントが「いかに少ないトークンで回すか」を追うのに対し、マキシングは「いかに多く投じて質を上げるか」を追います。モデルが賢くなった2026年では、コンテキスト・推論・反復にトークンを投じるほど成果（ROI）が伸びる局面が明確に増えました。</p>
 
-    <h2 id="s2">なぜ今「マキシング」なのか？</h2>
+    
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/f40-2.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">開発責任者の視点</div>
+        <p>절約が目的化していた。<em>品質のために使い切る</em>という発想が無かった。</p>
+      </div>
+    </aside>
+<h2 id="s2">なぜ今「マキシング」なのか？</h2>
     <p class="answer">多くの重要な仕事では、間違いの手戻りコストがトークン代を大きく上回るからだ。</p>
     <p>重要な意思決定の調査、大規模なコード改修、精度が問われる分析——こうした仕事では、トークンをケチって精度を落とすより、惜しみなく使って一発で正確に仕上げる方が、結果的に安く・速くなります。2026年のモデルは100万トークンのコンテキストを<strong>標準料金（長文の追加料金なし）</strong>で扱え、深く推論させることもできるため、「振り切る」選択肢が現実的になりました。</p>
     <div class="stat"><span class="n">100万</span><span class="l">Opus 4.8 等が標準料金で扱えるコンテキスト・トークン数（長文プレミアムなし）</span></div>
 
     <h2 id="s3">トークンを「振り切る」4つの手法</h2>
     <p class="answer">大規模コンテキスト・深い推論・マルチエージェント・反復検証の4つで、品質側に振り切る。</p>
+    <aside class="kn-side">
+      <img src="avatars/m30-2.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">開発の視点</div><p>手法を並べてもらえると、<em>自分の使い方</em>と比べられる。</p></div>
+    </aside>
     <ol>
       <li><strong>大規模コンテキストに全部入れる。</strong>要約で情報を削るのではなく、関連資料を最大100万トークンのコンテキストにそのまま渡して判断させる。</li>
       <li><strong>深く推論させる（adaptive thinking）。</strong>2026年のClaudeは固定の思考予算でなく effort（low〜max）で深さを調整する。難問ほど high / xhigh / max に上げる。</li>
@@ -174,8 +198,20 @@ fbq('init','1264057945446029');fbq('track','PageView');
       <div class="cc-cap">※イメージ図です。実測値ではなく、トークンを惜しまず使うほど手戻りが減り、狙った品質で仕上がる——その配分の変化の方向を表しています。</div>
     </figure>
 
-    <h2 id="s4">いつ振り切り、いつ絞るのか？</h2>
+    
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/m50-6.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">経営企画の視点</div>
+        <p>振り切る場面と絞る場面を分ければ、費用の話も説明しやすい。</p>
+      </div>
+    </aside>
+<h2 id="s4">いつ振り切り、いつ絞るのか？</h2>
     <p class="answer">判断ミスの手戻りコストがトークン代を上回る局面で振り切り、それ以外は絞る。</p>
+    <aside class="kn-side">
+      <img src="avatars/f40-6.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">情シスの視点</div><p>振り切る前提なら、上限の設計はセットで要る。</p></div>
+    </aside>
     <p>すべてに振り切るのではありません。<strong>「絞る（マネジメント）↔ 振り切る（マキシング）」を局面で使い分ける</strong>のが、トークン戦略の核心です。</p>
     <div class="tbl-wrap">
       <table>

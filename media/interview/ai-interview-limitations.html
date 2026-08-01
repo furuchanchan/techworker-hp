@@ -106,6 +106,14 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <div class="kicker">限界と設計 / Limitations</div>
   <h1>AIインタビューのデメリットと限界｜精度を落とさないための設計</h1>
   <p class="dek">導入を検討する段階で知りたいのは、できることではなく「できないこと」だ。非言語情報の欠落、想定外の脱線への弱さ、ラポールが必要なテーマ、回答者のAI慣れの差、深掘りの質のばらつき——AIインタビューの限界を提供者の立場から開示し、それぞれの影響と補完策、精度を落とさないための設計をセットで整理する。</p>
+  <div class="kn-voices" aria-hidden="true">
+    <span class="kn-fc" style="--sayo:0.0s"><span class="av"><img src="avatars/m50-6.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">精度が不安</span></span>
+    <span class="kn-fc" style="--sayo:6.3s"><span class="av"><img src="avatars/f20-6.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">表情は見えない</span></span>
+    <span class="kn-fc" style="--sayo:2.1s"><span class="av"><img src="avatars/m30-0.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">脱線したら？</span></span>
+    <span class="kn-fc" style="--sayo:8.4s"><span class="av"><img src="avatars/f40-0.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">AI慣れの差</span></span>
+    <span class="kn-fc" style="--sayo:4.2s"><span class="av"><img src="avatars/m20-2.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">品質のばらつき</span></span>
+  </div>
+  <div class="kn-voices-cap">調査の現場でよく聞く声<span class="note">※ 実際のご相談で挙がる論点をもとにした例です</span></div>
   <div class="a-meta">
     <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.29</span><span class="dot">·</span><span>最終更新 2026.07.29</span><span class="dot">·</span><span>読了 9分</span>
   </div>
@@ -148,6 +156,10 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
     <h2 id="s1">AIインタビューのデメリットは何か？——5つの限界の全体像</h2>
     <p class="answer">非言語情報の欠落、脱線への弱さ、ラポール、AI慣れの差、深掘りのばらつき。いずれも影響と補完策を特定できる。</p>
+    <aside class="kn-side">
+      <img src="avatars/f30-2.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">商品企画の視点</div><p>できないことを先に聞けると、期待値を間違えずに済む。</p></div>
+    </aside>
     <p>AIインタビューは、AIがモデレーターとして回答者一人ずつに質問し、答えに応じて深掘りする定性調査の手法です（仕組みの全体像は<a href="ai-interview.html">AIインタビューとは</a>で解説しています）。同時並行・24時間の実査という構造上の強みの裏側には、人間のモデレーターを置き換えたことによる構造上の弱みがあります。主要な限界を、調査への影響と補完策まで含めて一覧にします。</p>
     <div class="tbl-wrap">
       <table>
@@ -164,7 +176,15 @@ fbq('init','1264057945446029');fbq('track','PageView');
     <p>見ての通り、6つのうち5つは「設計と運用の打ち手がある限界」で、1つ（定量推定）は「そもそも手法の守備範囲の外」です。この区別が判断の出発点になります。守備範囲の外のことをAIインタビューに期待してはいけませんが、打ち手のある限界を理由に手法ごと捨てるのも、判断としては粗すぎます。</p>
     <div class="callout"><p>デメリットの議論で混同されやすいのは、「手法の限界」と「設計の失敗」。深掘りが浅い調査の多くは、AIの限界ではなく深掘りポイントを設計しなかった失敗だ。切り分けてから対策する。</p></div>
 
-    <h2 id="s2">非言語情報が取れないことは、どこまで致命的か？</h2>
+    
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/f50-0.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">リサーチ担当の視点</div>
+        <p>非言語が取れないのは事実。ただ<em>どのテーマで致命的か</em>を分ければ使い道は残る。</p>
+      </div>
+    </aside>
+<h2 id="s2">非言語情報が取れないことは、どこまで致命的か？</h2>
     <p class="answer">表情・沈黙・場の空気は記録に残らない。発話が主役の調査では補えるが、観察が本質の調査では対面を選ぶ。</p>
     <p>対面のデプスインタビューで熟練モデレーターが読んでいるのは、言葉だけではありません。答えるまでの間の長さ、視線の逸れ、笑いながら語られる不満、前のめりになる瞬間——<strong>発話の外にあるシグナル</strong>が、深掘りの方向を決める材料になっています。AIインタビューでは、この層の情報が原理的に取れません。音声で答える形式なら声のトーンは残りますが、音声型AIインタビュアーの適性を検証したTirumalaら（2025年、arXiv公開のプレプリント）も、現在の技術には<strong>感情検出の限界</strong>があることを指摘しています。</p>
     <p>沈黙の扱いも同じです。回答者が黙ったとき、それが「思い出している」のか「言いにくくて迷っている」のかを見分けて、待つか・促すか・話題を変えるかを判断する——この判断は人間のモデレーターの技術であり、AIはまだ同じ水準でこなせません。</p>
@@ -177,6 +197,10 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
     <h2 id="s3">ラポールが要るテーマと想定外の脱線に、AIはどこまで対応できるか？</h2>
     <p class="answer">深い信頼関係の構築と、脱線を調査の焦点に変える判断は人間に分がある。テーマ選定の段階で線を引く。</p>
+    <aside class="kn-side">
+      <img src="avatars/m20-0.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">若手の視点</div><p>ラポールが要るテーマは、そもそも人が会う前提で設計する。</p></div>
+    </aside>
     <p>次の2つは、AIインタビューの限界の中でも「人間のモデレーターにしかできないこと」がはっきり残る領域です。</p>
     <h3>ラポール：信頼が要る開示は、人間相手に向かう</h3>
     <p>ラポール（信頼関係）の形成が前提となるテーマ——たとえば喪失体験や重い疾患の経験のように、聞き手との関係ができて初めて語られる話題では、AIインタビューは人間の代わりになりません。Croesら（2024年、Interacting with Computers誌）は286名を対象にした実験で、チャットボット相手では「判断される恐れ」が下がる一方、<strong>「信頼」は人間相手のほうが高い</strong>という非対称を報告しています。恐れの壁は下がっても、信頼を前提とする深い開示は人間に向かう、ということです。</p>
@@ -199,6 +223,10 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
     <h2 id="s4">回答者のAI慣れと、深掘りの質のばらつきはどう影響するか？</h2>
     <p class="answer">慣れの差は語りの厚みの差になり、深掘りの質は毎回一定ではない。回答形式の選択と人の検品で抑え込む。</p>
+    <aside class="kn-side">
+      <img src="avatars/f40-2.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">CS担当の視点</div><p>回答者のAI慣れは想像以上に差がある。<em>導入の一文</em>で変わる。</p></div>
+    </aside>
     <p>残る2つの限界は、実査の品質に直接跳ね返るものです。導入後に「思ったより浅い回答が混ざる」と感じる原因の多くは、ここにあります。</p>
     <h3>AI慣れの差：同じ設計でも、回答の厚みは人によって変わる</h3>
     <p>URLを開いて機械に向かって声で話す、という回答体験への慣れには、回答者の間で大きな差があります。音声アシスタントやAIチャットを日常的に使う人は最初から流暢に話しますが、慣れていない人は発話が短くなったり、質問への確認的な返答に留まったりします。この差は年齢だけでなく、職種やデジタル接点の多寡でも生じます。対象者にデスクレスの現場職や高齢層が多い調査では、<strong>設計が同じでも語りの厚みが揃わない</strong>リスクを織り込む必要があります。</p>
@@ -208,7 +236,15 @@ fbq('init','1264057945446029');fbq('track','PageView');
     <p>だからこそ、実務では2つの手当てをセットにします。第一に、<strong>深掘りポイントの明示的な設計</strong>。「『面倒』という言葉が出たら、何の工程が面倒なのかを具体化する」のように、どの回答が出たらどこを掘るかを事前に指定すれば、深掘りの質は設計で底上げできます。第二に、<strong>人間による全件レビューと除外基準</strong>。掘り切れなかった回答・品質の低い回答を検品で特定し、分析から外すか追加の実査で補う運用です。当メディアの<a href="sample-study.html">公開サンプル調査</a>（※架空データによる公開デモ）でも、回答23件のうち自動検査と人の確認で3件を除外して有効20件としており、「集まった回答を全部そのまま使わない」ことを品質管理の前提にしています。</p>
     <div class="quote-box"><p>AIインタビューの品質は「AIがどれだけ賢いか」では決まらない。どこを掘るかを人が設計し、掘れたかを人が検品する——この前後工程の運用が、深掘りのばらつきを結果のばらつきにしない防波堤になる。</p></div>
 
-    <h2 id="s5">精度を落とさないためには、何を設計すればよいか？</h2>
+    
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/m40-6.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">マーケ責任者の視点</div>
+        <p>限界を隠さず出してくる資料のほうが、社内では通しやすい。</p>
+      </div>
+    </aside>
+<h2 id="s5">精度を落とさないためには、何を設計すればよいか？</h2>
     <p class="answer">質問ガイドの設計、人間リサーチャーの監修、対面との併用。この3つで限界は運用で管理できる問題に変わる。</p>
     <p>ここまで見た限界は、放置すれば精度の低下として現れ、設計すれば管理できる変数に変わります。打ち手は3つに集約されます。</p>
     <ol>

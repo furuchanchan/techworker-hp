@@ -107,6 +107,14 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <div class="kicker">Token Strategy</div>
   <h1>トークンマネジメントとは｜生成AIのコストを最大90%下げる実践ガイド</h1>
   <p class="dek">同じ仕事でも、トークンの使い方次第で請求額は何倍も変わる。プロンプトキャッシュ・モデル使い分け・Batch APIで無駄を削る——2026年のClaudeで実践する、コスト最小化の考え方。</p>
+  <div class="kn-voices" aria-hidden="true">
+    <span class="kn-fc" style="--sayo:0.0s"><span class="av"><img src="avatars/m50-2.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">費用が読めない</span></span>
+    <span class="kn-fc" style="--sayo:6.3s"><span class="av"><img src="avatars/f20-0.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">急に増える</span></span>
+    <span class="kn-fc" style="--sayo:2.1s"><span class="av"><img src="avatars/m30-6.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">誰が使ったか不明</span></span>
+    <span class="kn-fc" style="--sayo:8.4s"><span class="av"><img src="avatars/f40-0.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">上限が無い</span></span>
+    <span class="kn-fc" style="--sayo:4.2s"><span class="av"><img src="avatars/m20-6.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">説明できない</span></span>
+  </div>
+  <div class="kn-voices-cap">現場でよく聞く声<span class="note">※ 実際のご相談で挙がる論点をもとにした例です</span></div>
   <div class="a-meta">
     <img class="av" src="../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.06.13</span><span class="dot">·</span><span>最終更新 2026.06.13</span><span class="dot">·</span><span>読了 7分</span>
   </div>
@@ -145,14 +153,30 @@ fbq('init','1264057945446029');fbq('track','PageView');
 </aside>
       <h2 id="s1">トークンマネジメントとは？</h2>
     <p class="answer">生成AIが扱う「トークン」の使用量を管理し、品質を保ちながらコストと処理速度を最適化する戦略だ。</p>
+    <aside class="kn-side">
+      <img src="avatars/f50-6.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">経理の視点</div><p>月末に請求額を見て驚く、という状態が続いていた。</p></div>
+    </aside>
     <p>トークンとは、AIが文章を処理するときの最小単位（おおよそ単語や文字のかたまり）で、生成AIのAPIは<strong>入力トークンと出力トークンの量に応じて課金</strong>されます。したがって、無駄なトークンを削ることは、そのままコスト削減に直結します。品質を最大化する<a href="token-maxing.html">トークンマキシング</a>とは逆向きの、コスト最小化の発想です。</p>
 
-    <h2 id="s2">なぜトークン管理が重要なのか？</h2>
+    
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/f30-2.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">情シスの視点</div>
+        <p>管理の目的は削減だけではなく、<em>説明できる状態</em>を作ることだった。</p>
+      </div>
+    </aside>
+<h2 id="s2">なぜトークン管理が重要なのか？</h2>
     <p class="answer">コストは「トークン単価 × 使用量」で決まり、放置すると無駄が積み上がるからだ。</p>
     <p>生成AIのコストは突き詰めると「トークン単価 × 使用量」です。使えば使うほど増えるため、放置すると無駄が積み上がります。たとえば、同じ長い資料を毎回まるごと送信する、不要な会話履歴を毎リクエストに含める、必要以上に長い出力を生成させる——こうした積み重ねが請求額を押し上げます。逆に言えば、<strong>「同じ処理をいかに少ないトークンで回すか」を設計するだけで、品質を落とさずにコストを大きく下げられます。</strong></p>
 
     <h2 id="s3">トークンコストを下げる4つの手法</h2>
     <p class="answer">プロンプトキャッシュ・モデル使い分け・Batch API・出力制御の4つで、コストを削る。</p>
+    <aside class="kn-side">
+      <img src="avatars/m20-0.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">エンジニアの視点</div><p>手法ごとに効く場面が違う。<em>全部やる必要はない</em>。</p></div>
+    </aside>
     <ol>
       <li><strong>プロンプトキャッシュを使う。</strong>システムプロンプトや長い参照資料など「毎回同じ前提」をキャッシュする。Anthropicの公式仕様では、キャッシュからの読み出しは通常入力トークンの約0.1倍（およそ90%安）。書き込みは1.25倍（5分有効）・2倍（1時間有効）かかるが、同じ前提を2回以上使うワークフローなら元が取れる。</li>
       <li><strong>モデルを使い分ける。</strong>すべてを最上位モデルで処理する必要はない。単純な分類や要約は安価なモデル、推論や本番品質が要る処理は上位モデル、とタスクに応じて使い分ける（料金は下表）。</li>
@@ -169,6 +193,10 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
     <h2 id="s4">モデル別の料金はいくら？（2026年）</h2>
     <p class="answer">用途に過剰なモデルを使っていないか、まず料金表で確認するのが出発点だ。</p>
+    <aside class="kn-side">
+      <img src="avatars/f40-2.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">経営企画の視点</div><p>モデル別の単価が分かると、設計段階で選べる。</p></div>
+    </aside>
     <p>主要なClaudeモデルの料金（100万トークンあたり、2026年時点の公式価格）です。Fable 5・Opus 4.8・Sonnet 4.6 は100万トークンのコンテキストを<strong>標準料金（長文の追加料金なし）</strong>で扱えます。用途に対して過剰なモデルを使っていないか、まずここを確認します。</p>
     <div class="tbl-wrap">
       <table>
@@ -182,7 +210,15 @@ fbq('init','1264057945446029');fbq('track','PageView');
     <p>出典：Anthropic公式の料金体系（2026年）。同じ処理でも、Haiku 4.5 で足りるものを Fable 5 で回せば10倍のコストになります。</p>
     <div class="stat"><span class="n">約90%</span><span class="l">プロンプトキャッシュ読み出し時のコスト削減幅（通常入力の約0.1倍／Anthropic公式仕様）</span></div>
 
-    <h2 id="s5">いつ絞り、いつ振り切るのか？</h2>
+    
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/m40-6.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">開発責任者の視点</div>
+        <p>絞る場面と振り切る場面の判断基準が要る。一律の節約では品質が落ちる。</p>
+      </div>
+    </aside>
+<h2 id="s5">いつ絞り、いつ振り切るのか？</h2>
     <p class="answer">1件あたりの価値が小さい処理は絞り、精度が成果を左右する局面は振り切る。</p>
     <p>すべてを絞ればいいわけではありません。<strong>「絞る（マネジメント）↔ 振り切る（<a href="token-maxing.html">マキシング</a>）」を局面で使い分ける</strong>のが、トークン戦略の核心です。コストを削るべき場所と、品質に投資すべき場所を業務文脈に合わせて切り分けます。</p>
     <div class="tbl-wrap">

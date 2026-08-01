@@ -106,6 +106,14 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <div class="kicker">社内の声 / Employee Voice</div>
   <h1>従業員の本音をAIインタビューで聞く</h1>
   <p class="dek">エンゲージメントサーベイのスコアは毎回取れている。それでも、現場で何が起きているかは分からないまま——。AIインタビューを社内に向けるとき、何を設計し、匿名性と音声をどう扱い、どう運用するか。経営企画・人事・情シス・AI推進担当のために、限界も含めて実務を整理する。</p>
+  <div class="kn-voices" aria-hidden="true">
+    <span class="kn-fc" style="--sayo:0.0s"><span class="av"><img src="avatars/m30-6.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">本音が出ない</span></span>
+    <span class="kn-fc" style="--sayo:6.3s"><span class="av"><img src="avatars/f20-2.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">匿名でも書けない</span></span>
+    <span class="kn-fc" style="--sayo:2.1s"><span class="av"><img src="avatars/m40-2.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">サーベイ疲れ</span></span>
+    <span class="kn-fc" style="--sayo:8.4s"><span class="av"><img src="avatars/f50-6.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">点数だけ見てる</span></span>
+    <span class="kn-fc" style="--sayo:4.2s"><span class="av"><img src="avatars/m20-0.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">何も変わらない</span></span>
+  </div>
+  <div class="kn-voices-cap">調査の現場でよく聞く声<span class="note">※ 実際のご相談で挙がる論点をもとにした例です</span></div>
   <div class="a-meta">
     <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.27</span><span class="dot">·</span><span>最終更新 2026.07.27</span><span class="dot">·</span><span>読了 10分</span>
   </div>
@@ -141,6 +149,10 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
     <h2 id="s1">なぜ従業員サーベイだけでは実態がつかめないのか？</h2>
     <p class="answer">スコアは取れても「なぜ」が残らない。自由記述は書く負荷が高く、掘り返せず、声の大きい人に偏るため。</p>
+    <aside class="kn-side">
+      <img src="avatars/f40-2.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">人事の視点</div><p>設問を増やすほど回答率が落ちて、結局実態が見えない。</p></div>
+    </aside>
     <p>従業員サーベイは、組織の状態を定点で測る道具として広く定着しています。スコアの推移が見えること自体に価値はありますが、経営が知りたいのは「エンゲージメントが下がった」という事実ではなく、「なぜ下がったのか」「どこで何が起きているのか」です。そして、この「なぜ」を拾う役割を期待されている自由記述欄が、実務では機能しにくい構造を抱えています。</p>
     <ol>
       <li><strong>書く負荷が高い。</strong>業務の合間に、自分の考えを整理して文章にする作業は重労働です。結果として自由記述は空欄か、「特にありません」「もう少し評価してほしい」といった短文が並びます。話せば10分出てくる内容も、書くとなると3行で終わるのが普通です。</li>
@@ -151,7 +163,15 @@ fbq('init','1264057945446029');fbq('track','PageView');
     <p>この構造を補うために少人数ヒアリングを行っても、今度は別の壁に当たります。聞ける人数が限られるため、どれだけ深い語りが取れても<strong>「それは一部の意見では」という反論に答えられない</strong>のです。深さを取ると広さを失い、広さを取ると深さを失う。従業員の声をめぐる調査は、長くこのトレードオフの中にありました。</p>
     <div class="quote-box"><p>スコアは「どれくらいか」に答える。語りは「なぜか」に答える。経営判断に必要なのは両方なのに、従来の道具はどちらか片方しか取れなかった。</p></div>
 
-    <h2 id="s2">社内向けAIインタビューとは何か？</h2>
+    
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/f30-0.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">人事の視点</div>
+        <p>点数の上下は分かる。<em>なぜ下がったか</em>が分からないので手を打てなかった。</p>
+      </div>
+    </aside>
+<h2 id="s2">社内向けAIインタビューとは何か？</h2>
     <p class="answer">全員に・同じ深さで・非同期に聞き、発言を構造化する手法。評価に使わない線引きが1on1や面談との違い。</p>
     <p>AIインタビューは、AIがモデレーター役を務めるインタビュー手法です。回答者は配布されたURLを開き、自分の都合のよい時間に、声またはテキストで質問に答えます。AIは回答の内容を受けて「それはどの業務でのことですか」「そのとき実際はどうしましたか」と一人ずつ聞き返し、語りを深めていきます。この仕組みを顧客ではなく<strong>自社の従業員に向ける</strong>のが、社内向けAIインタビューです。</p>
     <p>サーベイと少人数ヒアリングのトレードオフに対して、この手法は「深さと広さを同時に取る」という答え方をします。深掘りの往復があるため一人ひとりの語りには文脈が残り、同時並行で実施できるため対象を全員に広げられます。しかも発言はテキストとして構造化されるので、「どのテーマが何人から語られたか」という横断集計まで一気に到達できます。「一部の意見では」という反論に、人数と原文の両方で答えられるようになるということです。</p>
@@ -202,6 +222,10 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
     <h2 id="s4">匿名性をどう設計するか？</h2>
     <p class="answer">匿名の範囲・音声の扱い・集計の単位・評価に使わない宣言・結果の還元。5つを聞く前に明示する。</p>
+    <aside class="kn-side">
+      <img src="avatars/m20-6.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">現場の視点</div><p>誰が読むのか分からないと、書ける範囲が狭くなる。</p></div>
+    </aside>
     <p>社内調査の成否を分ける最大の変数が、この匿名性の設計です。前提として押さえておくべきなのは、<strong>技術的に匿名であることと、回答者が匿名だと信じられることは別物</strong>だという点です。仕組み上は名前と回答が切り離されていても、「声で答えるなら、声で誰か分かるのではないか」「書き方の癖でばれるのではないか」という不安が残っていれば、出てくるのは当たり障りのない回答だけです。匿名性は、技術仕様ではなく回答者との約束として設計する必要があります。実務では次の5つを、<strong>聞き始める前に</strong>明示します。</p>
     <ol>
       <li><strong>匿名の範囲を先に明示する。</strong>「誰が何を見られるのか」を具体的に書きます。回答が誰の名前と紐づくのか・紐づかないのか、集計結果を見るのは誰か、原文を読めるのは誰か。「匿名です」の一言ではなく、情報の流れを示すことが信頼の土台になります。</li>
@@ -229,6 +253,10 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
     <h2 id="s5">深掘りはどこで止めるべきか？</h2>
     <p class="answer">特定個人への評価や健康状態など、踏み込むべきでない話題を決め、AIにも停止の線引きを設計しておく。</p>
+    <aside class="kn-side">
+      <img src="avatars/f50-2.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">人事責任者の視点</div><p>深掘りしすぎると、<em>特定されるのでは</em>という不安が先に立つ。</p></div>
+    </aside>
     <p>AIインタビューの強みは、回答を受けてさらに聞き返す深掘りにあります。しかし社内調査では、この強みをそのまま使ってはいけない領域があります。<strong>顧客調査では美点である「どこまでも掘る」が、社内では事故になりうる</strong>——これが社内向け設計の固有の論点です。</p>
     <p>踏み込むべきでない典型は、次のような話題です。</p>
     <ul>
@@ -238,7 +266,15 @@ fbq('init','1264057945446029');fbq('track','PageView');
     <p>実務では、これを「AIの良識に期待する」のではなく、設計として書き込みます。すなわち、<strong>深掘りする観点を指定するのと同じ粒度で、深掘りしない話題と、その話題が出たときの振る舞い（受け止めて、それ以上掘らずに次の質問へ進む）を指定する</strong>ということです。深掘りの設計とは、アクセルの設計であると同時にブレーキの設計でもあります。</p>
     <div class="callout"><p>判断基準はこう置ける。「この深掘りは、組織の実態を知るために必要か？　それとも個人の事情に踏み込んでいるだけか？」。後者に近づく話題は、設計段階で停止側に振り分けておく。</p></div>
 
-    <h2 id="s6">単発で終わらせないためにどう運用するか？</h2>
+    
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/m50-0.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">経営企画の視点</div>
+        <p>単発で終わらせると「聞いただけ」になる。次に何を返すかまで設計が要る。</p>
+      </div>
+    </aside>
+<h2 id="s6">単発で終わらせないためにどう運用するか？</h2>
     <p class="answer">四半期などの定点化で差分を見る。前回結果を文脈に、施策前後の変化を比較する運用に育てていく。</p>
     <p>社内調査は、一度きりの実施では価値の半分しか出ません。単発の調査で分かるのは「今どうか」だけですが、経営が知りたいのは多くの場合「変わったか」だからです。運用として考えるべきは次の3点です。</p>
     <ol>

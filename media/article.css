@@ -296,3 +296,79 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--electric);outline-o
 .acf-app .af-doc .l.hl{background:rgba(0,94,255,.2);}
 .acf-app .af-doc .l.w90{width:90%;}.acf-app .af-doc .l.w60{width:60%;}.acf-app .af-doc .l.w75{width:75%;}
 @media(max-width:560px){.acf-app .af-side{display:none;}.acf-dash .af-kpis{grid-template-columns:1fr;gap:12px;}.acf-dash .af-bars{height:46px;}}
+
+
+/* ===== 人物コンポーネント（Humation・全メディア共通） =====
+   帯 .kn-voices / 視点 .kn-take / サイドノート .kn-side。
+   色は各メディアのCSS変数に追従する（interviewはlab.cssで緑になる）。
+   アバターは同ディレクトリの avatars/ または ../avatars/ を参照する。 */
+/* --- 現場の声（Humation アバター帯） ---
+   使い方: <div class="kn-voices"><span class="kn-fc" style="--sayo:0s">
+             <span class="av"><img src="avatars/f30-2.svg" alt="" width="88" height="88"></span>
+             <span class="say">セリフ（10字以内）</span></span> …
+           </div>
+   セリフは吹き出しで数人ずつ順番に点灯する。装飾なので aria-hidden="true" を付ける。 */
+.kn-voices{display:flex;flex-wrap:wrap;column-gap:clamp(10px,1.6vw,18px);row-gap:clamp(22px,2.4vw,30px);margin:38px 0 8px;}
+.kn-fc{position:relative;width:clamp(58px,6.4vw,84px);aspect-ratio:1;flex:none;}
+.kn-fc .av{display:block;width:100%;height:100%;border-radius:50%;border:1px solid var(--line);overflow:hidden;background:var(--paper-2);}
+.kn-fc:nth-child(3n) .av{background:#F7F4EC;}
+.kn-fc:nth-child(3n+2) .av{background:#fff;}
+.kn-fc img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
+.kn-fc .say{position:absolute;left:50%;bottom:calc(100% - 2px);z-index:3;white-space:nowrap;font-family:var(--jp);font-size:11px;font-weight:700;line-height:1;color:var(--ink-soft);background:#fff;border:1.5px solid rgba(0,94,255,.35);border-color:color-mix(in srgb, var(--electric) 38%, transparent);border-radius:10px;padding:6px 10px;box-shadow:0 2px 8px rgba(13,17,23,.10);opacity:0;transform:translateX(-50%) scale(.5);transform-origin:bottom center;animation:kn-say 10.5s infinite;animation-delay:var(--sayo,0s);pointer-events:none;}
+.kn-fc .say::after{content:"";position:absolute;left:50%;bottom:-4.5px;width:7px;height:7px;background:#fff;border-right:1.5px solid rgba(0,94,255,.35);border-bottom:1.5px solid rgba(0,94,255,.35);border-right-color:color-mix(in srgb, var(--electric) 38%, transparent);border-bottom-color:color-mix(in srgb, var(--electric) 38%, transparent);transform:translateX(-50%) rotate(45deg);}
+@keyframes kn-say{0%,3%{opacity:0;transform:translateX(-50%) scale(.5)}7%,18%{opacity:1;transform:translateX(-50%) scale(1)}23%,100%{opacity:0;transform:translateX(-50%) scale(.5)}}
+
+/* キャプション（「よく聞く声」の説明行） */
+.kn-voices-cap{display:flex;align-items:baseline;flex-wrap:wrap;gap:2px 9px;font-family:var(--jp);font-size:12.5px;font-weight:700;line-height:1.75;color:var(--electric);margin-top:16px;word-break:keep-all;overflow-wrap:anywhere;}
+.kn-voices-cap::before{content:"";align-self:center;width:6px;height:6px;border-radius:50%;background:var(--electric);flex:none;}
+.kn-voices-cap .note{font-weight:500;color:var(--slate);}
+
+@media (prefers-reduced-motion:reduce){.kn-fc .say{animation:none;opacity:0;}}
+/* モバイルは6人が1行に収まる幅へ（5+1の孤立行を作らない） */
+@media (max-width:640px){
+  .kn-voices{column-gap:8px;row-gap:26px;}
+  .kn-fc{width:clamp(38px,calc((100% - 46px)/6),58px);}
+  .kn-fc .say{font-size:10px;padding:5px 8px;}
+  .kn-voices-cap{font-size:12px;}
+}
+
+/* --- 視点（本文の節目に1人ぶんの読み手の視点を添える） ---
+   使い方: <aside class="kn-take">
+             <img class="kn-take-av" src="avatars/m40-0.svg" alt="" width="56" height="56">
+             <div class="kn-take-body">
+               <div class="kn-take-role">推進担当の視点</div>
+               <p>本文への短い反応（1〜2文）。</p>
+             </div>
+           </aside>
+   枠で囲わず上下のヘアラインだけで区切る（v6: ベタ塗り・カード化を避ける）。 */
+.kn-take{display:flex;gap:16px;align-items:flex-start;margin:38px 0;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.kn-take-av{flex:none;width:56px;height:56px;border-radius:50%;border:1px solid var(--line);background:#F7F4EC;object-fit:cover;object-position:center top;}
+.kn-take-body{min-width:0;}
+.kn-take-role{display:flex;align-items:center;gap:7px;font-family:var(--en);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--electric);}
+.kn-take-role::before{content:"";width:14px;height:1px;background:var(--electric);flex:none;}
+.kn-take p{margin:7px 0 0;font-size:14.5px;line-height:1.9;color:var(--ink-soft);}
+.kn-take p em{font-style:normal;font-weight:700;color:var(--ink);}
+@media (max-width:640px){
+  .kn-take{gap:13px;margin:30px 0;padding:17px 0;}
+  .kn-take-av{width:46px;height:46px;}
+  .kn-take p{font-size:14px;}
+}
+
+/* --- サイドノート（本文の右余白に並走する短い一言） ---
+   使い方: <aside class="kn-side">
+             <img src="avatars/f30-0.svg" alt="" width="34" height="34">
+             <div><div class="r">経理の視点</div><p>短い一言（1文）。</p></div>
+           </aside>
+   広い画面では本文の右余白へ浮かせ、本文の流れを一切止めない（長文記事の定番手法）。
+   1320px未満では本文内に収め、左ヘアラインで body から区別する。
+   .kn-take（上下ヘアライン・本文幅）とは形を変えて、同じ形の連続を避ける。 */
+.kn-side{display:flex;gap:11px;align-items:flex-start;margin:24px 0;padding:2px 0 2px 15px;border-left:1px solid var(--line-2);}
+.kn-side img{flex:none;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:#F7F4EC;object-fit:cover;object-position:center top;}
+.kn-side .r{font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--electric);line-height:1.4;}
+.kn-side p{margin:5px 0 0;font-size:13px;line-height:1.85;color:var(--slate);}
+.kn-side p em{font-style:normal;font-weight:600;color:var(--ink-soft);}
+@media(min-width:1320px){
+  .kn-side{float:right;clear:right;width:230px;margin:6px -278px 28px 48px;padding:13px 0 0;border-left:none;border-top:1px solid var(--line-2);gap:10px;}
+  .kn-side img{width:32px;height:32px;}
+  .kn-side p{font-size:12.5px;line-height:1.8;}
+}
