@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3V34NWXVCJ');
+</script>
+<!-- TW intent tracker (first-party, sessionStorage only) -->
+<script>
+(function(){try{var ss=sessionStorage,ls=localStorage;
+if(!ss.getItem('tw_landing')){ss.setItem('tw_landing',location.pathname);ss.setItem('tw_ref',document.referrer||'');var q=new URLSearchParams(location.search);ss.setItem('tw_utm',['utm_source','utm_medium','utm_campaign'].map(function(k){return q.get(k)||'';}).join('|'));}
+var p=JSON.parse(ss.getItem('tw_pages')||'[]');if(p[p.length-1]!==location.pathname){p.push(location.pathname);ss.setItem('tw_pages',JSON.stringify(p.slice(-20)));}
+if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_visits')||'0',10)+1));ss.setItem('tw_counted','1');}
+}catch(e){}})();
+</script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workers AIで音声文字起こしを本番実装する｜外部APIを使わずCloudflare内で完結させる構成 — TechWorker</title>
+<meta name="description" content="Cloudflare Workers AI（@cf/openai/whisper-large-v3-turbo）とR2だけで音声文字起こしを完結させる構成を、wrangler.tomlの[ai]バインディング・[[r2_buckets]]・[assets]のrun_worker_first・[env.staging]まで実装ベースで解説。音声を外部APIに送らない設計が法人の情報システム審査でなぜ効くのかも整理します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/infra/workers-ai-speech-to-text">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Workers AIで音声文字起こしを本番実装する｜外部APIを使わずCloudflare内で完結させる構成">
+<meta property="og:description" content="Workers AIのWhisperとR2だけで音声文字起こしを完結させる構成を、wrangler.tomlと実装から解説。バインディング設定、staging環境の作り方、サイズ上限・再試行・失敗時の扱いまで。">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/media/infra/workers-ai-speech-to-text">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Workers AIで音声文字起こしを本番実装する｜外部APIを使わずCloudflare内で完結させる構成">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../article.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"Workers AIで音声文字起こしを本番実装する｜外部APIを使わずCloudflare内で完結させる構成",
+  "description":"Cloudflare Workers AI（@cf/openai/whisper-large-v3-turbo）とR2で音声文字起こしを完結させる構成を、wrangler.tomlの[ai]バインディング・[[r2_buckets]]・[assets]のrun_worker_first・[env.staging]まで実装ベースで解説する。音声を外部APIへ送らない設計が法人の情報システム審査で持つ意味も整理する。",
+  "datePublished":"2026-08-09","dateModified":"2026-08-09","inLanguage":"ja",
+  "image":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630},
+  "author":{"@type":"Person","name":"古野光太朗","jobTitle":"株式会社TechWorker 代表取締役","url":"https://techworker.co.jp/company.html","image":"https://techworker.co.jp/assets/author-furuno.jpg","sameAs":["https://x.com/koutarou_furuno"],"affiliation":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"}},
+  "publisher":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/","logo":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630}},
+  "mainEntityOfPage":{"@type":"WebPage","@id":"https://techworker.co.jp/media/infra/workers-ai-speech-to-text"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},
+    {"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},
+    {"@type":"ListItem","position":3,"name":"Workers AIで音声文字起こしを本番実装する","item":"https://techworker.co.jp/media/infra/workers-ai-speech-to-text"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Workers AIに送った音声は学習に使われますか？","acceptedAnswer":{"@type":"Answer","text":"Cloudflareの公式ドキュメント（Workers AI / Data usage）では、Customer ContentをWorkers AI上のモデルの学習や、Cloudflare・第三者サービスの改善に利用しないと明記されています。また推論データは既定では保存されず、R2やKVなどのストレージサービスを併用した場合に限り保存されるとされています（2026年8月9日確認）。自分でR2へ保存した音声は自社の保存物になるため、保持期間と削除の運用は別途設計が必要です。"}},
+    {"@type":"Question","name":"音声ファイルのサイズ上限はどれくらいですか？","acceptedAnswer":{"@type":"Answer","text":"whisper-large-v3-turboのモデルページには音声ファイルサイズの上限は記載されていません（2026年8月9日確認）。一方でWorkerのリクエストボディ上限はCloudflareのプラン依存で、Free/Proは100MBと公式に記載されています。実務では公式上限に依存せず、アプリ側で自前の上限を決めて超過を明示的に弾く設計が安全です。CoeSignalの実装では25MiBを超える音声を413で拒否しています。"}},
+    {"@type":"Question","name":"Workers AIの料金はどう決まりますか？","acceptedAnswer":{"@type":"Answer","text":"Neuronという単位での従量課金です。公式の料金ページでは1,000 Neuronsあたり$0.011、1日10,000 Neuronsまでは無料枠と記載されています。whisper-large-v3-turboは音声1分あたり46.63 neuronsです（2026年8月9日確認）。料金は改定されるため、必ず公式の料金ページで最新を確認してください。"}},
+    {"@type":"Question","name":"[env.staging]でstaging環境を作るとき、何に注意すべきですか？","acceptedAnswer":{"@type":"Answer","text":"バインディングと環境変数はトップレベルから継承されない点です。Cloudflareの公式ドキュメントでは、vars・kv_namespaces・r2_buckets・ai・durable_objects・services・secretsが非継承キーとして挙げられており、環境ごとに書き直す必要があります。routesは継承されるため、本番の独自ドメインを引き継がせたくない場合はenv側でroutes = []と明示します。"}}
+  ]
+}
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <a href="../index.html" class="logo">Tech<i>Worker</i><span class="m-tag">Media</span></a>
+  <ul>
+    <li><a href="../index.html">記事一覧</a></li>
+    <li><a href="../interview/">AIインタビュー</a></li>
+    <li><a href="../../index.html">TechWorkerとは</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="../../contact.html" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="../index.html">記事一覧</a>
+  <a href="../interview/">AIインタビュー</a>
+  <a href="../../index.html">TechWorkerとは</a>
+  <a href="../../cases.html">導入事例</a>
+  <a href="../../contact.html" class="m-cta">無料相談を申し込む</a>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span>Workers AIで音声文字起こしを本番実装する</nav>
+  <div class="kicker">Infrastructure</div>
+  <h1>Workers AIで音声文字起こしを本番実装する</h1>
+  <p class="dek">音声をどこへ送るかは、実装の都合ではなく審査の結果を決める。Cloudflare Workers AIとR2だけで文字起こしを完結させると、音声は自社の管理境界から出ない。自社で開発・運用しているAIインタビュープロダクト「CoeSignal」で実際に動かしている構成を、wrangler.tomlと実装コードから解説する。</p>
+  <div class="kn-voices" aria-hidden="true">
+    <span class="kn-fc" style="--sayo:0.0s"><span class="av"><img src="../avatars/m40-2.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">音声はどこへ？</span></span>
+    <span class="kn-fc" style="--sayo:6.3s"><span class="av"><img src="../avatars/f30-0.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">委託先が多い</span></span>
+    <span class="kn-fc" style="--sayo:2.1s"><span class="av"><img src="../avatars/m50-6.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">越境移転は？</span></span>
+    <span class="kn-fc" style="--sayo:8.4s"><span class="av"><img src="../avatars/f50-2.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">同意文が重い</span></span>
+    <span class="kn-fc" style="--sayo:4.2s"><span class="av"><img src="../avatars/m20-0.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">審査で止まる</span></span>
+  </div>
+  <div class="kn-voices-cap">音声を扱うプロダクトの導入審査でよく挙がる論点<span class="note">※ 実際の検討で挙がる観点をもとにした例です</span></div>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.08.09</span><span class="dot">·</span><span>最終更新 2026.08.09</span><span class="dot">·</span><span>読了 12分</span>
+  </div>
+</header>
+
+<style>
+/* workers-ai-speech-to-text — 設定ファイルのエディタUI（scoped: wa-） */
+.wa-cover{padding:0;}
+.wa-tabs{display:flex;align-items:center;gap:0;border-bottom:1px solid var(--line);background:var(--paper);}
+.wa-tab{font-family:var(--mono);font-size:11.5px;font-weight:500;color:var(--slate);padding:13px 18px;border-right:1px solid var(--line);}
+.wa-tab.on{color:var(--ink);background:var(--white);font-weight:600;box-shadow:inset 0 -1px 0 var(--white);}
+.wa-tab.wa-env{margin-left:auto;border-right:none;font-family:var(--en);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--electric);}
+.wa-code{display:grid;grid-template-columns:44px minmax(0,1fr);font-family:var(--mono);font-size:12.5px;line-height:2.0;padding:16px 0 18px;overflow-x:auto;}
+.wa-code .wa-ln{text-align:right;padding-right:14px;color:var(--slate);opacity:.5;font-variant-numeric:tabular-nums;user-select:none;}
+.wa-code .wa-src{white-space:pre;color:var(--ink-soft);padding-right:18px;}
+.wa-k{color:var(--electric);font-weight:600;}
+.wa-s{color:var(--ink);}
+.wa-c{color:var(--slate);opacity:.75;}
+.wa-foot{border-top:1px solid var(--line);padding:13px 18px;font-family:var(--jp);font-size:11.5px;color:var(--slate);line-height:1.75;}
+/* 本文中のコード表示（.ui-mock の中で等幅・インデント保持） */
+.ui-mock .um-text.wa-mono{font-family:var(--mono);font-size:12.5px;line-height:1.95;white-space:pre;overflow-x:auto;}
+/* インライン識別子（設定キー・モデルID・関数名） */
+.art-body code,.art-body table code{font-family:var(--mono);font-size:.88em;color:var(--ink);background:var(--paper-2);border-radius:4px;padding:.1em .38em;word-break:break-word;}
+.art-body .lede code{font-size:.9em;}
+@media(max-width:560px){
+  .wa-code{font-size:11px;grid-template-columns:34px minmax(0,1fr);}
+  .wa-tab{padding:11px 12px;font-size:10.5px;}
+  .ui-mock .um-text.wa-mono{font-size:11px;}
+}
+</style>
+<div class="art-cover-v6 wa-cover">
+  <div class="wa-tabs">
+    <span class="wa-tab on">wrangler.toml</span>
+    <span class="wa-tab">worker.js</span>
+    <span class="wa-tab wa-env">production</span>
+  </div>
+  <div class="wa-code" role="img" aria-label="wrangler.tomlの抜粋。aiバインディングにAI、r2_bucketsにAUDIO、assetsにrun_worker_firstを設定している。">
+    <div class="wa-ln">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13</div>
+    <div class="wa-src"><span class="wa-c"># Workers AI（音声書き起こし）</span>
+<span class="wa-k">[ai]</span>
+binding = <span class="wa-s">"AI"</span>
+
+<span class="wa-c"># R2（音声・トランスクリプトの保存）</span>
+<span class="wa-k">[[r2_buckets]]</span>
+binding = <span class="wa-s">"AUDIO"</span>
+bucket_name = <span class="wa-s">"aiiv-audio"</span>
+
+<span class="wa-c"># 静的アセットを同じWorkerから配信</span>
+<span class="wa-k">[assets]</span>
+directory = <span class="wa-s">"../public"</span>
+run_worker_first = [<span class="wa-s">"/"</span>, <span class="wa-s">"/api/*"</span>, <span class="wa-s">"/login"</span>, …]</div>
+  </div>
+  <div class="wa-foot">この13行で、AI推論・オブジェクトストレージ・静的配信がひとつのWorkerに載る。外向きのAPIキーもエンドポイントURLも登場しない。</div>
+</div>
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次">
+    <div class="art-toc-inner">
+      <div class="toc-h">目次</div>
+      <a href="#s1">なぜ外部APIに送らないのか</a>
+      <a href="#s2">全体構成</a>
+      <a href="#s3">Workers AIの呼び出し</a>
+      <a href="#s4">R2への保存</a>
+      <a href="#s5">フロントの同居</a>
+      <a href="#s6">stagingミラー</a>
+      <a href="#s7">実装上の注意点</a>
+      <a href="#s8">向くケース・向かないケース</a>
+      <a href="#faq">よくある質問</a>
+    </div>
+  </nav>
+
+  <article class="art-body rv">
+    <div class="lede">
+      <div class="lede-h">この記事の要点</div>
+      <ul>
+        <li>Workers AIの<strong>whisper-large-v3-turbo</strong>を<code>[ai]</code>バインディング経由で呼べば、音声はCloudflareの外に出ない。処理委託先が1社増えないことが、法人の情報システム審査では技術的な優劣より効く。</li>
+        <li>音声とテキストは<strong>R2</strong>に置く。同じWorkerからバインディング越しに読み書きするので、署名URLも外向きの認証情報も要らない。<strong>漏れる鍵がそもそも存在しない</strong>構成になる。</li>
+        <li><code>[assets]</code>の<code>run_worker_first</code>でフロントを同居させ、<code>[env.staging]</code>で検証環境を丸ごとミラーする。ただし<strong>バインディングと環境変数は環境に継承されない</strong>——ここが最初の落とし穴。</li>
+      </ul>
+    </div>
+
+    <p class="fig-cap" style="margin-top:-24px;">本記事に掲載するコードは、構成が伝わる最小限に整理したものです。実装から認証・セッション検証・業務ロジックは外し、一部は簡略化した例に置き換えています（該当箇所には注記を付けます）。</p>
+
+    <h2 id="s1">なぜ外部の文字起こしAPIに音声を送らないのか？</h2>
+    <p class="answer">音声は話者の意図と無関係に個人情報を含みやすく、処理委託先が1社増えるごとに法人側の審査コストが跳ね上がるため。</p>
+    <aside class="kn-side">
+      <img src="../avatars/f30-0.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">情シスの視点</div><p>機能の良し悪しより先に、<em>「どこに何が渡るか」</em>の一覧が出てくるかを見ている。</p></div>
+    </aside>
+    <p>音声を扱うプロダクトを法人へ入れるとき、最初に止まるのは機能の議論ではありません。「その音声はどこへ行くのか」です。テキスト入力なら人は書く内容を選びますが、話し言葉ではそうなりません。所属や取引先の固有名詞、同僚の名前、体調、社内の人間関係——質問していない情報が、当たり前のように音声へ入り込みます。つまり音声データは、設計上「個人情報を含む前提」で扱うのが実務的です。</p>
+    <p>ここで外部の文字起こしAPIを1つ挟むと、増えるのはHTTPリクエストではありません。委託先一覧への追記、委託契約の締結、越境移転の説明、回答者向け同意文の改版、そして情報システム部門の再審査。技術的な難易度はほぼゼロなのに、社内を通すための紙の枚数だけが増えます。自社で開発・運用しているAIインタビュープロダクト「CoeSignal」でも、回答画面と利用規約に処理者を明示する運用にしているため、処理者を1社追加する判断はコードを書くより重い意思決定になっています。</p>
+    <p>Cloudflare Workers AIを選ぶ理由は、この一点に集約されます。Workerの実行基盤・AI推論・オブジェクトストレージが同じベンダーの中で完結するため、音声の送信先が増えません。データの扱いについてもCloudflareは公式ドキュメントで、Customer ContentをWorkers AI上のモデルの学習に使わないこと、Cloudflareや第三者サービスの改善にも使わないこと（明示的な同意がある場合を除く）を記載しています。また推論データは既定では保存されず、R2やKVなどのストレージサービスを併用した場合にのみ保存される、とも明記されています。</p>
+    <p class="fig-cap">出典：Cloudflare公式ドキュメント <a href="https://developers.cloudflare.com/workers-ai/platform/data-usage/" target="_blank" rel="noopener noreferrer">Workers AI — Data usage</a>（2026年8月9日確認）。記載は改定されるため、審査資料に使う際は必ず一次ソースを直接ご確認ください。</p>
+    <div class="callout"><p>「推論データは保存されない」が成立するのは、自分で保存しない場合だけ。R2に音声を置いた瞬間、それは自社の保存物になり、保持期間・削除・開示の運用は自社の責任になる。この線引きを曖昧にしたまま説明すると、審査でいちばん厳しく突かれる。</p></div>
+
+    <h2 id="s2">全体構成——Workerに何を載せるか</h2>
+    <p class="answer">静的フロント・API・AI推論・オブジェクトストレージをWorker 1本に集約し、外向きの通信を持たせない構成にする。</p>
+    <p>構成はシンプルです。レイヤーごとに使うCloudflareの機能と、wrangler.tomlでの記述を対応させると次のようになります。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>レイヤー</th><th>使う機能</th><th>wrangler.tomlの記述</th></tr>
+        <tr><td>フロントエンド</td><td>Workers Static Assets</td><td><code>[assets]</code> directory / binding / run_worker_first</td></tr>
+        <tr><td>API</td><td>Workers</td><td><code>main = "worker.js"</code></td></tr>
+        <tr><td>音声の文字起こし</td><td>Workers AI</td><td><code>[ai]</code> binding = "AI"</td></tr>
+        <tr><td>音声・テキストの保管</td><td>R2</td><td><code>[[r2_buckets]]</code> binding = "AUDIO"</td></tr>
+        <tr><td>検証環境</td><td>Wrangler environments</td><td><code>[env.staging]</code> ＋ 各バインディングの再定義</td></tr>
+      </table>
+    </div>
+    <p>この構成の要は「バインディング」という考え方です。Workers AIもR2も、外向きのHTTPエンドポイントとAPIキーで呼ぶのではなく、ランタイムが<code>env</code>オブジェクトに渡してくる変数として使います。Cloudflare公式ドキュメントはバインディングを「Workersランタイムがコードに提供する実行時の変数」と説明しています。実務上の意味は明確で、<strong>接続先URLもAPIキーも存在しない</strong>——だから漏れる鍵もローテーションすべき鍵もありません。シークレット管理の対象が1つ減るのは、監査項目が1つ減るのと同じことです。</p>
+    <p class="fig-cap">出典：<a href="https://developers.cloudflare.com/workers-ai/configuration/bindings/" target="_blank" rel="noopener noreferrer">Workers AI — Bindings</a>／<a href="https://developers.cloudflare.com/r2/api/workers/workers-api-usage/" target="_blank" rel="noopener noreferrer">R2 — Use R2 from Workers</a>（いずれも2026年8月9日確認）</p>
+
+
+    <aside class="kn-take">
+      <img class="kn-take-av" src="../avatars/m40-0.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">開発責任者の視点</div>
+        <p>APIキーを増やさない構成にしたら、レビューで議論する項目そのものが減った。<em>管理しないものは、漏れない</em>。</p>
+      </div>
+    </aside>
+<h2 id="s3">Workers AIの呼び出しはどう書くか？</h2>
+    <p class="answer">wrangler.tomlに<code>[ai]</code>を3行書き、<code>env.AI.run()</code>にモデルIDと音声を渡すだけ。認証コードは1行も要らない。</p>
+    <p>設定側は次の3行です。公式ドキュメントに載っているとおりの最小形で、追加のパラメータはありません。</p>
+    <div class="ui-mock">
+      <div class="um-bar"><span class="um-dot"></span><span class="um-dot"></span><span class="um-dot"></span><span class="um-name">wrangler.toml — Workers AI バインディング</span></div>
+      <div class="um-row">
+        <div class="um-text wa-mono"># Workers AI（音声書き起こし。第一候補: @cf/openai/whisper-large-v3-turbo）
+[ai]
+binding = "AI"</div>
+      </div>
+    </div>
+    <p class="fig-cap">図：CoeSignalの<code>worker/wrangler.toml</code>より（コメントは実物）。この記述だけで<code>env.AI</code>が使えるようになります。</p>
+    <p>呼び出し側は、音声のバイト列をbase64文字列にしてモデルへ渡します。実装から抜き出したのが次のコードです（引数の受け渡しのみ整理、ロジックは実物）。</p>
+    <div class="ui-mock">
+      <div class="um-bar"><span class="um-dot"></span><span class="um-dot"></span><span class="um-dot"></span><span class="um-name">worker.js — 文字起こしの呼び出し</span></div>
+      <div class="um-row">
+        <div class="um-text wa-mono">function arrayBufferToBase64(buffer) {
+  const bytes = new Uint8Array(buffer);
+  const CHUNK_SIZE = 0x8000; // 32768バイトずつ（call stack溢れ回避）
+  let binary = "";
+  for (let i = 0; i &lt; bytes.length; i += CHUNK_SIZE) {
+    binary += String.fromCharCode.apply(null, bytes.subarray(i, i + CHUNK_SIZE));
+  }
+  return btoa(binary);
+}
+
+async function callWorkersAITranscription(env, { audioBuffer }) {
+  const result = await env.AI.run("@cf/openai/whisper-large-v3-turbo", {
+    audio: arrayBufferToBase64(audioBuffer),
+    language: "ja",
+  });
+  return (result &amp;&amp; (result.text || result.transcription_info?.text)) || "";
+}</div>
+      </div>
+    </div>
+    <p>短いコードですが、本番で踏んだ落とし穴が2つ埋まっています。</p>
+    <p><strong>1つ目はbase64変換です。</strong>公式サンプルはNode.jsの<code>Buffer.from(buf, 'binary').toString("base64")</code>でbase64を作ります。しかし<code>nodejs_compat</code>フラグを有効にしていない素のWorkers環境には<code>Buffer</code>がありません。代わりに<code>btoa</code>を使うと、今度は<code>String.fromCharCode.apply</code>へ数百万個の引数を渡すことになり、コールスタックが溢れます。32,768バイトずつのチャンク分割は、この両方を避けるための実装です。数分の音声でも確実に落ちる箇所なので、短い音声だけでテストして通ってしまうと本番で刺さります。</p>
+    <p><strong>2つ目は出力の受け取り方です。</strong>公式のモデルページに記載されているoutput schemaは<code>transcription_info</code>オブジェクト（<code>text</code>と<code>word_count</code>を持つ）と、WebVTT形式を含む<code>segments</code>配列です。実装では<code>result.text</code>と<code>result.transcription_info?.text</code>の両方を見て、どちらの形で返ってきても壊れないようにしています。モデル側の返却形は更新され得るので、片方だけを前提にしないほうが安全です。</p>
+    <p>入力パラメータは<code>audio</code>のほかに<code>task</code>（transcribe / translate、既定はtranscribe）、<code>language</code>、<code>vad_filter</code>、<code>initial_prompt</code>、<code>beam_size</code>などが公式に定義されています。日本語のインタビュー用途では<code>language: "ja"</code>を明示的に渡す形にしています。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>項目</th><th>公式に確認できる値（2026年8月9日時点）</th></tr>
+        <tr><td>モデルID</td><td><code>@cf/openai/whisper-large-v3-turbo</code></td></tr>
+        <tr><td>料金</td><td>音声1分あたり 46.63 neurons。Neuronは1,000 Neuronsあたり$0.011、1日10,000 Neuronsまで無料枠</td></tr>
+        <tr><td>レート制限</td><td>Automatic Speech Recognitionカテゴリとして 720 requests per minute</td></tr>
+        <tr><td>音声ファイルの上限</td><td>モデルページに記載なし（後述のとおり自前で上限を決める）</td></tr>
+      </table>
+    </div>
+    <p class="fig-cap">出典：<a href="https://developers.cloudflare.com/workers-ai/models/whisper-large-v3-turbo/" target="_blank" rel="noopener noreferrer">モデルページ</a>／<a href="https://developers.cloudflare.com/workers-ai/platform/pricing/" target="_blank" rel="noopener noreferrer">Workers AI Pricing</a>／<a href="https://developers.cloudflare.com/workers-ai/platform/limits/" target="_blank" rel="noopener noreferrer">Workers AI Limits</a>（すべて2026年8月9日確認）。なお音声1分あたりのドル単価は、モデルページが$0.00051、料金ページが$0.0005と表記が分かれています。見積もりに使う場合はNeuron単価と併記された料金ページ側を基準にし、必ず最新の公式値をご確認ください。</p>
+
+    <h2 id="s4">音声とテキストをR2にどう置くか？</h2>
+    <p class="answer"><code>[[r2_buckets]]</code>を1つ足し、<code>env.AUDIO.put()</code>で音声とJSONを同じバケットへ書く。取り出しのegress課金がないのが効く。</p>
+    <aside class="kn-side">
+      <img src="../avatars/f50-2.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">法務の視点</div><p>保存する／しないの分岐は、<em>障害時にどちらへ倒れるか</em>まで書いてほしい。</p></div>
+    </aside>
+    <p>設定は<code>binding</code>と<code>bucket_name</code>の2つだけです。CoeSignalでは<code>AUDIO</code>という名前で1バケットを持ち、音声・トランスクリプト・判定ログ・メモをすべてここに集約しています。オブジェクトキーは<code>{セッションID}/{質問ID}_{深掘り回数}</code>を基点にして、音声は拡張子付き（Content-Typeを見て<code>webm</code> / <code>mp4</code> / <code>wav</code>を出し分け）、回答レコードは<code>.json</code>で並べます。1セッション＝1プレフィックスになるので、あとから<code>list</code>で束ねる操作も、まとめて<code>delete</code>する操作も素直に書けます。</p>
+    <p>設計上のポイントを3つ挙げます。</p>
+    <ul>
+      <li><strong>バイト列は一度しか読めない。</strong>リクエストボディは1回しか読めないため、<code>await audio.arrayBuffer()</code>を先に1回だけ実行し、そのバッファをWorkers AIへの入力とR2への保存の両方で使い回します。「AIに投げてから保存する」と素直に書くと、保存側で空のボディを掴みます。</li>
+      <li><strong>保存するかどうかは、障害時に「保存しない」側へ倒す。</strong>音声を残すかは調査ごとの設定で決まりますが、その設定を読めなかったときに「保存する」側へフォールバックすると、設定参照の一時障害だけで生の音声が残ってしまいます。実装では例外時に<code>false</code>を返し、保存しない側へ倒しています。</li>
+      <li><strong>R2の条件付き書き込みが排他制御に使える。</strong>R2の<code>put</code>は<code>onlyIf</code>でETag条件を付けられ、条件に合わなければ成功オブジェクトではなく<code>null</code>を返します。これを使うと、データベースを別途持たずに「同じ回答を二重に処理させない」ロックが書けます。</li>
+    </ul>
+    <div class="ui-mock">
+      <div class="um-bar"><span class="um-dot"></span><span class="um-dot"></span><span class="um-dot"></span><span class="um-name">worker.js — R2の条件付き書き込み（簡略化した例）</span></div>
+      <div class="um-row">
+        <div class="um-text wa-mono">const obj = await env.AUDIO.get(key);
+const etag = obj?.etag ?? null;
+
+const stored = await env.AUDIO.put(key, JSON.stringify(value), {
+  httpMetadata: { contentType: "application/json" },
+  // 既存があればETag一致時のみ / 無ければ新規作成時のみ書き込む
+  onlyIf: etag ? { etagMatches: etag } : { etagDoesNotMatch: "*" },
+});
+return stored !== null; // null = 条件不一致＝他のリクエストが先に書いた</div>
+      </div>
+    </div>
+    <p class="fig-cap">図：実装の<code>putJsonIfCurrent</code>から、リトライ・エラーラップ・セッション検証を外して条件分岐だけを残した例です。実物はこの周りに再試行とバックオフが付いています。</p>
+    <p>R2を選ぶ理由はもう一つあります。Cloudflareは公式ドキュメントで、R2を「一般的なクラウドストレージにありがちな高額なegress帯域料金なしに、大量の非構造化データを保存できる」ものとして説明しています。音声のような重いオブジェクトは、置くコストより「後から何度も取り出すコスト」で効いてきます。分析のたびに全件を読み直す運用でも、そこが青天井にならないのは実務的に大きい差です（<a href="https://developers.cloudflare.com/r2/" target="_blank" rel="noopener noreferrer">Cloudflare R2 公式ドキュメント</a>・2026年8月9日確認）。</p>
+
+    <h2 id="s5">フロントエンドをどう同居させるか？（[assets] と run_worker_first）</h2>
+    <p class="answer">静的ファイルを同じWorkerから配信し、Workerを先に走らせたいパスだけ<code>run_worker_first</code>に列挙する。</p>
+    <p>Workers Static Assetsを使うと、<code>public/</code>のような静的ディレクトリをそのままWorkerから配信できます。設定は<code>directory</code>（配信元）、<code>binding</code>（コードから<code>env.ASSETS.fetch()</code>で触るための名前）、そしてルーティングを決める<code>run_worker_first</code>です。</p>
+    <div class="ui-mock">
+      <div class="um-bar"><span class="um-dot"></span><span class="um-dot"></span><span class="um-dot"></span><span class="um-name">wrangler.toml — 静的アセットの同居</span></div>
+      <div class="um-row">
+        <div class="um-text wa-mono">[assets]
+directory = "../public"
+binding = "ASSETS"
+run_worker_first = ["/", "/api/*", "/login", "/admin", …]
+html_handling = "drop-trailing-slash"</div>
+      </div>
+    </div>
+    <p class="fig-cap">図：CoeSignalの設定を短縮したもの（実物の<code>run_worker_first</code>はもう少し長いパス一覧です）。</p>
+    <p><code>run_worker_first</code>は公式ドキュメントで「アセットに一致するリクエストであってもWorkerスクリプトを起動するかどうかを制御する」と説明されています。既定の<code>false</code>ではアセットが優先され、Workerは呼ばれません。ここで重要なのは、真偽値だけでなく<strong>ルートパターンの配列を渡せる</strong>点です。<code>*</code>でのマッチに加え、<code>!</code>を先頭に付けた否定パターンも書けて、否定パターンが優先されます。</p>
+    <p>この一行が事故防止として効きます。認証が必要な画面（ログイン後の管理画面など）は必ずWorker側を通し、それ以外の画像・CSS・JavaScriptはアセット配信に任せる。もし認証必須のHTMLがアセットとして素通りで配られると、認証チェックの前にページの中身が出てしまいます。ルーティング表の1行で防げる事故を、アプリケーションコード側の分岐で頑張らないほうがいい、という判断です。</p>
+    <p>なお<code>not_found_handling</code>はあえて指定していません。CoeSignalのフロントはSPAではなく、一致しないパスは素の404で構いません。SPAの設定を「とりあえず」入れると、存在しないURLがすべてトップページのHTMLを返すようになり、404が消えてクローラにも運用にも良くない状態になります（<a href="https://developers.cloudflare.com/workers/static-assets/binding/" target="_blank" rel="noopener noreferrer">Workers Static Assets — Binding</a>・2026年8月9日確認）。</p>
+
+    <h2 id="s6">stagingはどう作るか？（[env.staging] の落とし穴）</h2>
+    <p class="answer"><code>[env.名前]</code>を足すと別Workerとしてデプロイされる。ただしバインディングと環境変数は継承されないので、環境ごとに書き直す。</p>
+    <p>Wranglerの環境機能を使うと、1つの設定ファイルから複数のWorkerをデプロイできます。公式ドキュメントによれば、環境は<code>&lt;トップレベルのname&gt;-&lt;環境名&gt;</code>という命名で別のWorkerとして展開され、<code>wrangler deploy --env staging</code>で切り替えます。</p>
+    <p>ここが最大の落とし穴です。トップレベルに書いた設定が、すべて環境に引き継がれるわけではありません。公式ドキュメントは<strong>非継承キー</strong>として次を挙げています。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>継承されない（環境ごとに再定義が必要）</th><th>継承される</th></tr>
+        <tr><td><code>vars</code> / <code>kv_namespaces</code> / <code>r2_buckets</code> / <code>ai</code> / <code>durable_objects</code> / <code>services</code> / <code>secrets</code></td><td><code>route</code> / <code>routes</code> など（環境側で上書き可能）</td></tr>
+      </table>
+    </div>
+    <p class="fig-cap">出典：<a href="https://developers.cloudflare.com/workers/wrangler/environments/" target="_blank" rel="noopener noreferrer">Wrangler — Environments</a>（2026年8月9日確認）</p>
+    <p>したがってstagingを作るときは、<code>[env.staging.ai]</code>、<code>[[env.staging.r2_buckets]]</code>、<code>[env.staging.vars]</code>をそれぞれ書き直します。CoeSignalでは検証用に別バケット（<code>aiiv-audio-stripe-test</code>）を割り当て、<code>[env.staging.vars]</code>に<code>MOCK = "1"</code>を置いて外部AI呼び出しを止めた状態で回答者UXを通しで確認できるようにしています。</p>
+    <p>そして<code>routes</code>は<strong>継承される側</strong>なので、本番の独自ドメインをstagingが引き継がないよう<code>routes = []</code>と明示的に空にします。ここを書き忘れると、staging用のデプロイが本番ドメインのルートを触りに行きます。</p>
+    <div class="callout"><p>非継承の仕様は、慣れるまでは不便に見えるが、安全側に倒れている。r2_bucketsを書き忘れたstagingは「バインディングが無い」ので起動時点で落ちる。これが継承だったら、stagingのつもりで本番バケットへ書き込むほうの事故が起きていた。落ちるほうがいい。</p></div>
+
+
+    <aside class="kn-take">
+      <img class="kn-take-av" src="../avatars/m50-6.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">SREの視点</div>
+        <p>AIを呼ぶ前に決めておくべきことのほうが多い。<em>上限・重複・再試行・失敗時の返し方</em>——ここを後回しにすると本番で必ず戻ってくる。</p>
+      </div>
+    </aside>
+<h2 id="s7">実装上、先に決めておくべきことは何か？</h2>
+    <p class="answer">サイズ上限・二重処理の防止・再試行回数・失敗時の返し方の4つ。いずれもAIを呼ぶ前に決める。</p>
+    <p>文字起こしそのものは<code>env.AI.run()</code>の1行ですが、本番で効くのはその周りです。CoeSignalの実装で実際に置いているガードを挙げます。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>論点</th><th>実装での扱い</th><th>返すレスポンス</th></tr>
+        <tr><td>音声サイズ</td><td>25MiBを超えるものは受け付けない（自前の上限）</td><td>413 <code>AUDIO_TOO_LARGE</code></td></tr>
+        <tr><td>二重処理</td><td>R2の条件付き書き込みで「処理中」を予約。処理中判定が古くなる閾値は2分、保存段は10分</td><td>409 <code>TRANSCRIPTION_IN_PROGRESS</code></td></tr>
+        <tr><td>再試行の上限</td><td>1回答あたり3回まで</td><td>429 <code>TRANSCRIPTION_ATTEMPT_LIMIT</code></td></tr>
+        <tr><td>予約の横取り</td><td>保存段に移る時点で所有権を確認し、新しい試行に引き継がれていたら書き込まない</td><td>409 <code>TRANSCRIPTION_RESERVATION_LOST</code></td></tr>
+        <tr><td>文字起こし失敗</td><td>テキストが取れないまま保存へ進まない</td><td>502（回答者には再試行を案内）</td></tr>
+        <tr><td>バインディング未設定</td><td>フォールバックも無効なら、処理を始めずに落とす</td><td>500</td></tr>
+      </table>
+    </div>
+    <p>サイズ上限について補足します。whisper-large-v3-turboのモデルページには音声ファイルサイズの上限が記載されていません（2026年8月9日確認）。一方、Workerのリクエストボディ上限はCloudflareのプランに依存し、公式のWorkers Limitsでは Free/Pro が100MB、Business が200MB、Enterprise が既定500MBと記載されています。つまり<strong>プラットフォーム上限に依存すると、プランを変えた瞬間に挙動が変わる</strong>ということです。アプリ側で自前の上限を決めて明示的に弾くほうが、挙動が読めるうえエラーメッセージも親切になります（<a href="https://developers.cloudflare.com/workers/platform/limits/" target="_blank" rel="noopener noreferrer">Workers — Limits</a>・2026年8月9日確認）。</p>
+    <p>二重処理の防止は、地味ですが実運用で最も効いたガードです。回答者がボタンを連打する、通信が切れて再送される、タブが二重に開いている——同じ音声が2回届くのは珍しくありません。R2の条件付き書き込みで<code>processing → persisting → completed / failed</code>という状態を持たせ、処理中の重複リクエストは409で即座に返します。同時に、プロセスが途中で死んだまま予約が残り続けないよう、古い予約は一定時間で無効化しています。</p>
+    <p>録音側にも1点あります。ブラウザによって使えるコーデックが違うため、<code>MediaRecorder</code>の<code>mimeType</code>は<code>audio/webm;codecs=opus</code> → <code>audio/webm</code> → <code>audio/mp4</code>の順に<code>isTypeSupported()</code>で確かめて使えるものを選び、サーバー側もContent-Typeを見て保存時の拡張子を出し分けます。1つ決め打ちにすると、特定のブラウザだけ録音が始まらない現象になります。</p>
+    <h3>整形レイヤーを足すなら、処理者を増やさない範囲で</h3>
+    <p>Whisperの出力には、同音異義語の変換ミスのような明白な認識誤りが残ります。CoeSignalではLLMで最小限だけ直す整形レイヤーを任意で挟んでいますが、設計方針は明確です。<strong>すでに同意文に記載済みのベンダーだけを使う</strong>——つまり整形のために処理者を増やさない。加えて、原文を別フィールドに不変で保持し、編集率とタイムアウトのガードを付け、失格・失敗時は黙って原文を使います。整形は「乗ればラッキー」のレイヤーであって、クリティカルパスに置くものではありません。フィラーや言い回しを整えないのも意図的で、発言の一次性が失われるとリサーチのデータとして価値が落ちるためです。</p>
+
+    <h2 id="s8">この構成はどんなときに向くか？</h2>
+    <p class="answer">録音を後から処理する非リアルタイム用途で、かつ処理委託先を増やしたくない場合。逐次字幕や話者分離が主目的なら別構成を検討する。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>向くケース</th><th>別の構成を検討すべきケース</th></tr>
+        <tr><td>録音 → 送信 → 文字起こしの非リアルタイム処理</td><td>発話中に逐次表示するライブ字幕が主機能</td></tr>
+        <tr><td>情報システム部門の審査で委託先を減らしたい</td><td>統制がCloudflare以外のクラウドに寄っている</td></tr>
+        <tr><td>フロントとAPIが1つのアプリとして完結している</td><td>話者分離やタイムスタンプ単位の編集が中心</td></tr>
+        <tr><td>音声を大量に保管し、後から何度も読み直す</td><td>すでに別ベンダーの文字起こしを審査済みで運用中</td></tr>
+      </table>
+    </div>
+    <p>CoeSignalでも、社外向け調査に限って別ベンダーへのフォールバックを用意しています。ただし既定は無効で、有効化には環境変数の明示的な設定が必要です。そして社内向け調査では、調査の種別が「社内」と判定された時点でフォールバック自体が有効になりません。例外を作るなら、<strong>例外が発動しない範囲を先にコードで固定する</strong>。設定ファイルのコメントや運用ルールではなく、条件式として書いておく。これが、後から構成を説明するときにいちばん効きます。</p>
+    <p>音声をAIで扱うプロダクトは、モデルの精度で差がつく局面より、「どこに何が渡るか」を1枚で説明できるかで導入可否が決まる局面のほうが多い。Workers AIとR2で完結させる構成は、その説明を短くするための選択です。関連して、AIインタビューという用途そのものについては<a href="../interview/ai-interview.html">AIインタビューとは</a>で、生成AIの利用コスト設計については<a href="../token-management.html">トークンマネジメント</a>で扱っています。</p>
+
+    <h2 id="faq">よくある質問</h2>
+    <div class="faq"><div class="q">Workers AIに送った音声は学習に使われますか？</div><p class="a">Cloudflareの公式ドキュメント（Workers AI / Data usage）では、Customer ContentをWorkers AI上のモデルの学習や、Cloudflare・第三者サービスの改善に利用しないと明記されています。また推論データは既定では保存されず、R2やKVなどのストレージサービスを併用した場合に限り保存されるとされています（2026年8月9日確認）。自分でR2へ保存した音声は自社の保存物になるため、保持期間と削除の運用は別途設計が必要です。</p></div>
+    <div class="faq"><div class="q">音声ファイルのサイズ上限はどれくらいですか？</div><p class="a">whisper-large-v3-turboのモデルページには音声ファイルサイズの上限は記載されていません（2026年8月9日確認）。一方でWorkerのリクエストボディ上限はCloudflareのプラン依存で、Free/Proは100MBと公式に記載されています。実務では公式上限に依存せず、アプリ側で自前の上限を決めて超過を明示的に弾く設計が安全です。CoeSignalの実装では25MiBを超える音声を413で拒否しています。</p></div>
+    <div class="faq"><div class="q">Workers AIの料金はどう決まりますか？</div><p class="a">Neuronという単位での従量課金です。公式の料金ページでは1,000 Neuronsあたり$0.011、1日10,000 Neuronsまでは無料枠と記載されています。whisper-large-v3-turboは音声1分あたり46.63 neuronsです（2026年8月9日確認）。料金は改定されるため、必ず公式の料金ページで最新をご確認ください。</p></div>
+    <div class="faq"><div class="q">[env.staging]でstaging環境を作るとき、何に注意すべきですか？</div><p class="a">バインディングと環境変数はトップレベルから継承されない点です。Cloudflareの公式ドキュメントでは、vars・kv_namespaces・r2_buckets・ai・durable_objects・services・secretsが非継承キーとして挙げられており、環境ごとに書き直す必要があります。routesは継承されるため、本番の独自ドメインを引き継がせたくない場合はenv側でroutes = []と明示します。</p></div>
+  </article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役</span></div>
+    <p>上場企業を含む37社・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。AIインタビュープロダクト「CoeSignal」を自社で開発・運用している。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>生成AIプロダクトの構成設計、審査を通る形から一緒に考えます。</h3>
+    <p>どのモデルを使うかより、データがどこを通るかで導入可否が決まる場面は少なくありません。処理委託先の設計、情報システム部門への説明資料、実装アーキテクチャの選定まで、上場企業を含む37社・2,500名の支援知見をもとにご相談を承ります。検討段階だけのご相談も歓迎です。</p>
+  </div>
+  <a href="../../contact.html" class="btn">無料相談 <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="../../training.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">生成AI法人研修（主要ツール全対応）</a>　／　<a href="../../cases.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">導入事例</a>　／　<a href="../../contact.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">無料相談</a></p>
+<div class="back-list"><a href="../index.html">← メディア一覧に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="../token-management.html" class="related-card"><span class="rc-cat">Token Strategy</span><div class="rc-title">トークンマネジメント｜生成AIの利用コストを設計する</div></a>
+    <a href="../interview/ai-interview.html" class="related-card"><span class="rc-cat">AIインタビュー</span><div class="rc-title">AIインタビューとは｜仕組みと従来調査との違い</div></a>
+    <a href="../kenshu/claude-code-dounyu.html" class="related-card"><span class="rc-cat">導入・展開</span><div class="rc-title">Claude Codeの法人導入｜パイロットから全社展開までの進め方</div></a>
+  </div>
+</div></section>
+
+<p style="max-width:var(--measure);margin:36px auto 0;padding:0 20px;font-size:12px;color:var(--slate);line-height:1.9;">本記事は株式会社TechWorkerが独自に作成したものであり、Cloudflare, Inc. との提携・後援・承認を受けたものではありません。Cloudflare、Workers、Workers AI、R2はCloudflare, Inc. の商標です。記載の仕様・料金・制限値は2026年8月9日に公式ドキュメントで確認した時点のもので、改定される場合があります。実装前に必ず一次ソースをご確認ください。</p>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">Tech<i>Worker</i><span class="m-tag">Media</span></div>
+        <p>生成AIの法人導入・実装の実践知をお届けするメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+      </div>
+      <div class="footer-col"><h4>メディア</h4><a href="../index.html">記事一覧</a><a href="../interview/">AIインタビュー</a><a href="../kenshu/">AI研修・導入ラボ</a></div>
+      <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../index.html#services">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="../../contact.html">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+</body>
+</html>

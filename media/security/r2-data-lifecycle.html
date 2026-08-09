@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3V34NWXVCJ');
+</script>
+<!-- TW intent tracker (first-party, sessionStorage only) -->
+<script>
+(function(){try{var ss=sessionStorage,ls=localStorage;
+if(!ss.getItem('tw_landing')){ss.setItem('tw_landing',location.pathname);ss.setItem('tw_ref',document.referrer||'');var q=new URLSearchParams(location.search);ss.setItem('tw_utm',['utm_source','utm_medium','utm_campaign'].map(function(k){return q.get(k)||'';}).join('|'));}
+var p=JSON.parse(ss.getItem('tw_pages')||'[]');if(p[p.length-1]!==location.pathname){p.push(location.pathname);ss.setItem('tw_pages',JSON.stringify(p.slice(-20)));}
+if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_visits')||'0',10)+1));ss.setItem('tw_counted','1');}
+}catch(e){}})();
+</script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIが扱う音声・個人情報をどう保持し、どう消すか｜Cloudflare R2でのデータライフサイクル設計【2026年8月版】 — TechWorker</title>
+<meta name="description" content="AIが扱う音声・文字起こし・面談記録のような機微なデータを、Cloudflare R2でどう保持し、どう消すか。公開バケットを避け署名付きURLで期限を切って配布する設計、Object Lifecycleによる自動削除、Bucket Locksとの優先順位の落とし穴、保管地域(jurisdiction)の制約、削除依頼が来たときの実務までを2026年8月時点の公式情報に基づいて整理します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/security/r2-data-lifecycle">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AIが扱う音声・個人情報をどう保持し、どう消すか｜Cloudflare R2でのデータライフサイクル設計【2026年8月版】">
+<meta property="og:description" content="公開バケットを避け署名付きURLで期限を切って配布する設計、Object Lifecycleによる自動削除、Bucket Locksとの優先順位の落とし穴、保管地域(jurisdiction)の制約、削除依頼が来たときの実務までを2026年8月時点の公式情報に基づいて整理する。">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/media/security/r2-data-lifecycle">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AIが扱う音声・個人情報をどう保持し、どう消すか｜Cloudflare R2でのデータライフサイクル設計【2026年8月版】">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../article.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"AIが扱う音声・個人情報をどう保持し、どう消すか｜Cloudflare R2でのデータライフサイクル設計【2026年8月版】",
+  "description":"AIが扱う音声・文字起こし・面談記録のような機微なデータを、Cloudflare R2でどう保持し、どう消すか。公開バケットを避け署名付きURLで期限を切って配布する設計、Object Lifecycleによる自動削除、Bucket Locksとの優先順位の落とし穴、保管地域(jurisdiction)の制約、削除依頼が来たときの実務までを2026年8月時点の公式情報に基づいて整理する。",
+  "datePublished":"2026-08-09","dateModified":"2026-08-09","inLanguage":"ja",
+  "image":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630},
+  "author":{"@type":"Person","name":"古野光太朗","jobTitle":"株式会社TechWorker 代表取締役","url":"https://techworker.co.jp/company.html","image":"https://techworker.co.jp/assets/author-furuno.jpg","sameAs":["https://x.com/koutarou_furuno"],"affiliation":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"}},
+  "publisher":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/","logo":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630}},
+  "mainEntityOfPage":{"@type":"WebPage","@id":"https://techworker.co.jp/media/security/r2-data-lifecycle"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},
+    {"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},
+    {"@type":"ListItem","position":3,"name":"AIセキュリティ・ラボ","item":"https://techworker.co.jp/media/security/"},
+    {"@type":"ListItem","position":4,"name":"AIが扱う音声・個人情報をどう保持し、どう消すか","item":"https://techworker.co.jp/media/security/r2-data-lifecycle"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"署名付きURLの有効期限は最大どれくらいですか？","acceptedAnswer":{"@type":"Answer","text":"最大7日間（604,800秒）です。最短は1秒から設定でき、配布に必要な時間に合わせて短く切るのが基本です。有効期限を過ぎたURLはアクセスできなくなり、リソース・操作・期限のいずれかを改ざんすると署名が一致しなくなり、403 SignatureDoesNotMatchで拒否されます。ただし、カスタムドメインを設定したバケットでは署名付きURLの発行自体ができない点に注意してください。S3互換エンドポイント（{ACCOUNT_ID}.r2.cloudflarestorage.com）を使う必要があります。"}},
+    {"@type":"Question","name":"Object LifecycleとBucket Locksは、どちらを設定すればよいですか？","acceptedAnswer":{"@type":"Answer","text":"目的が違うため、両方使うのが基本です。Object Lifecycleは一定期間が過ぎたら自動で削除する、または保存クラスを移すための仕組みで、通常の保持期間の運用を担います。Bucket Locksは指定期間、削除や上書きそのものを禁止するための仕組みで、監査証跡や契約上消してはいけないデータを守ります。同じオブジェクトに両方を設定した場合はBucket Lockのルールがlifecycleルールより優先されるため、「自動で消えるはずが消えない」という設計の落とし穴に注意してください。"}},
+    {"@type":"Question","name":"データの保管場所を日本国内に限定したい場合はどうすればよいですか？","acceptedAnswer":{"@type":"Answer","text":"2026年8月時点で、R2のjurisdiction（データの保管地域）として選べるのは「eu」と「fedramp」の2つのみで、日本国内限定を直接指定する仕組みはありません。国内保管を要件にする取引先がいる場合、技術設定だけでは応えられないため、契約や説明でどう答えるかを法務も交えて別途検討する必要があります。なお、jurisdictionはバケット作成後に変更できず、指定した場合はS3互換エンドポイントの形式やLogpushとの連携可否も変わる点を導入前に確認してください。"}},
+    {"@type":"Question","name":"削除依頼が来たら、R2のオブジェクトを消すだけで十分ですか？","acceptedAnswer":{"@type":"Answer","text":"不十分な場合がほとんどです。R2上の元データを消しても、バックアップ、アクセスログ、CDNやアプリ側のキャッシュ、そして処理のために送信したAIプロバイダ側にデータが残っている可能性があります。削除依頼への対応範囲は保存先だけでなく処理の経路全体を洗い出したうえで設計する必要があり、法的にどこまでの削除義務があるかは弁護士・法務への確認が必須です。"}}
+  ]
+}
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <a href="index.html" class="logo">AIセキュリティ<i>ラボ</i></a>
+  <ul>
+    <li><a href="index.html">記事一覧</a></li>
+    <li><a href="index.html#about">このメディアについて</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="../../contact.html" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="index.html">記事一覧</a>
+  <a href="index.html#about">このメディアについて</a>
+  <a href="../../contact.html" class="m-cta">無料相談を申し込む</a>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIセキュリティ・ラボ</a><span class="sep">/</span>AIが扱う音声・個人情報をどう保持し、どう消すか</nav>
+  <div class="kicker">Cloudflare R2 × データライフサイクル設計</div>
+  <h1>AIが扱う音声・個人情報をどう保持し、どう消すか｜Cloudflare R2でのデータライフサイクル設計</h1>
+  <p class="dek">面談の音声、文字起こし、機微な相談内容——AIが扱うデータは「動く設計」が先に完成し、「消す設計」は後回しになりやすい。公開バケットに置きっぱなしの音声ファイル、期限を切らずに配られたダウンロードURL、削除依頼にどこまで応えればいいか分からない実務。Cloudflare R2の署名付きURL・Object Lifecycle・Bucket Locks・保管地域(jurisdiction)という4つの機能で保持と削除をどう設計するか、2026年8月時点の公式情報をもとに整理する。</p>
+  <div class="kn-voices" aria-hidden="true">
+    <span class="kn-fc" style="--sayo:0.0s"><span class="av"><img src="avatars/f30-0.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">いつまで残すか未定</span></span>
+    <span class="kn-fc" style="--sayo:6.3s"><span class="av"><img src="avatars/m40-2.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">URL漏れたら詰む</span></span>
+    <span class="kn-fc" style="--sayo:2.1s"><span class="av"><img src="avatars/f20-6.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">削除、どこまでやれば</span></span>
+    <span class="kn-fc" style="--sayo:8.4s"><span class="av"><img src="avatars/m50-0.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">気づけば肥大化</span></span>
+    <span class="kn-fc" style="--sayo:4.2s"><span class="av"><img src="avatars/f40-6.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">退職者の音声も残ってる</span></span>
+  </div>
+  <div class="kn-voices-cap">情シス・開発者からよく挙がる声<span class="note">※ 実際の相談で挙がる論点をもとにした例です</span></div>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.08.09</span><span class="dot">·</span><span>最終更新 2026.08.09</span><span class="dot">·</span><span>読了 13分</span>
+  </div>
+</header>
+
+<style>
+/* r2-data-lifecycle cover — ライフサイクル管理ダッシュボード風（scoped: rdl-） */
+.rdl-unit{font-size:14px;font-weight:600;color:var(--slate);margin-left:1px;}
+.rdl-cap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-family:var(--jp);font-size:11.5px;color:var(--slate);margin-top:10px;padding-top:12px;border-top:1px solid var(--line);}
+</style>
+<div class="art-cover-v6 acf-dash">
+  <div class="af-top"><span class="af-dot"></span>R2 DATA LIFECYCLE ダッシュボード<span class="af-smp">※サンプル値・画面はイメージです</span></div>
+  <div class="af-kpis">
+    <div><div class="af-k-l">管理中のオブジェクト</div><div class="af-k-v">482,300<span class="rdl-unit">件</span></div></div>
+    <div><div class="af-k-l">有効なLifecycleルール</div><div class="af-k-v">6<span class="rdl-unit">件</span></div></div>
+    <div><div class="af-k-l">直近30日の自動削除</div><div class="af-k-v"><em>12,480</em><span class="rdl-unit">件</span></div></div>
+  </div>
+  <div class="af-bars" role="img" aria-label="prefixごとにオブジェクト数と保持期間が異なることを示す棒グラフのイメージ">
+    <i class="hi" style="height:92%"></i><i style="height:70%"></i><i style="height:58%"></i><i style="height:44%"></i><i style="height:33%"></i><i style="height:24%"></i><i style="height:16%"></i><i style="height:9%"></i>
+  </div>
+  <div class="rdl-cap"><span>prefix別オブジェクト数の内訳（イメージ）</span><span>prefix設計が粗いと、Lifecycleルールも粗くなる</span></div>
+</div>
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次">
+    <div class="art-toc-inner">
+      <div class="toc-h">目次</div>
+      <a href="#s1">なぜ保持期間の設計は後回しになるのか</a>
+      <a href="#s2">どこに置き、どう配布するか</a>
+      <a href="#s3">どう自動で消すか（Object Lifecycle）</a>
+      <a href="#s4">消してはいけないものをどう守るか</a>
+      <a href="#s5">保管場所の要件にどう答えるか</a>
+      <a href="#s6">削除依頼が来たときの実務</a>
+      <a href="#faq">よくある質問</a>
+    </div>
+  </nav>
+
+  <article class="art-body rv">
+    <div class="lede">
+      <div class="lede-h">この記事の要点</div>
+      <ul>
+        <li>AIが扱う音声・文字起こしのようなデータは、<strong>保存して使う設計が先に固まり、消す設計は後回しになりやすい</strong>。消す仕組みは動いている間は誰の目にも触れず、価値を生まないという構造そのものが原因になる。</li>
+        <li>配布は公開バケットではなく<strong>署名付きURLで期限を切って</strong>渡す。ただし署名付きURLはS3互換エンドポイントでしか発行できず、<strong>カスタムドメインでは使えない</strong>という制約がある。</li>
+        <li>自動削除は<strong>Object Lifecycle</strong>、消してはいけないデータは<strong>Bucket Locks</strong>で守る。同じオブジェクトに重ねるとBucket Lockが優先されるため、優先順位を理解せずに設計すると事故につながる。</li>
+      </ul>
+    </div>
+
+    <h2 id="s1">AIが扱うデータの保持期間は、なぜ設計が後回しになるのか？</h2>
+    <p class="answer">消す仕組みは動いている間は誰にも価値を生まないため後回しにされ、たいてい情シス審査や削除依頼で初めて問われて詰まるから。</p>
+    <aside class="kn-side">
+      <img src="avatars/m40-0.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">情シスの視点</div><p>セキュリティチェックシートの「削除ポリシー」欄で、決めていなかったことに初めて気づいた。</p></div>
+    </aside>
+    <p>音声を文字起こしする、面談の記録を要約する、相談内容から下書きを作る——生成AIを使ったサービスは、たいてい「保存して使う」機能が先に完成する。文字起こしの精度も、検索も、要約の質も、保存されたデータの上に成り立つ体験だから、開発の優先順位は自然と「入れる・使う」側に寄っていく。</p>
+    <p>一方で「消す」機能は、動いている間はユーザーにも開発チームにも何の価値も生まない。それどころか、実装とテストの手間が増えるだけに見える。優先順位をつけるとき、後ろに回されやすい理由はここにある。バグではなく、構造として後回しにされる。</p>
+    <p>後回しにされたツケが表面化するタイミングは、だいたい決まっている。情シス審査のセキュリティチェックシートで「保持期間」「削除方針」の欄に答えられないとき。個人情報保護方針を見直すとき。退職者や解約した顧客から削除を求められたとき。監査で「誰のデータをいつまで持っているか」を聞かれたとき。どれも、サービスが順調に育った後にやってくる。</p>
+    <p>さらにAIを扱うサービス特有の事情もある。保存先を1つ決めれば済んだ時代と違い、音声や文字起こしのような一次データに加えて、要約や下書きの生成のために外部のAIプロバイダへ送信したコピー、CDNやアプリ側のキャッシュ、アクセスログといった「増殖したコピー」が生まれる。保存先を決めることと、保持・削除のライフサイクルを設計することは、似ているようで別の仕事だ。</p>
+    <div class="callout"><p>保存先を1つ決めることは、プロダクトが動くための条件。保持・削除のライフサイクルを設計することは、動き続けた先で必ず問われる条件。両方をひとつの「保存の設計」として扱った瞬間に、消す側の設計だけが静かに抜け落ちる。</p></div>
+    <p>ここから先は、Cloudflare R2を例に、保持と削除をどう設計するかを機能ごとに見ていく。本稿のR2機能に関する記述は、2026年8月時点のCloudflare公式ドキュメント（developers.cloudflare.com）に基づく——製品仕様は更新されるため、導入判断の直前には必ず一次情報を確認してほしい。</p>
+
+    <h2 id="s2">音声・文字起こしは、どこに置き、どう配布すればよいのか？</h2>
+    <p class="answer">バケットを公開状態にせず、配布は署名付きURLで期限を切って渡す。ただしカスタムドメインでは署名付きURLが使えない制約がある。</p>
+    <p>R2バケットには、公開アクセスを有効にしてURLで直接配信する設定と、非公開のまま必要なときだけ一時的なURLを発行する設定がある。音声や文字起こしのような機微なデータを扱うなら、基本は後者になる。バケットを公開状態にしたうえで「推測されにくいURLだから大丈夫」という運用は、URLさえ知っていれば誰でも入れる状態と実質同じで、URLは共有チャットやログ、ブラウザ履歴といった思わぬ経路から漏れうる。</p>
+    <p><strong>署名付きURL（presigned URL）</strong>は、この問題への標準的な答えだ。有効期限を1秒〜7日間（604,800秒）の範囲で指定して発行するURLで、期限が切れれば自動的に使えなくなる。URLに含まれるリソース・操作（GETやPUTなど）・期限のいずれかが書き換えられると署名が一致しなくなり、403 SignatureDoesNotMatchで拒否される。発行にはAWS SDK for JavaScript v3の<code>getSignedUrl</code>と<code>GetObjectCommand</code>を使い、<code>region</code>には<code>"auto"</code>を指定する。</p>
+    <div class="ui-mock">
+      <div class="um-bar"><span class="um-dot"></span><span class="um-dot"></span><span class="um-dot"></span><span class="um-name">署名付きURLの発行 — AWS SDK for JavaScript v3の例</span></div>
+      <div class="um-row">
+        <div class="um-label">発行コード（S3互換エンドポイント・region: "auto"）</div>
+        <div class="um-text prompt" style="font-family:var(--mono);font-size:13px;">const command = new GetObjectCommand({
+  Bucket: "interview-audio-store",
+  Key: "audio/2026/08/session-8841.m4a",
+});
+const url = await getSignedUrl(s3, command, { expiresIn: 3600 }); // 1時間で失効</div>
+      </div>
+      <div class="um-row">
+        <div class="um-label ai">発行されるURLの構造（イメージ）</div>
+        <div class="um-text">https://{ACCOUNT_ID}.r2.cloudflarestorage.com/interview-audio-store/audio/2026/08/session-8841.m4a?X-Amz-Expires=3600&amp;X-Amz-Signature=...
+※ 期限切れ、またはリソース・操作・期限のいずれかを書き換えると403 SignatureDoesNotMatchで拒否される</div>
+      </div>
+    </div>
+    <p class="fig-cap">図：署名付きURL発行の流れ（イメージ）。1回の発行につき1つのリソース・1つの有効期限が紐づき、期限を過ぎればURLごと無効になる。</p>
+    <p>ここで実務上ハマりやすいのが、<strong>署名付きURLはS3互換エンドポイント（{ACCOUNT_ID}.r2.cloudflarestorage.com）でのみ発行でき、カスタムドメインを設定したバケットでは使えない</strong>という制約だ。ブランドを統一するために配信用ドメインをカスタムドメインへ切り替えた直後、「署名付きURLの発行コードが動かなくなった」というつまずきは珍しくない。原因はコードのバグではなく、エンドポイントの選び方そのものにある。配布に署名付きURLを使う設計なら、カスタムドメインとは別に、発行専用でS3互換エンドポイントを使う経路を最初から用意しておく必要がある。</p>
+    <aside class="kn-side">
+      <img src="avatars/f30-6.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">開発者の視点</div><p>配信ドメインをカスタムドメインに統一した直後、署名付きURLの発行だけがエラーを吐くようになった。<em>ドメインではなくエンドポイントの選び方</em>が原因だった。</p></div>
+    </aside>
+    <p>もう一つ、実務でよく見落とされるのがバケット名を決めるタイミングだ。Cloudflareの仕様上、R2バケットの名前は作成後に変更できない。プロダクト名やブランドを変更しても、既存バケットの名前はそのまま残る。筆者が運営するAIインタビューサービスでも、プロダクトの改名後に旧サービス名を含むバケット名をそのまま使い続けている。バケット名は署名付きURLの外部露出がなければユーザーの目に触れないため、実害がないと判断してそのままにした、という実務上の判断だ。バケットを作る最初の一手は、後から直せないという前提で決めておくとよい。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>配布方法</th><th>アクセスできる人</th><th>主なリスク</th><th>向いている用途</th></tr>
+        <tr><td>公開バケット＋直リンク</td><td>URLを知っている全員（推測も含む）</td><td>URLの流出がそのまま無制限アクセスにつながる</td><td>公開して問題ない静的アセットのみ</td></tr>
+        <tr><td>署名付きURL</td><td>URLを知っていて、かつ有効期限内の人</td><td>期限内はURLを知る人なら誰でもアクセス可能</td><td>一時的な個別配布・ダウンロードリンク</td></tr>
+        <tr><td>Cloudflare Access等の認証経由</td><td>IdPで認証された本人のみ</td><td>導入・運用の手間はやや大きい</td><td>継続的な社内アクセス・管理画面</td></tr>
+      </table>
+    </div>
+    <p>継続的に社内メンバーがアクセスする管理画面のような用途では、署名付きURLよりもリクエストごとに人を確認する構成のほうが向いている。その設計は<a href="zero-trust-access.html">社内ツール・管理画面をVPNなしで守る</a>で扱っている。本稿が扱うのは、あくまで音声・文字起こしのような個々のファイルを一時的に配る場面での設計だ。</p>
+
+    <h2 id="s3">保持期間が過ぎたデータは、どう自動で消すのか？</h2>
+    <p class="answer">Object Lifecycleでルールを設定して自動削除・保存クラス移行を行う。ただしprefix設計を先に決めておかないとルールが作れない。</p>
+    <p>保持期間が来たデータを人力で消す運用は、件数が増えた瞬間に破綻する。R2の<strong>Object Lifecycle</strong>は、この作業をルールとして仕組み化する機能だ。設定はダッシュボード・Wrangler CLI・S3互換のLifecycle APIの3経路から行え、1バケットあたり最大1,000ルールを持てる。ルールの種類は2つ——期限が来たオブジェクトを削除する<strong>Expiration</strong>と、標準ストレージから低頻度アクセス（Infrequent Access）クラスへ移す<strong>Transition</strong>——で、削除だけでなくコスト最適化のためのクラス移行もあわせて設計できる。</p>
+    <div class="ui-mock">
+      <div class="um-bar"><span class="um-dot"></span><span class="um-dot"></span><span class="um-dot"></span><span class="um-name">Wrangler CLIでのLifecycleルール追加例</span></div>
+      <div class="um-row">
+        <div class="um-label">コマンド（90日で自動削除するルールをaudio/prefixに追加）</div>
+        <div class="um-text prompt" style="font-family:var(--mono);font-size:13px;">npx wrangler r2 bucket lifecycle add interview-audio-store \
+  delete-audio-90d audio/ --expire-days 90</div>
+      </div>
+      <div class="um-row">
+        <div class="um-label ai">主な追加オプション</div>
+        <div class="um-text">--expire-date（絶対日付での削除指定）
+--ia-transition-days（低頻度アクセスクラスへの移行日数）
+--abort-multipart-days（未完了のマルチパートアップロードの破棄日数）
+--jurisdiction（保管地域を指定したバケット向け）</div>
+      </div>
+    </div>
+    <p class="fig-cap">図：Wrangler CLIでのLifecycleルール追加イメージ。ルールはバケット全体ではなくprefix単位で適用範囲を決める。</p>
+    <p>ここで効いてくるのが<strong>prefix設計</strong>だ。LifecycleルールはPrefix（フォルダのような区切り）単位で適用範囲を決める。音声は90日、文字起こしのテキストは1年、一時的なエクスポートファイルは7日、というように、データの種類ごとに保持期間が違うのであれば、その種類ごとにprefixを最初から分けておく必要がある。「バケットを1つ作って、種類を区別せず全部同じ場所に放り込む」設計だと、あとからルールを作る段階で詰む——特定の種類だけを狙って削除する手段がなくなるからだ。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>ルール種別</th><th>何をするか</th><th>主なオプション</th><th>使いどころ</th></tr>
+        <tr><td>Expiration</td><td>指定した日数・日付が来たオブジェクトを削除</td><td>--expire-days／--expire-date</td><td>保持期間が過ぎた音声・文字起こし・一時ファイルの自動削除</td></tr>
+        <tr><td>Transition</td><td>標準ストレージから低頻度アクセスクラスへ移行</td><td>--ia-transition-days</td><td>削除はしないが、参照頻度が下がった過去データのコスト最適化</td></tr>
+      </table>
+    </div>
+    <p>見落とされがちだが地味に効くのが<code>--abort-multipart-days</code>だ。アップロードに失敗した音声ファイルの断片（マルチパートアップロードの未完了分）は、放置すると気づかないまま課金対象のストレージとして残り続ける。保持期間の設計と同じタイミングで、このオプションも一緒に決めておくと後で困らない。</p>
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/m20-6.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">エンジニアの視点</div>
+        <p>最初はバケット直下に種類を区別せず全部保存していた。あとから保持期間をデータの種類ごとに分けたくなり、<em>結局オブジェクトを新しいprefixへ丸ごとコピーし直す</em>羽目になった。</p>
+      </div>
+    </aside>
+    <p>prefix設計は、保存を始める前に一度決めてしまえば、あとはルールを積むだけの話になる。逆に、保存が始まってから設計をやり直すコストは、オブジェクトの数だけ膨らむ。</p>
+
+    <h2 id="s4">消してはいけないデータは、どう守るのか？</h2>
+    <p class="answer">Bucket Locksで削除・上書きを禁止する。Object Lifecycleと同じオブジェクトに設定した場合はBucket Lockが優先されるため、順序を誤ると「消えるはずが消えない」事故が起きる。</p>
+    <p>自動削除の設計を進めると、今度は逆の要件にぶつかる。監査ログ、契約上の保存義務があるデータ、法的な保全要請がかかったデータのように、「期限が来ても消えては困る」データだ。これに応えるのが<strong>Bucket Locks</strong>で、Object Lifecycleとは別の仕組みとして用意されている。指定した期間、あるいは無期限で、オブジェクトの削除・上書きそのものを禁止する保持機能で、ダッシュボード・<code>wrangler r2 bucket lock add</code>コマンド・APIから設定でき、1バケットあたり最大1,000ルールを持てる。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>観点</th><th>Object Lifecycle</th><th>Bucket Locks</th></tr>
+        <tr><td>役割</td><td>期限が来たら消す・移す</td><td>期限が来ても消させない・変更させない</td></tr>
+        <tr><td>典型的な用途</td><td>音声・文字起こしなど通常データの保持期間運用</td><td>監査ログ、契約上の保存義務があるデータ、保全要請中のデータ</td></tr>
+        <tr><td>設定経路</td><td>ダッシュボード／Wrangler CLI／S3互換Lifecycle API</td><td>ダッシュボード／wrangler r2 bucket lock add／API</td></tr>
+        <tr><td>上限</td><td>1バケットあたり最大1,000ルール</td><td>1バケットあたり最大1,000ルール</td></tr>
+        <tr><td>同じオブジェクトに両方かかった場合</td><td colspan="2" style="text-align:center;">Bucket Lockのルールが優先される</td></tr>
+      </table>
+    </div>
+    <p>この最後の行が、実務でつまずきやすい落とし穴になる。同じオブジェクトにObject LifecycleとBucket Locksを重ねて設定した場合、<strong>Bucket Lockのルールがlifecycleルールよりも優先される</strong>。「90日で自動削除する設定にしたはずなのに、実は同じprefixにBucket Lockもかかっていて消えない」という状態が、表面上は気づきにくいまま起こりうる。逆に言えば、消してはいけないデータを確実に守れる仕組みでもある——優先順位を理解したうえで意図的に使えば、Bucket Locksは「Lifecycleルールの誤設定からデータを守る安全弁」にもなる。</p>
+    <aside class="kn-side">
+      <img src="avatars/f50-2.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">監査対応の視点</div><p>90日で消えるはずのログが消えていないことに気づき、原因を追ったら数か月前に自分でかけたBucket Lockが残っていた。<em>忘れた頃に効いてくる</em>設定だと痛感した。</p></div>
+    </aside>
+    <p>なお、AWS S3のObject Lockには「Governance（管理者権限があれば解除できる）」「Compliance（誰も解除できない）」という2段階のモードがあるが、これに相当する権限段階がR2のBucket Locksにも存在するかどうかは、2026年8月時点の公式ドキュメントに明記が見当たらず、本稿では<strong>未確認</strong>として扱う。コンプライアンス上の強い保全要件を伴う用途で採用する場合は、この点を必ず公式ドキュメントの最新記載で確認してほしい。</p>
+    <div class="callout"><p>Object LifecycleとBucket Locksは、「消す」と「守る」で役割が逆。同じオブジェクトに重ねて設定するときは、Bucket Lockが必ず勝つという優先順位を前提に設計する。</p></div>
+
+    <h2 id="s5">「データは国内に保管してほしい」と言われたら、どう答えるか？</h2>
+    <p class="answer">R2のjurisdiction（保管地域）で選べるのはeuとfedrampの2つのみで、日本国内限定の指定は存在しない。技術設定だけでは答えられない要件として扱う。</p>
+    <p>個人情報や機微な音声データを扱うサービスでは、取引先や情シス審査から「データはどこの国に保管されているか」「国内に限定できるか」と聞かれる場面がある。R2には<strong>jurisdiction</strong>という、バケット作成時にデータの保管地域を指定できる仕組みがある。ただし2026年8月時点で選べる値は<strong>「eu」と「fedramp」の2つのみ</strong>で、日本国内限定を直接指定する選択肢はない。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>jurisdictionの値</th><th>何を指定するか</th><th>制約</th></tr>
+        <tr><td>未指定（デフォルト）</td><td>Cloudflareのグローバルなネットワーク内で保管</td><td>特定地域への限定なし</td></tr>
+        <tr><td>eu</td><td>EU域内での保管</td><td>S3互換エンドポイントが専用の形式に変わる</td></tr>
+        <tr><td>fedramp</td><td>FedRAMP対応リージョンでの保管</td><td>米国の政府機関向け要件を想定</td></tr>
+      </table>
+    </div>
+    <p>実務上とりわけ重要なのが、<strong>jurisdictionはバケット作成後に変更できない</strong>という制約だ。運用が始まってから「やっぱり分けたい」と思っても、既存バケットの設定は変えられず、新しいバケットを作ってデータを移行するしかない。加えて、jurisdictionを指定すると、S3互換エンドポイントが<code>https://{ACCOUNT_ID}.{JURISDICTION}.r2.cloudflarestorage.com</code>という専用の形式に変わるため、前章で扱った署名付きURLの発行もこのエンドポイントに合わせて修正する必要がある。さらに、Logpush（ログの外部連携機能）はjurisdiction指定リソースと連携できないという制約も持つ。</p>
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/f40-0.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">法務の視点</div>
+        <p>「国内に置いてほしい」という取引先の要望を受けて設定画面を調べたら、<em>選べる選択肢に日本がそもそも存在しなかった</em>。技術で解決する話ではないと分かり、契約文面での説明に切り替えた。</p>
+      </div>
+    </aside>
+    <p>つまり「国内保管」を要件にする相手には、jurisdictionという技術設定では応えられないという事実を、まず正直に伝える必要がある。そのうえで、実際にどう応えるか——保管場所以外の管理策（アクセス制御・暗号化・監査ログなど）で説明するのか、契約条項での合意にとどめるのか——は技術チームだけで決められる話ではなく、法務を交えて方針を決める必要がある。ここは本稿の範囲を超えるため、個別の契約判断は必ず法務・弁護士に確認してほしい。</p>
+
+    <h2 id="s6">削除依頼が来たとき、何をどこまで消せばよいのか？</h2>
+    <p class="answer">R2上の元データだけでなく、バックアップ・ログ・キャッシュ・処理を委託したAIプロバイダまで削除の範囲に含めて設計しておく必要がある。</p>
+    <p>本人からの削除請求、契約終了にともなうデータ消去義務——理由はさまざまだが、「このデータを消してほしい」という依頼は、AIを扱うサービスを続けていれば必ず来る。このとき、R2のオブジェクトを消しただけで「対応完了」としてしまうと、実際には不十分なことが多い。</p>
+    <div class="ba-grid">
+      <div class="ba-card before">
+        <span class="ba-tag">不十分になりやすい対応</span>
+        <div class="ba-body">R2上の音声・文字起こしファイルを削除して終了。バックアップ、アクセスログ、CDN・アプリ側のキャッシュ、処理のために送信したAIプロバイダ側のデータは確認していない</div>
+      </div>
+      <div class="ba-card after">
+        <span class="ba-tag">範囲を洗い出してからの対応</span>
+        <div class="ba-body">R2本体に加えて、バックアップ・レプリケーション先、ログ、キャッシュ、処理を委託した外部AIプロバイダという5つの経路をチェックリストとして確認したうえで対応する</div>
+      </div>
+    </div>
+    <p>洗い出すべき経路は、大きく5つに整理できる。<strong>①R2本体のオブジェクト</strong>、<strong>②バックアップ・レプリケーション先</strong>、<strong>③アクセスログ・監査ログ</strong>、<strong>④CDNやアプリ側のキャッシュ</strong>、そして<strong>⑤文字起こしや要約のために送信した外部のAIプロバイダ側でのデータの扱い</strong>だ。特に⑤は見落とされやすい。自社のインフラの外に一時的にでもデータを渡している以上、削除依頼の範囲は自社のバケットの中だけでは完結しない。</p>
+    <p>ここで効いてくるのが、「渡した先」を後から追える形にしておくことだ。筆者が運営するAIインタビューサービスでは、処理者（実際にデータを処理する外部のAIプロバイダ、たとえばAnthropicやOpenAIなど）を同意文の中に明示し、同意そのものにバージョンを持たせて追跡している。新しい処理者にデータが渡るような機能を追加するときは、既定の状態をOFFにし、契約と同意文の更新が完了してから初めて有効化する。この順序を仕組みとして強制しておくと、削除依頼が来たときに「どこまで渡したか分からない」という事態を避けられる。</p>
+    <div class="quote-box"><p>「消しました」と言えるのは、消した場所を全部言えるときだけだ。</p></div>
+    <aside class="kn-side">
+      <img src="avatars/m30-2.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">個人情報保護担当の視点</div><p>削除依頼への回答を「本体からは消しました」で出しかけて止まった。<em>バックアップとログはまだ生きている</em>ことに気づいたのは、確認のチェックリストを作った後だった。</p></div>
+    </aside>
+    <p>最後に、本稿では触れられない範囲を明記しておく。個人情報保護法やGDPRといった法律が、具体的に何日以内の削除を義務づけるか、どこまでの範囲を「削除した」とみなせるかは、業種・データの性質・契約内容によって変わる法律解釈の話であり、本稿で断定はしない。運用ルールを確定させる前に、必ず法務・弁護士に確認してほしい。</p>
+    <div class="callout"><p>削除依頼の対応範囲は、保存先を1つ増やすたびに広がる。新しい保存先・新しい処理者を追加するときは、それを消す方法もセットで決めておくと、あとから慌てて洗い出す作業をせずに済む。</p></div>
+
+    <h2 id="faq">よくある質問</h2>
+    <div class="faq"><div class="q">署名付きURLの有効期限は最大どれくらいですか？</div><p class="a">最大7日間（604,800秒）です。最短は1秒から設定でき、配布に必要な時間に合わせて短く切るのが基本です。有効期限を過ぎたURLはアクセスできなくなり、リソース・操作・期限のいずれかを改ざんすると署名が一致しなくなり、403 SignatureDoesNotMatchで拒否されます。ただし、カスタムドメインを設定したバケットでは署名付きURLの発行自体ができない点に注意してください。S3互換エンドポイント（{ACCOUNT_ID}.r2.cloudflarestorage.com）を使う必要があります。</p></div>
+    <div class="faq"><div class="q">Object LifecycleとBucket Locksは、どちらを設定すればよいですか？</div><p class="a">目的が違うため、両方使うのが基本です。Object Lifecycleは一定期間が過ぎたら自動で削除する、または保存クラスを移すための仕組みで、通常の保持期間の運用を担います。Bucket Locksは指定期間、削除や上書きそのものを禁止するための仕組みで、監査証跡や契約上消してはいけないデータを守ります。同じオブジェクトに両方を設定した場合はBucket Lockのルールがlifecycleルールより優先されるため、「自動で消えるはずが消えない」という設計の落とし穴に注意してください。</p></div>
+    <div class="faq"><div class="q">データの保管場所を日本国内に限定したい場合はどうすればよいですか？</div><p class="a">2026年8月時点で、R2のjurisdiction（データの保管地域）として選べるのは「eu」と「fedramp」の2つのみで、日本国内限定を直接指定する仕組みはありません。国内保管を要件にする取引先がいる場合、技術設定だけでは応えられないため、契約や説明でどう答えるかを法務も交えて別途検討する必要があります。なお、jurisdictionはバケット作成後に変更できず、指定した場合はS3互換エンドポイントの形式やLogpushとの連携可否も変わる点を導入前に確認してください。</p></div>
+    <div class="faq"><div class="q">削除依頼が来たら、R2のオブジェクトを消すだけで十分ですか？</div><p class="a">不十分な場合がほとんどです。R2上の元データを消しても、バックアップ、アクセスログ、CDNやアプリ側のキャッシュ、そして処理のために送信したAIプロバイダ側にデータが残っている可能性があります。削除依頼への対応範囲は保存先だけでなく処理の経路全体を洗い出したうえで設計する必要があり、法的にどこまでの削除義務があるかは弁護士・法務への確認が必須です。</p></div>
+  </article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役</span></div>
+    <p>上場企業を含む37社・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>AIが扱うデータの保持・削除設計も、導入支援の一部として伴走します。</h3>
+    <p>署名付きURLでの配布設計から、Object LifecycleとBucket Locksを使った保持ルールの設計、削除依頼が来たときの対応フローづくりまで。上場企業を含む37社・2,500名の生成AI導入支援で培った知見をもとに、TechWorkerがデータの保持・削除設計をご支援します。「消す仕組みが後回しになっている」段階からのご相談も歓迎です。</p>
+  </div>
+  <a href="../../contact.html" class="btn">無料相談する <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="../../contact.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">無料相談</a>　／　<a href="../../library/security-guide.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">経営者のための生成AIセキュリティ実践ガイド（無料DL）</a>　／　<a href="../../library/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">事例集（無料DL）</a></p>
+<div class="back-list"><a href="index.html">← AIセキュリティ・ラボに戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="saas-security-review.html" class="related-card"><span class="rc-cat">法人審査</span><div class="rc-title">AI SaaSが情シス審査を通るために実装したこと｜監査ログ・削除権</div></a>
+    <a href="workers-secrets.html" class="related-card"><span class="rc-cat">シークレット管理</span><div class="rc-title">APIキーを.envに置かない｜Workersでのシークレット管理</div></a>
+    <a href="zero-trust-access.html" class="related-card"><span class="rc-cat">ゼロトラスト</span><div class="rc-title">管理画面をVPNなしで守る｜Cloudflare Accessのゼロトラスト構成</div></a>
+    <a href="ai-crawler-control.html" class="related-card"><span class="rc-cat">クローラー対策</span><div class="rc-title">AIクローラーからサイトを守る｜robots.txtの限界とCloudflareでの制御</div></a>
+  </div>
+</div></section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">AIセキュリティ<i>ラボ</i></div>
+        <p>AIが扱うデータの保持・削除設計とセキュリティの実践知をお届けするメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+      </div>
+      <div class="footer-col"><h4>AIセキュリティ・ラボ</h4><a href="index.html">記事一覧</a><a href="index.html#about">このメディアについて</a></div>
+      <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../index.html#services">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="../../contact.html">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p style="font-size:11.5px;color:var(--slate);line-height:1.9;margin:18px 0 0;max-width:720px;">本ページは株式会社TechWorkerが独自に作成したものであり、Cloudflare, Inc.との提携・後援・承認を受けたものではありません。CloudflareはCloudflare, Inc.の商標です。</p>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+</body>
+</html>

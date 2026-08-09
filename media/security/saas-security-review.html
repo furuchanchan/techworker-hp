@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3V34NWXVCJ');
+</script>
+<!-- TW intent tracker (first-party, sessionStorage only) -->
+<script>
+(function(){try{var ss=sessionStorage,ls=localStorage;
+if(!ss.getItem('tw_landing')){ss.setItem('tw_landing',location.pathname);ss.setItem('tw_ref',document.referrer||'');var q=new URLSearchParams(location.search);ss.setItem('tw_utm',['utm_source','utm_medium','utm_campaign'].map(function(k){return q.get(k)||'';}).join('|'));}
+var p=JSON.parse(ss.getItem('tw_pages')||'[]');if(p[p.length-1]!==location.pathname){p.push(location.pathname);ss.setItem('tw_pages',JSON.stringify(p.slice(-20)));}
+if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_visits')||'0',10)+1));ss.setItem('tw_counted','1');}
+}catch(e){}})();
+</script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI SaaSが情シスのセキュリティ審査を通るために実装したこと｜監査ログ・削除権・アカウント管理【2026】 — TechWorker</title>
+<meta name="description" content="AI SaaSの情シス審査で問われるのは、監査ログや削除機能が「ある」かではなく、顧客が自分の画面から確認・実行できるかどうかだ。招待制サインアップ、fail closedの認証設計、アクセスコードのハッシュ化、監査ログ閲覧・データ削除・パスワード変更の実装、新しいAIベンダーを追加する手順まで、Cloudflare Workers上で運用する自社AI SaaSの本番実装をもとに実務の型を整理する。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/security/saas-security-review">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI SaaSが情シスのセキュリティ審査を通るために実装したこと｜監査ログ・削除権・アカウント管理【2026】">
+<meta property="og:description" content="監査ログや削除機能が「ある」かではなく、顧客が自分で確認・実行できるか。招待制サインアップ・fail closed認証・監査ログ閲覧・データ削除・ベンダー追加手順まで、自社AI SaaSの本番実装から実務の型を整理する。">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/media/security/saas-security-review">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI SaaSが情シスのセキュリティ審査を通るために実装したこと｜監査ログ・削除権・アカウント管理【2026】">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../article.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"AI SaaSが情シスのセキュリティ審査を通るために実装したこと｜監査ログ・削除権・アカウント管理【2026】",
+  "description":"AI SaaSが情シスの法人審査を通るために実装した内容を、実際の本番環境をもとに解説する。監査ログや削除機能は「ある」だけでは審査で評価されず、顧客自身が画面から確認・実行できることが要件になる。招待制サインアップ、fail closedの認証設計、アクセスコードのSHA-256ハッシュ化、監査ログ閲覧・データ削除・パスワード変更の実装、新しいAIベンダーを追加する際の既定OFF→契約更新→通知→有効化という手順、秘密情報をリポジトリに置かない設計まで、Cloudflare Workers上で運用する自社AI SaaS「CoeSignal」の実装を一次情報として示す。",
+  "datePublished":"2026-08-09","dateModified":"2026-08-09","inLanguage":"ja",
+  "image":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630},
+  "author":{"@type":"Person","name":"古野光太朗","jobTitle":"株式会社TechWorker 代表取締役","url":"https://techworker.co.jp/company.html","image":"https://techworker.co.jp/assets/author-furuno.jpg","sameAs":["https://x.com/koutarou_furuno"],"affiliation":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"}},
+  "publisher":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/","logo":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630}},
+  "mainEntityOfPage":{"@type":"WebPage","@id":"https://techworker.co.jp/media/security/saas-security-review"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},
+    {"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},
+    {"@type":"ListItem","position":3,"name":"AIセキュリティ・ラボ","item":"https://techworker.co.jp/media/security/"},
+    {"@type":"ListItem","position":4,"name":"AI SaaSが情シスのセキュリティ審査を通るために実装したこと","item":"https://techworker.co.jp/media/security/saas-security-review"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"監査ログ・削除・パスワード変更が「ある」だけでは、なぜ審査に通らないのですか？","acceptedAnswer":{"@type":"Answer","text":"機能の存在は前提に過ぎず、法人審査で問われるのは顧客自身が画面から確認・実行できるかどうかだからです。エンジニアへの依頼やデータベースの手動確認で対応できる状態は、顧客からは「無い」のと見分けがつきません。"}},
+    {"@type":"Question","name":"招待制サインアップにすると、利用開始のハードルが上がりませんか？","acceptedAnswer":{"@type":"Answer","text":"上がりますが、それが狙いの一部です。管理者またはワークスペース所有者が発行する1回限り・期限付きの招待リンクに限定することで、「誰が入れるか」を常に説明できる状態を保てます。利便性より、入口を絞ることを優先する場面での設計です。"}},
+    {"@type":"Question","name":"新しいAIベンダーを追加するとき、開発と契約はどちらを先に進めればよいですか？","acceptedAnswer":{"@type":"Answer","text":"開発を先に進めて構いません。ただし有効化は契約・同意文の更新のあとにします。実装は既定OFFの環境変数として作り、コードのマージと機能の有効化を別の出来事として分離しておくと、この順番を事故なく守れます。"}},
+    {"@type":"Question","name":"この記事の内容を実装すれば、情シス審査に必ず通りますか？","acceptedAnswer":{"@type":"Answer","text":"通るとは限りません。審査基準は企業や業界によって異なり、業種によっては本記事にない要件が追加で求められることもあります。本記事は「実際に何を問われ、何を実装したか」という一次情報の共有であり、審査通過を保証するものではありません。"}}
+  ]
+}
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <a href="index.html" class="logo">AIセキュリティ<i>ラボ</i></a>
+  <ul>
+    <li><a href="index.html">記事一覧</a></li>
+    <li><a href="index.html#about">このメディアについて</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="../../contact.html" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="index.html">記事一覧</a>
+  <a href="index.html#about">このメディアについて</a>
+  <a href="../../contact.html" class="m-cta">無料相談を申し込む</a>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIセキュリティ・ラボ</a><span class="sep">/</span>AI SaaSが情シスのセキュリティ審査を通るために実装したこと</nav>
+  <div class="kicker">情シス審査 × 実装設計</div>
+  <h1>AI SaaSが情シスのセキュリティ審査を通るために実装したこと｜監査ログ・削除権・アカウント管理</h1>
+  <p class="dek">監査ログの閲覧機能はある。削除ボタンもある。それでも情シスの審査は止まる——問われているのは機能の有無ではなく、顧客が自分の画面から確認・実行できるかどうかだ。Cloudflare Workers上で運用する自社AI SaaSの本番実装を題材に、招待制サインアップ・fail closedの認証・監査ログ閲覧・データ削除・パスワード変更・新しいAIベンダーを追加する手順まで、審査を通すために実際に組んだ設計を明かす。</p>
+  <div class="kn-voices" aria-hidden="true">
+    <span class="kn-fc" style="--sayo:0.0s"><span class="av"><img src="avatars/f30-6.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">削除ボタンが無い</span></span>
+    <span class="kn-fc" style="--sayo:6.3s"><span class="av"><img src="avatars/m20-2.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">監査ログが見れない</span></span>
+    <span class="kn-fc" style="--sayo:2.1s"><span class="av"><img src="avatars/f40-2.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">退職者の権限が残る</span></span>
+    <span class="kn-fc" style="--sayo:8.4s"><span class="av"><img src="avatars/m30-0.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">同意文が古いまま</span></span>
+    <span class="kn-fc" style="--sayo:4.2s"><span class="av"><img src="avatars/f50-0.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">審査資料が無い</span></span>
+  </div>
+  <div class="kn-voices-cap">SaaS導入審査でよく挙がる声<span class="note">※ 実際の相談で挙がる論点をもとにした例です</span></div>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.08.09</span><span class="dot">·</span><span>最終更新 2026.08.09</span><span class="dot">·</span><span>読了 10分</span>
+  </div>
+</header>
+
+<style>
+/* saas-security-review cover — 実装状況ダッシュボード風（scoped: ssr-） */
+.ssr-unit{font-size:14px;font-weight:600;color:var(--slate);margin-left:1px;}
+.ssr-cap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-family:var(--jp);font-size:11.5px;color:var(--slate);margin-top:10px;padding-top:12px;border-top:1px solid var(--line);}
+</style>
+<div class="art-cover-v6 acf-dash">
+  <div class="af-top"><span class="af-dot"></span>SAAS セキュリティ審査 実装状況ダッシュボード<span class="af-smp">※サンプル値・画面はイメージです</span></div>
+  <div class="af-kpis">
+    <div><div class="af-k-l">審査で問われた項目</div><div class="af-k-v">10<span class="ssr-unit">件</span></div></div>
+    <div><div class="af-k-l">実装した項目</div><div class="af-k-v">10<span class="ssr-unit">件</span></div></div>
+    <div><div class="af-k-l">顧客が自分で確認・実行できる</div><div class="af-k-v"><em>5</em><span class="ssr-unit">件</span></div></div>
+  </div>
+  <div class="af-bars" role="img" aria-label="審査項目のカテゴリ別に実装進捗のばらつきがあることを示す棒グラフのイメージ">
+    <i class="hi" style="height:92%"></i><i style="height:78%"></i><i style="height:68%"></i><i style="height:58%"></i><i style="height:46%"></i><i style="height:36%"></i><i style="height:24%"></i><i style="height:14%"></i>
+  </div>
+  <div class="ssr-cap"><span>カテゴリ別の実装進捗（イメージ）</span><span>「ある」と「顧客が自分でできる」は別集計にする</span></div>
+</div>
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次">
+    <div class="art-toc-inner">
+      <div class="toc-h">目次</div>
+      <a href="#s1">情シス審査で実際に何を聞かれるか</a>
+      <a href="#s2">「機能がある」と「実行できる」の違い</a>
+      <a href="#s3">実装した項目とその理由</a>
+      <a href="#s4">新しいAIベンダーを追加する手順</a>
+      <a href="#s5">導入する側のチェックリスト</a>
+      <a href="#faq">よくある質問</a>
+    </div>
+  </nav>
+
+  <article class="art-body rv">
+    <div class="lede">
+      <div class="lede-h">この記事の要点</div>
+      <ul>
+        <li>情シス審査で問われるのは「機能があるか」ではなく<strong>「顧客が自分の画面から確認・実行できるか」</strong>。監査ログ・データ削除・パスワード変更は、この基準で作り直すべき典型項目だった。</li>
+        <li>実装の芯は<strong>既定値の設計</strong>。公開サインアップは既定OFFで招待制のみ、認証はfail closed、新しいAIベンダーへの連携も既定OFF。安全側に倒したうえで、契約・同意の更新後に個別にONへ切り替える。</li>
+        <li>「これをやれば審査に通る」という保証はない。<strong>審査基準は企業ごとに違う</strong>ため、本記事は実際に問われた項目と実装の一次情報として、自社の設計判断に落とし込むための材料として使ってほしい。</li>
+      </ul>
+    </div>
+
+    <h2 id="s1">AI SaaSの情シス審査で、実際に何を聞かれるのか？</h2>
+    <p class="answer">データの保存先・処理者・保持期間・削除・アクセス制御・監査証跡の6つが定番の質問群で、多くは「機能があるか」ではなく「顧客側で確認・実行できるか」まで踏み込んで聞かれる。</p>
+    <p>AI SaaSを情シスに持ち込むと、審査シートには「データの保存先はどこか」「データを処理する第三者（ベンダー）は誰か」「保持期間はどれくらいか」「削除はどう行うか」「誰がアクセスできるか」「操作の記録は残るか」といった質問が並ぶ。言い回しは企業ごとに違うが、突き詰めると<strong>保存先・処理者・保持期間・削除・アクセス制御・監査証跡</strong>という6つの軸に収束することが多い。</p>
+    <p>この6軸自体は目新しいものではなく、ISMS（ISO/IEC 27001）やSOC2といった外部認証の考え方にも共通して現れる論点だ。ただし本記事で扱う実装は、特定の認証取得を前提にしたものではない。筆者（TechWorker）もこれから題材にするAI SaaS「CoeSignal」も、ISMSやSOC2などの外部認証を取得しているわけではなく、以下は<strong>実際の法人審査で個別に問われた項目に、実装で答えてきた一次情報</strong>として読んでほしい。</p>
+    <p>題材にするのは、筆者が運用するCloudflare Workers上のAI SaaS「CoeSignal」の本番実装だ。抽象的な「べき論」ではなく、実際に組んだ環境変数・データ設計・画面機能を見ていく。</p>
+    <aside class="kn-side">
+      <img src="avatars/m40-0.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">情シスの視点</div><p>審査シートの半分は「機能があるか」ではなく「誰が、いつ、どうやって確認できるか」を聞いている。</p></div>
+    </aside>
+
+    <h2 id="s2">「機能がある」と「顧客が自分で確認・実行できる」は、なぜ違うのか？</h2>
+    <p class="answer">監査ログ・データ削除・パスワード変更は多くのSaaSに機能として存在するが、法人審査で問われるのは顧客自身が画面から確認・実行できるかどうか。開発側の内部運用でカバーしているだけでは審査を通らない。</p>
+    <p>CoeSignalが実際の法人審査で指摘されたのは、この「機能はあるが顧客は使えない」という状態だった。具体的には次の3点が穴として挙がった。</p>
+    <p>監査ログは記録されていたが、<strong>顧客が見る画面がなかった</strong>。何かあれば開発チームがデータベースを直接確認して回答する運用で、記録自体は存在していても、顧客からは「無い」のと見分けがつかない。データ削除は開発チームへの依頼ベースで、実行まで数日かかっていた。削除の処理そのものはコードとして存在したが、<strong>顧客が自分のタイミングで押せるボタンがなかった</strong>。パスワードは初期値のまま運用され、変更は運用者への申請フローだった。顧客が自分の意思で今すぐ変える手段がなかった。</p>
+    <p>3点に共通するのは、「バックエンドではできる」と「顧客が自分でできる」を混同していたこと。審査する側が確認したいのは前者ではなく後者であり、この区別に気づいてから実装の優先順位が変わった。</p>
+    <div class="ba-grid">
+      <div class="ba-card before">
+        <span class="ba-tag">指摘前 — 機能はある</span>
+        <div class="ba-body">監査ログはDBに記録。閲覧はエンジニアが手動でクエリを実行<br><br>データ削除は開発チームへの依頼ベース。実行まで数日<br><br>パスワードは初期値のまま。変更は運用者への申請フロー</div>
+      </div>
+      <div class="ba-card after">
+        <span class="ba-tag">指摘後 — 顧客が自分でできる</span>
+        <div class="ba-body">管理画面に監査ログの閲覧タブを追加。期間・操作種別で顧客自身が絞り込める<br><br>「データを削除する」ボタンを設置。確認ダイアログを経て顧客が即時実行できる<br><br>パスワード変更画面を追加。顧客が自分のタイミングで変更できる</div>
+      </div>
+    </div>
+    <p class="fig-cap">図：法人審査で指摘された3点の、指摘前と実装後の対比。コードとしての機能追加ではなく、顧客が触れる画面の追加が要点だった。</p>
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/f20-0.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">開発責任者の視点</div>
+        <p>「消してくださいと言われたら消せます」は答えになっていなかった。審査が聞いていたのは、<em>顧客が自分でできるかどうか</em>だった。</p>
+      </div>
+    </aside>
+
+    <h2 id="s3">実際に何を実装したか、その理由は？</h2>
+    <p class="answer">招待制サインアップ・fail closedの認証・アクセスコードのハッシュ化・監査ログ閲覧/削除/パスワード変更・ベンダー連携の既定OFF・同意のバージョン管理・緊急停止スイッチ・秘密情報の外出しを実装した。審査の観点に対応づけると下表になる。</p>
+    <p>ここまでの2点——審査で何を聞かれるか、機能と実行可能性の違い——を踏まえ、CoeSignalの本番環境で実際に組んだ実装を、審査の観点に対応づけて整理する。番号は実装した順番ではなく、審査でよく質問される順に近い。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>実装したこと</th><th>具体（設計・環境変数）</th><th>審査で問われる観点</th><th>なぜこの設計にしたか</th></tr>
+        <tr><td>公開サインアップの無効化＋招待制</td><td><code>PUBLIC_SIGNUP_ENABLED="0"</code> / <code>INVITE_SIGNUP_ENABLED="1"</code>。管理者またはワークスペース所有者が1回限り・期限付きの招待リンクを発行</td><td>アクセス制御・入口管理</td><td>「誰でも登録できる」入口をなくし、アカウントの発生源を常に特定の人物まで遡れるようにする</td></tr>
+        <tr><td>fail closedの認証設計</td><td>認証設定が読み込めない・不整合が起きた場合は、通すのではなく拒否する</td><td>認証の堅牢性・障害時の挙動</td><td>設定ミスや障害の瞬間に「開いてしまう」設計は事故に気づきにくい。閉じる方向に倒して被害を抑える</td></tr>
+        <tr><td>アクセスコードの非平文保存</td><td><code>access_code_sha256</code>としてSHA-256ハッシュのみ保持し、原文は保存しない</td><td>認証情報の保管</td><td>データベースが漏れても、アクセスコードの原文を復元できない状態にする</td></tr>
+        <tr><td>監査ログの閲覧機能</td><td>顧客の管理画面に、操作ログを確認できる画面を実装</td><td>監査証跡・アカウンタビリティ</td><td>記録されているだけでは審査上「無い」のと同じ。顧客自身が確認できることが要件</td></tr>
+        <tr><td>データ削除機能</td><td>顧客がセルフサービスで自分のデータを削除できるボタンを実装</td><td>削除権・データ主体の権利</td><td>依頼してから数日ではなく、顧客の意思で即時に完結させる</td></tr>
+        <tr><td>パスワード変更機能</td><td>顧客が自分の画面からパスワードを変更できる機能を実装</td><td>アカウント管理・認証情報のライフサイクル</td><td>初期パスワードを固定運用にせず、顧客側で更新の主導権を持てるようにする</td></tr>
+        <tr><td>新規処理者への連携を既定OFF</td><td><code>ALLOW_OPENAI_TRANSCRIPTION_FALLBACK</code> <code>ALLOW_OPENAI_RUNTIME_TTS</code> <code>ALLOW_OPENAI_SCREEN_OBSERVATION</code> 等を既定<code>"0"</code>に設定</td><td>データの処理者・第三者提供</td><td>契約・同意文の更新より先に、データが新しいベンダーへ渡る事態を防ぐ</td></tr>
+        <tr><td>同意のバージョン管理</td><td>同意文にversionを持たせ、処理者（Anthropic・OpenAIなど）を明示。バージョン5以降で特定の処理者への提供に明示同意、という形で追跡</td><td>同意の追跡可能性</td><td>「いつ、どの処理者への提供に同意を得たか」を後から契約と突き合わせて説明できる</td></tr>
+        <tr><td>緊急停止スイッチ</td><td>例：<code>TRANSCRIPT_POLISH="0"</code>のように、特定のAI処理を止める環境変数を用意</td><td>インシデント対応・障害対応の速度</td><td>問題が見つかったAI処理を、コード変更なしでdeployだけで即座に止められる</td></tr>
+        <tr><td>秘密情報をリポジトリに置かない</td><td>APIキー等は<code>wrangler secret put</code>で登録し、暗号化された状態でCloudflare側に保存。設定ファイルにはsecret名の宣言だけを残す</td><td>シークレット管理</td><td>設定ファイルをリポジトリにコミットしても、値そのものは漏れない</td></tr>
+      </table>
+    </div>
+    <p>このうちアクセス制御の考え方は、社内ツール側の話になるが<a href="zero-trust-access.html">Cloudflare Accessによるゼロトラスト構成</a>とも共通する。招待制にしても、その招待リンクの発行画面自体を誰でも開けてしまえば意味がない。入口を絞る設計は、社内向け・顧客向けを問わず同じ発想で組む。</p>
+    <div class="ui-mock">
+      <div class="um-bar"><span class="um-dot"></span><span class="um-dot"></span><span class="um-dot"></span><span class="um-name">本番環境変数の設計方針 — 一部抜粋（イメージ）</span></div>
+      <div class="um-row">
+        <div class="um-label">既定値の設計（安全側に倒す）</div>
+        <div class="um-text prompt">PUBLIC_SIGNUP_ENABLED = "0"          # 公開サインアップは既定で無効
+INVITE_SIGNUP_ENABLED = "1"          # 招待制のみ有効
+ALLOW_OPENAI_TRANSCRIPTION_FALLBACK = "0"   # 新しい処理者への連携は既定OFF
+ALLOW_OPENAI_RUNTIME_TTS = "0"
+ALLOW_OPENAI_SCREEN_OBSERVATION = "0"
+TRANSCRIPT_POLISH = "1"              # 問題が起きたら "0" にして即deployで停止</div>
+      </div>
+      <div class="um-row">
+        <div class="um-label ai">秘密情報は設定ファイルに置かない</div>
+        <div class="um-text">APIキー・トークンなどの実値は wrangler secret put で登録する。
+この設定ファイルに残るのは「どのsecret名を使うか」という宣言だけで、値そのものはリポジトリに含まれない。</div>
+      </div>
+    </div>
+    <p class="fig-cap">図：本番環境変数の設計方針のイメージ。新しい連携機能は既定OFFで実装し、契約・同意の更新後に値を変更してONにする。秘密情報の扱い方の基本は<a href="workers-secrets.html">シークレット管理の基本</a>で扱っている。</p>
+    <aside class="kn-side">
+      <img src="avatars/m50-2.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">法務の視点</div><p>同意文にバージョンを振ってもらえてから、「いつからどの処理者への提供に同意しているか」を契約書と突き合わせられるようになった。</p></div>
+    </aside>
+    <div class="callout"><p>共通しているのは、初期状態を安全側に倒し、範囲を広げる操作は後から明示的に行うという設計思想。壊れたときに開くのではなく閉じる。契約も同意もない状態では、新しいベンダーにデータを渡さない。個々の機能の巧拙より、この既定値の設計思想そのものが審査で繰り返し評価されている。</p></div>
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/f30-2.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">開発責任者の視点</div>
+        <p>10項目を並べると多く見えるが、実装の労力が大きかったのは監査ログ閲覧とデータ削除の2つだけだった。<em>残りの多くは、環境変数の既定値を変えるだけ</em>で済んだ。</p>
+      </div>
+    </aside>
+
+    <h2 id="s4">新しいAIベンダーを追加するときは、どういう手順を踏むか？</h2>
+    <p class="answer">既定OFFの環境変数として実装し、契約・同意文を更新し、顧客に通知したうえで、環境変数をONにしてdeployする。この順番を逆にしない。</p>
+    <p>新しいAIベンダー（処理者）を機能として追加したくなる場面は珍しくない。文字起こしのフォールバック先を増やす、音声合成のランタイムを切り替える、画面の内容を解析する——といった機能追加のたびに、CoeSignalでは次の順番を固定している。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>フェーズ</th><th>やること</th><th>出口条件</th></tr>
+        <tr><td>1. 実装</td><td>新しい処理者への連携をコードとして実装するが、環境変数は既定「0」のまま。コードはマージしてよいが、フラグがオフである限り実際には呼ばれない</td><td>コードはデプロイ済みだが、機能はまだ誰にも作用していない</td></tr>
+        <tr><td>2. 契約・同意文の更新</td><td>利用規約・プライバシーポリシー等の同意文をバージョンアップし、追加される処理者の名称と、渡るデータの範囲を明示する</td><td>新しい処理者への提供が、文面として説明できる状態になっている</td></tr>
+        <tr><td>3. 顧客への通知</td><td>何が変わるか、どの処理者にどのデータが渡るかを顧客に通知し、必要な同意を取得する</td><td>通知・同意の記録が残っている</td></tr>
+        <tr><td>4. 有効化</td><td>環境変数をONにしてdeployする。この時点で初めて実際にデータが渡り始める</td><td>機能が有効化され、かつそこに至るまでの契約・同意・通知の記録がすべて揃っている</td></tr>
+      </table>
+    </div>
+    <p>ポイントは、コードのマージと機能の有効化を別の出来事として扱うこと。実装が終わっていても、フラグがオフである限り実害は発生しない。逆に言えば、環境変数をONにする最後の一手だけは、契約・同意文の更新が完了するまで誰も押せないようにしておく必要がある。</p>
+    <aside class="kn-side">
+      <img src="avatars/m20-6.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">開発責任者の視点</div><p>「動くコード」と「動いている機能」を分けて考えるようになった。フラグがオフなら、レビューでマージしても実害はない。</p></div>
+    </aside>
+    <div class="quote-box"><p>実装は先に進めていい。データが実際に動き出すのは、契約と同意が追いついてからだ。</p></div>
+
+    <h2 id="s5">導入する側は、審査で何を確認すればよいか？</h2>
+    <p class="answer">「機能の有無」ではなく「顧客側で確認・実行できるか」「既定値が安全側か」「変更時に通知される仕組みがあるか」の3点で聞くと、実質的な審査になる。</p>
+    <p>ここまでは作る側の視点だった。導入審査をする情シス側に立つと、聞くべき質問は少し変わる。「機能があるか」で終わらせず、次の一段まで確認する。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>確認項目</th><th>聞き方（質問例）</th><th>一段掘り下げる一言</th></tr>
+        <tr><td>データの保存先・処理者</td><td>データはどこに保存され、処理する第三者（ベンダー）は誰か</td><td>今後ベンダーが増える予定はあるか。増えるときはどう通知されるか</td></tr>
+        <tr><td>保持期間・削除</td><td>データはどれくらいの期間保持されるか</td><td>削除は自分たちの画面から今すぐ実行できるか、それとも依頼が必要か</td></tr>
+        <tr><td>アクセス制御・入口</td><td>アカウントの発行は公開登録か、招待制か</td><td>退職者・異動者のアクセスは、誰が、どういう手順で失効させるか</td></tr>
+        <tr><td>認証の安全側設計</td><td>認証設定に不備があったとき、通すのか止めるのか（fail open／fail closed）</td><td>パスワードやアクセスコードは平文で保存されていないか</td></tr>
+        <tr><td>監査証跡</td><td>操作ログは記録されているか</td><td>そのログは自分たちの画面で見られるか、ベンダーへの問い合わせが必要か</td></tr>
+        <tr><td>インシデント対応</td><td>特定の機能に問題が起きたとき、どのくらいの速さで止められるか</td><td>止める操作は誰が行うか。コード修正が要るか、設定変更だけで済むか</td></tr>
+      </table>
+    </div>
+    <div class="callout"><p>この記事の実装をすべて満たしても、審査に通る保証はない。審査基準は企業によって、また業界によって異なり、業種特有の要件（特定の認証取得や、より厳格なデータ所在地の指定など）が加わることもある。ここで示したのは「実際に何を問われ、何を実装したか」という一次情報であり、自社の設計判断に落とし込むための材料として使ってほしい。</p></div>
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/f40-6.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">情シスの視点</div>
+        <p>チェックリストを埋めるだけの審査から、「顧客が自分でできるか」まで一段掘り下げて聞くようになってから、<em>導入後に「思っていたのと違う」という問い合わせが減った</em>。</p>
+      </div>
+    </aside>
+
+    <h2 id="faq">よくある質問</h2>
+    <div class="faq"><div class="q">監査ログ・削除・パスワード変更が「ある」だけでは、なぜ審査に通らないのですか？</div><p class="a">機能の存在は前提に過ぎず、法人審査で問われるのは顧客自身が画面から確認・実行できるかどうかだからです。エンジニアへの依頼やデータベースの手動確認で対応できる状態は、顧客からは「無い」のと見分けがつきません。</p></div>
+    <div class="faq"><div class="q">招待制サインアップにすると、利用開始のハードルが上がりませんか？</div><p class="a">上がりますが、それが狙いの一部です。管理者またはワークスペース所有者が発行する1回限り・期限付きの招待リンクに限定することで、「誰が入れるか」を常に説明できる状態を保てます。利便性より、入口を絞ることを優先する場面での設計です。</p></div>
+    <div class="faq"><div class="q">新しいAIベンダーを追加するとき、開発と契約はどちらを先に進めればよいですか？</div><p class="a">開発を先に進めて構いません。ただし有効化は契約・同意文の更新のあとにします。実装は既定OFFの環境変数として作り、コードのマージと機能の有効化を別の出来事として分離しておくと、この順番を事故なく守れます。</p></div>
+    <div class="faq"><div class="q">この記事の内容を実装すれば、情シス審査に必ず通りますか？</div><p class="a">通るとは限りません。審査基準は企業や業界によって異なり、業種によっては本記事にない要件が追加で求められることもあります。本記事は「実際に何を問われ、何を実装したか」という一次情報の共有であり、審査通過を保証するものではありません。</p></div>
+  </article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役</span></div>
+    <p>上場企業を含む37社・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>AI SaaSのセキュリティ実装も、導入支援の一部として伴走します。</h3>
+    <p>監査ログ・削除権・アカウント管理といった審査対応の実装から、社内ツールの公開範囲や権限設計まで。自社のAI SaaS運用と37社・2,500名の導入支援で得た知見をもとに相談できます。「情シス審査で何を聞かれるか分からない」段階からのご相談も歓迎です。</p>
+  </div>
+  <a href="../../contact.html" class="btn">無料相談する <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="../../contact.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">無料相談</a>　／　<a href="../../library/security-guide.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">経営者のための生成AIセキュリティ実践ガイド（無料DL）</a>　／　<a href="../../library/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">事例集（無料DL）</a></p>
+<div class="back-list"><a href="index.html">← AIセキュリティ・ラボに戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="zero-trust-access.html" class="related-card"><span class="rc-cat">ゼロトラスト</span><div class="rc-title">管理画面をVPNなしで守る｜Cloudflare Accessのゼロトラスト構成</div></a>
+    <a href="workers-secrets.html" class="related-card"><span class="rc-cat">シークレット管理</span><div class="rc-title">APIキーを.envに置かない｜Workersでのシークレット管理</div></a>
+    <a href="r2-data-lifecycle.html" class="related-card"><span class="rc-cat">データ保持</span><div class="rc-title">音声・個人情報の保持と削除｜R2でのデータライフサイクル設計</div></a>
+    <a href="firewall-for-ai.html" class="related-card"><span class="rc-cat">LLMセキュリティ</span><div class="rc-title">LLMアプリのプロンプトインジェクション対策｜ガードレールで防げる範囲</div></a>
+  </div>
+</div></section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">AIセキュリティ<i>ラボ</i></div>
+        <p>内製AIツールの安全な公開と社内定着の実践知をお届けするメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+      </div>
+      <div class="footer-col"><h4>AIセキュリティ・ラボ</h4><a href="index.html">記事一覧</a><a href="index.html#about">このメディアについて</a></div>
+      <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../index.html#services">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="../../contact.html">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p style="font-size:11.5px;color:var(--slate);line-height:1.9;margin:18px 0 0;max-width:720px;">本ページは株式会社TechWorkerが独自に作成したものであり、Cloudflare, Inc.との提携・後援・承認を受けたものではありません。CloudflareはCloudflare, Inc.の商標です。</p>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+</body>
+</html>

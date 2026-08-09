@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3V34NWXVCJ');
+</script>
+<!-- TW intent tracker (first-party, sessionStorage only) -->
+<script>
+(function(){try{var ss=sessionStorage,ls=localStorage;
+if(!ss.getItem('tw_landing')){ss.setItem('tw_landing',location.pathname);ss.setItem('tw_ref',document.referrer||'');var q=new URLSearchParams(location.search);ss.setItem('tw_utm',['utm_source','utm_medium','utm_campaign'].map(function(k){return q.get(k)||'';}).join('|'));}
+var p=JSON.parse(ss.getItem('tw_pages')||'[]');if(p[p.length-1]!==location.pathname){p.push(location.pathname);ss.setItem('tw_pages',JSON.stringify(p.slice(-20)));}
+if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_visits')||'0',10)+1));ss.setItem('tw_counted','1');}
+}catch(e){}})();
+</script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>社内ツール・管理画面をVPNなしで守る｜Cloudflare Accessによるゼロトラスト構成【2026】 — TechWorker</title>
+<meta name="description" content="内製AIツールが増えるほど、URLを知っていれば入れる検証環境や退職者のアクセス残存、監査で説明できない権限管理が積み上がる。VPNを増やさず、Cloudflare AccessでIdP連携・ポリシー・Service Token・セッション期間・監査ログを設計する実務の型を、2026年8月時点の公式情報をもとに整理する。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/security/zero-trust-access">
+<meta property="og:type" content="article">
+<meta property="og:title" content="社内ツール・管理画面をVPNなしで守る｜Cloudflare Accessによるゼロトラスト構成【2026】">
+<meta property="og:description" content="VPNを増やさず、Cloudflare AccessでIdP連携・ポリシー・Service Token・セッション期間・監査ログを設計する実務の型を、2026年8月時点の公式情報をもとに整理する。">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/media/security/zero-trust-access">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="社内ツール・管理画面をVPNなしで守る｜Cloudflare Accessによるゼロトラスト構成【2026】">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../article.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"社内ツール・管理画面をVPNなしで守る｜Cloudflare Accessによるゼロトラスト構成【2026】",
+  "description":"内製AIツール（社内チャット・検証用ダッシュボード・管理画面）が増えるほど、URLを知っていれば入れる検証環境、退職者に残るアクセス、監査で説明できない権限管理という3つのリスクが積み上がる。VPNを増やす発想から、Cloudflare AccessでIdP連携・ポリシー・Service Token・セッション期間・監査ログを設計するゼロトラストの発想への転換を、2026年8月時点の公式情報に基づいて解説する。",
+  "datePublished":"2026-08-09","dateModified":"2026-08-09","inLanguage":"ja",
+  "image":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630},
+  "author":{"@type":"Person","name":"古野光太朗","jobTitle":"株式会社TechWorker 代表取締役","url":"https://techworker.co.jp/company.html","image":"https://techworker.co.jp/assets/author-furuno.jpg","sameAs":["https://x.com/koutarou_furuno"],"affiliation":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"}},
+  "publisher":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/","logo":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630}},
+  "mainEntityOfPage":{"@type":"WebPage","@id":"https://techworker.co.jp/media/security/zero-trust-access"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},
+    {"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},
+    {"@type":"ListItem","position":3,"name":"AIセキュリティ・ラボ","item":"https://techworker.co.jp/media/security/"},
+    {"@type":"ListItem","position":4,"name":"社内ツール・管理画面をVPNなしで守る","item":"https://techworker.co.jp/media/security/zero-trust-access"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"無料プランでもCloudflare Accessは使えますか？","acceptedAnswer":{"@type":"Answer","text":"使えます。Cloudflareの公式ブログでは、Zero Trust（Cloudflare One）の無料プランで最大50ユーザーまで主要機能を利用できると案内されています（2026年8月時点）。ただし認証ログの保存期間など機能差はプランによって異なるため、退職者調査など長期保存が必要な用途を想定する場合は、現在のプラン詳細を公式サイトで確認してください。"}},
+    {"@type":"Question","name":"社内システムの改修は必要ですか？","acceptedAnswer":{"@type":"Answer","text":"多くの場合は不要です。Cloudflare Tunnelを使えば、アプリ自体にコードを追加せず、ファイアウォールでインバウンドポートを開けずに前段でAccessを挟めます。既存のURLや認証方式に手を入れずに始められるのが実務上の利点です。"}},
+    {"@type":"Question","name":"既存の社内IDプロバイダをそのまま使えますか？","acceptedAnswer":{"@type":"Answer","text":"Google WorkspaceやMicrosoft Entra ID（Azure AD）、Oktaなど、Cloudflare Accessは主要なIDプロバイダとの連携に対応しています。汎用のSAML／OIDCにも対応しているため、多くの社内IdPをそのまま接続できます。ID基盤がない小規模チームでも、組み込みのワンタイムPIN（メール認証）から始められます。"}},
+    {"@type":"Question","name":"API連携やWebhookはどう扱えばよいですか？","acceptedAnswer":{"@type":"Answer","text":"人のログインを前提にしたポリシーだけを作ると、外部からのAPI呼び出しやWebhookまでブロックしてしまいます。Cloudflare AccessのService Tokenを使えば、自動化された通信専用にClient ID／Client Secretによる別の認証経路を用意できます。導入時に『人が使うのか、システムが使うのか』を経路ごとに分けて設計しておくのがポイントです。"}}
+  ]
+}
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <a href="index.html" class="logo">AIセキュリティ<i>ラボ</i></a>
+  <ul>
+    <li><a href="index.html">記事一覧</a></li>
+    <li><a href="index.html#about">このメディアについて</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="../../contact.html" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="index.html">記事一覧</a>
+  <a href="index.html#about">このメディアについて</a>
+  <a href="../../contact.html" class="m-cta">無料相談を申し込む</a>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIセキュリティ・ラボ</a><span class="sep">/</span>社内ツール・管理画面をVPNなしで守る</nav>
+  <div class="kicker">Cloudflare Access × ゼロトラスト</div>
+  <h1>社内ツール・管理画面をVPNなしで守る｜Cloudflare Accessによるゼロトラスト構成</h1>
+  <p class="dek">検証用ダッシュボードが増えるたびにVPNを増やすわけにはいかない。URLさえ知っていれば誰でも入れる検証環境、退職しても消えないアクセス権、監査で「誰が何に入れるか」を説明できない状態——内製AIツールが増えるほど積み上がるこれらのリスクを、Cloudflare Accessで「リクエストごとに人を確認する」構成に置き換えることでどう塞ぐか、2026年8月時点の公式情報をもとに整理する。</p>
+  <div class="kn-voices" aria-hidden="true">
+    <span class="kn-fc" style="--sayo:0.0s"><span class="av"><img src="avatars/f30-0.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">URLで入れちゃう</span></span>
+    <span class="kn-fc" style="--sayo:6.3s"><span class="av"><img src="avatars/m40-2.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">退職者もまだ入れる</span></span>
+    <span class="kn-fc" style="--sayo:2.1s"><span class="av"><img src="avatars/f20-6.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">パスワード使い回し</span></span>
+    <span class="kn-fc" style="--sayo:8.4s"><span class="av"><img src="avatars/m20-0.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">誰が見れるか不明</span></span>
+    <span class="kn-fc" style="--sayo:4.2s"><span class="av"><img src="avatars/f40-0.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">VPN申請が遅い</span></span>
+  </div>
+  <div class="kn-voices-cap">情シス・システム担当からよく挙がる声<span class="note">※ 実際の相談で挙がる論点をもとにした例です</span></div>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.08.09</span><span class="dot">·</span><span>最終更新 2026.08.09</span><span class="dot">·</span><span>読了 9分</span>
+  </div>
+</header>
+
+<style>
+/* zero-trust-access cover — Accessポリシー ダッシュボード風（scoped: zta-） */
+.zta-unit{font-size:14px;font-weight:600;color:var(--slate);margin-left:1px;}
+.zta-cap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-family:var(--jp);font-size:11.5px;color:var(--slate);margin-top:10px;padding-top:12px;border-top:1px solid var(--line);}
+</style>
+<div class="art-cover-v6 acf-dash">
+  <div class="af-top"><span class="af-dot"></span>CLOUDFLARE ACCESS ポリシー ダッシュボード<span class="af-smp">※サンプル値・画面はイメージです</span></div>
+  <div class="af-kpis">
+    <div><div class="af-k-l">保護中のアプリ</div><div class="af-k-v">18<span class="zta-unit">件</span></div></div>
+    <div><div class="af-k-l">有効なポリシー</div><div class="af-k-v">24<span class="zta-unit">件</span></div></div>
+    <div><div class="af-k-l">直近24hのブロック</div><div class="af-k-v"><em>37</em><span class="zta-unit">件</span></div></div>
+  </div>
+  <div class="af-bars" role="img" aria-label="アプリ別のアクセス試行回数にばらつきがあることを示す棒グラフのイメージ">
+    <i class="hi" style="height:88%"></i><i style="height:70%"></i><i style="height:52%"></i><i style="height:46%"></i><i style="height:38%"></i><i style="height:30%"></i><i style="height:22%"></i><i style="height:14%"></i>
+  </div>
+  <div class="zta-cap"><span>アプリ別のアクセス試行（イメージ）</span><span>ブロックの多いアプリは、公開範囲の見直しサイン</span></div>
+</div>
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次">
+    <div class="art-toc-inner">
+      <div class="toc-h">目次</div>
+      <a href="#s1">内製AIツールが増えると何が起きるか</a>
+      <a href="#s2">VPNとゼロトラストの違い</a>
+      <a href="#s3">Cloudflare Accessでできること</a>
+      <a href="#s4">導入手順の実際</a>
+      <a href="#s5">よくある失敗</a>
+      <a href="#faq">よくある質問</a>
+    </div>
+  </nav>
+
+  <article class="art-body rv">
+    <div class="lede">
+      <div class="lede-h">この記事の要点</div>
+      <ul>
+        <li>内製AIツールが増えるほど、<strong>URLを知っていれば入れる検証環境・退職者に残るアクセス・監査で説明できない権限管理</strong>という3つのリスクが積み上がる。原因の多くは、VPNを増やして対応しようとする発想そのものにある。</li>
+        <li>ゼロトラストは「ネットワークに入れるかどうか」から「<strong>リクエストごとに人を確認する</strong>」への発想転換。Cloudflare Accessを使えば、既存アプリを改修せずに前段でIDプロバイダ連携・ポリシー・監査ログを追加できる。</li>
+        <li>導入は、リスクの高いツールを1つ選んで検証環境として試すところから始めれば十分。ただし<strong>バイパス経路の除去・API/Webhookの扱い・退去プロセスとの連動</strong>を設計しておかないと、ゼロトラスト化したつもりで穴が残る。</li>
+      </ul>
+    </div>
+
+    <h2 id="s1">内製AIツールが増えると、何が起きるのか？</h2>
+    <p class="answer">URLを知っていれば誰でも入れる検証環境、退職者に残ったアクセス、監査で説明できない権限管理という3つのリスクが積み上がる。</p>
+    <aside class="kn-side">
+      <img src="avatars/m40-0.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">情シスの視点</div><p>検証環境が増えるたびに「URLとIDだけ発行して終わり」になっていた。棚卸しの対象にすら入っていなかった。</p></div>
+    </aside>
+    <p>生成AIの普及で、社内チャット、検証用ダッシュボード、部門ごとの管理画面といった内製ツールが急に増えている。エンジニアでなくても、低コードのツールや生成AI自体を使って1日で動くものを作れるようになったことが大きい。作るのが速くなった分、公開の仕方は後回しになりやすい。多くの現場でよく見る積み上がり方は、次の3つに整理できる。</p>
+    <ol>
+      <li><strong>URLを知っていれば誰でも入れる。</strong>「社外秘のつもりだが、URLさえ知っていれば外部からでも開ける」状態のまま、検証環境が本番相当のデータを扱い始める。Basic認証を掛けていても、パスワードは共有チャットに貼られて使い回され、退職者にも残ったままになりやすい。</li>
+      <li><strong>退職者のアクセスが残る。</strong>ツールごとに個別アカウントを発行する運用だと、退職・異動のたびに削除する対象も個別になる。人事の退職手続きと、内製ツールのアカウント削除が別の作業として存在する限り、どこかで抜け落ちる。</li>
+      <li><strong>監査で説明できない。</strong>情シス審査やセキュリティ監査で「誰が、いつ、何にアクセスできるか」を一覧で求められたとき、IPアドレス制限やBasic認証だけでは「誰が」に当たる記録が残っていない。ツールの数だけ、この問いに答えられない状態が積み上がる。</li>
+    </ol>
+    <div class="callout"><p>URLの流出も、退職者のアクセス残存も、監査で説明できないことも、根っこは同じところにある。「ネットワークに入れるかどうか」だけで守っている限り、入った後の一人ひとりを見分ける手段がない。</p></div>
+
+    <h2 id="s2">VPNとゼロトラストは、何が違うのか？</h2>
+    <p class="answer">VPNは接続時に一度だけ判定し、ゼロトラストはリクエストのたびに人を確認する。</p>
+    <p>内製ツールが増えたときの典型的な対応が「VPNを増やす」または「既存VPNの対象を広げる」ことだ。だが、この対応はツールが増えるほど無理が出てくる。VPNの設計は、接続を許可した時点で社内ネットワークのかなり広い範囲に届いてしまう「性善説」に近い。一度つながれば、あとはネットワークの中でどこまで見えるかという話になり、アプリ単位での本人確認は行われない。ツールが1つや2つならVPNのアカウント管理でも回るが、内製ツールが10、20と増えるにつれて、申請・発行・失効のやり取りだけで情シスの工数が埋まっていく。</p>
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/f30-2.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">社内システム担当の視点</div>
+        <p>VPNのアカウント発行と失効の申請対応だけで、月に何時間も取られていた。<em>ツールが増えるほど、この作業も比例して増える</em>感覚があった。</p>
+      </div>
+    </aside>
+    <p>これに対してゼロトラストは、判定のタイミングをネットワークへの入り口からリクエスト1つひとつへ移す考え方だ。米国NIST（国立標準技術研究所）が2020年8月に公表した『Zero Trust Architecture』（NIST Special Publication 800-207、Rose, S., Borchert, O., Mitchell, S., Connelly, S.著）は、静的なネットワーク境界を守るのではなく、ユーザー・資産・リソースそれぞれを個別に守る考え方としてゼロトラストを整理している。実務の言葉に置き換えると、VPNは「建物の入口で鍵を1回確認する」設計であるのに対し、ゼロトラストは「部屋の扉ごとに、開けるたびにIDを提示してもらう」設計に近い。</p>
+    <div class="quote-box"><p>VPNは「入れるか入れないか」を接続の瞬間に一度だけ判定する。ゼロトラストは、そのリクエストが本当にその人からのものかを、毎回確認しにいく。</p></div>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>観点</th><th>VPN</th><th>ゼロトラスト（Cloudflare Access）</th></tr>
+        <tr><td>判定のタイミング</td><td>接続時に一度だけ</td><td>リクエストのたびに毎回</td></tr>
+        <tr><td>接続後の到達範囲</td><td>社内ネットワーク全体に届くことが多い</td><td>許可されたアプリ単位に限定</td></tr>
+        <tr><td>本人確認の粒度</td><td>「入れる／入れない」のみ</td><td>IdPのID・グループ単位で、誰がアクセスしたかを記録</td></tr>
+        <tr><td>退職時の対応</td><td>VPNアカウントの削除を個別に実施</td><td>社内IdP側の無効化と連動させやすい</td></tr>
+        <tr><td>ログに残るもの</td><td>接続ログ（IPなど）中心</td><td>誰が・いつ・どのアプリに・許可か拒否かを記録</td></tr>
+      </table>
+    </div>
+    <p>表からも分かる通り、ゼロトラストへの置き換えは「VPNをやめる」というより「判定の粒度を細かくする」ことに近い。次の章では、この考え方を実装するCloudflare Accessが具体的に何をしてくれるのかを見ていく。</p>
+
+    <h2 id="s3">Cloudflare Accessは、何をしてくれるのか？</h2>
+    <p class="answer">IdP連携・ポリシー・Service Token・セッション期間・監査ログの5つで、社内ツールへのアクセスを人単位で制御・記録できる。</p>
+    <p>Cloudflare Accessは、Cloudflareが提供するSASE（Secure Access Service Edge）プラットフォーム「Cloudflare One」（Cloudflare Zero Trustとも呼ばれる）の中で、Zero Trust Network Access（ZTNA）を担う製品だ。公式ドキュメントでは、すべてのリクエストをアイデンティティとコンテキストに基づいて認証・認可したうえでアクセスを許可する仕組みとして説明されている。本稿の機能記述は、2026年8月時点のCloudflare公式ドキュメント（developers.cloudflare.com）および公式ブログ（blog.cloudflare.com）に基づく。</p>
+    <p>実務で押さえておきたいのは、次の5つの機能だ。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>機能</th><th>何をするか</th><th>実務での使いどころ</th></tr>
+        <tr><td>IdP連携</td><td>Google WorkspaceやMicrosoft Entra ID（Azure AD）、Oktaなど既存の社内IDプロバイダをそのまま接続。汎用SAML／OIDCにも対応し、IdP未整備ならCloudflare組み込みのワンタイムPIN（メール認証）も使える</td><td>新しいID基盤を作らずに、今のアカウントのまま認証を挟める</td></tr>
+        <tr><td>ポリシー</td><td>「誰が（メール・グループ）」「どのアプリに」「どんな条件で」アクセスできるかを、アプリ単位でルール化する</td><td>検証環境は情シスのみ、社内チャットは全社員、のように公開範囲を分ける</td></tr>
+        <tr><td>Service Token</td><td>Client ID／Client Secretを発行し、人のログインを介さない自動化された通信を認証する仕組み</td><td>監視ツールやAPI連携、CI/CDなど「人が操作しない経路」を塞がずに残す</td></tr>
+        <tr><td>セッション期間</td><td>ログイン後、再認証を求めるまでの有効期間をアプリごとに設定できる（既定24時間、15分〜1か月の範囲で調整可能）</td><td>開きっぱなしのタブを想定し、機微な管理画面ほど短く設定する</td></tr>
+        <tr><td>監査ログ</td><td>誰が・いつ・どのアプリに・許可されたか拒否されたかを記録する</td><td>情シス審査や社内監査で「アクセス権限の一覧」をそのまま提示できる</td></tr>
+      </table>
+    </div>
+    <aside class="kn-side">
+      <img src="avatars/m50-0.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">監査対応の視点</div><p>監査で「アクセス権限の一覧を出してください」と言われたとき、Accessのポリシー一覧をそのまま資料にできた。台帳を別に作らずに済んだのは大きい。</p></div>
+    </aside>
+    <div class="ui-mock">
+      <div class="um-bar"><span class="um-dot"></span><span class="um-dot"></span><span class="um-dot"></span><span class="um-name">Access ポリシー設定 — 検証用ダッシュボードの例</span></div>
+      <div class="um-row">
+        <div class="um-label">ルール（Include条件）</div>
+        <div class="um-text prompt">対象アプリ：kensho-dashboard.techworker.internal
+Include：Google Workspace ドメイン = techworker.co.jp、かつ グループ = 情シス部
+セッション期間：8時間</div>
+      </div>
+      <div class="um-row">
+        <div class="um-label ai">判定結果（イメージ）</div>
+        <div class="um-text">koutarou@techworker.co.jp → 情シス部グループに所属 → 許可（ログに記録）
+unknown@example.com → グループに所属せず → 拒否（ログに記録）</div>
+      </div>
+    </div>
+    <p class="fig-cap">図：Accessポリシーの設定イメージ。IdPのグループ情報をそのままInclude条件に使うため、新しい権限台帳を作らずに済む。</p>
+    <p>ポリシーはIdP側のグループ情報をそのまま条件に使えるので、Access専用の権限台帳を新しく作る必要がない。社内IdPのグループ管理さえ運用できていれば、Access側は「そのグループを許可する」というルールを1本足すだけで済む。</p>
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/f40-6.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">情シスの視点</div>
+        <p>最初は人のログインしか考えていなかった。あとから、監視ツールが検証環境のヘルスチェックAPIを叩けなくなっていることに気づき、<em>Service Tokenの存在を知った</em>。</p>
+      </div>
+    </aside>
+    <div class="callout"><p>Cloudflareの公式ブログでは、Zero Trust（Cloudflare One）の無料プランで最大50ユーザーまで主要機能を利用できると案内されている（2026年8月時点）。ただし認証ログの保存期間はプランによって異なり、無料プランでは24時間で消える。退職者調査など後から遡って確認する運用を想定するなら、この保存期間の違いは導入前に確認しておきたい。</p></div>
+
+    <h2 id="s4">導入は、実際どう進めるのか？</h2>
+    <p class="answer">既存アプリに手を入れずに前段で守り、社内IdPと接続し、検証環境から始めて型を広げていく。</p>
+    <p>Cloudflare Accessの導入で最初につまずきやすいのは、「対象のアプリを改修しないといけないのでは」という思い込みだ。実際には、多くの場合アプリ側のコードには一切触れない。</p>
+    <p><strong>既存アプリに手を入れずに前段で守る。</strong>Cloudflare Tunnelは、<code>cloudflared</code>という常駐プロセスがアプリの動くサーバーからCloudflareへ向けて送信のみの接続を確立する仕組みで、公開用の固定IPを持たず、ファイアウォールでインバウンドポートを一切開けずに社外公開できる。今動いている検証用ダッシュボードや社内チャットのURLは変えずに、その手前にAccessの認証を挟むだけでよい。</p>
+    <p><strong>社内IdPとの接続。</strong>既にGoogle WorkspaceやMicrosoft Entra ID（Azure AD）を使っているなら、新しいアカウント台帳を作らずそのままAccessに接続できる。退職・異動の処理は、人事や情シスが主IdP側のグループを更新する一手間で、Access側の権限にも反映される設計にしておく。</p>
+    <p><strong>検証環境から始める。</strong>全社の内製ツールを一度に囲おうとすると、影響範囲の大きいツールから着手してしまい、関係部署の調整だけで止まる。最もリスクの高いツール——個人情報を扱う検証環境や、管理者権限を持つ社内チャットの管理画面など——を1つ選び、IdP接続とポリシー1本で動作確認する小さいループを先に回す。1本通った型は、次のツールへそのまま複製できる。</p>
+    <aside class="kn-side">
+      <img src="avatars/m30-6.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">社内システム担当の視点</div><p>最初に選んだのが全社員が使うチャットツールで、影響範囲の大きさから承認だけで数週間かかった。次からは、利用者が少ない検証環境を1本目に選び直した。</p></div>
+    </aside>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>フェーズ</th><th>やること</th><th>出口条件</th></tr>
+        <tr><td>Step 1<br>検証環境で試す</td><td>リスクが高いツールを1つ選び、Cloudflare Tunnelでアプリに手を加えずに前段を作る。社内IdPを接続し、まず「情シス部のみ許可」のポリシーを1本作る</td><td>選んだツールが、Access経由でしか開けない状態になっている</td></tr>
+        <tr><td>Step 2<br>社内IdPと運用を合わせる</td><td>退職・異動時にIdP側のグループを更新するだけで、Access側の権限も追従する状態にする。Service Tokenで自動化の経路を分離する</td><td>人事・情シスの退去プロセスに、Accessの棚卸しが組み込まれている</td></tr>
+        <tr><td>Step 3<br>対象を広げる</td><td>検証で固めたポリシーの型を、他の内製ツール・管理画面に複製していく。監査ログを月次で確認する運用に乗せる</td><td>内製ツールの一覧とアクセス権限を、聞かれたらすぐ出せる状態になっている</td></tr>
+      </table>
+    </div>
+
+    <h2 id="s5">よくある失敗は、何か？</h2>
+    <p class="answer">バイパス経路の残存、API・Webhookの締め出し、退去プロセスとの非連動が典型的な失敗になる。</p>
+    <p>Cloudflare Accessを前段に置いても、次の3つを設計しないままだと、ゼロトラスト化したつもりで穴が残る。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>失敗パターン</th><th>起きること</th><th>対策</th></tr>
+        <tr><td>バイパス経路が残る</td><td>移行前のURLやオリジンのIPアドレスに直接到達できる経路が生きたまま。Accessを迂回して入れてしまう</td><td>Cloudflare Tunnelでオリジンへの接続をアウトバウンドのみに変え、直接到達できる経路そのものを塞ぐ</td></tr>
+        <tr><td>APIやWebhookを閉め出す</td><td>人のログインを前提にポリシーを組み、外部SaaSのWebhookや監視ツールのAPI呼び出しまで一緒にブロックしてしまう</td><td>Service Tokenで、機械アクセス用の経路を人間のログインとは別に用意する</td></tr>
+        <tr><td>退去プロセスと連動していない</td><td>社内IdP側でアカウントを無効化しても、Access側に残った例外ポリシーや期限を長く切ったService Tokenはそのまま有効であり続ける</td><td>退職・異動のチェックリストに、Accessのポリシーとservice tokenの棚卸しを組み込む</td></tr>
+      </table>
+    </div>
+    <p><strong>バイパス経路が残る。</strong>Access導入前のURLやオリジンのIPアドレスに直接到達できる経路が残っていると、Accessを迂回してそのまま入れてしまう。Cloudflare Tunnelでオリジンへの接続をアウトバウンドのみに変え、直接到達できる経路そのものを塞いでおく必要がある。</p>
+    <p><strong>APIやWebhookを閉め出す。</strong>人のログインだけを前提にポリシーを組むと、外部SaaSからのWebhookや監視ツールのAPI呼び出しまで一緒にブロックしてしまう。Service Tokenで機械アクセス用の経路を人間のログインとは別に用意しておけば、この事故は避けられる。</p>
+    <p><strong>退去プロセスと連動していない。</strong>社内IdP側でアカウントを無効化しても、Access側に残った例外ポリシーや、期限を長く切ったService Tokenはそのまま有効であり続ける。退職・異動のチェックリストに、Accessのポリシーとservice tokenの棚卸しを組み込んでおく必要がある。</p>
+    <aside class="kn-take">
+      <img class="kn-take-av" src="avatars/f50-2.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">監査対応の視点</div>
+        <p>退去プロセスの連動を監査項目に入れてからは、「退職者のアクセスは残っていないか」と聞かれても、<em>その場でAccessのログを見せて答えられる</em>ようになった。</p>
+      </div>
+    </aside>
+    <div class="callout"><p>ゼロトラストの導入は、1本のツールを守って終わりではない。内製ツールが増えるたびに同じ型を複製し、退去プロセスや監査と連動させ続けることで、初めて「説明できる状態」が維持される。</p></div>
+
+    <h2 id="faq">よくある質問</h2>
+    <div class="faq"><div class="q">無料プランでもCloudflare Accessは使えますか？</div><p class="a">使えます。Cloudflareの公式ブログでは、Zero Trust（Cloudflare One）の無料プランで最大50ユーザーまで主要機能を利用できると案内されています（2026年8月時点）。ただし認証ログの保存期間など機能差はプランによって異なるため、退職者調査など長期保存が必要な用途を想定する場合は、現在のプラン詳細を公式サイトで確認してください。</p></div>
+    <div class="faq"><div class="q">社内システムの改修は必要ですか？</div><p class="a">多くの場合は不要です。Cloudflare Tunnelを使えば、アプリ自体にコードを追加せず、ファイアウォールでインバウンドポートを開けずに前段でAccessを挟めます。既存のURLや認証方式に手を入れずに始められるのが実務上の利点です。</p></div>
+    <div class="faq"><div class="q">既存の社内IDプロバイダをそのまま使えますか？</div><p class="a">Google WorkspaceやMicrosoft Entra ID（Azure AD）、Oktaなど、Cloudflare Accessは主要なIDプロバイダとの連携に対応しています。汎用のSAML／OIDCにも対応しているため、多くの社内IdPをそのまま接続できます。ID基盤がない小規模チームでも、組み込みのワンタイムPIN（メール認証）から始められます。</p></div>
+    <div class="faq"><div class="q">API連携やWebhookはどう扱えばよいですか？</div><p class="a">人のログインを前提にしたポリシーだけを作ると、外部からのAPI呼び出しやWebhookまでブロックしてしまいます。Cloudflare AccessのService Tokenを使えば、自動化された通信専用にClient ID／Client Secretによる別の認証経路を用意できます。導入時に「人が使うのか、システムが使うのか」を経路ごとに分けて設計しておくのがポイントです。</p></div>
+  </article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役</span></div>
+    <p>上場企業を含む37社・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>内製AIツールのセキュリティ設計も、導入支援の一部として伴走します。</h3>
+    <p>ツール選定・セットアップだけでなく、社内ツールの公開範囲や権限設計まで含めて相談できます。「検証環境が増えすぎて、どこから手を付ければいいか分からない」段階からのご相談も歓迎です。</p>
+  </div>
+  <a href="../../contact.html" class="btn">無料相談する <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="../../contact.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">無料相談</a>　／　<a href="../../library/security-guide.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">経営者のための生成AIセキュリティ実践ガイド（無料DL）</a>　／　<a href="../../library/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">事例集（無料DL）</a></p>
+<div class="back-list"><a href="index.html">← AIセキュリティ・ラボに戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="saas-security-review.html" class="related-card"><span class="rc-cat">法人審査</span><div class="rc-title">AI SaaSが情シス審査を通るために実装したこと｜監査ログ・削除権</div></a>
+    <a href="workers-secrets.html" class="related-card"><span class="rc-cat">シークレット管理</span><div class="rc-title">APIキーを.envに置かない｜Workersでのシークレット管理</div></a>
+    <a href="firewall-for-ai.html" class="related-card"><span class="rc-cat">LLMセキュリティ</span><div class="rc-title">LLMアプリのプロンプトインジェクション対策｜ガードレールで防げる範囲</div></a>
+    <a href="ai-crawler-control.html" class="related-card"><span class="rc-cat">クローラー対策</span><div class="rc-title">AIクローラーからサイトを守る｜robots.txtの限界とCloudflareでの制御</div></a>
+  </div>
+</div></section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">AIセキュリティ<i>ラボ</i></div>
+        <p>内製AIツールの安全な公開と社内定着の実践知をお届けするメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+      </div>
+      <div class="footer-col"><h4>AIセキュリティ・ラボ</h4><a href="index.html">記事一覧</a><a href="index.html#about">このメディアについて</a></div>
+      <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../index.html#services">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="../../contact.html">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p style="font-size:11.5px;color:var(--slate);line-height:1.9;margin:18px 0 0;max-width:720px;">本ページは株式会社TechWorkerが独自に作成したものであり、Cloudflare, Inc.との提携・後援・承認を受けたものではありません。CloudflareはCloudflare, Inc.の商標です。</p>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+</body>
+</html>

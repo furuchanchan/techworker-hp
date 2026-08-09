@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3V34NWXVCJ');
+</script>
+<!-- TW intent tracker (first-party, sessionStorage only) -->
+<script>
+(function(){try{var ss=sessionStorage,ls=localStorage;
+if(!ss.getItem('tw_landing')){ss.setItem('tw_landing',location.pathname);ss.setItem('tw_ref',document.referrer||'');var q=new URLSearchParams(location.search);ss.setItem('tw_utm',['utm_source','utm_medium','utm_campaign'].map(function(k){return q.get(k)||'';}).join('|'));}
+var p=JSON.parse(ss.getItem('tw_pages')||'[]');if(p[p.length-1]!==location.pathname){p.push(location.pathname);ss.setItem('tw_pages',JSON.stringify(p.slice(-20)));}
+if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_visits')||'0',10)+1));ss.setItem('tw_counted','1');}
+}catch(e){}})();
+</script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cloudflare Workersの本番運用で踏んだ罠5つ｜routes継承・Authentication error 10000・cron未反映【2026】 — TechWorker</title>
+<meta name="description" content="Cloudflare Workersで本番のAIアプリを運用して実際に踏んだ設定の罠を5つ、wrangler.tomlの実物とともに記録。routesの環境継承、CI最小権限トークンで出るAuthentication error 10000、cron triggersが反映されない理由、R2バケットのリネーム不可、Cloudflare Pagesの拡張子なしURL。原因と再発防止まで。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/infra/workers-production-pitfalls">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cloudflare Workersの本番運用で踏んだ罠5つ｜routes継承・Authentication error 10000・cron未反映">
+<meta property="og:description" content="デプロイは成功したのに設定が効いていない。Cloudflare Workersの本番運用で実際に踏んだ5つの罠を、wrangler.tomlの実物と公式ドキュメントの根拠つきで記録する。">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/media/infra/workers-production-pitfalls">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cloudflare Workersの本番運用で踏んだ罠5つ｜routes継承・Authentication error 10000・cron未反映">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../article.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"Cloudflare Workersの本番運用で踏んだ罠5つ｜routes継承・Authentication error 10000・cron未反映",
+  "description":"Cloudflare Workers上で本番のAIアプリを運用する中で実際に踏んだ設定の罠を5つ記録する。wrangler.tomlのトップレベルroutesが環境に継承される問題、CIの最小権限APIトークンで発生するAuthentication error 10000、cron triggersがCIのデプロイで適用されない理由、R2バケットがリネームできないこと、Cloudflare Pagesの拡張子なしURLへのリダイレクト。",
+  "datePublished":"2026-08-09","dateModified":"2026-08-09","inLanguage":"ja",
+  "image":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630},
+  "author":{"@type":"Person","name":"古野光太朗","jobTitle":"株式会社TechWorker 代表取締役","url":"https://techworker.co.jp/company.html","image":"https://techworker.co.jp/assets/author-furuno.jpg","sameAs":["https://x.com/koutarou_furuno"],"affiliation":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"}},
+  "publisher":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/","logo":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630}},
+  "mainEntityOfPage":{"@type":"WebPage","@id":"https://techworker.co.jp/media/infra/workers-production-pitfalls"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},
+    {"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},
+    {"@type":"ListItem","position":3,"name":"Cloudflare Workersの本番運用で踏んだ罠5つ","item":"https://techworker.co.jp/media/infra/workers-production-pitfalls"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"wrangler.tomlのトップレベルroutesは環境（env）に継承されますか？","acceptedAnswer":{"@type":"Answer","text":"継承されます。Cloudflare公式のWrangler設定ドキュメントでroutesは「Inheritable keys（トップレベルで設定でき、環境に継承またはオーバーライドされる）」に分類されています。stagingなどの環境に本番ドメインを付けたくない場合は、その環境のセクションにroutes = [] を明示して継承を打ち消してください。なお環境変数varsとバインディングは逆に「Non-inheritable keys」で、環境ごとに書き直す必要があります。"}},
+    {"@type":"Question","name":"CIのデプロイがAuthentication error 10000で落ちます。何を疑えばいいですか？","acceptedAnswer":{"@type":"Answer","text":"設定ファイルにroutesを書いていないか確認してください。Workerのスクリプト更新はアカウントスコープの権限で足りますが、routeの設定はゾーンスコープのWorkers Routes権限を要求します。Cloudflare公式のWorkers Builds設定ドキュメントでも、必要な権限はアカウント側（Account Settings read、Workers Scripts edit ほか）とゾーン側（Workers Routes edit）に分けて示されています。最小権限で発行したCIトークンにゾーン権限がないと認証エラーになりますが、エラーメッセージはroutesについて何も言いません。"}},
+    {"@type":"Question","name":"CIでデプロイしたのにcronが動きません。なぜですか？","acceptedAnswer":{"@type":"Answer","text":"wrangler versions uploadでバージョンをアップロードして昇格させる経路では、トリガーが適用されないためです。Cloudflare公式ドキュメントは「Workerのトリガー（ルート、ドメイン、cron triggers）への変更を適用するにはwrangler triggers deployコマンドを使う」と明記しています。デプロイ後にwrangler triggers deployを実行してください。CIが成功したことはcronが反映された証拠になりません。"}},
+    {"@type":"Question","name":"R2バケットの名前を後から変えられますか？","acceptedAnswer":{"@type":"Answer","text":"変えられません。CloudflareのR2バケット管理APIにはList・Get・Create・Patch・Deleteしかなく、リネーム操作が存在しません（Patchが変更するのは新規アップロード時のデフォルトstorage classで、名前ではありません）。名前を変えたい場合は新しいバケットを作って全オブジェクトを移行することになります。プロダクト名の変更に備えるなら、バケット名にはブランド名ではなく役割を入れておくのが安全です。"}},
+    {"@type":"Question","name":"canonicalは.html付きと拡張子なしのどちらにすべきですか？","acceptedAnswer":{"@type":"Answer","text":"Cloudflare Pagesでホスティングしている場合は拡張子なしに揃えてください。公式ドキュメントに「Pagesは/contact.htmlを/contactへリダイレクトする」と記載があり、canonicalを.html付きで書くと宣言した正規URLがリダイレクト元になってしまいます。canonical・og:url・sitemap.xmlの3つを拡張子なしで統一し、公開前にcanonicalのURLを直接叩いて200が返るか機械的に確認するのが確実です。"}}
+  ]
+}
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <a href="../index.html" class="logo">Tech<i>Worker</i><span class="m-tag">Media</span></a>
+  <ul>
+    <li><a href="../index.html">記事一覧</a></li>
+    <li><a href="../kenshu/index.html">AI研修・導入ラボ</a></li>
+    <li><a href="../../index.html">TechWorkerとは</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="../../contact.html" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="../index.html">記事一覧</a>
+  <a href="../kenshu/index.html">AI研修・導入ラボ</a>
+  <a href="../../index.html">TechWorkerとは</a>
+  <a href="../../cases.html">導入事例</a>
+  <a href="../../contact.html" class="m-cta">無料相談を申し込む</a>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span>Cloudflare Workersの本番運用で踏んだ罠5つ</nav>
+  <div class="kicker">Infra Ops</div>
+  <h1>Cloudflare Workersの本番運用で踏んだ罠5つ</h1>
+  <p class="dek">ローカルで動いた。CIも緑になった。それでも設定は効いていない——自社で開発・運用しているAIプロダクトをCloudflare Workersに載せる中で実際に踏んだ5つの罠を、<code>wrangler.toml</code>の実物とあわせて記録する。routesの環境継承、最小権限トークンで出るAuthentication error 10000、反映されないcron、変えられないR2バケット名、そしてPagesの拡張子なしURL。</p>
+  <div class="kn-voices" aria-hidden="true">
+    <span class="kn-fc" style="--sayo:0.0s"><span class="av"><img src="../avatars/m30-2.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">本番に飛んだ</span></span>
+    <span class="kn-fc" style="--sayo:6.3s"><span class="av"><img src="../avatars/f30-0.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">10000って何</span></span>
+    <span class="kn-fc" style="--sayo:2.1s"><span class="av"><img src="../avatars/m40-6.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">cronが沈黙</span></span>
+    <span class="kn-fc" style="--sayo:8.4s"><span class="av"><img src="../avatars/f50-2.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">CIは緑なのに</span></span>
+    <span class="kn-fc" style="--sayo:4.2s"><span class="av"><img src="../avatars/m20-0.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">名前を戻せない</span></span>
+  </div>
+  <div class="kn-voices-cap">本番運用で実際に出た症状<span class="note">※ 本記事で扱う5つの罠が最初に現れたときの見え方です</span></div>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.08.09</span><span class="dot">·</span><span>最終更新 2026.08.09</span><span class="dot">·</span><span>読了 12分</span>
+  </div>
+</header>
+
+<style>
+/* workers-production-pitfalls — code blocks + CI log cover（scoped: wp-） */
+.art-body pre{margin:0 0 10px;border:1px solid var(--line-2);border-radius:10px;background:var(--white);padding:16px 18px;overflow-x:auto;}
+.art-body pre code{display:block;font-family:var(--mono);font-size:13px;line-height:1.85;color:var(--ink-soft);white-space:pre;}
+.art-body p code,.art-body li code,.art-body td code,.art-head .dek code,.art-body .faq code{font-family:var(--mono);font-size:.87em;background:var(--paper-2);border-radius:4px;padding:1px 5px;color:var(--ink);}
+.wp-cover{padding:0;}
+.wp-ci-top{display:flex;align-items:center;gap:9px;padding:14px 20px;border-bottom:1px solid var(--line);font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--slate);}
+.wp-ci-top .wp-dot{width:7px;height:7px;border-radius:50%;background:var(--electric);flex:none;}
+.wp-ci-top .wp-smp{margin-left:auto;font-family:var(--jp);font-weight:400;letter-spacing:0;text-transform:none;font-size:10.5px;opacity:.8;}
+.wp-log{padding:16px 20px 18px;font-family:var(--mono);font-size:12.5px;line-height:1.95;color:var(--slate);}
+.wp-log .ln{display:flex;gap:12px;align-items:baseline;white-space:nowrap;}
+.wp-log .mk{flex:none;width:30px;font-weight:600;}
+.wp-log .cmd{min-width:0;overflow:hidden;text-overflow:ellipsis;}
+.wp-log .bad{color:var(--ink);font-weight:600;}
+.wp-log .err{padding-left:42px;color:var(--ink);}
+.wp-log .err b{font-weight:600;border-bottom:1.5px solid var(--electric);}
+.wp-why{border-top:1px solid var(--line);padding:14px 20px 16px;font-family:var(--jp);font-size:12px;color:var(--slate);line-height:1.8;}
+.wp-why em{font-style:normal;font-family:var(--mono);color:var(--ink);font-weight:600;}
+@media(max-width:560px){
+  .wp-log{font-size:11px;padding:14px 14px 16px;}
+  .wp-log .mk{width:26px;}
+  .wp-log .err{padding-left:34px;}
+  .wp-ci-top{padding:12px 14px;}
+  .wp-ci-top .wp-smp{display:none;}
+  .wp-why{padding:12px 14px 14px;}
+  .art-body pre{padding:14px 13px;}
+  .art-body pre code{font-size:11.5px;}
+}
+</style>
+<div class="art-cover-v6 wp-cover">
+  <div class="wp-ci-top"><span class="wp-dot"></span>CI · deploy-production<span class="wp-smp">※ 本記事で扱う失敗の再現イメージ</span></div>
+  <div class="wp-log" role="img" aria-label="CIのログ。テストとstagingデプロイは成功し、versions uploadのステップだけがAuthentication error code 10000で失敗している">
+    <div class="ln"><span class="mk">OK</span><span class="cmd">npm test</span></div>
+    <div class="ln"><span class="mk">OK</span><span class="cmd">wrangler deploy --env staging</span></div>
+    <div class="ln"><span class="mk">OK</span><span class="cmd">npm run smoke:staging</span></div>
+    <div class="ln bad"><span class="mk">ERR</span><span class="cmd">wrangler versions upload</span></div>
+    <div class="err">Authentication error [code: <b>10000</b>]</div>
+  </div>
+  <div class="wp-why">原因は <em>wrangler.toml</em> に足した <em>routes</em> の1行。エラー文はrouteについて一言も触れない——本記事で扱う5つの罠は、いずれも「デプロイは成功したように見える」形で現れる。</div>
+</div>
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次">
+    <div class="art-toc-inner">
+      <div class="toc-h">目次</div>
+      <a href="#s1">罠1 routesがenvに継承される</a>
+      <a href="#s2">罠2 Authentication error 10000</a>
+      <a href="#s3">罠3 cronが反映されない</a>
+      <a href="#s4">罠4 R2バケットは改名できない</a>
+      <a href="#s5">罠5 Pagesの拡張子なしURL</a>
+      <a href="#s6">5つに共通する構造</a>
+      <a href="#faq">よくある質問</a>
+    </div>
+  </nav>
+
+  <article class="art-body rv">
+    <div class="lede">
+      <div class="lede-h">この記事の要点</div>
+      <ul>
+        <li>Cloudflare Workersで本番を壊すのは、たいていコードではなく<strong>設定の効き方</strong>。継承するキーとしないキーが混在し、デプロイの経路によって適用される範囲が変わる。</li>
+        <li>扱うのは5つ。<strong>routesの環境継承／最小権限トークンのAuthentication error 10000／cron triggersの未反映／R2バケットのリネーム不可／Pagesの拡張子なしURL</strong>。それぞれ「何が起きたか→なぜ→どう直すか→再発防止」で記録する。</li>
+        <li>5つとも<strong>エラーを出さずに失敗する</strong>。だから対策は共通で、「設定を書いたこと」ではなく「効いている証跡」で完了を判定する。記事末に証跡の一覧表を置いた。</li>
+      </ul>
+    </div>
+
+    <aside class="inline-dx-cta" style="margin:6px 0 40px;border:1px solid var(--line-2);border-radius:12px;background:var(--white);padding:22px 26px;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
+  <div style="flex:1;min-width:240px;">
+    <div style="font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);">TechWorker ・ 生成AIの実装と運用</div>
+    <div style="font-family:var(--jp);font-weight:700;font-size:16.5px;color:var(--ink);line-height:1.55;margin-top:8px;">この記事は、自社プロダクトの運用記録です</div>
+    <div style="font-size:13.5px;color:var(--slate);line-height:1.8;margin-top:5px;">TechWorkerは生成AIの研修・導入支援に加えて、自社でもAIプロダクトを開発・運用しています。本記事の内容はその過程で実際に踏んだ設定の失敗をまとめたものです。</div>
+  </div>
+  <a href="../../contact.html" class="btn" style="white-space:nowrap;flex:none;color:var(--paper);border-bottom:none;">相談する <i>&rarr;</i></a>
+</aside>
+
+    <p>Cloudflare Workersは、書いたコードがそのままエッジで動く。ローカルで<code>wrangler dev</code>が通れば本番でもだいたい動く——という感覚は、コードに関してはおおむね正しい。踏み抜くのは設定のほうだ。</p>
+    <p>この記事は、自社で開発・運用しているAIインタビューのプロダクトをCloudflare Workers上で動かす中で実際に踏んだ罠を5つ、設定ファイルの実物とともに記録したものです。入門記事ではありません。基本的な使い方は公式ドキュメントが整っているので、ここでは「ドキュメントを読んでいても踏む」失敗だけを扱います。技術的な主張には、確認できた範囲で公式ドキュメントの該当箇所を添えました。</p>
+    <p>5つに共通するのは、いずれも<strong>デプロイが成功したように見える</strong>ことです。CIは緑になり、ページは表示され、コードは新しくなっている。それでも設定は効いていない。</p>
+
+    <h2 id="s1">罠1：stagingにデプロイしたら、本番の独自ドメインが付いた</h2>
+    <p class="answer"><code>wrangler.toml</code>のトップレベル<code>routes</code>は環境（env）に継承される。<code>[env.staging]</code>側で<code>routes = []</code>を明示しないと、本番のドメインがstaging Workerに向く。</p>
+    <aside class="kn-side">
+      <img src="../avatars/m40-2.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">運用担当の視点</div><p>「本番ドメインが検証環境に向く」は、コードのバグより<em>静かに</em>壊れる。</p></div>
+    </aside>
+    <h3>何が起きたか</h3>
+    <p>検証用のstaging Workerへデプロイしたところ、本番の独自ドメインがstaging側に紐づいた。stagingは外部AI・認証・決済を既定でOFFにし、<code>MOCK = "1"</code>で固定レスポンスを返す環境で、本番のトラフィックを受ける想定はまったくない。デプロイ直後に気づいて修正したが、気づかなければ本番URLが検証用の応答を返し続けていた。</p>
+    <h3>なぜ起きるか</h3>
+    <p>Wranglerの環境（Environments）は、設定キーを「継承するもの」と「継承しないもの」に分けています。公式のWrangler設定ドキュメントの定義はこうです。</p>
+    <ul>
+      <li><strong>Inheritable keys：</strong>「トップレベルで設定でき、環境ごとの設定に継承（またはオーバーライド）される」キー</li>
+      <li><strong>Non-inheritable keys：</strong>「トップレベルで設定できるが環境には継承されず、環境ごとに指定しなければならない」キー</li>
+    </ul>
+    <p>そして<code>routes</code>は<strong>Inheritable keys</strong>側に、<code>vars</code>（環境変数）とバインディング類は<strong>Non-inheritable keys</strong>側に分類されています。</p>
+    <p>ここが罠の本体です。同じ設定ファイルの中で、挙動が逆になる。<code>vars</code>は「トップレベルに書いてもenvには降りてこない」ので環境ごとに書き直す必要があり、<code>routes</code>は逆に「トップレベルに書くと黙ってenvにも降りてくる」。前者の感覚で後者を書くと事故ります。手元の設定ファイルには、この非対称性がそのまま残っています。</p>
+    <pre><code>[env.staging.vars]
+APP_ENV = "staging"
+MOCK = "1"
+TRANSCRIPT_POLISH = "0"
+# Top-level vars are not inherited by Wrangler environments. Keep external
+# screen/audio AI explicitly disabled in staging; the full respondent E2E uses MOCK.
+ALLOW_OPENAI_SCREEN_OBSERVATION = "0"
+OPENAI_LIVE_TRANSCRIPTION_ENABLED = "0"</code></pre>
+    <p class="fig-cap">実際の<code>wrangler.toml</code>より。<code>vars</code>は継承されないため、stagingでも外部AIを明示的にOFFへ倒し直している。「書いていない＝OFF」ではなく「書いていない＝未定義」なので、安全側に倒すには明示が要る。</p>
+    <h3>どう直すか</h3>
+    <p><code>[env.staging]</code>に<code>routes = []</code>を明示します。空配列は「この環境にはrouteを付けない」という宣言で、トップレベルからの継承を打ち消します。</p>
+    <pre><code>[env.staging]
+name = "coesignal-staging"
+workers_dev = true
+preview_urls = false
+# 本番の独自ドメイン（トップレベルroutes）を継承させない
+routes = []</code></pre>
+    <p class="fig-cap">同じく実物より。コメントは「なぜ空配列を書いているのか」を将来の自分に説明するために置いている。空配列は一見すると無意味な行に見えるので、理由がないと削除される。</p>
+    <h3>再発防止</h3>
+    <p>二段構えにしました。一段目は、上の<code>routes = []</code>を恒久的に残すこと。後述の理由でトップレベルから<code>routes</code>を消したあとも、この行は消していません。将来だれかがトップレベルに<code>routes</code>を書き戻したときの受け皿になるからです。<strong>設定ファイルのガードは、原因が消えても残す。</strong></p>
+    <p>二段目は、そもそもトップレベルに<code>routes</code>を書かない設計に倒したこと。これは次の罠と地続きです。</p>
+
+    <h2 id="s2">罠2：Authentication error 10000——エラー文がrouteに一言も触れない</h2>
+    <p class="answer">CI用の最小権限トークンで<code>routes</code>を設定に書くと、<code>/zones/*/workers/routes</code>の呼び出しにゾーンスコープの権限が要るため認証エラーで落ちる。メッセージはroutesについて何も言わない。</p>
+    <h3>何が起きたか</h3>
+    <p>GitHub Actionsからのデプロイが<code>Authentication error [code: 10000]</code>で失敗した。ローカルの<code>wrangler deploy</code>は通る。コードもテストも変えていない。変えたのは<code>wrangler.toml</code>に<code>routes</code>を足したことだけ。</p>
+    <p>エラーメッセージは「認証エラー」としか言いません。トークンが失効したのか、シークレットの登録をミスったのか、アカウントIDが違うのか——最初に疑うのはそのあたりで、<code>routes</code>の行に辿り着くまでに時間を溶かします。</p>
+    <h3>なぜ起きるか</h3>
+    <p>Cloudflareの権限モデルは、アカウントスコープとゾーンスコープに分かれています。Workerのスクリプトをアップロードする操作はアカウントスコープですが、Workerをドメイン（route）に紐づける操作はゾーンスコープです。公式のWorkers Builds設定ドキュメントは、デプロイに必要な権限をこう分けて示しています。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>スコープ</th><th>必要な権限</th><th>何のために要るか</th></tr>
+        <tr><td>アカウント</td><td>Account Settings (read)／Workers Scripts (edit)／Workers KV Storage (edit)／Workers R2 Storage (edit)</td><td>Workerのコードとバインディングを更新する</td></tr>
+        <tr><td>ゾーン</td><td>Workers Routes (edit)</td><td>Workerを独自ドメイン・routeに紐づける</td></tr>
+        <tr><td>ユーザー</td><td>User Details (read)／Memberships (read)</td><td>トークンの所属確認</td></tr>
+      </table>
+    </div>
+    <p class="fig-cap">出典：Cloudflare公式ドキュメント（Workers Builds — Configuration）・2026年8月時点。</p>
+    <p>CI用のトークンは最小権限で発行してあります。Workerを更新するのに必要なアカウント側の権限しか持たせていない。そこへ<code>routes</code>を書くと、wranglerは<code>/zones/*/workers/routes</code>を叩きにいきます。トークンにゾーン権限がないので弾かれる。<code>10000</code>はCloudflare APIが権限不足に対して返す汎用の認証エラーコードで、「どのエンドポイントで足りなかったのか」までは教えてくれません。</p>
+    <p>要するに、<strong><code>routes</code>の1行が、CIトークンに要求する権限の階層を1段上げる</strong>。最小権限を徹底しているCIほど刺さります。</p>
+    <h3>どう直すか</h3>
+    <p>選択肢は2つです。</p>
+    <ol>
+      <li>CIトークンにゾーンスコープの<strong>Workers Routes (edit)</strong>を足す</li>
+      <li><code>routes</code>を設定ファイルから外し、カスタムドメインの管理をデプロイの経路から分離する</li>
+    </ol>
+    <p>採ったのは2です。カスタムドメインの紐づけはアカウント側に永続するので、毎回のデプロイで宣言し直す必要がありません。1を採ると、コードを更新するだけのトークンが常時ゾーンの書き換え権限を持つことになる。ドメインの付け替えは年に数回、コードのデプロイは日に数回。<strong>頻度の低い操作に合わせて、頻度の高い経路の権限を上げるのは割に合わない</strong>——付け替え・追加は、ダッシュボードかフル権限のローカルwranglerで行います。</p>
+    <h3>再発防止</h3>
+    <p>設定ファイルに「なぜ書かないか」をコメントで残しました。消した設定は差分から消えるので、意図もいっしょに消えます。残すなら本文に残すしかない。</p>
+    <pre><code># 独自ドメイン coesignal.techworker.co.jp は 2026-07-17 のローカルdeployでアタッチ済み。
+# カスタムドメインはアカウント側に永続するため、ここには書かない:
+# routes をこのファイルに書くと、CIの最小権限 CLOUDFLARE_API_TOKEN（ゾーン権限なし）が
+# /zones/*/workers/routes への呼び出しで Authentication error 10000 になりデプロイが落ちる。
+# ドメインの付け替え・追加はダッシュボードまたはフル権限のローカルwranglerで行うこと。</code></pre>
+    <p class="fig-cap">実際の<code>wrangler.toml</code>冒頭のコメント。「書かない理由」と「ではどこで設定するのか」をセットで書いておかないと、半年後に誰か（自分を含む）が親切心で書き戻す。</p>
+
+    <aside class="kn-take">
+      <img class="kn-take-av" src="../avatars/f40-0.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">情シスの視点</div>
+        <p>最小権限の方針は正しい。ただし<em>最小権限にした結果どのエラーで落ちるか</em>を知らないと、切り分けに時間を取られる。権限を絞るなら、絞った境界で何が起きるかもセットで残しておきたい。</p>
+      </div>
+    </aside>
+
+    <h2 id="s3">罠3：CIは成功しているのに、cronが動かない</h2>
+    <p class="answer">バージョンをアップロードして昇格させる経路（<code>wrangler versions upload</code>）ではトリガーが適用されない。cronを反映するには<code>wrangler triggers deploy</code>が別途必要。</p>
+    <aside class="kn-side">
+      <img src="../avatars/f30-6.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">開発責任者の視点</div><p>「動かない」より<em>「呼ばれてすらいない」</em>のほうが気づくのが遅れる。</p></div>
+    </aside>
+    <h3>何が起きたか</h3>
+    <p>日次のバッチをcronで回す設定を入れ、CIからデプロイした。ワークフローは成功。Workerのコードも新しくなっている。しかし翌朝、ジョブが動いていない。エラーログすら残らない。「失敗した」ではなく「呼ばれてすらいない」という、いちばん気づきにくい壊れ方でした。</p>
+    <h3>なぜ起きるか</h3>
+    <p>デプロイの経路が2種類あることが原因です。<code>wrangler deploy</code>はコードと設定をまとめて反映します。cron triggersについても公式ドキュメントは「Wranglerでデプロイすると、それまでのCron Triggersは<code>triggers</code>配列で指定したものに置き換えられる」と書いています。</p>
+    <p>一方、CIで本番を安全に更新するときは、バージョンをアップロードしてから昇格させる流れ（<code>wrangler versions upload</code>→<code>wrangler versions deploy</code>）を使うことが多い。テストの通ったコミットを一度アップロードし、検証を挟んでから切り替えられるからです。この経路は<strong>コードのバージョンだけを扱い、トリガーには触れません</strong>。</p>
+    <p>公式ドキュメントの記述は明快です。デプロイ管理のページには「Workerのトリガー（ルート、ドメイン、cron triggers）への変更を適用するには<code>wrangler triggers deploy</code>コマンドを使う」とあり、<code>triggers deploy</code>コマンド自身の説明は「<code>wrangler versions upload</code>を使うときに、トリガー（ルートやドメイン、Cron Triggers）への変更を適用する」です。</p>
+    <div class="callout"><p>CIが緑になったことは、cronが反映された証拠にならない。コードのバージョンとトリガーの設定は、別々の経路で本番に届く。</p></div>
+    <h3>どう直すか</h3>
+    <p>デプロイのあとに<code>wrangler triggers deploy</code>を1ステップ足します。設定側はcronの定義を置くだけです。</p>
+    <pre><code>[triggers]
+crons = [ "15 23 * * *" ]</code></pre>
+    <p class="fig-cap">記法はCloudflare公式ドキュメントより。Cron Triggersは「UTC時刻で実行される」と明記されているので、日本時間の朝8:15に回したければUTCでは前日の23:15になる。日本時間で設計してUTCで書くとき、日付がずれる時間帯があることに注意。</p>
+    <p>もう一つ、同じページに書かれている挙動も併せて覚えておきたい。<code>crons</code>に空配列を渡すと全てのトリガーが削除され、プロパティ自体を書かなければ既存のトリガーが維持されます。「1本だけ足すつもり」で<code>crons</code>を書き換えると、書かなかったぶんが消えます。</p>
+    <h3>再発防止</h3>
+    <p>判定基準を変えました。<strong>cronの反映は「デプロイが成功したか」ではなく「スケジュール実行の証跡が着弾したか」で判定する。</strong> 日次ジョブなら翌日の通知、時間単位なら次の実行時刻のログ。設定を書いたことは完了ではありません。この判定基準は残り4つの罠にもそのまま効くので、最後の節でまとめて扱います。</p>
+
+    <h2 id="s4">罠4：R2バケットは改名できない——プロダクト名を変えたときの設計判断</h2>
+    <p class="answer">R2バケットは作成後に名前を変えられない。Worker名は変えられる。だから改名時は「変えられない名前」だけが旧プロダクト名のまま残る。</p>
+    <h3>何が起きたか</h3>
+    <p>プロダクト名を変更しました。Worker名はダッシュボードのリネームで変更でき、secretsやバインディングを保持したまま移行できています（この挙動については公式ドキュメントの明記を見つけられなかったので、実行前にご自身の環境で確認してください）。ところがR2バケットだけが変えられない。結果、いまも設定ファイルには旧プロダクト名由来のバケット名が残っています。</p>
+    <pre><code># R2バインディング（音声・トランスクリプト・判定ログ・メモの保存）
+[[r2_buckets]]
+binding = "AUDIO"
+bucket_name = "aiiv-audio"
+
+[[env.staging.r2_buckets]]
+binding = "AUDIO"
+bucket_name = "aiiv-audio-stripe-test"</code></pre>
+    <p class="fig-cap">実際の<code>wrangler.toml</code>より（本番とstagingの該当部分を並べたもの）。バインディング名はどちらも<code>AUDIO</code>で、バケット名だけが環境で違う。バインディングはNon-inheritableなので、env側でもう一度宣言する必要がある——罠1の裏返しがここにも出ている。</p>
+    <h3>なぜ起きるか</h3>
+    <p>R2のバケット管理APIに、リネーム操作が存在しないためです。CloudflareのAPIリファレンスにあるバケット操作はList / Get / Create / Patch / Deleteで、Patchが変更するのは「新規アップロード時のデフォルトstorage class」であって名前ではありません。名前を書き換える口はどこにもない。</p>
+    <p>これは設計上そうなっている、と考えるのが自然です。バケット名はS3互換エンドポイントのパスに現れ、カスタムドメインの紐づけの単位になり、既存オブジェクトの参照の前提にもなる。あとから変えれば、それらすべてを同時に付け替える必要があります。</p>
+    <h3>どう直すか（改名時の設計判断）</h3>
+    <p>3択で考えました。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>選択肢</th><th>やること</th><th>判断</th></tr>
+        <tr><td>A. 旧名のまま運用</td><td>バケット名は据え置き、コードからはバインディング名で参照する</td><td>採用</td></tr>
+        <tr><td>B. 新バケットへ移行</td><td>新規作成→全オブジェクトのコピー→参照の切り替え→旧バケットの廃棄</td><td>見送り</td></tr>
+        <tr><td>C. 新環境だけ新命名</td><td>以後に作る環境から新命名にし、既存環境は据え置く</td><td>却下</td></tr>
+      </table>
+    </div>
+    <p>Aを採った理由は単純で、<strong>コードにバケット名が出てこない</strong>からです。参照は<code>env.AUDIO</code>というバインディング経由なので、意味を担っているのはバインディング名のほう。バケット名は設定ファイルの2行にしか現れません。</p>
+    <p>Bは、音声とトランスクリプトという「消せない・移行コストが実データ量に比例する」データを、見た目の統一のために動かすことになります。二重書き込み期間の設計、整合性の確認、切り戻し手順まで含めた作業を、ユーザーに一切見えない改善のために積む理由がない。Cは命名規則が2系統に割れ、どちらが正なのかを毎回考えることになるため却下しました。統一しないなら、統一しないほうに統一したほうがまだましです。</p>
+    <h3>再発防止</h3>
+    <p>ルールを1行にしました。<strong>あとから変えられない名前には、プロダクト名を入れない。役割で付ける。</strong></p>
+    <p>R2バケット、キュー、データベースのように名前が作成時に確定してしまう資源は、<code>audio-store</code>のように役割で名付ける。逆に、変えられるもの——Worker名、バインディング名、リポジトリ名——にはブランドを入れてよい。ブランドは変わりますが、役割は変わりません。</p>
+    <aside class="kn-side">
+      <img src="../avatars/m50-0.svg" alt="" loading="lazy" width="36" height="36">
+      <div><div class="r">アーキテクトの視点</div><p><em>「あとで直せる名前」と「直せない名前」</em>を、最初に分けておけばよかった。</p></div>
+    </aside>
+
+    <h2 id="s5">罠5：Cloudflare Pagesが<code>.html</code>を消す——canonicalとsitemapのずれ</h2>
+    <p class="answer">Cloudflare Pagesは<code>.html</code>付きURLを拡張子なしURLへリダイレクトする。canonicalとsitemapを拡張子なしで揃えないと、宣言した正規URLと実際に配信されるURLがずれる。</p>
+    <h3>何が起きたか</h3>
+    <p>こちらはWorkersではなくPages側、TechWorkerのコーポレートサイトの話です。記事ページのファイル名は<code>claude-code-dounyu.html</code>で、canonicalもsitemapも<code>.html</code>付きで書いていました。ところがCloudflare Pagesは<code>.html</code>を拡張子なしのURLへリダイレクトします。宣言している正規URLがリダイレクト元、実際に配信されるURLがリダイレクト先、という状態になっていた。</p>
+    <h3>なぜ起きるか</h3>
+    <p>公式ドキュメントに明記されている挙動です。「PagesはHTMLページを拡張子なしの対応URLへリダイレクトする。たとえば<code>/contact.html</code>は<code>/contact</code>へリダイレクトされる」。ステータスコードまでは公式に記載がありませんが、当サイトで確認した限りでは308（Permanent Redirect）でした。</p>
+    <p>問題は<strong>壊れて見えない</strong>ことです。ユーザーはリダイレクトされて正しいページに着く。表示は正常。だからブラウザで確認するかぎり、何も起きていないように見えます。ずれているのは、クローラーに渡している正規URLの宣言だけ。</p>
+    <h3>どう直すか</h3>
+    <p>外部に出るURLを拡張子なしに統一します。具体的にはcanonical、<code>og:url</code>、<code>sitemap.xml</code>の3つ。TechWorkerのサイトでは全50ページを拡張子なしで揃え直しました。</p>
+    <p>内部リンク（<code>href="claude-code-dounyu.html"</code>）は<code>.html</code>のままでも動きます。リダイレクトを1回挟むだけなので実害は小さい。ただ、正規URLと内部リンクで書式が割れると監査がしづらくなるので、揃えられるなら揃えたほうがよいでしょう。</p>
+    <h3>再発防止</h3>
+    <p>公開前の機械チェックを1本入れました。<strong>canonicalに書いたURLをそのまま叩いて、200が返るか。</strong> 308が返ったらcanonicalが間違っています。人間の目視ではまず気づけませんが、この1行のチェックなら確実に捕まる。</p>
+    <p>sitemapも手書きせず生成する。手書きしているかぎり、いつか必ずファイル名のほうを写してしまいます。</p>
+
+    <aside class="kn-take">
+      <img class="kn-take-av" src="../avatars/m30-0.svg" alt="" loading="lazy" width="56" height="56">
+      <div class="kn-take-body">
+        <div class="kn-take-role">運用担当の視点</div>
+        <p>5つとも、デプロイのログを見ているかぎり気づけなかった。<em>気づけたのは、デプロイの外側に置いた確認だけ</em>だった。</p>
+      </div>
+    </aside>
+
+    <h2 id="s6">5つに共通する構造——「書いたこと」を完了にしない</h2>
+    <p class="answer">5つとも「デプロイは成功したのに設定が効いていない」型。対策は共通で、設定を書いたことではなく、効いている証跡で完了を判定する。</p>
+    <p>並べてみると、別々の機能の話に見えて、失敗の形が同じです。</p>
+    <ul>
+      <li>継承するキーとしないキーが混在している（<code>routes</code>は継承、<code>vars</code>とバインディングは非継承）</li>
+      <li>権限のスコープが操作によって違う（スクリプト更新はアカウント、routeはゾーン）</li>
+      <li>デプロイの経路によって、適用される設定の範囲が違う（<code>wrangler deploy</code>と<code>versions upload</code>）</li>
+      <li>名前には変えられるものと変えられないものがある（Worker名とR2バケット名）</li>
+      <li>配信レイヤーがURLを書き換える（PagesのHTML拡張子）</li>
+    </ul>
+    <p>どれも「宣言したとおりに効く」という前提が崩れる場所です。そして5つのうち4つは、失敗しても目に見えるエラーを出しません。だから対策も1つに畳めます。</p>
+    <div class="quote-box"><p>設定は「書いたこと」で完了にしない。「効いている証跡」で完了にする。エラーを出さない失敗は、確認しにいかないかぎり見つからない。</p></div>
+    <p>具体的には、罠ごとに「完了と誤認する根拠」と「実際に見るべき証跡」を対にして持っておくのが実務的です。この記事の実質的な結論はこの表になります。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>罠</th><th>「終わった」と誤認する根拠</th><th>実際に見るべき証跡</th></tr>
+        <tr><td>1. routesの継承</td><td>staging用の設定を書いた</td><td>staging Workerに紐づいているドメインの一覧</td></tr>
+        <tr><td>2. Authentication error 10000</td><td>ローカルではデプロイできた</td><td>CIトークンのスコープにゾーン権限があるか</td></tr>
+        <tr><td>3. cronが反映されない</td><td>CIのワークフローが成功した</td><td>スケジュール実行のログ・通知が実際に着弾したか</td></tr>
+        <tr><td>4. R2バケットの改名</td><td>ダッシュボードで名前を直したつもり</td><td>名前は作成時に確定する。参照はバインディング経由か</td></tr>
+        <tr><td>5. Pagesの拡張子なしURL</td><td>ブラウザでページが表示された</td><td>canonicalのURLを直接叩いて200が返るか</td></tr>
+      </table>
+    </div>
+    <div class="callout"><p>5つのうち4つ（1・2・3・5）は、デプロイのログを見ているかぎり気づけない。CIに足すべきなのは、デプロイのステップではなく<strong>デプロイ後の確認のステップ</strong>。証跡を1つずつジョブにしていくと、同じ罠を二度踏まなくなる。</p></div>
+    <p>Cloudflare Workersは、少ない設定で本番が動く。設定が少ないぶん、1行の意味が重い。<code>routes</code>の1行が権限の階層を変え、バケット名の1行が二度と変えられない。書く前に「これは継承されるか」「これはあとから変えられるか」を確認するだけで、この記事の5つのうち4つは踏まずに済みます。</p>
+
+    <h2 id="faq">よくある質問</h2>
+    <div class="faq"><div class="q"><code>wrangler.toml</code>のトップレベル<code>routes</code>は環境（env）に継承されますか？</div><p class="a">継承されます。Cloudflare公式のWrangler設定ドキュメントで<code>routes</code>は「Inheritable keys（トップレベルで設定でき、環境に継承またはオーバーライドされる）」に分類されています。stagingなどの環境に本番ドメインを付けたくない場合は、その環境のセクションに<code>routes = []</code>を明示して継承を打ち消してください。なお環境変数<code>vars</code>とバインディングは逆に「Non-inheritable keys」で、環境ごとに書き直す必要があります。</p></div>
+    <div class="faq"><div class="q">CIのデプロイが<code>Authentication error 10000</code>で落ちます。何を疑えばいいですか？</div><p class="a">設定ファイルに<code>routes</code>を書いていないか確認してください。Workerのスクリプト更新はアカウントスコープの権限で足りますが、routeの設定はゾーンスコープの<strong>Workers Routes</strong>権限を要求します。Cloudflare公式のWorkers Builds設定ドキュメントでも、必要な権限はアカウント側（Account Settings read、Workers Scripts edit ほか）とゾーン側（Workers Routes edit）に分けて示されています。最小権限で発行したCIトークンにゾーン権限がないと認証エラーになりますが、エラーメッセージは<code>routes</code>について何も言いません。</p></div>
+    <div class="faq"><div class="q">CIでデプロイしたのにcronが動きません。なぜですか？</div><p class="a"><code>wrangler versions upload</code>でバージョンをアップロードして昇格させる経路では、トリガーが適用されないためです。Cloudflare公式ドキュメントは「Workerのトリガー（ルート、ドメイン、cron triggers）への変更を適用するには<code>wrangler triggers deploy</code>コマンドを使う」と明記しています。デプロイ後に<code>wrangler triggers deploy</code>を実行してください。CIが成功したことはcronが反映された証拠になりません。</p></div>
+    <div class="faq"><div class="q">R2バケットの名前を後から変えられますか？</div><p class="a">変えられません。CloudflareのR2バケット管理APIにはList・Get・Create・Patch・Deleteしかなく、リネーム操作が存在しません（Patchが変更するのは新規アップロード時のデフォルトstorage classで、名前ではありません）。名前を変えたい場合は新しいバケットを作って全オブジェクトを移行することになります。プロダクト名の変更に備えるなら、バケット名にはブランド名ではなく役割を入れておくのが安全です。</p></div>
+    <div class="faq"><div class="q">canonicalは<code>.html</code>付きと拡張子なしのどちらにすべきですか？</div><p class="a">Cloudflare Pagesでホスティングしている場合は拡張子なしに揃えてください。公式ドキュメントに「Pagesは<code>/contact.html</code>を<code>/contact</code>へリダイレクトする」と記載があり、canonicalを<code>.html</code>付きで書くと宣言した正規URLがリダイレクト元になってしまいます。canonical・<code>og:url</code>・<code>sitemap.xml</code>の3つを拡張子なしで統一し、公開前にcanonicalのURLを直接叩いて200が返るか機械的に確認するのが確実です。</p></div>
+
+    <h3>参照した公式ドキュメント</h3>
+    <ul>
+      <li><a href="https://developers.cloudflare.com/workers/wrangler/configuration/" target="_blank" rel="noopener noreferrer">Configuration — Wrangler</a>（Inheritable keys／Non-inheritable keysの定義と<code>routes</code>・<code>vars</code>の分類）</li>
+      <li><a href="https://developers.cloudflare.com/workers/wrangler/environments/" target="_blank" rel="noopener noreferrer">Environments — Wrangler</a>（環境ごとの設定の書き方）</li>
+      <li><a href="https://developers.cloudflare.com/workers/ci-cd/builds/configuration/" target="_blank" rel="noopener noreferrer">Workers Builds — Configuration</a>（デプロイに必要なAPIトークン権限のスコープ別一覧）</li>
+      <li><a href="https://developers.cloudflare.com/workers/versions-and-deployments/deployment-management/" target="_blank" rel="noopener noreferrer">Deployment management — Workers</a>（トリガーの変更には<code>wrangler triggers deploy</code>が必要）</li>
+      <li><a href="https://developers.cloudflare.com/workers/wrangler/commands/workers/" target="_blank" rel="noopener noreferrer">Wrangler commands — Workers</a>（<code>triggers deploy</code>コマンドの定義）</li>
+      <li><a href="https://developers.cloudflare.com/workers/configuration/cron-triggers/" target="_blank" rel="noopener noreferrer">Cron Triggers — Workers</a>（<code>[triggers]</code>の記法、UTC実行、配列の置き換え挙動）</li>
+      <li><a href="https://developers.cloudflare.com/api/resources/r2/subresources/buckets/" target="_blank" rel="noopener noreferrer">Cloudflare API — R2 Buckets</a>（バケット操作の一覧。リネーム操作は存在しない）</li>
+      <li><a href="https://developers.cloudflare.com/r2/buckets/create-buckets/" target="_blank" rel="noopener noreferrer">Create new buckets — R2</a>（バケット名の命名規則）</li>
+      <li><a href="https://developers.cloudflare.com/pages/configuration/serving-pages/" target="_blank" rel="noopener noreferrer">Serving Pages — Cloudflare Pages</a>（HTMLページの拡張子なしURLへのリダイレクト）</li>
+    </ul>
+    <p class="fig-cap">いずれも2026年8月時点で確認。Cloudflareの仕様は更新されるため、実装前に最新の公式ドキュメントをご確認ください。</p>
+  </article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役</span></div>
+    <p>上場企業を含む37社・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。自社でもCloudflare Workers上でAIプロダクトを開発・運用している。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>生成AIの本番運用まで、設計から伴走します。</h3>
+    <p>「検証では動いたが本番に載せられない」——止まる原因は、モデルの精度ではなく権限設計・デプロイ経路・監視といった運用側の設計であることが多くあります。上場企業を含む37社・2,500名の支援と、自社プロダクトの運用で扱ってきた論点をもとに、検討段階からご相談いただけます。</p>
+  </div>
+  <a href="../../contact.html" class="btn">無料相談 <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="../../claude-code-training.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">Claude Code法人研修</a>　／　<a href="../../training.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">生成AI法人研修（主要ツール全対応）</a>　／　<a href="../../contact.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);">無料相談</a></p>
+<div class="back-list"><a href="../index.html">← TechWorker Mediaに戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="../token-management.html" class="related-card"><span class="rc-cat">コスト</span><div class="rc-title">トークンマネジメントとは｜生成AIのコストを下げる実践ガイド</div></a>
+    <a href="../kenshu/claude-code-dounyu.html" class="related-card"><span class="rc-cat">導入・展開</span><div class="rc-title">Claude Codeの法人導入｜パイロットから全社展開までの進め方</div></a>
+  </div>
+</div></section>
+
+<p style="max-width:var(--measure);margin:36px auto 0;padding:0 20px;font-size:12px;color:var(--slate);line-height:1.9;">本記事は株式会社TechWorkerが独自に作成したものであり、Cloudflare, Inc.との提携・後援・承認を受けたものではありません。Cloudflare、Cloudflare Workers、Cloudflare Pages、R2はCloudflare, Inc.の商標です。記載した仕様は2026年8月時点で公式ドキュメントを確認したものです。</p>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">Tech<i>Worker</i><span class="m-tag">Media</span></div>
+        <p>生成AI活用の実践知をお届けするメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+      </div>
+      <div class="footer-col"><h4>メディア</h4><a href="../index.html">記事一覧</a><a href="../kenshu/index.html">AI研修・導入ラボ</a><a href="../token-management.html">トークンマネジメント</a></div>
+      <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../index.html#services">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="../../contact.html">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+</body>
+</html>
