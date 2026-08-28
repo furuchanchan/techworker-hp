@@ -178,34 +178,6 @@ body.menu-open .mmenu{transform:none;visibility:visible;}
 .news-row .tt{font-size:15px;font-weight:500;color:var(--ink);line-height:1.6;}
 .news-row:hover .tt{color:var(--electric);}
 
-/* ===== MACRO ===== */
-.macro{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:96px 0;}
-.macro h2 .mk{color:var(--electric);}
-.macro .lead{margin-top:22px;font-size:16px;color:#28313f;line-height:2.05;max-width:70ch;}
-.macro .lead strong{color:var(--ink);font-weight:600;}
-.macro-impact{display:grid;grid-template-columns:auto 1fr;gap:70px;align-items:center;margin-top:52px;padding-top:50px;border-top:1px solid var(--line);}
-.mi-stat{flex-shrink:0;}
-.mi-n{font-family:var(--en);font-weight:700;font-size:clamp(104px,15vw,210px);line-height:.86;letter-spacing:-.06em;color:var(--electric);}
-.mi-n .pct{font-size:.4em;font-weight:600;vertical-align:super;margin-left:4px;letter-spacing:-.02em;}
-.mi-cap{font-size:15px;color:#28313f;line-height:1.78;margin-top:18px;max-width:34ch;font-weight:500;}
-.mi-cap .src{display:inline-block;margin-top:12px;font-family:var(--en);font-size:11px;letter-spacing:.08em;color:var(--slate);border:1px solid var(--line-2);border-radius:3px;padding:3px 9px;}
-.mi-body p{font-size:16.5px;color:#28313f;line-height:2.05;margin-bottom:18px;}
-.mi-body p:last-child{margin-bottom:0;}
-.mi-body strong{color:var(--ink);font-weight:700;}
-.macro-bottom{margin-top:54px;padding-top:38px;border-top:2px solid var(--ink);}
-.macro-bottom p{font-family:var(--jp);font-weight:700;font-size:clamp(20px,2.8vw,32px);line-height:1.55;letter-spacing:-.02em;}
-.macro-bottom .mk2{color:var(--electric);}
-
-/* ===== PROBLEM ===== */
-.problem{padding:96px 0;}
-.problem-grid{margin-top:50px;border-top:1px solid var(--line);}
-.problem-row{display:grid;grid-template-columns:84px 1fr;gap:8px;padding:28px 0;border-bottom:1px solid var(--line);align-items:baseline;}
-.problem-row .pn{font-family:var(--en);font-weight:600;font-size:22px;color:var(--electric);letter-spacing:-.02em;}
-.problem-row p{font-size:17px;line-height:1.7;color:var(--ink);font-weight:500;}
-.problem-answer{margin-top:50px;background:var(--electric-dark);color:var(--paper);padding:48px 52px;border-radius:4px;}
-.problem-answer p{font-family:var(--jp);font-weight:500;font-size:clamp(17px,2vw,21px);line-height:1.95;letter-spacing:-.01em;}
-.problem-answer em{font-style:normal;color:#fff;font-weight:700;background:linear-gradient(transparent 82%,rgba(255,255,255,.32) 82%,rgba(255,255,255,.32) 92%,transparent 92%);padding:0 .02em;}
-
 /* ===== APPROACH ===== */
 .approach{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:96px 0;}
 .approach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:56px;border-top:1px solid var(--line);}
@@ -465,8 +437,6 @@ html.js .rvg.show>*:nth-child(5){transition-delay:.36s;}
   .fig:nth-child(even){padding-left:22px;border-left:1px solid var(--line);}
   .fig:nth-child(odd){border-left:none;}
   .fig:nth-child(n+3){border-top:1px solid var(--line);}
-  .macro-impact{grid-template-columns:1fr;gap:28px;}
-  .mi-n{font-size:clamp(88px,26vw,150px);}
   .tools .container{grid-template-columns:1fr;gap:22px;}
   .news-row{grid-template-columns:96px 1fr;gap:8px 16px;}
   .news-row .tg{display:none;}
@@ -485,8 +455,6 @@ html.js .rvg.show>*:nth-child(5){transition-delay:.36s;}
   .container{padding:0 22px;}
   nav{padding:0 10px 0 18px;height:60px;}
   .mmenu{top:60px;}
-  .problem-row{grid-template-columns:54px 1fr;}
-  .problem-answer{padding:34px 26px;}
   .flow-steps{grid-template-columns:1fr;}
 }
 
@@ -758,57 +726,6 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
       <a href="news/008.html" class="news-row"><span class="d">2026.04.20</span><span class="tg">お知らせ</span><span class="tt">生成AI×士業メディアの運用を開始しました</span></a>
       <a href="news/007.html" class="news-row"><span class="d">2026.04.10</span><span class="tg">お知らせ</span><span class="tt">生成AI×人材メディアの運用を開始しました</span></a>
       <a href="news/001.html" class="news-row"><span class="d">2026.03.20</span><span class="tg">お知らせ</span><span class="tt">生成AI活用事例ホワイトペーパーを公開しました</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- MACRO -->
-<section class="macro" id="macro">
-  <div class="container">
-    <div class="sec-head rv">
-      <span class="tag">Why Now <span>なぜ、いま動くのか</span></span>
-      <h2>OpenAIも、Anthropicも。<br>AIを「作った本人」が、いま<span class="mk">導入支援</span>に動いている。</h2>
-    </div>
-    <div class="macro-impact rv">
-      <div class="mi-stat">
-        <div class="mi-n">95<span class="pct">%</span></div>
-        <div class="mi-cap">企業の生成AI導入の約95%が、成果につながらないまま止まっている。<span class="src">出典：MIT, 2025</span></div>
-      </div>
-      <div class="mi-body">
-        <p>この現実を最もよく知るのが、開発元です。2026年、<strong>OpenAIは導入コンサルタントを数百名規模で採用</strong>。<strong>Anthropicも大手コンサルと提携</strong>し、導入支援の網を広げています。</p>
-        <p>なぜ、AIをつくる当事者そのものが「導入支援」にこれほど投資するのか。答えは明快です。<strong>ツールは、もう十分に高性能だから。</strong></p>
-      </div>
-    </div>
-    <div class="macro-bottom rv">
-      <p>成否を分けるのは、AIの性能ではない。<br>自社の業務文脈をAIに渡す「<span class="mk2">導入設計</span>」だ。</p>
-    </div>
-  </div>
-</section>
-
-<!-- PROBLEM -->
-<section class="problem" id="problem">
-  <div class="container">
-    <div class="sec-head rv"><span class="tag">The Problem <span>課題</span></span><h2>このような状態に、なっていませんか。</h2></div>
-    <style>
-    .v6fig{--v6card:#fff;--v6ink:#16181D;--v6slate:#565E6A;--v6muted:#4A5666;--v6hair:#ECEEF1;--v6hair2:#E2E4E9;--v6soft2:#FAFBFC;--v6blue:#005EFF;--v6blueink:#003DAA;--v6bluesoft:#EFF3FF;color:var(--v6ink);line-height:1.6;letter-spacing:.003em;font-feature-settings:normal}
-    .v6fig *{box-sizing:border-box}
-    .v6fig .v6cl{border:1px solid var(--v6hair2);border-radius:13px;overflow:hidden;background:var(--v6card);box-shadow:0 18px 40px -28px rgba(20,23,28,.26);max-width:740px}
-    .v6fig .v6clrow{display:flex;align-items:flex-start;gap:14px;padding:16px 22px;font-size:15px;color:var(--v6ink);line-height:1.55}
-    .v6fig .v6clrow+.v6clrow{border-top:1px solid var(--v6hair)}
-    .v6fig .v6cbx{width:21px;height:21px;border-radius:6px;background:var(--v6blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-    .v6fig .v6clf{padding:15px 22px;background:var(--v6bluesoft);font-size:14px;color:var(--v6blueink);font-weight:600}
-    </style>
-    <div class="v6fig rv">
-      <div class="v6cl">
-        <div class="v6clrow"><span class="v6cbx"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6.2l2.6 2.6L10 3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>ChatGPTやCopilotを契約したが、使っているのは一部の社員だけ。</div>
-        <div class="v6clrow"><span class="v6cbx"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6.2l2.6 2.6L10 3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>PoCは完了した。しかし全社展開の道筋が見えない。</div>
-        <div class="v6clrow"><span class="v6cbx"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6.2l2.6 2.6L10 3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>経営層はAI活用を掲げているが、現場は何から手をつければよいか分からない。</div>
-        <div class="v6clrow"><span class="v6cbx"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6.2l2.6 2.6L10 3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>ツールは導入した。しかし業務時間は減っていない。</div>
-        <div class="v6clf">ひとつでも当てはまれば、「コンテキスト整理」の余地があります。</div>
-      </div>
-    </div>
-    <div class="problem-answer rv">
-      <p>AIが機能しない原因の大半は、ツールの問題ではありません。社内の業務知識・判断基準・意思決定プロセスが、AIに渡せる形になっていないことが根本原因です。私たちはこれを<em>「コンテキスト整理」</em>と呼んでいます。</p>
     </div>
   </div>
 </section>
