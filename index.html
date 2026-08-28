@@ -224,23 +224,23 @@ body.menu-open .mmenu{transform:none;visibility:visible;}
 .ocard:hover strong{color:var(--electric);}
 .hcase-others .more{text-align:center;margin-top:42px;}
 
-/* ===== VOICE / CLIENTS ===== */
+/* ===== VOICE ===== */
 .voice{padding:96px 0;border-top:1px solid var(--line);}
-.clients{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:42px;padding:26px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-.clients-label{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);padding-left:12px;border-left:3px solid var(--electric);}
-.client-name{font-family:var(--jp);font-weight:700;font-size:19px;letter-spacing:-.01em;}
-.clients-more{font-size:13px;color:var(--slate);}
 .voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:42px;}
-.voice-card{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:28px 30px 26px;display:flex;flex-direction:column;}
-.voice-card::before{content:"\201C";font-family:var(--en);font-size:52px;line-height:0;height:26px;color:var(--electric);opacity:.28;display:block;}
-.voice-card p{font-family:var(--jp);font-weight:600;font-size:15.5px;line-height:1.95;letter-spacing:-.01em;color:var(--ink);flex:1;margin-top:6px;}
-.voice-card footer{margin-top:22px;padding-top:18px;border-top:1px solid var(--line);}
-.v-person{display:flex;align-items:center;gap:12px;}
-.v-avatar{width:42px;height:42px;border-radius:8px;background:var(--paper-2);border:1px solid var(--line-2);color:var(--electric);font-family:var(--jp);font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.voice-card .vrole{display:block;font-weight:700;font-size:14px;}
-.voice-card .vco{display:block;font-size:12px;color:var(--slate);margin-top:2px;line-height:1.45;}
-.v-service{display:inline-block;margin-top:14px;font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.03em;color:var(--slate);padding:4px 11px;border:1px solid var(--line);border-radius:4px;}
-.v-service b{color:var(--electric);font-weight:600;}
+.voice-card{position:relative;min-width:0;min-height:430px;display:flex;flex-direction:column;overflow:hidden;background:rgba(251,252,253,.94);border:1px solid var(--line-2);border-radius:8px;box-shadow:0 10px 28px rgba(13,17,23,.045);}
+.voice-portrait{position:relative;height:150px;flex-shrink:0;overflow:hidden;padding:18px 20px;background:repeating-linear-gradient(0deg,rgba(13,17,23,.035) 0 1px,transparent 1px 28px),repeating-linear-gradient(90deg,rgba(13,17,23,.035) 0 1px,transparent 1px 28px),#f6f5f4;border-bottom:1px solid var(--line);}
+.voice-portrait::after{content:"";position:absolute;top:17px;right:19px;width:17px;height:4px;background:var(--electric);}
+.voice-sector{position:relative;z-index:2;display:inline-flex;align-items:center;gap:7px;max-width:calc(100% - 48px);padding:6px 10px;color:#3b4654;background:rgba(251,252,253,.9);border:1px solid var(--line);border-radius:999px;font-size:10px;font-weight:700;line-height:1.35;}
+.voice-sector::before{content:"";width:6px;height:6px;flex-shrink:0;background:var(--electric);border-radius:50%;}
+.voice-context{position:absolute;z-index:2;left:22px;bottom:18px;color:var(--slate);font-family:var(--en);font-size:10px;font-weight:700;line-height:1.4;letter-spacing:.06em;}
+.voice-portrait img{position:absolute;z-index:1;right:12px;bottom:-37px;width:184px;height:184px;object-fit:contain;}
+.voice-quote{position:relative;flex:1;padding:26px 24px 16px;}
+.voice-quote-mark{position:absolute;top:11px;left:18px;color:#a9c2ff;font-family:Georgia,serif;font-size:46px;line-height:1;}
+.voice-quote blockquote{position:relative;z-index:1;margin-top:18px;font-family:var(--jp);font-size:16px;font-weight:700;line-height:1.85;letter-spacing:-.015em;color:var(--ink);}
+.voice-attribution{margin:0 24px;padding:16px 0 19px;border-top:1px solid var(--line);}
+.voice-role{font-size:12.5px;font-weight:700;line-height:1.5;}
+.voice-company{margin-top:4px;color:var(--slate);font-size:11.5px;line-height:1.5;}
+.voice-service{margin-top:9px;color:var(--electric);font-family:var(--en);font-size:10.5px;font-weight:700;line-height:1.5;}
 
 /* ===== SERVICES ===== */
 .services{padding:96px 0;background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
@@ -418,7 +418,7 @@ html.js .rvg.show>*:nth-child(5){transition-delay:.36s;}
   .approach-grid{grid-template-columns:1fr;}
   .approach-col{border-left:none;border-top:1px solid var(--line);padding:30px 0 6px;}
   .svc-cards,.svc-overviews{grid-template-columns:1fr;}
-  .voice-grid{grid-template-columns:1fr;}
+  .voice-grid{grid-template-columns:1fr;max-width:720px;margin-left:auto;margin-right:auto;}
   .svc-consult{grid-template-columns:1fr;gap:24px;padding:32px 26px;}
   .rb-grid{grid-template-columns:1fr;}
   .flow-steps{grid-template-columns:1fr 1fr;}
@@ -456,6 +456,18 @@ html.js .rvg.show>*:nth-child(5){transition-delay:.36s;}
   nav{padding:0 10px 0 18px;height:60px;}
   .mmenu{top:60px;}
   .flow-steps{grid-template-columns:1fr;}
+  .voice{padding:72px 0;}
+  .voice-grid{gap:16px;margin-top:30px;}
+  .voice-card{min-height:0;}
+  .voice-portrait{height:134px;padding:16px 17px;}
+  .voice-portrait::after{top:15px;right:15px;}
+  .voice-sector{max-width:calc(100% - 36px);font-size:9.5px;padding:5px 8px;}
+  .voice-context{left:18px;bottom:15px;font-size:9.5px;}
+  .voice-portrait img{right:4px;bottom:-31px;width:154px;height:154px;}
+  .voice-quote{padding:22px 20px 14px;}
+  .voice-quote-mark{top:9px;left:15px;}
+  .voice-quote blockquote{margin-top:17px;font-size:16px;line-height:1.85;}
+  .voice-attribution{margin:0 20px;padding:15px 0 18px;}
 }
 
 /* ===== Floating DX assessment CTA ===== */
@@ -812,37 +824,59 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
   </div>
 </section>
 
-<!-- VOICE / CLIENTS -->
+<!-- VOICE -->
 <section class="voice" id="voice">
   <div class="container">
-    <div class="sec-head rv"><span class="tag">Voice <span>お客様の声</span></span><h2>現場の、リアルな声。</h2></div>
-    <div class="clients rv">
-      <span class="clients-label">導入企業</span>
-      <span class="client-name">さくらインターネット株式会社</span>
-      <span class="clients-more">ほか、上場企業を含む37社のご支援を手がけてきました。</span>
-    </div>
+    <div class="sec-head rv"><span class="tag">Voice <span>お客様の声</span></span><h2>AI活用で、仕事はどう変わったか。</h2></div>
     <div class="voice-grid rvg">
-      <blockquote class="voice-card">
-        <p>経験と勘に頼っていた用途探索が、1時間で何案も出てくる。自社だけでは届かなかった発想の幅が、広がりました。</p>
-        <footer>
-          <div class="v-person"><span class="v-avatar">化</span><div><span class="vrole">研究開発本部 マネージャー</span><span class="vco">東証プライム上場・総合化学メーカー</span></div></div>
-          <span class="v-service"><b>ご利用</b>：生成AIコンサル（R&D領域）</span>
+      <article class="voice-card">
+        <div class="voice-portrait">
+          <span class="voice-sector">総合化学メーカー</span>
+          <span class="voice-context">R&amp;D ／ 用途探索</span>
+          <img src="assets/humation/voice-research.svg" alt="研究開発部門のお客様を表すHumationアバター" loading="lazy" decoding="async">
+        </div>
+        <div class="voice-quote">
+          <span class="voice-quote-mark" aria-hidden="true">“</span>
+          <blockquote>経験と勘に頼っていた用途探索が、1時間で何案も出てくる。自社だけでは届かなかった発想の幅が、広がりました。</blockquote>
+        </div>
+        <footer class="voice-attribution">
+          <div class="voice-role">研究開発本部 マネージャー</div>
+          <div class="voice-company">東証プライム上場・総合化学メーカー</div>
+          <div class="voice-service">生成AIコンサル ／ R&amp;D領域</div>
         </footer>
-      </blockquote>
-      <blockquote class="voice-card">
-        <p>外注していた市場リサーチを、自社で回せるように。コストが下がっただけでなく、意思決定のスピードそのものが変わりました。</p>
-        <footer>
-          <div class="v-person"><span class="v-avatar">薬</span><div><span class="vrole">DX推進部 ご担当</span><span class="vco">外資系大手製薬企業</span></div></div>
-          <span class="v-service"><b>ご利用</b>：生成AIコンサル＋社内研修</span>
+      </article>
+      <article class="voice-card">
+        <div class="voice-portrait">
+          <span class="voice-sector">さくらインターネット株式会社</span>
+          <span class="voice-context">全社員300名 ／ 生成AI研修</span>
+          <img src="assets/humation/voice-training.svg" alt="さくらインターネットの研修担当者を表すHumationアバター" loading="lazy" decoding="async">
+        </div>
+        <div class="voice-quote">
+          <span class="voice-quote-mark" aria-hidden="true">“</span>
+          <blockquote>一律の説明ではなく、部門ごとの業務文脈に合わせた実践型研修。「自分の業務でどう使うか」を、300名が具体的に理解できました。</blockquote>
+        </div>
+        <footer class="voice-attribution">
+          <div class="voice-role">研修企画 ご担当</div>
+          <div class="voice-company">さくらインターネット株式会社</div>
+          <div class="voice-service">全社員300名 ／ 部門別設計</div>
         </footer>
-      </blockquote>
-      <blockquote class="voice-card">
-        <p>属人化していた判断基準や業務知識を、AIが扱える形に整理。バラバラだった「前提」が揃い、現場が同じ目線で動けるようになりました。</p>
-        <footer>
-          <div class="v-person"><span class="v-avatar">経</span><div><span class="vrole">経営企画部 部長</span><span class="vco">中堅メーカー</span></div></div>
-          <span class="v-service"><b>ご利用</b>：生成AIコンサル（コンテキスト整理）</span>
+      </article>
+      <article class="voice-card">
+        <div class="voice-portrait">
+          <span class="voice-sector">外資系大手製薬企業</span>
+          <span class="voice-context">DX推進 ／ リサーチ内製化</span>
+          <img src="assets/humation/voice-dx.svg" alt="製薬企業のDX推進担当者を表すHumationアバター" loading="lazy" decoding="async">
+        </div>
+        <div class="voice-quote">
+          <span class="voice-quote-mark" aria-hidden="true">“</span>
+          <blockquote>外注していた市場リサーチを、自社で回せるように。コストだけでなく、意思決定のスピードそのものが変わりました。</blockquote>
+        </div>
+        <footer class="voice-attribution">
+          <div class="voice-role">DX推進部 ご担当</div>
+          <div class="voice-company">外資系大手製薬企業</div>
+          <div class="voice-service">生成AIコンサル ＋ 社内研修</div>
         </footer>
-      </blockquote>
+      </article>
     </div>
     <div class="more rv" style="margin-top:34px;"><a href="cases.html" class="btn btn--ghost">お客様の声をもっと見る <i>→</i></a></div>
   </div>
