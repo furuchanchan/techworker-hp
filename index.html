@@ -187,45 +187,9 @@ body.menu-open .mmenu{transform:none;visibility:visible;}
 .approach-col h3{font-family:var(--jp);font-weight:700;font-size:19px;line-height:1.5;margin:16px 0 12px;letter-spacing:-.01em;}
 .approach-col p{font-size:15px;color:var(--slate);line-height:1.95;}
 
-/* ===== RESULTS STATEMENT ===== */
-.results-st{padding:96px 0 70px;}
-.results-st h2{font-family:var(--jp);font-weight:700;font-size:clamp(26px,3.4vw,44px);line-height:1.4;letter-spacing:-.02em;margin-top:22px;}
-.results-st h2 .mk{color:var(--electric);}
-
-/* ===== HOME CASE ===== */
-.hcase{padding-bottom:30px;}
-.hcase-top{display:grid;grid-template-columns:auto 1fr;gap:60px;align-items:center;padding:46px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-.hcase-num .s{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);}
-.hcase-num .big{display:flex;align-items:baseline;gap:8px;margin-top:6px;}
-.hcase-num .big b{font-family:var(--en);font-weight:600;font-size:clamp(56px,7vw,92px);line-height:1;color:var(--electric);letter-spacing:-.03em;}
-.hcase-num .big i{font-style:normal;font-size:22px;font-weight:600;}
-.hcase-num .desc{font-size:13px;color:var(--slate);margin-top:6px;}
-.hcase-meta .mtag{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
-.hcase-meta .badge{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.12em;color:var(--paper);background:var(--electric);padding:4px 10px;border-radius:3px;}
-.hcase-meta .ind{font-size:13px;color:var(--slate);font-weight:500;}
-.hcase-meta h3{font-family:var(--jp);font-weight:700;font-size:clamp(22px,2.6vw,32px);line-height:1.4;letter-spacing:-.02em;}
-.hcase-meta .co{font-size:14px;color:var(--slate);margin-top:8px;}
-.hcase-ba{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid var(--line);}
-.hcase-ba > div{padding:38px 40px 38px 0;}
-.hcase-ba > div:last-child{padding-left:48px;border-left:1px solid var(--line);}
-.hcase-ba .col-l{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.14em;color:var(--slate);margin-bottom:14px;}
-.hcase-ba .col-l.aft{color:var(--electric);}
-.hcase-ba p{font-size:15px;color:#28313f;line-height:1.95;}
-.hcase-ba ul{list-style:none;}
-.hcase-ba li{display:flex;gap:12px;align-items:flex-start;padding:7px 0;font-size:15px;line-height:1.7;}
-.hcase-ba li svg{flex-shrink:0;margin-top:5px;color:var(--electric);}
-.hcase-others{padding:46px 0 0;}
-.hcase-others .ogrid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);}
-.ocard{padding:30px 28px;border-left:1px solid var(--line);text-decoration:none;display:block;transition:background .2s;}
-.ocard:first-child{border-left:none;padding-left:0;}
-.ocard .oi{font-size:12px;color:var(--slate);font-weight:500;}
-.ocard strong{display:block;font-size:16px;font-weight:600;line-height:1.5;margin:10px 0;color:var(--ink);}
-.ocard .om{font-family:var(--en);font-size:13px;font-weight:600;color:var(--electric);}
-.ocard:hover strong{color:var(--electric);}
-.hcase-others .more{text-align:center;margin-top:42px;}
-
 /* ===== VOICE ===== */
 .voice{padding:96px 0;border-top:1px solid var(--line);}
+.voice-proof{margin-top:16px;color:var(--slate);font-size:14px;font-weight:600;letter-spacing:.01em;}
 .voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:42px;}
 .voice-card{position:relative;min-width:0;min-height:430px;display:flex;flex-direction:column;overflow:hidden;background:rgba(251,252,253,.94);border:1px solid var(--line-2);border-radius:8px;box-shadow:0 10px 28px rgba(13,17,23,.045);}
 .voice-portrait{position:relative;height:150px;flex-shrink:0;overflow:hidden;padding:18px 20px;background:repeating-linear-gradient(0deg,rgba(13,17,23,.035) 0 1px,transparent 1px 28px),repeating-linear-gradient(90deg,rgba(13,17,23,.035) 0 1px,transparent 1px 28px),#f6f5f4;border-bottom:1px solid var(--line);}
@@ -402,12 +366,10 @@ html.js .rvg.show>*:nth-child(5){transition-delay:.36s;}
 .svc-c{position:relative;overflow:hidden;}
 .svc-c::after{content:"";position:absolute;top:0;left:0;height:3px;width:0;background:var(--electric);transition:width .35s cubic-bezier(.2,.8,.2,1);}
 .svc-c:hover::after{width:100%;}
-.ocard strong{transition:color .2s,transform .25s cubic-bezier(.2,.8,.2,1);}
-.ocard:hover strong{transform:translateX(4px);}
 .tool-item{transition:transform .2s ease;}
 .tool-item:hover{transform:translateY(-2px);}
-.svc-overview,.svc-c,.ocard,.voice-card{transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s ease;}
-.svc-overview:hover,.svc-c:hover,.ocard:hover,.voice-card:hover{transform:translateY(-4px);box-shadow:0 22px 44px -28px rgba(13,17,23,.30);}
+.svc-overview,.svc-c,.voice-card{transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s ease;}
+.svc-overview:hover,.svc-c:hover,.voice-card:hover{transform:translateY(-4px);box-shadow:0 22px 44px -28px rgba(13,17,23,.30);}
 .company-table tr{transition:background .2s;}
 .company-table tr:hover{background:rgba(0,94,255,.03);}
 
@@ -440,13 +402,6 @@ html.js .rvg.show>*:nth-child(5){transition-delay:.36s;}
   .tools .container{grid-template-columns:1fr;gap:22px;}
   .news-row{grid-template-columns:96px 1fr;gap:8px 16px;}
   .news-row .tg{display:none;}
-  .hcase-top{grid-template-columns:1fr;gap:28px;}
-  .hcase-ba{grid-template-columns:1fr;}
-  .hcase-ba > div{padding:28px 0;}
-  .hcase-ba > div:last-child{border-left:none;border-top:1px solid var(--line);padding-left:0;}
-  .hcase-others .ogrid{grid-template-columns:1fr;}
-  .ocard{border-left:none;border-top:1px solid var(--line);padding:26px 0;}
-  .ocard:first-child{border-top:none;}
   .person .container,.person.rev .container{grid-template-columns:1fr;gap:30px;}
   .person.rev .p-photo{order:0;}
   .p-photo{max-width:280px;}
@@ -780,54 +735,10 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
   </div>
 </section>
 
-<!-- RESULTS STATEMENT + CASE -->
-<section class="results-st" id="results">
-  <div class="container">
-    <div class="rv"><span class="tag">Results <span>実績</span></span>
-    <h2>37社、2,500名。<br>業種を問わず、<span class="mk">成果</span>を出してまいりました。</h2></div>
-  </div>
-  <div class="container hcase">
-    <div class="hcase-top rv">
-      <div class="hcase-num">
-        <div class="s">Ideation Time</div>
-        <div class="big"><b>1</b><i>時間</i></div>
-        <div class="desc">アイデアの発散から収束まで完了</div>
-      </div>
-      <div class="hcase-meta">
-        <div class="mtag"><span class="badge">PICKUP</span><span class="ind">化学 / 素材</span></div>
-        <h3>新素材アイディエーションの革新</h3>
-        <div class="co">東証プライム上場 総合科学メーカー</div>
-      </div>
-    </div>
-    <div class="hcase-ba rv">
-      <div>
-        <div class="col-l">Before</div>
-        <p>新素材の用途探索は研究者の経験と勘に依存。1,000件中わずか3件の成功率。スピードとスケールの両立が困難な状態でした。</p>
-      </div>
-      <div>
-        <div class="col-l aft">After</div>
-        <ul>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>1時間で発散から収束まで完了する手法を確立</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>ビジネスモデル特許を出願中</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>自社では到達できなかった新用途をAIが提示</li>
-        </ul>
-      </div>
-    </div>
-    <div class="hcase-others rv">
-      <div class="ogrid">
-        <a href="cases.html" class="ocard"><span class="oi">医薬 / ヘルスケア</span><strong>リサーチ外注費の大幅削減</strong><span class="om">年間数百万円削減</span></a>
-        <a href="cases.html" class="ocard"><span class="oi">IT / クラウド</span><strong>さくらインターネット 全社300名AI研修</strong><span class="om">300名が自律活用</span></a>
-        <a href="cases.html" class="ocard"><span class="oi">建設 / 不動産</span><strong>全社AI活用支援</strong><span class="om">複数部門を段階展開中</span></a>
-      </div>
-      <div class="more"><a href="cases.html" class="btn btn--ghost">他の実績を見る <i>→</i></a></div>
-    </div>
-  </div>
-</section>
-
 <!-- VOICE -->
 <section class="voice" id="voice">
   <div class="container">
-    <div class="sec-head rv"><span class="tag">Voice <span>お客様の声</span></span><h2>AI活用で、仕事はどう変わったか。</h2></div>
+    <div class="sec-head rv"><span class="tag">Voice <span>お客様の声</span></span><h2>AI活用で、仕事はどう変わったか。</h2><p class="voice-proof">37社・2,500名を支援</p></div>
     <div class="voice-grid rvg">
       <article class="voice-card">
         <div class="voice-portrait">
