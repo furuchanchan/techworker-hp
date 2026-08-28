@@ -109,24 +109,70 @@ body.menu-open .mmenu{transform:none;visibility:visible;}
 .mmenu .m-lang{margin-top:auto;border:none;font-family:var(--en);font-size:13px;color:var(--slate);}
 .mmenu .m-lang::after{content:none;}
 
+/* ===== NEWS CANVAS ===== */
+.news-shell{background-image:linear-gradient(rgba(13,17,23,.038) 1px,transparent 1px),linear-gradient(90deg,rgba(13,17,23,.038) 1px,transparent 1px);background-size:56px 56px;}
+
 /* ===== PAGE HEAD ===== */
-.page-head{max-width:1280px;margin:0 auto;padding:160px 48px 0;}
-.page-head .crumb{font-family:var(--en);font-size:12px;color:var(--slate);margin-bottom:34px;letter-spacing:.02em;}
+.page-head{max-width:1280px;margin:0 auto;padding:132px 48px 0;}
+.page-head .crumb{font-family:var(--en);font-size:12px;color:var(--slate);margin-bottom:28px;letter-spacing:.02em;}
 .page-head .crumb a{color:var(--slate);text-decoration:none;transition:color .2s;}
 .page-head .crumb a:hover{color:var(--electric);}
 .page-head .crumb .sep{margin:0 9px;opacity:.5;}
 .page-head .crumb .cur{color:var(--ink);}
-.page-head h1{font-family:var(--jp);font-weight:700;font-size:clamp(32px,4.6vw,58px);line-height:1.24;letter-spacing:-.02em;margin-top:22px;}
-.page-head .lead{font-size:16px;color:var(--slate);line-height:2.05;margin-top:22px;max-width:60ch;}
+.page-head h1{font-family:var(--jp);font-weight:700;font-size:clamp(38px,4.8vw,62px);line-height:1.2;letter-spacing:-.035em;margin-top:18px;}
+.page-head .lead{font-size:15.5px;color:var(--slate);line-height:1.9;margin-top:14px;max-width:68ch;}
+
+/* ===== FEATURED NEWS ===== */
+.news-section{padding:34px 0 104px;}
+.news-feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;}
+.news-card{position:relative;display:flex;min-width:0;min-height:500px;flex-direction:column;overflow:hidden;color:var(--ink);background:rgba(251,252,253,.96);border:1px solid var(--line-2);border-radius:8px;text-decoration:none;box-shadow:0 10px 28px rgba(13,17,23,.035);transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s ease,border-color .25s ease;}
+.news-card:hover{transform:translateY(-4px);border-color:rgba(0,94,255,.38);box-shadow:0 22px 44px -28px rgba(13,17,23,.28);}
+.news-card.is-featured{border-color:var(--electric);box-shadow:0 0 0 1px rgba(0,94,255,.05),0 12px 30px rgba(13,17,23,.04);}
+.news-card-visual{position:relative;display:flex;aspect-ratio:16/9;align-items:center;justify-content:center;overflow:hidden;background:#f7f8fa;border-bottom:1px solid var(--line);}
+.news-card-visual::after{content:"";position:absolute;z-index:5;top:17px;right:18px;width:18px;height:4px;background:var(--electric);}
+.news-card-visual img{width:100%;height:100%;object-fit:cover;object-position:top left;transition:transform .45s cubic-bezier(.16,1,.3,1);}
+.news-card:hover .news-card-visual img{transform:scale(1.018);}
+.news-featured-label{position:absolute;z-index:6;top:13px;left:14px;padding:6px 10px;color:#fff;background:var(--electric);border-radius:3px;font-family:var(--en);font-size:10px;font-weight:700;letter-spacing:.04em;}
+.news-card-body{display:flex;flex:1;flex-direction:column;padding:20px 22px 18px;}
+.news-card-meta{display:flex;align-items:center;gap:14px;margin-bottom:15px;}
+.news-kind{display:inline-flex;align-items:center;padding:4px 9px;color:var(--electric);background:var(--white);border:1px solid var(--line-2);border-radius:999px;font-size:10.5px;font-weight:700;line-height:1.3;white-space:nowrap;}
+.news-date{font-family:var(--en);font-size:12px;color:var(--slate);font-feature-settings:"tnum" 1;}
+.news-card-title{font-size:18px;font-weight:700;line-height:1.55;letter-spacing:-.018em;}
+.news-card-summary{margin-top:12px;color:var(--slate);font-size:13px;line-height:1.8;}
+.news-card-link{display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:17px;border-top:1px solid var(--line);color:var(--electric);font-size:12.5px;font-weight:700;}
+.news-card-link i{font-family:var(--en);font-style:normal;transition:transform .25s cubic-bezier(.16,1,.3,1);}
+.news-card:hover .news-card-link i{transform:translateX(5px);}
+
+/* factual event visual: no stock photography */
+.news-visual-event{align-items:stretch;justify-content:stretch;padding:24px;background:repeating-linear-gradient(0deg,rgba(13,17,23,.035) 0 1px,transparent 1px 34px),repeating-linear-gradient(90deg,rgba(13,17,23,.035) 0 1px,transparent 1px 34px),#f4f4f2;}
+.event-poster{display:flex;width:100%;flex-direction:column;justify-content:space-between;padding:24px;background:rgba(251,252,253,.92);border:1px solid var(--line-2);}
+.event-poster .kicker{color:var(--electric);font-family:var(--en);font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;}
+.event-poster strong{max-width:15ch;font-size:23px;line-height:1.42;letter-spacing:-.025em;}
+.event-poster .partners{display:flex;align-items:center;gap:9px;color:var(--slate);font-family:var(--en);font-size:10px;font-weight:600;}
+.event-poster .partners b{color:var(--ink);font-size:11px;}
+.event-poster .partners i{width:18px;height:1px;background:var(--electric);}
+
+/* factual document cover built from the published title */
+.news-visual-document{padding:24px;background:#f0f1f3;}
+.document-stack{position:relative;width:82%;height:84%;}
+.document-page{position:absolute;display:flex;flex-direction:column;padding:20px 18px;background:#fff;border:1px solid var(--line);box-shadow:0 12px 24px rgba(13,17,23,.08);}
+.document-page.back{inset:12% -3% 2% 32%;transform:rotate(5deg);}
+.document-page.mid{inset:5% 8% 6% 17%;transform:rotate(1.8deg);}
+.document-page.front{inset:0 35% 0 0;justify-content:space-between;}
+.document-page .doc-num{color:var(--electric);font-family:var(--en);font-size:9px;font-weight:700;letter-spacing:.08em;}
+.document-page strong{font-size:16px;line-height:1.42;letter-spacing:-.02em;}
+.document-page .doc-rule{height:5px;background:linear-gradient(90deg,var(--electric) 0 48%,rgba(0,94,255,.2) 48% 72%,transparent 72%);}
+.document-page .doc-lines{height:42%;background:repeating-linear-gradient(0deg,rgba(13,17,23,.15) 0 1px,transparent 1px 8px);}
 
 /* ===== NEWS LIST ===== */
-.news-section{padding:54px 0 110px;}
+.latest-head{display:flex;align-items:center;justify-content:space-between;margin-top:44px;padding-bottom:13px;border-bottom:1px solid var(--line-2);}
+.latest-head h2{color:var(--electric);font-family:var(--en);font-size:13px;font-weight:700;letter-spacing:.045em;}
+.latest-head span{color:var(--slate);font-size:11px;}
 .news-list{border-top:1px solid var(--line);}
 .news-row{display:grid;grid-template-columns:140px 110px 1fr auto;gap:28px;align-items:center;padding:26px 0;border-bottom:1px solid var(--line);text-decoration:none;transition:background .2s;}
 .news-row:hover{background:var(--paper-2);}
 .news-row .d{font-family:var(--en);font-size:14.5px;color:var(--slate);font-feature-settings:"tnum" 1;letter-spacing:.01em;}
 .news-row .tg{font-size:12px;font-weight:600;color:var(--electric);letter-spacing:.02em;}
-.news-row .tg.ev{color:var(--violet);}
 .news-row .tt{font-size:16px;font-weight:500;color:var(--ink);line-height:1.6;transition:color .2s,transform .25s cubic-bezier(.2,.8,.2,1);}
 .news-row:hover .tt{color:var(--electric);transform:translateX(5px);}
 .news-row .ar{font-family:var(--en);color:var(--electric);font-size:15px;opacity:0;transition:opacity .25s,transform .25s cubic-bezier(.2,.8,.2,1);transform:translateX(-4px);}
@@ -186,6 +232,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--electric);outline-o
 
 /* ===== RESPONSIVE ===== */
 @media(max-width:1000px){
+  .news-feature-grid{grid-template-columns:1fr;}
+  .news-card{display:grid;grid-template-columns:minmax(280px,42%) 1fr;min-height:0;}
+  .news-card-visual{height:100%;min-height:248px;aspect-ratio:auto;border-right:1px solid var(--line);border-bottom:none;}
+  .news-card-body{min-height:248px;}
   .footer-inner{grid-template-columns:1fr 1fr;gap:32px;}
 }
 @media(max-width:860px){
@@ -193,14 +243,26 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--electric);outline-o
   nav .nav-cta{padding:8px 14px;font-size:12.5px;}nav .nav-cta .full{display:none;}nav .nav-cta .short{display:inline;}
   nav .lang{display:none;}
   .hamb{display:block;}
-  .page-head{padding:118px 24px 0;}
+  .page-head{padding:108px 24px 0;}
   .news-row{grid-template-columns:104px 1fr;gap:6px 16px;}
   .news-row .tg{display:none;}
   .news-row .ar{display:none;}
 }
 @media(max-width:560px){
   .container{padding:0 22px;}
-  .page-head{padding:108px 22px 0;}
+  .page-head{padding:94px 22px 0;}
+  .page-head .crumb{margin-bottom:22px;}
+  .page-head h1{font-size:38px;}
+  .news-section{padding-top:26px;padding-bottom:78px;}
+  .news-feature-grid{gap:15px;}
+  .news-card{display:flex;min-height:0;}
+  .news-card-visual{height:auto;min-height:0;aspect-ratio:16/9;border-right:none;border-bottom:1px solid var(--line);}
+  .news-card-body{min-height:280px;padding:19px 19px 17px;}
+  .news-card-title{font-size:17px;}
+  .news-card-summary{font-size:12.5px;}
+  .event-poster{padding:18px;}
+  .event-poster strong{font-size:20px;}
+  .latest-head{margin-top:36px;}
   nav{padding:0 10px 0 18px;height:60px;}
   .mmenu{top:60px;}
 }
@@ -339,32 +401,82 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
 
 <main>
 
+<div class="news-shell">
 <!-- PAGE HEAD -->
 <header class="page-head">
   <div class="crumb" aria-label="パンくず"><a href="index.html">ホーム</a><span class="sep">/</span><span class="cur">ニュース</span></div>
   <div class="rv">
-    <span class="tag">News <span>お知らせ・イベント</span></span>
-    <h1>ニュース</h1>
-    <p class="lead">TechWorkerのお知らせ、イベント、登壇情報をお届けします。</p>
+    <span class="tag">News <span>最新情報</span></span>
+    <h1>TechWorkerの、いま。</h1>
+    <p class="lead">プロダクト、顧客との取り組み、イベントなどの最新情報をお届けします。</p>
   </div>
 </header>
 
-<!-- NEWS LIST -->
+<!-- FEATURED NEWS -->
 <section class="news-section">
   <div class="container">
+    <div class="news-feature-grid rvg" aria-label="注目のニュース">
+      <a href="news/009.html" class="news-card is-featured">
+        <div class="news-card-visual">
+          <span class="news-featured-label">FEATURED</span>
+          <img src="media/interview/product-ui/coesignal-workspace-home.png" alt="AIインタビューサービスCoeSignalのワークスペース画面" width="1280" height="900" loading="eager" decoding="async">
+        </div>
+        <div class="news-card-body">
+          <div class="news-card-meta"><span class="news-kind">プロダクト</span><time class="news-date" datetime="2026-08-28">2026.08.28</time></div>
+          <h2 class="news-card-title">現場の声を、意思決定の証拠へ。AIインタビューサービス「CoeSignal」を正式ローンチ</h2>
+          <p class="news-card-summary">顧客や従業員へのヒアリングから、原発言まで遡れる意思決定用の報告をつくります。</p>
+          <span class="news-card-link">詳しく見る <i>→</i></span>
+        </div>
+      </a>
+
+      <a href="news/004.html" class="news-card">
+        <div class="news-card-visual news-visual-event" aria-hidden="true">
+          <div class="event-poster">
+            <span class="kicker">Enterprise AI Seminar</span>
+            <strong>生成AIを、<br>現場の力に。</strong>
+            <span class="partners"><b>TechWorker</b><i></i><span>さくらインターネット株式会社</span></span>
+          </div>
+        </div>
+        <div class="news-card-body">
+          <div class="news-card-meta"><span class="news-kind">登壇・イベント</span><time class="news-date" datetime="2025-05-07">2025.05.07</time></div>
+          <h2 class="news-card-title">さくらインターネット株式会社の社内セミナーに代表・古野が講師として登壇</h2>
+          <p class="news-card-summary">生成AIに関する基礎知識と、実務で活用するための考え方を共有しました。</p>
+          <span class="news-card-link">詳しく見る <i>→</i></span>
+        </div>
+      </a>
+
+      <a href="news/001.html" class="news-card">
+        <div class="news-card-visual news-visual-document" aria-hidden="true">
+          <div class="document-stack">
+            <span class="document-page back"><span class="doc-num">03 / RESULTS</span><span class="doc-lines"></span><span class="doc-rule"></span></span>
+            <span class="document-page mid"><span class="doc-num">02 / PROCESS</span><span class="doc-lines"></span><span class="doc-rule"></span></span>
+            <span class="document-page front"><span class="doc-num">TECHWORKER REPORT</span><strong>2026年版<br>生成AI活用<br>事例集</strong><span class="doc-rule"></span></span>
+          </div>
+        </div>
+        <div class="news-card-body">
+          <div class="news-card-meta"><span class="news-kind">レポート・資料</span><time class="news-date" datetime="2026-03-20">2026.03.20</time></div>
+          <h2 class="news-card-title">生成AI活用事例ホワイトペーパーを公開しました</h2>
+          <p class="news-card-summary">7業種・37社の導入から見えた、成果につながる実践パターンをまとめています。</p>
+          <span class="news-card-link">詳しく見る <i>→</i></span>
+        </div>
+      </a>
+    </div>
+
+    <div class="latest-head rv">
+      <h2>LATEST NEWS</h2>
+      <span>その他のニュース</span>
+    </div>
     <div class="news-list rvg">
-      <a href="news/009.html" class="news-row"><span class="d">2026.08.28</span><span class="tg">お知らせ</span><span class="tt">AIインタビューサービス「CoeSignal」を正式ローンチ</span><span class="ar">→</span></a>
-      <a href="news/005.html" class="news-row"><span class="d">2026.06.06</span><span class="tg">お知らせ</span><span class="tt">ホームページをアップデートしました</span><span class="ar">→</span></a>
-      <a href="news/008.html" class="news-row"><span class="d">2026.04.20</span><span class="tg">お知らせ</span><span class="tt">生成AI×士業メディアの運用を開始しました</span><span class="ar">→</span></a>
-      <a href="news/007.html" class="news-row"><span class="d">2026.04.10</span><span class="tg">お知らせ</span><span class="tt">生成AI×人材メディアの運用を開始しました</span><span class="ar">→</span></a>
-      <a href="news/001.html" class="news-row"><span class="d">2026.03.20</span><span class="tg">お知らせ</span><span class="tt">生成AI活用事例ホワイトペーパーを公開しました</span><span class="ar">→</span></a>
-      <a href="news/002.html" class="news-row"><span class="d">2026.03.14</span><span class="tg">お知らせ</span><span class="tt">サービスラインナップを刷新しました</span><span class="ar">→</span></a>
-      <a href="news/003.html" class="news-row"><span class="d">2026.02.28</span><span class="tg ev">イベント</span><span class="tt">「AI導入の落とし穴」無料ウェビナー開催のお知らせ</span><span class="ar">→</span></a>
-      <a href="news/004.html" class="news-row"><span class="d">2025.05.07</span><span class="tg ev">イベント</span><span class="tt">さくらインターネット株式会社の社内セミナーに代表・古野が講師として登壇しました</span><span class="ar">→</span></a>
-      <a href="news/006.html" class="news-row"><span class="d">2025.05.01</span><span class="tg ev">イベント</span><span class="tt">毎週、生成AI活用の無料ウェビナーを開催しています</span><span class="ar">→</span></a>
+      <a href="news/005.html" class="news-row"><time class="d" datetime="2026-06-06">2026.06.06</time><span class="tg">コーポレート</span><span class="tt">ホームページをアップデートしました</span><span class="ar">→</span></a>
+      <a href="news/008.html" class="news-row"><time class="d" datetime="2026-04-20">2026.04.20</time><span class="tg">メディア</span><span class="tt">生成AI×士業メディアの運用を開始しました</span><span class="ar">→</span></a>
+      <a href="news/007.html" class="news-row"><time class="d" datetime="2026-04-10">2026.04.10</time><span class="tg">メディア</span><span class="tt">生成AI×人材メディアの運用を開始しました</span><span class="ar">→</span></a>
+      <a href="news/002.html" class="news-row"><time class="d" datetime="2026-03-14">2026.03.14</time><span class="tg">サービス</span><span class="tt">サービスラインナップを刷新しました</span><span class="ar">→</span></a>
+      <a href="news/003.html" class="news-row"><time class="d" datetime="2026-02-28">2026.02.28</time><span class="tg">イベント</span><span class="tt">「AI導入の落とし穴」無料ウェビナー開催のお知らせ</span><span class="ar">→</span></a>
+      <a href="news/006.html" class="news-row"><time class="d" datetime="2025-05-01">2025.05.01</time><span class="tg">イベント</span><span class="tt">毎週、生成AI活用の無料ウェビナーを開催しています</span><span class="ar">→</span></a>
     </div>
   </div>
 </section>
+</div>
 
 <!-- CTA -->
 <section class="news-cta">
