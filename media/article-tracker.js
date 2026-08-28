@@ -29,9 +29,23 @@
     return "other";
   }
 
+  function addCoeSignalAttribution(anchor) {
+    var url = new URL(anchor.href, location.href);
+    if (url.hostname !== "coesignal.techworker.co.jp") return;
+    if (!url.searchParams.has("utm_source")) url.searchParams.set("utm_source", "techworker");
+    if (!url.searchParams.has("utm_medium")) url.searchParams.set("utm_medium", "owned_media");
+    if (!url.searchParams.has("utm_campaign")) url.searchParams.set("utm_campaign", "ai_interview_lab");
+    if (!url.searchParams.has("utm_content")) {
+      var pageSlug = path === "/media/interview" ? "portal" : path.split("/").pop();
+      url.searchParams.set("utm_content", pageSlug || "media");
+    }
+    anchor.href = url.toString();
+  }
+
   document.addEventListener("click", function (event) {
     var anchor = event.target.closest && event.target.closest("a[href]");
     if (!anchor) return;
+    addCoeSignalAttribution(anchor);
     var kind = kindFor(anchor);
     if (["consultation", "assessment", "download", "service"].indexOf(kind) === -1) return;
     send("media_cta_click", {
