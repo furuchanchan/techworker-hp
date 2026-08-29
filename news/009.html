@@ -36,7 +36,7 @@ if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_vi
 <meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Sans+JP:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -112,7 +112,7 @@ if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_vi
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{overflow-x:hidden;scroll-behavior:smooth;}
-body{font-family:var(--jp);background:var(--paper);color:var(--ink);line-height:1.85;font-size:16px;-webkit-font-smoothing:antialiased;font-feature-settings:"palt" 1;overflow-x:hidden;}
+body{font-family:var(--jp);background:var(--white);color:var(--ink);line-height:1.85;font-size:16px;-webkit-font-smoothing:antialiased;font-feature-settings:"palt" 1;overflow-x:hidden;}
 ::selection{background:var(--electric);color:var(--paper);}
 a{color:inherit;}
 img{display:block;max-width:100%;}
@@ -169,82 +169,6 @@ body.menu-open .mmenu{transform:none;visibility:visible;}
 .mmenu .m-lang{margin-top:auto;border:none;font-family:var(--en);font-size:13px;color:var(--slate);}
 .mmenu .m-lang::after{content:none;}
 
-/* ===== ARTICLE HEAD ===== */
-.art-head{max-width:1280px;margin:0 auto;padding:150px 48px 0;}
-.art-head .crumb{font-family:var(--en);font-size:12px;color:var(--slate);margin-bottom:40px;letter-spacing:.02em;}
-.art-head .crumb a{color:var(--slate);text-decoration:none;transition:color .2s;}
-.art-head .crumb a:hover{color:var(--electric);}
-.art-head .crumb .sep{margin:0 9px;opacity:.5;}
-.art-head .crumb .cur{color:var(--ink);}
-.art-head .a-meta{display:flex;align-items:center;gap:18px;margin:22px 0 18px;}
-.art-head .a-date{font-family:var(--en);font-size:14px;color:var(--slate);font-feature-settings:"tnum" 1;letter-spacing:.01em;}
-.art-head .a-cat{font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--electric);}
-.art-head .a-cat.ev{color:var(--violet);}
-.art-head h1{font-family:var(--jp);font-weight:700;font-size:clamp(28px,4vw,50px);line-height:1.34;letter-spacing:-.02em;max-width:24ch;}
-.art-rule{max-width:1280px;margin:46px auto 0;padding:0 48px;}
-.art-rule hr{border:none;border-top:1px solid var(--line);}
-
-/* ===== ARTICLE BODY ===== */
-.art-wrap{padding:54px 0 70px;}
-.art-body{max-width:760px;margin:0 auto;}
-.art-body p{font-size:16px;color:#28313f;line-height:2.05;margin-bottom:30px;}
-.art-body p:last-child{margin-bottom:0;}
-.art-body p strong{color:var(--ink);font-weight:600;}
-.art-body a{color:var(--electric);text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);transition:border-color .2s;}
-.art-body a:hover{border-color:var(--electric);}
-.art-body h2{font-family:var(--jp);font-weight:700;font-size:22px;line-height:1.5;letter-spacing:-.01em;margin:48px 0 18px;padding-left:16px;border-left:3px solid var(--electric);}
-.art-body h2:first-child{margin-top:0;}
-.art-body ul{list-style:none;margin:0 0 30px;}
-.art-body li{position:relative;font-size:16px;color:#28313f;line-height:1.95;padding:6px 0 6px 24px;}
-.art-body li::before{content:"";position:absolute;left:0;top:16px;width:7px;height:7px;background:var(--electric);border-radius:1px;}
-.art-body .info-box{margin:0 0 30px;border:1px solid var(--line);background:var(--white);border-radius:6px;padding:8px 28px;}
-.art-body .info-table{width:100%;border-collapse:collapse;}
-.art-body .info-table tr{border-bottom:1px solid var(--line);}
-.art-body .info-table tr:last-child{border-bottom:none;}
-.art-body .info-table th{text-align:left;font-size:13px;font-weight:600;color:var(--slate);padding:16px 18px 16px 0;width:118px;vertical-align:top;white-space:nowrap;}
-.art-body .info-table td{font-size:15px;color:var(--ink);padding:16px 0;line-height:1.7;}
-.art-body .quote-box{margin:0 0 30px;border-left:3px solid var(--electric);background:var(--paper-2);padding:24px 28px;border-radius:0 6px 6px 0;}
-.art-body .quote-box p{margin:0;font-family:var(--jp);font-weight:500;font-size:16px;line-height:1.95;color:var(--ink);}
-.art-body .a-link{font-size:14px;}
-
-/* article CTA */
-.art-cta{max-width:760px;margin:48px auto 0;background:var(--electric-dark);color:var(--paper);border-radius:8px;padding:40px 44px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;}
-.art-cta h3{font-family:var(--jp);font-weight:700;font-size:clamp(18px,2.2vw,24px);line-height:1.5;letter-spacing:-.01em;color:var(--paper);}
-.art-cta p{font-size:14px;color:rgba(244,246,249,.82);margin-top:10px;line-height:1.9;max-width:46ch;}
-.art-cta .btn{background:var(--paper);color:var(--electric);white-space:nowrap;}
-.art-cta .btn:hover{background:var(--white);}
-
-/* back to list */
-.back-list{max-width:760px;margin:46px auto 0;padding-top:32px;border-top:1px solid var(--line);}
-.back-list a{display:inline-flex;align-items:center;gap:9px;font-family:var(--jp);font-size:14.5px;font-weight:600;color:var(--electric);text-decoration:none;transition:gap .2s;}
-.back-list a:hover{gap:13px;}
-
-/* prev/next pager */
-.pager{max-width:760px;margin:0 auto;padding:40px 0;display:grid;grid-template-columns:1fr 1fr;gap:24px;}
-.pager-card{display:block;text-decoration:none;color:inherit;padding:26px 28px;background:var(--white);border:1px solid var(--line);border-radius:8px;transition:border-color .25s,transform .25s,box-shadow .25s;}
-.pager-card:hover{border-color:var(--electric);transform:translateY(-3px);box-shadow:0 14px 34px rgba(13,17,23,.07);}
-.pager-label{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--electric);display:block;margin-bottom:10px;}
-.pager-title{font-size:15px;font-weight:600;line-height:1.55;color:var(--ink);transition:color .2s;}
-.pager-card:hover .pager-title{color:var(--electric);}
-.pager-date{font-family:var(--en);font-size:12px;color:var(--slate);margin-top:9px;font-feature-settings:"tnum" 1;}
-.pager-next{text-align:right;}
-.pager-placeholder{visibility:hidden;}
-
-/* related */
-.related{padding:60px 0 96px;border-top:1px solid var(--line);}
-.related .container{max-width:1280px;}
-.related h2{font-family:var(--jp);font-weight:700;font-size:clamp(22px,2.6vw,30px);line-height:1.4;letter-spacing:-.02em;margin-top:18px;}
-.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:40px;border-top:1px solid var(--line);}
-.related-card{display:block;text-decoration:none;color:inherit;padding:30px 28px 30px 0;border-bottom:1px solid var(--line);border-left:1px solid var(--line);padding-left:28px;transition:background .2s;}
-.related-card:first-child{border-left:none;padding-left:0;}
-.related-card:hover{background:var(--paper-2);}
-.related-card .rc-meta{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
-.related-card .rc-date{font-family:var(--en);font-size:13px;color:var(--slate);font-feature-settings:"tnum" 1;}
-.related-card .rc-cat{font-size:11px;font-weight:600;letter-spacing:.04em;color:var(--electric);}
-.related-card .rc-cat.ev{color:var(--violet);}
-.related-card .rc-title{font-size:15px;font-weight:600;line-height:1.6;color:var(--ink);transition:color .2s,transform .25s cubic-bezier(.2,.8,.2,1);}
-.related-card:hover .rc-title{color:var(--electric);transform:translateX(4px);}
-
 /* ===== FOOTER ===== */
 footer{background:var(--white);border-top:1px solid var(--line);padding:64px 0 40px;}
 .footer-inner{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;}
@@ -259,15 +183,6 @@ footer{background:var(--white);border-top:1px solid var(--line);padding:64px 0 4
 .footer-col p{font-size:13px;color:var(--slate);line-height:1.7;margin-top:12px;}
 .copyright{text-align:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-family:var(--en);font-size:12px;color:var(--slate);}
 
-/* ===== reveal ===== */
-html.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
-html.js .rv.show{opacity:1;transform:none;}
-html.js .rvg>*{opacity:0;transform:translateY(18px);}
-html.js .rvg.show>*{opacity:1;transform:none;transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1);}
-html.js .rvg.show>*:nth-child(1){transition-delay:.04s;}
-html.js .rvg.show>*:nth-child(2){transition-delay:.12s;}
-html.js .rvg.show>*:nth-child(3){transition-delay:.20s;}
-
 /* ===== focus visibility ===== */
 a:focus-visible,button:focus-visible{outline:2px solid var(--electric);outline-offset:3px;border-radius:3px;}
 :focus:not(:focus-visible){outline:none;}
@@ -275,8 +190,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--electric);outline-o
 /* ===== reduced motion ===== */
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto;}
-  html.js .rv{opacity:1;transform:none;transition:none;}
-  html.js .rvg>*{opacity:1;transform:none;}
   *{animation-duration:.001ms!important;transition-duration:.001ms!important;}
 }
 
@@ -292,34 +205,38 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--electric);outline-o
 /* ===== RESPONSIVE ===== */
 @media(max-width:1000px){
   .footer-inner{grid-template-columns:1fr 1fr;gap:32px;}
-  .related-grid{grid-template-columns:1fr;}
-  .related-card{border-left:none;padding-left:0;}
 }
 @media(max-width:860px){
   nav ul{display:none;}
   nav .nav-cta{padding:8px 14px;font-size:12.5px;}nav .nav-cta .full{display:none;}nav .nav-cta .short{display:inline;}
   nav .lang{display:none;}
   .hamb{display:block;}
-  .art-head{padding:118px 24px 0;}
-  .art-rule{padding:0 24px;}
-  .art-cta{grid-template-columns:1fr;gap:22px;padding:30px 26px;}
-  .pager{grid-template-columns:1fr;}
-  .pager-next{text-align:left;}
-  .pager-placeholder{display:none;}
+  .art-head{padding:112px 24px 0;}
+  .article-hero{padding:0 24px;}
 }
 @media(max-width:560px){
   .container{padding:0 22px;}
-  .art-head{padding:108px 22px 0;}
-  .art-rule{padding:0 22px;}
+  .art-head{padding:96px 22px 0;}
+  .art-head .crumb{margin-bottom:36px;}
+  .a-topline{align-items:flex-start;flex-direction:column;margin-bottom:19px;}
+  .a-share-label{display:none;}
+  .art-head h1{font-size:34px;line-height:1.35;}
+  .art-head .lead{margin-top:20px;font-size:15.5px;}
+  .article-hero{margin-top:42px;padding:0;}
+  .article-hero-frame{border-right:none;border-left:none;border-radius:0;}
+  .article-hero figcaption{padding:0 22px;}
+  .art-wrap{padding:54px 0 88px;}
+  .art-body p,.art-body li{font-size:15.5px;}
+  .art-body h2{margin-top:52px;font-size:24px;}
   nav{padding:0 10px 0 18px;height:60px;}
   .mmenu{top:60px;}
-  .art-head .info-table th{width:96px;}
 }
 @media print{
   body{background:#fff;color:#000;}
-  nav,.mmenu,.hamb,.art-cta,.pager,.related{display:none;}
+  nav,.mmenu,.hamb,.a-share{display:none;}
 }
 </style>
+<link rel="stylesheet" href="article.css">
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -334,11 +251,11 @@ fbq('init', '1264057945446029');
 fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
+src="https://www.facebook.com/tr?id=1264057945446029&amp;ev=PageView&amp;noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 </head>
-<body>
+<body class="article-page">
 
 <!-- NAV -->
 <nav id="nav">
@@ -375,14 +292,27 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
 <!-- ARTICLE HEAD -->
 <header class="art-head">
   <div class="crumb" aria-label="パンくず"><a href="../index.html">ホーム</a><span class="sep">/</span><a href="../news.html">ニュース</a><span class="sep">/</span><span class="cur">CoeSignal正式ローンチ</span></div>
-  <span class="tag">News <span>お知らせ</span></span>
-  <div class="a-meta">
-    <span class="a-date">2026.08.28</span>
-    <span class="a-cat">お知らせ</span>
+  <div class="a-topline">
+    <div class="a-meta">
+      <time class="a-date" datetime="2026-08-28">2026.08.28</time>
+      <span class="a-cat">お知らせ</span>
+    </div>
+    <div class="a-share" aria-label="この記事を共有">
+      <span class="a-share-label">Share</span>
+      <a href="https://x.com/intent/post?url=https%3A%2F%2Ftechworker.co.jp%2Fnews%2F009&amp;text=AI%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%93%E3%83%A5%E3%83%BC%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%80%8CCoeSignal%E3%80%8D%E3%82%92%E6%AD%A3%E5%BC%8F%E3%83%AD%E3%83%BC%E3%83%B3%E3%83%81" target="_blank" rel="noopener noreferrer" aria-label="Xで共有">X</a>
+      <button type="button" id="copyLink" aria-label="記事のリンクをコピー">Link</button>
+    </div>
   </div>
   <h1>現場の声を、意思決定の証拠へ。AIインタビューサービス「CoeSignal」を正式ローンチ</h1>
+  <p class="lead">AIが一人ひとりの声を深掘りし、反対意見や少数意見も含め、原発言まで遡れる意思決定用の報告をつくります。</p>
 </header>
-<div class="art-rule"><hr></div>
+
+<figure class="article-hero">
+  <div class="article-hero-frame">
+    <img src="../media/interview/product-ui/coesignal-illust-hero.png" alt="CoeSignalの分析ビュー。複数の回答を論点ごとに整理し、引用元の音声まで確認できる画面" width="1200" height="568" decoding="async">
+  </div>
+  <figcaption>CoeSignalの分析画面イメージ。回答を共通テーマごとに整理し、引用元の発言まで遡れます。</figcaption>
+</figure>
 
 <!-- ARTICLE BODY -->
 <section class="art-wrap">
@@ -405,17 +335,17 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
 
       <h2>CoeSignalの特長</h2>
 
-      <p><strong>1. AIが回答に応じて理由を深掘り</strong><br>
-      回答者は、専用URLから都合のよい時間に、音声またはテキストで回答できます。AIが回答内容に応じて追加質問を行い、表面的な回答だけでは分からない具体的な場面、理由、迷い、判断条件を確かめます。</p>
+      <h3>AIが回答に応じて理由を深掘り</h3>
+      <p>回答者は、専用URLから都合のよい時間に、音声またはテキストで回答できます。AIが回答内容に応じて追加質問を行い、表面的な回答だけでは分からない具体的な場面、理由、迷い、判断条件を確かめます。</p>
 
-      <p><strong>2. 日程調整を増やさず、一人ひとりにヒアリング</strong><br>
-      回答者ごとの面談日程を組むことなく、複数のヒアリングを並行して進められます。顧客、従業員、会員など、対象者の都合に合わせて声を集められます。</p>
+      <h3>日程調整を増やさず、一人ひとりにヒアリング</h3>
+      <p>回答者ごとの面談日程を組むことなく、複数のヒアリングを並行して進められます。顧客、従業員、会員など、対象者の都合に合わせて声を集められます。</p>
 
-      <p><strong>3. 結論から原発言まで遡れる報告</strong><br>
-      集まった回答を、主要な発見、少数意見、反対意見、留意点とともに整理します。要約をブラックボックスにせず、同意された範囲で元の発言へ戻れる形にすることで、会議や稟議で検証できる報告をつくります。</p>
+      <h3>結論から原発言まで遡れる報告</h3>
+      <p>集まった回答を、主要な発見、少数意見、反対意見、留意点とともに整理します。要約をブラックボックスにせず、同意された範囲で元の発言へ戻れる形にすることで、会議や稟議で検証できる報告をつくります。</p>
 
-      <p><strong>4. AIだけで完結させず、人が品質を確認</strong><br>
-      自動生成された内容をそのまま納品するのではなく、担当者が回答や分析内容、除外理由などを確認します。調査設計から報告まで、意思決定の目的に合わせて支援します。</p>
+      <h3>AIだけで完結させず、人が品質を確認</h3>
+      <p>自動生成された内容をそのまま納品するのではなく、担当者が回答や分析内容、除外理由などを確認します。調査設計から報告まで、意思決定の目的に合わせて支援します。</p>
 
       <h2>主な活用場面</h2>
 
@@ -427,71 +357,27 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
         <li>AI導入や業務改革に向けた現場課題の整理</li>
       </ul>
 
-      <h2>代表取締役 CEO兼CTO 古野光太朗のコメント</h2>
+      <h2>代表コメント</h2>
 
-      <div class="quote-box">
-        <p>企業の支援をする中で何度も目にしてきたのは、現場には重要な事実があるのに、それが会議で使える証拠になっていないという状況でした。<br><br>
-        CoeSignalは、単にインタビューを速くするためのサービスではありません。誰が、どのような文脈で話したのか。反対意見はなかったのか。どこまで確かなのか。そうした問いに答えられる形で声を残し、経営、商品、組織の次の一手につなげるためのサービスです。<br><br>
-        現場の声が、意思決定の中心に置かれる状態をつくっていきます。</p>
-      </div>
+      <figure class="representative-photo">
+        <div class="representative-photo-frame">
+          <img src="../assets/ceo-portrait.jpg" alt="株式会社TechWorker 代表取締役 CEO兼CTO 古野光太朗" width="2730" height="4096" loading="lazy" decoding="async">
+        </div>
+        <figcaption>株式会社TechWorker 代表取締役 CEO兼CTO 古野光太朗</figcaption>
+      </figure>
 
-      <h2>サービス概要</h2>
+      <p>企業の支援をする中で何度も目にしてきたのは、現場には重要な事実があるのに、それが会議で使える証拠になっていないという状況でした。</p>
+      <p>CoeSignalは、単にインタビューを速くするためのサービスではありません。誰が、どのような文脈で話したのか。反対意見はなかったのか。どこまで確かなのか。そうした問いに答えられる形で声を残し、経営、商品、組織の次の一手につなげるためのサービスです。</p>
+      <p>現場の声が、意思決定の中心に置かれる状態をつくっていきます。</p>
 
-      <div class="info-box">
-        <table class="info-table">
-          <tr><th>サービス名</th><td>CoeSignal（コエシグナル）</td></tr>
-          <tr><th>提供会社</th><td>株式会社TechWorker</td></tr>
-          <tr><th>詳細</th><td><a href="https://coesignal.techworker.co.jp/docs">CoeSignalの機能・導入情報を見る</a></td></tr>
-          <tr><th>お問い合わせ</th><td><a href="../contact.html">お問い合わせフォーム</a></td></tr>
-        </table>
+      <div class="article-service">
+        <p><strong>CoeSignal（コエシグナル）</strong><br>提供：株式会社TechWorker<br><a href="https://coesignal.techworker.co.jp/docs">サービスの詳細を見る</a> ／ <a href="../contact.html">お問い合わせ</a></p>
       </div>
 
     </div>
-
-    <!-- CTA -->
-    <div class="art-cta rv">
-      <div>
-        <h3>次に決めたいことから、ご相談ください。</h3>
-        <p>商品、顧客、組織について、いつまでに何を決めたいかを伺い、最初の調査テーマを整理します。</p>
-      </div>
-      <a href="../contact.html" class="btn">無料相談を申し込む <i>→</i></a>
-    </div>
-
-      <p class="byline" style="font-size:13px;color:var(--slate);margin:24px auto 0;max-width:760px;">執筆：古野光太朗（株式会社TechWorker 代表取締役 CEO兼CTO）｜公開：2026-08-28</p>
 
     <div class="back-list">
       <a href="../news.html">← ニュース一覧に戻る</a>
-    </div>
-
-    <div class="pager">
-      <div class="pager-card pager-placeholder"></div>
-      <a href="005.html" class="pager-card pager-next">
-        <span class="pager-label">Next</span>
-        <div class="pager-title">ホームページをアップデートしました</div>
-        <div class="pager-date">2026.06.06</div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- RELATED -->
-<section class="related">
-  <div class="container">
-    <span class="tag">Related <span>関連ニュース</span></span>
-    <h2>関連ニュース</h2>
-    <div class="related-grid rvg">
-      <a href="005.html" class="related-card">
-        <div class="rc-meta"><span class="rc-date">2026.06.06</span><span class="rc-cat">お知らせ</span></div>
-        <div class="rc-title">ホームページをアップデートしました</div>
-      </a>
-      <a href="002.html" class="related-card">
-        <div class="rc-meta"><span class="rc-date">2026.03.14</span><span class="rc-cat">お知らせ</span></div>
-        <div class="rc-title">サービスラインナップを刷新しました</div>
-      </a>
-      <a href="001.html" class="related-card">
-        <div class="rc-meta"><span class="rc-date">2026.03.20</span><span class="rc-cat">お知らせ</span></div>
-        <div class="rc-title">生成AI活用事例ホワイトペーパーを公開しました</div>
-      </a>
     </div>
   </div>
 </section>
@@ -549,9 +435,7 @@ addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>40)
   matchMedia('(min-width:861px)').addEventListener('change',function(e){if(e.matches)setMenu(false);});
 })();
 
-/* scroll reveal */
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.rv,.rvg').forEach(function(el){io.observe(el);});
 </script>
+<script src="article.js"></script>
 </body>
 </html>
