@@ -36,7 +36,7 @@ if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_vi
 <meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Sans+JP:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -169,82 +169,6 @@ body.menu-open .mmenu{transform:none;visibility:visible;}
 .mmenu .m-lang{margin-top:auto;border:none;font-family:var(--en);font-size:13px;color:var(--slate);}
 .mmenu .m-lang::after{content:none;}
 
-/* ===== ARTICLE HEAD ===== */
-.art-head{max-width:1280px;margin:0 auto;padding:150px 48px 0;}
-.art-head .crumb{font-family:var(--en);font-size:12px;color:var(--slate);margin-bottom:40px;letter-spacing:.02em;}
-.art-head .crumb a{color:var(--slate);text-decoration:none;transition:color .2s;}
-.art-head .crumb a:hover{color:var(--electric);}
-.art-head .crumb .sep{margin:0 9px;opacity:.5;}
-.art-head .crumb .cur{color:var(--ink);}
-.art-head .a-meta{display:flex;align-items:center;gap:18px;margin:22px 0 18px;}
-.art-head .a-date{font-family:var(--en);font-size:14px;color:var(--slate);font-feature-settings:"tnum" 1;letter-spacing:.01em;}
-.art-head .a-cat{font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--electric);}
-.art-head .a-cat.ev{color:var(--violet);}
-.art-head h1{font-family:var(--jp);font-weight:700;font-size:clamp(28px,4vw,50px);line-height:1.34;letter-spacing:-.02em;max-width:24ch;}
-.art-rule{max-width:1280px;margin:46px auto 0;padding:0 48px;}
-.art-rule hr{border:none;border-top:1px solid var(--line);}
-
-/* ===== ARTICLE BODY ===== */
-.art-wrap{padding:54px 0 70px;}
-.art-body{max-width:760px;margin:0 auto;}
-.art-body p{font-size:16px;color:#28313f;line-height:2.05;margin-bottom:30px;}
-.art-body p:last-child{margin-bottom:0;}
-.art-body p strong{color:var(--ink);font-weight:600;}
-.art-body a{color:var(--electric);text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);transition:border-color .2s;}
-.art-body a:hover{border-color:var(--electric);}
-.art-body h2{font-family:var(--jp);font-weight:700;font-size:22px;line-height:1.5;letter-spacing:-.01em;margin:48px 0 18px;padding-left:16px;border-left:3px solid var(--electric);}
-.art-body h2:first-child{margin-top:0;}
-.art-body ul{list-style:none;margin:0 0 30px;}
-.art-body li{position:relative;font-size:16px;color:#28313f;line-height:1.95;padding:6px 0 6px 24px;}
-.art-body li::before{content:"";position:absolute;left:0;top:16px;width:7px;height:7px;background:var(--electric);border-radius:1px;}
-.art-body .info-box{margin:0 0 30px;border:1px solid var(--line);background:var(--white);border-radius:6px;padding:8px 28px;}
-.art-body .info-table{width:100%;border-collapse:collapse;}
-.art-body .info-table tr{border-bottom:1px solid var(--line);}
-.art-body .info-table tr:last-child{border-bottom:none;}
-.art-body .info-table th{text-align:left;font-size:13px;font-weight:600;color:var(--slate);padding:16px 18px 16px 0;width:118px;vertical-align:top;white-space:nowrap;}
-.art-body .info-table td{font-size:15px;color:var(--ink);padding:16px 0;line-height:1.7;}
-.art-body .quote-box{margin:0 0 30px;border-left:3px solid var(--electric);background:var(--paper-2);padding:24px 28px;border-radius:0 6px 6px 0;}
-.art-body .quote-box p{margin:0;font-family:var(--jp);font-weight:500;font-size:16px;line-height:1.95;color:var(--ink);}
-.art-body .a-link{font-size:14px;}
-
-/* article CTA */
-.art-cta{max-width:760px;margin:48px auto 0;background:var(--electric-dark);color:var(--paper);border-radius:8px;padding:40px 44px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;}
-.art-cta h3{font-family:var(--jp);font-weight:700;font-size:clamp(18px,2.2vw,24px);line-height:1.5;letter-spacing:-.01em;color:var(--paper);}
-.art-cta p{font-size:14px;color:rgba(244,246,249,.82);margin-top:10px;line-height:1.9;max-width:46ch;}
-.art-cta .btn{background:var(--paper);color:var(--electric);white-space:nowrap;}
-.art-cta .btn:hover{background:var(--white);}
-
-/* back to list */
-.back-list{max-width:760px;margin:46px auto 0;padding-top:32px;border-top:1px solid var(--line);}
-.back-list a{display:inline-flex;align-items:center;gap:9px;font-family:var(--jp);font-size:14.5px;font-weight:600;color:var(--electric);text-decoration:none;transition:gap .2s;}
-.back-list a:hover{gap:13px;}
-
-/* prev/next pager */
-.pager{max-width:760px;margin:0 auto;padding:40px 0;display:grid;grid-template-columns:1fr 1fr;gap:24px;}
-.pager-card{display:block;text-decoration:none;color:inherit;padding:26px 28px;background:var(--white);border:1px solid var(--line);border-radius:8px;transition:border-color .25s,transform .25s,box-shadow .25s;}
-.pager-card:hover{border-color:var(--electric);transform:translateY(-3px);box-shadow:0 14px 34px rgba(13,17,23,.07);}
-.pager-label{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--electric);display:block;margin-bottom:10px;}
-.pager-title{font-size:15px;font-weight:600;line-height:1.55;color:var(--ink);transition:color .2s;}
-.pager-card:hover .pager-title{color:var(--electric);}
-.pager-date{font-family:var(--en);font-size:12px;color:var(--slate);margin-top:9px;font-feature-settings:"tnum" 1;}
-.pager-next{text-align:right;}
-.pager-placeholder{visibility:hidden;}
-
-/* related */
-.related{padding:60px 0 96px;border-top:1px solid var(--line);}
-.related .container{max-width:1280px;}
-.related h2{font-family:var(--jp);font-weight:700;font-size:clamp(22px,2.6vw,30px);line-height:1.4;letter-spacing:-.02em;margin-top:18px;}
-.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:40px;border-top:1px solid var(--line);}
-.related-card{display:block;text-decoration:none;color:inherit;padding:30px 28px 30px 0;border-bottom:1px solid var(--line);border-left:1px solid var(--line);padding-left:28px;transition:background .2s;}
-.related-card:first-child{border-left:none;padding-left:0;}
-.related-card:hover{background:var(--paper-2);}
-.related-card .rc-meta{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
-.related-card .rc-date{font-family:var(--en);font-size:13px;color:var(--slate);font-feature-settings:"tnum" 1;}
-.related-card .rc-cat{font-size:11px;font-weight:600;letter-spacing:.04em;color:var(--electric);}
-.related-card .rc-cat.ev{color:var(--violet);}
-.related-card .rc-title{font-size:15px;font-weight:600;line-height:1.6;color:var(--ink);transition:color .2s,transform .25s cubic-bezier(.2,.8,.2,1);}
-.related-card:hover .rc-title{color:var(--electric);transform:translateX(4px);}
-
 /* ===== FOOTER ===== */
 footer{background:var(--white);border-top:1px solid var(--line);padding:64px 0 40px;}
 .footer-inner{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;}
@@ -320,6 +244,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--electric);outline-o
   nav,.mmenu,.hamb,.art-cta,.pager,.related{display:none;}
 }
 </style>
+<link rel="stylesheet" href="article.css">
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -334,11 +259,11 @@ fbq('init', '1264057945446029');
 fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
+src="https://www.facebook.com/tr?id=1264057945446029&amp;ev=PageView&amp;noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 </head>
-<body>
+<body class="article-page">
 
 <!-- NAV -->
 <nav id="nav">
@@ -372,22 +297,30 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
   <a href="../en/index.html" class="m-lang">English ↗</a>
 </div>
 
+<main>
 <!-- ARTICLE HEAD -->
 <header class="art-head">
-  <div class="crumb" aria-label="パンくず"><a href="../index.html">ホーム</a><span class="sep">/</span><a href="../news.html">ニュース</a><span class="sep">/</span><span class="cur">無料ウェビナー</span></div>
-  <span class="tag ev">News <span>イベント</span></span>
-  <div class="a-meta">
-    <span class="a-date">2025.05.01</span>
-    <span class="a-cat ev">イベント</span>
+  <div class="crumb" role="navigation" aria-label="パンくず"><a href="../index.html">ホーム</a><span class="sep">/</span><a href="../news.html">ニュース</a><span class="sep">/</span><span class="cur">無料ウェビナー</span></div>
+  <div class="a-topline">
+    <div class="a-meta"><time class="a-date" datetime="2025-05-01">2025.05.01</time><span class="a-cat">イベント</span></div>
+    <div class="a-share" aria-label="この記事を共有"><span class="a-share-label">Share</span><a href="https://x.com/intent/post?url=https%3A%2F%2Ftechworker.co.jp%2Fnews%2F006" target="_blank" rel="noopener noreferrer" aria-label="Xで共有">X</a><button type="button" id="copyLink" aria-label="記事のリンクをコピー">Link</button></div>
   </div>
   <h1>毎週、生成AI活用の無料ウェビナーを開催しています</h1>
+  <p class="lead">生成AIを現場で使われる状態にするための考え方と実践例を、毎週オンラインでご紹介しています。</p>
 </header>
-<div class="art-rule"><hr></div>
+
+<figure class="article-hero">
+  <div class="article-hero-frame hero-event">
+    <div class="hero-event-copy"><small>Weekly Webinar</small><strong>生成AI活用を、<br>実務の話から。</strong><p>導入・定着・全社展開を、実例を交えて解説します。</p></div>
+    <div class="hero-event-date"><b>FREE</b><span>EVERY WEEK / ONLINE</span></div>
+  </div>
+  <figcaption>経営者・DX推進担当・情報システム・現場リーダー向けの無料オンラインウェビナー。</figcaption>
+</figure>
 
 <!-- ARTICLE BODY -->
 <section class="art-wrap">
   <div class="container">
-    <div class="art-body rv">
+    <div class="art-body">
 
       <p>株式会社TechWorkerは、生成AIの業務活用をテーマとした<strong>無料オンラインウェビナーを毎週開催</strong>しています。「ツールは導入したが、現場で使われない」——多くの企業が直面するこの課題を、実例を交えながら解きほぐす、実践的な内容です。</p>
 
@@ -414,65 +347,20 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
       <h2>開催概要</h2>
 
       <div class="info-box">
-        <table class="info-table">
-          <tr><th>形式</th><td>オンライン</td></tr>
-          <tr><th>頻度</th><td>毎週開催</td></tr>
-          <tr><th>対象</th><td>経営者・DX推進担当・情報システム・現場リーダーの方</td></tr>
-          <tr><th>参加費</th><td>無料</td></tr>
+        <table class="info-table" aria-label="無料ウェビナー開催概要">
+          <tr><th scope="row">形式</th><td>オンライン</td></tr>
+          <tr><th scope="row">頻度</th><td>毎週開催</td></tr>
+          <tr><th scope="row">対象</th><td>経営者・DX推進担当・情報システム・現場リーダーの方</td></tr>
+          <tr><th scope="row">参加費</th><td>無料</td></tr>
         </table>
       </div>
 
       <p>開催日程・お申し込みは、<a href="../contact.html">お問い合わせフォーム</a>よりご案内しています。「ウェビナー参加希望」とお書き添えのうえ、お気軽にご連絡ください。</p>
-
     </div>
-
-    <!-- CTA -->
-    <div class="art-cta rv">
-      <div>
-        <h3>まずは無料ウェビナーから、お気軽に。</h3>
-        <p>個別のご相談をご希望の方には、無料相談も承っています。現状の課題をお聞きし、最適な始め方をご提案します。</p>
-      </div>
-      <a href="../contact.html" class="btn">参加・相談を申し込む <i>→</i></a>
-    </div>
-
-      <p class="byline" style="font-size:13px;color:var(--slate);margin:24px auto 0;max-width:760px;">執筆：古野光太朗（株式会社TechWorker 代表取締役 CEO兼CTO）｜公開：2025-05-01</p>
-
-    <div class="back-list">
-      <a href="../news.html">← ニュース一覧に戻る</a>
-    </div>
-
-    <div class="pager">
-      <a href="004.html" class="pager-card">
-        <span class="pager-label">Prev</span>
-        <div class="pager-title">さくらインターネット株式会社の社内セミナーに代表・古野が講師として登壇しました</div>
-        <div class="pager-date">2025.05.07</div>
-      </a>
-      <div class="pager-card pager-placeholder pager-next"></div>
-    </div>
+    <div class="back-list"><a href="../news.html">← ニュース一覧に戻る</a></div>
   </div>
 </section>
-
-<!-- RELATED -->
-<section class="related">
-  <div class="container">
-    <span class="tag">Related <span>関連ニュース</span></span>
-    <h2>関連ニュース</h2>
-    <div class="related-grid rvg">
-      <a href="003.html" class="related-card">
-        <div class="rc-meta"><span class="rc-date">2026.02.28</span><span class="rc-cat ev">イベント</span></div>
-        <div class="rc-title">「AI導入の落とし穴」無料ウェビナー開催のお知らせ</div>
-      </a>
-      <a href="004.html" class="related-card">
-        <div class="rc-meta"><span class="rc-date">2025.05.07</span><span class="rc-cat ev">イベント</span></div>
-        <div class="rc-title">さくらインターネット株式会社の社内セミナーに代表・古野が講師として登壇しました</div>
-      </a>
-      <a href="001.html" class="related-card">
-        <div class="rc-meta"><span class="rc-date">2026.03.20</span><span class="rc-cat">お知らせ</span></div>
-        <div class="rc-title">生成AI活用事例ホワイトペーパーを公開しました</div>
-      </a>
-    </div>
-  </div>
-</section>
+</main>
 
 <!-- FOOTER -->
 <footer>
@@ -531,5 +419,6 @@ addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>40)
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.rv,.rvg').forEach(function(el){io.observe(el);});
 </script>
+<script src="article.js"></script>
 </body>
 </html>
