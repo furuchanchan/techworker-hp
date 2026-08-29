@@ -3,7 +3,11 @@
   if(!copy)return;
   function reset(label){
     copy.textContent=label;
-    setTimeout(function(){copy.textContent='Link';},1600);
+    copy.setAttribute('aria-label',label==='Copied'?'リンクをコピーしました':'リンクをコピーできませんでした');
+    setTimeout(function(){
+      copy.textContent='Link';
+      copy.setAttribute('aria-label','記事のリンクをコピー');
+    },1600);
   }
   function legacyCopy(){
     var field=document.createElement('textarea');
