@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="ja" class="no-js"><head><meta charset="UTF-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-3V34NWXVCJ');</script><script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>生成AI研修の演習課題をどう作るか｜実データを使わず業務に近づける設計 — TechWorker</title><meta name="description" content="生成AI研修の演習をプロンプト練習だけで終わらせず、業務の入力・判断・確認・修正まで再現する設計を解説。機密データを持ち込まない教材化、評価表、製品別の使い分けを整理します。"><link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg"><link rel="canonical" href="https://techworker.co.jp/media/kenshu/generative-ai-training-exercise-design">
+<meta property="og:type" content="article"><meta property="og:title" content="生成AI研修の演習課題をどう作るか｜実データを使わず業務に近づける設計"><meta property="og:description" content="生成AI研修の演習をプロンプト練習だけで終わらせず、業務の入力・判断・確認・修正まで再現する設計を解説。機密データを持ち込まない教材化、評価表、製品別の使い分けを整理します。"><meta property="og:image" content="https://techworker.co.jp/media/kenshu/covers/generative-ai-training-exercise-design.png"><meta property="og:url" content="https://techworker.co.jp/media/kenshu/generative-ai-training-exercise-design"><meta property="og:site_name" content="TechWorker"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://techworker.co.jp/media/kenshu/covers/generative-ai-training-exercise-design.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../article.css"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"生成AI研修の演習課題をどう作るか｜実データを使わず業務に近づける設計","description":"生成AI研修の演習をプロンプト練習だけで終わらせず、業務の入力・判断・確認・修正まで再現する設計を解説。機密データを持ち込まない教材化、評価表、製品別の使い分けを整理します。","datePublished":"2026-09-09","dateModified":"2026-09-09","inLanguage":"ja","image":{"@type":"ImageObject","url":"https://techworker.co.jp/media/kenshu/covers/generative-ai-training-exercise-design.png","width":1200,"height":630},"author":{"@type":"Person","name":"古野光太朗","url":"https://techworker.co.jp/company.html"},"publisher":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://techworker.co.jp/media/kenshu/generative-ai-training-exercise-design"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},{"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},{"@type":"ListItem","position":3,"name":"AI研修・導入ラボ","item":"https://techworker.co.jp/media/kenshu/"},{"@type":"ListItem","position":4,"name":"生成AI研修の演習課題をどう作るか｜実データを使わず業務に近づける設計","item":"https://techworker.co.jp/media/kenshu/generative-ai-training-exercise-design"}]}</script>
+<style>.daily-cover{display:block;width:min(1100px,calc(100% - 48px));height:auto;aspect-ratio:1200/630;object-fit:cover;margin:0 auto 54px;border:1px solid var(--line-2);border-radius:16px}.source-note{font-size:13px;color:var(--slate)}.source-list li{margin-bottom:10px;word-break:break-word}@media(max-width:720px){.daily-cover{width:calc(100% - 28px);border-radius:10px;margin-bottom:34px}}</style></head>
+<body><div class="progress" id="progress"></div><nav id="nav"><a href="index.html" class="logo">Tech<i>Worker</i><span class="m-tag">Media</span></a><ul><li><a href="index.html">AI研修・導入ラボ</a></li><li><a href="../index.html">記事一覧</a></li><li><a href="../../index.html">TechWorkerとは</a></li></ul><div class="nav-right"><a href="../../training.html" class="nav-cta"><span class="full">相談する</span><span class="short">相談</span></a></div></nav>
+<header class="art-head"><nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a></nav><div class="kicker">Exercise Design</div><h1>生成AI研修の演習課題をどう作るか｜実データを使わず業務に近づける設計</h1><p class="dek">生成AI研修の演習をプロンプト練習だけで終わらせず、業務の入力・判断・確認・修正まで再現する設計を解説。機密データを持ち込まない教材化、評価表、製品別の使い分けを整理します。</p><div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.09.09</span><span class="dot">·</span><span>一次情報 6件</span></div></header><img class="daily-cover" src="covers/generative-ai-training-exercise-design.png" alt="機密を除いた模擬資料から生成AI研修の演習とフィードバックを設計する図" width="1200" height="630">
+<div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div><a href="#s1">演習課題の目的を「操作」から「判断」に変える</a><a href="#s2">一つの演習を「入力・生成・判断・修正」に分ける</a><a href="#s3">教材データを三段階で管理する</a><a href="#s4">評価表は「正解」より確認行動を採点する</a><a href="#s5">製品・研修サービスを比べるときの軸</a><a href="#s6">90分で試せる課題の型</a><a href="#s7">限界：模擬データは本番のリスクを再現しきれない</a><a href="#s8">生成AI研修の演習設計と定着を相談する</a><a href="#s9">出典・確認範囲（確認日：2026年9月9日）</a></div></nav><article class="art-body"><p>生成AI研修で「プロンプトを入力して、それらしい文章が出た」という演習だけを行うと、受講者は操作を覚えても、実務で必要な判断を練習できません。仕事では、入力してよい情報か、出力をどこまで信頼するか、誰が確認するか、間違いをどう戻すかまで決めるからです。</p>
+<p>一方、実際の顧客情報や社内機密をそのまま教材へ持ち込むのも危険です。演習は本番データを使うかどうかではなく、業務の構造を残しながら、個人・顧客・契約を特定できる情報を取り除く設計にします。</p>
+<p>本稿の検索意図は、研修で使う演習課題と教材データの作り方です。職種別カリキュラム、研修効果の測定、Copilotのガバナンス設計を扱う既存記事とは、演習の入力・判断・修正を具体化する点で分けています。</p>
+<h2 id="s1">演習課題の目的を「操作」から「判断」に変える</h2>
+<p>受講者が知りたいのは、ツールのボタンの場所だけではありません。「この仕事なら使えるか」「この出力は人が確認すべきか」「入力してはいけない情報は何か」を自分で判断できることです。</p>
+<p>英国Skills Englandの2026年ベンチマークは、職場向けAI基礎技能を、技術、非技術、責任・倫理の3領域に分けています。明確な指示、定型業務の支援、設定の調整だけでなく、リスクと結果を理解し、出力の誤りを見つける力も含まれます。演習もこの三領域を一つのケースに組み込みます。</p>
+<p>欧州AI規則の第4条は、提供者・導入者が、知識、経験、教育、利用文脈を踏まえてAIリテラシーの発展を支援するよう求めています。ただし、特定の個人が一定水準に達することを保証する義務ではありません。日本企業の研修へ直接適用する法的結論ではなく、受講者の役割と利用文脈に応じて課題を分ける考え方として参照します。</p>
+<h2 id="s2">一つの演習を「入力・生成・判断・修正」に分ける</h2>
+<h3>1. 入力：安全な教材データを用意する</h3>
+<p>実データを匿名化したつもりでも、固有の案件名、日時、少数の属性を組み合わせれば個人や顧客を推測できることがあります。まず、教材の目的に必要な項目だけを残します。氏名、メールアドレス、顧客番号、契約金額などは、架空値へ置き換えるか削除します。置き換え表を作る場合は、研修終了後に消せる保管場所と担当者を決めます。</p>
+<p>良い教材は、現実の文章を丸ごとコピーした教材ではありません。業務上の制約、判断の分岐、よくある誤り、正解にならない例を残した小さなケースです。たとえば「顧客からの要望を社内依頼票に要約する」なら、要望本文、納期、未確認事項、禁止している約束を、架空の値で組み立てます。</p>
+<h3>2. 生成：同じ課題に複数の指示を試す</h3>
+<p>受講者へ完成済みのプロンプトを配るだけでは、条件を変えたときの挙動を学べません。目的、対象読者、制約、出力形式、確認事項を一つずつ変え、結果の差を比較します。課題には「情報が不足しているときは質問を返す」「根拠がない推測を明示する」といった条件も入れます。</p>
+<h3>3. 判断：出力を採用・保留・却下に分ける</h3>
+<p>採点を文章の上手さだけにすると、もっともらしい誤りを見落とします。受講者は、事実確認が必要な箇所、社内規程との不一致、顧客への約束になり得る表現、機密情報の混入を色分けします。採用、要修正、利用中止の三つへ分類し、理由を一行で書かせます。</p>
+<h3>4. 修正：人が業務成果物へ戻す</h3>
+<p>最後に、出力をそのまま提出させず、元の業務様式へ戻します。誰がレビューするか、何を根拠として確認するか、修正履歴をどこへ残すかまで記録します。生成AIの文章を使うことではなく、担当者が責任ある成果物に変換できることを到達点にします。</p>
+<h2 id="s3">教材データを三段階で管理する</h2>
+<p>研修用データは、実データか架空データかの二択ではありません。次の三段階を使い分けます。</p>
+<ul>
+<li><strong>例示データ</strong>：完全に架空の短い例。初学者が操作と確認の型を学ぶ。</li>
+<li><strong>構造化した模擬データ</strong>：実務の項目、分岐、誤りを再現するが、個人や顧客を特定できない。業務演習の中心にする。</li>
+<li><strong>限定された本番データ</strong>：承認された環境で、利用目的・権限・保存・削除を確認した場合だけ使う。研修の初回から使わない。</li>
+</ul>
+<p>NISTの生成AIプロファイルは、生成AIの固有リスクを組織の目標に沿って識別・評価・管理するための補助資料です。教材データも、機密性だけでなく、誤出力、偏り、追跡不能な変更、利用者が過信するリスクを洗い出します。匿名化や架空化をしたから安全、という結論にはしません。</p>
+<h2 id="s4">評価表は「正解」より確認行動を採点する</h2>
+<p>演習の評価表には、次の観点を置きます。</p>
+<ul>
+<li>入力データの利用可否と不足情報を確認したか</li>
+<li>目的・対象者・制約・形式を指示に含めたか</li>
+<li>出力の事実、数字、引用、個人情報を確認したか</li>
+<li>不確かな箇所を保留し、適切な担当者へ戻したか</li>
+<li>修正前後と採用理由を記録したか</li>
+</ul>
+<p>「正しい回答を一度で出せたか」だけを採点すると、偶然の成功を技能と誤認します。受講者の提出物、確認コメント、差し戻し理由を残せば、研修担当者はどの判断が難しかったかを次の課題へ反映できます。これは先日の効果測定記事で扱った指標設計とは異なり、演習中の行動を観察するための評価です。</p>
+<h2 id="s5">製品・研修サービスを比べるときの軸</h2>
+<p>市場には、短時間の汎用eラーニング、特定製品の公式学習、講師付きの業務研修、導入後の伴走支援があります。優劣を一律に決めるのではなく、教材へ何を持ち込めるか、受講者の操作をどこまで記録できるか、管理者が課題を自社業務へ差し替えられるかを比較します。</p>
+<p>Microsoft LearnのMicrosoft 365 Copilot向け学習パスは、営業、財務、IT、人事などのユースケース演習を製品環境で行う構成です。実際のライセンスやOneDriveが前提になるため、製品操作の習得には向きますが、全社共通の判断規程や、他製品を含む利用基準を自動で教えるものではありません。公式教材を使う場合も、自社の架空ケースと確認表を追加します。</p>
+<p>Skills Englandの「What works for AI upskilling」は、包摂的で安全かつ持続可能なAI人材育成のための調査・事例・実務原則をまとめています。短いコースを配るだけでなく、対象者の条件、現場の支援、継続的な改善を設計する視点が得られます。国内ではデジタル庁のガイドラインが、生成AIの活用促進とリスク管理を表裏一体で進める考え方を示しますが、行政向け資料を民間企業の法的判断へそのまま転用しません。</p>
+<h2 id="s6">90分で試せる課題の型</h2>
+<p>最初は大きな業務改革を扱わず、次の一ケースで試します。</p>
+<ol>
+<li>架空の問い合わせ10件と、社内の回答ルールを用意する。</li>
+<li>受講者が要約を生成し、根拠と不明点を色分けする。</li>
+<li>誤った納期、禁止表現、根拠のない補完を一つ以上混ぜる。</li>
+<li>受講者が採用・修正・保留を選び、確認者へ回す。</li>
+<li>講師が、出力の巧拙ではなく確認行動と記録を講評する。</li>
+</ol>
+<p>演習後は、課題の難しさ、データの不足、確認者の負荷、研修では解けなかったルールを記録します。利用率や満足度だけで成功とせず、業務で安全に再現できるかを次の小さな検証へつなげます。</p>
+<h2 id="s7">限界：模擬データは本番のリスクを再現しきれない</h2>
+<p>架空データは、個人情報や顧客情報を守るうえで有用ですが、本番の例外、権限、部署間の調整、最新情報の欠落を完全には再現しません。反対に、実データを使えば現実味は増しても、漏えい・目的外利用・保存先の問題が増えます。したがって、初回は模擬データで判断の型を練習し、承認済みの限定環境でのみ次段階へ進みます。</p>
+<p>また、研修で正解したことは、長期的な業務成果や法令順守の証明ではありません。AI規則、社内規程、契約、個人情報の扱いは利用地域・業務・製品条件で変わるため、必要に応じて法務・情報セキュリティと確認します。</p>
+<h2 id="s8">生成AI研修の演習設計と定着を相談する</h2>
+<p>実データを配るかどうかの議論だけで止めず、業務の分岐、確認者、失敗例、記録方法を一つの課題に落とすと、受講後の行動へつながります。自社の業務と利用環境に合わせた演習設計、評価表、定着支援をまとめて見直したい場合はご相談ください。</p>
+<h2 id="s9">出典・確認範囲（確認日：2026年9月9日）</h2>
+<div class="tbl-wrap"><table><thead><tr><th>一次情報</th><th>発行日</th><th>根拠箇所・用途</th></tr></thead><tbody>
+<tr><td><a href="https://www.gov.uk/government/publications/ai-foundation-skills-for-work/ai-foundation-skills-for-work-benchmark">Skills England「AI foundation skills for work benchmark」</a></td><td>2026-01-28</td><td>技術・非技術・責任倫理の3領域と6基礎技能。</td></tr>
+<tr><td><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/2026-07-27/eng">欧州連合「Regulation (EU) 2024/1689」Article 4</a></td><td>2024-07-12（統合版確認 2026-07-27）</td><td>利用文脈・経験等を踏まえたAIリテラシー支援。日本法への直接適用ではない。</td></tr>
+<tr><td><a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST「AI Risk Management Framework: Generative AI Profile」</a></td><td>2024-07-26</td><td>生成AI固有リスクの識別・評価・管理。</td></tr>
+<tr><td><a href="https://www.gov.uk/government/publications/skills-for-ai-what-works-for-ai-upskilling-in-the-uk">英国DWP・Skills England「Skills for AI: What works for AI upskilling in the UK」</a></td><td>2026-06-10（更新 2026-07-27）</td><td>包摂的で安全・持続可能なAI人材育成の研究・実務原則。</td></tr>
+<tr><td><a href="https://learn.microsoft.com/en-us/training/paths/empower-workforce-copilot-use-cases/">Microsoft Learn「Empower your workforce with Microsoft 365 Copilot Use Cases」</a></td><td>日付明示なし</td><td>製品環境で職種別ユースケース演習を行う公式学習パス。</td></tr>
+<tr><td><a href="https://www.digital.go.jp/news/3579c42d-b11c-4756-b66e-3d3e35175623">デジタル庁「生成AIの調達・利活用に係るガイドライン」</a></td><td>2025-05-27（更新 2025-06-13）</td><td>活用促進とリスク管理を一体で扱う国内方針。最新版確認を要する。</td></tr>
+</tbody></table></div><h2 id="sources">一次情報と確認範囲</h2><p class="source-note">確認日：2026年9月9日。製品仕様・制度は更新されるため、導入時はリンク先の最新版を再確認してください。海外の制度・職業規範は日本へ直接適用せず、相違点と限界を本文に明記しています。</p><ol class="source-list"><li><a href="https://www.gov.uk/government/publications/ai-foundation-skills-for-work/ai-foundation-skills-for-work-benchmark" target="_blank" rel="noopener noreferrer">職場向けAI技能は技術・非技術・責任倫理の3領域に分かれる</a></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/2026-07-27/eng" target="_blank" rel="noopener noreferrer">AIリテラシー支援は知識・経験・教育・利用文脈を踏まえる</a></li><li><a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener noreferrer">生成AI固有リスクは組織目標に沿って管理する</a></li><li><a href="https://www.gov.uk/government/publications/skills-for-ai-what-works-for-ai-upskilling-in-the-uk" target="_blank" rel="noopener noreferrer">AI人材育成は安全・包摂・持続性を含む実務設計が必要</a></li><li><a href="https://learn.microsoft.com/en-us/training/paths/empower-workforce-copilot-use-cases/" target="_blank" rel="noopener noreferrer">Microsoft公式学習パスは複数職種の製品ユースケース演習を含む</a></li><li><a href="https://www.digital.go.jp/news/3579c42d-b11c-4756-b66e-3d3e35175623" target="_blank" rel="noopener noreferrer">デジタル庁は生成AIの活用とリスク管理を一体で扱う</a></li></ol></article></div>
+<div class="author"><div class="inner"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><div><div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div><p>上場企業を含む37社・2,500名の生成AI導入・研修支援で得た実務知をもとに、導入・運用・顧客理解を扱っています。この実績はTechWorkerの生成AI支援実績であり、個別製品の導入実績を示すものではありません。</p></div></div></div>
+<div class="art-cta"><div class="inner"><div><h3>業務に近い生成AI研修の演習を設計する</h3><p>実データを使わず、入力・判断・修正を含む演習課題と評価基準を設計します。</p></div><a href="../../training.html?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=generative-ai-training-exercise-design" class="btn" data-cta="generative-ai-training-exercise-design">生成AI研修を相談する <i>→</i></a></div></div><div class="back-list"><a href="index.html">← AI研修・導入ラボの記事一覧に戻る</a></div><section class="related"><div class="container"><div class="rl-h">Related</div><div class="related-grid"><a href="generative-ai-training-role-based-design.html" class="related-card"><span class="rc-cat">関連記事</span><div class="rc-title">職種別の研修設計</div></a><a href="generative-ai-training-effectiveness.html" class="related-card"><span class="rc-cat">関連記事</span><div class="rc-title">生成AI研修の効果測定</div></a></div></div></section>
+<footer><div class="container"><div class="footer-inner"><div class="footer-brand"><div class="logo">AI研修・導入ラボ</div><p>一次情報と実務に基づく生成AIメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p></div><div class="footer-col"><h4>メディア</h4><a href="index.html">記事一覧</a><a href="../index.html">全媒体</a></div><div class="footer-col"><h4>運営会社</h4><a href="../../company.html">会社概要</a><a href="../../privacy.html">プライバシーポリシー</a></div></div><p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p></div></footer><script>var pb=document.getElementById('progress');addEventListener('scroll',function(){var h=document.documentElement,d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?h.scrollTop/d*100:0)+'%'},{passive:true})</script><script src="/media/article-tracker.js" defer></script></body></html>
