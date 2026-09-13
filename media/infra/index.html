@@ -50,18 +50,19 @@ if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_vi
   "mainEntity":{
     "@type":"ItemList",
     "itemListElement":[
-      {"@type":"ListItem","position":1,"url":"https://techworker.co.jp/media/infra/ai-model-routing-fallback-contract-design","name":"AI基盤のモデル切替設計｜品質・schema・toolを壊さないルーティングとfallback【2026】"},
-      {"@type":"ListItem","position":2,"url":"https://techworker.co.jp/media/infra/ai-agent-evaluation-release-gates","name":"AIエージェントの品質劣化を止める｜評価セット・リリース判定・本番監視の設計【2026】"},
-      {"@type":"ListItem","position":3,"url":"https://techworker.co.jp/media/infra/durable-ai-agent-workflow-design","name":"AIエージェントの長時間実行を止めない｜承認待ち・再試行・状態を残すワークフロー設計【2026】"},
-      {"@type":"ListItem","position":4,"url":"https://techworker.co.jp/media/infra/rag-index-freshness-versioning","name":"RAGの更新を止めない｜source revision・upsert・index versionを分ける【2026】"},
-      {"@type":"ListItem","position":5,"url":"https://techworker.co.jp/media/infra/durable-objects-agent-concurrency","name":"AIエージェントの同時実行を制御する｜Durable Objectsで会話の二重実行を防ぐ【2026】"},
-      {"@type":"ListItem","position":6,"url":"https://techworker.co.jp/media/infra/ai-agent-observability-trace-design","name":"AIエージェントの障害を追跡できるログ設計｜trace ID・OpenTelemetry・AI Gatewayをつなぐ【2026】"},
-      {"@type":"ListItem","position":7,"url":"https://techworker.co.jp/media/infra/cloudflare-ai-gateway-cache-safety","name":"Cloudflare AI Gatewayのキャッシュ安全設計｜cache key・TTL・DLPをどう分けるか"},
-      {"@type":"ListItem","position":8,"url":"https://techworker.co.jp/media/infra/cloudflare-queues-ai-jobs","name":"Cloudflare QueuesでAIジョブを非同期化する｜再試行・DLQ・冪等性の設計【2026】"},
-      {"@type":"ListItem","position":9,"url":"https://techworker.co.jp/media/infra/cloudflare-workflows-ai-pipeline","name":"Cloudflare WorkflowsでAI処理を耐障害化する｜step・再試行・承認待ち【2026】" },
-      {"@type":"ListItem","position":10,"url":"https://techworker.co.jp/media/infra/workers-production-pitfalls","name":"Cloudflare Workersの本番運用で踏んだ罠5つ｜routes継承・Authentication error 10000・cron未反映【2026】"},
-      {"@type":"ListItem","position":11,"url":"https://techworker.co.jp/media/infra/workers-ai-speech-to-text","name":"Workers AIで音声文字起こしを本番実装する｜外部APIを使わずCloudflare内で完結させる構成"},
-      {"@type":"ListItem","position":12,"url":"https://techworker.co.jp/media/infra/sso-audit-log-enterprise-review","name":"情シス審査を通すために実装したこと｜監査ログ・データ削除・パスワード変更の作り方【2026】"}
+      {"@type":"ListItem","position":1,"url":"https://techworker.co.jp/media/infra/llm-streaming-cancellation-reconnect-design","name":"LLMストリーミングの中断設計｜途中表示を「完了」と扱わない、Abort・再接続・tool実行の分離【2026】"},
+      {"@type":"ListItem","position":2,"url":"https://techworker.co.jp/media/infra/ai-model-routing-fallback-contract-design","name":"AI基盤のモデル切替設計｜品質・schema・toolを壊さないルーティングとfallback【2026】"},
+      {"@type":"ListItem","position":3,"url":"https://techworker.co.jp/media/infra/ai-agent-evaluation-release-gates","name":"AIエージェントの品質劣化を止める｜評価セット・リリース判定・本番監視の設計【2026】"},
+      {"@type":"ListItem","position":4,"url":"https://techworker.co.jp/media/infra/durable-ai-agent-workflow-design","name":"AIエージェントの長時間実行を止めない｜承認待ち・再試行・状態を残すワークフロー設計【2026】"},
+      {"@type":"ListItem","position":5,"url":"https://techworker.co.jp/media/infra/rag-index-freshness-versioning","name":"RAGの更新を止めない｜source revision・upsert・index versionを分ける【2026】"},
+      {"@type":"ListItem","position":6,"url":"https://techworker.co.jp/media/infra/durable-objects-agent-concurrency","name":"AIエージェントの同時実行を制御する｜Durable Objectsで会話の二重実行を防ぐ【2026】"},
+      {"@type":"ListItem","position":7,"url":"https://techworker.co.jp/media/infra/ai-agent-observability-trace-design","name":"AIエージェントの障害を追跡できるログ設計｜trace ID・OpenTelemetry・AI Gatewayをつなぐ【2026】"},
+      {"@type":"ListItem","position":8,"url":"https://techworker.co.jp/media/infra/cloudflare-ai-gateway-cache-safety","name":"Cloudflare AI Gatewayのキャッシュ安全設計｜cache key・TTL・DLPをどう分けるか"},
+      {"@type":"ListItem","position":9,"url":"https://techworker.co.jp/media/infra/cloudflare-queues-ai-jobs","name":"Cloudflare QueuesでAIジョブを非同期化する｜再試行・DLQ・冪等性の設計【2026】"},
+      {"@type":"ListItem","position":10,"url":"https://techworker.co.jp/media/infra/cloudflare-workflows-ai-pipeline","name":"Cloudflare WorkflowsでAI処理を耐障害化する｜step・再試行・承認待ち【2026】" },
+      {"@type":"ListItem","position":11,"url":"https://techworker.co.jp/media/infra/workers-production-pitfalls","name":"Cloudflare Workersの本番運用で踏んだ罠5つ｜routes継承・Authentication error 10000・cron未反映【2026】"},
+      {"@type":"ListItem","position":12,"url":"https://techworker.co.jp/media/infra/workers-ai-speech-to-text","name":"Workers AIで音声文字起こしを本番実装する｜外部APIを使わずCloudflare内で完結させる構成"},
+      {"@type":"ListItem","position":13,"url":"https://techworker.co.jp/media/infra/sso-audit-log-enterprise-review","name":"情シス審査を通すために実装したこと｜監査ログ・データ削除・パスワード変更の作り方【2026】"}
     ]
   }
 }
@@ -171,6 +172,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <section class="jz-sec jz-latest">
   <div class="jz-sec-h">記事一覧</div>
   <div class="jz-list rv">
+    <a href="llm-streaming-cancellation-reconnect-design.html"><div class="l-side"><div class="l-cat">Streaming Reliability</div><div class="l-date">2026.09.13</div></div><div><div class="l-title">LLMストリーミングの中断設計｜途中表示を「完了」と扱わない、Abort・再接続・tool実行の分離【2026】</div><div class="l-desc">&quot;LLMの逐次表示を本番運用するために、表示用stream、生成完了、利用者の中断、再接続、tool実行を分けて設計する方法を解説。OpenAI・Anthropic・Cloudflare Workersの仕様差と、二重実行を避ける最小構成を整理します。&quot;</div></div><div class="l-arrow">&rarr;</div></a>
     <a href="ai-model-routing-fallback-contract-design.html"><div class="l-side"><div class="l-cat">Model Routing</div><div class="l-date">2026.09.12</div></div><div><div class="l-title">AI基盤のモデル切替設計｜品質・schema・toolを壊さないルーティングとfallback【2026】</div><div class="l-desc">&quot;AI基盤でモデルを切り替えるときに、コストや可用性だけで判断しないための実務を解説。用途別ルーティング、固定version、構造化出力・tool互換性、fallback後の再判定、変更評価を整理します。&quot;</div></div><div class="l-arrow">&rarr;</div></a>
     <a href="ai-agent-evaluation-release-gates.html"><div class="l-side"><div class="l-cat">Agent Evaluation</div><div class="l-date">2026.09.11</div></div><div><div class="l-title">AIエージェントの品質劣化を止める｜評価セット・リリース判定・本番監視の設計【2026】</div><div class="l-desc">&quot;プロンプト、モデル、toolを変えたときにAIエージェントの品質を落とさないための評価設計を解説。業務別評価セット、機械判定と人の校正、リリース判定、本番監視を整理します。&quot;</div></div><div class="l-arrow">&rarr;</div></a>
     <a href="durable-ai-agent-workflow-design.html"><div class="l-side"><div class="l-cat">Durable Workflow</div><div class="l-date">2026.09.10</div></div><div><div class="l-title">AIエージェントの長時間実行を止めない｜承認待ち・再試行・状態を残すワークフロー設計【2026】</div><div class="l-desc">&quot;AIエージェントの長時間処理や承認待ちで、処理状態を失わないためのワークフロー設計を解説。Queue・Durable Objectsとの役割分担、冪等性、再試行の限界まで整理します。&quot;</div></div><div class="l-arrow">&rarr;</div></a>
