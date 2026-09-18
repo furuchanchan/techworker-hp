@@ -50,23 +50,24 @@ if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_vi
   "mainEntity":{
     "@type":"ItemList",
     "itemListElement":[
-      {"@type":"ListItem","position":1,"url":"https://techworker.co.jp/media/infra/mcp-server-stateless-production-migration","name":"MCPサーバーを本番運用する｜2026-07-28のステートレス化・移行設計【2026】"},
-      {"@type":"ListItem","position":2,"url":"https://techworker.co.jp/media/infra/generative-ai-data-residency-processing-design","name":"生成AI APIのデータ所在地設計｜保存・推論・ツール・ログを分けて確認する"},
-      {"@type":"ListItem","position":3,"url":"https://techworker.co.jp/media/infra/llm-prompt-cache-prefix-ttl-observability-design","name":"LLMのprompt cacheを効かせる設計｜安定prefix・TTL・ヒット率を分ける本番運用【2026】"},
-      {"@type":"ListItem","position":4,"url":"https://techworker.co.jp/media/infra/ai-api-429-admission-retry-design","name":"AI APIの429を「再試行」で増幅させない｜レート制限・課金上限・過負荷を分ける負荷制御設計【2026】"},
-      {"@type":"ListItem","position":5,"url":"https://techworker.co.jp/media/infra/llm-streaming-cancellation-reconnect-design","name":"LLMストリーミングの中断設計｜途中表示を「完了」と扱わない、Abort・再接続・tool実行の分離【2026】"},
-      {"@type":"ListItem","position":6,"url":"https://techworker.co.jp/media/infra/ai-model-routing-fallback-contract-design","name":"AI基盤のモデル切替設計｜品質・schema・toolを壊さないルーティングとfallback【2026】"},
-      {"@type":"ListItem","position":7,"url":"https://techworker.co.jp/media/infra/ai-agent-evaluation-release-gates","name":"AIエージェントの品質劣化を止める｜評価セット・リリース判定・本番監視の設計【2026】"},
-      {"@type":"ListItem","position":8,"url":"https://techworker.co.jp/media/infra/durable-ai-agent-workflow-design","name":"AIエージェントの長時間実行を止めない｜承認待ち・再試行・状態を残すワークフロー設計【2026】"},
-      {"@type":"ListItem","position":9,"url":"https://techworker.co.jp/media/infra/rag-index-freshness-versioning","name":"RAGの更新を止めない｜source revision・upsert・index versionを分ける【2026】"},
-      {"@type":"ListItem","position":10,"url":"https://techworker.co.jp/media/infra/durable-objects-agent-concurrency","name":"AIエージェントの同時実行を制御する｜Durable Objectsで会話の二重実行を防ぐ【2026】"},
-      {"@type":"ListItem","position":11,"url":"https://techworker.co.jp/media/infra/ai-agent-observability-trace-design","name":"AIエージェントの障害を追跡できるログ設計｜trace ID・OpenTelemetry・AI Gatewayをつなぐ【2026】"},
-      {"@type":"ListItem","position":12,"url":"https://techworker.co.jp/media/infra/cloudflare-ai-gateway-cache-safety","name":"Cloudflare AI Gatewayのキャッシュ安全設計｜cache key・TTL・DLPをどう分けるか"},
-      {"@type":"ListItem","position":13,"url":"https://techworker.co.jp/media/infra/cloudflare-queues-ai-jobs","name":"Cloudflare QueuesでAIジョブを非同期化する｜再試行・DLQ・冪等性の設計【2026】"},
-      {"@type":"ListItem","position":14,"url":"https://techworker.co.jp/media/infra/cloudflare-workflows-ai-pipeline","name":"Cloudflare WorkflowsでAI処理を耐障害化する｜step・再試行・承認待ち【2026】" },
-      {"@type":"ListItem","position":15,"url":"https://techworker.co.jp/media/infra/workers-production-pitfalls","name":"Cloudflare Workersの本番運用で踏んだ罠5つ｜routes継承・Authentication error 10000・cron未反映【2026】"},
-      {"@type":"ListItem","position":16,"url":"https://techworker.co.jp/media/infra/workers-ai-speech-to-text","name":"Workers AIで音声文字起こしを本番実装する｜外部APIを使わずCloudflare内で完結させる構成"},
-      {"@type":"ListItem","position":17,"url":"https://techworker.co.jp/media/infra/sso-audit-log-enterprise-review","name":"情シス審査を通すために実装したこと｜監査ログ・データ削除・パスワード変更の作り方【2026】"}
+      {"@type":"ListItem","position":1,"url":"https://techworker.co.jp/media/infra/workers-ai-asynchronous-batch-production-design","name":"Cloudflare Workers AI Batch APIの本番設計｜同期推論と分ける判断基準"},
+      {"@type":"ListItem","position":2,"url":"https://techworker.co.jp/media/infra/mcp-server-stateless-production-migration","name":"MCPサーバーを本番運用する｜2026-07-28のステートレス化・移行設計【2026】"},
+      {"@type":"ListItem","position":3,"url":"https://techworker.co.jp/media/infra/generative-ai-data-residency-processing-design","name":"生成AI APIのデータ所在地設計｜保存・推論・ツール・ログを分けて確認する"},
+      {"@type":"ListItem","position":4,"url":"https://techworker.co.jp/media/infra/llm-prompt-cache-prefix-ttl-observability-design","name":"LLMのprompt cacheを効かせる設計｜安定prefix・TTL・ヒット率を分ける本番運用【2026】"},
+      {"@type":"ListItem","position":5,"url":"https://techworker.co.jp/media/infra/ai-api-429-admission-retry-design","name":"AI APIの429を「再試行」で増幅させない｜レート制限・課金上限・過負荷を分ける負荷制御設計【2026】"},
+      {"@type":"ListItem","position":6,"url":"https://techworker.co.jp/media/infra/llm-streaming-cancellation-reconnect-design","name":"LLMストリーミングの中断設計｜途中表示を「完了」と扱わない、Abort・再接続・tool実行の分離【2026】"},
+      {"@type":"ListItem","position":7,"url":"https://techworker.co.jp/media/infra/ai-model-routing-fallback-contract-design","name":"AI基盤のモデル切替設計｜品質・schema・toolを壊さないルーティングとfallback【2026】"},
+      {"@type":"ListItem","position":8,"url":"https://techworker.co.jp/media/infra/ai-agent-evaluation-release-gates","name":"AIエージェントの品質劣化を止める｜評価セット・リリース判定・本番監視の設計【2026】"},
+      {"@type":"ListItem","position":9,"url":"https://techworker.co.jp/media/infra/durable-ai-agent-workflow-design","name":"AIエージェントの長時間実行を止めない｜承認待ち・再試行・状態を残すワークフロー設計【2026】"},
+      {"@type":"ListItem","position":10,"url":"https://techworker.co.jp/media/infra/rag-index-freshness-versioning","name":"RAGの更新を止めない｜source revision・upsert・index versionを分ける【2026】"},
+      {"@type":"ListItem","position":11,"url":"https://techworker.co.jp/media/infra/durable-objects-agent-concurrency","name":"AIエージェントの同時実行を制御する｜Durable Objectsで会話の二重実行を防ぐ【2026】"},
+      {"@type":"ListItem","position":12,"url":"https://techworker.co.jp/media/infra/ai-agent-observability-trace-design","name":"AIエージェントの障害を追跡できるログ設計｜trace ID・OpenTelemetry・AI Gatewayをつなぐ【2026】"},
+      {"@type":"ListItem","position":13,"url":"https://techworker.co.jp/media/infra/cloudflare-ai-gateway-cache-safety","name":"Cloudflare AI Gatewayのキャッシュ安全設計｜cache key・TTL・DLPをどう分けるか"},
+      {"@type":"ListItem","position":14,"url":"https://techworker.co.jp/media/infra/cloudflare-queues-ai-jobs","name":"Cloudflare QueuesでAIジョブを非同期化する｜再試行・DLQ・冪等性の設計【2026】"},
+      {"@type":"ListItem","position":15,"url":"https://techworker.co.jp/media/infra/cloudflare-workflows-ai-pipeline","name":"Cloudflare WorkflowsでAI処理を耐障害化する｜step・再試行・承認待ち【2026】" },
+      {"@type":"ListItem","position":16,"url":"https://techworker.co.jp/media/infra/workers-production-pitfalls","name":"Cloudflare Workersの本番運用で踏んだ罠5つ｜routes継承・Authentication error 10000・cron未反映【2026】"},
+      {"@type":"ListItem","position":17,"url":"https://techworker.co.jp/media/infra/workers-ai-speech-to-text","name":"Workers AIで音声文字起こしを本番実装する｜外部APIを使わずCloudflare内で完結させる構成"},
+      {"@type":"ListItem","position":18,"url":"https://techworker.co.jp/media/infra/sso-audit-log-enterprise-review","name":"情シス審査を通すために実装したこと｜監査ログ・データ削除・パスワード変更の作り方【2026】"}
     ]
   }
 }
@@ -176,6 +177,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <section class="jz-sec jz-latest">
   <div class="jz-sec-h">記事一覧</div>
   <div class="jz-list rv">
+    <a href="workers-ai-asynchronous-batch-production-design.html"><div class="l-side"><div class="l-cat">Workers AI Batch</div><div class="l-date">2026.09.18</div></div><div><div class="l-title">Cloudflare Workers AI Batch APIの本番設計｜同期推論と分ける判断基準</div><div class="l-desc">Cloudflare Workers AIのAsynchronous Batch APIを、投入、受付、状態確認、結果回収、再実行に分け、同期APIと混ぜずに本番運用する方法を解説します。</div></div><div class="l-arrow">&rarr;</div></a>
     <a href="mcp-server-stateless-production-migration.html"><div class="l-side"><div class="l-cat">Stateless MCP</div><div class="l-date">2026.09.17</div></div><div><div class="l-title">MCPサーバーを本番運用する｜2026-07-28のステートレス化・移行設計【2026】</div><div class="l-desc">MCP 2026-07-28で変わったステートレス運用を前提に、旧sessionとの共存、業務状態の分離、互換性確認、廃止条件を整理します。</div></div><div class="l-arrow">&rarr;</div></a>
     <a href="generative-ai-data-residency-processing-design.html"><div class="l-side"><div class="l-cat">Data Residency</div><div class="l-date">2026.09.16</div></div><div><div class="l-title">生成AI APIのデータ所在地設計｜保存・推論・ツール・ログを分けて確認する</div><div class="l-desc">生成AI APIのデータ所在地を、保存、推論処理、RAG、外部ツール、ログ、キャッシュに分けて確認する設計を公式資料から整理します。</div></div><div class="l-arrow">&rarr;</div></a>
     <a href="llm-prompt-cache-prefix-ttl-observability-design.html"><div class="l-side"><div class="l-cat">Prompt Cache</div><div class="l-date">2026.09.15</div></div><div><div class="l-title">LLMのprompt cacheを効かせる設計｜安定prefix・TTL・ヒット率を分ける本番運用【2026】</div><div class="l-desc">&quot;LLMのprompt cacheを、応答キャッシュと混同せず本番運用する方法を解説。安定prefix、動的入力、tool定義、TTL、providerごとの差、cached tokensの測定を分け、コストと初回応答待ちを改善します。&quot;</div></div><div class="l-arrow">&rarr;</div></a>
