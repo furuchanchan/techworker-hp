@@ -413,3 +413,24 @@ dialog.zoom img{display:block;max-width:none;height:auto}
 dialog.zoom .x{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.95);font-size:22px;line-height:1;color:var(--ink);cursor:pointer}
 dialog.zoom .x:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 @media (max-width:900px){.stage .map[data-zoom]{position:relative}.station.wide .txt{grid-template-columns:1fr;gap:0}.station.wide .txt .bd p{margin-top:18px}.station.wide .fig>.shot{overflow:hidden}.station.wide .fig>.shot img{min-width:0;width:100%}dialog.zoom{width:100vw;max-width:100vw;max-height:100vh;height:100vh;border-radius:0}dialog.zoom .zin{max-height:100vh;height:100%}}
+
+/* スマホ〜タブレット幅：「できあがる業務図の例」バッジが差し替え画像の左上の文字と重なるため、画像の外（通常の流れ）に出す */
+@media (max-width:900px){
+  .sample{margin-top:20px}
+  .sample .tagx{position:static;display:inline-flex;left:auto;top:auto;margin-bottom:10px}
+}
+
+/* スマホ幅：「くわしく見る→」の押す場所を32px以上に（見た目の大きさはほぼ変えず、上下の余白だけ広げる） */
+@media (max-width:600px){
+  .mc .more{padding:7px 0;margin:9px 0 -7px}
+}
+
+/* スマホ幅：ナビがはみ出してページ全体が広がるのを防ぐ（ロゴとボタンを詰める／優先度の低いボタンは隠す） */
+@media (max-width:480px){
+  .nav .wrap{gap:10px}
+  .brand{gap:6px}
+  .mark{width:23px;height:23px}
+  .word{font-size:16px}
+  .nav .btn.sm{padding:8px 14px;font-size:12px}
+  .nav .btn.ghost{display:none}
+}
