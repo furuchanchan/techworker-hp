@@ -1,5 +1,6 @@
 // 他社の事例を探す（/companymap の #others）。入れた言葉で、公開のWorker（companymap-cases）に問い合わせて上位の事例を描く。
 // 最初の検索は、この欄が画面に近づいたときに1回だけ行う（ページを開いた全員に問い合わせないため）。
+// 並べ直しに判定用のAI（Jev）を使うので、1回の検索に1秒ほどかかる。
 (() => {
   const root = document.getElementById('case-search');
   if (!root) return;
@@ -48,6 +49,7 @@
     exs.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.q === q)));
     const my = ++seq;
     out.setAttribute('aria-busy', 'true');
+    if (!out.querySelector('.cs-card')) out.innerHTML = '<p class="cs-msg">事例を探しています…</p>'; // 結果がまだ無いときだけ（1秒ほどかかる）
     try {
       const r = await fetch(`${API}?q=${encodeURIComponent(q)}`);
       if (!r.ok) throw new Error(`HTTP ${r.status}`);
