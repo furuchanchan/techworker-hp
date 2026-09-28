@@ -63,11 +63,10 @@
     }
   }
 
-  // 事例を開いた・相談へ進んだ（どの検索から来たかは直前の search で分かる）
+  // 事例を開いた（相談ボタンの計測は cta.js がまとめて行う。場所は case-search）
   out.addEventListener('click', e => {
     const card = e.target.closest('.cs-card');
     if (card) track('select_content', { content_type: 'peer_case', item_id: card.querySelector('.cs-co')?.textContent || '' });
-    if (e.target.closest('.cs-more .btn')) track('companymap_cta_click', { location: 'case_search' });
   });
   input.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(() => search(input.value), 450); });
   form.addEventListener('submit', e => { e.preventDefault(); clearTimeout(timer); search(input.value); });
