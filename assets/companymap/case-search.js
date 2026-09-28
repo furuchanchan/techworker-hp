@@ -14,6 +14,7 @@
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const num = n => Number(n || 0).toLocaleString('ja-JP');
   const ym = s => { const m = /^(\d{4})(?:-(\d{2}))?/.exec(s || ''); return m ? (m[2] ? `${m[1]}年${Number(m[2])}月` : `${m[1]}年`) : ''; };
+  const track = (name, params) => { if (typeof window.gtag === 'function') window.gtag('event', name, params); }; // GA4
   const EXT = '<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M3 1.5h5.5V7M8.5 1.5L1.5 8.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>';
 
   function card(x) {
@@ -54,7 +55,7 @@
       const r = await fetch(`${API}?q=${encodeURIComponent(q)}`);
       if (!r.ok) throw new Error(`HTTP ${r.status}`);
       const d = await r.json();
-      if (my === seq) render(q, d);
+      if (my === seq) { render(q, d); track('search', { search_term: q, results: d.total, reranked: d.reranked }); }
     } catch (e) {
       if (my === seq) { last = ''; out.innerHTML = '<p class="cs-msg">いまは事例を読み込めませんでした。少し時間をおいて、もう一度お試しください。</p>'; }
     } finally {
@@ -62,6 +63,12 @@
     }
   }
 
+  // 事例を開いた・相談へ進んだ（どの検索から来たかは直前の search で分かる）
+  out.addEventListener('click', e => {
+    const card = e.target.closest('.cs-card');
+    if (card) track('select_content', { content_type: 'peer_case', item_id: card.querySelector('.cs-co')?.textContent || '' });
+    if (e.target.closest('.cs-more .btn')) track('companymap_cta_click', { location: 'case_search' });
+  });
   input.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(() => search(input.value), 450); });
   form.addEventListener('submit', e => { e.preventDefault(); clearTimeout(timer); search(input.value); });
   exs.forEach(b => b.addEventListener('click', () => { input.value = b.dataset.q; clearTimeout(timer); search(b.dataset.q); }));
