@@ -35,7 +35,7 @@ if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_vi
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Inter+Tight:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/companymap/style.css?v=20260928c">
+<link rel="stylesheet" href="/assets/companymap/style.css?v=20260928d">
 </head>
 <body>
 
@@ -103,16 +103,15 @@ if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_vi
   </div>
 </header>
 
-<section class="sec"><div class="wrap">
-  <span class="kick">いまの様子</span>
-  <h2 class="h2">作ったAI、いまどこにありますか。</h2>
-  <div class="scatter">
-    <div class="sc"><span class="n">01</span><h4>フォルダの奥</h4><p>研修で作ったプロンプト集が、共有フォルダで眠っている。</p></div>
-    <div class="sc"><span class="n">02</span><h4>作った人の手元</h4><p>便利に使っているのは、作った本人と数人だけ。</p></div>
-    <div class="sc"><span class="n">03</span><h4>呼び出す人が未定</h4><p>だれがいつ呼び出すか、まだ決まっていないエージェント。</p></div>
-    <div class="sc"><span class="n">04</span><h4>PoCの報告書の中</h4><p>試してよかったAIが、報告書の中で止まっている。</p></div>
+<section class="sec" id="pains"><div class="wrap">
+  <span class="kick">いまの課題</span>
+  <h2 class="h2">AIを入れたあと、<br>こんなところで止まっていませんか。</h2>
+  <div class="pains">
+    <div class="pn"><span class="n">01</span><h4>研修のあと、<br>だれも開かなくなった。</h4><p>研修で作ったプロンプト集は、共有フォルダの奥。毎日使っているのは、作った本人と数人だけ。ライセンス代だけが、毎月出ていきます。</p></div>
+    <div class="pn"><span class="n">02</span><h4>「で、AIで何が変わったの？」<br>に答えられない。</h4><p>経営会議で出せるのは、利用回数くらい。浮いた時間も、減った手間も数えていないので、次のAIの予算が通りません。</p></div>
+    <div class="pn"><span class="n">03</span><h4>その仕事、<br>あの人しか分からない。</h4><p>手順はベテランの頭の中。AIに任せようにも、仕事の流れがどこにも書いてないので、どこから渡せばいいのか決まりません。</p></div>
   </div>
-  <p class="lead2">どれも、AIの持ち場がまだ決まっていない状態です。仕事のどこで、だれが呼び出し、だれが確かめるのか。そこを一緒に決めていくのが、CompanyMap AIです。</p>
+  <p class="lead2">3つとも、根っこは同じです。会社の仕事の流れが、どこにも描かれていないこと。CompanyMap AIは、まず仕事を業務図にして、AIに任せるところ、人が確かめるところ、浮いた時間を1枚で見えるようにします。</p>
 </div></section>
 
 <section class="sec" id="how"><div class="wrap">
@@ -142,6 +141,20 @@ if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_vi
       <p>動きはじめたら、使われた回数、人が直した回数、浮いた時間を記録します。任せる範囲を広げたくなったら、業務図を描き足します。</p>
     </div>
     <div class="fig"><div class="shot"><img src="/assets/companymap/results.jpg" width="2000" height="429" loading="lazy" alt="浮いた時間（実績）の画面"></div></div>
+  </div>
+</div></section>
+
+<section class="sec" id="voices"><div class="wrap">
+  <span class="kick">業界・部署ごとの事例</span>
+  <h2 class="h2">同じ悩みから、<br>動き出した会社があります。</h2>
+  <p class="lead2">国内の上場企業が公表した生成AIの事例から。どれも、仕事のどこにAIを置くかがはっきりしていて、変わったことが数字で出ている事例です。</p>
+  <div class="voices">
+    <article class="vc"><div class="tags"><span>建設業</span><span>工事の作業所</span><span>作業所の社員</span></div><p class="pain">2時間の会議の議事録づくりに、半日近くかかっていた。</p><div class="res"><b>1/10</b><small>議事録にかかる時間</small></div><p class="src">大豊建設／LINE WORKS 導入事例（2026年1月）</p></article>
+    <article class="vc"><div class="tags"><span>建設業</span><span>トンネル工事の現場</span><span>現場監督</span></div><p class="pain">センサーやカメラの情報がばらばらで、点検のたびに見て回っていた。</p><div class="res"><b>40<i>%減</i></b><small>点検・異常対応にかかる時間</small></div><p class="src">西松建設／BUILT（ITmedia）（2024年5月）</p></article>
+    <article class="vc"><div class="tags"><span>空運業</span><span>空港・整備・客室・運航</span></div><p class="pain">分厚い規程やマニュアルから探すのが、人の経験頼みだった。</p><div class="res"><b>90<i>%短縮</i></b><small>規程・マニュアルを探す時間</small></div><p class="src">ANAホールディングス／同社発表（2025年10月）</p></article>
+    <article class="vc"><div class="tags"><span>海運業</span><span>物流の現場</span><span>新人の教育</span></div><p class="pain">システムの使い方を、ベテランが新人1人に約168時間かけて教えていた。</p><div class="res"><b>960<i>件</i></b><small>AIが答えた質問（正確さ88%）</small></div><p class="src">商船三井ロジスティクス／OfficeBot 導入事例（2025年6月）</p></article>
+    <article class="vc"><div class="tags"><span>倉庫・運輸関連業</span><span>通関の事務</span></div><p class="pain">通関書類の転記に追われ、事務の負担が大きかった。</p><div class="res"><b>340<i>時間／月</i></b><small>減った作業（目標は220時間）</small></div><p class="src">エーアイテイー／Daily Cargo（2026年7月）</p></article>
+    <article class="vc"><div class="tags"><span>建設業</span><span>全社</span><span>生成AIセンタ</span></div><p class="pain">入れたAIを、毎日の仕事で使われるものにしたかった。</p><div class="res"><b>76<i>%</i></b><small>日常的に使っている人の割合</small></div><p class="src">コムシスホールディングス／同社発表（2025年6月）</p></article>
   </div>
 </div></section>
 
