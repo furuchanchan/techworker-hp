@@ -1,5 +1,5 @@
 // 他社の事例を探す（/companymap の #others）。入れた言葉で、公開のWorker（companymap-cases）に問い合わせて上位の事例を描く。
-// 最初の検索は、この欄が画面に近づいたときに1回だけ行う（ページを開いた全員に問い合わせないため）。
+// 最初は何も入れず、入力か「たとえば」のボタンで探す。
 // 並べ直しに判定用のAI（Jev）を使うので、1回の検索に1秒ほどかかる。
 (() => {
   const root = document.getElementById('case-search');
@@ -66,6 +66,4 @@
   form.addEventListener('submit', e => { e.preventDefault(); clearTimeout(timer); search(input.value); });
   exs.forEach(b => b.addEventListener('click', () => { input.value = b.dataset.q; clearTimeout(timer); search(b.dataset.q); }));
 
-  const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { io.disconnect(); search(input.value); } }, { rootMargin: '400px 0px' });
-  io.observe(root);
 })();
