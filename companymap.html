@@ -150,9 +150,19 @@ if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_vi
   <div class="wrap" style="position:relative">
     <span class="kick">他社の事例</span>
     <h2 class="h2">ほかの会社は、<br>どこでAIを使っているんだろう。</h2>
-    <p class="lead2">国内の上場企業が公表した生成AIの活用事例を、業種や業務、使っているツールから探せます。すべて出典つきです。</p>
+    <p class="lead2">業種や仕事の名前を入れると、国内の上場企業が公表した生成AIの活用事例が出てきます。どれも出典つきです。</p>
     <div class="nums"><div><b>4,864</b><span>件の活用事例</span></div><div><b>1,980</b><span>社の国内上場企業</span></div></div>
-    <div class="shot"><img src="/assets/companymap/cases.jpg" width="2000" height="1071" loading="lazy" alt="他社の生成AI活用事例の検索画面"></div>
+    <link rel="stylesheet" href="/assets/companymap/case-search.css?v=20260928b">
+    <div class="cs" id="case-search" data-api="https://companymap-cases.frosty-rice-fdbc.workers.dev/search">
+      <form class="cs-form" role="search">
+        <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13 13l4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <input type="search" name="q" value="製造業 AIエージェント" placeholder="例：物流 問い合わせ" aria-label="業種や仕事の名前" autocomplete="off" maxlength="60">
+        <button type="submit">探す</button>
+      </form>
+      <div class="cs-ex"><span>たとえば</span><button type="button" data-q="製造業 AIエージェント">製造業 AIエージェント</button><button type="button" data-q="物流 問い合わせ">物流 問い合わせ</button><button type="button" data-q="建設業 議事録">建設業 議事録</button><button type="button" data-q="営業 提案書">営業 提案書</button><button type="button" data-q="人事 採用">人事 採用</button><button type="button" data-q="経理">経理</button></div>
+      <div class="cs-out" aria-live="polite"></div>
+    </div>
+    <script src="/assets/companymap/case-search.js?v=20260928b" defer></script>
     <p class="cap">2026年9月27日時点。会社の発表・統合報告書・取材記事から収録。</p>
   </div>
 </section>
