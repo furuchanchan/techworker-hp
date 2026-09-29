@@ -261,11 +261,10 @@ footer .r{margin-left:auto}
 .frag.file .k{margin-bottom:1px}
 .kpi{right:28px;bottom:30px;min-width:330px;padding:16px 20px 14px}
 .kpi .t{display:block;font-family:var(--jp);font-size:17px;font-weight:900;letter-spacing:-.01em;margin-top:4px;line-height:1.4}
-.kpi .on{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;margin-top:6px}
-.kpi .on i{width:8px;height:8px;border-radius:50%;background:var(--ink)}
-.kpi .row3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
-.kpi .row3 b{font-family:var(--en);font-size:28px;font-weight:800;letter-spacing:-.03em;line-height:1.1;color:var(--ink)}
-.kpi .row3 b i{font-style:normal;font-size:12px;font-weight:700;margin-left:2px;font-family:var(--jp)}
+.kpi .row3{display:flex;flex-direction:column;gap:8px;margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
+.kpi .row3 div{display:flex;flex-wrap:wrap;gap:4px;align-items:baseline}
+.kpi .row3 small{font-size:11.5px;font-weight:700;color:var(--mute)}
+.kpi .row3 b{font-family:var(--jp);font-size:13px;font-weight:700;letter-spacing:0;line-height:1.4;color:var(--ink)}
 .scatter+.lead2{margin-top:36px}
 .deliver{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}
 .dv{border-radius:16px;padding:26px 24px 28px;box-shadow:inset 0 0 0 1px var(--line-2)}
@@ -434,3 +433,6 @@ dialog.zoom .x:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
   .nav .btn.sm{padding:8px 14px;font-size:12px}
   .nav .btn.ghost{display:none}
 }
+
+/* スマホ〜タブレット幅：冒頭の画面の下に業務図のカードが重なるので、「タップで拡大」は画面の右上に出す */
+@media (max-width:900px){.zoom-hint{top:12px;bottom:auto}}
