@@ -168,6 +168,7 @@ if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_vi
     }catch(e){}
     try{
       var res=await fetch('/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+      if(res.status===422) throw new Error('sales');
       if(!res.ok) throw new Error('status '+res.status);
       try{if(typeof gtag==='function')gtag('event','generate_lead',{inquiry_type:'consultation',source:'CompanyMap AI'});}catch(e){}
       box.classList.add('done');
@@ -176,7 +177,7 @@ if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_vi
     }catch(err){
       btn.disabled=false; btn.innerHTML='無料相談を申し込む <i>→</i>';
       status.className='status err';
-      status.innerHTML='送信できませんでした。時間をおいてもう一度お試しいただくか、<a href="mailto:info@techworker.co.jp">info@techworker.co.jp</a> へご連絡ください。';
+      status.innerHTML=err.message==='sales'?'営業・売り込みを目的としたご連絡は、このフォームではお受けしておりません。サービスのご相談の場合は、ご検討中の内容を具体的にご記入のうえ、もう一度お送りください。':'送信できませんでした。時間をおいてもう一度お試しいただくか、<a href="mailto:info@techworker.co.jp">info@techworker.co.jp</a> へご連絡ください。';
     }
   });
   form.addEventListener('input',function(){ if(status.classList.contains('err')){status.className='status';status.innerHTML=note;} });

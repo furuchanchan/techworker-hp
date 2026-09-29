@@ -3261,6 +3261,7 @@ Fill in the JSON below per the rules above (no comments):
         headers: { 'Content-Type': 'application/json' },
         body:    JSON.stringify(payload),
       });
+      if (res.status === 422) throw new Error('sales');
       if (!res.ok) {
         const detail = await res.text().catch(() => '');
         throw new Error(`HTTP ${res.status} ${detail}`);
@@ -3276,7 +3277,7 @@ Fill in the JSON below per the rules above (no comments):
       }
     } catch (err) {
       console.error('Form submit failed:', err);
-      alert('Submission failed. Please try again later, or contact us directly at info@techworker.co.jp.');
+      alert(err.message === 'sales' ? 'We do not accept sales or promotional messages through this form. If you are asking about our services, please describe what you are considering and submit again.' : 'Submission failed. Please try again later, or contact us directly at info@techworker.co.jp.');
     } finally {
       submitBtn.disabled = false;
       submitBtn.innerHTML = 'Submit <span class="arrow">→</span>';
