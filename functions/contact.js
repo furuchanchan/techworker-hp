@@ -65,15 +65,94 @@ function computeIntent(data) {
   return { score, emoji, label, priority, reasons };
 }
 
-async function saveToNotion(data, apiKey) {
-  const msg = ((data.diag_score != null)
+// ===== 営業・売り込みの自動判定 =====
+// 本文が書かれた送信だけを Claude Haiku に判定させる。
+// 判定できない（キー未設定・タイムアウト・APIエラー）ときは通す：
+// 本物の相談を取りこぼす損のほうが、営業が1通混ざる損より大きいため。
+const SALES_MODEL = 'claude-haiku-4-5-20251001';
+const SALES_STATUS = '営業（自動判定）';
+const SALES_SYSTEM = `あなたは株式会社TechWorker（法人向け生成AI研修・AI活用支援・業務図サービスCompanyMap AIを提供）の問い合わせフォームの受付係です。
+送られてきた問い合わせが「TechWorkerに対する営業・売り込み」かどうかを判定してください。
+
+営業・売り込み（sales=true）の例:
+- 送信者が自社の商品・サービス・ツールを紹介し、導入や商談を持ちかけている
+- 業務提携・代理店・協業・アライアンスの打診で、送信者側のサービスを売る目的のもの
+- SEO・広告・Web制作・営業代行・採用代行・人材紹介・オフショア開発・M&A仲介・資金調達・補助金申請代行などの案内
+- メディア掲載・アワード・展示会出展などの有料枠の勧誘
+- 「貴社のお役に立てると思い」「ご提案させていただきたく」など、送信者側が提供する立場で連絡している
+
+営業ではない（sales=false）の例:
+- TechWorkerの研修・AI活用支援・CompanyMap AIの導入検討、見積・資料請求・質問
+- 自社のAI活用の悩みの相談
+- 取材依頼（掲載料を求めないもの）、採用への応募
+- 定型文（例:「【資料ダウンロード】…」「ご希望: …」）だけの送信
+
+迷うときは sales=false にしてください。本物のお客さんを止めることが一番の失敗です。`;
+
+async function classifySales(data, apiKey) {
+  const message = String(data.message || '').trim();
+  if (!message || !apiKey) return null;
+  const content = [
+    `会社名: ${data.company || '-'}`,
+    `部署: ${data.department || '-'}`,
+    `役職: ${data.position || '-'}`,
+    `ご用件: ${INQUIRY_MAP[data.inquiry_type] || data.inquiry_type || '-'}`,
+    `お問い合わせ内容:\n${message.slice(0, 4000)}`,
+  ].join('\n');
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      signal: AbortSignal.timeout(8000),
+      headers: {
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: SALES_MODEL,
+        max_tokens: 300,
+        system: SALES_SYSTEM,
+        tools: [{
+          name: 'judge',
+          description: '問い合わせが営業・売り込みかどうかの判定結果を返す',
+          input_schema: {
+            type: 'object',
+            properties: {
+              sales:  { type: 'boolean', description: '営業・売り込みなら true' },
+              reason: { type: 'string',  description: '判定理由（日本語で1文）' },
+            },
+            required: ['sales', 'reason'],
+          },
+        }],
+        tool_choice: { type: 'tool', name: 'judge' },
+        messages: [{ role: 'user', content }],
+      }),
+    });
+    if (!res.ok) {
+      console.error('Sales classifier error:', res.status, await res.text());
+      return null;
+    }
+    const body = await res.json();
+    const out = (body.content || []).find((c) => c.type === 'tool_use');
+    if (!out || typeof out.input?.sales !== 'boolean') return null;
+    return { sales: out.input.sales, reason: String(out.input.reason || '') };
+  } catch (err) {
+    console.error('Sales classifier failed:', err?.message || err);
+    return null;
+  }
+}
+
+async function saveToNotion(data, apiKey, salesReason = null) {
+  let msg = ((data.diag_score != null)
     ? `【📊AI活用度診断 ${data.diag_band || ''}（${data.diag_score}/${data.diag_max || 100}）】\n${data.diag_answers || ''}\n${data.message || ''}`
-    : (data.message || '')).trim().slice(0, 1900);
+    : (data.message || '')).trim();
+  if (salesReason) msg = `【営業と自動判定・送信を停止】${salesReason}\n${msg}`;
+  msg = msg.slice(0, 1900);
   const properties = {
     'お名前':     { title:     [{ text: { content: data.name    || '' } }] },
     '会社名':     { rich_text: [{ text: { content: data.company || '' } }] },
     '相談内容':   { rich_text: [{ text: { content: msg } }] },
-    'ステータス': { select:    { name: '未対応' } },
+    'ステータス': { select:    { name: salesReason ? SALES_STATUS : '未対応' } },
   };
   if (data.email)        properties['メール']         = { email:        data.email };
   if (data.phone)        properties['電話番号']       = { phone_number: data.phone };
@@ -210,6 +289,20 @@ export async function onRequestPost({ request, env }) {
   if (!env.NOTION_API_KEY) {
     return new Response(JSON.stringify({ error: 'NOTION_API_KEY not configured' }), {
       status: 500, headers: { ...CORS, 'Content-Type': 'application/json' },
+    });
+  }
+
+  // 営業・売り込みと判定したら送信を止める。誤判定をあとで拾えるよう Notion には残し、Slack には流さない
+  const verdict = await classifySales(data, env.ANTHROPIC_API_KEY);
+  console.log('Sales verdict:', verdict ? JSON.stringify(verdict) : 'skipped');
+  if (verdict?.sales) {
+    try {
+      await saveToNotion(data, env.NOTION_API_KEY, verdict.reason || '理由なし');
+    } catch (err) {
+      console.error('Notion save (sales) failed:', err.message);
+    }
+    return new Response(JSON.stringify({ error: 'sales_blocked' }), {
+      status: 422, headers: { ...CORS, 'Content-Type': 'application/json' },
     });
   }
 

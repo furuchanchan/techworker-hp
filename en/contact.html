@@ -676,6 +676,7 @@ async function handleSubmit(e){
       body:JSON.stringify(data),
     });
 
+    if(res.status===422)throw new Error('sales');
     if(!res.ok)throw new Error('server error');
 
     if(typeof fbq==='function'){fbq('track','Lead');}
@@ -701,7 +702,7 @@ async function handleSubmit(e){
     btn.disabled=false;
     btn.style.opacity='1';
     btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg>Submit';
-    alert('Sorry, your message could not be sent. Please try again in a few moments.');
+    alert(err.message==='sales'?'We do not accept sales or promotional messages through this form. If you are asking about our services, please describe what you are considering and submit again.':'Sorry, your message could not be sent. Please try again in a few moments.');
   }
 }
 </script>

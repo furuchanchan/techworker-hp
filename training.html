@@ -193,7 +193,7 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
   var label=btn?btn.innerHTML:'';
   if(btn){btn.disabled=true;btn.style.opacity='0.7';btn.innerHTML='<span>送信中...</span>';}
   fetch('/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
-  .then(function(res){if(!res.ok)throw new Error('server');return res.json();})
+  .then(function(res){if(res.status===422)throw new Error('sales');if(!res.ok)throw new Error('server');return res.json();})
   .then(function(){
     if(typeof fbq==='function'){fbq('track','Lead');}
     var thanks=document.getElementById('trainingThanks');
@@ -202,9 +202,9 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
     var ap=document.getElementById('apply');
     if(window.scrollTo&&ap){window.scrollTo({top:ap.offsetTop-80,behavior:'smooth'});}
   })
-  .catch(function(){
+  .catch(function(err){
     if(btn){btn.disabled=false;btn.style.opacity='1';btn.innerHTML=label;}
-    alert('送信に失敗しました。お手数ですが時間をおいて再度お試しください。');
+    alert(err.message==='sales'?'営業・売り込みを目的としたご連絡は、このフォームではお受けしておりません。サービスのご相談の場合は、ご検討中の内容を具体的にご記入のうえ、もう一度お送りください。':'送信に失敗しました。お手数ですが時間をおいて再度お試しください。');
   });
 }
 </script></body></html>

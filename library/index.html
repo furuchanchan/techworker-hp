@@ -441,12 +441,13 @@ addEventListener('scroll',function(){var n=document.querySelector('nav');if(n)n.
     };
     try{
       var res=await fetch('/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+      if(res.status===422)throw new Error('sales');
       if(!res.ok)throw new Error('HTTP '+res.status);
       setUnlocked();
       if(typeof fbq==='function'){try{fbq('track','Lead',{content_name:info?info.title:currentDoc});}catch(_){}}
       successDownload.href=info?info.url:'#';
       modalForm.style.display='none';modalSuccess.classList.add('show');refreshUI();
-    }catch(err){console.error('Download form failed:',err);alert('送信に失敗しました。お手数ですが info@techworker.co.jp までご連絡ください。');}
+    }catch(err){console.error('Download form failed:',err);alert(err.message==='sales'?'営業・売り込みを目的としたご連絡は、このフォームではお受けしておりません。サービスのご相談の場合は、ご検討中の内容を具体的にご記入のうえ、もう一度お送りください。':'送信に失敗しました。お手数ですが info@techworker.co.jp までご連絡ください。');}
     finally{submitBtn.disabled=false;submitBtn.textContent='ダウンロードする';}
   });
   refreshUI();
