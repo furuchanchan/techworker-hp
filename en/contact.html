@@ -456,22 +456,27 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
             <input type="email" name="email" placeholder="sample@example.com" required>
           </div>
 
+          <div class="form-group">
+            <label>Phone Number<span class="required">Required</span></label>
+            <input type="tel" name="phone" autocomplete="tel" placeholder="+81 3-1234-5678" pattern="[^0-9０-９]*([0-9０-９][^0-9０-９]*){10,15}" title="Please enter a phone number with at least 10 digits (e.g. +81 3-1234-5678)" required>
+          </div>
+
           <div class="form-row">
             <div class="form-group">
-              <label>Job Title<span class="optional">Optional</span></label>
-              <input type="text" name="position" placeholder="Director / Manager, etc.">
+              <label>Job Title<span class="required">Required</span></label>
+              <input type="text" name="position" placeholder="Director / Manager, etc." required>
             </div>
             <div class="form-group">
-              <label>Department<span class="optional">Optional</span></label>
-              <input type="text" name="department" placeholder="Corporate Planning / DX Office, etc.">
+              <label>Department<span class="required">Required</span></label>
+              <input type="text" name="department" placeholder="Corporate Planning / DX Office, etc." required>
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
-              <label>Company Size<span class="optional">Optional</span></label>
+              <label>Company Size<span class="required">Required</span></label>
               <div class="select-wrapper">
-                <select name="company_size">
+                <select name="company_size" required>
                   <option value="" disabled selected>Please select</option>
                   <option value="1-10名">1–10 employees</option>
                   <option value="11-50名">11–50 employees</option>

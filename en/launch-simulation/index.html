@@ -2196,27 +2196,39 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
       <div class="cf-step-content active" data-step="1">
         <div class="cf-row">
           <label class="cf-field"><span class="cf-l">Company <em>Required</em></span><input type="text" name="company" id="cf-company" required autocomplete="organization"/></label>
-          <label class="cf-field"><span class="cf-l">Department</span><input type="text" name="dept" id="cf-dept" autocomplete="organization-title"/></label>
+          <label class="cf-field"><span class="cf-l">Department <em>Required</em></span><input type="text" name="dept" id="cf-dept" required autocomplete="organization-title"/></label>
         </div>
         <div class="cf-row">
           <label class="cf-field"><span class="cf-l">Name <em>Required</em></span><input type="text" name="name" id="cf-name" required autocomplete="name"/></label>
-          <label class="cf-field"><span class="cf-l">Title</span><input type="text" name="title" id="cf-title-input"/></label>
+          <label class="cf-field"><span class="cf-l">Title <em>Required</em></span><input type="text" name="title" id="cf-title-input" required/></label>
         </div>
         <div class="cf-row">
           <label class="cf-field"><span class="cf-l">Email <em>Required</em></span><input type="email" name="email" id="cf-email" required autocomplete="email"/></label>
-          <label class="cf-field"><span class="cf-l">Phone</span><input type="tel" name="phone" id="cf-phone" autocomplete="tel"/></label>
+          <label class="cf-field"><span class="cf-l">Phone <em>Required</em></span><input type="tel" name="phone" id="cf-phone" autocomplete="tel" placeholder="+81 3-1234-5678" pattern="[^0-9０-９]*([0-9０-９][^0-9０-９]*){10,15}" title="Please enter a phone number with at least 10 digits (e.g. +81 3-1234-5678)" required/></label>
         </div>
 
-        <label class="cf-field"><span class="cf-l">Industry <em>Required</em></span>
-          <select name="industry" id="cf-industry" required>
-            <option value="">Please select</option>
-            <option>Food &amp; beverage</option><option>Household goods / toiletries</option>
-            <option>Cosmetics &amp; beauty</option><option>Consumer electronics &amp; gadgets</option>
-            <option>Apparel &amp; fashion</option><option>Financial services &amp; insurance</option>
-            <option>SaaS / IT</option><option>Pharmaceuticals &amp; healthcare</option>
-            <option>Other</option>
-          </select>
-        </label>
+        <div class="cf-row">
+          <label class="cf-field"><span class="cf-l">Industry <em>Required</em></span>
+            <select name="industry" id="cf-industry" required>
+              <option value="">Please select</option>
+              <option>Food &amp; beverage</option><option>Household goods / toiletries</option>
+              <option>Cosmetics &amp; beauty</option><option>Consumer electronics &amp; gadgets</option>
+              <option>Apparel &amp; fashion</option><option>Financial services &amp; insurance</option>
+              <option>SaaS / IT</option><option>Pharmaceuticals &amp; healthcare</option>
+              <option>Other</option>
+            </select>
+          </label>
+          <label class="cf-field"><span class="cf-l">Company size <em>Required</em></span>
+            <select name="company_size" id="cf-company-size" required>
+              <option value="" disabled selected>Please select</option>
+              <option value="1-10名">1–10 employees</option>
+              <option value="11-50名">11–50 employees</option>
+              <option value="51-100名">51–100 employees</option>
+              <option value="101-300名">101–300 employees</option>
+              <option value="301名以上">301+ employees</option>
+            </select>
+          </label>
+        </div>
 
         <label class="cf-field"><span class="cf-l">Product / concept summary <em>Required</em></span>
           <textarea name="concept" id="cf-concept" rows="4" required placeholder="e.g. Functional beverage using botanical ingredients. Targets women aged 30–40, planned price ¥198 per bottle."></textarea>
@@ -3127,7 +3139,7 @@ Fill in the JSON below per the rules above (no comments):
 
   function validateStep1() {
     let ok = true;
-    const required = ['cf-company','cf-name','cf-email','cf-industry','cf-concept'];
+    const required = ['cf-company','cf-dept','cf-name','cf-title-input','cf-email','cf-phone','cf-industry','cf-company-size','cf-concept'];
     required.forEach(id => {
       const el = document.getElementById(id);
       if (!el.value.trim()) { el.classList.add('error'); ok = false; }
@@ -3136,6 +3148,10 @@ Fill in the JSON below per the rules above (no comments):
     const email = document.getElementById('cf-email');
     if (email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
       email.classList.add('error'); ok = false;
+    }
+    const phone = document.getElementById('cf-phone');
+    if (phone.value && phone.validity.patternMismatch) {
+      phone.classList.add('error'); ok = false;
     }
     const agree = document.getElementById('cf-agree');
     if (!agree.checked) {
@@ -3250,6 +3266,7 @@ Fill in the JSON below per the rules above (no comments):
       phone:        fd.get('phone')   || '',
       department:   fd.get('dept')    || '',
       position:     fd.get('title')   || '',
+      company_size: fd.get('company_size') || '',
       inquiry_type: 'consultation',
       message:      messageParts.join('\n'),
       source:       'launch-simulation',

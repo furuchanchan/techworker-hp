@@ -393,22 +393,27 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
             <input type="email" name="email" placeholder="sample@example.com" aria-label="メールアドレス" required>
           </div>
 
+          <div class="form-group">
+            <label>電話番号<span class="required">必須</span></label>
+            <input type="tel" name="phone" autocomplete="tel" placeholder="03-1234-5678" pattern="[^0-9０-９]*([0-9０-９][^0-9０-９]*){10,15}" title="電話番号を数字10桁以上でご入力ください（例：03-1234-5678）" aria-label="電話番号" required>
+          </div>
+
           <div class="form-row">
             <div class="form-group">
-              <label>役職<span class="optional">任意</span></label>
-              <input type="text" name="position" placeholder="部長 / マネージャー 等" aria-label="役職">
+              <label>役職<span class="required">必須</span></label>
+              <input type="text" name="position" autocomplete="organization-title" placeholder="部長 / マネージャー 等" aria-label="役職" required>
             </div>
             <div class="form-group">
-              <label>部署<span class="optional">任意</span></label>
-              <input type="text" name="department" placeholder="経営企画部 / DX推進室 等" aria-label="部署">
+              <label>部署<span class="required">必須</span></label>
+              <input type="text" name="department" placeholder="経営企画部 / DX推進室 等" aria-label="部署" required>
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
-              <label>会社規模<span class="optional">任意</span></label>
+              <label>会社規模<span class="required">必須</span></label>
               <div class="select-wrapper">
-                <select name="company_size" aria-label="会社規模">
+                <select name="company_size" aria-label="会社規模" required>
                   <option value="" disabled selected>選択してください</option>
                   <option value="1-10名">1〜10名</option>
                   <option value="11-50名">11〜50名</option>
@@ -591,6 +596,7 @@ if(params.get('type')){
     var v=(el.value||'').trim();
     if(el.required && !v) return '入力してください。';
     if(el.type==='email' && v && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return 'メールアドレスの形式をご確認ください。';
+    if(el.type==='tel' && v && el.validity.patternMismatch) return '電話番号を数字10桁以上でご入力ください。';
     return '';
   }
   function validate(el){
