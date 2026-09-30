@@ -21,12 +21,12 @@ if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_vi
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Claude Codeの料金を法人で考える｜Team・Enterprise・APIの選び方【2026】 — TechWorker</title>
-<meta name="description" content="Claude Codeを法人導入するときの料金を整理。Team（Standard/Premiumシート）・Enterprise・API従量の比較表、規模別の選び方、見落としやすい運用・教育・ガバナンスのコスト、稟議に載せる費用対効果の組み立て方まで。2026年8月時点のAnthropic公式料金にもとづき解説します。">
+<meta name="description" content="Claude Codeを法人導入するときの料金を整理。Team（Standard/Premiumシート）・現行Enterprise・API従量の比較表、規模別の選び方、見落としやすい運用・教育・ガバナンスのコスト、稟議に載せる費用対効果の組み立て方まで。2026年9月30日に確認したAnthropic公式料金にもとづき解説します。">
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
 <link rel="canonical" href="https://techworker.co.jp/media/kenshu/claude-code-cost">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Claude Codeの料金を法人で考える｜Team・Enterprise・APIの選び方【2026】">
-<meta property="og:description" content="Team・Enterprise・API従量、どれで契約するか。プラン比較表、規模別の判断表、見落としやすいコスト、稟議の組み立て方を2026年8月時点のAnthropic公式料金にもとづき整理します。">
+<meta property="og:description" content="Team・現行Enterprise・API従量の料金と契約条件を比較。規模別の判断表、見落としやすいコスト、稟議の組み立て方を2026年9月30日に確認したAnthropic公式料金にもとづき整理します。">
 <meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
 <meta property="og:url" content="https://techworker.co.jp/media/kenshu/claude-code-cost">
 <meta property="og:site_name" content="TechWorker">
@@ -42,8 +42,8 @@ if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_vi
   "@context":"https://schema.org",
   "@type":"Article",
   "headline":"Claude Codeの料金を法人で考える｜Team・Enterprise・APIの選び方【2026】",
-  "description":"Claude Codeを法人導入するときの契約形態を整理する。Team（Standard/Premiumシート）・Enterprise・API従量の比較、規模別の選び方、見落としやすい運用・教育・ガバナンスのコスト、稟議に載せる費用対効果の組み立て方を、2026年8月時点のAnthropic公式料金にもとづき解説する。",
-  "datePublished":"2026-07-22","dateModified":"2026-08-01","inLanguage":"ja",
+  "description":"Claude Codeを法人導入するときの契約形態を整理する。Team（Standard/Premiumシート）・現行Enterprise・API従量の比較、規模別の選び方、見落としやすい運用・教育・ガバナンスのコスト、稟議に載せる費用対効果の組み立て方を、2026年9月30日に確認したAnthropic公式料金にもとづき解説する。",
+  "datePublished":"2026-07-22","dateModified":"2026-09-30","inLanguage":"ja",
   "image":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630},
   "author":{"@type":"Person","name":"古野光太朗","jobTitle":"株式会社TechWorker 代表取締役 CEO兼CTO","url":"https://techworker.co.jp/company.html","image":"https://techworker.co.jp/assets/author-furuno.jpg","sameAs":["https://x.com/koutarou_furuno"],"affiliation":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"}},
   "publisher":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/","logo":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630}},
@@ -65,9 +65,10 @@ if(!ss.getItem('tw_counted')){ls.setItem('tw_visits',(parseInt(ls.getItem('tw_vi
 {
   "@context":"https://schema.org","@type":"FAQPage",
   "mainEntity":[
-    {"@type":"Question","name":"Claude CodeはTeamプランのStandardシートでも使えますか？","acceptedAnswer":{"@type":"Answer","text":"使えます。Anthropic公式料金ページでは、TeamプランにClaude CodeとClaude Coworkが含まれると明記されています（2026年8月時点）。ただし利用枠はシート種別で異なり、Standardシートの枠は小さめです。コーディングでの本格利用が想定されるメンバーにはPremiumシートを割り当て、チャット中心のメンバーはStandardにする混在構成が現実的です。"}},
-    {"@type":"Question","name":"API従量課金の場合、1人あたり月いくら見込めばよいですか？","acceptedAnswer":{"@type":"Answer","text":"Anthropic公式ドキュメントは、エンタープライズ導入の平均で1人あたり稼働日13ドル前後、月150〜250ドルと公表しています（2026年8月時点）。また、90%のユーザーは1日30ドル未満に収まるとされています。ただしモデル選択やセッションの持ち方で大きく変動するため、少人数のパイロットで自社の実測値を取ってから全体予算を組んでください。"}},
-    {"@type":"Question","name":"TeamプランとAPI従量は併用できますか？","acceptedAnswer":{"@type":"Answer","text":"併用できます。Anthropic公式ドキュメントでは、組織内でサインイン方法が混在する場合、各開発者は自分が認証した方法に応じて課金・計上されると説明されています。日常的に使うメンバーはTeamシート、CI/CDや自動化などの機械的な利用はAPIワークスペース、と分ける構成が管理しやすい形です。"}},
+    {"@type":"Question","name":"Claude CodeはTeamプランのStandardシートでも使えますか？","acceptedAnswer":{"@type":"Answer","text":"使えます。Claude CodeはTeamの全シートに含まれ、PremiumはStandardより利用枠が大きいシートです。米国向け価格は、Standardが年払いで1人月20ドル、月払いで25ドル、Premiumが年払いで1人月100ドル、月払いで125ドルです。どちらにも利用枠があり、上限後も続ける場合は、管理者が使用量クレジットと支出上限を設定します。料金・通貨・税は地域によって異なるため、契約画面でも確認してください。"}},
+    {"@type":"Question","name":"現行のEnterprise契約は定額ですか？","acceptedAnswer":{"@type":"Answer","text":"定額のシート料金だけではありません。新規Enterpriseは単一のEnterpriseシートを年払いで契約し、Claude、Claude Code、Coworkの利用量をAPI標準料金で別途支払います。シート料金にトークン利用枠は含まれません。セルフサービスは20席以上で利用量を前払いクレジットから消費し、営業経由は50席以上で利用量を月次請求します。旧契約のChat、Chat + Claude Code、Standard、Premiumシートは請求方式が異なるため、管理画面のシート種別を確認してください。"}},
+    {"@type":"Question","name":"API従量課金は1人当たり月いくら見込めばよいですか？","acceptedAnswer":{"@type":"Answer","text":"人数だけでは決まりません。2026年9月30日に確認したAPI標準料金は、100万トークン当たり、Claude Fable 5.1が入力10ドル・出力50ドル、Claude Opus 5.5が入力4ドル・出力20ドル、Claude Sonnet 5.5が入力2ドル・出力10ドル、Claude Haiku 4.5が入力1ドル・出力5ドルです。モデル、入出力の長さ、キャッシュ、バッチ処理、データ所在地で請求額が変わります。2〜4週間の試験運用で利用者別の実額を測り、組織と利用者の支出上限を設定してから年額予算へ換算してください。"}},
+    {"@type":"Question","name":"TeamとAPI従量を社内で使い分けられますか？","acceptedAnswer":{"@type":"Answer","text":"使い分けられます。対話型のClaude CodeはTeamアカウントで利用し、CI/CDや自動処理はClaude PlatformのAPIキーで実行できます。ただし、環境変数にANTHROPIC_API_KEYがあるとClaude CodeはサブスクリプションよりAPIキーを優先するため、意図しない請求先へ計上されないよう、認証方式と実行環境を分けて管理してください。"}},
     {"@type":"Question","name":"研修費用に助成金は使えますか？","acceptedAnswer":{"@type":"Answer","text":"生成AI研修は人材開発支援助成金の対象となり得ます。ただし対象要件・申請可否は研修の形態や企業の状況によって異なるため、管轄労働局または社労士にご確認ください。TechWorkerの研修費用についてはお問い合わせください。"}}
   ]
 }
@@ -106,7 +107,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a><span class="sep">/</span>Claude Codeの料金を法人で考える</nav>
   <div class="kicker">料金・稟議</div>
   <h1>Claude Codeの料金を法人で考える｜Team・Enterprise・APIの選び方</h1>
-  <p class="dek">Claude Codeを会社で使うと決めたとき、最初に迷うのが契約形態だ。Team・Enterprise・API従量——どれを選ぶかで月々の支払いも管理の仕方も変わる。2026年8月時点のAnthropic公式料金にもとづき、プランの全体像、規模別の選び方、見落としやすいコスト、稟議への載せ方までを整理する。</p>
+  <p class="dek">Claude Codeを会社で使うと決めたとき、最初に迷うのが契約形態だ。Team・Enterprise・API従量のどれを使うかで、月々の支払いも管理の仕方も変わる。2026年9月30日に確認したAnthropic公式料金にもとづき、プランの全体像、規模別の選び方、見落としやすいコスト、稟議への載せ方までを整理する。</p>
   <div class="kn-voices" aria-hidden="true">
     <span class="kn-fc" style="--sayo:0.0s"><span class="av"><img src="avatars/f50-0.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">Teamでいい？</span></span>
     <span class="kn-fc" style="--sayo:6.3s"><span class="av"><img src="avatars/m40-2.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">従量が読めない</span></span>
@@ -116,7 +117,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
   </div>
   <div class="kn-voices-cap">研修・導入のご相談でよく挙がる声<span class="note">※ 実際の相談で挙がる論点をもとにした例です</span></div>
   <div class="a-meta">
-    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.22</span><span class="dot">·</span><span>最終更新 2026.08.01</span><span class="dot">·</span><span>読了 9分</span>
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.22</span><span class="dot">·</span><span>最終更新 2026.09.30</span><span class="dot">·</span><span>読了 9分</span>
   </div>
 </header>
 
@@ -143,7 +144,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 }
 </style>
 <div class="art-cover-v6 cc-cover">
-  <div class="cc-head">Claude Code 法人利用・3つの入口<span class="cc-smp">※2026年8月時点・Anthropic公式料金より（米ドル・年払い時）</span></div>
+  <div class="cc-head">Claude Code 法人利用・3つの入口<span class="cc-smp">※2026年9月30日確認・Anthropic公式料金より（米ドル。Teamは年払い時）</span></div>
   <div class="cc-grid">
     <div class="cc-col">
       <div class="cc-plan">Team / Standard</div>
@@ -157,11 +158,11 @@ fbq('init','1264057945446029');fbq('track','PageView');
     </div>
     <div class="cc-col">
       <div class="cc-plan">API 従量</div>
-      <div class="cc-price">$150<span class="cc-tilde">〜</span>250<span class="cc-unit">/人・月</span></div>
-      <p class="cc-note">エンタープライズ導入の実績目安としてAnthropicが公表する値。</p>
+      <div class="cc-price">モデル別<span class="cc-unit">/100万トークン</span></div>
+      <p class="cc-note">入力1〜10ドル、出力5〜50ドル。利用モデルとトークン量で決まる。</p>
     </div>
   </div>
-  <div class="cc-foot">Enterpriseプランは「シート料金＋API料金ベースの従量」の組み合わせ。各プランの含まれる範囲は本文の比較表で整理する。</div>
+  <div class="cc-foot">現行Enterpriseは年払いのシート料金に加え、Claude・Claude Code・Coworkの全利用量をAPI標準料金で支払う。各プランの条件は本文の比較表で整理する。</div>
 </div>
 
 <div class="art-layout">
@@ -181,8 +182,8 @@ fbq('init','1264057945446029');fbq('track','PageView');
     <div class="lede">
       <div class="lede-h">この記事の要点</div>
       <ul>
-        <li>法人でClaude Codeを使う入口は<strong>Teamプラン（シート課金）・Enterpriseプラン・API従量課金</strong>の3つ。Teamは2〜150人が対象で、Standardシート（年払い月$20）とPremiumシート（同$100）を混在できる（2026年8月時点・Anthropic公式より）。</li>
-        <li>API従量の実額は、Anthropic公式ドキュメントの公表値で<strong>平均13ドル/人・稼働日、月150〜250ドル/人</strong>。9割のユーザーは1日30ドル未満に収まる。まずパイロットで自社の実測値を取る。</li>
+        <li>法人でClaude Codeを使う入口は<strong>Teamプラン・Enterpriseプラン・API従量課金</strong>の3つ。Teamは2〜150席で、Standard（年払いで1人月20ドル）とPremium（同100ドル）を混在できる。現行Enterpriseはシート料金とは別に全利用量がAPI標準料金で請求される（2026年9月30日確認）。</li>
+        <li>API従量は人数だけでは決まらない。<strong>モデル別の入出力単価と実際のトークン量</strong>から算出し、2〜4週間の試験運用で利用者別の実額を測って年額予算へ換算する。</li>
         <li>稟議で効くのはライセンス費の安さではなく、<strong>運用・教育・ガバナンスまで含めた総コスト</strong>と、パイロット実測にもとづく費用対効果のロジック。捏造したROI数値は使わない。</li>
       </ul>
     </div>
@@ -202,62 +203,64 @@ fbq('init','1264057945446029');fbq('track','PageView');
       <img src="avatars/m20-0.svg" alt="" loading="lazy" width="36" height="36">
       <div><div class="r">情シスの視点</div><p>Team・Enterprise・APIの3択という前提がそもそも間違っていた。</p></div>
     </aside>
-    <p>Claude Codeは、Anthropicが提供するターミナルで動くコーディングエージェントだ。法人で使う場合の契約は大きく3系統に分かれる。①<strong>Teamプラン</strong>（人数分のシート課金）、②<strong>Enterpriseプラン</strong>（シート＋API料金ベースの従量の組み合わせ）、③<strong>API従量課金</strong>（Claude Console経由、またはAmazon Bedrock / Google Cloud / Microsoft Foundryなどのクラウド経由）だ。個人向けのPro（年払い時 月$17）やMax（月$100〜）でもClaude Codeは使えるが、メンバー管理や一元請求といった法人向けの管理機能がないため、会社としての導入はTeam以上が前提になる。以下はAnthropic公式料金ページ（2026年8月時点）にもとづく比較だ。</p>
+    <p>Claude Codeは、Anthropicが提供するターミナルで動くコーディングエージェントだ。法人で使う場合の契約は大きく3系統に分かれる。①<strong>Teamプラン</strong>（人数分のシート課金）、②<strong>Enterpriseプラン</strong>（シート料金と従量料金の組み合わせ）、③<strong>API従量課金</strong>（Claude Console経由、またはAmazon Bedrock / Google Cloud / Microsoft Foundryなどのクラウド経由）だ。用途が違えば併用もできる。個人向けのPro（月20ドルまたは年200ドル）やMax（月100ドルまたは200ドル）でもClaude Codeは使えるが、メンバー管理や一元請求といった法人向けの管理機能がない。会社として導入するならTeam以上を軸にする。以下はAnthropic公式の<a href="https://support.claude.com/en/articles/9266767-what-is-the-team-plan" target="_blank" rel="noopener">Teamプラン</a>、<a href="https://support.claude.com/en/articles/9797531-what-is-the-enterprise-plan" target="_blank" rel="noopener">Enterpriseプラン</a>の説明（2026年9月30日確認）にもとづく比較だ。</p>
     <div class="tbl-wrap">
       <table>
         <tr><th>導入形態</th><th>料金（米ドル）</th><th>含まれるもの・特徴</th><th>向いている組織</th></tr>
-        <tr><td>Team（Standardシート）</td><td>月$20/人（年払い時）<br>月払いは$25</td><td>Claudeチャット・Claude Code・Claude Coworkを含む。利用枠はPremiumより小さい</td><td>チャット中心のメンバー</td></tr>
-        <tr><td>Team（Premiumシート）</td><td>月$100/人（年払い時）<br>月払いは$125</td><td>同上。Claude Codeの本格利用に向けた大きな利用枠</td><td>日常的にコードを書く・書かせるメンバー</td></tr>
-        <tr><td>Enterprise</td><td>シート料金＋API料金ベースの従量（要問い合わせ）</td><td>SCIM・監査ログ・HIPAA対応オプションなどの統制機能。セルフサーブと営業経由の2形態</td><td>大規模組織・セキュリティ/統制要件が強い組織</td></tr>
+        <tr><td>Team（Standardシート）</td><td>1人月20ドル（年払い時）<br>月払いは25ドル</td><td>Claude・Claude Code・Coworkを含む。利用枠はPremiumより小さい</td><td>チャット中心のメンバー</td></tr>
+        <tr><td>Team（Premiumシート）</td><td>1人月100ドル（年払い時）<br>月払いは125ドル</td><td>Standardと同じ機能を含み、利用枠が大きい</td><td>日常的にコードを書く・書かせるメンバー</td></tr>
+        <tr><td>Enterprise</td><td>年払いのシート料金＋全利用量のAPI従量</td><td>現行は単一シート。Claude Codeを含むが利用量は別料金。セルフサービスは20席以上、営業経由は50席以上</td><td>大規模組織・セキュリティ/統制要件が強い組織</td></tr>
         <tr><td>API従量（Console/クラウド）</td><td>使った分だけ（モデル別トークン単価）</td><td>ワークスペース単位の支出上限・分析APIで管理。クラウド経由は自社クラウド請求に合算</td><td>CI/CD・自動化・エージェント組み込みが主目的の組織</td></tr>
-        <tr><td>（参考）Pro / Max</td><td>月$17〜 / 月$100〜</td><td>個人向け。Claude Codeを含むが法人管理機能はない</td><td>個人の検証・トライアル</td></tr>
+        <tr><td>（参考）Pro / Max</td><td>Proは月20ドルまたは年200ドル<br>Maxは月100ドルまたは200ドル</td><td>個人向け。Claude Codeを含むが法人管理機能はない</td><td>個人の検証・トライアル</td></tr>
       </table>
     </div>
-    <div class="callout"><p>Teamプランは「2〜150人のチーム」が対象で、StandardとPremiumのシートを混在できる（Anthropic公式料金ページより・2026年8月時点）。全員にPremiumを配る必要はない。コードを書く人にPremium、それ以外はStandardという設計が起点になる。150人を超える場合やSSO・監査ログの要件がある場合はEnterpriseが受け皿になる。</p></div>
-    <p>TeamプランでのClaude Code利用には、公式ドキュメント上の注意点がひとつある。各メンバーの利用は<strong>シートごとの利用枠（5時間のローリングウィンドウ＋週次ウィンドウ）</strong>から消費され、この枠はClaudeチャットやCoworkと共有される。枠を使い切った後も続けたい場合は、管理者が「使用量クレジット」を有効化して組織・グループ・メンバー単位の支出上限を設定できる。つまりTeamプランは「定額で無制限」ではなく、「定額の枠＋必要に応じた追い課金」という構造だ。</p>
+    <div class="callout"><p>Teamプランは2〜150席が対象で、StandardとPremiumを混在できる（2026年9月30日確認）。全員にPremiumを配る必要はない。利用量の多い人にPremium、それ以外はStandardを割り当てる。150席を超える場合や監査ログなどの統制要件がある場合はEnterpriseを検討する。</p></div>
+    <p>Teamプランで注意したいのは、StandardとPremiumのどちらにも利用枠があることだ。枠はメンバーごとに設定され、Claude、Claude Code、Coworkで共有される。枠を使い切った後も続ける場合は、管理者が<a href="https://support.claude.com/en/articles/12005970-manage-usage-credits-for-team-and-seat-based-enterprise-plans" target="_blank" rel="noopener">使用量クレジット</a>を有効にする。超過分はAPI標準料金で消費され、Teamでは組織全体と利用者ごとの月間支出上限を設定できる。Teamプランの料金は、シートに含まれる利用枠と、必要に応じた使用量クレジットの二段構えだ。</p>
+    <p>現行Enterpriseは、単一のEnterpriseシートを年払いで契約し、Claude、Claude Code、Coworkの全利用量をAPI標準料金で別途支払う。シート料金にトークン利用枠は含まれない。セルフサービスは20席以上で、利用量を前払いクレジットから消費する。営業経由は50席以上で、利用量を月次後払いする。旧契約のChat、Chat + Claude Code、Standard、Premiumシートは次回更新まで条件が残るが、更新時に現行の単一シートへ移行する。請求を比較するときは、管理画面に表示されるシート種別を確認してほしい。</p>
 
     <h2 id="s2">API従量課金だと実際いくらかかるのか？</h2>
-    <p class="answer">Anthropic公式の公表値は平均13ドル/人・稼働日、月150〜250ドル/人。9割のユーザーは1日30ドル未満に収まる。</p>
+    <p class="answer">人数だけでは決まらない。モデル別の入出力単価と自社のトークン使用量を測り、月額と年額へ換算する。</p>
     <aside class="kn-side">
       <img src="avatars/f30-0.svg" alt="" loading="lazy" width="36" height="36">
       <div><div class="r">経理の視点</div><p>従量課金は稟議に載せにくい。<em>上限の置き方</em>を先に決める必要がある。</p></div>
     </aside>
-    <p>API従量課金は「使った分だけ」なので予算が読みにくい、と思われがちだが、Anthropicは実績ベースの目安を公式ドキュメントで公表している。エンタープライズ導入全体で、<strong>平均は1人あたり稼働日13ドル前後・月150〜250ドル</strong>。そして<strong>90%のユーザーは1日30ドル未満</strong>に収まる（Claude Code公式ドキュメントより・2026年8月時点）。1ドル150円換算の概算では月あたり約2.3万〜3.8万円/人になるが、為替と使い方で変動するためあくまで目安だ。単価の源泉であるモデル別のAPI料金は次のとおり。</p>
+    <p>API従量課金の月額は、人数だけでは見積もれない。使うモデル、入力と出力のトークン数、プロンプトキャッシュ、バッチ処理、データ所在地で変わるからだ。まず標準のモデル別単価を置き、2〜4週間の試験運用で利用者別の実額を測る。2026年9月30日に確認した<a href="https://platform.claude.com/docs/en/about-claude/pricing" target="_blank" rel="noopener">Anthropic公式API料金</a>は次のとおり。</p>
     <div class="tbl-wrap">
       <table>
         <tr><th>モデル</th><th>入力（100万トークンあたり）</th><th>出力（100万トークンあたり）</th></tr>
-        <tr><td>Claude Opus 5</td><td>$5</td><td>$25</td></tr>
-        <tr><td>Claude Sonnet 5</td><td>$2（2026年8月31日までの導入価格。以降$3）</td><td>$10（同、以降$15）</td></tr>
-        <tr><td>Claude Haiku 4.5</td><td>$1</td><td>$5</td></tr>
+        <tr><td>Claude Fable 5.1</td><td>10ドル</td><td>50ドル</td></tr>
+        <tr><td>Claude Opus 5.5</td><td>4ドル</td><td>20ドル</td></tr>
+        <tr><td>Claude Sonnet 5.5</td><td>2ドル</td><td>10ドル</td></tr>
+        <tr><td>Claude Haiku 4.5</td><td>1ドル</td><td>5ドル</td></tr>
       </table>
     </div>
-    <p class="fig-cap">出典：Anthropic公式ドキュメント（API料金ページ）・2026年8月時点。プロンプトキャッシュの読み取りは基本入力単価の0.1倍、バッチ処理は入出力とも50%割引が適用される。</p>
+    <p class="fig-cap">出典：Anthropic公式「Pricing」（2026年9月30日確認）。単位は米ドル／100万トークン。表は標準のベース入出力料金で、プロンプトキャッシュ、バッチ処理、データ所在地、Fast mode、クラウド事業者の料金は別条件。</p>
     <p>コストの振れ幅を作るのはモデル選択とセッションの持ち方だ。Opusを常用し長いセッションを開きっぱなしにすれば膨らみ、Sonnet中心でこまめにコンテキストを切れば抑えられる。管理面では、Claude Consoleに<strong>Claude Code専用のワークスペース</strong>が自動作成され、ワークスペース単位の支出上限（スペンドリミット）とメンバー別の利用レポート（Claude Code Analytics API）が使える。つまり「青天井になるのでは」という稟議上の懸念には、公式の上限機能で答えられる。Bedrock / Google Cloud / Microsoft Foundry経由の場合は各クラウドの請求・予算管理に乗るため、既存のクラウド予算枠で処理したい会社はこの経路も選択肢になる。</p>
-    <div class="callout"><p>予算の立て方はシンプルでいい。公表値の月150〜250ドル/人を仮置きし、パイロットの2〜4週間で自社の実測値に置き換える。実測が出た時点で「人数×実測単価×12カ月」に更新すれば、稟議の数字は自社データで裏づけられる。</p></div>
+    <div class="callout"><p>予算は、2〜4週間の試験運用で利用者別の実額を測り、「1人当たりの月間実測額×対象人数×12カ月」で年額へ換算する。モデル構成や利用量を変える場合は、同じ期間でもう一度測る。稟議には、公表された一律の月額目安より自社データを使う。</p></div>
 
     
     <aside class="kn-take">
       <img class="kn-take-av" src="avatars/f50-2.svg" alt="" loading="lazy" width="56" height="56">
       <div class="kn-take-body">
         <div class="kn-take-role">情シスの視点</div>
-        <p>Teamか従量かで迷っていたが、<em>使い方が違うメンバーを同じ契約に揃える必要はない</em>。日常利用と自動化を分けて考えると、悩みの半分は消えた。</p>
+        <p>TeamではStandardとPremiumを混在できる。<em>人が使うシート料金と、自動処理のAPI利用料を分けて見積もる</em>と、利用者数と処理量のどちらで費用が増えるかを確認できる。</p>
       </div>
     </aside>
 <h2 id="s3">どの規模・体制ならどれを選ぶべきか？</h2>
-    <p class="answer">2〜10人の試験導入はTeam Premium、150人超や統制要件はEnterprise、CI/CD組み込みや自動化が主目的ならAPIを選ぶ。</p>
+    <p class="answer">2〜10人の試験導入はTeamで利用量に応じてStandardとPremiumを選ぶ。150人超やTeamを超える統制要件はEnterprise、CI/CD組み込みや自動化が主目的ならAPIを検討する。</p>
     <p>プランの優劣ではなく、組織の状態との相性で決める。判断の起点は「誰が・何人で・何のために使うか」の3点だ。下の表に典型パターンを整理した。</p>
     <div class="tbl-wrap">
       <table>
         <tr><th>状況・規模</th><th>推奨</th><th>理由</th></tr>
-        <tr><td>2〜10人でまず試したい</td><td>Team（Premium中心）</td><td>最小の手続きで始めやすく、シート課金で予算が読める。効果検証に集中できる</td></tr>
-        <tr><td>11〜150人へ展開したい</td><td>Team（Standard/Premium混在）</td><td>コードを書く人にPremium、それ以外はStandardで総額を最適化できる</td></tr>
-        <tr><td>150人超・SSO/監査/統制要件がある</td><td>Enterprise</td><td>SCIM・監査ログ・HIPAA対応オプションなど、情報システム部門の要件に応えられる</td></tr>
+        <tr><td>2〜10人でまず試したい</td><td>Team（利用量に応じてStandard/Premium）</td><td>両シートにClaude Codeが含まれる。含有枠内の利用を試し、超過利用料も分けて見積もる</td></tr>
+        <tr><td>11〜150人へ展開したい</td><td>Team（Standard/Premium混在）</td><td>職種だけで分けず、実際の利用量と必要な枠を見てシートを配分する</td></tr>
+        <tr><td>150人超・監査ログ／SCIM／カスタム保持などTeamを超える統制要件がある</td><td>Enterprise</td><td>必要な追加機能と契約条件を照合する。SSOはTeamにも含まれるため、SSOだけを切替理由にしない</td></tr>
         <tr><td>CI/CD・自動化・社内エージェントに組み込みたい</td><td>API従量（Console）</td><td>人のシートでなく処理量に課金される。ワークスペースの支出上限で統制できる</td></tr>
         <tr><td>既存のクラウド予算・契約で賄いたい</td><td>Bedrock / Google Cloud / Foundry経由</td><td>自社クラウドの請求に合算され、調達・稟議の経路を新設しなくてよい</td></tr>
         <tr><td>担当者が個人で検証したい</td><td>Pro / Max</td><td>低コストで試せる。ただし法人管理機能はないため、本導入時にTeam以上へ移行する</td></tr>
       </table>
     </div>
-    <p>迷いやすいのは「Teamシートか、API従量か」の分岐だ。判断軸は利用の性質にある。<strong>人が対話しながら使う日常利用はシート課金</strong>のほうが予算が安定し、<strong>夜間バッチやパイプラインなど機械的な利用は従量課金</strong>のほうが実態に合う。両者は併用でき、公式ドキュメント上も、組織内でサインイン方法が混在する場合は各開発者が認証した方法に応じて計上されると明記されている。導入の具体的な進め方は<a href="claude-code-dounyu.html">Claude Codeの法人導入手順</a>を、エンジニア以外の部門での使いどころは<a href="claude-code-hi-engineer.html">非エンジニアのClaude Code活用</a>をあわせて参照してほしい。</p>
+    <p>迷いやすいのは「Teamシートか、API従量か」の分岐だ。判断軸は利用の性質にある。<strong>人が対話しながら使う日常利用はシート課金</strong>のほうが予算を立てやすく、<strong>夜間バッチやパイプラインなど機械的な利用は従量課金</strong>のほうが実態に合う。両者は併用できる。ただし、Claude CodeをTeamで使う端末に環境変数<code>ANTHROPIC_API_KEY</code>があると、サブスクリプションよりAPIキーが優先され、API利用料として請求される。対話利用と自動処理で認証方式と実行環境を分ける。導入の具体的な進め方は<a href="claude-code-dounyu.html">Claude Codeの法人導入手順</a>を、エンジニア以外の部門での使いどころは<a href="claude-code-hi-engineer.html">非エンジニアのClaude Code活用</a>をあわせて参照してほしい。</p>
 
     <h2 id="s4">ライセンス費以外に見落としやすいコストは何か？</h2>
     <p class="answer">ライセンス費より、運用・教育・ガバナンスの人件費が総コストを左右する。定着支援まで含めて予算化する。</p>
@@ -294,14 +297,14 @@ fbq('init','1264057945446029');fbq('track','PageView');
       <li><strong>対象業務を特定する。</strong>「開発全般」ではなく、コードレビュー・テスト作成・調査・定型改修など、誰のどの作業に効かせるかを絞る。</li>
       <li><strong>パイロットで実測する。</strong>2〜4週間、対象業務の所要時間を導入前後で記録する。効果の数字はここからしか生まれない。</li>
       <li><strong>費用は総額で見せる。</strong>ライセンス費（または従量の実測単価×人数）＋運用・教育・ガバナンスの工数を年額換算する。</li>
-      <li><strong>効果は自社の時給で言語化する。</strong>削減時間×自社人件費を主軸に、品質・リードタイム・属人化解消などの副次効果は定性で添える。他社の数値やベンダーの汎用ROIを主語にしない。</li>
+      <li><strong>効果を自社の時給で金額に換算する。</strong>削減時間×自社人件費を主軸に、品質・リードタイム・属人化解消などの副次効果は定性で添える。他社の数値やベンダーの汎用ROIを主語にしない。</li>
     </ol>
     <p>このロジックを稟議書に落とすときの構成要素をチェックリストにした。上から順に埋めれば、決裁者が確認したい論点をひととおりカバーできる。</p>
     <div class="callout">
       <p><strong>稟議の構成要素チェックリスト</strong></p>
       <p>□ 目的とスコープ（対象部署・人数・期間）<br>
       □ プラン選定の根拠（Team/Enterprise/APIの比較と選定理由）<br>
-      □ 費用の総額（ライセンス＋運用＋教育、年額換算。従量は公式目安→実測で更新）<br>
+      □ 費用の総額（ライセンス＋運用＋教育、年額換算。従量はモデル別単価と自社実測で算出）<br>
       □ 効果の測定方法（対象業務・実測の取り方・判定基準）<br>
       □ リスクと統制（データ取り扱い・権限・監査・支出上限）<br>
       □ 定着計画（研修・社内チャンピオン・展開ステップ）<br>
@@ -310,9 +313,10 @@ fbq('init','1264057945446029');fbq('track','PageView');
     <p>「見直し条件」まで書くのがコツだ。撤退ラインを先に示す提案は、推進者の希望的観測ではなく経営判断の材料として読まれる。先行企業がどの業務で成果を出しているかは<a href="claude-code-jirei.html">Claude Code導入事例</a>にまとめているので、対象業務を絞る際の参考にしてほしい。</p>
 
     <h2 id="faq">よくある質問</h2>
-    <div class="faq"><div class="q">Claude CodeはTeamプランのStandardシートでも使えますか？</div><p class="a">使えます。Anthropic公式料金ページでは、TeamプランにClaude CodeとClaude Coworkが含まれると明記されています（2026年8月時点）。ただし利用枠はシート種別で異なり、Standardシートの枠は小さめです。コーディングでの本格利用が想定されるメンバーにはPremiumシートを割り当て、チャット中心のメンバーはStandardにする混在構成が現実的です。</p></div>
-    <div class="faq"><div class="q">API従量課金の場合、1人あたり月いくら見込めばよいですか？</div><p class="a">Anthropic公式ドキュメントは、エンタープライズ導入の平均で1人あたり稼働日13ドル前後、月150〜250ドルと公表しています（2026年8月時点）。また、90%のユーザーは1日30ドル未満に収まるとされています。ただしモデル選択やセッションの持ち方で大きく変動するため、少人数のパイロットで自社の実測値を取ってから全体予算を組んでください。</p></div>
-    <div class="faq"><div class="q">TeamプランとAPI従量は併用できますか？</div><p class="a">併用できます。Anthropic公式ドキュメントでは、組織内でサインイン方法が混在する場合、各開発者は自分が認証した方法に応じて課金・計上されると説明されています。日常的に使うメンバーはTeamシート、CI/CDや自動化などの機械的な利用はAPIワークスペース、と分ける構成が管理しやすい形です。</p></div>
+    <div class="faq"><div class="q">Claude CodeはTeamプランのStandardシートでも使えますか？</div><p class="a">使えます。Claude CodeはTeamの全シートに含まれ、PremiumはStandardより利用枠が大きいシートです。米国向け価格は、Standardが年払いで1人月20ドル、月払いで25ドル、Premiumが年払いで1人月100ドル、月払いで125ドルです。どちらにも利用枠があり、上限後も続ける場合は、管理者が使用量クレジットと支出上限を設定します。料金・通貨・税は地域によって異なるため、契約画面でも確認してください。</p></div>
+    <div class="faq"><div class="q">現行のEnterprise契約は定額ですか？</div><p class="a">定額のシート料金だけではありません。新規Enterpriseは単一のEnterpriseシートを年払いで契約し、Claude、Claude Code、Coworkの利用量をAPI標準料金で別途支払います。シート料金にトークン利用枠は含まれません。セルフサービスは20席以上で利用量を前払いクレジットから消費し、営業経由は50席以上で利用量を月次請求します。旧契約のChat、Chat + Claude Code、Standard、Premiumシートは請求方式が異なるため、管理画面のシート種別を確認してください。</p></div>
+    <div class="faq"><div class="q">API従量課金は1人当たり月いくら見込めばよいですか？</div><p class="a">人数だけでは決まりません。2026年9月30日に確認したAPI標準料金は、100万トークン当たり、Claude Fable 5.1が入力10ドル・出力50ドル、Claude Opus 5.5が入力4ドル・出力20ドル、Claude Sonnet 5.5が入力2ドル・出力10ドル、Claude Haiku 4.5が入力1ドル・出力5ドルです。モデル、入出力の長さ、キャッシュ、バッチ処理、データ所在地で請求額が変わります。2〜4週間の試験運用で利用者別の実額を測り、組織と利用者の支出上限を設定してから年額予算へ換算してください。</p></div>
+    <div class="faq"><div class="q">TeamとAPI従量を社内で使い分けられますか？</div><p class="a">使い分けられます。対話型のClaude CodeはTeamアカウントで利用し、CI/CDや自動処理はClaude PlatformのAPIキーで実行できます。ただし、環境変数にANTHROPIC_API_KEYがあるとClaude CodeはサブスクリプションよりAPIキーを優先するため、意図しない請求先へ計上されないよう、認証方式と実行環境を分けて管理してください。</p></div>
     <div class="faq"><div class="q">研修費用に助成金は使えますか？</div><p class="a">生成AI研修は人材開発支援助成金の対象となり得ます。ただし対象要件・申請可否は研修の形態や企業の状況によって異なるため、管轄労働局または社労士にご確認ください。TechWorkerの研修費用についてはお問い合わせください。</p></div>
   </article>
 </div>
