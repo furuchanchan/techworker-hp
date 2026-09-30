@@ -3254,6 +3254,14 @@ Fill in the JSON below per the rules above (no comments):
       message:      messageParts.join('\n'),
       source:       'launch-simulation',
     };
+    try {
+      const iss = sessionStorage;
+      payload.intent_referrer = iss.getItem('tw_ref') || document.referrer || '(direct)';
+      payload.intent_landing  = iss.getItem('tw_landing') || location.pathname;
+      payload.intent_utm      = iss.getItem('tw_utm') || '';
+      payload.intent_pages    = JSON.parse(iss.getItem('tw_pages') || '[]').join(' > ');
+      payload.intent_visits   = localStorage.getItem('tw_visits') || '1';
+    } catch (_) {}
 
     try {
       const res = await fetch('/contact', {
@@ -3271,6 +3279,7 @@ Fill in the JSON below per the rules above (no comments):
       document.getElementById('cf-success-email').textContent = email;
       document.getElementById('cf-ref').textContent = generateRef();
       goToStep(3);
+      if (typeof gtag === 'function') gtag('event', 'generate_lead', { inquiry_type: 'consultation', source: 'launch-simulation' });
       // Meta Pixel: lead conversion
       if (typeof fbq === 'function') {
         try { fbq('track', 'Lead', { content_name: 'Launch Simulation LP' }); } catch (_) {}
