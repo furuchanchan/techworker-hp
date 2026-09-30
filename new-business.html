@@ -1542,6 +1542,7 @@ function submitTraining(e){
     source:'新規事業LP',
     message:'【新規事業向けAI活用LP】ご希望: '+(offer||'(未選択)')
   };
+  try{var iss=sessionStorage;payload.intent_referrer=iss.getItem('tw_ref')||document.referrer||'(direct)';payload.intent_landing=iss.getItem('tw_landing')||location.pathname;payload.intent_utm=iss.getItem('tw_utm')||'';payload.intent_pages=(JSON.parse(iss.getItem('tw_pages')||'[]')).join(' > ');payload.intent_visits=localStorage.getItem('tw_visits')||'1';}catch(e){}
   var label=btn?btn.innerHTML:'';
   if(btn){btn.disabled=true;btn.style.opacity='0.7';btn.innerHTML='<span>送信中...</span>';}
   fetch('/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
