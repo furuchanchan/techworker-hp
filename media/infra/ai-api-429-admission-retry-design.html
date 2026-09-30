@@ -6,7 +6,7 @@
 <style>.daily-cover{display:block;width:min(1100px,calc(100% - 48px));height:auto;aspect-ratio:1200/630;object-fit:cover;margin:0 auto 54px;border:1px solid var(--line-2);border-radius:16px}.source-note{font-size:13px;color:var(--slate)}.source-list li{margin-bottom:10px;word-break:break-word}@media(max-width:720px){.daily-cover{width:calc(100% - 28px);border-radius:10px;margin-bottom:34px}}</style></head>
 <body><div class="progress" id="progress"></div><nav id="nav"><a href="index.html" class="logo">Tech<i>Worker</i><span class="m-tag">Media</span></a><ul><li><a href="index.html">AI基盤ラボ</a></li><li><a href="../index.html">記事一覧</a></li><li><a href="../../index.html">TechWorkerとは</a></li></ul><div class="nav-right"><a href="../../contact.html" class="nav-cta"><span class="full">相談する</span><span class="short">相談</span></a></div></nav>
 <header class="art-head"><nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI基盤ラボ</a></nav><div class="kicker">429 Load Control</div><h1>AI APIの429を「再試行」で増幅させない｜レート制限・課金上限・過負荷を分ける負荷制御設計【2026】</h1><p class="dek">&quot;OpenAI・Anthropic・Cloudflare AI Gatewayの仕様を踏まえ、AI APIの429を一律リトライせず、待機可能なレート制限、復旧待ちの課金上限、上流過負荷を分けて扱う本番設計を解説します。&quot;</p><div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.09.14</span><span class="dot">·</span><span>一次情報 7件</span></div></header><img class="daily-cover" src="covers/ai-api-429-admission-retry-design.png" alt="AI APIへの送信前にtenant・model・token・優先度を確認し、429の原因を一時制限・課金上限・上流過負荷へ分類して待機・停止・隔離を選ぶ設計図" width="1200" height="630">
-<div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div><a href="#s1">429は一種類の失敗ではない</a><a href="#s2">retryは一層だけ、入場制御は送信前に行う</a><a href="#s3">停止する条件を先に定義する</a><a href="#s4">限界と反証</a><a href="#s5">導入時の最小チェックリスト</a><a href="#s6">情報図解</a><a href="#s7">既存記事との差分・内部リンク</a><a href="#s8">CTA</a><a href="#s9">一次根拠</a></div></nav><article class="art-body"><p>AI APIが429を返したとき、<code>429なら指数バックオフ</code>だけを書いて終えると、本番では足りません。同じ429でも、数秒待てば通るレート制限、残高・月次上限が戻るまで通らない状態、ゲートウェイ側の利用上限で止めた状態があり、再試行の意味が異なるためです。利用者の再送、SDKの自動retry、Worker側のretry、Gateway側のretryが重なると、失敗したリクエスト自体が上流の負荷を増やし、待機列と請求を膨らませます。</p>
+<div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div><a href="#s1">429は一種類の失敗ではない</a><a href="#s2">retryは一層だけ、入場制御は送信前に行う</a><a href="#s3">停止する条件を先に定義する</a><a href="#s4">限界と反証</a><a href="#s5">導入時の最小チェックリスト</a><a href="#s9">一次根拠</a></div></nav><article class="art-body"><p>AI APIが429を返したとき、<code>429なら指数バックオフ</code>だけを書いて終えると、本番では足りません。同じ429でも、数秒待てば通るレート制限、残高・月次上限が戻るまで通らない状態、ゲートウェイ側の利用上限で止めた状態があり、再試行の意味が異なるためです。利用者の再送、SDKの自動retry、Worker側のretry、Gateway側のretryが重なると、失敗したリクエスト自体が上流の負荷を増やし、待機列と請求を膨らませます。</p>
 <p>結論は、429をHTTP statusだけで扱わず、<strong>原因を分類してから入場制御・待機・失敗通知を選ぶ</strong>ことです。入口で利用者・tenant・モデル別に同時実行数とtoken見積りを予約し、上流の<code>Retry-After</code>がある短期制限だけを一層で再試行します。支出上限や恒久的な設定不備は再試行せず、明示的に停止します。本稿は9月3日のQueue/DLQ記事の「非同期ジョブの再配信」とは別に、オンライン推論を上流へ送る前後の負荷制御を扱います。</p>
 <h2 id="s1">429は一種類の失敗ではない</h2>
 <p>IETFのRFC 6585は、429を一定時間に送ったrequestが多過ぎる状態と定義し、<code>Retry-After</code>を付けることを許容しています。しかし、誰を一人と数えるか、どの範囲で数えるかは規定していません。アプリはstatusだけから「10秒後なら必ず成功」と推測できません。</p>
@@ -35,17 +35,6 @@
 <li>provider request ID、内部run ID、モデル、予約量、結果分類を、本文を残し過ぎずに追えるか</li>
 <li>対話・一括・embeddingなど異なる優先度の処理が、同じ枠を奪い合っていないか</li>
 </ul>
-<h2 id="s6">情報図解</h2>
-<p><strong>図版仕様（1200×675px）:</strong> 濃紺背景に、左から右へ「受付 → 分類 → 実行 → 結果」の4列を配置する。分類列から、青の<code>Retry-Afterあり</code>は「一層だけ待機→再送」、橙の<code>spend/credit</code>は「管理者確認」、赤の<code>5xx/529</code>は「隔離・観測」へ分岐。受付列には<code>tenant / model / input・output token予約 / 優先度</code>の4タグ、実行列にはSDK・Worker・Gatewayのうち一つだけを発光させ、残り二つへ「retry禁止」の破線を引く。下部に「429 = 再送命令ではなく、容量シグナル」という結論を置く。</p>
-<h2 id="s7">既存記事との差分・内部リンク</h2>
-<ul>
-<li><a href="https://techworker.co.jp/media/infra/cloudflare-ai-gateway-cache-safety">Cloudflare AI Gatewayの安全なキャッシュ設計</a>は、Gatewayで回答を再利用するときのprivacyと鮮度を扱う。本稿は、実際に429を受けたときの原因分類、入場制御、retry担当の一層化に限定する。</li>
-<li><a href="https://techworker.co.jp/media/infra/cloudflare-queues-ai-jobs">Cloudflare QueuesでAIジョブを非同期化する</a>は、非同期jobの再配信とDLQを扱う。本稿は、オンライン推論をproviderへ送信する前後の容量制御を扱う。</li>
-<li><a href="https://techworker.co.jp/media/infra/ai-model-routing-fallback-contract-design">AI基盤のモデル切替設計</a>はfallback時の品質契約を扱う。本稿は、同じprovider・modelへ再送すべきかを429原因から判断する。</li>
-</ul>
-<p>主検索意図は「AI APIの429を本番でどう分類し、再試行の増幅を防ぐか」であり、Gateway cache、Queue運用、model切替の検索意図・結論とは重複しない。CTAも429ログを起点にした負荷制御レビューへ限定する。</p>
-<h2 id="s8">CTA</h2>
-<p>OpenAI/Anthropic/AI Gatewayが返した429ログを基に、retryの重複と容量配分を設計レビューしたい場合は、<a href="https://techworker.co.jp/contact.html">AI基盤の429再発防止を相談する</a>。</p>
 <h2 id="s9">一次根拠</h2>
 <ul>
 <li><a href="https://help.openai.com/en/articles/5955604">OpenAI: Troubleshooting API rate limits and 429 errors</a></li>

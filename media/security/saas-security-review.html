@@ -95,7 +95,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
 <header class="art-head">
   <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIセキュリティ・ラボ</a><span class="sep">/</span>AI SaaSが情シスのセキュリティ審査を通るために実装したこと</nav>
-  <div class="kicker">情シス審査 × 実装設計</div>
+  <div class="kicker">導入審査・調達・コスト</div>
   <h1>AI SaaSが情シスのセキュリティ審査を通るために実装したこと｜監査ログ・削除権・アカウント管理</h1>
   <p class="dek">監査ログの閲覧機能はある。削除ボタンもある。それでも情シスの審査は止まる——問われているのは機能の有無ではなく、顧客が自分の画面から確認・実行できるかどうかだ。Cloudflare Workers上で運用する自社AI SaaSの本番実装を題材に、招待制サインアップ・fail closedの認証・監査ログ閲覧・データ削除・パスワード変更・新しいAIベンダーを追加する手順まで、審査を通すために実際に組んだ設計を明かす。</p>
   <div class="kn-voices" aria-hidden="true">
@@ -142,7 +142,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
     </div>
   </nav>
 
-  <article class="art-body rv">
+  <article class="art-body">
     <div class="lede">
       <div class="lede-h">この記事の要点</div>
       <ul>
@@ -308,10 +308,10 @@ TRANSCRIPT_POLISH = "1"              # 問題が起きたら "0" にして即dep
 <section class="related"><div class="container">
   <div class="rl-h">Related</div>
   <div class="related-grid">
-    <a href="zero-trust-access.html" class="related-card"><span class="rc-cat">ゼロトラスト</span><div class="rc-title">管理画面をVPNなしで守る｜Cloudflare Accessのゼロトラスト構成</div></a>
-    <a href="workers-secrets.html" class="related-card"><span class="rc-cat">シークレット管理</span><div class="rc-title">APIキーを.envに置かない｜Workersでのシークレット管理</div></a>
-    <a href="r2-data-lifecycle.html" class="related-card"><span class="rc-cat">データ保持</span><div class="rc-title">音声・個人情報の保持と削除｜R2でのデータライフサイクル設計</div></a>
-    <a href="firewall-for-ai.html" class="related-card"><span class="rc-cat">LLMセキュリティ</span><div class="rc-title">LLMアプリのプロンプトインジェクション対策｜ガードレールで防げる範囲</div></a>
+    <a href="zero-trust-access.html" class="related-card"><span class="rc-cat">権限とアクセス管理</span><div class="rc-title">管理画面をVPNなしで守る｜Cloudflare Accessのゼロトラスト構成</div></a>
+    <a href="workers-secrets.html" class="related-card"><span class="rc-cat">機密データの保護</span><div class="rc-title">APIキーを.envに置かない｜Workersでのシークレット管理</div></a>
+    <a href="r2-data-lifecycle.html" class="related-card"><span class="rc-cat">機密データの保護</span><div class="rc-title">音声・個人情報の保持と削除｜R2でのデータライフサイクル設計</div></a>
+    <a href="firewall-for-ai.html" class="related-card"><span class="rc-cat">攻撃対策と検証</span><div class="rc-title">LLMアプリのプロンプトインジェクション対策｜ガードレールで防げる範囲</div></a>
   </div>
 </div></section>
 

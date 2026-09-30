@@ -29,10 +29,11 @@
 
   function kindFor(anchor) {
     var href = (anchor.getAttribute("href") || "").toLowerCase();
+    if (href.indexOf("type=document") !== -1) return "download";
     if (href.indexOf("contact") !== -1 || href.indexOf("appointments") !== -1) return "consultation";
     if (href.indexOf("ai-assessment") !== -1) return "assessment";
     if (href.indexOf("library") !== -1 || anchor.hasAttribute("download")) return "download";
-    if (/training|new-business|launch-simulation|coesignal/.test(href)) return "service";
+    if (/training|new-business|launch-simulation|coesignal|companymap/.test(href)) return "service";
     if (href.indexOf("/media/") !== -1 || href.indexOf(".html") !== -1) return "internal";
     return "other";
   }

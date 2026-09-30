@@ -95,7 +95,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
 <header class="art-head">
   <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIセキュリティ・ラボ</a><span class="sep">/</span>AIが扱う音声・個人情報をどう保持し、どう消すか</nav>
-  <div class="kicker">Cloudflare R2 × データライフサイクル設計</div>
+  <div class="kicker">機密データの保護</div>
   <h1>AIが扱う音声・個人情報をどう保持し、どう消すか｜Cloudflare R2でのデータライフサイクル設計</h1>
   <p class="dek">面談の音声、文字起こし、機微な相談内容——AIが扱うデータは「動く設計」が先に完成し、「消す設計」は後回しになりやすい。公開バケットに置きっぱなしの音声ファイル、期限を切らずに配られたダウンロードURL、削除依頼にどこまで応えればいいか分からない実務。Cloudflare R2の署名付きURL・Object Lifecycle・Bucket Locks・保管地域(jurisdiction)という4つの機能で保持と削除をどう設計するか、2026年8月時点の公式情報をもとに整理する。</p>
   <div class="kn-voices" aria-hidden="true">
@@ -143,7 +143,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
     </div>
   </nav>
 
-  <article class="art-body rv">
+  <article class="art-body">
     <div class="lede">
       <div class="lede-h">この記事の要点</div>
       <ul>
@@ -335,10 +335,10 @@ const url = await getSignedUrl(s3, command, { expiresIn: 3600 }); // 1時間で�
 <section class="related"><div class="container">
   <div class="rl-h">Related</div>
   <div class="related-grid">
-    <a href="saas-security-review.html" class="related-card"><span class="rc-cat">法人審査</span><div class="rc-title">AI SaaSが情シス審査を通るために実装したこと｜監査ログ・削除権</div></a>
-    <a href="workers-secrets.html" class="related-card"><span class="rc-cat">シークレット管理</span><div class="rc-title">APIキーを.envに置かない｜Workersでのシークレット管理</div></a>
-    <a href="zero-trust-access.html" class="related-card"><span class="rc-cat">ゼロトラスト</span><div class="rc-title">管理画面をVPNなしで守る｜Cloudflare Accessのゼロトラスト構成</div></a>
-    <a href="ai-crawler-control.html" class="related-card"><span class="rc-cat">クローラー対策</span><div class="rc-title">AIクローラーからサイトを守る｜robots.txtの限界とCloudflareでの制御</div></a>
+    <a href="saas-security-review.html" class="related-card"><span class="rc-cat">導入審査・調達・コスト</span><div class="rc-title">AI SaaSが情シス審査を通るために実装したこと｜監査ログ・削除権</div></a>
+    <a href="workers-secrets.html" class="related-card"><span class="rc-cat">機密データの保護</span><div class="rc-title">APIキーを.envに置かない｜Workersでのシークレット管理</div></a>
+    <a href="zero-trust-access.html" class="related-card"><span class="rc-cat">権限とアクセス管理</span><div class="rc-title">管理画面をVPNなしで守る｜Cloudflare Accessのゼロトラスト構成</div></a>
+    <a href="ai-crawler-control.html" class="related-card"><span class="rc-cat">実行環境と通信の制限</span><div class="rc-title">AIクローラーからサイトを守る｜robots.txtの限界とCloudflareでの制御</div></a>
   </div>
 </div></section>
 

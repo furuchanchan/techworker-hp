@@ -127,30 +127,30 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <section class="jz-sec jz-latest">
   <div class="jz-sec-h">記事一覧</div>
   <div class="jz-list rv">
-<a href="rag-file-ingestion-malware-quarantine.html"><div class="l-side"><div class="l-cat">実務</div><div class="l-date">2026.09.30</div></div><div><div class="l-title">RAGのファイル取込を隔離する｜マルウェア検査前に解析器へ渡さない設計</div><div class="l-desc">RAGへ取り込むファイルを隔離し、形式検査、マルウェア検査、検査不能の扱い、制限付き解析、再検査までを分ける設計を解説します。</div></div><div class="l-arrow">→</div></a>
-<a href="ai-agent-webhook-signature-deduplication.html"><div class="l-side"><div class="l-cat">実務</div><div class="l-date">2026.09.29</div></div><div><div class="l-title">AIエージェントのwebhook受信を守る｜署名確認から重複排除まで</div><div class="l-desc">AIエージェントを起動するwebhookで、生本文の署名検証、時刻窓、イベントIDの重複排除、業務処理の冪等性、現在権限の再確認を分けます。</div></div><div class="l-arrow">→</div></a>
-<a href="llm-markdown-output-xss-sanitization.html"><div class="l-side"><div class="l-cat">実務</div><div class="l-date">2026.09.28</div></div><div><div class="l-title">生成AIのMarkdown表示でXSSリスクを減らす｜無害化・URL・Trusted Typesの実装境界</div><div class="l-desc">LLM出力をMarkdownからHTMLへ変換する際に、許可タグ、URL、DOM無害化、CSP、Trusted TypesでXSS経路を減らし、回帰試験で検証する方法を解説します。</div></div><div class="l-arrow">→</div></a>
-<a href="browser-agent-session-isolation-design.html"><div class="l-side"><div class="l-cat">実務</div><div class="l-date">2026.09.27</div></div><div><div class="l-title">ブラウザ操作AIエージェントのセッション分離｜Cookie・ログイン・スクリーンショットを閉じる【2026】</div><div class="l-desc">ブラウザ操作AIへ普段使いのプロファイルを渡さず、匿名調査・認証済み閲覧・送信操作を分離する方法を解説。Cookie、接続先、ダウンロード、画面保存、終了処理を扱います。</div></div><div class="l-arrow">→</div></a>
-    <a href="mcp-elicitation-sensitive-data-design.html"><div class="l-side"><div class="l-cat">MCP Elicitation</div><div class="l-date">2026.09.21</div></div><div><div class="l-title">MCP Elicitationの安全設計｜資格情報と機密入力をAI会話から分離する</div><div class="l-desc">MCP serverが利用者へ追加情報を求めるElicitationで、構造化入力、URL mode、資格情報、同意、監査を分ける安全設計を解説します。</div></div><div class="l-arrow">&rarr;</div></a>
-    <a href="prompt-injection-incident-response-playbook.html"><div class="l-side"><div class="l-cat">AI Incident Response</div><div class="l-date">2026.09.19</div></div><div><div class="l-title">プロンプトインジェクション事故対応｜AIエージェントを止めて安全に復旧する</div><div class="l-desc">AIエージェントが悪意ある指示を読み、意図しないtool実行や情報露出を起こした際の検知、隔離、証跡保全、影響確認、復旧を解説します。</div></div><div class="l-arrow">&rarr;</div></a>
-    <a href="ai-agent-permission-drift-access-review.html"><div class="l-side"><div class="l-cat">Permission Review</div><div class="l-date">2026.09.18</div></div><div><div class="l-title">AIエージェントの権限ドリフト対策｜増えたアクセス権を定期レビューする</div><div class="l-desc">AIエージェントの接続先とscopeが運用中に増え続ける権限ドリフトを防ぐため、権限台帳、利用証跡、棚卸し、失効を一つの運用にする方法を解説します。</div></div><div class="l-arrow">&rarr;</div></a>
-    <a href="mcp-apps-security-design.html"><div class="l-side"><div class="l-cat">MCP Apps Boundary</div><div class="l-date">2026.09.17</div></div><div><div class="l-title">MCP Appsのセキュリティ設計｜iframe・CSP・postMessage・書込み操作をどう守るか【2026】</div><div class="l-desc">MCP Appsで第三者UIを会話内に表示する際に、sandboxed iframe、CSP、postMessage、UI起点のtool callをどう分離・検証するかを整理します。</div></div><div class="l-arrow">&rarr;</div></a>
-    <a href="ai-agent-runtime-sandbox-egress-design.html"><div class="l-side"><div class="l-cat">Runtime Sandbox</div><div class="l-date">2026.09.16</div></div><div><div class="l-title">AIエージェントのサンドボックス設計｜workspace・通信・認証情報を分離する</div><div class="l-desc">AIエージェントの実行環境を、workspace、network egress、credentials、承認、監査に分け、被害範囲を閉じる設計を解説します。</div></div><div class="l-arrow">&rarr;</div></a>
-    <a href="ai-agent-delegated-identity-token-exchange-design.html"><div class="l-side"><div class="l-cat">Delegated Identity</div><div class="l-date">2026.09.15</div></div><div><div class="l-title">AIエージェントの代理実行ID設計｜利用者・agent・toolの権限を一つのtokenに潰さない【2026】</div><div class="l-desc">&quot;AIエージェントが業務ツールを代理実行するとき、利用者、agent実行体、下流サービスのIDを分ける設計を解説。短命token、audience、scope、on-behalf-of、監査を組み合わせ、共有admin権限を避けます。&quot;</div></div><div class="l-arrow">&rarr;</div></a>
-    <a href="ai-agent-memory-poisoning-isolation-design.html"><div class="l-side"><div class="l-cat">Memory Isolation</div><div class="l-date">2026.09.14</div></div><div><div class="l-title">AIエージェントの記憶を汚染させない｜保存前検証・tenant分離・期限・出所を分ける設計【2026】</div><div class="l-desc">&quot;AIエージェントの長期記憶を、将来の命令入力として扱わないための設計を解説。保存前検証、user・tenant・session分離、出所と信頼度、保持期限、改ざん調査を分け、memory poisoningと越境漏えいを抑えます。&quot;</div></div><div class="l-arrow">&rarr;</div></a>
-    <a href="ai-agent-tool-validation-authorization-design.html"><div class="l-side"><div class="l-cat">Tool Authorization</div><div class="l-date">2026.09.13</div></div><div><div class="l-title">AIエージェントのtool検証設計｜JSON schemaの後に、認可・業務制約・確定記録を置く【2026】</div><div class="l-desc">&quot;AIエージェントが生成したtool引数を安全に実行するために、JSON schema、現在の認可、業務上の前提条件、冪等性・監査を分ける設計を解説。OpenAI・Anthropic・MCPの仕様差と、schemaだけでは止められない事故を整理します。&quot;</div></div><div class="l-arrow">&rarr;</div></a>
-    <a href="ai-agent-red-teaming-boundary-design.html"><div class="l-side"><div class="l-cat">Red Teaming</div><div class="l-date">2026.09.12</div></div><div><div class="l-title">AIエージェントのレッドチーム設計｜promptだけでなく権限・tool・実行環境を検証する【2026】</div><div class="l-desc">&quot;AIエージェントを本番導入する前のレッドチーム設計を解説。攻撃シナリオを、入力、データ、tool権限、実行結果の四境界に分け、再現可能な評価・修正・再試験へつなげる方法を整理します。&quot;</div></div><div class="l-arrow">&rarr;</div></a>
-    <a href="generative-ai-dlp-design.html"><div class="l-side"><div class="l-cat">Generative AI DLP</div><div class="l-date">2026.09.11</div></div><div><div class="l-title">生成AIのDLP設計｜入力・出力・検索・ログで機密データを止める【2026】</div><div class="l-desc">&quot;生成AIで機密データを扱うときのDLP設計を解説。prompt、RAG・web検索、回答、監査ログの四つの境界で、検知・遮断・マスキング・例外運用を分ける方法を整理します。&quot;</div></div><div class="l-arrow">&rarr;</div></a>
-    <a href="ai-agent-audit-log-design.html"><div class="l-side"><div class="l-cat">Agent Audit Log</div><div class="l-date">2026.09.10</div></div><div><div class="l-title">AIエージェントの監査ログ設計｜「誰が、何を、なぜ実行したか」を後から復元する【2026】</div><div class="l-desc">&quot;AIエージェントの事故・誤操作を後から追える監査ログの設計を解説。実行主体、tool、承認、外部効果を結ぶ相関IDと、プロンプトを無制限に保存しない最小データ化を整理します。&quot;</div></div><div class="l-arrow">&rarr;</div></a>
-    <a href="rag-retrieval-access-control.html"><div class="l-side"><div class="l-cat">RAG Authorization</div><div class="l-date">2026.09.09</div></div><div><div class="l-title">RAGの権限漏れを防ぐ｜namespace・metadata filterを認可情報から作る【2026】</div><div class="l-desc">RAGで他社・他部署の文書を検索結果へ混ぜないために、Vectorizeのnamespaceとmetadata filterを認証済みの認可情報から組み立てる設計を解説。検索後の再認可と更新時の注意点も整理します。</div></div><div class="l-arrow">&rarr;</div></a>
-    <a href="llm-api-cost-abuse-controls.html"><div class="l-side"><div class="l-cat">Cost Abuse Controls</div><div class="l-date">2026.09.08</div></div><div><div class="l-title">LLM APIの高額請求を防ぐ｜rate limit・spend limit・tool予算を分ける【2026】</div><div class="l-desc">生成AIの高額請求や可用性低下を防ぐために、request数、実費、エージェントのtool実行回数を別々に制御する設計を解説。Cloudflare AI Gatewayのrate limit・spend limitの適用範囲と限界も整理します。</div></div><div class="l-arrow">&rarr;</div></a>
-    <a href="mcp-oauth-authorization-design.html"><div class="l-side"><div class="l-cat">MCP Authorization</div><div class="l-date">2026.09.07</div></div><div><div class="l-title">MCPサーバーのOAuth認可設計｜resource・scope・トークン再利用をどう防ぐか【2026】</div><div class="l-desc">リモートMCPサーバーを安全に接続するために、OAuthのresource、scope、Protected Resource Metadata、短命token、DPoPをどう使い分けるか。配布元確認とは別の実行時認可を整理します。</div></div><div class="l-arrow">&rarr;</div></a>
-    <a href="mcp-server-supply-chain-security.html"><div class="l-side"><div class="l-cat">MCP Security</div><div class="l-date">2026.09.04</div></div><div><div class="l-title">MCPサーバーのサプライチェーン対策｜導入前に確認する配布元・署名・更新</div><div class="l-desc">MCPサーバー導入時にRegistry掲載だけで安全と判断せず、配布元、版・digest固定、SBOM、来歴、権限、sandboxを確認する手順を解説します。</div></div><div class="l-arrow">&rarr;</div></a>
-    <a href="ai-agent-ssrf-prevention.html"><div class="l-side"><div class="l-cat">Agent Security</div><div class="l-date">2026.09.03</div></div><div><div class="l-title">AIエージェントのSSRF対策｜URL取得ツールを安全にする設計【2026】</div><div class="l-desc">AIエージェントのURL取得ツールをSSRFから守るためのURL正規化、IP検査、redirect制御、egress分離、監査を解説。</div></div><div class="l-arrow">&rarr;</div></a>
-    <a href="ai-agent-human-approval-gates.html"><div class="l-side"><div class="l-cat">Agentic AI Security</div><div class="l-date">2026.09.01</div></div><div><div class="l-title">AIエージェントの承認ゲート設計｜どの操作を人が止めるべきか【2026】</div><div class="l-desc">AIエージェントの外部送信・更新・削除・支払いを人が承認するためのリスク分類、承認画面、期限、監査、fail-close設計。</div></div><div class="l-arrow">&rarr;</div></a>
+<a href="rag-file-ingestion-malware-quarantine.html"><div class="l-side"><div class="l-cat">攻撃対策と検証</div><div class="l-date">2026.09.30</div></div><div><div class="l-title">RAGのファイル取込を隔離する｜マルウェア検査前に解析器へ渡さない設計</div><div class="l-desc">RAGへ取り込むファイルを隔離し、形式検査、マルウェア検査、検査不能の扱い、制限付き解析、再検査までを分ける設計を解説します。</div></div><div class="l-arrow">→</div></a>
+<a href="ai-agent-webhook-signature-deduplication.html"><div class="l-side"><div class="l-cat">実行環境と通信の制限</div><div class="l-date">2026.09.29</div></div><div><div class="l-title">AIエージェントのwebhook受信を守る｜署名確認から重複排除まで</div><div class="l-desc">AIエージェントを起動するwebhookで、生本文の署名検証、時刻窓、イベントIDの重複排除、業務処理の冪等性、現在権限の再確認を分けます。</div></div><div class="l-arrow">→</div></a>
+<a href="llm-markdown-output-xss-sanitization.html"><div class="l-side"><div class="l-cat">攻撃対策と検証</div><div class="l-date">2026.09.28</div></div><div><div class="l-title">生成AIのMarkdown表示でXSSリスクを減らす｜無害化・URL・Trusted Typesの実装境界</div><div class="l-desc">LLM出力をMarkdownからHTMLへ変換する際に、許可タグ、URL、DOM無害化、CSP、Trusted TypesでXSS経路を減らし、回帰試験で検証する方法を解説します。</div></div><div class="l-arrow">→</div></a>
+<a href="browser-agent-session-isolation-design.html"><div class="l-side"><div class="l-cat">実行環境と通信の制限</div><div class="l-date">2026.09.27</div></div><div><div class="l-title">ブラウザ操作AIエージェントのセッション分離｜Cookie・ログイン・スクリーンショットを閉じる【2026】</div><div class="l-desc">ブラウザ操作AIへ普段使いのプロファイルを渡さず、匿名調査・認証済み閲覧・送信操作を分離する方法を解説。Cookie、接続先、ダウンロード、画面保存、終了処理を扱います。</div></div><div class="l-arrow">→</div></a>
+    <a href="mcp-elicitation-sensitive-data-design.html"><div class="l-side"><div class="l-cat">機密データの保護</div><div class="l-date">2026.09.21</div></div><div><div class="l-title">MCP Elicitationの安全設計｜資格情報と機密入力をAI会話から分離する</div><div class="l-desc">MCP serverが利用者へ追加情報を求めるElicitationで、構造化入力、URL mode、資格情報、同意、監査を分ける安全設計を解説します。</div></div><div class="l-arrow">&rarr;</div></a>
+    <a href="prompt-injection-incident-response-playbook.html"><div class="l-side"><div class="l-cat">承認・監査・事故対応</div><div class="l-date">2026.09.19</div></div><div><div class="l-title">プロンプトインジェクション事故対応｜AIエージェントを止めて安全に復旧する</div><div class="l-desc">AIエージェントが悪意ある指示を読み、意図しないtool実行や情報露出を起こした際の検知、隔離、証跡保全、影響確認、復旧を解説します。</div></div><div class="l-arrow">&rarr;</div></a>
+    <a href="ai-agent-permission-drift-access-review.html"><div class="l-side"><div class="l-cat">権限とアクセス管理</div><div class="l-date">2026.09.18</div></div><div><div class="l-title">AIエージェントの権限ドリフト対策｜増えたアクセス権を定期レビューする</div><div class="l-desc">AIエージェントの接続先とscopeが運用中に増え続ける権限ドリフトを防ぐため、権限台帳、利用証跡、棚卸し、失効を一つの運用にする方法を解説します。</div></div><div class="l-arrow">&rarr;</div></a>
+    <a href="mcp-apps-security-design.html"><div class="l-side"><div class="l-cat">実行環境と通信の制限</div><div class="l-date">2026.09.17</div></div><div><div class="l-title">MCP Appsのセキュリティ設計｜iframe・CSP・postMessage・書込み操作をどう守るか【2026】</div><div class="l-desc">MCP Appsで第三者UIを会話内に表示する際に、sandboxed iframe、CSP、postMessage、UI起点のtool callをどう分離・検証するかを整理します。</div></div><div class="l-arrow">&rarr;</div></a>
+    <a href="ai-agent-runtime-sandbox-egress-design.html"><div class="l-side"><div class="l-cat">実行環境と通信の制限</div><div class="l-date">2026.09.16</div></div><div><div class="l-title">AIエージェントのサンドボックス設計｜workspace・通信・認証情報を分離する</div><div class="l-desc">AIエージェントの実行環境を、workspace、network egress、credentials、承認、監査に分け、被害範囲を閉じる設計を解説します。</div></div><div class="l-arrow">&rarr;</div></a>
+    <a href="ai-agent-delegated-identity-token-exchange-design.html"><div class="l-side"><div class="l-cat">権限とアクセス管理</div><div class="l-date">2026.09.15</div></div><div><div class="l-title">AIエージェントの代理実行ID設計｜利用者・agent・toolの権限を一つのtokenに潰さない【2026】</div><div class="l-desc">&quot;AIエージェントが業務ツールを代理実行するとき、利用者、agent実行体、下流サービスのIDを分ける設計を解説。短命token、audience、scope、on-behalf-of、監査を組み合わせ、共有admin権限を避けます。&quot;</div></div><div class="l-arrow">&rarr;</div></a>
+    <a href="ai-agent-memory-poisoning-isolation-design.html"><div class="l-side"><div class="l-cat">機密データの保護</div><div class="l-date">2026.09.14</div></div><div><div class="l-title">AIエージェントの記憶を汚染させない｜保存前検証・tenant分離・期限・出所を分ける設計【2026】</div><div class="l-desc">&quot;AIエージェントの長期記憶を、将来の命令入力として扱わないための設計を解説。保存前検証、user・tenant・session分離、出所と信頼度、保持期限、改ざん調査を分け、memory poisoningと越境漏えいを抑えます。&quot;</div></div><div class="l-arrow">&rarr;</div></a>
+    <a href="ai-agent-tool-validation-authorization-design.html"><div class="l-side"><div class="l-cat">権限とアクセス管理</div><div class="l-date">2026.09.13</div></div><div><div class="l-title">AIエージェントのtool検証設計｜JSON schemaの後に、認可・業務制約・確定記録を置く【2026】</div><div class="l-desc">&quot;AIエージェントが生成したtool引数を安全に実行するために、JSON schema、現在の認可、業務上の前提条件、冪等性・監査を分ける設計を解説。OpenAI・Anthropic・MCPの仕様差と、schemaだけでは止められない事故を整理します。&quot;</div></div><div class="l-arrow">&rarr;</div></a>
+    <a href="ai-agent-red-teaming-boundary-design.html"><div class="l-side"><div class="l-cat">攻撃対策と検証</div><div class="l-date">2026.09.12</div></div><div><div class="l-title">AIエージェントのレッドチーム設計｜promptだけでなく権限・tool・実行環境を検証する【2026】</div><div class="l-desc">&quot;AIエージェントを本番導入する前のレッドチーム設計を解説。攻撃シナリオを、入力、データ、tool権限、実行結果の四境界に分け、再現可能な評価・修正・再試験へつなげる方法を整理します。&quot;</div></div><div class="l-arrow">&rarr;</div></a>
+    <a href="generative-ai-dlp-design.html"><div class="l-side"><div class="l-cat">機密データの保護</div><div class="l-date">2026.09.11</div></div><div><div class="l-title">生成AIのDLP設計｜入力・出力・検索・ログで機密データを止める【2026】</div><div class="l-desc">&quot;生成AIで機密データを扱うときのDLP設計を解説。prompt、RAG・web検索、回答、監査ログの四つの境界で、検知・遮断・マスキング・例外運用を分ける方法を整理します。&quot;</div></div><div class="l-arrow">&rarr;</div></a>
+    <a href="ai-agent-audit-log-design.html"><div class="l-side"><div class="l-cat">承認・監査・事故対応</div><div class="l-date">2026.09.10</div></div><div><div class="l-title">AIエージェントの監査ログ設計｜「誰が、何を、なぜ実行したか」を後から復元する【2026】</div><div class="l-desc">&quot;AIエージェントの事故・誤操作を後から追える監査ログの設計を解説。実行主体、tool、承認、外部効果を結ぶ相関IDと、プロンプトを無制限に保存しない最小データ化を整理します。&quot;</div></div><div class="l-arrow">&rarr;</div></a>
+    <a href="rag-retrieval-access-control.html"><div class="l-side"><div class="l-cat">機密データの保護</div><div class="l-date">2026.09.09</div></div><div><div class="l-title">RAGの権限漏れを防ぐ｜namespace・metadata filterを認可情報から作る【2026】</div><div class="l-desc">RAGで他社・他部署の文書を検索結果へ混ぜないために、Vectorizeのnamespaceとmetadata filterを認証済みの認可情報から組み立てる設計を解説。検索後の再認可と更新時の注意点も整理します。</div></div><div class="l-arrow">&rarr;</div></a>
+    <a href="llm-api-cost-abuse-controls.html"><div class="l-side"><div class="l-cat">導入審査・調達・コスト</div><div class="l-date">2026.09.08</div></div><div><div class="l-title">LLM APIの高額請求を防ぐ｜rate limit・spend limit・tool予算を分ける【2026】</div><div class="l-desc">生成AIの高額請求や可用性低下を防ぐために、request数、実費、エージェントのtool実行回数を別々に制御する設計を解説。Cloudflare AI Gatewayのrate limit・spend limitの適用範囲と限界も整理します。</div></div><div class="l-arrow">&rarr;</div></a>
+    <a href="mcp-oauth-authorization-design.html"><div class="l-side"><div class="l-cat">権限とアクセス管理</div><div class="l-date">2026.09.07</div></div><div><div class="l-title">MCPサーバーのOAuth認可設計｜resource・scope・トークン再利用をどう防ぐか【2026】</div><div class="l-desc">リモートMCPサーバーを安全に接続するために、OAuthのresource、scope、Protected Resource Metadata、短命token、DPoPをどう使い分けるか。配布元確認とは別の実行時認可を整理します。</div></div><div class="l-arrow">&rarr;</div></a>
+    <a href="mcp-server-supply-chain-security.html"><div class="l-side"><div class="l-cat">導入審査・調達・コスト</div><div class="l-date">2026.09.04</div></div><div><div class="l-title">MCPサーバーのサプライチェーン対策｜導入前に確認する配布元・署名・更新</div><div class="l-desc">MCPサーバー導入時にRegistry掲載だけで安全と判断せず、配布元、版・digest固定、SBOM、来歴、権限、sandboxを確認する手順を解説します。</div></div><div class="l-arrow">&rarr;</div></a>
+    <a href="ai-agent-ssrf-prevention.html"><div class="l-side"><div class="l-cat">実行環境と通信の制限</div><div class="l-date">2026.09.03</div></div><div><div class="l-title">AIエージェントのSSRF対策｜URL取得ツールを安全にする設計【2026】</div><div class="l-desc">AIエージェントのURL取得ツールをSSRFから守るためのURL正規化、IP検査、redirect制御、egress分離、監査を解説。</div></div><div class="l-arrow">&rarr;</div></a>
+    <a href="ai-agent-human-approval-gates.html"><div class="l-side"><div class="l-cat">承認・監査・事故対応</div><div class="l-date">2026.09.01</div></div><div><div class="l-title">AIエージェントの承認ゲート設計｜どの操作を人が止めるべきか【2026】</div><div class="l-desc">AIエージェントの外部送信・更新・削除・支払いを人が承認するためのリスク分類、承認画面、期限、監査、fail-close設計。</div></div><div class="l-arrow">&rarr;</div></a>
     <a href="zero-trust-access">
       <div class="l-side">
-        <div class="l-cat">ゼロトラスト / Zero Trust</div>
+        <div class="l-cat">権限とアクセス管理</div>
         <div class="l-date">2026.08.09</div>
       </div>
       <div>
@@ -161,7 +161,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
     </a>
     <a href="firewall-for-ai">
       <div class="l-side">
-        <div class="l-cat">LLMセキュリティ / LLM Security</div>
+        <div class="l-cat">攻撃対策と検証</div>
         <div class="l-date">2026.08.09</div>
       </div>
       <div>
@@ -172,7 +172,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
     </a>
     <a href="ai-crawler-control">
       <div class="l-side">
-        <div class="l-cat">クローラー対策 / Crawler Control</div>
+        <div class="l-cat">実行環境と通信の制限</div>
         <div class="l-date">2026.08.09</div>
       </div>
       <div>
@@ -183,7 +183,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
     </a>
     <a href="saas-security-review">
       <div class="l-side">
-        <div class="l-cat">法人審査 / Security Review</div>
+        <div class="l-cat">導入審査・調達・コスト</div>
         <div class="l-date">2026.08.09</div>
       </div>
       <div>
@@ -194,7 +194,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
     </a>
     <a href="workers-secrets">
       <div class="l-side">
-        <div class="l-cat">シークレット管理 / Secrets</div>
+        <div class="l-cat">機密データの保護</div>
         <div class="l-date">2026.08.09</div>
       </div>
       <div>
@@ -205,7 +205,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
     </a>
     <a href="r2-data-lifecycle">
       <div class="l-side">
-        <div class="l-cat">データ保持 / Data Lifecycle</div>
+        <div class="l-cat">機密データの保護</div>
         <div class="l-date">2026.08.09</div>
       </div>
       <div>
