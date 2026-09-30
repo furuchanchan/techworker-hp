@@ -6,7 +6,7 @@
 <style>.daily-cover{display:block;width:min(1100px,calc(100% - 48px));height:auto;aspect-ratio:1200/630;object-fit:cover;margin:0 auto 54px;border:1px solid var(--line-2);border-radius:16px}.source-note{font-size:13px;color:var(--slate)}.source-list li{margin-bottom:10px;word-break:break-word}@media(max-width:720px){.daily-cover{width:calc(100% - 28px);border-radius:10px;margin-bottom:34px}}</style></head>
 <body><div class="progress" id="progress"></div><nav id="nav"><a href="index.html" class="logo">Tech<i>Worker</i><span class="m-tag">Media</span></a><ul><li><a href="index.html">AI基盤ラボ</a></li><li><a href="../index.html">記事一覧</a></li><li><a href="../../index.html">TechWorkerとは</a></li></ul><div class="nav-right"><a href="../../contact.html" class="nav-cta"><span class="full">相談する</span><span class="short">相談</span></a></div></nav>
 <header class="art-head"><nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI基盤ラボ</a></nav><div class="kicker">Streaming Reliability</div><h1>LLMストリーミングの中断設計｜途中表示を「完了」と扱わない、Abort・再接続・tool実行の分離【2026】</h1><p class="dek">&quot;LLMの逐次表示を本番運用するために、表示用stream、生成完了、利用者の中断、再接続、tool実行を分けて設計する方法を解説。OpenAI・Anthropic・Cloudflare Workersの仕様差と、二重実行を避ける最小構成を整理します。&quot;</p><div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.09.13</span><span class="dot">·</span><span>一次情報 6件</span></div></header><img class="daily-cover" src="covers/llm-streaming-cancellation-reconnect-design.png" alt="LLMストリーミングの途中表示、生成完了、tool外部効果を分離し、切断と再接続でも同じ実行を一度だけ確定する3段階の状態設計図" width="1200" height="630">
-<div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div><a href="#s1">deltaを業務データにしない</a><a href="#s2">clientの切断を、上流の中断へ意図的に伝える</a><a href="#s3">再接続は「もう一度生成」ではなく、実行の継続確認にする</a><a href="#s4">最小の状態遷移を先に決める</a><a href="#s5">限界と確認範囲</a><a href="#s6">導入時の最小チェックリスト</a><a href="#s7">情報図解</a><a href="#s8">一次根拠</a></div></nav><article class="art-body"><p>LLMの逐次表示は、待ち時間の印象を改善します。しかし、画面に数文字届いたこと、モデルが最後まで生成したこと、利用者が受け取ったこと、外部操作が確定したことは同じ出来事ではありません。スマートフォンの回線切替、ブラウザの「停止」、Workerのタイムアウト、tool呼び出しの途中切断を一つの「失敗」として扱うと、利用者には未完の文が残り、裏側では課金や更新だけが継続する、あるいは再接続時に二重実行する状態になります。</p>
+<div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div><a href="#s1">deltaを業務データにしない</a><a href="#s2">clientの切断を、上流の中断へ意図的に伝える</a><a href="#s3">再接続は「もう一度生成」ではなく、実行の継続確認にする</a><a href="#s4">最小の状態遷移を先に決める</a><a href="#s5">限界と確認範囲</a><a href="#s6">導入時の最小チェックリスト</a><a href="#s8">一次根拠</a></div></nav><article class="art-body"><p>LLMの逐次表示は、待ち時間の印象を改善します。しかし、画面に数文字届いたこと、モデルが最後まで生成したこと、利用者が受け取ったこと、外部操作が確定したことは同じ出来事ではありません。スマートフォンの回線切替、ブラウザの「停止」、Workerのタイムアウト、tool呼び出しの途中切断を一つの「失敗」として扱うと、利用者には未完の文が残り、裏側では課金や更新だけが継続する、あるいは再接続時に二重実行する状態になります。</p>
 <p>結論は、streamを表示の輸送路として扱い、業務上の完了は別の確定状態として持つことです。具体的には、(1) 途中deltaは表示専用、(2) providerの終端eventを受けて初めて生成完了、(3) toolや更新は完全な引数を検証してから一度だけ実行、(4) 再接続は同じ実行IDの状態を読みに行く、に分けます。これは9月12日のモデル切替設計とは別の論点です。あちらが「どのモデルへ切り替えるか」の契約なら、本稿は同じ実行を利用者へどう届け、いつ中断・確定するかの設計です。</p>
 <h2 id="s1">deltaを業務データにしない</h2>
 <p>OpenAIのResponses APIは<code>stream=true</code>でSSEを返し、<code>response.output_text.delta</code>、<code>response.completed</code>、<code>error</code>などの型付きeventを送ります。したがって画面へdeltaを描画しても、<code>response.completed</code>を受けるまで回答を保存済み・送信可能とマークしません。AnthropicのMessages APIもSSEですが、最終は<code>message_stop</code>で、過負荷はstream内の<code>error</code> eventとして届きます。さらにtoolの引数は途中では部分JSONであり、<code>content_block_stop</code>後に初めて完全なobjectとして扱えます。providerごとに終端eventとエラー表現が違うため、「接続が閉じたら成功」という共通化は危険です。</p>
@@ -30,14 +30,6 @@
 <li>再接続時に同じ<code>run_id</code>の状態を読み、無条件に新規生成していないか</li>
 <li>toolの外部効果に、実行前条件と冪等性キー、確定記録を置いたか</li>
 </ul>
-<h2 id="s7">情報図解</h2>
-<p><strong>結論:</strong> 「表示」「生成完了」「外部効果」を一本のstreamに混ぜない。</p>
-<ol>
-<li><strong>表示:</strong> deltaを<code>run_id</code>と連番で配信し、切断時は暫定表示のまま止める。</li>
-<li><strong>確定:</strong> providerの終端event後にschema・終了理由を確認し、回答状態を<code>completed</code>にする。</li>
-<li><strong>効果:</strong> 完全なtool引数を認可・前提条件・冪等性キーで検証し、結果を一度だけ記録する。</li>
-</ol>
-<p><strong>制約:</strong> SSEの再接続は配送の再試行であり、LLM生成・tool実行の再開保証ではない。provider仕様とWorkerの互換フラグは実装時に再確認する。</p>
 <h2 id="s8">一次根拠</h2>
 <ul>
 <li><a href="https://developers.openai.com/api/docs/guides/streaming-responses">OpenAI: Streaming API responses</a></li>
