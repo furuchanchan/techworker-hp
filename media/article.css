@@ -372,3 +372,14 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--electric);outline-o
   .kn-side img{width:32px;height:32px;}
   .kn-side p{font-size:12.5px;line-height:1.8;}
 }
+/* 2026-10 記事中盤の申込み（.mid-cta）と日次記事の表紙・出典（各記事の<style>から移設） */
+.mid-cta{margin:36px 0 44px;border:1px solid var(--line-2);border-radius:12px;background:var(--white);padding:22px 26px;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap;}
+.mid-cta .mc-body{flex:1;min-width:240px;}
+.mid-cta .mc-k{font-family:var(--en);font-size:10.5px;font-weight:600;letter-spacing:.12em;color:var(--electric);}
+.mid-cta .mc-t{font-family:var(--jp);font-weight:700;font-size:16.5px;color:var(--ink);line-height:1.55;margin-top:8px;}
+.mid-cta .mc-d{font-size:13.5px;color:var(--slate);line-height:1.8;margin-top:5px;}
+.mid-cta .btn{white-space:nowrap;flex:none;color:var(--paper);border-bottom:none;}
+.daily-cover{display:block;width:min(1100px,calc(100% - 48px));height:auto;aspect-ratio:1200/630;object-fit:cover;margin:0 auto 54px;border:1px solid var(--line-2);border-radius:16px}
+.source-note{font-size:13px;color:var(--slate)}
+.source-list li{margin-bottom:10px;word-break:break-word}
+@media(max-width:720px){.daily-cover{width:calc(100% - 28px);border-radius:10px;margin-bottom:34px}.mid-cta{padding:20px}}
