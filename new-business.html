@@ -1435,8 +1435,22 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
             </select>
           </div>
           <div class="fld"><label>会社名<span class="rq">必須</span></label><input type="text" name="company" placeholder="株式会社サンプル" required /></div>
+          <div class="fld">
+            <label>会社規模<span class="rq">必須</span></label>
+            <select name="company_size" required>
+              <option value="">選択してください</option>
+              <option value="1-10名">1〜10名</option>
+              <option value="11-50名">11〜50名</option>
+              <option value="51-100名">51〜100名</option>
+              <option value="101-300名">101〜300名</option>
+              <option value="301名以上">301名以上</option>
+            </select>
+          </div>
+          <div class="fld"><label>部署<span class="rq">必須</span></label><input type="text" name="department" placeholder="新規事業開発部" required /></div>
+          <div class="fld"><label>役職<span class="rq">必須</span></label><input type="text" name="position" autocomplete="organization-title" placeholder="部長" required /></div>
           <div class="fld"><label>お名前<span class="rq">必須</span></label><input type="text" name="name" placeholder="山田 太郎" required /></div>
           <div class="fld"><label>会社メールアドレス<span class="rq">必須</span></label><input type="email" name="email" placeholder="taro@example.co.jp" required /></div>
+          <div class="fld"><label>電話番号<span class="rq">必須</span></label><input type="tel" name="phone" autocomplete="tel" placeholder="03-1234-5678" pattern="[^0-9０-９]*([0-9０-９][^0-9０-９]*){10,15}" title="電話番号を数字10桁以上でご入力ください（例：03-1234-5678）" required /></div>
           <button type="submit" class="btn btn-blue submit">無料で申し込む<span class="ar">→</span></button>
           <p class="trust">入力情報はご案内のみに利用します。<a href="privacy.html">プライバシーポリシー</a>に同意のうえ送信してください。</p>
         </form>
@@ -1538,6 +1552,10 @@ function submitTraining(e){
     name:get('name'),
     company:get('company'),
     email:get('email'),
+    phone:get('phone'),
+    department:get('department'),
+    position:get('position'),
+    company_size:get('company_size'),
     inquiry_type:inquiry,
     source:'新規事業LP',
     message:'【新規事業向けAI活用LP】ご希望: '+(offer||'(未選択)')

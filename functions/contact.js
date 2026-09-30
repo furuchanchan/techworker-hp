@@ -27,6 +27,24 @@ function isAllowedSource(request) {
   try { return ALLOWED_ORIGINS.has(new URL(ref).origin); } catch { return false; }
 }
 
+// 営業の連絡に使うため、すべてのフォームで必須にしている項目。空や形式違いの送信は受け付けない
+const REQUIRED_FIELDS = ['name', 'company', 'email', 'phone', 'department', 'position', 'company_size'];
+// Notion の「会社規模」select の選択肢と一致させる
+const COMPANY_SIZES = new Set(['1-10名', '11-50名', '51-100名', '101-300名', '301名以上']);
+
+// CoeSignal（worker の /api/contact）からの転送は会社規模を送っていない。
+// CoeSignal のフォームに会社規模を足したら、この例外を消す
+const fromCoeSignal = (data) => String(data.source || '').startsWith('CoeSignal');
+
+function invalidFields(data) {
+  const bad = REQUIRED_FIELDS.filter((k) => !data[k] && !(k === 'company_size' && fromCoeSignal(data)));
+  if (data.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) bad.push('email');
+  const digits = data.phone.replace(/\D/g, '').length;
+  if (data.phone && (digits < 10 || digits > 15)) bad.push('phone');
+  if (data.company_size && !COMPANY_SIZES.has(data.company_size)) bad.push('company_size');
+  return bad;
+}
+
 const INQUIRY_MAP = {
   consultation: '無料相談',
   document:     '資料請求',
@@ -287,11 +305,12 @@ export async function onRequestPost({ request, env }) {
     });
   }
 
-  // 必須項目チェック: 名前・メールが両方空なら無効（空リードの混入を防ぐ）
-  const hasName  = data.name  && String(data.name).trim();
-  const hasEmail = data.email && String(data.email).trim();
-  if (!hasName && !hasEmail) {
-    return new Response(JSON.stringify({ error: 'Missing required fields' }), {
+  // 必須項目チェック: 全角で入力された電話番号は半角にそろえてから数字の桁数を見る
+  for (const k of REQUIRED_FIELDS) data[k] = String(data[k] ?? '').trim();
+  data.phone = data.phone.normalize('NFKC');
+  const invalid = invalidFields(data);
+  if (invalid.length) {
+    return new Response(JSON.stringify({ error: 'Missing required fields', fields: invalid }), {
       status: 400, headers: { ...CORS, 'Content-Type': 'application/json' },
     });
   }
