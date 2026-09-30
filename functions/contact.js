@@ -167,6 +167,32 @@ function normalizeReferrer(ref) {
   return ref;
 }
 
+// 流入元とUTMから、どこから来たかを分ける（Notionの「流入チャネル」とSlackの行動シグナルに出す）
+const AI_HOST     = /(^|\.)(chatgpt\.com|openai\.com|perplexity\.ai|claude\.ai|gemini\.google\.com|copilot\.microsoft\.com|copilot\.com|notebooklm\.google\.com|felo\.ai|genspark\.ai)$/;
+const SEARCH_HOST = /^(www\.)?(google\.[a-z.]+|bing\.com|duckduckgo\.com|ecosia\.org|baidu\.com)$|^(search\.)?yahoo\.co\.jp$|^search\.yahoo\.com$|^search\.naver\.com$/;
+const SNS_HOST    = /(^|\.)(t\.co|x\.com|twitter\.com|facebook\.com|fb\.com|instagram\.com|linkedin\.com|lnkd\.in|youtube\.com|threads\.net)$/;
+const MAIL_HOST   = /^(mail\.google\.com|outlook\.(live|office|office365)\.com|mail\.yahoo\.co\.jp)$/;
+
+function hostChannel(host) {
+  if (AI_HOST.test(host))     return 'AI検索';
+  if (SEARCH_HOST.test(host)) return '検索';
+  if (SNS_HOST.test(host))    return 'SNS';
+  if (MAIL_HOST.test(host))   return 'メール';
+  return null;
+}
+
+function classifyChannel({ intent_referrer: ref, intent_landing: landing, intent_utm: utm }) {
+  if (!ref && !landing) return '記録なし';
+  const [source = '', medium = ''] = String(utm || '').toLowerCase().split('|');
+  if (/^(cpc|ppc|cpm|paid|paid[-_]?social|display|banner|ads?)$/.test(medium)) return '広告';
+  if (/^(e-?mail|mail|newsletter)$/.test(medium)) return 'メール';
+  if (/^(social|sns|social[-_]?network)$/.test(medium)) return 'SNS';
+  // utm_source は「chatgpt.com」のようなドメインのことも「google」のような名前だけのこともある
+  if (source) return hostChannel(source) || hostChannel(`${source}.com`) || '外部サイト';
+  if (!ref || ref === '(direct)') return '直接';
+  try { return hostChannel(new URL(ref).hostname) || '外部サイト'; } catch { return '外部サイト'; }
+}
+
 async function saveToNotion(data, apiKey, salesReason = null) {
   let msg = ((data.diag_score != null)
     ? `【📊AI活用度診断 ${data.diag_band || ''}（${data.diag_score}/${data.diag_max || 100}）】\n${data.diag_answers || ''}\n${data.message || ''}`
@@ -186,6 +212,7 @@ async function saveToNotion(data, apiKey, salesReason = null) {
   if (data.company_size) properties['会社規模']       = { select:       { name: data.company_size } };
   if (data.inquiry_type) properties['問い合わせ種別'] = { select:       { name: INQUIRY_MAP[data.inquiry_type] || '無料相談' } };
   if (data.source)       properties['ソース']         = { select:       { name: data.source } };
+  properties['流入チャネル'] = { select: { name: classifyChannel(data) } };
   if (data.intent_referrer) properties['流入元']      = { rich_text: [{ text: { content: data.intent_referrer.slice(0, 1900) } }] };
   if (data.intent_landing)  properties['ランディング'] = { rich_text: [{ text: { content: data.intent_landing.slice(0, 1900) } }] };
   if (data.intent_utm && data.intent_utm.replace(/\|/g, '')) properties['UTM'] = { rich_text: [{ text: { content: data.intent_utm.slice(0, 1900) } }] };
@@ -216,7 +243,7 @@ async function sendSlackNotification(data, webhookUrl) {
   const pages = data.intent_pages || '';
   const intent = computeIntent(data);
   const utm = (data.intent_utm && data.intent_utm.replace(/\|/g, '')) ? `\nUTM: ${data.intent_utm}` : '';
-  const intentText = `*行動シグナル*\n流入元: ${data.intent_referrer || '(フォームから届いていない)'}\nランディング: ${data.intent_landing || '-'}\n閲覧経路: ${pages || '-'}\n訪問回数: ${data.intent_visits || '1'}回目${utm}`;
+  const intentText = `*行動シグナル*\n流入元: ${data.intent_referrer || '(フォームから届いていない)'}（${classifyChannel(data)}）\nランディング: ${data.intent_landing || '-'}\n閲覧経路: ${pages || '-'}\n訪問回数: ${data.intent_visits || '1'}回目${utm}`;
   const headerText = `${intent.emoji ? intent.emoji + ' ' + intent.label + '｜' : ''}問い合わせ: ${data.name || '(名前なし)'}`;
   const payload = {
     text: `${intent.emoji ? intent.emoji + ' ' : ''}HP問い合わせ: ${data.name || '(名前なし)'} / ${data.company || '(会社名なし)'}`,
