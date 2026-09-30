@@ -193,6 +193,25 @@ function classifyChannel({ intent_referrer: ref, intent_landing: landing, intent
   try { return hostChannel(new URL(ref).hostname) || '外部サイト'; } catch { return '外部サイト'; }
 }
 
+// 「どこから来たか」は、初めてサイトに来たときの記録を使う（後日あらためて来て問い合わせた人も、最初の入口が分かる）。
+// その記録が無い送信は、今回の訪問を使う
+const pageTitle = (t) => String(t || '').replace(/\s*(｜|\||—|-)\s*(株式会社)?TechWorker\s*$/, '');
+
+function firstTouch(data) {
+  if (data.intent_first_landing) {
+    return { intent_referrer: data.intent_first_referrer, intent_landing: data.intent_first_landing, intent_utm: data.intent_first_utm, title: pageTitle(data.intent_first_title), at: data.intent_first_at };
+  }
+  return { intent_referrer: data.intent_referrer, intent_landing: data.intent_landing, intent_utm: data.intent_utm, title: pageTitle(data.intent_landing_title) };
+}
+
+const hasUtm = (utm) => !!(utm && utm.replace(/\|/g, ''));
+
+// 今回の訪問を1行にまとめる（例: 3回目の訪問（初回 2026-09-12）｜今回の流入元 (direct)（直接）｜/training > /contact）
+function visitSummary(data) {
+  const first = data.intent_first_at && Number(data.intent_visits) > 1 ? `（初回 ${data.intent_first_at}）` : '';
+  return `${data.intent_visits || '1'}回目の訪問${first}｜今回の流入元 ${data.intent_referrer || '-'}（${classifyChannel(data)}）｜${data.intent_pages || '-'}`;
+}
+
 async function saveToNotion(data, apiKey, salesReason = null) {
   let msg = ((data.diag_score != null)
     ? `【📊AI活用度診断 ${data.diag_band || ''}（${data.diag_score}/${data.diag_max || 100}）】\n${data.diag_answers || ''}\n${data.message || ''}`
@@ -212,10 +231,13 @@ async function saveToNotion(data, apiKey, salesReason = null) {
   if (data.company_size) properties['会社規模']       = { select:       { name: data.company_size } };
   if (data.inquiry_type) properties['問い合わせ種別'] = { select:       { name: INQUIRY_MAP[data.inquiry_type] || '無料相談' } };
   if (data.source)       properties['ソース']         = { select:       { name: data.source } };
-  properties['流入チャネル'] = { select: { name: classifyChannel(data) } };
-  if (data.intent_referrer) properties['流入元']      = { rich_text: [{ text: { content: data.intent_referrer.slice(0, 1900) } }] };
-  if (data.intent_landing)  properties['ランディング'] = { rich_text: [{ text: { content: data.intent_landing.slice(0, 1900) } }] };
-  if (data.intent_utm && data.intent_utm.replace(/\|/g, '')) properties['UTM'] = { rich_text: [{ text: { content: data.intent_utm.slice(0, 1900) } }] };
+  const first = firstTouch(data);
+  const text = (v) => ({ rich_text: [{ text: { content: String(v).slice(0, 1900) } }] });
+  properties['流入チャネル'] = { select: { name: classifyChannel(first) } };
+  if (first.intent_referrer)     properties['流入元']      = text(first.intent_referrer);
+  if (first.intent_landing)      properties['ランディング'] = text(first.title ? `${first.intent_landing}｜${first.title}` : first.intent_landing);
+  if (hasUtm(first.intent_utm))  properties['UTM']         = text(first.intent_utm);
+  if (data.intent_landing)       properties['今回の訪問']   = text(visitSummary(data));
 
   const res = await fetch('https://api.notion.com/v1/pages', {
     method: 'POST',
@@ -240,10 +262,15 @@ async function sendSlackNotification(data, webhookUrl) {
     return;
   }
   const type = INQUIRY_MAP[data.inquiry_type] || data.inquiry_type || '-';
-  const pages = data.intent_pages || '';
   const intent = computeIntent(data);
-  const utm = (data.intent_utm && data.intent_utm.replace(/\|/g, '')) ? `\nUTM: ${data.intent_utm}` : '';
-  const intentText = `*行動シグナル*\n流入元: ${data.intent_referrer || '(フォームから届いていない)'}（${classifyChannel(data)}）\nランディング: ${data.intent_landing || '-'}\n閲覧経路: ${pages || '-'}\n訪問回数: ${data.intent_visits || '1'}回目${utm}`;
+  const first = firstTouch(data);
+  const intentText = [
+    '*行動シグナル*',
+    `どこから来たか: ${first.intent_referrer || '(フォームから届いていない)'}（${classifyChannel(first)}）`,
+    `入口のページ: ${first.intent_landing ? (first.title ? `${first.intent_landing}｜${first.title}` : first.intent_landing) : '-'}`,
+    ...(hasUtm(first.intent_utm) ? [`UTM: ${first.intent_utm}`] : []),
+    ...(data.intent_landing ? [`今回: ${visitSummary(data)}`] : []),
+  ].join('\n');
   const headerText = `${intent.emoji ? intent.emoji + ' ' + intent.label + '｜' : ''}問い合わせ: ${data.name || '(名前なし)'}`;
   const payload = {
     text: `${intent.emoji ? intent.emoji + ' ' : ''}HP問い合わせ: ${data.name || '(名前なし)'} / ${data.company || '(会社名なし)'}`,
@@ -348,7 +375,8 @@ export async function onRequestPost({ request, env }) {
     });
   }
 
-  if (data.intent_referrer) data.intent_referrer = normalizeReferrer(String(data.intent_referrer));
+  if (data.intent_referrer)       data.intent_referrer       = normalizeReferrer(String(data.intent_referrer));
+  if (data.intent_first_referrer) data.intent_first_referrer = normalizeReferrer(String(data.intent_first_referrer));
 
   // 営業・売り込みと判定したら送信を止める。誤判定をあとで拾えるよう Notion には残し、Slack には流さない
   const verdict = await classifySales(data, env.ANTHROPIC_API_KEY);
