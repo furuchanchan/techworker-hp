@@ -352,9 +352,9 @@ body.assessing footer,body.assessing .refs{display:none;}
 .fg label{display:block;font-size:13.5px;font-weight:600;margin-bottom:8px;}
 .fg label .req{color:var(--electric);font-size:11.5px;margin-left:6px;}
 .fg label .opt2{color:var(--slate);font-size:11.5px;margin-left:6px;font-weight:500;}
-.fg input,.fg select,.fg textarea{width:100%;padding:14px 15px;font-size:15px;font-family:inherit;border:1px solid var(--line);border-radius:8px;background:var(--white);color:var(--ink);transition:border-color .2s,box-shadow .2s;}
-.fg input:focus,.fg select:focus,.fg textarea:focus{outline:none;border-color:var(--electric);box-shadow:0 0 0 3px rgba(0,94,255,.12);}
-.fg.invalid input,.fg.invalid select,.fg.invalid textarea{border-color:var(--slate);box-shadow:0 0 0 3px rgba(74,86,102,.16);}
+.fg input,.fg textarea{width:100%;padding:14px 15px;font-size:15px;font-family:inherit;border:1px solid var(--line);border-radius:8px;background:var(--white);color:var(--ink);transition:border-color .2s,box-shadow .2s;}
+.fg input:focus,.fg textarea:focus{outline:none;border-color:var(--electric);box-shadow:0 0 0 3px rgba(0,94,255,.12);}
+.fg.invalid input,.fg.invalid textarea{border-color:var(--slate);box-shadow:0 0 0 3px rgba(74,86,102,.16);}
 .field-error{display:none;color:var(--slate);font-weight:600;font-size:12.5px;margin-top:6px;}
 .fg.invalid .field-error{display:block;}
 .fg textarea{resize:vertical;min-height:80px;}
@@ -454,7 +454,7 @@ footer .container{max-width:1180px;}
   .q-block,.lv-band,.bench,.themes,.breakdown,.lead,.ai-report{padding-left:20px;padding-right:20px;}
   .q-block h3{font-size:17.5px;}
   .opt{font-size:15px;}
-  .fg input,.fg select,.fg textarea{font-size:16px;}
+  .fg input,.fg textarea{font-size:16px;}
   /* 5段階ゲージ: ラベルを1行固定で潰れ・折返しを防ぐ */
   .lv-scale{gap:5px;align-items:flex-start;}
   .lv-scale .ls{font-size:10px;letter-spacing:-.02em;line-height:1.2;min-width:0;white-space:nowrap;}
@@ -656,7 +656,6 @@ footer .container{max-width:1180px;}
           </div>
           <div class="fg"><label for="lf-name">お名前<span class="req">必須</span></label><input id="lf-name" type="text" name="name" placeholder="山田 太郎" autocomplete="name" required aria-required="true"></div>
           <div class="fg"><label for="lf-company">会社名<span class="req">必須</span></label><input id="lf-company" type="text" name="company" placeholder="株式会社○○○○" autocomplete="organization" required aria-required="true"></div>
-          <div class="fg"><label for="lf-company-size">会社規模<span class="req">必須</span></label><select id="lf-company-size" name="company_size" required aria-required="true"><option value="" disabled selected>選択してください</option><option value="1-10名">1〜10名</option><option value="11-50名">11〜50名</option><option value="51-100名">51〜100名</option><option value="101-300名">101〜300名</option><option value="301名以上">301名以上</option></select></div>
           <div class="fg"><label for="lf-department">部署<span class="req">必須</span></label><input id="lf-department" type="text" name="department" placeholder="経営企画部 / DX推進室 等" required aria-required="true"></div>
           <div class="fg"><label for="lf-position">役職<span class="req">必須</span></label><input id="lf-position" type="text" name="position" placeholder="部長 / マネージャー 等" autocomplete="organization-title" required aria-required="true"></div>
           <div class="fg"><label for="lf-email">会社メールアドレス<span class="req">必須</span></label><input id="lf-email" type="email" name="email" placeholder="taro@example.co.jp" autocomplete="email" required aria-required="true"></div>
@@ -1030,11 +1029,11 @@ function val(el){var g=el.closest('.fg');if(!g)return true;var v=(el.value||'').
   var m=g.querySelector('.field-error');
   if(err){g.classList.add('invalid');if(!m){m=document.createElement('div');m.className='field-error';g.appendChild(m);}m.textContent=err;return false;}
   g.classList.remove('invalid');if(m)m.textContent='';return true;}
-lf.querySelectorAll('input,select,textarea').forEach(function(el){el.addEventListener('blur',function(){if((el.value||'').trim()||el.required)val(el);});el.addEventListener('input',function(){var g=el.closest('.fg');if(g&&g.classList.contains('invalid'))val(el);});});
+lf.querySelectorAll('input,textarea').forEach(function(el){el.addEventListener('blur',function(){if((el.value||'').trim()||el.required)val(el);});el.addEventListener('input',function(){var g=el.closest('.fg');if(g&&g.classList.contains('invalid'))val(el);});});
 
 lf.addEventListener('submit',async function(e){
   e.preventDefault();
-  var ok=true;lf.querySelectorAll('input[required],select[required],textarea[required]').forEach(function(el){if(!val(el))ok=false;});
+  var ok=true;lf.querySelectorAll('input[required],textarea[required]').forEach(function(el){if(!val(el))ok=false;});
   if(!document.getElementById('pp').checked)ok=false;
   if(!ok){var bad=lf.querySelector('.fg.invalid');if(bad)bad.scrollIntoView({behavior:'smooth',block:'center'});return;}
   var btn=lf.querySelector('.lead-submit');btn.disabled=true;btn.style.opacity='.7';btn.textContent='送信中...';

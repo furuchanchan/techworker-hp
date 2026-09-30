@@ -28,20 +28,13 @@ function isAllowedSource(request) {
 }
 
 // 営業の連絡に使うため、すべてのフォームで必須にしている項目。空や形式違いの送信は受け付けない
-const REQUIRED_FIELDS = ['name', 'company', 'email', 'phone', 'department', 'position', 'company_size'];
-// Notion の「会社規模」select の選択肢と一致させる
-const COMPANY_SIZES = new Set(['1-10名', '11-50名', '51-100名', '101-300名', '301名以上']);
-
-// CoeSignal（worker の /api/contact）からの転送は会社規模を送っていない。
-// CoeSignal のフォームに会社規模を足したら、この例外を消す
-const fromCoeSignal = (data) => String(data.source || '').startsWith('CoeSignal');
+const REQUIRED_FIELDS = ['name', 'company', 'email', 'phone', 'department', 'position'];
 
 function invalidFields(data) {
-  const bad = REQUIRED_FIELDS.filter((k) => !data[k] && !(k === 'company_size' && fromCoeSignal(data)));
+  const bad = REQUIRED_FIELDS.filter((k) => !data[k]);
   if (data.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) bad.push('email');
   const digits = data.phone.replace(/\D/g, '').length;
   if (data.phone && (digits < 10 || digits > 15)) bad.push('phone');
-  if (data.company_size && !COMPANY_SIZES.has(data.company_size)) bad.push('company_size');
   return bad;
 }
 
@@ -75,7 +68,6 @@ function computeIntent(data) {
   if (nMedia)    { score += 1;                           reasons.push('メディア閲覧'); }
   if (visits >= 3)      { score += 3; reasons.push(`${visits}回目の訪問`); }
   else if (visits === 2){ score += 1; reasons.push('再訪問'); }
-  if (/301名以上|101-300名|51-100名/.test(data.company_size || '')) { score += 1; reasons.push('中堅〜大企業'); }
 
   let emoji = '', label = '通常', priority = 'normal';
   if (score >= 8)      { emoji = '🔥🔥🔥'; label = '最優先リード'; priority = 'hot'; }
@@ -228,7 +220,6 @@ async function saveToNotion(data, apiKey, salesReason = null) {
   if (data.phone)        properties['電話番号']       = { phone_number: data.phone };
   if (data.department)   properties['部署']           = { rich_text: [{ text: { content: data.department } }] };
   if (data.position)     properties['役職']           = { rich_text: [{ text: { content: data.position } }] };
-  if (data.company_size) properties['会社規模']       = { select:       { name: data.company_size } };
   if (data.inquiry_type) properties['問い合わせ種別'] = { select:       { name: INQUIRY_MAP[data.inquiry_type] || '無料相談' } };
   if (data.source)       properties['ソース']         = { select:       { name: data.source } };
   const first = firstTouch(data);
@@ -293,7 +284,6 @@ async function sendSlackNotification(data, webhookUrl) {
           { type: 'mrkdwn', text: `*ソース*\n${data.source || 'HP本体'}` },
           { type: 'mrkdwn', text: `*メール*\n${data.email || '-'}` },
           { type: 'mrkdwn', text: `*電話番号*\n${data.phone || '-'}` },
-          { type: 'mrkdwn', text: `*会社規模*\n${data.company_size || '-'}` },
         ],
       },
       {
