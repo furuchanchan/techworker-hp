@@ -1072,31 +1072,19 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
           <label class="cf-field"><span class="cf-l">電話番号 <em>必須</em></span><input type="tel" name="phone" id="cf-phone" autocomplete="tel" placeholder="03-1234-5678" pattern="[^0-9０-９]*([0-9０-９][^0-9０-９]*){10,15}" title="電話番号を数字10桁以上でご入力ください（例：03-1234-5678）" required/></label>
         </div>
 
-        <div class="cf-row">
-          <label class="cf-field"><span class="cf-l">業種 <em>必須</em></span>
-            <select name="industry" id="cf-industry" required>
-              <option value="">選択してください</option>
-              <option>食品・飲料</option>
-              <option>日用品・トイレタリー</option>
-              <option>化粧品・美容</option>
-              <option>D2C・通販</option>
-              <option>小売・PB</option>
-              <option>家電・ガジェット</option>
-              <option>広告代理店・調査会社</option>
-              <option>その他</option>
-            </select>
-          </label>
-          <label class="cf-field"><span class="cf-l">会社規模 <em>必須</em></span>
-            <select name="company_size" id="cf-company-size" required>
-              <option value="" disabled selected>選択してください</option>
-              <option value="1-10名">1〜10名</option>
-              <option value="11-50名">11〜50名</option>
-              <option value="51-100名">51〜100名</option>
-              <option value="101-300名">101〜300名</option>
-              <option value="301名以上">301名以上</option>
-            </select>
-          </label>
-        </div>
+        <label class="cf-field"><span class="cf-l">業種 <em>必須</em></span>
+          <select name="industry" id="cf-industry" required>
+            <option value="">選択してください</option>
+            <option>食品・飲料</option>
+            <option>日用品・トイレタリー</option>
+            <option>化粧品・美容</option>
+            <option>D2C・通販</option>
+            <option>小売・PB</option>
+            <option>家電・ガジェット</option>
+            <option>広告代理店・調査会社</option>
+            <option>その他</option>
+          </select>
+        </label>
 
         <label class="cf-field"><span class="cf-l">検証したいテーマ・商品概要 <em>必須</em></span>
           <textarea name="concept" id="cf-concept" rows="4" required placeholder="例：ボタニカル素材を使った機能性飲料。30〜40代女性向け、1本498円を想定。パッケージA/Bと価格の納得性を確かめたい。"></textarea>
@@ -1268,7 +1256,7 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a){
 
   function validateStep1() {
     let ok = true;
-    const required = ['cf-company','cf-dept','cf-name','cf-title-input','cf-email','cf-phone','cf-industry','cf-company-size','cf-concept'];
+    const required = ['cf-company','cf-dept','cf-name','cf-title-input','cf-email','cf-phone','cf-industry','cf-concept'];
     required.forEach(id => {
       const el = document.getElementById(id);
       if (!el.value.trim()) { el.classList.add('error'); ok = false; }
@@ -1388,7 +1376,6 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a){
       phone:        fd.get('phone')   || '',
       department:   fd.get('dept')    || '',
       position:     fd.get('title')   || '',
-      company_size: fd.get('company_size') || '',
       inquiry_type: 'consultation',
       message:      messageParts.join('\n'),
       source:       'digital-twin-research',

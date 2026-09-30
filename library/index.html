@@ -139,10 +139,10 @@ body.menu-open .mmenu{transform:none;visibility:visible;}
 .modal label.field{display:block;margin-bottom:13px;}
 .modal label.field span{display:block;font-size:12px;font-weight:600;color:var(--slate);margin-bottom:6px;}
 .modal label.field span em{color:#c0392b;font-style:normal;}
-.modal input,.modal select,.modal textarea{width:100%;padding:12px 14px;border:1px solid var(--line-2);border-radius:7px;font-family:inherit;font-size:14px;background:var(--white);transition:border-color .2s,box-shadow .2s;}
+.modal input,.modal textarea{width:100%;padding:12px 14px;border:1px solid var(--line-2);border-radius:7px;font-family:inherit;font-size:14px;background:var(--white);transition:border-color .2s,box-shadow .2s;}
 .modal textarea{resize:vertical;min-height:84px;line-height:1.7;}
 .modal label.field span em.opt{color:var(--slate);font-weight:500;}
-.modal input:focus,.modal select:focus{outline:none;border-color:var(--electric);box-shadow:0 0 0 3px rgba(0,94,255,.12);}
+.modal input:focus{outline:none;border-color:var(--electric);box-shadow:0 0 0 3px rgba(0,94,255,.12);}
 .modal .agree{display:flex;align-items:flex-start;gap:9px;margin:8px 0 20px;font-size:12px;color:var(--slate);line-height:1.6;}
 .modal .agree input{width:auto;margin-top:3px;}
 .modal .agree a{color:var(--electric);text-decoration:underline;}
@@ -336,7 +336,6 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
       <form id="dlForm" novalidate>
         <label class="field"><span>お名前 <em>*</em></span><input type="text" name="name" required autocomplete="name"></label>
         <label class="field"><span>会社名 <em>*</em></span><input type="text" name="company" required autocomplete="organization"></label>
-        <label class="field"><span>会社規模 <em>*</em></span><select name="company_size" required><option value="" disabled selected>選択してください</option><option value="1-10名">1〜10名</option><option value="11-50名">11〜50名</option><option value="51-100名">51〜100名</option><option value="101-300名">101〜300名</option><option value="301名以上">301名以上</option></select></label>
         <label class="field"><span>部署 <em>*</em></span><input type="text" name="department" required placeholder="例：経営企画部"></label>
         <label class="field"><span>役職 <em>*</em></span><input type="text" name="position" required autocomplete="organization-title" placeholder="例：部長"></label>
         <label class="field"><span>メールアドレス <em>*</em></span><input type="email" name="email" required autocomplete="email"></label>
@@ -419,7 +418,7 @@ addEventListener('scroll',function(){var n=document.querySelector('nav');if(n)n.
     });
   });
   document.getElementById('modalClose').addEventListener('click',closeModal);
-  overlay.addEventListener('keydown',function(e){if(e.key!=='Tab')return;var els=overlay.querySelectorAll('a[href],button:not([disabled]),input,select,textarea');if(!els.length)return;var first=els[0],last=els[els.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}});
+  overlay.addEventListener('keydown',function(e){if(e.key!=='Tab')return;var els=overlay.querySelectorAll('a[href],button:not([disabled]),input,textarea');if(!els.length)return;var first=els[0],last=els[els.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}});
   overlay.addEventListener('click',function(e){if(e.target===overlay)closeModal();});
   addEventListener('keydown',function(e){if(e.key==='Escape'&&overlay.classList.contains('show'))closeModal();});
   form.addEventListener('submit',async function(e){
@@ -431,7 +430,7 @@ addEventListener('scroll',function(){var n=document.querySelector('nav');if(n)n.
     var note=fd.get('note')||'';
     var payload={
       name:fd.get('name')||'',company:fd.get('company')||'',email:fd.get('email')||'',position:fd.get('position')||'',phone:fd.get('phone')||'',
-      department:fd.get('department')||'',company_size:fd.get('company_size')||'',
+      department:fd.get('department')||'',
       inquiry_type:'document',
       message:'【資料ダウンロード】'+(info?info.title:currentDoc)+'（役職: '+(fd.get('position')||'-')+'）'+(note?'\n【ご相談内容】'+note:''),
       source:'library'

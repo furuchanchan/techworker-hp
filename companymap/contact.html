@@ -111,7 +111,6 @@
           <label><span>メールアドレス</span><input name="email" type="email" maxlength="254" autocomplete="email" inputmode="email" placeholder="you@example.com" required></label>
           <label><span>電話番号</span><input name="phone" type="tel" maxlength="40" autocomplete="tel" inputmode="tel" placeholder="03-1234-5678" required></label>
         </div>
-        <label><span>会社規模</span><select name="company_size" required><option value="" selected>選択してください</option><option value="1-10名">1〜10名</option><option value="11-50名">11〜50名</option><option value="51-100名">51〜100名</option><option value="101-300名">101〜300名</option><option value="301名以上">301名以上</option></select></label>
         <label><span>いまの課題<em>（任意）</em></span><textarea name="message" rows="3" placeholder="例：AIが現場に定着しない／投資対効果を示せない／業務が属人化している"></textarea></label>
         <div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
         <button type="submit" class="btn">無料相談を申し込む <i>→</i></button>
@@ -142,7 +141,7 @@
     e.preventDefault();
     var fd=new FormData(form);
     var v=function(k){return String(fd.get(k)||'').trim();};
-    var need=[['company','会社名'],['name','お名前'],['department','ご所属の部署'],['position','役職'],['email','メールアドレス'],['phone','電話番号'],['company_size','会社規模']];
+    var need=[['company','会社名'],['name','お名前'],['department','ご所属の部署'],['position','役職'],['email','メールアドレス'],['phone','電話番号']];
     var miss=need.filter(function(f){return !v(f[0]);}).map(function(f){return f[1];});
     var emailOk=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('email'));
     var phoneDigits=v('phone').normalize('NFKC').replace(/\D/g,'').length;
@@ -156,7 +155,7 @@
     btn.disabled=true; btn.innerHTML='送信しています…';
     var data={
       name:v('name'), company:v('company'), email:v('email'), phone:v('phone'),
-      department:v('department'), position:v('position'), company_size:v('company_size'),
+      department:v('department'), position:v('position'),
       message:'【生成AIの導入をうまく進めたい部署】'+v('inquiry')+(v('message')?'\n【いまの課題】'+v('message'):''),
       inquiry_type:'consultation', source:'CompanyMap AI', website:v('website')
     };
