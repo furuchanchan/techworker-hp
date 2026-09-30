@@ -4,6 +4,14 @@
   if (window.__techworkerMediaTrackerLoaded) return;
   window.__techworkerMediaTrackerLoaded = true;
 
+  // 問い合わせの流入元の記録（/assets/tw-track.js）が入っていない記事でも読み込む。
+  // 記事は自動で作っているので、入れ忘れても入口の記事が記録から抜けないようにする
+  if (!document.querySelector('script[src="/assets/tw-track.js"]')) {
+    var tw = document.createElement("script");
+    tw.src = "/assets/tw-track.js";
+    document.head.appendChild(tw);
+  }
+
   var path = location.pathname.replace(/\.html$/, "").replace(/\/$/, "") || "/";
   var title = document.title || "";
   var fired = {};
