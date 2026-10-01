@@ -31,7 +31,7 @@
 <h2 id="s2">URL解析は文字列の前方一致で済ませない</h2><p class="answer">前方一致では見た目と接続先の違いを防げない。標準parserで正規化し、schemeとportを必要最小限にする。</p>
 <p><code>https://example.com.evil.invalid</code>、userinfoを含むURL、Unicodeや末尾ドット、IPv6表記など、見た目と実際の接続先が異なる入力があります。標準URL parserで正規化し、許可schemeを<code>https</code>など必要最小限に限定します。</p>
 <p><code>file:</code>、<code>gopher:</code>、<code>data:</code>、<code>ftp:</code>など不要なschemeは拒否します。portも80/443など必要なものだけに限定し、URLに埋め込まれたcredentialは受け付けません。</p>
-<aside class="mid-cta"><div class="mc-body"><div class="mc-k">資料請求 ・ 無料</div><div class="mc-t">生成AI活用事例集を受け取る</div><div class="mc-d">TechWorkerが支援した企業の生成AI活用事例をまとめた資料です。記事のテーマと合わせてご覧ください。</div></div><a href="../../contact.html?type=document&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=ai-agent-ssrf-prevention&amp;utm_content=mid" class="btn" data-cta="ai-agent-ssrf-prevention-mid">事例集を受け取る <i>&rarr;</i></a></aside>
+<aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">Claude Code 企業導入 セキュリティ＆セットアップ実践ガイド</div><div class="mc-d">3つのリスク、5つの設計原則、10項目のチェックリストを、情シスの審査に出せる形でまとめた資料です。</div></div><a href="../../library/?doc=security&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=ai-agent-ssrf-prevention&amp;utm_content=mid" class="btn" data-cta="ai-agent-ssrf-prevention-mid">ガイドを受け取る <i>&rarr;</i></a></aside>
 <h2 id="s3">DNS解決後のIPを検査する</h2><p class="answer">公開名でもDNSがprivateやloopbackを返し得る。接続直前に解決した全IPを検査する。</p>
 <p>hostnameが公開名でも、DNSがloopbackやprivate addressを返す場合があります。接続直前に解決した全IPを検査し、loopback、link-local、private、multicast、予約済み範囲を拒否します。IPv4だけでなくIPv6も対象です。</p>
 <p>DNS rebindingを考えると、検査時と接続時に別の解決結果を使わない構成が必要です。可能なら専用egress proxyで解決と接続を一体化し、アプリ本体から内部ネットワークへ直接到達できないようにします。</p>

@@ -49,7 +49,7 @@
 <li>承認期限</li>
 </ul>
 <p>モデルが生成した長い説明は、説得力があっても安全性の証明ではありません。OWASPのAgentic AI Top 10は、人が権威性や説明に過度に依存するHuman-Agent Trust Exploitationを扱っています。承認画面は理由文より、具体的な差分と境界を優先します。</p>
-<aside class="mid-cta"><div class="mc-body"><div class="mc-k">資料請求 ・ 無料</div><div class="mc-t">生成AI活用事例集を受け取る</div><div class="mc-d">TechWorkerが支援した企業の生成AI活用事例をまとめた資料です。記事のテーマと合わせてご覧ください。</div></div><a href="../../contact.html?type=document&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=ai-agent-human-approval-gates&amp;utm_content=mid" class="btn" data-cta="ai-agent-human-approval-gates-mid">事例集を受け取る <i>&rarr;</i></a></aside>
+<aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">Claude Code 企業導入 セキュリティ＆セットアップ実践ガイド</div><div class="mc-d">3つのリスク、5つの設計原則、10項目のチェックリストを、情シスの審査に出せる形でまとめた資料です。</div></div><a href="../../library/?doc=security&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=ai-agent-human-approval-gates&amp;utm_content=mid" class="btn" data-cta="ai-agent-human-approval-gates-mid">ガイドを受け取る <i>&rarr;</i></a></aside>
 <h2 id="s3">承認対象を固定する</h2><p class="answer">承認後に宛先や本文が変わると別の操作になる。payload hashとversionを付け、実行直前に照合する。</p>
 <p>承認後に本文、添付、宛先、金額が変わると、承認した操作と実行した操作が異なります。承認要求へpayload hashとversionを付け、実行直前に一致を確認します。違えば再承認へ戻します。</p>
 <p>承認tokenは一回限り、短い期限、対象操作限定にします。別操作への流用や、古い承認の再利用を防ぎます。</p>

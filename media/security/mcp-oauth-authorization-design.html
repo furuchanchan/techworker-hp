@@ -34,7 +34,7 @@
 <h3><code>resource</code>はtokenの宛先を示す</h3>
 <p>MCP clientは、authorization requestとtoken requestの双方で、対象MCP serverを表すcanonical URIを<code>resource</code>として送ります。RFC 8707のresource indicatorは、tokenを特定のresourceへ結び付け、別resourceへの転用を防ぐための仕組みです。</p>
 <p>複数のMCP serverに一つの広いtokenを渡すのではなく、接続先ごとにresourceを分けます。テナントをURIのpathなどで区別できる設計では、tokenのaudienceもテナント境界まで絞れるかを確認します。ただし、URI設計は既存の認可モデルと一緒に決める必要があり、単にpathを増やすだけで隔離が成立するわけではありません。</p>
-<aside class="mid-cta"><div class="mc-body"><div class="mc-k">資料請求 ・ 無料</div><div class="mc-t">生成AI活用事例集を受け取る</div><div class="mc-d">TechWorkerが支援した企業の生成AI活用事例をまとめた資料です。記事のテーマと合わせてご覧ください。</div></div><a href="../../contact.html?type=document&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=mcp-oauth-authorization-design&amp;utm_content=mid" class="btn" data-cta="mcp-oauth-authorization-design-mid">事例集を受け取る <i>&rarr;</i></a></aside>
+<aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">Claude Code 企業導入 セキュリティ＆セットアップ実践ガイド</div><div class="mc-d">3つのリスク、5つの設計原則、10項目のチェックリストを、情シスの審査に出せる形でまとめた資料です。</div></div><a href="../../library/?doc=security&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=mcp-oauth-authorization-design&amp;utm_content=mid" class="btn" data-cta="mcp-oauth-authorization-design-mid">ガイドを受け取る <i>&rarr;</i></a></aside>
 <h2 id="s3">scopeは最初から全権限を渡さない</h2><p class="answer">scopeは業務上の操作に対応させて小さく定義し、必要になる直前に段階的に要求する。細かくし過ぎない点にも注意する。</p>
 <p>scope名そのものに万能の標準はありません。だからこそ、業務上の操作に対応させて小さく定義します。たとえば検索だけなら読取、下書き保存なら保存、外部送信・支払い・削除は別scopeか、scopeに加え人の承認を必要にします。</p>
 <p>MCP仕様では、clientが必要なscopeを段階的に要求する考え方が示されています。最初の接続で「将来必要になるかもしれない」権限まで要求せず、追加操作の直前に必要な権限を求める方が、利用者への説明と監査がしやすくなります。</p>

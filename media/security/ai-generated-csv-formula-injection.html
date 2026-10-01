@@ -23,7 +23,7 @@
 <p class="answer">AI生成かどうかで安全を分けず、外部入力を再掲した値も取得元と期待する型を記録し、同じ検査へ通す。</p>
 <p>AIが作った文字列だけを危険と見なさない。検索結果、問い合わせフォーム、外部API、過去のCSVから取得した値をAIが再掲する場合もある。出力項目ごとに、値の取得元、期待する型、自由記述を許すか、出力先を記録する。</p>
 <p>サーバー側で列名と順序を固定する。存在しない列、重複列、想定外の配列や入れ子はCSV化前に拒否し、数値列へ自由記述が入った場合も失敗として記録する。</p>
-<aside class="mid-cta"><div class="mc-body"><div class="mc-k">資料請求 ・ 無料</div><div class="mc-t">生成AI活用事例集を受け取る</div><div class="mc-d">TechWorkerが支援した企業の生成AI活用事例をまとめた資料です。記事のテーマと合わせてご覧ください。</div></div><a href="../../contact.html?type=document&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=ai-generated-csv-formula-injection&amp;utm_content=mid" class="btn" data-cta="ai-generated-csv-formula-injection-mid">事例集を受け取る <i>&rarr;</i></a></aside>
+<aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">Claude Code 企業導入 セキュリティ＆セットアップ実践ガイド</div><div class="mc-d">3つのリスク、5つの設計原則、10項目のチェックリストを、情シスの審査に出せる形でまとめた資料です。</div></div><a href="../../library/?doc=security&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=ai-generated-csv-formula-injection&amp;utm_content=mid" class="btn" data-cta="ai-generated-csv-formula-injection-mid">ガイドを受け取る <i>&rarr;</i></a></aside>
 <h2 id="s3">出力用途を二つに分ける</h2>
 <p class="answer">機械が再取込みする正本と人が開く表示用CSVを分け、表示用の接頭辞や変換が連携データへ混ざるのを防ぐ。</p>
 <p>機械が再取込みするデータと、人が閲覧するデータを同じCSVにしない。機械連携には、項目型を明示できるJSONやAPIを優先する。どうしてもCSVが必要なら、送信先、項目型、文字コード、区切り記号を契約として固定し、表計算ソフトで開かないようにする。</p>
