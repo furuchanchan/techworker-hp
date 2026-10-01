@@ -417,6 +417,8 @@ addEventListener('scroll',function(){var n=document.querySelector('nav');if(n)n.
       openModal(doc);
     });
   });
+  // ?doc=cases / ?doc=security で開くと、その資料の受け取りを最初から開く（メディアの申込み枠から来た時）
+  (function(){var d=new URLSearchParams(location.search).get('doc');if(!d||!DOCS[d])return;if(isUnlocked()){location.replace(DOCS[d].url);return;}openModal(d);})();
   document.getElementById('modalClose').addEventListener('click',closeModal);
   overlay.addEventListener('keydown',function(e){if(e.key!=='Tab')return;var els=overlay.querySelectorAll('a[href],button:not([disabled]),input,textarea');if(!els.length)return;var first=els[0],last=els[els.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}});
   overlay.addEventListener('click',function(e){if(e.target===overlay)closeModal();});

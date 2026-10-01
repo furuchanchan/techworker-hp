@@ -38,6 +38,17 @@
     return "other";
   }
 
+  // どの場所の申込みが押されたか（右下・記事中・記事末・ナビ・本文）
+  function placementOf(anchor) {
+    var el = anchor.closest("[data-cta-placement]");
+    if (el) return el.getAttribute("data-cta-placement");
+    if (anchor.closest(".mid-cta")) return "mid";
+    if (anchor.closest(".art-cta")) return "end";
+    if (anchor.closest("#nav, .mmenu")) return "nav";
+    if (anchor.closest(".mh-band, .lb-cta")) return "band";
+    return "body";
+  }
+
   function addCoeSignalAttribution(anchor) {
     var url = new URL(anchor.href, location.href);
     if (url.hostname !== "coesignal.techworker.co.jp") return;
@@ -60,7 +71,9 @@
     send("media_cta_click", {
       cta_kind: kind,
       cta_text: (anchor.textContent || "").trim().replace(/\s+/g, " ").slice(0, 80),
-      cta_destination: anchor.href.slice(0, 200)
+      cta_destination: anchor.href.slice(0, 200),
+      cta_placement: placementOf(anchor),
+      cta_offer: anchor.getAttribute("data-cta-offer") || ""
     });
   }, true);
 
@@ -82,4 +95,12 @@
     if (range <= 0) return;
     maxDepth = Math.max(maxDepth, Math.round(root.scrollTop / range * 100));
   }, { passive: true });
+
+  // 右下の申込み枠（媒体ごとの申込み）
+  if (!document.querySelector('script[src="/media/cv-dock.js"]')) {
+    var dock = document.createElement("script");
+    dock.src = "/media/cv-dock.js";
+    dock.defer = true;
+    document.head.appendChild(dock);
+  }
 })();
