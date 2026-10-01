@@ -186,8 +186,9 @@
     box.querySelector(".twd-x").addEventListener("click", function () { box.classList.add("min"); setMin(true); gaEvent("media_dock_close"); });
     box.querySelector(".twd-pill").addEventListener("click", function () { box.classList.remove("min"); setMin(false); gaEvent("media_dock_open"); });
 
-    var targets = document.querySelectorAll(".mid-cta, .art-cta, .mh-band, .inline-dx-cta, footer, .lb-cta");
-    if ("IntersectionObserver" in window && targets.length) {
+    // メール登録の枠（newsletter.js）は後から差し込まれることがあるので、差し込んだ側からも登録できるようにする
+    var targets = document.querySelectorAll(".mid-cta, .art-cta, .mh-band, .inline-dx-cta, footer, .lb-cta, .nl-box");
+    if ("IntersectionObserver" in window) {
       var seen = new Set();
       var io = new IntersectionObserver(function (es) {
         es.forEach(function (e) { e.isIntersecting ? seen.add(e.target) : seen.delete(e.target); });
@@ -195,6 +196,7 @@
         render();
       }, { threshold: 0.15 });
       targets.forEach(function (t) { io.observe(t); });
+      window.__twDockObserve = function (el) { io.observe(el); };
     }
     var root = document.documentElement;
     function onScroll() {
