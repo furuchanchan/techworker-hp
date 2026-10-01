@@ -150,17 +150,18 @@
   // 記事中の申込み（その場で読める資料）に、見本と中身の具体例を足す
   function enrichMidCta() {
     document.querySelectorAll(".mid-cta").forEach(function (m) {
-      var a = m.querySelector('a[href*="library/?doc="]');
-      if (!a || m.classList.contains("rich")) return;
-      var d = DOCS[(a.getAttribute("href").match(/doc=([a-z]+)/) || [])[1]];
-      if (!d) return;
+      if (m.classList.contains("rich")) return;
+      var a = m.querySelector('a[href*="library/?doc="]'), d;
+      if (a) d = DOCS[(a.getAttribute("href").match(/doc=([a-z]+)/) || [])[1]];
+      else if ((a = m.querySelector('a[href*="companymap"]'))) d = companymap(seg === "shigyo" ? "事務所" : "部署", seg === "shigyo" ? "/media/cv/companymap-shigyo.jpg" : null);
+      if (!a || !d) return;
       var img = el("img", "mc-img"); img.src = d.img; img.alt = d.title + "の見本"; img.loading = "lazy"; img.width = 680; img.height = 300;
       m.insertBefore(img, m.firstChild);
       var body = m.querySelector(".mc-body");
       var t = body && body.querySelector(".mc-t"); if (t) t.textContent = d.title;
       var desc = body && body.querySelector(".mc-d"); if (desc) desc.remove();
       if (body) body.appendChild(pointsList(d.points, "mc-p"));
-      a.textContent = "無料で受け取る →";
+      a.textContent = d.cta + " →";
       m.appendChild(el("div", "mc-note", d.note));
       m.classList.add("rich");
     });
