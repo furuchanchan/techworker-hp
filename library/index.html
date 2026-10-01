@@ -136,6 +136,12 @@ body.menu-open .mmenu{transform:none;visibility:visible;}
 .modal h3{font-family:var(--jp);font-size:21px;font-weight:700;line-height:1.4;margin:8px 0 6px;letter-spacing:-.01em;}
 .modal .modal-doc{font-size:13px;color:var(--slate);margin-bottom:22px;}
 .modal .modal-doc strong{color:var(--electric);font-weight:600;}
+.modal-doc:has(+.modal-points){margin-bottom:10px;}
+.modal-points{list-style:none;margin:0 0 10px;padding:12px 14px;background:var(--paper,#F4F6F9);border-radius:10px;}
+.modal-points li{position:relative;padding-left:18px;font-size:13px;line-height:1.65;color:var(--ink-soft,#2A333F);}
+.modal-points li+li{margin-top:3px;}
+.modal-points li::before{content:"";position:absolute;left:3px;top:.55em;width:7px;height:7px;border-radius:50%;background:var(--electric,#005EFF);}
+.modal-note{font-size:12px;color:var(--slate);margin:0 0 18px;}
 .modal label.field{display:block;margin-bottom:13px;}
 .modal label.field span{display:block;font-size:12px;font-weight:600;color:var(--slate);margin-bottom:6px;}
 .modal label.field span em{color:#c0392b;font-style:normal;}
@@ -333,6 +339,8 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
       <span class="tag">Free Download</span>
       <h3 id="modalTitle">資料をダウンロード</h3>
       <p class="modal-doc">お届けする資料：<strong id="modalDocName">—</strong></p>
+      <ul class="modal-points" id="modalPoints"></ul>
+      <p class="modal-note">送信後、この画面ですぐに読めます（PDF保存も可）。</p>
       <form id="dlForm" novalidate>
         <label class="field"><span>お名前 <em>*</em></span><input type="text" name="name" required autocomplete="name"></label>
         <label class="field"><span>会社名 <em>*</em></span><input type="text" name="company" required autocomplete="organization"></label>
@@ -388,8 +396,8 @@ addEventListener('scroll',function(){var n=document.querySelector('nav');if(n)n.
 /* download gate */
 (function(){
   var DOCS={
-    cases:{title:'2026年版 生成AI活用事例集',url:'cases-2026.html'},
-    security:{title:'Claude Code 企業導入 セキュリティ＆セットアップ実践ガイド',url:'claude-code-security.html'}
+    cases:{title:'2026年版 生成AI活用事例集',url:'cases-2026.html',points:['化学メーカー：新素材のアイデア出しを、発散から収束まで1時間で','大手製薬：市場リサーチを内製化し、外注費を削減','さくらインターネット：全社300名のAI研修']},
+    security:{title:'Claude Code 企業導入 セキュリティ＆セットアップ実践ガイド',url:'claude-code-security.html',points:['情シスの確認にそのまま使える10項目のチェックリスト','情報漏洩・過剰な権限・外部依存の3大リスク','権限・シークレット・監査ログなど5つの設計原則']}
   };
   var STORE_KEY='tw_library_unlocked';
   var overlay=document.getElementById('modalOverlay'),modalForm=document.getElementById('modalForm'),modalSuccess=document.getElementById('modalSuccess');
@@ -408,7 +416,7 @@ addEventListener('scroll',function(){var n=document.querySelector('nav');if(n)n.
       });
     }
   }
-  function openModal(doc){currentDoc=doc;lastFocus=document.activeElement;modalForm.style.display='block';modalSuccess.classList.remove('show');modalDocName.textContent=DOCS[doc].title;overlay.classList.add('show');document.body.style.overflow='hidden';var f=overlay.querySelector('#dlForm input');if(f)f.focus();}
+  function openModal(doc){currentDoc=doc;lastFocus=document.activeElement;modalForm.style.display='block';modalSuccess.classList.remove('show');modalDocName.textContent=DOCS[doc].title;var mp=document.getElementById('modalPoints');if(mp){mp.innerHTML='';(DOCS[doc].points||[]).forEach(function(t){var li=document.createElement('li');li.textContent=t;mp.appendChild(li);});}overlay.classList.add('show');document.body.style.overflow='hidden';var f=overlay.querySelector('#dlForm input');if(f)f.focus();}
   function closeModal(){overlay.classList.remove('show');document.body.style.overflow='';if(lastFocus&&lastFocus.focus)lastFocus.focus();}
   document.querySelectorAll('.js-download').forEach(function(btn){
     btn.addEventListener('click',function(){
