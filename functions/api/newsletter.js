@@ -7,13 +7,14 @@ const ALLOWED_ORIGINS = new Set([
   'https://www.techworker.co.jp',
 ]);
 
-// Resend のセグメント（General）と、テーマ（Topics）の ID。配信スクリプトの config.json と同じ値
+// Resend のセグメント（General）と、テーマ（Topics）の ID。配信スクリプトの config.json と同じ値。
+// テーマは既定で購読しない（opt_out）設定。選んだテーマだけ opt_in にするので、選ばなかったテーマは届かない
 const SEGMENT_ID = 'fe158366-2ada-4c6d-a089-f184a31d83bb';
 const TOPICS = {
-  kenshu:    '8ac180d5-dc59-4a25-bddb-3ab2c21147cf',
-  shigyo:    '3ad2584d-ab11-4d4c-b57e-27422384889a',
-  interview: '3aa35e67-ca36-4d4a-86cc-ca6d8d1c1b0d',
-  security:  '219eba26-0c2f-403b-97f2-899c30623df5',
+  kenshu:    'd9a6f426-95a2-4079-88cd-390007ac8d3d',
+  shigyo:    'b8a1ccb0-96e6-4a27-b135-9a5f4a0a236c',
+  interview: '56ef8a46-9b78-4425-9bed-aca15e511688',
+  security:  'e6366e95-1896-4cc9-b6f5-875e32192ef9',
 };
 
 const API = 'https://api.resend.com';
