@@ -1,5 +1,5 @@
 /* メディアの申込み（CVの入口）。media/article-tracker.js が全ページで読み込む。
-   1) 右下の枠: 媒体ごとに、その読者がいちばん受け取りやすい申込みを1つ（＋控えめな2つ目）。
+   1) 右下の枠: 媒体ごとに、その読者がいちばん受け取りやすい申込みを1つ。見本・題・ボタン・一言だけに絞る。
       受け取る物の見本（資料の表紙・業務図）と、中身の具体例3つ、受け取り方（送信後すぐ読める等）を見せる。
    2) 記事中の申込み（.mid-cta）にも、同じ見本と中身の具体例を足す。
    中身の具体例は、実在する資料・ページに書いてあることだけ（library/cases-2026.html・claude-code-security.html・companymap）。
@@ -81,11 +81,11 @@
   var css =
     ".twd{position:fixed;right:20px;bottom:20px;z-index:60;font-family:var(--jp,'IBM Plex Sans JP',system-ui,sans-serif);color:var(--ink,#11161D);transition:opacity .35s,transform .35s}" +
     ".twd.off{opacity:0;transform:translateY(14px);pointer-events:none}" +
-    ".twd-card{width:344px;background:#fff;border:1px solid rgba(13,17,23,.12);border-radius:16px;overflow:hidden;box-shadow:0 30px 70px -28px rgba(13,17,23,.5),0 2px 8px rgba(13,17,23,.06);position:relative}" +
+    ".twd-card{width:316px;background:#fff;border:1px solid rgba(13,17,23,.12);border-radius:16px;overflow:hidden;box-shadow:0 30px 70px -28px rgba(13,17,23,.5),0 2px 8px rgba(13,17,23,.06);position:relative}" +
     ".twd-img{display:block;width:100%;height:auto;aspect-ratio:680/300;object-fit:cover;background:#EEF3FF}" +
     ".twd-in{padding:14px 18px 14px}" +
     ".twd-k{display:inline-block;font-size:11.5px;font-weight:700;color:" + A + ";background:color-mix(in srgb," + A + " 9%,#fff);border-radius:999px;padding:3px 10px}" +
-    ".twd-t{font-size:15.5px;font-weight:700;line-height:1.5;margin-top:8px;letter-spacing:-.01em}" +
+    ".twd-t{font-size:15px;font-weight:700;line-height:1.5;margin-top:8px;letter-spacing:-.01em}" +
     ".twd-p{list-style:none;margin:8px 0 0;padding:0}" +
     ".twd-p li{position:relative;padding-left:20px;font-size:12.5px;line-height:1.6;color:var(--ink-soft,#2A333F);margin-top:4px}" +
     ".twd-p li::before{content:'';position:absolute;left:2px;top:.42em;width:11px;height:11px;border-radius:50%;background:" + A + " url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.4l2.6 2.6L12 5.4' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E\") center/9px no-repeat}" +
@@ -114,7 +114,7 @@
     ".mid-cta.rich .btn{grid-column:2;justify-self:start}" +
     ".mid-cta.rich .mc-note{grid-column:2;font-size:12px;color:var(--slate,#5A6677);margin-top:-12px}" +
     "@media(max-width:720px){.mid-cta.rich{grid-template-columns:1fr;gap:14px}.mid-cta.rich .btn,.mid-cta.rich .mc-note{grid-column:1}.mid-cta.rich .mc-note{margin-top:-8px}}" +
-    "@media(min-width:761px) and (max-height:820px){.twd-p{display:none}.twd-t{font-size:15px}}" +
+    "@media(min-width:761px) and (max-height:760px){.twd-img{display:none}}" +
     "@media(prefers-reduced-motion:reduce){.twd,.twd-b{transition:none}}";
 
   function build() {
@@ -127,14 +127,13 @@
     var inner = el("div", "twd-in");
     inner.appendChild(el("span", "twd-k", o.kind));
     inner.appendChild(el("div", "twd-t", o.title));
-    inner.appendChild(pointsList(o.points, "twd-p"));
+    // 右下は情報を絞る（見本・題・ボタン・一言だけ）。中身の具体例は記事中の申込みと受け取りフォームに出す
     var mt = el("div", "twd-mt"); mt.appendChild(el("small", "", o.kind)); mt.appendChild(document.createTextNode(o.mt));
     var b = el("a", "twd-b"); b.href = withUtm(o.href, "primary"); b.setAttribute("data-cta-offer", o.offer);
     b.appendChild(el("span", "twd-lg", o.cta + " →")); b.appendChild(el("span", "twd-sm", o.mcta));
     var x = el("button", "twd-x", "×"); x.type = "button"; x.setAttribute("aria-label", "小さくする");
     card.appendChild(img); card.appendChild(th); card.appendChild(inner); card.appendChild(mt); card.appendChild(b);
     inner.appendChild(b); inner.appendChild(el("div", "twd-n", o.note));
-    if (o.sub) { var s = el("a", "twd-s", o.sub.label); s.href = withUtm(o.sub.href, "secondary"); s.setAttribute("data-cta-offer", o.sub.offer); inner.appendChild(s); }
     card.appendChild(x);
     var pill = el("button", "twd-pill"); pill.type = "button"; pill.setAttribute("aria-label", "申込みを開く");
     var pi = el("img"); pi.src = o.img; pi.alt = ""; pill.appendChild(pi); pill.appendChild(el("span", "", o.short));
