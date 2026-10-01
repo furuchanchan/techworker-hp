@@ -217,7 +217,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
       </table>
     </div>
     <p>公式ドキュメントは、既存のクラウド契約を活かす経路——Amazon Bedrock、Google Cloud、Microsoft Foundry経由での利用——も案内しています。認証と課金をクラウド側に寄せたい組織の選択肢になります。さらに「野良利用」対策として、管理ポリシー設定の<strong>forceLoginMethod・forceLoginOrgUUID</strong>を配布すると、自社組織以外のアカウントでのログインを制限できます（公式ドキュメントより・2026年8月時点）。</p>
-    <p>ツール自体の権限も承認制が土台です。Claude Codeは既定で読み取り専用として動作し、ファイル編集やコマンド実行には明示的な承認が求められます。ls・cat・git statusのような読み取り専用コマンドは承認なしで実行され、頻用する安全なコマンドはユーザー・リポジトリ・組織単位で許可リスト化できます。認証情報はmacOSでは暗号化されたKeychainに保存されます。この「既定は閉じていて、開ける範囲を組織が決める」構造が、社内展開の設計余地そのものです。導入手順そのものは<a href="claude-code-dounyu.html">Claude Codeの導入方法</a>で解説しています。</p>
+    <p>ツール自体の権限も承認制が土台です。Claude Codeは既定で読み取り専用として動作し、ファイル編集やコマンド実行には明示的な承認が求められます。ls・cat・git statusのような読み取り専用コマンドは承認なしで実行され、頻用する安全なコマンドはユーザー・リポジトリ・組織単位で許可リスト化できます。認証情報はmacOSでは暗号化されたKeychainに保存されます。この「既定は閉じていて、開ける範囲を組織が決める」構造が、社内展開の設計余地そのものです。導入手順そのものはClaude Codeの導入方法で解説しています。</p>
 
     
     <aside class="kn-take">
@@ -321,7 +321,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
         <li>□ 利用ルールを文書化し、研修・周知の計画を立てた</li>
       </ul>
     </div>
-    <p>導入の初期設定・インストール手順から固めたい場合は、<a href="claude-code-dounyu.html">Claude Codeの導入方法</a>から読み進めてください。展開の設計と教育をまとめて外部の伴走で進めたい場合は、<a href="../../training.html#claude-code">TechWorkerのClaude Code研修</a>で情シス向けの設定設計と現場向けハンズオンを一体で提供しています。</p>
+    <p>導入の初期設定・インストール手順から固めたい場合は、Claude Codeの導入方法から読み進めてください。展開の設計と教育をまとめて外部の伴走で進めたい場合は、<a href="../../training.html#claude-code">TechWorkerのClaude Code研修</a>で情シス向けの設定設計と現場向けハンズオンを一体で提供しています。</p>
 
     <h2 id="faq">よくある質問</h2>
     <div class="faq"><div class="q">社員がClaude Codeに入力したソースコードは、AIモデルの学習に使われますか？</div><p class="a">Team・Enterprise・APIなどの商用プランでは、組織が明示的にオプトインしない限り、Claude Codeに送信されたコードやプロンプトを生成モデルの学習に使わないとAnthropicが公式に明記しています（Anthropic公式ドキュメントより・2026年8月時点）。一方、個人向けプラン（Free・Pro・Max）には学習利用を許可する設定が存在するため、業務利用は会社契約に統一することが前提になります。</p></div>
@@ -353,7 +353,6 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <section class="related"><div class="container">
   <div class="rl-h">Related</div>
   <div class="related-grid">
-    <a href="claude-code-dounyu.html" class="related-card"><span class="rc-cat">導入</span><div class="rc-title">Claude Codeの導入方法｜インストールから初期設定・チーム展開まで</div></a>
     <a href="claude-code-cost.html" class="related-card"><span class="rc-cat">コスト</span><div class="rc-title">Claude Codeの料金・コスト管理｜プラン選定とトークン消費の設計</div></a>
     <a href="claude-code-hi-engineer.html" class="related-card"><span class="rc-cat">活用</span><div class="rc-title">非エンジニアのClaude Code活用｜エンジニア以外の部門への広げ方</div></a>
   </div>
