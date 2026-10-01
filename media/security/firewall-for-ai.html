@@ -20,29 +20,17 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="LLMアプリのプロンプトインジェクション対策｜Cloudflareのガードレール機能で何を防げるか【2026年8月版】">
 <meta property="og:description" content="直接注入・間接注入・機密の吸い出しという3類型とOWASP Top 10 for LLM Applications 2026で攻撃を整理し、CloudflareのAI Gateway GuardrailsとAI Security for Appsで防げる範囲、アプリ側の設計でしか防げない範囲を切り分ける。">
-<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:image" content="https://techworker.co.jp/media/security/covers/firewall-for-ai.png">
 <meta property="og:url" content="https://techworker.co.jp/media/security/firewall-for-ai">
 <meta property="og:site_name" content="TechWorker">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="LLMアプリのプロンプトインジェクション対策｜Cloudflareのガードレール機能で何を防げるか【2026年8月版】">
-<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta name="twitter:image" content="https://techworker.co.jp/media/security/covers/firewall-for-ai.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../article.css">
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"Article",
-  "headline":"LLMアプリのプロンプトインジェクション対策｜Cloudflareのガードレール機能で何を防げるか【2026年8月版】",
-  "description":"プロンプトインジェクションを直接注入・間接注入・機密の吸い出しの3類型とOWASP Top 10 for LLM Applications 2026で整理し、CloudflareのAI Gateway GuardrailsとAI Security for Apps(旧Firewall for AI)で防げる範囲、権限設計や出力処理などアプリ側の設計でしか防げない範囲を解説する。ガードレールは確率的な緩和策であり完全な防御ではない点も明示する。",
-  "datePublished":"2026-08-09","dateModified":"2026-08-09","inLanguage":"ja",
-  "image":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630},
-  "author":{"@type":"Person","name":"古野光太朗","jobTitle":"株式会社TechWorker 代表取締役 CEO兼CTO","url":"https://techworker.co.jp/company.html","image":"https://techworker.co.jp/assets/author-furuno.jpg","sameAs":["https://x.com/koutarou_furuno"],"affiliation":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"}},
-  "publisher":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/","logo":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630}},
-  "mainEntityOfPage":{"@type":"WebPage","@id":"https://techworker.co.jp/media/security/firewall-for-ai"}
-}
-</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "LLMアプリのプロンプトインジェクション対策｜Cloudflareのガードレール機能で何を防げるか【2026年8月版】", "description": "プロンプトインジェクションを直接注入・間接注入・機密の吸い出しの3類型とOWASP Top 10 for LLM Applications 2026で整理し、CloudflareのAI Gateway GuardrailsとAI Security for Apps(旧Firewall for AI)で防げる範囲、権限設計や出力処理などアプリ側の設計でしか防げない範囲を解説する。ガードレールは確率的な緩和策であり完全な防御ではない点も明示する。", "datePublished": "2026-08-09", "dateModified": "2026-08-09", "inLanguage": "ja", "image": "https://techworker.co.jp/media/security/covers/firewall-for-ai.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/security/firewall-for-ai"}}</script>
 <script type="application/ld+json">
 {
   "@context":"https://schema.org","@type":"BreadcrumbList",

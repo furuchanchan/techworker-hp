@@ -20,29 +20,17 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="AIが扱う音声・個人情報をどう保持し、どう消すか｜Cloudflare R2でのデータライフサイクル設計【2026年8月版】">
 <meta property="og:description" content="公開バケットを避け署名付きURLで期限を切って配布する設計、Object Lifecycleによる自動削除、Bucket Locksとの優先順位の落とし穴、保管地域(jurisdiction)の制約、削除依頼が来たときの実務までを2026年8月時点の公式情報に基づいて整理する。">
-<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:image" content="https://techworker.co.jp/media/security/covers/r2-data-lifecycle.png">
 <meta property="og:url" content="https://techworker.co.jp/media/security/r2-data-lifecycle">
 <meta property="og:site_name" content="TechWorker">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AIが扱う音声・個人情報をどう保持し、どう消すか｜Cloudflare R2でのデータライフサイクル設計【2026年8月版】">
-<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta name="twitter:image" content="https://techworker.co.jp/media/security/covers/r2-data-lifecycle.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../article.css">
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"Article",
-  "headline":"AIが扱う音声・個人情報をどう保持し、どう消すか｜Cloudflare R2でのデータライフサイクル設計【2026年8月版】",
-  "description":"AIが扱う音声・文字起こし・面談記録のような機微なデータを、Cloudflare R2でどう保持し、どう消すか。公開バケットを避け署名付きURLで期限を切って配布する設計、Object Lifecycleによる自動削除、Bucket Locksとの優先順位の落とし穴、保管地域(jurisdiction)の制約、削除依頼が来たときの実務までを2026年8月時点の公式情報に基づいて整理する。",
-  "datePublished":"2026-08-09","dateModified":"2026-08-09","inLanguage":"ja",
-  "image":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630},
-  "author":{"@type":"Person","name":"古野光太朗","jobTitle":"株式会社TechWorker 代表取締役 CEO兼CTO","url":"https://techworker.co.jp/company.html","image":"https://techworker.co.jp/assets/author-furuno.jpg","sameAs":["https://x.com/koutarou_furuno"],"affiliation":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"}},
-  "publisher":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/","logo":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630}},
-  "mainEntityOfPage":{"@type":"WebPage","@id":"https://techworker.co.jp/media/security/r2-data-lifecycle"}
-}
-</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AIが扱う音声・個人情報をどう保持し、どう消すか｜Cloudflare R2でのデータライフサイクル設計【2026年8月版】", "description": "AIが扱う音声・文字起こし・面談記録のような機微なデータを、Cloudflare R2でどう保持し、どう消すか。公開バケットを避け署名付きURLで期限を切って配布する設計、Object Lifecycleによる自動削除、Bucket Locksとの優先順位の落とし穴、保管地域(jurisdiction)の制約、削除依頼が来たときの実務までを2026年8月時点の公式情報に基づいて整理する。", "datePublished": "2026-08-09", "dateModified": "2026-08-09", "inLanguage": "ja", "image": "https://techworker.co.jp/media/security/covers/r2-data-lifecycle.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/security/r2-data-lifecycle"}}</script>
 <script type="application/ld+json">
 {
   "@context":"https://schema.org","@type":"BreadcrumbList",

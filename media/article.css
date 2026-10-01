@@ -383,3 +383,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--electric);outline-o
 .source-note{font-size:13px;color:var(--slate)}
 .source-list li{margin-bottom:10px;word-break:break-word}
 @media(max-width:720px){.daily-cover{width:calc(100% - 28px);border-radius:10px;margin-bottom:34px}.mid-cta{padding:20px}}
+/* 2026-10 記事一覧に表紙の小さい画像（.jz-list.has-thumb） */
+.jz-list.has-thumb a{grid-template-columns:208px 150px minmax(0,1fr) 24px;gap:26px;align-items:center;padding:20px 4px}
+.jz-list.has-thumb .l-thumb{display:block;width:208px;height:auto;aspect-ratio:1200/630;object-fit:cover;border-radius:10px;border:1px solid var(--line);background:var(--paper-2)}
+@media(max-width:880px){.jz-list.has-thumb a{grid-template-columns:132px minmax(0,1fr);gap:6px 14px;padding:18px 2px;align-items:start}.jz-list.has-thumb .l-thumb{width:132px;grid-row:1 / span 2}.jz-list.has-thumb .l-side,.jz-list.has-thumb a>div:not(.l-side):not(.l-arrow){grid-column:2}.jz-list.has-thumb .l-desc{display:none}.jz-list.has-thumb .l-arrow{display:none}}
+.jz-list.has-thumb a:not(:has(.l-thumb)){grid-template-columns:150px minmax(0,1fr) 24px;padding-left:238px}
+@media(max-width:880px){.jz-list.has-thumb a:not(:has(.l-thumb)){grid-template-columns:1fr;padding-left:2px}.jz-list.has-thumb a:not(:has(.l-thumb)) .l-side,.jz-list.has-thumb a:not(:has(.l-thumb))>div{grid-column:1}}

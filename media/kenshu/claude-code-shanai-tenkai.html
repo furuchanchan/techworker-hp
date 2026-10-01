@@ -20,29 +20,17 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Claude Codeの社内展開｜セキュリティ・管理機能・配布設計【2026】">
 <meta property="og:description" content="アカウント・権限設計、学習利用・保持期間、managed-settings.jsonでの設定強制配布、OpenTelemetryでの監査、段階展開の手順。Anthropic公式ドキュメントで確認できた仕様のみで、情シス向けに整理します。">
-<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:image" content="https://techworker.co.jp/media/kenshu/covers/claude-code-shanai-tenkai.png">
 <meta property="og:url" content="https://techworker.co.jp/media/kenshu/claude-code-shanai-tenkai">
 <meta property="og:site_name" content="TechWorker">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Claude Codeの社内展開｜セキュリティ・管理機能・配布設計【2026】">
-<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta name="twitter:image" content="https://techworker.co.jp/media/kenshu/covers/claude-code-shanai-tenkai.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../article.css">
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"Article",
-  "headline":"Claude Codeの社内展開｜セキュリティ・管理機能・配布設計【2026】",
-  "description":"Claude Codeを全社展開する情シス向けガイド。アカウント・権限設計、データの取扱い（学習利用・保持期間）、managed-settings.jsonによる設定の強制配布、OpenTelemetryと分析ダッシュボードでの監査、段階展開の手順を、Anthropic公式ドキュメントで確認できた仕様のみで整理する。",
-  "datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"ja",
-  "image":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630},
-  "author":{"@type":"Person","name":"古野光太朗","jobTitle":"株式会社TechWorker 代表取締役 CEO兼CTO","url":"https://techworker.co.jp/company.html","image":"https://techworker.co.jp/assets/author-furuno.jpg","sameAs":["https://x.com/koutarou_furuno"],"affiliation":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"}},
-  "publisher":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/","logo":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630}},
-  "mainEntityOfPage":{"@type":"WebPage","@id":"https://techworker.co.jp/media/kenshu/claude-code-shanai-tenkai"}
-}
-</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Claude Codeの社内展開｜セキュリティ・管理機能・配布設計【2026】", "description": "Claude Codeを全社展開する情シス向けガイド。アカウント・権限設計、データの取扱い（学習利用・保持期間）、managed-settings.jsonによる設定の強制配布、OpenTelemetryと分析ダッシュボードでの監査、段階展開の手順を、Anthropic公式ドキュメントで確認できた仕様のみで整理する。", "datePublished": "2026-07-29", "dateModified": "2026-07-29", "inLanguage": "ja", "image": "https://techworker.co.jp/media/kenshu/covers/claude-code-shanai-tenkai.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/claude-code-shanai-tenkai"}}</script>
 <script type="application/ld+json">
 {
   "@context":"https://schema.org","@type":"BreadcrumbList",
