@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js" data-media="shokei">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}gtag('config', 'G-3V34NWXVCJ');
+</script>
+<script src="/assets/tw-track.js" defer></script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>引き継ぎメモを、生成AIと一緒に読み解く。 — TechWorker</title>
+<meta name="description" content="まずは一つの業務、一つのメモから。AIに任せる作業と、人が確かめる作業を分けて試すための手順です。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/shokei/first-ai-handover">
+<meta property="og:type" content="article">
+<meta property="og:title" content="引き継ぎメモを、生成AIと一緒に読み解く。">
+<meta property="og:description" content="まずは一つの業務、一つのメモから。AIに任せる作業と、人が確かめる作業を分けて試すための手順です。">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/media/shokei/first-ai-handover">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="引き継ぎメモを、生成AIと一緒に読み解く。">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../article.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "引き継ぎメモを、生成AIと一緒に読み解く。", "description": "まずは一つの業務、一つのメモから。AIに任せる作業と、人が確かめる作業を分けて試すための手順です。", "datePublished": "2026-10-03", "dateModified": "2026-10-03", "inLanguage": "ja", "image": "https://techworker.co.jp/assets/ogp.png", "author": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/shokei/first-ai-handover"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "事業承継AIラボ", "item": "https://techworker.co.jp/media/shokei/"}, {"@type": "ListItem", "position": 4, "name": "引き継ぎメモを、生成AIと一緒に読み解く。", "item": "https://techworker.co.jp/media/shokei/first-ai-handover"}]}</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<style>
+:root{--electric:#1F2933;--electric-dark:#0B0F14} .art-head h1{word-break:auto-phrase} .share-links{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin:32px 0;font-size:13px}.share-links button{font:inherit;color:var(--electric);background:none;border:0;border-bottom:1px solid var(--line-2);cursor:pointer;padding:8px 0}.share-links a{padding:8px 0}.share-links p{width:100%;font-size:12px;color:var(--slate)}.prompt-text{white-space:pre-wrap;overflow-wrap:anywhere;font:14px/1.95 var(--jp);padding:24px;background:var(--white);border:1px solid var(--line);border-radius:12px;margin:22px 0 28px}.cover-caption{max-width:var(--measure);margin:0 auto 32px;font-size:12px;color:var(--slate);padding:0 24px}.art-toc a{border-left:0;padding-left:0}.art-toc a.active{border-left:0}@media(max-width:560px){#nav .logo{font-size:16px}#nav .nav-right{gap:4px}#nav .nav-cta{padding:8px 10px}}@media print{.share-links{display:none}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<nav id="nav">
+  <a href="index.html" class="logo">事業承継AI<i>ラボ</i></a>
+  <ul>
+    <li><a href="index.html">記事一覧</a></li>
+    <li><a href="index.html#about">このメディアについて</a></li>
+    <li><a href="../index.html">TechWorkerメディア</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="../../companymap?utm_source=techworker_media&amp;utm_medium=hub&amp;utm_campaign=shokei&amp;utm_content=nav" class="nav-cta"><span class="full">引き継ぐ業務を見える化</span><span class="short">業務図</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="index.html">記事一覧</a>
+  <a href="index.html#about">このメディアについて</a>
+  <a href="../index.html">TechWorkerメディア</a>
+  <a href="../../companymap?utm_source=techworker_media&amp;utm_medium=hub&amp;utm_campaign=shokei&amp;utm_content=menu" class="m-cta">自社の引き継ぐ業務を見える化</a>
+</div>
+<main><header class="art-head"><nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">事業承継AIラボ</a><span class="sep">/</span>生成AIの実践</nav><div class="kicker">生成AIの実践</div><h1>引き継ぎメモを、生成AIと一緒に読み解く。</h1><p class="dek">まずは一つの業務、一つのメモから。AIに任せる作業と、人が確かめる作業を分けて試すための手順です。</p><div class="a-meta"><span class="who">株式会社TechWorker</span><span class="dot">·</span><time datetime="2026-10-03">2026.10.03</time><span class="dot">·</span><span>最終更新 2026.10.03</span><span class="dot">·</span><span>読了 約4分</span></div></header>
+<div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div><a href="#choose">後継者が困っている問いを一つ選ぶ</a><a href="#prepare">メモに番号を付け、原文へ戻れるようにする</a><a href="#check">短くなった文章ほど、抜けた条件を確かめる</a><a href="#measure">便利かどうかは、確認の手間まで含めて比べる</a><a href="#next">次の一歩</a><a href="#prompt">生成AIに渡す指示文</a><a href="#sources">出典</a></div></nav><article class="art-body">
+<h2 id="choose">後継者が困っている問いを一つ選ぶ</h2>
+<p>生成AIを試す出発点は、手元にある資料の量よりも、後継者が答えを探している問いです。「納期変更の相談を受けたら、最初に何を確かめるか」のように、場面が浮かぶ問いを一つ選びます。</p>
+<p>関係するメモを集める前に、誰がその資料を見てよいのか、利用するAIサービスへ入力してよいのかを確認します。判断がつかない資料は使わず、架空のメモで手順だけを試せます。以下は本メディアが提案する試行手順で、特定サービスの精度や効果を検証した結果ではありません。</p>
+<h2 id="prepare">メモに番号を付け、原文へ戻れるようにする</h2>
+<p>メモには「資料A・2026年10月確認」のような識別名を付けます。長いメモなら段落にも番号を振ります。AIの回答がどの部分を根拠にしているのか、あとで確かめるためです。</p>
+<p>記録のない理由をAIに想像させないように、出力の項目を先に決めます。この記事に載せた指示文を使い、場面、確認事項、判断、その理由、例外、原文の箇所を抜き出してもらいます。</p>
+<ul><li>入力した資料に書かれた内容だけを使う。</li><li>根拠となる資料名と段落番号を添える。</li><li>書かれていない情報は「記載なし」とする。</li><li>資料同士の違いを勝手に解消せず、確認が必要な点として残す。</li></ul>
+<h2 id="check">短くなった文章ほど、抜けた条件を確かめる</h2>
+<p>読みやすい要約でも、例外が落ちると業務では使えません。「この顧客だけ」「繁忙期を除く」といった条件が残っているか、資料を知る人が確認します。AIが示した出典の番号も、存在するだけでは不十分です。その箇所が実際に回答を支えているかを読みます。</p>
+<p>回答の中に、資料にない内容が一つでもあれば、原文に戻って直します。同じ問いを言い換えたときに答えが変わる場合は、その回答を確定した社内ルールとして扱わず、担当者に確認します。</p>
+<h2 id="measure">便利かどうかは、確認の手間まで含めて比べる</h2>
+<p>試した後は、回答が出るまでの時間だけで判断しないようにします。資料の準備と修正にかかった時間、確認が必要だった箇所、後継者が自分で答えを見つけられたかをメモします。</p>
+<p>説明に使えると分かった項目から残し、誤りが続く箇所は人に尋ねる導線を保ちます。次の資料を増やすのは、この一件で使える条件が分かってからで十分です。</p>
+<h2 id="next">次の一歩</h2><p class="answer">手元のメモ一つに番号を付け、AIの回答と原文を照合するところまで試してください。以下の指示文を、入力を許可された資料で試せます。</p><h2 id="prompt">生成AIに渡す指示文</h2><p>入力を許可されたメモに資料名と段落番号を付けてから使います。出力は、資料を知る人が原文と照合してください。</p><pre class="prompt-text">あなたは、引き継ぎメモを読みやすくする補助者です。
+以下の資料に明記された内容だけを使い、次の項目を整理してください。
+
+・判断が必要になった場面
+・確認した情報と選択肢
+・選んだ判断と、その理由
+・例外や、判断が変わる条件
+・人に相談すべき点
+・根拠となる資料名と段落番号
+
+資料にないことは推測せず「記載なし」と書いてください。
+事実、話し手の意見、未確認事項を区別してください。
+資料同士に矛盾があれば、勝手に解消せず列挙してください。
+最後に、人が原文と照合すべき箇所を示してください。
+
+【資料】
+ここに、社内で入力を許可されたメモを入れます。
+機密情報や個人情報を含む場合は、入力前に社内ルールと利用サービスの契約・設定を確認してください。</pre><h2 id="sources">出典・参考資料</h2><p class="source-note">出典の確認日：2026年10月2日。本文の手順は本メディアの実践案であり、導入効果や個別の経営判断を保証するものではありません。</p><ul class="source-list"><li><a href="https://www.meti.go.jp/shingikai/mono_info_service/ai_shakai_jisso/pdf/20260331_1.pdf" target="_blank" rel="noopener noreferrer">総務省・経済産業省「AI事業者ガイドライン 第1.2版」本編 ↗</a><br>2026年3月31日。安全性、プライバシー、セキュリティなどの指針を参照。本文のメモ整理・照合手順は本メディアの実践案です。</li></ul><div class="share-links" aria-label="記事を共有"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftechworker.co.jp%2Fmedia%2Fshokei%2Ffirst-ai-handover&amp;text=%E5%BC%95%E3%81%8D%E7%B6%99%E3%81%8E%E3%83%A1%E3%83%A2%E3%82%92%E3%80%81%E7%94%9F%E6%88%90AI%E3%81%A8%E4%B8%80%E7%B7%92%E3%81%AB%E8%AA%AD%E3%81%BF%E8%A7%A3%E3%81%8F%E3%80%82" target="_blank" rel="noopener noreferrer">Xで共有 ↗</a><button type="button" id="copy-url">URLをコピー</button><p id="share-status" role="status" aria-live="polite"></p></div></article></div><div class="author"><div class="inner"><div><div class="who">株式会社TechWorker <span>／ 事業承継AIラボ</span></div><p>公的資料を参照し、経営者の判断と現場の知恵を引き継ぐための対話、生成AIでの資料の読み解き、情報管理の手順を扱います。</p></div></div></div><div class="art-cta"><div class="inner"><div><h3>引き継ぐ仕事の流れを、業務図に残す。</h3><p>CompanyMap AIは、AIの聞き取りで部署の業務フローを業務図にするサービスです。仕事の担当と流れを確認する際に使えます。</p></div><a href="../../companymap?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=first-ai-handover&amp;utm_content=end" class="btn">CompanyMap AIを見る <i>→</i></a></div></div><div class="back-list"><a href="index.html">← 事業承継AIラボの記事一覧に戻る</a></div><section class="related"><div class="container"><div class="rl-h">あわせて読む</div><div class="related-grid"><a href="inherit-the-reason.html" class="related-card"><span class="rc-cat">承継の準備</span><div class="rc-title">社長の「なぜ」を、次の経営者に残す。</div></a><a href="before-sharing-with-ai.html" class="related-card"><span class="rc-cat">情報管理</span><div class="rc-title">その承継資料、AIに渡して大丈夫ですか。</div></a></div></div></section></main><footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">事業承継AI<i>ラボ</i></div>
+        <p>会社の判断と現場の知恵を、次の担い手へつなぐ実務メディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+      </div>
+      <div class="footer-col"><h4>事業承継AIラボ</h4><a href="index.html">記事一覧</a><a href="index.html#about">このメディアについて</a><a href="../index.html">TechWorkerメディア一覧</a></div>
+      <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../services.html">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="../../contact.html">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+    </div>
+        <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer><script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+
+(function(){var b=document.getElementById('copy-url'),s=document.getElementById('share-status');if(!b)return;b.addEventListener('click',async function(){try{if(!navigator.clipboard)throw new Error('Clipboard unavailable');await navigator.clipboard.writeText(document.querySelector('link[rel="canonical"]').href);s.textContent='記事のURLをコピーしました。';}catch(e){s.textContent='コピーできませんでした。ブラウザのアドレス欄からコピーしてください。';}});})();
+</script>
+<script src="/media/article-tracker.js" defer></script>
+</body>
+</html>
