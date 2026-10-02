@@ -2,7 +2,7 @@
    1) 右下の枠: 媒体ごとに、その読者がいちばん受け取りやすい申込みを1つ。見本・題・ボタン・一言だけに絞る。
       受け取る物の見本（資料の表紙・業務図）と、中身の具体例3つ、受け取り方（送信後すぐ読める等）を見せる。
    2) 記事中の申込み（.mid-cta）にも、同じ見本と中身の具体例を足す。
-   中身の具体例は、実在する資料・ページに書いてあることだけ（library/cases-2026.html・claude-code-security.html・gyomuzu-templates.html・companymap）。
+   中身の具体例は、実在する資料・ページに書いてあることだけ（library/cases-2026.html・claude-code-security.html・gyomuzu-templates.html・claude-code-ringi.html・companymap）。
    - 出す時: ページを2割読んだ時か、12秒たった時（一覧・ホームはスクロールを始めた時）
    - 記事中・記事末の申込みとフッターが見えている間は隠す。×で小さな札にたたむ（同じタブの間は維持）
    - 計測: media_dock_view／close／open。クリックは article-tracker.js の media_cta_click（cta_placement=dock） */
@@ -30,6 +30,13 @@
     note: "送信後、その場で読めます（PDF保存も可）",
     cta: "無料で受け取る", mcta: "受け取る", href: "/library/?doc=cases", short: "事例集を受け取る", mt: "生成AI活用事例集（無料）"
   };
+  var RINGI = {
+    kind: "無料ダウンロード", img: "/media/cv/ringi.jpg", offer: "guide_claude_code_ringi",
+    title: "Claude Code 法人導入 稟議書テンプレート（料金比較表つき）",
+    points: ["Team・Enterprise・API従量の料金比較表（2026年9月30日確認）", "人数と統制の要件で選ぶ、規模別の契約の選び方", "件名から承認者まで、［　］を埋めて使える稟議書の文例"],
+    note: "送信後、その場で読めます（PDF保存も可）",
+    cta: "無料で受け取る", mcta: "受け取る", href: "/library/?doc=ringi", short: "稟議書テンプレートを受け取る", mt: "Claude Code 稟議書テンプレート（無料）"
+  };
   var TEMPLATES = {
     kind: "無料ダウンロード", img: "/media/cv/gyomuzu.jpg", offer: "guide_gyomuzu_templates",
     title: "部署別 業務図テンプレート集（AIに任せる工程の見つけ方つき）",
@@ -50,6 +57,7 @@
 
   var OFFERS = {
     kenshu: function () {
+      if (slug === "claude-code-cost") return Object.assign({}, RINGI, { sub: { label: "Claude Code研修の内容を見る", href: "/training.html#claude-code", offer: "training_claude_code" } });
       if (/claude-code/.test(slug)) return Object.assign({}, GUIDE, { sub: { label: "Claude Code研修の内容を見る", href: "/training.html#claude-code", offer: "training_claude_code" } });
       if (/copilot|m365/.test(slug)) return Object.assign({}, CASES, { sub: { label: "Copilotの定着・研修を相談する", href: "/copilot.html#consult", offer: "consult_copilot" } });
       return Object.assign({}, CASES, { sub: DIAG });
@@ -64,7 +72,7 @@
   var make = OFFERS[seg] || function () { return Object.assign({}, /token/.test(slug) ? GUIDE : CASES, { sub: DIAG }); };
   var o = make();
   var media = seg || "home";
-  var DOCS = { security: GUIDE, cases: CASES, gyomuzu: TEMPLATES };
+  var DOCS = { security: GUIDE, cases: CASES, gyomuzu: TEMPLATES, ringi: RINGI };
 
   function withUtm(href, content) {
     var u = new URL(href, location.origin);
