@@ -4,7 +4,7 @@
    2) 記事中の申込み（.mid-cta）にも、同じ見本と中身の具体例を足す。
    中身の具体例は、実在する資料・ページに書いてあることだけ（library/cases-2026.html・claude-code-security.html・gyomuzu-templates.html・claude-code-ringi.html・companymap）。
    - 出す時: ページを2割読んだ時か、12秒たった時（一覧・ホームはスクロールを始めた時）
-   - 記事中・記事末の申込みとフッターが見えている間は隠す。×で小さな札にたたむ（同じタブの間は維持）
+   - 記事の図・表紙、記事中・記事末の申込み、フッターが見えている間は隠す。×で小さな札にたたむ（同じタブの間は維持）
    - 計測: media_dock_view／close／open。クリックは article-tracker.js の media_cta_click（cta_placement=dock） */
 (function () {
   "use strict";
@@ -203,14 +203,14 @@
     box.querySelector(".twd-pill").addEventListener("click", function () { box.classList.remove("min"); setMin(false); gaEvent("media_dock_open"); });
 
     // メール登録の枠（newsletter.js）は後から差し込まれることがあるので、差し込んだ側からも登録できるようにする
-    var targets = document.querySelectorAll(".mid-cta, .art-cta, .mh-band, .inline-dx-cta, footer, .lb-cta, .nl-box");
+    var targets = document.querySelectorAll(".mid-cta, .art-cta, .mh-band, .inline-dx-cta, footer, .lb-cta, .nl-box, .fig-inline, .product-shot, .daily-cover, .art-cover, .art-cover-v6");
     if ("IntersectionObserver" in window) {
       var seen = new Set();
       var io = new IntersectionObserver(function (es) {
         es.forEach(function (e) { e.isIntersecting ? seen.add(e.target) : seen.delete(e.target); });
         blocked = seen.size;
         render();
-      }, { threshold: 0.15 });
+      }, { threshold: 0 });
       targets.forEach(function (t) { io.observe(t); });
       window.__twDockObserve = function (el) { io.observe(el); };
     }

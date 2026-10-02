@@ -2,38 +2,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}gtag('config','G-3V34NWXVCJ');</script><script src="/assets/tw-track.js" defer></script><script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width,initial-scale=1"><title>生成AI研修の演習課題をどう作るか｜実データを使わず業務に近づける設計 — TechWorker</title><meta name="description" content="生成AI研修の演習は、プロンプト練習で終わらせず、入力・生成・判断・修正の4段階で業務の判断を練習する設計にします。機密データを持ち込まない教材化、確認行動を採点する評価表、90分で試せる課題の型を整理します。"><link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg"><link rel="canonical" href="https://techworker.co.jp/media/kenshu/generative-ai-training-exercise-design">
 <meta property="og:type" content="article"><meta property="og:title" content="生成AI研修の演習課題をどう作るか｜実データを使わず業務に近づける設計"><meta property="og:description" content="生成AI研修の演習を、入力・生成・判断・修正の4段階で設計する方法を解説します。実データを使わない教材化、評価表、90分で試せる課題の型を整理します。"><meta property="og:image" content="https://techworker.co.jp/media/kenshu/covers/generative-ai-training-exercise-design.png"><meta property="og:url" content="https://techworker.co.jp/media/kenshu/generative-ai-training-exercise-design"><meta property="og:site_name" content="TechWorker"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://techworker.co.jp/media/kenshu/covers/generative-ai-training-exercise-design.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../article.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "生成AI研修の演習課題をどう作るか｜実データを使わず業務に近づける設計", "description": "生成AI研修の演習は、プロンプト練習で終わらせず、入力・生成・判断・修正の4段階で業務の判断を練習する設計にします。機密データを持ち込まない教材化、確認行動を採点する評価表、90分で試せる課題の型を整理します。", "datePublished": "2026-09-09", "dateModified": "2026-10-02", "inLanguage": "ja", "image": "https://techworker.co.jp/media/kenshu/covers/generative-ai-training-exercise-design.png", "author": {"@type": "Person", "name": "古野光太朗", "url": "https://techworker.co.jp/company.html"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/generative-ai-training-exercise-design"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},{"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},{"@type":"ListItem","position":3,"name":"AI研修・導入ラボ","item":"https://techworker.co.jp/media/kenshu/"},{"@type":"ListItem","position":4,"name":"生成AI研修の演習課題をどう作るか｜実データを使わず業務に近づける設計","item":"https://techworker.co.jp/media/kenshu/generative-ai-training-exercise-design"}]}</script><script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "研修の演習に実データを使ってよいですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "初回から使いません。個人・顧客・契約を特定できる情報を取り除き、業務の構造を残した模擬データを中心にします。限定された本番データは、承認された環境で目的、権限、保存、削除を確認した場合だけ使います。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "演習の評価は何を見ればよいですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "一度で正しい回答を出せたかよりも、確認行動を採点します。入力データの利用可否、指示の内容、事実や数字の確認、不確かな箇所の保留、修正の記録を見ます。偶然の成功を技能と誤認しないためです。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "最初の演習はどのくらいの規模で試せばよいですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "大きな業務改革は扱わず、90分の一ケースで試します。架空の問い合わせ10件と回答ルールを用意し、誤った納期などを混ぜます。受講者が採用・修正・保留を選ぶ流れを講評します。"
-      }
-    }
-  ]
-}
-</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../article.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "生成AI研修の演習課題をどう作るか｜実データを使わず業務に近づける設計", "description": "生成AI研修の演習は、プロンプト練習で終わらせず、入力・生成・判断・修正の4段階で業務の判断を練習する設計にします。機密データを持ち込まない教材化、確認行動を採点する評価表、90分で試せる課題の型を整理します。", "datePublished": "2026-09-09", "dateModified": "2026-10-03", "inLanguage": "ja", "image": "https://techworker.co.jp/media/kenshu/covers/generative-ai-training-exercise-design.png", "author": {"@type": "Person", "name": "古野光太朗", "url": "https://techworker.co.jp/company.html"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/generative-ai-training-exercise-design"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},{"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},{"@type":"ListItem","position":3,"name":"AI研修・導入ラボ","item":"https://techworker.co.jp/media/kenshu/"},{"@type":"ListItem","position":4,"name":"生成AI研修の演習課題をどう作るか｜実データを使わず業務に近づける設計","item":"https://techworker.co.jp/media/kenshu/generative-ai-training-exercise-design"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "研修の演習に実データを使ってよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "初回から使いません。個人・顧客・契約を特定できる情報を取り除き、業務の構造を残した模擬データを中心にします。限定された本番データは、承認された環境で目的、権限、保存、削除を確認した場合だけ使います。"}}, {"@type": "Question", "name": "演習の評価は何を見ればよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "一度で正しい回答を出せたかよりも、確認行動を採点します。入力データの利用可否、指示の内容、事実や数字の確認、不確かな箇所の保留、修正の記録を見ます。偶然の成功を技能と誤認しないためです。"}}, {"@type": "Question", "name": "最初の演習はどのくらいの規模で試せばよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "大きな業務改革は扱わず、90分の一ケースで試します。架空の問い合わせ10件と回答ルールを用意し、誤った納期などを混ぜます。受講者が採用・修正・保留を選ぶ流れを講評します。"}}]}</script>
 </head>
 <body><div class="progress" id="progress"></div><nav id="nav">
   <a href="index.html" class="logo">AI研修・導入<i>ラボ</i></a>
@@ -51,7 +20,7 @@
   <a href="index.html#about">このメディアについて</a>
   <a href="../../training.html" class="m-cta">無料相談を申し込む</a>
 </div>
-<header class="art-head"><nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a></nav><div class="kicker">研修の設計と運営</div><h1>生成AI研修の演習課題をどう作るか｜実データを使わず業務に近づける設計</h1><p class="dek">生成AI研修の演習は、操作の練習から判断の練習へ変え、入力・生成・判断・修正の4段階に分けて設計します。<br>プロンプトを入力して終わる演習に限界を感じている、研修担当や人事、情シスの方に向けた記事です。<br>実データを使わない教材の作り方、評価表、90分で試せる課題の型が分かります。</p><div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.09.09</span><span class="dot">·</span><span>最終更新 2026.10.02</span><span class="dot">·</span><span>一次情報 6件</span></div></header><img class="daily-cover" src="covers/generative-ai-training-exercise-design.png" alt="生成AI研修の演習を判断の練習に変える。入力・生成・判断・修正の四段で評価表を作る" width="1200" height="630">
+<header class="art-head"><nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a></nav><div class="kicker">研修の設計と運営</div><h1>生成AI研修の演習課題をどう作るか｜実データを使わず業務に近づける設計</h1><p class="dek">生成AI研修の演習は、操作の練習から判断の練習へ変え、入力・生成・判断・修正の4段階に分けて設計します。<br>プロンプトを入力して終わる演習に限界を感じている、研修担当や人事、情シスの方に向けた記事です。<br>実データを使わない教材の作り方、評価表、90分で試せる課題の型が分かります。</p><div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.09.09</span><span class="dot">·</span><span>最終更新 2026.10.03</span><span class="dot">·</span><span>一次情報 6件</span></div></header><img class="daily-cover" src="covers/generative-ai-training-exercise-design.png" alt="生成AI研修の演習を判断の練習に変える。入力・生成・判断・修正の四段で評価表を作る" width="1200" height="630">
 <div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div>      <a href="#s1">結論：目的は操作から判断へ</a>
       <a href="#s2">手順：演習の組み立て方</a>
       <a href="#s3">うまくいかない例</a>
@@ -73,6 +42,8 @@
 
     <h2 id="s2">一つの演習は、どんな手順で組み立てますか？</h2>
     <p class="answer">入力、生成、判断、修正の4段階に分け、最後に確認行動を採点します。出力は採用、要修正、利用中止に分類します。</p>
+    <figure class="fig-inline"><a href="figs/generative-ai-training-exercise-design-1.png" target="_blank" rel="noopener"><img src="figs/generative-ai-training-exercise-design-1.png" alt="資料にない納期を、確認担当へ戻す。担当ごとの受け渡しを左から順に示します。" width="1200" height="720" loading="lazy" decoding="async"></a><figcaption>TechWorker作成：本文に基づく研修用の設計例。実施結果や効果の実測ではありません。</figcaption></figure>
+<p>問い合わせ10件のうち、資料に納期がない一件を含めます。受講者は、AIが補った納期を見つけ、原資料へ戻り、確認担当へ保留として渡します。文章の巧さより、この確認と引き継ぎを採点します。これは教材の設計例です。</p>
     <ol>
       <li><strong>入力：安全な教材データを用意します。</strong>実データを匿名化したつもりでも、固有の案件名、日時、少数の属性を組み合わせれば、個人や顧客を推測できることがあります。教材の目的に必要な項目だけを残します。氏名、メールアドレス、顧客番号、契約金額などは、架空値へ置き換えるか削除します。置き換え表を作る場合は、研修終了後に消せる保管場所と担当者を決めます。教材は、現実の文章を丸ごとコピーしません。業務上の制約、判断の分岐、よくある誤り、正解にならない例を残した、小さなケースにします。</li>
       <li><strong>生成：同じ課題に複数の指示を試します。</strong>完成済みのプロンプトを配るだけでは、条件を変えたときの挙動を学べません。目的、対象読者、制約、出力形式、確認事項を一つずつ変え、結果の差を比較します。「情報が不足しているときは質問を返す」「根拠がない推測を明示する」といった条件も入れます。</li>

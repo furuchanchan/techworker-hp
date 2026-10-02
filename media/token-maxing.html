@@ -14,12 +14,12 @@
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>トークンマキシングとは｜惜しまず使って出力品質を上げる4つの手順【2026年】 — TechWorker</title>
-<meta name="description" content="トークンマキシングは、トークンを惜しまず使ってAIの出力品質を上げる戦略です。最大100万トークンのコンテキストを標準料金で使える2026年に、振り切る4つの手順と、絞る場面との使い分けを整理します。">
+<meta name="description" content="難しい仕事へ追加の原文、推論、独立した検証を使う判断がトークンマキシングです。処理量だけでは品質を保証できません。4つの手順と合格後に止める条件、2026年9月の自社の過去記録を解説します。">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="canonical" href="https://techworker.co.jp/media/token-maxing">
 <meta property="og:type" content="article">
 <meta property="og:title" content="トークンマキシングとは｜惜しまず使って出力品質を上げる4つの手順【2026年】">
-<meta property="og:description" content="トークンマキシングは、トークンを惜しまず使ってAIの出力品質を上げる戦略です。最大100万トークンのコンテキストを標準料金で使える2026年に、振り切る4つの手順と、絞る場面との使い分けを整理します。">
+<meta property="og:description" content="難しい仕事へ追加の原文、推論、独立した検証を使う判断がトークンマキシングです。処理量だけでは品質を保証できません。4つの手順と合格後に止める条件、2026年9月の自社の過去記録を解説します。">
 <meta property="og:image" content="https://techworker.co.jp/media/covers/token-maxing.png">
 <meta property="og:url" content="https://techworker.co.jp/media/token-maxing">
 <meta property="og:site_name" content="TechWorker">
@@ -30,7 +30,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="article.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "トークンマキシングとは｜惜しまず使って出力品質を上げる4つの手順【2026年】", "description": "トークンマキシングは、トークンを惜しまず使ってAIの出力品質を上げる戦略です。最大100万トークンのコンテキストを標準料金で使える2026年に、振り切る4つの手順と、絞る場面との使い分けを整理します。", "datePublished": "2026-06-13", "dateModified": "2026-10-02", "inLanguage": "ja", "image": "https://techworker.co.jp/media/covers/token-maxing.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/token-maxing.html"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "トークンマキシングとは｜惜しまず使って出力品質を上げる4つの手順【2026年】", "description": "難しい仕事へ追加の原文、推論、独立した検証を使う判断がトークンマキシングです。処理量だけでは品質を保証できません。4つの手順と合格後に止める条件、2026年9月の自社の過去記録を解説します。", "datePublished": "2026-06-13", "dateModified": "2026-10-03", "inLanguage": "ja", "image": "https://techworker.co.jp/media/covers/token-maxing.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/token-maxing.html"}}</script>
 <script type="application/ld+json">
 {
   "@context":"https://schema.org","@type":"BreadcrumbList",
@@ -41,46 +41,7 @@
   ]
 }
 </script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "トークンマキシングはコストが心配では？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "すべてには使わず、品質が金額を上回る局面に限定します。ほかはmax_tokensやBatch APIで絞り、トークンマネジメントと併用します。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "「深く考えさせる」とは具体的に何ですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "2026年のClaudeは、adaptive thinkingとeffortで思考の深さを指定します。effortはlow / medium / high / xhigh / maxの5段階です。難しい仕事ほど上げます。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "100万トークンも使えますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "はい。Opus 5.5などは100万トークンのコンテキストを標準料金で提供しており、長文に対する追加料金はありません。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "マルチエージェントは難しそうです。",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "役割を分けて並列に走らせるだけでも、網羅性とクロスチェックの効果が出ます。まずは調査・レビューなど観点の分担から始めます。"
-      }
-    }
-  ]
-}
-</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "トークンマキシングはコストが心配では？", "acceptedAnswer": {"@type": "Answer", "text": "すべてには使わず、品質が金額を上回る局面に限定します。ほかはmax_tokensやBatch APIで絞り、トークンマネジメントと併用します。"}}, {"@type": "Question", "name": "「深く考えさせる」とは具体的に何ですか？", "acceptedAnswer": {"@type": "Answer", "text": "2026年のClaudeは、adaptive thinkingとeffortで思考の深さを指定します。effortはlow / medium / high / xhigh / maxの5段階です。利用できる強度はモデルごとに異なります。通常設定で残った失敗を確認してから上げます。"}}, {"@type": "Question", "name": "100万トークンも使えますか？", "acceptedAnswer": {"@type": "Answer", "text": "はい。Opus 5.5などは100万トークンのコンテキストを標準料金で提供しており、長文に対する追加料金はありません。"}}, {"@type": "Question", "name": "マルチエージェントは難しそうです。", "acceptedAnswer": {"@type": "Answer", "text": "同じ仕事を複製せず、独立した確認項目を分担します。役割を分けるだけで効果を保証するものではありません。まずは調査・レビューなど観点の分担から始めます。"}}]}</script>
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -121,9 +82,9 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <nav class="crumb" aria-label="パンくず"><a href="../index.html">ホーム</a><span class="sep">/</span><a href="index.html">メディア</a><span class="sep">/</span>トークンマキシング</nav>
   <div class="kicker">Token Strategy</div>
   <h1>トークンマキシングとは｜AIの出力品質を最大化する「惜しまず使う」戦略</h1>
-  <p class="dek">トークンを惜しまず使う戦略は、手戻りのコストがトークン代を上回る仕事で効き、2026年は最大100万トークンのコンテキストを標準料金で使えます。<br>AIの出力が浅い、コストが不安だと感じる、開発責任者や情シス、経営企画の方に向けた記事です。<br>品質を上げる4つの手順と、トークンを絞る場面との使い分けが分かります。</p>
+  <p class="dek">難しい仕事には、必要な原文と独立した検証へ追加の処理を使います。トークン量だけでは品質を保証できません。<br>AIの回答が浅い、検証が足りないと感じる開発責任者や情シス、経営企画の方に向けた記事です。<br>4つの手順、処理を追加する判断、合格後に止める条件と、2026年9月の自社の過去記録が分かります。</p>
   <div class="a-meta">
-    <img class="av" src="../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.06.13</span><span class="dot">·</span><span>最終更新 2026.10.02</span><span class="dot">·</span><span>読了 7分</span>
+    <img class="av" src="../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.06.13</span><span class="dot">·</span><span>最終更新 2026.10.03</span><span class="dot">·</span><span>読了 7分</span>
   </div>
 </header>
 
@@ -131,13 +92,14 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <nav class="art-toc" aria-label="目次">
     <div class="art-toc-inner">
       <div class="toc-h">目次</div>
-            <a href="#s1">結論：トークンマキシングとは</a>
-      <a href="#s2">自社の実例：代表のトークンの使い分け</a>
-      <a href="#s3">手順：品質側に振り切る4つ</a>
-      <a href="#s4">うまくいかない例</a>
-      <a href="#s5">比較表：振り切る場面と絞る場面</a>
+            <a href="#s1">トークンマキシングとは何ですか？</a>
+      <a href="#s2">TechWorkerの過去記録では、上位モデルをどう使っていましたか？</a>
+      <a href="#s3">トークンを振り切るには、どんな手順で進めますか？</a>
+      <a href="#s4">トークンマキシングがうまくいかない例には、どんなものがありますか？</a>
+      <a href="#s5">振り切る場面と絞る場面は、どう見分けますか？</a>
       <a href="#faq">よくある質問</a>
-      <a href="#s6">次の一歩</a>
+      <a href="#s6">次の一歩として、まず何から試せばよいですか？</a>
+<a href="#sources">この記事は、どの資料をもとにしていますか？</a>
 </div>
   </nav>
 
@@ -151,38 +113,22 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <a href="../ai-assessment.html" class="btn" style="white-space:nowrap;flex:none;color:var(--paper);border-bottom:none;">無料で診断する <i>&rarr;</i></a>
 </aside>
     <h2 id="s1">トークンマキシングとは何ですか？</h2>
-    <p class="answer">トークンを惜しまず使い、AIの出力品質を最大化する戦略です。コストを絞るトークンマネジメントとは逆の考え方です。</p>
-    <p>トークンとは、AIが文章を処理するときの最小単位です。<a href="token-management.html">トークンマネジメント</a>は、いかに少ないトークンで回すかを追います。マキシングは、いかに多く投じて質を上げるかを追います。</p>
-        <p>重要な意思決定の調査、大規模なコード改修、精度が問われる分析では、手戻りのコストがトークン代を大きく上回ります。トークンを絞って精度を落とすより、惜しみなく使って一発で仕上げるほうが、安く速くなります。</p>
+    <p class="answer">難しい仕事へ追加の資料、推論、独立した検証を使う考え方です。トークンを増やすだけで、品質が上がるとは限りません。</p>
+    <p>トークンとは、AIが文章を処理するときの最小単位です。<a href="token-management.html">トークンマネジメント</a>は、いかに少ないトークンで回すかを追います。この記事では、マキシングを「必要な検証へ追加の処理を使う」判断として扱います。一般に統一された性能指標の名前ではありません。</p>
+        <p>重要な意思決定の調査、大規模なコード改修、精度が問われる分析では、手戻りのコストがトークン代を大きく上回ります。トークンを絞って精度を落とすより、追加の検証が有効な場合があります。ただし、同じ誤りを繰り返すだけなら、処理を増やしても手戻りは減りません。</p>
     <p>2026年のモデルは、100万トークンのコンテキストを標準料金で扱えます。長文の追加料金はありません。Opus 5.5などが該当します。深く推論させることもできるため、振り切る選択肢が現実的になりました。</p>
 
-    <h2 id="s2">TechWorkerの代表は、Claude Codeでトークンをどう使い分けていますか？</h2>
-    <p class="answer">代表の古野は作業ごとにモデルを分け、大事な判断に上位モデルを使います。9月は入力の約97%がキャッシュでした。</p>
-    <figure class="fig-inline"><a href="figs/token-maxing-2.png" target="_blank" rel="noopener"><img src="figs/token-maxing-2.png" alt="2026年9月のモデル別の利用額を比べた棒グラフ。Opus 5.5が約1,200ドルで最大、Fable 5.1が約1,000ドル、Sonnet 5・5.5が約630ドル、そのほかが約130ドル。" width="1200" height="705" loading="lazy" decoding="async"></a><figcaption>TechWorker代表の端末の利用記録を集計ツール（ccusage）でAPI料金に換算した額（2026年9月）。実際の請求額とは異なります。</figcaption></figure>
-    <p>TechWorkerでは、代表の古野が毎日Claude Codeを使っています。用途は、自社サービスの開発、メディアの改修、営業資料の作成、毎朝の自動の集計です。</p>
-    <p>契約は、個人向けプランのMax 20x（月200ドル）です。使用量の上限を超えた分を従量で払う設定（extra usage）を有効にしています。法人の契約と料金は、<a href="kenshu/claude-code-cost.html">Claude Codeの法人契約（Team・Enterprise・APIの料金と選び方）</a>で扱っています。</p>
-    <p>代表の端末の利用記録を、集計ツール（ccusage）でAPI料金に換算しました。2026年9月14日〜30日の17日間で約3,000ドル分、1日平均で約180ドル分です。日によって約4ドル分から約850ドル分まで差があり、200倍以上の開きがあります。</p>
-    <p>2026年9月のモデル別の内訳は、次のとおりです（API料金に換算した額）。</p>
-    <ul>
-      <li>Claude Opus 5.5：約1,200ドル</li>
-      <li>Claude Fable 5.1：約1,000ドル</li>
-      <li>Claude Sonnet 5・5.5：約630ドル</li>
-      <li>そのほか：約130ドル</li>
-    </ul>
-    <p>換算額は、実際の請求額とは異なります。定額の範囲内の利用には、追加の支払いは発生しません。</p>
-    <p>作業ごとにモデルを分けています。大事な判断は上位モデルに任せ、調べものと通常の実装はSonnetに回します。決まった抜き出しはHaikuに回し、毎朝の自動の集計もSonnetで動かします。</p>
-    <p>9月は、入力の約97%がキャッシュからの読み込みでした。1回の応答ごとに、その回と累計の推定額を画面の下に表示しています。前日の利用額は、毎朝社内のSlackに届きます。</p>
-    <p>勝負どころには上位モデルを使い、定型の作業は軽いモデルで絞ります。振り切る場面と絞る場面を分ける考え方です。</p>
+    <h2 id="s2">TechWorkerの過去記録では、上位モデルをどう使っていましたか？</h2>
+<p class="answer">2026年9月のClaude Code記録では、作業ごとにモデルを分け、入力の多くをキャッシュから読み出していました。現在の運用とは分けて掲載します。</p><figure class="fig-inline"><a href="figs/token-maxing-2.png" target="_blank" rel="noopener"><img src="figs/token-maxing-2.png" alt="2026年9月のモデル別の利用額を比べた棒グラフ。Opus 5.5が約1,200ドルで最大、Fable 5.1が約1,000ドル、Sonnet 5・5.5が約630ドル、そのほかが約130ドル。" width="1200" height="705" loading="lazy" decoding="async"></a><figcaption>TechWorker代表の端末の利用記録を集計ツール（ccusage）でAPI料金に換算した額（2026年9月）。実際の請求額とは異なります。</figcaption></figure><p>代表の古野の端末記録をccusageでAPI料金に換算した既存の報告値は、2026年9月14日〜30日の17日間で約3,000ドル、1日平均約180ドルです。少ない日は約4ドル、多い日は約850ドルでした。9月の入力の約97%はキャッシュ読み出しでした。モデル別の既存報告値は、Opus 5.5が約1,200ドル、Fable 5.1が約1,000ドル、Sonnet 5・5.5が約630ドル、そのほかが約130ドルです。今回、元ログは再集計していません。</p><p>当時はClaude Codeを開発や資料作成に使い、作業に応じて上位モデル、Sonnet、Haikuへ分けていました。これは過去の利用記録です。2026年10月のTechWorkerはCodexを中心にGPT系を使う体制へ移っています。当時のClaude運用、応答ごとの料金表示、毎朝のSlack通知が現在も続くことを示しません。</p><p>API換算額は、定額契約で実際に支払った金額ではありません。契約費、追加従量、API請求を混ぜずに照合してください。この例はモデル分担と利用量の偏りを説明するもので、費用削減率や成果の改善を実証した値ではありません。</p>
+<h2 id="s3">トークンを振り切るには、どんな手順で進めますか？</h2>
+    <p class="answer">必要な原文、推論の強度、独立した確認、実行結果の検証を選んで使います。合格条件を満たしたら停止します。</p>
+    <figure class="fig-inline"><a href="figs/token-maxing-1.png" target="_blank" rel="noopener"><img src="figs/token-maxing-1.png" alt="必要な原文を選び、失敗した論点の推論、独立した確認、原本や実行結果の検証を行い、合格したら終了する手順です。" width="1200" height="701" loading="lazy" decoding="async"></a><figcaption>TechWorker作成：追加の処理を使うための設計例です。トークン量を増やすだけで品質を保証するものではありません。画像を押すと拡大できます。</figcaption></figure>
 
-    <aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">Claude Code 企業導入 セキュリティ＆セットアップ実践ガイド</div><div class="mc-d">3つのリスク、5つの設計原則、10項目のチェックリストを、情シスの審査に出せる形でまとめた資料です。</div></div><a href="../library/?doc=security&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=token-maxing&amp;utm_content=mid" class="btn" data-cta="token-maxing-mid">ガイドを受け取る <i>&rarr;</i></a></aside>
-    <h2 id="s3">トークンを振り切るには、どんな手順で進めますか？</h2>
-    <p class="answer">大規模コンテキスト、深い推論、マルチエージェント、反復検証の4つの手順で、品質側に振り切ります。</p>
-    <figure class="fig-inline"><a href="figs/token-maxing-1.png" target="_blank" rel="noopener"><img src="figs/token-maxing-1.png" alt="トークンを振り切る4つの手順を縦に並べた図。大規模コンテキスト、深い推論、マルチエージェントの並列実行、反復・自己検証のループの順で、深い推論が強調されている。" width="1200" height="701" loading="lazy" decoding="async"></a></figure>
     <ol>
-      <li><strong>大規模コンテキストに全部入れます。</strong>要約で情報を削らず、関連資料を最大100万トークンのコンテキストにそのまま渡して判断させます。</li>
-      <li><strong>深く推論させます（adaptive thinking）。</strong>2026年のClaudeは、固定の思考予算でなくeffort（low〜max）で深さを調整します。難問ほどhigh、xhigh、maxに上げます。</li>
-      <li><strong>マルチエージェントで並列に走らせます。</strong>観点を分けて複数のAIを同時に動かし、網羅性とクロスチェックを効かせます。</li>
-      <li><strong>反復・自己検証のループを回します。</strong>一度で終わらせず、生成、検証、改善を繰り返します。人間のレビュー工数をAIに肩代わりさせます。</li>
+      <li><strong>必要な資料を選んで渡します。</strong>判断に関係する原文と参照箇所を残し、無関係なログまで全部入れません。入力上限の大きさと、必要な情報を正しく使えることは別です。</li>
+      <li><strong>深く推論させます（adaptive thinking）。</strong>2026年のClaudeは、固定の思考予算でなくeffort（low〜max）で深さを調整します。まず通常設定で失敗した論点を確認し、必要な処理だけ強度を上げます。利用できる段階はモデルごとに確認します。</li>
+      <li><strong>マルチエージェントで並列に走らせます。</strong>観点を分けて複数のAIを同時に動かし、一方のAIは引用元との一致を、もう一方は計算や抜けた条件を確認します。担当者が両方の結果を照合します。</li>
+      <li><strong>反復・自己検証のループを回します。</strong>生成後に原本、計算、実行結果など別の根拠で確認します。AIの自己評価だけを合格理由にしません。合格条件を満たし、新しい失敗がなければ終了します。</li>
     </ol>
     
     <h2 id="s4">トークンマキシングがうまくいかない例には、どんなものがありますか？</h2>
@@ -204,13 +150,13 @@ fbq('init','1264057945446029');fbq('track','PageView');
         <tr><td>トークン代が得られる成果を上回る</td><td>マネジメント</td><td>投資が回収できない</td></tr>
       </table>
     </div>
-    <p>上場企業を含む37社・2,500名の支援では、ここぞの場面で振り切れる組織ほど、成果が大きくなる傾向が見えています。</p>
+    <p>この切り分けは運用の提案です。追加処理による成果の改善率を測定したものではありません。自社で同じ課題を試し、正答、所要時間、手戻り、使用量を比較して採否を決めます。</p>
 
     <h2 id="faq">よくある質問</h2>
     <div class="faq"><div class="q">トークンマキシングはコストが心配では？</div><p class="a">すべてには使わず、品質が金額を上回る局面に限定します。ほかはmax_tokensやBatch APIで絞り、<a href="token-management.html">トークンマネジメント</a>と併用します。</p></div>
-    <div class="faq"><div class="q">「深く考えさせる」とは具体的に何ですか？</div><p class="a">2026年のClaudeは、adaptive thinkingとeffortで思考の深さを指定します。effortはlow / medium / high / xhigh / maxの5段階です。難しい仕事ほど上げます。</p></div>
+    <div class="faq"><div class="q">「深く考えさせる」とは具体的に何ですか？</div><p class="a">2026年のClaudeは、adaptive thinkingとeffortで思考の深さを指定します。effortはlow / medium / high / xhigh / maxの5段階です。利用できる強度はモデルごとに異なります。通常設定で残った失敗を確認してから上げます。</p></div>
     <div class="faq"><div class="q">100万トークンも使えますか？</div><p class="a">はい。Opus 5.5などは100万トークンのコンテキストを標準料金で提供しており、長文に対する追加料金はありません。</p></div>
-    <div class="faq"><div class="q">マルチエージェントは難しそうです。</div><p class="a">役割を分けて並列に走らせるだけでも、網羅性とクロスチェックの効果が出ます。まずは調査・レビューなど観点の分担から始めます。</p></div>
+    <div class="faq"><div class="q">マルチエージェントは難しそうです。</div><p class="a">同じ仕事を複製せず、独立した確認項目を分担します。役割を分けるだけで効果を保証するものではありません。まずは調査・レビューなど観点の分担から始めます。</p></div>
 
     <h2 id="s6">次の一歩として、まず何から試せばよいですか？</h2>
     <p class="answer">手戻りのコストが大きい重要な調査や意思決定を1件選び、4つの手順で振り切って試すことから始めます。</p>
@@ -220,14 +166,15 @@ fbq('init','1264057945446029');fbq('track','PageView');
       <li>大量・単純な処理は、これまでどおり絞ります。</li>
     </ol>
     <p>どこで絞り、どこで振り切るかの設計は、TechWorkerが一緒に整理します。検討段階のご相談だけでも歓迎です。</p>
-  </article>
+  <h2 id="sources">この記事は、どの資料をもとにしていますか？</h2><p>2026年10月3日に料金と推論制御の仕様を確認しました。自社の利用量は2026年9月の既存報告値です。追加のトークン、長い入力、複数エージェントが成果を改善する因果効果を実測したものではありません。</p><ul class="src-list"><li><a href="https://platform.claude.com/docs/en/about-claude/pricing" target="_blank" rel="noopener">Anthropic：API料金とcache料金</a></li><li><a href="https://platform.claude.com/docs/en/build-with-claude/thinking-steering-and-cost" target="_blank" rel="noopener">Anthropic：推論の強度と費用の制御</a></li></ul>
+</article>
 </div>
 
 <div class="author"><div class="inner">
   <img class="av" src="../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
   <div>
     <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div>
-    <p>上場企業を含む37社・2,500名の生成AI導入・研修を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
+    <p class="a">上場企業を含む37社・2,500名の生成AI導入・研修を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
   </div>
 </div></div>
 
@@ -245,7 +192,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <section class="related"><div class="container">
   <div class="rl-h">Related</div>
   <div class="related-grid">
-    <a href="token-management.html" class="related-card"><span class="rc-cat">Token Strategy</span><div class="rc-title">トークンマネジメントとは｜生成AIのコストを最大90%下げる実践ガイド</div></a>
+    <a href="token-management.html" class="related-card"><span class="rc-cat">Token Strategy</span><div class="rc-title">トークンマネジメントとは｜品質を保って費用を見直す実践ガイド</div></a>
     <a href="../cases.html" class="related-card"><span class="rc-cat">実績</span><div class="rc-title">生成AI導入・研修の支援実績（37社・2,500名）</div></a>
   </div>
 </div></section>

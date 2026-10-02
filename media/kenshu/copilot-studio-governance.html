@@ -2,38 +2,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}gtag('config','G-3V34NWXVCJ');</script><script src="/assets/tw-track.js" defer></script><script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width,initial-scale=1"><title>Copilot Studioのガバナンス設計｜環境・DLP・公開承認を分ける — TechWorker</title><meta name="description" content="Copilot Studioの展開は、環境、データ移動、公開承認、運用レビューの4つの境界に分けて統制します。市民開発を止めずに、試作・検証・本番環境、DLP、公開承認、運用レビューを設計する方法を整理します。"><link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg"><link rel="canonical" href="https://techworker.co.jp/media/kenshu/copilot-studio-governance">
 <meta property="og:type" content="article"><meta property="og:title" content="Copilot Studioのガバナンス設計｜環境・DLP・公開承認を分ける"><meta property="og:description" content="Copilot Studioの市民開発を止めずに統制する方法を解説します。試作・検証・本番環境、DLP、公開承認、運用レビューの分け方を整理します。"><meta property="og:image" content="https://techworker.co.jp/media/kenshu/covers/copilot-studio-governance.png"><meta property="og:url" content="https://techworker.co.jp/media/kenshu/copilot-studio-governance"><meta property="og:site_name" content="TechWorker"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://techworker.co.jp/media/kenshu/covers/copilot-studio-governance.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../article.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Copilot Studioのガバナンス設計｜環境・DLP・公開承認を分ける", "description": "Copilot Studioの展開は、環境、データ移動、公開承認、運用レビューの4つの境界に分けて統制します。市民開発を止めずに、試作・検証・本番環境、DLP、公開承認、運用レビューを設計する方法を整理します。", "datePublished": "2026-09-04", "dateModified": "2026-10-02", "inLanguage": "ja", "image": "https://techworker.co.jp/media/kenshu/covers/copilot-studio-governance.png", "author": {"@type": "Person", "name": "古野光太朗", "url": "https://techworker.co.jp/company.html"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/copilot-studio-governance"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},{"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},{"@type":"ListItem","position":3,"name":"AI研修・導入ラボ","item":"https://techworker.co.jp/media/kenshu/"},{"@type":"ListItem","position":4,"name":"Copilot Studioのガバナンス設計｜環境・DLP・公開承認を分ける","item":"https://techworker.co.jp/media/kenshu/copilot-studio-governance"}]}</script><script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Copilot Studioの市民開発は許可してよいですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "許可しても構いません。個人の環境から本番データへ接続させる必要はありません。試作、検証、本番の環境を分け、本番へ移す前に承認を入れれば、試作を止めずに経路だけを狭められます。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "DLPを設定すれば公開承認は不要ですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "不要にはなりません。DLPは接続とデータ移動の境界です。誰がどのチャネルへ公開できるか、問題時に誰が止めるかは決まりません。業務オーナー、データ責任者、運用担当の承認を別に置きます。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "公開後の運用では何を確認すればよいですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "月次で、利用者の種類、失敗・エスカレーションの理由、接続追加の申請、DLPの警告、所有者不明のエージェントを確認します。使われない場合は機能を足す前に、利用者と意思決定を見直します。"
-      }
-    }
-  ]
-}
-</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../article.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Copilot Studioのガバナンス設計｜環境・DLP・公開承認を分ける", "description": "Copilot Studioの展開は、環境、データ移動、公開承認、運用レビューの4つの境界に分けて統制します。市民開発を止めずに、試作・検証・本番環境、DLP、公開承認、運用レビューを設計する方法を整理します。", "datePublished": "2026-09-04", "dateModified": "2026-10-03", "inLanguage": "ja", "image": "https://techworker.co.jp/media/kenshu/covers/copilot-studio-governance.png", "author": {"@type": "Person", "name": "古野光太朗", "url": "https://techworker.co.jp/company.html"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/copilot-studio-governance"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},{"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},{"@type":"ListItem","position":3,"name":"AI研修・導入ラボ","item":"https://techworker.co.jp/media/kenshu/"},{"@type":"ListItem","position":4,"name":"Copilot Studioのガバナンス設計｜環境・DLP・公開承認を分ける","item":"https://techworker.co.jp/media/kenshu/copilot-studio-governance"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Copilot Studioの市民開発は許可してよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "許可しても構いません。個人の環境から本番データへ接続させる必要はありません。試作、検証、本番の環境を分け、本番へ移す前に承認を入れれば、試作を止めずに経路だけを狭められます。"}}, {"@type": "Question", "name": "DLPを設定すれば公開承認は不要ですか？", "acceptedAnswer": {"@type": "Answer", "text": "不要にはなりません。DLPは接続とデータ移動の境界です。誰がどのチャネルへ公開できるか、問題時に誰が止めるかは決まりません。業務オーナー、データ責任者、運用担当の承認を別に置きます。"}}, {"@type": "Question", "name": "公開後の運用では何を確認すればよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "月次で、利用者の種類、失敗・エスカレーションの理由、接続追加の申請、DLPの警告、所有者不明のエージェントを確認します。使われない場合は機能を足す前に、利用者と意思決定を見直します。"}}]}</script>
 </head>
 <body><div class="progress" id="progress"></div><nav id="nav">
   <a href="index.html" class="logo">AI研修・導入<i>ラボ</i></a>
@@ -51,7 +20,7 @@
   <a href="index.html#about">このメディアについて</a>
   <a href="../../training.html" class="m-cta">無料相談を申し込む</a>
 </div>
-<header class="art-head"><nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a></nav><div class="kicker">社内ルールと安全</div><h1>Copilot Studioのガバナンス設計｜環境・DLP・公開承認を分ける</h1><p class="dek">Copilot Studioの展開は、環境、データ移動、公開承認、運用レビューの4つの境界に分けて統制します。<br>市民開発を止めずに、本番への経路だけを管理したい、情シスやDX推進担当の方に向けた記事です。<br>試作・検証・本番の分け方、DLPの考え方、公開承認の三者、公開後の確認点が分かります。</p><div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.09.04</span><span class="dot">·</span><span>最終更新 2026.10.02</span><span class="dot">·</span><span>一次情報 6件</span></div></header><img class="daily-cover" src="covers/copilot-studio-governance.png" alt="Copilot Studioの公開までの流れ。作成者・承認者・Studioが、エージェントを作る→接続先を制御する→検証環境で試す→公開を承認する→本番へ公開する→所有者を確認するの順に進める業務図" width="1200" height="630">
+<header class="art-head"><nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a></nav><div class="kicker">社内ルールと安全</div><h1>Copilot Studioのガバナンス設計｜環境・DLP・公開承認を分ける</h1><p class="dek">Copilot Studioの展開は、環境、データ移動、公開承認、運用レビューの4つの境界に分けて統制します。<br>市民開発を止めずに、本番への経路だけを管理したい、情シスやDX推進担当の方に向けた記事です。<br>試作・検証・本番の分け方、DLPの考え方、公開承認の三者、公開後の確認点が分かります。</p><div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.09.04</span><span class="dot">·</span><span>最終更新 2026.10.03</span><span class="dot">·</span><span>一次情報 6件</span></div></header><img class="daily-cover" src="covers/copilot-studio-governance.png" alt="Copilot Studioの公開までの流れ。作成者・承認者・Studioが、エージェントを作る→接続先を制御する→検証環境で試す→公開を承認する→本番へ公開する→所有者を確認するの順に進める業務図" width="1200" height="630">
 <div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div>      <a href="#s1">結論：4つの境界に分ける</a>
       <a href="#s2">手順：統制の整え方</a>
       <a href="#s3">うまくいかない例</a>
@@ -63,12 +32,14 @@
 <h2 id="s1">Copilot Studioの展開では、何を分けて統制すればよいですか？</h2>
     <p class="answer">環境、データ移動、公開承認、運用レビューの4つの境界に分けます。作れる人を増やすことと本番の範囲を分けます。</p>
     <p>Copilot Studioを社内展開すると、最初の失敗は、2つの作業を同じにしてしまう点にあります。作れる人を増やすことと、本番で使ってよい範囲を決めることです。</p>
-    <p>市民開発を許可しても、個人の環境から本番データへ接続させる必要はありません。DLPだけを設定しても、誰がどのチャネルへ公開できるかは決まりません。問題が起きたとき誰が止めるかも決まりません。</p>
+    <p>プログラミングの専門家ではない社員が自分で業務ツールを作る「市民開発」を許可しても、個人の環境から本番データへ接続させる必要はありません。情報の持ち出しを制限するデータポリシー（DLP）だけでは、誰がどのチャネルへ公開できるかは決まりません。問題が起きたとき誰が止めるかも決まりません。</p>
     <p>結論は、環境、データ移動、公開承認、運用レビューを分けることです。この4つを一枚の申請書に詰め込まず、目的別の境界として設計します。</p>
     <p>Copilot StudioのエージェントはPower Platform環境内で作成・管理されます。環境は、データ境界、セキュリティロール、データポリシー、ライフサイクル分離に関わります。まず環境を分けると、試作を止めずに、本番への経路だけを狭められます。</p>
 
     <h2 id="s2">Copilot Studioの統制は、どんな手順で整えますか？</h2>
     <p class="answer">環境を分け、DLPで接続を決め、三者で公開を承認し、公開後に月次で確認し、最初の30日の記録を残します。</p>
+    <figure class="fig-inline"><a href="figs/copilot-studio-governance-1.png" target="_blank" rel="noopener"><img src="figs/copilot-studio-governance-1.png" alt="公開前に三者が別の範囲を確認する。担当ごとの受け渡しを左から順に示します。" width="1200" height="667" loading="lazy" decoding="async"></a><figcaption>TechWorker作成：本文に基づく確認・判断の手順です。</figcaption></figure>
+<p>公開票には、環境、利用者グループ、知識ソース、アクション、公開チャネル、停止担当を並べます。接続先や公開先が変わる場合は、前回の承認で済ませず、変更した項目を三者へ戻します。</p>
     <ol>
       <li><strong>試作・検証・本番を別の約束にします。</strong>試作環境は、学習用の架空データと許可済みコネクタに限定し、利用者を少人数にします。評価するのは、回答の正しさだけではありません。どの知識ソース・アクション・HTTP接続を使いたいのかも見ます。検証環境では、実データを最小化したテストケース、想定外入力、失敗時のメッセージ、ログの見方を確認します。本番環境では、所有者、対象利用者、停止条件、変更責任者を明記してから公開します。</li>
       <li><strong>DLPで、データが動き得る範囲を決めます。</strong>確認するのは、エージェントが何を答えるかだけではありません。知識ソース、コネクタ、スキル、HTTP要求、公開チャネルの組み合わせが、どこへデータを動かし得るかです。許可するコネクタを環境別に決め、業務上の理由がない接続は、最初から使えない状態にします。</li>

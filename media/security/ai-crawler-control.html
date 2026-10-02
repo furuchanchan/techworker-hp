@@ -30,7 +30,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../article.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AIクローラーからサイトを守る｜robots.txtの限界とCloudflareでの制御【2026】", "description": "AIクローラーは学習用・検索/回答用・ユーザー代理用の3種類に分かれ、robots.txtだけでは止められません。GPTBot、ClaudeBot、Google-Extendedの違いと、Cloudflareでの制御、ブロックする前の判断軸を整理します。", "datePublished": "2026-08-09", "dateModified": "2026-10-02", "inLanguage": "ja", "image": "https://techworker.co.jp/media/security/covers/ai-crawler-control.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/security/ai-crawler-control"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AIクローラーからサイトを守る｜robots.txtの限界とCloudflareでの制御【2026】", "description": "AIクローラーは学習用・検索/回答用・ユーザー代理用の3種類に分かれ、robots.txtだけでは止められません。GPTBot、ClaudeBot、Google-Extendedの違いと、Cloudflareでの制御、ブロックする前の判断軸を整理します。", "datePublished": "2026-08-09", "dateModified": "2026-10-03", "inLanguage": "ja", "image": "https://techworker.co.jp/media/security/covers/ai-crawler-control.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/security/ai-crawler-control"}}</script>
 <script type="application/ld+json">
 {
   "@context":"https://schema.org","@type":"BreadcrumbList",
@@ -42,7 +42,7 @@
   ]
 }
 </script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "robots.txtに書けば、法的にAI学習を禁止できますか？", "acceptedAnswer": {"@type": "Answer", "text": "robots.txtは、2022年9月にIETFがRFC 9309として標準化した技術仕様です。クローラーに対する意思表示の共通フォーマットです。ただし、指示に従うかどうかはクローラー運営者側の実装と方針次第です。robots.txtの記述そのものに、遵守を強制する法的効力はありません。確実な法的強制力を求める場合は、利用規約の整備や専門家への相談が必要です。"}}, {"@type": "Question", "name": "Cloudflareを使っていない場合、AIクローラーは制御できませんか？", "acceptedAnswer": {"@type": "Answer", "text": "robots.txtと、その拡張であるContent Signalsは、Cloudflareを使わなくても使えます。自社サーバーに設置するだけで、意思表示ができます。ただし「お願い」止まりである点は変わりません。実効性を持たせるには、自社のWebサーバーやCDN側でUser-Agent・IPアドレスによるアクセス制御を組みます。Cloudflare以外のボット対策製品を組み合わせる方法もあります。"}}, {"@type": "Question", "name": "AI学習をブロックすると、ChatGPTやPerplexityの検索・回答に自社サイトが出てこなくなりますか？", "acceptedAnswer": {"@type": "Answer", "text": "クローラーを区別せず一律にブロックした場合は、そうなります。ただし主要各社は、学習用と検索・回答用でクローラーを分けています。例は、OpenAIのGPTBotとOAI-SearchBotです。AnthropicのClaudeBotとClaude-SearchBotも同様です。学習用だけを止めて、検索・回答用は許可できます。Google-Extendedをブロックしても、通常のGoogle検索の掲載順位には影響しないと公式に明記されています。"}}, {"@type": "Question", "name": "一度設定すれば、あとは安心ですか？", "acceptedAnswer": {"@type": "Answer", "text": "いいえ。新しいAIクローラーは今後も増えますし、既存クローラーのUser-Agentや各社のポリシーも変わっていきます。robots.txtに従わないクローラーがいないかを、定期的にログで確認します。Cloudflareを使っているなら、AI Crawl Controlの遵守状況の追跡機能が使えます。実際の状況を定点観測する運用が欠かせません。"}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "robots.txtに書けば、法的にAI学習を禁止できますか？", "acceptedAnswer": {"@type": "Answer", "text": "RFC 9309が示すrobots.txtはアクセス認可の仕組みではありません。技術的に取得を拒否するには、サーバー側の認証や遮断が必要です。法的な効力は、国・契約・利用状況で異なるため、技術仕様だけから一律に断定しません。"}}, {"@type": "Question", "name": "Cloudflareを使っていない場合、AIクローラーは制御できませんか？", "acceptedAnswer": {"@type": "Answer", "text": "robots.txtは、Cloudflareを使わなくても設置できます。自社サーバーに設置するだけで、意思表示ができます。ただし「お願い」止まりである点は変わりません。実効性を持たせるには、自社のWebサーバーやCDN側でUser-Agent・IPアドレスによるアクセス制御を組みます。Cloudflare以外のボット対策製品を組み合わせる方法もあります。"}}, {"@type": "Question", "name": "AI学習をブロックすると、ChatGPTやPerplexityの検索・回答に自社サイトが出てこなくなりますか？", "acceptedAnswer": {"@type": "Answer", "text": "クローラーを区別せず一律にブロックした場合は、そうなります。ただし主要各社は、学習用と検索・回答用でクローラーを分けています。例は、OpenAIのGPTBotとOAI-SearchBotです。AnthropicのClaudeBotとClaude-SearchBotも同様です。学習用だけを止めて、検索・回答用は許可できます。Google-Extendedをブロックしても、通常のGoogle検索の掲載順位には影響しないと公式に明記されています。"}}, {"@type": "Question", "name": "一度設定すれば、あとは安心ですか？", "acceptedAnswer": {"@type": "Answer", "text": "いいえ。新しいAIクローラーは今後も増えますし、既存クローラーのUser-Agentや各社のポリシーも変わっていきます。robots.txtに従わないクローラーがいないかを、定期的にログで確認します。Cloudflareを使っているなら、AI Crawl Controlの遵守状況の追跡機能が使えます。実際の状況を定点観測する運用が欠かせません。"}}]}</script>
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -77,7 +77,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <h1>AIクローラーからサイトを守る｜robots.txtの限界とCloudflareでの制御</h1>
   <p class="dek">AIクローラーは、学習用・検索/回答用・ユーザー代理用の3種類に分かれ、robots.txtだけでは止められません。<br>AI学習は止めたいが、AI検索からの流入は残したい、情シスやWeb担当の方の悩みに向けた記事です。<br>robots.txtの限界と、Cloudflareで何を制御できるか、ブロックする前の判断軸が分かります。</p>
   <div class="a-meta">
-    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.08.09</span><span class="dot">·</span><span>最終更新 2026.10.02</span><span class="dot">·</span><span>読了 13分</span>
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.08.09</span><span class="dot">·</span><span>最終更新 2026.10.03</span><span class="dot">·</span><span>読了 13分</span>
   </div>
 </header>
 
@@ -86,44 +86,35 @@ fbq('init','1264057945446029');fbq('track','PageView');
 .aic-unit{font-size:14px;font-weight:600;color:var(--slate);margin-left:1px;}
 .aic-cap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-family:var(--jp);font-size:11.5px;color:var(--slate);margin-top:10px;padding-top:12px;border-top:1px solid var(--line);}
 </style>
-<div class="art-cover-v6 acf-dash">
-  <div class="af-top"><span class="af-dot"></span>AI CRAWL CONTROL ダッシュボード<span class="af-smp">※サンプル値・画面はイメージです</span></div>
-  <div class="af-kpis">
-    <div><div class="af-k-l">検知したクローラー</div><div class="af-k-v">18<span class="aic-unit">種</span></div></div>
-    <div><div class="af-k-l">ブロック設定</div><div class="af-k-v">7<span class="aic-unit">種</span></div></div>
-    <div><div class="af-k-l">許可率</div><div class="af-k-v"><em>61</em><span class="aic-unit">%</span></div></div>
-  </div>
-  <div class="af-bars" role="img" aria-label="クローラーのカテゴリごとにリクエスト数が異なることを示す棒グラフのイメージ">
-    <i class="hi" style="height:88%"></i><i style="height:72%"></i><i style="height:64%"></i><i style="height:50%"></i><i style="height:41%"></i><i style="height:33%"></i><i style="height:24%"></i><i style="height:15%"></i>
-  </div>
-  <div class="aic-cap"><span>カテゴリ別リクエスト数の内訳（イメージ）</span><span>学習・検索・ユーザー代理でアクセス目的が異なる</span></div>
-</div>
+<a href="covers/ai-crawler-control.png" target="_blank" rel="noopener"><img class="daily-cover" src="covers/ai-crawler-control.png" alt="AIクローラーをrobots.txtの先で制御する。学習の許可と検索流入を別々に決める。" width="1200" height="630"></a>
 
 <div class="art-layout">
   <nav class="art-toc" aria-label="目次">
     <div class="art-toc-inner">
       <div class="toc-h">目次</div>
-      <a href="#s1">なぜrobots.txtだけでは止められないのか</a>
-      <a href="#s2">主要なAIクローラー一覧</a>
-      <a href="#s3">Cloudflareで何ができるか</a>
-      <a href="#s4">ブロックすべきか、許可すべきか</a>
-      <a href="#s5">実務の進め方</a>
+      <a href="#s1">robots.txtだけで、AIクローラーを止められますか？</a>
+      <a href="#s2">AIクローラーの制御は、どんな手順で進めますか？</a>
+      <a href="#s3">AIクローラー対策がうまくいかない例には、どんなものがありますか？</a>
+      <a href="#s4">主要なAIクローラーは、何をしているのですか？</a>
+      <a href="#s5">次の一歩は何から始めればよいですか？</a>
       <a href="#faq">よくある質問</a>
-    </div>
+    <a href="#sources">この記事は、どの資料をもとにしていますか？</a>
+</div>
   </nav>
 
   <article class="art-body"><h2 id="s1">robots.txtだけで、AIクローラーを止められますか？</h2>
-<p class="answer">止められません。robots.txtは「お願い」で強制力がなく、学習用と検索用を分けて判断する必要があります。</p>
+<p class="answer">止められません。robots.txtはアクセス認可の仕組みではありません。学習用と検索用の方針を分け、必要な遮断はサーバー側で行います。</p>
 <p>robots.txtは1994年に生まれ、2022年9月にIETFがRFC 9309として標準化しました。主要なAIクローラーは、いずれも公式ドキュメントでrobots.txtの尊重を明言しています。対象は、GPTBot、ClaudeBot、Google-Extended、PerplexityBotなどです。</p>
 <p>ただし、標準化されていることと、強制力があることは別の問題です。robots.txtは、クローラーが自分でファイルを取得し、自分の意思で従って初めて機能します。サーバー側が技術的に遮断しているわけではありません。</p>
 <p>さらに、判定に使うUser-Agentは自己申告の文字列です。送信側が自由に書けるため、「GPTBot」と名乗るリクエストが本物とは限りません。Cloudflareが検証済みボット（Verified Bots）の仕組みを用意しているのは、このためです。IPアドレス帯の照合や、Web Bot Authと呼ぶ暗号署名による検証を使います。</p>
 <p>もう一つ見落としやすいのが、利用者の代理で動くボットです。ChatGPT-User、Claude-User、Perplexity-Userがその例です。利用者が質問した瞬間に、ページを取得します。OpenAIは、この種のリクエストにはrobots.txtのルールが適用されない場合があると明記しています。</p>
 <p>Anthropicは、3種のボットすべてがrobots.txtを尊重するとしています。同時に、IPアドレスでのブロックには注意が必要だとしています。robots.txtを読む能力を妨げるため、適切または永続的に機能しない場合があるためです。</p>
-<div class="callout"><p>robots.txtは「意思表示」です。「アクセス制御」の働きはありません。悪意あるクローラーや、指示を無視するクローラーを止めるには、別の仕組みが必要です。ネットワークやサーバー側で、技術的に強制します。</p></div>
-<p>実務上の落とし所は、2026年8月時点で次のとおりです。Trainingは目的に応じて選択的にブロックし、SearchとAgentは基本的に許可します。全クローラーの一律ブロックは、AI検索経由の流入をゼロにするリスクが大きくなりやすい設定です。何も設定しない運用も、意思決定の放棄と同じです。</p>
+<div class="callout"><p>RFC 9309は、robots.txtの規則をアクセス認可の仕組みではないと明記します。悪意あるクローラーや、指示を無視するクローラーを止めるには、別の仕組みが必要です。ネットワークやサーバー側で、技術的に強制します。</p></div>
+<p>学習利用と検索で見つけてもらうことを、別の判断にします。公開情報を広く読んでほしい会社と、会員向けコンテンツを守る会社では、許可する対象が異なります。検索用を止める場合は流入への影響をログで確かめます。</p>
 
 <h2 id="s2">AIクローラーの制御は、どんな手順で進めますか？</h2>
 <p class="answer">現状把握、方針決定、設定、検証の4つを、影響範囲を確認しながら段階的に進めます。</p>
+    <figure class="fig-inline"><a href="figs/ai-crawler-control-1.png" target="_blank" rel="noopener"><img src="figs/ai-crawler-control-1.png" alt="AIクローラーの方針で確認する対象と、拒否または次の工程へ渡す条件を示した設計例です。" width="1200" height="608" loading="lazy" decoding="async"></a><figcaption>TechWorker作成：本文の手順を図にした設計例です。製品の公式画面や導入効果の実測ではありません。画像を押すと拡大できます。</figcaption></figure>
 <ol>
 <li><strong>現状を把握します。</strong>既存のrobots.txtを棚卸しします。Cloudflareを使っているなら、AI Crawl Controlのダッシュボードを開きます。どのクローラーがどれだけアクセスしているかを確認します。意図せず許可・ブロックされているクローラーがないかも見ます。</li>
 <li><strong>方針を決めます。</strong>次の3つの軸を分けて、情シス・広報・Web担当・経営で合意を取ります。
@@ -132,40 +123,16 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <li>AI検索・AI回答からの流入価値：ChatGPT検索、Perplexity、Gemini経由の参照を、集客に使うか。</li>
 <li>コンテンツの性質：広告収益のページか、会員限定・有償か、採用情報やプレスリリースのように広く読まれてほしいページか。</li>
 </ul></li>
-<li><strong>設定します。</strong>robots.txtとContent-Signalを整えます。Cloudflareを使っているなら、AI Crawl Controlで設定します。Search・Agent・Training別に、許可とブロックを選べます。必要に応じて、Super Bot Fight ModeやAI Labyrinthを併用します。全体ブロックになっていないかを確認します。</li>
+<li><strong>設定します。</strong>robots.txtを整えます。Cloudflareを使っているなら、AI Crawl Controlで設定します。クローラーごとに、許可とブロックを設定します。必要に応じて、Super Bot Fight ModeやAI Labyrinthを併用します。全体ブロックになっていないかを確認します。</li>
 <li><strong>検証します。</strong>設定後は、アクセスログで反映を確認します。AI Crawl Controlの遵守状況の追跡機能で、指示に従わないクローラーがいないかも見ます。いれば、Bot ManagementやWAF側での遮断に切り替えます。</li>
 </ol>
 <p>手順3の設定例を示します。robots.txtで、学習用は拒否し、検索用とユーザー代理用は許可する書き方です。</p>
-<div class="ui-mock">
-      <div class="um-bar"><span class="um-dot"></span><span class="um-dot"></span><span class="um-dot"></span><span class="um-name">robots.txt — Cloudflare Managed robots.txtの追記イメージ</span></div>
-      <div class="um-row">
-        <div class="um-label">クローラー別の許可・拒否</div>
-        <div class="um-text prompt">User-agent: GPTBot
+<pre><code>User-agent: GPTBot
 Disallow: /
 
 User-agent: OAI-SearchBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /</div>
-      </div>
-      <div class="um-row">
-        <div class="um-label ai">Content-Signalの拡張（Cloudflare管理robots.txtの例）</div>
-        <div class="um-text">Content-Signal: search=yes, ai-train=no, use=reference</div>
-      </div>
-    </div>
-<p class="fig-cap">図：Cloudflareのmanaged robots.txtが自動付与するContent-Signal行のイメージ。学習（ai-train）は拒否、検索（search）は許可という意思表示を1行で行える（2026年8月時点の仕様）。</p>
-<p>Cloudflareの制御は、段階的に拡張されてきました。AI Crawl Control（旧称AI Audit）は、無料プランを含む全プランに標準搭載です。クローラーごとに許可・ブロックを設定でき、robots.txtの指示に従っているかも追跡できます。</p>
-<ul>
-<li><strong>2025年7月1日：</strong>新規サインアップのドメインで「AI botsをブロック」をデフォルトオンにしました。robots.txtを自動管理するManaged robots.txtも発表しています。既存のrobots.txtがある場合は、Cloudflare側の指示が先頭に追加されます。</li>
-<li><strong>2026年7月1日：</strong>AIクローラーの振る舞いを、Search、Agent、Trainingの3カテゴリに分類しました。2026年9月15日以降の新規ドメインは、広告表示ページに限り、TrainingとAgentを既定でブロックします。Searchは許可します。既存ドメインは自動では変わりません。</li>
-<li><strong>Googlebotのような複数目的のクローラー：</strong>最も制限的なルールが適用されます。</li>
-</ul>
-<p>この分類が効くのは、Cloudflareがネットワークの手前で判定するためです。リクエストを受け止め、検証済みボットかどうかを確認してから通します。判定には、IPアドレス帯の照合と、Ed25519暗号署名によるWeb Bot Authの2種類を使います。User-Agentの文字列だけに頼りません。</p>
-<p>遮断の土台はプラン別に用意されています。Freeは、Bot Fight Modeでドメイン単位の一括オン・オフができます。Pro・BusinessのSuper Bot Fight Modeは、カテゴリ別のアクションに対応します。WAFカスタムルールとも連携します。EnterpriseのBot Managementは、リクエスト単位のボットスコアを使えます。</p>
-<p>指示を無視するクローラー向けには、AI Labyrinthがあります。2025年3月に発表された機能です。疑わしいボットを検知すると、人間には見えないリンクを仕込み、AI生成の偽ページへ誘導して巡回コストを上げます。</p>
-<p>ブロックのほかに、対価を得る選択肢もあります。2025年7月に、Pay per crawlがプライベートベータで発表されました。クローラーにHTTP 402 Payment Requiredを返す仕組みです。2026年7月には、x402というオープンプロトコル上のMonetization Gatewayを発表しています。巡回のたびに対価を得る方式から、回答にコンテンツが使われたときに対価を得る発想へ軸足を移しています。</p>
-
+Allow: /</code></pre><p>編集部による記載例です。Cloudflareの実画面や自動生成結果ではありません。クローラーの最新のトークンは、提供元の公式資料で確認してください。</p>
+<p>CloudflareのAI Crawl Controlは、全プランでクローラーのアクセス状況、個別の許可・ブロック、robots.txtへの遵守状況を確認できます。2026年10月3日に公式の概要と管理手順を再確認しました。料金を得るPay Per Crawlは非公開ベータで、通常の遮断機能と分けて扱います。</p><p>設定例では、学習用のGPTBotと検索用のOAI-SearchBotを別に指定します。設定文字列だけで送信元の本人性は確認できません。User-Agentの条件と、提供元の公式IP情報や利用するCDNのボット判定を照合します。機微な情報をrobots.txtだけで守らず、認証された領域へ移してください。</p>
 <h2 id="s3">AIクローラー対策がうまくいかない例には、どんなものがありますか？</h2>
 <p class="answer">robots.txtだけで終える、一律にブロックする、設定して放置する、の3つが典型です。</p>
 <ul>
@@ -199,8 +166,8 @@ Allow: /</div>
 <p>学習利用だけを止めたいなら、GPTBot・ClaudeBot・Google-Extendedをブロックします。検索・回答用とユーザー代理用のクローラーは許可します。この切り分けは、Search・Agent・Trainingの3分類で、そのまま扱えます。</p>
 
 <h2 id="faq">よくある質問</h2>
-<div class="faq"><div class="q">robots.txtに書けば、法的にAI学習を禁止できますか？</div><p class="a">robots.txtは、2022年9月にIETFがRFC 9309として標準化した技術仕様です。クローラーに対する意思表示の共通フォーマットです。ただし、指示に従うかどうかはクローラー運営者側の実装と方針次第です。robots.txtの記述そのものに、遵守を強制する法的効力はありません。確実な法的強制力を求める場合は、利用規約の整備や専門家への相談が必要です。</p></div>
-<div class="faq"><div class="q">Cloudflareを使っていない場合、AIクローラーは制御できませんか？</div><p class="a">robots.txtと、その拡張であるContent Signalsは、Cloudflareを使わなくても使えます。自社サーバーに設置するだけで、意思表示ができます。ただし「お願い」止まりである点は変わりません。実効性を持たせるには、自社のWebサーバーやCDN側でUser-Agent・IPアドレスによるアクセス制御を組みます。Cloudflare以外のボット対策製品を組み合わせる方法もあります。</p></div>
+<div class="faq"><div class="q">robots.txtに書けば、法的にAI学習を禁止できますか？</div><p class="a">RFC 9309が示すrobots.txtはアクセス認可の仕組みではありません。技術的に取得を拒否するには、サーバー側の認証や遮断が必要です。法的な効力は、国・契約・利用状況で異なるため、技術仕様だけから一律に断定しません。</p></div>
+<div class="faq"><div class="q">Cloudflareを使っていない場合、AIクローラーは制御できませんか？</div><p class="a">robots.txtは、Cloudflareを使わなくても設置できます。自社サーバーに設置するだけで、意思表示ができます。ただし「お願い」止まりである点は変わりません。実効性を持たせるには、自社のWebサーバーやCDN側でUser-Agent・IPアドレスによるアクセス制御を組みます。Cloudflare以外のボット対策製品を組み合わせる方法もあります。</p></div>
 <div class="faq"><div class="q">AI学習をブロックすると、ChatGPTやPerplexityの検索・回答に自社サイトが出てこなくなりますか？</div><p class="a">クローラーを区別せず一律にブロックした場合は、そうなります。ただし主要各社は、学習用と検索・回答用でクローラーを分けています。例は、OpenAIのGPTBotとOAI-SearchBotです。AnthropicのClaudeBotとClaude-SearchBotも同様です。学習用だけを止めて、検索・回答用は許可できます。Google-Extendedをブロックしても、通常のGoogle検索の掲載順位には影響しないと公式に明記されています。</p></div>
 <div class="faq"><div class="q">一度設定すれば、あとは安心ですか？</div><p class="a">いいえ。新しいAIクローラーは今後も増えますし、既存クローラーのUser-Agentや各社のポリシーも変わっていきます。robots.txtに従わないクローラーがいないかを、定期的にログで確認します。Cloudflareを使っているなら、AI Crawl Controlの遵守状況の追跡機能が使えます。実際の状況を定点観測する運用が欠かせません。</p></div>
 
@@ -209,9 +176,10 @@ Allow: /</div>
 <ol>
 <li>robots.txtを棚卸しし、どのクローラーが来ているかを確認します。</li>
 <li>学習利用、AI検索の流入価値、ページの性質の3軸で方針を決めます。</li>
-<li>学習用だけを選択的にブロックし、実際のアクセスログで反映を確認します。</li>
+<li>決めた方針に沿って許可・ブロックを設定し、実際のアクセスログで反映を確認します。</li>
 </ol>
 <p>少なくとも学習用クローラーの扱いは、会社としての方針を持っておく必要があります。四半期に一度などの見直しを、運用に組み込んでください。</p>
+<h2 id="sources">この記事は、どの資料をもとにしていますか？</h2><p>2026年10月3日に上記3資料を確認しました。主要各社のボット表は2026年8月に確認した既存の掲載情報で、全社の最新仕様を今回再検証したものではありません。設定前に対象ボットの公式資料を確認してください。</p><ul class="src-list"><li><a href="https://www.rfc-editor.org/rfc/rfc9309.html" target="_blank" rel="noopener">IETF RFC 9309：Robots Exclusion Protocol</a></li><li><a href="https://developers.cloudflare.com/ai-crawl-control/" target="_blank" rel="noopener">Cloudflare：AI Crawl Controlの概要</a></li><li><a href="https://developers.cloudflare.com/ai-crawl-control/features/manage-ai-crawlers/" target="_blank" rel="noopener">Cloudflare：AIクローラーの管理</a></li></ul>
 </article>
 </div>
 
@@ -219,7 +187,7 @@ Allow: /</div>
   <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
   <div>
     <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div>
-    <p>上場企業を含む37社・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
+    <p class="a">上場企業を含む37社・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
   </div>
 </div></div>
 
