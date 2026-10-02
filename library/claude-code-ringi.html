@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3V34NWXVCJ');
+</script>
+<script src="/assets/tw-track.js" defer></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code 法人導入 稟議書テンプレート｜料金比較表つき — TechWorker</title>
+<meta name="description" content="Claude Codeの法人契約（Team・Enterprise・API従量）の料金比較表、規模別の選び方、そのまま使える稟議書テンプレート、稟議で聞かれやすいことと答え方をまとめた無料資料です。">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Claude Code 法人導入 稟議書テンプレート｜料金比較表つき — TechWorker">
+<meta property="og:description" content="Claude Codeの法人契約（Team・Enterprise・API従量）の料金比較表、規模別の選び方、そのまま使える稟議書テンプレート、稟議で聞かれやすいことと答え方をまとめた無料資料です。">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/library/claude-code-ringi">
+<link rel="canonical" href="https://techworker.co.jp/library/claude-code-ringi">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Code 法人導入 稟議書テンプレート｜料金比較表つき — TechWorker">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== TOKENS (v2) ===== */
+:root{
+  --ink:#0D1117; --paper:#F4F6F9; --paper-2:#ECEFF3; --white:#FBFCFD;
+  --electric:#005EFF; --electric-dark:#003DAA;
+  --slate:#5A6677; --line:rgba(13,17,23,.12); --line-2:rgba(13,17,23,.20);
+  --emerald:#00B894; --violet:#7C3AED; --danger:#C0392B;
+  --jp:'IBM Plex Sans JP','IBM Plex Sans',system-ui,sans-serif;
+  --en:'IBM Plex Sans','IBM Plex Sans JP',system-ui,sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;overflow-x:hidden;}
+body{font-family:var(--jp);background:var(--paper);color:var(--ink);line-height:1.85;font-size:16px;-webkit-font-smoothing:antialiased;font-feature-settings:"palt" 1;overflow-x:hidden;}
+::selection{background:var(--electric);color:var(--paper);}
+a{color:var(--electric);}
+img{display:block;max-width:100%;}
+
+/* ===== TAG (structured label, v2) ===== */
+.tag{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--electric);display:inline-flex;align-items:center;gap:11px;padding-left:14px;border-left:3px solid var(--electric);}
+.tag span{color:var(--slate);font-weight:500;letter-spacing:.02em;text-transform:none;font-size:13px;}
+
+/* ===== READER BAR ===== */
+.reader-bar{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;background:rgba(244,246,249,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 24px;}
+.reader-bar .back{font-size:13px;font-weight:600;color:var(--slate);text-decoration:none;display:inline-flex;align-items:center;gap:7px;}
+.reader-bar .back:hover{color:var(--electric);}
+.reader-bar .brand{font-family:var(--en);font-size:16px;font-weight:700;letter-spacing:-.01em;color:var(--ink);text-decoration:none;}
+.reader-bar .brand i{font-style:normal;color:var(--electric);}
+.reader-bar .print{font-family:var(--jp);font-size:13px;font-weight:600;padding:9px 18px;border:1.5px solid var(--electric);color:var(--electric);background:none;border-radius:5px;cursor:pointer;transition:background .2s,color .2s;}
+.reader-bar .print:hover{background:var(--electric);color:var(--paper);}
+
+/* ===== DOC ===== */
+.doc{max-width:840px;margin:0 auto;padding:56px 40px 90px;}
+
+/* COVER */
+.cover{padding:80px 0 56px;border-bottom:2px solid var(--ink);margin-bottom:60px;}
+.cover .tag{margin-bottom:30px;}
+.cover h1{font-family:var(--jp);font-weight:700;font-size:clamp(32px,5vw,46px);line-height:1.34;letter-spacing:-.02em;margin-bottom:24px;}
+.cover h1 .mk{color:var(--electric);}
+.cover .sub{font-size:17px;color:var(--slate);line-height:2;max-width:640px;}
+.cover .sub strong{color:var(--ink);font-weight:600;}
+.cover .cover-meta{display:flex;gap:0;margin-top:42px;border-top:1px solid var(--line);}
+.cover .cover-meta div{padding:24px 30px 0 0;margin-right:30px;border-right:1px solid var(--line);}
+.cover .cover-meta div:last-child{border-right:none;}
+.cover .cover-meta b{font-family:var(--en);display:block;font-size:30px;font-weight:600;letter-spacing:-.02em;color:var(--electric);line-height:1;font-feature-settings:"tnum" 1;}
+.cover .cover-meta span{display:block;font-size:12.5px;color:var(--slate);margin-top:8px;}
+
+/* TOC */
+.toc{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:30px 34px;margin-bottom:66px;}
+.toc h4{font-family:var(--en);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--slate);font-weight:600;margin-bottom:20px;}
+.toc ol{list-style:none;counter-reset:toc;}
+.toc li{counter-increment:toc;padding:11px 0;border-bottom:1px solid var(--line);display:flex;align-items:baseline;gap:16px;font-size:15px;font-weight:600;}
+.toc li:last-child{border-bottom:none;}
+.toc li::before{content:counter(toc,decimal-leading-zero);font-family:var(--en);font-size:13px;color:var(--electric);font-weight:600;letter-spacing:.02em;}
+.toc li a{color:var(--ink);text-decoration:none;}
+.toc li a:hover{color:var(--electric);}
+
+/* CHAPTER */
+.chapter{margin-bottom:70px;}
+.chapter .ch-num{font-family:var(--en);font-size:13px;letter-spacing:.14em;color:var(--electric);font-weight:600;margin-bottom:12px;}
+.chapter h2{font-family:var(--jp);font-size:clamp(24px,3vw,30px);font-weight:700;line-height:1.4;letter-spacing:-.02em;margin-bottom:10px;padding-bottom:20px;border-bottom:1px solid var(--line);}
+.chapter h3{font-size:18px;font-weight:700;margin:36px 0 12px;letter-spacing:-.01em;}
+.chapter p{margin:14px 0;color:#28313f;}
+.chapter strong{color:var(--ink);font-weight:700;}
+.chapter .lead-p{font-size:17px;color:var(--slate);line-height:2;margin-top:18px;}
+.chapter .lead-p strong{color:var(--ink);font-weight:600;}
+
+/* big stat row */
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:34px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.stat{padding:26px 24px 24px;border-left:1px solid var(--line);}
+.stat:first-child{border-left:none;padding-left:0;}
+.stat .n{font-family:var(--en);font-size:clamp(34px,5vw,46px);font-weight:600;color:var(--electric);line-height:1;letter-spacing:-.03em;font-feature-settings:"tnum" 1;}
+.stat .l{font-size:12.5px;color:var(--slate);margin-top:12px;line-height:1.7;}
+
+/* risk cards (light tint + danger left border) */
+.risk{background:rgba(192,57,43,.05);border:1px solid rgba(192,57,43,.20);border-left:4px solid var(--danger);border-radius:0 8px 8px 0;padding:26px 30px;margin:22px 0;}
+.risk .risk-head{display:flex;align-items:baseline;gap:14px;margin-bottom:12px;flex-wrap:wrap;}
+.risk .risk-no{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.1em;color:var(--danger);padding-left:11px;border-left:3px solid var(--danger);}
+.risk h3{margin:0;font-size:19px;font-weight:700;letter-spacing:-.01em;}
+.risk p{margin:8px 0;font-size:14.5px;color:#28313f;line-height:1.9;}
+.risk .risk-fact{font-size:13px;color:var(--danger);border-top:1px solid rgba(192,57,43,.22);padding-top:14px;margin-top:16px;line-height:1.8;font-weight:500;}
+.risk .risk-fact b{font-weight:700;}
+
+/* principle ladder */
+.ladder{margin:26px 0;border-top:1px solid var(--line);}
+.ladder .rung{display:flex;align-items:flex-start;gap:18px;padding:22px 0;border-bottom:1px solid var(--line);}
+.ladder .rank{font-family:var(--en);font-size:15px;font-weight:600;color:var(--paper);background:var(--electric);min-width:34px;height:34px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ladder .rung-body h4{font-size:16px;font-weight:700;margin-bottom:5px;letter-spacing:-.01em;}
+.ladder .rung-body p{margin:4px 0 0;font-size:14px;color:var(--slate);line-height:1.9;}
+.ladder .rung-body p strong{color:var(--ink);font-weight:600;}
+
+/* setup grid (chapter 4) */
+.setup{margin:26px 0;border-top:1px solid var(--line);}
+.setup .srow{display:grid;grid-template-columns:200px 1fr;gap:24px;padding:24px 0;border-bottom:1px solid var(--line);}
+.setup .skey{font-size:15px;font-weight:700;color:var(--ink);letter-spacing:-.01em;}
+.setup .skey .pre{display:block;font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--electric);text-transform:uppercase;margin-bottom:6px;}
+.setup .sval{font-size:14.5px;color:#28313f;line-height:1.9;}
+.setup .sval code{font-family:var(--en);font-size:13px;background:var(--paper-2);border:1px solid var(--line);border-radius:4px;padding:1px 7px;color:var(--ink);}
+
+/* checklist */
+.checklist{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:30px 32px;margin:26px 0;}
+.checklist .cl-item{display:flex;align-items:flex-start;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);}
+.checklist .cl-item:last-child{border-bottom:none;}
+.checklist .box{width:20px;height:20px;border:2px solid var(--electric);border-radius:4px;flex-shrink:0;margin-top:3px;}
+.checklist .cl-item .t{font-size:14.5px;}
+.checklist .cl-item .t b{font-weight:700;}
+.checklist .cl-item .t span{display:block;font-size:12.5px;color:var(--slate);margin-top:3px;line-height:1.7;}
+
+/* callout (electric tint) */
+.callout{background:rgba(0,94,255,.05);border-left:4px solid var(--electric);border-radius:0 8px 8px 0;padding:22px 26px;margin:26px 0;font-size:15px;line-height:1.95;}
+.callout b{color:var(--electric);font-weight:600;}
+
+/* emphasis block (electric-dark bg, paper text) */
+.emph{background:var(--electric-dark);color:var(--paper);border-radius:8px;padding:36px 40px;margin:30px 0;}
+.emph p{font-family:var(--jp);font-weight:500;font-size:clamp(17px,2vw,20px);line-height:1.85;letter-spacing:-.01em;color:var(--paper);}
+.emph em{font-style:normal;font-weight:700;color:#fff;background:linear-gradient(transparent 82%,rgba(255,255,255,.30) 82%,rgba(255,255,255,.30) 92%,transparent 92%);padding:0 .02em;}
+
+/* final CTA (electric bg, paper text) */
+.doc-cta{background:var(--electric);color:var(--paper);border-radius:10px;padding:52px 48px;margin:78px 0 0;text-align:center;}
+.doc-cta .tag{border-color:var(--paper);color:var(--paper);justify-content:center;margin-bottom:18px;}
+.doc-cta .tag span{color:rgba(244,246,249,.8);}
+.doc-cta h2{font-family:var(--jp);font-size:clamp(24px,3vw,30px);font-weight:700;line-height:1.5;letter-spacing:-.02em;border:none;padding:0;margin-bottom:16px;color:var(--paper);}
+.doc-cta p{color:rgba(244,246,249,.88);font-size:15px;margin-bottom:30px;line-height:1.9;}
+.doc-cta .btn{font-family:var(--jp);display:inline-flex;align-items:center;gap:10px;background:var(--paper);color:var(--electric);font-weight:600;font-size:15px;padding:16px 38px;border-radius:5px;text-decoration:none;transition:background .2s,transform .25s;}
+.doc-cta .btn i{font-style:normal;transition:transform .25s;}
+.doc-cta .btn:hover{background:var(--white);transform:translateY(-2px);}
+.doc-cta .btn:hover i{transform:translateX(4px);}
+.doc-foot{text-align:center;margin-top:54px;padding-top:24px;border-top:1px solid var(--line);font-size:12px;color:var(--slate);font-family:var(--en);letter-spacing:.02em;}
+
+@media (max-width:640px){
+  .doc{padding:42px 22px 64px;}
+  .cover{padding:60px 0 44px;}
+  .cover .cover-meta{flex-wrap:wrap;gap:0;}
+  .cover .cover-meta div{padding:18px 22px 0 0;margin-right:22px;}
+  .stat-row{grid-template-columns:1fr;}
+  .stat{border-left:none;border-top:1px solid var(--line);padding:22px 0;}
+  .stat:first-child{border-top:none;}
+  .setup .srow{grid-template-columns:1fr;gap:8px;}
+  .reader-bar .brand{display:none;}
+  .emph,.doc-cta{padding:30px 26px;}
+}
+
+/* ===== PRINT ===== */
+@media print{
+  .reader-bar{display:none;}
+  body{background:#fff;font-size:11pt;line-height:1.6;color:#000;}
+  .doc{max-width:100%;padding:0;}
+  .chapter,.risk,.checklist,.ladder,.setup,.emph,.doc-cta,.stat-row{break-inside:avoid;}
+  .cover{padding:14px 0 26px;}
+  .emph{background:var(--electric-dark)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .doc-cta{background:var(--electric)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .stat .n,.cover h1 .mk,.chapter .ch-num,.toc li::before,.ladder .rank,.tag,.risk{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  a{text-decoration:none;color:inherit;}
+}
+
+/* ringi additions */
+.tbl-wrap{overflow-x:auto;margin:26px 0;border:1px solid var(--line);border-radius:8px;background:var(--white);}
+.tbl-wrap table{border-collapse:collapse;width:100%;min-width:720px;font-size:14px;line-height:1.75;}
+.tbl-wrap th,.tbl-wrap td{padding:14px 16px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);border-right:1px solid var(--line);}
+.tbl-wrap th:last-child,.tbl-wrap td:last-child{border-right:none;}
+.tbl-wrap tr:last-child td{border-bottom:none;}
+.tbl-wrap thead th{background:var(--electric-dark);color:var(--paper);font-weight:600;font-size:13px;}
+.tbl-wrap tbody th{background:var(--paper-2);font-weight:700;width:150px;}
+.note{font-size:13px;color:var(--slate);line-height:1.8;margin:10px 0;}
+.blank{background:rgba(0,94,255,.10);border-radius:3px;padding:0 4px;font-weight:600;color:var(--electric-dark);}
+.qa{margin:26px 0;border-top:1px solid var(--line);}
+.qa .q{padding:22px 0;border-bottom:1px solid var(--line);}
+.qa .q h4{font-size:16px;font-weight:700;margin-bottom:8px;letter-spacing:-.01em;}
+.qa .q p{margin:4px 0;font-size:14.5px;color:#28313f;line-height:1.9;}
+.form{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:6px 28px;margin:26px 0;}
+.form .setup{margin:0;border-top:none;}
+.form .setup .srow:last-child{border-bottom:none;}
+@media (max-width:640px){.form{padding:4px 18px;}}
+@media print{.tbl-wrap{overflow:visible;}.tbl-wrap table{min-width:0;font-size:9.5pt;}.form,.qa .q{break-inside:avoid;}}
+</style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1264057945446029');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+
+<div class="reader-bar">
+  <a href="index.html" class="back">← 資料ライブラリ</a>
+  <a href="../index.html" class="brand">Tech<i>Worker</i></a>
+  <button class="print" onclick="window.print()">PDFで保存 / 印刷</button>
+</div>
+
+<div class="doc">
+
+  <header class="cover">
+    <div class="tag">Claude Code <span>法人導入 稟議書テンプレート</span></div>
+    <h1>Claude Code 法人導入<br><span class="mk">稟議書テンプレート</span><br>料金比較表つき</h1>
+    <p class="sub">契約を選び、社内の承認を通すための資料です。<strong>Team・Enterprise・API従量の料金比較表と、そのまま使える稟議書の文例</strong>をまとめました。自社で埋める所は［　］で空けてあります。</p>
+    <div class="cover-meta">
+      <div><b>3</b><span>契約の料金比較</span></div>
+      <div><b>例文</b><span>稟議書の各枠に記入例</span></div>
+      <div><b>9月30日</b><span>料金の確認日（2026年）</span></div>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <h4>Contents</h4>
+    <ol>
+      <li><a href="#c1">この資料の使い方</a></li>
+      <li><a href="#c2">契約3つの料金比較表</a></li>
+      <li><a href="#c3">規模別の選び方</a></li>
+      <li><a href="#c4">稟議書テンプレート</a></li>
+      <li><a href="#c5">稟議で聞かれやすいことと答え方</a></li>
+      <li><a href="#c6">次の一歩</a></li>
+    </ol>
+  </nav>
+
+  <section class="chapter" id="c1">
+    <div class="ch-num">01</div>
+    <h2>この資料の使い方</h2>
+    <p class="lead-p">Claude Codeの法人契約は、<strong>Team・Enterprise・API従量課金の3つ</strong>です。この資料は、契約を選んで稟議書を書き上げるまでを1本にまとめています。</p>
+    <p>使い方は3ステップです。まず、料金比較表で3つの契約の違いをつかみます。次に、規模別の選び方で自社の入口を決めます。最後に、稟議書テンプレートの［　］を自社の内容で埋めます。</p>
+    <div class="callout">金額はすべて米ドルです。<b>2026年9月30日に確認した</b>Anthropic公式の情報です。料金・通貨・税は地域で異なります。申込みの前に、契約画面で最新の内容を確認してください。</div>
+  </section>
+
+  <section class="chapter" id="c2">
+    <div class="ch-num">02</div>
+    <h2>契約3つの料金比較表</h2>
+    <p class="lead-p">入口はTeam・Enterprise・API従量課金の3つです。<strong>少人数で試すならTeam、統制の要件が強い組織はEnterprise、自動処理に組み込むならAPI</strong>が基本線です。</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>契約</th><th>料金（米ドル）</th><th>含まれるもの・特徴</th><th>向いている組織</th></tr></thead>
+        <tbody>
+          <tr><th>Team（Standardシート）</th><td>1人月20ドル（年払い）<br>月払いは25ドル</td><td>Claude・Claude Code・Coworkを含みます。利用枠は小さめです。</td><td>チャット中心のメンバー</td></tr>
+          <tr><th>Team（Premiumシート）</th><td>1人月100ドル（年払い）<br>月払いは125ドル</td><td>Standardと同じ機能で、利用枠が大きいシートです。</td><td>日常的にコードを書く・書かせるメンバー</td></tr>
+          <tr><th>Enterprise</th><td>年払いのシート料金に、全利用量のAPI従量を加えた額</td><td>Claude Codeを含みますが、利用量は別料金です。セルフサービスは20席以上、営業経由は50席以上が条件です。</td><td>大規模組織、セキュリティや統制の要件が強い組織</td></tr>
+          <tr><th>API従量課金</th><td>使った分だけ（モデル別のトークン単価）</td><td>ワークスペース単位の支出上限と分析APIで管理します。Amazon Bedrock、Google Cloud、Microsoft Foundry経由で使えます。この場合は、自社クラウドの請求に合算されます。</td><td>CI/CD・自動化・エージェント組み込みが主目的の組織</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">出典：Anthropic公式の Teamプラン（https://support.claude.com/en/articles/9266767-what-is-the-team-plan）、Enterpriseプラン（https://support.claude.com/en/articles/9797531-what-is-the-enterprise-plan）の説明ページ。2026年9月30日確認。単位は米ドルです。</p>
+    <p>Teamは2〜150席が対象で、StandardとPremiumを混在できます。全員にPremiumを配る必要はありません。利用量の多い人にPremiumを、それ以外の人にStandardを割り当てます。</p>
+    <h3>API従量課金のモデル別の標準単価</h3>
+    <p>100万トークン（AIが読み書きする文字量の単位）当たりの単価です。単位は米ドルです。</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>モデル</th><th>入力</th><th>出力</th></tr></thead>
+        <tbody>
+          <tr><th>Claude Fable 5.1</th><td>10ドル</td><td>50ドル</td></tr>
+          <tr><th>Claude Opus 5.5</th><td>4ドル</td><td>20ドル</td></tr>
+          <tr><th>Claude Sonnet 5.5</th><td>2ドル</td><td>10ドル</td></tr>
+          <tr><th>Claude Haiku 4.5</th><td>1ドル</td><td>5ドル</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">出典：Anthropic公式のAPI料金ページ（https://platform.claude.com/docs/en/about-claude/pricing）。2026年9月30日確認。標準のベース料金です。プロンプトキャッシュ、バッチ処理、データ所在地、Fast mode、クラウド事業者の料金は別の条件になります。</p>
+  </section>
+
+  <section class="chapter" id="c3">
+    <div class="ch-num">03</div>
+    <h2>規模別の選び方</h2>
+    <p class="lead-p">選び方の軸は、<strong>人数と、統制の要件と、使い方</strong>の3つです。</p>
+    <div class="ladder">
+      <div class="rung"><span class="rank">1</span><div class="rung-body"><h4>2〜10人で試す場合はTeam</h4><p>まずは少人数で始めます。<strong>Standardを基本に、利用量の多い人だけPremiumにします。</strong></p></div></div>
+      <div class="rung"><span class="rank">2</span><div class="rung-body"><h4>11〜150人に広げる場合もTeam</h4><p>Teamの中で、StandardとPremiumの配分を調整します。<strong>実際の利用量を見て配ります。</strong></p></div></div>
+      <div class="rung"><span class="rank">3</span><div class="rung-body"><h4>150人を超える場合はEnterprise</h4><p>次の統制要件がある場合も同じです。監査ログ、SCIM（利用者情報を自動で同期する仕組み）、カスタム保持（データの保存期間の個別設定）です。</p></div></div>
+      <div class="rung"><span class="rank">4</span><div class="rung-body"><h4>自動処理に使う場合はAPI従量</h4><p>夜間バッチやCI/CDなどの機械的な利用が当てはまります。<strong>人が対話する日常利用はシート課金、自動処理はAPI従量が実態に合い、両者は併用できます。</strong></p></div></div>
+    </div>
+    <div class="callout">SSO（一度のログインで複数のサービスに入れる仕組み）は、Teamにも含まれます。<b>Enterpriseへ進む理由は、監査ログなどの追加機能が必要かどうか</b>で判断します。</div>
+  </section>
+
+  <section class="chapter" id="c4">
+    <div class="ch-num">04</div>
+    <h2>稟議書テンプレート</h2>
+    <p class="lead-p">稟議書の各枠に、記事から書ける例文を入れました。<strong>［　］は自社で埋める所です。</strong>例文は自社の内容に合わせて書き換えてください。</p>
+    <div class="form">
+      <div class="setup">
+        <div class="srow"><div class="skey">件名</div><div class="sval">Claude Codeの法人導入に関する承認のお願い（<span class="blank">［　］部署</span>、<span class="blank">［　］名、［　］カ月</span>の試験運用）</div></div>
+        <div class="srow"><div class="skey">目的</div><div class="sval"><span class="blank">［　］部署</span>の<span class="blank">［　］業務</span>にClaude Codeを使い、作業時間の削減と品質の向上を図ります。まず2〜4週間の試験運用で実額と効果を測り、その結果をもとに本導入を判断します。</div></div>
+        <div class="srow"><div class="skey">導入範囲</div><div class="sval">対象部署は<span class="blank">［　］</span>、対象人数は<span class="blank">［　］名</span>、期間は<span class="blank">［　］</span>です。対象業務は、コードレビュー、テスト作成、調査、定型改修などから絞ります（<span class="blank">［　］</span>）。</div></div>
+        <div class="srow"><div class="skey">費用</div><div class="sval">契約は<span class="blank">［Team・Enterprise・APIのいずれか］</span>です。選定の理由は<span class="blank">［　］</span>です。Teamの場合、Standardは年払いで1人月20ドルです。Premiumは年払いで1人月100ドルです（2026年9月30日確認）。年額は「1人当たりの月間実測額×対象人数×12カ月」で出します。運用・教育・ガバナンスの工数<span class="blank">［　］円</span>を加えた総額は<span class="blank">［　］円</span>です。</div></div>
+        <div class="srow"><div class="skey">効果の測り方</div><div class="sval">導入の前後で、対象業務の所要時間と利用者別の費用を記録します。削減時間に自社の人件費を掛けて金額にします。判定基準は<span class="blank">［　］</span>です。品質、リードタイム、属人化の解消は、定性で添えます。</div></div>
+        <div class="srow"><div class="skey">リスクと対策</div><div class="sval">費用が膨らむリスクには、組織全体と利用者ごとの月間支出上限を設定して備えます。請求先が混在するリスクには、対話利用と自動処理で認証方式と実行環境を分けて備えます。データの取り扱い、権限、監査は<span class="blank">［　］</span>のとおり運用します。利用率や効果が基準に届かないときは、<span class="blank">［　］</span>を条件に縮小または撤退します。</div></div>
+        <div class="srow"><div class="skey">承認者</div><div class="sval">起案者は<span class="blank">［　］</span>、承認者は<span class="blank">［　］</span>、関係部門は<span class="blank">［情報システム部門・法務・経理など　］</span>です。</div></div>
+      </div>
+    </div>
+    <h3>稟議書に添えるチェックリスト</h3>
+    <div class="checklist">
+      <div class="cl-item"><span class="box"></span><div class="t"><b>目的とスコープ</b><span>対象部署・人数・期間</span></div></div>
+      <div class="cl-item"><span class="box"></span><div class="t"><b>プラン選定の根拠</b><span>Team・Enterprise・APIの比較と選定理由</span></div></div>
+      <div class="cl-item"><span class="box"></span><div class="t"><b>費用の総額</b><span>ライセンス、運用、教育を年額に換算。従量はモデル別単価と自社の実測で算出</span></div></div>
+      <div class="cl-item"><span class="box"></span><div class="t"><b>効果の測定方法</b><span>対象業務、実測の取り方、判定基準</span></div></div>
+      <div class="cl-item"><span class="box"></span><div class="t"><b>リスクと統制</b><span>データの取り扱い、権限、監査、支出上限</span></div></div>
+      <div class="cl-item"><span class="box"></span><div class="t"><b>定着計画</b><span>研修、社内チャンピオン、展開ステップ</span></div></div>
+      <div class="cl-item"><span class="box"></span><div class="t"><b>見直し条件</b><span>利用率や効果が基準に届かないときの縮小・撤退ライン</span></div></div>
+    </div>
+    <div class="callout">見直し条件まで書くのがコツです。<b>撤退ラインを先に示す提案は、経営判断の材料として読まれます。</b></div>
+  </section>
+
+  <section class="chapter" id="c5">
+    <div class="ch-num">05</div>
+    <h2>稟議で聞かれやすいことと答え方</h2>
+    <p class="lead-p">決裁者から出やすい質問と、答えの骨子です。<strong>自社の実測値を添えて答えると、説得力が上がります。</strong></p>
+    <div class="qa">
+      <div class="q"><h4>Enterpriseは定額ですか？</h4><p>シート料金だけではありません。Claude、Claude Code、Coworkの利用量は、API標準料金で別途支払います。シート料金にトークン利用枠は含まれません。</p></div>
+      <div class="q"><h4>API従量は1人当たり月いくらですか？</h4><p>人数だけでは決まりません。モデル、入出力の長さ、キャッシュ、バッチ処理、データ所在地で変わります。2〜4週間の試験運用で利用者別の実額を測り、支出上限を設定してから年額に換算します。</p></div>
+      <div class="q"><h4>費用が膨らむ心配はありませんか？</h4><p>支出上限で備えます。Teamは、組織全体と利用者ごとの月間支出上限を設定できます。APIは、Claude Code専用のワークスペースに上限を置けます。</p></div>
+      <div class="q"><h4>全員にPremiumが必要ですか？</h4><p>必要ありません。StandardとPremiumを混在できます。実際の利用量を見て配分します。</p></div>
+      <div class="q"><h4>TeamとAPIは併用できますか？</h4><p>併用できます。対話型はTeamアカウントで使い、CI/CDや自動処理はAPIキーで実行します。環境変数ANTHROPIC_API_KEYがあるとAPIキーが優先されるため、認証方式と実行環境を分けます。</p></div>
+      <div class="q"><h4>実際の費用感は分かりますか？</h4><p>TechWorkerの例です。個人向けのMax 20x（月200ドル）に、上限を超えた分の従量を足して使っています。9月14日〜30日の17日間で、API換算で約3,000ドル分でした。換算額は実際の請求額とは異なります。日による差が大きく、少ない日は約4ドル分、多い日は約850ドル分でした。人数と単価だけで年額を出すと、この差を見落とします。</p></div>
+      <div class="q"><h4>効果の数字はどう示しますか？</h4><p>自社の実測だけを使います。「開発生産性が◯倍」のような出所の曖昧な数字は、根拠を問われたときに説明できません。</p></div>
+      <div class="q"><h4>研修費用に助成金は使えますか？</h4><p>生成AI研修は、人材開発支援助成金の対象となり得ます。対象要件と申請の可否は、研修の形態や企業の状況で異なります。管轄の労働局または社労士に確認してください。</p></div>
+    </div>
+  </section>
+
+  <section class="chapter" id="c6">
+    <div class="ch-num">06</div>
+    <h2>次の一歩</h2>
+    <p class="lead-p">対象業務と人数を決めて、<strong>2〜4週間の試験運用の枠を取る</strong>ことから始めます。支出上限を設定し、実測値をもとに稟議書の［　］を埋めてください。</p>
+    <p>TechWorkerは、上場企業を含む37社・2,500名の支援の知見をもとに伴走します。プラン選定から稟議資料の組み立て、研修・定着までを支えます。</p>
+
+    <div class="doc-cta">
+      <div class="tag">Next Step <span>Claude Code研修</span></div>
+      <h2>導入設計から定着まで、<br>実務で使える形にします。</h2>
+      <p>プラン選定・環境構築・運用ルール・教育まで伴走します。費用はお問い合わせください。</p>
+      <a href="../training.html#claude-code" class="btn">Claude Code研修の相談をする <i>→</i></a>
+    </div>
+  </section>
+
+  <p class="doc-foot">© 2026 TechWorker Inc. — Claude Code 法人導入 稟議書テンプレート｜料金比較表つき</p>
+
+</div>
+</body>
+</html>
