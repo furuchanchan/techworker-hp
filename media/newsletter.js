@@ -8,10 +8,11 @@
   window.__twNewsletterLoaded = true;
 
   var TOPICS = [
-    { k: "kenshu", n: "AI研修・導入", d: "Copilot・Gemini・Claude Codeを法人で導入し、定着させるための費用・研修・稟議", c: "#005EFF" },
-    { k: "shigyo", n: "士業のAI活用", d: "税理士・社労士・行政書士などの事務所で、書面作成や相談対応にAIを使う方法", c: "#0E7C66" },
-    { k: "interview", n: "AIインタビュー・業務の見える化", d: "従業員や顧客の声をAIで聞き取り、業務図や意思決定に使う方法", c: "#6D4AFF" },
-    { k: "security", n: "AIセキュリティ", d: "生成AIを社内で安全に使うためのルール・設定・守り方", c: "#D9480F" }
+    { k: "gyomuzu", n: "業務図・AIの持ち場", d: "部署の業務を業務図にして、どの工程をAIに任せるかを決める方法" },
+    { k: "kenshu", n: "AI研修・導入", d: "Copilot・Gemini・Claude Codeを法人で導入し、定着させるための費用・研修・稟議" },
+    { k: "shigyo", n: "士業のAI活用", d: "税理士・社労士・行政書士などの事務所で、書面作成や相談対応にAIを使う方法" },
+    { k: "interview", n: "AIインタビュー・業務の見える化", d: "従業員や顧客の声をAIで聞き取り、業務図や意思決定に使う方法" },
+    { k: "security", n: "AIセキュリティ", d: "生成AIを社内で安全に使うためのルール・設定・守り方" }
   ];
   var BY_KEY = {};
   TOPICS.forEach(function (t) { BY_KEY[t.k] = t; });
@@ -33,12 +34,12 @@
     ".nl-compact .nl-lead{font-size:13.5px;margin-top:4px}" +
     ".nl-ts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:22px;border:0;padding:0}" +
     ".nl-t{display:flex;gap:12px;align-items:flex-start;padding:16px 18px;border:1px solid var(--line-2,rgba(13,17,23,.18));border-radius:12px;background:#fff;cursor:pointer;transition:border-color .15s,background .15s}" +
-    ".nl-t:hover{border-color:var(--c)}" +
+    ".nl-t:hover{border-color:var(--electric,#005EFF)}" +
     ".nl-t input{appearance:none;-webkit-appearance:none;flex:0 0 20px;width:20px;height:20px;margin:1px 0 0;border:1.5px solid var(--line-2,rgba(13,17,23,.18));border-radius:6px;background:#fff;display:grid;place-content:center;cursor:pointer}" +
-    ".nl-t input:checked{background:var(--c);border-color:var(--c)}" +
+    ".nl-t input:checked{background:var(--electric,#005EFF);border-color:var(--electric,#005EFF)}" +
     ".nl-t input:checked::after{content:'';width:10px;height:6px;border:2px solid #fff;border-top:0;border-right:0;transform:translateY(-1px) rotate(-45deg)}" +
-    ".nl-t input:focus-visible{outline:2px solid var(--c);outline-offset:2px}" +
-    ".nl-t.on{border-color:var(--c);background:color-mix(in srgb,var(--c) 6%,#fff)}" +
+    ".nl-t input:focus-visible{outline:2px solid var(--electric,#005EFF);outline-offset:2px}" +
+    ".nl-t.on{border-color:var(--electric,#005EFF);background:color-mix(in srgb,var(--electric,#005EFF) 6%,#fff)}" +
     ".nl-tn{display:block;font-weight:700;font-size:15px;line-height:1.5}" +
     ".nl-td{display:block;font-size:13px;line-height:1.7;color:var(--slate,#5A6677);margin-top:3px}" +
     ".nl-compact .nl-ts{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}" +
@@ -75,12 +76,12 @@
     var one = BY_KEY[checked[0]];
     var head = full
       ? '<p class="nl-k">メールで受け取る</p><h2 class="nl-h">読みたいテーマだけ、メールで届きます</h2>' +
-        '<p class="nl-lead">4つのテーマから選べます。選んだテーマで新しい記事が出た週に、週1回まとめてお送りします。</p>'
+        '<p class="nl-lead">5つのテーマから選べます。選んだテーマで新しい記事が出た週に、週1回まとめてお送りします。</p>'
       : '<h3 class="nl-h">' + (one && checked.length === 1 ? "「" + esc(one.n) + "」の新着を、メールで受け取る" : "読みたいテーマの新着を、メールで受け取る") + "</h3>" +
         '<p class="nl-lead">選んだテーマで新しい記事が出た週に、週1回まとめてお送りします。ほかのテーマも選べます。</p>';
     var ts = TOPICS.map(function (t) {
       var on = checked.indexOf(t.k) !== -1;
-      return '<label class="nl-t' + (on ? " on" : "") + '" style="--c:' + t.c + '"><input type="checkbox" name="topics" value="' + t.k + '"' + (on ? " checked" : "") + ">" +
+      return '<label class="nl-t' + (on ? " on" : "") + '"><input type="checkbox" name="topics" value="' + t.k + '"' + (on ? " checked" : "") + ">" +
         '<span><span class="nl-tn">' + esc(t.n) + '</span><span class="nl-td">' + esc(t.d) + "</span></span></label>";
     }).join("");
     var box = document.createElement("section");

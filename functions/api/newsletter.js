@@ -11,6 +11,7 @@ const ALLOWED_ORIGINS = new Set([
 // テーマは既定で購読しない（opt_out）設定。選んだテーマだけ opt_in にするので、選ばなかったテーマは届かない
 const SEGMENT_ID = 'fe158366-2ada-4c6d-a089-f184a31d83bb';
 const TOPICS = {
+  gyomuzu:   '7404b853-0844-42b5-a9be-170b35c4b7d0',
   kenshu:    'd9a6f426-95a2-4079-88cd-390007ac8d3d',
   shigyo:    'b8a1ccb0-96e6-4a27-b135-9a5f4a0a236c',
   interview: '56ef8a46-9b78-4425-9bed-aca15e511688',

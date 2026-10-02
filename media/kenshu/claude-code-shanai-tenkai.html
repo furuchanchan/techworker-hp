@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja" class="no-js">
+<html lang="ja" class="no-js" data-media="kenshu">
 <head>
 <meta charset="UTF-8">
 <!-- Google tag (gtag.js) -->
@@ -233,6 +233,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
 <h2 id="s3">全社展開は、どんな手順で進めますか？</h2>
 <p class="answer">契約とデータ方針、設定配布、利用ルール、監査、段階展開の5つを、この順で進めます。</p>
+    <figure class="fig-inline"><a href="figs/claude-code-shanai-tenkai-1.png" target="_blank" rel="noopener"><img src="figs/claude-code-shanai-tenkai-1.png" alt="Claude Codeを全社に展開する5つの手順を縦に並べた図。契約とデータ方針、標準設定と管理ポリシーの配布、利用ルール、監査、パイロットから全社への順で、管理ポリシーの配布が強調されている。" width="1200" height="825" loading="lazy" decoding="async"></a></figure>
 <h3>手順1　契約とデータ方針を決める</h3>
 <p>最初の分岐は契約形態です。個人向けプラン（Free・Pro・Max）は消費者向け規約で提供されます。ユーザー自身の設定次第で、データが学習に使われる場合があります。</p>
 <p>業務コードを扱う以上、商用条項が適用され、管理機能を持つ会社契約に統一するのが出発点です。選択肢はClaude for Teams、Claude for Enterprise、Claude Console（API課金）です。比較は、下の表にまとめました。</p>
@@ -296,6 +297,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
 <h2 id="s4">社内展開がうまくいかない例には、どんなものがありますか？</h2>
 <p class="answer">個人アカウントの混在、端末側の見落とし、設定の個別運用、一斉開放、監査なしの拡大が代表例です。</p>
+    <figure class="fig-inline"><a href="figs/claude-code-shanai-tenkai-2.png" target="_blank" rel="noopener"><img src="figs/claude-code-shanai-tenkai-2.png" alt="社内展開でよくある5つの失敗を、失敗・起きること・こうする、の3列で並べた表。個人アカウントの放置、サーバー側だけで安心、各自に設定させる、一斉に開放する、監査の指標を決めずに配布する。" width="1200" height="745" loading="lazy" decoding="async"></a></figure>
 <ul>
 <li><strong>個人アカウントの業務利用を放置する。</strong>会社が商用プランでも、社員が個人アカウントで業務コードを入力していれば、統制の外です。契約の一本化と、ログイン制限をセットで設計します。</li>
 <li><strong>サーバー側のポリシーだけで安心する。</strong>セッション記録は、ローカルにプレーンテキストで保存されます。ディスク暗号化、退職・端末返却時のデータ消去、保存期間の設定は、自社のエンドポイント管理の仕事です。</li>
@@ -306,6 +308,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
 <h2 id="s5">契約形態ごとの管理機能は、どう違いますか？</h2>
 <p class="answer">小規模はTeams、統制要件が重い組織はEnterprise、従量で管理したいならConsoleが向きます。</p>
+    <figure class="fig-inline"><a href="figs/claude-code-shanai-tenkai-3.png" target="_blank" rel="noopener"><img src="figs/claude-code-shanai-tenkai-3.png" alt="Claude Codeの契約形態を2つの質問で選ぶ判断フロー。統制要件が重ければEnterprise、API基盤で従量管理したければConsole、どちらでもなければTeams。" width="1200" height="836" loading="lazy" decoding="async"></a></figure>
 <div class="tbl-wrap">
 <table>
 <tr><th>観点</th><th>Claude for Teams</th><th>Claude for Enterprise</th><th>Claude Console（API）</th></tr>
