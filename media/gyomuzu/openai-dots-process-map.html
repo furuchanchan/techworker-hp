@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js" data-media="gyomuzu">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}gtag('config', 'G-3V34NWXVCJ');
+</script>
+<script src="/assets/tw-track.js" defer></script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenAIのdotsとは｜24時間働くAIに任せる前に、業務図で決める3つのこと — TechWorker</title>
+<meta name="description" content="OpenAIのdotsを部署で使う前に、任せる工程・事前承認の範囲・停止と引き継ぎを業務図で決めます。4つのカスタムルール、日本の提供条件、料金を公式資料で確認します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/gyomuzu/openai-dots-process-map">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenAIのdotsとは｜24時間働くAIに任せる前に、業務図で決める3つのこと">
+<meta property="og:description" content="OpenAIのdotsを部署で使う前に、任せる工程・事前承認の範囲・停止と引き継ぎを業務図で決めます。4つのカスタムルール、日本の提供条件、料金を公式資料で確認します。">
+<meta property="og:image" content="https://techworker.co.jp/media/gyomuzu/covers/openai-dots-process-map.png">
+<meta property="og:url" content="https://techworker.co.jp/media/gyomuzu/openai-dots-process-map">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OpenAIのdotsとは｜24時間働くAIに任せる前に、業務図で決める3つのこと">
+<meta name="twitter:image" content="https://techworker.co.jp/media/gyomuzu/covers/openai-dots-process-map.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../article.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "OpenAIのdotsとは｜24時間働くAIに任せる前に、業務図で決める3つのこと", "description": "OpenAIのdotsを部署で使う前に、任せる工程・事前承認の範囲・停止と引き継ぎを業務図で決めます。4つのカスタムルール、日本の提供条件、料金を公式資料で確認します。", "datePublished": "2026-10-03", "dateModified": "2026-10-03", "inLanguage": "ja", "image": "https://techworker.co.jp/media/gyomuzu/covers/openai-dots-process-map.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/gyomuzu/openai-dots-process-map"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "業務図ラボ", "item": "https://techworker.co.jp/media/gyomuzu/"}, {"@type": "ListItem", "position": 4, "name": "OpenAIのdotsとは", "item": "https://techworker.co.jp/media/gyomuzu/openai-dots-process-map"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "dotsはスマートフォンだけで作成できますか？", "acceptedAnswer": {"@type": "Answer", "text": "作成はデスクトップアプリか、パソコンのウェブ版で行います。モバイルでは作成できず、モバイルのウェブ版も非対応です。作成後は、利用可能になればモバイルアプリで会話できます。"}}, {"@type": "Question", "name": "事前承認済みにすると、毎回自動で送信されますか？", "acceptedAnswer": {"@type": "Answer", "text": "事前承認済みとは、プロンプトで操作を明示的に依頼したことです。下書きの依頼を、今後すべての送信への承認に広げないでください。送信まで任せるかは、対象の操作と社内の承認範囲を確認します。"}}, {"@type": "Question", "name": "自分のパソコンへの接続は必須ですか？", "acceptedAnswer": {"@type": "Answer", "text": "必須ではありません。dotは専用のクラウドコンピューターを持ちます。自分のパソコンへのアクセスは任意で、初期状態ではオフです。対象の工程に必要かを確認してから接続します。"}}, {"@type": "Question", "name": "アプリの接続を解除すれば、取得済みの情報も消えますか？", "acceptedAnswer": {"@type": "Answer", "text": "接続を解除しても、dotが取得済みの情報は削除されません。削除にはdotのリセットが必要です。リセットでは会話、保存済みメモリ、予定済みタスクも削除されます。削除対象を確認してから操作してください。"}}]}</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <a href="index.html" class="logo">業務図<i>ラボ</i></a>
+  <ul>
+    <li><a href="index.html">記事一覧</a></li>
+    <li><a href="../../companymap?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=openai-dots-process-map&amp;utm_content=nav">CompanyMap AIについて</a></li>
+    <li><a href="../../index.html">TechWorkerとは</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="../../companymap?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=openai-dots-process-map&amp;utm_content=nav_cta" class="nav-cta"><span class="full">CompanyMap AIを見る</span><span class="short">詳細</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="index.html">記事一覧</a>
+  <a href="../../companymap?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=openai-dots-process-map&amp;utm_content=menu">CompanyMap AIについて</a>
+  <a href="../../index.html">TechWorkerとは</a>
+  <a href="../../companymap?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=openai-dots-process-map&amp;utm_content=menu_cta" class="m-cta">CompanyMap AIを見る</a>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">業務図ラボ</a><span class="sep">/</span>OpenAIのdotsとは</nav>
+  <div class="kicker">任せる工程の決め方</div>
+  <h1>OpenAIのdotsとは｜24時間働くAIに任せる前に、業務図で決める3つのこと</h1>
+  <p class="dek">dotsに任せる前に、工程・承認範囲・止める条件の3つを業務図で決めます。<br>24時間働くAIへ部署の仕事を任せたい、管理職とDX担当の方向けの記事です。<br>4つのカスタムルールの使い分け、日本の提供条件、料金が分かります。</p>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.10.03</span><span class="dot">·</span><span>最終更新 2026.10.03</span><span class="dot">·</span><span>読了 11分</span>
+  </div>
+</header>
+<img class="daily-cover" src="covers/openai-dots-process-map.png" alt="dotsに任せる前に決めること。工程・承認・引き継ぎ先を業務図へ" width="1200" height="630">
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次">
+    <div class="art-toc-inner">
+      <div class="toc-h">目次</div>
+<a href="#s1">OpenAIのdotsには、何を決めてから仕事を任せますか？</a><a href="#s2">TechWorkerの商談業務図は、dotsの担当を考える際にどう使えますか？</a><a href="#s3">dotsに任せる前に、業務図へ何を書きますか？</a><a href="#s4">dotsへ仕事を任せたとき、どんな失敗を想定しますか？</a><a href="#s5">4つのカスタムルールは、業務図の3つの札にどう対応しますか？</a><a href="#s6">dotsは日本で使えますか？料金はどうなりますか？</a><a href="#faq">dotsを使い始めるとき、何を確認すればよいですか？</a><a href="#s8">部署で試すために、最初に何をしますか？</a><a href="#sources">この記事は、どの資料をもとにしていますか？</a>
+</div>
+  </nav>
+
+  <article class="art-body">
+<h2 id="s1">OpenAIのdotsには、何を決めてから仕事を任せますか？</h2>
+<p class="answer">任せる工程、事前承認の範囲、止める条件と引き継ぎ先の3つを業務図に書いてから、dotに仕事を渡します。</p>
+<p>OpenAIは2026年9月29日にdotsを発表しました。会話をしていない間も仕事を進めるエージェントです。エージェントとは、目標に沿って作業を進めるAIです。GPT-6 Astraを搭載し、専用のクラウドコンピューターで動きます。</p>
+<p>部署で使うときは、完了した成果と承認が必要な操作を分けます。文面の下書きができた時点で、その工程は完了にできます。送信まで任せるかは、別の工程で決めます。仕事の名前だけを渡すと、この区切りが曖昧になります。</p>
+<p>dotsには、操作の確認方法を決める4つのカスタムルールがあります。ただし、ルールを設定しても間違いは起こります。人が結果を確認する工程も、業務図に残してください。</p>
+<p>以下では、営業のフォロー文面を例に説明します。任せる対象は承認済みの議事録に限ります。顧客への送信は営業が担当する設計です。製品の機能と提供条件は、公式資料で確認しました。確認日は2026年10月3日です。</p>
+<p>出典：<a href="https://openai.com/ja-JP/index/introducing-dots/" target="_blank" rel="noopener">OpenAI「dotsのご紹介」</a>、<a href="https://help.openai.com/ja-jp/articles/20001530-getting-started-with-your-dot" target="_blank" rel="noopener">dotスタートガイド</a>。</p>
+
+<h2 id="s2">TechWorkerの商談業務図は、dotsの担当を考える際にどう使えますか？</h2>
+<p class="answer">公開済みの商談業務図では、AIの下書きと人の送信を分けています。この区切りをdotの担当範囲にも使います。</p>
+<p>TechWorkerは「1回目商談」の業務図を公開しています。工程6は「フォロー文面を下書き」です。工程7は「送信・台帳に記録」です。下書きはAIが担当し、送信と記録は人が行います。</p>
+<p>TechWorkerには、dotsを使った実績はまだありません。公開済みの工程を土台に、任せ方を考えます。</p>
+<p>図の担当をdotに置き換えるだけでは、設定は決まりません。どの議事録を読むか、どこに下書きを置くかも決めます。送信先の選択や台帳の変更が、下書きに混ざらないようにします。</p>
+<p>公開済みの図には、担当と使うシステムも記されています。これを見ながら、dotに必要な情報を選べます。接続するアプリは、対象の工程に必要なものから決めます。工程の隣に、読んでよい資料と触らない対象を書きます。</p>
+<p>この業務図は、CompanyMap AIの画面をもとに作成しました。CompanyMap AIは、AIの聞き取りで部署の業務フローを業務図にするサービスです。担当者間の受け渡しを確かめる土台として使えます。</p>
+<p>出典：<a href="ai-task-allocation-process-map.html">TechWorker「AIに任せる業務の決め方」</a>。公開済みの商談図と本文を、2026年10月3日に確認しました。</p>
+<aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">部署別 業務図テンプレート集（AIに任せる工程の見つけ方つき）</div><div class="mc-d">5部署の業務図の例と、自社用の空の型、AIに任せる工程の札の付け方をまとめた資料です。</div></div><a href="../../library/?doc=gyomuzu&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=openai-dots-process-map&amp;utm_content=mid" class="btn">無料で受け取る <i>&rarr;</i></a></aside>
+
+<h2 id="s3">dotsに任せる前に、業務図へ何を書きますか？</h2>
+<p class="answer">工程の担当と成果物を決め、承認の対象を絞り、停止時に人へ戻す条件まで、3つの手順で書き込みます。</p>
+    <figure class="fig-inline"><a href="figs/openai-dots-process-map-1.png" target="_blank" rel="noopener"><img src="figs/openai-dots-process-map-1.png" alt="営業が範囲を決め、dotが議事録を読み、文面を下書きします。営業が内容を確認して送信する設計例です。" width="1200" height="570" loading="lazy" decoding="async"></a><figcaption>営業フォローの運用設計例です。TechWorkerのdots利用実績を示す図ではありません。</figcaption></figure>
+<h3>1．任せる工程と、完成した状態を書きます</h3>
+<p>まず、ひとつの商談後のフォローを対象にします。部署の仕事をまとめて渡すと、完了の確認が難しくなります。下書きまでをひとつの工程として切り出してください。</p>
+<p>次の流れは、dotsを使う場合の運用の設計例です。TechWorkerがdotsで実行した結果ではありません。</p>
+<ol>
+<li>営業が、対象資料と読む範囲を決めます。</li>
+<li>dotが、承認済みの議事録を読みます。</li>
+<li>dotが、フォロー文面を下書きします。</li>
+<li>営業が、内容と宛先を確認します。</li>
+<li>営業が、送信します。</li>
+</ol>
+<p>dotの成果物は、確認できる場所に置いた下書きです。本文に使った議事録の箇所も、営業へ渡す設計にします。根拠のない金額や納期を補わないことも指示します。完成した下書きと、未確認の項目を一緒に受け取ります。</p>
+<p>下書きが長い場合も、完了条件は変えません。営業が内容を確認できることを、受け渡しの基準にします。確認する人が見つからない状態では送信へ進めません。業務図では、その手前に人の確認を置きます。</p>
+<h3>2．事前承認の対象を、操作ごとに書きます</h3>
+<p>「フォローを任せる」だけでは、承認の対象が広くなります。読み取り、下書きの作成、送信を別の操作として書きます。今回の設計例では、読み取りと下書きの作成を依頼します。営業の確認と送信は、人の担当として残します。</p>
+<p>公式ヘルプの「事前承認済み」は、明示的な依頼を指します。プロンプトで、その操作を依頼したという意味です。一度の依頼を、今後すべての送信への承認に広げないでください。</p>
+<p>依頼文には、対象の議事録、期間、成果物の置き場所を書きます。読取専用にする資料と、作成してよい下書きを区別します。既存の顧客情報を変更しないことも、同じ依頼に記します。前回の下書きを参考にする場合は、使ってよい資料として指定します。</p>
+<p>たとえば「この議事録からフォロー文面を下書きしてください」と依頼します。続けて、対象資料と下書きの置き場所を指定します。「送信は営業が行います」と、担当の区切りも書きます。これは社内で承認範囲を決めるための記載例です。</p>
+<h3>3．止める条件と、引き継ぎ先を決めます</h3>
+<p>資料にない金額や納期が必要になったら、その項目で止めます。議事録と依頼内容が食い違う場合も、人へ戻します。宛先が複数候補になった場合は、営業が確認します。dotに推測で埋めさせない項目を、先に決めておきます。</p>
+<p>引き継ぎ先は「担当者」だけでは足りません。商談担当の営業と、不在時に確認する責任者を決めます。引き継ぐ内容は、未確認の項目と根拠の資料です。作業がどこまで終わったかも、同じ場所へ残します。</p>
+<p>人が承認した後も、再開する工程を指定します。納期の確認だけなら、該当箇所を直して下書きに戻します。その承認を送信の許可まで広げないようにします。承認した操作と、完了した操作を工程ごとに照合してください。</p>
+<p>出典：<a href="https://help.openai.com/ja-jp/articles/20001530-getting-started-with-your-dot" target="_blank" rel="noopener">dotスタートガイドの動作設定と承認</a>。手順の営業例は、TechWorkerによる運用設計の解説です。</p>
+
+<h2 id="s4">dotsへ仕事を任せたとき、どんな失敗を想定しますか？</h2>
+<p class="answer">依頼の範囲が広がる、下書きが未確認で送られる、停止後の引き継ぎが宙に浮く、という失敗を想定します。</p>
+<p>ここで挙げるのは、運用設計上の想定失敗例です。TechWorkerがdotsで経験した事故ではありません。</p>
+<h3>「フォローして」が送信まで含むと受け取られます</h3>
+<p>下書きのつもりでも、依頼の中に送信まで含む表現が残ります。業務図に送信の担当がなければ、確認の区切りも曖昧です。読み取り、下書き、送信を別の工程に戻します。依頼文とカスタムルールの対象を、同じ操作名で合わせます。</p>
+<h3>確認者が、文面だけを見て承認します</h3>
+<p>読みやすい文面でも、宛先や金額に誤りが残る場合があります。確認の工程には、見る項目も書いてください。この営業例では、議事録との一致、宛先、金額、納期を見ます。未確認の項目が残れば、送信の工程へ渡しません。</p>
+<h3>作業は止まっても、誰も引き取りません</h3>
+<p>人への引き継ぎを設定しても、社内の担当が不明なままです。商談担当と不在時の責任者を、業務図へ記します。止まった項目を確認する場所も揃えます。再開する工程が決まるまで、下書きの作成は完了扱いにしません。</p>
+<p>OpenAIは、dotがルールに従う際も間違うと説明しています。自動レビューや安全要件があることと、成果の確認は両立させます。人が何を見て承認したか、記録を残す運用を勧めます。</p>
+
+<h2 id="s5">4つのカスタムルールは、業務図の3つの札にどう対応しますか？</h2>
+<p class="answer">自動実行、下書きと確認、人の実行という3つの札へ、操作の承認条件を見ながら4つのルールを対応させます。</p>
+    <figure class="fig-inline"><a href="figs/openai-dots-process-map-2.png" target="_blank" rel="noopener"><img src="figs/openai-dots-process-map-2.png" alt="dotsの4つのカスタムルールを、業務図の3つの札へ対応させた表。事前承認は明示依頼した操作に限ります。" width="1200" height="564" loading="lazy" decoding="async"></a><figcaption>OpenAIのカスタムルールをもとに、TechWorkerが作成した対応例です。</figcaption></figure>
+<p>次の表は、TechWorkerによる対応の解説です。OpenAI公式の分類表ではありません。製品のルールは操作の承認条件を表します。業務図の札は、工程を誰がどこまで進めるかを表します。</p>
+<div class="tbl-wrap"><table><thead><tr><th>dotsのカスタムルール</th><th>業務図の札</th><th>営業例での決め方</th></tr></thead><tbody>
+<tr><td>確認なしで実行</td><td>AIが自動で</td><td>対象と範囲を決めた読み取りに使う候補です。</td></tr>
+<tr><td>事前承認済みの場合に実行</td><td>AIが自動で（範囲限定）</td><td>明示的に依頼した読み取りや下書きに限ります。</td></tr>
+<tr><td>実行前に確認</td><td>AIが下書き・人が確認</td><td>実行の前に人が承認する工程を置きます。</td></tr>
+<tr><td>ユーザーに引き継ぎ</td><td>人が行う</td><td>宛先の確認や送信を営業へ戻す設計です。</td></tr>
+</tbody></table></div>
+<p>事前承認の札で自動にするのは、明示的に依頼した操作だけです。下書きまでを依頼したなら、成果は下書きです。送信の担当は、そのまま人に残ります。常時自動の札へ一括で置き換えないでください。</p>
+<p>カスタムルールを設定しても、組み込みの安全要件は適用されます。操作は自動レビューで確認されます。図の札は、製品の安全要件を外すためのものには使えません。</p>
+
+<h2 id="s6">dotsは日本で使えますか？料金はどうなりますか？</h2>
+<p class="answer">日本は提供対象です。ProとBusiness Premiumの最初のdotは追加料金なしで、順次提供されます。</p>
+<p>Proの対象は、欧州経済領域、スイス、英国を除く地域です。日本はChatGPTの対応国リストに載っています。この条件を照合すると、日本は提供対象に含まれます。ただし、アカウントで使えるまで数日かかる場合があります。</p>
+<p>Business Premiumは、ChatGPTの対応地域で提供されます。Enterpriseは、管理者が有効にするとベータ版を試せます。EduとHealthcareも含まれ、提供開始時はオフです。利用可否は、自社のプランと管理者設定で確かめてください。</p>
+<p>公式のPro料金は、月100、200、500米ドルの3段階です。最初のdotはProとBusiness Premiumのプランに含まれます。日本で支払う金額は、購入画面で確認してください。</p>
+<p>dotとの会話は、ChatGPTの利用上限に計上されません。CodexやChatGPT Workで行うタスクは、通常どおり計上されます。最初の1か月は、高度な作業の上限が拡大されます。契約前に、公式ページでプラン別の利用枠を確認してください。</p>
+<p>出典：<a href="https://help.openai.com/ja-jp/articles/20001530-getting-started-with-your-dot" target="_blank" rel="noopener">dotスタートガイド</a>、<a href="https://help.openai.com/en/articles/7947663-chatgpt-supported-countries" target="_blank" rel="noopener">ChatGPTの対応国</a>、<a href="https://help.openai.com/en/articles/9793128-about-chatgpt-pro-tiers" target="_blank" rel="noopener">Proの料金</a>、<a href="https://chatgpt.com/pricing/" target="_blank" rel="noopener">ChatGPT料金ページ</a>。確認日は2026年10月3日です。</p>
+
+<h2 id="faq">dotsを使い始めるとき、何を確認すればよいですか？</h2>
+<p class="answer">作成する端末、承認の対象、情報の保存と削除を確認し、対象プランで利用できることを確かめて始めます。</p>
+<div class="faq"><div class="q">dotsはスマートフォンだけで作成できますか？</div><p class="a">作成はデスクトップアプリか、パソコンのウェブ版で行います。モバイルでは作成できず、モバイルのウェブ版も非対応です。作成後は、利用可能になればモバイルアプリで会話できます。</p></div>
+<div class="faq"><div class="q">事前承認済みにすると、毎回自動で送信されますか？</div><p class="a">事前承認済みとは、プロンプトで操作を明示的に依頼したことです。下書きの依頼を、今後すべての送信への承認に広げないでください。送信まで任せるかは、対象の操作と社内の承認範囲を確認します。</p></div>
+<div class="faq"><div class="q">自分のパソコンへの接続は必須ですか？</div><p class="a">必須ではありません。dotは専用のクラウドコンピューターを持ちます。自分のパソコンへのアクセスは任意で、初期状態ではオフです。対象の工程に必要かを確認してから接続します。</p></div>
+<div class="faq"><div class="q">アプリの接続を解除すれば、取得済みの情報も消えますか？</div><p class="a">接続を解除しても、dotが取得済みの情報は削除されません。削除にはdotのリセットが必要です。リセットでは会話、保存済みメモリ、予定済みタスクも削除されます。削除対象を確認してから操作してください。</p></div>
+
+<h2 id="s8">部署で試すために、最初に何をしますか？</h2>
+<p class="answer">ひとつの業務を選び、dotが作る成果と人が行う操作を分け、承認範囲と引き継ぎ先を1枚の業務図へ残します。</p>
+<p>営業フォローなら、議事録の読取から下書きまでを切り出します。担当の営業が、内容と宛先を確認して送信します。対象資料、承認範囲、止める条件を、その工程の隣へ書きます。図と依頼文が一致した状態で、利用の準備を進めてください。</p>
+<p>工程の抜けや担当間の受け渡しが分からない場合は、聞き取りから始めます。CompanyMap AIは、AIの聞き取りで部署の業務フローを業務図にします。自部署の工程を確認したい方は、<a href="../../companymap/contact?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=openai-dots-process-map&amp;utm_content=body">CompanyMap AIへご相談ください</a>。</p>
+
+<h2 id="sources">この記事は、どの資料をもとにしていますか？</h2>
+<p class="answer">OpenAIの発表、ヘルプ、料金、対応国の公式資料と、TechWorkerの公開済み商談業務図を根拠にしています。</p>
+<p>製品情報の確認日は2026年10月3日です。営業の設計例と対応表は、TechWorkerの解説です。dotsの利用結果を示すものではありません。</p>
+<ul class="src-list">
+<li><a href="https://openai.com/ja-JP/index/introducing-dots/" target="_blank" rel="noopener">OpenAI「dotsのご紹介」</a>。2026年9月29日発表。</li>
+<li><a href="https://help.openai.com/ja-jp/articles/20001530-getting-started-with-your-dot" target="_blank" rel="noopener">OpenAI「dotスタートガイド」</a>。4つのルール、提供条件、設定と削除。</li>
+<li><a href="https://help.openai.com/en/articles/7947663-chatgpt-supported-countries" target="_blank" rel="noopener">OpenAI「ChatGPT Supported Countries」</a>。日本の記載を確認。</li>
+<li><a href="https://help.openai.com/en/articles/9793128-about-chatgpt-pro-tiers" target="_blank" rel="noopener">OpenAI「About ChatGPT Pro tiers」</a>。米ドルの月額料金を確認。</li>
+<li><a href="https://chatgpt.com/pricing/" target="_blank" rel="noopener">ChatGPT料金ページ</a>。Proの機能一覧を確認。</li>
+<li><a href="ai-task-allocation-process-map.html">TechWorker「AIに任せる業務の決め方」</a>。公開済み「1回目商談」の工程を使用。</li>
+</ul>
+
+</article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div>
+    <p>株式会社TechWorker代表取締役。企業の生成AI導入と、業務への組み込みを支援しています。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>部署の業務フローを、AIの聞き取りで業務図にします。</h3>
+    <p>CompanyMap AIは、AIの聞き取りで部署の業務フローを業務図にします。任せる工程を決める前に、部署の仕事を確かめられます。</p>
+  </div>
+  <a href="../../companymap/contact?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=openai-dots-process-map&amp;utm_content=end" class="btn">30分の無料相談 <i>→</i></a>
+</div></div>
+<div class="back-list"><a href="index.html">← 業務図ラボの記事一覧に戻る</a></div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">業務図<i>ラボ</i></div>
+        <p>業務図・業務フローの描き方と、AIに任せる工程の決め方をお届けするメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
+      </div>
+      <div class="footer-col"><h4>業務図ラボ</h4><a href="index.html">記事一覧</a><a href="../../companymap">CompanyMap AIについて</a></div>
+      <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../services.html">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="../../contact.html">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+<script src="/media/article-tracker.js" defer></script>
+</body>
+</html>
