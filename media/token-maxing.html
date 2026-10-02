@@ -14,12 +14,12 @@
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>トークンマキシングとは｜AIの出力品質を最大化する「惜しまず使う」戦略【2026年】 — TechWorker</title>
-<meta name="description" content="トークンマキシング（token maxing）とは、トークンを惜しまず最大限使って出力品質を最大化する戦略。大規模コンテキスト・深い推論・マルチエージェントの活用法と、コスト最適化との使い分けを解説します。">
+<meta name="description" content="トークンマキシングは、トークンを惜しまず使ってAIの出力品質を最大化する戦略です。最大100万トークンのコンテキストを標準料金で使える2026年に、振り切る4つの手順と、絞る場面との使い分けを整理します。">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="canonical" href="https://techworker.co.jp/media/token-maxing">
 <meta property="og:type" content="article">
 <meta property="og:title" content="トークンマキシングとは｜AIの出力品質を最大化する「惜しまず使う」戦略【2026年】">
-<meta property="og:description" content="トークンを惜しまず使って品質を最大化する戦略。大規模コンテキスト・深い推論・マルチエージェントの活用法と、コスト最適化との使い分け。">
+<meta property="og:description" content="トークンを惜しまず使ってAIの出力品質を最大化する戦略です。振り切る4つの手順と、コストを絞る場面との使い分けを整理します。">
 <meta property="og:image" content="https://techworker.co.jp/media/covers/token-maxing.png">
 <meta property="og:url" content="https://techworker.co.jp/media/token-maxing">
 <meta property="og:site_name" content="TechWorker">
@@ -30,7 +30,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="article.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "トークンマキシングとは｜AIの出力品質を最大化する「惜しまず使う」戦略【2026年】", "description": "トークンマキシング（token maxing）を、大規模コンテキスト・深い推論・マルチエージェントの観点から解説し、コスト最適化との使い分けを示す。", "datePublished": "2026-06-13", "dateModified": "2026-06-13", "inLanguage": "ja", "image": "https://techworker.co.jp/media/covers/token-maxing.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/token-maxing.html"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "トークンマキシングとは｜AIの出力品質を最大化する「惜しまず使う」戦略【2026年】", "description": "トークンマキシングは、トークンを惜しまず使ってAIの出力品質を最大化する戦略です。最大100万トークンのコンテキストを標準料金で使える2026年に、振り切る4つの手順と、絞る場面との使い分けを整理します。", "datePublished": "2026-06-13", "dateModified": "2026-10-02", "inLanguage": "ja", "image": "https://techworker.co.jp/media/covers/token-maxing.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/token-maxing.html"}}</script>
 <script type="application/ld+json">
 {
   "@context":"https://schema.org","@type":"BreadcrumbList",
@@ -43,12 +43,41 @@
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org","@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"トークンマキシングはコストが心配では？","acceptedAnswer":{"@type":"Answer","text":"すべてに使うのではなく、品質が金額を上回る局面に限定します。他はmax_tokensやBatch APIで絞り、トークンマネジメントと併用するのが正解です。"}},
-    {"@type":"Question","name":"「深く考えさせる」とは具体的に何ですか？","acceptedAnswer":{"@type":"Answer","text":"2026年のClaudeは固定の思考トークン量ではなく、adaptive thinkingとeffort（low/medium/high/xhigh/max）で思考の深さを指定します。難しい仕事ほどeffortを上げます。"}},
-    {"@type":"Question","name":"本当に100万トークンも使えるのですか？","acceptedAnswer":{"@type":"Answer","text":"はい。Opus 4.8などは100万トークンのコンテキストを標準料金で提供しており、長文に対する追加料金はありません。"}},
-    {"@type":"Question","name":"マルチエージェントは難しそうです。","acceptedAnswer":{"@type":"Answer","text":"役割を分けて並列に走らせるだけでも、網羅性とクロスチェックの効果が出ます。まずは調査・レビューなど観点の分担から始めるのが実践的です。"}}
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "トークンマキシングはコストが心配では？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "すべてには使わず、品質が金額を上回る局面に限定します。ほかはmax_tokensやBatch APIで絞り、トークンマネジメントと併用します。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "「深く考えさせる」とは具体的に何ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "2026年のClaudeは、adaptive thinkingとeffortで思考の深さを指定します。effortはlow / medium / high / xhigh / maxの5段階です。難しい仕事ほど上げます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "100万トークンも使えますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "はい。Opus 5.5などは100万トークンのコンテキストを標準料金で提供しており、長文に対する追加料金はありません。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "マルチエージェントは難しそうです。",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "役割を分けて並列に走らせるだけでも、網羅性とクロスチェックの効果が出ます。まずは調査・レビューなど観点の分担から始めます。"
+      }
+    }
   ]
 }
 </script>
@@ -92,7 +121,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <nav class="crumb" aria-label="パンくず"><a href="../index.html">ホーム</a><span class="sep">/</span><a href="index.html">メディア</a><span class="sep">/</span>トークンマキシング</nav>
   <div class="kicker">Token Strategy</div>
   <h1>トークンマキシングとは｜AIの出力品質を最大化する「惜しまず使う」戦略</h1>
-  <p class="dek">トークンをケチるほど成果が落ちる仕事がある。いつ振り切り、いつ絞るのか——2026年のClaudeで実践する、品質最大化の考え方。</p>
+  <p class="dek">トークンを惜しまず使う戦略は、手戻りのコストがトークン代を上回る仕事で効き、2026年は最大100万トークンのコンテキストを標準料金で使えます。<br>AIの出力が浅い、コストが不安だと感じる、開発責任者や情シス、経営企画の方に向けた記事です。<br>品質を上げる4つの手順と、トークンを絞る場面との使い分けが分かります。</p>
   <div class="kn-voices" aria-hidden="true">
     <span class="kn-fc" style="--sayo:0.0s"><span class="av"><img src="avatars/m40-0.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">出力が浅い</span></span>
     <span class="kn-fc" style="--sayo:6.3s"><span class="av"><img src="avatars/f30-6.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">品質が上がらない</span></span>
@@ -102,7 +131,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
   </div>
   <div class="kn-voices-cap">現場でよく聞く声<span class="note">※ 実際のご相談で挙がる論点をもとにした例です</span></div>
   <div class="a-meta">
-    <img class="av" src="../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.06.13</span><span class="dot">·</span><span>最終更新 2026.06.13</span><span class="dot">·</span><span>読了 7分</span>
+    <img class="av" src="../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.06.13</span><span class="dot">·</span><span>最終更新 2026.10.02</span><span class="dot">·</span><span>読了 7分</span>
   </div>
 </header>
 
@@ -110,25 +139,18 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <nav class="art-toc" aria-label="目次">
     <div class="art-toc-inner">
       <div class="toc-h">目次</div>
-      <a href="#s1">トークンマキシングとは</a>
-      <a href="#s2">なぜ今「マキシング」なのか</a>
-      <a href="#s3">振り切る4つの手法</a>
-      <a href="#s4">いつ振り切り、いつ絞るか</a>
+            <a href="#s1">結論：トークンマキシングとは</a>
+      <a href="#s2">自社の実例：代表のトークンの使い分け</a>
+      <a href="#s3">手順：品質側に振り切る4つ</a>
+      <a href="#s4">うまくいかない例</a>
+      <a href="#s5">比較表：振り切る場面と絞る場面</a>
       <a href="#faq">よくある質問</a>
-    </div>
+      <a href="#s6">次の一歩</a>
+</div>
   </nav>
 
-  <article class="art-body rv">
-    <div class="lede">
-      <div class="lede-h">この記事の要点</div>
-      <ul>
-        <li>トークンマキシング＝トークンを惜しまず最大限使い、出力品質を最大化する戦略。<a href="token-management.html">トークンマネジメント</a>（コスト最小化）の対極。</li>
-        <li>手段は ①大規模コンテキスト（最大100万トークン）②深い推論（adaptive thinking・effort）③マルチエージェント ④反復・自己検証。</li>
-        <li>「判断ミスの手戻りコスト ＞ トークン代」の局面で振り切る。重要な意思決定・調査・本番品質で効く。</li>
-      </ul>
-    </div>
-
-    <aside class="inline-dx-cta" style="margin:6px 0 40px;border:1px solid var(--line-2);border-radius:12px;background:var(--white);padding:22px 26px;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
+  <article class="art-body">
+<aside class="inline-dx-cta" style="margin:6px 0 40px;border:1px solid var(--line-2);border-radius:12px;background:var(--white);padding:22px 26px;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
   <div style="flex:1;min-width:240px;">
     <div style="font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);">診断ツール ・ 無料 ・ 5分</div>
     <div style="font-family:var(--jp);font-weight:700;font-size:16.5px;color:var(--ink);line-height:1.55;margin-top:8px;">自社の生成AI活用度を診断する</div>
@@ -136,80 +158,73 @@ fbq('init','1264057945446029');fbq('track','PageView');
   </div>
   <a href="../ai-assessment.html" class="btn" style="white-space:nowrap;flex:none;color:var(--paper);border-bottom:none;">無料で診断する <i>&rarr;</i></a>
 </aside>
-      <h2 id="s1">トークンマキシングとは？</h2>
-    <p class="answer">トークンを惜しまず最大限使い、AIの出力品質を最大化する戦略。コストを絞る「トークンマネジメント」の対極にある考え方だ。</p>
-    <aside class="kn-side">
-      <img src="avatars/f20-6.svg" alt="" loading="lazy" width="36" height="36">
-      <div><div class="r">エンジニアの視点</div><p>短く聞くほど良い、と思い込んでいた。</p></div>
-    </aside>
-    <p>トークンとは、AIが文章を処理するときの最小単位です。マネジメントが「いかに少ないトークンで回すか」を追うのに対し、マキシングは「いかに多く投じて質を上げるか」を追います。モデルが賢くなった2026年では、コンテキスト・推論・反復にトークンを投じるほど成果（ROI）が伸びる局面が明確に増えました。</p>
+    <h2 id="s1">トークンマキシングとは何ですか？</h2>
+    <p class="answer">トークンを惜しまず使い、AIの出力品質を最大化する戦略です。コストを絞るトークンマネジメントとは逆の考え方です。</p>
+    <p>トークンとは、AIが文章を処理するときの最小単位です。<a href="token-management.html">トークンマネジメント</a>は、いかに少ないトークンで回すかを追います。マキシングは、いかに多く投じて質を上げるかを追います。</p>
+        <p>重要な意思決定の調査、大規模なコード改修、精度が問われる分析では、手戻りのコストがトークン代を大きく上回ります。トークンを絞って精度を落とすより、惜しみなく使って一発で仕上げるほうが、安く速くなります。</p>
+    <p>2026年のモデルは、100万トークンのコンテキストを標準料金で扱えます。長文の追加料金はありません。Opus 5.5などが該当します。深く推論させることもできるため、振り切る選択肢が現実的になりました。</p>
 
-    
-    <aside class="kn-take">
-      <img class="kn-take-av" src="avatars/f40-2.svg" alt="" loading="lazy" width="56" height="56">
-      <div class="kn-take-body">
-        <div class="kn-take-role">開発責任者の視点</div>
-        <p>절約が目的化していた。<em>品質のために使い切る</em>という発想が無かった。</p>
-      </div>
-    </aside>
-<h2 id="s2">なぜ今「マキシング」なのか？</h2>
-    <p class="answer">多くの重要な仕事では、間違いの手戻りコストがトークン代を大きく上回るからだ。</p>
-    <p>重要な意思決定の調査、大規模なコード改修、精度が問われる分析——こうした仕事では、トークンをケチって精度を落とすより、惜しみなく使って一発で正確に仕上げる方が、結果的に安く・速くなります。2026年のモデルは100万トークンのコンテキストを<strong>標準料金（長文の追加料金なし）</strong>で扱え、深く推論させることもできるため、「振り切る」選択肢が現実的になりました。</p>
-    <div class="stat"><span class="n">100万</span><span class="l">Opus 4.8 等が標準料金で扱えるコンテキスト・トークン数（長文プレミアムなし）</span></div>
+    <h2 id="s2">TechWorkerの代表は、Claude Codeでトークンをどう使い分けていますか？</h2>
+    <p class="answer">代表の古野は作業ごとにモデルを分け、大事な判断に上位モデルを使います。9月は入力の約97%がキャッシュでした。</p>
+    <p>TechWorkerでは、代表の古野が毎日Claude Codeを使っています。用途は、自社サービスの開発、メディアの改修、営業資料の作成、毎朝の自動の集計です。</p>
+    <p>契約は、個人向けプランのMax 20x（月200ドル）です。使用量の上限を超えた分を従量で払う設定（extra usage）を有効にしています。</p>
+    <p>代表の端末の利用記録を、集計ツール（ccusage）でAPI料金に換算しました。2026年9月14日〜30日の17日間で約3,000ドル分、1日平均で約180ドル分です。日によって約4ドル分から約850ドル分まで差があり、200倍以上の開きがあります。</p>
+    <p>2026年9月のモデル別の内訳は、次のとおりです（API料金に換算した額）。</p>
+    <ul>
+      <li>Claude Opus 5.5：約1,200ドル</li>
+      <li>Claude Fable 5.1：約1,000ドル</li>
+      <li>Claude Sonnet 5・5.5：約630ドル</li>
+      <li>そのほか：約130ドル</li>
+    </ul>
+    <p>換算額は、実際の請求額とは異なります。定額の範囲内の利用には、追加の支払いは発生しません。</p>
+    <p>作業ごとにモデルを分けています。大事な判断は上位モデルに任せ、調べものと通常の実装はSonnetに回します。決まった抜き出しはHaikuに回し、毎朝の自動の集計もSonnetで動かします。</p>
+    <p>9月は、入力の約97%がキャッシュからの読み込みでした。1回の応答ごとに、その回と累計の推定額を画面の下に表示しています。前日の利用額は、毎朝社内のSlackに届きます。</p>
+    <p>勝負どころには上位モデルを使い、定型の作業は軽いモデルで絞ります。振り切る場面と絞る場面を分ける考え方です。</p>
 
-    <h2 id="s3">トークンを「振り切る」4つの手法</h2>
-    <p class="answer">大規模コンテキスト・深い推論・マルチエージェント・反復検証の4つで、品質側に振り切る。</p>
-    <aside class="kn-side">
-      <img src="avatars/m30-2.svg" alt="" loading="lazy" width="36" height="36">
-      <div><div class="r">開発の視点</div><p>手法を並べてもらえると、<em>自分の使い方</em>と比べられる。</p></div>
-    </aside>
+    <h2 id="s3">トークンを振り切るには、どんな手順で進めますか？</h2>
+    <p class="answer">大規模コンテキスト、深い推論、マルチエージェント、反復検証の4つの手順で、品質側に振り切ります。</p>
     <ol>
-      <li><strong>大規模コンテキストに全部入れる。</strong>要約で情報を削るのではなく、関連資料を最大100万トークンのコンテキストにそのまま渡して判断させる。</li>
-      <li><strong>深く推論させる（adaptive thinking）。</strong>2026年のClaudeは固定の思考予算でなく effort（low〜max）で深さを調整する。難問ほど high / xhigh / max に上げる。</li>
-      <li><strong>マルチエージェントで並列に走らせる。</strong>観点を分けて複数のAIを同時に動かし、網羅性とクロスチェックを効かせる。</li>
-      <li><strong>反復・自己検証のループを回す。</strong>一度で終わらせず「生成→検証→改善」を繰り返し、人間のレビュー工数を肩代わりさせる。</li>
+      <li><strong>大規模コンテキストに全部入れます。</strong>要約で情報を削らず、関連資料を最大100万トークンのコンテキストにそのまま渡して判断させます。</li>
+      <li><strong>深く推論させます（adaptive thinking）。</strong>2026年のClaudeは、固定の思考予算でなくeffort（low〜max）で深さを調整します。難問ほどhigh、xhigh、maxに上げます。</li>
+      <li><strong>マルチエージェントで並列に走らせます。</strong>観点を分けて複数のAIを同時に動かし、網羅性とクロスチェックを効かせます。</li>
+      <li><strong>反復・自己検証のループを回します。</strong>一度で終わらせず、生成、検証、改善を繰り返します。人間のレビュー工数をAIに肩代わりさせます。</li>
     </ol>
-    <figure class="cmp-chart" aria-label="トークンをケチった場合と惜しまず使った場合の、仕事の仕上がり方の違い（イメージ）">
-      <figcaption class="cc-top"><span class="dot"></span>やり直しと完成度の関係（イメージ）</figcaption>
-      <div class="cc-row"><span class="cc-lab">ケチって使う</span><div class="cc-stack"><i class="s-a" style="width:80%"></i><i class="s-b" style="width:20%"></i></div></div>
-      <div class="cc-row"><span class="cc-lab">惜しまず使う</span><div class="cc-stack"><i class="s-a" style="width:35%"></i><i class="s-b" style="width:65%"></i></div></div>
-      <div class="cc-legend"><span><i class="s-a"></i>手戻り・作り直し</span><span><i class="s-b"></i>狙った品質で一発完了</span></div>
-      <div class="cc-cap">※イメージ図です。実測値ではなく、トークンを惜しまず使うほど手戻りが減り、狙った品質で仕上がる——その配分の変化の方向を表しています。</div>
-    </figure>
-
     
-    <aside class="kn-take">
-      <img class="kn-take-av" src="avatars/m50-6.svg" alt="" loading="lazy" width="56" height="56">
-      <div class="kn-take-body">
-        <div class="kn-take-role">経営企画の視点</div>
-        <p>振り切る場面と絞る場面を分ければ、費用の話も説明しやすい。</p>
-      </div>
-    </aside>
-<h2 id="s4">いつ振り切り、いつ絞るのか？</h2>
-    <p class="answer">判断ミスの手戻りコストがトークン代を上回る局面で振り切り、それ以外は絞る。</p>
-    <aside class="kn-side">
-      <img src="avatars/f40-6.svg" alt="" loading="lazy" width="36" height="36">
-      <div><div class="r">情シスの視点</div><p>振り切る前提なら、上限の設計はセットで要る。</p></div>
-    </aside>
-    <p>すべてに振り切るのではありません。<strong>「絞る（マネジメント）↔ 振り切る（マキシング）」を局面で使い分ける</strong>のが、トークン戦略の核心です。</p>
-    <div class="tbl-wrap">
+    <h2 id="s4">トークンマキシングがうまくいかない例には、どんなものがありますか？</h2>
+    <p class="answer">すべてに振り切る、単純な反復に使う、トークン代が成果を上回るのに続ける、の3つが典型です。</p>
+    <ul>
+      <li><strong>すべての処理で振り切る。</strong>トークンマキシングは、品質が金額を上回る局面に限定します。ほかの処理はmax_tokensやBatch APIで絞ります。</li>
+      <li><strong>大量・単純・反復の処理で振り切る。</strong>1件あたりの価値が小さい処理は、トークンマネジメントの領域です。</li>
+      <li><strong>トークン代が得られる成果を上回るのに続ける。</strong>投資が回収できない状態です。この場合は絞る側に戻します。</li>
+    </ul>
+
+    <h2 id="s5">振り切る場面と絞る場面は、どう見分けますか？</h2>
+    <p class="answer">判断ミスの手戻りがトークン代を上回る局面は振り切り、トークン代が成果を上回る局面は絞ります。</p>
+        <div class="tbl-wrap">
       <table>
         <tr><th>局面</th><th>取るべき戦略</th><th>理由</th></tr>
         <tr><td>大量・単純・反復の処理</td><td>マネジメント</td><td>1件あたりの価値が小さい</td></tr>
         <tr><td>重要な意思決定・調査・本番品質</td><td>マキシング</td><td>精度がそのまま成果になる</td></tr>
-        <tr><td>判断ミス ＞ トークン代</td><td>マキシング</td><td>手戻りの方が高くつく</td></tr>
-        <tr><td>トークン代 ＞ 得られる成果</td><td>マネジメント</td><td>投資が回収できない</td></tr>
+        <tr><td>判断ミスの手戻りがトークン代を上回る</td><td>マキシング</td><td>手戻りの方が高くつく</td></tr>
+        <tr><td>トークン代が得られる成果を上回る</td><td>マネジメント</td><td>投資が回収できない</td></tr>
       </table>
     </div>
-
-    <div class="quote-box"><p>AIはエンジンだ。コンテキストは燃料だ。勝負どころでは、燃料を惜しまない。</p></div>
-    <p>上場企業を含む37社・2,500名の支援を通じて見えてきたのは、ここぞの場面で振り切れる組織ほど、AIから得る成果が大きくなるという傾向です。重要なのは「いつ振り切り、いつ絞るか」を、業務文脈に合わせて設計することです。</p>
+    <p>上場企業を含む37社・2,500名の支援では、ここぞの場面で振り切れる組織ほど、成果が大きくなる傾向が見えています。</p>
 
     <h2 id="faq">よくある質問</h2>
-    <div class="faq"><div class="q">トークンマキシングはコストが心配では？</div><p class="a">すべてに使うのではなく「品質が金額を上回る局面」に限定します。他はmax_tokensやBatch APIで絞り、<a href="token-management.html">トークンマネジメント</a>と併用するのが正解です。</p></div>
-    <div class="faq"><div class="q">「深く考えさせる」とは具体的に何ですか？</div><p class="a">2026年のClaudeは固定の思考トークン量ではなく、adaptive thinking と effort（low / medium / high / xhigh / max）で思考の深さを指定します。難しい仕事ほど effort を上げます。</p></div>
-    <div class="faq"><div class="q">本当に100万トークンも使えるのですか？</div><p class="a">はい。Opus 4.8などは100万トークンのコンテキストを標準料金で提供しており、長文に対する追加料金はありません。</p></div>
-    <div class="faq"><div class="q">マルチエージェントは難しそうです。</div><p class="a">役割を分けて並列に走らせるだけでも、網羅性とクロスチェックの効果が出ます。まずは調査・レビューなど観点の分担から始めるのが実践的です。</p></div>
+    <div class="faq"><div class="q">トークンマキシングはコストが心配では？</div><p class="a">すべてには使わず、品質が金額を上回る局面に限定します。ほかはmax_tokensやBatch APIで絞り、<a href="token-management.html">トークンマネジメント</a>と併用します。</p></div>
+    <div class="faq"><div class="q">「深く考えさせる」とは具体的に何ですか？</div><p class="a">2026年のClaudeは、adaptive thinkingとeffortで思考の深さを指定します。effortはlow / medium / high / xhigh / maxの5段階です。難しい仕事ほど上げます。</p></div>
+    <div class="faq"><div class="q">100万トークンも使えますか？</div><p class="a">はい。Opus 5.5などは100万トークンのコンテキストを標準料金で提供しており、長文に対する追加料金はありません。</p></div>
+    <div class="faq"><div class="q">マルチエージェントは難しそうです。</div><p class="a">役割を分けて並列に走らせるだけでも、網羅性とクロスチェックの効果が出ます。まずは調査・レビューなど観点の分担から始めます。</p></div>
+
+    <h2 id="s6">次の一歩として、まず何から試せばよいですか？</h2>
+    <p class="answer">手戻りのコストが大きい重要な調査や意思決定を1件選び、4つの手順で振り切って試すことから始めます。</p>
+    <ol>
+      <li>手戻りのコストが大きい仕事を1件選びます。</li>
+      <li>関連資料をコンテキストに入れ、effortを上げて実行します。</li>
+      <li>大量・単純な処理は、これまでどおり絞ります。</li>
+    </ol>
+    <p>どこで絞り、どこで振り切るかの設計は、TechWorkerが一緒に整理します。検討段階のご相談だけでも歓迎です。</p>
   </article>
 </div>
 

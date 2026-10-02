@@ -1,49 +1,106 @@
 <!DOCTYPE html><html lang="ja" class="no-js"><head><meta charset="UTF-8">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-3V34NWXVCJ');</script><script src="/assets/tw-track.js" defer></script><script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>AIインタビューでプロトタイプを評価する｜操作・発話・画面の証拠をつなぐ設計 — TechWorker</title><meta name="description" content="AIインタビューで試作品の使いやすさを調べる際に、感想だけで結論を出さず、タスク、画面上の行動、発話、次の改修判断を結び直す方法を解説します。"><link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg"><link rel="canonical" href="https://techworker.co.jp/media/interview/ai-interview-prototype-usability-testing">
-<meta property="og:type" content="article"><meta property="og:title" content="AIインタビューでプロトタイプを評価する｜操作・発話・画面の証拠をつなぐ設計"><meta property="og:description" content="AIインタビューで試作品の使いやすさを調べる際に、感想だけで結論を出さず、タスク、画面上の行動、発話、次の改修判断を結び直す方法を解説します。"><meta property="og:image" content="https://techworker.co.jp/media/interview/covers/ai-interview-prototype-usability-testing.png"><meta property="og:url" content="https://techworker.co.jp/media/interview/ai-interview-prototype-usability-testing"><meta property="og:site_name" content="TechWorker"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://techworker.co.jp/media/interview/covers/ai-interview-prototype-usability-testing.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../article.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AIインタビューでプロトタイプを評価する｜操作・発話・画面の証拠をつなぐ設計", "description": "AIインタビューで試作品の使いやすさを調べる際に、感想だけで結論を出さず、タスク、画面上の行動、発話、次の改修判断を結び直す方法を解説します。", "datePublished": "2026-09-17", "dateModified": "2026-10-01", "inLanguage": "ja", "image": "https://techworker.co.jp/media/interview/covers/ai-interview-prototype-usability-testing.png", "author": {"@type": "Person", "name": "古野光太朗", "url": "https://techworker.co.jp/company.html"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/interview/ai-interview-prototype-usability-testing"}, "mentions": {"@type": "SoftwareApplication", "name": "CoeSignal", "url": "https://coesignal.techworker.co.jp/"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},{"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},{"@type":"ListItem","position":3,"name":"AIインタビュー・ラボ","item":"https://techworker.co.jp/media/interview/"},{"@type":"ListItem","position":4,"name":"AIインタビューでプロトタイプを評価する｜操作・発話・画面の証拠をつなぐ設計","item":"https://techworker.co.jp/media/interview/ai-interview-prototype-usability-testing"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"プロトタイプ評価のタスク文はどう書けばよいですか？","acceptedAnswer":{"@type":"Answer","text":"画面内の用語や正しい操作を入れず、「来月の請求額を確認したいとき、どこから始めますか」のように利用場面とゴールだけを渡します。正解を教えた回数は行動ログへ残します。"}},{"@type":"Question","name":"AIインタビューの評価ログには何を残しますか？","acceptedAnswer":{"@type":"Answer","text":"提示条件、行動、発話、解釈と処置の四つを分けて残します。AI要約だけでなく、どのタスクのどの時点の発話に基づくかを戻せる参照を付け、解釈は確定事実でなく仮説として扱います。"}},{"@type":"Question","name":"試作品の評価でアクセシビリティはどう扱いますか？","acceptedAnswer":{"@type":"Answer","text":"操作が完了した人だけを見て使いやすいと結論づけず、別の評価軸を置きます。支援技術や端末設定を同意の範囲で記録し、利用者評価はWCAG適合の証明にならないため技術基準・専門家確認へ渡します。"}}]}</script></head>
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>AIインタビューでプロトタイプを評価する｜操作・発話・画面の証拠をつなぐ設計 — TechWorker</title><meta name="description" content="試作品の評価ログは、提示条件・行動・発話・解釈と処置の4欄に分けて残すと、次の改修につながります。AIインタビューで試作品の使いやすさを調べる際の、タスク、画面上の行動、発話、改修判断の結び直し方を解説します。"><link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg"><link rel="canonical" href="https://techworker.co.jp/media/interview/ai-interview-prototype-usability-testing">
+<meta property="og:type" content="article"><meta property="og:title" content="AIインタビューでプロトタイプを評価する｜操作・発話・画面の証拠をつなぐ設計"><meta property="og:description" content="試作品の評価ログは、4欄に分けて残すと次の改修につながります。AIインタビューでタスク、画面上の行動、発話、改修判断を結び直す方法を解説します。"><meta property="og:image" content="https://techworker.co.jp/media/interview/covers/ai-interview-prototype-usability-testing.png"><meta property="og:url" content="https://techworker.co.jp/media/interview/ai-interview-prototype-usability-testing"><meta property="og:site_name" content="TechWorker"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://techworker.co.jp/media/interview/covers/ai-interview-prototype-usability-testing.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../article.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AIインタビューでプロトタイプを評価する｜操作・発話・画面の証拠をつなぐ設計", "description": "試作品の評価ログは、提示条件・行動・発話・解釈と処置の4欄に分けて残すと、次の改修につながります。AIインタビューで試作品の使いやすさを調べる際の、タスク、画面上の行動、発話、改修判断の結び直し方を解説します。", "datePublished": "2026-09-17", "dateModified": "2026-10-02", "inLanguage": "ja", "image": "https://techworker.co.jp/media/interview/covers/ai-interview-prototype-usability-testing.png", "author": {"@type": "Person", "name": "古野光太朗", "url": "https://techworker.co.jp/company.html"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/interview/ai-interview-prototype-usability-testing"}, "mentions": {"@type": "SoftwareApplication", "name": "CoeSignal", "url": "https://coesignal.techworker.co.jp/"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},{"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},{"@type":"ListItem","position":3,"name":"AIインタビュー・ラボ","item":"https://techworker.co.jp/media/interview/"},{"@type":"ListItem","position":4,"name":"AIインタビューでプロトタイプを評価する｜操作・発話・画面の証拠をつなぐ設計","item":"https://techworker.co.jp/media/interview/ai-interview-prototype-usability-testing"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "プロトタイプ評価のタスク文はどう書けばよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "画面内の用語や正しい操作は入れません。「来月の請求額を確認したいとき、どこから始めますか」のように、利用場面とゴールだけを渡します。正解を教えた回数は、行動ログへ残します。"}}, {"@type": "Question", "name": "AIインタビューの評価ログには何を残しますか？", "acceptedAnswer": {"@type": "Answer", "text": "提示条件、行動、発話、解釈と処置の四つを分けて残します。AI要約に加えて、どのタスクのどの時点の発話に基づくかを戻せる参照を付けます。解釈は確定事実とみなさず、仮説として扱います。"}}, {"@type": "Question", "name": "試作品の評価でアクセシビリティはどう扱いますか？", "acceptedAnswer": {"@type": "Answer", "text": "操作が完了した人だけを見て、使いやすいと結論づけません。別の評価軸を置きます。支援技術や端末設定は、同意の範囲で記録します。利用者評価はWCAG適合の証明にならないため、技術基準・専門家確認へ渡します。"}}]}</script>
+</head>
 <body><div class="progress" id="progress"></div><nav id="nav"><a href="index.html" class="logo">AIインタビュー<i>ラボ</i></a><ul><li><a href="index.html">記事一覧</a></li><li><a href="index.html#about">このメディアについて</a></li></ul><div class="nav-right"><a href="../../companymap/contact" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a><button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button></div></nav><div class="mmenu" id="mmenu" aria-hidden="true"><a href="index.html">記事一覧</a><a href="index.html#about">このメディアについて</a><a href="../../companymap/contact" class="m-cta">無料相談を申し込む</a></div>
-<header class="art-head"><nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIインタビュー・ラボ</a></nav><div class="kicker">用途別の活用</div><h1>AIインタビューでプロトタイプを評価する｜操作・発話・画面の証拠をつなぐ設計</h1><p class="dek">AIインタビューで試作品の使いやすさを調べる際に、感想だけで結論を出さず、タスク、画面上の行動、発話、次の改修判断を結び直す方法を解説します。</p><div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.09.17</span><span class="dot">·</span><span>最終更新 2026.10.01</span><span class="dot">·</span><span>一次情報 7件</span></div></header><img class="daily-cover" src="covers/ai-interview-prototype-usability-testing.png" alt="試作品の評価を改修へ渡す。参加者・担当者・AIが、タスクを渡す→試作品を操作する→中立に聞き返す→記録を要約する→元記録で確かめる→改修を指示するの順に進める業務図" width="1200" height="630">
-<div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div><a href="#s1">先に「好きか」ではなく、達成したい行動を決める</a><a href="#s2">証拠を四つの欄に分ける</a><a href="#s3">AIの要約を改修指示として確定しない</a><a href="#s4">アクセシビリティは別の評価軸を置く</a><a href="#s5">1回の調査を次の改修へ渡す</a><a href="#s6">適用限界</a><a href="#faq">よくある質問</a></div></nav><article class="art-body"><div class="lede"><div class="lede-h">この記事の要点</div><ul><li>試作品の感想だけでは次に直す場所は決まらないため、AIインタビューではタスク、行動、発話、改修判断を同じ記録で扱います。</li><li>タスクは画面内の用語や正しい操作を含めず利用場面とゴールだけを渡し、AI要約は元記録に戻って確認してから改修指示にします。</li><li>アクセシビリティは別の評価軸で見ます。少数の障壁を市場全体の割合へ変換せず、高リスク領域では専門家レビューを別に行います。</li></ul></div><p>試作品の感想だけでは、次に直す場所は決まりません。AIインタビューでは、<strong>タスク、行動、発話、改修判断を同じ記録で扱います</strong>。</p>
-<h2 id="s1">先に「好きか」ではなく、達成したい行動を決める</h2><p class="answer">好みではなく達成したい行動を先に決め、誘導しないタスク文で自力での完了を分けて数える。</p>
-<p>利用者の目的を決めます。「請求書を確認する」のように、誘導しないタスクを置きます[1]。</p>
-<p>AIには中立に聞き返させ、原因を先回りさせません。</p>
-<p>タスク文には、画面内の用語や正しい操作を入れません。「左のメニューから設定を開いてください」では、ナビゲーションが見つかるかを試せなくなります。「来月の請求額を確認したいとき、どこから始めますか」のように、利用場面とゴールだけを渡します。参加者が途中で「何をすればよいですか」と尋ねた場合も、正解を教えた回数を行動ログへ残します。支援後に完了したことと、自力で完了したことを同じ成功として数えないためです。</p>
-<p>一つのセッションに、目的の異なるタスクを詰め込みすぎないことも重要です。初回登録、検索、支払いのように必要な前提が異なる操作は、途中の失敗が後続タスクへ影響します。調べたい論点ごとに開始画面を固定し、同じ版・同じタスクで比較できる条件を先に決めます。AIの追問は自由にしても、比較の軸まで変えない設計にします。</p>
-<h2 id="s2">証拠を四つの欄に分ける</h2><p class="answer">提示条件、行動、発話、解釈と処置の四欄に分け、解釈は確定事実でなく仮説として扱う。</p>
-<p>評価ログは、AI要約だけを残さず、四つを分けます。</p>
-<ol>
-<li><strong>提示条件</strong>：試作品の版、端末、タスク文。</li>
-<li><strong>行動</strong>：到達・中断・戻るなどの事実。</li>
-<li><strong>発話</strong>：理解・期待・迷いの原文。</li>
-<li><strong>解釈と処置</strong>：仮説、改修案、再確認条件。</li>
-</ol>
-<p>画面記録は、操作と発話を照合する材料です[2]。範囲・保存先・利用目的を同意時に明示し、必要なければ匿名化した試作品を使います。</p>
-<p>たとえば「見つけにくい」という発話があっても、画面記録では検索を試していたのか、メニューを往復していたのか、表示内容を読んで止まったのかを確認します。画面で起きた事実と、本人がそう解釈した理由は、どちらか一方だけでは改修に不足します。逆に、発話が少なくても迷いなく別経路で完了した参加者は、現在の導線の代替行動を示す材料になります。</p>
-<p>この四欄は、AIの自動要約を否定するためのものではありません。要約には「どのタスクの、どの時点の、どの発話に基づくか」を戻せる参照を付けます。調査者は、解釈欄を確定事実ではなく仮説として扱い、修正後に再テストする対象を選びます。</p>
-<aside class="mid-cta"><div class="mc-body"><div class="mc-k">CompanyMap AI</div><div class="mc-t">AIの聞き取りで、会社全体の業務図をつくる</div><div class="mc-d">部署ごとの仕事の流れをAIが聞き取り、詰まっている所やAIに任せられる所を1枚の業務図にします。</div></div><a href="../../companymap?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=ai-interview-prototype-usability-testing&amp;utm_content=mid" class="btn" data-cta="ai-interview-prototype-usability-testing-mid">CompanyMap AIを見る <i>&rarr;</i></a></aside><h2 id="s3">AIの要約を改修指示として確定しない</h2><p class="answer">AIの要約は元記録に戻って停止や別経路での完了、原因を分けるまで、改修指示として確定しない。</p>
-<p>AIは論点を速く集められますが、「利用者は設定画面を嫌った」を改修指示にしてはいけません。元記録へ戻り、停止、別経路での完了、説明不足と操作不能を分けます。</p>
-<p>Listen Labs掲載のカリフォルニア芸術大学事例は、Figma試作品の操作記録、追問、動画、文字起こしを組み合わせています[3]。AIは研究者や設計判断を置き換えません。</p>
-<p>改修候補を選ぶときは、要望の多さではなく、タスクの目的への影響を見ます。ある参加者が「色を変えてほしい」と言っても、実際には次の操作を示す文言を理解できなかったのかもしれません。見た目の好み、理解の誤り、操作不能、対象外の要望を分けると、デザイナーや開発者が修正可能な問いになります。重要な不一致は、別の参加者にも同じタスクを試してもらい、再現する障壁かを確かめます。</p>
-<h2 id="s4">アクセシビリティは別の評価軸を置く</h2><p class="answer">完了した人だけで使いやすいと結論づけず、支援技術による障壁を別の評価軸で観察する。</p>
-<p>操作が完了した人だけを見て「使いやすい」と結論づけると、支援技術や端末による障壁を見落とします。W3Cは、障害のある利用者を継続的に含め、少数の評価を一般化しないよう勧めています[4]。利用者評価はWCAG適合の証明にもなりません。</p>
-<p>支援技術を使う参加者がいる場合、タスクを短くすることだけで負担を解決したと判断しません。使用している支援技術、端末設定、参加者が普段使う操作方法を、本人の同意の範囲で記録します。そこで見つかった障壁は通常のUI改善と分けて、技術基準・専門家確認へ渡します。AIによる会話の速さを理由に、観察やアクセシビリティ検証を省略しないことが必要です。</p>
-<h2 id="s5">1回の調査を次の改修へ渡す</h2><p class="answer">版、タスク、結果を一枚にまとめ、改修後は同じタスクを別の参加者にも試して再確認する。</p>
-<p>終了時には、版、タスク、結果を一枚にまとめ、改修候補に画面時刻・発話・再テストを付けます。</p>
-<p>改修後は、同じ参加者から感想を取り直すだけでなく、同じタスクを別の参加者がどう達成するかも見ます。前回の調査で見つけた障壁が消えたのか、別の場所へ移っただけなのか、変更が関係ない人の操作を悪化させていないかを分けるためです。AIインタビューはこの反復の記録と追問を速くできますが、設計上の意思決定を自動化する道具ではありません。</p>
-<p>既存の回答形式の選び方、パイロット調査、A/Bテスト後のAIインタビューも参照してください。</p>
-<p><a href="https://coesignal.techworker.co.jp/">CoeSignal（株式会社TechWorkerが提供するAIインタビュープラットフォーム）</a>では、調査設計と実査を相談できます。</p>
-<p><strong>プロトタイプ評価を含むAIインタビュー設計を相談する</strong></p>
-<h2 id="s6">適用限界</h2><p class="answer">少数の障壁を市場全体の割合や売上影響へ変換せず、高リスクの領域は実利用環境などで別に確認する。</p>
-<p>AIインタビューと画面記録は、少数の障壁を市場全体の割合や売上影響へ変換するものではありません。高リスク領域では、実利用環境、専門家レビュー、基準適合の確認を別に行います。</p><h2 id="faq">よくある質問</h2>
-<div class="faq"><div class="q">プロトタイプ評価のタスク文はどう書けばよいですか？</div><p class="a">画面内の用語や正しい操作を入れず、「来月の請求額を確認したいとき、どこから始めますか」のように利用場面とゴールだけを渡します。正解を教えた回数は行動ログへ残します。</p></div>
-<div class="faq"><div class="q">AIインタビューの評価ログには何を残しますか？</div><p class="a">提示条件、行動、発話、解釈と処置の四つを分けて残します。AI要約だけでなく、どのタスクのどの時点の発話に基づくかを戻せる参照を付け、解釈は確定事実でなく仮説として扱います。</p></div>
-<div class="faq"><div class="q">試作品の評価でアクセシビリティはどう扱いますか？</div><p class="a">操作が完了した人だけを見て使いやすいと結論づけず、別の評価軸を置きます。支援技術や端末設定を同意の範囲で記録し、利用者評価はWCAG適合の証明にならないため技術基準・専門家確認へ渡します。</p></div>
-<h2 id="sources">一次情報と確認範囲</h2><p class="source-note">確認日：2026年9月17日。製品仕様・制度は更新されるため、導入時はリンク先の最新版を再確認してください。海外の制度・職業規範は日本へ直接適用せず、相違点と限界を本文に明記しています。</p><ol class="source-list"><li><a href="https://www.gov.uk/service-manual/user-research/using-moderated-usability-testing" target="_blank" rel="noopener noreferrer">I-1</a></li><li><a href="https://www.gov.uk/service-manual/user-research/taking-notes-and-recording-user-research-sessions" target="_blank" rel="noopener noreferrer">I-2</a></li><li><a href="https://www.gov.uk/service-manual/user-research/plan-user-research-for-your-service" target="_blank" rel="noopener noreferrer">I-3</a></li><li><a href="https://www.w3.org/WAI/test-evaluate/involving-users/" target="_blank" rel="noopener noreferrer">I-4</a></li><li><a href="https://listenlabs.ai/blog/ui-research-with-listenlabs-ai" target="_blank" rel="noopener noreferrer">I-5</a></li><li><a href="https://www.mrs.org.uk/pdf/MRS_AIA_ParadoxofQualResearchatScale_2025.pdf" target="_blank" rel="noopener noreferrer">I-6</a></li><li><a href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf" target="_blank" rel="noopener noreferrer">I-7</a></li></ol></article></div>
+<header class="art-head"><nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIインタビュー・ラボ</a></nav><div class="kicker">用途別の活用</div><h1>AIインタビューでプロトタイプを評価する｜操作・発話・画面の証拠をつなぐ設計</h1><p class="dek">試作品の評価ログは、提示条件・行動・発話・解釈と処置の4欄に分けて残すと、次の改修につながります。<br>AIインタビューで試作品の使いやすさを調べたい、プロダクト企画・UXリサーチ担当の方に向けた記事です。<br>タスク文の書き方、証拠の分け方、AI要約の扱い、アクセシビリティの見方、改修への渡し方が分かります。</p><div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.09.17</span><span class="dot">·</span><span>最終更新 2026.10.02</span><span class="dot">·</span><span>一次情報 7件</span></div></header><img class="daily-cover" src="covers/ai-interview-prototype-usability-testing.png" alt="試作品の評価を改修へ渡す。参加者・担当者・AIが、タスクを渡す→試作品を操作する→中立に聞き返す→記録を要約する→元記録で確かめる→改修を指示するの順に進める業務図" width="1200" height="630">
+<div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div>
+      <a href="#s1">結論：何を記録するか</a>
+      <a href="#s2">手順：評価の進め方</a>
+      <a href="#s3">うまくいかない例</a>
+      <a href="#s4">評価ログの四欄表</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#s5">次の一歩</a>
+      <a href="#sources">出典と確認範囲</a>
+    </div></nav><article class="art-body">
+<aside class="mid-cta"><div class="mc-body"><div class="mc-k">CompanyMap AI</div><div class="mc-t">AIの聞き取りで、部署の業務フローを業務図にする</div><div class="mc-d">部署ごとの仕事の流れをAIが聞き取り、詰まっている所やAIに任せられる所を1枚の業務図にします。</div></div><a href="../../companymap?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=ai-interview-prototype-usability-testing&amp;utm_content=mid" class="btn" data-cta="ai-interview-prototype-usability-testing-mid">CompanyMap AIを見る <i>&rarr;</i></a></aside>
+
+    <h2 id="s1">AIインタビューで試作品の使いやすさを評価するには、何を記録すればよいですか？</h2>
+    <p class="answer">タスク、行動、発話、改修判断を同じ記録で扱い、AI要約は元記録で確かめてから改修を決めます。</p>
+    <p>試作品の感想だけでは、次に直す場所は決まりません。AIインタビューでは、タスク、行動、発話、改修判断を、同じ記録で扱います。</p>
+    <p>要点は3つです。</p>
+    <ul>
+      <li>タスクには、画面内の用語や正しい操作を含めません。利用場面とゴールだけを渡します。</li>
+      <li>AI要約は、元記録に戻って確認してから、改修指示にします。</li>
+      <li>アクセシビリティは、別の評価軸で見ます。少数の障壁を市場全体の割合へ変換しません。高リスクの領域では、専門家レビューを別に行います。</li>
+    </ul>
+
+    <h2 id="s2">試作品の評価は、どんな手順で進めればよいですか？</h2>
+    <p class="answer">達成したい行動を決め、証拠を四欄に分け、AI要約を元記録で確かめ、改修へ渡して再テストします。</p>
+    <h3>手順1：先に達成したい行動を決める</h3>
+    <p>利用者の目的を決めます。「請求書を確認する」のように、誘導しないタスクを置きます[1]。AIには中立に聞き返させ、原因を先回りさせません。</p>
+    <p>タスク文には、画面内の用語や正しい操作を入れません。「左のメニューから設定を開いてください」では、ナビゲーションが見つかるかを試せなくなります。「来月の請求額を確認したいとき、どこから始めますか」のように、利用場面とゴールだけを渡します。</p>
+    <p>参加者が途中で「何をすればよいですか」と尋ねた場合も、正解を教えた回数を、行動ログへ残します。支援後に完了したことと、自力で完了したことを、同じ成功として数えないためです。</p>
+    <p>一つのセッションに、目的の異なるタスクを詰め込みすぎないことも大切です。初回登録、検索、支払いのように必要な前提が異なる操作は、途中の失敗が後続タスクへ影響します。</p>
+    <p>調べたい論点ごとに、開始画面を固定します。同じ版・同じタスクで比較できる条件を、先に決めます。AIの追問は自由にしても、比較の軸は変えません。</p>
+    <h3>手順2：証拠を四つの欄に分ける</h3>
+    <p>評価ログは、AI要約だけを残さず、提示条件、行動、発話、解釈と処置の四つに分けます。各欄に残すものは、後段の表にまとめました。</p>
+    <p>画面記録は、操作と発話を照合する材料です[2]。範囲・保存先・利用目的を同意時に明示します。必要なければ、匿名化した試作品を使います。</p>
+    <p>たとえば「見つけにくい」という発話があったとします。画面記録で、検索を試していたのか、メニューを往復していたのか、表示内容を読んで止まったのかを確認します。</p>
+    <p>画面で起きた事実と、本人がそう解釈した理由は、どちらか一方だけでは改修に不足します。発話が少なくても、迷いなく別経路で完了した参加者は、現在の導線の代替行動を示す材料になります。</p>
+    <p>四欄は、AIの自動要約を否定するためのものではありません。要約には、「どのタスクの、どの時点の、どの発話に基づくか」を戻せる参照を付けます。解釈欄は、確定事実とみなさず仮説として扱い、修正後に再テストする対象を選びます。</p>
+    <h3>手順3：AI要約を元記録で確かめてから、改修指示にする</h3>
+    <p>AIは論点を速く集められますが、「利用者は設定画面を嫌った」を改修指示にしてはいけません。元記録へ戻り、停止、別経路での完了、説明不足と操作不能を分けます。</p>
+    <p>Listen Labs掲載の、カリフォルニア芸術大学の事例があります[3]。Figma（デザインツール）の試作品の操作記録、追問、動画、文字起こしを組み合わせています。AIは、研究者や設計判断を置き換えません。</p>
+    <p>改修候補を選ぶときは、タスクの目的への影響を見ます。要望の多さは、選ぶ基準にしません。</p>
+    <p>ある参加者が「色を変えてほしい」と言っても、実際には、次の操作を示す文言を理解できなかったのかもしれません。見た目の好み、理解の誤り、操作不能、対象外の要望を分けると、デザイナーや開発者が修正できる問いになります。重要な不一致は、別の参加者にも同じタスクを試してもらい、再現する障壁かを確かめます。</p>
+    <h3>手順4：アクセシビリティは別の評価軸で見る</h3>
+    <p>操作が完了した人だけを見て「使いやすい」と結論づけると、支援技術や端末による障壁を見落とします。W3Cは、障害のある利用者を継続的に含め、少数の評価を一般化しないよう勧めています[4]。</p>
+    <p>利用者評価は、WCAG（ウェブのアクセシビリティ指針）への適合の証明にもなりません。</p>
+    <p>支援技術を使う参加者がいる場合、タスクを短くすることだけで、負担を解決したと判断しません。使用している支援技術、端末設定、参加者が普段使う操作方法を、本人の同意の範囲で記録します。</p>
+    <p>そこで見つかった障壁は、通常のUI改善と分けて、技術基準・専門家確認へ渡します。AIによる会話の速さを理由に、観察やアクセシビリティ検証を省略しません。</p>
+    <h3>手順5：1回の調査を次の改修へ渡す</h3>
+    <p>終了時には、版、タスク、結果を一枚にまとめます。改修候補には、画面時刻・発話・再テストを付けます。</p>
+    <p>改修後は、同じタスクを別の参加者がどう達成するかも見ます。同じ参加者から感想を取り直すことに加えて行います。障壁が消えたのか、別の場所へ移っただけなのか、関係ない人の操作を悪化させていないかを分けるためです。</p>
+    <p>AIインタビューは、この反復の記録と追問を速くできます。設計上の意思決定を自動化する道具ではありません。</p>
+    <p><a href="https://coesignal.techworker.co.jp/">CoeSignal（株式会社TechWorkerが提供するAIインタビュープラットフォーム）</a>では、調査設計と実査を相談できます。</p>
+
+    <h2 id="s3">試作品評価で、うまくいかなくなるのはどんなときですか？</h2>
+    <p class="answer">タスク文で答えを教えたとき、要約をそのまま改修指示にしたとき、完了者だけで判断したときに崩れます。</p>
+    <ul>
+      <li><strong>タスク文に操作を書く。</strong>「左のメニューから設定を開いてください」と書くと、ナビゲーションが見つかるかを試せません。</li>
+      <li><strong>支援後の完了も成功に数える。</strong>正解を教えた回数を残さないと、自力での完了と区別できません。</li>
+      <li><strong>目的の異なるタスクを詰め込む。</strong>途中の失敗が、後続タスクへ影響します。</li>
+      <li><strong>要約をそのまま改修指示にする。</strong>「利用者は設定画面を嫌った」では、停止、別経路での完了、説明不足と操作不能が分かりません。</li>
+      <li><strong>要望の多さで改修候補を選ぶ。</strong>「色を変えてほしい」の裏に、文言の理解不足があるかもしれません。</li>
+      <li><strong>完了した人だけを見て使いやすいと結論づける。</strong>支援技術や端末による障壁を見落とします。</li>
+    </ul>
+    <p>適用の限界もあります。AIインタビューと画面記録は、少数の障壁を市場全体の割合や売上影響へ変換するものではありません。高リスク領域では、実利用環境、専門家レビュー、基準適合の確認を別に行います。</p>
+
+    <h2 id="s4">評価ログの四つの欄には、何を残しますか？</h2>
+    <p class="answer">提示条件、行動、発話、解釈と処置の四欄に分け、解釈は確定事実とみなさず仮説として扱います。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>欄</th><th>残すもの</th></tr>
+        <tr><td>提示条件</td><td>試作品の版、端末、タスク文</td></tr>
+        <tr><td>行動</td><td>到達・中断・戻るなどの事実</td></tr>
+        <tr><td>発話</td><td>理解・期待・迷いの原文</td></tr>
+        <tr><td>解釈と処置</td><td>仮説、改修案、再確認条件</td></tr>
+      </table>
+    </div>
+
+    <h2 id="faq">よくある質問</h2>
+<div class="faq"><div class="q">プロトタイプ評価のタスク文はどう書けばよいですか？</div><p class="a">画面内の用語や正しい操作は入れません。「来月の請求額を確認したいとき、どこから始めますか」のように、利用場面とゴールだけを渡します。正解を教えた回数は、行動ログへ残します。</p></div>
+<div class="faq"><div class="q">AIインタビューの評価ログには何を残しますか？</div><p class="a">提示条件、行動、発話、解釈と処置の四つを分けて残します。AI要約に加えて、どのタスクのどの時点の発話に基づくかを戻せる参照を付けます。解釈は確定事実とみなさず、仮説として扱います。</p></div>
+<div class="faq"><div class="q">試作品の評価でアクセシビリティはどう扱いますか？</div><p class="a">操作が完了した人だけを見て、使いやすいと結論づけません。別の評価軸を置きます。支援技術や端末設定は、同意の範囲で記録します。利用者評価はWCAG適合の証明にならないため、技術基準・専門家確認へ渡します。</p></div>
+
+
+    <h2 id="s5">次の一歩は何から始めればよいですか？</h2>
+    <p class="answer">次の調査で、利用場面とゴールだけのタスク文を作り、評価ログを四欄に分けて記録します。</p>
+    <ol>
+      <li>利用場面とゴールだけのタスク文を作ります。</li>
+      <li>評価ログを、提示条件・行動・発話・解釈と処置の四欄に分けます。</li>
+      <li>改修後は、同じタスクを別の参加者にも試してもらいます。</li>
+    </ol>
+
+    <h2 id="sources">出典：一次情報と確認範囲</h2><p class="source-note">確認日：2026年9月17日。製品仕様・制度は更新されるため、導入時はリンク先の最新版を再確認してください。海外の制度・職業規範は日本へ直接適用せず、相違点と限界を本文に明記しています。</p><ol class="source-list"><li><a href="https://www.gov.uk/service-manual/user-research/using-moderated-usability-testing" target="_blank" rel="noopener noreferrer">I-1</a></li><li><a href="https://www.gov.uk/service-manual/user-research/taking-notes-and-recording-user-research-sessions" target="_blank" rel="noopener noreferrer">I-2</a></li><li><a href="https://www.gov.uk/service-manual/user-research/plan-user-research-for-your-service" target="_blank" rel="noopener noreferrer">I-3</a></li><li><a href="https://www.w3.org/WAI/test-evaluate/involving-users/" target="_blank" rel="noopener noreferrer">I-4</a></li><li><a href="https://listenlabs.ai/blog/ui-research-with-listenlabs-ai" target="_blank" rel="noopener noreferrer">I-5</a></li><li><a href="https://www.mrs.org.uk/pdf/MRS_AIA_ParadoxofQualResearchatScale_2025.pdf" target="_blank" rel="noopener noreferrer">I-6</a></li><li><a href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf" target="_blank" rel="noopener noreferrer">I-7</a></li></ol>
+
+  </article></div>
 <div class="author"><div class="inner"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><div><div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div><p>上場企業を含む37社・2,500名の生成AI導入・研修支援で得た実務知をもとに、導入・運用・顧客理解を扱っています。この実績はTechWorkerの生成AI支援実績であり、個別製品の導入実績を示すものではありません。</p></div></div></div>
-<div class="art-cta"><div class="inner"><div><h3>聞き取りから、会社全体の業務図へ。</h3><p>CompanyMap AIは、部署ごとの仕事の流れをAIの聞き取りで洗い出し、1枚の業務図にします。詰まっている所、担当者しか分からない所、AIに任せられる所まで見えるようにします。</p></div><a href="../../companymap?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=ai-interview-prototype-usability-testing&amp;utm_content=end" class="btn" data-cta="ai-interview-prototype-usability-testing-end">CompanyMap AIを見る <i>→</i></a></div></div><div class="back-list"><a href="index.html">← AIインタビュー・ラボの記事一覧に戻る</a></div><section class="related"><div class="container"><div class="rl-h">Related</div><div class="related-grid"></div></div></section>
+<div class="art-cta"><div class="inner"><div><h3>聞き取りから、部署の業務図へ。</h3><p>CompanyMap AIは、部署ごとの仕事の流れをAIの聞き取りで洗い出し、1枚の業務図にします。詰まっている所、担当者しか分からない所、AIに任せられる所まで見えるようにします。</p></div><a href="../../companymap?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=ai-interview-prototype-usability-testing&amp;utm_content=end" class="btn" data-cta="ai-interview-prototype-usability-testing-end">CompanyMap AIを見る <i>→</i></a></div></div><div class="back-list"><a href="index.html">← AIインタビュー・ラボの記事一覧に戻る</a></div><section class="related"><div class="container"><div class="rl-h">Related</div><div class="related-grid"></div></div></section>
 <footer><div class="container"><div class="footer-inner"><div class="footer-brand"><div class="logo">AIインタビュー・ラボ</div><p>一次情報と実務に基づく生成AIメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p></div><div class="footer-col"><h4>メディア</h4><a href="index.html">記事一覧</a><a href="../index.html">全媒体</a></div><div class="footer-col"><h4>運営会社</h4><a href="../../company.html">会社概要</a><a href="../../privacy.html">プライバシーポリシー</a></div></div><p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p></div></footer><script>var nav=document.getElementById('nav');
 addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
 (function(){

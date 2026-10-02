@@ -14,12 +14,12 @@
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AIモデレーターとは｜人間モデレーターとの違いと使い分け【2026】 — AIインタビュー・ラボ</title>
-<meta name="description" content="AIモデレーターとは、定性調査のインタビュー進行と深掘りをAIが担う仕組みです。人間モデレーターとの違いを正面から比較し、調査目的×対象者×深さの使い分けマトリクス、「AIで広く聞いて人で深掘る」ハイブリッド設計3パターンまで、リサーチ・商品企画・マーケ担当向けに実務目線で解説します。">
+<meta name="description" content="AIモデレーターと人の使い分けは、調査目的・対象者・深掘りの深さの3軸で決まります。定性調査の進行役を誰に任せるか迷う方に向けて、人間モデレーターとの比較表、使い分けの手順、ハイブリッド設計3パターンを解説します。">
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
 <link rel="canonical" href="https://techworker.co.jp/media/interview/ai-moderator">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AIモデレーターとは｜人間モデレーターとの違いと使い分け【2026】">
-<meta property="og:description" content="インタビューの進行と深掘りをAIが担う「AIモデレーター」。人間モデレーターとの正面比較、使い分けマトリクス、ハイブリッド設計3パターンを実務目線で解説します。">
+<meta property="og:description" content="AIモデレーターと人の使い分けは、3軸で決まります。人間モデレーターとの比較表、使い分けの手順、ハイブリッド設計3パターンを解説します。">
 <meta property="og:image" content="https://techworker.co.jp/media/interview/covers/ai-moderator.png">
 <meta property="og:url" content="https://techworker.co.jp/media/interview/ai-moderator">
 <meta property="og:site_name" content="AIインタビュー・ラボ">
@@ -31,7 +31,7 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../article.css">
 <link rel="stylesheet" href="lab.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AIモデレーターとは｜人間モデレーターとの違いと使い分け【2026】", "description": "AIモデレーターとは、定性調査のインタビュー進行と深掘りをAIが担う仕組み。人間モデレーターとの違いを正面から比較し、調査目的×対象者×深さの使い分けマトリクス、ハイブリッド設計3パターンまで実務目線で解説する。", "datePublished": "2026-07-26", "dateModified": "2026-07-26", "inLanguage": "ja", "image": "https://techworker.co.jp/media/interview/covers/ai-moderator.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/interview/ai-moderator"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AIモデレーターとは｜人間モデレーターとの違いと使い分け【2026】", "description": "AIモデレーターと人の使い分けは、調査目的・対象者・深掘りの深さの3軸で決まります。定性調査の進行役を誰に任せるか迷う方に向けて、人間モデレーターとの比較表、使い分けの手順、ハイブリッド設計3パターンを解説します。", "datePublished": "2026-07-26", "dateModified": "2026-10-02", "inLanguage": "ja", "image": "https://techworker.co.jp/media/interview/covers/ai-moderator.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/interview/ai-moderator"}}</script>
 <script type="application/ld+json">
 {
   "@context":"https://schema.org","@type":"BreadcrumbList",
@@ -43,17 +43,7 @@
   ]
 }
 </script>
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org","@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"AIモデレーターは人間モデレーターを置き換えますか？","acceptedAnswer":{"@type":"Answer","text":"置き換えではなく分担が実務の答えです。AIは同時並行の実査と一貫した深掘りに、人は非言語情報の観察・関係構築・その場の仮説の組み替えに強く、得意な局面が重なりません。世界最大級の調査会社イプソスも公式記事でAIを「共同モデレーター（co-moderator）」と位置づけるハイブリッドモデルを提唱しており、大手の実務も併用を前提に動いています。"}},
-    {"@type":"Question","name":"回答者はAIモデレーター相手に本音を話しますか？","acceptedAnswer":{"@type":"Answer","text":"話しやすくなる場面があります。人に評価される心配が薄れる分、対人では言いにくいことを率直に話しやすくなるという研究報告があり、金銭や不満のような話題では機械相手が有利に働くことがあります。一方で、共感の乏しさが語りを浅くする場面もあるため、テーマごとの向き不向きの見極めが前提です。詳しくは本メディアの研究ノート「人はAIに本音を話すのか」で整理しています。"}},
-    {"@type":"Question","name":"AIモデレーターに向かない調査はどれですか？","acceptedAnswer":{"@type":"Answer","text":"表情・沈黙・手元の操作など発話の外にある情報が主役の調査、信頼関係の構築から始める必要がある繊細なテーマ、専門家相手に設計を離れて脱線しながら掘るエキスパートインタビューです。これらは人間モデレーターの領分として残ります。対象人数がごく少なく、一人の語りの重みが大きい調査も同様です。"}},
-    {"@type":"Question","name":"ハイブリッドはどこから始めればよいですか？","acceptedAnswer":{"@type":"Answer","text":"ファネル型が起点です。まずAIモデレーターで数十人に広く聞いて論点を絞り、重要な論点を語った数名にだけ人間が深く聞く。この設計なら、人の稼働を最小にしたまま広さと深さの両方を確保できます。既存のインタビュー体制を変えずに、前段のAI実査だけを足すところから始められるのが利点です。"}}
-  ]
-}
-</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "AIモデレーターは人間モデレーターを置き換えますか？", "acceptedAnswer": {"@type": "Answer", "text": "置き換えません。分担して使うのが実務の答えです。AIは同時並行の実査と一貫した深掘りに強みがあります。人は非言語情報の観察、関係構築、その場の仮説の組み替えに強みがあります。得意な局面が重なりません。世界最大級の調査会社イプソスも、公式記事でAIを共同モデレーターとするハイブリッドモデルを提唱しています。"}}, {"@type": "Question", "name": "回答者はAIモデレーター相手に本音を話しますか？", "acceptedAnswer": {"@type": "Answer", "text": "話しやすくなる場面があります。人に評価される心配が薄れるため、対人では言いにくいことを率直に話しやすくなるという研究報告があります。金銭や不満のような話題では、機械相手が有利に働くことがあります。共感の乏しさが語りを浅くする場面もあるため、テーマごとの向き不向きの見極めが前提です。詳しくは研究ノート「人はAIに本音を話すのか」で整理しています。"}}, {"@type": "Question", "name": "AIモデレーターに向かない調査はどれですか？", "acceptedAnswer": {"@type": "Answer", "text": "表情・沈黙・手元の操作など、発話の外の情報が主役の調査です。信頼関係の構築から始める繊細なテーマも向きません。専門家を相手に、設計を離れて脱線しながら掘るエキスパートインタビューも同様です。これらは人間モデレーターの領分として残ります。対象人数がごく少なく、一人の語りの重みが大きい調査も当てはまります。"}}, {"@type": "Question", "name": "ハイブリッドはどこから始めればよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "ファネル型が起点です。まずAIモデレーターで数十人に広く聞いて、論点を絞ります。重要な論点を語った数名にだけ、人が深く聞きます。人の稼働を最小にしたまま、広さと深さの両方を確保できます。既存のインタビュー体制を変えずに、前段のAI実査だけを足せる点が利点です。"}}]}</script>
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -86,7 +76,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIインタビュー・ラボ</a><span class="sep">/</span>AIモデレーターとは</nav>
   <div class="kicker">基礎・費用・ツール選び</div>
   <h1>AIモデレーターとは｜人間モデレーターとの違いと使い分け</h1>
-  <p class="dek">定性調査の質を握ってきたのは、質問を投げ、答えを聞き、掘るべきところを見極める「モデレーター」だった。その進行役をAIが担う選択肢が実用段階に入り、問いは「AIか人か」から「どこをAIに、どこを人に任せるか」に変わっている。人間モデレーターとの正面比較、使い分けの判断軸、ハイブリッド設計の3パターンを、2026年の実務目線で整理する。</p>
+  <p class="dek">AIモデレーターと人の使い分けは、調査目的・対象者・深掘りの深さの3軸で決まります。<br>定性調査で、誰にインタビューの進行を任せるか決めきれないリサーチ・マーケティング担当の方に向けた記事です。<br>AIにできること・できないこと、人との比較表、使い分けの手順、ハイブリッド設計3パターンが分かります。</p>
   <div class="kn-voices" aria-hidden="true">
     <span class="kn-fc" style="--sayo:0.0s"><span class="av"><img src="avatars/m30-2.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">AIが聞けるの？</span></span>
     <span class="kn-fc" style="--sayo:6.3s"><span class="av"><img src="avatars/f40-6.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">深掘りは無理では</span></span>
@@ -96,7 +86,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
   </div>
   <div class="kn-voices-cap">調査の現場でよく聞く声<span class="note">※ 実際のご相談で挙がる論点をもとにした例です</span></div>
   <div class="a-meta">
-    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.26</span><span class="dot">·</span><span>最終更新 2026.07.26</span><span class="dot">·</span><span>読了 9分</span>
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.26</span><span class="dot">·</span><span>最終更新 2026.10.02</span><span class="dot">·</span><span>読了 9分</span>
   </div>
 </header>
 
@@ -104,39 +94,32 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
 <div class="art-layout">
   <nav class="art-toc" aria-label="目次">
-    <div class="art-toc-inner">
-      <div class="toc-h">目次</div>
+    <div class="art-toc-inner"><div class="toc-h">目次</div>
       <a href="#s1">AIモデレーターとは</a>
-      <a href="#s2">できること・できないこと</a>
-      <a href="#s3">人間モデレーターとの比較</a>
-      <a href="#s4">使い分けマトリクス</a>
-      <a href="#s5">ハイブリッド設計3パターン</a>
+      <a href="#s2">自社の実例：CoeSignal</a>
+      <a href="#s3">手順：使い分けと設計</a>
+      <a href="#s4">うまくいかない調査</a>
+      <a href="#s5">人との比較表</a>
       <a href="#faq">よくある質問</a>
+      <a href="#s6">次の一歩</a>
     </div>
   </nav>
 
   <article class="art-body">
-    <div class="lede">
-      <div class="lede-h">この記事の要点</div>
-      <ul>
-        <li>AIモデレーターとは、<strong>インタビューの進行と深掘りをAIが担う仕組み</strong>。台本の読み上げや分岐フォームではなく、回答の内容を受けて次の質問が変わる点が本質。</li>
-        <li>人間モデレーターとの関係は優劣ではなく<strong>分担</strong>。AIは同時並行・24時間・一貫した深掘りに、人は非言語の観察・関係構築・その場の仮説の組み替えに強い。イプソスも公式にAIを「共同モデレーター（co-moderator）」とするハイブリッドを提唱している。</li>
-        <li>使い分けは<strong>調査目的×対象者×深掘りの深さ</strong>の3軸で決まる。基本形は「AIで広く聞いて論点を絞り、人で深く掘る」ファネル型で、本記事では3つのハイブリッド設計パターンを提示する。</li>
-      </ul>
-    </div>
+<aside class="mid-cta"><div class="mc-body"><div class="mc-k">CompanyMap AI</div><div class="mc-t">AIの聞き取りで、部署の業務フローを業務図にする</div><div class="mc-d">部署ごとの仕事の流れをAIが聞き取り、詰まっている所やAIに任せられる所を1枚の業務図にします。</div></div><a href="../../companymap?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=ai-moderator&amp;utm_content=mid" class="btn" data-cta="ai-moderator-mid">CompanyMap AIを見る <i>&rarr;</i></a></aside>
 
-    <aside class="mid-cta"><div class="mc-body"><div class="mc-k">CompanyMap AI</div><div class="mc-t">AIの聞き取りで、会社全体の業務図をつくる</div><div class="mc-d">部署ごとの仕事の流れをAIが聞き取り、詰まっている所やAIに任せられる所を1枚の業務図にします。</div></div><a href="../../companymap?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=ai-moderator&amp;utm_content=mid" class="btn" data-cta="ai-moderator-mid">CompanyMap AIを見る <i>&rarr;</i></a></aside>
-    <p>インタビュー調査の見積もりで最初に決まらないのは、質問でも人数でもなく「誰がモデレートするか」ではないでしょうか。社内に熟練者はいない、外部モデレーターは日程が合わない、それでも実査は来月まで——この制約の中で「AIモデレーター」という言葉に行き着いた方に向けて、この記事では、AIモデレーターに何ができて何ができないのか、人間モデレーターとどう違うのか、そしてどう使い分け・組み合わせるのかを、判断に使える表とパターンに落として解説します。</p>
+    <p>インタビュー調査の見積もりで最初に決まらないのは、質問でも人数でもなく「誰がモデレートするか」ではないでしょうか。社内に熟練者はいません。外部モデレーターは日程が合いません。それでも実査は来月までです。この制約の中でAIモデレーターに行き着いた方に向けて、判断に使える表とパターンを示します。</p>
 
-    <h2 id="s1">AIモデレーターとは何か？</h2>
-    <p class="answer">インタビューの進行と深掘りをAIが担う仕組み。台本の読み上げではなく、回答の内容に応じて聞き返す。</p>
-    <aside class="kn-side">
-      <img src="avatars/f50-6.svg" alt="" loading="lazy" width="36" height="36">
-      <div><div class="r">商品企画の視点</div><p>モデレーターの腕で結果が変わる、というのは経験的にそのとおりだった。</p></div>
-    </aside>
-    <p>モデレーターとは、定性調査におけるインタビューの進行役です。仕事は司会進行だけではありません。<strong>質問を投げ、答えを聞き、どこを掘るべきかを判断して聞き返し、限られた時間で論点を回収する</strong>——深掘りの質を決める中核の役割です。</p>
-    <p>AIモデレーターとは、この進行役をAIが担う仕組みを指します。回答者の答えを理解したうえで、「それはどんな場面でしたか」「なぜそう感じたのですか」と、答えの内容に応じた聞き返しをその場で行います。</p>
-    <p>従来からあった「分岐付きアンケート」や「台本型チャットボット」との違いはここにあります。分岐フォームは、作り手が事前に用意した選択肢と分岐しかたどれません。AIモデレーターは、<strong>事前に想定していなかった答えに対しても、その言葉を拾って掘り下げられる</strong>。この差が、集まる語りの解像度の差になります。</p>
+    <h2 id="s1">AIモデレーターとは何で、人とはどう使い分けますか？</h2>
+    <p class="answer">AIモデレーターは進行と深掘りをAIが担う仕組みで、人とは3つの軸で分担して使います。</p>
+    <p>モデレーターは、定性調査でインタビューを進める役です。質問を投げ、答えを聞き、掘るべき所を判断して聞き返し、限られた時間で論点を回収します。深掘りの質を決める中核の役割です。</p>
+    <p>AIモデレーターは、この進行役をAIが担う仕組みです。回答を理解したうえで、「それはどんな場面でしたか」「なぜそう感じたのですか」と、内容に応じてその場で聞き返します。要点は3つです。</p>
+    <ul>
+      <li><strong>本質は、回答に反応して掘ることです。</strong>台本の読み上げや分岐フォームとは違います。</li>
+      <li><strong>人との関係は分担です。</strong>AIは同時並行・24時間・一貫した深掘りに、人は非言語の観察・関係構築・その場の仮説の組み替えに強みがあります。</li>
+      <li><strong>使い分けは3軸で決まります。</strong>調査目的、対象者、深掘りの深さです。</li>
+    </ul>
+    <p>分岐フォームは、作り手が用意した選択肢と分岐しかたどれません。AIモデレーターは、想定していなかった答えでも、その言葉を拾って掘り下げられます。この差が、集まる語りの解像度の差になります。</p>
     <div class="ba-grid">
       <div class="ba-card before">
         <span class="ba-tag">台本型チャットボット — 分岐をたどる（※サンプル）</span>
@@ -148,42 +131,91 @@ fbq('init','1264057945446029');fbq('track','PageView');
       </div>
     </div>
     <p class="fig-cap">図：分岐フォームとAIモデレーターの違い（※やり取りは説明用のサンプル）。</p>
-    <p>実装の形は大きく2つあります。一つは<strong>非同期型</strong>——回答者がURLを開き、都合のよい時間に声やテキストで答え、AIが一問ずつ聞き返す形式。もう一つは<strong>リアルタイム対話型</strong>——音声通話のようにその場で対話する形式です。現在の実務では、日程調整が不要で回答者が自分のペースで話せる非同期型が主流の一つになっています。AIモデレーターを使う調査手法の全体像はAIインタビューとはで基礎から解説しています。</p>
-    <div class="callout"><p>AIモデレーターの本質は「自動で聞くこと」ではなく「回答に反応して掘ること」。反応しない自動質問は、形式がチャットでも中身はアンケートと同じになる。</p></div>
+    <p>実装の形は2つあります。非同期型は、回答者がURLを開き、都合のよい時間に声やテキストで答える形式です。AIが一問ずつ聞き返します。リアルタイム対話型は、音声通話のようにその場で対話する形式です。日程調整が不要で、回答者が自分のペースで話せる非同期型が、現在の実務で主流の一つです。</p>
+    <h3>AIモデレーターにできること</h3>
+    <ul>
+      <li><strong>同時並行・24時間の実査。</strong>人は1対1で逐次にしか聞けません。AIは複数の回答者と同時に対話できます。非同期なら、日程調整そのものが消えます。</li>
+      <li><strong>一貫した品質の深掘り。</strong>設計した深掘りポイントを、1人目にも100人目にも同じ基準で適用します。疲労による質のばらつきや、モデレーター間の技量差が起きません。</li>
+      <li><strong>誘導の抑制。</strong>「やっぱり価格ですよね？」と仮説への同意を求める聞き方は、人が無意識にやりがちなミスです。AIは設計どおりに中立な聞き方を守ります。</li>
+      <li><strong>記録の自動化。</strong>回答は音声とテキストの両方で残り、録音からの書き起こし工程が実質不要になります。</li>
+    </ul>
+    <div class="callout"><p>AIモデレーターの本質は、回答に反応して掘ることです。反応しない自動質問は、形式がチャットでも中身はアンケートと同じになります。</p></div>
 
-    <h2 id="s2">AIモデレーターは何ができて、何ができないのか？</h2>
-    <p class="answer">同時並行・24時間の実査と一貫した深掘りが得意。非言語の観察と関係構築、大胆な脱線はできない。</p>
-    <aside class="kn-side">
-      <img src="avatars/m20-0.svg" alt="" loading="lazy" width="36" height="36">
-      <div><div class="r">若手の視点</div><p>できないことを先に知っておくほうが、社内の期待値を揃えやすい。</p></div>
-    </aside>
-    <p>導入判断を誤らないために、できることとできないことを先に線引きします。まず、できることは4つです。</p>
-    <ol>
-      <li><strong>同時並行・24時間の実査。</strong>人間のモデレーターは1対1で逐次にしか聞けませんが、AIモデレーターは複数の回答者と同時に対話できます。回答者の都合に合わせた非同期実施なら、日程調整そのものが消えます。</li>
-      <li><strong>一貫した品質の深掘り。</strong>設計した深掘りポイントを、1人目にも100人目にも同じ基準で適用します。人間につきものの、疲労による質のばらつきや、モデレーター間の技量差が発生しません。</li>
-      <li><strong>誘導の抑制。</strong>「やっぱり価格ですよね？」と仮説への同意を求めてしまう聞き方は、人間が無意識にやりがちなミスです。AIモデレーターは設計どおりに中立な聞き方を守ります（逆に言えば、設計に誘導が入っていれば忠実に再現するため、質問ガイドの設計品質がそのまま調査品質になります）。</li>
-      <li><strong>記録の自動化。</strong>回答は音声とテキストの両方でそのまま残り、録音からの書き起こし工程が実質不要になります。</li>
-    </ol>
-    <p>一方、できないことも同じ解像度で押さえておくべきです。</p>
-    <ol>
-      <li><strong>非言語情報の観察。</strong>表情の曇り、沈黙の長さ、視線、手元の操作——発話の外にある情報を読み取り、その場で解釈することはできません。</li>
-      <li><strong>関係構築（ラポール）からの聞き取り。</strong>病気・家族・金銭トラブルのような繊細なテーマで、信頼関係を築いてから核心に入る進行は、人間の熟練モデレーターの領分です。</li>
-      <li><strong>設計を離れた大胆な脱線。</strong>回答の一言から「この調査の前提が違うのでは」と気づき、その場でインタビューの焦点そのものを組み替える判断は、AIには任せられません。AIの深掘りは、あくまで設計された範囲の中で機能します。</li>
-      <li><strong>グループの場の運営。</strong>複数人の発言を捌き、対立を引き出し、声の大きい参加者を制御するグループインタビューの進行は、現時点では人間の仕事です。</li>
-    </ol>
-    <div class="quote-box"><p>AIモデレーターが置き換えるのは「実査のオペレーション」であって、「何を聞くべきかの判断」ではない。設計と解釈は、むしろ人の中核業務として残る。</p></div>
+    <h2 id="s2">自社の実例：CoeSignalでは、AIモデレーターの実査をどう進めますか？</h2>
+    <p class="answer">URLを配って声かテキストで答えてもらいます。日程調整は不要で、1回10〜20分で実施します。</p>
+    <p><a href="https://coesignal.techworker.co.jp/">CoeSignal（株式会社TechWorkerが提供するAIインタビュープラットフォーム）</a>は、AIモデレーターによる実査をURL配布で行います。ファネル型の前段として使える形です。</p>
+    <ul>
+      <li><strong>回答方法：</strong>声とテキストのどちらでも答えられます。日程調整は不要で、スマートフォンからも回答できます。</li>
+      <li><strong>所要時間：</strong>1回10〜20分です。</li>
+      <li><strong>聞き方：</strong>3つのモードから、調査目的に合わせて選べます。自然な会話モードは、相槌と追い質問を挟みます。じっくり回答モードは、考える間を回答者が自分で取れます。操作しながら回答モードは、PC画面を共有しながら答えます。</li>
+      <li><strong>成果物：</strong>結論と反対意見をまとめた報告書、回答全文の共有画面、報告会（60分）です。後段で人が深掘りする対象を選ぶ材料が、そのまま揃います。</li>
+      <li><strong>対象者：</strong>自社の顧客リストへの配布のほか、あてがない場合は、提携する調査ネットワークから条件に合う回答者を募集できます。</li>
+    </ul>
+    <p>料金は、対象範囲・人数・条件・成果物により個別見積りです。<a href="https://coesignal.techworker.co.jp/">30分の無料相談</a>で概算を確認できます。</p>
 
-    
-    <aside class="kn-take">
-      <img class="kn-take-av" src="avatars/f30-0.svg" alt="" loading="lazy" width="56" height="56">
-      <div class="kn-take-body">
-        <div class="kn-take-role">リサーチ担当の視点</div>
-        <p>人間と正面比較すると、勝ち負けではなく<em>役割が違う</em>と分かる。</p>
+    <h2 id="s3">AIモデレーターを使う調査は、どんな手順で組みますか？</h2>
+    <p class="answer">3つの問いで型を決め、場面ごとの推奨を確認し、ハイブリッドを設計して、質問ガイドに時間を回します。</p>
+    <h3>手順1：3つの問いで、AI・人・ハイブリッドを決める</h3>
+    <ol>
+      <li><strong>対象者は10人を超えるか。</strong>超えるなら、人の逐次実査は日程・稼働・費用のどれかが破綻しやすくなります。AIの同時並行が効く領域です。人数の考え方は<a href="how-many-interviews.html">インタビューは何人にすべきか</a>で扱っています。</li>
+      <li><strong>発話の外の情報が本質か。</strong>表情・沈黙・手元の操作が主役なら人です。語られる言葉が主役なら、AIで足ります。</li>
+      <li><strong>設計の外に出る判断が必要か。</strong>聞くべきことを事前に設計できるならAIです。インタビュー中に調査の焦点自体を動かす可能性が高いなら、人です。</li>
+    </ol>
+    <h3>手順2：場面ごとの推奨を確認する</h3>
+    <ul>
+      <li>「なぜ」の仮説を広く集める探索（顧客・想定顧客の数十人）は、AIモデレーターです。</li>
+      <li>コンセプト・訴求の反応と理由の収集（想定顧客の数十人）は、AIモデレーターです。</li>
+      <li>解約理由やVoC（顧客の声）の継続的な収集（解約者・既存顧客の多数）は、AIモデレーターです。</li>
+      <li>繊細なテーマの当事者インタビュー（当事者の少数）は、人間モデレーターです。</li>
+      <li>エキスパート・キーパーソンへの取材（専門家の数名）は、人間モデレーターです。</li>
+      <li>操作観察を伴うユーザビリティテスト（ユーザーの少数）は、人間モデレーターです。発話より行動の観察が主役になります。</li>
+      <li>広く聞いてから重要な相手に深く聞く調査は、ハイブリッドです。</li>
+    </ul>
+    <h3>手順3：ハイブリッドの型を選ぶ</h3>
+    <p>実務の最適解は、多くの場合、組み合わせです。世界最大級の調査会社イプソスは、2025年12月の公式記事（Mind or Machines: Exploring AI moderation and when to use it）で、ハイブリッドモデルを提唱しました。考え方は「人と機械（mind and machines）」で、AIを共同モデレーター（co-moderator）に位置づけます。</p>
+    <p>2026年4月に、定性調査部門Ipsos UUが新モデル（Human-Led, AI-Accelerated）を発表しました。専門リサーチャーを中心に据えたAI搭載モデレーションを、柱の一つに位置づけています（2026年7月時点・イプソス公式サイトより）。</p>
+    <p>組み合わせ方は、次の3パターンに集約されます。</p>
+    <ul>
+      <li><strong>ファネル型（AI→人）：</strong>AIで数十人に広く聞いて論点を絞り、重要な論点を語った数名に人が深く聞きます。探索から始まる調査全般に向く、最も汎用的な基本形です。</li>
+      <li><strong>検証型（人→AI）：</strong>人の少数デプスで仮説を立て、AIで広い人数に当てて広がりを確かめます。熟練モデレーターの知見が既にあり、規模の裏づけが欲しい場面に向きます。</li>
+      <li><strong>並走型（AI×人の分担）：</strong>同一調査内で、繊細な対象者やキーパーソンは人が、それ以外はAIが担当します。対象者の属性が混在する、B2Bの顧客調査などに向きます。</li>
+    </ul>
+    <p>最初の一手には、ファネル型を勧めます。動き方は次のとおりです。</p>
+    <div class="ui-mock">
+      <div class="um-bar"><span class="um-dot"></span><span class="um-dot"></span><span class="um-dot"></span><span class="um-name">ファネル型ハイブリッドの設計例（※イメージ）</span></div>
+      <div class="um-row">
+        <div class="um-label ai">STEP 1 — AIで広く聞く</div>
+        <div class="um-text">解約者30人にAIモデレーターのURLを配布。全員に同じ設計で「解約を決めた場面」を深掘りし、1週間で語りを回収する。</div>
       </div>
-    </aside>
-<h2 id="s3">人間モデレーターと何が違うのか？正面から比較する</h2>
-    <p class="answer">優劣ではなく構造の違い。人は文脈適応と観察に、AIは一貫性と規模に強く、得意な局面が異なる。</p>
-    <p>「AIモデレーターは人間より上か下か」という問いの立て方は、実務では役に立ちません。両者は強みの構造が違うからです。観点ごとに正面から比較します。</p>
+      <div class="um-row">
+        <div class="um-label">STEP 2 — 論点を絞る</div>
+        <div class="um-text">横断分析で論点を抽出。「更新月の通知をきっかけに利用実態を見直した」という語りが多数を占めると分かる。</div>
+      </div>
+      <div class="um-row">
+        <div class="um-label">STEP 3 — 人で深く掘る</div>
+        <div class="um-text">その論点を最も具体的に語った3名にだけ、人間モデレーターが60分の対面・オンラインインタビューを実施し、施策の当否を詰める。</div>
+      </div>
+    </div>
+    <p class="fig-cap">図：ファネル型ハイブリッドの流れ（※内容は説明用のイメージ）。人の稼働は最重要の3名分に集中する。</p>
+    <p>この設計は、人間モデレーターの価値を下げません。AIが前段で論点を絞るので、人の60分は核心を詰める時間になります。稼働は減り、1回あたりの密度は上がります。集めた語りを論点に落とす実務は、<a href="interview-analysis.html">インタビュー分析をAIで行う</a>で扱っています。</p>
+    <h3>手順4：質問ガイドの設計に時間を移す</h3>
+    <p>3問すべてがAI寄りでも、設計の作法は人間モデレーター時代と変わりません。質問ガイドの組み方、誘導の排除、パイロットでの磨き込みが必要です。AIモデレーターの質は設計で決まります。浮いた実査時間は、深掘りポイントの指定とパイロットに投資してください。</p>
+
+    <h2 id="s4">AIモデレーターで、うまくいかない調査にはどんなものがありますか？</h2>
+    <p class="answer">非言語の観察、関係構築、設計外の脱線、グループ運営が主役の調査は、人間モデレーターに残ります。</p>
+    <p>導入判断を誤らないために、できないことを先に押さえます。次の4つは、AIモデレーターに向きません。</p>
+    <ul>
+      <li><strong>非言語情報の観察。</strong>表情の曇り、沈黙の長さ、視線、手元の操作を、その場で読み取って解釈することはできません。</li>
+      <li><strong>関係構築（ラポール）からの聞き取り。</strong>病気・家族・金銭トラブルのような繊細なテーマが当てはまります。信頼関係を築いてから核心に入る進行は、熟練した人間モデレーターの領分です。</li>
+      <li><strong>設計を離れた大胆な脱線。</strong>回答の一言から「調査の前提が違うのでは」と気づき、その場で焦点を組み替える判断は、AIに任せられません。AIの深掘りは、設計された範囲の中で働きます。</li>
+      <li><strong>グループの場の運営。</strong>複数人の発言をさばき、対立を引き出し、声の大きい参加者を制御するグループインタビューは、現時点では人の仕事です。</li>
+    </ul>
+    <p>設計にも落とし穴があります。AIモデレーターは、設計どおりに中立な聞き方を守ります。逆に、設計に誘導が入っていれば、忠実に再現します。質問ガイドの設計品質が、そのまま調査品質になります。</p>
+    <div class="quote-box"><p>AIモデレーターが置き換えるのは、「実査のオペレーション」です。「何を聞くべきかの判断」は置き換えません。設計と解釈は、人の中核業務として残ります。</p></div>
+
+    <h2 id="s5">人間モデレーターとAIモデレーターは、何がどう違いますか？</h2>
+    <p class="answer">人は文脈への適応と観察に、AIは一貫性と規模にそれぞれ強く、得意な局面が重なりません。</p>
+    <p>「AIは人より上か下か」という問いは、実務では役に立ちません。両者は強みの構造が違うからです。観点ごとに比べます。</p>
     <div class="tbl-wrap">
       <table>
         <tr><th>観点</th><th>人間モデレーター</th><th>AIモデレーター</th></tr>
@@ -198,91 +230,27 @@ fbq('init','1264057945446029');fbq('track','PageView');
         <tr><td>コスト構造</td><td>稼働が人数・時間に比例</td><td>人数が増えても人の稼働が比例しない</td></tr>
       </table>
     </div>
-    <p>表の8行目は補足が要ります。人に評価される心配が薄れることで、対人では言いにくいことを機械相手には率直に話しやすくなる——という研究報告は複数あります。ただし万能ではなく、共感の乏しさが語りを浅くする場面も報告されています。この論点は<a href="honesty-with-ai.html">人はAIに本音を話すのか</a>で研究の実像と限界まで掘り下げているので、繊細なテーマを扱う方はあわせて読んでください。</p>
-    <p>もう一つ見落とされがちなのが「深掘りの質の源泉」の行です。人間モデレーターの質は<strong>その人の技量</strong>に宿り、採用や育成でしか上げられません。AIモデレーターの質は<strong>質問ガイドと深掘り設計</strong>に宿り、設計を磨けば全員分の実査が同時に良くなります。質の改善レバーが「人」から「設計」に移ることが、運用上の最も大きな構造変化です。</p>
-    <div class="callout"><p>採用市場で熟練モデレーターを探すことはできても、その技量を複製することはできない。設計は複製できる。ここがAIモデレーター導入の本質的なリターンになる。</p></div>
-
-    <h2 id="s4">どう使い分けるか？調査目的×対象者×深さのマトリクス</h2>
-    <p class="answer">調査目的・対象者・深掘りの深さの3軸で決める。広く理由を集めるならAI、少数と深く向き合うなら人。</p>
-    <aside class="kn-side">
-      <img src="avatars/f40-2.svg" alt="" loading="lazy" width="36" height="36">
-      <div><div class="r">CS担当の視点</div><p>テーマがデリケートなときは人が会う。<em>そこは譲らない</em>という線引きが要る。</p></div>
-    </aside>
-    <p>使い分けの判断軸は3つ——<strong>調査目的</strong>（探索か検証か観察か）、<strong>対象者</strong>（人数と属性）、<strong>深掘りの深さ</strong>（設計の範囲で足りるか、その場の組み替えまで要るか）です。典型的な場面をマトリクスに落とします。</p>
-    <div class="tbl-wrap">
-      <table>
-        <tr><th>調査の場面</th><th>対象者</th><th>求める深掘り</th><th>推奨</th></tr>
-        <tr><td>「なぜ」の仮説を広く集める探索</td><td>顧客・想定顧客 数十人</td><td>設計した観点に沿った深掘り</td><td><strong>AIモデレーター</strong></td></tr>
-        <tr><td>コンセプト・訴求の反応と理由の収集</td><td>想定顧客 数十人</td><td>引っかかりの理由の具体化</td><td><strong>AIモデレーター</strong></td></tr>
-        <tr><td>解約理由・VoCの継続的な収集</td><td>解約者・既存顧客 多数</td><td>文脈と経緯の聞き取り</td><td><strong>AIモデレーター</strong></td></tr>
-        <tr><td>繊細なテーマの当事者インタビュー</td><td>当事者 少数</td><td>関係構築からの深い聞き取り</td><td><strong>人間モデレーター</strong></td></tr>
-        <tr><td>エキスパート・キーパーソンへの取材</td><td>専門家 数名</td><td>その場の脱線・仮説の組み替え</td><td><strong>人間モデレーター</strong></td></tr>
-        <tr><td>操作観察を伴うユーザビリティテスト</td><td>ユーザー 少数</td><td>発話より行動の観察が主役</td><td><strong>人間モデレーター</strong></td></tr>
-        <tr><td>広く聞いてから重要な相手に深く聞く</td><td>多数→少数</td><td>広さと深さの両方</td><td><strong>ハイブリッド</strong>（次章）</td></tr>
-      </table>
-    </div>
-    <p>迷ったときは、次の3つの問いで判定できます。</p>
-    <ol>
-      <li><strong>対象者は10人を超えるか。</strong>超えるなら、人間モデレーターの逐次実査は日程・稼働・費用のどれかが破綻しやすい。AIモデレーターの同時並行が効く領域です。人数の考え方そのものは<a href="how-many-interviews.html">インタビューは何人にすべきか</a>で扱っています。</li>
-      <li><strong>発話の外の情報が本質か。</strong>表情・沈黙・手元の操作が主役なら人間。語られる言葉が主役ならAIで足ります。</li>
-      <li><strong>設計の外に出る判断が必要か。</strong>聞くべきことが事前に設計できるならAI。インタビュー中に調査の焦点自体を動かす可能性が高いなら人間です。</li>
-    </ol>
-    <p>3問すべてが「AI寄り」でも、1対1で深く掘る調査設計の作法——質問ガイドの組み方、誘導の排除、パイロットでの磨き込み——は人間モデレーター時代と変わらず必要です。設計の実務はデプスインタビューをAIで行うで手順化しています。</p>
-
-    
-    <aside class="kn-take">
-      <img class="kn-take-av" src="avatars/m40-0.svg" alt="" loading="lazy" width="56" height="56">
-      <div class="kn-take-body">
-        <div class="kn-take-role">マーケの視点</div>
-        <p>AIで広く聞いて論点を絞り、重要な相手にだけ人が会う。この順番なら現実的。</p>
-      </div>
-    </aside>
-<h2 id="s5">ハイブリッド設計はどう組むか？3つのパターン</h2>
-    <p class="answer">基本形は「AIで広く聞き、人で深く掘る」。ファネル型・検証型・並走型の3パターンで設計する。</p>
-    <p>実務の最適解は、多くの場合「AIか人か」の二択ではなく組み合わせです。併用は当社だけの主張ではありません。世界最大級の調査会社イプソスは、公式記事「Mind or Machines: Exploring AI moderation and when to use it」（2025年12月）で、「人か機械か（mind or machines）ではなく、人と機械（mind and machines）」として、<strong>AIを共同モデレーター（co-moderator）とするハイブリッドモデル</strong>を提唱しました。さらに2026年4月には、定性調査部門Ipsos UUの「Human-Led, AI-Accelerated」モデルを発表し、専門リサーチャーを中心に据えたAI搭載モデレーションを柱の一つに位置づけています（2026年7月時点・イプソス公式サイトより）。</p>
-    <p>組み合わせ方は、実務では次の3パターンに集約されます。</p>
-    <div class="tbl-wrap">
-      <table>
-        <tr><th>パターン</th><th>流れ</th><th>向く場面</th></tr>
-        <tr><td><strong>1. ファネル型</strong><br>（AI→人）</td><td>AIで数十人に広く聞いて論点を絞り、重要な論点を語った数名に人が深く聞く</td><td>探索から始まる調査全般。最も汎用的な基本形</td></tr>
-        <tr><td><strong>2. 検証型</strong><br>（人→AI）</td><td>人の少数デプスで仮説を立て、AIで広い人数に当てて仮説の広がりを確かめる</td><td>熟練モデレーターの知見が既にあり、規模の裏づけが欲しい場面</td></tr>
-        <tr><td><strong>3. 並走型</strong><br>（AI×人の分担）</td><td>同一調査内で、繊細な対象者・キーパーソンは人が、それ以外はAIが担当する</td><td>対象者の属性が混在する調査。B2Bの顧客調査など</td></tr>
-      </table>
-    </div>
-    <p>最初の一手として推奨するのは<strong>ファネル型</strong>です。動き方を具体化すると、次のようになります。</p>
-    <div class="ui-mock">
-      <div class="um-bar"><span class="um-dot"></span><span class="um-dot"></span><span class="um-dot"></span><span class="um-name">ファネル型ハイブリッドの設計例（※イメージ）</span></div>
-      <div class="um-row">
-        <div class="um-label ai">STEP 1 — AIで広く聞く</div>
-        <div class="um-text">解約者30人にAIモデレーターのURLを配布。全員に同じ設計で「解約を決めた場面」を深掘りし、1週間で語りを回収する。</div>
-      </div>
-      <div class="um-row">
-        <div class="um-label">STEP 2 — 論点を絞る</div>
-        <div class="um-text">横断分析で論点を抽出。「価格」ではなく「更新月の通知をきっかけに利用実態を見直した」という語りが多数を占めると分かる。</div>
-      </div>
-      <div class="um-row">
-        <div class="um-label">STEP 3 — 人で深く掘る</div>
-        <div class="um-text">その論点を最も具体的に語った3名にだけ、人間モデレーターが60分の対面・オンラインインタビューを実施し、施策の当否を詰める。</div>
-      </div>
-    </div>
-    <p class="fig-cap">図：ファネル型ハイブリッドの流れ（※内容は説明用のイメージ）。人の稼働は最重要の3名分だけに集中する。</p>
-    <p>この設計の利点は、人間モデレーターの価値を下げないことです。むしろ、AIが前段で論点を絞ってくれるため、<strong>人の60分は「何を聞くべきか探る時間」ではなく「核心を詰める時間」になる</strong>。稼働は減り、1回あたりの密度は上がります。AIパートで集めた語りを論点に落とす分析の実務は<a href="interview-analysis.html">インタビュー分析をAIで行う</a>で扱っています。</p>
-    <h3>CoeSignalでファネル型の前段を組む場合</h3>
-    <p>具体例として、TechWorkerのAIインタビュープラットフォーム<a href="https://coesignal.techworker.co.jp/">CoeSignal</a>では、AIモデレーターによる実査をURL配布で行います。回答は声・テキストのどちらでも可能で、日程調整は不要、1回10〜20分、スマートフォンからも回答できます。聞き方は、相槌と追い質問を挟む<strong>自然な会話モード</strong>、考える間を回答者が自分で取れる<strong>じっくり回答モード</strong>、PC画面を共有しながら答える<strong>操作しながら回答モード</strong>の3つから、調査目的に合わせて選べます。</p>
-    <p>成果物は結論と反対意見をまとめた報告書・回答全文の共有画面・報告会（60分）で、後段の人による深掘り対象を選ぶ材料がそのまま揃います。自社の顧客リストへの配布のほか、対象者のあてがない場合は提携する調査ネットワークから条件に合う回答者を募集することもできます。料金は対象範囲・人数・条件・成果物により個別見積りのため、<a href="https://coesignal.techworker.co.jp/">30分の無料相談</a>で概算を確認してください。</p>
-    <h3>まず何をすべきか</h3>
-    <p>この記事を閉じたあとの最初の一歩は、次の3つです。</p>
-    <ol>
-      <li><strong>手元の調査企画を3つの問いにかける。</strong>10人を超えるか、非言語が本質か、設計の外に出るか。これでAI・人・ハイブリッドのどれかが決まります。</li>
-      <li><strong>ファネル型で前段だけAI化してみる。</strong>既存のインタビュー体制は変えず、「広く聞く前段」をAIモデレーターに足す。人の稼働を増やさずに、聞ける人数が一桁増えます。</li>
-      <li><strong>質問ガイドの設計に時間を移す。</strong>AIモデレーターの質は設計で決まります。深掘りポイントの指定とパイロットでの磨き込みに、浮いた実査時間を投資してください。</li>
-    </ol>
+    <p>回答者側の心理の行には補足があります。人に評価される心配が薄れると、対人では言いにくいことを、機械相手には率直に話しやすくなります。この趣旨の研究報告は複数あります。共感の乏しさが語りを浅くする場面も報告されています。</p>
+    <p>研究の実像と限界は、<a href="honesty-with-ai.html">人はAIに本音を話すのか</a>で掘り下げています。繊細なテーマを扱う方は、あわせて読んでください。</p>
+    <p>深掘りの質の源泉の行も見落とせません。人の質は、その人の技量に宿ります。上げる手段は、採用と育成だけです。AIの質は、質問ガイドと深掘り設計に宿ります。設計を磨けば、全員分の実査が同時に良くなります。質の改善レバーが「人」から「設計」に移ることが、運用上の最も大きな構造変化です。</p>
+    <div class="callout"><p>熟練モデレーターを採用市場で探すことはできても、その技量を複製することはできません。設計は複製できます。ここがAIモデレーター導入の、本質的なリターンです。</p></div>
 
     <h2 id="faq">よくある質問</h2>
-    <div class="faq"><div class="q">AIモデレーターは人間モデレーターを置き換えますか？</div><p class="a">置き換えではなく分担が実務の答えです。AIは同時並行の実査と一貫した深掘りに、人は非言語情報の観察・関係構築・その場の仮説の組み替えに強く、得意な局面が重なりません。世界最大級の調査会社イプソスも公式記事でAIを「共同モデレーター（co-moderator）」と位置づけるハイブリッドモデルを提唱しており、大手の実務も併用を前提に動いています。</p></div>
-    <div class="faq"><div class="q">回答者はAIモデレーター相手に本音を話しますか？</div><p class="a">話しやすくなる場面があります。人に評価される心配が薄れる分、対人では言いにくいことを率直に話しやすくなるという研究報告があり、金銭や不満のような話題では機械相手が有利に働くことがあります。一方で、共感の乏しさが語りを浅くする場面もあるため、テーマごとの向き不向きの見極めが前提です。詳しくは本メディアの研究ノート「人はAIに本音を話すのか」で整理しています。</p></div>
-    <div class="faq"><div class="q">AIモデレーターに向かない調査はどれですか？</div><p class="a">表情・沈黙・手元の操作など発話の外にある情報が主役の調査、信頼関係の構築から始める必要がある繊細なテーマ、専門家相手に設計を離れて脱線しながら掘るエキスパートインタビューです。これらは人間モデレーターの領分として残ります。対象人数がごく少なく、一人の語りの重みが大きい調査も同様です。</p></div>
-    <div class="faq"><div class="q">ハイブリッドはどこから始めればよいですか？</div><p class="a">ファネル型が起点です。まずAIモデレーターで数十人に広く聞いて論点を絞り、重要な論点を語った数名にだけ人間が深く聞く。この設計なら、人の稼働を最小にしたまま広さと深さの両方を確保できます。既存のインタビュー体制を変えずに、前段のAI実査だけを足すところから始められるのが利点です。</p></div>
+<div class="faq"><div class="q">AIモデレーターは人間モデレーターを置き換えますか？</div><p class="a">置き換えません。分担して使うのが実務の答えです。AIは同時並行の実査と一貫した深掘りに強みがあります。人は非言語情報の観察、関係構築、その場の仮説の組み替えに強みがあります。得意な局面が重なりません。世界最大級の調査会社イプソスも、公式記事でAIを共同モデレーターとするハイブリッドモデルを提唱しています。</p></div>
+<div class="faq"><div class="q">回答者はAIモデレーター相手に本音を話しますか？</div><p class="a">話しやすくなる場面があります。人に評価される心配が薄れるため、対人では言いにくいことを率直に話しやすくなるという研究報告があります。金銭や不満のような話題では、機械相手が有利に働くことがあります。共感の乏しさが語りを浅くする場面もあるため、テーマごとの向き不向きの見極めが前提です。詳しくは研究ノート「人はAIに本音を話すのか」で整理しています。</p></div>
+<div class="faq"><div class="q">AIモデレーターに向かない調査はどれですか？</div><p class="a">表情・沈黙・手元の操作など、発話の外の情報が主役の調査です。信頼関係の構築から始める繊細なテーマも向きません。専門家を相手に、設計を離れて脱線しながら掘るエキスパートインタビューも同様です。これらは人間モデレーターの領分として残ります。対象人数がごく少なく、一人の語りの重みが大きい調査も当てはまります。</p></div>
+<div class="faq"><div class="q">ハイブリッドはどこから始めればよいですか？</div><p class="a">ファネル型が起点です。まずAIモデレーターで数十人に広く聞いて、論点を絞ります。重要な論点を語った数名にだけ、人が深く聞きます。人の稼働を最小にしたまま、広さと深さの両方を確保できます。既存のインタビュー体制を変えずに、前段のAI実査だけを足せる点が利点です。</p></div>
+
+
+    <h2 id="s6">次の一歩は何から始めればよいですか？</h2>
+    <p class="answer">手元の調査企画を3つの問いにかけ、ファネル型の前段だけAIに任せるところから始めます。</p>
+    <ol>
+      <li><strong>手元の調査企画を3つの問いにかけます。</strong>10人を超えるか、非言語が本質か、設計の外に出るかで、AI・人・ハイブリッドのどれかが決まります。</li>
+      <li><strong>ファネル型で、前段だけAI化します。</strong>既存のインタビュー体制は変えず、広く聞く前段をAIモデレーターに足します。人の稼働を増やさずに、聞ける人数が一桁増えます。</li>
+      <li><strong>質問ガイドの設計に時間を移します。</strong>深掘りポイントの指定とパイロットでの磨き込みに、浮いた実査時間を使います。</li>
+    </ol>
+    <p>CoeSignalの概算や進め方は、<a href="https://coesignal.techworker.co.jp/">30分の無料相談</a>で確認できます。</p>
+
   </article>
 </div>
 
@@ -294,7 +262,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
   </div>
 </div></div>
 
-<div class="art-cta"><div class="inner"><div><h3>聞き取りから、会社全体の業務図へ。</h3><p>CompanyMap AIは、部署ごとの仕事の流れをAIの聞き取りで洗い出し、1枚の業務図にします。詰まっている所、担当者しか分からない所、AIに任せられる所まで見えるようにします。</p></div><a href="../../companymap?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=ai-moderator&amp;utm_content=end" class="btn" data-cta="ai-moderator-end">CompanyMap AIを見る <i>→</i></a></div></div><p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="https://coesignal.techworker.co.jp/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(15,107,77,.3);">CoeSignal 公式サイト（AIインタビュープラットフォーム）</a>　／　<a href="../../companymap?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=ai-moderator&amp;utm_content=related" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(15,107,77,.3);">CompanyMap AI</a></p>
+<div class="art-cta"><div class="inner"><div><h3>聞き取りから、部署の業務図へ。</h3><p>CompanyMap AIは、部署ごとの仕事の流れをAIの聞き取りで洗い出し、1枚の業務図にします。詰まっている所、担当者しか分からない所、AIに任せられる所まで見えるようにします。</p></div><a href="../../companymap?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=ai-moderator&amp;utm_content=end" class="btn" data-cta="ai-moderator-end">CompanyMap AIを見る <i>→</i></a></div></div><p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="https://coesignal.techworker.co.jp/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(15,107,77,.3);">CoeSignal 公式サイト（AIインタビュープラットフォーム）</a>　／　<a href="../../companymap?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=ai-moderator&amp;utm_content=related" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(15,107,77,.3);">CompanyMap AI</a></p>
 <div class="back-list"><a href="index.html">← AIインタビュー・ラボ（記事一覧）に戻る</a></div>
 
 <section class="related"><div class="container">

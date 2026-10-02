@@ -14,12 +14,12 @@
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>インタビュー分析を生成AIで速くする｜発話データを判断材料に変える【2026】 — AIインタビュー・ラボ</title>
-<meta name="description" content="インタビューや自由回答の分析に生成AIを使うと、逐語録化・コーディング・横断比較といった重い工程が速くなり、人は問いの設定と解釈に集中できます。AI要約を鵜呑みにしないための設計、根拠に遡れるレポートの型まで、定性調査の分析を意思決定につなげる方法を実践的に解説します。">
+<meta name="description" content="インタビュー分析は、逐語録化から統合まで4つの手作業が重なるため重く、生成AIが下ごしらえを速くします。AI要約を鵜呑みにしない設計と、根拠に遡れるレポートの型まで、定性調査の分析を意思決定につなげる方法を解説します。">
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
 <link rel="canonical" href="https://techworker.co.jp/media/interview/interview-analysis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="インタビュー分析を生成AIで速くする｜発話データを判断材料に変える【2026】">
-<meta property="og:description" content="逐語録化・コーディング・横断比較を生成AIで速くし、人は問いと解釈に集中する。AI要約を鵜呑みにしない設計と、根拠に遡れるレポートの型まで実践的に解説します。">
+<meta property="og:description" content="インタビュー分析は4つの手作業が重なるため重く、生成AIが下ごしらえを速くします。AI要約を鵜呑みにしない設計と、根拠に遡れるレポートの型を解説します。">
 <meta property="og:image" content="https://techworker.co.jp/media/interview/covers/interview-analysis.png">
 <meta property="og:url" content="https://techworker.co.jp/media/interview/interview-analysis">
 <meta property="og:site_name" content="AIインタビュー・ラボ">
@@ -31,7 +31,7 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../article.css">
 <link rel="stylesheet" href="lab.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "インタビュー分析を生成AIで速くする｜発話データを判断材料に変える【2026】", "description": "インタビューや自由回答の分析に生成AIを使うと、逐語録化・コーディング・横断比較といった重い工程が速くなり、人は問いの設定と解釈に集中できる。AI要約を鵜呑みにしないための設計、根拠に遡れるレポートの型まで、定性調査の分析を意思決定につなげる方法を実践的に解説する。", "datePublished": "2026-07-14", "dateModified": "2026-07-14", "inLanguage": "ja", "image": "https://techworker.co.jp/media/interview/covers/interview-analysis.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/interview/interview-analysis"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "インタビュー分析を生成AIで速くする｜発話データを判断材料に変える【2026】", "description": "インタビュー分析は、逐語録化から統合まで4つの手作業が重なるため重く、生成AIが下ごしらえを速くします。AI要約を鵜呑みにしない設計と、根拠に遡れるレポートの型まで、定性調査の分析を意思決定につなげる方法を解説します。", "datePublished": "2026-07-14", "dateModified": "2026-10-02", "inLanguage": "ja", "image": "https://techworker.co.jp/media/interview/covers/interview-analysis.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/interview/interview-analysis"}}</script>
 <script type="application/ld+json">
 {
   "@context":"https://schema.org","@type":"BreadcrumbList",
@@ -43,17 +43,7 @@
   ]
 }
 </script>
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org","@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"文字起こしだけAIに任せるのと、分析までAIを使うのは何が違いますか？","acceptedAnswer":{"@type":"Answer","text":"文字起こしは発話をテキストにする工程で、そこで止めると、読む・分類する・比べるという一番重い作業がまるごと人に残ります。分析までAIを使うと、テーマの抽出、複数インタビューの横断比較、示唆と発言の紐付けまで下書きが揃った状態から始められます。人の仕事が「ゼロから読み解く」から「AIの下書きを検証して仕上げる」に変わる、という違いです。"}},
-    {"@type":"Question","name":"何件くらいのインタビューから、AIによる横断分析の価値が出ますか？","acceptedAnswer":{"@type":"Answer","text":"一概に何件以上という基準はありません。数件でも、逐語録化や要約の下書きが速くなる価値はあります。一方で、複数の対象者を横断して「共通するテーマ」「割れている論点」を洗い出す使い方は、人手では読み比べがつらくなる件数ほど効きます。件数で線を引くより、「全件を人が精読しきれるか」を目安に、しきれない規模になったら横断分析を組み込むのが現実的です。"}},
-    {"@type":"Question","name":"インタビューの発話データをAIに渡すとき、セキュリティはどう考えればいいですか？","acceptedAnswer":{"@type":"Answer","text":"発話データは個人の語りそのものなので、一般のテキスト以上に慎重に扱います。基本は、利用するツールの学習利用の有無とデータ保管方針を先に確認すること、個人を特定できる情報は渡す前に処理すること、社内の規程に沿ってアクセス範囲を絞ることです。組織的に運用するなら、CoeSignalのようにSSO・権限管理・監査ログ・データ管理を備え、NDAや個別契約に対応するEnterprise Control前提の環境を選ぶ方法もあります。"}},
-    {"@type":"Question","name":"既存のアンケート自由回答の分析にも、同じ方法は使えますか？","acceptedAnswer":{"@type":"Answer","text":"使えます。自由回答はインタビューより一件あたりの文脈は薄いものの、件数が多く人手で読み切れないという同じ課題を抱えています。テーマ抽出・横断比較・原文への紐付けという型はそのまま適用でき、むしろ件数が多いぶんAIの効果が出やすい領域です。ただし短い回答ほどAIが文脈を補って解釈しがちなので、示唆から原文に戻って確かめる運用はインタビュー以上に大切になります。"}}
-  ]
-}
-</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "文字起こしだけAIに任せるのと、分析までAIを使うのは何が違いますか？", "acceptedAnswer": {"@type": "Answer", "text": "文字起こしで止めると、読む・分類する・比べるという一番重い作業が、まるごと人に残ります。分析までAIを使うと、テーマ抽出、横断比較、示唆と発言の紐付けまで、下書きが揃った状態から始められます。人の仕事が、ゼロから読み解く作業から、AIの下書きを検証して仕上げる作業に変わります。"}}, {"@type": "Question", "name": "何件くらいのインタビューから、AIによる横断分析の価値が出ますか？", "acceptedAnswer": {"@type": "Answer", "text": "何件以上という基準はありません。数件でも、逐語録化や要約の下書きは速くなります。複数の対象者を横断して、共通するテーマと割れている論点を洗い出す使い方があります。人手で読み比べるのがつらい件数ほど効きます。全件を人が精読しきれるかを目安にして、しきれない規模になったら横断分析を組み込むのが現実的です。"}}, {"@type": "Question", "name": "インタビューの発話データをAIに渡すとき、セキュリティはどう考えればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "発話データは個人の語りそのものなので、一般のテキスト以上に慎重に扱います。基本は3つです。利用するツールの学習利用の有無とデータ保管方針を先に確認します。個人を特定できる情報は、渡す前に処理します。社内の規程に沿って、アクセス範囲を絞ります。組織的に運用するなら、SSO（一度のログインで複数のサービスに入れる仕組み）・権限管理・監査ログ・データ管理を備えた環境も選べます。CoeSignalは、NDAや個別契約に対応します。"}}, {"@type": "Question", "name": "既存のアンケート自由回答の分析にも、同じ方法は使えますか？", "acceptedAnswer": {"@type": "Answer", "text": "使えます。自由回答はインタビューより一件あたりの文脈が薄い一方、件数が多く人手で読み切れないという同じ課題を抱えています。テーマ抽出・横断比較・原文への紐付けという型は、そのまま適用できます。短い回答ほど、AIが文脈を補って解釈しがちです。示唆から原文に戻って確かめる運用は、インタビュー以上に大切です。"}}]}</script>
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -86,7 +76,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIインタビュー・ラボ</a><span class="sep">/</span>インタビュー分析を生成AIで速くする</nav>
   <div class="kicker">分析と検証</div>
   <h1>インタビュー分析を生成AIで速くする——発話データを判断材料に変える</h1>
-  <p class="dek">逐語録の山を前に手が止まる分析から、根拠に遡れる判断材料づくりへ。生成AIが速くする工程、人が残すべき仕事、AI要約を鵜呑みにしない設計、意思決定につながるレポートの型を整理する。</p>
+  <p class="dek">インタビュー分析は、逐語録化から統合まで4つの手作業が重なるため重く、生成AIが下ごしらえを速くします。<br>インタビューの逐語録が溜まって分析が進まない、リサーチ・マーケティング・CX担当の方に向けた記事です。<br>AIが速くする工程、AI要約を鵜呑みにしない設計、意思決定につながるレポートの型が分かります。</p>
   <div class="kn-voices" aria-hidden="true">
     <span class="kn-fc" style="--sayo:0.0s"><span class="av"><img src="avatars/m40-0.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">逐語録が読み切れない</span></span>
     <span class="kn-fc" style="--sayo:6.3s"><span class="av"><img src="avatars/f30-6.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">切片化が重い</span></span>
@@ -96,7 +86,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
   </div>
   <div class="kn-voices-cap">調査の現場でよく聞く声<span class="note">※ 実際のご相談で挙がる論点をもとにした例です</span></div>
   <div class="a-meta">
-    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.14</span><span class="dot">·</span><span>最終更新 2026.07.14</span><span class="dot">·</span><span>読了 8分</span>
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.14</span><span class="dot">·</span><span>最終更新 2026.10.02</span><span class="dot">·</span><span>読了 8分</span>
   </div>
 </header>
 
@@ -104,148 +94,66 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
 <div class="art-layout">
   <nav class="art-toc" aria-label="目次">
-    <div class="art-toc-inner">
-      <div class="toc-h">目次</div>
-      <a href="#s1">なぜ分析は大変か</a>
-      <a href="#s2">AIが速くする工程</a>
-      <a href="#s3">鵜呑みにしない設計</a>
-      <a href="#s4">レポートの型</a>
+    <div class="art-toc-inner"><div class="toc-h">目次</div>
+      <a href="#s1">結論：AIが速くする工程</a>
+      <a href="#s2">自社の実例：CoeSignal</a>
+      <a href="#s3">手順：分析の進め方</a>
+      <a href="#s4">うまくいかない例</a>
+      <a href="#s5">工程ごとの比較表</a>
       <a href="#faq">よくある質問</a>
+      <a href="#s6">次の一歩</a>
     </div>
   </nav>
 
   <article class="art-body">
-    <div class="lede">
-      <div class="lede-h">この記事の要点</div>
-      <ul>
-        <li>インタビュー分析が重いのは、逐語録化・コーディング・切片化・統合という<strong>多段の手作業が積み重なるうえ、解釈が担当者に属人化しやすい</strong>から。件数が増えるほど「読み切れない」が常態化する。</li>
-        <li>生成AIが速くするのは<strong>文字起こし・要約・テーマ抽出・横断比較・引用元の紐付け</strong>という下ごしらえの工程。問いの設定・解釈・意思決定は人の中核として残る。</li>
-        <li>AI要約は便利なぶん、<strong>ハルシネーション・少数意見の均し込み・確証バイアス</strong>という落とし穴がある。反証を必ず残し、示唆から原文・原音声へ遡れる状態を保ち、人が最終確認する設計が前提。</li>
-      </ul>
-    </div>
+<aside class="mid-cta"><div class="mc-body"><div class="mc-k">CompanyMap AI</div><div class="mc-t">AIの聞き取りで、部署の業務フローを業務図にする</div><div class="mc-d">部署ごとの仕事の流れをAIが聞き取り、詰まっている所やAIに任せられる所を1枚の業務図にします。</div></div><a href="../../companymap?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=interview-analysis&amp;utm_content=mid" class="btn" data-cta="interview-analysis-mid">CompanyMap AIを見る <i>&rarr;</i></a></aside>
 
-    <aside class="mid-cta"><div class="mc-body"><div class="mc-k">CompanyMap AI</div><div class="mc-t">AIの聞き取りで、会社全体の業務図をつくる</div><div class="mc-d">部署ごとの仕事の流れをAIが聞き取り、詰まっている所やAIに任せられる所を1枚の業務図にします。</div></div><a href="../../companymap?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=interview-analysis&amp;utm_content=mid" class="btn" data-cta="interview-analysis-mid">CompanyMap AIを見る <i>&rarr;</i></a></aside>
-    <p>インタビューを終えて手元に残ったのは、1件数十ページの逐語録が10本。読み始める時間が取れないまま、報告会の日程だけが近づいてくる——リサーチやマーケ、CXの現場でよくある状況ではないでしょうか。この記事では、一番重い「読む・分類する・比べる」を生成AIに任せて、人は解釈と意思決定に集中するための工程分担、AI要約を鵜呑みにしない検証の設計、そのまま会議で使えるレポートの型までを整理します。</p>
-      <h2 id="s1">インタビュー分析はなぜ大変なのか？</h2>
-    <p class="answer">逐語録化から統合まで多段の手作業が積み重なり、しかも解釈が担当者一人の頭の中に閉じやすいから。</p>
-    <aside class="kn-side">
-      <img src="avatars/f20-6.svg" alt="" loading="lazy" width="36" height="36">
-      <div><div class="r">若手リサーチャーの視点</div><p>20本分の逐語録を前にすると、どこから手を付けるかで止まる。</p></div>
-    </aside>
-    <h3>工程が多く、件数が増えると読み切れない</h3>
-    <p>定性調査の分析は、話を聞き終えてからが本番です。従来の進め方では、次の工程を一件ずつ人手で積み上げてきました。</p>
+    <p>インタビューを終えて手元に残ったのは、1件数十ページの逐語録が10本。読み始める時間が取れないまま、報告会の日程だけが近づいてくる。リサーチやマーケ、CXの現場でよくある状況ではないでしょうか。</p>
+
+    <h2 id="s1">生成AIはインタビュー分析のどこを速くし、人に何が残りますか？</h2>
+    <p class="answer">文字起こし・要約・テーマ抽出・横断比較・引用元の紐付けが速くなり、問いの設定と解釈は人に残ります。</p>
+    <p>インタビュー分析が重いのは、4つの手作業が積み重なるうえ、解釈が担当者に属人化しやすいからです。</p>
     <ul>
-      <li><strong>逐語録化</strong>——録音をテキストに起こす</li>
-      <li><strong>コーディング</strong>——発言に意味のラベルを付ける</li>
-      <li><strong>切片化</strong>——文脈ごとに発言を切り出す</li>
-      <li><strong>統合</strong>——カードを並べ替えて構造化する（KJ法などの統合作業）</li>
+      <li><strong>逐語録化：</strong>録音をテキストに起こします。</li>
+      <li><strong>コーディング：</strong>発言に意味のラベルを付けます。</li>
+      <li><strong>切片化：</strong>文脈ごとに発言を切り出します。</li>
+      <li><strong>統合：</strong>カードを並べ替えて構造化します（KJ法などの統合作業）。</li>
     </ul>
-    <p>1時間のインタビューでも逐語録は数十ページになり、それが5件、10件と重なると、全件を精読して比較すること自体が難しくなります。レポート提出が調査の数週間後になり、その間に意思決定のタイミングを逃す——リサーチやマーケの現場でよくある光景です。</p>
-    <h3>解釈が担当者に属人化する</h3>
-    <p>もう一つの問題が属人化です。どの発言を重く見るか、どの文脈で解釈するかは、分析した担当者の経験と関心に依存します。同じ逐語録から別の人が別の結論を導くことは珍しくなく、<strong>「なぜその示唆になったのか」を後から第三者が検証しにくい</strong>のが、従来のインタビュー分析の構造的な弱点でした。</p>
-    <p>工数の重さと解釈のブラックボックス化。この二つが、せっかく集めた発話データを判断材料として使い切れない原因になっています。</p>
-    <div class="callout"><p>分析が重いと、調査は「実施すること」が目的化する。発話データが判断材料に変わらないまま、逐語録がフォルダに眠る——これが一番もったいない失敗パターン。</p></div>
+    <p>1時間のインタビューでも、逐語録は数十ページになります。5件、10件と重なると、全件を精読して比較すること自体が難しくなります。レポートが調査の数週間後になり、意思決定のタイミングを逃すこともあります。</p>
+    <p>どの発言を重く見るかは、担当者の経験と関心に依存します。同じ逐語録から、別の人が別の結論を導くことは珍しくありません。「なぜその示唆になったのか」を、後から第三者が検証しにくい点が、従来の構造的な弱点でした。</p>
+    <p>生成AIが速くするのは、分析の下ごしらえにあたる工程です。具体的には、文字起こしと一件ごとの要約です。複数インタビューを横断したテーマの抽出もあります。共通する論点と割れている論点の整理や、示唆と発言の紐付けまで、下書きが短時間で揃います。</p>
+    <p>問いの設定、下書きの解釈、解釈の意思決定への使い方は、人の仕事として残ります。AI要約には、ハルシネーション・少数意見の均し込み・確証バイアスという落とし穴があります。反証を残し、原文・原音声へ遡れる状態を保ち、人が最終確認する設計が前提です。</p>
 
-    
-    <aside class="kn-take">
-      <img class="kn-take-av" src="avatars/f40-2.svg" alt="" loading="lazy" width="56" height="56">
-      <div class="kn-take-body">
-        <div class="kn-take-role">リサーチ担当の視点</div>
-        <p>速くなるのは<em>構造化まで</em>。示唆を決めるのは人だと切り分けると使いやすい。</p>
-      </div>
-    </aside>
-<h2 id="s2">生成AIはインタビュー分析のどこを速くするか？</h2>
-    <p class="answer">文字起こし・要約・テーマ抽出・横断比較・引用元の紐付けという下ごしらえ。問いの設定と解釈は人に残る。</p>
-    <p>生成AIが得意なのは、分析の「下ごしらえ」にあたる工程です。音声の文字起こし、一件ごとの要約、複数インタビューを横断したテーマの抽出、対象者間で共通する論点と割れている論点の整理、そして<strong>抽出した示唆がどの発言に基づくかの紐付け</strong>まで、人手なら数日かかっていた作業の下書きが短時間で揃います。</p>
-    <p>逆に、何を明らかにするために聞くのかという問いの設定、下書きをどう解釈するか、その解釈をどう意思決定に使うかは、AIに任せられない人の仕事です。工程ごとに整理すると次のようになります。</p>
-    <div class="tbl-wrap">
-      <table>
-        <tr><th>工程</th><th>従来の進め方</th><th>生成AIで変わること</th><th>人に残る仕事</th></tr>
-        <tr><td>逐語録化</td><td>録音を聞きながら手で起こす</td><td>自動文字起こしで下書きが揃う</td><td>固有名詞・聞き取りの確認</td></tr>
-        <tr><td>要約・コーディング</td><td>精読して意味のラベルを付ける</td><td>要約とテーマの下書きを生成</td><td>ラベルの妥当性を判断する</td></tr>
-        <tr><td>横断比較</td><td>全件を読み比べて共通点を探す</td><td>共通テーマと割れる論点を抽出</td><td>どの論点を重く見るか決める</td></tr>
-        <tr><td>根拠の紐付け</td><td>引用探しに手間がかかり省略されがち</td><td>示唆と発言の対応を保持できる</td><td>引用が文脈通りかを確かめる</td></tr>
-        <tr><td>解釈・意思決定</td><td>担当者の頭の中で完結</td><td>—（AIの領域ではない）</td><td>問いを立て、判断し、動く</td></tr>
-      </table>
-    </div>
-    <p>この分担が回ると、分析にかける時間の使われ方が変わります。下ごしらえに費やしていた時間が圧縮され、発言の解釈と打ち手の設計——本来やりたかった仕事——に時間を回せるようになります。</p>
-    <figure class="cmp-chart" aria-label="インタビュー分析にかける時間の使われ方（AI活用前後のイメージ・サンプル）">
-      <figcaption class="cc-top"><span class="dot"></span>分析にかける時間の使われ方（※サンプル）</figcaption>
-      <div class="cc-row"><span class="cc-lab">AI活用前</span><div class="cc-stack"><i class="s-a" style="width:75%"></i><i class="s-b" style="width:25%"></i></div></div>
-      <div class="cc-row"><span class="cc-lab">AI活用後</span><div class="cc-stack"><i class="s-a" style="width:30%"></i><i class="s-b" style="width:70%"></i></div></div>
-      <div class="cc-legend"><span><i class="s-a"></i>逐語録化・整理・引用探し（AIが圧縮）</span><span><i class="s-b"></i>解釈・打ち手の設計（人の判断）</span></div>
-      <div class="cc-cap">※サンプル（イメージ図）です。実測値ではなく、AIが下ごしらえを圧縮し、解釈と意思決定に時間を回せる方向を表しています。</div>
-    </figure>
-    <p>この「示唆と引用元の紐付け」が保たれた分析がどんな姿になるかは、実物を見るのが早いでしょう。次の表は、公開サンプル調査「音声広告の受容性」（20名）から抽出された示唆の一覧です。</p>
-    <div class="tbl-wrap">
-      <table>
-        <tr><th>示唆</th><th>言及数</th><th>引用元へ</th></tr>
-        <tr><td>「ながら聴取」がほぼ全員の基本形</td><td>20名中18名</td><td>原音声・全文へ</td></tr>
-        <tr><td>想起の決め手は「語り口」</td><td>想起あり16名中9名</td><td>原音声・全文へ</td></tr>
-        <tr><td>スキップ主因は「同じ広告の繰り返し」</td><td>20名中10名</td><td>原音声・全文へ</td></tr>
-        <tr><td>広告体験が課金・離脱の判断まで</td><td>20名中3名</td><td>原音声・全文へ</td></tr>
-      </table>
-    </div>
-    <p class="fig-cap">表：公開サンプル調査「音声広告の受容性」（※架空データによるデモ）の示唆一覧。すべての示唆に言及数と引用元が付き、原文・原音声へ遡れます。</p>
-    <p>どの示唆にも言及数と引用元が付いているため、18名の共通項なのか3名の少数シグナルなのかを確かめながら読めます。この調査の分析過程は分析ノートで全解剖しています。</p>
-    <p>インタビューの実施そのものからAIに任せる選択肢や、聞き方の設計についてはAIインタビューとは｜AIが一人ずつ深掘りする定性調査の新しい選択肢とデプスインタビューのやり方で扱っています。分析だけをAI化する場合も、実査から一気通貫にする場合も、この工程分担の考え方は同じです。</p>
-
-    <h2 id="s3">AI要約を鵜呑みにしないためにどうするか？</h2>
-    <p class="answer">反証を必ず残し、示唆から原文・原音声へ遡れる状態を保ち、人が最終確認する。この三つを運用に組み込む。</p>
-    <aside class="kn-side">
-      <img src="avatars/m30-6.svg" alt="" loading="lazy" width="36" height="36">
-      <div><div class="r">商品企画の視点</div><p>AIの要約は読みやすい。<em>読みやすさと正しさは別</em>だと肝に銘じる。</p></div>
-    </aside>
-    <h3>AI要約の三つの落とし穴</h3>
-    <p>生成AIの要約は流暢です。流暢だからこそ、注意すべき癖を先に押さえておく必要があります。</p>
-    <ol>
-      <li><strong>ハルシネーション。</strong>AIは言っていないことを、もっともらしく補って要約することがある。要約単体では気づけないため、元の発言と突き合わせられる形になっていないと検証のしようがない。</li>
-      <li><strong>少数意見の均し込み。</strong>要約は多数派の論調に寄りやすく、一人だけが語った鋭い違和感——定性調査で一番価値のある発見であることが多い——が「その他の意見」に埋もれる。</li>
-      <li><strong>確証バイアスの増幅。</strong>「この仮説を裏付ける発言を探して」と頼めば、AIは従順に裏付けだけを集めてくる。都合のよい引用が並んだレポートは、会議では強く見えて、判断としては脆い。</li>
-    </ol>
-    <p>二つ目の「均し込み」は、要約の見た目からは気づきにくい落とし穴です。同じ発話データでも、要約のさせ方で残るものが変わります。</p>
-    <div class="ba-grid">
-      <div class="ba-card before">
-        <span class="ba-tag">均し込みが起きた要約の例</span>
-        <div class="ba-body">「対象者10名の多くが、初期設定のわかりにくさを課題として挙げた」——1名だけが語った「設定は迷わなかったが、そもそも社内の稟議が通らない」という発言が多数派の論調に吸収され、要約のどこにも残っていない。</div>
-      </div>
-      <div class="ba-card after">
-        <span class="ba-tag">反証を残した要約の例</span>
-        <div class="ba-body">「10名中8名が初期設定のわかりにくさを挙げた。一方で1名は設定でなく稟議の通しにくさを挙げており、つまずきが操作性ではなく導入プロセスにある可能性を示す反証として保持する」——少数の発言が、次に検証すべき論点として残っている。</div>
-      </div>
-    </div>
-    <p class="fig-cap">図：AI要約の「均し込み」が起きた要約と、反証を残した要約の対比（※架空の例です）。</p>
-    <h3>対策は運用の設計で打つ</h3>
-    <p>対策は運用の設計で打てます。</p>
-    <ol>
-      <li><strong>結論と一緒に反証——仮説に合わない発言・割れている論点——を必ず残させる</strong>こと。</li>
-      <li><strong>どの示唆も引用元の発言、さらには原文・原音声まで遡れる状態</strong>を保つこと。</li>
-      <li>AIの出力はあくまで下書きと位置づけ、<strong>人が原文と突き合わせて最終確認してから外に出す</strong>こと。</li>
-    </ol>
-    <p>この三点が揃うと、AI要約は「速いが怪しいもの」から「速くて検証可能なもの」に変わります。</p>
-    <p>この考え方を製品として設計しているのが、TechWorkerのAIインタビューサービス<strong>CoeSignal</strong>です。AIが一人ずつ深掘りするインタビューを、回答者がURLを開いて声で答える形で実施し、設計・実査・分析・納品までを一つの流れで扱います。</p>
-    <p>成果物は「根拠に遡れる判断メモ」——結論・反証・次の検証・引用元で構成され、<strong>示唆から回答全文、許諾済みの原音声まで戻れる</strong>つくりです。AIの下書きを担当者が確認してから納品する運用も、ここで述べた設計をそのまま実装したものです。実際のレポート画面は<a href="https://research.techworker.co.jp/" target="_blank" rel="noopener noreferrer">公開サンプル</a>で確認できます。</p>
-    <p>判断メモの構造はこうです。結論・根拠・反証・次の検証が一枚に並び、示唆ごとに引用元が付いて、そこから元の発言と音声まで遡れます。</p>
+    <h2 id="s2">自社の実例：CoeSignalは、根拠に遡れる分析をどう実現していますか？</h2>
+    <p class="answer">結論・反証・次の検証・引用元でできた判断メモを納品し、示唆から原音声まで戻れるようにしています。</p>
+    <p>CoeSignal（株式会社TechWorkerが提供するAIインタビュープラットフォーム）は、AIが一人ずつ深掘りするインタビューを、回答者がURLを開いて声で答える形で実施します。設計・実査・分析・納品までを、一つの流れで扱います。</p>
+    <p>成果物は、「根拠に遡れる判断メモ」です。結論・反証・次の検証・引用元で構成され、示唆から回答全文、許諾済みの原音声まで戻れます。AIの下書きを担当者が確認してから納品する運用も、本記事で述べる設計を実装したものです。</p>
+    <p>実際のレポート画面は、<a href="https://research.techworker.co.jp/" target="_blank" rel="noopener noreferrer">公開サンプル</a>で確認できます。</p>
     <div class="product-shot"><div class="ps-bar">CoeSignal — 根拠に遡れる判断メモ<span class="r">図はイメージ・数値はサンプル</span></div><img src="product-ui/coesignal-illust-report.png" alt="根拠に遡れる判断メモの構造図。結論・根拠・反証・次の検証と、引用元の発言再生" loading="lazy" width="1200"></div>
-    <p class="fig-cap">図：根拠に遡れる判断メモの構造（図はイメージ・数値はサンプル）。実物のレポート画面は<a href="https://research.techworker.co.jp/" target="_blank" rel="noopener noreferrer">公開サンプル</a>で確認できます。</p>
-    <div class="quote-box"><p>AIの要約が信用できるかどうかは、モデルの賢さではなく「原文に戻れるか」で決まる。遡れない示唆は、どれほど流暢でも判断材料にならない。</p></div>
+    <p class="fig-cap">図：根拠に遡れる判断メモの構造（図はイメージ・数値はサンプル）。結論・根拠・反証・次の検証と、引用元の発言再生が並ぶ。</p>
+    <p>公開サンプル調査「音声広告の受容性」（20名）から抽出された示唆には、すべて言及数と引用元が付いています。原文・原音声へ遡れます。</p>
+    <ul>
+      <li>「ながら聴取」がほぼ全員の基本形です（20名中18名）。</li>
+      <li>想起の決め手は「語り口」です（想起あり16名中9名）。</li>
+      <li>スキップの主因は「同じ広告の繰り返し」です（20名中10名）。</li>
+      <li>広告体験が、課金・離脱の判断まで及んでいます（20名中3名）。</li>
+    </ul>
+    <p>これは架空データによるデモです。言及数が付いているので、18名の共通項なのか、3名の少数シグナルなのかを確かめながら読めます。</p>
 
-    
-    <aside class="kn-take">
-      <img class="kn-take-av" src="avatars/m50-0.svg" alt="" loading="lazy" width="56" height="56">
-      <div class="kn-take-body">
-        <div class="kn-take-role">マーケ責任者の視点</div>
-        <p>レポートの型が決まっていれば、報告のたびに構成を考えなくて済む。</p>
-      </div>
-    </aside>
-<h2 id="s4">分析を意思決定につなげるレポートの型は？</h2>
-    <p class="answer">結論→根拠→反証→次の検証、の順で書く。会議の「本当にそう言ってた？」に引用と音声で答えられる形にする。</p>
-    <aside class="kn-side">
-      <img src="avatars/f30-0.svg" alt="" loading="lazy" width="36" height="36">
-      <div><div class="r">マーケの視点</div><p>示唆と根拠がひも付いていないと、会議で崩れる。</p></div>
-    </aside>
-    <p>分析の出口はレポートです。そしてレポートの価値は、読み物としての完成度ではなく、<strong>会議でそのまま判断材料になるか</strong>で決まります。</p>
-    <p>発言の抜粋を並べただけの資料は「で、どうする？」に答えられず、逆に結論だけの資料は「本当にそう言ってたの？」に答えられません。両方に耐える型が、次の四段構成です。</p>
+    <h2 id="s3">AI要約を使う分析は、どんな手順で進めればよいですか？</h2>
+    <p class="answer">小さく試し、反証と引用元を必須にし、人が原文と突き合わせてから、四段構成で報告します。</p>
+    <h3>手順1：手元のデータで小さく試す</h3>
+    <p>直近の逐語録やアンケート自由回答を、1テーマぶんだけAIに渡します。テーマ抽出と要約の下書きを作らせます。できた下書きは、原文と突き合わせます。</p>
+    <h3>手順2：反証と引用元を必須項目にする</h3>
+    <p>要約を頼むときは、「結論に合わない発言」と「各示唆の引用元」を必ず出力させます。原文に遡れない示唆は、採用しないと決めます。運用の設計は、次の3つです。</p>
+    <ol>
+      <li><strong>結論と一緒に反証を残させます。</strong>仮説に合わない発言や、割れている論点です。</li>
+      <li><strong>どの示唆も、引用元の発言から原文・原音声まで遡れる状態を保ちます。</strong></li>
+      <li><strong>AIの出力は下書きと位置づけます。</strong>人が原文と突き合わせて最終確認してから、外に出します。</li>
+    </ol>
+    <p>この3点が揃うと、AI要約は「速いが怪しいもの」から「速くて検証可能なもの」に変わります。</p>
+    <h3>手順3：レポートを四段構成で書く</h3>
+    <p>分析の出口はレポートです。発言の抜粋を並べただけの資料は、「で、どうする？」に答えられません。結論だけの資料は、「その発言は実際にあったの？」に答えられません。両方に耐える型が、次の四段構成です。</p>
     <div class="ui-mock">
       <div class="um-bar"><span class="um-dot"></span><span class="um-dot"></span><span class="um-dot"></span><span class="um-name">判断メモの型 — 構成例（※サンプル）</span></div>
       <div class="um-row">
@@ -262,26 +170,66 @@ fbq('init','1264057945446029');fbq('track','PageView');
       </div>
       <div class="um-row">
         <div class="um-label">4. 次の検証</div>
-        <div class="um-text">この結論を確かめるために次に何を調べるか。分析を「終わり」でなく「次の一手」につなげる。</div>
+        <div class="um-text">この結論を確かめるために次に何を調べるか。分析を、次の一手につなげる。</div>
       </div>
     </div>
     <p class="fig-cap">図：意思決定につながる判断メモの四段構成（※サンプル）。結論から書き始め、根拠・反証・次の検証で支える。</p>
-    <p>この型の肝は3と4にあります。反証を明記したレポートは、会議で反論が出たときに「その論点は把握済みで、だからこの結論です」と返せます。次の検証まで書いてあれば、レポートは棚に眠らず、次の調査や施策の起点になります。</p>
-    <p>そして全体を貫く条件が、<strong>どの記述も引用と原音声に戻れること</strong>。「本当にそう言ってた？」と聞かれた瞬間に発言そのものを示せるレポートは、それだけで社内の信頼を勝ち取ります。顧客の声を継続的に判断材料へ変える仕組みづくりはVoC（顧客の声）をAIインタビューで集める・活かすでも扱っています。</p>
-    <div class="callout"><p>チェックは一つで足りる。「このレポートの任意の一文について、元の発言をその場で示せるか」。示せない一文は、削るか、仮説と明記する。</p></div>
-    <h3>まず何から始めるか</h3>
-    <p>ここまでの内容を実務に落とすなら、次の三つから始めるのが現実的です。</p>
+    <p>型の肝は、3と4です。反証を明記したレポートは、会議で反論が出たときに、「その論点は把握済みで、だからこの結論です」と返せます。次の検証まで書いてあれば、レポートは棚に眠らず、次の調査や施策の起点になります。</p>
+    <p>全体を貫く条件は、どの記述も引用と原音声に戻れることです。「その発言は実際にあったの？」と聞かれた瞬間に、発言そのものを示せるレポートは、社内の信頼を勝ち取ります。</p>
+    <div class="callout"><p>チェックは1つで足ります。「このレポートの任意の一文について、元の発言をその場で示せるか」です。示せない一文は、削るか、仮説と明記します。</p></div>
+
+    <h2 id="s4">AI要約を鵜呑みにすると、どんな失敗が起きますか？</h2>
+    <p class="answer">ハルシネーション、少数意見の均し込み、確証バイアスの増幅の3つが、典型的な落とし穴です。</p>
+    <p>生成AIの要約は流暢です。流暢だからこそ、癖を先に押さえます。</p>
     <ol>
-      <li><strong>手元のデータで小さく試す。</strong>直近の逐語録やアンケート自由回答を1テーマぶんだけAIに渡し、テーマ抽出と要約の下書きを作らせて、原文と突き合わせてみる。</li>
-      <li><strong>反証と引用元を必須項目にする。</strong>要約を頼むときは「結論に合わない発言」と「各示唆の引用元」を必ず出力させ、原文に遡れない示唆は採用しないと決める。</li>
-      <li><strong>次のレポート1本を四段構成で書く。</strong>結論→根拠→反証→次の検証の型に置き換えるだけで、会議での通り方が変わる。実査から分析まで一気通貫にしたい場合は、<a href="https://coesignal.techworker.co.jp/">CoeSignalの無料相談</a>で自社のテーマに合わせた設計をご一緒できます。</li>
+      <li><strong>ハルシネーション。</strong>AIは、言っていないことをもっともらしく補って要約することがあります。要約単体では気づけません。元の発言と突き合わせられる形になっていないと、検証のしようがありません。</li>
+      <li><strong>少数意見の均し込み。</strong>要約は多数派の論調に寄りやすい性質があります。一人だけが語った鋭い違和感は、定性調査で一番価値のある発見であることが多いのに、「その他の意見」に埋もれます。</li>
+      <li><strong>確証バイアスの増幅。</strong>「この仮説を裏付ける発言を探して」と頼めば、AIは従順に裏付けだけを集めます。都合のよい引用が並んだレポートは、会議では強く見えても、判断としては脆くなります。</li>
     </ol>
+    <p>均し込みは、要約の見た目から気づきにくい落とし穴です。同じ発話データでも、要約のさせ方で残るものが変わります。</p>
+    <div class="ba-grid">
+      <div class="ba-card before">
+        <span class="ba-tag">均し込みが起きた要約の例</span>
+        <div class="ba-body">「対象者10名の多くが、初期設定のわかりにくさを課題として挙げた」——1名だけが語った「設定は迷わなかったが、そもそも社内の稟議が通らない」という発言が多数派の論調に吸収され、要約のどこにも残っていない。</div>
+      </div>
+      <div class="ba-card after">
+        <span class="ba-tag">反証を残した要約の例</span>
+        <div class="ba-body">「10名中8名が初期設定のわかりにくさを挙げた。一方で1名は稟議の通しにくさを挙げており、つまずきの原因が導入プロセスにある可能性を示す反証として保持する」——少数の発言が、次に検証すべき論点として残っている。</div>
+      </div>
+    </div>
+    <p class="fig-cap">図：AI要約の「均し込み」が起きた要約と、反証を残した要約の対比（※架空の例です）。</p>
+    <div class="callout"><p>分析が重いと、調査は「実施すること」が目的になりがちです。発話データが判断材料に変わらないまま、逐語録がフォルダに眠ります。これが一番もったいない失敗です。</p></div>
+
+    <h2 id="s5">工程ごとに、従来の進め方と生成AIで何が変わりますか？</h2>
+    <p class="answer">逐語録化から根拠の紐付けまでの下ごしらえは圧縮され、解釈と意思決定は人の仕事として残ります。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>工程</th><th>従来の進め方</th><th>生成AIで変わること</th><th>人に残る仕事</th></tr>
+        <tr><td>逐語録化</td><td>録音を聞きながら手で起こす</td><td>自動文字起こしで下書きが揃う</td><td>固有名詞・聞き取りの確認</td></tr>
+        <tr><td>要約・コーディング</td><td>精読して意味のラベルを付ける</td><td>要約とテーマの下書きを生成</td><td>ラベルの妥当性を判断する</td></tr>
+        <tr><td>横断比較</td><td>全件を読み比べて共通点を探す</td><td>共通テーマと割れる論点を抽出</td><td>どの論点を重く見るか決める</td></tr>
+        <tr><td>根拠の紐付け</td><td>引用探しに手間がかかり省略されがち</td><td>示唆と発言の対応を保持できる</td><td>引用が文脈通りかを確かめる</td></tr>
+        <tr><td>解釈・意思決定</td><td>担当者の頭の中で完結</td><td>—（AIの領域ではない）</td><td>問いを立て、判断し、動く</td></tr>
+      </table>
+    </div>
+    <p>この分担が回ると、下ごしらえに費やしていた時間が圧縮されます。発言の解釈と打ち手の設計に、時間を回せるようになります。</p>
 
     <h2 id="faq">よくある質問</h2>
-    <div class="faq"><div class="q">文字起こしだけAIに任せるのと、分析までAIを使うのは何が違いますか？</div><p class="a">文字起こしは発話をテキストにする工程で、そこで止めると、読む・分類する・比べるという一番重い作業がまるごと人に残ります。分析までAIを使うと、テーマの抽出、複数インタビューの横断比較、示唆と発言の紐付けまで下書きが揃った状態から始められます。人の仕事が「ゼロから読み解く」から「AIの下書きを検証して仕上げる」に変わる、という違いです。</p></div>
-    <div class="faq"><div class="q">何件くらいのインタビューから、AIによる横断分析の価値が出ますか？</div><p class="a">一概に何件以上という基準はありません。数件でも、逐語録化や要約の下書きが速くなる価値はあります。一方で、複数の対象者を横断して「共通するテーマ」「割れている論点」を洗い出す使い方は、人手では読み比べがつらくなる件数ほど効きます。件数で線を引くより、「全件を人が精読しきれるか」を目安に、しきれない規模になったら横断分析を組み込むのが現実的です。</p></div>
-    <div class="faq"><div class="q">インタビューの発話データをAIに渡すとき、セキュリティはどう考えればいいですか？</div><p class="a">発話データは個人の語りそのものなので、一般のテキスト以上に慎重に扱います。基本は、利用するツールの学習利用の有無とデータ保管方針を先に確認すること、個人を特定できる情報は渡す前に処理すること、社内の規程に沿ってアクセス範囲を絞ることです。組織的に運用するなら、CoeSignalのようにSSO・権限管理・監査ログ・データ管理を備え、NDAや個別契約に対応するEnterprise Control前提の環境を選ぶ方法もあります。</p></div>
-    <div class="faq"><div class="q">既存のアンケート自由回答の分析にも、同じ方法は使えますか？</div><p class="a">使えます。自由回答はインタビューより一件あたりの文脈は薄いものの、件数が多く人手で読み切れないという同じ課題を抱えています。テーマ抽出・横断比較・原文への紐付けという型はそのまま適用でき、むしろ件数が多いぶんAIの効果が出やすい領域です。ただし短い回答ほどAIが文脈を補って解釈しがちなので、示唆から原文に戻って確かめる運用はインタビュー以上に大切になります。</p></div>
+<div class="faq"><div class="q">文字起こしだけAIに任せるのと、分析までAIを使うのは何が違いますか？</div><p class="a">文字起こしで止めると、読む・分類する・比べるという一番重い作業が、まるごと人に残ります。分析までAIを使うと、テーマ抽出、横断比較、示唆と発言の紐付けまで、下書きが揃った状態から始められます。人の仕事が、ゼロから読み解く作業から、AIの下書きを検証して仕上げる作業に変わります。</p></div>
+<div class="faq"><div class="q">何件くらいのインタビューから、AIによる横断分析の価値が出ますか？</div><p class="a">何件以上という基準はありません。数件でも、逐語録化や要約の下書きは速くなります。複数の対象者を横断して、共通するテーマと割れている論点を洗い出す使い方があります。人手で読み比べるのがつらい件数ほど効きます。全件を人が精読しきれるかを目安にして、しきれない規模になったら横断分析を組み込むのが現実的です。</p></div>
+<div class="faq"><div class="q">インタビューの発話データをAIに渡すとき、セキュリティはどう考えればいいですか？</div><p class="a">発話データは個人の語りそのものなので、一般のテキスト以上に慎重に扱います。基本は3つです。利用するツールの学習利用の有無とデータ保管方針を先に確認します。個人を特定できる情報は、渡す前に処理します。社内の規程に沿って、アクセス範囲を絞ります。組織的に運用するなら、SSO（一度のログインで複数のサービスに入れる仕組み）・権限管理・監査ログ・データ管理を備えた環境も選べます。CoeSignalは、NDAや個別契約に対応します。</p></div>
+<div class="faq"><div class="q">既存のアンケート自由回答の分析にも、同じ方法は使えますか？</div><p class="a">使えます。自由回答はインタビューより一件あたりの文脈が薄い一方、件数が多く人手で読み切れないという同じ課題を抱えています。テーマ抽出・横断比較・原文への紐付けという型は、そのまま適用できます。短い回答ほど、AIが文脈を補って解釈しがちです。示唆から原文に戻って確かめる運用は、インタビュー以上に大切です。</p></div>
+
+
+    <h2 id="s6">次の一歩は何から始めればよいですか？</h2>
+    <p class="answer">1テーマぶんの逐語録をAIに渡し、反証と引用元つきの要約を作らせて、原文と突き合わせます。</p>
+    <ol>
+      <li>手元の逐語録か自由回答を、1テーマぶんだけ試します。</li>
+      <li>反証と引用元を必須項目にします。</li>
+      <li>次のレポート1本を、四段構成で書きます。</li>
+    </ol>
+    <p>実査から分析まで一気通貫にしたい場合は、<a href="https://coesignal.techworker.co.jp/">CoeSignalの無料相談</a>で、自社のテーマに合わせた設計ができます。</p>
+
   </article>
 </div>
 
@@ -293,7 +241,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
   </div>
 </div></div>
 
-<div class="art-cta"><div class="inner"><div><h3>聞き取りから、会社全体の業務図へ。</h3><p>CompanyMap AIは、部署ごとの仕事の流れをAIの聞き取りで洗い出し、1枚の業務図にします。詰まっている所、担当者しか分からない所、AIに任せられる所まで見えるようにします。</p></div><a href="../../companymap?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=interview-analysis&amp;utm_content=end" class="btn" data-cta="interview-analysis-end">CompanyMap AIを見る <i>→</i></a></div></div><p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="https://coesignal.techworker.co.jp/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(15,107,77,.3);">CoeSignal 公式サイト（AIインタビュー）</a>　／　<a href="https://research.techworker.co.jp/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(15,107,77,.3);">サンプルレポートを見る</a>　／　<a href="../../companymap?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=interview-analysis&amp;utm_content=related" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(15,107,77,.3);">CompanyMap AI</a></p>
+<div class="art-cta"><div class="inner"><div><h3>聞き取りから、部署の業務図へ。</h3><p>CompanyMap AIは、部署ごとの仕事の流れをAIの聞き取りで洗い出し、1枚の業務図にします。詰まっている所、担当者しか分からない所、AIに任せられる所まで見えるようにします。</p></div><a href="../../companymap?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=interview-analysis&amp;utm_content=end" class="btn" data-cta="interview-analysis-end">CompanyMap AIを見る <i>→</i></a></div></div><p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="https://coesignal.techworker.co.jp/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(15,107,77,.3);">CoeSignal 公式サイト（AIインタビュー）</a>　／　<a href="https://research.techworker.co.jp/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(15,107,77,.3);">サンプルレポートを見る</a>　／　<a href="../../companymap?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=interview-analysis&amp;utm_content=related" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(15,107,77,.3);">CompanyMap AI</a></p>
 <div class="back-list"><a href="index.html">← AIインタビュー・ラボ（記事一覧）に戻る</a></div>
 
 <section class="related"><div class="container">

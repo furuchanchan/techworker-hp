@@ -1,4 +1,35 @@
-<!DOCTYPE html><html lang="ja" class="no-js"><head><meta charset="UTF-8"><script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-3V34NWXVCJ');</script><script src="/assets/tw-track.js" defer></script><script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script><meta name="viewport" content="width=device-width,initial-scale=1"><title>Microsoft 365 Copilot導入前のSharePoint権限棚卸し｜過剰共有を防ぐ実務 — TechWorker</title><meta name="description" content="Copilot導入前にSharePointとOneDriveの過剰共有、所有者不在、高リスクsiteを見つけ、制限機能と恒久的な権限修正を分けて進める方法を解説します。"><link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg"><link rel="canonical" href="https://techworker.co.jp/media/kenshu/copilot-sharepoint-permission-audit"><meta property="og:type" content="article"><meta property="og:title" content="Microsoft 365 Copilot導入前のSharePoint権限棚卸し｜過剰共有を防ぐ実務"><meta property="og:description" content="Copilot導入前にSharePointとOneDriveの過剰共有、所有者不在、高リスクsiteを見つけ、制限機能と恒久的な権限修正を分けて進める方法を解説します。"><meta property="og:image" content="https://techworker.co.jp/media/kenshu/covers/copilot-sharepoint-permission-audit.png"><meta property="og:url" content="https://techworker.co.jp/media/kenshu/copilot-sharepoint-permission-audit"><meta property="og:site_name" content="TechWorker"><meta name="twitter:card" content="summary_large_image"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../article.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Microsoft 365 Copilot導入前のSharePoint権限棚卸し｜過剰共有を防ぐ実務", "description": "Copilot導入前にSharePointとOneDriveの過剰共有、所有者不在、高リスクsiteを見つけ、制限機能と恒久的な権限修正を分けて進める方法を解説します。", "datePublished": "2026-09-21", "dateModified": "2026-10-01", "inLanguage": "ja", "image": "https://techworker.co.jp/media/kenshu/covers/copilot-sharepoint-permission-audit.png", "author": {"@type": "Person", "name": "古野光太朗", "url": "https://techworker.co.jp/company.html"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/copilot-sharepoint-permission-audit"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},{"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},{"@type":"ListItem","position":3,"name":"AI研修・導入ラボ","item":"https://techworker.co.jp/media/kenshu/"},{"@type":"ListItem","position":4,"name":"Microsoft 365 Copilot導入前のSharePoint権限棚卸し｜過剰共有を防ぐ実務","item":"https://techworker.co.jp/media/kenshu/copilot-sharepoint-permission-audit"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Copilotを導入すると、権限のない情報も見えてしまいますか？","acceptedAnswer":{"@type":"Answer","text":"Copilotが新しい権限を作るわけではありません。利用者が既にアクセスできるメールやドキュメントなどを使うため、導入前から過剰共有があると、機密情報が見つかりやすくなることがあります。"}},{"@type":"Question","name":"Restricted Content Discoveryを設定すれば権限の問題は解決しますか？","acceptedAnswer":{"@type":"Answer","text":"解決しません。対象siteを組織横断検索やCopilotで発見されにくくするだけで、site permission自体は変えないからです。修正中の一時措置と位置づけ、解除日と担当者を決めます。"}},{"@type":"Question","name":"導入前の権限棚卸しは何から始めればよいですか？","acceptedAnswer":{"@type":"Answer","text":"対象tenantのsite inventoryを作り、事業owner、管理owner、機密区分、外部共有、全社共有、最終更新日を並べます。ownerが決まらないsiteはpilotの対象外とし、削除ではなく保留に置きます。"}}]}</script></head><body><div class="progress" id="progress"></div><nav id="nav">
+<!DOCTYPE html><html lang="ja" class="no-js"><head><meta charset="UTF-8"><script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-3V34NWXVCJ');</script><script src="/assets/tw-track.js" defer></script><script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script><meta name="viewport" content="width=device-width,initial-scale=1"><title>Microsoft 365 Copilot導入前のSharePoint権限棚卸し｜過剰共有を防ぐ実務 — TechWorker</title><meta name="description" content="Copilot導入前は、4週間で権限の棚卸しから是正、研修まで進めると、過剰共有を防げます。SharePointやOneDriveの共有状態を確かめたい担当者の方に向けて、過剰共有、所有者不在、高リスクsiteの見つけ方と、制限機能と恒久的な権限修正の分け方を解説します。確認日は2026年9月21日です。"><link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg"><link rel="canonical" href="https://techworker.co.jp/media/kenshu/copilot-sharepoint-permission-audit"><meta property="og:type" content="article"><meta property="og:title" content="Microsoft 365 Copilot導入前のSharePoint権限棚卸し｜過剰共有を防ぐ実務"><meta property="og:description" content="Copilot導入前にSharePointとOneDriveの過剰共有、所有者不在、高リスクsiteを見つけ、制限機能と恒久的な権限修正を分けて進める方法を、4週間の進め方で解説します。"><meta property="og:image" content="https://techworker.co.jp/media/kenshu/covers/copilot-sharepoint-permission-audit.png"><meta property="og:url" content="https://techworker.co.jp/media/kenshu/copilot-sharepoint-permission-audit"><meta property="og:site_name" content="TechWorker"><meta name="twitter:card" content="summary_large_image"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../article.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Microsoft 365 Copilot導入前のSharePoint権限棚卸し｜過剰共有を防ぐ実務", "description": "Copilot導入前は、4週間で権限の棚卸しから是正、研修まで進めると、過剰共有を防げます。SharePointやOneDriveの共有状態を確かめたい担当者の方に向けて、過剰共有、所有者不在、高リスクsiteの見つけ方と、制限機能と恒久的な権限修正の分け方を解説します。確認日は2026年9月21日です。", "datePublished": "2026-09-21", "dateModified": "2026-10-02", "inLanguage": "ja", "image": "https://techworker.co.jp/media/kenshu/covers/copilot-sharepoint-permission-audit.png", "author": {"@type": "Person", "name": "古野光太朗", "url": "https://techworker.co.jp/company.html"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/copilot-sharepoint-permission-audit"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},{"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},{"@type":"ListItem","position":3,"name":"AI研修・導入ラボ","item":"https://techworker.co.jp/media/kenshu/"},{"@type":"ListItem","position":4,"name":"Microsoft 365 Copilot導入前のSharePoint権限棚卸し｜過剰共有を防ぐ実務","item":"https://techworker.co.jp/media/kenshu/copilot-sharepoint-permission-audit"}]}</script><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Copilotを導入すると、権限のない情報も見えてしまいますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Copilotが新しい権限を作るわけではありません。利用者が既にアクセスできるメールやドキュメントなどを使います。導入前から過剰共有があると、機密情報が見つかりやすくなることがあります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Restricted Content Discoveryを設定すれば権限の問題は解決しますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "解決しません。対象siteを、組織横断検索やCopilotで発見されにくくするだけです。site permission自体は変えません。修正中の一時措置と位置づけ、解除日と担当者を決めます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "導入前の権限棚卸しは何から始めればよいですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "対象tenantのsite inventoryを作ります。事業owner、管理owner、機密区分、外部共有、全社共有、最終更新日を並べます。ownerが決まらないsiteはpilotの対象外とし、削除せず保留に置きます。"
+      }
+    }
+  ]
+}
+</script></head><body><div class="progress" id="progress"></div><nav id="nav">
   <a href="index.html" class="logo">AI研修・導入<i>ラボ</i></a>
   <ul>
     <li><a href="index.html">記事一覧</a></li>
@@ -13,12 +44,102 @@
   <a href="index.html">記事一覧</a>
   <a href="index.html#about">このメディアについて</a>
   <a href="../../training.html" class="m-cta">無料相談を申し込む</a>
-</div><header class="art-head"><nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a></nav><div class="kicker">社内ルールと安全</div><h1>Microsoft 365 Copilot導入前のSharePoint権限棚卸し｜過剰共有を防ぐ実務</h1><p class="dek">Copilot導入前にSharePointとOneDriveの過剰共有、所有者不在、高リスクsiteを見つけ、制限機能と恒久的な権限修正を分けて進める方法を解説します。</p><div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.09.21</span><span class="dot">·</span><span>最終更新 2026.10.01</span><span class="dot">·</span><span>一次情報 6件</span></div></header><img class="daily-cover" src="covers/copilot-sharepoint-permission-audit.png" alt="SharePointの権限を導入前に棚卸し。情シス・所有者・試験利用者が、サイトを棚卸しする→検索を試す→共有を修正する→研修へつなぐ→月次で見直すの順に進める業務図" width="1200" height="630"><div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div><a href="#s1">Copilotは既存権限を前提に動く</a><a href="#s2">site単位で優先順位を付ける</a><a href="#s3">発見制限とaccess制限を分ける</a><a href="#s4">廃止予定の一時策へ依存しない</a><a href="#s5">pilotと研修を権限是正へ接続する</a><a href="#s6">適用限界</a></div></nav><article class="art-body"><div class="lede"><div class="lede-h">この記事の要点</div><ul><li>Copilotは利用者が既にアクセスできる情報を使う。導入後に機密が見つかりやすくなる原因は、導入前からの過剰共有であることがある。</li><li>file単位ではなくsite単位で優先順位を付ける。発見を制限する機能と、アクセス自体を絞る機能は別物として使い分ける。</li><li>廃止予定の一時策には頼らず、pilotで見つかってはいけない情報と見つかるべき情報を試す。導入前の4週間で棚卸しから是正、研修まで進める。</li></ul></div><p>Copilot導入前にSharePointとOneDriveの過剰共有、所有者不在、高リスクsiteを見つけ、制限機能と恒久的な権限修正を分けて進める方法を解説します。</p><h2 id="s1">Copilotは既存権限を前提に動く</h2><p class="answer">Copilotは既存の権限を前提に動く。機密が見つかりやすくなる原因は、導入前からの過剰共有であることがある。</p><p>Microsoft 365 Copilotは、利用者が既にaccessできるメール、chat、documentなどをgroundingに利用します[1]。Copilotが新しい権限を勝手に作るわけではありません。導入後に機密情報が見つかりやすくなった場合、原因は導入前からの過剰共有であることがあります。prompt研修より先に、誰がどのsiteとfileを読めるかを棚卸しします。</p><h2 id="s2">site単位で優先順位を付ける</h2><p class="answer">全ファイルではなくsite単位で優先順位を付ける。人事・法務・財務・経営会議・顧客情報から手を付ける。</p><p>全fileを人手で開くのではなく、所有者不在、Everyone共有、匿名link、外部共有、permission inheritanceの破断、長期未更新、機密情報の存在をsite単位で抽出します。Microsoftのdeployment blueprintは、data access governance reportとsite access reviewを使い、ownerへ是正を委任する流れを示します[2]。人事、法務、財務、経営会議、顧客情報を優先します。</p><aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">生成AI活用事例集を受け取る</div><div class="mc-d">TechWorkerが支援した企業の生成AI活用事例をまとめた資料です。記事のテーマと合わせてご覧ください。</div></div><a href="../../library/?doc=cases&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=copilot-sharepoint-permission-audit&amp;utm_content=mid" class="btn" data-cta="copilot-sharepoint-permission-audit-mid">事例集を受け取る <i>&rarr;</i></a></aside>
-<h2 id="s3">発見制限とaccess制限を分ける</h2><p class="answer">発見制限は権限そのものを変えない。見つけにくくすることと、読めなくすることは別の対策である。</p><p>Restricted Content Discoveryは、対象siteを組織横断検索やCopilotで発見されにくくしますが、site permission自体は変えません[3]。Restricted Access Controlは指定groupへaccessを絞る別の境界です[2]。何を「見つけにくくする」のか、何を「読めなくする」のかを混同しないことが重要です。</p><h2 id="s4">廃止予定の一時策へ依存しない</h2><p class="answer">一時的な許可リストは安全の境界ではない。解除する条件と、恒久的な是正の期限を決める。</p><p>Restricted SharePoint Searchは一時的なallow listで、security boundaryではありません。Microsoftは2026年7月31日から新規有効化を停止し、長期利用ではなくRCD、SharePoint Advanced Management、Purviewを使うよう案内しています[4]。既存tenantで有効でも、解除条件と恒久是正の期限を決めます。</p><h2 id="s5">pilotと研修を権限是正へ接続する</h2><p class="answer">少人数のpilotで、見つかってはいけない情報と見つかるべき情報の両方を試し、報告窓口と修正期限を決める。</p><p>少人数のpilot利用者で、見つかってはいけない情報と、見つかるべき情報の両方を試します。問題を見つけた利用者が報告する窓口、ownerの修正期限、例外承認を決めます。研修では「機密情報を入れない」だけでなく、Copilotが既存accessを尊重する構造、根拠fileの確認、誤回答の報告を実環境で練習します。</p><h2 id="s6">適用限界</h2><p class="answer">制御はlicenseで異なり、隠しすぎると有用性も下がる。恒久的な権限是正を中心に、他の統制と組み合わせる。</p><p>利用できるreportや制御はlicenseで異なります[5]。RCDを増やしすぎると検索とCopilotの有用性も下がります。すべてを隠すのではなく、accessの恒久是正、content lifecycle、sensitivity label、DLPを組み合わせ、業務上必要な発見性を保ちます。</p><h2 id="ops">4週間の導入前実務</h2><p class="answer">導入前の4週間で、棚卸し、pilot検索、共有の修正、研修の順に進める。go-live後は月次でreviewする。</p><p>1週目は対象tenantのsite inventoryを作り、事業owner、管理owner、機密区分、外部共有、全社共有、最終更新日を並べます。ownerが決まらないsiteはCopilot pilotの対象外とし、削除ではなく保留へ置きます。全社共有が業務上必要な社内規程やtemplateもあるため、広い権限を一律に異常とは判定しません。</p><p>2週目はpilot利用者を複数部門から選び、実際の業務質問で検索します。「見つかってはいけない情報」と「見つかるべき情報」を同数程度用意し、過剰共有と検索不能を分けて記録します。結果には、回答本文だけでなく参照されたfile、site、利用者のaccess経路を残します。</p><p>3週目はownerが不要な共有link、group membership、broken inheritanceを修正します。RCDは修正中の一時措置として使い、解除日と担当者を決めます。RACやsensitivity labelを使う場合は、通常検索、共同編集、既存automationへの影響もtestします。</p><p>4週目は研修でaccessの仕組み、根拠fileの確認、誤った共有の報告、外部送信前の確認を練習します。go-live後は新規site、owner不在、全社共有、RCD滞留を月次でreviewし、制限したまま放置しません。</p><h2 id="faq">よくある質問</h2>
-<div class="faq"><div class="q">Copilotを導入すると、権限のない情報も見えてしまいますか？</div><p class="a">Copilotが新しい権限を作るわけではありません。利用者が既にアクセスできるメールやドキュメントなどを使うため、導入前から過剰共有があると、機密情報が見つかりやすくなることがあります。</p></div>
-<div class="faq"><div class="q">Restricted Content Discoveryを設定すれば権限の問題は解決しますか？</div><p class="a">解決しません。対象siteを組織横断検索やCopilotで発見されにくくするだけで、site permission自体は変えないからです。修正中の一時措置と位置づけ、解除日と担当者を決めます。</p></div>
-<div class="faq"><div class="q">導入前の権限棚卸しは何から始めればよいですか？</div><p class="a">対象tenantのsite inventoryを作り、事業owner、管理owner、機密区分、外部共有、全社共有、最終更新日を並べます。ownerが決まらないsiteはpilotの対象外とし、削除ではなく保留に置きます。</p></div>
-<h2 id="sources">一次情報と確認範囲</h2><p class="source-note">確認日：2026年9月21日。海外の制度・製品仕様・研究結果は日本へそのまま適用せず、国内法・契約・対象条件を別途確認してください。</p><ol class="source-list"><li><a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/microsoft-365-copilot-architecture" target="_blank" rel="noopener noreferrer">K-1 Microsoft Copilot architecture</a></li><li><a href="https://learn.microsoft.com/en-us/sharepoint/get-ready-copilot-sharepoint-advanced-management" target="_blank" rel="noopener noreferrer">K-2 Get ready for Copilot with SharePoint Advanced Management</a></li><li><a href="https://learn.microsoft.com/en-us/sharepoint/restricted-content-discovery" target="_blank" rel="noopener noreferrer">K-3 Restricted Content Discovery</a></li><li><a href="https://learn.microsoft.com/en-us/sharepoint/restricted-sharepoint-search" target="_blank" rel="noopener noreferrer">K-4 Restricted SharePoint Search</a></li><li><a href="https://learn.microsoft.com/en-us/sharepoint/sharepoint-advanced-management-licensing" target="_blank" rel="noopener noreferrer">K-5 SharePoint Advanced Management licensing</a></li><li><a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/copilot-controls/security-governance" target="_blank" rel="noopener noreferrer">K-6 Copilot controls: security and governance</a></li></ol></article></div><div class="author"><div class="inner"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><div><div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div><p>上場企業を含む37社・2,500名の生成AI導入・研修支援で得た実務知をもとに、導入・運用・顧客理解を扱っています。この実績はTechWorkerの生成AI支援実績であり、個別製品の導入実績を示すものではありません。</p></div></div></div><div class="art-cta"><div class="inner"><div><h3>Copilot導入を権限棚卸しから設計する</h3><p>SharePointの共有状態、pilot、利用ルール、研修を一体で設計します。</p></div><a href="../../training.html?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=copilot-sharepoint-permission-audit" class="btn" data-cta="copilot-sharepoint-permission-audit">生成AI研修を相談する <i>→</i></a></div></div><div class="back-list"><a href="index.html">← AI研修・導入ラボの記事一覧に戻る</a></div><section class="related"><div class="container"><div class="rl-h">Related</div><div class="related-grid"><a href="copilot-adoption.html" class="related-card"><span class="rc-cat">定着と効果測定</span><div class="rc-title">Copilot導入の進め方</div></a><a href="m365-copilot-usage-report-training-gap-analysis.html" class="related-card"><span class="rc-cat">定着と効果測定</span><div class="rc-title">利用reportと研修改善</div></a></div></div></section><footer><div class="container"><div class="footer-inner"><div class="footer-brand"><div class="logo">AI研修・導入ラボ</div><p>一次情報と実務に基づく生成AIメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p></div><div class="footer-col"><h4>メディア</h4><a href="index.html">記事一覧</a><a href="../index.html">全媒体</a></div><div class="footer-col"><h4>運営会社</h4><a href="../../company.html">会社概要</a><a href="../../privacy.html">プライバシーポリシー</a></div></div><p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p></div></footer><script>
+</div><header class="art-head"><nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a></nav><div class="kicker">社内ルールと安全</div><h1>Microsoft 365 Copilot導入前のSharePoint権限棚卸し｜過剰共有を防ぐ実務</h1><p class="dek">Copilot導入前は、4週間で権限の棚卸しから是正、研修まで進めると、過剰共有を防げます。<br>Copilotの導入前に、SharePointやOneDriveの共有状態を確かめたい担当者の方に向けた記事です。<br>site単位の優先順位、発見制限とaccess制限の違い、4週間の進め方が分かります。</p><div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.09.21</span><span class="dot">·</span><span>最終更新 2026.10.02</span><span class="dot">·</span><span>一次情報 6件</span></div></header><img class="daily-cover" src="covers/copilot-sharepoint-permission-audit.png" alt="SharePointの権限を導入前に棚卸し。情シス・所有者・試験利用者が、サイトを棚卸しする→検索を試す→共有を修正する→研修へつなぐ→月次で見直すの順に進める業務図" width="1200" height="630"><div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div>
+      <a href="#s1">結論</a>
+      <a href="#s2">手順</a>
+      <a href="#s3">うまくいかない例</a>
+      <a href="#s4">比較表</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#s5">次の一歩</a>
+    </div></nav><article class="art-body">
+<h2 id="s1">Copilot導入前に、なぜSharePointの権限棚卸しが必要ですか？</h2>
+<p class="answer">Copilotは利用者が既にアクセスできる情報を使うため、導入前の過剰共有を先に直します。</p>
+<p>Microsoft 365 Copilotは、利用者が既にaccessできる情報を使います。メール、chat、documentなどを、grounding（回答の根拠にすること）に利用します[1]。Copilotが新しい権限を勝手に作るわけではありません。</p>
+<p>導入後に機密情報が見つかりやすくなった場合、原因は導入前からの過剰共有であることがあります。prompt研修より先に、誰がどのsiteとfileを読めるかを棚卸しします。</p>
+<p>要点は、次の3つです。</p>
+<ul>
+<li>file単位でなく、site単位で優先順位を付けます。</li>
+<li>発見を制限する機能と、アクセス自体を絞る機能は、別物として使い分けます。</li>
+<li>廃止予定の一時策には頼らず、導入前の4週間で棚卸しから是正、研修まで進めます。</li>
+</ul>
+<aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">生成AI活用事例集を受け取る</div><div class="mc-d">TechWorkerが支援した企業の生成AI活用事例をまとめた資料です。記事のテーマと合わせてご覧ください。</div></div><a href="../../library/?doc=cases&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=copilot-sharepoint-permission-audit&amp;utm_content=mid" class="btn" data-cta="copilot-sharepoint-permission-audit-mid">事例集を受け取る <i>&rarr;</i></a></aside>
+
+<h2 id="s2">導入前の4週間は、どう進めますか？</h2>
+<p class="answer">1週目に棚卸し、2週目にpilot検索、3週目に共有の修正、4週目に研修、go-live後は月次で見直します。</p>
+<h3>手順1　1週目：site単位で棚卸しし、優先順位を付ける</h3>
+<p>全fileを人手で開く必要はありません。次をsite単位で抽出します。</p>
+<ul>
+<li>所有者不在</li>
+<li>Everyone共有、匿名link、外部共有</li>
+<li>permission inheritanceの破断</li>
+<li>長期未更新</li>
+<li>機密情報の存在</li>
+</ul>
+<p>Microsoftのdeployment blueprintは、次の流れを示します[2]。使うのは、data access governance reportとsite access reviewです。是正は、ownerへ委任します。優先するのは、人事、法務、財務、経営会議、顧客情報です。</p>
+<p>対象tenant（自社のMicrosoft 365環境）のsite inventoryを作ります。次を並べます。</p>
+<ul>
+<li>事業owner、管理owner</li>
+<li>機密区分</li>
+<li>外部共有、全社共有</li>
+<li>最終更新日</li>
+</ul>
+<p>ownerが決まらないsiteは、Copilot pilot（少人数の試験利用）の対象外とします。削除せず、保留へ置きます。全社共有が業務上必要な社内規程やtemplateもあるため、広い権限を一律に異常とは判定しません。</p>
+<h3>手順2　2週目：pilot利用者で実際に検索する</h3>
+<p>pilot利用者を、複数部門から選びます。実際の業務質問で検索します。「見つかってはいけない情報」と「見つかるべき情報」を、同数程度用意します。</p>
+<p>過剰共有と検索不能を分けて記録します。結果には、回答本文だけでなく、参照されたfile、site、利用者のaccess経路を残します。</p>
+<h3>手順3　3週目：共有を修正し、制限機能を使い分ける</h3>
+<p>ownerが、不要な共有link、group membership、broken inheritanceを修正します。</p>
+<p>制限機能は、役割が違います。下の表のとおり、見つけにくくすることと、読めなくすることは別の対策です。Restricted Content Discovery（RCD）は、修正中の一時措置として使います。解除日と担当者を決めます。</p>
+<p>RAC（Restricted Access Control）やsensitivity labelを使う場合は、影響もtestします。対象は、通常検索、共同編集、既存automationです。</p>
+<h3>手順4　4週目：研修で権限の仕組みを練習する</h3>
+<p>少人数のpilot利用者で、報告窓口、ownerの修正期限、例外承認を決めます。</p>
+<p>研修では、「機密情報を入れない」だけでなく、次を実環境で練習します。</p>
+<ul>
+<li>Copilotが既存accessを尊重する構造。</li>
+<li>根拠fileの確認。</li>
+<li>誤回答と、誤った共有の報告。</li>
+<li>外部送信前の確認。</li>
+</ul>
+<h3>手順5　go-live後：月次で見直す</h3>
+<p>新規site、owner不在、全社共有、RCD滞留を、月次でreviewします。制限したまま放置しません。</p>
+
+<h2 id="s3">権限の棚卸しがうまくいかない例には、どんなものがありますか？</h2>
+<p class="answer">RCDで権限問題が解決したとみなす、一時策に依存する、隠しすぎるの3つが代表例です。</p>
+<ul>
+<li><strong>RCDで権限の問題が解決したとみなす。</strong>RCDは、site permission自体を変えません。見つけにくくするだけです。</li>
+<li><strong>廃止予定の一時策に依存する。</strong>Restricted SharePoint Searchは、一時的なallow listです。security boundaryではありません。Microsoftは、2026年7月31日から新規有効化を停止しました[4]。既存tenantで有効でも、解除条件と恒久是正の期限を決めます。</li>
+<li><strong>制限を増やしすぎる。</strong>RCDを増やしすぎると、検索とCopilotの有用性も下がります。</li>
+<li><strong>ownerが決まらないsiteを削除する。</strong>削除せず、保留に置きます。</li>
+<li><strong>制限したまま放置する。</strong>解除日と担当者を決め、月次で見直します。</li>
+</ul>
+<p>すべてを隠すのが答えではありません。accessの恒久是正、content lifecycle、sensitivity label、DLPを組み合わせます。業務上必要な発見性を保ちます。</p>
+
+<h2 id="s4">発見制限とaccess制限は、どう違いますか？</h2>
+<p class="answer">RCDは見つけにくくし、RACはaccessを絞ります。RSSは一時策で、安全の境界ではありません。</p>
+<div class="tbl-wrap">
+<table>
+<tr><th>機能</th><th>何をするか</th><th>site permissionへの影響</th><th>位置づけ</th></tr>
+<tr><td>Restricted Content Discovery（RCD）[3]</td><td>対象siteを、組織横断検索やCopilotで発見されにくくする</td><td>変えない</td><td>修正中の一時措置。解除日と担当者を決める</td></tr>
+<tr><td>Restricted Access Control（RAC）[2]</td><td>指定groupへaccessを絞る</td><td>accessの境界を別に設ける</td><td>通常検索、共同編集、既存automationへの影響をtestする</td></tr>
+<tr><td>Restricted SharePoint Search（RSS）[4]</td><td>一時的なallow list</td><td>security boundaryではない</td><td>2026年7月31日から新規有効化を停止。長期利用でなく、RCD、SharePoint Advanced Management、Purviewを使う</td></tr>
+</table>
+</div>
+<p class="fig-cap">出典：Microsoft公式ドキュメント（2026年9月21日確認）。番号は下の出典に対応します。</p>
+
+<h2 id="faq">よくある質問</h2>
+<div class="faq"><div class="q">Copilotを導入すると、権限のない情報も見えてしまいますか？</div><p class="a">Copilotが新しい権限を作るわけではありません。利用者が既にアクセスできるメールやドキュメントなどを使います。導入前から過剰共有があると、機密情報が見つかりやすくなることがあります。</p></div>
+<div class="faq"><div class="q">Restricted Content Discoveryを設定すれば権限の問題は解決しますか？</div><p class="a">解決しません。対象siteを、組織横断検索やCopilotで発見されにくくするだけです。site permission自体は変えません。修正中の一時措置と位置づけ、解除日と担当者を決めます。</p></div>
+<div class="faq"><div class="q">導入前の権限棚卸しは何から始めればよいですか？</div><p class="a">対象tenantのsite inventoryを作ります。事業owner、管理owner、機密区分、外部共有、全社共有、最終更新日を並べます。ownerが決まらないsiteはpilotの対象外とし、削除せず保留に置きます。</p></div>
+
+<h2 id="s5">次の一歩は、何から始めればよいですか？</h2>
+<p class="answer">対象tenantのsite inventoryを作り、ownerが決まらないsiteを洗い出すところから始めます。</p>
+<p>まず、1週目の手順を実行します。sensitivity labelやreportなどの利用できる制御は、licenseで異なります[5]。利用できる機能は、自社のlicenseで確認します。</p>
+<p>TechWorkerは、SharePointの共有状態、pilot、利用ルール、研修を一体で設計します。画面下の「生成AI研修を相談する」から、ご相談ください。</p>
+
+<h2 id="sources">出典と確認範囲</h2>
+<p class="source-note">確認日：2026年9月21日。海外の制度・製品仕様・研究結果は日本へそのまま適用せず、国内法・契約・対象条件を別途確認してください。</p>
+<ol class="source-list"><li><a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/microsoft-365-copilot-architecture" target="_blank" rel="noopener noreferrer">Microsoft Copilot architecture</a></li><li><a href="https://learn.microsoft.com/en-us/sharepoint/get-ready-copilot-sharepoint-advanced-management" target="_blank" rel="noopener noreferrer">Get ready for Copilot with SharePoint Advanced Management</a></li><li><a href="https://learn.microsoft.com/en-us/sharepoint/restricted-content-discovery" target="_blank" rel="noopener noreferrer">Restricted Content Discovery</a></li><li><a href="https://learn.microsoft.com/en-us/sharepoint/restricted-sharepoint-search" target="_blank" rel="noopener noreferrer">Restricted SharePoint Search</a></li><li><a href="https://learn.microsoft.com/en-us/sharepoint/sharepoint-advanced-management-licensing" target="_blank" rel="noopener noreferrer">SharePoint Advanced Management licensing</a></li><li><a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/copilot-controls/security-governance" target="_blank" rel="noopener noreferrer">Copilot controls: security and governance</a></li></ol>
+</article></div><div class="author"><div class="inner"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><div><div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div><p>上場企業を含む37社・2,500名の生成AI導入・研修支援で得た実務知をもとに、導入・運用・顧客理解を扱っています。この実績はTechWorkerの生成AI支援実績であり、個別製品の導入実績を示すものではありません。</p></div></div></div><div class="art-cta"><div class="inner"><div><h3>Copilot導入を権限棚卸しから設計する</h3><p>SharePointの共有状態、pilot、利用ルール、研修を一体で設計します。</p></div><a href="../../training.html?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=copilot-sharepoint-permission-audit" class="btn" data-cta="copilot-sharepoint-permission-audit">生成AI研修を相談する <i>→</i></a></div></div><div class="back-list"><a href="index.html">← AI研修・導入ラボの記事一覧に戻る</a></div><section class="related"><div class="container"><div class="rl-h">Related</div><div class="related-grid"><a href="copilot-adoption.html" class="related-card"><span class="rc-cat">定着と効果測定</span><div class="rc-title">Copilot導入の進め方</div></a><a href="m365-copilot-usage-report-training-gap-analysis.html" class="related-card"><span class="rc-cat">定着と効果測定</span><div class="rc-title">利用reportと研修改善</div></a></div></div></section><footer><div class="container"><div class="footer-inner"><div class="footer-brand"><div class="logo">AI研修・導入ラボ</div><p>一次情報と実務に基づく生成AIメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p></div><div class="footer-col"><h4>メディア</h4><a href="index.html">記事一覧</a><a href="../index.html">全媒体</a></div><div class="footer-col"><h4>運営会社</h4><a href="../../company.html">会社概要</a><a href="../../privacy.html">プライバシーポリシー</a></div></div><p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p></div></footer><script>
 var nav=document.getElementById('nav');
 addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
 (function(){
