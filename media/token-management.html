@@ -13,24 +13,24 @@
 <script src="/assets/tw-track.js" defer></script>
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>トークンマネジメントとは｜生成AIのコストを最大90%下げる実践ガイド【2026年】 — TechWorker</title>
-<meta name="description" content="トークンマネジメントは、生成AIのトークン量を管理してコストを最適化する戦略です。プロンプトキャッシュの読み出しは通常入力の約0.1倍（最大約90%減）です。費用が読めない情シス・経営企画・開発責任者の方に向けて、4つの手法、モデル別料金、自社の使い方、絞る場面と振り切る場面を解説します。">
+<title>トークンコストとトークンマネジメント｜最大90%下げる4つの手法【2026年】 — TechWorker</title>
+<meta name="description" content="トークンコストを管理して下げる方法がトークンマネジメントです。プロンプトキャッシュの読み出しは通常入力の約0.1倍（最大約90%減）。4つの手法とモデル別料金、絞る場面と振り切る場面、自社での使い方を解説します。">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="canonical" href="https://techworker.co.jp/media/token-management">
 <meta property="og:type" content="article">
-<meta property="og:title" content="トークンマネジメントとは｜生成AIのコストを最大90%下げる実践ガイド【2026年】">
-<meta property="og:description" content="プロンプトキャッシュ・モデル使い分け・Batch API・出力制御で、生成AIのコストを下げる方法を整理します。モデル別料金と、TechWorkerの実際の使い方つきです。">
+<meta property="og:title" content="トークンコストとトークンマネジメント｜最大90%下げる4つの手法【2026年】">
+<meta property="og:description" content="トークンコストを管理して下げる方法がトークンマネジメントです。プロンプトキャッシュの読み出しは通常入力の約0.1倍（最大約90%減）。4つの手法とモデル別料金、絞る場面と振り切る場面、自社での使い方を解説します。">
 <meta property="og:image" content="https://techworker.co.jp/media/covers/token-management.png">
 <meta property="og:url" content="https://techworker.co.jp/media/token-management">
 <meta property="og:site_name" content="TechWorker">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="トークンマネジメントとは｜生成AIのコストを最大90%下げる実践ガイド【2026年】">
+<meta name="twitter:title" content="トークンコストとトークンマネジメント｜最大90%下げる4つの手法【2026年】">
 <meta name="twitter:image" content="https://techworker.co.jp/media/covers/token-management.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="article.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "トークンマネジメントとは｜生成AIのコストを最大90%下げる実践ガイド【2026年】", "description": "トークンマネジメントは、生成AIのトークン量を管理してコストを最適化する戦略です。プロンプトキャッシュの読み出しは通常入力の約0.1倍（最大約90%減）です。費用が読めない情シス・経営企画・開発責任者の方に向けて、4つの手法、モデル別料金、自社の使い方、絞る場面と振り切る場面を解説します。", "datePublished": "2026-06-13", "dateModified": "2026-10-02", "inLanguage": "ja", "image": "https://techworker.co.jp/media/covers/token-management.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/token-management.html"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "トークンコストとトークンマネジメント｜最大90%下げる4つの手法【2026年】", "description": "トークンコストを管理して下げる方法がトークンマネジメントです。プロンプトキャッシュの読み出しは通常入力の約0.1倍（最大約90%減）。4つの手法とモデル別料金、絞る場面と振り切る場面、自社での使い方を解説します。", "datePublished": "2026-06-13", "dateModified": "2026-10-02", "inLanguage": "ja", "image": "https://techworker.co.jp/media/covers/token-management.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/token-management.html"}}</script>
 <script type="application/ld+json">
 {
   "@context":"https://schema.org","@type":"BreadcrumbList",
@@ -115,14 +115,6 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <div class="kicker">Token Strategy</div>
   <h1>トークンマネジメントとは｜生成AIのコストを最大90%下げる実践ガイド</h1>
   <p class="dek">トークンの使い方で請求額は大きく変わり、プロンプトキャッシュの読み出しは通常入力の約0.1倍（最大約90%減）です。<br>生成AIの費用が読めない、急に増える、説明できないとお困りの情シス・経営企画・開発責任者の方に向けた記事です。<br>キャッシュ・モデルの使い分け・Batch API・出力制御の4手法と、モデル別料金、絞る場面と振り切る場面が分かります。</p>
-  <div class="kn-voices" aria-hidden="true">
-    <span class="kn-fc" style="--sayo:0.0s"><span class="av"><img src="avatars/m50-2.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">費用が読めない</span></span>
-    <span class="kn-fc" style="--sayo:6.3s"><span class="av"><img src="avatars/f20-0.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">急に増える</span></span>
-    <span class="kn-fc" style="--sayo:2.1s"><span class="av"><img src="avatars/m30-6.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">誰が使ったか不明</span></span>
-    <span class="kn-fc" style="--sayo:8.4s"><span class="av"><img src="avatars/f40-0.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">上限が無い</span></span>
-    <span class="kn-fc" style="--sayo:4.2s"><span class="av"><img src="avatars/m20-6.svg" alt="" loading="eager" width="88" height="88"></span><span class="say">説明できない</span></span>
-  </div>
-  <div class="kn-voices-cap">現場でよく聞く声<span class="note">※ 実際のご相談で挙がる論点をもとにした例です</span></div>
   <div class="a-meta">
     <img class="av" src="../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.06.13</span><span class="dot">·</span><span>最終更新 2026.10.02</span><span class="dot">·</span><span>読了 7分</span>
   </div>

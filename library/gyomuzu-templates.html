@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3V34NWXVCJ');
+</script>
+<script src="/assets/tw-track.js" defer></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>部署別 業務図テンプレート集｜AIに任せる工程の見つけ方つき — TechWorker</title>
+<meta name="description" content="経理・人事労務・カスタマー対応・総務法務・営業の5部署の業務図の例と、自社用の空の型、AIに任せる工程の札の付け方をまとめた資料です。">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="部署別 業務図テンプレート集｜AIに任せる工程の見つけ方つき — TechWorker">
+<meta property="og:description" content="経理・人事労務・カスタマー対応・総務法務・営業の5部署の業務図の例と、自社用の空の型、AIに任せる工程の札の付け方をまとめた資料です。">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/library/gyomuzu-templates">
+<link rel="canonical" href="https://techworker.co.jp/library/gyomuzu-templates">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="部署別 業務図テンプレート集｜AIに任せる工程の見つけ方つき — TechWorker">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== TOKENS (v2) ===== */
+:root{
+  --ink:#0D1117; --paper:#F4F6F9; --paper-2:#ECEFF3; --white:#FBFCFD;
+  --electric:#005EFF; --electric-dark:#003DAA;
+  --slate:#5A6677; --line:rgba(13,17,23,.12); --line-2:rgba(13,17,23,.20);
+  --emerald:#00B894; --violet:#7C3AED; --danger:#C0392B;
+  --jp:'IBM Plex Sans JP','IBM Plex Sans',system-ui,sans-serif;
+  --en:'IBM Plex Sans','IBM Plex Sans JP',system-ui,sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;overflow-x:hidden;}
+body{font-family:var(--jp);background:var(--paper);color:var(--ink);line-height:1.85;font-size:16px;-webkit-font-smoothing:antialiased;font-feature-settings:"palt" 1;overflow-x:hidden;}
+::selection{background:var(--electric);color:var(--paper);}
+a{color:var(--electric);}
+img{display:block;max-width:100%;}
+
+/* ===== TAG (structured label, v2) ===== */
+.tag{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--electric);display:inline-flex;align-items:center;gap:11px;padding-left:14px;border-left:3px solid var(--electric);}
+.tag span{color:var(--slate);font-weight:500;letter-spacing:.02em;text-transform:none;font-size:13px;}
+
+/* ===== READER BAR ===== */
+.reader-bar{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;background:rgba(244,246,249,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 24px;}
+.reader-bar .back{font-size:13px;font-weight:600;color:var(--slate);text-decoration:none;display:inline-flex;align-items:center;gap:7px;}
+.reader-bar .back:hover{color:var(--electric);}
+.reader-bar .brand{font-family:var(--en);font-size:16px;font-weight:700;letter-spacing:-.01em;color:var(--ink);text-decoration:none;}
+.reader-bar .brand i{font-style:normal;color:var(--electric);}
+.reader-bar .print{font-family:var(--jp);font-size:13px;font-weight:600;padding:9px 18px;border:1.5px solid var(--electric);color:var(--electric);background:none;border-radius:5px;cursor:pointer;transition:background .2s,color .2s;}
+.reader-bar .print:hover{background:var(--electric);color:var(--paper);}
+
+/* ===== DOC ===== */
+.doc{max-width:840px;margin:0 auto;padding:56px 40px 90px;}
+
+/* COVER */
+.cover{padding:80px 0 56px;border-bottom:2px solid var(--ink);margin-bottom:60px;}
+.cover .tag{margin-bottom:30px;}
+.cover h1{font-family:var(--jp);font-weight:700;font-size:clamp(32px,5vw,46px);line-height:1.34;letter-spacing:-.02em;margin-bottom:24px;}
+.cover h1 .mk{color:var(--electric);}
+.cover .sub{font-size:17px;color:var(--slate);line-height:2;max-width:640px;}
+.cover .sub strong{color:var(--ink);font-weight:600;}
+.cover .cover-meta{display:flex;gap:0;margin-top:42px;border-top:1px solid var(--line);}
+.cover .cover-meta div{padding:24px 30px 0 0;margin-right:30px;border-right:1px solid var(--line);}
+.cover .cover-meta div:last-child{border-right:none;}
+.cover .cover-meta b{font-family:var(--en);display:block;font-size:30px;font-weight:600;letter-spacing:-.02em;color:var(--electric);line-height:1;font-feature-settings:"tnum" 1;}
+.cover .cover-meta span{display:block;font-size:12.5px;color:var(--slate);margin-top:8px;}
+
+/* TOC */
+.toc{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:30px 34px;margin-bottom:66px;}
+.toc h4{font-family:var(--en);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--slate);font-weight:600;margin-bottom:20px;}
+.toc ol{list-style:none;counter-reset:toc;}
+.toc li{counter-increment:toc;padding:11px 0;border-bottom:1px solid var(--line);display:flex;align-items:baseline;gap:16px;font-size:15px;font-weight:600;}
+.toc li:last-child{border-bottom:none;}
+.toc li::before{content:counter(toc,decimal-leading-zero);font-family:var(--en);font-size:13px;color:var(--electric);font-weight:600;letter-spacing:.02em;}
+.toc li a{color:var(--ink);text-decoration:none;}
+.toc li a:hover{color:var(--electric);}
+
+/* CHAPTER */
+.chapter{margin-bottom:70px;}
+.chapter .ch-num{font-family:var(--en);font-size:13px;letter-spacing:.14em;color:var(--electric);font-weight:600;margin-bottom:12px;}
+.chapter h2{font-family:var(--jp);font-size:clamp(24px,3vw,30px);font-weight:700;line-height:1.4;letter-spacing:-.02em;margin-bottom:10px;padding-bottom:20px;border-bottom:1px solid var(--line);}
+.chapter h3{font-size:18px;font-weight:700;margin:36px 0 12px;letter-spacing:-.01em;}
+.chapter p{margin:14px 0;color:#28313f;}
+.chapter strong{color:var(--ink);font-weight:700;}
+.chapter .lead-p{font-size:17px;color:var(--slate);line-height:2;margin-top:18px;}
+.chapter .lead-p strong{color:var(--ink);font-weight:600;}
+
+/* big stat row */
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:34px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.stat{padding:26px 24px 24px;border-left:1px solid var(--line);}
+.stat:first-child{border-left:none;padding-left:0;}
+.stat .n{font-family:var(--en);font-size:clamp(34px,5vw,46px);font-weight:600;color:var(--electric);line-height:1;letter-spacing:-.03em;font-feature-settings:"tnum" 1;}
+.stat .l{font-size:12.5px;color:var(--slate);margin-top:12px;line-height:1.7;}
+
+/* risk cards (light tint + danger left border) */
+.risk{background:rgba(192,57,43,.05);border:1px solid rgba(192,57,43,.20);border-left:4px solid var(--danger);border-radius:0 8px 8px 0;padding:26px 30px;margin:22px 0;}
+.risk .risk-head{display:flex;align-items:baseline;gap:14px;margin-bottom:12px;flex-wrap:wrap;}
+.risk .risk-no{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.1em;color:var(--danger);padding-left:11px;border-left:3px solid var(--danger);}
+.risk h3{margin:0;font-size:19px;font-weight:700;letter-spacing:-.01em;}
+.risk p{margin:8px 0;font-size:14.5px;color:#28313f;line-height:1.9;}
+.risk .risk-fact{font-size:13px;color:var(--danger);border-top:1px solid rgba(192,57,43,.22);padding-top:14px;margin-top:16px;line-height:1.8;font-weight:500;}
+.risk .risk-fact b{font-weight:700;}
+
+/* principle ladder */
+.ladder{margin:26px 0;border-top:1px solid var(--line);}
+.ladder .rung{display:flex;align-items:flex-start;gap:18px;padding:22px 0;border-bottom:1px solid var(--line);}
+.ladder .rank{font-family:var(--en);font-size:15px;font-weight:600;color:var(--paper);background:var(--electric);min-width:34px;height:34px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ladder .rung-body h4{font-size:16px;font-weight:700;margin-bottom:5px;letter-spacing:-.01em;}
+.ladder .rung-body p{margin:4px 0 0;font-size:14px;color:var(--slate);line-height:1.9;}
+.ladder .rung-body p strong{color:var(--ink);font-weight:600;}
+
+/* setup grid (chapter 4) */
+.setup{margin:26px 0;border-top:1px solid var(--line);}
+.setup .srow{display:grid;grid-template-columns:200px 1fr;gap:24px;padding:24px 0;border-bottom:1px solid var(--line);}
+.setup .skey{font-size:15px;font-weight:700;color:var(--ink);letter-spacing:-.01em;}
+.setup .skey .pre{display:block;font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--electric);text-transform:uppercase;margin-bottom:6px;}
+.setup .sval{font-size:14.5px;color:#28313f;line-height:1.9;}
+.setup .sval code{font-family:var(--en);font-size:13px;background:var(--paper-2);border:1px solid var(--line);border-radius:4px;padding:1px 7px;color:var(--ink);}
+
+/* checklist */
+.checklist{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:30px 32px;margin:26px 0;}
+.checklist .cl-item{display:flex;align-items:flex-start;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);}
+.checklist .cl-item:last-child{border-bottom:none;}
+.checklist .box{width:20px;height:20px;border:2px solid var(--electric);border-radius:4px;flex-shrink:0;margin-top:3px;}
+.checklist .cl-item .t{font-size:14.5px;}
+.checklist .cl-item .t b{font-weight:700;}
+.checklist .cl-item .t span{display:block;font-size:12.5px;color:var(--slate);margin-top:3px;line-height:1.7;}
+
+/* callout (electric tint) */
+.callout{background:rgba(0,94,255,.05);border-left:4px solid var(--electric);border-radius:0 8px 8px 0;padding:22px 26px;margin:26px 0;font-size:15px;line-height:1.95;}
+.callout b{color:var(--electric);font-weight:600;}
+
+/* emphasis block (electric-dark bg, paper text) */
+.emph{background:var(--electric-dark);color:var(--paper);border-radius:8px;padding:36px 40px;margin:30px 0;}
+.emph p{font-family:var(--jp);font-weight:500;font-size:clamp(17px,2vw,20px);line-height:1.85;letter-spacing:-.01em;color:var(--paper);}
+.emph em{font-style:normal;font-weight:700;color:#fff;background:linear-gradient(transparent 82%,rgba(255,255,255,.30) 82%,rgba(255,255,255,.30) 92%,transparent 92%);padding:0 .02em;}
+
+/* final CTA (electric bg, paper text) */
+.doc-cta{background:var(--electric);color:var(--paper);border-radius:10px;padding:52px 48px;margin:78px 0 0;text-align:center;}
+.doc-cta .tag{border-color:var(--paper);color:var(--paper);justify-content:center;margin-bottom:18px;}
+.doc-cta .tag span{color:rgba(244,246,249,.8);}
+.doc-cta h2{font-family:var(--jp);font-size:clamp(24px,3vw,30px);font-weight:700;line-height:1.5;letter-spacing:-.02em;border:none;padding:0;margin-bottom:16px;color:var(--paper);}
+.doc-cta p{color:rgba(244,246,249,.88);font-size:15px;margin-bottom:30px;line-height:1.9;}
+.doc-cta .btn{font-family:var(--jp);display:inline-flex;align-items:center;gap:10px;background:var(--paper);color:var(--electric);font-weight:600;font-size:15px;padding:16px 38px;border-radius:5px;text-decoration:none;transition:background .2s,transform .25s;}
+.doc-cta .btn i{font-style:normal;transition:transform .25s;}
+.doc-cta .btn:hover{background:var(--white);transform:translateY(-2px);}
+.doc-cta .btn:hover i{transform:translateX(4px);}
+.doc-foot{text-align:center;margin-top:54px;padding-top:24px;border-top:1px solid var(--line);font-size:12px;color:var(--slate);font-family:var(--en);letter-spacing:.02em;}
+
+@media (max-width:640px){
+  .doc{padding:42px 22px 64px;}
+  .cover{padding:60px 0 44px;}
+  .cover .cover-meta{flex-wrap:wrap;gap:0;}
+  .cover .cover-meta div{padding:18px 22px 0 0;margin-right:22px;}
+  .stat-row{grid-template-columns:1fr;}
+  .stat{border-left:none;border-top:1px solid var(--line);padding:22px 0;}
+  .stat:first-child{border-top:none;}
+  .setup .srow{grid-template-columns:1fr;gap:8px;}
+  .reader-bar .brand{display:none;}
+  .emph,.doc-cta{padding:30px 26px;}
+}
+
+/* ===== PRINT ===== */
+@media print{
+  .reader-bar{display:none;}
+  body{background:#fff;font-size:11pt;line-height:1.6;color:#000;}
+  .doc{max-width:100%;padding:0;}
+  .chapter,.risk,.checklist,.ladder,.setup,.emph,.doc-cta,.stat-row{break-inside:avoid;}
+  .cover{padding:14px 0 26px;}
+  .emph{background:var(--electric-dark)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .doc-cta{background:var(--electric)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .stat .n,.cover h1 .mk,.chapter .ch-num,.toc li::before,.ladder .rank,.tag,.risk{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  a{text-decoration:none;color:inherit;}
+}
+
+/* ===== gyomuzu templates ===== */
+.chip{display:inline-block;font-size:12.5px;font-weight:700;padding:2px 10px;border-radius:5px;line-height:1.7;white-space:nowrap;}
+.chip.auto{background:#1F2933;color:#fff;}
+.chip.draft{background:#7B8794;color:#fff;}
+.chip.human{background:#E4E7EB;color:#1F2933;}
+.legend{display:grid;gap:0;margin:24px 0;border-top:1px solid var(--line);}
+.legend .lg{display:grid;grid-template-columns:150px 1fr;gap:18px;padding:16px 0;border-bottom:1px solid var(--line);align-items:baseline;font-size:14.5px;}
+.dept{margin:54px 0 0;break-inside:avoid-page;}
+.dept h3{margin-top:0;}
+.dept .fig{margin:18px 0 8px;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff;}
+.dept .fig img{width:100%;height:auto;}
+.dept .eg{font-size:13px;color:var(--slate);margin:6px 0 16px;}
+.dtbl{width:100%;border-collapse:collapse;background:var(--white);border:1px solid var(--line);font-size:14px;line-height:1.8;}
+.dtbl th,.dtbl td{border:1px solid var(--line);padding:12px 14px;vertical-align:top;text-align:left;width:33.3%;}
+.dtbl th{background:var(--paper-2);font-size:13px;font-weight:700;}
+.dtbl ul{list-style:none;}
+.dtbl li{padding-left:1em;text-indent:-1em;}
+.dtbl li::before{content:"・";}
+.flow{margin:26px 0;display:grid;gap:12px;}
+.flow .q{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:18px 22px;font-size:15px;}
+.flow .q b{display:block;font-family:var(--en);font-size:12px;letter-spacing:.1em;color:var(--slate);margin-bottom:4px;}
+.flow .ans{display:grid;grid-template-columns:90px 1fr;gap:14px;align-items:baseline;padding:10px 22px;font-size:14.5px;border-left:2px solid var(--line-2);margin-left:22px;}
+.flow .ans span{font-weight:700;font-size:13px;color:var(--slate);}
+.blank-wrap{overflow-x:auto;margin:20px 0;}
+.blank{width:100%;min-width:680px;border-collapse:collapse;background:#fff;font-size:13px;}
+.blank th,.blank td{border:1px solid var(--line-2);padding:8px 10px;text-align:left;vertical-align:top;}
+.blank th{background:var(--paper-2);font-weight:700;}
+.blank.grid td{height:76px;}
+.blank.grid th.rowh{width:132px;}.blank.grid tbody th.rowh{height:76px;}
+.blank.list td{height:50px;}
+.blank .sm{font-weight:400;color:var(--slate);font-size:11.5px;display:block;}
+.steps5{margin:26px 0;border-top:1px solid var(--line);}
+.steps5 .st{display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line);}
+.steps5 .rank{font-family:var(--en);font-size:15px;font-weight:600;color:var(--paper);background:var(--electric);min-width:34px;height:34px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.steps5 h4{font-size:16px;margin-bottom:6px;}
+.steps5 p{margin:4px 0;font-size:14.5px;color:#28313f;}
+@media (max-width:640px){.legend .lg{grid-template-columns:1fr;gap:6px;}.dtbl th,.dtbl td{display:block;width:100%;}.dtbl thead{display:none;}.flow .ans{grid-template-columns:1fr;gap:2px;}}
+@media print{.dept{break-inside:avoid;}.dept .fig,.dtbl,.flow,.steps5 .st,.legend{break-inside:avoid;}.chip,.dtbl th,.blank th{-webkit-print-color-adjust:exact;print-color-adjust:exact;}.blank-wrap{overflow:visible;}.blank{min-width:0;}.blank-break{break-before:page;}}
+</style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1264057945446029');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+
+<div class="reader-bar">
+  <a href="index.html" class="back">← 資料ライブラリ</a>
+  <a href="../index.html" class="brand">Tech<i>Worker</i></a>
+  <button class="print" onclick="window.print()">PDFで保存 / 印刷</button>
+</div>
+
+<div class="doc">
+
+  <header class="cover">
+    <div class="tag">業務図ラボ <span>部署別 業務図テンプレート集</span></div>
+    <h1>部署別 業務図テンプレート集<br><span class="mk">AIに任せる工程の見つけ方つき</span></h1>
+    <p class="sub">経理、人事労務、カスタマー対応、総務・法務、営業の<strong>5つの部署の業務図の例</strong>と、自社の業務を書き込める空の型をまとめました。工程ごとにAIへ任せる範囲を決める手順もついています。</p>
+    <div class="cover-meta">
+      <div><b>5</b><span>部署の業務図の例</span></div>
+      <div><b>3</b><span>つの札</span></div>
+      <div><b>2</b><span>種類の空の型</span></div>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <h4>Contents</h4>
+    <ol>
+      <li><a href="#c1">はじめに：この資料の使い方</a></li>
+      <li><a href="#c2">部署別の業務図の例（5部署）</a></li>
+      <li><a href="#c3">自社用の空の型</a></li>
+      <li><a href="#c4">札の付け方</a></li>
+      <li><a href="#c5">次の一歩：自社の業務図をつくる</a></li>
+    </ol>
+  </nav>
+
+  <section class="chapter" id="c1">
+    <div class="ch-num">01</div>
+    <h2>はじめに：この資料の使い方</h2>
+    <p class="lead-p">この資料は、<strong>部署の仕事を1枚の図にして、AIに任せる工程を見つける</strong>ための道具です。例を見て、空の型に自社の業務を書き込み、札を付けます。</p>
+    <p>業務図とは、誰が、どの順番で、何を使って進めるかを、工程でつないで1枚に描いたものです。工程とは、業務を作業の単位に分けたひとつひとつのことです。</p>
+    <h3>図の見方</h3>
+    <p>横の帯は、誰がやるかを表します。左から右へ、仕事が進みます。各工程の上の札が、任せ方を表します。</p>
+    <div class="legend">
+      <div class="lg"><span><span class="chip auto">AIが自動で</span></span><span>AIが実行まで進めます。人は結果を後から見ます。</span></div>
+      <div class="lg"><span><span class="chip draft">AIが下書き</span></span><span>AIが下書きまで作ります。人が見て、直して、決めます。</span></div>
+      <div class="lg"><span><span class="chip human">人が行う</span></span><span>人が実行します。AIは使わないか、材料を集めるところまでです。</span></div>
+    </div>
+    <p>図の中の「AIが下書き」は、人が確認することを前提にした札です。</p>
+    <h3>使い方</h3>
+    <div class="callout">
+      <b>1.</b> 第2章で、近い部署の例を見ます。<br>
+      <b>2.</b> 第3章の空の型に、自社の工程と担当を書きます。<br>
+      <b>3.</b> 第4章の質問で、工程ごとに札を付けます。<br>
+      <b>4.</b> AIがやらないことと、確認する人を書き添えます。
+    </div>
+  </section>
+
+  <section class="chapter" id="c2">
+    <div class="ch-num">02</div>
+    <h2>部署別の業務図の例（5部署）</h2>
+    <p class="lead-p">各部署の業務を、1枚の業務図にしました。図の下の表で、任せる候補、人が判断する工程、AIがやらないことを整理しています。</p>
+    <p>経理、人事労務、カスタマー対応、総務・法務の4つは、一般的な流れをもとにした例です。使うシステムは、会計ソフトや勤怠システムのような一般名で書いています。営業は、TechWorkerの実例です。</p>
+    
+    <div class="dept">
+      <h3>例1　経理「月次の締め」</h3>
+      <div class="fig"><img src="figs/gyomuzu/accounting.png" alt="経理「月次の締め」の業務図" loading="lazy"></div>
+      <p class="eg">例です。自社の業務に合わせて工程と担当を直してください。</p>
+      <table class="dtbl"><thead><tr><th>AIに任せる候補の工程</th><th>人が判断する工程</th><th>AIがやらないこと</th></tr></thead>
+      <tbody><tr><td><ul><li>仕訳案の作成（AIが下書き）</li><li>残高と明細の照合（AIが自動で）</li><li>月次資料の作成（AIが下書き）</li></ul></td><td><ul><li>仕訳の確認と登録</li><li>差異の調査と修正</li><li>資料を確認して締める</li></ul></td><td><ul><li>会計ソフトの登録内容は書き換えない</li><li>確認前の資料を共有しない</li></ul></td></tr></tbody></table>
+    </div>
+    <div class="dept">
+      <h3>例2　人事労務「入社の手続き」</h3>
+      <div class="fig"><img src="figs/gyomuzu/hr.png" alt="人事労務「入社の手続き」の業務図" loading="lazy"></div>
+      <p class="eg">例です。自社の業務に合わせて工程と担当を直してください。</p>
+      <table class="dtbl"><thead><tr><th>AIに任せる候補の工程</th><th>人が判断する工程</th><th>AIがやらないこと</th></tr></thead>
+      <tbody><tr><td><ul><li>案内文と書類リストの作成（AIが下書き）</li><li>書類の記入漏れの点検（AIが自動で）</li><li>登録内容の作成（AIが下書き）</li></ul></td><td><ul><li>入社情報の受け取り</li><li>案内の確認と入社者への送付</li><li>不備の確認と勤怠システムへの登録</li></ul></td><td><ul><li>入社者へ直接連絡しない</li><li>提出された書類の内容は書き換えない</li></ul></td></tr></tbody></table>
+    </div>
+    <div class="dept">
+      <h3>例3　カスタマー対応「問い合わせの一次対応」</h3>
+      <div class="fig"><img src="figs/gyomuzu/support.png" alt="カスタマー対応「問い合わせの一次対応」の業務図" loading="lazy"></div>
+      <p class="eg">例です。自社の業務に合わせて工程と担当を直してください。</p>
+      <table class="dtbl"><thead><tr><th>AIに任せる候補の工程</th><th>人が判断する工程</th><th>AIがやらないこと</th></tr></thead>
+      <tbody><tr><td><ul><li>内容の分類と受付（AIが自動で）</li><li>定型の質問への回答案（AIが下書き）</li><li>対応内容の記録と集計（AIが自動で）</li></ul></td><td><ul><li>個別の事情を含む問い合わせの確認</li><li>回答案の確認と返信</li></ul></td><td><ul><li>お客さんへ直接返信しない</li><li>個別の事情を含む問い合わせの回答案は作らない</li></ul></td></tr></tbody></table>
+    </div>
+    <div class="dept">
+      <h3>例4　総務・法務「契約書の確認と保管」</h3>
+      <div class="fig"><img src="figs/gyomuzu/legal.png" alt="総務・法務「契約書の確認と保管」の業務図" loading="lazy"></div>
+      <p class="eg">例です。自社の業務に合わせて工程と担当を直してください。</p>
+      <table class="dtbl"><thead><tr><th>AIに任せる候補の工程</th><th>人が判断する工程</th><th>AIがやらないこと</th></tr></thead>
+      <tbody><tr><td><ul><li>条文の確認点の一覧づくり（AIが下書き）</li><li>台帳の登録内容の作成（AIが下書き）</li><li>更新期限の通知（AIが自動で）</li></ul></td><td><ul><li>修正案の検討と判断</li><li>先方との調整と締結</li><li>保管と台帳への登録</li></ul></td><td><ul><li>契約書の内容は書き換えない</li><li>法的な可否を最終判断しない</li><li>先方へ送らない</li></ul></td></tr></tbody></table>
+    </div>
+    <div class="dept">
+      <h3>例5　営業「1回目商談」</h3>
+      <div class="fig"><img src="figs/gyomuzu/sales.png" alt="営業「1回目商談」の業務図" loading="lazy"></div>
+      <p class="eg">TechWorkerの実例です。CompanyMap AIの画面で作成した業務図をもとにしています。</p>
+      <table class="dtbl"><thead><tr><th>AIに任せる候補の工程</th><th>人が判断する工程</th><th>AIがやらないこと</th></tr></thead>
+      <tbody><tr><td><ul><li>CRM照合・BANT算出（AIが自動で）</li><li>企業リサーチ（AIが下書き）</li><li>商談準備ページの作成（AIが下書き）</li><li>フォロー文面の作成（AIが下書き）</li><li>週次の改善集計（AIが自動で）</li></ul></td><td><ul><li>商談に臨む</li><li>フォローの送信と台帳への記録</li></ul></td><td><ul><li>CRMの登録内容は書き換えない（工程1）</li><li>工程2と工程6にも、やらないことを設定しています</li></ul></td></tr></tbody></table>
+    </div>
+  </section>
+
+  <section class="chapter" id="c3">
+    <div class="ch-num">03</div>
+    <h2>自社用の空の型</h2>
+    <p class="lead-p">自社の業務を書き込むための型です。印刷して手で書いても、画面に写して打ち込んでも使えます。</p>
+    <h3>型1：業務図の下書き</h3>
+    <p>左の列に担当を書きます。工程は、仕事が進む順に左から右へ書いていきます。工程名は「見積を送る」のように、動詞で終えます。</p>
+    <div class="blank-wrap"><table class="blank grid">
+      <thead><tr><th class="rowh">担当（帯）</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr></thead>
+      <tbody>
+        <tr><th class="rowh">お客さん・社外<span class="sm">例：問い合わせる人</span></th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><th class="rowh">担当者<span class="sm">例：部署の担当者</span></th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><th class="rowh">責任者<span class="sm">例：確認して決める人</span></th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><th class="rowh">AI・ツール<span class="sm">例：使うシステム名も書く</span></th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      </tbody></table></div>
+    <h3>型2：工程ごとの札と書き込み</h3>
+    <p>型1で書いた工程を、1行ずつ書き写します。札は、第4章の質問で決めます。</p>
+    <div class="blank-wrap"><table class="blank list">
+      <thead><tr><th>工程名</th><th>担当</th><th>札<span class="sm">自動／下書き／人</span></th><th>AIがやらないこと</th><th>確認する人と見る点</th></tr></thead>
+      <tbody><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr></tbody></table></div>
+    <div class="callout">先に書くのは、工程名と担当だけで構いません。迷う工程は、いったん「人が行う」にしておきます。</div>
+  </section>
+
+  <section class="chapter" id="c4">
+    <div class="ch-num">04</div>
+    <h2>札の付け方</h2>
+    <p class="lead-p">任せる範囲は、<strong>工程ごとに段階をつけて決めます</strong>。業務全体に1つの答えを出す必要はありません。</p>
+    <h3>見る点は3つです</h3>
+    <p>工程ごとに、お客さんに届くか、元に戻せるか、判断の基準を文章で書き切れるかを見ます。たとえば社内の集計は、間違えても直せます。お客さんへの送信や台帳の書き換えは、元に戻しにくい工程です。</p>
+    <h3>2つの質問で札を決めます</h3>
+    <div class="flow">
+      <div class="q"><b>質問1</b>手順と判断の基準を、文章で書き切れますか。</div>
+      <div class="ans"><span>いいえ</span><span class="chip human">人が行う</span></div>
+      <div class="q"><b>質問2</b>書き切れる場合です。間違いがお客さんに届きますか。または、元に戻せませんか。</div>
+      <div class="ans"><span>はい</span><span class="chip draft">AIが下書き・人が確認</span></div>
+      <div class="ans"><span>どちらも違う</span><span class="chip auto">AIが自動で</span><span></span></div>
+    </div>
+    <p>「AIが自動で」は、あくまで候補です。最初は迷う工程を「人が行う」か「AIが下書き・人が確認」にして、動かしながら軽くしていきます。</p>
+    <h3>5つの手順</h3>
+    <div class="steps5">
+      <div class="st"><span class="rank">1</span><div><h4>工程に分ける</h4><p>業務を工程に分け、動詞で終わる名前を付けます。担当ごとに並べると、受け渡しが見えます。</p></div></div>
+      <div class="st"><span class="rank">2</span><div><h4>影響を見る</h4><p>お客さんに届くか、元に戻せるか、基準を書き切れるかを、工程ごとに見ます。</p></div></div>
+      <div class="st"><span class="rank">3</span><div><h4>札を付ける</h4><p>上の2つの質問で、3つの札から選びます。</p></div></div>
+      <div class="st"><span class="rank">4</span><div><h4>AIがやらないことを書く</h4><p>「対象は操作しない」の形で、1行にします。たとえば「CRMの登録内容は書き換えない」です。</p></div></div>
+      <div class="st"><span class="rank">5</span><div><h4>使うシステムと見直す日を決める</h4><p>工程ごとに使うシステムを書くと、AIに渡す権限の範囲が見えます。札を見直す日も、先に決めておきます。</p></div></div>
+    </div>
+    <h3>慎重に付ける工程</h3>
+    <p>金銭の取引、法務の判断、人事、法令上重要な手続きは、人の承認を必ず通すようにと、Microsoftの公式資料（<a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/flows-advanced-approvals" target="_blank" rel="noopener">Multistage and AI approvals in agent flows</a>）が注意しています。自社でこれらに近い工程は、「人が行う」札から始めます。</p>
+    <p>人が確認する工程には、確認する人と見る点も書き添えます。AIの出力を形だけ承認することを防ぐためです。</p>
+    <h3>うまくいかない例</h3>
+    <div class="callout"><b>AIがやらないことを書かない。</b>どこまで触ってよいかが、人によって変わります。<br><b>確認する人を決めない。</b>AIの出力が、そのままお客さんに届きます。<br><b>札を見直さない。</b>業務が変わると、任せ方が実態と合わなくなります。</div>
+  </section>
+
+  <section class="chapter" id="c5">
+    <div class="ch-num">05</div>
+    <h2>次の一歩：自社の業務図をつくる</h2>
+    <p class="lead-p">まず、<strong>1つの部署の、1つの業務フロー</strong>を選びます。第3章の型に工程を書き出し、札を付けるところから始めます。</p>
+    <p>業務図を一から描く時間が取れない場合は、CompanyMap AIが使えます。CompanyMap AIは、AIの聞き取りで、部署の業務フローを業務図にするサービスです。聞き取りの答えをもとに、工程と担当を1枚にまとめます。</p>
+    <div class="doc-cta">
+      <div class="tag">Next Step <span>CompanyMap AI</span></div>
+      <h2>部署の業務フローを、<br>AIの聞き取りで業務図にします。</h2>
+      <p>工程、担当、使うシステムを1枚にまとめ、任せる工程を決める土台をつくります。</p>
+      <a href="https://techworker.co.jp/companymap" class="btn">CompanyMap AIを見る <i>→</i></a>
+    </div>
+  </section>
+
+  <p class="doc-foot">© 2026 TechWorker Inc. — 部署別 業務図テンプレート集｜AIに任せる工程の見つけ方つき</p>
+
+</div>
+</body>
+</html>

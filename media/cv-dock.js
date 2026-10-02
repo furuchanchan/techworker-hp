@@ -2,7 +2,7 @@
    1) 右下の枠: 媒体ごとに、その読者がいちばん受け取りやすい申込みを1つ。見本・題・ボタン・一言だけに絞る。
       受け取る物の見本（資料の表紙・業務図）と、中身の具体例3つ、受け取り方（送信後すぐ読める等）を見せる。
    2) 記事中の申込み（.mid-cta）にも、同じ見本と中身の具体例を足す。
-   中身の具体例は、実在する資料・ページに書いてあることだけ（library/cases-2026.html・claude-code-security.html・companymap）。
+   中身の具体例は、実在する資料・ページに書いてあることだけ（library/cases-2026.html・claude-code-security.html・gyomuzu-templates.html・companymap）。
    - 出す時: ページを2割読んだ時か、12秒たった時（一覧・ホームはスクロールを始めた時）
    - 記事中・記事末の申込みとフッターが見えている間は隠す。×で小さな札にたたむ（同じタブの間は維持）
    - 計測: media_dock_view／close／open。クリックは article-tracker.js の media_cta_click（cta_placement=dock） */
@@ -30,6 +30,13 @@
     note: "送信後、その場で読めます（PDF保存も可）",
     cta: "無料で受け取る", mcta: "受け取る", href: "/library/?doc=cases", short: "事例集を受け取る", mt: "生成AI活用事例集（無料）"
   };
+  var TEMPLATES = {
+    kind: "無料ダウンロード", img: "/media/cv/gyomuzu.jpg", offer: "guide_gyomuzu_templates",
+    title: "部署別 業務図テンプレート集（AIに任せる工程の見つけ方つき）",
+    points: ["経理・人事労務・カスタマー対応・総務法務・営業の5部署の業務図の例", "自社の業務をそのまま書き込める空の型", "AIに任せる工程を決める札の付け方（2つの質問）"],
+    note: "送信後、その場で読めます（PDF保存も可）",
+    cta: "無料で受け取る", mcta: "受け取る", href: "/library/?doc=gyomuzu", short: "業務図テンプレートを受け取る", mt: "部署別 業務図テンプレート集（無料）"
+  };
   function companymap(where, img) {
     return {
       kind: "無料相談・30分", img: img || "/media/cv/companymap.jpg", offer: "companymap_consult",
@@ -49,7 +56,7 @@
     },
     shigyo: function () { return Object.assign(companymap("事務所", "/media/cv/companymap-shigyo.jpg"), { sub: DIAG }); },
     interview: function () { return Object.assign(companymap("部署"), { sub: { label: "CompanyMap AIを見る", href: "/companymap", offer: "companymap_lp" } }); },
-    gyomuzu: function () { return Object.assign(companymap("部署"), { sub: { label: "CompanyMap AIを見る", href: "/companymap", offer: "companymap_lp" } }); },
+    gyomuzu: function () { return Object.assign({}, TEMPLATES, { sub: { label: "自社の業務図を30分の無料相談でつくる", href: "/companymap/contact", offer: "companymap_consult" } }); },
     security: function () { return Object.assign({}, GUIDE, { sub: { label: "社内のAI利用ルールを相談する（30分・無料）", href: "/contact.html?type=consultation", offer: "consult_security" } }); },
     infra: function () { return Object.assign({}, GUIDE, { sub: DIAG }); },
     simulation: function () { return Object.assign({}, CASES, { sub: { label: "発売前の検証を相談する", href: "/launch-simulation/", offer: "launch_simulation" } }); }
@@ -57,7 +64,7 @@
   var make = OFFERS[seg] || function () { return Object.assign({}, /token/.test(slug) ? GUIDE : CASES, { sub: DIAG }); };
   var o = make();
   var media = seg || "home";
-  var DOCS = { security: GUIDE, cases: CASES };
+  var DOCS = { security: GUIDE, cases: CASES, gyomuzu: TEMPLATES };
 
   function withUtm(href, content) {
     var u = new URL(href, location.origin);
