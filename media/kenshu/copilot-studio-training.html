@@ -14,12 +14,12 @@
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Copilot Studio研修とは｜業務エージェントを内製する学び方と進め方【2026】 — TechWorker</title>
-<meta name="description" content="Microsoft Copilot Studioで何ができるか（エージェント作成・SharePoint等の社内データ接続・Teams配布）をMicrosoft Learnの一次情報で確認し、「使う研修」から「作る研修」へ進むスキル段階、社内FAQエージェントなど題材の選び方（効果×難易度）、内製に必要なスキルと学習ステップ、研修選定のチェックリストまで整理します。">
+<meta name="description" content="Microsoft Copilot Studioで、社内FAQなどの業務エージェントを、プログラミングなしの操作で作り、Teamsに配布できます。何ができるか、最初の題材の選び方、内製の学習ステップ、研修の選び方を、2026年時点のMicrosoft公式情報をもとに整理します。">
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
 <link rel="canonical" href="https://techworker.co.jp/media/kenshu/copilot-studio-training">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Copilot Studio研修とは｜業務エージェントを内製する学び方と進め方【2026】">
-<meta property="og:description" content="Microsoft Copilot Studioで社内FAQエージェント等を内製するための学び方。「使う→作る」スキル段階表、題材の選び方（効果×難易度）、研修選定チェックリストを実務目線で整理します。">
+<meta property="og:description" content="Copilot Studioで業務エージェントを作り、Teamsに配布する方法を整理します。できること、最初の題材の選び方、内製の学習ステップ、研修の選び方まで、2026年時点のMicrosoft公式情報がもとです。">
 <meta property="og:image" content="https://techworker.co.jp/media/kenshu/covers/copilot-studio-training.png">
 <meta property="og:url" content="https://techworker.co.jp/media/kenshu/copilot-studio-training">
 <meta property="og:site_name" content="TechWorker">
@@ -30,7 +30,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../article.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Copilot Studio研修とは｜業務エージェントを内製する学び方と進め方【2026】", "description": "Microsoft Copilot Studioで何ができるか（エージェント作成・社内データ接続・Teams配布）をMicrosoft Learnの一次情報で確認し、「使う研修」から「作る研修」へ進むスキル段階、社内FAQエージェントなど題材の選び方（効果×難易度）、内製に必要なスキルセットと学習ステップ、研修で学ぶ場合の選定チェックリストを整理する。", "datePublished": "2026-07-29", "dateModified": "2026-07-29", "inLanguage": "ja", "image": "https://techworker.co.jp/media/kenshu/covers/copilot-studio-training.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/copilot-studio-training"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Copilot Studio研修とは｜業務エージェントを内製する学び方と進め方【2026】", "description": "Microsoft Copilot Studioで、社内FAQなどの業務エージェントを、プログラミングなしの操作で作り、Teamsに配布できます。何ができるか、最初の題材の選び方、内製の学習ステップ、研修の選び方を、2026年時点のMicrosoft公式情報をもとに整理します。", "datePublished": "2026-07-29", "dateModified": "2026-10-02", "inLanguage": "ja", "image": "https://techworker.co.jp/media/kenshu/covers/copilot-studio-training.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/copilot-studio-training"}}</script>
 <script type="application/ld+json">
 {
   "@context":"https://schema.org","@type":"BreadcrumbList",
@@ -44,12 +44,41 @@
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org","@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"Copilot Studioを使うのにプログラミングの知識は必要ですか？","acceptedAnswer":{"@type":"Answer","text":"必須ではありません。Microsoft Copilot StudioはMicrosoft Learn上で、エージェントを構築するためのグラフィカルなローコードツールと位置づけられており、画面操作と自然言語の記述でエージェントを作成できます。ただし、業務の言語化、社内文書の整備、権限やガバナンスの設計といったプログラミング以外のスキルが成果を左右します。"}},
-    {"@type":"Question","name":"Microsoft 365 CopilotとCopilot Studioは何が違いますか？","acceptedAnswer":{"@type":"Answer","text":"Microsoft 365 CopilotはWordやExcel、Teamsの中でAIを「使う」ための製品で、Copilot StudioはAIエージェントを「作る」ためのツールです。Copilot Studioで作ったエージェントによって、Microsoft 365 Copilotを自社のデータや業務シナリオに合わせて拡張することもできます。"}},
-    {"@type":"Question","name":"最初に作るエージェントの題材は何がよいですか？","acceptedAnswer":{"@type":"Answer","text":"社内FAQエージェントのように「答えが既存の文書に書いてあり、同じ質問が繰り返し発生する」業務が適しています。就業規則や手続きマニュアルなど既存の文書をそのまま知識ソースとして接続でき、問い合わせ対応時間の削減という形で効果も測りやすいため、最初の1体に向いています。"}},
-    {"@type":"Question","name":"研修を受ければ、すぐに社内でエージェントを内製できるようになりますか？","acceptedAnswer":{"@type":"Answer","text":"研修だけでは完結しません。研修で作成から公開までの一連の流れを一度経験したうえで、社内データの整備、情報システム部門との環境・権限の調整、公開後に誰が改善を続けるかという運用体制づくりが必要です。研修はその起点として、自社の題材でエージェントを1体作り、公開まで到達できる設計のものを選んでください。"}}
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Copilot Studioを使うのにプログラミングの知識は必要ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "必須ではありません。Copilot Studioは、Microsoft Learn上でローコードツールと位置づけられています。画面操作と自然言語の記述で、エージェントを作成できます。ただし、プログラミング以外のスキルが成果を左右します。業務の言語化、社内文書の整備、権限やガバナンスの設計です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Microsoft 365 CopilotとCopilot Studioは何が違いますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Microsoft 365 Copilotは、WordやExcel、Teamsの中でAIを「使う」ための製品です。Copilot Studioは、AIエージェントを「作る」ためのツールです。Copilot Studioで作ったエージェントは、Microsoft 365 Copilotの拡張にも使えます。自社のデータや業務シナリオに合わせられます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "最初に作るエージェントの題材は何がよいですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "社内FAQエージェントのように「答えが既存の文書に書いてあり、同じ質問が繰り返し発生する」業務が適しています。就業規則や手続きマニュアルなど、既存の文書をそのまま知識ソースとして接続できます。問い合わせ対応時間の削減という形で効果も測りやすいため、最初の1体に向いています。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "研修を受ければ、すぐに社内でエージェントを内製できるようになりますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "研修だけでは完結しません。研修で、作成から公開までの流れを一度経験します。そのうえで、次の3つが必要です。社内データの整備、情報システム部門との環境・権限の調整、公開後に誰が改善を続けるかという運用体制づくりです。研修は、自社の題材でエージェントを1体作り、公開まで到達できる設計のものを選んでください。"
+      }
+    }
   ]
 }
 </script>
@@ -85,7 +114,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a><span class="sep">/</span>Copilot Studio研修とは</nav>
   <div class="kicker">導入と業務への組み込み</div>
   <h1>Copilot Studio研修とは｜業務エージェントを内製する学び方と進め方</h1>
-  <p class="dek">Microsoft Copilot Studioを使うと、社内FAQに答えるエージェントやヘルプデスクの一次対応を、プログラミングなしの操作で作り、Teamsに配布できる。生成AI研修の主戦場は、いま「使い方を学ぶ」から「業務エージェントを作る」へと段階が進みつつある。何ができるのか、何から作るのか、どんな研修を選ぶのか——内製に向けた学び方と進め方を、2026年時点のMicrosoft公式情報を土台に整理する。</p>
+  <p class="dek">Copilot Studioなら、社内FAQに答えるエージェントを、プログラミングなしの操作で作り、Teamsに配布できます。研修の段階は5つに整理できます。<br>生成AI研修を「使い方を学ぶ」から一歩進めたい、人事や情シス、DX推進担当の方に向けた記事です。<br>何ができるか、何から作るか、どんな研修を選ぶかが、2026年時点のMicrosoft公式情報をもとに分かります。</p>
   <div class="kn-voices" aria-hidden="true">
     <span class="kn-fc" style="--sayo:0.0s"><span class="av"><img src="avatars/m30-2.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">作れるらしい</span></span>
     <span class="kn-fc" style="--sayo:6.3s"><span class="av"><img src="avatars/f50-2.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">誰が作るの？</span></span>
@@ -95,7 +124,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
   </div>
   <div class="kn-voices-cap">研修・導入のご相談でよく挙がる声<span class="note">※ 実際の相談で挙がる論点をもとにした例です</span></div>
   <div class="a-meta">
-    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.29</span><span class="dot">·</span><span>最終更新 2026.07.29</span><span class="dot">·</span><span>読了 9分</span>
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.29</span><span class="dot">·</span><span>最終更新 2026.10.02</span><span class="dot">·</span><span>読了 9分</span>
   </div>
 </header>
 
@@ -156,26 +185,19 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <nav class="art-toc" aria-label="目次">
     <div class="art-toc-inner">
       <div class="toc-h">目次</div>
-      <a href="#s1">Copilot Studioで何ができるか</a>
+            <a href="#s1">結論：Copilot Studioでできること</a>
       <a href="#s2">「使う研修」から「作る研修」へ</a>
-      <a href="#s3">エージェント題材の選び方</a>
-      <a href="#s4">内製に必要なスキルと学習ステップ</a>
-      <a href="#s5">研修で学ぶ場合の選定観点</a>
+      <a href="#s3">手順：内製の学習ステップ</a>
+      <a href="#s4">うまくいかない例</a>
+      <a href="#s5">比較表：エージェントの題材</a>
+      <a href="#s6">研修を選ぶ基準</a>
       <a href="#faq">よくある質問</a>
-    </div>
+      <a href="#s7">次の一歩</a>
+</div>
   </nav>
 
-  <article class="art-body rv">
-    <div class="lede">
-      <div class="lede-h">この記事の要点</div>
-      <ul>
-        <li>Microsoft Copilot Studioは、会話型のAIエージェントを<strong>ローコードで作るためのツール</strong>。エージェントの作成、SharePointなど社内データへの接続、Teams・Microsoft 365 Copilotへの配布までを一つの画面で完結できる（Microsoft Learnの一次情報で確認）。</li>
-        <li>生成AI研修は「使い方を学ぶ」で終わりではない。個人の時短で止まりがちな効果を<strong>業務の仕組みとして残す</strong>のが、Copilot Studioで「作る」段階。本記事では「使う→作る」のスキル段階表で現在地を確かめられる。</li>
-        <li>最初の題材は<strong>社内FAQエージェントが定石</strong>。答えが既存文書に書いてあり、同じ質問が繰り返される業務から始める。題材の選び方（効果×難易度）と研修選定チェックリストも本文に掲載する。</li>
-      </ul>
-    </div>
-
-    <aside class="inline-dx-cta" style="margin:6px 0 40px;border:1px solid var(--line-2);border-radius:12px;background:var(--white);padding:22px 26px;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
+  <article class="art-body">
+<aside class="inline-dx-cta" style="margin:6px 0 40px;border:1px solid var(--line-2);border-radius:12px;background:var(--white);padding:22px 26px;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
   <div style="flex:1;min-width:240px;">
     <div style="font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);">診断ツール ・ 無料 ・ 5分</div>
     <div style="font-family:var(--jp);font-weight:700;font-size:16.5px;color:var(--ink);line-height:1.55;margin-top:8px;">自社の生成AI活用度を診断する</div>
@@ -183,57 +205,69 @@ fbq('init','1264057945446029');fbq('track','PageView');
   </div>
   <a href="../../ai-assessment.html" class="btn" style="white-space:nowrap;flex:none;color:var(--paper);border-bottom:none;">無料で診断する <i>&rarr;</i></a>
 </aside>
-      <h2 id="s1">Copilot Studioで何ができるのか？</h2>
-    <p class="answer">会話型のAIエージェントをローコードで作成し、SharePoint等の社内データに接続して、TeamsやWebサイトに配布できる。</p>
-    <aside class="kn-side">
-      <img src="avatars/m30-0.svg" alt="" loading="lazy" width="36" height="36">
-      <div><div class="r">業務部門の視点</div><p>エージェントを作るのは情シスの仕事だと思い込んでいた。</p></div>
-    </aside>
-    <p>Microsoft Copilot Studio（以下、Copilot Studio）は、Microsoftが提供するエージェント開発ツールです。Microsoft Learnの概要ドキュメント（2026年時点）では「エージェントとエージェントフローを構築するための、グラフィカルなローコードツール」と定義されており、データサイエンティストや開発者でなくてもエージェントを作成できることが明記されています。作りたいエージェントを言葉で説明して雛形を作る自然言語ベースの作成にも対応しており、コードを書く場面は基本的にありません。ここでのエージェントとは、指示・コンテキスト・知識ソース・トピック（会話の流れ）・ツール・トリガーを組み合わせて、質問への回答やタスクの実行をこなす会話型AIのことです。何ができるかを分解すると、次の5つに集約されます。</p>
-    <div class="tbl-wrap">
-      <table>
-        <tr><th>できること</th><th>内容（Microsoft Learn準拠）</th><th>業務での意味</th></tr>
-        <tr><td>エージェント作成</td><td>作りたい内容を自然言語で記述し、指示・知識・ツールを画面上で設定して作成</td><td>非エンジニアの推進担当者でも作り手になれる</td></tr>
-        <tr><td>社内データ接続</td><td>知識ソースとして公開Webサイト・アップロード文書・SharePoint・Dataverse・コネクタ経由の社内データを利用可能</td><td>就業規則やマニュアルなど既存文書を根拠に回答させられる</td></tr>
-        <tr><td>会話設計</td><td>トピック（ノードをつないだ会話の流れ）を設計しつつ、想定外の質問には知識ソースを根拠とした生成AIの回答で対応</td><td>定型の応対と柔軟な回答を組み合わせられる</td></tr>
-        <tr><td>業務の自動化</td><td>エージェントフローでアプリ・サービスをまたぐ定型処理を自動化し、エージェントから呼び出せる</td><td>「答える」だけでなく「処理する」まで任せられる</td></tr>
-        <tr><td>配布（公開）</td><td>Teams・Microsoft 365 Copilot・Webサイト・モバイルアプリ・SharePointなど複数チャネルへ公開</td><td>社員が毎日開くTeamsの中に業務エージェントを置ける</td></tr>
-      </table>
-    </div>
-    <p>社内データ接続には権限の仕組みが組み込まれています。SharePointやコネクタ経由の知識ソースはMicrosoft Entra IDの認証を使い、<strong>質問した本人がアクセスできる文書だけを根拠に回答する</strong>ため、部外秘の資料が別部門の社員への回答に混ざる構造になっていません。また、Copilot Studioで作ったエージェントは単体で使うほか、Microsoft 365 Copilotを自社データ・自社シナリオで拡張する形でも使えます。以上の仕様はいずれもMicrosoft Learnの公式ドキュメント（<a href="https://learn.microsoft.com/ja-jp/microsoft-copilot-studio/fundamentals-what-is-copilot-studio" target="_blank" rel="noopener noreferrer">Copilot Studio概要</a>・ナレッジソース・公開チャネルの各ページ、2026年時点）で確認できます。</p>
-    <div class="callout"><p>押さえるべき本質は「チャットボット作成ツールの進化版」ではなく、<strong>社内の文書・データを根拠に動くAIを、業務部門が自分の手で作れる</strong>ようになったこと。作り手の枠がエンジニアから現場に広がった点が、研修テーマとしてCopilot Studioが浮上している理由になる。</p></div>
+    <h2 id="s1">Copilot Studioで何ができますか？</h2>
+    <p class="answer">会話型のAIエージェントをローコードで作り、社内データに接続して、Teamsなどに配布できます。</p>
+    <p>Microsoft Copilot Studio（以下、Copilot Studio）は、Microsoftが提供するエージェント開発ツールです。Microsoft Learnの概要ドキュメント（2026年時点）は、グラフィカルなローコードツールと定義しています。エージェントとエージェントフローを構築するためのツールです。データサイエンティストや開発者でなくても、エージェントを作成できます。</p>
+    <p>作りたいエージェントを言葉で説明して、雛形を作ることもできます。コードを書く場面は、基本的にありません。</p>
+    <p>ここでのエージェントとは、質問への回答やタスクの実行をこなす会話型AIです。指示、コンテキスト、知識ソース、トピック（会話の流れ）、ツール、トリガーを組み合わせて作ります。できることは、次の5つです。</p>
+    <ul>
+      <li><strong>エージェント作成。</strong>作りたい内容を自然言語で記述し、指示・知識・ツールを画面上で設定します。非エンジニアの推進担当者でも、作り手になれます。</li>
+      <li><strong>社内データ接続。</strong>知識ソースは、公開Webサイト、アップロード文書、SharePoint、Dataverseを使えます。コネクタ経由の社内データも使えます。就業規則やマニュアルなど、既存文書を根拠に回答させられます。</li>
+      <li><strong>会話設計。</strong>トピック（ノードをつないだ会話の流れ）を設計します。想定外の質問には、知識ソースを根拠とした生成AIの回答で対応します。</li>
+      <li><strong>業務の自動化。</strong>エージェントフローで、アプリやサービスをまたぐ定型処理を自動化し、エージェントから呼び出せます。</li>
+      <li><strong>配布（公開）。</strong>Teams、Microsoft 365 Copilot、Webサイトなど、複数のチャネルへ公開できます。モバイルアプリやSharePointにも公開できます。</li>
+    </ul>
+    <p>社内データ接続には、権限の仕組みが組み込まれています。SharePointやコネクタ経由の知識ソースは、Microsoft Entra IDの認証を使います。質問した本人がアクセスできる文書だけを根拠に回答します。部外秘の資料が別部門の社員への回答に混ざる構造にはなっていません。</p>
+    <p>Copilot Studioで作ったエージェントは、単体で使えます。Microsoft 365 Copilotを、自社データ・自社シナリオで拡張する形でも使えます。以上の仕様は、Microsoft Learnの公式ドキュメント（<a href="https://learn.microsoft.com/ja-jp/microsoft-copilot-studio/fundamentals-what-is-copilot-studio" target="_blank" rel="noopener noreferrer">Copilot Studio概要</a>・ナレッジソース・公開チャネルの各ページ、2026年時点）で確認できます。</p>
+    <div class="callout"><p>押さえたいのは、社内の文書・データを根拠に動くAIを、業務部門が自分の手で作れるようになった点です。作り手の枠がエンジニアから現場に広がったことが、研修テーマとしてCopilot Studioが浮上している理由です。</p></div>
 
-    
-    <aside class="kn-take">
-      <img class="kn-take-av" src="avatars/f20-0.svg" alt="" loading="lazy" width="56" height="56">
-      <div class="kn-take-body">
-        <div class="kn-take-role">業務部門の視点</div>
-        <p>「使う」で止まっていたのは、作れると思っていなかったから。<em>自分の部門の定型業務なら題材を出せる</em>——作る側に回る発想がなかった。</p>
-      </div>
-    </aside>
-<h2 id="s2">なぜ「使う研修」の次に「作る研修」なのか？</h2>
-    <p class="answer">使い方研修の効果は個人の時短で止まりやすい。エージェントを作る段階に進むと、効果が業務の仕組みとして残る。</p>
-    <p>多くの企業の生成AI研修は、プロンプトの書き方や活用例を学ぶ「使い方研修」から始まります。入口としては正しい一方で、そこで得られる効果は受講者個人の時短に紐づくため、使う人と使わない人の差が開き、異動や退職とともに消えていきます。エージェントは業務の側に組み込まれるので、作った人が異動しても動き続けます。この「効果がどこに残るか」の違いが、使う研修と作る研修の分かれ目です。段階を整理すると次のようになります。</p>
-    <div class="tbl-wrap">
-      <table>
-        <tr><th>段階</th><th>主な対象</th><th>できるようになること</th><th>効果の残り方</th><th>研修の型</th></tr>
-        <tr><td>Lv0 触る</td><td>全社員</td><td>生成AIに触れて抵抗感をなくす</td><td>きっかけ（残らない）</td><td>体験会・デモ</td></tr>
-        <tr><td>Lv1 使う</td><td>全社員</td><td>ChatGPTやMicrosoft 365 Copilotで自分の業務を時短する</td><td>個人のスキル（人に依存）</td><td>使い方研修（プロンプト・活用例）</td></tr>
-        <tr><td>Lv2 型にする</td><td>部門の推進役</td><td>部門の定型業務をプロンプトや手順の型として共有する</td><td>チームの手順（属人性が減る）</td><td>業務適用ワークショップ</td></tr>
-        <tr><td>Lv3 作る</td><td>推進担当・内製チーム</td><td>Copilot Studioで業務エージェントを作り、部門に配布する</td><td>業務の仕組み（人が替わっても残る）</td><td>作る研修（本記事の対象）</td></tr>
-        <tr><td>Lv4 広げる</td><td>情シス・DX部門</td><td>複数部門への展開、権限・ガバナンスの標準化</td><td>全社の基盤</td><td>内製化の伴走支援</td></tr>
-      </table>
-    </div>
-    <p>注意したいのは、段階を飛ばさないことです。Lv1を経ずにいきなりLv3の研修を受けると、「エージェントに何をさせれば業務が変わるか」という肌感覚がないまま、ツールの操作だけを覚えることになります。逆にLv1で止まっている組織は、利用率が伸び悩む壁に突き当たりがちです。使い方研修の効果が頭打ちになる構造と打ち手は<a href="copilot-adoption.html">Copilotが定着しない理由と解決策</a>で、研修自体の費用感は<a href="copilot-training-cost.html">Copilot研修の費用相場</a>で詳しく扱っています。</p>
-    <div class="quote-box"><p>使う研修は人にスキルを残す。作る研修は業務に仕組みを残す。次に投資すべきはどちらか、で考えると迷わない。</p></div>
+    <h2 id="s2">なぜ「使う研修」の次に「作る研修」が必要なのですか？</h2>
+    <p class="answer">使い方研修の効果は個人の時短で止まりやすく、エージェントを作る段階に進むと、効果が業務の仕組みとして残ります。</p>
+    <p>多くの企業の生成AI研修は、プロンプトの書き方や活用例を学ぶ「使い方研修」から始まります。入口としては適切です。ただ、得られる効果は受講者個人の時短に紐づきます。使う人と使わない人の差が開き、異動や退職とともに消えていきます。</p>
+    <p>エージェントは業務の側に組み込まれるため、作った人が異動しても動き続けます。この「効果がどこに残るか」の違いが、使う研修と作る研修の分かれ目です。段階は次のとおり整理できます。</p>
+    <ul>
+      <li><strong>Lv0 触る（全社員）。</strong>生成AIに触れて抵抗感をなくします。体験会・デモの段階で、効果は残りません。</li>
+      <li><strong>Lv1 使う（全社員）。</strong>ChatGPTやMicrosoft 365 Copilotで、自分の業務を時短します。効果は個人のスキルに残り、人に依存します。</li>
+      <li><strong>Lv2 型にする（部門の推進役）。</strong>部門の定型業務を、プロンプトや手順の型として共有します。チームの手順が残り、属人性が減ります。</li>
+      <li><strong>Lv3 作る（推進担当・内製チーム）。</strong>Copilot Studioで業務エージェントを作り、部門に配布します。業務の仕組みとして残り、人が替わっても続きます。本記事の対象です。</li>
+      <li><strong>Lv4 広げる（情シス・DX部門）。</strong>複数部門への展開と、権限・ガバナンスの標準化を進めます。全社の基盤になります。</li>
+    </ul>
+    <p>使う研修は、人にスキルを残します。作る研修は、業務に仕組みを残します。</p>
+    <p>使い方研修の効果が頭打ちになる構造と打ち手は、<a href="copilot-adoption.html">Copilotが定着しない理由と解決策</a>で扱っています。研修の費用感は、<a href="copilot-training-cost.html">Copilot研修の費用相場</a>をご覧ください。</p>
 
-    <h2 id="s3">何を作るか——エージェントの題材はどう選ぶ？</h2>
-    <p class="answer">答えが決まっていて問い合わせが多い業務から選ぶ。効果と難易度の2軸で並べると、最初に作る1体が決まる。</p>
-    <aside class="kn-side">
-      <img src="avatars/f50-0.svg" alt="" loading="lazy" width="36" height="36">
-      <div><div class="r">マネージャーの視点</div><p>題材選びで失敗すると、作ったのに誰も使わない。<em>頻度と手間の掛け算</em>で選ぶ。</p></div>
-    </aside>
-    <p>内製が頓挫する典型は、題材選びの失敗です。経営データと対話するダッシュボードのような派手な題材から始めると、元になるデータが整っておらず、作る前の整備で力尽きます。原則はシンプルで、<strong>「答えが既存の文書に書いてあり、同じ質問が繰り返し発生する」業務から選ぶ</strong>こと。効果は「問い合わせ件数×1件あたりの対応時間」で、難易度は「元になるデータが今どれだけ整っているか」でほぼ決まります。代表的な題材を効果×難易度の2軸で並べると、着手順は次のように整理できます。</p>
+    <h2 id="s3">Copilot Studioの内製は、どんな順番で学べばよいですか？</h2>
+    <p class="answer">個人利用、自分用の1体、少人数への公開、情シスとの調整、更新運用の5つの順で、小さく確実に進めます。</p>
+    <p>内製と聞くとプログラミング研修を想像しがちですが、Copilot Studioの画面操作は数日で覚えられます。成果を左右するのは、操作の外側にある4つのスキルです。</p>
+    <ul>
+      <li><strong>指示設計。</strong>エージェントの役割・口調・答えてよい範囲と、答えてはいけない範囲を、あいまいさなく言語化します。Lv1の経験が効いてきます。</li>
+      <li><strong>ナレッジ整備。</strong>回答の根拠になる文書を、正しい最新版に絞って整理します。古い規程が混ざれば、間違った回答が量産されます。エージェントの品質は、接続する文書の品質で決まります。</li>
+      <li><strong>会話設計と検証。</strong>よくある質問の流れをトピックとして設計し、テストで想定外の質問や誤答のパターンを潰します。「試して直す」の反復が本体です。</li>
+      <li><strong>公開とガバナンス。</strong>誰に公開するか、どの認証を使うか、機密文書を知識ソースに入れてよいかを判断します。全社展開の成否を分ける領域です。</li>
+    </ul>
+    <p>学習ステップは、次の5つです。</p>
+    <ol>
+      <li><strong>個人でCopilotを使いこなします。</strong>Lv1の実務経験を積み、AIに何を任せると効くかの感覚を持ちます。</li>
+      <li><strong>自分用のエージェントを1体作ります。</strong>知識ソースは1つに絞ります。公開せず、自分のテストだけで完結させます。</li>
+      <li><strong>部門の題材で作り、少人数に公開します。</strong>社内FAQ型など効果の見えやすい題材で、5〜10人に使ってもらい、フィードバックを回します。</li>
+      <li><strong>公開まわりを情シスと整えます。</strong>Teams配布、認証、公開範囲、知識ソースの取り扱いルールを合意します。</li>
+      <li><strong>更新運用をルール化して横展開します。</strong>元文書が変わったら誰がいつ直すかを決め、2体目以降の題材に広げます。</li>
+    </ol>
+    <div class="callout"><p>着手前に、Copilot Studioの利用に必要なライセンス・環境を、情シスと確認します。ライセンス体系や課金の仕組みは更新されます。最新の条件は、Microsoftの公式情報（Microsoft Learnおよび料金ページ）で確認してください。</p></div>
+    <p>業務プロセスのどこをエージェントに置き換えるか設計するなら、<a href="copilot-bpr.html">CopilotによるBPRの進め方</a>が参考になります。</p>
+
+    <h2 id="s4">Copilot Studioの研修や内製で、うまくいかない例にはどんなものがありますか？</h2>
+    <p class="answer">派手な題材から始める、段階を飛ばす、古い文書を接続する、デモ見学で終わる、の4つが代表的です。</p>
+    <ul>
+      <li><strong>派手な題材から始める。</strong>経営データと対話するダッシュボードのような題材は、元になるデータが整っていません。作る前の整備で力尽きます。</li>
+      <li><strong>段階を飛ばす。</strong>Lv1を経ずにLv3の研修を受けると、操作だけを覚えることになります。エージェントに何をさせれば業務が変わるかの肌感覚がないままです。逆にLv1で止まる組織は、利用率が伸び悩む壁に突き当たりがちです。</li>
+      <li><strong>古い規程を知識ソースに混ぜる。</strong>間違った回答が量産されます。</li>
+      <li><strong>デモ見学型の研修を選ぶ。</strong>講師が作る画面を眺めるだけでは、研修後に残るものがありません。</li>
+      <li><strong>公開後に放置する。</strong>元文書が変わったときに誰が直すかを決めていないと、エージェントが古い回答を続けます。</li>
+    </ul>
+
+    <h2 id="s5">最初に作るエージェントの題材は、どう選べばよいですか？</h2>
+    <p class="answer">答えが既存文書にあり、問い合わせが繰り返される業務から選びます。効果と難易度の2軸で並べると決まります。</p>
+    <p>原則は、答えが既存の文書に書いてあり、同じ質問が繰り返し発生する業務から選ぶことです。効果は「問い合わせ件数×1件あたりの対応時間」で、難易度は「元になるデータが今どれだけ整っているか」でほぼ決まります。</p>
     <div class="tbl-wrap">
       <table>
         <tr><th>題材例</th><th>期待できる効果</th><th>難易度（何が重いか）</th><th>着手の目安</th></tr>
@@ -244,83 +278,40 @@ fbq('init','1264057945446029');fbq('track','PageView');
         <tr><td>外部システム連携の自動処理</td><td>高：申請・登録など定型処理の自動化</td><td>高：コネクタ・フロー・権限の設計が必要</td><td>内製チームの成熟後</td></tr>
       </table>
     </div>
-    <p class="fig-cap">※着手の目安は一般的な傾向です。自社のデータ整備状況によって難易度は変わります。</p>
-    <p>最初の1体に社内FAQ型を勧めるのは、失敗してもリカバリしやすく、効果が数字で見えるからです。完成後のイメージを持つために、Teams上で社員が社内FAQエージェントに質問する場面を示します。</p>
-    <div class="ui-mock">
-      <div class="um-bar"><span class="um-dot"></span><span class="um-dot"></span><span class="um-dot"></span><span class="um-name">社内FAQエージェント — 回答のイメージ（内容はサンプル）</span></div>
-      <div class="um-row">
-        <div class="um-label">社員の質問（Teams）</div>
-        <div class="um-text prompt">慶弔休暇は何日取得できますか？ 結婚の場合を知りたいです。申請方法もあわせて教えてください。</div>
-      </div>
-      <div class="um-row">
-        <div class="um-label ai">エージェントの回答</div>
-        <div class="um-text">本人の結婚の場合、慶弔休暇として連続5日間を取得できます（※サンプル）。
+    <p class="fig-cap">着手の目安は一般的な傾向です。自社のデータ整備状況によって難易度は変わります。</p>
+    <p>最初の1体に社内FAQ型を勧めるのは、失敗してもリカバリしやすく、効果が数字で見えるからです。根拠となる文書を出典として示せるため、回答が正しいかを検証しやすくなります。間違いに気づいたら、元の文書を直せば回答も直ります。</p>
 
-【申請方法】
-・勤怠システムから「特別休暇」を選択して申請
-・挙式日または入籍日から6か月以内に取得
-
-出典：就業規則・慶弔休暇規程（SharePoint）</div>
-      </div>
-    </div>
-    <p class="fig-cap">図：社内FAQエージェントの回答イメージ（日数・条件はサンプル）。根拠となる文書を出典として示せるため、回答が正しいかの検証がしやすく、間違いに気づいたら元の文書を直せば回答も直る。</p>
-    <p>なお、題材を個別に選ぶのではなく、業務プロセス全体のどこをAIエージェントに置き換えるかから設計したい場合は、<a href="copilot-bpr.html">CopilotによるBPR（業務プロセス再設計）の進め方</a>が参考になります。</p>
-
-    
-    <aside class="kn-take">
-      <img class="kn-take-av" src="avatars/m40-0.svg" alt="" loading="lazy" width="56" height="56">
-      <div class="kn-take-body">
-        <div class="kn-take-role">情シスの視点</div>
-        <p>内製と聞くと開発体制の話に飛んでいたが、必要なのは業務理解とデータの置き場の整理だった。<em>作る前に決めるべきことの方が多い</em>。</p>
-      </div>
-    </aside>
-<h2 id="s4">内製に必要なスキルセットと学習ステップは？</h2>
-    <p class="answer">中核はプログラミングではなく、指示設計・ナレッジ整備・会話設計・ガバナンスの4つ。順に積めば非エンジニアでも作れる。</p>
-    <p>「内製」と聞くとプログラミング研修を想像しがちですが、Copilot Studioの画面操作そのものは数日で覚えられます。成果を左右するのは操作の外側にある、次の4つのスキルです。</p>
+    <h2 id="s6">Copilot Studioを学ぶ研修は、何を基準に選べばよいですか？</h2>
+    <p class="answer">受講者が自社の題材でエージェントを1体作り、公開まで到達できるかと、運用設計の有無で選びます。</p>
+    <p>Copilot Studioを扱う研修は、今後増えていきます。中身の差も大きくなります。講師が作る画面を眺めるデモ見学型と、受講者が自社題材で手を動かして公開まで到達する型では、研修後に残るものが違います。選ぶときは、次の8点を確認してください。</p>
     <ul>
-      <li><strong>指示設計。</strong>エージェントの役割・口調・答えてよい範囲と答えてはいけない範囲を、あいまいさなく言語化するスキル。プロンプト作成の延長線上にあり、Lv1の経験がここで効いてくる。</li>
-      <li><strong>ナレッジ整備。</strong>回答の根拠になる文書を、正しい最新版に絞って整理するスキル。古い規程が混ざれば間違った回答が量産される。「AIはエンジンだ。コンテキストは燃料だ」——エージェントの品質は接続する文書の品質で決まる。</li>
-      <li><strong>会話設計と検証。</strong>よくある質問の流れをトピックとして設計し、テストで想定外の質問や誤答のパターンを潰すスキル。作って終わりでなく「試して直す」の反復が本体になる。</li>
-      <li><strong>公開とガバナンス。</strong>誰に公開するか、どの認証を使うか、機密文書を知識ソースに入れてよいかを判断するスキル。情報システム部門との共通言語になる領域で、全社展開の成否を分ける。</li>
+      <li>演習で、受講者が実際にエージェントを1体作るか。デモ見学型か、手を動かす型かの最重要の分岐です。</li>
+      <li>題材を、自社の業務から選べるか。汎用サンプルだけの研修は、翌日から業務につながりません。</li>
+      <li>社内データ接続（SharePoint等の知識ソース）まで扱うか。扱わない研修では、社内の質問に答えるエージェントに到達しません。</li>
+      <li>Teams配布、認証、公開範囲まで扱うか。作ったが配布できない、という停止を防げます。</li>
+      <li>非エンジニア前提のカリキュラムか。受講対象を業務部門に広げられます。</li>
+      <li>研修後の運用・改善（誰が直すか）まで設計に含むか。公開後に放置されるエージェントを防げます。</li>
+      <li>事前に環境・ライセンス準備の案内があるか。当日、環境がなくて触れない事故を防げます。</li>
+      <li>費用の内訳と助成金の扱いが明示されているか。稟議・予算化を進めやすくなります。</li>
     </ul>
-    <p>学習ステップは、いきなり部門公開を目指さず、小さく確実に登るのが定石です。</p>
-    <ol>
-      <li><strong>個人でCopilotを使いこなす。</strong>Lv1の実務経験を積み、「AIに何を任せると効くか」の感覚を持つ。</li>
-      <li><strong>自分用のエージェントを1体作る。</strong>知識ソースは1つに絞り、公開せず自分のテストだけで完結させる。</li>
-      <li><strong>部門の題材で作り、少人数に公開する。</strong>社内FAQ型など効果の見えやすい題材で、5〜10人に使ってもらいフィードバックを回す。</li>
-      <li><strong>公開まわりを情シスと整える。</strong>Teams配布・認証・公開範囲・知識ソースの取り扱いルールを合意する。</li>
-      <li><strong>更新運用をルール化して横展開する。</strong>元文書が変わったら誰がいつ直すかを決め、2体目以降の題材に広げる。</li>
-    </ol>
-    <div class="callout"><p>着手前に、Copilot Studioの利用に必要なライセンス・環境を情シスと確認しておくこと。ライセンス体系や課金の仕組みは更新されるため、最新の条件はMicrosoftの公式情報（Microsoft Learnおよび料金ページ）で確認するのが確実だ。</p></div>
-
-    <h2 id="s5">研修で学ぶ場合、何を基準に選べばよいか？</h2>
-    <p class="answer">デモ見学で終わらず、自社の題材でエージェントを1体作り公開まで到達できるか。運用設計の有無で選ぶ。</p>
-    <aside class="kn-side">
-      <img src="avatars/m50-0.svg" alt="" loading="lazy" width="36" height="36">
-      <div><div class="r">人事の視点</div><p>「作れるようになる研修」は、受講後に何が残るかで選ぶしかない。</p></div>
-    </aside>
-    <p>「Copilot Studioを扱う研修」は今後増えていきますが、中身の差は大きくなります。講師が作る画面を眺めるデモ見学型と、受講者が自社題材で手を動かして公開まで到達する型では、研修後に残るものがまったく違います。選定時は次のチェックリストで確認してください。</p>
-    <div class="tbl-wrap">
-      <table>
-        <tr><th>確認項目</th><th>そこで分かること</th></tr>
-        <tr><td>演習で受講者が実際にエージェントを1体作るか</td><td>デモ見学型か、手を動かす型かの最重要の分岐</td></tr>
-        <tr><td>題材を自社の業務から選べるか</td><td>汎用サンプルだけの研修は、翌日から業務につながらない</td></tr>
-        <tr><td>社内データ接続（SharePoint等の知識ソース）まで扱うか</td><td>接続を扱わない研修では「社内の質問に答えるエージェント」に到達しない</td></tr>
-        <tr><td>Teams配布・認証・公開範囲まで扱うか</td><td>「作ったが配布できない」で止まるリスクを潰せるか</td></tr>
-        <tr><td>非エンジニア前提のカリキュラムか</td><td>受講対象を業務部門に広げられるか</td></tr>
-        <tr><td>研修後の運用・改善（誰が直すか）まで設計に含むか</td><td>公開後に放置されるエージェントを防げるか</td></tr>
-        <tr><td>事前に環境・ライセンス準備の案内があるか</td><td>当日「環境がなくて触れない」事故を防げるか</td></tr>
-        <tr><td>費用の内訳と助成金の扱いが明示されているか</td><td>稟議・予算化を進めやすいか</td></tr>
-      </table>
-    </div>
-    <p>費用面では、要件を満たし申請が認められれば、人材開発支援助成金（事業展開等リスキリング支援コース）の対象となる場合があります。経費助成は中小企業で最大75%・大企業で最大60%、1人あたり経費30万円の上限などの枠組みがあり、適用には訓練時間数や計画届などの要件を満たす必要があります。制度の詳細は厚生労働省の公表情報を確認してください。研修価格の相場観と助成金を含めた予算の組み方は<a href="copilot-training-cost.html">Copilot研修の費用相場</a>に、研修会社・導入支援会社をどう見比べるかはCopilot導入支援の比較にまとめています。あわせて、そのほかの記事は<a href="index.html">AI研修・導入ラボの記事一覧</a>からたどれます。</p>
-    <p>TechWorkerでも、上場企業を含む37社・2,500名への生成AI支援の中で、「使う研修」の次の段階として業務エージェントの内製に踏み出す企業が増えているのを見てきました。共通する成功パターンは、研修を「操作を教わる場」ではなく「最初の1体を作りきる場」として設計することです。研修が終わった時点で、動くエージェントと、それを直せる人が社内に残っている——この状態を作れるかどうかで選ぶことを勧めます。</p>
+    <p>費用面では、人材開発支援助成金（事業展開等リスキリング支援コース）の対象となる場合があります。要件を満たし、申請が認められることが前提です。経費助成は中小企業で最大75%、大企業で最大60%、1人あたり経費30万円の上限などの枠組みです。訓練時間数や計画届などの要件があり、制度の詳細は厚生労働省の公表情報で確認してください。</p>
+    <p>助成金を含めた予算の組み方は、<a href="copilot-training-cost.html">Copilot研修の費用相場</a>にまとめています。そのほかの記事は、<a href="index.html">AI研修・導入ラボの記事一覧</a>からたどれます。</p>
+    <p>TechWorkerは、上場企業を含む37社・2,500名の生成AI支援を行っています。「使う研修」の次の段階として、業務エージェントの内製に踏み出す企業が増えています。共通する成功パターンは、研修を操作を教わる場でなく、最初の1体を作りきる場として設計することです。</p>
 
     <h2 id="faq">よくある質問</h2>
-    <div class="faq"><div class="q">Copilot Studioを使うのにプログラミングの知識は必要ですか？</div><p class="a">必須ではありません。Microsoft Copilot StudioはMicrosoft Learn上で、エージェントを構築するためのグラフィカルなローコードツールと位置づけられており、画面操作と自然言語の記述でエージェントを作成できます。ただし、業務の言語化、社内文書の整備、権限やガバナンスの設計といったプログラミング以外のスキルが成果を左右します。</p></div>
-    <div class="faq"><div class="q">Microsoft 365 CopilotとCopilot Studioは何が違いますか？</div><p class="a">Microsoft 365 CopilotはWordやExcel、Teamsの中でAIを「使う」ための製品で、Copilot StudioはAIエージェントを「作る」ためのツールです。Copilot Studioで作ったエージェントによって、Microsoft 365 Copilotを自社のデータや業務シナリオに合わせて拡張することもできます。</p></div>
-    <div class="faq"><div class="q">最初に作るエージェントの題材は何がよいですか？</div><p class="a">社内FAQエージェントのように「答えが既存の文書に書いてあり、同じ質問が繰り返し発生する」業務が適しています。就業規則や手続きマニュアルなど既存の文書をそのまま知識ソースとして接続でき、問い合わせ対応時間の削減という形で効果も測りやすいため、最初の1体に向いています。</p></div>
-    <div class="faq"><div class="q">研修を受ければ、すぐに社内でエージェントを内製できるようになりますか？</div><p class="a">研修だけでは完結しません。研修で作成から公開までの一連の流れを一度経験したうえで、社内データの整備、情報システム部門との環境・権限の調整、公開後に誰が改善を続けるかという運用体制づくりが必要です。研修はその起点として、自社の題材でエージェントを1体作り、公開まで到達できる設計のものを選んでください。</p></div>
+    <div class="faq"><div class="q">Copilot Studioを使うのにプログラミングの知識は必要ですか？</div><p class="a">必須ではありません。Copilot Studioは、Microsoft Learn上でローコードツールと位置づけられています。画面操作と自然言語の記述で、エージェントを作成できます。ただし、プログラミング以外のスキルが成果を左右します。業務の言語化、社内文書の整備、権限やガバナンスの設計です。</p></div>
+    <div class="faq"><div class="q">Microsoft 365 CopilotとCopilot Studioは何が違いますか？</div><p class="a">Microsoft 365 Copilotは、WordやExcel、Teamsの中でAIを「使う」ための製品です。Copilot Studioは、AIエージェントを「作る」ためのツールです。Copilot Studioで作ったエージェントは、Microsoft 365 Copilotの拡張にも使えます。自社のデータや業務シナリオに合わせられます。</p></div>
+    <div class="faq"><div class="q">最初に作るエージェントの題材は何がよいですか？</div><p class="a">社内FAQエージェントのように「答えが既存の文書に書いてあり、同じ質問が繰り返し発生する」業務が適しています。就業規則や手続きマニュアルなど、既存の文書をそのまま知識ソースとして接続できます。問い合わせ対応時間の削減という形で効果も測りやすいため、最初の1体に向いています。</p></div>
+    <div class="faq"><div class="q">研修を受ければ、すぐに社内でエージェントを内製できるようになりますか？</div><p class="a">研修だけでは完結しません。研修で、作成から公開までの流れを一度経験します。そのうえで、次の3つが必要です。社内データの整備、情報システム部門との環境・権限の調整、公開後に誰が改善を続けるかという運用体制づくりです。研修は、自社の題材でエージェントを1体作り、公開まで到達できる設計のものを選んでください。</p></div>
+
+    <h2 id="s7">次の一歩は何から始めればよいですか？</h2>
+    <p class="answer">自社の社内FAQの題材を1つ決め、自分用のエージェントを1体作るところから始めます。</p>
+    <ol>
+      <li>答えが既存の文書にあり、問い合わせが繰り返される業務を1つ選びます。</li>
+      <li>情シスと、必要なライセンス・環境を確認します。</li>
+      <li>自分用のエージェントを1体作り、少人数への公開に進みます。</li>
+    </ol>
+    <p>研修が終わった時点で、動くエージェントと、それを直せる人が社内に残る設計を、TechWorkerが一緒に考えます。</p>
   </article>
 </div>
 

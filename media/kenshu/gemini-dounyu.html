@@ -14,12 +14,12 @@
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Geminiの法人導入｜Google Workspaceの管理設定から全社展開までの進め方【2026】 — TechWorker</title>
-<meta name="description" content="Geminiの法人導入は2026年、「買うか」ではなく「どう開けて、どう使わせるか」の作業になりました。GeminiのAIアシスタントはGoogle Workspaceの各プランに含まれます。Googleの公式プライバシーハブが示すデータの扱い（組織外に共有しない・モデル学習に使わない・人によるレビューをしない）、管理コンソールでの設定、パイロットの設計、全社展開でつまずく論点までを情シス視点で整理します。">
+<meta name="description" content="2026年8月時点で、GeminiのAIアシスタントはGoogle Workspaceの各プランに含まれます。導入は、開ける範囲、利用ルール、展開の順番の3点を決める設計作業です。全社展開を任された情シス・DX推進の方に向けて、データの扱い、管理コンソールの設定、パイロットの設計、つまずく点を解説します。">
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
 <link rel="canonical" href="https://techworker.co.jp/media/kenshu/gemini-dounyu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Geminiの法人導入｜Google Workspaceの管理設定から全社展開までの進め方【2026】">
-<meta property="og:description" content="Geminiは各Workspaceプランに同梱。導入は「買うか」でなく「どう開けるか」の設計に変わった。公式プライバシーハブが示すデータの扱い、管理コンソール設定、パイロット設計、全社展開の論点を情シス視点で整理。">
+<meta property="og:description" content="GeminiはGoogle Workspaceの各プランに含まれます。導入は、開ける範囲、利用ルール、展開の順番の3点を決める作業です。データの扱いからパイロット設計まで整理します。">
 <meta property="og:image" content="https://techworker.co.jp/media/kenshu/covers/gemini-dounyu.png">
 <meta property="og:url" content="https://techworker.co.jp/media/kenshu/gemini-dounyu">
 <meta property="og:site_name" content="TechWorker">
@@ -30,7 +30,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../article.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Geminiの法人導入｜Google Workspaceの管理設定から全社展開までの進め方【2026】", "description": "Geminiの法人導入を情シス・DX推進の視点で解説。GeminiのAIアシスタントがGoogle Workspaceの各プランに含まれるようになった2026年の前提、Google公式の生成AIプライバシーハブが示すデータの扱い（組織外に共有しない・許可なくモデル学習に使わない・人によるレビューをしない）、個人Googleアカウントとの違い、管理コンソールで決めるオン/オフの範囲、Gemini Notebook（旧NotebookLM）の扱い、パイロットの設計と評価指標、全社展開でつまずく論点までを整理する。", "datePublished": "2026-07-24", "dateModified": "2026-07-24", "inLanguage": "ja", "image": "https://techworker.co.jp/media/kenshu/covers/gemini-dounyu.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/gemini-dounyu"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Geminiの法人導入｜Google Workspaceの管理設定から全社展開までの進め方【2026】", "description": "2026年8月時点で、GeminiのAIアシスタントはGoogle Workspaceの各プランに含まれます。導入は、開ける範囲、利用ルール、展開の順番の3点を決める設計作業です。全社展開を任された情シス・DX推進の方に向けて、データの扱い、管理コンソールの設定、パイロットの設計、つまずく点を解説します。", "datePublished": "2026-07-24", "dateModified": "2026-10-02", "inLanguage": "ja", "image": "https://techworker.co.jp/media/kenshu/covers/gemini-dounyu.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/gemini-dounyu"}}</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -73,7 +73,7 @@
       "name": "Geminiを法人で使うには何を契約すればよいですか？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "2026年8月時点では、Google Workspaceの各プランに Gemini AI アシスタントが含まれています。すでにWorkspaceを使っている企業は、新たにAIライセンスを買うのではなく、管理コンソールで利用範囲を設計する作業から始まります。全社のエージェント基盤まで踏み込む場合は、Google Cloudの Gemini Enterprise（Businessエディションは1シート月額21米ドルから）が別建ての選択肢になります。"
+        "text": "2026年8月時点では、Google Workspaceの各プランに Gemini AI アシスタントが含まれています。すでにWorkspaceを使っている企業は、AIライセンスを新たに買いません。管理コンソールで利用範囲を設計する作業から始めます。全社のエージェント基盤まで進む場合は、別建ての選択肢があります。Google Cloudの Gemini Enterprise（Businessエディションは1シート月額21米ドルから）です。"
       }
     },
     {
@@ -81,7 +81,7 @@
       "name": "入力した社内情報がAIの学習に使われませんか？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Googleは公式の生成AIプライバシーハブで、Google Workspaceの生成AI機能について、プロンプトと生成結果を組織外に共有せず、許可なく生成AIモデルの学習に使わず、人によるレビューも行わないと説明しています。ただし社員が個人のGoogleアカウントで使うGeminiは扱いが異なるため、業務利用は会社アカウントに寄せるルールが必要です。"
+        "text": "Googleは公式の生成AIプライバシーハブで、Google Workspaceの生成AI機能について説明しています。プロンプトと生成結果を組織外に共有せず、許可なく生成AIモデルの学習に使わず、人によるレビューも行わないという内容です。ただし、社員が個人のGoogleアカウントで使うGeminiは扱いが異なります。業務利用は会社アカウントに寄せるルールが必要です。"
       }
     },
     {
@@ -89,7 +89,7 @@
       "name": "情シスは管理コンソールで何を決めるのですか？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "大きくは、Gemini関連サービスをどの組織部門にオンにするか、Gemini Notebook（旧NotebookLM）などの関連サービスを開けるか、監査とアラートをどう見るか、の3点です。全社一律で開けるか、部門単位で段階的に開けるかは、パイロットの設計と合わせて決めます。"
+        "text": "大きくは3点です。Gemini関連サービスを、どの組織部門でオンにするかを決めます。Gemini Notebook（旧NotebookLM）などの関連サービスを開けるかを決めます。監査とアラートをどう見るかも決めます。全社一律で開けるか、部門単位で段階的に開けるかは、パイロットの設計と合わせて決めます。"
       }
     },
     {
@@ -97,7 +97,7 @@
       "name": "パイロットは何人・何か月でやるべきですか？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "一律の正解はありませんが、業務が近い1〜2部門・十数名規模で1〜2か月というのが動かしやすい単位です。人数より「何をもって成功とするか」を先に決めることが重要で、利用率だけでなく対象業務の所要時間や差し戻し回数など、業務側の指標を1つ置くと判断できます。"
+        "text": "一律の正解はありません。業務が近い1〜2部門・十数名規模で、1〜2か月が動かしやすい単位です。人数より、何をもって成功とするかを先に決めることが大切です。利用率に加えて、対象業務の所要時間や差し戻し回数など、業務側の指標を1つ置くと判断できます。"
       }
     }
   ]
@@ -135,7 +135,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a><span class="sep">/</span>Geminiの法人導入</nav>
   <div class="kicker">導入と業務への組み込み</div>
   <h1>Geminiの法人導入｜Google Workspaceの管理設定から全社展開までの進め方</h1>
-  <p class="dek">「Geminiを導入したい」という相談は、2026年に入って中身が変わった。Google WorkspaceにAIアシスタントが含まれるようになり、多くの企業では稟議を上げる前から、社員のGmailとドキュメントに機能が存在している。だから導入プロジェクトの実体は「買う」ことではなく、どこまで開けるか、何を禁止するか、誰から使わせるかを決める設計作業になる。本記事は、情シス・DX推進が全社展開の前に押さえる論点を、Googleの公式ドキュメントで確認できる事実に絞って整理する。</p>
+  <p class="dek">2026年8月時点で、GeminiのAIアシスタントはGoogle Workspaceの各プランに含まれ、導入は決めるべき3点の設計作業になりました。<br>全社展開を任された、情シスやDX推進の担当者の方に向けた記事です。<br>データの扱い、管理コンソールの設定、パイロットの設計、全社展開でつまずく点が分かります。</p>
   <div class="kn-voices" aria-hidden="true">
     <span class="kn-fc" style="--sayo:0.0s"><span class="av"><img src="avatars/m40-0.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">設定が分からない</span></span>
     <span class="kn-fc" style="--sayo:6.3s"><span class="av"><img src="avatars/f30-2.svg" alt="" loading="lazy" width="88" height="88"></span><span class="say">情報は大丈夫？</span></span>
@@ -145,7 +145,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
   </div>
   <div class="kn-voices-cap">研修・導入のご相談でよく挙がる声<span class="note">※ 実際の相談で挙がる論点をもとにした例です</span></div>
   <div class="a-meta">
-    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.24</span><span class="dot">·</span><span>最終更新 2026.07.24</span><span class="dot">·</span><span>読了 10分</span>
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.24</span><span class="dot">·</span><span>最終更新 2026.10.02</span><span class="dot">·</span><span>読了 10分</span>
   </div>
 </header>
 
@@ -211,25 +211,16 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <nav class="art-toc" aria-label="目次">
     <div class="art-toc-inner">
       <div class="toc-h">目次</div>
-      <a href="#s1">2026年の導入は何が変わったか</a>
-      <a href="#s2">データの扱いをどう確認するか</a>
-      <a href="#s3">管理コンソールで決めること</a>
-      <a href="#s4">パイロットの設計</a>
-      <a href="#s5">全社展開でつまずく論点</a>
+      <a href="#s1">Geminiの法人導入では、何を決めればよいですか？</a>
+      <a href="#s2">導入は、どんな手順で進めればよいですか？</a>
+      <a href="#s3">導入がうまくいかない例には、どんなものがありますか？</a>
+      <a href="#s4">部門の状態によって、Geminiが届く範囲はどう違いますか？</a>
       <a href="#faq">よくある質問</a>
+      <a href="#s5">次の一歩は何から始めればよいですか？</a>
     </div>
   </nav>
 
-  <article class="art-body rv">
-    <div class="lede">
-      <div class="lede-h">この記事の要点</div>
-      <ul>
-        <li>2026年8月時点、<strong>Gemini AI アシスタントはGoogle Workspaceの各プランに含まれる</strong>。導入プロジェクトの実体は「買う」ことではなく、<strong>どこまで開けて、何を禁止し、誰から使わせるか</strong>を決める設計作業になった。</li>
-        <li>データの扱いはGoogle公式の生成AIプライバシーハブが基準。Workspaceの生成AI機能について、<strong>プロンプトと生成結果を組織外に共有しない・許可なく生成AIモデルの学習に使わない・人によるレビューを行わない</strong>と説明されている。ただし<strong>社員の個人Googleアカウントで使うGeminiは扱いが異なる</strong>。</li>
-        <li>全社展開の失敗はほぼ、機能ではなく<strong>業務文脈の不足</strong>で起きる。Driveに業務データが載っていない部門では、同じ機能でも成果が出ない。</li>
-      </ul>
-    </div>
-
+  <article class="art-body">
 <aside class="inline-dx-cta" style="margin:6px 0 40px;border:1px solid var(--line-2);border-radius:12px;background:var(--white);padding:22px 26px;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
   <div style="flex:1;min-width:240px;">
     <div style="font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);">診断ツール ・ 無料 ・ 5分</div>
@@ -239,94 +230,58 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <a href="../../ai-assessment.html" class="btn" style="white-space:nowrap;flex:none;color:var(--paper);border-bottom:none;">無料で診断する <i>&rarr;</i></a>
 </aside>
 
-    <h2 id="s1">2026年のGemini導入は、何を決める作業になったのか？</h2>
-    <p class="answer">「導入するか」はすでに終わっている。決めるのは開ける範囲・利用ルール・展開の順番の3つ。</p>
-    <aside class="kn-side">
-      <img src="avatars/f40-2.svg" alt="" loading="lazy" width="36" height="36">
-      <div><div class="r">情シスの視点</div><p>稟議を書く前に、現場が先に使い始めていた。止めるのか、整えるのかを先に決める必要があった。</p></div>
-    </aside>
-    <p>数年前まで、生成AIの法人導入プロジェクトは「契約する／しない」から始まりました。2026年のGeminiは違います。Google Workspaceの各プランに Gemini AI アシスタントが含まれるため、<strong>多くの企業では稟議が起票される前から、社員のGmailとGoogle ドキュメントに機能が存在しています</strong>。情シスに相談が来る時点で、現場はすでに触っている。</p>
-    <p>この前提に立つと、導入プロジェクトで決めるべきことは3つに整理できます。</p>
-    <div class="tbl-wrap">
-      <table>
-        <tr><th>決めること</th><th>具体的な論点</th><th>決めないと起きること</th></tr>
-        <tr><td>1. 開ける範囲</td><td>どの機能を、どの組織部門に、いつからオンにするか</td><td>部門ごとに使える機能が違う理由を説明できず、問い合わせが情シスに集中する</td></tr>
-        <tr><td>2. 利用ルール</td><td>入れてよい情報の範囲、個人アカウント利用の扱い、生成物の確認責任</td><td>「使ってはいけない気がする」で現場が自主規制し、使われないまま止まる</td></tr>
-        <tr><td>3. 展開の順番</td><td>どの部門から始め、何を見て次に進むか</td><td>全社一斉に開けて、成果が測れないまま「よく分からないもの」になる</td></tr>
-      </table>
-    </div>
-    <p>ここで効くのが順番です。<strong>2を決めずに1だけ実行すると、機能は開いているのに誰も踏み込まない状態になります</strong>。逆に1を止めたまま2を議論しても、現場はすでに使えるので実効性がありません。ルールを先に、範囲はその後に。これがGeminiの導入設計の基本形です。</p>
-
-    <h2 id="s2">情シスがまず確認すべきデータの扱いは？</h2>
-    <p class="answer">Workspaceの生成AI機能は、組織外に共有されず、許可なくモデル学習に使われず、人によるレビューも行われない。</p>
-    <p>「入力した社内情報がAIの学習に使われるのでは」という懸念は、Gemini導入の相談で最初に出る論点です。Googleは公式ヘルプの<strong>生成AIプライバシーハブ</strong>で、Google Workspaceの生成AI機能について次のように説明しています。</p>
-    <div class="quote-box"><p>Google Workspace の生成AI機能では、入力したプロンプトと生成された内容は組織外に共有されず、許可なく生成AIモデルの学習には使用されず、人によるレビューも行われない——というのが公式ヘルプに示されている扱いです（2026年8月時点・Google Workspace ヘルプ「生成 AI に関するプライバシー ハブ」より要約）。</p></div>
-    <p>ここで情シスが押さえるべきなのは、この保護が<strong>「会社のGoogle Workspaceアカウントで使ったとき」の話</strong>だという点です。社員が個人のGoogleアカウントでGeminiを使った場合、適用される規約もデータの扱いも別物になります。つまり実務上の論点は「Geminiは安全か」ではなく、<strong>「社員が業務情報をどのアカウントで扱っているか」</strong>です。</p>
-    <div class="tbl-wrap">
-      <table>
-        <tr><th>確認する項目</th><th>なぜ確認するか</th><th>実務での置き方</th></tr>
-        <tr><td>会社アカウントでの利用に寄せられているか</td><td>個人アカウント利用は保護の前提が変わる</td><td>ブラウザのプロファイル分離、利用ルールへの明記、周知</td></tr>
-        <tr><td>入れてよい情報の線引き</td><td>「何がダメか」が曖昧だと現場が全面自主規制する</td><td>禁止する情報を列挙し、それ以外は原則可と書く</td></tr>
-        <tr><td>生成物の確認責任</td><td>誤りが残ったまま外部に出る事故を防ぐ</td><td>「対外文書は人が最終確認」を1行ルールにする</td></tr>
-        <tr><td>関連サービスの扱い</td><td>Gemini Notebookなどは別途オン/オフの対象</td><td>先行部門だけ開ける、など段階を決める</td></tr>
-      </table>
-    </div>
-    <div class="callout"><p>禁止事項だけを列挙したルールは、現場では「全部ダメ」と読まれる。<strong>禁止する情報を具体的に書き、それ以外は使ってよいと明記する</strong>——この書き方に変えるだけで、利用率が動くことがある。ルールは制限であると同時に、許可の表明でもある。</p></div>
-
-
-    <aside class="kn-take">
-      <img class="kn-take-av" src="avatars/m50-0.svg" alt="" loading="lazy" width="56" height="56">
-      <div class="kn-take-body">
-        <div class="kn-take-role">情報システム部門の視点</div>
-        <p>止める理由を探していたが、実際に必要だったのは<em>使ってよい範囲を明文化すること</em>だった。曖昧なままのほうがリスクが高い。</p>
-      </div>
-    </aside>
-<h2 id="s3">管理コンソールでは、何をオン・オフするのか？</h2>
-    <p class="answer">機能ごと・組織部門ごとにオン/オフを設計する。全社一律か段階かは、パイロットの設計とセットで決める。</p>
-    <aside class="kn-side">
-      <img src="avatars/m20-0.svg" alt="" loading="lazy" width="36" height="36">
-      <div><div class="r">運用担当の視点</div><p>一斉に全部開けると、問い合わせが同じ週に集中する。段階に分ける理由は運用負荷のほうにもある。</p></div>
-    </aside>
-    <p>Google Workspaceの管理コンソールでは、生成AI関連のサービスを<strong>サービス単位・組織部門単位</strong>でオン/オフできます。実務で設計対象になるのは、おおむね次の層です（設定項目名や画面構成は更新されるため、実施前に必ず管理コンソールと公式ヘルプで最新の状態を確認してください）。</p>
+    <h2 id="s1">Geminiの法人導入では、何を決めればよいですか？</h2>
+    <p class="answer">契約はすでに済んでいます。決めるのは、開ける範囲、利用ルール、展開の順番の3つです。</p>
+    <p>数年前まで、生成AIの法人導入は「契約する／しない」から始まりました。2026年のGeminiは違います。Google Workspaceの各プランに、Gemini AI アシスタントが含まれるためです。</p>
+    <p>多くの企業では、稟議が起票される前から、社員のGmailとGoogle ドキュメントに機能が存在しています。情シスに相談が来る時点で、現場はすでに触っています。</p>
+    <p>導入プロジェクトで決めることは、次の3つです。</p>
     <ul>
-      <li><strong>各アプリ内のGemini機能</strong>：Gmail・ドキュメント・スプレッドシート・スライド・Meet などに組み込まれたAIアシスタント。日常業務の入口になる層。</li>
-      <li><strong>Gemini アプリ</strong>：チャット形式で使う層。プランによってアクセスできるモデルや機能の範囲が異なる。</li>
-      <li><strong>Gemini Notebook（旧NotebookLM）</strong>：指定した資料の中だけで回答させる用途。2026年にNotebookLMから改称され、法人向けエディションも Gemini Notebook Enterprise となった。管理者側でユーザーごとにオン/オフできる。</li>
-      <li><strong>Google Workspace Studio</strong>：プログラミングなしでWorkspace全体の反復作業を自動化するツール。作る側の層にあたるため、開ける対象を絞る判断がしやすい。</li>
+      <li><strong>開ける範囲。</strong>どの機能を、どの組織部門に、いつからオンにするかを決めます。</li>
+      <li><strong>利用ルール。</strong>入れてよい情報の範囲、個人アカウント利用の扱い、生成物の確認責任を決めます。</li>
+      <li><strong>展開の順番。</strong>どの部門から始め、何を見て次に進むかを決めます。</li>
     </ul>
-    <p>ここでの設計方針は<strong>「使う層は広く、作る層は狭く」</strong>です。日常業務のAIアシスタントは全社で開けても運用は破綻しませんが、自動化フローやエージェントを作れる層まで一気に全社へ開けると、品質のばらつきと管理対象の増加が同時に来ます。作る層の広げ方は<a href="gemini-gems.html">GemsとWorkspace Studioによる内製</a>で扱います。</p>
-    <p>なお、全社のエージェントを一元管理したい、Workspace外のデータ基盤ともつなぎたい、という段階になると、Google Cloud側の <strong>Gemini Enterprise</strong> が別建ての選択肢になります。公式ページでは Business エディションが1シート月額21米ドルから、Standard / Plus エディションが1シート月額30米ドルからと案内されています（2026年8月時点）。Workspaceの機能で足りるかを先に確かめてから検討する順番が安全です。</p>
+    <p>順番が大切です。ルールを決めずに範囲だけ開けると、機能は開いているのに誰も踏み込みません。範囲を止めたままルールを議論しても、現場はすでに使えるので実効性がありません。ルールを先に、範囲はその後に決めます。</p>
 
-    <h2 id="s4">パイロットは、どう設計すれば判断材料になるのか？</h2>
-    <p class="answer">人数より「何をもって成功とするか」を先に決める。利用率に加えて業務側の指標を1つ置く。</p>
-    <p>パイロットでよくある失敗は、「まず使ってみましょう」で始めて、終わったときに何も判断できないことです。利用ログは残るが、それが良い数字なのか悪い数字なのか誰にも分からない。この状態を避けるには、開始前に評価の枠を作っておく必要があります。</p>
-    <div class="tbl-wrap">
-      <table>
-        <tr><th>設計項目</th><th>決め方の目安</th><th>ありがちな失敗</th></tr>
-        <tr><td>対象</td><td>業務が近い1〜2部門・十数名。職種がばらけすぎない単位</td><td>各部門から1名ずつ集め、共通の題材が作れない</td></tr>
-        <tr><td>期間</td><td>1〜2か月。研修→実務適用→振り返りが1周する長さ</td><td>2週間で終え、日常業務に戻る前に評価してしまう</td></tr>
-        <tr><td>対象業務</td><td>頻度が高く、成果物の形が決まっている業務を2〜3個</td><td>「何に使ってもよい」で始め、活用が個人差に埋もれる</td></tr>
-        <tr><td>成功の定義</td><td>利用率＋業務側の指標1つ（所要時間・差し戻し回数など）</td><td>利用率だけを見て、業務が変わったかを説明できない</td></tr>
-        <tr><td>撤退・拡大の判断</td><td>何が起きたら全社展開に進むかを先に文章化</td><td>結果が出てから基準を作ることになり、判断が主観に流れる</td></tr>
-      </table>
-    </div>
-    <div class="callout"><p>業務側の指標は、精緻さより<strong>継続して取れること</strong>を優先する。所要時間の自己申告でも、同じ人が同じ方法で前後を比べれば判断材料になる。取れない指標を設計して測定が止まるほうが痛い。</p></div>
+    <h2 id="s2">導入は、どんな手順で進めればよいですか？</h2>
+    <p class="answer">データの扱い、利用ルール、管理コンソール、パイロット、展開順の5つの手順で進めます。</p>
+    <p><strong>手順1：データの扱いを確認します。</strong>「入力した社内情報がAIの学習に使われるのでは」という懸念は、導入相談で最初に出る論点です。Googleは、公式ヘルプの生成AIプライバシーハブで説明しています。対象はGoogle Workspaceの生成AI機能です。内容は次のとおりです。</p>
+    <div class="quote-box"><p>プロンプトと生成された内容は組織外に共有されません。許可なく生成AIモデルの学習には使用されません。人によるレビューも行われません（2026年8月時点・Google Workspace ヘルプ「生成 AI に関するプライバシー ハブ」より要約）。</p></div>
+    <p>この保護は、会社のGoogle Workspaceアカウントで使ったときの話です。社員が個人のGoogleアカウントでGeminiを使うと、適用される規約もデータの扱いも別になります。実務上の論点は、社員が業務情報をどのアカウントで扱っているかです。会社アカウントでの利用に寄せるため、ブラウザのプロファイル分離、利用ルールへの明記、周知を行います。</p>
+    <p><strong>手順2：利用ルールを書きます。</strong>入れてよい情報の線引きが曖昧だと、現場が全面的に自主規制します。禁止する情報を具体的に列挙し、それ以外は原則可と書きます。生成物の確認責任は、「対外文書は人が最終確認」の1行で足ります。</p>
+    <div class="callout"><p>禁止事項だけを並べたルールは、現場では「全部ダメ」と読まれます。禁止する情報を具体的に書き、それ以外は使ってよいと明記すると、利用率が動くことがあります。ルールは制限であると同時に、許可の表明でもあります。</p></div>
+    <p><strong>手順3：管理コンソールで、オン・オフを設計します。</strong>管理コンソールでは、生成AI関連のサービスをオン/オフできます。単位は、サービスごと、組織部門ごとです。設定項目名や画面構成は更新されます。実施前に管理コンソールと公式ヘルプで最新の状態を確認してください。設計の対象は、おおむね次の層です。</p>
+    <ul>
+      <li><strong>各アプリ内のGemini機能</strong>は、Gmail・ドキュメント・スプレッドシートなどに組み込まれたAIアシスタントです。日常業務の入口になる層です。</li>
+      <li><strong>Gemini アプリ</strong>は、チャット形式で使う層です。プランによって、使えるモデルや機能の範囲が異なります。</li>
+      <li><strong>Gemini Notebook（旧NotebookLM）</strong>は、指定した資料の中だけで回答させる用途です。2026年にNotebookLMから改称されました。法人向けエディションは Gemini Notebook Enterprise です。管理者側でユーザーごとにオン/オフできます。</li>
+      <li><strong>Google Workspace Studio</strong>は、プログラミングなしで反復作業を自動化するツールです。作る側の層にあたるため、開ける対象を絞る判断がしやすくなります。</li>
+    </ul>
+    <p>設計方針は、「使う層は広く、作る層は狭く」です。日常業務のAIアシスタントは、全社で開けても運用は破綻しません。自動化フローやエージェントを作れる層まで一気に開けると、品質のばらつきと管理対象の増加が同時に来ます。作る層の広げ方は、<a href="gemini-gems.html">GemsとWorkspace Studioによる内製</a>で扱います。</p>
+    <p>全社のエージェントを一元管理したい場合は、別建ての選択肢があります。Google Cloud側の Gemini Enterprise です。Workspace外のデータ基盤とつなぎたい場合も同じです。公式ページの案内は次のとおりです（2026年8月時点）。Business エディションは1シート月額21米ドルからです。Standard / Plus エディションは1シート月額30米ドルからです。Workspaceの機能で足りるかを先に確かめてから検討します。</p>
+    <p><strong>手順4：パイロットを設計します。</strong>人数より、何をもって成功とするかを先に決めます。評価の枠は、開始前に次のように作ります。</p>
+    <ul>
+      <li><strong>対象：</strong>業務が近い1〜2部門・十数名にします。職種がばらけすぎない単位です。</li>
+      <li><strong>期間：</strong>1〜2か月にします。研修、実務適用、振り返りが1周する長さです。</li>
+      <li><strong>対象業務：</strong>頻度が高く、成果物の形が決まっている業務を2〜3個選びます。</li>
+      <li><strong>成功の定義：</strong>利用率に加えて、業務側の指標を1つ置きます。所要時間や差し戻し回数などです。</li>
+      <li><strong>撤退・拡大の判断：</strong>何が起きたら全社展開に進むかを、先に文章化します。</li>
+    </ul>
+    <div class="callout"><p>業務側の指標は、精緻さより継続して取れることを優先します。所要時間の自己申告でも、同じ人が同じ方法で前後を比べれば判断材料になります。取れない指標を設計して、測定が止まる事態を避けます。</p></div>
+    <p><strong>手順5：部門ごとに、展開順を決めます。</strong>Geminiが届く範囲を先に測ってから、順番を決めます。測り方は、下の比較表で示します。</p>
 
+    <h2 id="s3">導入がうまくいかない例には、どんなものがありますか？</h2>
+    <p class="answer">ルールを決めずに開ける、禁止だけ並べる、目的なくパイロットを始める、一斉に展開するの4つです。</p>
+    <ul>
+      <li><strong>ルールを決めずに、範囲だけ開ける。</strong>部門ごとに使える機能が違う理由を説明できず、問い合わせが情シスに集中します。</li>
+      <li><strong>禁止事項だけを並べる。</strong>「使ってはいけない気がする」で現場が自主規制し、使われないまま止まります。</li>
+      <li><strong>「まず使ってみましょう」でパイロットを始める。</strong>利用ログは残っても、良い数字なのか悪い数字なのか誰にも分かりません。各部門から1名ずつ集めて共通の題材が作れない例や、2週間で終えて日常業務に戻る前に評価してしまう例もあります。</li>
+      <li><strong>全社一斉に開ける。</strong>成果が測れないまま、「よく分からないもの」になります。結果が出てから基準を作ると、判断が主観に流れます。</li>
+    </ul>
+    <p>パイロットが成功した企業が全社展開でつまずく理由は、ほとんどの場合ツール側にありません。AIは手が届く範囲の情報しか使えないためです。ドキュメントとスプレッドシートで業務が回る部門では、Geminiは最初から文脈を持っています。紙とローカルファイル、Workspace外の基幹システムで回る部門では、手ぶらのAIしか使えません。</p>
+    <p>全社展開の直後には、「開けたのに使われない」問題も起きます。Geminiは購入の実感を伴わずに配られるため、Copilotとは違う形で認知の壁が現れます。その構造と対策は、Geminiが定着しない原因と対策で扱います。費用と稟議の組み立ては、Gemini研修の費用相場にまとめています。</p>
 
-    <aside class="kn-take">
-      <img class="kn-take-av" src="avatars/f20-2.svg" alt="" loading="lazy" width="56" height="56">
-      <div class="kn-take-body">
-        <div class="kn-take-role">DX推進の視点</div>
-        <p>パイロットは成功したのに全社では伸びなかった。差は機能ではなく、<em>その部門の業務データがDriveにあったかどうか</em>だった。</p>
-      </div>
-    </aside>
-<h2 id="s5">全社展開で、実際につまずくのはどこか？</h2>
-    <p class="answer">機能ではなく業務文脈で詰まる。Driveに業務データがない部門では、同じ機能でも成果が出ない。</p>
-    <aside class="kn-side">
-      <img src="avatars/f30-6.svg" alt="" loading="lazy" width="36" height="36">
-      <div><div class="r">現場マネージャーの視点</div><p>紙とローカルのExcelで回している業務だと、AIに渡すものがそもそも無かった。</p></div>
-    </aside>
-    <p>パイロットが成功した企業が全社展開でつまずく理由は、ほとんどの場合ツール側にありません。<strong>AIは手が届く範囲の情報しか使えない</strong>——この当たり前が、部門によって残酷に効きます。ドキュメントとスプレッドシートで業務が回っている部門では、Geminiは最初から文脈を持っています。一方、紙とローカルファイル、あるいはWorkspace外の基幹システムで回っている部門では、同じ機能を開けても手ぶらのAIしか使えません。</p>
+    <h2 id="s4">部門の状態によって、Geminiが届く範囲はどう違いますか？</h2>
+    <p class="answer">Drive上で業務が完結する部門は届きやすく、紙や基幹システム中心の部門は届きにくくなります。</p>
     <div class="tbl-wrap">
       <table>
         <tr><th>部門の状態</th><th>Geminiが使える範囲</th><th>先に手を打つこと</th></tr>
@@ -335,14 +290,22 @@ fbq('init','1264057945446029');fbq('track','PageView');
         <tr><td>紙・基幹システム中心で電子ファイルが薄い</td><td>汎用的な文章作成にしか使えず、価値を実感しにくい</td><td>AI導入より先に業務の電子化。順番を入れ替えない</td></tr>
       </table>
     </div>
-    <p>この見極めを展開計画に反映すると、「全部門に同時に開けて、同じ研修を配る」という設計にはなりません。<strong>部門ごとに、Geminiが届く範囲を先に測ってから展開順を決める</strong>。これが、パイロットの成功を全社に持ち込むための実務的な作法です。</p>
-    <p>そしてもう1つ、全社展開の直後に必ず起きるのが「開けたのに使われない」問題です。Geminiは購入の実感を伴わずに配られるため、Copilotとは違う形で認知の壁が現れます。その構造と対策はGeminiが定着しない原因と対策で扱います。費用と稟議の組み立てはGemini研修の費用相場にまとめています。</p>
+    <p>この見極めを展開計画に反映すると、「全部門に同時に開けて、同じ研修を配る」設計にはなりません。部門ごとに、Geminiが届く範囲を先に測ってから展開順を決めます。</p>
 
     <h2 id="faq">よくある質問</h2>
-    <div class="faq"><div class="q">Geminiを法人で使うには何を契約すればよいですか？</div><p class="a">2026年8月時点では、Google Workspaceの各プランに Gemini AI アシスタントが含まれています。すでにWorkspaceを使っている企業は、新たにAIライセンスを買うのではなく、管理コンソールで利用範囲を設計する作業から始まります。全社のエージェント基盤まで踏み込む場合は、Google Cloudの Gemini Enterprise（Businessエディションは1シート月額21米ドルから）が別建ての選択肢になります。</p></div>
-    <div class="faq"><div class="q">入力した社内情報がAIの学習に使われませんか？</div><p class="a">Googleは公式の生成AIプライバシーハブで、Google Workspaceの生成AI機能について、プロンプトと生成結果を組織外に共有せず、許可なく生成AIモデルの学習に使わず、人によるレビューも行わないと説明しています。ただし社員が個人のGoogleアカウントで使うGeminiは扱いが異なるため、業務利用は会社アカウントに寄せるルールが必要です。</p></div>
-    <div class="faq"><div class="q">情シスは管理コンソールで何を決めるのですか？</div><p class="a">大きくは、Gemini関連サービスをどの組織部門にオンにするか、Gemini Notebook（旧NotebookLM）などの関連サービスを開けるか、監査とアラートをどう見るか、の3点です。全社一律で開けるか、部門単位で段階的に開けるかは、パイロットの設計と合わせて決めます。</p></div>
-    <div class="faq"><div class="q">パイロットは何人・何か月でやるべきですか？</div><p class="a">一律の正解はありませんが、業務が近い1〜2部門・十数名規模で1〜2か月というのが動かしやすい単位です。人数より「何をもって成功とするか」を先に決めることが重要で、利用率だけでなく対象業務の所要時間や差し戻し回数など、業務側の指標を1つ置くと判断できます。</p></div>
+    <div class="faq"><div class="q">Geminiを法人で使うには何を契約すればよいですか？</div><p class="a">2026年8月時点では、Google Workspaceの各プランに Gemini AI アシスタントが含まれています。すでにWorkspaceを使っている企業は、AIライセンスを新たに買いません。管理コンソールで利用範囲を設計する作業から始めます。全社のエージェント基盤まで進む場合は、別建ての選択肢があります。Google Cloudの Gemini Enterprise（Businessエディションは1シート月額21米ドルから）です。</p></div>
+    <div class="faq"><div class="q">入力した社内情報がAIの学習に使われませんか？</div><p class="a">Googleは公式の生成AIプライバシーハブで、Google Workspaceの生成AI機能について説明しています。プロンプトと生成結果を組織外に共有せず、許可なく生成AIモデルの学習に使わず、人によるレビューも行わないという内容です。ただし、社員が個人のGoogleアカウントで使うGeminiは扱いが異なります。業務利用は会社アカウントに寄せるルールが必要です。</p></div>
+    <div class="faq"><div class="q">情シスは管理コンソールで何を決めるのですか？</div><p class="a">大きくは3点です。Gemini関連サービスを、どの組織部門でオンにするかを決めます。Gemini Notebook（旧NotebookLM）などの関連サービスを開けるかを決めます。監査とアラートをどう見るかも決めます。全社一律で開けるか、部門単位で段階的に開けるかは、パイロットの設計と合わせて決めます。</p></div>
+    <div class="faq"><div class="q">パイロットは何人・何か月でやるべきですか？</div><p class="a">一律の正解はありません。業務が近い1〜2部門・十数名規模で、1〜2か月が動かしやすい単位です。人数より、何をもって成功とするかを先に決めることが大切です。利用率に加えて、対象業務の所要時間や差し戻し回数など、業務側の指標を1つ置くと判断できます。</p></div>
+
+    <h2 id="s5">次の一歩は何から始めればよいですか？</h2>
+    <p class="answer">利用ルールの下書きを作り、パイロットの対象部門と成功の定義を決めることから始めます。</p>
+    <ol>
+      <li>入れてよい情報と禁止する情報を書き出し、利用ルールの下書きを作ります。</li>
+      <li>管理コンソールで、使う層と作る層のどこまでを開けるかを決めます。</li>
+      <li>パイロットの対象部門、期間、成功の定義を文章にします。</li>
+    </ol>
+
   </article>
 </div>
 

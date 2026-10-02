@@ -1,8 +1,37 @@
 <!DOCTYPE html><html lang="ja" class="no-js"><head><meta charset="UTF-8">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-3V34NWXVCJ');</script><script src="/assets/tw-track.js" defer></script><script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>AIエージェントの権限ドリフト対策｜増えたアクセス権を定期レビューする — TechWorker</title><meta name="description" content="AIエージェントの接続先とscopeが運用中に増え続ける権限ドリフトを防ぐため、権限台帳、利用証跡、棚卸し、失効を一つの運用にする方法を解説します。"><link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg"><link rel="canonical" href="https://techworker.co.jp/media/security/ai-agent-permission-drift-access-review">
-<meta property="og:type" content="article"><meta property="og:title" content="AIエージェントの権限ドリフト対策｜増えたアクセス権を定期レビューする"><meta property="og:description" content="AIエージェントの接続先とscopeが運用中に増え続ける権限ドリフトを防ぐため、権限台帳、利用証跡、棚卸し、失効を一つの運用にする方法を解説します。"><meta property="og:image" content="https://techworker.co.jp/media/security/covers/ai-agent-permission-drift-access-review.png"><meta property="og:url" content="https://techworker.co.jp/media/security/ai-agent-permission-drift-access-review"><meta property="og:site_name" content="TechWorker"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://techworker.co.jp/media/security/covers/ai-agent-permission-drift-access-review.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../article.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AIエージェントの権限ドリフト対策｜増えたアクセス権を定期レビューする", "description": "AIエージェントの接続先とscopeが運用中に増え続ける権限ドリフトを防ぐため、権限台帳、利用証跡、棚卸し、失効を一つの運用にする方法を解説します。", "datePublished": "2026-09-18", "dateModified": "2026-10-01", "inLanguage": "ja", "image": "https://techworker.co.jp/media/security/covers/ai-agent-permission-drift-access-review.png", "author": {"@type": "Person", "name": "古野光太朗", "url": "https://techworker.co.jp/company.html"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/security/ai-agent-permission-drift-access-review"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},{"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},{"@type":"ListItem","position":3,"name":"AIセキュリティ・ラボ","item":"https://techworker.co.jp/media/security/"},{"@type":"ListItem","position":4,"name":"AIエージェントの権限ドリフト対策｜増えたアクセス権を定期レビューする","item":"https://techworker.co.jp/media/security/ai-agent-permission-drift-access-review"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"権限ドリフトとは何ですか？","acceptedAnswer":{"@type":"Answer","text":"AIエージェントが試験導入から本番へ進むにつれて接続先や権限が増え、読み取りだけだった連携に送信権限が加わる、一時的な管理scopeが残る、担当変更後も例外が続くといった状態です。初回の最小権限の設計だけでは防げません。"}},{"@type":"Question","name":"エージェントの権限レビューは、どのくらいの頻度で行いますか？","acceptedAnswer":{"@type":"Answer","text":"四半期などの定期レビューに加え、tool追加、scope変更、モデル更新、owner異動、token漏えい、重大インシデント、利用停止をきっかけに臨時レビューを行います。管理者同意で全利用者へ付与された権限も別に可視化します。"}},{"@type":"Question","name":"使われていない権限は、すぐに削除してよいですか？","acceptedAnswer":{"@type":"Answer","text":"直ちに放置も削除もしません。季節業務、緊急時、月次処理など利用周期を確認し、必要なら短命の昇格や申請式アクセスへ置き換えます。不明を自動承認にせず、隔離期間と再確認期限を設けて業務を壊さないようにします。"}}]}</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>AIエージェントの権限ドリフト対策｜増えたアクセス権を定期レビューする — TechWorker</title><meta name="description" content="AIエージェントの権限ドリフトは、付与理由・利用実績・承認者・失効日の4項目を台帳に置き、定期レビューして防ぎます。台帳、棚卸し、臨時レビュー、失効テストの手順を整理します。"><link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg"><link rel="canonical" href="https://techworker.co.jp/media/security/ai-agent-permission-drift-access-review">
+<meta property="og:type" content="article"><meta property="og:title" content="AIエージェントの権限ドリフト対策｜増えたアクセス権を定期レビューする"><meta property="og:description" content="AIエージェントの権限ドリフトは、付与理由・利用実績・承認者・失効日の4項目を台帳に置き、定期レビューして防ぎます。台帳、棚卸し、臨時レビュー、失効テストの手順を整理します。"><meta property="og:image" content="https://techworker.co.jp/media/security/covers/ai-agent-permission-drift-access-review.png"><meta property="og:url" content="https://techworker.co.jp/media/security/ai-agent-permission-drift-access-review"><meta property="og:site_name" content="TechWorker"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://techworker.co.jp/media/security/covers/ai-agent-permission-drift-access-review.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../article.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AIエージェントの権限ドリフト対策｜増えたアクセス権を定期レビューする", "description": "AIエージェントの権限ドリフトは、付与理由・利用実績・承認者・失効日の4項目を台帳に置き、定期レビューして防ぎます。台帳、棚卸し、臨時レビュー、失効テストの手順を整理します。", "datePublished": "2026-09-18", "dateModified": "2026-10-02", "inLanguage": "ja", "image": "https://techworker.co.jp/media/security/covers/ai-agent-permission-drift-access-review.png", "author": {"@type": "Person", "name": "古野光太朗", "url": "https://techworker.co.jp/company.html"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/security/ai-agent-permission-drift-access-review"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},{"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},{"@type":"ListItem","position":3,"name":"AIセキュリティ・ラボ","item":"https://techworker.co.jp/media/security/"},{"@type":"ListItem","position":4,"name":"AIエージェントの権限ドリフト対策｜増えたアクセス権を定期レビューする","item":"https://techworker.co.jp/media/security/ai-agent-permission-drift-access-review"}]}</script><script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "権限ドリフトとは何ですか？",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "AIエージェントが試験導入から本番へ進むにつれて、接続先や権限が増える状態です。読み取りだけだった連携に送信権限が加わる、一時的な管理scopeが残る、担当変更後も例外が続くといった形で起きます。初回の最小権限の設計だけでは防げません。"
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "エージェントの権限レビューは、どのくらいの頻度で行いますか？",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "四半期などの定期レビューを行います。加えて、tool追加、scope変更、モデル更新、owner異動、token漏えいをきっかけに、臨時レビューを行います。重大インシデントや利用停止も、きっかけです。管理者同意で全利用者へ付与された権限も別に可視化します。"
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "使われていない権限は、すぐに削除してよいですか？",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "直ちに放置も削除もしません。季節業務、緊急時、月次処理など利用周期を確認し、必要なら短命の昇格や申請式アクセスへ置き換えます。不明を自動承認にせず、隔離期間と再確認期限を設けて業務を壊さないようにします。"
+   }
+  }
+ ]
+}</script>
 </head>
 <body><div class="progress" id="progress"></div><nav id="nav">
   <a href="index.html" class="logo">AIセキュリティ<i>ラボ</i></a>
@@ -20,36 +49,81 @@
   <a href="index.html#about">このメディアについて</a>
   <a href="../../contact.html" class="m-cta">無料相談を申し込む</a>
 </div>
-<header class="art-head"><nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIセキュリティ・ラボ</a></nav><div class="kicker">権限とアクセス管理</div><h1>AIエージェントの権限ドリフト対策｜増えたアクセス権を定期レビューする</h1><p class="dek">AIエージェントの接続先とscopeが運用中に増え続ける権限ドリフトを防ぐため、権限台帳、利用証跡、棚卸し、失効を一つの運用にする方法を解説します。</p><div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.09.18</span><span class="dot">·</span><span>最終更新 2026.10.01</span><span class="dot">·</span><span>一次情報 6件</span></div></header><img class="daily-cover" src="covers/ai-agent-permission-drift-access-review.png" alt="AIエージェントの権限を定期的に見直す。付与理由・利用実績・承認者・失効日を一つの台帳で確認する" width="1200" height="630">
-<div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div><a href="#s1">人・エージェント・接続先を分ける</a><a href="#s2">付与権限と利用権限を比較する</a><a href="#s3">レビュー対象と判断者を固定する</a><a href="#s4">変更イベントで臨時レビューする</a><a href="#s5">失効をテストしてから完了にする</a><a href="#s6">最小のレビュー証跡</a><a href="#s7">適用限界</a><a href="#faq">よくある質問</a></div></nav><article class="art-body"><div class="lede"><div class="lede-h">この記事の要点</div><ul><li>試験導入から本番へ進むほど、エージェントの接続先と権限は増え、一時的な権限や例外が残る。これが権限ドリフトで、初回の最小権限だけでは防げない。</li><li>付与した理由・実際に使った権限・継続を承認した人・失効日を同じ台帳に置き、付与権限と実行ログの利用権限を比べて、判断者を決めて定期的に確認する。</li><li>tool追加やscope変更など変更イベントでも臨時に見直し、失効は実行後にnegative testで確かめる。権限棚卸しは他の脆弱性を単独で解決しない。</li></ul></div>
-<p>AIエージェントは、試験導入から本番へ進むほど接続先と権限が増えます。読み取りだけだったメール連携へ送信権限が加わり、一時的な管理scopeが残り、担当変更後も例外が継続する。これが権限ドリフトです。対策は初回のleast privilegeだけでは足りません。<strong>「付与した理由」「実際に使った権限」「継続を承認した人」「失効日」を同じ台帳で定期確認する</strong>必要があります。</p>
-<h2 id="s1">人・エージェント・接続先を分ける</h2><p class="answer">利用者、エージェント、接続先を別の行に記録し、誰のために、どの実行体が、何へ触れたかを監査できる形にする。</p>
-<p>権限台帳には、依頼した利用者、実行するエージェント、接続する業務システム、認可方式、scope、環境、有効期限を記録します。利用者本人の権限と、エージェントサービスの権限を一行にまとめません。代理実行では「誰のために」「どの実行体が」「何へ」アクセスしたかを監査できる形にします。</p>
-<p>NIST SP 800-207は、ネットワーク位置だけで暗黙に信頼せず、resource accessごとに主体と装置を評価する考え方を示します[1]。AIエージェントでも、社内ネットワークにあることを広い権限の理由にしません。MCPやAPI接続の追加時には、目的、入力、出力、副作用、承認者を登録します。</p>
-<h2 id="s2">付与権限と利用権限を比較する</h2><p class="answer">台帳のscopeと実行ログで実際の利用を比べ、使われない権限は利用周期を確認して縮小や申請式へ置き換える。</p>
-<p>Microsoftは、unused permissionやより小さくできるreducible permissionをoverprivilegedとし、定期監査と撤回を推奨しています[2]。台帳のscopeと、一定期間の実行ログで実際に呼ばれたoperationを比較します。</p>
-<p>使われていない権限が見つかっても、直ちに障害とみなして放置しません。季節業務、緊急時、月次処理など利用周期を確認し、必要なら短命の昇格や申請式アクセスへ置き換えます。「将来使うかもしれない」は恒久権限の根拠にせず、再付与の手順を整えます。</p>
-<p>ログは成功呼び出しだけでなく、拒否、承認待ち、scope不足、管理者上書きを含めます。エージェントが権限不足を理由に別toolへ迂回していないかも確認します。promptやAIの説明だけを監査根拠にせず、認可サーバーと接続先の記録を正本にします。</p>
+<header class="art-head"><nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIセキュリティ・ラボ</a></nav><div class="kicker">権限とアクセス管理</div><h1>AIエージェントの権限ドリフト対策｜増えたアクセス権を定期レビューする</h1><p class="dek">AIエージェントの権限ドリフトは、4項目の台帳を定期レビューして防ぎます。<br>エージェントの接続先と権限が運用中に増えて困る、情報システムやセキュリティの担当者の悩みに答えます。<br>台帳の項目、5つの運用手順、うまくいかない例、最小のレビュー証跡が分かります。</p><div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.09.18</span><span class="dot">·</span><span>最終更新 2026.10.02</span><span class="dot">·</span><span>一次情報 6件</span></div></header><img class="daily-cover" src="covers/ai-agent-permission-drift-access-review.png" alt="AIエージェントの権限を定期的に見直す。付与理由・利用実績・承認者・失効日を一つの台帳で確認する" width="1200" height="630">
+<div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div><a href="#s1">AIエージェントの権限ドリフトは、どう防げばよいですか？</a><a href="#s2">権限ドリフトは、どんな手順で見直しますか？</a><a href="#s3">うまくいかない例には、どんなものがありますか？</a><a href="#s4">レビューの役割ごとに、何を確認しますか？</a><a href="#faq">よくある質問</a><a href="#s6">次の一歩は何から始めればよいですか？</a><a href="#sources">出典と確認範囲</a></div></nav><article class="art-body"><h2 id="s1">AIエージェントの権限ドリフトは、どう防げばよいですか？</h2>
+<p class="answer">付与の理由、実際に使った権限、承認した人、失効日を同じ台帳に置き、定期的に確認します。</p>
+<p>AIエージェントは、試験導入から本番へ進むほど、接続先と権限が増えます。次のような状態が起きます。</p>
+<ul>
+<li>読み取りだけだったメール連携に、送信権限が加わります。</li>
+<li>一時的な管理scopeが、そのまま残ります。</li>
+<li>担当が変わった後も、例外が続きます。</li>
+</ul>
+<p>これが権限ドリフトです。初回のleast privilege（必要最小限の権限）だけでは防げません。<strong>「付与した理由」「実際に使った権限」「継続を承認した人」「失効日」を同じ台帳で定期確認する</strong>必要があります。</p>
+<p>台帳には、利用者、エージェント、接続先を別の行で記録します。記録する項目は、次のとおりです。</p>
+<ul>
+<li>依頼した利用者</li>
+<li>実行するエージェント</li>
+<li>接続する業務システム</li>
+<li>認可方式、scope、環境、有効期限</li>
+</ul>
+<p>利用者本人の権限と、エージェントサービスの権限は、一行にまとめません。代理実行では「誰のために」「どの実行体が」「何へ」アクセスしたかを監査できる形にします。</p>
+<p>NIST SP 800-207は、ネットワーク位置だけで暗黙に信頼しない考え方を示します。resource accessごとに主体と装置を評価します[1]。エージェントでも、社内ネットワークにあることを広い権限の理由にしません。</p>
 <aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">Claude Code 企業導入 セキュリティ＆セットアップ実践ガイド</div><div class="mc-d">3つのリスク、5つの設計原則、10項目のチェックリストを、情シスの審査に出せる形でまとめた資料です。</div></div><a href="../../library/?doc=security&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=ai-agent-permission-drift-access-review&amp;utm_content=mid" class="btn" data-cta="ai-agent-permission-drift-access-review-mid">ガイドを受け取る <i>&rarr;</i></a></aside>
-<h2 id="s3">レビュー対象と判断者を固定する</h2><p class="answer">所有者、業務責任者、セキュリティ担当で役割を分け、判断を継続・縮小・期限付き継続・失効・不明に分けて固定する。</p>
-<p>レビューは、所有者、業務責任者、セキュリティ担当の役割を分けます。所有者は用途が残っているか、業務責任者は副作用を許容するか、セキュリティ担当はscope・token・ログを確認します。Microsoft Entraのaccess reviewsも、groupやapplication accessについてreviewerが継続可否を判断し、未回答時の処置を設定できます[3]。</p>
-<p>判断は「継続」「縮小」「期限付き継続」「失効」「不明」に分けます。不明を自動承認にしない一方、即時削除で業務を壊さないため隔離期間と再確認期限を設定します。例外は理由、期限、代替統制を必須にします。</p>
-<h2 id="s4">変更イベントで臨時レビューする</h2><p class="answer">定期レビューに加え、tool追加、scope変更、モデル更新、owner異動、token漏えいで臨時レビューを行う。</p>
-<p>四半期などの定期レビューに加え、tool追加、scope変更、モデル更新、owner異動、token漏えい、重大インシデント、利用停止をトリガーにします。OAuth token exchangeを使う場合も、発行時のaudience、scope、subjectと、現在の利用目的が一致するか確認します[4]。</p>
-<p>特に管理者同意で全利用者へ付与された権限は、個人の同意画面だけで可視化できません。管理者同意の記録、サービスプリンシパル、資格情報の期限、利用者別の実行ログを結びます。MCP serverや外部toolの更新で要求scopeが増えたときは、差分を自動承認せず再審査します。</p>
-<h2 id="s5">失効をテストしてから完了にする</h2><p class="answer">レビュー表に削除と書くだけでは権限は残る。失効を実行し、操作できないことをnegative testで確認する。</p>
-<p>レビュー表で「削除」と書くだけでは権限は残ります。consent撤回、role削除、token無効化、secret rotation、接続設定削除を実行し、エージェントが操作できないことをnegative testで確認します。監査ログには、誰が、何を、なぜ、いつ失効し、どのテストで確認したかを残します。</p>
-<p>関連する<a href="https://techworker.co.jp/media/security/mcp-oauth-authorization-design">MCP OAuth認可</a>、代理実行ID、tool検証と認可も参照してください。</p>
-<p><strong>AIエージェントの権限レビュー設計を相談する</strong></p>
-<h2 id="s6">最小のレビュー証跡</h2><p class="answer">対象、owner、現行scope、直近利用日、判断、期限、確認テストを残し、台帳と実設定の差は発行元で突き合わせる。</p>
-<p>レビューごとに、対象エージェント、owner、接続先、現行scope、直近利用日、利用operation、判断、理由、期限、実施した変更、確認テストを残します。表の承認だけでなく、identity providerと接続先の現在値を取得して差分を確認します。台帳と実設定が違う場合は、どちらかを推測で正本にせず、発行元と実行ログを突き合わせます。</p>
-<p>緊急権限は通常権限と別にし、発行時点で自動失効時刻を持たせます。インシデント対応後に「念のため残す」のではなく、必要になれば再申請できる経路を用意し、恒久化を例外審査へ送ります。</p>
-<h2 id="s7">適用限界</h2><p class="answer">棚卸しはprompt injectionや脆弱なtool実装、漏えい済みcredentialを単独では解決しない。</p>
-<p>権限棚卸しは、prompt injection、脆弱なtool実装、漏えい済みcredentialを単独で解決しません。認証、入力検証、runtime分離、監視、インシデント対応と組み合わせます。</p><h2 id="faq">よくある質問</h2>
-<div class="faq"><div class="q">権限ドリフトとは何ですか？</div><p class="a">AIエージェントが試験導入から本番へ進むにつれて接続先や権限が増え、読み取りだけだった連携に送信権限が加わる、一時的な管理scopeが残る、担当変更後も例外が続くといった状態です。初回の最小権限の設計だけでは防げません。</p></div>
-<div class="faq"><div class="q">エージェントの権限レビューは、どのくらいの頻度で行いますか？</div><p class="a">四半期などの定期レビューに加え、tool追加、scope変更、モデル更新、owner異動、token漏えい、重大インシデント、利用停止をきっかけに臨時レビューを行います。管理者同意で全利用者へ付与された権限も別に可視化します。</p></div>
+<h2 id="s2">権限ドリフトは、どんな手順で見直しますか？</h2>
+<p class="answer">台帳の整備、利用実績との比較、判断者の固定、臨時レビュー、失効テストの5つです。</p>
+<ol>
+<li><strong>人・エージェント・接続先を分けて台帳に載せます。</strong>MCPやAPI接続を追加するときは、目的、入力、出力、副作用、承認者を登録します。</li>
+<li><strong>付与権限と利用権限を比較します。</strong>Microsoftは、使われない権限や、より小さくできる権限を過剰な権限としています。定期監査と撤回を推奨しています[2]。台帳のscopeと、一定期間の実行ログで実際に呼ばれたoperationを比べます。ログには、成功呼び出しだけでなく、拒否、承認待ち、scope不足、管理者上書きも含めます。エージェントが権限不足を理由に、別toolへ迂回していないかも確認します。認可サーバーと接続先の記録を、正本にします。</li>
+<li><strong>レビューの対象と判断者を固定します。</strong>役割は3つに分けます。所有者は用途が残っているかを見ます。業務責任者は副作用を許容するかを見ます。セキュリティ担当は、scope・token・ログを確認します。判断は「継続」「縮小」「期限付き継続」「失効」「不明」に分けます。不明は自動承認にしません。業務を壊さないよう、隔離期間と再確認期限を設定します。例外は、理由、期限、代替統制を必須にします。</li>
+<li><strong>変更イベントで臨時レビューします。</strong>四半期などの定期レビューに加え、次をきっかけにします。tool追加、scope変更、モデル更新、owner異動です。token漏えい、重大インシデント、利用停止もきっかけにします。OAuth token exchangeを使う場合も確認します。発行時のaudience、scope、subjectが、現在の利用目的と一致するかを見ます[4]。MCP serverや外部toolの更新で要求scopeが増えたときは、差分を自動承認せず再審査します。</li>
+<li><strong>失効をテストしてから完了にします。</strong>consent撤回、role削除、token無効化、secret rotation、接続設定削除を実行します。エージェントが操作できないことを、negative test（拒否されることの確認試験）で確かめます。監査ログには、誰が、何を、なぜ、いつ失効したかを残します。確認したテストも残します。</li>
+</ol>
+
+<h2 id="s3">うまくいかない例には、どんなものがありますか？</h2>
+<p class="answer">初回の設計だけで済ませること、不明を自動承認すること、削除と書くだけで終えることが典型です。</p>
+<ul>
+<li><strong>初回の最小権限だけで済ませます。</strong>運用中に増える権限は、初回の設計では防げません。</li>
+<li><strong>利用者とエージェントの権限を一行にまとめます。</strong>誰のために、どの実行体が動いたかを監査できません。</li>
+<li><strong>使われていない権限を、直ちに障害と見なして放置または削除します。</strong>季節業務、緊急時、月次処理など、利用周期を確認します。必要なら、短命の昇格や申請式アクセスへ置き換えます。「将来使うかもしれない」は、恒久権限の根拠にしません。</li>
+<li><strong>管理者同意で付いた権限を見落とします。</strong>管理者同意で全利用者へ付与された権限は、個人の同意画面だけでは可視化できません。管理者同意の記録、サービスプリンシパル、資格情報の期限、利用者別の実行ログを結びます。</li>
+<li><strong>レビュー表に「削除」と書くだけで終えます。</strong>それでは権限は残ります。失効を実行して確かめます。</li>
+<li><strong>台帳と実設定の差を推測で埋めます。</strong>台帳と実設定が違う場合は、発行元と実行ログを突き合わせます。</li>
+<li><strong>緊急権限を残します。</strong>緊急権限は通常権限と別にし、発行時点で自動失効時刻を持たせます。「念のため残す」ことはしません。必要になれば再申請できる経路を用意します。恒久化は、例外審査へ送ります。</li>
+<li><strong>promptやAIの説明だけを監査の根拠にします。</strong>認可サーバーと接続先の記録を、正本にします。</li>
+</ul>
+<p>権限棚卸しだけでは、prompt injectionや脆弱なtool実装、漏えい済みcredentialは解決しません。認証、入力検証、runtime分離、監視、インシデント対応と組み合わせます。</p>
+
+<h2 id="s4">レビューの役割ごとに、何を確認しますか？</h2>
+<p class="answer">所有者は用途、業務責任者は副作用、セキュリティ担当はscope・token・ログを確認します。</p>
+<div class="tbl-wrap"><table><thead><tr><th>役割</th><th>確認すること</th><th>判断の選択肢</th></tr></thead><tbody>
+<tr><td>所有者</td><td>用途が残っているか</td><td>継続、縮小、期限付き継続、失効、不明</td></tr>
+<tr><td>業務責任者</td><td>副作用を許容するか</td><td>同上</td></tr>
+<tr><td>セキュリティ担当</td><td>scope・token・ログ</td><td>同上。例外は理由、期限、代替統制を必須にする</td></tr>
+</tbody></table></div>
+<p>Microsoft Entraのaccess reviewsも、継続可否をreviewerが判断します。対象はgroupやapplication accessです。未回答時の処置も設定できます[3]。</p>
+
+<h2 id="faq">よくある質問</h2>
+<div class="faq"><div class="q">権限ドリフトとは何ですか？</div><p class="a">AIエージェントが試験導入から本番へ進むにつれて、接続先や権限が増える状態です。読み取りだけだった連携に送信権限が加わる、一時的な管理scopeが残る、担当変更後も例外が続くといった形で起きます。初回の最小権限の設計だけでは防げません。</p></div>
+<div class="faq"><div class="q">エージェントの権限レビューは、どのくらいの頻度で行いますか？</div><p class="a">四半期などの定期レビューを行います。加えて、tool追加、scope変更、モデル更新、owner異動、token漏えいをきっかけに、臨時レビューを行います。重大インシデントや利用停止も、きっかけです。管理者同意で全利用者へ付与された権限も別に可視化します。</p></div>
 <div class="faq"><div class="q">使われていない権限は、すぐに削除してよいですか？</div><p class="a">直ちに放置も削除もしません。季節業務、緊急時、月次処理など利用周期を確認し、必要なら短命の昇格や申請式アクセスへ置き換えます。不明を自動承認にせず、隔離期間と再確認期限を設けて業務を壊さないようにします。</p></div>
-<h2 id="sources">一次情報と確認範囲</h2><p class="source-note">確認日：2026年9月18日。製品仕様・制度は更新されるため、導入時はリンク先の最新版を再確認してください。海外の制度・職業規範は日本へ直接適用せず、相違点と限界を本文に明記しています。</p><ol class="source-list"><li><a href="https://csrc.nist.gov/pubs/sp/800/207/final" target="_blank" rel="noopener noreferrer">S-1</a></li><li><a href="https://learn.microsoft.com/en-us/entra/identity-platform/secure-least-privileged-access" target="_blank" rel="noopener noreferrer">S-2</a></li><li><a href="https://learn.microsoft.com/en-us/azure/active-directory/governance/perform-access-review" target="_blank" rel="noopener noreferrer">S-3</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc8693" target="_blank" rel="noopener noreferrer">S-4</a></li><li><a href="https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final" target="_blank" rel="noopener noreferrer">S-5</a></li><li><a href="https://genai.owasp.org/initiatives/agentic-security-initiative/" target="_blank" rel="noopener noreferrer">S-6</a></li></ol></article></div>
+
+<h2 id="s6">次の一歩は何から始めればよいですか？</h2>
+<p class="answer">レビューごとに対象、判断、期限、確認テストの証跡を残し、台帳と実設定の差を確認します。</p>
+<p>レビューごとに、次を残します。</p>
+<ul>
+<li>対象エージェントとowner</li>
+<li>接続先と現行scope</li>
+<li>直近利用日と利用operation</li>
+<li>判断、理由、期限</li>
+<li>実施した変更と確認テスト</li>
+</ul>
+<p>表の承認だけで終えません。identity providerと接続先の現在値を取得して、差分を確認します。</p>
+<p>関連する<a href="https://techworker.co.jp/media/security/mcp-oauth-authorization-design">MCP OAuth認可</a>、代理実行ID、tool検証と認可も参照してください。</p>
+
+<h2 id="sources">出典と確認範囲</h2>
+<p class="source-note">確認日：2026年9月18日。製品仕様・制度は更新されるため、導入時はリンク先の最新版を再確認してください。</p>
+<ol class="source-list"><li><a href="https://csrc.nist.gov/pubs/sp/800/207/final" target="_blank" rel="noopener noreferrer">S-1</a></li><li><a href="https://learn.microsoft.com/en-us/entra/identity-platform/secure-least-privileged-access" target="_blank" rel="noopener noreferrer">S-2</a></li><li><a href="https://learn.microsoft.com/en-us/azure/active-directory/governance/perform-access-review" target="_blank" rel="noopener noreferrer">S-3</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc8693" target="_blank" rel="noopener noreferrer">S-4</a></li><li><a href="https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final" target="_blank" rel="noopener noreferrer">S-5</a></li><li><a href="https://genai.owasp.org/initiatives/agentic-security-initiative/" target="_blank" rel="noopener noreferrer">S-6</a></li></ol>
+</article></div>
 <div class="author"><div class="inner"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><div><div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div><p>上場企業を含む37社・2,500名の生成AI導入・研修支援で得た実務知をもとに、導入・運用・顧客理解を扱っています。この実績はTechWorkerの生成AI支援実績であり、個別製品の導入実績を示すものではありません。</p></div></div></div>
 <div class="art-cta"><div class="inner"><div><h3>AIエージェントの権限を棚卸しする</h3><p>付与理由と実利用を比較し、縮小・失効をnegative testまで確認します。</p></div><a href="../../contact.html?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=ai-agent-permission-drift-access-review" class="btn" data-cta="ai-agent-permission-drift-access-review">AIセキュリティを相談する <i>→</i></a></div></div><div class="back-list"><a href="index.html">← AIセキュリティ・ラボの記事一覧に戻る</a></div><section class="related"><div class="container"><div class="rl-h">Related</div><div class="related-grid"><a href="mcp-oauth-authorization-design.html" class="related-card"><span class="rc-cat">権限とアクセス管理</span><div class="rc-title">MCP OAuth認可</div></a></div></div></section>
 <footer><div class="container"><div class="footer-inner"><div class="footer-brand"><div class="logo">AIセキュリティ・ラボ</div><p>一次情報と実務に基づく生成AIメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p></div><div class="footer-col"><h4>メディア</h4><a href="index.html">記事一覧</a><a href="../index.html">全媒体</a></div><div class="footer-col"><h4>運営会社</h4><a href="../../company.html">会社概要</a><a href="../../privacy.html">プライバシーポリシー</a></div></div><p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p></div></footer><script>var nav=document.getElementById('nav');

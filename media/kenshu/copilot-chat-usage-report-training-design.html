@@ -1,8 +1,39 @@
 <!DOCTYPE html><html lang="ja" class="no-js"><head><meta charset="UTF-8">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-3V34NWXVCJ');</script><script src="/assets/tw-track.js" defer></script><script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>Copilot Chat利用レポートを研修へ使う｜非ライセンス利用者の定着を測る — TechWorker</title><meta name="description" content="Microsoft Copilotライセンスを持たないCopilot Chat利用者のactive users、prompt、入口、継続を、対象を混同せず研修改善へつなげる方法を解説します。"><link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg"><link rel="canonical" href="https://techworker.co.jp/media/kenshu/copilot-chat-usage-report-training-design">
-<meta property="og:type" content="article"><meta property="og:title" content="Copilot Chat利用レポートを研修へ使う｜非ライセンス利用者の定着を測る"><meta property="og:description" content="Microsoft Copilotライセンスを持たないCopilot Chat利用者のactive users、prompt、入口、継続を、対象を混同せず研修改善へつなげる方法を解説します。"><meta property="og:image" content="https://techworker.co.jp/media/kenshu/covers/copilot-chat-usage-report-training-design.png"><meta property="og:url" content="https://techworker.co.jp/media/kenshu/copilot-chat-usage-report-training-design"><meta property="og:site_name" content="TechWorker"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://techworker.co.jp/media/kenshu/covers/copilot-chat-usage-report-training-design.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../article.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Copilot Chat利用レポートを研修へ使う｜非ライセンス利用者の定着を測る", "description": "Microsoft Copilotライセンスを持たないCopilot Chat利用者のactive users、prompt、入口、継続を、対象を混同せず研修改善へつなげる方法を解説します。", "datePublished": "2026-09-19", "dateModified": "2026-10-01", "inLanguage": "ja", "image": "https://techworker.co.jp/media/kenshu/covers/copilot-chat-usage-report-training-design.png", "author": {"@type": "Person", "name": "古野光太朗", "url": "https://techworker.co.jp/company.html"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/copilot-chat-usage-report-training-design"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},{"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},{"@type":"ListItem","position":3,"name":"AI研修・導入ラボ","item":"https://techworker.co.jp/media/kenshu/"},{"@type":"ListItem","position":4,"name":"Copilot Chat利用レポートを研修へ使う｜非ライセンス利用者の定着を測る","item":"https://techworker.co.jp/media/kenshu/copilot-chat-usage-report-training-design"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Copilot Chatの利用レポートは誰の利用を対象にしていますか？","acceptedAnswer":{"@type":"Answer","text":"Copilotライセンスを持たない利用者のCopilot Chat利用が対象です。有償ライセンス保有者の利用は別のレポートで確認するため、両者を足して全社利用率を作ると母集団と機能差が消えます。"}},{"@type":"Question","name":"利用が増えたら研修は成功したと言えますか？","acceptedAnswer":{"@type":"Answer","text":"言えません。prompt数は活動量で、品質や時間削減の証明ではないからです。初回利用が増えても翌週に戻らなければ定着とは言えず、業務の完了や原資料の確認、差戻しも併せて見ます。"}},{"@type":"Question","name":"研修直後にレポートの数字が出ていないときはどう判断しますか？","acceptedAnswer":{"@type":"Answer","text":"不参加とはみなしません。Copilot Chatの活動は日次の終了後48時間程度遅れて反映される場合があるためです。月次資料には対象期間や反映遅延も記載し、同じ定義で比べます。"}}]}</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Copilot Chat利用レポートを研修へ使う｜非ライセンス利用者の定着を測る — TechWorker</title><meta name="description" content="Copilot Chatの利用レポートは、Copilotライセンスを持たない利用者だけが対象です。active users、prompt、入口、継続を、対象を混同せずに読み、研修課題へ翻訳する手順と、月次レビューの型を整理します。"><link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg"><link rel="canonical" href="https://techworker.co.jp/media/kenshu/copilot-chat-usage-report-training-design">
+<meta property="og:type" content="article"><meta property="og:title" content="Copilot Chat利用レポートを研修へ使う｜非ライセンス利用者の定着を測る"><meta property="og:description" content="Copilotライセンスを持たないCopilot Chat利用者の、active users、prompt、入口、継続を読み、研修改善へつなげる方法を整理します。"><meta property="og:image" content="https://techworker.co.jp/media/kenshu/covers/copilot-chat-usage-report-training-design.png"><meta property="og:url" content="https://techworker.co.jp/media/kenshu/copilot-chat-usage-report-training-design"><meta property="og:site_name" content="TechWorker"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://techworker.co.jp/media/kenshu/covers/copilot-chat-usage-report-training-design.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../article.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Copilot Chat利用レポートを研修へ使う｜非ライセンス利用者の定着を測る", "description": "Copilot Chatの利用レポートは、Copilotライセンスを持たない利用者だけが対象です。active users、prompt、入口、継続を、対象を混同せずに読み、研修課題へ翻訳する手順と、月次レビューの型を整理します。", "datePublished": "2026-09-19", "dateModified": "2026-10-02", "inLanguage": "ja", "image": "https://techworker.co.jp/media/kenshu/covers/copilot-chat-usage-report-training-design.png", "author": {"@type": "Person", "name": "古野光太朗", "url": "https://techworker.co.jp/company.html"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/copilot-chat-usage-report-training-design"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},{"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},{"@type":"ListItem","position":3,"name":"AI研修・導入ラボ","item":"https://techworker.co.jp/media/kenshu/"},{"@type":"ListItem","position":4,"name":"Copilot Chat利用レポートを研修へ使う｜非ライセンス利用者の定着を測る","item":"https://techworker.co.jp/media/kenshu/copilot-chat-usage-report-training-design"}]}</script><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Copilot Chatの利用レポートは誰の利用を対象にしていますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Copilotライセンスを持たない利用者のCopilot Chat利用が対象です。有償ライセンス保有者の利用は別のレポートで確認します。両者を足して全社利用率を作ると、母集団と機能差が消えます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "利用が増えたら研修は成功したと言えますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "言えません。prompt数は活動量で、品質や時間削減の証明ではないからです。初回利用が増えても翌週に戻らなければ定着とは言えません。業務の完了や原資料の確認、差戻しも併せて見ます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "研修直後にレポートの数字が出ていないときはどう判断しますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不参加とはみなしません。Copilot Chatの活動は、日次の終了後48時間程度遅れて反映される場合があるためです。月次資料には対象期間や反映遅延も記載し、同じ定義で比べます。"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body><div class="progress" id="progress"></div><nav id="nav">
   <a href="index.html" class="logo">AI研修・導入<i>ラボ</i></a>
@@ -20,19 +51,79 @@
   <a href="index.html#about">このメディアについて</a>
   <a href="../../training.html" class="m-cta">無料相談を申し込む</a>
 </div>
-<header class="art-head"><nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a></nav><div class="kicker">定着と効果測定</div><h1>Copilot Chat利用レポートを研修へ使う｜非ライセンス利用者の定着を測る</h1><p class="dek">Microsoft Copilotライセンスを持たないCopilot Chat利用者のactive users、prompt、入口、継続を、対象を混同せず研修改善へつなげる方法を解説します。</p><div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.09.19</span><span class="dot">·</span><span>最終更新 2026.10.01</span><span class="dot">·</span><span>一次情報 6件</span></div></header><img class="daily-cover" src="covers/copilot-chat-usage-report-training-design.png" alt="Copilot Chatの数字を研修課題へ。推進担当・レポートが、利用を集計する→入口と回数を分ける→原因を診断する→課題へ翻訳する→月次で見直すの順に進める業務図" width="1200" height="630">
-<div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div><a href="#s1">対象は「ライセンスなし」に限定する</a><a href="#s2">入口と利用回数を分ける</a><a href="#s3">数字を研修課題へ翻訳する</a><a href="#s4">利用増と業務成果を混同しない</a><a href="#s5">月次レビューの型</a><a href="#s6">適用限界</a></div></nav><article class="art-body"><div class="lede"><div class="lede-h">この記事の要点</div><ul><li>Copilot Chatの利用レポートは、Copilotライセンスを持たない利用者が対象。有償ライセンス保有者のレポートとは別系列で報告する。</li><li>入口、初回利用、反復利用を分けて読む。初回利用が増えても翌週に戻らなければ定着とは言えず、数字は研修課題へ翻訳して使う。</li><li>prompt数は活動量であり、品質や時間削減の証明ではない。利用ログだけでROIを断定せず、業務の完了や確認の状況も併記する。</li></ul></div><p>Microsoft Copilot Chatの利用レポートは、Microsoft 365 Copilotの有償ライセンス保有者レポートとは対象が違います。研修担当者が最初に行うべきことは、<strong>「Copilotライセンスを持たない利用者」の入口、初回利用、反復利用を分け、業務シナリオへ接続すること</strong>です。</p>
-<h2 id="s1">対象は「ライセンスなし」に限定する</h2><p class="answer">このレポートの対象はCopilotライセンスを持たない利用者だけ。有償ライセンス保有者の利用と足して全社利用率にしない。</p><p>Microsoftの現行文書では、Copilot Chat usage reportはCopilotライセンスを持たない利用者のCopilot Chat利用を対象にします[1]。有償ライセンス保有者の利用はMicrosoft Copilot usage reportで確認します[2]。両者を足して全社利用率を作ると、母集団と機能差が消えます。</p><p>月次資料には、対象ライセンス、対象人数、期間、UTC基準、匿名化設定、反映遅延を記します。Copilot Chat activityは日次終了後48時間程度遅れる場合があるため、研修直後の未反映を不参加とみなしません[1]。</p>
-<h2 id="s2">入口と利用回数を分ける</h2><p class="answer">入口別の差は人気ではなく発見経路の差。初回利用が増えても戻らなければ定着とは言えない。</p><p>レポートにはactive users、average daily active users、total prompts、平均prompt数、entry point別の利用が含まれます[1]。Teams、Outlook、Edge、Copilotアプリ、Wordなど、入口ごとの差は「人気」ではなく発見経路と業務配置の差として読みます。</p><p>初回利用者が増えても、翌週に戻らなければ定着とは言えません。7日、28日、90日を同じ定義で追い、初回、複数日利用、複数週利用へ分けます。個人名の表示は既定で匿名化されるため、必要性と権限を確認せず解除しません。</p>
-<aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">生成AI活用事例集を受け取る</div><div class="mc-d">TechWorkerが支援した企業の生成AI活用事例をまとめた資料です。記事のテーマと合わせてご覧ください。</div></div><a href="../../library/?doc=cases&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=copilot-chat-usage-report-training-design&amp;utm_content=mid" class="btn" data-cta="copilot-chat-usage-report-training-design-mid">事例集を受け取る <i>&rarr;</i></a></aside>
-<h2 id="s3">数字を研修課題へ翻訳する</h2><p class="answer">数字は課題に翻訳する。見つけられない、初回で止まる、業務に結びつかないで、打ち手が違う。</p><p>対象者が見つけられないなら、pin設定や入口案内を改善します。初回promptで止まるなら、検索、要約、下書きなど安全な一業務を演習します。利用は続くが業務へ結びつかないなら、部門資料、確認責任、禁止データを含むロール別演習へ進みます。</p><p>Microsoft Adoptionの資料は、利用強度やアプリ別利用からtargeted trainingを設計する考え方を示しています[3]。ただし他社のleaderboardや閾値を自社KPIへコピーせず、対象業務と利用者の権限に合わせます。</p>
-<h2 id="s4">利用増と業務成果を混同しない</h2><p class="answer">prompt数は活動量で、品質や時間削減の証明ではない。研修前後は業務の完了や確認も並べる。</p><p>prompt数は活動量であり、品質や時間削減の証明ではありません。研修前後で、対象業務の完了、原資料確認、差戻し、禁止情報入力、利用者の自己評価を併記します。Copilot Analyticsはadoptionとimpactを分けて扱っており[4]、usage reportだけでROIを断定しません。</p><p>ExcelやPowerPointの一部編集モードがactive usageへ含まれないなど、取得範囲は更新されます[1]。取得されない操作を「未利用」とせず、製品文書の更新日と管理画面を再確認します。関連する<a href="m365-copilot-usage-report-training-gap-analysis.html">有償ライセンス保有者レポート</a>とは別系列で報告します。</p><p><strong>Copilot Chat研修の定着分析を相談する</strong></p>
-<h2 id="s5">月次レビューの型</h2><p class="answer">月次は対象人数、利用者数、入口、反復利用などを固定表にし、数字が弱いときも原因を分けて診断する。</p><p>対象人数、active users、日次平均、prompt数、入口、反復利用、対象業務、研修施策、次の一手を固定表にします。数字が弱い場合も、追加研修だけでなく、入口、権限、業務選定、上司支援を分けて診断します。</p><p>たとえばTeamsからの初回利用だけが増えた場合は、研修参加者が案内された入口を試した可能性は確認できますが、業務定着までは言えません。翌週も同じ対象者群が戻ったか、別の業務アプリへ広がったか、成果物の確認負荷が増えていないかを追加します。部門比較では人数差を残し、prompt総数だけで順位づけせず、一人当たり利用と対象業務の完了を並べて判断します。</p>
-<h2 id="s6">適用限界</h2><p class="answer">利用ログだけでは回答品質や生産性の因果を示せない。製品仕様は変わるため更新日を毎月確認する。</p><p>利用ログだけでは回答品質、生産性、従業員体験の因果を示せません。製品仕様や対象レポートは変わるため、Microsoft Learnの更新日を毎月確認し、ライセンス保有者向けreportと混同しないことが前提です。</p><h2 id="faq">よくある質問</h2>
-<div class="faq"><div class="q">Copilot Chatの利用レポートは誰の利用を対象にしていますか？</div><p class="a">Copilotライセンスを持たない利用者のCopilot Chat利用が対象です。有償ライセンス保有者の利用は別のレポートで確認するため、両者を足して全社利用率を作ると母集団と機能差が消えます。</p></div>
-<div class="faq"><div class="q">利用が増えたら研修は成功したと言えますか？</div><p class="a">言えません。prompt数は活動量で、品質や時間削減の証明ではないからです。初回利用が増えても翌週に戻らなければ定着とは言えず、業務の完了や原資料の確認、差戻しも併せて見ます。</p></div>
-<div class="faq"><div class="q">研修直後にレポートの数字が出ていないときはどう判断しますか？</div><p class="a">不参加とはみなしません。Copilot Chatの活動は日次の終了後48時間程度遅れて反映される場合があるためです。月次資料には対象期間や反映遅延も記載し、同じ定義で比べます。</p></div>
-<h2 id="sources">一次情報と確認範囲</h2><p class="source-note">確認日：2026年9月19日。製品仕様・制度・研究結果は更新されるため、導入時はリンク先の最新版を再確認してください。海外の制度・職業規範は日本へ直接適用せず、相違点と限界を本文に明記しています。</p><ol class="source-list"><li><a href="https://learn.microsoft.com/en-us/microsoft-365/admin/activity-reports/microsoft-copilot-usage?view=o365-worldwide" target="_blank" rel="noopener noreferrer">K-1 Microsoft Copilot Chat Usage Report</a></li><li><a href="https://learn.microsoft.com/en-us/microsoft-365/admin/activity-reports/microsoft-365-copilot-usage" target="_blank" rel="noopener noreferrer">K-2 Microsoft 365 Copilot usage report</a></li><li><a href="https://adoption.microsoft.com/files/copilot/Unlocking-AIs-Impact-whitepaper.pdf" target="_blank" rel="noopener noreferrer">K-3 Microsoft: Unlocking AI’s Impact</a></li><li><a href="https://learn.microsoft.com/en-us/viva/insights/copilot-analytics-introduction" target="_blank" rel="noopener noreferrer">K-4 Copilot Analytics introduction</a></li><li><a href="https://learn.microsoft.com/en-us/training/modules/monitor-optimize-m365-ai-services/" target="_blank" rel="noopener noreferrer">K-5 Monitor and optimize Microsoft 365 AI services</a></li><li><a href="https://www.adoption.microsoft.com/en-us/copilot/advanced-resources/" target="_blank" rel="noopener noreferrer">K-6 Microsoft Copilot advanced resources</a></li></ol></article></div>
+<header class="art-head"><nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a></nav><div class="kicker">定着と効果測定</div><h1>Copilot Chat利用レポートを研修へ使う｜非ライセンス利用者の定着を測る</h1><p class="dek">Copilot Chatの利用レポートは、ライセンスなしの利用者だけが対象で、入口・初回・反復の3つに分けて読みます。<br>利用レポートを見ても研修の改善につなげられない、研修担当や情シス、DX推進担当の方に向けた記事です。<br>対象の限定、数字の読み方、研修課題への翻訳、月次レビューの型が分かります。</p><div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.09.19</span><span class="dot">·</span><span>最終更新 2026.10.02</span><span class="dot">·</span><span>一次情報 6件</span></div></header><img class="daily-cover" src="covers/copilot-chat-usage-report-training-design.png" alt="Copilot Chatの数字を研修課題へ。推進担当・レポートが、利用を集計する→入口と回数を分ける→原因を診断する→課題へ翻訳する→月次で見直すの順に進める業務図" width="1200" height="630">
+<div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div>      <a href="#s1">結論：対象と読み方</a>
+      <a href="#s2">手順：レポートを研修に活かす</a>
+      <a href="#s3">うまくいかない例</a>
+      <a href="#s4">比較表：数字の状態と打ち手</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#s5">次の一歩</a>
+      <a href="#sources">一次情報と確認範囲</a>
+</div></nav><article class="art-body">
+<h2 id="s1">Copilot Chatの利用レポートは、どう読んで研修につなげればよいですか？</h2>
+    <p class="answer">対象はライセンスなしの利用者だけです。入口、初回、反復利用を分けて読み、数字を研修課題へ翻訳します。</p>
+    <p>Microsoft Copilot Chatの利用レポートは、対象が違います。Microsoft 365 Copilotの有償ライセンス保有者のレポートとは別物です。</p>
+    <p>研修担当者が最初に行うことは、Copilotライセンスを持たない利用者の入口、初回利用、反復利用を分けることです。そのうえで、業務シナリオへ接続します。</p>
+    <p>Microsoftの現行文書では、Copilot Chat usage reportの対象が決まっています。Copilotライセンスを持たない利用者の、Copilot Chat利用です[1]。有償ライセンス保有者の利用は、Microsoft Copilot usage reportで確認します[2]。</p>
+    <p>レポートには、次の項目が含まれます[1]。</p>
+    <ul>
+      <li>active users</li>
+      <li>average daily active users</li>
+      <li>total prompts と平均prompt数</li>
+      <li>entry point別の利用</li>
+    </ul>
+
+    <h2 id="s2">利用レポートは、どんな手順で研修に活かしますか？</h2>
+    <p class="answer">対象を限定し、入口と反復を分け、数字を課題へ翻訳し、業務成果を併記して、月次で見直します。</p>
+    <ol>
+      <li><strong>対象を「ライセンスなし」に限定します。</strong>月次資料には、対象ライセンス、対象人数、期間、UTC基準、匿名化設定、反映遅延を記します。Copilot Chat activityは、日次終了後48時間程度遅れる場合があります[1]。研修直後の未反映を、不参加とみなしません。</li>
+      <li><strong>入口と利用回数を分けます。</strong>Teams、Outlook、Edge、Copilotアプリ、Wordなどが入口です。入口ごとの差は、発見経路と業務配置の差として読みます。初回利用者が増えても、翌週に戻らなければ定着とはいえません。7日、28日、90日を同じ定義で追い、初回、複数日利用、複数週利用へ分けます。個人名の表示は既定で匿名化されます。必要性と権限を確認せず、解除しません。</li>
+      <li><strong>数字を研修課題へ翻訳します。</strong>数字の状態ごとに、打ち手が違います。比較表にまとめます。Microsoft Adoptionの資料は、targeted trainingの設計を示しています[3]。利用強度やアプリ別利用から設計する考え方です。他社のleaderboardや閾値を自社KPIへコピーせず、対象業務と利用者の権限に合わせます。</li>
+      <li><strong>利用増と業務成果を並べて見ます。</strong>研修前後で、対象業務の完了、原資料確認、差戻し、禁止情報入力、利用者の自己評価を併記します。Copilot Analyticsは、adoptionとimpactを分けて扱っています[4]。usage reportだけで、ROIを断定しません。</li>
+      <li><strong>月次レビューを固定の表で回します。</strong>次の項目を固定表にします。対象人数、active users、日次平均、prompt数、入口、反復利用、対象業務、研修施策、次の一手です。数字が弱い場合も、追加研修に決めつけません。入口、権限、業務選定、上司支援を分けて診断します。</li>
+    </ol>
+    <aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">生成AI活用事例集を受け取る</div><div class="mc-d">TechWorkerが支援した企業の生成AI活用事例をまとめた資料です。記事のテーマと合わせてご覧ください。</div></div><a href="../../library/?doc=cases&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=copilot-chat-usage-report-training-design&amp;utm_content=mid" class="btn" data-cta="copilot-chat-usage-report-training-design-mid">事例集を受け取る <i>&rarr;</i></a></aside>
+
+    <h2 id="s3">利用レポートの読み方で、うまくいかない例にはどんなものがありますか？</h2>
+    <p class="answer">2つのレポートを足す、prompt数を成果とみなす、未取得の操作を未利用と決める、の3つが典型です。</p>
+    <ul>
+      <li><strong>有償ライセンス保有者の利用と足して、全社利用率を作る。</strong>母集団と機能差が消えます。</li>
+      <li><strong>研修直後の未反映を、不参加とみなす。</strong>反映の遅れを考慮せずに判断します。</li>
+      <li><strong>初回利用の増加を、定着とみなす。</strong>たとえば、Teamsからの初回利用だけが増えた場合です。研修参加者が、案内された入口を試した可能性は確認できます。業務定着までは言えません。翌週も同じ対象者群が戻ったか、別の業務アプリへ広がったか、成果物の確認負荷が増えていないかを、追加で見ます。</li>
+      <li><strong>prompt数を、品質や時間削減の証明とする。</strong>prompt数は活動量です。</li>
+      <li><strong>部門の順位を、prompt総数だけで決める。</strong>部門比較では人数差を残します。一人当たり利用と、対象業務の完了を並べて判断します。</li>
+      <li><strong>取得されない操作を、未利用と決める。</strong>ExcelやPowerPointの一部編集モードが、active usageへ含まれない場合があります。取得範囲は更新されます[1]。製品文書の更新日と管理画面を、再確認します。</li>
+      <li><strong>利用ログだけで、品質や生産性の因果を語る。</strong>利用ログだけでは、回答品質、生産性、従業員体験の因果を示せません。</li>
+    </ul>
+    <p>製品仕様や対象レポートは変わります。Microsoft Learnの更新日を毎月確認し、ライセンス保有者向けのレポートと混同しないことが前提です。関連する<a href="m365-copilot-usage-report-training-gap-analysis.html">有償ライセンス保有者レポート</a>とは、別系列で報告します。</p>
+
+    <h2 id="s4">数字の状態ごとに、研修の打ち手はどう変わりますか？</h2>
+    <p class="answer">見つけられない、初回で止まる、業務に結びつかないの3つで、改善する場所が違います。</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>数字の状態</th><th>打ち手</th></tr>
+        <tr><td>対象者が、Copilot Chatを見つけられない</td><td>pin設定や入口案内を改善する</td></tr>
+        <tr><td>初回promptで止まる</td><td>検索、要約、下書きなど、安全な一業務を演習する</td></tr>
+        <tr><td>利用は続くが、業務へ結びつかない</td><td>部門資料、確認責任、禁止データを含む、ロール別演習へ進む</td></tr>
+      </table>
+    </div>
+
+    <h2 id="faq">よくある質問</h2>
+    <div class="faq"><div class="q">Copilot Chatの利用レポートは誰の利用を対象にしていますか？</div><p class="a">Copilotライセンスを持たない利用者のCopilot Chat利用が対象です。有償ライセンス保有者の利用は別のレポートで確認します。両者を足して全社利用率を作ると、母集団と機能差が消えます。</p></div>
+    <div class="faq"><div class="q">利用が増えたら研修は成功したと言えますか？</div><p class="a">言えません。prompt数は活動量で、品質や時間削減の証明ではないからです。初回利用が増えても翌週に戻らなければ定着とは言えません。業務の完了や原資料の確認、差戻しも併せて見ます。</p></div>
+    <div class="faq"><div class="q">研修直後にレポートの数字が出ていないときはどう判断しますか？</div><p class="a">不参加とはみなしません。Copilot Chatの活動は、日次の終了後48時間程度遅れて反映される場合があるためです。月次資料には対象期間や反映遅延も記載し、同じ定義で比べます。</p></div>
+
+    <h2 id="s5">次の一歩は何から始めればよいですか？</h2>
+    <p class="answer">月次レビューの固定表を作り、対象人数や入口、反復利用などを、同じ定義で記録することから始めます。</p>
+    <ol>
+      <li>対象ライセンス、対象人数、期間、UTC基準、反映遅延を、月次資料の冒頭に記します。</li>
+      <li>active users、日次平均、prompt数、入口、反復利用を、固定表に入れます。</li>
+      <li>数字の状態ごとに、研修施策と次の一手を書き込みます。</li>
+    </ol>
+    <p>Copilot Chat研修の定着分析は、TechWorkerが一緒に整理します。ご相談ください。</p>
+
+    <h3 id="sources">一次情報と確認範囲</h3><p class="source-note">確認日：2026年9月19日。製品仕様・制度・研究結果は更新されるため、導入時はリンク先の最新版を再確認してください。海外の制度・職業規範は日本へ直接適用せず、相違点と限界を本文に明記しています。</p><ol class="source-list"><li><a href="https://learn.microsoft.com/en-us/microsoft-365/admin/activity-reports/microsoft-copilot-usage?view=o365-worldwide" target="_blank" rel="noopener noreferrer">K-1 Microsoft Copilot Chat Usage Report</a></li><li><a href="https://learn.microsoft.com/en-us/microsoft-365/admin/activity-reports/microsoft-365-copilot-usage" target="_blank" rel="noopener noreferrer">K-2 Microsoft 365 Copilot usage report</a></li><li><a href="https://adoption.microsoft.com/files/copilot/Unlocking-AIs-Impact-whitepaper.pdf" target="_blank" rel="noopener noreferrer">K-3 Microsoft: Unlocking AI’s Impact</a></li><li><a href="https://learn.microsoft.com/en-us/viva/insights/copilot-analytics-introduction" target="_blank" rel="noopener noreferrer">K-4 Copilot Analytics introduction</a></li><li><a href="https://learn.microsoft.com/en-us/training/modules/monitor-optimize-m365-ai-services/" target="_blank" rel="noopener noreferrer">K-5 Monitor and optimize Microsoft 365 AI services</a></li><li><a href="https://www.adoption.microsoft.com/en-us/copilot/advanced-resources/" target="_blank" rel="noopener noreferrer">K-6 Microsoft Copilot advanced resources</a></li></ol>
+  </article></div>
 <div class="author"><div class="inner"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><div><div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div><p>上場企業を含む37社・2,500名の生成AI導入・研修支援で得た実務知をもとに、導入・運用・顧客理解を扱っています。この実績はTechWorkerの生成AI支援実績であり、個別製品の導入実績を示すものではありません。</p></div></div></div>
 <div class="art-cta"><div class="inner"><div><h3>Copilot Chatの利用データを研修改善へ変える</h3><p>非ライセンス利用者の入口・継続・業務接続を分けて改善します。</p></div><a href="../../training.html?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=copilot-chat-usage-report-training-design" class="btn" data-cta="copilot-chat-usage-report-training-design">生成AI研修を相談する <i>→</i></a></div></div><div class="back-list"><a href="index.html">← AI研修・導入ラボの記事一覧に戻る</a></div><section class="related"><div class="container"><div class="rl-h">Related</div><div class="related-grid"><a href="m365-copilot-usage-report-training-gap-analysis.html" class="related-card"><span class="rc-cat">定着と効果測定</span><div class="rc-title">Microsoft 365 Copilot利用レポート</div></a><a href="copilot-chat-basic-vs-m365-copilot-premium-training.html" class="related-card"><span class="rc-cat">研修の設計と運営</span><div class="rc-title">Copilot ChatとM365 Copilot</div></a></div></div></section>
 <footer><div class="container"><div class="footer-inner"><div class="footer-brand"><div class="logo">AI研修・導入ラボ</div><p>一次情報と実務に基づく生成AIメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p></div><div class="footer-col"><h4>メディア</h4><a href="index.html">記事一覧</a><a href="../index.html">全媒体</a></div><div class="footer-col"><h4>運営会社</h4><a href="../../company.html">会社概要</a><a href="../../privacy.html">プライバシーポリシー</a></div></div><p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p></div></footer><script>
