@@ -186,6 +186,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
 <h2 id="s3">トークンのコストを下げるには、どんな手順で進めますか？</h2>
 <p class="answer">プロンプトキャッシュ、モデルの使い分け、Batch API、出力制御の4つを順に当てはめます。</p>
+    <figure class="fig-inline"><a href="figs/token-management-1.png" target="_blank" rel="noopener"><img src="figs/token-management-1.png" alt="トークンのコストを下げる4つの手順を縦に並べた図。プロンプトキャッシュ、モデルの使い分け、Batch API、出力トークンの制御の順で、最初のプロンプトキャッシュが強調されている。" width="1200" height="701" loading="lazy" decoding="async"></a></figure>
 <ol>
 <li><strong>プロンプトキャッシュを使います。</strong>システムプロンプトや長い参照資料など、毎回同じ前提をキャッシュします。Anthropicの公式仕様では、キャッシュからの読み出しは通常入力トークンの約0.1倍（およそ90%安）です。書き込みは1.25倍（5分有効）、または2倍（1時間有効）かかります。同じ前提を2回以上使うワークフローなら、元が取れます。</li>
 <li><strong>モデルを使い分けます。</strong>すべてを最上位モデルで処理する必要はありません。単純な分類や要約は安価なモデル、推論や本番品質が要る処理は上位モデルに回します。料金は下の表のとおりです。</li>
@@ -195,6 +196,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
 <h2 id="s4">トークン管理がうまくいかない例には、どんなものがありますか？</h2>
 <p class="answer">最上位モデルで全部を回すこと、一律に絞ること、リアルタイム用途にバッチを使うことが代表例です。</p>
+    <figure class="fig-inline"><a href="figs/token-management-2.png" target="_blank" rel="noopener"><img src="figs/token-management-2.png" alt="トークン管理の4つの失敗を、失敗・起きること・こうする、の3列で並べた表。最上位モデルで全部を回す、安いモデルに一律で変える、リアルタイム用途にBatch APIを使う、1回しか使わない前提にキャッシュを当てる。" width="1200" height="676" loading="lazy" decoding="async"></a></figure>
 <ul>
 <li><strong>最上位モデルで全部を回す。</strong>Haiku 4.5で足りる処理をFable 5.1で回すと、コストは10倍になります。</li>
 <li><strong>安いモデルに一律で変える。</strong>安いモデルで品質が落ちると、手戻りが生まれます。タスクで使い分けます。</li>
