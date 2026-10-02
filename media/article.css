@@ -299,39 +299,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--electric);outline-o
 
 
 /* ===== 人物コンポーネント（Humation・全メディア共通） =====
-   帯 .kn-voices / 視点 .kn-take / サイドノート .kn-side。
+   視点 .kn-take / サイドノート .kn-side。
    色は各メディアのCSS変数に追従する（interviewはlab.cssで緑になる）。
    アバターは同ディレクトリの avatars/ または ../avatars/ を参照する。 */
-/* --- 現場の声（Humation アバター帯） ---
-   使い方: <div class="kn-voices"><span class="kn-fc" style="--sayo:0s">
-             <span class="av"><img src="avatars/f30-2.svg" alt="" width="88" height="88"></span>
-             <span class="say">セリフ（10字以内）</span></span> …
-           </div>
-   セリフは吹き出しで数人ずつ順番に点灯する。装飾なので aria-hidden="true" を付ける。 */
-.kn-voices{display:flex;flex-wrap:wrap;column-gap:clamp(10px,1.6vw,18px);row-gap:clamp(22px,2.4vw,30px);margin:38px 0 8px;}
-.kn-fc{position:relative;width:clamp(58px,6.4vw,84px);aspect-ratio:1;flex:none;}
-.kn-fc .av{display:block;width:100%;height:100%;border-radius:50%;border:1px solid var(--line);overflow:hidden;background:var(--paper-2);}
-.kn-fc:nth-child(3n) .av{background:#F7F4EC;}
-.kn-fc:nth-child(3n+2) .av{background:#fff;}
-.kn-fc img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
-.kn-fc .say{position:absolute;left:50%;bottom:calc(100% - 2px);z-index:3;white-space:nowrap;font-family:var(--jp);font-size:11px;font-weight:700;line-height:1;color:var(--ink-soft);background:#fff;border:1.5px solid color-mix(in srgb,var(--electric) 35%,transparent);border-color:color-mix(in srgb, var(--electric) 38%, transparent);border-radius:10px;padding:6px 10px;box-shadow:0 2px 8px rgba(13,17,23,.10);opacity:0;transform:translateX(-50%) scale(.5);transform-origin:bottom center;animation:kn-say 10.5s infinite;animation-delay:var(--sayo,0s);pointer-events:none;}
-.kn-fc .say::after{content:"";position:absolute;left:50%;bottom:-4.5px;width:7px;height:7px;background:#fff;border-right:1.5px solid color-mix(in srgb,var(--electric) 35%,transparent);border-bottom:1.5px solid color-mix(in srgb,var(--electric) 35%,transparent);border-right-color:color-mix(in srgb, var(--electric) 38%, transparent);border-bottom-color:color-mix(in srgb, var(--electric) 38%, transparent);transform:translateX(-50%) rotate(45deg);}
-@keyframes kn-say{0%,3%{opacity:0;transform:translateX(-50%) scale(.5)}7%,18%{opacity:1;transform:translateX(-50%) scale(1)}23%,100%{opacity:0;transform:translateX(-50%) scale(.5)}}
-
-/* キャプション（「よく聞く声」の説明行） */
-.kn-voices-cap{display:flex;align-items:baseline;flex-wrap:wrap;gap:2px 9px;font-family:var(--jp);font-size:12.5px;font-weight:700;line-height:1.75;color:var(--electric);margin-top:16px;word-break:keep-all;overflow-wrap:anywhere;}
-.kn-voices-cap::before{content:"";align-self:center;width:6px;height:6px;border-radius:50%;background:var(--electric);flex:none;}
-.kn-voices-cap .note{font-weight:500;color:var(--slate);}
-
-@media (prefers-reduced-motion:reduce){.kn-fc .say{animation:none;opacity:0;}}
-/* モバイルは6人が1行に収まる幅へ（5+1の孤立行を作らない） */
-@media (max-width:640px){
-  .kn-voices{column-gap:8px;row-gap:26px;}
-  .kn-fc{width:clamp(38px,calc((100% - 46px)/6),58px);}
-  .kn-fc .say{font-size:10px;padding:5px 8px;}
-  .kn-voices-cap{font-size:12px;}
-}
-
 /* --- 視点（本文の節目に1人ぶんの読み手の視点を添える） ---
    使い方: <aside class="kn-take">
              <img class="kn-take-av" src="avatars/m40-0.svg" alt="" width="56" height="56">

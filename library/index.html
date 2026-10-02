@@ -318,6 +318,15 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
         <div class="res-actions"><button class="btn js-download" data-doc="security">無料でダウンロード <i>↓</i></button></div>
       </article>
 
+      <!-- GYOMUZU (live) -->
+      <article class="res-card">
+        <span class="res-kind">業務図</span>
+        <h3>部署別 業務図テンプレート集<br>AIに任せる工程の見つけ方つき</h3>
+        <p>5部署の業務図の例と、自社用の空の型、AIに任せる工程の札の付け方をまとめました。</p>
+        <div class="res-meta"><span>5部署の例</span><span>空の型つき</span><span>PDF / Web</span></div>
+        <div class="res-actions"><button class="btn js-download" data-doc="gyomuzu">無料でダウンロード <i>↓</i></button></div>
+      </article>
+
       <!-- ROADMAP (coming soon) -->
       <article class="res-card is-soon soon">
         <span class="res-kind">ロードマップ</span>
@@ -397,7 +406,8 @@ addEventListener('scroll',function(){var n=document.querySelector('nav');if(n)n.
 (function(){
   var DOCS={
     cases:{title:'2026年版 生成AI活用事例集',url:'cases-2026.html',points:['化学メーカー：新素材のアイデア出しを、発散から収束まで1時間で','大手製薬：市場リサーチを内製化し、外注費を削減','さくらインターネット：全社300名のAI研修']},
-    security:{title:'Claude Code 企業導入 セキュリティ＆セットアップ実践ガイド',url:'claude-code-security.html',points:['情シスの確認にそのまま使える10項目のチェックリスト','情報漏洩・過剰な権限・外部依存の3大リスク','権限・シークレット・監査ログなど5つの設計原則']}
+    security:{title:'Claude Code 企業導入 セキュリティ＆セットアップ実践ガイド',url:'claude-code-security.html',points:['情シスの確認にそのまま使える10項目のチェックリスト','情報漏洩・過剰な権限・外部依存の3大リスク','権限・シークレット・監査ログなど5つの設計原則']},
+    gyomuzu:{title:'部署別 業務図テンプレート集｜AIに任せる工程の見つけ方つき',url:'gyomuzu-templates.html',points:['経理・人事労務・カスタマー対応・総務法務・営業の5部署の業務図の例','自社の業務をそのまま書き込める空の型','AIに任せる工程を決める札の付け方（2つの質問）']}
   };
   var STORE_KEY='tw_library_unlocked';
   var overlay=document.getElementById('modalOverlay'),modalForm=document.getElementById('modalForm'),modalSuccess=document.getElementById('modalSuccess');
@@ -425,7 +435,7 @@ addEventListener('scroll',function(){var n=document.querySelector('nav');if(n)n.
       openModal(doc);
     });
   });
-  // ?doc=cases / ?doc=security で開くと、その資料の受け取りを最初から開く（メディアの申込み枠から来た時）
+  // ?doc=cases / ?doc=security / ?doc=gyomuzu で開くと、その資料の受け取りを最初から開く（メディアの申込み枠から来た時）
   (function(){var d=new URLSearchParams(location.search).get('doc');if(!d||!DOCS[d])return;if(isUnlocked()){location.replace(DOCS[d].url);return;}openModal(d);})();
   document.getElementById('modalClose').addEventListener('click',closeModal);
   overlay.addEventListener('keydown',function(e){if(e.key!=='Tab')return;var els=overlay.querySelectorAll('a[href],button:not([disabled]),input,textarea');if(!els.length)return;var first=els[0],last=els[els.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}});
