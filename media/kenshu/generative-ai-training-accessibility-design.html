@@ -1,35 +1,4 @@
-<!DOCTYPE html><html lang="ja" class="no-js" data-media="kenshu"><head><meta charset="UTF-8"><script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}gtag('config','G-3V34NWXVCJ');</script><script src="/assets/tw-track.js" defer></script><script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script><meta name="viewport" content="width=device-width,initial-scale=1"><title>生成AI研修のアクセシビリティ設計｜操作速度ではなく業務判断を測る — TechWorker</title><meta name="description" content="生成AI研修のアクセシビリティは、申込時に必要な条件を聞き、入口を2つ以上用意し、評価から不要な速さを外して設計します。研修を設計・運営する担当者の方に向けて、字幕、代替テキスト、キーボード操作、時間延長、複数の回答方法の組み込み方を解説します。資料確認日は2026年9月29日です。"><link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg"><link rel="canonical" href="https://techworker.co.jp/media/kenshu/generative-ai-training-accessibility-design"><meta property="og:type" content="article"><meta property="og:title" content="生成AI研修のアクセシビリティ設計｜操作速度ではなく業務判断を測る"><meta property="og:description" content="生成AI研修の教材、演習、評価から不要な障壁を外し、字幕、代替テキスト、キーボード操作、時間延長、複数の回答方法を組み込む設計を解説します。"><meta property="og:image" content="https://techworker.co.jp/media/kenshu/covers/generative-ai-training-accessibility-design.png"><meta property="og:url" content="https://techworker.co.jp/media/kenshu/generative-ai-training-accessibility-design"><meta property="og:site_name" content="TechWorker"><meta name="twitter:card" content="summary_large_image"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../article.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "生成AI研修のアクセシビリティ設計｜操作速度ではなく業務判断を測る", "description": "生成AI研修のアクセシビリティは、申込時に必要な条件を聞き、入口を2つ以上用意し、評価から不要な速さを外して設計します。研修を設計・運営する担当者の方に向けて、字幕、代替テキスト、キーボード操作、時間延長、複数の回答方法の組み込み方を解説します。資料確認日は2026年9月29日です。", "image": "https://techworker.co.jp/media/kenshu/covers/generative-ai-training-accessibility-design.png", "datePublished": "2026-09-29", "dateModified": "2026-10-02", "author": {"@type": "Person", "name": "古野光太朗", "url": "https://techworker.co.jp/company.html"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/generative-ai-training-accessibility-design"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},{"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},{"@type":"ListItem","position":3,"name":"AI研修・導入ラボ","item":"https://techworker.co.jp/media/kenshu/"},{"@type":"ListItem","position":4,"name":"生成AI研修のアクセシビリティ設計｜操作速度ではなく業務判断を測る","item":"https://techworker.co.jp/media/kenshu/generative-ai-training-accessibility-design"}]}</script><script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "研修の申込みでは障害の有無を聞くべきですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "障害の有無だけでは、運営に必要な情報が集まりません。字幕や文字起こし、画面読み上げ、キーボード操作、休憩や時間延長、口頭以外の回答方法など、必要な条件を聞きます。回答は、必要な担当者だけが扱います。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "演習の制限時間は変えてよいですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "測りたい能力によります。情報の切り分けや指示の明確さ、出力の検証を測るなら、目的は損なわれません。時間延長や休憩、事前に用意した入力文の利用を認めても同じです。業務上の時間制約を測る場合は、別に判断します。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "WCAGに準拠していれば十分ですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "十分ではありません。端末、支援技術、言語、疲労の状態は、受講者ごとに異なります。公開基準で共通の障壁を減らし、申込時の確認で個別条件を補い、終了後に参加できなかった工程を回収します。"
-      }
-    }
-  ]
-}
-</script></head><body><div class="progress" id="progress"></div><nav id="nav">
+<!DOCTYPE html><html lang="ja" class="no-js" data-media="kenshu"><head><meta charset="UTF-8"><script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}gtag('config','G-3V34NWXVCJ');</script><script src="/assets/tw-track.js" defer></script><script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script><meta name="viewport" content="width=device-width,initial-scale=1"><title>生成AI研修のアクセシビリティ設計｜操作速度ではなく業務判断を測る — TechWorker</title><meta name="description" content="生成AI研修のアクセシビリティは、申込時に必要な条件を聞き、入口を2つ以上用意し、評価から不要な速さを外して設計します。研修を設計・運営する担当者の方に向けて、字幕、代替テキスト、キーボード操作、時間延長、複数の回答方法の組み込み方を解説します。資料確認日は2026年9月29日です。"><link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg"><link rel="canonical" href="https://techworker.co.jp/media/kenshu/generative-ai-training-accessibility-design"><meta property="og:type" content="article"><meta property="og:title" content="生成AI研修のアクセシビリティ設計｜操作速度ではなく業務判断を測る"><meta property="og:description" content="生成AI研修の教材、演習、評価から不要な障壁を外し、字幕、代替テキスト、キーボード操作、時間延長、複数の回答方法を組み込む設計を解説します。"><meta property="og:image" content="https://techworker.co.jp/media/kenshu/covers/generative-ai-training-accessibility-design.png"><meta property="og:url" content="https://techworker.co.jp/media/kenshu/generative-ai-training-accessibility-design"><meta property="og:site_name" content="TechWorker"><meta name="twitter:card" content="summary_large_image"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../article.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "生成AI研修のアクセシビリティ設計｜操作速度ではなく業務判断を測る", "description": "生成AI研修のアクセシビリティは、申込時に必要な条件を聞き、入口を2つ以上用意し、評価から不要な速さを外して設計します。研修を設計・運営する担当者の方に向けて、字幕、代替テキスト、キーボード操作、時間延長、複数の回答方法の組み込み方を解説します。資料確認日は2026年9月29日です。", "image": "https://techworker.co.jp/media/kenshu/covers/generative-ai-training-accessibility-design.png", "datePublished": "2026-09-29", "dateModified": "2026-10-03", "author": {"@type": "Person", "name": "古野光太朗", "url": "https://techworker.co.jp/company.html"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/generative-ai-training-accessibility-design"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},{"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},{"@type":"ListItem","position":3,"name":"AI研修・導入ラボ","item":"https://techworker.co.jp/media/kenshu/"},{"@type":"ListItem","position":4,"name":"生成AI研修のアクセシビリティ設計｜操作速度ではなく業務判断を測る","item":"https://techworker.co.jp/media/kenshu/generative-ai-training-accessibility-design"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "研修の申込みでは障害の有無を聞くべきですか？", "acceptedAnswer": {"@type": "Answer", "text": "障害の有無だけでは、運営に必要な情報が集まりません。字幕や文字起こし、画面読み上げ、キーボード操作、休憩や時間延長、口頭以外の回答方法など、必要な条件を聞きます。回答は、必要な担当者だけが扱います。"}}, {"@type": "Question", "name": "演習の制限時間は変えてよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "測りたい能力によります。情報の切り分けや指示の明確さ、出力の検証を測るなら、目的は損なわれません。時間延長や休憩、事前に用意した入力文の利用を認めても同じです。業務上の時間制約を測る場合は、別に判断します。"}}, {"@type": "Question", "name": "WCAGに準拠していれば十分ですか？", "acceptedAnswer": {"@type": "Answer", "text": "十分ではありません。端末、支援技術、言語、疲労の状態は、受講者ごとに異なります。公開基準で共通の障壁を減らし、申込時の確認で個別条件を補い、終了後に参加できなかった工程を回収します。"}}]}</script></head><body><div class="progress" id="progress"></div><nav id="nav">
   <a href="index.html" class="logo">AI研修・導入<i>ラボ</i></a>
   <ul>
     <li><a href="index.html">記事一覧</a></li>
@@ -44,7 +13,7 @@
   <a href="index.html">記事一覧</a>
   <a href="index.html#about">このメディアについて</a>
   <a href="../../training.html" class="m-cta">無料相談を申し込む</a>
-</div><header class="art-head"><nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a></nav><div class="kicker">研修の設計と運営</div><h1>生成AI研修のアクセシビリティ設計｜操作速度ではなく業務判断を測る</h1><p class="dek">生成AI研修のアクセシビリティは、申込時に必要な条件を聞き、入口を2つ以上用意し、評価から不要な速さを外して設計します。<br>生成AI研修を設計・運営する、担当者の方に向けた記事です。<br>字幕、代替テキスト、キーボード操作、時間延長、複数の回答方法の組み込み方が分かります。</p><div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.09.29</span><span class="dot">·</span><span>最終更新 2026.10.02</span><span class="dot">·</span><span>一次情報 6件</span></div></header><img class="daily-cover" src="covers/generative-ai-training-accessibility-design.png" alt="生成AI研修を誰でも受けられる形に。字幕・時間延長など必要な条件を申込時に聞く" width="1200" height="630"><div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div>
+</div><header class="art-head"><nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a></nav><div class="kicker">研修の設計と運営</div><h1>生成AI研修のアクセシビリティ設計｜操作速度ではなく業務判断を測る</h1><p class="dek">生成AI研修のアクセシビリティは、申込時に必要な条件を聞き、入口を2つ以上用意し、評価から不要な速さを外して設計します。<br>生成AI研修を設計・運営する、担当者の方に向けた記事です。<br>字幕、代替テキスト、キーボード操作、時間延長、複数の回答方法の組み込み方が分かります。</p><div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.09.29</span><span class="dot">·</span><span>最終更新 2026.10.03</span><span class="dot">·</span><span>一次情報 6件</span></div></header><img class="daily-cover" src="covers/generative-ai-training-accessibility-design.png" alt="生成AI研修を誰でも受けられる形に。字幕・時間延長など必要な条件を申込時に聞く" width="1200" height="630"><div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div>
       <a href="#s1">結論</a>
       <a href="#s2">手順</a>
       <a href="#s3">うまくいかない例</a>
@@ -54,6 +23,7 @@
     </div></nav><article class="art-body">
 <h2 id="s1">生成AI研修のアクセシビリティは、何から設計すればよいですか？</h2>
 <p class="answer">申込時に字幕、読み上げ、キーボード操作、時間延長など、必要な条件を聞くところから始めます。</p>
+<p>この記事は、申込画面、教材、演習、採点表を作る研修運営者向けです。字幕を付けるだけで終えず、受講者が根拠を開き、回答を提出するまでの障壁を確認します。</p>
 <p>生成AI研修で受講者が止まる原因は、プロンプトの難しさだけではありません。次のような障壁が重なる場合があります。</p>
 <ul>
 <li>音声だけの説明</li>
@@ -81,6 +51,7 @@
 
 <h2 id="s2">アクセシブルな研修は、どんな手順で設計しますか？</h2>
 <p class="answer">申込時の確認、入口の複数化、評価の見直し、開催前の一周、公開前の実利用試験の5つで進めます。</p>
+    <figure class="fig-inline"><a href="figs/generative-ai-training-accessibility-design-1.png" target="_blank" rel="noopener"><img src="figs/generative-ai-training-accessibility-design-1.png" alt="提出まで一周し、止まった操作を直す。本文の判断や記録項目を示します。" width="1200" height="701" loading="lazy" decoding="async"></a><figcaption>TechWorker作成：本文に基づく確認・判断の手順です。</figcaption></figure>
 <h3>手順1　申込時に、必要な条件を聞く</h3>
 <p>申込フォームで、障害の有無だけを尋ねても、運営に必要な情報は集まりません。聞くべきことは、次のとおりです。</p>
 <ul>
@@ -139,7 +110,7 @@
 <li><strong>口頭補助がなければ進めない箇所を、「当日支援で対応」で済ませる。</strong>教材側の欠陥として修正します。</li>
 <li><strong>代替手段を、機械的に当てる。</strong>音声応対そのものを測る研修では、評価対象が変わります。</li>
 </ul>
-<p>すべての障害特性を、一度の試験で網羅することはできません。申込時に必要な支援を聞き、個別調整の連絡経路も残します。</p>
+<p>一度の試験では、すべての障害特性を網羅できません。申込時に必要な支援を聞き、個別調整の連絡経路も残します。</p>
 
 <h2 id="s4">どの障壁に、どんな対応を組み込めばよいですか？</h2>
 <p class="answer">教材、演習、評価の障壁ごとに、2つ以上の入口と、不要な速さを外した評価を組み込みます。</p>

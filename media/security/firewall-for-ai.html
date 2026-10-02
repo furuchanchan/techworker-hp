@@ -13,24 +13,24 @@
 <script src="/assets/tw-track.js" defer></script>
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LLMアプリのプロンプトインジェクション対策｜Cloudflareのガードレール機能で何を防げるか【2026年8月版】 — TechWorker</title>
-<meta name="description" content="プロンプトインジェクションは、WAFでは防げず、ガードレールは緩和策にとどまります。Cloudflareの AI Gateway Guardrails と AI Security for Apps の役割、導入の手順、アプリ側で担保すべき権限設計を2026年8月時点の公式情報で整理します。">
+<title>LLMアプリのプロンプトインジェクション対策｜Cloudflareのガードレール機能で何を防げるか【2026年10月確認】 — TechWorker</title>
+<meta name="description" content="従来のWAFルールだけでは不十分で、ガードレールは緩和策にとどまります。Cloudflareの AI Gateway Guardrails と AI Security for Apps の役割、導入の手順、アプリ側で担保すべき権限設計を解説します。掲載分類とCloudflareの検査対象・提供条件は2026年10月3日に確認しました。">
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
 <link rel="canonical" href="https://techworker.co.jp/media/security/firewall-for-ai">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LLMアプリのプロンプトインジェクション対策｜Cloudflareのガードレール機能で何を防げるか【2026年8月版】">
-<meta property="og:description" content="プロンプトインジェクションは、WAFでは防げず、ガードレールは緩和策にとどまります。Cloudflareの AI Gateway Guardrails と AI Security for Apps の役割、導入の手順、アプリ側で担保すべき権限設計を2026年8月時点の公式情報で整理します。">
+<meta property="og:title" content="LLMアプリのプロンプトインジェクション対策｜Cloudflareのガードレール機能で何を防げるか【2026年10月確認】">
+<meta property="og:description" content="従来のWAFルールだけでは不十分で、ガードレールは緩和策にとどまります。Cloudflareの AI Gateway Guardrails と AI Security for Apps の役割、導入の手順、アプリ側で担保すべき権限設計を解説します。掲載分類とCloudflareの検査対象・提供条件は2026年10月3日に確認しました。">
 <meta property="og:image" content="https://techworker.co.jp/media/security/covers/firewall-for-ai.png">
 <meta property="og:url" content="https://techworker.co.jp/media/security/firewall-for-ai">
 <meta property="og:site_name" content="TechWorker">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="LLMアプリのプロンプトインジェクション対策｜Cloudflareのガードレール機能で何を防げるか【2026年8月版】">
+<meta name="twitter:title" content="LLMアプリのプロンプトインジェクション対策｜Cloudflareのガードレール機能で何を防げるか【2026年10月確認】">
 <meta name="twitter:image" content="https://techworker.co.jp/media/security/covers/firewall-for-ai.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../article.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "LLMアプリのプロンプトインジェクション対策｜Cloudflareのガードレール機能で何を防げるか【2026年8月版】", "description": "プロンプトインジェクションは、WAFでは防げず、ガードレールは緩和策にとどまります。Cloudflareの AI Gateway Guardrails と AI Security for Apps の役割、導入の手順、アプリ側で担保すべき権限設計を2026年8月時点の公式情報で整理します。", "datePublished": "2026-08-09", "dateModified": "2026-10-02", "inLanguage": "ja", "image": "https://techworker.co.jp/media/security/covers/firewall-for-ai.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/security/firewall-for-ai"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "LLMアプリのプロンプトインジェクション対策｜Cloudflareのガードレール機能で何を防げるか【2026年10月確認】", "description": "従来のWAFルールだけでは不十分で、ガードレールは緩和策にとどまります。Cloudflareの AI Gateway Guardrails と AI Security for Apps の役割、導入の手順、アプリ側で担保すべき権限設計を解説します。掲載分類とCloudflareの検査対象・提供条件は2026年10月3日に確認しました。", "datePublished": "2026-08-09", "dateModified": "2026-10-03", "inLanguage": "ja", "image": "https://techworker.co.jp/media/security/covers/firewall-for-ai.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/security/firewall-for-ai"}}</script>
 <script type="application/ld+json">
 {
   "@context":"https://schema.org","@type":"BreadcrumbList",
@@ -42,44 +42,7 @@
   ]
 }
 </script>
-<script type="application/ld+json">{
- "@context": "https://schema.org",
- "@type": "FAQPage",
- "mainEntity": [
-  {
-   "@type": "Question",
-   "name": "ガードレールを導入すれば、プロンプトインジェクションを完全に防げますか？",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "いいえ。ガードレールは統計的なモデルによる検知にもとづく緩和策で、100%の検知率を保証するものではありません。未知の言い回しや巧妙な難読化はすり抜ける可能性があります。正当な問い合わせを誤ってブロックすることもあります。権限設計や出力の扱いといったアプリ側の対策を重ねる多層防御が前提になります。"
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "Cloudflareの「AI Gateway Guardrails」と「AI Security for Apps(旧Firewall for AI)」は何が違いますか？",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "見ている方向が異なります。Guardrailsは、自社アプリからモデル提供元へ向かう出口側で、プロンプトと応答の有害コンテンツを検知します。AI Security for Appsは、外部から自社のLLMに向かう入口側で検知します。対象は、プロンプトインジェクションやPII(個人を特定できる情報)の混入です。多くの構成では両方を組み合わせて使います。"
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "間接プロンプトインジェクションは、ゲートウェイの導入だけで防げますか？",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "完全には防げません。LLMが読み込む外部コンテンツ(Webページ・ドキュメント・メールなど)は、無限に近いバリエーションがあります。ゲートウェイ側の検知をすり抜ける文面も出てきます。実行できるツールを最小権限に絞り、影響の大きい操作には人の承認を挟むアプリ側の設計が、実質的な防御線になります。"
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "導入にはどのくらいの費用がかかりますか？",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "機能によって異なります。AI Gatewayの基本機能とGuardrailsの利用自体は無料です。ただ、Guardrailsの評価にはWorkers AIのトークン量に応じた従量課金が発生します。AI Security for Appsは、2026年8月時点ではエンドポイントの自動発見が全プラン無料です。本格的な検知・緩和機能は、Enterpriseプランの有償アドオンです。正確な金額は、公式の最新の料金ページで確認してください。"
-   }
-  }
- ]
-}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "ガードレールを導入すれば、プロンプトインジェクションを完全に防げますか？", "acceptedAnswer": {"@type": "Answer", "text": "いいえ。ガードレールは統計的なモデルによる検知にもとづく緩和策で、100%の検知率を保証するものではありません。未知の言い回しや巧妙な難読化はすり抜ける可能性があります。正当な問い合わせを誤ってブロックすることもあります。権限設計や出力の扱いといったアプリ側の対策を重ねる多層防御が前提になります。"}}, {"@type": "Question", "name": "Cloudflareの「AI Gateway Guardrails」と「AI Security for Apps(旧Firewall for AI)」は何が違いますか？", "acceptedAnswer": {"@type": "Answer", "text": "見ている方向が異なります。Guardrailsは、自社アプリからモデル提供元へ向かう出口側で、プロンプトと応答の有害コンテンツを検知します。AI Security for Appsは、外部から自社のLLMに向かう入口側で検知します。対象は、プロンプトインジェクションやPII(個人を特定できる情報)の混入です。多くの構成では両方を組み合わせて使います。"}}, {"@type": "Question", "name": "間接プロンプトインジェクションは、ゲートウェイの導入だけで防げますか？", "acceptedAnswer": {"@type": "Answer", "text": "完全には防げません。LLMが読み込む外部コンテンツ(Webページ・ドキュメント・メールなど)は、無限に近いバリエーションがあります。ゲートウェイ側の検知をすり抜ける文面も出てきます。実行できるツールを最小権限に絞り、影響の大きい操作には人の承認を挟むアプリ側の設計が、実質的な防御線になります。"}}, {"@type": "Question", "name": "導入にはどのくらいの費用がかかりますか？", "acceptedAnswer": {"@type": "Answer", "text": "利用する機能と評価モデルで異なります。AI Security for Appsの検知フィールドは、2026年10月3日に確認した公式資料ではEnterpriseの有償追加機能です。Guardrailsの評価料金も、対応モデルと契約条件を確認してください。"}}]}</script>
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -112,9 +75,9 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIセキュリティ・ラボ</a><span class="sep">/</span>LLMアプリのプロンプトインジェクション対策</nav>
   <div class="kicker">攻撃対策と検証</div>
   <h1>LLMアプリのプロンプトインジェクション対策｜Cloudflareのガードレール機能で何を防げるか</h1>
-  <p class="dek">プロンプトインジェクションは、WAFでは防げず、Cloudflareの2つの機能も緩和策にとどまります。<br>顧客対応チャットや社内ナレッジ検索にLLMを組み込む、情シスやセキュリティ担当の方の悩みに答えます。<br>Cloudflareの2つの機能が防げる範囲と、アプリ側の設計でしか埋まらない部分が分かります。</p>
+  <p class="dek">従来のWAFルールだけでは不十分で、Cloudflareの2つの機能も緩和策にとどまります。<br>顧客対応チャットや社内ナレッジ検索にLLMを組み込む、情シスやセキュリティ担当の方の悩みに答えます。<br>Cloudflareの2つの機能が防げる範囲と、アプリ側の設計でしか埋まらない部分が分かります。</p>
   <div class="a-meta">
-    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.08.09</span><span class="dot">·</span><span>最終更新 2026.10.02</span><span class="dot">·</span><span>読了 11分</span>
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.08.09</span><span class="dot">·</span><span>最終更新 2026.10.03</span><span class="dot">·</span><span>読了 11分</span>
   </div>
 </header>
 
@@ -123,55 +86,30 @@ fbq('init','1264057945446029');fbq('track','PageView');
 .ffa-unit{font-size:14px;font-weight:600;color:var(--slate);margin-left:1px;}
 .ffa-cap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-family:var(--jp);font-size:11.5px;color:var(--slate);margin-top:10px;padding-top:12px;border-top:1px solid var(--line);}
 </style>
-<div class="art-cover-v6 acf-dash">
-  <div class="af-top"><span class="af-dot"></span>AI GATEWAY ガードレール検知ダッシュボード<span class="af-smp">※サンプル値・画面はイメージです</span></div>
-  <div class="af-kpis">
-    <div><div class="af-k-l">月間リクエスト</div><div class="af-k-v">128,400</div></div>
-    <div><div class="af-k-l">ガードレールでブロック</div><div class="af-k-v">342<span class="ffa-unit">件</span></div></div>
-    <div><div class="af-k-l">PII検知でフラグ</div><div class="af-k-v"><em>58</em><span class="ffa-unit">件</span></div></div>
-  </div>
-  <div class="af-bars" role="img" aria-label="検知カテゴリ別の件数にばらつきがあることを示す棒グラフのイメージ">
-    <i class="hi" style="height:100%"></i><i style="height:74%"></i><i style="height:56%"></i><i style="height:39%"></i><i style="height:24%"></i><i style="height:14%"></i>
-  </div>
-  <div class="ffa-cap"><span>検知カテゴリ別の件数（イメージ）</span><span>直近30日・サンプルデータ</span></div>
-</div>
+<a href="covers/firewall-for-ai.png" target="_blank" rel="noopener"><img class="daily-cover" src="covers/firewall-for-ai.png" alt="命令とデータが混ざるLLMアプリの守り方。直接注入・間接注入・機密の吸い出しに多層の対策を置く。" width="1200" height="630"></a>
 
 <div class="art-layout">
   <nav class="art-toc" aria-label="目次">
     <div class="art-toc-inner">
       <div class="toc-h">目次</div>
-      <a href="#s1">なぜ既存のWAFでは防げないのか</a>
-      <a href="#s2">攻撃の類型（OWASP Top 10軸）</a>
-      <a href="#s3">Cloudflareで何を防げるか</a>
-      <a href="#s4">ゲートウェイとアプリ側の切り分け</a>
-      <a href="#s5">導入の進め方と運用指標</a>
+      <a href="#s1">プロンプトインジェクションは、WAFやガードレールで防げますか？</a>
+      <a href="#s2">攻撃には、どんな類型がありますか？</a>
+      <a href="#s3">導入と運用は、どんな手順で進めますか？</a>
+      <a href="#s4">うまくいかない例には、どんなものがありますか？</a>
+      <a href="#s5">Cloudflareの機能は、何を見ていて、どう違いますか？</a>
       <a href="#faq">よくある質問</a>
-    </div>
+    <a href="#s6">次の一歩は何から始めればよいですか？</a>
+<a href="#sources">この記事は、どの資料をもとにしていますか？</a>
+</div>
   </nav>
 
   <article class="art-body"><h2 id="s1">プロンプトインジェクションは、WAFやガードレールで防げますか？</h2>
-<p class="answer">WAFでは原理的に防げません。ガードレールは緩和策で、権限設計や出力の扱いと重ねて使います。</p>
-<p>顧客対応チャットや社内ナレッジ検索に、LLM（大規模言語モデル）を組み込む企業が増えています。同時に、想定していない指示をLLMに送り込んで挙動を乗っ取る「プロンプトインジェクション」への懸念も増えています。</p>
-<p>情シスやセキュリティ担当の方から、まず出る質問があります。既存のWAF（Web Application Firewall）で防げないのか、という質問です。答えは「防げない」です。理由は、攻撃の成り立ちにあります。</p>
-<p>SQLインジェクションやXSSへの対策は、入力に含まれる特定の構文を検知・無害化することで機能します。引用符、セミコロン、scriptタグのような、命令として解釈され得る記号です。命令とデータが構文で区別できるため、WAFはパターンマッチングで切り分けられます。</p>
-<p>LLMには、この構文の境界がありません。システムプロンプト、ユーザーの質問、外部から読み込んだWebページの本文は、すべて同じ自然言語のテキストです。モデルのコンテキストウィンドウに、同じように流し込まれます。</p>
-<p>信頼できる開発者の指示と、信頼できないユーザー入力の区別は、構造として保証されていません。攻撃者の指示は、特殊な記号を使う必要がなく、普通の日本語や英語の文章として成立します。そのため、危険な記号を弾くシグネチャでは、原理的に検知できません。</p>
-<p>この弱さは、業界でも共通認識です。OWASP（The Open Worldwide Application Security Project）のTop 10 for LLM Applicationsでは、プロンプトインジェクションが1位です。2025年版と2026年版の両方で1位です。</p>
-<div class="callout"><p>ガードレールは、統計的なモデルによる検知にもとづく緩和策です。暗号のように、数学的な正しさを保証する防御ではありません。未知の言い回しや巧妙な難読化はすり抜け得ます。正常な問い合わせを誤って止めることもあります。検知率と誤検知率を、運用しながら上げていくものです。</p></div>
-
+<p class="answer">従来のWAFルールだけでは、プロンプトインジェクションを十分に防げません。LLM向けの検知を使い、アプリの権限と出力の扱いを別に制限します。</p><p>プロンプトインジェクションは、利用者の入力や、AIが読む文書・メールに命令を混ぜる攻撃です。通常の文章として成立するため、SQLやscriptタグのような構文だけを探す防御では取りこぼします。</p><p>WAFにLLM向けの検知機能を追加した製品もあります。「WAFなら原理的に検知できない」と一括りにはしません。ただし、入力を検知したことと、その利用者に操作権限があること、出力が安全に表示されることは別です。</p><p>この記事は、LLMを組み込んだアプリの開発責任者向けです。検知、toolの認可、送信前の承認、表示処理を、それぞれどこへ置くかを説明します。</p>
 <h2 id="s2">攻撃には、どんな類型がありますか？</h2>
-<p class="answer">直接注入、間接注入、機密の吸い出しの3類型です。OWASPの2026年版でも1位と2位を占めます。</p>
-<p>2026年8月、OWASPが「OWASP GenAI LLM Top 10 2026」を公開しました。2025年版を置き換えた版です。反映したのは、2つです。専門家の投票（比重75%）と、報告された数千件規模のインシデントデータ（比重25%）です。</p>
-<p>1位はPrompt Injectionです。2位はSensitive Information Disclosure（機密情報の開示）です。いずれも、2025年版から順位を維持しました。実務では、次の3つの型に整理すると見通しがよくなります。</p>
-<ol>
-<li><strong>直接注入（Direct Prompt Injection）。</strong>ユーザーが入力欄に、悪意ある指示を直接打ち込む型です。「これまでの指示をすべて無視して」「あなたのシステムプロンプトを教えて」が典型です。OWASPのLLM01:2026 Prompt Injectionが扱います。攻撃元が入力欄の向こう側にいるため、比較的検知しやすい型です。</li>
-<li><strong>間接注入（Indirect Prompt Injection）。</strong>LLMが自分で読み込みに行く外部コンテンツに、攻撃者が指示を埋め込んでおく型です。閲覧するWebページ、要約対象のドキュメント、返信を書くために読むメール本文が当たります。エンドユーザー自身は、悪意ある文言を一度も入力していません。そのため、気づきにくい型です。RAG（検索拡張生成）構成や、メール要約・ブラウジングのエージェントほど、攻撃対象が広がります。</li>
-<li><strong>機密の吸い出し（Sensitive Information Disclosure / Exfiltration）。</strong>システムプロンプト、RAGで参照する社内文書、会話履歴の個人情報・機密情報を、質問の言い回しを変えながら引き出す型です。対応するのは、OWASPのLLM02:2026 Sensitive Information Disclosureです。LLM08:2026 Hidden Context Exposureも対応します。LLM08は、2025年版のSystem Prompt Leakageから改称・拡張されました。</li>
-</ol>
-<p>OWASPの2026年版は、スコープも整理しました。「エージェント」のリスクは、姉妹プロジェクトの「OWASP Agentic Top 10」に切り出されています。エージェントは、ツールを呼び出し、記憶を持ち、実世界に影響する行動を取ります。本稿が扱うのは、アプリケーションの一部品としてのLLMへの攻撃です。</p>
-
+<p class="answer">入力欄への直接注入、参照文書への間接注入、機密情報の持ち出しを分けて確認します。</p><p>直接注入は、利用者が悪意ある指示を入力する経路です。間接注入は、Webページ、メール、RAGの参照文書へ攻撃者が命令を埋める経路です。利用者が入力していない文章も、モデルが読む以上は検査対象になります。</p><p>2026年10月3日に確認したOWASP公式の一覧は2025版です。Prompt InjectionはLLM01、Sensitive Information DisclosureはLLM02です。出力の扱いはLLM05、Excessive AgencyはLLM06、Unbounded ConsumptionはLLM10として掲載されています。</p><p>ここでの経路分けは説明のための分類です。リスクの順位をそのまま自社の優先度にせず、参照できる文書、呼べるtool、送信先を見て被害範囲を決めます。</p>
 <h2 id="s3">導入と運用は、どんな手順で進めますか？</h2>
 <p class="answer">ログ、フラグ、ブロックの順に段階を踏み、アプリ側の権限設計を並行して進めて、4つの指標を見ます。</p>
+    <figure class="fig-inline"><a href="figs/firewall-for-ai-1.png" target="_blank" rel="noopener"><img src="figs/firewall-for-ai-1.png" alt="LLMの多層防御で確認する対象と、拒否または次の工程へ渡す条件を示した設計例です。" width="1200" height="410" loading="lazy" decoding="async"></a><figcaption>TechWorker作成：本文の手順を図にした設計例です。製品の公式画面や導入効果の実測ではありません。画像を押すと拡大できます。</figcaption></figure>
 <p>いきなり全カテゴリをブロックに設定すると、正当な業務利用まで止まります。現場の反発で、運用ごと形骸化しやすくなります。段階を踏むのが現実的です。</p>
 <ol>
 <li><strong>観察します。</strong>GuardrailsとAI Security for Appsを、「ログ・フラグ」設定で先に有効化します。既存トラフィックの検知パターンを、1〜2週間観察します。ブロックする前に、自社の正常な利用パターンと誤検知の傾向を把握するためです。</li>
@@ -185,54 +123,38 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <li>インシデント対応までの時間を、発生の都度見ます。検知から、調査、遮断、関係者への共有までの所要時間です。見る担当と手順を決めておかないと、初動が遅れます。</li>
 </ul></li>
 </ol>
-<p>ブロックへ寄せすぎると業務が止まり、緩めすぎると意味がなくなります。ログで自社の実態を見てから閾値を決める順番が、一番早い進め方です。</p>
+<p>ブロックへ寄せすぎると業務が止まり、緩めすぎると意味がなくなります。ログで正当な利用と誤検知を確かめてから、遮断する基準を決めます。</p>
 
 <aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">Claude Code 企業導入 セキュリティ＆セットアップ実践ガイド</div><div class="mc-d">3つのリスク、5つの設計原則、10項目のチェックリストを、情シスの審査に出せる形でまとめた資料です。</div></div><a href="../../library/?doc=security&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=firewall-for-ai&amp;utm_content=mid" class="btn" data-cta="firewall-for-ai-mid">ガイドを受け取る <i>&rarr;</i></a></aside>
 <h2 id="s4">うまくいかない例には、どんなものがありますか？</h2>
 <p class="answer">ゲートウェイの導入で片づけること、権限設計の後回し、出力の鵜呑み、ブロック数だけの報告が典型です。</p>
 <p>ゲートウェイは、テキストとして流れる入力と出力を、外側から観察して判定します。ゲートウェイが原理的に知り得ないことがあります。そのリクエストを送ったユーザーが、どこまでの操作を許されているかです。モデルの応答を、アプリ側がどう扱うかも知り得ません。</p>
-<p>ここで効くのが、OWASPが2026年版で3位に押し上げたLLM03:2026 Excessive Agency（過剰なエージェンシー）です。10位のLLM10:2026 Improper Output Handling（不適切な出力の取り扱い）も同じです。どちらも、入出力の検知では埋められない、アプリ自身の設計の話です。</p>
+<p>ここで効くのが、OWASPのLLM06:2025 Excessive Agency（過剰な操作権限）です。LLM05:2025 Improper Output Handling（不適切な出力の取り扱い）も同じです。どちらも、入出力の検知では埋められない、アプリ自身の設計の話です。</p>
 <ul>
 <li><strong>製品を入れれば片づくと考えます。</strong>権限設計とツール実行の承認は、自社の仕事です。</li>
 <li><strong>ツールに広い権限を渡します。</strong>プロンプトインジェクションが成功したときの被害の大きさは、ツールに与えた権限の大きさで決まります。読み取り専用のDBユーザーしか渡していなければ、乗っ取られても情報を書き換えられません。送信先メールアドレスを許可リストで縛れば、任意の宛先への情報送出は起きません。</li>
 <li><strong>取り消せない操作を、モデルに単独で実行させます。</strong>影響範囲の大きい操作には、人の承認を挟みます。</li>
-<li><strong>LLMの応答を鵜呑みにして、次の処理へ渡します。</strong>報告されている経路があります。応答をエスケープせずHTMLへ差し込めば、XSSになります。応答をSQLやシェルコマンドの一部に使えば、下流のインジェクションになります。ターミナルへそのまま表示すると、ANSI制御文字を悪用した表示の偽装が起きます。応答中のURLを自動でフェッチするMarkdownレンダラーでは、画像読み込みを経由した情報の持ち出しが起きます。OWASPのLLM10:2026は、ANSI・ターミナルへの出力や自動フェッチするレンダラーまで、説明を広げました。被害の実例が増えていることの裏返しです。</li>
+<li><strong>LLMの応答を鵜呑みにして、次の処理へ渡します。</strong>報告されている経路があります。応答をエスケープせずHTMLへ差し込めば、XSSになります。応答をSQLやシェルコマンドの一部に使えば、下流のインジェクションになります。ターミナルへそのまま表示すると、ANSI制御文字を悪用した表示の偽装が起きます。応答中のURLを自動でフェッチするMarkdownレンダラーでは、画像読み込みを経由した情報の持ち出しが起きます。OWASPの不適切な出力処理の項目は、ANSI・ターミナルへの出力や自動フェッチするレンダラーまで、説明を広げました。被害の実例が増えていることの裏返しです。</li>
 <li><strong>自社のプロンプトの安全性だけを見ます。</strong>LLMが読みに行くWebページやメールの中身も、すべて入力です。</li>
 <li><strong>ブロック率だけを報告します。</strong>誤検知率とインシデント対応の時間を見ないと、運用が回りません。</li>
 </ul>
 
 <h2 id="s5">Cloudflareの機能は、何を見ていて、どう違いますか？</h2>
-<p class="answer">Guardrailsは自社から提供元への出口を、AI Security for Appsは外部から自社への入口を見ます。</p>
-<p>機能名と提供状況は、2026年8月時点の公式情報にもとづきます。出典は、developers.cloudflare.comとCloudflare公式ブログです。導入判断の直前には、一次情報を確認してください。</p>
-<p><strong>AI Gateway の Guardrails</strong>は、自社アプリからモデルプロバイダへ向かうリクエストの間で動作します。対象のプロバイダは、OpenAI、Anthropic、Gemini、Workers AIなどです。ユーザーのプロンプトとモデルの応答を、Meta社のLlama Guard 3（8B）モデルでリアルタイムに評価します。暴力・ヘイト・性的コンテンツ・自傷など、有害カテゴリごとに「無視・フラグ・ブロック」を設定できます。検知結果は、AI Gatewayのログに記録され、後から監査できます。利用自体は無料です。評価には、Workers AIのトークン量に応じた従量課金が発生します。</p>
-<p><strong>AI Security for Apps（旧称 Firewall for AI）</strong>は、向きが逆の機能です。CloudflareのWAFに統合されています。外部から自社の公開LLMエンドポイントへ届く入力を、検知の対象にします。プロンプトインジェクションの兆候、PII（個人を特定できる情報）の混入、不適切なトピックです。まずLLMを提供するエンドポイントを自動発見します。検知結果は、WAFのルールとして「ブロック・ログ・カスタムレスポンス」に振り分けられます。2026年に一般提供（GA）へ移行しました。本格的な検知・緩和機能はEnterpriseプランの有償アドオンです。Free・Pro・Businessプランでは、エンドポイントの自動発見だけが無料で使えます。</p>
-<p>2つは補完関係にあり、どちらか一方で足りる構成は多くありません。</p>
-<div class="tbl-wrap">
-<table>
-<tr><th>機能</th><th>見ている方向</th><th>主な検知対象</th><th>2026年8月時点の提供条件</th></tr>
-<tr><td>AI Gateway Guardrails</td><td>自社アプリ→モデル提供元</td><td>暴力・ヘイト・性的表現など有害コンテンツ</td><td>利用は無料、評価分はWorkers AIの従量課金</td></tr>
-<tr><td>AI Security for Apps（旧Firewall for AI）</td><td>外部→自社のLLMエンドポイント</td><td>プロンプトインジェクション・PII混入・不適切トピック</td><td>エンドポイント発見は全プラン無料／検知・緩和はEnterpriseの有償アドオン</td></tr>
-<tr><td>レート制限</td><td>両方向に設定可</td><td>単位時間あたりのリクエスト数超過</td><td>AI Gatewayのコア機能として無料（固定・スライディングウィンドウ）</td></tr>
-<tr><td>ログ／Analytics</td><td>両方向</td><td>プロンプト・応答・プロバイダ・トークン数・コスト・所要時間</td><td>全プランで利用可（保持期間はプランにより異なる）</td></tr>
-</table>
-</div>
-<p>レート制限は、一定時間内のリクエスト数を制限します。方式は2つです。「固定ウィンドウ」は、たとえば10分ごとに区切ります。「スライディングウィンドウ」は、直近10分を常に見ます。超過時は、HTTP 429を返します。</p>
-<p>OWASPが2026年版で再定義したLLM06:2026 Unbounded Consumptionへの緩和策です。大量リクエストによるコスト急増や、推論モデルの長い思考過程の悪用です。ゾーン全体の汎用レート制限ルールを併用すれば、AI Gatewayを経由しないエンドポイントも制限できます。</p>
-
-
+<p class="answer">Guardrailsはモデル呼出しの入出力、AI Security for Appsは自社エンドポイントへの入力を検査します。どちらも業務の認可を代わりに判断する機能ではありません。</p><p>2026年10月3日に公式資料を確認しました。AI Gateway Guardrailsは、アプリとモデル提供元の間でpromptと応答を検査し、設定に応じて記録やブロックを行います。対応するモデルと評価料金は導入前に確認してください。</p><p>AI Security for AppsはWAFへ統合されたLLM向け検知です。現在の公式資料では、対象はcf-llmとラベル付けされたエンドポイントへ届くJSON入力です。エンドポイントの発見は全プラン、検知フィールドとLog Mode RulesetはEnterpriseの有償追加機能です。</p><p>前者を通したからといって、外部ページに埋められた命令を必ず発見できるわけではありません。後者は入口の入力を検査しますが、取得後の文書やtool結果など、別の経路も残ります。自社で実際に通る経路を試験してください。</p>
 <h2 id="faq">よくある質問</h2>
 <div class="faq"><div class="q">ガードレールを導入すれば、プロンプトインジェクションを完全に防げますか？</div><p class="a">いいえ。ガードレールは統計的なモデルによる検知にもとづく緩和策で、100%の検知率を保証するものではありません。未知の言い回しや巧妙な難読化はすり抜ける可能性があります。正当な問い合わせを誤ってブロックすることもあります。権限設計や出力の扱いといったアプリ側の対策を重ねる多層防御が前提になります。</p></div>
 <div class="faq"><div class="q">Cloudflareの「AI Gateway Guardrails」と「AI Security for Apps(旧Firewall for AI)」は何が違いますか？</div><p class="a">見ている方向が異なります。Guardrailsは、自社アプリからモデル提供元へ向かう出口側で、プロンプトと応答の有害コンテンツを検知します。AI Security for Appsは、外部から自社のLLMに向かう入口側で検知します。対象は、プロンプトインジェクションやPII(個人を特定できる情報)の混入です。多くの構成では両方を組み合わせて使います。</p></div>
 <div class="faq"><div class="q">間接プロンプトインジェクションは、ゲートウェイの導入だけで防げますか？</div><p class="a">完全には防げません。LLMが読み込む外部コンテンツ(Webページ・ドキュメント・メールなど)は、無限に近いバリエーションがあります。ゲートウェイ側の検知をすり抜ける文面も出てきます。実行できるツールを最小権限に絞り、影響の大きい操作には人の承認を挟むアプリ側の設計が、実質的な防御線になります。</p></div>
-<div class="faq"><div class="q">導入にはどのくらいの費用がかかりますか？</div><p class="a">機能によって異なります。AI Gatewayの基本機能とGuardrailsの利用自体は無料です。ただ、Guardrailsの評価にはWorkers AIのトークン量に応じた従量課金が発生します。AI Security for Appsは、2026年8月時点ではエンドポイントの自動発見が全プラン無料です。本格的な検知・緩和機能は、Enterpriseプランの有償アドオンです。正確な金額は、公式の最新の料金ページで確認してください。</p></div>
+<div class="faq"><div class="q">導入にはどのくらいの費用がかかりますか？</div><p class="a">利用する機能と評価モデルで異なります。AI Security for Appsの検知フィールドは、2026年10月3日に確認した公式資料ではEnterpriseの有償追加機能です。Guardrailsの評価料金も、対応モデルと契約条件を確認してください。</p></div>
 
 <h2 id="s6">次の一歩は何から始めればよいですか？</h2>
-<p class="answer">2つの機能を「ログ・フラグ」設定で有効にし、アプリ側の権限設計の見直しも始めます。</p>
+<p class="answer">対象機能の契約と対応範囲を確認し、まず検知を記録し、アプリ側の権限設計の見直しも始めます。</p>
 <ol>
-<li>2つの機能を「ログ・フラグ」設定で有効にし、1〜2週間観察します。</li>
+<li>対象機能の契約と対応範囲を確認し、まず検知を記録し、1〜2週間観察します。</li>
 <li>LLMエージェントに渡しているツールの権限と、承認が必要な操作を洗い出します。</li>
 <li>LLMの応答を、次の処理へ渡している箇所を確認します。</li>
 </ol>
+<h2 id="sources">この記事は、どの資料をもとにしていますか？</h2><p>2026年10月3日に掲載分類、検査対象、提供条件を確認しました。自社アプリでの検知率や導入効果を測定した記事ではありません。1〜2週間の観察期間は編集部の運用提案です。</p><ul class="src-list"><li><a href="https://genai.owasp.org/llm-top-10/" target="_blank" rel="noopener">OWASP：Top 10 for LLMs and Gen AI Apps（2025版）</a></li><li><a href="https://developers.cloudflare.com/ai-gateway/features/guardrails/" target="_blank" rel="noopener">Cloudflare：AI Gateway Guardrails</a></li><li><a href="https://developers.cloudflare.com/waf/detections/ai-security-for-apps/" target="_blank" rel="noopener">Cloudflare：AI Security for Apps</a></li></ul>
 </article>
 </div>
 
@@ -240,7 +162,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
   <div>
     <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div>
-    <p>上場企業を含む37社・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
+    <p class="a">上場企業を含む37社・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
   </div>
 </div></div>
 

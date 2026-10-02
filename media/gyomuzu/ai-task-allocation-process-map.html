@@ -176,7 +176,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <p>ここからは、TechWorkerの営業の業務図を例にします。営業の「新規のお客さんとの商談」は、4つのワークフローに分けています。1回目商談、2回目商談、3回目商談、契約です。次の図は、そのうち「1回目商談」です。</p>
 <p>この図は、CompanyMap AIの画面で作成した業務図をもとにしています。CompanyMap AIは、AIの聞き取りで部署の業務フローを業務図にするサービスです。</p>
 <p>図の見方です。横の帯は担当で、お客さん、営業、AIの3つがあります。左から右へ、仕事が進みます。各工程の上の札が、任せ方を表します。</p>
-<figure class="fig-inline"><img src="figs/ai-task-allocation-process-map-1.png" alt="TechWorker営業の1回目商談の業務図。お客さん、営業、AIの3つの担当に、9つの工程が並ぶ。AIが自動で行う工程は2つ、AIが下書きする工程は3つ、人が行う工程は4つ。" loading="lazy" width="1200" height="778"><figcaption>出典：CompanyMap AIで作成したTechWorker営業の「1回目商談」の業務図（第3版・AIを入れた後）をもとに作図。</figcaption></figure>
+<figure class="fig-inline"><a href="figs/ai-task-allocation-process-map-1.png" target="_blank" rel="noopener"><img src="figs/ai-task-allocation-process-map-1.png" alt="TechWorker営業の1回目商談の業務図。お客さん、営業、AIの3つの担当に、9つの工程が並ぶ。AIが自動で行う工程は2つ、AIが下書きする工程は3つ、人が行う工程は4つ。" loading="lazy" width="1200" height="681"></a><figcaption>出典：CompanyMap AIで作成したTechWorker営業の「1回目商談」の業務図（第3版・AIを入れた後）をもとに作図。</figcaption></figure>
 <p>準備の段階では、AIが3つの工程を進めます。</p>
 <p>工程1「CRM照合・BANT算出」は、AIが自動で行います。CRM（顧客情報を管理するシステム）から会社を照合します。BANT（予算、決裁者、必要性、導入時期の4点で見込みを測る枠組み）のスコアも出します。この工程のAIがやらないことは、「CRMの登録内容は書き換えない」です。</p>
 <p>工程2「企業リサーチ」と工程3「商談準備ページを作成」は、AIが下書きです。使うシステムは、Web検索とNotionです。</p>
@@ -198,7 +198,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <li><strong>工程ごとに、間違えたときの影響を見ます。</strong>見る点は3つです。お客さんに届くか。元に戻せるか。判断の基準を文章で書き切れるか。たとえば社内の集計は、間違えても直せます。お客さんへの送信や台帳の書き換えは、元に戻しにくい工程です。</li>
 <li><strong>札を付けます。</strong>次の図のとおり、質問は2つです。手順と判断の基準を書き切れない工程は、「人が行う」にします。書き切れても、間違いがお客さんに届く、または元に戻せない工程は、「AIが下書き・人が確認」にします。どちらにも当てはまらない工程が、「AIが自動で」の候補です。</li>
 </ol>
-<figure class="fig-inline"><img src="figs/ai-task-allocation-process-map-2.png" alt="工程の札を決める2つの質問。手順と判断の基準を書き切れなければ人が行う。間違いが届く、または戻せなければAIが下書き・人が確認。どちらでもなければAIが自動で。" loading="lazy" width="1200" height="797"></figure>
+<figure class="fig-inline"><a href="figs/ai-task-allocation-process-map-2.png" target="_blank" rel="noopener"><img src="figs/ai-task-allocation-process-map-2.png" alt="工程の札を決める2つの質問。手順と判断の基準を書き切れなければ人が行う。間違いが届く、または戻せなければAIが下書き・人が確認。どちらでもなければAIが自動で。" loading="lazy" width="1200" height="797"></a></figure>
 <ol start="4">
 <li><strong>AIがやらないことを、工程ごとに書きます。</strong>「対象は操作しない」の形で1行にします。TechWorkerの図では、工程1に「CRMの登録内容は書き換えない」と書きました。AIの手が届く範囲を、工程の隣で見えるようにします。</li>
 <li><strong>使うシステムと、見直す日を決めます。</strong>工程ごとに使うシステムを書くと、AIに渡す権限の範囲が見えます。TechWorkerの図には、「商談ごと・週次で改善」と書いています。週次の改善集計が、札を見直す機会にもなります。</li>
@@ -210,7 +210,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
 <h2 id="s4">うまくいかない例には、どんなものがありますか？</h2>
 <p class="answer">よくある失敗は、AIがやらないことを書かない、確認者を決めない、札を見直さない、の3つです。</p>
-<figure class="fig-inline"><img src="figs/ai-task-allocation-process-map-3.png" alt="任せる工程の決め方でよくある3つの失敗と、その直し方の表。" loading="lazy" width="1200" height="545"></figure>
+<figure class="fig-inline"><a href="figs/ai-task-allocation-process-map-3.png" target="_blank" rel="noopener"><img src="figs/ai-task-allocation-process-map-3.png" alt="任せる工程の決め方でよくある3つの失敗と、その直し方の表。" loading="lazy" width="1200" height="546"></a></figure>
 <ul>
 <li><strong>AIがやらないことを書かない。</strong>札だけを付けると、「どこまで触ってよいか」が人によって変わります。工程1のように、やらないことを1行で書きます。</li>
 <li><strong>確認する人も札も決めずに、下書きだけ任せる。</strong>AIの出力が、そのままお客さんに届きます。「誰が」「何を見て」確認するかを、工程ごとに決めます。確認が形だけの承認にならないよう、自動化バイアスにも注意します。</li>

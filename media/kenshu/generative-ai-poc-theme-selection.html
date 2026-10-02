@@ -2,38 +2,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}gtag('config','G-3V34NWXVCJ');</script><script src="/assets/tw-track.js" defer></script><script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width,initial-scale=1"><title>生成AIのPoCテーマの選び方｜「便利そう」ではなく、業務・データ・確認負荷で絞る — TechWorker</title><meta name="description" content="生成AIのPoCテーマは、業務価値・データ準備度・確認負荷・実行意欲の4軸で絞ります。最初のPoCで何を対象にするか迷う推進担当や現場担当の方に向けて、外すテーマの決め方、4軸での比較、成功・停止・拡大の条件、次の部門への渡し方を解説します。"><link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg"><link rel="canonical" href="https://techworker.co.jp/media/kenshu/generative-ai-poc-theme-selection">
 <meta property="og:type" content="article"><meta property="og:title" content="生成AIのPoCテーマの選び方｜「便利そう」ではなく、業務・データ・確認負荷で絞る"><meta property="og:description" content="生成AIのPoCテーマを4軸で絞る方法を解説します。外すテーマの決め方、最難関工程の試し方、成功・停止・拡大の条件、次の部門への渡し方が分かります。"><meta property="og:image" content="https://techworker.co.jp/media/kenshu/covers/generative-ai-poc-theme-selection.png"><meta property="og:url" content="https://techworker.co.jp/media/kenshu/generative-ai-poc-theme-selection"><meta property="og:site_name" content="TechWorker"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://techworker.co.jp/media/kenshu/covers/generative-ai-poc-theme-selection.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../article.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "生成AIのPoCテーマの選び方｜「便利そう」ではなく、業務・データ・確認負荷で絞る", "description": "生成AIのPoCテーマは、業務価値・データ準備度・確認負荷・実行意欲の4軸で絞ります。最初のPoCで何を対象にするか迷う推進担当や現場担当の方に向けて、外すテーマの決め方、4軸での比較、成功・停止・拡大の条件、次の部門への渡し方を解説します。", "datePublished": "2026-09-17", "dateModified": "2026-10-02", "inLanguage": "ja", "image": "https://techworker.co.jp/media/kenshu/covers/generative-ai-poc-theme-selection.png", "author": {"@type": "Person", "name": "古野光太朗", "url": "https://techworker.co.jp/company.html"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/generative-ai-poc-theme-selection"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},{"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},{"@type":"ListItem","position":3,"name":"AI研修・導入ラボ","item":"https://techworker.co.jp/media/kenshu/"},{"@type":"ListItem","position":4,"name":"生成AIのPoCテーマの選び方｜「便利そう」ではなく、業務・データ・確認負荷で絞る","item":"https://techworker.co.jp/media/kenshu/generative-ai-poc-theme-selection"}]}</script><script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "生成AIのPoCでは、どんなテーマを避けるべきですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "自動送信、採否の自動判定、確定処理、権限変更など、取り消しにくい処理は、小さな検証に向きません。データの所在や権限が不明な業務も、最初の候補から外して止めます。まず現在の繰り返し手順を書き出します。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "PoCのテーマは何を基準に比べればよいですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "業務価値、データ準備度、確認負荷、実行意欲の4つです。合計点だけで並べません。弱い軸を今回の検証で改善するのか、前提条件として別に解くのかを、候補ごとに記録します。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "PoCが終わったあとの判断はどう決めますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "開始前に決めておきます。価値と確認手順が両立した業務は、対象を限定して拡大します。データや権限が未整備なら、整えて再試行します。確認負荷が許容できなければ、範囲を狭めるか停止します。"
-      }
-    }
-  ]
-}
-</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../article.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "生成AIのPoCテーマの選び方｜「便利そう」ではなく、業務・データ・確認負荷で絞る", "description": "生成AIのPoCテーマは、業務価値・データ準備度・確認負荷・実行意欲の4軸で絞ります。最初のPoCで何を対象にするか迷う推進担当や現場担当の方に向けて、外すテーマの決め方、4軸での比較、成功・停止・拡大の条件、次の部門への渡し方を解説します。", "datePublished": "2026-09-17", "dateModified": "2026-10-03", "inLanguage": "ja", "image": "https://techworker.co.jp/media/kenshu/covers/generative-ai-poc-theme-selection.png", "author": {"@type": "Person", "name": "古野光太朗", "url": "https://techworker.co.jp/company.html"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/generative-ai-poc-theme-selection"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},{"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},{"@type":"ListItem","position":3,"name":"AI研修・導入ラボ","item":"https://techworker.co.jp/media/kenshu/"},{"@type":"ListItem","position":4,"name":"生成AIのPoCテーマの選び方｜「便利そう」ではなく、業務・データ・確認負荷で絞る","item":"https://techworker.co.jp/media/kenshu/generative-ai-poc-theme-selection"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "生成AIのPoCでは、どんなテーマを避けるべきですか？", "acceptedAnswer": {"@type": "Answer", "text": "自動送信、採否の自動判定、確定処理、権限変更など、取り消しにくい処理は、小さな検証に向きません。データの所在や権限が不明な業務も、最初の候補から外して止めます。まず現在の繰り返し手順を書き出します。"}}, {"@type": "Question", "name": "PoCのテーマは何を基準に比べればよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "業務価値、データ準備度、確認負荷、実行意欲の4つです。合計点だけで並べません。弱い軸を今回の検証で改善するのか、前提条件として別に解くのかを、候補ごとに記録します。"}}, {"@type": "Question", "name": "PoCが終わったあとの判断はどう決めますか？", "acceptedAnswer": {"@type": "Answer", "text": "開始前に決めておきます。価値と確認手順が両立した業務は、対象を限定して拡大します。データや権限が未整備なら、整えて再試行します。確認負荷が許容できなければ、範囲を狭めるか停止します。"}}]}</script>
 </head>
 <body><div class="progress" id="progress"></div><nav id="nav">
   <a href="index.html" class="logo">AI研修・導入<i>ラボ</i></a>
@@ -51,7 +20,7 @@
   <a href="index.html#about">このメディアについて</a>
   <a href="../../training.html" class="m-cta">無料相談を申し込む</a>
 </div>
-<header class="art-head"><nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a></nav><div class="kicker">導入と業務への組み込み</div><h1>生成AIのPoCテーマの選び方｜「便利そう」ではなく、業務・データ・確認負荷で絞る</h1><p class="dek">生成AIのPoCテーマは、業務価値・データ準備度・確認負荷・実行意欲の4軸で絞ります。<br>最初のPoCで何を対象にするか迷う、推進担当や現場担当の方に向けた記事です。<br>外すテーマの決め方、4軸での比較、成功・停止・拡大の条件、次の部門への渡し方が分かります。</p><div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.09.17</span><span class="dot">·</span><span>最終更新 2026.10.02</span><span class="dot">·</span><span>一次情報 7件</span></div></header><img class="daily-cover" src="covers/generative-ai-poc-theme-selection.png" alt="生成AIのPoCテーマを絞る流れ。推進担当・現場担当が、外す案を決める→四つの軸で比べる→判断条件を置く→難しい工程を試す→広げるか決めるの順に進める業務図" width="1200" height="630">
+<header class="art-head"><nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a></nav><div class="kicker">導入と業務への組み込み</div><h1>生成AIのPoCテーマの選び方｜「便利そう」ではなく、業務・データ・確認負荷で絞る</h1><p class="dek">生成AIのPoCテーマは、業務価値・データ準備度・確認負荷・実行意欲の4軸で絞ります。<br>最初のPoCで何を対象にするか迷う、推進担当や現場担当の方に向けた記事です。<br>外すテーマの決め方、4軸での比較、成功・停止・拡大の条件、次の部門への渡し方が分かります。</p><div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.09.17</span><span class="dot">·</span><span>最終更新 2026.10.03</span><span class="dot">·</span><span>一次情報 7件</span></div></header><img class="daily-cover" src="covers/generative-ai-poc-theme-selection.png" alt="生成AIのPoCテーマを絞る流れ。推進担当・現場担当が、外す案を決める→四つの軸で比べる→判断条件を置く→難しい工程を試す→広げるか決めるの順に進める業務図" width="1200" height="630">
 <div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div><a href="#s1">生成AIのPoCでは、どのテーマを選べばよいですか？</a>
       <a href="#s2">テーマは、どんな手順で絞ればよいですか？</a>
       <a href="#s3">PoCでは、どんな失敗が起きやすいですか？</a>
@@ -65,7 +34,8 @@
 <p>PoCは、価値を出せる業務と、人の確認が不可欠な境界を知る実験です。取り消しにくい処理は候補から外します。根拠資料の選別や例外の差戻しなど、いちばん難しい工程を小さく試して、本番での価値を見極めます。成功、停止、拡大の条件は、開始前に決めます。</p>
 
 <h2 id="s2">テーマは、どんな手順で絞ればよいですか？</h2>
-<p class="answer">外すテーマを決め、4軸で比べ、最難関の工程を試し、判断条件を置き、広げるか決めます。</p>
+<p class="answer">外すテーマを決め、4軸で比べ、判定条件を置いてから最難関の工程を試し、結果から次の計画を決めます。</p>
+    <figure class="fig-inline"><a href="figs/generative-ai-poc-theme-selection-1.png" target="_blank" rel="noopener"><img src="figs/generative-ai-poc-theme-selection-1.png" alt="PoC後の行き先を開始前に決める。本文の判断や記録項目を示します。" width="1200" height="712" loading="lazy" decoding="async"></a><figcaption>TechWorker作成：本文に基づく確認・判断の手順です。</figcaption></figure>
 <p><strong>手順1：最初に外すテーマを決めます。</strong>取り消しにくい処理を、最初の候補から外します。自動送信、採否の自動判定、確定処理、権限変更は、小さな検証に向きません。データの所在・権限が不明な業務も止めます。</p>
 <p>AI事業者ガイドライン第1.2版は、利用者を含め、ガバナンス、安全性、プライバシーを共通指針として整理しています[1]。PoCでも、速さと確認責任を分けます。</p>
 <p>候補を集めるときは、現在の業務で繰り返している手順を書き出します。依頼を受ける、資料を探す、下書きを作る、確認して送る、といった単位です。AIに任せる部分と、人が確定する部分を混ぜずに済みます。担当者の印象だけで決めず、入力、参照資料、承認者、例外処理を一つずつ確認します。</p>
@@ -80,10 +50,8 @@
 </ol>
 <p>Microsoftも、選定時に能力、データ、スキル、コストを確認するよう示しています[2]。4軸はその翻訳で、公式の採点表ではありません。</p>
 <aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">生成AI活用事例集を受け取る</div><div class="mc-d">TechWorkerが支援した企業の生成AI活用事例をまとめた資料です。記事のテーマと合わせてご覧ください。</div></div><a href="../../library/?doc=cases&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=generative-ai-poc-theme-selection&amp;utm_content=mid" class="btn" data-cta="generative-ai-poc-theme-selection-mid">事例集を受け取る <i>&rarr;</i></a></aside>
-<p><strong>手順3：いちばん難しい工程を、小さく試します。</strong>簡単な要約だけでは、本番価値は分かりません。根拠資料の選別、例外の差戻し、入力可否を試します。Microsoftは、投資前に最難関の工程を検証することを勧めています[3]。</p>
-<p>問い合わせ回答の下書きなら、正しい文案を生成できたかで終わらせません。参照すべき社内資料を選べたか、資料にないことを断定しなかったか、例外を誰へ渡すかまで確認します。要約業務なら、数字・固有名詞・期限を原文へ戻って確認できるかを見ます。</p>
-<p>研修も、対象業務を匿名化し、入力範囲、原資料との照合、判断不能時の相談を、一つの演習にします。対象者には、実際にその業務を担い、例外や繁忙期を知る人を含めます。研修中に出た質問、止まった手順、判断が割れた例は、教材・利用ルール・データ整備のどこへ戻すかを分類します。</p>
-<p><strong>手順4：成功・停止・拡大の条件を、開始前に置きます。</strong>「根拠を確認できない出力は採用しない」「判断不能時は有人レビューへ渡す」と決めます。NISTは、利用文脈、ガバナンス、評価、管理を扱っています[4]。記録と例外を残します。</p>
+<p><strong>手順3：成功・停止・拡大の条件を、開始前に置きます。</strong>「根拠を確認できない出力は採用しない」「判断不能時は有人レビューへ渡す」と決めます。NISTは、利用文脈、ガバナンス、評価、管理を扱っています[4]。記録と例外を残します。</p>
+<p>問い合わせ下書きの判定票には、参照資料を選べたか、資料にない条件を補わなかったか、確認者の負荷が許容できたかを残します。価値があっても権限が未整備なら、成功として広げず、整備へ戻します。</p>
 <p>終了時の選択肢は、成功か失敗かの二択にしません。</p>
 <ul>
 <li>価値と確認手順が両立した業務は、対象部門を限定して拡大します。</li>
@@ -91,7 +59,10 @@
 <li>確認負荷や影響が許容できない場合は、利用範囲を狭めるか停止します。</li>
 </ul>
 <p>Google掲載のXero事例では、候補ツールを四段階評価し、四仮説を60日間、8部門の250人で検証しています[5]。仮説と評価条件を、先に置いた例です。</p>
-<p><strong>手順5：結果を、研修と導入の反復にします。</strong>価値が確認できたら広げ、準備が弱ければ整備へ戻り、確認負荷が高ければ範囲を狭めます。AIと人の判断の境界は自明ではありません[6]。</p>
+<p><strong>手順4：いちばん難しい工程を、小さく試します。</strong>簡単な要約だけでは、本番価値は分かりません。根拠資料の選別、例外の差戻し、入力可否を試します。Microsoftは、投資前に最難関の工程を検証することを勧めています[3]。</p>
+<p>問い合わせ回答の下書きなら、正しい文案を生成できたかで終わらせません。参照すべき社内資料を選べたか、資料にないことを断定しなかったか、例外を誰へ渡すかまで確認します。要約業務なら、数字・固有名詞・期限を原文へ戻って確認できるかを見ます。</p>
+<p>研修も、対象業務を匿名化し、入力範囲、原資料との照合、判断不能時の相談を、一つの演習にします。対象者には、実際にその業務を担い、例外や繁忙期を知る人を含めます。研修中に出た質問、止まった手順、判断が割れた例は、教材・利用ルール・データ整備のどこへ戻すかを分類します。</p>
+<p><strong>手順5：検証結果を、次の研修と導入計画に反映します。</strong>価値が確認できたら広げ、準備が弱ければ整備へ戻り、確認負荷が高ければ範囲を狭めます。AIと人の判断の境界は自明ではありません[6]。</p>
 <p>次の部門へ渡すのは、成功したプロンプト集だけではありません。対象業務、入力してよい情報、参照した原資料、確認者、例外、停止条件を、短い実施記録として渡します。別部門は、自分たちの業務差分だけを確かめられます。</p>
 
 <h2 id="s3">PoCでは、どんな失敗が起きやすいですか？</h2>

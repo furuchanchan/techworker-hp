@@ -30,7 +30,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../article.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Claude Codeの社内展開｜社内データの扱い・設定配布・ルール雛形【2026】", "description": "Claude Codeの社内展開は、契約形態・データ取扱い・設定配布・利用ルール・監査・展開順序の6つを順に決めて設計します。forceLoginOrgUUIDなどの設定、社内ルール雛形、展開前チェックリストを整理します。", "datePublished": "2026-07-29", "dateModified": "2026-10-02", "inLanguage": "ja", "image": "https://techworker.co.jp/media/kenshu/covers/claude-code-shanai-tenkai.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/claude-code-shanai-tenkai"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Claude Codeの社内展開｜社内データの扱い・設定配布・ルール雛形【2026】", "description": "Claude Codeの社内展開は、契約形態・データ取扱い・設定配布・利用ルール・監査・展開順序の6つを順に決めて設計します。forceLoginOrgUUIDなどの設定、社内ルール雛形、展開前チェックリストを整理します。", "datePublished": "2026-07-29", "dateModified": "2026-10-03", "inLanguage": "ja", "image": "https://techworker.co.jp/media/kenshu/covers/claude-code-shanai-tenkai.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/claude-code-shanai-tenkai"}}</script>
 <script type="application/ld+json">
 {
   "@context":"https://schema.org","@type":"BreadcrumbList",
@@ -42,46 +42,7 @@
   ]
 }
 </script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "社員がClaude Codeに入力したソースコードは、AIモデルの学習に使われますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "商用プラン（Team・Enterprise・APIなど）では、組織がオプトインしない限り、コードやプロンプトを学習に使わないとAnthropicが明記しています。個人向けプランには学習利用を許可する設定があるため、業務利用は会社契約に統一します。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "全社員のClaude Codeに同じセキュリティ設定を強制できますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "できます。端末に配布するmanaged-settings.jsonは、優先順位が最上位です。ユーザー側の設定では上書きできません。MDMなどで配布します。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "利用状況やコストの監査ログは取得できますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "取得できます。OpenTelemetry形式で、セッション数・トークン使用量・コストなどを自社の監視基盤へ出力できます。Team・Enterpriseには、管理者向けの分析ダッシュボードもあります。メトリクスにコードやプロンプトの本文は含まれません。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "社員が個人アカウントで業務利用する「野良利用」はどう防ぎますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "管理ポリシー設定のforceLoginMethodとforceLoginOrgUUIDを使います。自社組織以外でのログインを制限できます。あわせて、会社契約アカウントの発行、利用ルールの明文化、研修による周知を進めると、実効性が上がります。"
-      }
-    }
-  ]
-}
-</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "社員がClaude Codeに入力したソースコードは、AIモデルの学習に使われますか？", "acceptedAnswer": {"@type": "Answer", "text": "商用プラン（Team・Enterprise・APIなど）では、組織がオプトインしない限り、コードやプロンプトを学習に使わないとAnthropicが明記しています。個人向けプランには学習利用を許可する設定があるため、業務利用は会社契約に統一します。"}}, {"@type": "Question", "name": "全社員のClaude Codeに同じセキュリティ設定を強制できますか？", "acceptedAnswer": {"@type": "Answer", "text": "できます。端末に配布するmanaged-settings.jsonは、優先順位が最上位です。ユーザー側の設定では上書きできません。MDMなどで配布します。"}}, {"@type": "Question", "name": "利用状況やコストの監査ログは取得できますか？", "acceptedAnswer": {"@type": "Answer", "text": "取得できます。OpenTelemetry形式で、セッション数・トークン使用量・コストなどを自社の監視基盤へ出力できます。Team・Enterpriseには、管理者向けの分析ダッシュボードもあります。メトリクスにコードやプロンプトの本文は含まれません。"}}, {"@type": "Question", "name": "社員が個人アカウントで業務利用する「野良利用」はどう防ぎますか？", "acceptedAnswer": {"@type": "Answer", "text": "管理ポリシー設定のforceLoginMethodとforceLoginOrgUUIDを使います。自社組織以外でのログインを制限できます。あわせて、会社契約アカウントの発行、利用ルールの明文化、研修による周知を進めると、実効性が上がります。"}}]}</script>
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -118,7 +79,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <h1>Claude Codeの社内展開｜セキュリティ・管理機能・配布設計</h1>
   <p class="dek">Claude Codeの社内展開は、6つの論点を順に決めれば、抜けなく設計できます。<br>全社への展開を任された、情シスの方に向けた記事です。<br>データの取扱い、設定の強制配布、監査、段階展開の手順が、Anthropic公式ドキュメント（2026年8月時点）の仕様で分かります。</p>
   <div class="a-meta">
-    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.29</span><span class="dot">·</span><span>最終更新 2026.10.02</span><span class="dot">·</span><span>読了 9分</span>
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.29</span><span class="dot">·</span><span>最終更新 2026.10.03</span><span class="dot">·</span><span>読了 9分</span>
   </div>
 </header>
 
@@ -210,9 +171,9 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <div class="callout"><p>本記事の機能名と仕様は、Anthropic公式ドキュメント（code.claude.com/docs）で確認できた内容だけです（2026年8月時点）。仕様は更新されるため、展開時は最新の公式ドキュメントを確認してください。</p></div>
 
 <h2 id="s2">TechWorkerは、Claude Codeの利用状況をどう見ていますか？</h2>
-<p class="answer">1回の応答ごとに推定額を画面に出し、前日の利用額を毎朝社内のSlackに届けています。</p>
-<p>TechWorkerでは、代表の古野が毎日Claude Codeを使っています。用途は、自社サービスの開発、メディアの改修、営業資料の作成、毎朝の自動の集計です。</p>
-<p>契約は、個人向けプランのMax 20x（月200ドル）です。使用量の上限を超えた分を従量で払う設定（extra usage）も有効にしています。</p>
+<p class="answer">2026年9月14日〜30日の記録では、API料金に換算した利用量を日別に把握していました。</p>
+<p>2026年9月14日〜30日の記録では、TechWorker代表の古野がClaude Codeを使っていました。用途は、自社サービスの開発、メディアの改修、営業資料の作成、毎朝の自動の集計です。</p>
+<p>この期間の契約は、個人向けプランのMax 20x（月200ドル）で、超過分の従量設定（extra usage）も有効でした。</p>
 <p>利用量は、日によって大きく変わります。代表の端末の利用記録を集計ツール（ccusage）でAPI料金に換算すると、次のとおりでした。</p>
 <ul>
 <li>2026年9月14日〜30日の17日間で、約3,000ドル分です。</li>
@@ -220,7 +181,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <li>少ない日は約4ドル分、多い日は約850ドル分でした。200倍以上の開きです。</li>
 </ul>
 <p>換算額は、実際の請求額とは異なります。定額の範囲内の利用には、追加の支払いは発生しません。</p>
-<p>費用の見え方は、次のように整えています。1回の応答ごとに、その回と累計の推定額を画面の下に表示します。前日の利用額は、毎朝社内のSlackに届きます。</p>
+<p>料金表示とSlack通知は、当時の運用例です。現在の運用を示す記録ではありません。組織への展開では、個人向け契約の記録と、会社契約の管理者レポートを区別します。</p>
 <p>社内展開でも、利用状況を数字で追える状態が必要です。公式の監査手段は、手順4で整理します。</p>
 
 <aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">Claude Code 企業導入 セキュリティ＆セットアップ実践ガイド</div><div class="mc-d">3つのリスク、5つの設計原則、10項目のチェックリストを、情シスの審査に出せる形でまとめた資料です。</div></div><a href="../../library/?doc=security&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=claude-code-shanai-tenkai&amp;utm_content=mid" class="btn" data-cta="claude-code-shanai-tenkai-mid">ガイドを受け取る <i>&rarr;</i></a></aside>
@@ -237,7 +198,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <li><strong>サーバー側の保持：</strong>標準30日です。Zero Data Retention（ZDR）は、Enterprise向けに適格性を確認したうえで、組織単位で有効化します。標準のEnterpriseには、自動では含まれません。</li>
 <li><strong>端末のローカル保存：</strong>セッション記録が~/.claude/projects/に、既定で30日保存されます。保存期間は設定（cleanupPeriodDays）で調整できます。</li>
 <li><strong>フィードバック送信：</strong>/feedbackで送った会話履歴は、5年間保持されます。環境変数で無効化できます。</li>
-<li><strong>運用テレメトリ：</strong>コード・プロンプト・ファイルパスは含まれません。環境変数でオプトアウトできます。</li>
+<li><strong>運用情報の送信（テレメトリ）：</strong>コード・プロンプト・ファイルパスは含まれません。環境変数で送信を停止できます。</li>
 </ul>
 <p>ここで、ZDRの要否と機密リポジトリの扱いを、法務・セキュリティと合意します。</p>
 <h3>手順2　標準設定を作り、管理ポリシーを配布する</h3>

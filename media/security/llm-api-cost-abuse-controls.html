@@ -1,37 +1,8 @@
 <!DOCTYPE html><html lang="ja" class="no-js" data-media="security"><head><meta charset="UTF-8">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}gtag('config','G-3V34NWXVCJ');</script><script src="/assets/tw-track.js" defer></script><script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>LLM APIの高額請求を防ぐ｜rate limit・spend limit・tool予算を分ける【2026】 — TechWorker</title><meta name="description" content="LLM APIの高額請求は、request数、実費、tool実行の3つを別々の予算にして防ぎます。Cloudflare AI Gatewayのrate limitとspend limitの適用範囲と限界、上限のキーの決め方、429の設計を整理します。"><link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg"><link rel="canonical" href="https://techworker.co.jp/media/security/llm-api-cost-abuse-controls">
-<meta property="og:type" content="article"><meta property="og:title" content="LLM APIの高額請求を防ぐ｜rate limit・spend limit・tool予算を分ける【2026】"><meta property="og:description" content="LLM APIの高額請求は、request数、実費、tool実行の3つを別々の予算にして防ぎます。Cloudflare AI Gatewayのrate limitとspend limitの適用範囲と限界、上限のキーの決め方、429の設計を整理します。"><meta property="og:image" content="https://techworker.co.jp/media/security/covers/llm-api-cost-abuse-controls.png"><meta property="og:url" content="https://techworker.co.jp/media/security/llm-api-cost-abuse-controls"><meta property="og:site_name" content="TechWorker"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://techworker.co.jp/media/security/covers/llm-api-cost-abuse-controls.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../article.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "LLM APIの高額請求を防ぐ｜rate limit・spend limit・tool予算を分ける【2026】", "description": "LLM APIの高額請求は、request数、実費、tool実行の3つを別々の予算にして防ぎます。Cloudflare AI Gatewayのrate limitとspend limitの適用範囲と限界、上限のキーの決め方、429の設計を整理します。", "datePublished": "2026-09-08", "dateModified": "2026-10-02", "inLanguage": "ja", "image": "https://techworker.co.jp/media/security/covers/llm-api-cost-abuse-controls.png", "author": {"@type": "Person", "name": "古野光太朗", "url": "https://techworker.co.jp/company.html"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/security/llm-api-cost-abuse-controls"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},{"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},{"@type":"ListItem","position":3,"name":"AIセキュリティ・ラボ","item":"https://techworker.co.jp/media/security/"},{"@type":"ListItem","position":4,"name":"LLM APIの高額請求を防ぐ｜rate limit・spend limit・tool予算を分ける【2026】","item":"https://techworker.co.jp/media/security/llm-api-cost-abuse-controls"}]}</script><script type="application/ld+json">{
- "@context": "https://schema.org",
- "@type": "FAQPage",
- "mainEntity": [
-  {
-   "@type": "Question",
-   "name": "rate limitだけで、LLM APIの高額請求を防げますか？",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "防げません。rate limitは、一定時間のrequest数を抑えます。長い入力や高価なmodelは、同じ回数でも消費が大きく異なります。入口のrate limit、token使用量のspend limit、tool回数のaction予算を重ねて設計します。"
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "利用者別の上限は、何をキーにして設けますか？",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "IPアドレスだけにせず、認証済みの利用者、テナント、アプリケーション、model、操作種別を組み合わせます。クライアントが任意のuser_idを名乗れる設計は、予算回避やなりすましを招きます。識別子は、認証済みのserver側の情報から設定します。"
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "上限に達したときは、より安いmodelへ自動で切り替えてよいですか？",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "要約や候補生成のように品質条件を決めた処理に限ります。契約文書、顧客への外部送信、次の操作が変わる分類では、モデル変更が品質と説明責任を変えます。許す操作を業務側と先に合意し、理由を利用者へ返して停止する設計を基本にします。"
-   }
-  }
- ]
-}</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>LLM APIの高額請求を防ぐ｜rate limit・spend limit・tool予算を分ける【2026】 — TechWorker</title><meta name="description" content="LLM APIの高額請求は、request数、推定費用、tool実行の3つを別々の予算にして防ぎます。Cloudflare AI Gatewayのrate limitとspend limitの適用範囲と限界、上限のキーの決め方、429の設計を整理します。"><link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg"><link rel="canonical" href="https://techworker.co.jp/media/security/llm-api-cost-abuse-controls">
+<meta property="og:type" content="article"><meta property="og:title" content="LLM APIの高額請求を防ぐ｜rate limit・spend limit・tool予算を分ける【2026】"><meta property="og:description" content="LLM APIの高額請求は、request数、推定費用、tool実行の3つを別々の予算にして防ぎます。Cloudflare AI Gatewayのrate limitとspend limitの適用範囲と限界、上限のキーの決め方、429の設計を整理します。"><meta property="og:image" content="https://techworker.co.jp/media/security/covers/llm-api-cost-abuse-controls.png"><meta property="og:url" content="https://techworker.co.jp/media/security/llm-api-cost-abuse-controls"><meta property="og:site_name" content="TechWorker"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://techworker.co.jp/media/security/covers/llm-api-cost-abuse-controls.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../article.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "LLM APIの高額請求を防ぐ｜rate limit・spend limit・tool予算を分ける【2026】", "description": "LLM APIの高額請求は、request数、推定費用、tool実行の3つを別々の予算にして防ぎます。Cloudflare AI Gatewayのrate limitとspend limitの適用範囲と限界、上限のキーの決め方、429の設計を整理します。", "datePublished": "2026-09-08", "dateModified": "2026-10-03", "inLanguage": "ja", "image": "https://techworker.co.jp/media/security/covers/llm-api-cost-abuse-controls.png", "author": {"@type": "Person", "name": "古野光太朗", "url": "https://techworker.co.jp/company.html"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/security/llm-api-cost-abuse-controls"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},{"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},{"@type":"ListItem","position":3,"name":"AIセキュリティ・ラボ","item":"https://techworker.co.jp/media/security/"},{"@type":"ListItem","position":4,"name":"LLM APIの高額請求を防ぐ｜rate limit・spend limit・tool予算を分ける【2026】","item":"https://techworker.co.jp/media/security/llm-api-cost-abuse-controls"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "rate limitだけで、LLM APIの高額請求を防げますか？", "acceptedAnswer": {"@type": "Answer", "text": "防げません。rate limitは、一定時間のrequest数を抑えます。長い入力や高価なmodelは、同じ回数でも消費が大きく異なります。入口のrate limit、token使用量のspend limit、tool回数のaction予算を重ねて設計します。"}}, {"@type": "Question", "name": "利用者別の上限は、何をキーにして設けますか？", "acceptedAnswer": {"@type": "Answer", "text": "IPアドレスだけにせず、認証済みの利用者、テナント、アプリケーション、model、操作種別を組み合わせます。クライアントが任意のuser_idを名乗れる設計は、予算回避やなりすましを招きます。識別子は、認証済みのserver側の情報から設定します。"}}, {"@type": "Question", "name": "上限に達したときは、より安いmodelへ自動で切り替えてよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "要約や候補生成のように品質条件を決めた処理に限ります。契約文書、顧客への外部送信、次の操作が変わる分類では、モデル変更が品質と説明責任を変えます。許す操作を業務側と先に合意し、理由を利用者へ返して停止する設計を基本にします。"}}]}</script>
 </head>
 <body><div class="progress" id="progress"></div><nav id="nav">
   <a href="index.html" class="logo">AIセキュリティ<i>ラボ</i></a>
@@ -49,12 +20,12 @@
   <a href="index.html#about">このメディアについて</a>
   <a href="../../contact.html" class="m-cta">無料相談を申し込む</a>
 </div>
-<header class="art-head"><nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIセキュリティ・ラボ</a></nav><div class="kicker">導入審査・調達・コスト</div><h1>LLM APIの高額請求を防ぐ｜rate limit・spend limit・tool予算を分ける【2026】</h1><p class="dek">LLM APIの高額請求は、request数、実費、tool実行の3つを別々の予算にして防ぎます。<br>生成AIの機能を社内外へ出す、開発やセキュリティの担当者の悩みに答えます。<br>rate limit、spend limit、tool予算の役割と限界、上限のキーの決め方が分かります。</p><div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.09.08</span><span class="dot">·</span><span>最終更新 2026.10.02</span><span class="dot">·</span><span>一次情報 6件</span></div></header><img class="daily-cover" src="covers/llm-api-cost-abuse-controls.png" alt="LLM APIの高額請求を三つの予算で抑える。request・金額・tool実行を別々に制御する" width="1200" height="630">
-<div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div><a href="#s1">LLM APIの高額請求は、何を分けて制御すれば防げますか？</a><a href="#s2">自社ではAI利用料の見張りをどうしていますか？</a><a href="#s3">上限は、どんな手順で設計すればよいですか？</a><a href="#s4">うまくいかない例には、どんなものがありますか？</a><a href="#s5">3つの予算は、それぞれ何を抑えますか？</a><a href="#faq">よくある質問</a><a href="#s6">次の一歩は何から始めればよいですか？</a><a href="#s9">出典と確認範囲</a></div></nav><article class="art-body"><h2 id="s1">LLM APIの高額請求は、何を分けて制御すれば防げますか？</h2>
-<p class="answer">request数、実費、tool実行の3つを別の予算にして重ねます。rate limitだけでは防げません。</p>
+<header class="art-head"><nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIセキュリティ・ラボ</a></nav><div class="kicker">導入審査・調達・コスト</div><h1>LLM APIの高額請求を防ぐ｜rate limit・spend limit・tool予算を分ける【2026】</h1><p class="dek">LLM APIの高額請求は、request数、推定費用、tool実行の3つを別々の予算にして防ぎます。<br>生成AIの機能を社内外へ出す、開発やセキュリティの担当者の悩みに答えます。<br>rate limit、spend limit、tool予算の役割と限界、上限のキーの決め方が分かります。</p><div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.09.08</span><span class="dot">·</span><span>最終更新 2026.10.03</span><span class="dot">·</span><span>一次情報 6件</span></div></header><img class="daily-cover" src="covers/llm-api-cost-abuse-controls.png" alt="LLM APIの高額請求を三つの予算で抑える。request・金額・tool実行を別々に制御する" width="1200" height="630">
+<div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div><a href="#s1">LLM APIの高額請求は、何を分けて制御すれば防げますか？</a><a href="#s2">自社の過去記録では、AI利用量にどんな偏りがありましたか？</a><a href="#s3">上限は、どんな手順で設計すればよいですか？</a><a href="#s4">うまくいかない例には、どんなものがありますか？</a><a href="#s5">3つの予算は、それぞれ何を抑えますか？</a><a href="#faq">よくある質問</a><a href="#s6">次の一歩は何から始めればよいですか？</a><a href="#s9">出典と確認範囲</a></div></nav><article class="art-body"><h2 id="s1">LLM APIの高額請求は、何を分けて制御すれば防げますか？</h2>
+<p class="answer">呼び出し回数、推定費用、外部機能を実行する回数に、それぞれ上限を置きます。一定時間の呼び出し回数を制限するだけでは、高額請求を十分に防げません。</p>
 <p>生成AIの利用制御を「一分に何回まで」にしても、高額請求や可用性低下は十分に防げません。短い要求を大量に送る濫用と、長い入力や高価なモデルを使う処理は、同じ回数でも消費する資源が大きく異なるためです。何段ものtool（エージェントが呼び出す検索や送信などの機能）を動かす処理も同じです。</p>
 <p>OWASPは、過剰で制御されない推論を「Unbounded Consumption」として整理しています。DoS（サービスを止める攻撃）、経済的損失、model theft、サービス低下につながる脅威です。大きなcontext、長い出力、複数回のretry、agent loopは、少ない操作でも高い消費になり得ます。</p>
-<p>結論として、制御対象は次の3つの予算に分けます。</p>
+<p>制御対象を、次の3つの予算に分けます。</p>
 <ol>
 <li><strong>request予算</strong>は、短時間に入口へ届く回数です。botや偶発的な再送から可用性を守ります。</li>
 <li><strong>spend予算</strong>は、model・provider・token使用量から推定される金額です。token（AIが読み書きする文字量の単位）の多い処理による請求を抑えます。</li>
@@ -62,23 +33,14 @@
 </ol>
 <p>反対に、同じ利用者が短い問い合わせを数回行うことまで一律に止めると、正当な業務を妨げます。</p>
 <aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">Claude Code 企業導入 セキュリティ＆セットアップ実践ガイド</div><div class="mc-d">3つのリスク、5つの設計原則、10項目のチェックリストを、情シスの審査に出せる形でまとめた資料です。</div></div><a href="../../library/?doc=security&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=llm-api-cost-abuse-controls&amp;utm_content=mid" class="btn" data-cta="llm-api-cost-abuse-controls-mid">ガイドを受け取る <i>&rarr;</i></a></aside>
-<h2 id="s2">自社ではAI利用料の見張りをどうしていますか？</h2>
-<p class="answer">代表の古野がClaude Codeの利用額を、応答ごとの表示と毎朝のSlack通知で見ています。</p>
-<p>ここでの例は、TechWorker代表の古野が毎日使っているClaude Codeの利用料の見張り方です。APIゲートウェイの設定例ではありません。</p>
-<p>古野の端末の利用記録を、集計ツール（ccusage）でAPI料金に換算しました。2026年9月14日から30日の17日間で、約3,000ドル分です。1日平均は約180ドル分です。法人の契約と料金は、<a href="../kenshu/claude-code-cost.html">Claude Codeの法人契約（Team・Enterprise・APIの料金と選び方）</a>で扱っています。</p>
-<p>日によって差は大きく、少ない日は約4ドル分、多い日は約850ドル分でした。200倍以上の開きがあります。1日の回数や平均だけを見ても、この偏りは読み取れません。</p>
-<p>そのため、次の2つで支出を見えるようにしています。</p>
-<ul>
-<li>1回の応答ごとに、その回と累計の推定額を画面の下に表示します。</li>
-<li>前日の利用額が、毎朝社内のSlackに届きます。</li>
-</ul>
-<p>換算額は実際の請求額とは異なります。定額の範囲内の利用には、追加の支払いは発生しません。この見張り方は、次の手順で実費を別の予算として扱う考え方と同じ方向です。</p>
-
+<h2 id="s2">自社の過去記録では、AI利用量にどんな偏りがありましたか？</h2>
+<p class="answer">2026年9月のClaude Code利用量のAPI換算額には、日ごとに大きな偏りがありました。実請求額とは分けて読む記録です。</p><p>TechWorker代表の古野の端末で、2026年9月14日から30日の17日間の記録をccusageでAPI料金に換算した報告値は約3,000ドル、1日平均約180ドルでした。少ない日は約4ドル、多い日は約850ドルでした。今回、元ログは再集計していません。</p><p>この記録は、定額契約で実際に支払った金額ではありません。回数や平均だけでは消費の偏りを見落とす、という例として掲載しています。2026年10月のTechWorkerはCodexを中心にGPT系を使う体制で、当時のClaude運用や応答ごとの料金表示、毎朝のSlack通知が現在も続くことを示しません。</p>
 <h2 id="s3">上限は、どんな手順で設計すればよいですか？</h2>
-<p class="answer">入口、実費、tool実行の順に上限を置き、上限のキーと429の扱いまで決めます。</p>
+<p class="answer">入口、推定費用、tool実行の順に上限を置き、上限のキーと429の扱いまで決めます。</p>
+    <figure class="fig-inline"><a href="figs/llm-api-cost-abuse-controls-1.png" target="_blank" rel="noopener"><img src="figs/llm-api-cost-abuse-controls-1.png" alt="費用濫用の停止で確認する対象と、拒否または次の工程へ渡す条件を示した設計例です。" width="1200" height="712" loading="lazy" decoding="async"></a><figcaption>TechWorker作成：本文の手順を図にした設計例です。製品の公式画面や導入効果の実測ではありません。画像を押すと拡大できます。</figcaption></figure>
 <ol>
 <li><strong>入口にrate limitを置きます。</strong>AI Gatewayのrate limitingは、gatewayへ送れる回数を時間枠で制御します。固定windowとsliding windowを選べます。上限を超えると<code>429 Too Many Requests</code>を返し、処理しません。急な連打や認証前の濫用に有効です。</li>
-<li><strong>実費にspend limitを置きます。</strong>spend limitは、token使用量とmodel pricingから累積コストを追います。上限に達すると<code>429</code>でブロックします。model、provider、custom metadataの組み合わせで範囲を分けられます。全社の総額だけでなく、teamやapplication単位の予算も作れます。</li>
+<li><strong>推定費用にspend limitを置きます。</strong>spend limitは、token使用量とmodel pricingから累積コストを追います。上限に達すると<code>429</code>でブロックします。model、provider、custom metadataの組み合わせで範囲を分けられます。全社の総額だけでなく、teamやapplication単位の予算も作れます。</li>
 <li><strong>上限のキーを認証済みの情報で作ります。</strong>IPアドレスだけで制限すると、企業ネットワークやプロキシ配下の正当な利用者が同じ枠を取り合います。認証済みの利用者、テナント、アプリケーション、model、操作種別を組み合わせます。Cloudflare Accessで保護したcustom domainなら、認証済みのIDが付きます。IDは<code>cf.user_id</code> metadataとして、利用者別のspend limitに使えます。</li>
 <li><strong>tool予算と停止条件を別に持たせます。</strong>1回のmodel requestを通しても、その応答が10回の検索や外部更新を選べば、後段の負荷は残ります。エージェント実行ごとに、最大tool回数と最大並列数を決めます。最大wall time、最大取得bytes、最大queue投入数も決めます。上限に達したら理由を利用者へ返して止めます。</li>
 <li><strong><code>429</code>を安全な状態として設計します。</strong>画面には「上限に達した」「いつ再試行できるか」「結果が未作成か」を示します。同じ操作IDの二重起動を防ぎます。バックグラウンドjobは、上限に達した理由と再開条件を記録し、無条件のretryを避けます。</li>
@@ -98,10 +60,10 @@
 <p>上限は消費を制御するだけです。prompt injection、誤った権限、情報漏えい、誤答は防ぎません。「上限を置いたから請求は必ずこの額以下」とは書かないでください。providerの個別契約、割引、税、遅延した利用集計は、spend limitの推定に含まれません。</p>
 
 <h2 id="s5">3つの予算は、それぞれ何を抑えますか？</h2>
-<p class="answer">request予算は入口の回数、spend予算は実費、action予算はtool実行を抑えます。表で整理します。</p>
+<p class="answer">request予算は入口の回数、spend予算は推定費用、action予算はtool実行を抑えます。表で整理します。</p>
 <div class="tbl-wrap"><table><thead><tr><th>予算</th><th>抑えるもの</th><th>代表的な手段</th><th>残る限界</th></tr></thead><tbody>
 <tr><td>request予算</td><td>短時間の連打、認証前の濫用、偶発的な再送</td><td>AI Gatewayのrate limiting（固定window・sliding window）。超過時は429</td><td>同じ回数でもコストは同じではない</td></tr>
-<tr><td>spend予算</td><td>長い入力や高価なmodelによる実費の偏り</td><td>AI Gatewayのspend limits。model・provider・metadataで範囲を分ける</td><td>best-effort estimationで、請求額の正本ではない</td></tr>
+<tr><td>spend予算</td><td>長い入力や高価なmodelによる推定費用の偏り</td><td>AI Gatewayのspend limits。model・provider・metadataで範囲を分ける</td><td>best-effort estimationで、請求額の正本ではない</td></tr>
 <tr><td>action予算</td><td>1回の実行で起きる検索、取得、書込み、外部送信、後続job</td><td>最大tool回数、並列数、wall time、取得bytes、queue投入数</td><td>操作の正当性は別の承認・監査で確認する</td></tr>
 </tbody></table></div>
 
@@ -136,7 +98,7 @@
 </tbody></table></div>
 <p class="source-note">製品仕様・制度は更新されるため、導入時はリンク先の最新版を再確認してください。</p>
 </article></div>
-<div class="author"><div class="inner"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><div><div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div><p>上場企業を含む37社・2,500名の生成AI導入・研修支援で得た実務知をもとに、導入・運用・顧客理解を扱っています。この実績はTechWorkerの生成AI支援実績であり、個別製品の導入実績を示すものではありません。</p></div></div></div>
+<div class="author"><div class="inner"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><div><div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div><p class="a">上場企業を含む37社・2,500名の生成AI導入・研修支援で得た実務知をもとに、導入・運用・顧客理解を扱っています。この実績はTechWorkerの生成AI支援実績であり、個別製品の導入実績を示すものではありません。</p></div></div></div>
 <div class="art-cta"><div class="inner"><div><h3>LLM APIの費用濫用対策を点検する</h3><p>rate limit、spend limit、tool予算、停止条件を実運用の制御へ落とします。</p></div><a href="../../contact.html?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=llm-api-cost-abuse-controls" class="btn" data-cta="llm-api-cost-abuse-controls">AIセキュリティを相談する <i>→</i></a></div></div><div class="back-list"><a href="index.html">← AIセキュリティ・ラボの記事一覧に戻る</a></div><section class="related"><div class="container"><div class="rl-h">Related</div><div class="related-grid"><a href="mcp-oauth-authorization-design.html" class="related-card"><span class="rc-cat">権限とアクセス管理</span><div class="rc-title">MCPのOAuth認可設計</div></a><a href="ai-agent-human-approval-gates.html" class="related-card"><span class="rc-cat">承認・監査・事故対応</span><div class="rc-title">AIエージェントの人間承認ゲート</div></a></div></div></section>
 <footer><div class="container"><div class="footer-inner"><div class="footer-brand"><div class="logo">AIセキュリティ・ラボ</div><p>一次情報と実務に基づく生成AIメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p></div><div class="footer-col"><h4>メディア</h4><a href="index.html">記事一覧</a><a href="../index.html">全媒体</a></div><div class="footer-col"><h4>運営会社</h4><a href="../../company.html">会社概要</a><a href="../../privacy.html">プライバシーポリシー</a></div></div><p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p></div></footer><script>var nav=document.getElementById('nav');
 addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
