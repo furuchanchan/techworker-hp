@@ -110,9 +110,9 @@
   }, { passive: true });
 
   // 右下の申込み枠（媒体ごとの申込み）
-  if (!document.querySelector('script[src="/media/cv-dock.js"]')) {
+  if (!document.querySelector('script[src="/media/cv-dock.js"], script[src^="/media/cv-dock.js?"]')) {
     var dock = document.createElement("script");
-    dock.src = "/media/cv-dock.js";
+    dock.src = "/media/cv-dock.js?v=20261003-media-quality";
     dock.defer = true;
     document.head.appendChild(dock);
   }
