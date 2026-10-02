@@ -371,3 +371,11 @@ html[data-media="gyomuzu"]{--electric:#1F2933;--electric-dark:#0B0F14}
 .fig-inline a{display:block;border-bottom:none}
 .fig-inline img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line);background:var(--white);}
 .fig-inline figcaption{font-size:12.5px;color:var(--slate);line-height:1.7;margin-top:8px;}
+
+/* 公式引用画像（.source-figure）：画像は比率のまま、出典リンクをインラインに戻す */
+.source-figure .source-image{cursor:zoom-in;}
+.source-figure .source-image:focus-visible{outline:2px solid var(--electric);outline-offset:4px;}
+.source-figure figcaption{font-size:13px;}
+.source-figure .source-label{display:block;font-weight:600;margin-bottom:4px;}
+.source-figure figcaption a{display:inline;border-bottom:1px solid color-mix(in srgb,var(--electric) 28%,transparent);}
+.source-figure figcaption a:hover{border-bottom-color:var(--electric);}

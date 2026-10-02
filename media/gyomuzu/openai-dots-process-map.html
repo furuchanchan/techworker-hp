@@ -72,20 +72,29 @@ fbq('init','1264057945446029');fbq('track','PageView');
     <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.10.03</span><span class="dot">·</span><span>最終更新 2026.10.03</span><span class="dot">·</span><span>読了 11分</span>
   </div>
 </header>
-<img class="daily-cover" src="covers/openai-dots-process-map.png" alt="dotsに任せる前に決めること。工程・承認・引き継ぎ先を業務図へ" width="1200" height="630">
 
 <div class="art-layout">
   <nav class="art-toc" aria-label="目次">
     <div class="art-toc-inner">
       <div class="toc-h">目次</div>
-<a href="#s1">OpenAIのdotsには、何を決めてから仕事を任せますか？</a><a href="#s2">TechWorkerの商談業務図は、dotsの担当を考える際にどう使えますか？</a><a href="#s3">dotsに任せる前に、業務図へ何を書きますか？</a><a href="#s4">dotsへ仕事を任せたとき、どんな失敗を想定しますか？</a><a href="#s5">4つのカスタムルールは、業務図の3つの札にどう対応しますか？</a><a href="#s6">dotsは日本で使えますか？料金はどうなりますか？</a><a href="#faq">dotsを使い始めるとき、何を確認すればよいですか？</a><a href="#s8">部署で試すために、最初に何をしますか？</a><a href="#sources">この記事は、どの資料をもとにしていますか？</a>
+<a href="#s1">OpenAIのdotsは、どんな仕事を任せられますか？</a><a href="#s2">TechWorkerの商談業務図は、dotsの担当を考える際にどう使えますか？</a><a href="#s3">dotsに任せる前に、業務図へ何を書きますか？</a><a href="#s4">dotsへ仕事を任せたとき、どんな失敗を想定しますか？</a><a href="#s5">4つのカスタムルールは、業務図の3つの札にどう対応しますか？</a><a href="#s6">dotsは日本で使えますか？料金はどうなりますか？</a><a href="#faq">dotsを使い始めるとき、何を確認すればよいですか？</a><a href="#s8">部署で試すために、最初に何をしますか？</a><a href="#sources">この記事は、どの資料をもとにしていますか？</a>
 </div>
   </nav>
 
   <article class="art-body">
-<h2 id="s1">OpenAIのdotsには、何を決めてから仕事を任せますか？</h2>
-<p class="answer">任せる工程、事前承認の範囲、止める条件と引き継ぎ先の3つを業務図に書いてから、dotに仕事を渡します。</p>
+<h2 id="s1">OpenAIのdotsは、どんな仕事を任せられますか？</h2>
+<p class="answer">dotsは、会話していない間も資料の確認や更新を進めます。公式の営業例では、提案の準備と人の承認を分けています。</p>
 <p>OpenAIは2026年9月29日にdotsを発表しました。会話をしていない間も仕事を進めるエージェントです。エージェントとは、目標に沿って作業を進めるAIです。GPT-6 Astraを搭載し、専用のクラウドコンピューターで動きます。</p>
+<figure class="fig-inline source-figure">
+  <a class="source-image" href="figs/openai-dots-official-proposal.webp" target="_blank" rel="noopener" aria-label="OpenAI公式の営業例の画像を拡大する"><img src="figs/openai-dots-official-proposal.webp" alt="OpenAIが紹介する営業の例。黄色いdotのAlfredと、成約までの手順をまとめた文書が並ぶ画面です。" width="3819" height="2148" decoding="async" fetchpriority="high"></a>
+  <figcaption><span class="source-label">公式画像の引用</span>OpenAIが紹介する、法人向け提案を支えるdotの例です。画像を押すと拡大できます。<br>出典：<a href="https://openai.com/ja-JP/index/introducing-dots/" target="_blank" rel="noopener">OpenAI「dotsのご紹介」</a>（2026年9月29日公開、2026年10月3日確認）。</figcaption>
+</figure>
+<h3>公式画面で見る、AIの作業と人の判断</h3>
+<p>左側では、黄色いdotのAlfredと人が価格や担当を確認しています。右側には、法人向け提案の次の工程を記した資料があります。認証の検証、セキュリティ審査、契約条件の承認の3つです。</p>
+<p>公式の営業例では、顧客の要件と製品資料を照合します。要件が変わると、提案書やテスト計画を更新します。未解決の懸念も人へ知らせます。顧客に約束する内容は、営業とエンジニアが承認します。</p>
+<p>この画面だけで、社内の承認範囲までは決まりません。以下では、TechWorkerが公開した商談業務図を使います。AIの下書きと人の送信を分ける設計を見ていきます。</p>
+<h3>任せる前に、工程・承認・止める条件を決めます</h3>
+<p>任せる工程、事前承認の範囲、止める条件と引き継ぎ先を決めます。この3つを業務図へ書いてから、dotに仕事を渡します。</p>
 <p>部署で使うときは、完了した成果と承認が必要な操作を分けます。文面の下書きができた時点で、その工程は完了にできます。送信まで任せるかは、別の工程で決めます。仕事の名前だけを渡すと、この区切りが曖昧になります。</p>
 <p>dotsには、操作の確認方法を決める4つのカスタムルールがあります。ただし、ルールを設定しても間違いは起こります。人が結果を確認する工程も、業務図に残してください。</p>
 <p>以下では、営業のフォロー文面を例に説明します。任せる対象は承認済みの議事録に限ります。顧客への送信は営業が担当する設計です。製品の機能と提供条件は、公式資料で確認しました。確認日は2026年10月3日です。</p>
@@ -103,7 +112,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
 <h2 id="s3">dotsに任せる前に、業務図へ何を書きますか？</h2>
 <p class="answer">工程の担当と成果物を決め、承認の対象を絞り、停止時に人へ戻す条件まで、3つの手順で書き込みます。</p>
-    <figure class="fig-inline"><a href="figs/openai-dots-process-map-1.png" target="_blank" rel="noopener"><img src="figs/openai-dots-process-map-1.png" alt="営業が範囲を決め、dotが議事録を読み、文面を下書きします。営業が内容を確認して送信する設計例です。" width="1200" height="570" loading="lazy" decoding="async"></a><figcaption>営業フォローの運用設計例です。TechWorkerのdots利用実績を示す図ではありません。</figcaption></figure>
+    <figure class="fig-inline"><a href="figs/openai-dots-process-map-1.png" target="_blank" rel="noopener"><img src="figs/openai-dots-process-map-1.png" alt="営業が範囲を決め、dotが議事録を読み、文面を下書きします。営業が内容を確認して送信する設計例です。" width="1200" height="570" loading="lazy" decoding="async"></a><figcaption>TechWorker作成：営業フォローの運用設計例です。TechWorkerのdots利用実績を示す図ではありません。</figcaption></figure>
 <h3>1．任せる工程と、完成した状態を書きます</h3>
 <p>まず、ひとつの商談後のフォローを対象にします。部署の仕事をまとめて渡すと、完了の確認が難しくなります。下書きまでをひとつの工程として切り出してください。</p>
 <p>次の流れは、dotsを使う場合の運用の設計例です。TechWorkerがdotsで実行した結果ではありません。</p>
@@ -140,7 +149,6 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
 <h2 id="s5">4つのカスタムルールは、業務図の3つの札にどう対応しますか？</h2>
 <p class="answer">自動実行、下書きと確認、人の実行という3つの札へ、操作の承認条件を見ながら4つのルールを対応させます。</p>
-    <figure class="fig-inline"><a href="figs/openai-dots-process-map-2.png" target="_blank" rel="noopener"><img src="figs/openai-dots-process-map-2.png" alt="dotsの4つのカスタムルールを、業務図の3つの札へ対応させた表。事前承認は明示依頼した操作に限ります。" width="1200" height="564" loading="lazy" decoding="async"></a><figcaption>OpenAIのカスタムルールをもとに、TechWorkerが作成した対応例です。</figcaption></figure>
 <p>次の表は、TechWorkerによる対応の解説です。OpenAI公式の分類表ではありません。製品のルールは操作の承認条件を表します。業務図の札は、工程を誰がどこまで進めるかを表します。</p>
 <div class="tbl-wrap"><table><thead><tr><th>dotsのカスタムルール</th><th>業務図の札</th><th>営業例での決め方</th></tr></thead><tbody>
 <tr><td>確認なしで実行</td><td>AIが自動で</td><td>対象と範囲を決めた読み取りに使う候補です。</td></tr>
