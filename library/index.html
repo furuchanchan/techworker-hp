@@ -148,9 +148,9 @@ body.menu-open .mmenu{transform:none;visibility:visible;}
 .modal input,.modal textarea{width:100%;padding:12px 14px;border:1px solid var(--line-2);border-radius:7px;font-family:inherit;font-size:14px;background:var(--white);transition:border-color .2s,box-shadow .2s;}
 .modal textarea{resize:vertical;min-height:84px;line-height:1.7;}
 .modal label.field span em.opt{color:var(--slate);font-weight:500;}
-.modal input:focus{outline:none;border-color:var(--electric);box-shadow:0 0 0 3px rgba(0,94,255,.12);}
+.modal input:focus{outline:none;border-color:var(--electric);box-shadow:0 0 0 3px var(--focus-ring,rgba(0,94,255,.12));}
 .modal .agree{display:flex;align-items:flex-start;gap:9px;margin:8px 0 20px;font-size:12px;color:var(--slate);line-height:1.6;}
-.modal .agree input{width:auto;margin-top:3px;}
+.modal .agree input{width:auto;margin-top:3px;accent-color:var(--electric);}
 .modal .agree a{color:var(--electric);text-decoration:underline;}
 .modal .btn{width:100%;justify-content:center;}
 .modal .fineprint{font-size:11px;color:var(--slate);text-align:center;margin-top:14px;line-height:1.6;}
@@ -418,7 +418,7 @@ addEventListener('scroll',function(){var n=document.querySelector('nav');if(n)n.
     cases:{nl:'kenshu',title:'2026年版 生成AI活用事例集',url:'cases-2026.html',points:['化学メーカー：新素材のアイデア出しを、発散から収束まで1時間で','大手製薬：市場リサーチを内製化し、外注費を削減','さくらインターネット：全社300名のAI研修']},
     security:{nl:'security',title:'Claude Code 企業導入 セキュリティ＆セットアップ実践ガイド',url:'claude-code-security.html',points:['情シスの確認にそのまま使える10項目のチェックリスト','情報漏洩・過剰な権限・外部依存の3大リスク','権限・シークレット・監査ログなど5つの設計原則']},
     ringi:{nl:'kenshu',title:'Claude Code 法人導入 稟議書テンプレート｜料金比較表つき',url:'claude-code-ringi.html',points:['Team・Enterprise・API従量の料金比較表（2026年9月30日確認）','人数と統制の要件で選ぶ、規模別の契約の選び方','件名から承認者まで、［　］を埋めて使える稟議書の文例']},
-    gyomuzu:{nl:'gyomuzu',title:'部署別 業務図テンプレート集｜AIに任せる工程の見つけ方つき',url:'gyomuzu-templates.html',points:['経理・人事労務・カスタマー対応・総務法務・営業の5部署の業務図の例','自社の業務をそのまま書き込める空の型','AIに任せる工程を決める札の付け方（2つの質問）']}
+    gyomuzu:{nl:'gyomuzu',title:'部署別 業務図テンプレート集｜AIに任せる工程の見つけ方つき',url:'gyomuzu-templates.html',points:['経理・人事労務・カスタマー対応・総務法務・営業の5部署の業務図の例','自社の業務をそのまま書き込める空の型','AIに任せる工程を決める札の付け方（2つの質問）'],color:'#1F2933',colorDark:'#0B0F14',focusRing:'rgba(31,41,51,.12)'}
   };
   var STORE_KEY='tw_library_unlocked';
   var overlay=document.getElementById('modalOverlay'),modalForm=document.getElementById('modalForm'),modalSuccess=document.getElementById('modalSuccess');
@@ -437,7 +437,7 @@ addEventListener('scroll',function(){var n=document.querySelector('nav');if(n)n.
       });
     }
   }
-  function openModal(doc){currentDoc=doc;lastFocus=document.activeElement;modalForm.style.display='block';modalSuccess.classList.remove('show');modalDocName.textContent=DOCS[doc].title;var mp=document.getElementById('modalPoints');if(mp){mp.innerHTML='';(DOCS[doc].points||[]).forEach(function(t){var li=document.createElement('li');li.textContent=t;mp.appendChild(li);});}overlay.classList.add('show');document.body.style.overflow='hidden';var f=overlay.querySelector('#dlForm input');if(f)f.focus();}
+  function openModal(doc){currentDoc=doc;lastFocus=document.activeElement;var th=DOCS[doc]||{};[['--electric',th.color],['--electric-dark',th.colorDark],['--focus-ring',th.focusRing]].forEach(function(p){if(p[1])overlay.style.setProperty(p[0],p[1]);else overlay.style.removeProperty(p[0]);});modalForm.style.display='block';modalSuccess.classList.remove('show');modalDocName.textContent=DOCS[doc].title;var mp=document.getElementById('modalPoints');if(mp){mp.innerHTML='';(DOCS[doc].points||[]).forEach(function(t){var li=document.createElement('li');li.textContent=t;mp.appendChild(li);});}overlay.classList.add('show');document.body.style.overflow='hidden';var f=overlay.querySelector('#dlForm input');if(f)f.focus();}
   function closeModal(){overlay.classList.remove('show');document.body.style.overflow='';if(lastFocus&&lastFocus.focus)lastFocus.focus();}
   document.querySelectorAll('.js-download').forEach(function(btn){
     btn.addEventListener('click',function(){
