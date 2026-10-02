@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="article.css">
+<link rel="stylesheet" href="article.css?v=20261003-media-quality">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "トークンマキシングとは｜惜しまず使って出力品質を上げる4つの手順【2026年】", "description": "難しい仕事へ追加の原文、推論、独立した検証を使う判断がトークンマキシングです。処理量だけでは品質を保証できません。4つの手順と合格後に止める条件、2026年9月の自社の過去記録を解説します。", "datePublished": "2026-06-13", "dateModified": "2026-10-03", "inLanguage": "ja", "image": "https://techworker.co.jp/media/covers/token-maxing.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/token-maxing.html"}}</script>
 <script type="application/ld+json">
 {
@@ -122,7 +122,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <p class="answer">2026年9月のClaude Code記録では、作業ごとにモデルを分け、入力の多くをキャッシュから読み出していました。現在の運用とは分けて掲載します。</p><figure class="fig-inline"><a href="figs/token-maxing-2.png" target="_blank" rel="noopener"><img src="figs/token-maxing-2.png" alt="2026年9月のモデル別の利用額を比べた棒グラフ。Opus 5.5が約1,200ドルで最大、Fable 5.1が約1,000ドル、Sonnet 5・5.5が約630ドル、そのほかが約130ドル。" width="1200" height="705" loading="lazy" decoding="async"></a><figcaption>TechWorker代表の端末の利用記録を集計ツール（ccusage）でAPI料金に換算した額（2026年9月）。実際の請求額とは異なります。</figcaption></figure><p>代表の古野の端末記録をccusageでAPI料金に換算した既存の報告値は、2026年9月14日〜30日の17日間で約3,000ドル、1日平均約180ドルです。少ない日は約4ドル、多い日は約850ドルでした。9月の入力の約97%はキャッシュ読み出しでした。モデル別の既存報告値は、Opus 5.5が約1,200ドル、Fable 5.1が約1,000ドル、Sonnet 5・5.5が約630ドル、そのほかが約130ドルです。今回、元ログは再集計していません。</p><p>当時はClaude Codeを開発や資料作成に使い、作業に応じて上位モデル、Sonnet、Haikuへ分けていました。これは過去の利用記録です。2026年10月のTechWorkerはCodexを中心にGPT系を使う体制へ移っています。当時のClaude運用、応答ごとの料金表示、毎朝のSlack通知が現在も続くことを示しません。</p><p>API換算額は、定額契約で実際に支払った金額ではありません。契約費、追加従量、API請求を混ぜずに照合してください。この例はモデル分担と利用量の偏りを説明するもので、費用削減率や成果の改善を実証した値ではありません。</p>
 <h2 id="s3">トークンを振り切るには、どんな手順で進めますか？</h2>
     <p class="answer">必要な原文、推論の強度、独立した確認、実行結果の検証を選んで使います。合格条件を満たしたら停止します。</p>
-    <figure class="fig-inline"><a href="figs/token-maxing-1.png" target="_blank" rel="noopener"><img src="figs/token-maxing-1.png" alt="必要な原文を選び、失敗した論点の推論、独立した確認、原本や実行結果の検証を行い、合格したら終了する手順です。" width="1200" height="701" loading="lazy" decoding="async"></a><figcaption>TechWorker作成：追加の処理を使うための設計例です。トークン量を増やすだけで品質を保証するものではありません。画像を押すと拡大できます。</figcaption></figure>
+    <figure class="fig-inline"><a href="figs/token-maxing-1.png?v=20261003-media-quality" target="_blank" rel="noopener"><img src="figs/token-maxing-1.png?v=20261003-media-quality" alt="必要な原文を選び、失敗した論点の推論、独立した確認、原本や実行結果の検証を行い、合格したら終了する手順です。" width="1200" height="701" loading="lazy" decoding="async"></a><figcaption>TechWorker作成：追加の処理を使うための設計例です。トークン量を増やすだけで品質を保証するものではありません。画像を押すと拡大できます。</figcaption></figure>
 
     <ol>
       <li><strong>必要な資料を選んで渡します。</strong>判断に関係する原文と参照箇所を残し、無関係なログまで全部入れません。入力上限の大きさと、必要な情報を正しく使えることは別です。</li>
@@ -235,6 +235,6 @@ addEventListener('scroll',function(){var h=document.documentElement;var d=h.scro
 var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
 </script>
-<script src="/media/article-tracker.js" defer></script>
+<script src="/media/article-tracker.js?v=20261003-media-quality" defer></script>
 </body>
 </html>
