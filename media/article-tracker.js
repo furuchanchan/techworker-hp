@@ -49,6 +49,19 @@
     return "body";
   }
 
+  // 何の申込みか（右下の枠は data-cta-offer を持つ。それ以外はリンク先から決める）
+  function offerOf(anchor) {
+    var href = anchor.getAttribute("href") || "";
+    var doc = href.match(/[?&]doc=([a-z]+)/);
+    if (doc) return "doc_" + doc[1];
+    if (/companymap\/contact/.test(href)) return "companymap_consult";
+    if (/companymap/.test(href)) return "companymap_lp";
+    if (/training/.test(href)) return "training";
+    if (/contact/.test(href)) return "contact";
+    if (/ai-assessment/.test(href)) return "assessment";
+    return "";
+  }
+
   function addCoeSignalAttribution(anchor) {
     var url = new URL(anchor.href, location.href);
     if (url.hostname !== "coesignal.techworker.co.jp") return;
@@ -73,7 +86,7 @@
       cta_text: (anchor.textContent || "").trim().replace(/\s+/g, " ").slice(0, 80),
       cta_destination: anchor.href.slice(0, 200),
       cta_placement: placementOf(anchor),
-      cta_offer: anchor.getAttribute("data-cta-offer") || ""
+      cta_offer: anchor.getAttribute("data-cta-offer") || offerOf(anchor)
     });
   }, true);
 
