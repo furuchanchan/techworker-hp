@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
       # Cloudflare Pages API rejects commit messages that contain certain
       # Unicode characters (em dashes, some CJK combos, etc.) with
@@ -29,3 +31,26 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy . --project-name techworker-hp --branch ${{ steps.meta.outputs.branch }} --commit-hash ${{ steps.meta.outputs.sha }} --commit-message "Deploy ${{ steps.meta.outputs.sha }}" --commit-dirty true
+
+      # Notify Bing etc. (IndexNow) of pages changed by this push.
+      # Runs after the deploy; a non-200/202 response fails this step only.
+      - name: Notify IndexNow
+        run: |
+          set -euo pipefail
+          HOST=techworker.co.jp
+          KEY_FILE=db4fb7eeadb4e0a77a6908576175e869.txt
+          KEY=$(tr -d '[:space:]' < "$KEY_FILE")
+          git diff --name-only --diff-filter=d HEAD~1 HEAD -- '*.html' sitemap.xml \
+            | grep -Ev '^(functions|\.github|node_modules)/|(^|/)_[^/]*$|^404\.html$' \
+            | sed -E 's#(^|/)index\.html$#\1#; s#\.html$##' \
+            | sed -E "s#^#https://$HOST/#" \
+            | sort -u | head -n 10000 > urls.txt || true
+          COUNT=$(wc -l < urls.txt | tr -d ' ')
+          if [ "$COUNT" -eq 0 ]; then echo "IndexNow: no changed pages"; exit 0; fi
+          jq -Rn --arg host "$HOST" --arg key "$KEY" --arg loc "https://$HOST/$KEY_FILE" \
+            '{host:$host,key:$key,keyLocation:$loc,urlList:[inputs]}' < urls.txt > payload.json
+          STATUS=$(curl -sS -o response.txt -w '%{http_code}' -X POST https://api.indexnow.org/indexnow \
+            -H 'Content-Type: application/json; charset=utf-8' --data-binary @payload.json)
+          echo "IndexNow: sent $COUNT URLs, HTTP $STATUS"
+          cat response.txt
+          [ "$STATUS" = 200 ] || [ "$STATUS" = 202 ]

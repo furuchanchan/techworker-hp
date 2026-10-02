@@ -368,6 +368,7 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
         <label class="field"><span>電話番号 <em>*</em></span><input type="tel" name="phone" required autocomplete="tel" placeholder="例：03-1234-5678" pattern="[^0-9０-９]*([0-9０-９][^0-9０-９]*){10,15}" title="電話番号を数字10桁以上でご入力ください（例：03-1234-5678）"></label>
         <label class="field"><span>ご相談内容・お悩み <em class="opt">任意</em></span><textarea name="note" rows="3" placeholder="AI活用でお困りのこと、知りたいテーマなどがあればお書きください"></textarea></label>
         <label class="agree"><input type="checkbox" id="dlAgree" required><span><a href="../privacy.html" target="_blank">プライバシーポリシー</a>に同意します。ご登録のメールアドレスに、関連資料のご案内をお送りする場合があります。</span></label>
+        <label class="agree"><input type="checkbox" id="dlNewsletter"><span>TechWorker Mediaの新着記事をメールで受け取る（週1回・いつでも停止できます）</span></label>
         <button type="submit" class="btn" id="dlSubmit">ダウンロードする</button>
         <p class="fineprint">しつこい営業は一切いたしません。<br>1クリックでいつでも配信停止できます。</p>
       </form>
@@ -414,10 +415,10 @@ addEventListener('scroll',function(){var n=document.querySelector('nav');if(n)n.
 /* download gate */
 (function(){
   var DOCS={
-    cases:{title:'2026年版 生成AI活用事例集',url:'cases-2026.html',points:['化学メーカー：新素材のアイデア出しを、発散から収束まで1時間で','大手製薬：市場リサーチを内製化し、外注費を削減','さくらインターネット：全社300名のAI研修']},
-    security:{title:'Claude Code 企業導入 セキュリティ＆セットアップ実践ガイド',url:'claude-code-security.html',points:['情シスの確認にそのまま使える10項目のチェックリスト','情報漏洩・過剰な権限・外部依存の3大リスク','権限・シークレット・監査ログなど5つの設計原則']},
-    ringi:{title:'Claude Code 法人導入 稟議書テンプレート｜料金比較表つき',url:'claude-code-ringi.html',points:['Team・Enterprise・API従量の料金比較表（2026年9月30日確認）','人数と統制の要件で選ぶ、規模別の契約の選び方','件名から承認者まで、［　］を埋めて使える稟議書の文例']},
-    gyomuzu:{title:'部署別 業務図テンプレート集｜AIに任せる工程の見つけ方つき',url:'gyomuzu-templates.html',points:['経理・人事労務・カスタマー対応・総務法務・営業の5部署の業務図の例','自社の業務をそのまま書き込める空の型','AIに任せる工程を決める札の付け方（2つの質問）']}
+    cases:{nl:'kenshu',title:'2026年版 生成AI活用事例集',url:'cases-2026.html',points:['化学メーカー：新素材のアイデア出しを、発散から収束まで1時間で','大手製薬：市場リサーチを内製化し、外注費を削減','さくらインターネット：全社300名のAI研修']},
+    security:{nl:'security',title:'Claude Code 企業導入 セキュリティ＆セットアップ実践ガイド',url:'claude-code-security.html',points:['情シスの確認にそのまま使える10項目のチェックリスト','情報漏洩・過剰な権限・外部依存の3大リスク','権限・シークレット・監査ログなど5つの設計原則']},
+    ringi:{nl:'kenshu',title:'Claude Code 法人導入 稟議書テンプレート｜料金比較表つき',url:'claude-code-ringi.html',points:['Team・Enterprise・API従量の料金比較表（2026年9月30日確認）','人数と統制の要件で選ぶ、規模別の契約の選び方','件名から承認者まで、［　］を埋めて使える稟議書の文例']},
+    gyomuzu:{nl:'gyomuzu',title:'部署別 業務図テンプレート集｜AIに任せる工程の見つけ方つき',url:'gyomuzu-templates.html',points:['経理・人事労務・カスタマー対応・総務法務・営業の5部署の業務図の例','自社の業務をそのまま書き込める空の型','AIに任せる工程を決める札の付け方（2つの質問）']}
   };
   var STORE_KEY='tw_library_unlocked';
   var overlay=document.getElementById('modalOverlay'),modalForm=document.getElementById('modalForm'),modalSuccess=document.getElementById('modalSuccess');
@@ -473,6 +474,12 @@ addEventListener('scroll',function(){var n=document.querySelector('nav');if(n)n.
       setUnlocked();
       if(typeof gtag==='function'){gtag('event','generate_lead',{inquiry_type:'document',source:'library'});}
       if(typeof fbq==='function'){try{fbq('track','Lead',{content_name:info?info.title:currentDoc});}catch(_){}}
+      if(info&&document.getElementById('dlNewsletter').checked){
+        var nlTopic=info.nl,nlEmail=String(fd.get('email')||'').trim();
+        fetch('/api/newsletter',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:nlEmail,topics:[nlTopic],page:'/library/?doc='+currentDoc,hp:''})})
+          .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);if(typeof gtag==='function'){gtag('event','newsletter_signup',{nl_topics:nlTopic,nl_placement:'library_download',method:'library_download',transport_type:'beacon'});}})
+          .catch(function(err){console.error('Newsletter signup failed:',err);});
+      }
       successDownload.href=info?info.url:'#';
       modalForm.style.display='none';modalSuccess.classList.add('show');refreshUI();
     }catch(err){console.error('Download form failed:',err);alert(err.message==='sales'?'営業・売り込みを目的としたご連絡は、このフォームではお受けしておりません。サービスのご相談の場合は、ご検討中の内容を具体的にご記入のうえ、もう一度お送りください。':'送信に失敗しました。お手数ですが info@techworker.co.jp までご連絡ください。');}
