@@ -33,6 +33,89 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Launch Simulation — Test before launch in a 1,000-persona market.",
+  "description": "Validate packaging, price, messaging and target before spending on external research — a synthetic-consumer workbench from TechWorker that delivers a decision memo in days.",
+  "url": "https://techworker.co.jp/en/launch-simulation/",
+  "inLanguage": "en",
+  "provider": {
+    "@type": "Organization",
+    "name": "TechWorker",
+    "url": "https://techworker.co.jp/"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://techworker.co.jp/en/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Launch Simulation",
+      "item": "https://techworker.co.jp/en/launch-simulation/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why don't you just survey humans?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "People cannot articulate their intent precisely, are biased by how questions are asked, and — most fundamentally — what they answer to \"Will you buy this?\" diverges statistically from their actual purchase behavior (the Say/Do Gap). We use no human-spoken survey data. Instead, we directly simulate the behavior of 1,000 AI personas built from the Japan Census and Household Survey. The object of observation is not stated language but choice behavior conditioned on budget constraints, competitive alternatives, and purchase frequency. This is the core thesis we share with Aaru and Simile."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What exactly happens in Blind Validation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For one of your past concept tests, we receive only the questionnaire, concept board, and target-segment definition — not the actual results. We reproduce them independently with our AI. The deliverable is a third-party reconciliation report: overall Top2Box correlation, alignment of age × gender cross-tabs, correlation coefficient r, and a factor analysis on items where we diverge. The protocol prevents \"hindsight fitting,\" so you can verify reproducibility on your own."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does data cross borders? Is it used for model training?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Concept information is passed to the LLM only during processing and is not used for model training (we follow each LLM provider's commercial API policy). A domestic-processing option is available. Data is handled under NDA, and after simulation, both concept information and response data are deleted from our servers. We can issue a deletion certificate on request."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What categories does it apply to, and what are the accuracy assumptions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Currently validated categories: beverages, confectionery, seasonings, household goods, cosmetics, frozen foods. We have internally confirmed r=0.78–0.92 in the beverage category. Categories with long purchase cycles — B2B durables, pharmaceuticals, real estate — require separate scoping. As standard practice, we ask clients to evaluate reproducibility via Blind Validation in any category before moving to paid work."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can research firms or agencies embed this in their own offerings?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — white-label and OEM delivery are available. Typical use cases: integrating an \"AI concept test\" line into your existing research portfolio, or using it as the upstream layer in a consulting proposal. Report templates, branding, and API access are designed per partner."
+      }
+    }
+  ]
+}
+</script>
 <style>
   :root {
     /* Light enterprise palette — cool neutrals + trust-blue accent */
