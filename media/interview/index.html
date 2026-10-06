@@ -163,6 +163,8 @@ fbq('init','1264057945446029');fbq('track','PageView');
   .lb-th-grid{grid-template-columns:1fr;}
 }
 </style>
+<link rel="stylesheet" href="/media/audience-filter.css?v=20261006-readers">
+<script src="/media/audience-filter.js?v=20261006-readers" defer></script>
 </head>
 <body>
 
@@ -235,9 +237,11 @@ fbq('init','1264057945446029');fbq('track','PageView');
 </section>
 
 <!-- 3) 記事一覧 -->
-<section class="lb-wrap lb-index" id="articles" aria-label="記事一覧">
+<section id="articles" data-audience-catalog class="lb-wrap lb-index" aria-label="記事一覧">
   <div class="lb-sh"><span class="h">記事一覧</span><span class="ln"></span></div>
-  <div class="lb-cards">
+  <div class="audience-controls" role="group" aria-label="対象読者で絞り込む" hidden><button type="button" data-audience-filter="all" data-audience-label="すべて" aria-pressed="true" aria-controls="audience-results">すべて<span class="audience-count">10</span></button><button type="button" data-audience-filter="it" data-audience-label="情シス・AI導入担当" aria-pressed="false" aria-controls="audience-results">情シス・AI導入担当<span class="audience-count">0</span></button><button type="button" data-audience-filter="hr" data-audience-label="人事・研修担当" aria-pressed="false" aria-controls="audience-results">人事・研修担当<span class="audience-count">2</span></button><button type="button" data-audience-filter="operations" data-audience-label="業務責任者" aria-pressed="false" aria-controls="audience-results">業務責任者<span class="audience-count">8</span></button><button type="button" data-audience-filter="executive" data-audience-label="経営者・経営幹部" aria-pressed="false" aria-controls="audience-results">経営者・経営幹部<span class="audience-count">0</span></button></div>
+<p class="audience-result" role="status" aria-live="polite" aria-atomic="true">すべて：10件</p>
+<div id="audience-results" class="lb-cards">
 
 
 
@@ -247,81 +251,81 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
 
 
-    <a class="lb-card" href="ai-interview-consent-design.html"><img class="cover" src="covers/thumbs/ai-interview-consent-design.jpg" alt="同意を説明から撤回まで続ける。回答者・担当者が、六項目を説明する→同意を選ぶ→同意の証跡を残す→撤回を申し出る→撤回を処理するの順に進める業務図" width="600" height="315" loading="lazy"><span class="body"><span class="top"><span class="lb-chip">同意・保存・安全</span><span class="date">2026.09.03</span></span><span class="t">AIインタビューの同意設計｜録音・個人情報・撤回を回答者へどう説明するか【2026】</span><span class="d">AIインタビューで録音・個人情報・撤回をどう説明し、同意証跡をどう残すか。回答者体験とデータ処理を一致させる実務を解説。</span></span></a>
-    <a class="lb-card" href="interview-tools-comparison.html">
+    <a data-audience-item data-audience="operations" class="lb-card" href="ai-interview-consent-design.html"><img class="cover" src="covers/thumbs/ai-interview-consent-design.jpg" alt="同意を説明から撤回まで続ける。回答者・担当者が、六項目を説明する→同意を選ぶ→同意の証跡を残す→撤回を申し出る→撤回を処理するの順に進める業務図" width="600" height="315" loading="lazy"><span class="body"><span class="top"><span class="lb-chip">同意・保存・安全</span><span class="date">2026.09.03</span></span><span class="t">AIインタビューの同意設計｜録音・個人情報・撤回を回答者へどう説明するか【2026】</span><span class="d">AIインタビューで録音・個人情報・撤回をどう説明し、同意証跡をどう残すか。回答者体験とデータ処理を一致させる実務を解説。</span><span class="audience-tag">業務責任者</span></span></a>
+    <a data-audience-item data-audience="operations" class="lb-card" href="interview-tools-comparison.html">
       <img class="cover" src="covers/thumbs/interview-tools-comparison.jpg" alt="AIインタビューツールは運用の主体で選ぶ。セルフ型とマネージド型の2軸で整理" width="600" height="315" loading="lazy">
       <span class="body">
         <span class="top"><span class="lb-chip">基礎・費用・ツール選び</span><span class="date">2026.07.31</span></span>
         <span class="t">AIインタビューツール比較｜セルフ型とマネージド型の選び方【2026年版】</span>
-        <span class="d">羅列の比較でなく2軸4類型で整理。情報管理・納品物・契約形態などエンタープライズの選定観点まで。</span>
+        <span class="d">羅列の比較でなく2軸4類型で整理。情報管理・納品物・契約形態などエンタープライズの選定観点まで。</span><span class="audience-tag">業務責任者</span>
       </span>
     </a>
-    <a class="lb-card" href="internal-interview-cases.html">
+    <a data-audience-item data-audience="hr" class="lb-card" href="internal-interview-cases.html">
       <img class="cover" src="covers/thumbs/internal-interview-cases.jpg" alt="社内AIインタビューの公開事例を見る。SHIFT・トリドール・CPLなど国内外の運用例" width="600" height="315" loading="lazy">
       <span class="body">
         <span class="top"><span class="lb-chip">用途別の活用</span><span class="date">2026.07.30</span></span>
         <span class="t">社内AIインタビューの活用事例10選｜国内7社・海外3社の公開事例に学ぶ</span>
-        <span class="d">従業員の声をAIで深掘りする公開事例を一次情報リンク付きで整理。共通パターンと導入時の注意点まで。</span>
+        <span class="d">従業員の声をAIで深掘りする公開事例を一次情報リンク付きで整理。共通パターンと導入時の注意点まで。</span><span class="audience-tag">人事・研修担当</span>
       </span>
     </a>
-    <a class="lb-card" href="ai-interview-limitations.html">
+    <a data-audience-item data-audience="operations" class="lb-card" href="ai-interview-limitations.html">
       <img class="cover" src="covers/thumbs/ai-interview-limitations.jpg" alt="AIインタビューの限界を運用で管理する。5つの限界は影響と補完策を特定できる" width="600" height="315" loading="lazy">
       <span class="body">
         <span class="top"><span class="lb-chip">基礎・費用・ツール選び</span><span class="date">2026.07.29</span></span>
         <span class="t">AIインタビューのデメリットと限界｜精度を落とさないための設計【2026】</span>
-        <span class="d">できないことを先に開示する。限界×影響×補完策の表と導入前チェックリストで、検討後期の不安に答える。</span>
+        <span class="d">できないことを先に開示する。限界×影響×補完策の表と導入前チェックリストで、検討後期の不安に答える。</span><span class="audience-tag">業務責任者</span>
       </span>
     </a>
-    <a class="lb-card" href="ai-mensetsu-vs-ai-interview.html">
+    <a data-audience-item data-audience="hr" class="lb-card" href="ai-mensetsu-vs-ai-interview.html">
       <img class="cover" src="covers/thumbs/ai-mensetsu-vs-ai-interview.jpg" alt="AI面接とAIインタビューの違いを切り分ける。相手の呼び方と結果の使い道で切り分ける" width="600" height="315" loading="lazy">
       <span class="body">
         <span class="top"><span class="lb-chip">基礎・費用・ツール選び</span><span class="date">2026.07.28</span></span>
         <span class="t">「AI面接」と「AIインタビュー」の違い｜採用と市場調査で混同しないための整理【2026】</span>
-        <span class="d">同じ言葉で混ざる採用選考と市場調査。30秒で切り分けて、探しているほうへ案内する。</span>
+        <span class="d">同じ言葉で混ざる採用選考と市場調査。30秒で切り分けて、探しているほうへ案内する。</span><span class="audience-tag">人事・研修担当</span>
       </span>
     </a>
-    <a class="lb-card" href="ai-moderator.html">
+    <a data-audience-item data-audience="operations" class="lb-card" href="ai-moderator.html">
       <img class="cover" src="covers/thumbs/ai-moderator.jpg" alt="AIモデレーターと人間の使い分け。広く聞くのはAI、深く掘るのは人という分担" width="600" height="315" loading="lazy">
       <span class="body">
         <span class="top"><span class="lb-chip">基礎・費用・ツール選び</span><span class="date">2026.07.26</span></span>
         <span class="t">AIモデレーターとは｜人間モデレーターとの違いと使い分け【2026】</span>
-        <span class="d">できる・できないの線引きと、調査目的×対象者×深さで選ぶ使い分けマトリクス。ハイブリッド設計3パターンも。</span>
+        <span class="d">できる・できないの線引きと、調査目的×対象者×深さで選ぶ使い分けマトリクス。ハイブリッド設計3パターンも。</span><span class="audience-tag">業務責任者</span>
       </span>
     </a>
-    <a class="lb-card" href="ai-interview-cost.html">
+    <a data-audience-item data-audience="operations" class="lb-card" href="ai-interview-cost.html">
       <img class="cover" src="covers/thumbs/ai-interview-cost.jpg" alt="AIインタビューの費用は工程の内訳で比べる。従来の総額を工程別に分け、AIで消える費用を整理" width="600" height="315" loading="lazy">
       <span class="body">
         <span class="top"><span class="lb-chip">基礎・費用・ツール選び</span><span class="date">2026.07.25</span></span>
         <span class="t">AIインタビューの料金・費用相場｜従来のデプスインタビューと何が変わるか【2026】</span>
-        <span class="d">従来デプスの費用構造を工程分解し、AIで消える費用・残る費用を整理。予算配分の考え方まで。</span>
+        <span class="d">従来デプスの費用構造を工程分解し、AIで消える費用・残る費用を整理。予算配分の考え方まで。</span><span class="audience-tag">業務責任者</span>
       </span>
     </a>
-    <a class="lb-card" href="interview-analysis.html">
+    <a data-audience-item data-audience="operations" class="lb-card" href="interview-analysis.html">
       <img class="cover" src="covers/thumbs/interview-analysis.jpg" alt="インタビュー分析をAIで速くする。担当者・AIが、問いを設定する→文字起こしする→テーマを抽出する→引用元を紐付ける→原文で確かめる→反証を残すの順に進める業務図" width="600" height="315" loading="lazy">
       <span class="body">
         <span class="top"><span class="lb-chip">分析と検証</span><span class="date">2026.07.14</span></span>
         <span class="t">インタビュー分析を生成AIで速くする｜発話データを判断材料に変える</span>
-        <span class="d">発話を構造化し、示唆と根拠（引用元）を結びつける生成AI分析の実務。</span>
+        <span class="d">発話を構造化し、示唆と根拠（引用元）を結びつける生成AI分析の実務。</span><span class="audience-tag">業務責任者</span>
       </span>
     </a>
-    <a class="lb-card" href="how-many-interviews.html">
+    <a data-audience-item data-audience="operations" class="lb-card" href="how-many-interviews.html">
       <img class="cover" src="covers/thumbs/how-many-interviews.jpg" alt="インタビューは何人聞けば足りるか。「12人で飽和」の条件と、人数の決め方" width="600" height="315" loading="lazy">
       <span class="body">
         <span class="top"><span class="lb-chip">対象者と回答の質</span><span class="date">2026.07.10</span></span>
         <span class="t">インタビューは何人に聞けば十分か｜「12人で飽和」の研究から最新レビューまで</span>
-        <span class="d">6件で70%、12件で92%——古典実験の中身と条件、最新レビューの9〜17件、そして反論まで。</span>
+        <span class="d">6件で70%、12件で92%——古典実験の中身と条件、最新レビューの9〜17件、そして反論まで。</span><span class="audience-tag">業務責任者</span>
       </span>
     </a>
-    <a class="lb-card" href="honesty-with-ai.html">
+    <a data-audience-item data-audience="operations" class="lb-card" href="honesty-with-ai.html">
       <img class="cover" src="covers/thumbs/honesty-with-ai.jpg" alt="人はAIに本音を話すのか。「話しやすい」研究の実像と限界を整理" width="600" height="315" loading="lazy">
       <span class="body">
         <span class="top"><span class="lb-chip">AIと人の回答の違い</span><span class="date">2026.07.04</span></span>
         <span class="t">人はAIに本音を話すのか｜「機械相手だと話しやすい」研究の実像と限界</span>
-        <span class="d">開示が増える研究と、差がない研究。両方を読んで分かる「判断されない感覚」の正体。</span>
+        <span class="d">開示が増える研究と、差がない研究。両方を読んで分かる「判断されない感覚」の正体。</span><span class="audience-tag">業務責任者</span>
       </span>
     </a>
     </div>
-</section>
+<p class="audience-empty" hidden>このメディアには、選んだ読者向けの記事がまだありません。<br><a href="/media/#articles">メディア全体から探す</a></p><button type="button" class="audience-more" aria-controls="audience-results" hidden>もっと見る</button></section>
 
 <!-- 4) 扱うテーマ -->
 <section class="lb-wrap lb-themes" aria-label="扱うテーマ">

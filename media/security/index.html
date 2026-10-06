@@ -86,6 +86,8 @@ fbq('init','1264057945446029');fbq('track','PageView');
   footer a{display:inline-block;padding-top:7px;padding-bottom:7px;}
 }
 </style>
+<link rel="stylesheet" href="/media/audience-filter.css?v=20261006-readers">
+<script src="/media/audience-filter.js?v=20261006-readers" defer></script>
 </head>
 <body>
 
@@ -115,60 +117,62 @@ fbq('init','1264057945446029');fbq('track','PageView');
 </header>
 
 <!-- articles -->
-<section class="jz-sec jz-latest">
+<section id="articles" data-audience-catalog class="jz-sec jz-latest">
   <div class="jz-sec-h">記事一覧</div>
-  <div class="jz-list has-thumb rv">
+  <div class="audience-controls" role="group" aria-label="対象読者で絞り込む" hidden><button type="button" data-audience-filter="all" data-audience-label="すべて" aria-pressed="true" aria-controls="audience-results">すべて<span class="audience-count">12</span></button><button type="button" data-audience-filter="it" data-audience-label="情シス・AI導入担当" aria-pressed="false" aria-controls="audience-results">情シス・AI導入担当<span class="audience-count">12</span></button><button type="button" data-audience-filter="hr" data-audience-label="人事・研修担当" aria-pressed="false" aria-controls="audience-results">人事・研修担当<span class="audience-count">0</span></button><button type="button" data-audience-filter="operations" data-audience-label="業務責任者" aria-pressed="false" aria-controls="audience-results">業務責任者<span class="audience-count">0</span></button><button type="button" data-audience-filter="executive" data-audience-label="経営者・経営幹部" aria-pressed="false" aria-controls="audience-results">経営者・経営幹部<span class="audience-count">0</span></button></div>
+<p class="audience-result" role="status" aria-live="polite" aria-atomic="true">すべて：12件</p>
+<div id="audience-results" class="jz-list has-thumb rv">
 
-<a href="rag-file-ingestion-malware-quarantine.html"><img class="l-thumb" src="covers/thumbs/rag-file-ingestion-malware-quarantine.jpg" alt="RAGの取込口は新しい実行境界。脅威なしと確定したものだけを解析待ちへ移す" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">攻撃対策と検証</div><div class="l-date">2026.09.30</div></div><div><div class="l-title">RAGのファイル取込を隔離する｜マルウェア検査前に解析器へ渡さない設計</div><div class="l-desc">受け取ったファイルは、検査が終わるまで解析器やOCRへ渡しません。隔離、形式確認、マルウェア検査、制限付き解析、索引登録を状態で分けます。</div></div><div class="l-arrow">→</div></a>
+<a data-audience-item data-audience="it" href="rag-file-ingestion-malware-quarantine.html"><img class="l-thumb" src="covers/thumbs/rag-file-ingestion-malware-quarantine.jpg" alt="RAGの取込口は新しい実行境界。脅威なしと確定したものだけを解析待ちへ移す" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">攻撃対策と検証</div><div class="l-date">2026.09.30</div></div><div><div class="l-title">RAGのファイル取込を隔離する｜マルウェア検査前に解析器へ渡さない設計</div><div class="l-desc">受け取ったファイルは、検査が終わるまで解析器やOCRへ渡しません。隔離、形式確認、マルウェア検査、制限付き解析、索引登録を状態で分けます。</div><span class="audience-tag">情シス・AI導入担当</span></div><div class="l-arrow">→</div></a>
 
-<a href="llm-markdown-output-xss-sanitization.html"><img class="l-thumb" src="covers/thumbs/llm-markdown-output-xss-sanitization.jpg" alt="生成AIのMarkdown表示でXSSリスクを減らす。変換・無害化・挿入の順に固定し、リンクと画像も絞る" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">攻撃対策と検証</div><div class="l-date">2026.09.28</div></div><div><div class="l-title">生成AIのMarkdown表示でXSSリスクを減らす｜無害化・URL・Trusted Typesの実装境界</div><div class="l-desc">生成AIのMarkdownは、信頼できない入力として表示します。生のHTML、URL、画像、コードブロックを同じ処理へ流さず、解析と無害化の境界を固定します。</div></div><div class="l-arrow">→</div></a>
-<a href="browser-agent-session-isolation-design.html"><img class="l-thumb" src="covers/thumbs/browser-agent-session-isolation-design.jpg" alt="ブラウザ操作AIのセッションを分ける。担当者・AIが、匿名で調べる→人がログインする→閲覧専用で読む→ログアウトする→直前に確認するの順に進める業務図" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">実行環境と通信の制限</div><div class="l-date">2026.09.27</div></div><div><div class="l-title">ブラウザ操作AIエージェントのセッション分離｜Cookie・ログイン・画面記録を閉じる【2026】</div><div class="l-desc">普段使いのブラウザ専用環境をAIへ渡すと、開いているセッションの権限まで渡ります。用途別専用環境と使い捨てセッションで、Cookie・保存先・画面記録を切り分けます。</div></div><div class="l-arrow">→</div></a>
+<a data-audience-item data-audience="it" href="llm-markdown-output-xss-sanitization.html"><img class="l-thumb" src="covers/thumbs/llm-markdown-output-xss-sanitization.jpg" alt="生成AIのMarkdown表示でXSSリスクを減らす。変換・無害化・挿入の順に固定し、リンクと画像も絞る" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">攻撃対策と検証</div><div class="l-date">2026.09.28</div></div><div><div class="l-title">生成AIのMarkdown表示でXSSリスクを減らす｜無害化・URL・Trusted Typesの実装境界</div><div class="l-desc">生成AIのMarkdownは、信頼できない入力として表示します。生のHTML、URL、画像、コードブロックを同じ処理へ流さず、解析と無害化の境界を固定します。</div><span class="audience-tag">情シス・AI導入担当</span></div><div class="l-arrow">→</div></a>
+<a data-audience-item data-audience="it" href="browser-agent-session-isolation-design.html"><img class="l-thumb" src="covers/thumbs/browser-agent-session-isolation-design.jpg" alt="ブラウザ操作AIのセッションを分ける。担当者・AIが、匿名で調べる→人がログインする→閲覧専用で読む→ログアウトする→直前に確認するの順に進める業務図" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">実行環境と通信の制限</div><div class="l-date">2026.09.27</div></div><div><div class="l-title">ブラウザ操作AIエージェントのセッション分離｜Cookie・ログイン・画面記録を閉じる【2026】</div><div class="l-desc">普段使いのブラウザ専用環境をAIへ渡すと、開いているセッションの権限まで渡ります。用途別専用環境と使い捨てセッションで、Cookie・保存先・画面記録を切り分けます。</div><span class="audience-tag">情シス・AI導入担当</span></div><div class="l-arrow">→</div></a>
 
-    <a href="prompt-injection-incident-response-playbook.html"><img class="l-thumb" src="covers/thumbs/prompt-injection-incident-response-playbook.jpg" alt="プロンプトインジェクション事故対応の初動を決める。出力より先に権限を止め、証跡を残して段階復旧する" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">承認・監査・事故対応</div><div class="l-date">2026.09.19</div></div><div><div class="l-title">プロンプトインジェクション事故対応｜AIエージェントを止めて安全に復旧する</div><div class="l-desc">事故の初動では、モデルの返答を直す前に、ツール、認証情報、セッションを止めます。証拠を残し、影響範囲を確定してから段階的に戻します。</div></div><div class="l-arrow">&rarr;</div></a>
+    <a data-audience-item data-audience="it" href="prompt-injection-incident-response-playbook.html"><img class="l-thumb" src="covers/thumbs/prompt-injection-incident-response-playbook.jpg" alt="プロンプトインジェクション事故対応の初動を決める。出力より先に権限を止め、証跡を残して段階復旧する" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">承認・監査・事故対応</div><div class="l-date">2026.09.19</div></div><div><div class="l-title">プロンプトインジェクション事故対応｜AIエージェントを止めて安全に復旧する</div><div class="l-desc">事故の初動では、モデルの返答を直す前に、ツール、認証情報、セッションを止めます。証拠を残し、影響範囲を確定してから段階的に戻します。</div><span class="audience-tag">情シス・AI導入担当</span></div><div class="l-arrow">&rarr;</div></a>
 
-    <a href="mcp-apps-security-design.html"><img class="l-thumb" src="covers/thumbs/mcp-apps-security-design.jpg" alt="MCP Appsが書込みを実行するまで。承認者・App・hostが、操作を要求する→送信元を検証する→読取りを実行する→対象と差分を確認→書込みを実行するの順に進める業務図" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">実行環境と通信の制限</div><div class="l-date">2026.09.17</div></div><div><div class="l-title">MCP Appsのセキュリティ設計｜iframe・CSP・postMessage・書込み操作をどう守るか【2026】</div><div class="l-desc">MCP Appsは、MCPホスト、隔離されたiframe、MCPサーバーの3者を分けて守ります。iframeだけに頼らず、CSP、postMessageの送信元、ツール権限を重ねます。</div></div><div class="l-arrow">&rarr;</div></a>
-    <a href="ai-agent-runtime-sandbox-egress-design.html"><img class="l-thumb" src="covers/thumbs/ai-agent-runtime-sandbox-egress-design.jpg" alt="AIエージェントの実行環境を狭く作る。書ける場所・通信先・認証情報・承認を技術で狭める" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">実行環境と通信の制限</div><div class="l-date">2026.09.16</div></div><div><div class="l-title">AIエージェントのサンドボックス設計｜作業領域・通信・認証情報を分離する</div><div class="l-desc">サンドボックスは、書ける場所、接続できる宛先、使える認証情報を別々に閉じます。承認は、その境界を越えるときだけ求めます。</div></div><div class="l-arrow">&rarr;</div></a>
-    <a href="generative-ai-dlp-design.html"><img class="l-thumb" src="covers/thumbs/generative-ai-dlp-design.jpg" alt="生成AIの機密データを境界ごとに止める。利用者・承認者・DLPが、promptを送る→機密値を検知する→回答を検査する→例外を判断するの順に進める業務図" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">機密データの保護</div><div class="l-date">2026.09.11</div></div><div><div class="l-title">生成AIのDLP設計｜入力・出力・検索・記録で機密データを止める【2026】</div><div class="l-desc">生成AIのDLPは、入力だけを止めても足りません。入力文、モデル出力、RAG検索、観測記録の4か所で、遮断・伏せ字・通知を使い分けます。</div></div><div class="l-arrow">&rarr;</div></a>
-    <a href="llm-api-cost-abuse-controls.html"><img class="l-thumb" src="covers/thumbs/llm-api-cost-abuse-controls.jpg" alt="LLM APIの高額請求を三つの予算で抑える。request・金額・tool実行を別々に制御する" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">導入審査・調達・コスト</div><div class="l-date">2026.09.08</div></div><div><div class="l-title">LLM APIの高額請求を防ぐ｜回数上限・費用上限・ツール予算を分ける【2026】</div><div class="l-desc">高額請求は、回数、金額、外部ツールの3つを別々に止めます。1つの上限だけでは、長い要求や連続ツール実行を抑えられません。</div></div><div class="l-arrow">&rarr;</div></a>
+    <a data-audience-item data-audience="it" href="mcp-apps-security-design.html"><img class="l-thumb" src="covers/thumbs/mcp-apps-security-design.jpg" alt="MCP Appsが書込みを実行するまで。承認者・App・hostが、操作を要求する→送信元を検証する→読取りを実行する→対象と差分を確認→書込みを実行するの順に進める業務図" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">実行環境と通信の制限</div><div class="l-date">2026.09.17</div></div><div><div class="l-title">MCP Appsのセキュリティ設計｜iframe・CSP・postMessage・書込み操作をどう守るか【2026】</div><div class="l-desc">MCP Appsは、MCPホスト、隔離されたiframe、MCPサーバーの3者を分けて守ります。iframeだけに頼らず、CSP、postMessageの送信元、ツール権限を重ねます。</div><span class="audience-tag">情シス・AI導入担当</span></div><div class="l-arrow">&rarr;</div></a>
+    <a data-audience-item data-audience="it" href="ai-agent-runtime-sandbox-egress-design.html"><img class="l-thumb" src="covers/thumbs/ai-agent-runtime-sandbox-egress-design.jpg" alt="AIエージェントの実行環境を狭く作る。書ける場所・通信先・認証情報・承認を技術で狭める" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">実行環境と通信の制限</div><div class="l-date">2026.09.16</div></div><div><div class="l-title">AIエージェントのサンドボックス設計｜作業領域・通信・認証情報を分離する</div><div class="l-desc">サンドボックスは、書ける場所、接続できる宛先、使える認証情報を別々に閉じます。承認は、その境界を越えるときだけ求めます。</div><span class="audience-tag">情シス・AI導入担当</span></div><div class="l-arrow">&rarr;</div></a>
+    <a data-audience-item data-audience="it" href="generative-ai-dlp-design.html"><img class="l-thumb" src="covers/thumbs/generative-ai-dlp-design.jpg" alt="生成AIの機密データを境界ごとに止める。利用者・承認者・DLPが、promptを送る→機密値を検知する→回答を検査する→例外を判断するの順に進める業務図" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">機密データの保護</div><div class="l-date">2026.09.11</div></div><div><div class="l-title">生成AIのDLP設計｜入力・出力・検索・記録で機密データを止める【2026】</div><div class="l-desc">生成AIのDLPは、入力だけを止めても足りません。入力文、モデル出力、RAG検索、観測記録の4か所で、遮断・伏せ字・通知を使い分けます。</div><span class="audience-tag">情シス・AI導入担当</span></div><div class="l-arrow">&rarr;</div></a>
+    <a data-audience-item data-audience="it" href="llm-api-cost-abuse-controls.html"><img class="l-thumb" src="covers/thumbs/llm-api-cost-abuse-controls.jpg" alt="LLM APIの高額請求を三つの予算で抑える。request・金額・tool実行を別々に制御する" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">導入審査・調達・コスト</div><div class="l-date">2026.09.08</div></div><div><div class="l-title">LLM APIの高額請求を防ぐ｜回数上限・費用上限・ツール予算を分ける【2026】</div><div class="l-desc">高額請求は、回数、金額、外部ツールの3つを別々に止めます。1つの上限だけでは、長い要求や連続ツール実行を抑えられません。</div><span class="audience-tag">情シス・AI導入担当</span></div><div class="l-arrow">&rarr;</div></a>
 
 
 
-    <a href="ai-agent-human-approval-gates.html"><img class="l-thumb" src="covers/thumbs/ai-agent-human-approval-gates.jpg" alt="AIエージェントの承認ゲートを置く場所。承認者・AIが、操作を分類する→内部更新を実行する→差分を確認する→承認対象を照合する→操作を実行するの順に進める業務図" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">承認・監査・事故対応</div><div class="l-date">2026.09.01</div></div><div><div class="l-title">AIエージェントの承認ゲート設計｜どの操作を人が止めるべきか【2026】</div><div class="l-desc">承認を挟むのは、失敗時に外部へ影響が出る操作です。閲覧、下書き、送信、削除を同じ扱いにせず、実行直前の差分を人に見せます。</div></div><div class="l-arrow">&rarr;</div></a>
-    <a href="zero-trust-access"><img class="l-thumb" src="covers/thumbs/zero-trust-access.jpg?v=20261003-media-quality" alt="社内Webアプリの認証を比べる。VPNのみで守る構成と、アプリの前段で認証する構成の比較" width="600" height="315" loading="lazy">
+    <a data-audience-item data-audience="it" href="ai-agent-human-approval-gates.html"><img class="l-thumb" src="covers/thumbs/ai-agent-human-approval-gates.jpg" alt="AIエージェントの承認ゲートを置く場所。承認者・AIが、操作を分類する→内部更新を実行する→差分を確認する→承認対象を照合する→操作を実行するの順に進める業務図" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">承認・監査・事故対応</div><div class="l-date">2026.09.01</div></div><div><div class="l-title">AIエージェントの承認ゲート設計｜どの操作を人が止めるべきか【2026】</div><div class="l-desc">承認を挟むのは、失敗時に外部へ影響が出る操作です。閲覧、下書き、送信、削除を同じ扱いにせず、実行直前の差分を人に見せます。</div><span class="audience-tag">情シス・AI導入担当</span></div><div class="l-arrow">&rarr;</div></a>
+    <a data-audience-item data-audience="it" href="zero-trust-access"><img class="l-thumb" src="covers/thumbs/zero-trust-access.jpg?v=20261003-media-quality" alt="社内Webアプリの認証を比べる。VPNのみで守る構成と、アプリの前段で認証する構成の比較" width="600" height="315" loading="lazy">
       <div class="l-side">
         <div class="l-cat">権限とアクセス管理</div>
         <div class="l-date">2026.08.09</div>
       </div>
       <div>
         <div class="l-title">社内ツール・管理画面をVPNなしで守る｜Cloudflare Accessによるゼロトラスト構成</div>
-        <div class="l-desc">内製AIツールや検証環境へのアクセスを、アプリごとに管理する方法を示します。Cloudflare Accessの導入手順と、直結経路・退職時の権限失効で見落としやすい点を確認します。</div>
+        <div class="l-desc">内製AIツールや検証環境へのアクセスを、アプリごとに管理する方法を示します。Cloudflare Accessの導入手順と、直結経路・退職時の権限失効で見落としやすい点を確認します。</div><span class="audience-tag">情シス・AI導入担当</span>
       </div>
       <div class="l-arrow">&rarr;</div>
     </a>
-    <a href="firewall-for-ai"><img class="l-thumb" src="covers/thumbs/firewall-for-ai.jpg" alt="命令とデータが混ざるLLMアプリの守り方。ガードレールは確率的な緩和策で、多層防御が前提" width="600" height="315" loading="lazy">
+    <a data-audience-item data-audience="it" href="firewall-for-ai"><img class="l-thumb" src="covers/thumbs/firewall-for-ai.jpg" alt="命令とデータが混ざるLLMアプリの守り方。ガードレールは確率的な緩和策で、多層防御が前提" width="600" height="315" loading="lazy">
       <div class="l-side">
         <div class="l-cat">攻撃対策と検証</div>
         <div class="l-date">2026.08.09</div>
       </div>
       <div>
         <div class="l-title">LLMアプリのプロンプトインジェクション対策｜Cloudflareのガードレール機能で何を防げるか</div>
-        <div class="l-desc">CloudflareのAI向け保護機能は、入力の検知と緩和を助けます。公式資料を基に、防げる範囲とアプリ側に残る対策を確認します。</div>
+        <div class="l-desc">CloudflareのAI向け保護機能は、入力の検知と緩和を助けます。公式資料を基に、防げる範囲とアプリ側に残る対策を確認します。</div><span class="audience-tag">情シス・AI導入担当</span>
       </div>
       <div class="l-arrow">&rarr;</div>
     </a>
-    <a href="ai-crawler-control"><img class="l-thumb" src="covers/thumbs/ai-crawler-control.jpg" alt="AIクローラーはrobots.txtの先で制御。名乗りに頼らず、検証済みのボットだけを通す" width="600" height="315" loading="lazy">
+    <a data-audience-item data-audience="it" href="ai-crawler-control"><img class="l-thumb" src="covers/thumbs/ai-crawler-control.jpg" alt="AIクローラーはrobots.txtの先で制御。名乗りに頼らず、検証済みのボットだけを通す" width="600" height="315" loading="lazy">
       <div class="l-side">
         <div class="l-cat">実行環境と通信の制限</div>
         <div class="l-date">2026.08.09</div>
       </div>
       <div>
         <div class="l-title">AIクローラーからサイトを守る｜robots.txtの限界とCloudflareでの制御</div>
-        <div class="l-desc">AIの学習を止め、検索からの流入を残すには、クローラーごとの役割を見分けます。robots.txtの限界と、Cloudflareで観測・制御できる範囲を確認します。</div>
+        <div class="l-desc">AIの学習を止め、検索からの流入を残すには、クローラーごとの役割を見分けます。robots.txtの限界と、Cloudflareで観測・制御できる範囲を確認します。</div><span class="audience-tag">情シス・AI導入担当</span>
       </div>
       <div class="l-arrow">&rarr;</div>
     </a>
     </div>
-</section>
+<p class="audience-empty" hidden>このメディアには、選んだ読者向けの記事がまだありません。<br><a href="/media/#articles">メディア全体から探す</a></p><button type="button" class="audience-more" aria-controls="audience-results" hidden>もっと見る</button></section>
 
 <!-- cta -->
 <section class="jz-sec" style="margin-top:64px;">

@@ -161,6 +161,8 @@ fbq('init','1264057945446029');fbq('track','PageView');
 }
 .jz-cat-item .ct-en,.jz-list .l-cat,.jz-cards .c-cat{font-size:11px;}
 </style>
+<link rel="stylesheet" href="/media/audience-filter.css?v=20261006-readers">
+<script src="/media/audience-filter.js?v=20261006-readers" defer></script>
 </head>
 <body>
 
@@ -289,37 +291,39 @@ fbq('init','1264057945446029');fbq('track','PageView');
 </section>
 
 <!-- articles -->
-<section class="jz-sec jz-articles">
+<section id="articles" data-audience-catalog class="jz-sec jz-articles">
   <div class="jz-sec-h">新着記事</div>
-  <div class="jz-cards rv">
+  <div class="audience-controls" role="group" aria-label="対象読者で絞り込む" hidden><button type="button" data-audience-filter="all" data-audience-label="すべて" aria-pressed="true" aria-controls="audience-results">すべて<span class="audience-count">5</span></button><button type="button" data-audience-filter="it" data-audience-label="情シス・AI導入担当" aria-pressed="false" aria-controls="audience-results">情シス・AI導入担当<span class="audience-count">0</span></button><button type="button" data-audience-filter="hr" data-audience-label="人事・研修担当" aria-pressed="false" aria-controls="audience-results">人事・研修担当<span class="audience-count">0</span></button><button type="button" data-audience-filter="operations" data-audience-label="業務責任者" aria-pressed="false" aria-controls="audience-results">業務責任者<span class="audience-count">4</span></button><button type="button" data-audience-filter="executive" data-audience-label="経営者・経営幹部" aria-pressed="false" aria-controls="audience-results">経営者・経営幹部<span class="audience-count">1</span></button></div>
+<p class="audience-result" role="status" aria-live="polite" aria-atomic="true">すべて：5件</p>
+<div id="audience-results" class="jz-cards rv">
 
-<a href="law-firm-client-ai-chat-boundary-design.html"><img class="cv" src="covers/thumbs/law-firm-client-ai-chat-boundary-design.jpg" alt="AIチャットが弁護士へ引き継ぐ場面。相談者・弁護士・AIが、質問を入力する→質問を分類する→一般情報を案内する→原文ごと引き継ぐ→相談に回答する→停止理由を記録するの順に進める業務図" width="600" height="315" loading="lazy"><div class="cd"><div class="c-cat">相談・受付の対応</div><div class="c-title">法律事務所の顧客向け生成AIチャット｜受付・一般情報と法律相談を分ける</div><div class="c-meta">2026.09.30</div></div></a>
-
-
-
-    <a href="professional-firm-generative-ai-policy.html"><img class="cv" src="covers/thumbs/professional-firm-generative-ai-policy.jpg" alt="AI利用規程は業務と情報で決める。禁止でも無条件許可でもない規程にする" width="600" height="315" loading="lazy"><div class="cd"><div class="c-cat">所内ルールと人材育成</div><div class="c-title">士業事務所の生成AI利用規程｜入力禁止情報・人手確認・ログの決め方</div><div class="c-meta">2026.09.21 · 一次情報 6件</div></div></a>
+<a data-audience-item data-audience="operations" href="law-firm-client-ai-chat-boundary-design.html"><img class="cv" src="covers/thumbs/law-firm-client-ai-chat-boundary-design.jpg" alt="AIチャットが弁護士へ引き継ぐ場面。相談者・弁護士・AIが、質問を入力する→質問を分類する→一般情報を案内する→原文ごと引き継ぐ→相談に回答する→停止理由を記録するの順に進める業務図" width="600" height="315" loading="lazy"><div class="cd"><div class="c-cat">相談・受付の対応</div><div class="c-title">法律事務所の顧客向け生成AIチャット｜受付・一般情報と法律相談を分ける</div><div class="c-meta">2026.09.30</div><span class="audience-tag">業務責任者</span></div></a>
 
 
 
-    <a href="legal-citation-source-verification.html"><img class="cv" src="covers/thumbs/legal-citation-source-verification.jpg" alt="AIが示す法令・判例を原典で確かめる。条番号や事件名は検索語と仮説として扱う" width="600" height="315" loading="lazy"><div class="cd"><div class="c-cat">確認記録と事故対応</div><div class="c-title">生成AIが示す法令・判例の出典検証｜e-Govと裁判所DBへ戻る確認手順</div><div class="c-meta">2026.09.04 · 一次情報 6件</div></div></a>
-    <a href="tax-accounting-ai.html">
+    <a data-audience-item data-audience="executive" href="professional-firm-generative-ai-policy.html"><img class="cv" src="covers/thumbs/professional-firm-generative-ai-policy.jpg" alt="AI利用規程は業務と情報で決める。禁止でも無条件許可でもない規程にする" width="600" height="315" loading="lazy"><div class="cd"><div class="c-cat">所内ルールと人材育成</div><div class="c-title">士業事務所の生成AI利用規程｜入力禁止情報・人手確認・ログの決め方</div><div class="c-meta">2026.09.21 · 一次情報 6件</div><span class="audience-tag">経営者・経営幹部</span></div></a>
+
+
+
+    <a data-audience-item data-audience="operations" href="legal-citation-source-verification.html"><img class="cv" src="covers/thumbs/legal-citation-source-verification.jpg" alt="AIが示す法令・判例を原典で確かめる。条番号や事件名は検索語と仮説として扱う" width="600" height="315" loading="lazy"><div class="cd"><div class="c-cat">確認記録と事故対応</div><div class="c-title">生成AIが示す法令・判例の出典検証｜e-Govと裁判所DBへ戻る確認手順</div><div class="c-meta">2026.09.04 · 一次情報 6件</div><span class="audience-tag">業務責任者</span></div></a>
+    <a data-audience-item data-audience="operations" href="tax-accounting-ai.html">
       <img class="cv" src="covers/thumbs/tax-accounting-ai.jpg" alt="税理士事務所の準備作業をAIが下書き。仕訳の確定と申告は税理士が握る" width="600" height="315" loading="lazy">
       <div class="cd">
         <div class="c-cat">資格別の活用入門</div>
         <div class="c-title">税理士事務所の生成AI活用｜記帳・月次・税務調査対応の効率化</div>
-        <div class="c-meta">2026.06.20 · 読了8分</div>
+        <div class="c-meta">2026.06.20 · 読了8分</div><span class="audience-tag">業務責任者</span>
       </div>
     </a>
-    <a href="sharoshi-ai.html">
+    <a data-audience-item data-audience="operations" href="sharoshi-ai.html">
       <img class="cv" src="covers/thumbs/sharoshi-ai.jpg" alt="社労士事務所のAI活用を始める。就業規則・手続き書類・労務相談の準備に" width="600" height="315" loading="lazy">
       <div class="cd">
         <div class="c-cat">資格別の活用入門</div>
         <div class="c-title">社労士事務所の生成AI活用｜就業規則・手続き書類・相談対応</div>
-        <div class="c-meta">2026.06.22 · 読了8分</div>
+        <div class="c-meta">2026.06.22 · 読了8分</div><span class="audience-tag">業務責任者</span>
       </div>
     </a>
   </div>
-</section>
+<p class="audience-empty" hidden>このメディアには、選んだ読者向けの記事がまだありません。<br><a href="/media/#articles">メディア全体から探す</a></p><button type="button" class="audience-more" aria-controls="audience-results" hidden>もっと見る</button></section>
 
 <!-- about this media -->
 <section class="jz-sec" style="margin-top:64px;">
