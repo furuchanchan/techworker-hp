@@ -20,9 +20,10 @@
   <a href="../../contact.html" class="m-cta">無料相談を申し込む</a>
 </div>
 <header class="art-head"><nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIセキュリティ・ラボ</a></nav><div class="kicker">承認・監査・事故対応</div><h1>プロンプトインジェクション事故対応｜AIエージェントを止めて安全に復旧する</h1><p class="dek">事故の初動では、モデルの返答を直す前に、ツール、認証情報、セッションを止めます。証拠を残し、影響範囲を確定してから段階的に戻します。</p><div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.09.19</span><span class="dot">·</span><span>最終更新 2026.10.06</span></div></header><div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div><a href="#source">NISTは生成AI事故を継続的なリスク管理へ戻す</a><a href="#contain">最初の15分で実行経路を止める</a><a href="#evidence">入力文だけでなくツール呼出しと外部システムを追う</a><a href="#recover">原因別に境界を直して段階復旧する</a><a href="#sources">出典と確認範囲</a></div></nav><article class="art-body">
-<section class="source-quote" aria-label="一次資料の引用"><p><strong>一次資料</strong>：NIST AI RMF Generative AI Profile（2024年7月26日、2026年4月8日更新、確認日：2026年10月6日）</p>
+<p>参照した文書の指示にAIが従い、意図しないツール操作を始めた。こうした事態では、返答の修正より先に、進行中の処理と影響範囲を確認する必要があります。NISTのリスク管理の考え方を踏まえ、停止、証拠保全、復旧の手順を示します。</p>
+<section class="source-quote" aria-label="一次資料の引用"><p><strong>一次資料</strong>：NISTの生成AIリスク管理の枠組み（2024年7月26日、2026年4月8日更新、確認：2026年10月6日）</p>
 <blockquote><p lang="en">to incorporate trustworthiness considerations into the design, development, use, and evaluation of AI products, services, and systems.</p></blockquote>
-<p>出典：<a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener noreferrer">NIST AI RMF Generative AI Profile</a>。引用は論点を示す最小範囲にとどめ、日本語で読みどころを補います。</p></section>
+<p>出典：<a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener noreferrer">NIST AI RMF Generative AI Profile</a>。NISTは、AIの設計・開発・利用・評価を通じて信頼性を考慮する枠組みを示しています。以下の初動手順は、その考え方を踏まえたTechWorkerの設計案です。</p></section>
 <figure class="fig-inline"><a href="figs/prompt-injection-incident-response-playbook-1.png" target="_blank" rel="noopener"><img src="figs/prompt-injection-incident-response-playbook-1.png" alt="プロンプトインジェクション事故で停止、証拠保全、影響確認、復旧へ進む設計例" width="1200" height="825" loading="lazy" decoding="async"></a><figcaption><span class="source-label">TechWorker作成：</span>事故発覚後に止める対象と、復旧前に確認する条件を図示しています。 製品の公式画面や導入効果の実測ではありません。画像を押すと拡大できます。</figcaption></figure>
 <h2 id="source">NISTは生成AI事故を継続的なリスク管理へ戻す</h2>
 <p>NISTの生成AIプロファイルは、生成AIのリスクを統治、把握、測定、管理の循環で扱います。事故対応も一度の停止で終わらず、原因と影響を測り、対策と運用へ戻す作業です。</p>
@@ -48,4 +49,4 @@ addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30)
   mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
   addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
 })();
-var pb=document.getElementById('progress');addEventListener('scroll',function(){var h=document.documentElement,d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?h.scrollTop/d*100:0)+'%'},{passive:true})</script><script src="/media/article-tracker.js?v=20261003-media-quality" defer></script></body></html>
+var pb=document.getElementById('progress');addEventListener('scroll',function(){var h=document.documentElement,d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?h.scrollTop/d*100:0)+'%'},{passive:true})</script><script src="/media/article-tracker.js?v=20261006-readable-intros" defer></script></body></html>

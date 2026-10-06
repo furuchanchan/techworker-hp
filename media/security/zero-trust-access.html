@@ -74,7 +74,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIセキュリティ・ラボ</a><span class="sep">/</span>社内ツール・管理画面をVPNなしで守る</nav>
   <div class="kicker">権限とアクセス管理</div>
   <h1>社内ツール・管理画面をVPNなしで守る｜Cloudflare Accessによるゼロトラスト構成</h1>
-  <p class="dek">内製ツールが10、20と増えても、VPNを増やさず、Cloudflare Accessで人を確認して守れます。<br>内製AIツールや検証環境が増えて、アクセス管理に困っている情シスやシステム担当の方の悩みに答えます。<br>VPNとゼロトラストの違い、5つの導入手順、直結経路と退職時の失効で見落とす点が分かります。</p>
+  <p class="dek">内製AIツールや検証環境へのアクセスを、アプリごとに管理する方法を示します。Cloudflare Accessの導入手順と、直結経路・退職時の権限失効で見落としやすい点を確認します。</p>
   <div class="a-meta">
     <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.08.09</span><span class="dot">·</span><span>最終更新 2026.10.06</span><span class="dot">·</span><span>読了 9分</span>
   </div>
@@ -89,6 +89,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <nav class="art-toc" aria-label="目次">
     <div class="art-toc-inner">
       <div class="toc-h">目次</div><a href="#source">公式図は利用者・Cloudflare・アプリケーションの3層を示す</a><a href="#path">公開ホスト名から接続元サーバーまでを1本の経路で守る</a><a href="#policies">規則は初期状態で拒否から始める</a><a href="#verify">迂回経路と退職セッションを試験する</a><a href="#sources">出典と確認範囲</a></div></nav><article class="art-body">
+<p>社内用のAIツールや検証環境が増えると、利用を認める人と退職・異動時に外す権限を把握しにくくなります。Cloudflare Accessを例に、アプリごとのアクセス管理と、管理をすり抜ける直結経路の確認方法を説明します。</p>
 <figure class="fig-inline source-figure">
   <a class="source-image" href="sources/cloudflare-access-ztna-figure1.svg" target="_blank" rel="noopener noreferrer"><img src="sources/cloudflare-access-ztna-figure1.svg" alt="利用者と端末からCloudflare Accessを経て社内アプリケーションへ接続するZTNAの基本構成" width="1235" height="585" loading="lazy" decoding="async"></a>
   <figcaption><span class="source-label">Cloudflare公式：ZTNAによる遠隔アクセスの基本構成</span>利用者とアプリケーションの間にCloudflareが入り、利用者情報と端末状態で規則を評価する位置を読みます。 画像をクリックすると原図を開きます。<a href="https://developers.cloudflare.com/reference-architecture/design-guides/designing-ztna-access-policies/" target="_blank" rel="noopener noreferrer">原典ページ</a>／<a href="https://github.com/cloudflare/cloudflare-docs/blob/production/LICENSE" target="_blank" rel="noopener noreferrer">利用条件</a>（確認日：2026年10月6日）</figcaption>
@@ -172,6 +173,6 @@ addEventListener('scroll',function(){var h=document.documentElement;var d=h.scro
 var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
 </script>
-<script src="/media/article-tracker.js?v=20261003-media-quality" defer></script>
+<script src="/media/article-tracker.js?v=20261006-readable-intros" defer></script>
 </body>
 </html>

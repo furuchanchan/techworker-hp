@@ -103,7 +103,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
 <div class="art-layout">
   <nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div>
-      <a href="#source">公式の許可画面から、社内で許す操作を決める</a>
+      <a href="#source">権限設定から、社内で許す操作を決める</a>
       <a href="#question">Claude Codeを社内へ広げる順番はどうしますか？</a>
       <a href="#s2">TechWorkerは、Claude Codeの利用状況をどう見ていますか？</a>
       <a href="#s3">全社展開は、どんな手順で進めますか？</a>
@@ -114,14 +114,15 @@ fbq('init','1264057945446029');fbq('track','PageView');
     </div></nav>
 
   <article class="art-body">
-<h2 id="source">公式の許可画面から、社内で許す操作を決める</h2>
-<p>Anthropicの資料は2026年10月2日更新です。2026年10月6日に原典を確認し、記事の判断に必要な箇所を次に示します。</p>
+<p>Claude Codeを配っても、誰がどのファイルを変更してよいかが曖昧なままでは、チームで使い続けられません。最初に決めるのは、練習する作業と、変更を確認する人です。権限設定を手がかりに、段階的に広げる順番を考えます。</p>
+<h2 id="source">権限設定から、社内で許す操作を決める</h2>
 <blockquote class="source-quote"><p>“Claude Code supports fine-grained permissions”</p><footer>出典：<a href="https://code.claude.com/docs/en/permissions" target="_blank" rel="noopener noreferrer">Anthropic「Configure permissions」</a>（2026年10月6日確認）</footer></blockquote>
-<p><strong>ここを読む：</strong>公式文は、権限規則、実行モード、管理ポリシーで操作範囲を制御できると説明しています。全社配布より先に、対象リポジトリと許可できる操作をチーム単位で決めます。</p>
-<aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">Claude Code 企業導入 セキュリティ＆セットアップ実践ガイド</div><div class="mc-d">3つのリスク、5つの設計原則、10項目のチェックリストを、情シスの審査に出せる形でまとめた資料です。</div></div><a href="../../library/?doc=security&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=claude-code-shanai-tenkai&amp;utm_content=mid" class="btn" data-cta="claude-code-shanai-tenkai-mid">ガイドを受け取る <i>&rarr;</i></a></aside>
+<p>公式文は、権限規則、実行モード、管理ポリシーで操作範囲を制御できると説明しています。全社配布より先に、対象リポジトリと許可できる操作をチーム単位で決めます。</p>
+
 <h2 id="question">Claude Codeを社内へ広げる順番はどうしますか？</h2>
 <p class="answer">既存コードの読解から始め、Plan mode、限定修正、テストの順に権限を広げます。</p>
 <p>非エンジニアが文書やデータを扱う場合は、コード編集と同じ権限を渡しません。対象フォルダ、許可するコマンド、出力形式、レビュー担当を用途ごとに限定します。</p>
+<aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">Claude Code 企業導入 セキュリティ＆セットアップ実践ガイド</div><div class="mc-d">3つのリスク、5つの設計原則、10項目のチェックリストを、情シスの審査に出せる形でまとめた資料です。</div></div><a href="../../library/?doc=security&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=claude-code-shanai-tenkai&amp;utm_content=mid" class="btn" data-cta="claude-code-shanai-tenkai-mid">ガイドを受け取る <i>&rarr;</i></a></aside>
 <h2 id="s2">TechWorkerは、Claude Codeの利用状況をどう見ていますか？</h2>
 <p class="answer">2026年9月14日〜30日の記録では、API料金に換算した利用量を日別に把握していました。</p>
 <p>2026年9月14日〜30日の記録では、TechWorker代表の古野がClaude Codeを使っていました。用途は、自社サービスの開発、メディアの改修、営業資料の作成、毎朝の自動の集計です。</p>
@@ -307,6 +308,6 @@ addEventListener('scroll',function(){var h=document.documentElement;var d=h.scro
 var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
 </script>
-<script src="/media/article-tracker.js?v=20261003-media-quality" defer></script>
+<script src="/media/article-tracker.js?v=20261006-readable-intros" defer></script>
 </body>
 </html>

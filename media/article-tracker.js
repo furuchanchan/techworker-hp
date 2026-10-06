@@ -112,7 +112,7 @@
   // 右下の申込み枠（媒体ごとの申込み）
   if (!document.querySelector('script[src="/media/cv-dock.js"], script[src^="/media/cv-dock.js?"]')) {
     var dock = document.createElement("script");
-    dock.src = "/media/cv-dock.js?v=20261003-media-quality";
+    dock.src = "/media/cv-dock.js?v=20261006-readable-intros";
     dock.defer = true;
     document.head.appendChild(dock);
   }

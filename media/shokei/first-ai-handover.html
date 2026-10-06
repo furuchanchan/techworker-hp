@@ -104,6 +104,6 @@ document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
 
 (function(){var b=document.getElementById('copy-url'),s=document.getElementById('share-status');if(!b)return;b.addEventListener('click',async function(){try{if(!navigator.clipboard)throw new Error('Clipboard unavailable');await navigator.clipboard.writeText(document.querySelector('link[rel="canonical"]').href);s.textContent='記事のURLをコピーしました。';}catch(e){s.textContent='コピーできませんでした。ブラウザのアドレス欄からコピーしてください。';}});})();
 </script>
-<script src="/media/article-tracker.js?v=20261003-media-quality" defer></script>
+<script src="/media/article-tracker.js?v=20261006-readable-intros" defer></script>
 </body>
 </html>

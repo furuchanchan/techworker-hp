@@ -74,7 +74,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIセキュリティ・ラボ</a><span class="sep">/</span>AIクローラーからサイトを守る</nav>
   <div class="kicker">実行環境と通信の制限</div>
   <h1>AIクローラーからサイトを守る｜robots.txtの限界とCloudflareでの制御</h1>
-  <p class="dek">AIクローラーは、学習用・検索/回答用・ユーザー代理用の3種類に分かれ、robots.txtだけでは止められません。<br>AI学習は止めたいが、AI検索からの流入は残したい、情シスやWeb担当の方の悩みに向けた記事です。<br>robots.txtの限界と、Cloudflareで何を制御できるか、ブロックする前の判断軸が分かります。</p>
+  <p class="dek">AIの学習を止め、検索からの流入を残すには、クローラーごとの役割を見分けます。robots.txtの限界と、Cloudflareで観測・制御できる範囲を確認します。</p>
   <div class="a-meta">
     <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.08.09</span><span class="dot">·</span><span>最終更新 2026.10.06</span><span class="dot">·</span><span>読了 13分</span>
   </div>
@@ -89,6 +89,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <nav class="art-toc" aria-label="目次">
     <div class="art-toc-inner">
       <div class="toc-h">目次</div><a href="#source">公式画面では観測と制御が分かれている</a><a href="#robots">robots.txtは強制認証ではない</a><a href="#operate">クローラーごとに価値と負荷を見て決める</a><a href="#limits">識別精度と誤検知を運用で補う</a><a href="#sources">出典と確認範囲</a></div></nav><article class="art-body">
+<p>AIの学習には使わせたくない一方、AI検索からは読者に来てほしい。この2つを分けるには、アクセスしているクローラーの種類と役割を確認する必要があります。Cloudflareの公式画面で、観測できる情報と制御できる範囲を見ていきます。</p>
 <figure class="fig-inline source-figure">
   <a class="source-image" href="sources/cloudflare-ai-crawl-control-overview.png" target="_blank" rel="noopener noreferrer"><img src="sources/cloudflare-ai-crawl-control-overview.png" alt="Cloudflare AI Crawl Controlの概要画面。クローラー別の要求数、流入、robots.txtの方針を表示している" width="1113" height="839" loading="lazy" decoding="async"></a>
   <figcaption><span class="source-label">Cloudflare公式：AI Crawl Controlの概要画面</span>左上の要求集計と、下段の運営者別カードを読みます。画面内の数値は公式サンプルです。 画像をクリックすると原図を開きます。<a href="https://developers.cloudflare.com/changelog/post/2025-12-18-overview-tab/" target="_blank" rel="noopener noreferrer">原典ページ</a>／<a href="https://github.com/cloudflare/cloudflare-docs/blob/production/LICENSE" target="_blank" rel="noopener noreferrer">利用条件</a>（確認日：2026年10月6日）</figcaption>
@@ -172,6 +173,6 @@ addEventListener('scroll',function(){var h=document.documentElement;var d=h.scro
 var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
 </script>
-<script src="/media/article-tracker.js?v=20261003-media-quality" defer></script>
+<script src="/media/article-tracker.js?v=20261006-readable-intros" defer></script>
 </body>
 </html>

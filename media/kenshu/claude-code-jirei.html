@@ -111,8 +111,8 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
 <div class="art-layout">
   <nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div>
-      <a href="#source">公式の権限文書は、人が判断する境界を示す</a>
       <a href="#techworker-case">TechWorkerのCodex改修と検査</a>
+      <a href="#source">公式の権限文書は、人が判断する境界を示す</a>
       <a href="#question">Claude Codeの事例は、何を残せば別チームでも再現できますか？</a>
       <a href="#s2">公開事例では、各社はClaude Codeをどう導入していますか？</a>
       <a href="#s3">公開事例を踏まえて、自社ではどんな手順で始めますか？</a>
@@ -124,11 +124,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
     </div></nav>
 
   <article class="art-body">
-<h2 id="source">公式の権限文書は、人が判断する境界を示す</h2>
-<p>Anthropicの資料は2026年10月2日更新です。2026年10月6日に原典を確認し、記事の判断に必要な箇所を次に示します。</p>
-<blockquote class="source-quote"><p>“fine-grained permission rules, modes, and managed policies”</p><footer>出典：<a href="https://code.claude.com/docs/en/permissions" target="_blank" rel="noopener noreferrer">Anthropic「Configure permissions」</a>（2026年10月6日確認）</footer></blockquote>
-<p><strong>ここを読む：</strong>公式文は、操作範囲を権限規則と管理ポリシーで制御できると説明しています。事例を読むときも、成果だけでなく、どの操作を人が確認したかを残します。</p>
-
+<p>コード生成AIにどこまで任せ、どこを人が確認すればよいのでしょうか。TechWorkerのメディア改修では、記事の書き換えから公開後の照合までをCodexが担当しました。実際に行った作業と、検査で見つかった失敗から紹介します。</p>
 <h2 id="techworker-case">TechWorkerでは、Codexの改修結果を公開ページまで照合した</h2>
 <p>2026年10月6日、TechWorkerは自社メディア55記事の改稿にCodexを使いました。重複する36記事を統合し、3記事を公開対象から外す作業も含みます。</p>
 <p class="source-lead">この事例の一次資料は、公開済みの<a href="https://github.com/furuchanchan/techworker-hp/pull/79" target="_blank" rel="noopener noreferrer">変更提案（PR #79）</a>と<a href="resources/techworker-codex-media-verification-20261006.json">検証記録の公開用抜粋</a>です。以下は公開時点の実施記録です。次節のClaude Codeの企業事例とは、使用ツールと対象作業を分けています。</p>
@@ -149,10 +145,15 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <p>この経験から、既存サイトの一括修正では、変更対象と残す要素を先に決めます。本文の書き換え、共通表示の変更、転送の設定を分け、工程ごとに検査します。検査に落ちた対象を直してから公開し、最後に公開ページと原稿を照合します。</p>
 <p>コード生成AIへ渡す依頼には、対象ファイル、触ってはいけない範囲、実行する検査、公開後に見るURLを添えます。今回の<a href="../token-management#worklog">作業記録の記入例とCSVひな型</a>も使えます。</p>
 <p>この一件から、時間短縮率やCodexとClaude Codeの優劣は算出できません。Webページの改稿で確かめた工程を、別のシステムへ移す場合は、そのシステムの試験に置き換えます。</p>
-<aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">Claude Code 企業導入 セキュリティ＆セットアップ実践ガイド</div><div class="mc-d">3つのリスク、5つの設計原則、10項目のチェックリストを、情シスの審査に出せる形でまとめた資料です。</div></div><a href="../../library/?doc=security&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=claude-code-jirei&amp;utm_content=mid" class="btn" data-cta="claude-code-jirei-mid">ガイドを受け取る <i>&rarr;</i></a></aside>
+
+<h2 id="source">公式の権限文書は、人が判断する境界を示す</h2>
+<blockquote class="source-quote"><p>“fine-grained permission rules, modes, and managed policies”</p><footer>出典：<a href="https://code.claude.com/docs/en/permissions" target="_blank" rel="noopener noreferrer">Anthropic「Configure permissions」</a>（2026年10月6日確認）</footer></blockquote>
+<p>公式文は、操作範囲を権限規則と管理ポリシーで制御できると説明しています。事例を読むときも、成果だけでなく、どの操作を人が確認したかを残します。</p>
+
 <h2 id="question">Claude Codeの事例は、何を残せば別チームでも再現できますか？</h2>
 <p class="answer">入力、変更差分、実行コマンド、テスト結果、人の判断を一つの記録に残します。</p>
 <p>社内紹介では、機密コードを掲載せず、許可判断とテストの型を共有します。これなら事例が広告文ではなく、次の担当者が使える作業手順になります。</p>
+<aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">Claude Code 企業導入 セキュリティ＆セットアップ実践ガイド</div><div class="mc-d">3つのリスク、5つの設計原則、10項目のチェックリストを、情シスの審査に出せる形でまとめた資料です。</div></div><a href="../../library/?doc=security&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=claude-code-jirei&amp;utm_content=mid" class="btn" data-cta="claude-code-jirei-mid">ガイドを受け取る <i>&rarr;</i></a></aside>
 <h2 id="s2">公開事例では、各社はClaude Codeをどう導入していますか？</h2>
     <p class="answer">全社導入の公表、使い方の配布物化、結果の数字の公開に分かれます。8件とも原典を確認済みです。</p>
     <p>出典URLは、<a href="#s8">記事末尾の出典リンク集</a>にまとめました。</p>
@@ -326,6 +327,6 @@ addEventListener('scroll',function(){var h=document.documentElement;var d=h.scro
 var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
 </script>
-<script src="/media/article-tracker.js?v=20261003-media-quality" defer></script>
+<script src="/media/article-tracker.js?v=20261006-readable-intros" defer></script>
 </body>
 </html>
