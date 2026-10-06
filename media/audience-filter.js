@@ -6,7 +6,6 @@
     var items = Array.from(catalog.querySelectorAll('[data-audience-item]'));
     var result = catalog.querySelector('.audience-result');
     var empty = catalog.querySelector('.audience-empty');
-    var allMediaLink = empty.querySelector('a');
     var more = catalog.querySelector('.audience-more');
     var pageSize = Number(catalog.dataset.audiencePageSize) || items.length;
     var shown = pageSize;
@@ -23,7 +22,6 @@
       var label = buttons.find(function (button) { return button.dataset.audienceFilter === selected; }).dataset.audienceLabel;
       result.textContent = label + '：' + matching.length + '件' + (matching.length > shown ? '（' + shown + '件を表示）' : '');
       empty.hidden = matching.length !== 0;
-      allMediaLink.href = '/media/?audience=' + encodeURIComponent(selected) + '#articles';
       more.hidden = matching.length <= shown;
     }
     buttons.forEach(function (button) {

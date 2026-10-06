@@ -15,11 +15,7 @@ DATA = json.loads((ROOT / 'media/audiences.json').read_text())
 ROLES = DATA['roles']
 ARTICLES = DATA['articles']
 MEDIA = {'gyomuzu': '業務図ラボ', 'kenshu': 'AI研修・導入ラボ', 'shigyo': '士業AIジャーナル', 'interview': 'AIインタビュー・ラボ', 'security': 'AIセキュリティ・ラボ', 'shokei': '事業承継AIラボ'}
-VERSION = '20261006-readers'
-START, END = '<!-- audience:catalog -->', '<!-- /audience:catalog -->'
-
-def plain(value):
-    return html.unescape(re.sub(r'<[^>]+>', '', value)).strip()
+VERSION = '20261006-media-only'
 
 def required(pattern, text, label):
     m = re.search(pattern, text, re.S)
@@ -44,24 +40,10 @@ def controls(items):
     return '<div class="audience-controls" role="group" aria-label="対象読者で絞り込む" hidden>' + ''.join(buttons) + '</div>\n' + f'<p class="audience-result" role="status" aria-live="polite" aria-atomic="true">すべて：{len(items)}件</p>\n'
 
 def ending():
-    return '<p class="audience-empty" hidden>このメディアには、選んだ読者向けの記事がまだありません。<br><a href="/media/#articles">メディア全体から探す</a></p><button type="button" class="audience-more" aria-controls="audience-results" hidden>もっと見る</button>'
+    return '<p class="audience-empty" hidden>このメディアには、選んだ読者向けの記事がまだありません。<br><a href="/media/#media">ほかのメディアを見る</a></p><button type="button" class="audience-more" aria-controls="audience-results" hidden>もっと見る</button>'
 
 def tag(role):
     return f'<span class="audience-tag">{ROLES[role]}</span>'
-
-def article_info(path):
-    text = (ROOT / path).read_text()
-    title = plain(required(r'<h1\b[^>]*>(.*?)</h1>', text, path)[1])
-    date = required(r'"datePublished"\s*:\s*"([^"]+)"', text, path)[1][:10]
-    canonical = required(r'<link rel="canonical" href="([^"]+)"', text, path)[1]
-    image = required(r'<meta property="og:image" content="([^"]+)"', text, path)[1]
-    image_path = urlsplit(image).path
-    group = path.split('/')[1]
-    if '/figs/' not in image_path:
-        image_path = '/media/shokei/cover.png' if group == 'shokei' else f'/media/{group}/covers/thumbs/{Path(path).stem}.jpg'
-    if not (ROOT / image_path.lstrip('/')).is_file():
-        raise ValueError(f'{path}: missing image {image_path}')
-    return {'path': path, 'title': title, 'date': date, 'href': urlsplit(canonical).path, 'image': image_path}
 
 def build():
     actual = {str(p.relative_to(ROOT)) for p in (ROOT / 'media').rglob('*.html') if re.search(r'<article\b[^>]*class="[^"]*art-body', p.read_text())}
@@ -74,7 +56,9 @@ def build():
         text = (ROOT / path).read_text()
         text = re.sub(r'\s*<p class="article-audience"[^>]*>.*?</p>\s*', '', text, flags=re.S)
         head = required(r'<header class="art-head">.*?</header>', text, path)
-        label = f'\n<p class="article-audience"><span class="article-audience-label">主な対象読者</span><a href="/media/?audience={role}#articles">{ROLES[role]}</a></p>\n'
+        group = path.split('/')[1]
+        reader = f'<a href="/media/{group}/?audience={role}#articles">{ROLES[role]}</a>' if group in MEDIA else tag(role)
+        label = f'\n<p class="article-audience"><span class="article-audience-label">主な対象読者</span>{reader}</p>\n'
         updated = head[0][:-len('</header>')].rstrip() + label + '</header>'
         changes[path] = assets(text[:head.start()] + updated + text[head.end():])
 
@@ -127,33 +111,13 @@ def build():
     expected = {p for p in ARTICLES if p.split('/')[1] in MEDIA}
     if listed != expected:
         raise ValueError(f'Hub coverage mismatch: missing={sorted(expected-listed)}, extra={sorted(listed-expected)}')
-    listed.add('media/token-management.html')
-    ordered = sorted((article_info(p) for p in listed), key=lambda x: (x['date'], x['path']), reverse=True)
-    cards = []
-    for item in ordered:
-        path = item['path'];role = ARTICLES[path];media = path.split('/')[1]
-        name = MEDIA.get(media, 'トークン戦略')
-        cards.append(f'<a class="mh-card" data-audience-item data-audience="{role}" href="{html.escape(item["href"], quote=True)}"><img class="mh-img" src="{html.escape(item["image"], quote=True)}" alt="" width="1200" height="630" loading="lazy"><span class="mh-meta"><span class="mh-src">{name}</span><time datetime="{item["date"]}">{item["date"].replace("-", ".")}</time></span><span class="mh-t">{html.escape(item["title"])}</span>{tag(role)}</a>')
-    catalog = START + '\n<section class="mh-sec" id="articles" data-audience-catalog data-audience-page-size="12"><div class="mh-sec-h"><h2>立場から記事を探す</h2><p>自分の仕事や経営に近い記事を選べます</p></div>' + controls(listed) + '<div class="audience-catalog-grid" id="audience-results">' + '\n'.join(cards) + '</div>' + ending() + '</section>\n' + END
-    path = 'media/index.html';text = (ROOT / path).read_text()
-    if START in text:
-        text, n = re.subn(re.escape(START) + r'.*?' + re.escape(END), lambda _: catalog, text, flags=re.S)
-    else:
-        text, n = re.subn(r'<section class="mh-sec">\s*<div class="mh-sec-h"><h2>新着記事</h2>.*?</section>', lambda _: catalog, text, flags=re.S)
-    if n != 1:
-        raise ValueError('Media home catalog insertion target not unique')
-    text = re.sub(r'\n?<a class="audience-jump"[^>]*>.*?</a>', '', text)
-    text, n = re.subn(r'(<header class="mh-top">.*?</header>)', lambda m: m[0] + '\n<a class="audience-jump" href="#articles">立場から記事を探す ↓</a>', text, count=1, flags=re.S)
-    if n != 1:
-        raise ValueError('Media home header missing')
-    changes[path] = assets(text, catalog=True)
     # All inventory and markup checks pass before the first write.
     changed = 0
     for path, text in changes.items():
         target = ROOT / path
         if target.read_text() != text:
             target.write_text(text);changed += 1
-    print(json.dumps({'articles': len(ARTICLES), 'listed': len(listed), 'hubs': len(MEDIA)+1, 'changed_files': changed, 'listed_roles': dict(collections.Counter(ARTICLES[p] for p in listed))}, ensure_ascii=False))
+    print(json.dumps({'articles': len(ARTICLES), 'listed': len(listed), 'hubs': len(MEDIA), 'changed_files': changed, 'listed_roles': dict(collections.Counter(ARTICLES[p] for p in listed))}, ensure_ascii=False))
 
 if __name__ == '__main__':
     build()
