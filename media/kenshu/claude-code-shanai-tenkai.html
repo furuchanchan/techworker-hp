@@ -14,12 +14,12 @@
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Claude Codeの社内展開｜社内データの扱い・設定配布・ルール雛形【2026】 — TechWorker</title>
-<meta name="description" content="Claude Codeの社内展開は、契約形態・データ取扱い・設定配布・利用ルール・監査・展開順序の6つを順に決めて設計します。forceLoginOrgUUIDなどの設定、社内ルール雛形、展開前チェックリストを整理します。">
+<meta name="description" content="Claude Codeの社内展開は、既存コードの理解、修正、テストを一続きで練習します。非エンジニアへ広げる前に、操作範囲とレビュー担当を固定します。">
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
 <link rel="canonical" href="https://techworker.co.jp/media/kenshu/claude-code-shanai-tenkai">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Claude Codeの社内展開｜社内データの扱い・設定配布・ルール雛形【2026】">
-<meta property="og:description" content="Claude Codeの社内展開は、契約形態・データ取扱い・設定配布・利用ルール・監査・展開順序の6つを順に決めて設計します。forceLoginOrgUUIDなどの設定、社内ルール雛形、展開前チェックリストを整理します。">
+<meta property="og:description" content="Claude Codeの社内展開は、既存コードの理解、修正、テストを一続きで練習します。非エンジニアへ広げる前に、操作範囲とレビュー担当を固定します。">
 <meta property="og:image" content="https://techworker.co.jp/media/kenshu/covers/claude-code-shanai-tenkai.png">
 <meta property="og:url" content="https://techworker.co.jp/media/kenshu/claude-code-shanai-tenkai">
 <meta property="og:site_name" content="TechWorker">
@@ -29,8 +29,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../article.css?v=20261003-media-quality">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Claude Codeの社内展開｜社内データの扱い・設定配布・ルール雛形【2026】", "description": "Claude Codeの社内展開は、契約形態・データ取扱い・設定配布・利用ルール・監査・展開順序の6つを順に決めて設計します。forceLoginOrgUUIDなどの設定、社内ルール雛形、展開前チェックリストを整理します。", "datePublished": "2026-07-29", "dateModified": "2026-10-03", "inLanguage": "ja", "image": "https://techworker.co.jp/media/kenshu/covers/claude-code-shanai-tenkai.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/claude-code-shanai-tenkai"}}</script>
+<link rel="stylesheet" href="../article.css?v=20261006-source-first">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Claude Codeの社内展開｜社内データの扱い・設定配布・ルール雛形【2026】", "description": "Claude Codeの社内展開は、既存コードの理解、修正、テストを一続きで練習します。非エンジニアへ広げる前に、操作範囲とレビュー担当を固定します。", "datePublished": "2026-07-29", "dateModified": "2026-10-06", "inLanguage": "ja", "image": "https://techworker.co.jp/media/kenshu/covers/claude-code-shanai-tenkai.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/claude-code-shanai-tenkai"}}</script>
 <script type="application/ld+json">
 {
   "@context":"https://schema.org","@type":"BreadcrumbList",
@@ -42,7 +42,7 @@
   ]
 }
 </script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "社員がClaude Codeに入力したソースコードは、AIモデルの学習に使われますか？", "acceptedAnswer": {"@type": "Answer", "text": "商用プラン（Team・Enterprise・APIなど）では、組織がオプトインしない限り、コードやプロンプトを学習に使わないとAnthropicが明記しています。個人向けプランには学習利用を許可する設定があるため、業務利用は会社契約に統一します。"}}, {"@type": "Question", "name": "全社員のClaude Codeに同じセキュリティ設定を強制できますか？", "acceptedAnswer": {"@type": "Answer", "text": "できます。端末に配布するmanaged-settings.jsonは、優先順位が最上位です。ユーザー側の設定では上書きできません。MDMなどで配布します。"}}, {"@type": "Question", "name": "利用状況やコストの監査ログは取得できますか？", "acceptedAnswer": {"@type": "Answer", "text": "取得できます。OpenTelemetry形式で、セッション数・トークン使用量・コストなどを自社の監視基盤へ出力できます。Team・Enterpriseには、管理者向けの分析ダッシュボードもあります。メトリクスにコードやプロンプトの本文は含まれません。"}}, {"@type": "Question", "name": "社員が個人アカウントで業務利用する「野良利用」はどう防ぎますか？", "acceptedAnswer": {"@type": "Answer", "text": "管理ポリシー設定のforceLoginMethodとforceLoginOrgUUIDを使います。自社組織以外でのログインを制限できます。あわせて、会社契約アカウントの発行、利用ルールの明文化、研修による周知を進めると、実効性が上がります。"}}]}</script>
+
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -76,10 +76,10 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <header class="art-head">
   <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a><span class="sep">/</span>Claude Codeの社内展開</nav>
   <div class="kicker">Claude Codeの活用</div>
-  <h1>Claude Codeの社内展開｜セキュリティ・管理機能・配布設計</h1>
-  <p class="dek">Claude Codeの社内展開は、6つの論点を順に決めれば、抜けなく設計できます。<br>全社への展開を任された、情シスの方に向けた記事です。<br>データの取扱い、設定の強制配布、監査、段階展開の手順が、Anthropic公式ドキュメント（2026年8月時点）の仕様で分かります。</p>
+  <h1>Claude Codeの社内展開｜社内データの扱い・設定配布・ルール雛形</h1>
+  <p class="dek">Claude Codeの社内展開は、既存コードの理解、修正、テストを一続きで練習します。非エンジニアへ広げる前に、操作範囲とレビュー担当を固定します。</p>
   <div class="a-meta">
-    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.29</span><span class="dot">·</span><span>最終更新 2026.10.03</span><span class="dot">·</span><span>読了 9分</span>
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.29</span><span class="dot">·</span><span>最終更新 2026.10.06</span><span class="dot">·</span><span>読了 9分</span>
   </div>
 </header>
 
@@ -99,77 +99,29 @@ fbq('init','1264057945446029');fbq('track','PageView');
 .te-cap{padding:0 18px 14px;font-family:var(--jp);font-size:11.5px;color:var(--slate);border-top:1px solid var(--line);padding-top:12px;}
 @media(max-width:560px){.te-body{font-size:10.5px;}.te-ln{width:32px;padding-right:9px;}.te-smp{display:none;}}
 </style>
-<div class="art-cover-v6 te-cover">
-  <div class="te-bar">
-    <span class="te-dot"></span><span class="te-dot"></span><span class="te-dot"></span>
-    <span class="te-file">/Library/Application Support/ClaudeCode/ — <b>managed-settings.json</b></span>
-    <span class="te-smp">※サンプル・全社に強制配布する管理ポリシー設定</span>
-  </div>
-  <div class="te-body" role="img" aria-label="managed-settings.jsonのサンプル。permissionsのdenyで.envの読み取りとcurlコマンドを禁止し、forceLoginOrgUUIDで自社組織のみログインを許可する設定例">
-    <div class="te-ln"> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11</div>
-    <div class="te-code">{
-  <span class="k">"permissions"</span>: {
-    <span class="k">"deny"</span>: [
-      <span class="s">"Read(./.env)"</span>,
-      <span class="s">"Read(./secrets/**)"</span>,
-      <span class="s">"Bash(curl *)"</span>
-    ]
-  },
-  <span class="k">"forceLoginMethod"</span>: <span class="s">"claudeai"</span>,
-  <span class="k">"forceLoginOrgUUID"</span>: <span class="s">"xxxxxxxx-xxxx-xxxx"</span>
-}</div>
-  </div>
-  <div class="te-cap">図はイメージです。managed-settings.jsonはユーザー側の設定より常に優先され、上書きできません（Anthropic公式ドキュメントより・2026年8月時点）。</div>
-</div>
+
 
 <div class="art-layout">
-  <nav class="art-toc" aria-label="目次">
-    <div class="art-toc-inner">
-      <div class="toc-h">目次</div>
-      <a href="#s1">結論</a>
-      <a href="#s2">自社の実例</a>
-      <a href="#s3">手順</a>
-      <a href="#s4">うまくいかない例</a>
-      <a href="#s5">比較表</a>
-      <a href="#faq">よくある質問</a>
-      <a href="#s6">次の一歩</a>
-    </div>
-  </nav>
+  <nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div>
+      <a href="#source">公式の許可画面から、社内で許す操作を決める</a>
+      <a href="#question">Claude Codeを社内へ広げる順番はどうしますか？</a>
+      <a href="#s2">TechWorkerは、Claude Codeの利用状況をどう見ていますか？</a>
+      <a href="#s3">全社展開は、どんな手順で進めますか？</a>
+      <a href="#s4">社内展開がうまくいかない例には、どんなものがありますか？</a>
+      <a href="#s5">契約形態ごとの管理機能は、どう違いますか？</a>
+      <a href="#s6">次の一歩は、何から始めればよいですか？</a>
+      <a href="#sources">出典と確認範囲</a>
+    </div></nav>
 
   <article class="art-body">
-<aside class="inline-dx-cta" style="margin:6px 0 40px;border:1px solid var(--line-2);border-radius:12px;background:var(--white);padding:22px 26px;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
-  <div style="flex:1;min-width:240px;">
-    <div style="font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);">法人向け研修 ・ Claude Code</div>
-    <div style="font-family:var(--jp);font-weight:700;font-size:16.5px;color:var(--ink);line-height:1.55;margin-top:8px;">Claude Codeの社内展開を、研修で立ち上げる</div>
-    <div style="font-size:13.5px;color:var(--slate);line-height:1.8;margin-top:5px;">設定配布・利用ルールの設計からハンズオンまで、情シスと現場の両輪で伴走します。</div>
-  </div>
-  <a href="../../training.html#claude-code" class="btn" style="white-space:nowrap;flex:none;color:var(--paper);border-bottom:none;">研修の詳細を見る <i>&rarr;</i></a>
-</aside>
-<h2 id="s1">Claude Codeの社内展開で、情シスは何を押さえるべきですか？</h2>
-<p class="answer">契約形態・データの取扱い・設定配布・利用ルール・監査・展開順序の6つを、この順に決めます。</p>
-<p>Claude Codeは、ターミナルやIDEから使うエージェント型のコーディングツールです。リポジトリのファイルを読み、編集し、コマンドを実行するところまで踏み込みます。</p>
-<p>そのため、入力してよい情報のルールを決めるだけでは足りません。展開前に決める論点は、次の6つです。</p>
-<ul>
-<li><strong>アカウント・契約：</strong>個人プランの混在を許すか、会社契約に統一するか。</li>
-<li><strong>データの取扱い：</strong>学習利用の有無、保持期間、端末のローカル保存。</li>
-<li><strong>権限・設定の配布：</strong>どこまで自動実行を許すか、全端末に同じポリシーを強制できるか。</li>
-<li><strong>利用ルール：</strong>人が守る規程を、どう明文化するか。</li>
-<li><strong>監査・モニタリング：</strong>誰が、どれだけ、いくら使ったか。</li>
-<li><strong>展開の順序：</strong>一斉に開放するか、段階的に進めるか。</li>
-</ul>
-<p>商用プラン（Team・Enterprise・API）では、入力したコードやプロンプトは既定でモデル学習に使われません。サーバー側の保持は標準30日です。個人プランの混在、いわゆる野良利用を防ぐことが、第一歩になります。</p>
-<div class="callout"><p>本記事の機能名と仕様は、Anthropic公式ドキュメント（code.claude.com/docs）で確認できた内容だけです（2026年8月時点）。仕様は更新されるため、展開時は最新の公式ドキュメントを確認してください。</p></div>
-
+<h2 id="source">公式の許可画面から、社内で許す操作を決める</h2>
+<p>Anthropicの資料は2026年10月2日更新です。2026年10月6日に原典を確認し、記事の判断に必要な箇所を次に示します。</p>
+<blockquote class="source-quote"><p>“Claude Code supports fine-grained permissions”</p><footer>出典：<a href="https://code.claude.com/docs/en/permissions" target="_blank" rel="noopener noreferrer">Anthropic「Configure permissions」</a>（2026年10月6日確認）</footer></blockquote>
+<p><strong>ここを読む：</strong>公式文は、権限規則、実行モード、管理ポリシーで操作範囲を制御できると説明しています。全社配布より先に、対象リポジトリと許可できる操作をチーム単位で決めます。</p>
+<aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">Claude Code 企業導入 セキュリティ＆セットアップ実践ガイド</div><div class="mc-d">3つのリスク、5つの設計原則、10項目のチェックリストを、情シスの審査に出せる形でまとめた資料です。</div></div><a href="../../library/?doc=security&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=claude-code-shanai-tenkai&amp;utm_content=mid" class="btn" data-cta="claude-code-shanai-tenkai-mid">ガイドを受け取る <i>&rarr;</i></a></aside>
+<h2 id="question">Claude Codeを社内へ広げる順番はどうしますか？</h2>
+<p class="answer">既存コードの読解から始め、Plan mode、限定修正、テストの順に権限を広げます。</p>
+<p>非エンジニアが文書やデータを扱う場合は、コード編集と同じ権限を渡しません。対象フォルダ、許可するコマンド、出力形式、レビュー担当を用途ごとに限定します。</p>
 <h2 id="s2">TechWorkerは、Claude Codeの利用状況をどう見ていますか？</h2>
 <p class="answer">2026年9月14日〜30日の記録では、API料金に換算した利用量を日別に把握していました。</p>
 <p>2026年9月14日〜30日の記録では、TechWorker代表の古野がClaude Codeを使っていました。用途は、自社サービスの開発、メディアの改修、営業資料の作成、毎朝の自動の集計です。</p>
@@ -183,8 +135,6 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <p>換算額は、実際の請求額とは異なります。定額の範囲内の利用には、追加の支払いは発生しません。</p>
 <p>料金表示とSlack通知は、当時の運用例です。現在の運用を示す記録ではありません。組織への展開では、個人向け契約の記録と、会社契約の管理者レポートを区別します。</p>
 <p>社内展開でも、利用状況を数字で追える状態が必要です。公式の監査手段は、手順4で整理します。</p>
-
-<aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">Claude Code 企業導入 セキュリティ＆セットアップ実践ガイド</div><div class="mc-d">3つのリスク、5つの設計原則、10項目のチェックリストを、情シスの審査に出せる形でまとめた資料です。</div></div><a href="../../library/?doc=security&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=claude-code-shanai-tenkai&amp;utm_content=mid" class="btn" data-cta="claude-code-shanai-tenkai-mid">ガイドを受け取る <i>&rarr;</i></a></aside>
 <h2 id="s3">全社展開は、どんな手順で進めますか？</h2>
 <p class="answer">契約とデータ方針、設定配布、利用ルール、監査、段階展開の5つを、この順で進めます。</p>
     <figure class="fig-inline"><a href="figs/claude-code-shanai-tenkai-1.png" target="_blank" rel="noopener"><img src="figs/claude-code-shanai-tenkai-1.png" alt="Claude Codeを全社に展開する5つの手順を縦に並べた図。契約とデータ方針、標準設定と管理ポリシーの配布、利用ルール、監査、パイロットから全社への順で、管理ポリシーの配布が強調されている。" width="1200" height="825" loading="lazy" decoding="async"></a></figure>
@@ -195,12 +145,12 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <p>データの取扱いは、公式ドキュメントが商用プラン向けに次のとおり明記しています。</p>
 <ul>
 <li><strong>モデル学習：</strong>組織が明示的にオプトインしない限り、コードやプロンプトを学習に使いません。</li>
-<li><strong>サーバー側の保持：</strong>標準30日です。Zero Data Retention（ZDR）は、Enterprise向けに適格性を確認したうえで、組織単位で有効化します。標準のEnterpriseには、自動では含まれません。</li>
+<li><strong>サーバー側の保持：</strong>契約、利用経路、モデルで条件が異なります。Enterpriseのカスタム保持は最短30日です。データを保持しない設定（Zero Data Retention、ZDR）は適格な構成に限られ、対象モデルによっては30日保持が必要です。契約画面と現行の対象モデル一覧を確認します。</li>
 <li><strong>端末のローカル保存：</strong>セッション記録が~/.claude/projects/に、既定で30日保存されます。保存期間は設定（cleanupPeriodDays）で調整できます。</li>
 <li><strong>フィードバック送信：</strong>/feedbackで送った会話履歴は、5年間保持されます。環境変数で無効化できます。</li>
 <li><strong>運用情報の送信（テレメトリ）：</strong>コード・プロンプト・ファイルパスは含まれません。環境変数で送信を停止できます。</li>
 </ul>
-<p>ここで、ZDRの要否と機密リポジトリの扱いを、法務・セキュリティと合意します。</p>
+<p>ここで、利用するモデルを含めた保持条件と機密リポジトリの扱いを、法務・セキュリティと合意します。</p>
 <h3>手順2　標準設定を作り、管理ポリシーを配布する</h3>
 <p>Claude Codeの設定は、階層構造です。優先順位の高い順に、次の5層があります。</p>
 <ul>
@@ -211,7 +161,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <li><strong>ユーザー設定：</strong>~/.claude/settings.jsonです。本人の全プロジェクトに適用されます。</li>
 </ul>
 <p>統制の要は、最上位のmanaged-settings.jsonです。MDMやソフトウェア配布の仕組みで全端末に配置すれば、それが全社標準になります。配置先は、macOSが/Library/Application Support/ClaudeCode/です。Linux・WSLは/etc/claude-code/です。</p>
-<p>書く内容の中心は、permissions（許可ルール）です。allow（許可）・deny（拒否）・ask（都度確認）を、ツールやコマンド単位で指定できます。たとえば「Read(./.env)」で、認証情報ファイルの読み取りを禁止できます。「Bash(curl *)」で、外部への送信コマンドを禁止できます。</p>
+<p>書く内容の中心は、permissions（許可ルール）です。allow（許可）・deny（拒否）・ask（都度確認）を、ツールやコマンド単位で指定できます。たとえば「Read(./.env)」で、認証情報ファイルの読み取りを禁止できます。「Bash(curl *)」は代表的なcurl呼び出しを止める補助規則ですが、絶対パスや別のシェル経由の実行までは止めないため、安全境界にはなりません。外部送信を強制的に制限する場合は、sandboxのネットワーク制御などを併用します。</p>
 <p>Claude Codeは既定で読み取り専用です。ファイル編集やコマンド実行には、明示的な承認が求められます。</p>
 <p>人が確認する工程の決め方は、<a href="../gyomuzu/ai-task-allocation-process-map.html">AIに任せる業務の決め方</a>（業務図ラボ）で扱っています。</p>
 <p>野良利用への対策として、forceLoginMethodとforceLoginOrgUUIDを配布します。自社組織以外のアカウントでのログインを制限できます。</p>
@@ -248,8 +198,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <li>監査の出力先とダッシュボードの閲覧体制を整えてから、招待範囲を広げます。</li>
 <li>利用ルールの周知と、操作研修を対にして、全社へ広げます。</li>
 </ol>
-<p>エンジニア以外への広げ方は、<a href="claude-code-hi-engineer.html">非エンジニアのClaude Code活用</a>が参考になります。トークン消費とコストの設計は、<a href="claude-code-cost.html">Claude Codeの料金・コスト管理</a>で扱っています。</p>
-
+<p>エンジニア以外への広げ方は、<a href="https://techworker.co.jp/media/kenshu/claude-code-shanai-tenkai">非エンジニアのClaude Code活用</a>が参考になります。トークン消費とコストの設計は、<a href="claude-code-cost.html">Claude Codeの料金・コスト管理</a>で扱っています。</p>
 <h2 id="s4">社内展開がうまくいかない例には、どんなものがありますか？</h2>
 <p class="answer">個人アカウントの混在、端末側の見落とし、設定の個別運用、一斉開放、監査なしの拡大が代表例です。</p>
     <figure class="fig-inline"><a href="figs/claude-code-shanai-tenkai-2.png" target="_blank" rel="noopener"><img src="figs/claude-code-shanai-tenkai-2.png" alt="社内展開でよくある5つの失敗を、失敗・起きること・こうする、の3列で並べた表。個人アカウントの放置、サーバー側だけで安心、各自に設定させる、一斉に開放する、監査の指標を決めずに配布する。" width="1200" height="745" loading="lazy" decoding="async"></a></figure>
@@ -260,7 +209,6 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <li><strong>一斉に開放する。</strong>統制も定着も中途半端になります。パイロットから始めます。</li>
 <li><strong>監査の指標を決めずに配布する。</strong>見るべき数字がなければ、広げてよいかを判断できません。</li>
 </ul>
-
 <h2 id="s5">契約形態ごとの管理機能は、どう違いますか？</h2>
 <p class="answer">小規模はTeams、統制要件が重い組織はEnterprise、従量で管理したいならConsoleが向きます。</p>
     <figure class="fig-inline"><a href="figs/claude-code-shanai-tenkai-3.png" target="_blank" rel="noopener"><img src="figs/claude-code-shanai-tenkai-3.png" alt="Claude Codeの契約形態を2つの質問で選ぶ判断フロー。統制要件が重ければEnterprise、API基盤で従量管理したければConsole、どちらでもなければTeams。" width="1200" height="836" loading="lazy" decoding="async"></a></figure>
@@ -274,13 +222,6 @@ fbq('init','1264057945446029');fbq('track','PageView');
 </table>
 </div>
 <p class="fig-cap">出典：Anthropic公式ドキュメント（2026年8月時点）。</p>
-
-<h2 id="faq">よくある質問</h2>
-<div class="faq"><div class="q">社員がClaude Codeに入力したソースコードは、AIモデルの学習に使われますか？</div><p class="a">商用プラン（Team・Enterprise・APIなど）では、組織がオプトインしない限り、コードやプロンプトを学習に使わないとAnthropicが明記しています。個人向けプランには学習利用を許可する設定があるため、業務利用は会社契約に統一します。</p></div>
-<div class="faq"><div class="q">全社員のClaude Codeに同じセキュリティ設定を強制できますか？</div><p class="a">できます。端末に配布するmanaged-settings.jsonは、優先順位が最上位です。ユーザー側の設定では上書きできません。MDMなどで配布します。</p></div>
-<div class="faq"><div class="q">利用状況やコストの監査ログは取得できますか？</div><p class="a">取得できます。OpenTelemetry形式で、セッション数・トークン使用量・コストなどを自社の監視基盤へ出力できます。Team・Enterpriseには、管理者向けの分析ダッシュボードもあります。メトリクスにコードやプロンプトの本文は含まれません。</p></div>
-<div class="faq"><div class="q">社員が個人アカウントで業務利用する「野良利用」はどう防ぎますか？</div><p class="a">管理ポリシー設定のforceLoginMethodとforceLoginOrgUUIDを使います。自社組織以外でのログインを制限できます。あわせて、会社契約アカウントの発行、利用ルールの明文化、研修による周知を進めると、実効性が上がります。</p></div>
-
 <h2 id="s6">次の一歩は、何から始めればよいですか？</h2>
 <p class="answer">契約形態とデータ方針を決め、下のチェックリストを埋めながらパイロットを始めます。</p>
 <p>展開前に、次のチェックリスト（雛形）を埋めてください。</p>
@@ -295,6 +236,9 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <li>□ 利用ルールを文書化し、研修・周知の計画を立てた</li>
 </ul>
 <p>展開の設計と教育を、外部の伴走で進めたい場合は、<a href="../../training.html#claude-code">TechWorkerのClaude Code研修</a>をご覧ください。情シス向けの設定設計と、現場向けのハンズオンを一体で提供しています。</p>
+<h2 id="sources">出典と確認範囲</h2>
+<p class="source-note">確認日：2026年10月6日。製品仕様、契約、助成要件は変更されるため、実施時点の公式情報を確認してください。</p>
+<ol class="source-list"><li><a href="https://code.claude.com/docs/en/permissions" target="_blank" rel="noopener noreferrer">Configure permissions - Claude Code Docs</a></li><li><a href="https://code.claude.com/docs/en/settings" target="_blank" rel="noopener noreferrer">Claude Code settings</a></li><li><a href="https://support.claude.com/en/articles/10440198-configure-custom-data-retention-controls-for-enterprise-plans" target="_blank" rel="noopener noreferrer">Enterpriseのカスタム保持設定</a></li><li><a href="https://support.claude.com/en/articles/15425996-data-retention-practices-for-covered-models" target="_blank" rel="noopener noreferrer">対象モデルの保持条件</a></li><li><a href="https://support.claude.com/en/articles/9797531-what-is-the-enterprise-plan" target="_blank" rel="noopener noreferrer">Claude Enterpriseの管理機能</a></li></ol>
 </article>
 </div>
 
@@ -320,8 +264,8 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <section class="related"><div class="container">
   <div class="rl-h">Related</div>
   <div class="related-grid">
-    <a href="claude-code-cost.html" class="related-card"><span class="rc-cat">コスト</span><div class="rc-title">Claude Codeの料金・コスト管理｜プラン選定とトークン消費の設計</div></a>
-    <a href="claude-code-hi-engineer.html" class="related-card"><span class="rc-cat">活用</span><div class="rc-title">非エンジニアのClaude Code活用｜エンジニア以外の部門への広げ方</div></a>
+    <a href="claude-code-cost.html" class="related-card"><span class="rc-cat">コスト</span><div class="rc-title">Claude Codeの法人契約｜Team・Enterprise・APIの料金と選び方</div></a>
+
   </div>
 </div></section>
 

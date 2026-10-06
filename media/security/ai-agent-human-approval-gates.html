@@ -3,11 +3,10 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}gtag('config','G-3V34NWXVCJ');</script><script src="/assets/tw-track.js" defer></script>
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width,initial-scale=1"><title>AIエージェントの承認ゲート設計｜どの操作を人が止めるべきか【2026】 — TechWorker</title>
-<meta name="description" content="AIエージェントの承認ゲートは、操作を4段階に分け、失敗時の影響と元に戻せるかで決めます。外部送信・更新・削除・支払いを人が承認するためのリスク分類、承認画面、期限、監査、fail-close設計を解説します。"><link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg"><link rel="canonical" href="https://techworker.co.jp/media/security/ai-agent-human-approval-gates">
-<meta property="og:type" content="article"><meta property="og:title" content="AIエージェントの承認ゲート設計｜どの操作を人が止めるべきか【2026】"><meta property="og:description" content="AIエージェントの承認ゲートは、操作を4段階に分け、失敗時の影響と元に戻せるかで決めます。外部送信・更新・削除・支払いを人が承認するためのリスク分類、承認画面、期限、監査、fail-close設計を解説します。"><meta property="og:image" content="https://techworker.co.jp/media/security/covers/ai-agent-human-approval-gates.png"><meta property="og:url" content="https://techworker.co.jp/media/security/ai-agent-human-approval-gates"><meta property="og:site_name" content="TechWorker"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://techworker.co.jp/media/security/covers/ai-agent-human-approval-gates.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../article.css?v=20261003-media-quality">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AIエージェントの承認ゲート設計｜どの操作を人が止めるべきか【2026】", "description": "AIエージェントの承認ゲートは、操作を4段階に分け、失敗時の影響と元に戻せるかで決めます。外部送信・更新・削除・支払いを人が承認するためのリスク分類、承認画面、期限、監査、fail-close設計を解説します。", "datePublished": "2026-09-01", "dateModified": "2026-10-03", "inLanguage": "ja", "image": "https://techworker.co.jp/media/security/covers/ai-agent-human-approval-gates.png", "author": {"@type": "Person", "name": "古野光太朗", "url": "https://techworker.co.jp/company.html"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/security/ai-agent-human-approval-gates"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},{"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},{"@type":"ListItem","position":3,"name":"AIセキュリティ・ラボ","item":"https://techworker.co.jp/media/security/"},{"@type":"ListItem","position":4,"name":"AIエージェントの承認ゲート設計｜どの操作を人が止めるべきか【2026】","item":"https://techworker.co.jp/media/security/ai-agent-human-approval-gates"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "AIエージェントの操作は、すべて人が承認すべきですか？", "acceptedAnswer": {"@type": "Answer", "text": "すべてを承認対象にすると自動化の価値が消え、承認疲れで内容が読まれなくなります。読み取りは権限と監査で管理します。内部の可逆更新は、事後レビューとundoを条件に自動化します。外部送信と高影響・不可逆な操作には、明示承認を置くのが基本です。"}}, {"@type": "Question", "name": "承認された内容と実行された内容が食い違うのを防ぐには？", "acceptedAnswer": {"@type": "Answer", "text": "承認要求にpayload hashとversionを付け、実行直前に一致を確認します。違えば再承認へ戻します。承認tokenは一回限り、短い期限、対象操作限定にして、別操作への流用や古い承認の再利用も防ぎます。"}}, {"@type": "Question", "name": "承認者が応答しないときは、自動で実行してよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "高影響操作は期限切れで停止し、必要なら再申請するfail-closeにします。業務を止めないための自動実行は危険です。明示したpolicyに基づく代替動作を認めるのは、低リスクの可逆更新だけにします。"}}]}</script>
-</head>
+<meta name="description" content="承認を挟むのは、失敗時に外部へ影響が出る操作です。閲覧、下書き、送信、削除を同じ扱いにせず、実行直前の差分を人に見せます。"><link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg"><link rel="canonical" href="https://techworker.co.jp/media/security/ai-agent-human-approval-gates">
+<meta property="og:type" content="article"><meta property="og:title" content="AIエージェントの承認ゲート設計｜どの操作を人が止めるべきか【2026】"><meta property="og:description" content="承認を挟むのは、失敗時に外部へ影響が出る操作です。閲覧、下書き、送信、削除を同じ扱いにせず、実行直前の差分を人に見せます。"><meta property="og:image" content="https://techworker.co.jp/media/security/covers/ai-agent-human-approval-gates.png"><meta property="og:url" content="https://techworker.co.jp/media/security/ai-agent-human-approval-gates"><meta property="og:site_name" content="TechWorker"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://techworker.co.jp/media/security/covers/ai-agent-human-approval-gates.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../article.css?v=20261006-source-first">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AIエージェントの承認ゲート設計｜どの操作を人が止めるべきか【2026】", "description": "AIエージェントの承認ゲートは、操作を4段階に分け、失敗時の影響と元に戻せるかで決めます。外部送信・更新・削除・支払いを人が承認するためのリスク分類、承認画面、期限、監査、fail-close設計を解説します。", "datePublished": "2026-09-01", "dateModified": "2026-10-06", "inLanguage": "ja", "image": "https://techworker.co.jp/media/security/covers/ai-agent-human-approval-gates.png", "author": {"@type": "Person", "name": "古野光太朗", "url": "https://techworker.co.jp/company.html"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/security/ai-agent-human-approval-gates"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},{"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},{"@type":"ListItem","position":3,"name":"AIセキュリティ・ラボ","item":"https://techworker.co.jp/media/security/"},{"@type":"ListItem","position":4,"name":"AIエージェントの承認ゲート設計｜どの操作を人が止めるべきか【2026】","item":"https://techworker.co.jp/media/security/ai-agent-human-approval-gates"}]}</script></head>
 <body><div class="progress" id="progress"></div><nav id="nav">
   <a href="index.html" class="logo">AIセキュリティ<i>ラボ</i></a>
   <ul>
@@ -24,70 +23,31 @@
   <a href="index.html#about">このメディアについて</a>
   <a href="../../contact.html" class="m-cta">無料相談を申し込む</a>
 </div>
-<header class="art-head"><nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIセキュリティ・ラボ</a></nav><div class="kicker">承認・監査・事故対応</div><h1>AIエージェントの承認ゲート設計｜どの操作を人が止めるべきか【2026】</h1><p class="dek">AIエージェントの承認ゲートは、操作を4段階に分け、失敗時の影響と元に戻せるかで決めます。<br>メール送信やCRM更新、削除、支払いまでAIに任せたい、情シスや開発責任者の方の悩みに向けた記事です。<br>どの操作を人が止めるか、承認画面・期限・監査をどう作るかが分かります。</p><div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.09.01</span><span class="dot">·</span><span>最終更新 2026.10.03</span><span class="dot">·</span><span>一次情報 6件</span></div></header>
-<img class="daily-cover" src="covers/ai-agent-human-approval-gates.png" alt="AIエージェントの承認ゲートを置く場所。承認者・AIが、操作を分類する→内部更新を実行する→差分を確認する→承認対象を照合する→操作を実行するの順に進める業務図" width="1200" height="630">
-<div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div><a href="#s1">AIエージェントの操作のうち、どれを人が止めるべきですか？</a><a href="#s2">承認ゲートは、どんな手順で作りますか？</a><a href="#s3">承認ゲートがうまくいかない例には、どんなものがありますか？</a><a href="#s4">4段階の操作は、承認の要否でどう違いますか？</a><a href="#faq">よくある質問</a><a href="#s5">次の一歩は何から始めればよいですか？</a></div></nav><article class="art-body"><h2 id="s1">AIエージェントの操作のうち、どれを人が止めるべきですか？</h2>
-<p class="answer">決め手は、失敗時の影響と可逆性です。操作を四段階に分けて、承認の要否を決めます。</p>
-<p>AIエージェントが下書きを作るだけなら、誤りはレビューで戻せます。しかし、メール送信、CRM更新、ファイル削除、権限変更、支払いまで自動実行すると、誤った推論が外部作用になります。</p>
-<p>すべてを人に確認すると、自動化の価値が消えます。すべてを許可すると、事故が増えます。そこで、操作を次の四段階に分けます。</p>
-<ul>
-<li><strong>読み取り：</strong>公開情報や許可された社内情報の検索です。外部通信や機密データの取得範囲は別途制限します。通常は都度承認せず、権限と監査で管理します。</li>
-<li><strong>内部の可逆更新：</strong>下書き保存、タグ付け、仮ステータス変更などです。元に戻せて影響範囲が限られるなら、事後レビューとundo（取り消し）を条件に自動化できます。</li>
-<li><strong>外部への送信・共有：</strong>顧客メール、公開投稿、ファイル共有、フォーム送信です。組織を代表する行為になるため、宛先、本文、添付、送信理由を人が確認します。</li>
-<li><strong>高影響・不可逆操作：</strong>削除、支払い、権限付与、契約確定、医療・採用・与信などの判断です。原則として明示承認を必須にします。場合によっては、エージェントの操作対象から外します。</li>
-</ul>
-<aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">Claude Code 企業導入 セキュリティ＆セットアップ実践ガイド</div><div class="mc-d">3つのリスク、5つの設計原則、10項目のチェックリストを、情シスの審査に出せる形でまとめた資料です。</div></div><a href="../../library/?doc=security&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=ai-agent-human-approval-gates&amp;utm_content=mid" class="btn" data-cta="ai-agent-human-approval-gates-mid">ガイドを受け取る <i>&rarr;</i></a></aside>
-<h2 id="s2">承認ゲートは、どんな手順で作りますか？</h2>
-<p class="answer">承認画面、承認対象の固定、期限切れの停止、承認疲れの計測、監査ログの5つを順にそろえます。</p>
-    <figure class="fig-inline"><a href="figs/ai-agent-human-approval-gates-1.png" target="_blank" rel="noopener"><img src="figs/ai-agent-human-approval-gates-1.png" alt="承認ゲートで確認する対象と、拒否または次の工程へ渡す条件を示した設計例です。" width="1200" height="712" loading="lazy" decoding="async"></a><figcaption>TechWorker作成：本文の手順を図にした設計例です。製品の公式画面や導入効果の実測ではありません。画像を押すと拡大できます。</figcaption></figure>
-<p>営業フォローの設計例では、AIは下書きを保存し、営業が宛先・金額・本文の差分を確認します。承認後に宛先が変われば、送信へ進まず同じ下書きを再申請します。以下は実装の設計例で、運用効果の実測ではありません。</p>
-<ol>
-<li><strong>承認画面で差分を見せます。</strong>「実行しますか？」だけでは判断できません。承認者には、実行するtoolと操作種別、対象、宛先、変更前後の差分を一画面で示します。送信するデータと機密区分、エージェントが使った根拠、取り消し可否と影響範囲、承認期限も加えます。</li>
-<li><strong>承認対象を固定します。</strong>承認後に本文、添付、宛先、金額が変わると、承認した操作と実行した操作が異なります。承認要求には、内容を照合するハッシュ値と版番号を付けます。実行直前に両方が一致するか確かめ、違えば再承認へ戻します。承認の証票は一回限りとし、有効期限と対象操作を限定します。</li>
-<li><strong>timeoutはfail-close（失敗時は止まる設計）にします。</strong>承認者が応答しないとき、業務を止めないための自動実行は危険です。高影響操作は期限切れで停止し、必要なら再申請します。低リスクの可逆更新だけ、明示したpolicyに基づく代替動作を許可します。</li>
-<li><strong>承認疲れを測ります。</strong>承認件数が多すぎると、人は内容を読まずに通します。操作別の承認件数、却下率、修正率を計測します。申請から判断までの時間、承認後の取消・事故、同じ理由で繰り返される申請、承認なしで止まった高リスク操作も見ます。</li>
-<li><strong>監査ログを残します。</strong>次の項目を記録します。request ID、agent/version、tool、対象、payload hashです。risk class、承認者、判断、日時、実行結果も残します。機密本文を無制限に保存せず、必要なら暗号化、保持期限、閲覧権限を設定します。</li>
-</ol>
-<p>durable（途中で止まっても状態が残る）な待機なら、processを開き続けずに承認eventを待てます。例はCloudflare Workflowsの<code>waitForEvent()</code>です。ただし、eventを送れる主体の認証・認可は、アプリ側の責任です。承認対象versionの検証もアプリ側で行います。</p>
-<p>NIST AI RMFは、人とAIの役割・責任を明確にすることを求めています。運用監視には、appeal（異議申し立て）とoverride（人による上書き）を含めます。incident responseとchange managementも含めます。承認ゲートは、UI部品として作らず、責任・復旧・学習の仕組みとして設計します。</p>
-
-<h2 id="s3">承認ゲートがうまくいかない例には、どんなものがありますか？</h2>
-<p class="answer">長い理由文に頼る、承認後の変更を許す、期限切れで自動実行する、却下がないのを安全と見なす、の4つです。</p>
-<ul>
-<li><strong>理由文で判断させる。</strong>モデルが生成した長い説明は、説得力があっても安全性の証明ではありません。OWASPのAgentic AI Top 10は、人が説明に頼りすぎる問題を扱っています。名前はHuman-Agent Trust Exploitationです。承認画面では、具体的な差分と境界を優先して示します。</li>
-<li><strong>承認後に内容が変わる。</strong>宛先や本文が変わると別の操作になります。payload hashとversionの照合がないと、承認した内容と実行した内容が食い違います。</li>
-<li><strong>期限切れで自動実行する。</strong>応答がないまま実行されると、高影響操作が誰の承認もなく通ります。</li>
-<li><strong>却下がないのを安全と見なす。</strong>却下がほぼない場合も、安全とは限りません。画面が分かりにくい、承認者が適切でない、業務上拒否できない可能性を調べます。</li>
-</ul>
-
-<h2 id="s4">4段階の操作は、承認の要否でどう違いますか？</h2>
-<p class="answer">読み取りと内部の可逆更新は自動化でき、外部送信と高影響・不可逆操作には明示承認を置きます。</p>
-<div class="tbl-wrap"><table>
-<tr><th>段階</th><th>操作の例</th><th>承認の考え方</th></tr>
-<tr><td>読み取り</td><td>公開情報や許可された社内情報の検索</td><td>都度承認せず、権限と監査で管理</td></tr>
-<tr><td>内部の可逆更新</td><td>下書き保存、タグ付け、仮ステータス変更</td><td>事後レビューとundoを条件に自動化</td></tr>
-<tr><td>外部への送信・共有</td><td>顧客メール、公開投稿、ファイル共有、フォーム送信</td><td>宛先、本文、添付、送信理由を人が確認</td></tr>
-<tr><td>高影響・不可逆</td><td>削除、支払い、権限付与、契約確定</td><td>明示承認を必須にし、操作対象から外す場合もある</td></tr>
-</table></div>
-
-<h2 id="faq">よくある質問</h2>
-<div class="faq"><div class="q">AIエージェントの操作は、すべて人が承認すべきですか？</div><p class="a">すべてを承認対象にすると自動化の価値が消え、承認疲れで内容が読まれなくなります。読み取りは権限と監査で管理します。内部の可逆更新は、事後レビューとundoを条件に自動化します。外部送信と高影響・不可逆な操作には、明示承認を置くのが基本です。</p></div>
-<div class="faq"><div class="q">承認された内容と実行された内容が食い違うのを防ぐには？</div><p class="a">承認要求にpayload hashとversionを付け、実行直前に一致を確認します。違えば再承認へ戻します。承認tokenは一回限り、短い期限、対象操作限定にして、別操作への流用や古い承認の再利用も防ぎます。</p></div>
-<div class="faq"><div class="q">承認者が応答しないときは、自動で実行してよいですか？</div><p class="a">高影響操作は期限切れで停止し、必要なら再申請するfail-closeにします。業務を止めないための自動実行は危険です。明示したpolicyに基づく代替動作を認めるのは、低リスクの可逆更新だけにします。</p></div>
-
-<h2 id="s5">次の一歩は何から始めればよいですか？</h2>
-<p class="answer">まずtoolを4段階に分類し、外部送信と高影響の操作から承認条件と監査ログを決めます。</p>
-<ol>
-<li>エージェントが使うtoolを洗い出し、四段階に分類します。</li>
-<li>外部送信と高影響の操作に、差分つきの承認画面とpayload hashの照合を置きます。</li>
-<li>期限切れの扱いをfail-closeに決め、承認件数と却下率の計測を始めます。</li>
-</ol>
-<p>TechWorkerでは、toolごとの権限、承認条件、監査ログ、fail-close、復旧手順をレビューします。外部通信の境界は<a href="/media/security/firewall-for-ai">AIエージェントのSSRF対策</a>も参照してください。法人審査の実装は、AI SaaSが情シス審査を通るために実装したことが参考になります。</p>
-<p>人が確認する工程を業務図に残す方法は、<a href="../gyomuzu/ai-task-allocation-process-map.html">AIに任せる業務の決め方</a>（業務図ラボ）で扱っています。</p>
-<h2 id="sources">出典（一次情報と確認範囲）</h2><p class="source-note">確認日：2026年9月1日。製品仕様・制度は更新されるため、導入時はリンク先の最新版を再確認してください。数値や研究結果は対象・条件を超えて一般化せず、反証可能性と限界を本文に併記しています。</p><ol class="source-list"><li><a href="https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/" target="_blank" rel="noopener noreferrer">OWASP「Agentic AI Threats and Mitigations」</a></li><li><a href="https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/" target="_blank" rel="noopener noreferrer">OWASP「Agentic AI Top 10」</a></li><li><a href="https://airc.nist.gov/airmf-resources/airmf/5-sec-core/" target="_blank" rel="noopener noreferrer">NIST「AI Risk Management Framework Core」</a></li><li><a href="https://www.nccoe.nist.gov/projects/software-and-ai-agent-identity-and-authorization" target="_blank" rel="noopener noreferrer">NIST NCCoE「Software and AI Agent Identity and Authorization」</a></li><li><a href="https://www.ncsc.gov.uk/blogs/thinking-carefully-before-adopting-agentic-ai" target="_blank" rel="noopener noreferrer">NCSC「Thinking carefully before adopting agentic AI」</a></li><li><a href="https://developers.cloudflare.com/workflows/build/events-and-parameters/" target="_blank" rel="noopener noreferrer">Cloudflare Docs「Workflows events and parameters」</a></li></ol></article></div>
+<header class="art-head"><nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIセキュリティ・ラボ</a></nav><div class="kicker">承認・監査・事故対応</div><h1>AIエージェントの承認ゲート設計｜どの操作を人が止めるべきか【2026】</h1><p class="dek">承認を挟むのは、失敗時に外部へ影響が出る操作です。閲覧、下書き、送信、削除を同じ扱いにせず、実行直前の差分を人に見せます。</p><div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.09.01</span><span class="dot">·</span><span>最終更新 2026.10.06</span></div></header>
+<div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div><a href="#source">公式資料は書込みツールを前提に承認を求める</a><a href="#decision">承認が必要なのは結果を戻しにくい操作</a><a href="#design">承認画面には対象・差分・影響を出す</a><a href="#review">増えた権限を承認済みのまま放置しない</a><a href="#test">通す試験より、止まる試験を先に行う</a><a href="#sources">出典と確認範囲</a></div></nav><article class="art-body">
+<section class="source-quote" aria-label="一次資料の引用"><p><strong>一次資料</strong>：Chrome for Developers, Agent security considerations for WebMCP（2026年6月9日、確認日：2026年10月6日）</p>
+<blockquote><p lang="en">Assume WebMCP tools mutate state, unless the tool description or annotations (readOnlyHint) clearly state otherwise.</p></blockquote>
+<p>出典：<a href="https://developer.chrome.com/docs/agents/security" target="_blank" rel="noopener noreferrer">Chrome for Developers, Agent security considerations for WebMCP</a>。引用は論点を示す最小範囲にとどめ、日本語で読みどころを補います。</p></section>
+<figure class="fig-inline"><a href="figs/ai-agent-human-approval-gates-1.png" target="_blank" rel="noopener"><img src="figs/ai-agent-human-approval-gates-1.png" alt="承認ゲートで確認する対象と、拒否または次の工程へ渡す条件を示した設計例" width="1200" height="712" loading="lazy" decoding="async"></a><figcaption><span class="source-label">TechWorker作成：</span>承認対象、確認する実行内容、拒否と実行の分岐を本文に沿って図示しています。 製品の公式画面や導入効果の実測ではありません。画像を押すと拡大できます。</figcaption></figure>
+<h2 id="source">公式資料は書込みツールを前提に承認を求める</h2>
+<p>ChromeのWebMCP資料は、読取り専用だと明示されないツールを状態変更として扱い、必要に応じて利用者へ確認するよう求めています。承認ボタンを置けば安全になるという話ではなく、その前後を権限、記録、停止手順で囲みます。OWASPのAgentic AI資料も、過大な権限や意図しないツール利用を別の脅威として扱っています。</p>
+<p>したがって、承認ゲートは最後の防波堤です。エージェントへ最小権限しか渡さず、それでも残る外部作用を人が止めます。</p>
+<h2 id="decision">承認が必要なのは結果を戻しにくい操作</h2>
+<p>読取りと下書きは、通常は記録を残して自動化できます。送信、公開、購入、削除、権限変更、認証情報の利用は、実行直前に止めます。判断基準は金額だけではありません。顧客へ通知が飛ぶ、記録が正本へ書き込まれる、第三者の権限が変わる操作も対象です。</p>
+<p>承認を増やしすぎると、利用者は内容を読まずに通すようになります。連続処理では「この種類を今後すべて許可」ではなく、同じ対象・同じ上限・同じセッションに限った承認へ狭めます。</p>
+<h2 id="design">承認画面には対象・差分・影響を出す</h2>
+<p>「実行してよいですか」だけでは判断できません。送信先、変更前後、金額、公開範囲、取り消し方法を示します。メールなら宛先と本文、データ更新なら対象レコードと差分、削除なら件数と復元期限が必要です。</p>
+<p>エージェントの説明は参考情報です。承認者が見る正本は、実際に送る実行内容や実行するコマンドにします。説明と実行内容がずれた場合は実行せず、再生成させます。</p>
+<h2 id="review">権限ドリフトを承認済みのまま放置しない</h2>
+<p>導入時に正しかった権限も、ツール追加、グループ変更、担当者異動で広がります。TechWorkerの運用案では、エージェントの識別情報、接続先、権限範囲、利用ツールに加え、初期基準の保存日、前回から増えた権限、最終利用日、管理責任者を台帳へ残します。</p>
+<p>月次または四半期のレビューでは、設定一覧だけでなく、直近のツール実行記録から実利用権限を出します。暫定例外には承認者、理由、失効日を付け、期限切れの例外、未使用の権限、管理責任者不明の認証情報は停止して再承認へ戻します。承認済み操作が別のツール追加で高影響になった場合も、承認条件を再分類します。</p>
+<h2 id="test">通す試験より、止まる試験を先に行う</h2>
+<p>本番前には、宛先が変わった、件数が上限を超えた、権限が増えた、セッションが切れた場合を試します。そこで自動実行が止まり、承認者に差分が届くことを確認します。承認済み実行内容を後から書き換えられる実装なら、承認は成立していません。</p>
+<p>最初の対象は、外部メール送信や顧客データ更新など、影響が分かりやすい1操作で十分です。そこで承認待ち時間と差戻し理由を測り、承認を置く場所を直します。</p>
+<h2 id="sources">出典と確認範囲</h2><ul class="source-list"><li><a href="https://developer.chrome.com/docs/agents/security" target="_blank" rel="noopener noreferrer">Chrome for Developers, Agent security considerations for WebMCP</a></li><li><a href="https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/" target="_blank" rel="noopener noreferrer">OWASP Top 10 for Agentic Applications for 2026</a></li><li><a href="https://www.ncsc.gov.uk/blogs/thinking-carefully-before-adopting-agentic-ai" target="_blank" rel="noopener noreferrer">NCSC, Thinking carefully before adopting agentic AI</a></li></ul></article></div>
 <div class="author"><div class="inner"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><div><div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div><p class="a">上場企業を含む37社・2,500名の生成AI導入・研修支援で得た実務知をもとに、導入・運用・顧客理解を扱っています。この実績はTechWorkerの生成AI支援実績であり、個別製品の導入実績を示すものではありません。</p></div></div></div>
 <div class="art-cta"><div class="inner"><div><h3>AIエージェントの外部作用を安全に設計する</h3><p>権限、承認、監査、取消し、停止条件を、実際の業務フローとツール境界に沿ってレビューします。</p></div><a href="../../contact.html?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=ai-agent-human-approval-gates" class="btn" data-cta="ai-agent-human-approval-gates">セキュリティ設計を相談する <i>→</i></a></div></div>
-<div class="back-list"><a href="index.html">← AIセキュリティ・ラボの記事一覧に戻る</a></div><section class="related"><div class="container"><div class="rl-h">Related</div><div class="related-grid"><a href="firewall-for-ai.html" class="related-card"><span class="rc-cat">攻撃対策と検証</span><div class="rc-title">生成AIにファイアウォールが必要な理由</div></a></div></div></section>
+<div class="back-list"><a href="index.html">← AIセキュリティ・ラボの記事一覧に戻る</a></div><section class="related"><div class="container"><div class="rl-h">Related</div><div class="related-grid"><a href="firewall-for-ai.html" class="related-card"><span class="rc-cat">攻撃対策と検証</span><div class="rc-title">LLMアプリのプロンプトインジェクション対策｜Cloudflareのガードレール機能で何を防げるか</div></a></div></div></section>
 <footer><div class="container"><div class="footer-inner"><div class="footer-brand"><div class="logo">AIセキュリティ・ラボ</div><p>一次情報と実務に基づく生成AIメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p></div><div class="footer-col"><h4>メディア</h4><a href="index.html">記事一覧</a><a href="../index.html">全媒体</a></div><div class="footer-col"><h4>運営会社</h4><a href="../../company.html">会社概要</a><a href="../../privacy.html">プライバシーポリシー</a></div></div><p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p></div></footer><script>var nav=document.getElementById('nav');
 addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
 (function(){

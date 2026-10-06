@@ -1,9 +1,8 @@
 <!DOCTYPE html><html lang="ja" class="no-js" data-media="security"><head><meta charset="UTF-8">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}gtag('config','G-3V34NWXVCJ');</script><script src="/assets/tw-track.js" defer></script><script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>プロンプトインジェクション事故対応｜AIエージェントを止めて安全に復旧する — TechWorker</title><meta name="description" content="プロンプトインジェクションの事故は、出力より先に権限を止め、証跡の保全、tool単位の影響確認、段階復旧、平時の演習の5つの手順で対応します。うまくいかない例と適用限界も整理します。"><link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg"><link rel="canonical" href="https://techworker.co.jp/media/security/prompt-injection-incident-response-playbook">
-<meta property="og:type" content="article"><meta property="og:title" content="プロンプトインジェクション事故対応｜AIエージェントを止めて安全に復旧する"><meta property="og:description" content="プロンプトインジェクションの事故は、出力より先に権限を止め、証跡の保全、tool単位の影響確認、段階復旧、平時の演習の5つの手順で対応します。うまくいかない例と適用限界も整理します。"><meta property="og:image" content="https://techworker.co.jp/media/security/covers/prompt-injection-incident-response-playbook.png"><meta property="og:url" content="https://techworker.co.jp/media/security/prompt-injection-incident-response-playbook"><meta property="og:site_name" content="TechWorker"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://techworker.co.jp/media/security/covers/prompt-injection-incident-response-playbook.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../article.css?v=20261003-media-quality"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "プロンプトインジェクション事故対応｜AIエージェントを止めて安全に復旧する", "description": "プロンプトインジェクションの事故は、出力より先に権限を止め、証跡の保全、tool単位の影響確認、段階復旧、平時の演習の5つの手順で対応します。うまくいかない例と適用限界も整理します。", "datePublished": "2026-09-19", "dateModified": "2026-10-03", "inLanguage": "ja", "image": "https://techworker.co.jp/media/security/covers/prompt-injection-incident-response-playbook.png", "author": {"@type": "Person", "name": "古野光太朗", "url": "https://techworker.co.jp/company.html"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/security/prompt-injection-incident-response-playbook"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},{"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},{"@type":"ListItem","position":3,"name":"AIセキュリティ・ラボ","item":"https://techworker.co.jp/media/security/"},{"@type":"ListItem","position":4,"name":"プロンプトインジェクション事故対応｜AIエージェントを止めて安全に復旧する","item":"https://techworker.co.jp/media/security/prompt-injection-incident-response-playbook"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "プロンプトインジェクションを検知したら、最初に何をしますか？", "acceptedAnswer": {"@type": "Answer", "text": "会話画面を閉じるだけでなく、該当agentの権限を止めます。外部機能の認証情報、書き込み権限、外部通信、長期記憶への書込みです。送信・削除・権限変更など高影響のtoolを優先して遮断します。影響が疑われるtenant、agent、connectorを特定して、被害拡大を防ぎます。"}}, {"@type": "Question", "name": "事故調査のために、何を保全しておくべきですか？", "acceptedAnswer": {"@type": "Answer", "text": "入力本文、取得文書、instructionの版、modelを残します。tool callと引数、承認、response、外部API結果、記憶更新も残します。すべてincident IDで結びます。機密promptを含むログは閲覧権限と保持期間を限定し、別系統へ無制限に複製しません。"}}, {"@type": "Question", "name": "修正した後は、すぐに復旧してよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "すぐには復旧しません。実際の攻撃入力と変種を再実行し、toolが呼ばれないこと、警告が出ること、正常業務が壊れていないことを確認します。一度のfilter成功だけで復旧とせず、安全な版へ段階的に戻します。"}}]}</script>
-</head>
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>プロンプトインジェクション事故対応｜AIエージェントを止めて安全に復旧する — TechWorker</title><meta name="description" content="事故の初動では、モデルの返答を直す前に、ツール、認証情報、セッションを止めます。証拠を残し、影響範囲を確定してから段階的に戻します。"><link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg"><link rel="canonical" href="https://techworker.co.jp/media/security/prompt-injection-incident-response-playbook">
+<meta property="og:type" content="article"><meta property="og:title" content="プロンプトインジェクション事故対応｜AIエージェントを止めて安全に復旧する"><meta property="og:description" content="事故の初動では、モデルの返答を直す前に、ツール、認証情報、セッションを止めます。証拠を残し、影響範囲を確定してから段階的に戻します。"><meta property="og:image" content="https://techworker.co.jp/media/security/covers/prompt-injection-incident-response-playbook.png"><meta property="og:url" content="https://techworker.co.jp/media/security/prompt-injection-incident-response-playbook"><meta property="og:site_name" content="TechWorker"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://techworker.co.jp/media/security/covers/prompt-injection-incident-response-playbook.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../article.css?v=20261006-source-first"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "プロンプトインジェクション事故対応｜AIエージェントを止めて安全に復旧する", "description": "プロンプトインジェクションの事故は、出力より先に権限を止め、証跡の保全、tool単位の影響確認、段階復旧、平時の演習の5つの手順で対応します。うまくいかない例と適用限界も整理します。", "datePublished": "2026-09-19", "dateModified": "2026-10-06", "inLanguage": "ja", "image": "https://techworker.co.jp/media/security/covers/prompt-injection-incident-response-playbook.png", "author": {"@type": "Person", "name": "古野光太朗", "url": "https://techworker.co.jp/company.html"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/security/prompt-injection-incident-response-playbook"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},{"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},{"@type":"ListItem","position":3,"name":"AIセキュリティ・ラボ","item":"https://techworker.co.jp/media/security/"},{"@type":"ListItem","position":4,"name":"プロンプトインジェクション事故対応｜AIエージェントを止めて安全に復旧する","item":"https://techworker.co.jp/media/security/prompt-injection-incident-response-playbook"}]}</script></head>
 <body><div class="progress" id="progress"></div><nav id="nav">
   <a href="index.html" class="logo">AIセキュリティ<i>ラボ</i></a>
   <ul>
@@ -20,70 +19,24 @@
   <a href="index.html#about">このメディアについて</a>
   <a href="../../contact.html" class="m-cta">無料相談を申し込む</a>
 </div>
-<header class="art-head"><nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIセキュリティ・ラボ</a></nav><div class="kicker">承認・監査・事故対応</div><h1>プロンプトインジェクション事故対応｜AIエージェントを止めて安全に復旧する</h1><p class="dek">プロンプトインジェクションの事故は、出力より先に権限を止め、5つの手順で復旧します。<br>AIエージェントを業務で動かす、情報システムやセキュリティの担当者の悩みに答えます。<br>停止、証跡保全、影響確認、復旧、演習の手順と、うまくいかない例が分かります。</p><div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.09.19</span><span class="dot">·</span><span>最終更新 2026.10.03</span><span class="dot">·</span><span>一次情報 6件</span></div></header><img class="daily-cover" src="covers/prompt-injection-incident-response-playbook.png" alt="プロンプトインジェクション事故対応の初動を決める。出力より先に権限を止め、証跡を残して段階復旧する" width="1200" height="630">
-<div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div><a href="#s1">プロンプトインジェクションの事故では、最初に何をしますか？</a><a href="#s2">事故対応は、どんな順序で進めればよいですか？</a><a href="#s3">うまくいかない例には、どんなものがありますか？</a><a href="#s4">原因ごとに、復旧はどう変わりますか？</a><a href="#faq">よくある質問</a><a href="#s6">次の一歩は何から始めればよいですか？</a><a href="#sources">出典と確認範囲</a></div></nav><article class="art-body"><h2 id="s1">プロンプトインジェクションの事故では、最初に何をしますか？</h2>
-<p class="answer">出力より先に、該当エージェントが使う外部機能の認証情報を無効化し、書き込み権限、外部通信、長期記憶への保存を止めます。</p>
-<p>プロンプトインジェクションは、不正な文章がモデルの回答を変えるだけでは終わりません。AIエージェントのtool実行、外部送信、記憶保存へ進むと、業務事故になります。</p>
-<p>OWASP LLM01:2025は、直接・間接のprompt injectionが次につながると整理しています[1]。</p>
-<ul>
-<li>不正な意思決定</li>
-<li>情報露出</li>
-<li>無許可の機能実行</li>
-</ul>
-<p>検知後にpromptを修正するだけでは不十分です。<strong>権限を止め、入力・判断・tool call・外部影響を一続きで保全し、安全な版へ段階復旧する</strong>必要があります。</p>
-<p>異常を見つけたら、会話画面だけを閉じません。該当agentの外部機能の認証情報、書き込み権限、外部通信、長期記憶への書込みを停止します。</p>
-<aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">Claude Code 企業導入 セキュリティ＆セットアップ実践ガイド</div><div class="mc-d">3つのリスク、5つの設計原則、10項目のチェックリストを、情シスの審査に出せる形でまとめた資料です。</div></div><a href="../../library/?doc=security&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=prompt-injection-incident-response-playbook&amp;utm_content=mid" class="btn" data-cta="prompt-injection-incident-response-playbook-mid">ガイドを受け取る <i>&rarr;</i></a></aside>
-<h2 id="s2">事故対応は、どんな順序で進めればよいですか？</h2>
-<p class="answer">権限の停止、証跡の保全、影響範囲の確認、段階復旧、平時の演習の5つの順で進めます。</p>
-    <figure class="fig-inline"><a href="figs/prompt-injection-incident-response-playbook-1.png" target="_blank" rel="noopener"><img src="figs/prompt-injection-incident-response-playbook-1.png" alt="AI事故の初動で確認する対象と、拒否または次の工程へ渡す条件を示した設計例です。" width="1200" height="825" loading="lazy" decoding="async"></a><figcaption>TechWorker作成：本文の手順を図にした設計例です。製品の公式画面や導入効果の実測ではありません。画像を押すと拡大できます。</figcaption></figure>
-<p>初動の設計例では、当直が該当connectorの書込みと送信を止め、調査担当が同じincident IDで入力から外部APIの結果まで保全します。業務責任者が影響する案件を確認し、復旧する操作と通知判断を決めます。机上演習では停止の判断、連絡先、権限の所在を確認します。別途、検証環境で権限停止を実行し、操作が拒否された記録を確かめます。</p>
-<ol>
-<li><strong>権限を止めます。</strong>read-only調査と外部副作用を分けます。送信・削除・権限変更など、高影響のtoolを優先して遮断します。全AI機能を無条件に止めず、影響が疑われるtenant、agent、connector、時間帯を特定します。被害の拡大を防ぐためです。</li>
-<li><strong>証跡を上書きせず保全します。</strong>次の情報を、incident IDで結びます。入力本文、取得文書、system/developer instructionの版、modelです。tool call、引数、承認、response、外部API結果、記憶更新も結びます。ログに機密promptが含まれる場合は、閲覧権限と保持期間を限定します。調査のために、別系統へ無制限に複製しません。NIST AI 600-1は、生成AIのincidentを既存のrisk managementへ統合します。eventの記録、責任、post-deployment monitoringを扱います[2]。MITRE ATLASのincident sharingも、サニタイズした技術情報の共有を示します。実例に基づく防御へつなげる考え方です[3]。</li>
-<li><strong>影響範囲をtool単位で確認します。</strong>危険な回答が出たかだけを見ません。どのtoolが実行されたか、対象resource、権限、結果、下流処理を確認します。成功responseでも、宛先や対象が誤っていればincidentです。失敗responseでも、partial writeがないとは限りません。Google CloudのAI/ML security guidanceは、AI固有の対応を示しています。preparation、eradication、recovery、post-incident activityです。prompt injectionなどに合わせたplaybookを求めています[4]。中央SOC、法務、業務責任者へのescalation条件は、事前に決めます。</li>
-<li><strong>安全な版へ戻し、再検証します。</strong>原因に応じて対処を変えます。修正後は、実際の攻撃入力と変種をreplay（再実行）します。toolが呼ばれないこと、警告が出ること、正常業務が壊れていないことを確認します。GoogleのSAIFは、AI向けincident typeに合わせた調整を勧めています。調整するのは、abuse policyとresponse processです[5]。</li>
-<li><strong>平時にplaybookを演習します。</strong>次をplaybookへ固定します。検知条件、即時停止権限、証跡場所、連絡先です。影響確認query、復旧承認、顧客通知判断も固定します。四半期ごとの机上演習では、間接的なプロンプトインジェクションを想定し、当直者の判断と連絡の手順を確認します。技術訓練では検証環境の権限を実際に停止し、拒否された操作とログを確かめます。</li>
-</ol>
-
-<h2 id="s3">うまくいかない例には、どんなものがありますか？</h2>
-<p class="answer">promptの修正だけで終えること、画面だけ閉じること、一度のfilter成功で復旧とすることが典型です。</p>
-<ul>
-<li><strong>promptを直すだけで終えます。</strong>tool実行や外部送信が残っていれば、事故は続きます。</li>
-<li><strong>会話画面だけを閉じます。</strong>外部機能の認証情報、書き込み権限、外部通信、記憶書込みは動いたままです。</li>
-<li><strong>全AI機能を無条件に止めます。</strong>影響のないtenantやagentまで止まります。</li>
-<li><strong>危険な回答の有無だけを見ます。</strong>tool実行と下流処理を確認しないと、影響範囲が分かりません。</li>
-<li><strong>成功responseを正常と見なします。</strong>宛先や対象が誤っていれば、incidentです。</li>
-<li><strong>調査のためにログを複製します。</strong>機密promptが別系統へ広がります。</li>
-<li><strong>一度のfilter成功で復旧とします。</strong>攻撃入力と変種を再実行して、確かめます。</li>
-</ul>
-<p>入力filterやモデルguardrailだけでは、prompt injectionを完全に防げません。検知できないことを前提にします。最小権限、承認、sandbox、出力後validation、監査を重ねます。海外frameworkは、自社の法的通知義務を代替しません。日本の契約・個人情報・業界規制を、別途確認します。</p>
-
-<h2 id="s4">原因ごとに、復旧はどう変わりますか？</h2>
-<p class="answer">取得文書、prompt template、tool policy、長期記憶で、隔離や修正の対象が変わります。</p>
-<div class="tbl-wrap"><table><thead><tr><th>原因</th><th>復旧の対処</th></tr></thead><tbody>
-<tr><td>取得文書</td><td>隔離し、再取得する</td></tr>
-<tr><td>prompt template</td><td>版を戻す</td></tr>
-<tr><td>tool policy</td><td>allowlistと引数validationを修正する</td></tr>
-<tr><td>長期記憶</td><td>対象memoryを隔離し、別tenantへ伝播していないか確認する</td></tr>
-</tbody></table></div>
-
-<h2 id="faq">よくある質問</h2>
-<div class="faq"><div class="q">プロンプトインジェクションを検知したら、最初に何をしますか？</div><p class="a">会話画面を閉じるだけでなく、該当agentの権限を止めます。外部機能の認証情報、書き込み権限、外部通信、長期記憶への書込みです。送信・削除・権限変更など高影響のtoolを優先して遮断します。影響が疑われるtenant、agent、connectorを特定して、被害拡大を防ぎます。</p></div>
-<div class="faq"><div class="q">事故調査のために、何を保全しておくべきですか？</div><p class="a">入力本文、取得文書、instructionの版、modelを残します。tool callと引数、承認、response、外部API結果、記憶更新も残します。すべてincident IDで結びます。機密promptを含むログは閲覧権限と保持期間を限定し、別系統へ無制限に複製しません。</p></div>
-<div class="faq"><div class="q">修正した後は、すぐに復旧してよいですか？</div><p class="a">すぐには復旧しません。実際の攻撃入力と変種を再実行し、toolが呼ばれないこと、警告が出ること、正常業務が壊れていないことを確認します。一度のfilter成功だけで復旧とせず、安全な版へ段階的に戻します。</p></div>
-
-<h2 id="s6">次の一歩は何から始めればよいですか？</h2>
-<p class="answer">停止権限と証跡の場所を決めます。机上演習で判断と連絡を確認し、検証環境の技術訓練で権限停止が機能するか確かめます。</p>
-<ol>
-<li>検知条件、即時停止権限、証跡場所、連絡先をplaybookへ固定します。</li>
-<li>影響確認queryと、復旧承認、顧客通知の判断を決めます。</li>
-<li>四半期ごとに、間接的なプロンプトインジェクションを想定した机上演習を行います。別途、検証環境で権限停止を試験します。</li>
-</ol>
-
-<h2 id="sources">出典と確認範囲</h2>
-<p class="source-note">確認日：2026年9月19日。製品仕様・制度・研究結果は更新されるため、導入時はリンク先の最新版を再確認してください。</p>
-<ol class="source-list"><li><a href="https://genai.owasp.org/download/43299/?tmstv=1731900559" target="_blank" rel="noopener noreferrer">S-1 OWASP Top 10 for LLM Applications v2.0</a></li><li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener noreferrer">S-2 NIST AI 600-1</a></li><li><a href="https://ai-incidents.mitre.org/" target="_blank" rel="noopener noreferrer">S-3 MITRE ATLAS Incident Sharing</a></li><li><a href="https://docs.cloud.google.com/architecture/framework/perspectives/ai-ml/security" target="_blank" rel="noopener noreferrer">S-4 Google Cloud AI/ML security perspective</a></li><li><a href="https://services.google.com/fh/files/blogs/google_secure_ai_framework_approach.pdf" target="_blank" rel="noopener noreferrer">S-5 Google Secure AI Framework</a></li><li><a href="https://docs.cloud.google.com/mcp/ai-security-safety" target="_blank" rel="noopener noreferrer">S-6 Google Cloud MCP AI security and safety</a></li></ol>
-</article></div>
+<header class="art-head"><nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIセキュリティ・ラボ</a></nav><div class="kicker">承認・監査・事故対応</div><h1>プロンプトインジェクション事故対応｜AIエージェントを止めて安全に復旧する</h1><p class="dek">事故の初動では、モデルの返答を直す前に、ツール、認証情報、セッションを止めます。証拠を残し、影響範囲を確定してから段階的に戻します。</p><div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.09.19</span><span class="dot">·</span><span>最終更新 2026.10.06</span></div></header><div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div><a href="#source">NISTは生成AI事故を継続的なリスク管理へ戻す</a><a href="#contain">最初の15分で実行経路を止める</a><a href="#evidence">入力文だけでなくツール呼出しと外部システムを追う</a><a href="#recover">原因別に境界を直して段階復旧する</a><a href="#sources">出典と確認範囲</a></div></nav><article class="art-body">
+<section class="source-quote" aria-label="一次資料の引用"><p><strong>一次資料</strong>：NIST AI RMF Generative AI Profile（2024年7月26日、2026年4月8日更新、確認日：2026年10月6日）</p>
+<blockquote><p lang="en">to incorporate trustworthiness considerations into the design, development, use, and evaluation of AI products, services, and systems.</p></blockquote>
+<p>出典：<a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener noreferrer">NIST AI RMF Generative AI Profile</a>。引用は論点を示す最小範囲にとどめ、日本語で読みどころを補います。</p></section>
+<figure class="fig-inline"><a href="figs/prompt-injection-incident-response-playbook-1.png" target="_blank" rel="noopener"><img src="figs/prompt-injection-incident-response-playbook-1.png" alt="プロンプトインジェクション事故で停止、証拠保全、影響確認、復旧へ進む設計例" width="1200" height="825" loading="lazy" decoding="async"></a><figcaption><span class="source-label">TechWorker作成：</span>事故発覚後に止める対象と、復旧前に確認する条件を図示しています。 製品の公式画面や導入効果の実測ではありません。画像を押すと拡大できます。</figcaption></figure>
+<h2 id="source">NISTは生成AI事故を継続的なリスク管理へ戻す</h2>
+<p>NISTの生成AIプロファイルは、生成AIのリスクを統治、把握、測定、管理の循環で扱います。事故対応も一度の停止で終わらず、原因と影響を測り、対策と運用へ戻す作業です。</p>
+<p>プロンプトインジェクションでは、表示された不正出力より、エージェントが何を実行したかが被害を決めます。</p>
+<h2 id="contain">最初の15分で実行経路を止める</h2>
+<p>対象エージェントの待ち行列を止め、外部送信ツールと書込みツールを無効にします。漏えいの可能性がある認証情報は失効し、ブラウザセッションとOAuthトークンも切ります。モデルだけを停止しても、別実行処理が待ち行列を処理すれば事故は続きます。</p>
+<p>停止時刻、止めた構成要素、担当者を記録します。記録削除処理は一時停止し、証拠保全先を読取り専用にします。</p>
+<h2 id="evidence">入力文だけでなくツール呼出しと外部システムを追う</h2>
+<p>入力文、参照したウェブ・ファイル・メール、モデル応答、ツールの引数、ツールの結果、承認履歴を同じ要求IDでつなぎます。外部システム側では、送信済みメール、変更レコード、ダウンロード、権限変更を確認します。</p>
+<p>影響が未確定なら「漏えいなし」と報告しません。確認済み範囲と未確認範囲を分けます。</p>
+<h2 id="recover">原因別に境界を直して段階復旧する</h2>
+<p>外部文書が原因なら、その取得経路を隔離し、命令として扱わない表示へ変えます。ツール権限が広すぎたなら権限範囲を縮めます。承認をすり抜けたなら、承認対象と実行内容をハッシュ値で結びます。</p>
+<p>復旧は読取り専用の作業から始め、次に下書き、最後に外部送信へ進みます。各段階で同じ攻撃入力を再現し、以前の経路が失敗することを確かめます。</p>
+<h2 id="sources">出典と確認範囲</h2><ul class="source-list"><li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener noreferrer">NIST, AI RMF Generative AI Profile</a></li><li><a href="https://ai-incidents.mitre.org/" target="_blank" rel="noopener noreferrer">MITRE AI Incident Sharing</a></li><li><a href="https://genai.owasp.org/llm-top-10/" target="_blank" rel="noopener noreferrer">OWASP Top 10 for LLM Applications</a></li></ul></article></div>
 <div class="author"><div class="inner"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><div><div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div><p class="a">上場企業を含む37社・2,500名の生成AI導入・研修支援で得た実務知をもとに、導入・運用・顧客理解を扱っています。この実績はTechWorkerの生成AI支援実績であり、個別製品の導入実績を示すものではありません。</p></div></div></div>
 <div class="art-cta"><div class="inner"><div><h3>プロンプトインジェクション事故へ備える</h3><p>権限停止、証跡保全、影響確認、安全復旧を既存の事故対応へ接続します。</p></div><a href="../../contact.html?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=prompt-injection-incident-response-playbook" class="btn" data-cta="prompt-injection-incident-response-playbook">AIセキュリティを相談する <i>→</i></a></div></div><div class="back-list"><a href="index.html">← AIセキュリティ・ラボの記事一覧に戻る</a></div><section class="related"><div class="container"><div class="rl-h">Related</div><div class="related-grid"></div></div></section>
 <footer><div class="container"><div class="footer-inner"><div class="footer-brand"><div class="logo">AIセキュリティ・ラボ</div><p>一次情報と実務に基づく生成AIメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p></div><div class="footer-col"><h4>メディア</h4><a href="index.html">記事一覧</a><a href="../index.html">全媒体</a></div><div class="footer-col"><h4>運営会社</h4><a href="../../company.html">会社概要</a><a href="../../privacy.html">プライバシーポリシー</a></div></div><p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p></div></footer><script>var nav=document.getElementById('nav');

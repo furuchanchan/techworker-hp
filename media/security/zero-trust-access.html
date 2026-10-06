@@ -14,12 +14,12 @@
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>社内ツール・管理画面をVPNなしで守る｜Cloudflare Accessによるゼロトラスト構成【2026】 — TechWorker</title>
-<meta name="description" content="社内ツール・管理画面は、VPNを増やさず、Cloudflare Accessでリクエストごとに人を確認して守ります。VPNとの違い、アプリの前段で保護する5つの手順、バイパス経路やAPIの扱いなどの失敗を整理します。">
+<meta name="description" content="Cloudflare Accessをアプリケーションの前段へ置き、要求ごとに利用者情報とdevice条件を確認します。Tunnelだけで終えず、通信元でもAccessトークンを検証します。">
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
 <link rel="canonical" href="https://techworker.co.jp/media/security/zero-trust-access">
 <meta property="og:type" content="article">
 <meta property="og:title" content="社内ツール・管理画面をVPNなしで守る｜Cloudflare Accessによるゼロトラスト構成【2026】">
-<meta property="og:description" content="社内ツール・管理画面は、VPNを増やさず、Cloudflare Accessでリクエストごとに人を確認して守ります。VPNとの違い、アプリの前段で保護する5つの手順、バイパス経路やAPIの扱いなどの失敗を整理します。">
+<meta property="og:description" content="Cloudflare Accessをアプリケーションの前段へ置き、要求ごとに利用者情報とdevice条件を確認します。Tunnelだけで終えず、通信元でもAccessトークンを検証します。">
 <meta property="og:image" content="https://techworker.co.jp/media/security/covers/zero-trust-access.png?v=20261003-media-quality">
 <meta property="og:url" content="https://techworker.co.jp/media/security/zero-trust-access">
 <meta property="og:site_name" content="TechWorker">
@@ -29,8 +29,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../article.css?v=20261003-media-quality">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "社内ツール・管理画面をVPNなしで守る｜Cloudflare Accessによるゼロトラスト構成【2026】", "description": "社内ツール・管理画面は、VPNを増やさず、Cloudflare Accessでリクエストごとに人を確認して守ります。VPNとの違い、アプリの前段で保護する5つの手順、バイパス経路やAPIの扱いなどの失敗を整理します。", "datePublished": "2026-08-09", "dateModified": "2026-10-03", "inLanguage": "ja", "image": "https://techworker.co.jp/media/security/covers/zero-trust-access.png?v=20261003-media-quality", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/security/zero-trust-access"}}</script>
+<link rel="stylesheet" href="../article.css?v=20261006-source-first">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "社内ツール・管理画面をVPNなしで守る｜Cloudflare Accessによるゼロトラスト構成【2026】", "description": "社内ツール・管理画面は、VPNを増やさず、Cloudflare Accessでリクエストごとに人を確認して守ります。VPNとの違い、アプリの前段で保護する5つの手順、バイパス経路やAPIの扱いなどの失敗を整理します。", "datePublished": "2026-08-09", "dateModified": "2026-10-06", "inLanguage": "ja", "image": "https://techworker.co.jp/media/security/covers/zero-trust-access.png?v=20261003-media-quality", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/security/zero-trust-access"}}</script>
 <script type="application/ld+json">
 {
   "@context":"https://schema.org","@type":"BreadcrumbList",
@@ -42,7 +42,6 @@
   ]
 }
 </script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "無料プランでもCloudflare Accessは使えますか？", "acceptedAnswer": {"@type": "Answer", "text": "無料枠はありますが、対象人数、必要機能、ログ保持期間を現在の公式プランで確認してください。人数上限や保持期間を、過去の紹介値だけで判断しません。退職者調査など長期保存が要る場合は、導入前に条件を照合します。"}}, {"@type": "Question", "name": "社内システムの改修は必要ですか？", "acceptedAnswer": {"@type": "Answer", "text": "多くの場合は不要です。Cloudflare Tunnelを使えば、アプリ自体にコードを追加せずに済みます。インバウンドポートも開けずに、前段でAccessを挟めます。既存URL、DNS、既存認証との併用は、現在の構成を確認して決めます。アプリ側で利用者のIDを使う場合は、追加の検証実装が要ることがあります。"}}, {"@type": "Question", "name": "既存の社内IDプロバイダをそのまま使えますか？", "acceptedAnswer": {"@type": "Answer", "text": "Google Workspace、Entra ID（Azure AD）、Oktaなど、主要なIDプロバイダと連携できます。汎用のSAML／OIDCにも対応するため、多くの社内IdPをそのまま接続できます。ID基盤がない小規模チームでも、組み込みのワンタイムPIN（メール認証）から始められます。"}}, {"@type": "Question", "name": "API連携やWebhookはどう扱えばよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "人のログインを前提にしたポリシーだけでは、外部からのAPI呼び出しやWebhookまでブロックします。Service Tokenを使えば、自動化された通信専用の認証経路を、別に用意できます。認証は、Client IDとClient Secretで行います。導入時に、人が使うのか、システムが使うのかを、経路ごとに分けて設計します。"}}]}</script>
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -77,7 +76,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <h1>社内ツール・管理画面をVPNなしで守る｜Cloudflare Accessによるゼロトラスト構成</h1>
   <p class="dek">内製ツールが10、20と増えても、VPNを増やさず、Cloudflare Accessで人を確認して守れます。<br>内製AIツールや検証環境が増えて、アクセス管理に困っている情シスやシステム担当の方の悩みに答えます。<br>VPNとゼロトラストの違い、5つの導入手順、直結経路と退職時の失効で見落とす点が分かります。</p>
   <div class="a-meta">
-    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.08.09</span><span class="dot">·</span><span>最終更新 2026.10.03</span><span class="dot">·</span><span>読了 9分</span>
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.08.09</span><span class="dot">·</span><span>最終更新 2026.10.06</span><span class="dot">·</span><span>読了 9分</span>
   </div>
 </header>
 
@@ -86,92 +85,27 @@ fbq('init','1264057945446029');fbq('track','PageView');
 .zta-unit{font-size:14px;font-weight:600;color:var(--slate);margin-left:1px;}
 .zta-cap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-family:var(--jp);font-size:11.5px;color:var(--slate);margin-top:10px;padding-top:12px;border-top:1px solid var(--line);}
 </style>
-<a href="covers/zero-trust-access.png?v=20261003-media-quality" target="_blank" rel="noopener"><img class="daily-cover" src="covers/zero-trust-access.png?v=20261003-media-quality" alt="社内Webアプリの認証を比べる。VPNのみで守る構成と、アプリの前段で認証する構成の比較" width="1200" height="630"></a>
-
 <div class="art-layout">
   <nav class="art-toc" aria-label="目次">
     <div class="art-toc-inner">
-      <div class="toc-h">目次</div>
-      <a href="#s1">社内ツール・管理画面を、VPNなしで守るにはどうすればよいですか？</a>
-      <a href="#s2">Cloudflare Accessの導入は、どんな手順で進めますか？</a>
-      <a href="#s3">うまくいかない例には、どんなものがありますか？</a>
-      <a href="#s4">VPNとゼロトラストは、何が違いますか？</a>
-
-      <a href="#faq">よくある質問</a>
-    <a href="#s6">次の一歩は何から始めればよいですか？</a>
-<a href="#sources">この記事は、どの資料をもとにしていますか？</a>
-</div>
-  </nav>
-
-  <article class="art-body"><h2 id="s1">社内ツール・管理画面を、VPNなしで守るにはどうすればよいですか？</h2>
-<p class="answer">Cloudflare Accessをアプリの前段へ置き、利用者と条件を確認します。オリジンへの直結経路と、既存セッションの失効も検査します。</p>
-<p>生成AIの普及で、社内チャット、検証用ダッシュボード、部門ごとの管理画面といった内製ツールが増えています。短い試作で動くツールを作れるため、公開の仕方は後回しになりやすくなります。</p>
-<p>内製ツールが増えるときに想定する失敗は、次の3つです。</p>
-<ol>
-<li><strong>URLを知っていれば誰でも入れます。</strong>「社外秘のつもりだが、URLさえ知っていれば外部からでも開ける」状態のまま、検証環境が本番相当のデータを扱い始めます。Basic認証を掛けていても、パスワードは共有チャットに貼られて使い回されます。退職者にも残ったままになりやすくなります。</li>
-<li><strong>退職者のアクセスが残ります。</strong>ツールごとに個別アカウントを発行する運用だと、削除する対象も個別になります。人事の退職手続きと、内製ツールのアカウント削除が別の作業である限り、どこかで抜け落ちます。</li>
-<li><strong>監査で説明できません。</strong>情シス審査やセキュリティ監査で「誰が、いつ、何にアクセスできるか」を一覧で求められたとします。IPアドレス制限やBasic認証だけでは、「誰が」に当たる記録が残っていません。</li>
-</ol>
-<p>根っこは同じです。「ネットワークに入れるかどうか」だけで守っている限り、入った後の一人ひとりを見分ける手段がありません。</p>
-<p>典型的な対応は、「VPNを増やす」か、「既存VPNの対象を広げる」ことです。ただ、ツールが増えるほど無理が出ます。従来の構成でVPN接続後に広いネットワークへ届き、アプリごとの認可もない場合は、到達範囲が広がります。VPN製品や構成によって制限は異なります。内製ツールが10、20と増えると、申請・発行・失効のやり取りだけで、情シスの工数が埋まっていきます。</p>
-<p>ゼロトラストは、判定のタイミングを、ネットワークの入口からリクエスト1つひとつへ移す考え方です。米国NIST（国立標準技術研究所）が2020年8月に公表した『Zero Trust Architecture』（NIST Special Publication 800-207）は、これを整理しています。守る対象は、静的なネットワーク境界ではありません。ユーザー・資産・リソースそれぞれを個別に守る考え方です。</p>
-<p>実務の言葉にすると、ここで比較するVPNは「入口で認証した後、広い範囲へ到達できる」構成です。ゼロトラストは「部屋の扉ごとに、開けるたびにIDを提示してもらう」設計に近くなります。</p>
-<p>Cloudflare Accessは、Zero Trust Network Access（ZTNA）を担う製品です。SASE（Secure Access Service Edge）プラットフォーム「Cloudflare One」の一部です。公式ドキュメントは、次の仕組みと説明しています。すべてのリクエストを、アイデンティティとコンテキストに基づいて認証・認可します。本稿の機能記述は、2026年8月時点の公式情報に基づきます。出典は、developers.cloudflare.comとblog.cloudflare.comです。</p>
-
-<h2 id="s2">Cloudflare Accessの導入は、どんな手順で進めますか？</h2>
-<p class="answer">検証環境の1本から始め、IdP連携、自動化の経路の分離、退職・異動の手順との連動、横展開の順に進めます。</p>
-    <figure class="fig-inline"><a href="figs/zero-trust-access-1.png" target="_blank" rel="noopener"><img src="figs/zero-trust-access-1.png" alt="管理画面の前段で確認する対象と、拒否または次の工程へ渡す条件を示した設計例です。" width="1200" height="825" loading="lazy" decoding="async"></a><figcaption>TechWorker作成：本文の手順を図にした設計例です。製品の公式画面や導入効果の実測ではありません。画像を押すと拡大できます。</figcaption></figure>
-<p>最初につまずきやすいのは、「対象のアプリを改修しないといけないのでは」という思い込みです。実際には、多くの場合、アプリ側のコードには触れません。</p>
-<ol>
-<li><strong>リスクの高いツールを1つ選び、前段を作ります。</strong>全社の内製ツールを一度に囲おうとすると、関係部署の調整だけで止まります。個人情報を扱う検証環境や、管理者権限を持つ管理画面など、最もリスクの高い1つを選びます。Cloudflare Tunnelは、<code>cloudflared</code>という常駐プロセスを使います。このプロセスが、アプリの動くサーバーからCloudflareへ、送信のみの接続を確立します。公開用の固定IPは要りません。ファイアウォールでインバウンドポートを開けずに、社外公開できます。公開するホスト名、DNS、Tunnelの接続先を確認し、その前段にAccessを配置します。既存URLを維持できるかは現在の公開構成によります。</li>
-<li><strong>社内IdPを接続し、ポリシーを1本作ります。</strong>IdP（社内のID基盤）は、Google WorkspaceやMicrosoft Entra ID（Azure AD）、Oktaなどをそのまま接続できます。汎用SAML／OIDCにも対応します。IdPが未整備なら、Cloudflare組み込みのワンタイムPIN（メール認証）も使えます。ポリシーは、「誰が」「どのアプリに」「どんな条件で」アクセスできるかを、アプリ単位でルール化します。まず「情シス部のみ許可」を1本作ります。公開範囲は、アプリごとに分けられます。検証環境は情シスのみ、社内チャットは全社員、といった使い分けです。IdP側のグループ情報をそのまま条件に使えるので、Access専用の権限台帳は要りません。IdPのグループ管理を運用できていれば、Access側は「そのグループを許可する」ルールを1本足すだけです。</li>
-<li><strong>自動化の経路を、人のログインから分けます。</strong>Service Tokenは、人のログインを介さない通信を認証する仕組みです。Client IDとClient Secretを発行します。監視ツールやAPI連携、CI/CDなど、人が操作しない経路を塞がずに残せます。セッション期間も決めます。ログイン後に再認証を求めるまでの有効期間で、アプリごとに設定できます。既定は24時間で、15分から1か月の範囲で調整できます。機微な管理画面ほど短くします。</li>
-<li><strong>退職・異動の手順とAccessを連動させます。</strong>退職・異動のとき、IdP側のグループ更新と、Accessの許可条件を対応させます。既存セッションが直ちに無効になるとは限りません。退職時はセッションの失効を行い、拒否されることまで試験します。退職・異動のチェックリストに、Accessのポリシーとservice tokenの棚卸しを組み込みます。</li>
-<li><strong>対象を広げ、監査ログを月次で見ます。</strong>1本通った型は、次のツールへそのまま複製できます。検証で固めたポリシーを、他の内製ツールや管理画面へ広げます。監査ログは、誰が、いつ、どのアプリに、許可されたか拒否されたかを記録します。月次で確認する運用に乗せます。情シス審査や社内監査で、アクセス権限の一覧をそのまま出せます。</li>
-</ol>
-<p>契約前に、対象人数、必要な認証機能、ログ保持期間を現在のプランで確認します。記事の手順は、1つのWebアプリを前段で保護する設計例です。全社ネットワークの移行や、アプリ内部の業務認可を代わりに行うものではありません。</p>
-
-<h2 id="s3">うまくいかない例には、どんなものがありますか？</h2>
-<p class="answer">バイパス経路の残存、API・Webhookの締め出し、退職・異動の手順との非連動、最初から全社ツールを狙うことが典型です。</p>
-<p>Accessを前段に置いても、次を設計しないままだと、ゼロトラスト化したつもりで穴が残ります。</p>
-<ul>
-<li><strong>バイパス経路が残ります。</strong>Access導入前のURLや、オリジンのIPアドレスに直接到達できる経路が残っていると、Accessを迂回して入れます。Cloudflare Tunnelでオリジンへの接続をアウトバウンドのみに変え、直接到達できる経路そのものを塞ぎます。</li>
-<li><strong>APIやWebhookを閉め出します。</strong>人のログインだけを前提にポリシーを組むと、外部SaaSのWebhookや、監視ツールのAPI呼び出しまでブロックします。Service Tokenで、機械アクセス用の経路を別に用意します。</li>
-<li><strong>退職・異動の手順と連動していません。</strong>社内IdP側でアカウントを無効化しても、Access側に残った例外ポリシーは有効です。期限を長く切ったService Tokenも、そのまま有効であり続けます。</li>
-<li><strong>最初から全社が使うツールを狙います。</strong>影響範囲の大きいツールから着手すると、関係部署の調整だけで止まります。</li>
-</ul>
-<p>1本のツールを守って終わりにしません。内製ツールが増えるたびに同じ型を複製し、退職・異動の手順や監査と連動させ続けます。それで初めて、「説明できる状態」が維持されます。</p>
-
-<aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">Claude Code 企業導入 セキュリティ＆セットアップ実践ガイド</div><div class="mc-d">3つのリスク、5つの設計原則、10項目のチェックリストを、情シスの審査に出せる形でまとめた資料です。</div></div><a href="../../library/?doc=security&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=zero-trust-access&amp;utm_content=mid" class="btn" data-cta="zero-trust-access-mid">ガイドを受け取る <i>&rarr;</i></a></aside>
-<h2 id="s4">VPNとゼロトラストは、何が違いますか？</h2>
-<p class="answer">比較対象は、VPN接続後に広いネットワークへ届く構成と、アプリの前段で認証・認可するAccess構成です。VPN自体の制御能力は製品と設定で異なります。</p>
-<div class="tbl-wrap">
-<table>
-<tr><th>観点</th><th>VPN</th><th>ゼロトラスト（Cloudflare Access）</th></tr>
-<tr><td>判定のタイミング</td><td>接続時の認証が中心の構成</td><td>リクエストのたびに毎回</td></tr>
-<tr><td>接続後の到達範囲</td><td>社内ネットワーク全体に届くことが多い</td><td>許可されたアプリ単位に限定</td></tr>
-<tr><td>本人確認の粒度</td><td>アプリの別認可がない場合、接続可否が中心</td><td>IdPのID・グループ単位で、誰がアクセスしたかを記録</td></tr>
-<tr><td>退職時の対応</td><td>VPNアカウントの削除を個別に実施</td><td>社内IdP側の無効化と連動させやすい</td></tr>
-<tr><td>ログに残るもの</td><td>接続ログ（IPなど）中心</td><td>誰が・いつ・どのアプリに・許可か拒否かを記録</td></tr>
-</table>
-</div>
-<p>ゼロトラストへの置き換えは、「VPNをやめる」というより、「判定の粒度を細かくする」ことに近い作業です。</p>
-
-<h2 id="faq">よくある質問</h2>
-<div class="faq"><div class="q">無料プランでもCloudflare Accessは使えますか？</div><p class="a">無料枠はありますが、対象人数、必要機能、ログ保持期間を現在の公式プランで確認してください。人数上限や保持期間を、過去の紹介値だけで判断しません。退職者調査など長期保存が要る場合は、導入前に条件を照合します。</p></div>
-<div class="faq"><div class="q">社内システムの改修は必要ですか？</div><p class="a">多くの場合は不要です。Cloudflare Tunnelを使えば、アプリ自体にコードを追加せずに済みます。インバウンドポートも開けずに、前段でAccessを挟めます。既存URL、DNS、既存認証との併用は、現在の構成を確認して決めます。アプリ側で利用者のIDを使う場合は、追加の検証実装が要ることがあります。</p></div>
-<div class="faq"><div class="q">既存の社内IDプロバイダをそのまま使えますか？</div><p class="a">Google Workspace、Entra ID（Azure AD）、Oktaなど、主要なIDプロバイダと連携できます。汎用のSAML／OIDCにも対応するため、多くの社内IdPをそのまま接続できます。ID基盤がない小規模チームでも、組み込みのワンタイムPIN（メール認証）から始められます。</p></div>
-<div class="faq"><div class="q">API連携やWebhookはどう扱えばよいですか？</div><p class="a">人のログインを前提にしたポリシーだけでは、外部からのAPI呼び出しやWebhookまでブロックします。Service Tokenを使えば、自動化された通信専用の認証経路を、別に用意できます。認証は、Client IDとClient Secretで行います。導入時に、人が使うのか、システムが使うのかを、経路ごとに分けて設計します。</p></div>
-
-<h2 id="s6">次の一歩は何から始めればよいですか？</h2>
-<p class="answer">リスクの高い内製ツールを1つ選び、検証環境として、Accessの前段とポリシー1本を試します。</p>
-<ol>
-<li>個人情報を扱う検証環境や、管理者権限を持つ管理画面から、1つを選びます。</li>
-<li>Cloudflare Tunnelで前段を作り、社内IdPを接続して、ポリシーを1本作ります。</li>
-<li>監視ツールやWebhookなど、人が操作しない経路を洗い出し、Service Tokenで分けます。</li>
-</ol>
-<h2 id="sources">この記事は、どの資料をもとにしていますか？</h2><p>2026年10月3日にアプリ保護とセッション管理の公式手順を照合しました。本文は構成の設計例で、導入効果の実測ではありません。料金・人数上限・ログ保持の数値を今回更新済とは扱いません。</p><ul class="src-list"><li><a href="https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/" target="_blank" rel="noopener">Cloudflare：Webアプリの保護</a></li><li><a href="https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/" target="_blank" rel="noopener">Cloudflare：self-hostedアプリの公開</a></li><li><a href="https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/" target="_blank" rel="noopener">Cloudflare：セッション管理</a></li></ul>
-</article>
+      <div class="toc-h">目次</div><a href="#source">公式図は利用者・Cloudflare・アプリケーションの3層を示す</a><a href="#path">公開ホスト名から接続元サーバーまでを1本の経路で守る</a><a href="#policies">規則は初期状態で拒否から始める</a><a href="#verify">迂回経路と退職セッションを試験する</a><a href="#sources">出典と確認範囲</a></div></nav><article class="art-body">
+<figure class="fig-inline source-figure">
+  <a class="source-image" href="sources/cloudflare-access-ztna-figure1.svg" target="_blank" rel="noopener noreferrer"><img src="sources/cloudflare-access-ztna-figure1.svg" alt="利用者と端末からCloudflare Accessを経て社内アプリケーションへ接続するZTNAの基本構成" width="1235" height="585" loading="lazy" decoding="async"></a>
+  <figcaption><span class="source-label">Cloudflare公式：ZTNAによる遠隔アクセスの基本構成</span>利用者とアプリケーションの間にCloudflareが入り、利用者情報と端末状態で規則を評価する位置を読みます。 画像をクリックすると原図を開きます。<a href="https://developers.cloudflare.com/reference-architecture/design-guides/designing-ztna-access-policies/" target="_blank" rel="noopener noreferrer">原典ページ</a>／<a href="https://github.com/cloudflare/cloudflare-docs/blob/production/LICENSE" target="_blank" rel="noopener noreferrer">利用条件</a>（確認日：2026年10月6日）</figcaption>
+</figure>
+<h2 id="source">公式図は利用者・Cloudflare・アプリケーションの3層を示す</h2>
+<p>Cloudflare Accessは、利用者情報を確認する中継役としてアプリケーションの前に立ちます。利用者の要求をIdP、端末状態、通信条件で評価し、許可された通信だけを通信元へ渡します。</p>
+<p>VPNを外すこと自体が目的ではありません。通信へ入った後もアプリケーション単位で判断できる構成へ変えることが目的です。</p>
+<h2 id="path">公開ホスト名から接続元サーバーまでを1本の経路で守る</h2>
+<p>最初にAccessアプリケーションを作り、公開ホスト名と許可規則を設定します。その後、Cloudflare Tunnelで接続元サーバーから外向きの接続を作ります。公式資料も、Tunnel経路より先にAccessアプリケーションを用意するよう勧めています。</p>
+<p>接続元サーバーではAccessトークンを検証します。DNSやファイアウォールの誤設定でCloudflareを迂回した要求が届いても拒否するためです。</p>
+<h2 id="policies">規則は初期状態で拒否から始める</h2>
+<p>自社運用アプリケーションは初期状態で拒否です。情シスグループ、管理済み端末、特定国など、必要な条件を許可へ足します。人のログインと、自動処理（CI・Webhook）用のサービス認証情報は、同じ規則に混ぜません。</p>
+<p>セッション期間はアプリケーションのリスクで決めます。管理画面は短く、閲覧中心の社内ポータルは長くするなど、IdPセッションとAccessセッションの両方を確認します。</p>
+<h2 id="verify">迂回経路と退職セッションを試験する</h2>
+<p>接続元サーバーのIPへ直接接続して拒否されること、未管理端末が止まること、許可グループから外した利用者のセッションが失効することを試します。設定画面の規則表示だけでは完了にしません。</p>
+<p>APIやWebhook（外部通知）は、人のブラウザ ログインを求めると止まります。サービストークン等の機械用経路を分け、認証情報の更新と失効を運用へ入れます。</p>
+<h2 id="sources">出典と確認範囲</h2><ul class="source-list"><li><a href="https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/" target="_blank" rel="noopener noreferrer">Cloudflare, Add web applications（2026年4月21日更新）</a></li><li><a href="https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/" target="_blank" rel="noopener noreferrer">Cloudflare, Publish a self-hosted application</a></li><li><a href="https://developers.cloudflare.com/reference-architecture/design-guides/designing-ztna-access-policies/" target="_blank" rel="noopener noreferrer">Cloudflare, Designing ZTNA access policies</a></li></ul></article>
 </div>
 
 <div class="author"><div class="inner">
@@ -196,7 +130,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <section class="related"><div class="container">
   <div class="rl-h">Related</div>
   <div class="related-grid">
-    <a href="firewall-for-ai.html" class="related-card"><span class="rc-cat">攻撃対策と検証</span><div class="rc-title">LLMアプリのプロンプトインジェクション対策｜ガードレールで防げる範囲</div></a>
+    <a href="firewall-for-ai.html" class="related-card"><span class="rc-cat">攻撃対策と検証</span><div class="rc-title">LLMアプリのプロンプトインジェクション対策｜Cloudflareのガードレール機能で何を防げるか</div></a>
     <a href="ai-crawler-control.html" class="related-card"><span class="rc-cat">実行環境と通信の制限</span><div class="rc-title">AIクローラーからサイトを守る｜robots.txtの限界とCloudflareでの制御</div></a>
   </div>
 </div></section>

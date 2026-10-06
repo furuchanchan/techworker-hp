@@ -1,9 +1,8 @@
 <!DOCTYPE html><html lang="ja" class="no-js" data-media="security"><head><meta charset="UTF-8">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}gtag('config','G-3V34NWXVCJ');</script><script src="/assets/tw-track.js" defer></script><script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>生成AIのDLP設計｜入力・出力・検索・ログで機密データを止める【2026】 — TechWorker</title><meta name="description" content="生成AIのDLPは、prompt・検索・回答・ログの4つの境界ごとに、止め方を分けて設計します。検知・遮断・マスキング・例外運用の分け方と、監視から強制へ進める手順を整理します。"><link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg"><link rel="canonical" href="https://techworker.co.jp/media/security/generative-ai-dlp-design">
-<meta property="og:type" content="article"><meta property="og:title" content="生成AIのDLP設計｜入力・出力・検索・ログで機密データを止める【2026】"><meta property="og:description" content="生成AIのDLPは、prompt・検索・回答・ログの4つの境界ごとに、止め方を分けて設計します。検知・遮断・マスキング・例外運用の分け方と、監視から強制へ進める手順を整理します。"><meta property="og:image" content="https://techworker.co.jp/media/security/covers/generative-ai-dlp-design.png"><meta property="og:url" content="https://techworker.co.jp/media/security/generative-ai-dlp-design"><meta property="og:site_name" content="TechWorker"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://techworker.co.jp/media/security/covers/generative-ai-dlp-design.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../article.css?v=20261003-media-quality"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "生成AIのDLP設計｜入力・出力・検索・ログで機密データを止める【2026】", "description": "生成AIのDLPは、prompt・検索・回答・ログの4つの境界ごとに、止め方を分けて設計します。検知・遮断・マスキング・例外運用の分け方と、監視から強制へ進める手順を整理します。", "datePublished": "2026-09-11", "dateModified": "2026-10-03", "inLanguage": "ja", "image": "https://techworker.co.jp/media/security/covers/generative-ai-dlp-design.png", "author": {"@type": "Person", "name": "古野光太朗", "url": "https://techworker.co.jp/company.html"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/security/generative-ai-dlp-design"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},{"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},{"@type":"ListItem","position":3,"name":"AIセキュリティ・ラボ","item":"https://techworker.co.jp/media/security/"},{"@type":"ListItem","position":4,"name":"生成AIのDLP設計｜入力・出力・検索・ログで機密データを止める【2026】","item":"https://techworker.co.jp/media/security/generative-ai-dlp-design"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "生成AIのDLPとは何ですか？", "acceptedAnswer": {"@type": "Answer", "text": "機密データらしき値を検知する製品機能の名前です。同時に、どの境界で検知し、何を止め、誰が例外を判断するかという設計も指します。データ区分、送信先、操作目的、外部公開の有無に応じて、block、警告、マスキング、承認、記録を分けます。"}}, {"@type": "Question", "name": "機密情報を含むpromptを止めれば、漏えい対策は十分ですか？", "acceptedAnswer": {"@type": "Answer", "text": "十分ではありません。外部web検索、外部メール、RAGの文書を根拠にする別の経路が残り、回答やログからも漏れ得ます。prompt、添付、tool引数、grounding、回答、ログの各経路を書き出して、経路ごとに制御を置きます。"}}, {"@type": "Question", "name": "導入初日から、検知した通信を全て遮断してよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "勧めません。広いルールで全件blockすると通常業務まで止まり、利用者が管理外の経路へ移ります。まずsimulationで検知を記録し、誤検知と業務影響を確認して不要な検知を外してから、enforceへ進みます。"}}]}</script>
-</head>
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>生成AIのDLP設計｜入力・出力・検索・記録で機密データを止める【2026】 — TechWorker</title><meta name="description" content="生成AIのDLPは、入力だけを止めても足りません。入力文、モデル出力、RAG検索、観測記録の4か所で、遮断・伏せ字・通知を使い分けます。"><link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg"><link rel="canonical" href="https://techworker.co.jp/media/security/generative-ai-dlp-design">
+<meta property="og:type" content="article"><meta property="og:title" content="生成AIのDLP設計｜入力・出力・検索・記録で機密データを止める【2026】"><meta property="og:description" content="生成AIのDLPは、入力だけを止めても足りません。入力文、モデル出力、RAG検索、観測記録の4か所で、遮断・伏せ字・通知を使い分けます。"><meta property="og:image" content="https://techworker.co.jp/media/security/covers/generative-ai-dlp-design.png"><meta property="og:url" content="https://techworker.co.jp/media/security/generative-ai-dlp-design"><meta property="og:site_name" content="TechWorker"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://techworker.co.jp/media/security/covers/generative-ai-dlp-design.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../article.css?v=20261006-source-first"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "生成AIのDLP設計｜入力・出力・検索・記録で機密データを止める【2026】", "description": "生成AIのDLPは、prompt・検索・回答・記録の4つの境界ごとに、止め方を分けて設計します。検知・遮断・マスキング・例外運用の分け方と、監視から強制へ進める手順を整理します。", "datePublished": "2026-09-11", "dateModified": "2026-10-06", "inLanguage": "ja", "image": "https://techworker.co.jp/media/security/covers/generative-ai-dlp-design.png", "author": {"@type": "Person", "name": "古野光太朗", "url": "https://techworker.co.jp/company.html"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/security/generative-ai-dlp-design"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},{"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},{"@type":"ListItem","position":3,"name":"AIセキュリティ・ラボ","item":"https://techworker.co.jp/media/security/"},{"@type":"ListItem","position":4,"name":"生成AIのDLP設計｜入力・出力・検索・記録で機密データを止める【2026】","item":"https://techworker.co.jp/media/security/generative-ai-dlp-design"}]}</script></head>
 <body><div class="progress" id="progress"></div><nav id="nav">
   <a href="index.html" class="logo">AIセキュリティ<i>ラボ</i></a>
   <ul>
@@ -20,74 +19,28 @@
   <a href="index.html#about">このメディアについて</a>
   <a href="../../contact.html" class="m-cta">無料相談を申し込む</a>
 </div>
-<header class="art-head"><nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIセキュリティ・ラボ</a></nav><div class="kicker">機密データの保護</div><h1>生成AIのDLP設計｜入力・出力・検索・ログで機密データを止める【2026】</h1><p class="dek">生成AIのDLPは、prompt・検索・回答・ログの4つの境界ごとに、止め方を分けて設計します。<br>社内の機密データを生成AIで扱いたい、情シスやセキュリティ担当の方の悩みに向けた記事です。<br>どの境界で検知し、何を止め、誰が例外を判断するかが分かります。</p><div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.09.11</span><span class="dot">·</span><span>最終更新 2026.10.03</span><span class="dot">·</span><span>一次情報 7件</span></div></header><img class="daily-cover" src="covers/generative-ai-dlp-design.png" alt="生成AIの機密データを境界ごとに止める。利用者・承認者・DLPが、promptを送る→機密値を検知する→回答を検査する→例外を判断するの順に進める業務図" width="1200" height="630">
-<div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div><a href="#s1">生成AIのDLPは、どの境界で何を止める設計ですか？</a><a href="#s2">DLPは、どんな手順で導入しますか？</a><a href="#s3">DLPがうまくいかない例や限界には、どんなものがありますか？</a><a href="#s4">境界ごとの制御は、どう違いますか？</a><a href="#faq">よくある質問</a><a href="#s5">次の一歩は何から始めればよいですか？</a></div></nav><article class="art-body"><h2 id="s1">生成AIのDLPは、どの境界で何を止める設計ですか？</h2>
-<p class="answer">prompt、検索、回答、ログの4つの境界で、検知・遮断・例外判断を分けて設計します。</p>
-<p>生成AIのデータ漏えい対策を「利用者に注意してもらう」だけで終えると、漏れた経路を説明できません。候補は、貼り付けたprompt、参照した文書、外部検索へ渡った語句です。モデルが返した回答と、運用ログも候補です。</p>
-<p>DLP（Data Loss Prevention、情報漏えい防止）は、機密データらしき値を検知する製品機能の名前です。同時に、どの境界で検知し、何を止め、誰が例外を判断するかという設計でもあります。</p>
-<p>すべてのデータを一律に遮断すると、業務に必要な情報まで止まります。利用者は管理外の経路へ移ります。検知だけして送信を続けると、DLPはアラートを増やすだけになります。</p>
-<p>そこで、データ区分、送信先、操作目的、外部公開の有無に応じて、block、警告、マスキング、承認、記録を分けます。</p>
-<aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">Claude Code 企業導入 セキュリティ＆セットアップ実践ガイド</div><div class="mc-d">3つのリスク、5つの設計原則、10項目のチェックリストを、情シスの審査に出せる形でまとめた資料です。</div></div><a href="../../library/?doc=security&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=generative-ai-dlp-design&amp;utm_content=mid" class="btn" data-cta="generative-ai-dlp-design-mid">ガイドを受け取る <i>&rarr;</i></a></aside>
-<h2 id="s2">DLPは、どんな手順で導入しますか？</h2>
-<p class="answer">入力、検索、回答、ログの順に境界を決めます。最後に、監視から強制へ段階的に進めます。</p>
-    <figure class="fig-inline"><a href="figs/generative-ai-dlp-design-1.png" target="_blank" rel="noopener"><img src="figs/generative-ai-dlp-design-1.png" alt="DLPの4境界で確認する対象と、拒否または次の工程へ渡す条件を示した設計例です。" width="1200" height="701" loading="lazy" decoding="async"></a><figcaption>TechWorker作成：本文の手順を図にした設計例です。製品の公式画面や導入効果の実測ではありません。画像を押すと拡大できます。</figcaption></figure>
-<p>顧客コードを含む問い合わせを要約する設計例では、モデルへ送る前の検査と、外部検索へ渡す語句の制限を分けます。回答にコードを出してよい相手かも確認し、調査ログへ原文をそのまま複製しません。製品ごとの対応機能は同一ではありません。</p>
-<ol>
-<li><strong>モデルへ送る前の入力を制御します。</strong>prompt、添付ファイル、toolに渡す引数は、最初に外部へ出る可能性がある地点です。Cloudflare AI GatewayのDLPは、promptと応答の両方を検査する機能です。providerへ送る内容と、返ってくる内容を対象にします。個人番号や認証情報など、用途を問わず送らせない区分はblockします。契約番号など業務上必要な値は、送信先・利用目的・契約条件が満たされる場合だけ許し、検知した事実を残します。</li>
-<li><strong>固有の値を検知対象へ加えます。</strong>既製のパターンだけでは足りません。顧客コード、社内の案件名、製品の未公開名称は、分類ルールへ追加します。Google Cloudのcustom detector（Sensitive Data Protectionの機能）は、正規表現、辞書、保存済みの大規模辞書を使えます。導入前に、個人情報、営業秘密、認証情報、外部公開不可の扱いを、業務・法務・情シスで定義します。</li>
-<li><strong>検索とgroundingを別の経路として制御します。</strong>groundingは、外部の情報を回答の根拠にする仕組みです。機密値を含むpromptを止めても、外部web検索、外部メール、RAGの文書を根拠にすれば、別の漏えい経路が残ります。Microsoft Purview DLPは、次の制御を案内しています。機密情報を含むpromptでは、外部web検索をgroundingに使わせません。機密ラベル付きのファイルやメールも、処理に使わせません。</li>
-<li><strong>回答とログに別の方針を置きます。</strong>回答側では、入力に無い機密情報をRAGやtoolから取り出して表示するリスクがあります。出力は、表示・送信の直前に検知し、blockまたはreviewへ回します。ログは、実行ID、model、tool、statusを残し、promptと応答の全文は既定で保存しません。調査目的で原文を保存する場合は、閲覧権限、暗号化、保持期限、削除手順を分けます。</li>
-<li><strong>まず監視し、例外を調整してから強制します。</strong>初日から広いルールで全件blockすると、通常業務が止まり、回避経路が生まれます。MicrosoftのCopilot向け既定DLP policyは、simulation modeで記録します。実際にprompt処理をblockするには、enforce modeへ切り替えます。対象業務に不要な検知を外し、影響を確認してから強制します。</li>
-</ol>
-<p>検索・groundingの制御で、DLPを認可の代わりにしてはいけません。「誰がその文書を参照してよいか」は、認可の問題です。この点は、RAGの権限漏れを防ぐで扱っています。DLPは、認可済みの情報でも、どの経路へ出してよいかを補助的に判断します。</p>
-<p>外部メールをgroundingから除外する機能には、別の目的もあります。信頼できない内容がprompt injectionとして影響する経路を減らす目的です。</p>
-<p>運用では、検知件数だけを成功指標にしません。次の4点を分けて見ます。</p>
-<ul>
-<li>どのデータ区分・経路で検知したか</li>
-<li>block後に正当な業務が止まったか</li>
-<li>例外申請が繰り返されていないか</li>
-<li>検知されずに事故が起きていないか</li>
-</ul>
-
-<h2 id="s3">DLPがうまくいかない例や限界には、どんなものがありますか？</h2>
-<p class="answer">経路ごとの設計がない、streamingの遅延を見落とす、検知を万能と考える、の3つが典型です。</p>
-<ul>
-<li><strong>経路を書き出さずに導入する。</strong>promptだけを止めても、検索、回答、ログの経路が残ります。document、利用者、モデル、外部接続先ごとの境界を混ぜないでください。</li>
-<li><strong>streaming応答の遅延を見落とす。</strong>回答を逐次表示する場合は、Cloudflare AI Gatewayの応答検査（response scanning）による待ち時間を確認します。有効にすると、モデル提供元からの応答全体を一時保存してから検査するためです。応答をすぐ表示する体験との両立、timeout、失敗時の画面表示を、実装前に確認します。</li>
-<li><strong>マスキングの方式を目的に合わせない。</strong>Google Cloudは、マスキング、置換、tokenizationなどの変換を示しています。分析で同一人物・案件を結び直す必要がある場合だけ、鍵管理を分離した可逆tokenを検討します。不要なら、削除・非可逆化を優先します。</li>
-<li><strong>検知を万能と考える。</strong>DLPのpattern検知には、誤検知と見逃しがあります。機密語を含まない営業秘密、文脈に依存する個人情報、画像や暗号化された添付は、設定だけで完全に判定できません。</li>
-</ul>
-<p>DLPは、送信先との契約、目的外利用、利用者の権限、prompt injectionを単独で解決しません。高影響の送信・公開には、認可、承認、監査を重ねます。検知ルールと製品の対応範囲は、導入時に公式資料で再確認してください。</p>
-
-<h2 id="s4">境界ごとの制御は、どう違いますか？</h2>
-<p class="answer">入力はblockと条件付き許可、検索は経路の制限、回答は直前の検査、ログはメタデータ中心です。</p>
-<div class="tbl-wrap"><table>
-<tr><th>境界</th><th>主な制御</th><th>注意点</th></tr>
-<tr><td>入力（prompt・添付・tool引数）</td><td>区分に応じてblock、または条件付きで許可して検知を記録</td><td>固有の値は分類ルールへ追加する</td></tr>
-<tr><td>検索・grounding</td><td>機密promptでの外部web検索、機密ラベル付きファイルやメールの利用を制限</td><td>DLPは認可の代わりにならない</td></tr>
-<tr><td>回答</td><td>表示・送信の直前に検知し、blockまたはreview</td><td>streamingではbufferの遅延が出る</td></tr>
-<tr><td>ログ</td><td>実行ID、model、tool、statusなどのメタデータを残す</td><td>全文は既定で保存せず、保存する場合は権限・暗号化・保持期限を分ける</td></tr>
-</table></div>
-
-<h2 id="faq">よくある質問</h2>
-<div class="faq"><div class="q">生成AIのDLPとは何ですか？</div><p class="a">機密データらしき値を検知する製品機能の名前です。同時に、どの境界で検知し、何を止め、誰が例外を判断するかという設計も指します。データ区分、送信先、操作目的、外部公開の有無に応じて、block、警告、マスキング、承認、記録を分けます。</p></div>
-<div class="faq"><div class="q">機密情報を含むpromptを止めれば、漏えい対策は十分ですか？</div><p class="a">十分ではありません。外部web検索、外部メール、RAGの文書を根拠にする別の経路が残り、回答やログからも漏れ得ます。prompt、添付、tool引数、grounding、回答、ログの各経路を書き出して、経路ごとに制御を置きます。</p></div>
-<div class="faq"><div class="q">導入初日から、検知した通信を全て遮断してよいですか？</div><p class="a">勧めません。広いルールで全件blockすると通常業務まで止まり、利用者が管理外の経路へ移ります。まずsimulationで検知を記録し、誤検知と業務影響を確認して不要な検知を外してから、enforceへ進みます。</p></div>
-
-<h2 id="s5">次の一歩は何から始めればよいですか？</h2>
-<p class="answer">まず経路を書き出し、データ区分ごとの対応を決めて、simulationで検知を確かめます。</p>
-<p>導入前の最小チェックリストです。</p>
-<ul>
-<li>prompt、添付、tool引数、grounding、回答、ログの各経路を書き出したか</li>
-<li>データ区分ごとにblock、警告、マスキング、承認、記録のどれを使うか決めたか</li>
-<li>固有の顧客コードや案件名を、検知対象へ追加する責任者を決めたか</li>
-<li>simulationの結果から、誤検知・業務影響を確認してからenforceへ進むか</li>
-<li>DLP、認可、データ保持と削除を別の制御として設計したか</li>
-</ul>
-<p>TechWorkerでは、内製AIツールで扱うデータを棚卸しします。モデル呼出し、検索、tool、ログのそれぞれに必要なDLPと権限境界を設計します。目指すのは、業務に必要な情報を、必要な経路だけで安全に扱える状態です。利用を止めることは目的にしません。</p>
-<h2 id="sources">出典（一次情報と確認範囲）</h2><p class="source-note">確認日：2026年9月11日。製品仕様・制度は更新されるため、導入時はリンク先の最新版を再確認してください。本文は技術的な設計例です。国内法や契約上の義務は、導入先の条件に応じて確認してください。</p><ol class="source-list"><li><a href="https://developers.cloudflare.com/ai-gateway/features/dlp/" target="_blank" rel="noopener noreferrer">Cloudflare AI Gateway DLP：promptと応答を検査する</a></li><li><a href="https://developers.cloudflare.com/ai-gateway/features/dlp/set-up-dlp/" target="_blank" rel="noopener noreferrer">AI GatewayでDLP profileとactionを含むpolicyを設定できる</a></li><li><a href="https://learn.microsoft.com/en-us/purview/dlp-microsoft365-copilot-location-learn-about" target="_blank" rel="noopener noreferrer">Microsoft Purview DLP：機密promptの外部web検索などを制限できる</a></li><li><a href="https://learn.microsoft.com/en-us/purview/dlp-microsoft365-copilot-location-default-policy" target="_blank" rel="noopener noreferrer">Microsoft既定DLP policy：simulationで記録し、blockはenforceで行う</a></li><li><a href="https://docs.cloud.google.com/sensitive-data-protection/docs/deidentify-sensitive-data?authuser=0" target="_blank" rel="noopener noreferrer">Google Cloud：マスキング、削除、置換、tokenizationを示す</a></li><li><a href="https://developers.cloudflare.com/ai-gateway/observability/logging/" target="_blank" rel="noopener noreferrer">AI Gateway：payloadを保存せず、メタデータを残せる</a></li><li><a href="https://genai.owasp.org/download/43299/?tmstv=1731900559" target="_blank" rel="noopener noreferrer">OWASPはLLMアプリにおけるSensitive Information Disclosureを主要リスクとして扱う</a></li></ol></article></div>
+<header class="art-head"><nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIセキュリティ・ラボ</a></nav><div class="kicker">機密データの保護</div><h1>生成AIのDLP設計｜入力・出力・検索・記録で機密データを止める【2026】</h1><p class="dek">生成AIのDLPは、入力だけを止めても足りません。入力文、モデル出力、RAG検索、観測記録の4か所で、遮断・伏せ字・通知を使い分けます。</p><div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.09.11</span><span class="dot">·</span><span>最終更新 2026.10.06</span></div></header><div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div><a href="#source">公式図は個人を特定できる情報（PII）がモデルへ入る前の検知を示す</a><a href="#boundaries">同じ秘密が4つの経路を移動する</a><a href="#actions">遮断・伏せ字・通知を情報種別で分ける</a><a href="#logging">記録収集自体を新しい漏えい経路にしない</a><a href="#sources">出典と確認範囲</a></div></nav><article class="art-body">
+<figure class="fig-inline source-figure">
+  <a class="source-image" href="sources/cloudflare-pii-detection-mitigation.png" target="_blank" rel="noopener noreferrer"><img src="sources/cloudflare-pii-detection-mitigation.png" alt="Cloudflare AI Security for AppsがLLMへの入力文内の個人情報を検知し、WAF規則で緩和する流れ" width="2668" height="666" loading="lazy" decoding="async"></a>
+  <figcaption><span class="source-label">Cloudflare公式：個人情報漏えいの検知・緩和</span>この図は入力側の個人情報検知です。記事では出力、検索、記録まで範囲を広げて読み解きます。 画像をクリックすると原図を開きます。<a href="https://developers.cloudflare.com/reference-architecture/architectures/ai-security-for-apps/" target="_blank" rel="noopener noreferrer">原典ページ</a>／<a href="https://github.com/cloudflare/cloudflare-docs/blob/production/LICENSE" target="_blank" rel="noopener noreferrer">利用条件</a>（確認日：2026年10月6日）</figcaption>
+</figure>
+<h2 id="source">公式図は個人を特定できる情報（PII）がモデルへ入る前の検知を示す</h2>
+<p>Cloudflareの図は、要求内のPIIを検知判定項目へ変換し、WAF規則で緩和する流れを示します。入力時点で止めれば、モデル提供事業者や後続記録へ渡る量を減らせます。</p>
+<p>この図はAI Security for Appsの入力側対策です。別製品のAI Gateway DLPはBetaで、AI Gatewayを通る要求・応答本文のテキストを検査します。base64で符号化した画像や添付、バイナリ部分、外部URLの内容は検査しません。</p>
+<p>応答側でSSE（逐次配信）を検査すると、応答全体を受け取ってから判定するため、最初のトークンまでの待ち時間が増えます。低遅延が必要な経路では、要求だけを検査するか、応答検査用のゲートウェイを分けます。</p>
+<h2 id="boundaries">同じ秘密が4つの経路を移動する</h2>
+<p>利用者の入力文には顧客名や契約情報が入ります。モデル出力は入力を言い換えて再掲することがあります。RAGは閲覧権限の異なる文書を検索し、観測記録は入力文と応答を長く保存します。</p>
+<p>情報漏えい防止（DLP）の規則は、この4経路ごとに置きます。入力を許可しても、別部署のRAG結果を返してよいとは限りません。</p>
+<h2 id="actions">遮断・伏せ字・通知を情報種別で分ける</h2>
+<p>AI Gateway DLPの公式資料で確認できる処理は、検知結果を付けて原文を返す<code>Flag</code>と、応答を捨ててエラーに替える<code>Block</code>です。伏せ字や置換を製品機能として扱いません。</p>
+<p>ここからはTechWorkerの製品横断設計です。パスワード、APIキー、アクセストークンは遮断します。電話番号やメールアドレスは、業務上必要ならアプリケーション側で伏せ字や置換を使います。社内用語や案件コードは誤検知が多いため、まず通知で観測し、対象業務を確認してから止めます。RAGの閲覧権限と記録の保存制御も、AI Gateway DLPとは別に実装します。</p>
+<p>規則の結果には、検知分類、処理、対象システム、例外承認者を残します。原文そのものを監査記録へ複製しない設計が必要です。</p>
+<h2 id="logging">記録収集自体を新しい漏えい経路にしない</h2>
+<p>調査のために入力文の全文を保存すると、DLPで止めた秘密を別の場所へ残します。本文を保存する必要がなければ、検知分類、ハッシュ値、要求IDだけで追跡します。</p>
+<p>保存が必要な場合は、暗号化、閲覧権限、保持期限、削除手順を先に決めます。障害対応者が復号できる条件も記録します。</p>
+<h2 id="sources">出典と確認範囲</h2><ul class="source-list"><li><a href="https://developers.cloudflare.com/ai-gateway/features/dlp/" target="_blank" rel="noopener noreferrer">Cloudflare AI Gateway, Data Loss Prevention</a></li><li><a href="https://developers.cloudflare.com/reference-architecture/architectures/ai-security-for-apps/" target="_blank" rel="noopener noreferrer">Cloudflare, AI Security for Apps Reference Architecture</a></li><li><a href="https://learn.microsoft.com/en-us/purview/dlp-microsoft365-copilot-location-learn-about" target="_blank" rel="noopener noreferrer">Microsoft Purview, DLP for Microsoft 365 Copilot</a></li></ul></article></div>
 <div class="author"><div class="inner"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><div><div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div><p class="a">上場企業を含む37社・2,500名の生成AI導入・研修支援で得た実務知をもとに、導入・運用・顧客理解を扱っています。この実績はTechWorkerの生成AI支援実績であり、個別製品の導入実績を示すものではありません。</p></div></div></div>
-<div class="art-cta"><div class="inner"><div><h3>生成AIのデータ流出境界を点検する</h3><p>入力、検索、回答、ログを棚卸しし、block・警告・マスキング・承認を分けて設計します。</p></div><a href="../../contact.html?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=generative-ai-dlp-design" class="btn" data-cta="generative-ai-dlp-design">AIセキュリティを相談する <i>→</i></a></div></div><div class="back-list"><a href="index.html">← AIセキュリティ・ラボの記事一覧に戻る</a></div><section class="related"><div class="container"><div class="rl-h">Related</div><div class="related-grid"></div></div></section>
+<div class="art-cta"><div class="inner"><div><h3>生成AIのデータ流出境界を点検する</h3><p>入力、検索、回答、記録を棚卸しし、block・警告・マスキング・承認を分けて設計します。</p></div><a href="../../contact.html?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=generative-ai-dlp-design" class="btn" data-cta="generative-ai-dlp-design">AIセキュリティを相談する <i>→</i></a></div></div><div class="back-list"><a href="index.html">← AIセキュリティ・ラボの記事一覧に戻る</a></div><section class="related"><div class="container"><div class="rl-h">Related</div><div class="related-grid"></div></div></section>
 <footer><div class="container"><div class="footer-inner"><div class="footer-brand"><div class="logo">AIセキュリティ・ラボ</div><p>一次情報と実務に基づく生成AIメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p></div><div class="footer-col"><h4>メディア</h4><a href="index.html">記事一覧</a><a href="../index.html">全媒体</a></div><div class="footer-col"><h4>運営会社</h4><a href="../../company.html">会社概要</a><a href="../../privacy.html">プライバシーポリシー</a></div></div><p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p></div></footer><script>var nav=document.getElementById('nav');
 addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
 (function(){

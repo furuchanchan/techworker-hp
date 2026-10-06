@@ -14,12 +14,12 @@
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Microsoft Copilotが定着しない原因と対策｜利用率を上げる定着支援の設計【2026】 — TechWorker</title>
-<meta name="description" content="Microsoft Copilotが定着しない原因は、プロンプトの型・体感効果・推進体制・測定の4つの仕組みの欠落です。配布後に利用が減る悩みを抱える推進担当の方に向けて、チャンピオン制度、部門別プロンプト集、利用率の測り方、90日のロードマップを解説します。">
+<meta name="description" content="Copilot定着は、ライセンス配布数では判定できません。公式利用レポートの『利用可能』『アクティブ』『アプリ別利用』を分け、次の研修対象を決めます。">
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
 <link rel="canonical" href="https://techworker.co.jp/media/kenshu/copilot-adoption">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Microsoft Copilotが定着しない原因と対策｜利用率を上げる定着支援の設計【2026】">
-<meta property="og:description" content="Copilotが定着しない原因は4つの仕組みの欠落です。チャンピオン制度、部門別プロンプト集、利用率KPI、90日ロードマップで定着支援の作り方を整理します。">
+<meta property="og:description" content="Copilot定着は、ライセンス配布数では判定できません。公式利用レポートの『利用可能』『アクティブ』『アプリ別利用』を分け、次の研修対象を決めます。">
 <meta property="og:image" content="https://techworker.co.jp/media/kenshu/covers/copilot-adoption.png">
 <meta property="og:url" content="https://techworker.co.jp/media/kenshu/copilot-adoption">
 <meta property="og:site_name" content="TechWorker">
@@ -29,8 +29,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../article.css?v=20261003-media-quality">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Microsoft Copilotが定着しない原因と対策｜利用率を上げる定着支援の設計【2026】", "description": "Microsoft Copilotが定着しない原因は、プロンプトの型・体感効果・推進体制・測定の4つの仕組みの欠落です。配布後に利用が減る悩みを抱える推進担当の方に向けて、チャンピオン制度、部門別プロンプト集、利用率の測り方、90日のロードマップを解説します。", "datePublished": "2026-07-25", "dateModified": "2026-10-03", "inLanguage": "ja", "image": "https://techworker.co.jp/media/kenshu/covers/copilot-adoption.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/copilot-adoption"}}</script>
+<link rel="stylesheet" href="../article.css?v=20261006-source-first">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Microsoft Copilotが定着しない原因と対策｜利用率を上げる定着支援の設計【2026】", "description": "Copilot定着は、ライセンス配布数では判定できません。公式利用レポートの『利用可能』『アクティブ』『アプリ別利用』を分け、次の研修対象を決めます。", "datePublished": "2026-07-25", "dateModified": "2026-10-06", "inLanguage": "ja", "image": "https://techworker.co.jp/media/kenshu/covers/copilot-adoption.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/copilot-adoption"}}</script>
 <script type="application/ld+json">
 {
   "@context":"https://schema.org","@type":"BreadcrumbList",
@@ -42,7 +42,7 @@
   ]
 }
 </script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Copilotの利用率はどのくらいあれば「定着している」と言えますか？", "acceptedAnswer": {"@type": "Answer", "text": "全社共通の合格ラインとなる公的な数値はありません。アクティブ利用率を28日単位で定点観測し、3点で判断します。上昇傾向が続いているか、部門間の差が縮まっているか、一度きりでなく継続利用されているかです。他社との比較は、Copilot Dashboardの外部ベンチマーク機能で確認できます。"}}, {"@type": "Question", "name": "研修をやったのに使われなくなりました。何が足りないのでしょうか？", "acceptedAnswer": {"@type": "Answer", "text": "単発の研修は定着の起点であり、それだけでは数週間で元のやり方に戻りがちです。研修後に、3つが回っているかを確認してください。部門別プロンプト集、チャンピオンによる伴走、利用率KPIの週次レビューです。欠けている仕組みから補うのが近道です。"}}, {"@type": "Question", "name": "利用率の測定に追加費用はかかりますか？", "acceptedAnswer": {"@type": "Answer", "text": "管理センターのCopilot利用レポートは、レポート閲覧権限があれば追加費用なしで確認できます。Copilot Dashboardも、閲覧に有償のViva Insightsライセンスは不要です。Copilotライセンスが1つ以上あれば、主要な指標を確認できます。ベンチマーク比較などの拡張機能は50ライセンス以上が条件です（2026年7月時点のMicrosoft Learn公開情報）。"}}, {"@type": "Question", "name": "チャンピオン（推進者）は何人くらい置けばよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "人数より配置の単位が要点です。業務内容が近いまとまり（部門・課）ごとに、最低1名を推奨します。選ぶ基準は、その部門の業務を理解していて、同僚から相談されやすいことです。推進活動の時間を業務時間として公式に認めることが、継続の条件になります。"}}]}</script>
+
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -75,9 +75,9 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a><span class="sep">/</span>Microsoft Copilotが定着しない原因と対策</nav>
   <div class="kicker">定着と効果測定</div>
   <h1>Microsoft Copilotが定着しない原因と対策｜利用率を上げる定着支援の設計</h1>
-  <p class="dek">Copilotが定着しない原因は、プロンプトの型・体感効果・推進体制・測定の4つの仕組みの欠落です。<br>ライセンスを配り、初回の研修もやったのに利用が減っていく、推進担当の方に向けた記事です。<br>チャンピオン制度、部門別プロンプト集、利用率の測り方、90日のロードマップが分かります。</p>
+  <p class="dek">Copilot定着は、ライセンス配布数では判定できません。公式利用レポートの『利用可能』『アクティブ』『アプリ別利用』を分け、次の研修対象を決めます。</p>
   <div class="a-meta">
-    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.25</span><span class="dot">·</span><span>最終更新 2026.10.03</span><span class="dot">·</span><span>読了 9分</span>
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.25</span><span class="dot">·</span><span>最終更新 2026.10.06</span><span class="dot">·</span><span>読了 9分</span>
   </div>
 </header>
 
@@ -86,43 +86,29 @@ fbq('init','1264057945446029');fbq('track','PageView');
 .cad-unit{font-size:14px;font-weight:600;color:var(--slate);margin-left:1px;}
 .cad-cap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-family:var(--jp);font-size:11.5px;color:var(--slate);margin-top:10px;padding-top:12px;border-top:1px solid var(--line);}
 </style>
-<a href="covers/copilot-adoption.png" target="_blank" rel="noopener"><img class="daily-cover" src="covers/copilot-adoption.png" alt="Copilotの定着を支える仕組み。プロンプト集、推進担当、利用率の計測を90日の運用で確かめる。" width="1200" height="630"></a>
+
 
 <div class="art-layout">
-  <nav class="art-toc" aria-label="目次">
-    <div class="art-toc-inner">
-      <div class="toc-h">目次</div>
-      <a href="#s1">Microsoft Copilotは、なぜ定着しないのですか？</a>
+  <nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div>
+      <a href="#source">Microsoftの利用レポートは配布数と利用数を分ける</a>
+      <a href="#question">Copilotが定着していない部門を、どう見つけますか？</a>
       <a href="#s2">定着させるには、どんな手順で進めればよいですか？</a>
       <a href="#s3">定着支援では、どんな失敗が起きやすいですか？</a>
       <a href="#s4">管理センターの利用レポートとCopilot Dashboardは、どう違いますか？</a>
-      <a href="#faq">よくある質問</a>
       <a href="#s5">次の一歩は何から始めればよいですか？</a>
-    </div>
-  </nav>
+      <a href="#sources">出典と確認範囲</a>
+    </div></nav>
 
   <article class="art-body">
-    <aside class="inline-dx-cta" style="margin:6px 0 40px;border:1px solid var(--line-2);border-radius:12px;background:var(--white);padding:22px 26px;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
-  <div style="flex:1;min-width:240px;">
-    <div style="font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);">診断ツール ・ 無料 ・ 5分</div>
-    <div style="font-family:var(--jp);font-weight:700;font-size:16.5px;color:var(--ink);line-height:1.55;margin-top:8px;">自社の生成AI活用度を診断する</div>
-    <div style="font-size:13.5px;color:var(--slate);line-height:1.8;margin-top:5px;">Microsoftの成熟度モデルに沿って現在地を可視化し、業界別の活用事例と次の一手をその場で提示します。</div>
-  </div>
-  <a href="../../ai-assessment.html" class="btn" style="white-space:nowrap;flex:none;color:var(--paper);border-bottom:none;">無料で診断する <i>&rarr;</i></a>
-</aside>
-
-    <h2 id="s1">Microsoft Copilotは、なぜ定着しないのですか？</h2>
-    <p class="answer">まず、プロンプトの型、確認込みの効果、相談相手、測定の4点を調べます。利用環境や権限の問題も切り分けます。</p>
-    <p>導入直後の数週間は、よく使われます。導入直後に試した人が、1〜2か月後には使わなくなる場合があります。まず自社の利用記録で、どの部門の利用が止まったかを確かめます。「うちの社員はAIに向いていないのでは」という話になりますが、止まる理由は人でなく仕組みの側にあります。</p>
-    <ol>
-      <li><strong>プロンプトが分からない。</strong>「何を頼めるのか」の型が手元にありません。全社共通の研修だけでは、自分の業務への当てはめまで届きません。</li>
-      <li><strong>「手作業の方が速い」という体感。</strong>使い始めの数回は、指示の書き方を試行錯誤する分だけ時間がかかります。比較対象は熟練の手作業なので、最初の谷で離脱します。</li>
-      <li><strong>推進体制の不在。</strong>IT部門がライセンスを配って終わりになり、業務部門に相談相手がいません。</li>
-      <li><strong>測定していない。</strong>利用率を誰も見ていないので、離脱に気づけません。更新時に「使われていないのでは」という稟議の壁だけが残ります。</li>
-    </ol>
-    <div class="callout"><p>ライセンス配布は導入であり、定着ではありません。定着は、配布のあとに始まる別の仕事として、体制と予定を組んでおきます。</p></div>
-
-    <h2 id="s2">定着させるには、どんな手順で進めればよいですか？</h2>
+<h2 id="source">Microsoftの利用レポートは配布数と利用数を分ける</h2>
+<p>Microsoftの資料は2026年8月18日更新です。2026年10月6日に原典を確認し、記事の判断に必要な箇所を次に示します。</p>
+<figure class="fig-inline source-figure"><a class="source-image" href="sources/m365-copilot-usage-adoption.png" target="_blank" rel="noopener"><img src="sources/m365-copilot-usage-adoption.png" alt="Microsoft 365 Copilot利用状況レポートの採用状況画面。利用可能ユーザーとアクティブユーザーをアプリ別に比較している" width="1065" height="463" loading="lazy" decoding="async"></a><figcaption><span class="source-label">公式資料</span> <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/activity-reports/microsoft-365-copilot-usage?view=o365-worldwide" target="_blank" rel="noopener noreferrer">Microsoft「Microsoft 365 Copilot usage report」</a>（2026年8月18日更新、2026年10月6日確認）。CC BY 4.0（MicrosoftDocsリポジトリ）。<a href="https://github.com/MicrosoftDocs/microsoft-365-docs/blob/public/LICENSE" target="_blank" rel="noopener noreferrer">利用条件</a>。画像をクリックすると原寸で開きます。</figcaption></figure>
+<p><strong>ここを読む：</strong>公式画面では、利用可能ユーザーとアクティブユーザーが別の棒で示され、Word、Teams、Outlookなどの内訳も確認できます。配布済みかどうかと、業務で使われたかどうかを混ぜないことが最初の読みどころです。</p>
+<aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">生成AI活用事例集を受け取る</div><div class="mc-d">TechWorkerが支援した企業の生成AI活用事例をまとめた資料です。記事のテーマと合わせてご覧ください。</div></div><a href="../../library/?doc=cases&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=copilot-adoption&amp;utm_content=mid" class="btn" data-cta="copilot-adoption-mid">事例集を受け取る <i>&rarr;</i></a></aside>
+<h2 id="question">Copilotが定着していない部門を、どう見つけますか？</h2>
+<p class="answer">配布、アクティブ率、利用アプリ、業務成果を段階別に見て、止まっている場所だけを支援します。</p>
+<p>月次会議では利用者を一括りにせず、権限、業務題材、管理職の承認、操作習得のどこで止まったかを部門別に一つ選びます。分母はライセンス付与者、比較期間は同じ日数にそろえ、配置転換や休職者を注記します。</p>
+<h2 id="s2">定着させるには、どんな手順で進めればよいですか？</h2>
     <p class="answer">原因ごとの打ち手、チャンピオン、プロンプト集、利用率の測定、90日の判定の順で進めます。</p>
     <figure class="fig-inline"><a href="figs/copilot-adoption-1.png" target="_blank" rel="noopener"><img src="figs/copilot-adoption-1.png" alt="利用が止まった場所から手を打つ。本文の判断や記録項目を示します。" width="1200" height="740" loading="lazy" decoding="async"></a><figcaption>TechWorker作成：本文に基づく確認・判断の手順です。</figcaption></figure>
 <p>低利用の部署には、まず一つの業務で止まった場所を聞きます。入口を見つけられない、資料へアクセスできない、出力確認に手間がかかる、上司の承認がない、のどこかです。原因が決まってから、入口案内、権限修正、演習、手順変更を選びます。</p>
@@ -143,14 +129,14 @@ fbq('init','1264057945446029');fbq('track','PageView');
     <p><strong>手順3：部門別プロンプト集を作ります。</strong>全社共通のプロンプト集が使われないのは、例が自分の業務の言葉になっていないからです。営業には営業の、経理には経理の頻出業務があります。部門の頻出業務トップ5に絞り、「用途・そのまま使える指示文・差し替え箇所」をセットで配ります。出力は、必ず人が確認して仕上げます。</p>
     <p><strong>手順4：利用率を、公式の標準機能で測ります。</strong>見る指標は次の5つです。</p>
     <ul>
-      <li>アクティブ利用率は、28日以内に1回以上使った人÷ライセンス付与数です。週次で見ます。</li>
+      <li>公式レポートでは、選択した7・28・90・180日の期間内に、ユーザー起点の機能を使った人をアクティブユーザーとして数えます。本記事では部門比較の社内指標として28日に固定し、アクティブユーザー数÷ライセンス付与数を週次で見ます。</li>
       <li>部門別のアクティブ利用率は、止まっている部門を見つけるために使います。</li>
       <li>継続利用は、アクティブ日数や再利用ユーザーの割合で見ます。月次で確認します。</li>
       <li>アプリ別利用は、使われていないアプリを、プロンプト集の空白地帯のサインと読みます。</li>
       <li>1人あたりプロンプト送信数は、時短の体感と併せて読みます。</li>
     </ul>
     <p>利用レポートの「アクティブユーザー」は、期間内にユーザー起点のCopilot機能を1回以上使った有効ユーザーです。チャットペインを開いただけでは数えられず、プロンプト送信などの意図的な操作が対象です。定着のKPIとして、そのまま使えます。</p>
-    <p>経営への報告では、Copilot Dashboardの「Copilot assisted hours」が材料になります。ただし推計値であり、Microsoft Learn自身が、概算にとどまる値だと明記しています。社内資料では、推計値と添えます。</p>
+    <p>経営への報告では、Copilot Dashboardの「Copilotが支援した推計時間（Copilot assisted hours）」が材料になります。ただし推計値であり、Microsoft Learn自身が、概算にとどまる値だと明記しています。社内資料では、推計値と添えます。</p>
     <p><strong>手順5：90日で、改善ループを一巡させます。</strong>測る、広げる、判定して改める、の順に進めます。</p>
     <ul>
       <li><strong>Day 1〜30：</strong>KPI定義とベースライン取得、チャンピオンの任命、パイロット部門の選定を行います。効果が出やすい業務を3つ選びます。会議の要点整理、長いメールスレッドの要約、報告書の下書きなどです。</li>
@@ -158,9 +144,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
       <li><strong>Day 61〜90：</strong>部門間の差分分析、低利用部門へのテコ入れ、プロンプト集v2、経営報告、次の90日計画を行います。</li>
     </ul>
     <p>ベースラインは、最初の30日で必ず取ります。開始時点の数字がないと、改善の主張が成立しません。90日の出口は「完了」でなく、ループが回り始めた状態です。</p>
-
-    <aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">生成AI活用事例集を受け取る</div><div class="mc-d">TechWorkerが支援した企業の生成AI活用事例をまとめた資料です。記事のテーマと合わせてご覧ください。</div></div><a href="../../library/?doc=cases&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=copilot-adoption&amp;utm_content=mid" class="btn" data-cta="copilot-adoption-mid">事例集を受け取る <i>&rarr;</i></a></aside>
-    <h2 id="s3">定着支援では、どんな失敗が起きやすいですか？</h2>
+<h2 id="s3">定着支援では、どんな失敗が起きやすいですか？</h2>
     <p class="answer">配布で終える、全社一律で配る、全社平均だけ見る、が代表的な失敗です。ほかにも落とし穴があります。</p>
     <ul>
       <li><strong>ライセンスを配って終わりにする。</strong>導入と定着を同じ仕事と見なすと、4つの原因が同時に放置されます。</li>
@@ -173,14 +157,13 @@ fbq('init','1264057945446029');fbq('track','PageView');
     </ul>
     <p>研修の設計と費用感は、<a href="copilot-training-cost.html">Copilot研修の費用相場</a>で扱っています。定着した先に業務プロセスを組み替えるフェーズが来ます。その論点は、<a href="copilot-bpr.html">Copilotを起点にしたBPR</a>を参照してください。</p>
 <p>組み替えの前に任せる工程を決める方法は、<a href="../gyomuzu/ai-task-allocation-process-map.html">AIに任せる業務の決め方</a>（業務図ラボ）で扱っています。</p>
-
-    <h2 id="s4">管理センターの利用レポートとCopilot Dashboardは、どう違いますか？</h2>
+<h2 id="s4">管理センターの利用レポートとCopilot Dashboardは、どう違いますか？</h2>
     <p class="answer">全社の定点観測と個人のフォローは利用レポート、部門間比較と経営説明はDashboardが向きます。</p>
     <div class="tbl-wrap">
       <table>
         <tr><th>項目</th><th>Copilot利用レポート（管理センター）</th><th>Copilot Dashboard（Viva Insights）</th></tr>
         <tr><td>見られる場所</td><td>Microsoft 365管理センター「レポート＞使用状況」</td><td>Viva Insights（Teams／Webアプリ）</td></tr>
-        <tr><td>主な指標</td><td>有効ユーザー数・アクティブユーザー数・アクティブユーザー率・プロンプト送信数・アプリ別の利用状況・ユーザー別の最終利用日</td><td>Readiness／Adoption／Impact／Sentimentの4分類。グループ別・アプリ別のアクティブ利用率、継続利用率、Copilot assisted hours（推計）など</td></tr>
+        <tr><td>主な指標</td><td>有効ユーザー数・アクティブユーザー数・アクティブユーザー率・プロンプト送信数・アプリ別の利用状況・ユーザー別の最終利用日</td><td>準備状況（Readiness）／導入状況（Adoption）／効果（Impact）／利用者の評価（Sentiment）の4分類。グループ別・アプリ別のアクティブ利用率、継続利用率、Copilotが支援した推計時間など</td></tr>
         <tr><td>集計期間</td><td>直近7・28・90・180日から選択。活動は通常48時間以内に反映</td><td>直近28日。最大6日の遅延あり</td></tr>
         <tr><td>利用条件</td><td>レポート閲覧権限を持つ管理者</td><td>Copilotライセンス1以上のテナントで主要機能を利用可。ベンチマーク等の拡張機能は50ライセンス以上（またはViva Insightsライセンス50以上）</td></tr>
         <tr><td>向いている用途</td><td>全社の定点観測、利用が止まった個人の特定とフォロー</td><td>部門間比較、経営への効果説明、社内外ベンチマークとの比較</td></tr>
@@ -188,22 +171,17 @@ fbq('init','1264057945446029');fbq('track','PageView');
     </div>
     <p class="fig-cap">出典：2026年7月時点のMicrosoft Learn公開ドキュメント。</p>
     <p>プライバシー保護の最小グループサイズ未満の部門は、Dashboardに表示されません。</p>
-
-    <h2 id="faq">よくある質問</h2>
-    <div class="faq"><div class="q">Copilotの利用率はどのくらいあれば「定着している」と言えますか？</div><p class="a">全社共通の合格ラインとなる公的な数値はありません。アクティブ利用率を28日単位で定点観測し、3点で判断します。上昇傾向が続いているか、部門間の差が縮まっているか、一度きりでなく継続利用されているかです。他社との比較は、Copilot Dashboardの外部ベンチマーク機能で確認できます。</p></div>
-    <div class="faq"><div class="q">研修をやったのに使われなくなりました。何が足りないのでしょうか？</div><p class="a">単発の研修は定着の起点であり、それだけでは数週間で元のやり方に戻りがちです。研修後に、3つが回っているかを確認してください。部門別プロンプト集、チャンピオンによる伴走、利用率KPIの週次レビューです。欠けている仕組みから補うのが近道です。</p></div>
-    <div class="faq"><div class="q">利用率の測定に追加費用はかかりますか？</div><p class="a">管理センターのCopilot利用レポートは、レポート閲覧権限があれば追加費用なしで確認できます。Copilot Dashboardも、閲覧に有償のViva Insightsライセンスは不要です。Copilotライセンスが1つ以上あれば、主要な指標を確認できます。ベンチマーク比較などの拡張機能は50ライセンス以上が条件です（2026年7月時点のMicrosoft Learn公開情報）。</p></div>
-    <div class="faq"><div class="q">チャンピオン（推進者）は何人くらい置けばよいですか？</div><p class="a">人数より配置の単位が要点です。業務内容が近いまとまり（部門・課）ごとに、最低1名を推奨します。選ぶ基準は、その部門の業務を理解していて、同僚から相談されやすいことです。推進活動の時間を業務時間として公式に認めることが、継続の条件になります。</p></div>
-
-    <h2 id="s5">次の一歩は何から始めればよいですか？</h2>
+<h2 id="s5">次の一歩は何から始めればよいですか？</h2>
     <p class="answer">最初の30日で、利用率のベースライン取得とチャンピオンの任命を済ませます。測定から始めます。</p>
     <ol>
       <li>管理センターの利用レポートで、現状のアクティブ利用率を取得します。</li>
       <li>パイロット部門を選び、チャンピオンを任命して役割を書き出します。</li>
       <li>効果が出やすい業務を3つ選び、部門別プロンプト集v1の準備を始めます。</li>
     </ol>
-
-  </article>
+<h2 id="sources">出典と確認範囲</h2>
+<p class="source-note">確認日：2026年10月6日。製品仕様、契約、助成要件は変更されるため、実施時点の公式情報を確認してください。</p>
+<ol class="source-list"><li><a href="https://learn.microsoft.com/en-us/microsoft-365/admin/activity-reports/microsoft-365-copilot-usage?view=o365-worldwide" target="_blank" rel="noopener noreferrer">Microsoft 365 Copilot usage report</a></li><li><a href="https://learn.microsoft.com/en-us/copilot/microsoft-365/copilot-control-system/measurement-reporting" target="_blank" rel="noopener noreferrer">Measurement and reporting for Microsoft 365 Copilot</a></li></ol>
+</article>
 </div>
 
 <div class="author"><div class="inner">
@@ -228,9 +206,9 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <section class="related"><div class="container">
   <div class="rl-h">Related</div>
   <div class="related-grid">
-    <a href="copilot-training-cost.html" class="related-card"><span class="rc-cat">研修費用</span><div class="rc-title">Copilot研修の費用相場｜料金の内訳と選び方</div></a>
-    <a href="copilot-studio-training.html" class="related-card"><span class="rc-cat">エージェント</span><div class="rc-title">Copilot Studio研修とは｜業務エージェントを内製する学び方</div></a>
-    <a href="copilot-bpr.html" class="related-card"><span class="rc-cat">業務改革</span><div class="rc-title">Copilotを起点にしたBPR｜業務プロセスをAI前提で組み替える</div></a>
+    <a href="copilot-training-cost.html" class="related-card"><span class="rc-cat">研修費用</span><div class="rc-title">Copilot研修の費用相場｜公開講座・カスタム研修・助成金の料金</div></a>
+
+    <a href="copilot-bpr.html" class="related-card"><span class="rc-cat">業務改革</span><div class="rc-title">Microsoft Copilot×業務プロセス改革（BPR）｜ツール研修で終わらせない導入設計</div></a>
   </div>
 </div></section>
 
