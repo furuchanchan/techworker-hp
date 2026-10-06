@@ -109,7 +109,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
 <div class="art-layout">
   <nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div>
-      <a href="#source">公式の許可画面から、確認にかかる工数を考える</a>
+      <a href="#source">月額料金と、確認にかかる人の時間を分ける</a>
       <a href="#question">Claude Codeの費用を、月額料金だけで比べてよいですか？</a>
       <a href="#s2">2026年9月の記録では、TechWorkerはClaude Codeをどう契約し、どれだけ使っていましたか？</a>
       <a href="#s3">契約を決めて稟議に載せるまで、どんな手順で進めますか？</a>
@@ -121,14 +121,15 @@ fbq('init','1264057945446029');fbq('track','PageView');
     </div></nav>
 
   <article class="art-body">
-<h2 id="source">公式の許可画面から、確認にかかる工数を考える</h2>
-<p>Anthropicの資料は2026年10月2日更新です。2026年10月6日に原典を確認し、記事の判断に必要な箇所を次に示します。</p>
+<p>Claude Codeの予算を組むとき、月額料金だけでは実際の負担を見積もれません。利用量に応じた支払いに加え、変更内容を人が確認する時間も必要です。まず、その確認作業に関わる権限設定を見ていきます。</p>
+<h2 id="source">月額料金と、確認にかかる人の時間を分ける</h2>
 <blockquote class="source-quote"><p>“Control what Claude Code can access and do”</p><footer>出典：<a href="https://code.claude.com/docs/en/permissions" target="_blank" rel="noopener noreferrer">Anthropic「Configure permissions」</a>（2026年10月6日確認）</footer></blockquote>
-<p><strong>ここを読む：</strong>公式文は、権限規則、実行モード、管理ポリシーでアクセス範囲と操作を制御できると説明しています。費用の比較では、実行量だけでなく、人が許可内容を確認する時間も記録します。</p>
-<aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">Claude Code 法人導入 稟議書テンプレート（料金比較表つき）</div><div class="mc-d">3つの契約の料金比較表と、［　］を埋めて使える稟議書の文例をまとめた資料です。</div></div><a href="../../library/?doc=ringi&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=claude-code-cost&amp;utm_content=mid" class="btn" data-cta="claude-code-cost-mid">テンプレートを受け取る <i>&rarr;</i></a></aside>
+<p>公式文は、権限規則、実行モード、管理ポリシーでアクセス範囲と操作を制御できると説明しています。費用の比較では、実行量だけでなく、人が許可内容を確認する時間も記録します。</p>
+
 <h2 id="question">Claude Codeの費用を、月額料金だけで比べてよいですか？</h2>
 <p class="answer">いいえ。契約枠、利用上限、権限設計、レビュー工数を同じ表に置いて判断します。</p>
 <p>費用表には『実行前の確認に何分かかったか』も残します。許可を緩めて時間を短縮する判断は、対象リポジトリと操作範囲を限定してから行います。</p>
+<aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">Claude Code 法人導入 稟議書テンプレート（料金比較表つき）</div><div class="mc-d">3つの契約の料金比較表と、［　］を埋めて使える稟議書の文例をまとめた資料です。</div></div><a href="../../library/?doc=ringi&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=claude-code-cost&amp;utm_content=mid" class="btn" data-cta="claude-code-cost-mid">テンプレートを受け取る <i>&rarr;</i></a></aside>
 <h2 id="s2">2026年9月の記録では、TechWorkerはClaude Codeをどう契約し、どれだけ使っていましたか？</h2>
     <p class="answer">当時はMax 20x（月200ドル）を契約し、超過分を従量で支払っていました。2026年9月14日〜30日の使用量は、API換算で約3,000ドル分でした。</p>
     <figure class="fig-inline"><a href="figs/claude-code-cost-2.png" target="_blank" rel="noopener"><img src="figs/claude-code-cost-2.png" alt="代表1人のClaude Code利用額（API換算）の日別の棒グラフ。2026年9月14日〜30日で、少ない日は約4ドル、多い日は約850ドル、1日平均は約180ドル。" width="1200" height="793" loading="lazy" decoding="async"></a><figcaption>代表の端末の利用記録を集計ツール（ccusage）でAPI料金に換算。実際の請求額とは異なります。</figcaption></figure>
@@ -297,6 +298,6 @@ addEventListener('scroll',function(){var h=document.documentElement;var d=h.scro
 var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
 </script>
-<script src="/media/article-tracker.js?v=20261003-media-quality" defer></script>
+<script src="/media/article-tracker.js?v=20261006-readable-intros" defer></script>
 </body>
 </html>

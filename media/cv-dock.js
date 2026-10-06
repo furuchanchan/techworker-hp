@@ -192,18 +192,25 @@
     shown = true;
     if (isMin()) box.classList.add("min");
     render();
-    gaEvent("media_dock_view", { dock_state: isMin() ? "min" : "open" });
+    gaEvent("media_dock_view", { dock_state: box.classList.contains("min") ? "min" : "open" });
   }
 
   function init() {
     var st = el("style"); st.textContent = css; document.head.appendChild(st);
     enrichMidCta();
     box = build();
+    // 本文の右側にカードを置く余白がなければ、最初は小さな案内にする。
+    // 読者がボタンを押したときは、従来どおり展開できる。
+    var article = document.querySelector(".art-body");
+    if (article && article.getBoundingClientRect().right + 16 > document.documentElement.clientWidth - 336) {
+      box.classList.add("min");
+    }
     box.querySelector(".twd-x").addEventListener("click", function () { box.classList.add("min"); setMin(true); gaEvent("media_dock_close"); });
     box.querySelector(".twd-pill").addEventListener("click", function () { box.classList.remove("min"); setMin(false); gaEvent("media_dock_open"); });
 
     // メール登録の枠（newsletter.js）は後から差し込まれることがあるので、差し込んだ側からも登録できるようにする
-    var targets = document.querySelectorAll(".mid-cta, .art-cta, .mh-band, .inline-dx-cta, footer, .lb-cta, .nl-box, .fig-inline, .product-shot, .daily-cover, .art-cover, .art-cover-v6");
+    // 冒頭を読み終えるまでは、時間経過による表示でも本文を覆わない。
+    var targets = document.querySelectorAll(".art-head, .art-body > p:first-child, .mid-cta, .art-cta, .mh-band, .inline-dx-cta, footer, .lb-cta, .nl-box, .fig-inline, .product-shot, .daily-cover, .art-cover, .art-cover-v6");
     if ("IntersectionObserver" in window) {
       var seen = new Set();
       var io = new IntersectionObserver(function (es) {

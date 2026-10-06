@@ -20,9 +20,10 @@
   <a href="../../contact.html" class="m-cta">無料相談を申し込む</a>
 </div>
 <header class="art-head"><nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIセキュリティ・ラボ</a></nav><div class="kicker">実行環境と通信の制限</div><h1>MCP Appsのセキュリティ設計｜iframe・CSP・postMessage・書込み操作をどう守るか【2026】</h1><p class="dek">MCP Appsは、MCPホスト、隔離されたiframe、MCPサーバーの3者を分けて守ります。iframeだけに頼らず、CSP、postMessageの送信元、ツール権限を重ねます。</p><div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.09.17</span><span class="dot">·</span><span>最終更新 2026.10.06</span></div></header><div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div><a href="#source">公式構成は通信経路を2本に分けている</a><a href="#iframe">表示領域からMCPホストのDOM・Cookieへ直接触れさせない</a><a href="#messages">postMessageは送信元とメッセージ型を検証する</a><a href="#oauth">OAuthトークンを別の対象資源へ使い回さない</a><a href="#elicitation">機密入力を会話履歴へ戻さない</a><a href="#supply">導入時に配布元と更新経路を固定する</a><a href="#writes">書込みツールは表示用ツールと分ける</a><a href="#sources">出典と確認範囲</a></div></nav><article class="art-body">
-<section class="source-quote" aria-label="一次資料の引用"><p><strong>一次資料</strong>：MCP Apps Overview（確認日現在の公式資料、確認日：2026年10月6日）</p>
+<p>AIとの会話にアプリの画面を表示できるMCP Appsでは、画面を隔離するだけでなく、そこから実行できる操作も制限します。まず、公式仕様が保証する表示領域の境界を確認し、その先の通信とツール権限を分けて設計します。</p>
+<section class="source-quote" aria-label="一次資料の引用"><p><strong>一次資料</strong>：MCP Appsの表示領域の隔離（確認：2026年10月6日）</p>
 <blockquote><p lang="en">All Views run in sandboxed iframes with no access to the Host’s DOM, cookies, or storage.</p></blockquote>
-<p>出典：<a href="https://apps.extensions.modelcontextprotocol.io/api/documents/overview.html#architecture" target="_blank" rel="noopener noreferrer">MCP Apps Overview</a>。引用は論点を示す最小範囲にとどめ、日本語で読みどころを補います。</p></section>
+<p>出典：<a href="https://apps.extensions.modelcontextprotocol.io/api/documents/overview.html#architecture" target="_blank" rel="noopener noreferrer">MCP Apps Overview</a>。表示領域は隔離されたiframeで動き、ホスト側の画面構造やCookie、保存領域へ直接アクセスできないと説明されています。</p></section>
 <figure class="fig-inline"><a href="figs/mcp-apps-security-design-1.png" target="_blank" rel="noopener"><img src="figs/mcp-apps-security-design-1.png" alt="MCP Appの表示、通信、認可、書込み承認を分ける設計例" width="1200" height="608" loading="lazy" decoding="async"></a><figcaption><span class="source-label">TechWorker作成：</span>MCPホスト、表示領域、MCPサーバーの間で、表示と操作をどこで止めるかを図示しています。 製品の公式画面や導入効果の実測ではありません。画像を押すと拡大できます。</figcaption></figure>
 <h2 id="source">公式構成は通信経路を2本に分けている</h2>
 <p>公式のMermaid図では、MCPサーバーとホストはMCPプロトコルで、ホストと表示領域はpostMessageでつながります。表示領域がサーバーへ直接つながる図ではありません。ホストが通信と権限の境界になります。</p>
@@ -57,4 +58,4 @@ addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30)
   mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
   addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
 })();
-var pb=document.getElementById('progress');addEventListener('scroll',function(){var h=document.documentElement,d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?h.scrollTop/d*100:0)+'%'},{passive:true})</script><script src="/media/article-tracker.js?v=20261003-media-quality" defer></script></body></html>
+var pb=document.getElementById('progress');addEventListener('scroll',function(){var h=document.documentElement,d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?h.scrollTop/d*100:0)+'%'},{passive:true})</script><script src="/media/article-tracker.js?v=20261006-readable-intros" defer></script></body></html>

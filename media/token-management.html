@@ -13,24 +13,24 @@
 <script src="/assets/tw-track.js" defer></script>
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>トークンコストとトークンマネジメント｜品質を保って費用を見直す4つの手法【2026年】 — TechWorker</title>
-<meta name="description" content="品質条件を保ちながら、AIの利用量と作業の手戻りを記録します。TechWorkerのCodex改修を例に、記入用CSVと、費用を比較できない条件を示します。">
+<title>トークンマネジメントとは｜品質を保って費用を見直す実践ガイド — TechWorker</title>
+<meta name="description" content="生成AIの品質を保ちながら、利用量と費用を管理する方法を示します。TechWorkerのCodex改修を記入例に、記録する項目と、費用を比較するための条件を説明します。">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="canonical" href="https://techworker.co.jp/media/token-management">
 <meta property="og:type" content="article">
-<meta property="og:title" content="トークンコストとトークンマネジメント｜品質を保って費用を見直す4つの手法【2026年】">
-<meta property="og:description" content="品質条件を保ちながら、AIの利用量と作業の手戻りを記録します。TechWorkerのCodex改修を例に、記入用CSVと、費用を比較できない条件を示します。">
+<meta property="og:title" content="トークンマネジメントとは｜品質を保って費用を見直す実践ガイド">
+<meta property="og:description" content="生成AIの品質を保ちながら、利用量と費用を管理する方法を示します。TechWorkerのCodex改修を記入例に、記録する項目と、費用を比較するための条件を説明します。">
 <meta property="og:image" content="https://techworker.co.jp/media/figs/token-management-1.png">
 <meta property="og:url" content="https://techworker.co.jp/media/token-management">
 <meta property="og:site_name" content="TechWorker">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="トークンコストとトークンマネジメント｜品質を保って費用を見直す4つの手法【2026年】">
+<meta name="twitter:title" content="トークンマネジメントとは｜品質を保って費用を見直す実践ガイド">
 <meta name="twitter:image" content="https://techworker.co.jp/media/figs/token-management-1.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="article.css?v=20261006-source-first">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "トークンコストとトークンマネジメント｜品質を保って費用を見直す4つの手法【2026年】", "description": "トークンコストを管理して下げる方法がトークンマネジメントです。プロンプトキャッシュの割引率はモデルごとに異なります。4つの手法とモデル別料金、絞る場面と振り切る場面、自社での使い方を解説します。", "datePublished": "2026-06-13", "dateModified": "2026-10-06", "inLanguage": "ja", "image": "https://techworker.co.jp/media/figs/token-management-1.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/token-management.html"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "トークンマネジメントとは｜品質を保って費用を見直す実践ガイド", "description": "生成AIの品質を保ちながら、利用量と費用を管理する方法を示します。TechWorkerのCodex改修を記入例に、記録する項目と、費用を比較するための条件を説明します。", "datePublished": "2026-06-13", "dateModified": "2026-10-06", "inLanguage": "ja", "image": "https://techworker.co.jp/media/figs/token-management-1.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/token-management.html"}}</script>
 <script type="application/ld+json">
 {
   "@context":"https://schema.org","@type":"BreadcrumbList",
@@ -74,7 +74,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <nav class="crumb" aria-label="パンくず"><a href="../index.html">ホーム</a><span class="sep">/</span><a href="index.html">メディア</a><span class="sep">/</span>トークンマネジメント</nav>
   <div class="kicker">Token Strategy</div>
   <h1>トークンマネジメントとは｜品質を保って費用を見直す実践ガイド</h1>
-  <p class="dek">品質条件を保ちながら、入力・出力・キャッシュと作業の手戻りを記録します。TechWorkerのCodex改修を記入例に、費用を比較できる条件と、まだ比較できない条件を示します。</p>
+  <p class="dek">生成AIの品質を保ちながら、利用量と費用を管理する方法を示します。TechWorkerのCodex改修を記入例に、記録する項目と、費用を比較するための条件を説明します。</p>
   <div class="a-meta">
     <img class="av" src="../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.06.13</span><span class="dot">·</span><span>最終更新 2026.10.06</span><span class="dot">·</span><span>読了 7分</span>
   </div>
@@ -84,9 +84,10 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <nav class="art-toc" aria-label="目次">
     <div class="art-toc-inner">
       <div class="toc-h">目次</div><a href="#source">公式の利用量項目を二重加算しない</a><a href="#measure">作業単位で品質と費用を同じ表に置く</a><a href="#worklog">実際の記入例とCSVひな型</a><a href="#spend">惜しまず使う仕事と絞る仕事を分ける</a><a href="#reduce">キャッシュ・文脈・モデルをこの順で見直す</a><a href="#sources">出典と確認範囲</a></div></nav><article class="art-body">
-<section class="source-quote" aria-label="一次資料の引用"><p><strong>一次資料</strong>：OpenAI, Observability and usage（確認日現在の公式資料、確認日：2026年10月6日）</p>
+<p>AIの利用費を見直すには、どの作業にいくらかかったかを、やり直しの回数や成果物の品質と一緒に記録します。その基礎になるのが、入力・出力の処理量を表すトークン数です。まず、公式資料で内訳の数え方を確かめ、自社の作業記録へつなげます。</p>
+<section class="source-quote" aria-label="一次資料の引用"><p><strong>一次資料</strong>：OpenAIの利用量の記録方法（確認：2026年10月6日）</p>
 <blockquote><p lang="en">Cached tokens are included in input_tokens, and reasoning tokens are included in output_tokens.</p></blockquote>
-<p>出典：<a href="https://developers.openai.com/api/docs/guides/agents-api/observability" target="_blank" rel="noopener noreferrer">OpenAI, Observability and usage</a>。引用は論点を示す最小範囲にとどめ、日本語で読みどころを補います。</p></section>
+<p>出典：<a href="https://developers.openai.com/api/docs/guides/agents-api/observability" target="_blank" rel="noopener noreferrer">OpenAI, Observability and usage</a>。キャッシュ済みの入力は入力トークン数に、推論で使った分は出力トークン数に含まれます。内訳を合計へもう一度足さないようにします。</p></section>
 <figure class="fig-inline"><a href="figs/token-management-1.png" target="_blank" rel="noopener"><img src="figs/token-management-1.png" alt="トークン費用を入力の再利用、モデルの使い分け、Batch API、出力制御の順で見直す図" width="1200" height="701" loading="lazy" decoding="async"></a><figcaption><span class="source-label">TechWorker作成：</span>品質条件を固定した後に、費用を見直す順番を図示しています。 製品の公式画面や導入効果の実測ではありません。画像を押すと拡大できます。</figcaption></figure>
 <h2 id="source">公式の利用量項目を二重加算しない</h2>
 <p>OpenAIの利用量では、キャッシュ済み入力は入力トークンの内訳で、推論は出力トークンの内訳です。総量へもう一度足すと、利用量を過大に報告します。補助エージェントのモデル呼出し、再試行、ウェブ検索、サンドボックスの実行時間、第三者ツール費用は別に確認します。</p>
@@ -180,6 +181,6 @@ addEventListener('scroll',function(){var h=document.documentElement;var d=h.scro
 var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
 </script>
-<script src="/media/article-tracker.js?v=20261003-media-quality" defer></script>
+<script src="/media/article-tracker.js?v=20261006-readable-intros" defer></script>
 </body>
 </html>

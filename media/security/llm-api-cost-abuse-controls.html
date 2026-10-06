@@ -20,9 +20,10 @@
   <a href="../../contact.html" class="m-cta">無料相談を申し込む</a>
 </div>
 <header class="art-head"><nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIセキュリティ・ラボ</a></nav><div class="kicker">導入審査・調達・コスト</div><h1>LLM APIの高額請求を防ぐ｜回数上限・費用上限・ツール予算を分ける【2026】</h1><p class="dek">高額請求は、回数、金額、外部ツールの3つを別々に止めます。1つの上限だけでは、長い要求や連続ツール実行を抑えられません。</p><div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.09.08</span><span class="dot">·</span><span>最終更新 2026.10.06</span></div></header><div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div><a href="#source">公式資料は回数と費用を別の制御としている</a><a href="#budgets">要求・金額・ツールに別の予算を持たせる</a><a href="#identity">利用者・チーム・エージェント単位で原因を残す</a><a href="#failure">上限超過時の失敗を業務処理の流れへ組み込む</a><a href="#sources">出典と確認範囲</a></div></nav><article class="art-body">
-<section class="source-quote" aria-label="一次資料の引用"><p><strong>一次資料</strong>：Cloudflare AI Gateway, Spend limits（2026年、Beta、確認日：2026年10月6日）</p>
+<p>AIを組み込んだサービスでは、短時間の大量アクセスやツールの連続実行で、想定以上の費用が発生することがあります。費用上限の設定だけに頼らず、要求を受ける入口と後続処理にも停止条件を置きます。まず、Cloudflareが説明する費用上限の制約を見ます。</p>
+<section class="source-quote" aria-label="一次資料の引用"><p><strong>一次資料</strong>：Cloudflareの費用上限の制約（2026年、Beta、確認：2026年10月6日）</p>
 <blockquote><p lang="en">Spend limits are eventually consistent.</p></blockquote>
-<p>出典：<a href="https://developers.cloudflare.com/ai-gateway/features/spend-limits/" target="_blank" rel="noopener noreferrer">Cloudflare AI Gateway, Spend limits</a>。引用は論点を示す最小範囲にとどめ、日本語で読みどころを補います。</p></section>
+<p>出典：<a href="https://developers.cloudflare.com/ai-gateway/features/spend-limits/" target="_blank" rel="noopener noreferrer">Cloudflare AI Gateway, Spend limits</a>。費用上限は、すべての要求へ即時に反映されるわけではありません。同時実行が重なると、一時的に設定額を超える可能性があります。</p></section>
 <figure class="fig-inline"><a href="figs/llm-api-cost-abuse-controls-1.png" target="_blank" rel="noopener"><img src="figs/llm-api-cost-abuse-controls-1.png" alt="回数、費用、ツール実行の三つの上限で費用濫用を止める設計例" width="1200" height="712" loading="lazy" decoding="async"></a><figcaption><span class="source-label">TechWorker作成：</span>入口の回数、推定費用、後段の操作を別々に止める条件を図示しています。 製品の公式画面や導入効果の実測ではありません。画像を押すと拡大できます。</figcaption></figure>
 <h2 id="source">公式資料は回数と費用を別の制御としている</h2>
 <p>回数上限は要求回数を抑えます。費用上限はモデル価格とトークン使用量から金額を追います。短い要求を大量に送る事故と、少数の長い要求で費用が膨らむ事故は、同じ上限では止めにくいためです。</p>
@@ -49,4 +50,4 @@ addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30)
   mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
   addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
 })();
-var pb=document.getElementById('progress');addEventListener('scroll',function(){var h=document.documentElement,d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?h.scrollTop/d*100:0)+'%'},{passive:true})</script><script src="/media/article-tracker.js?v=20261003-media-quality" defer></script></body></html>
+var pb=document.getElementById('progress');addEventListener('scroll',function(){var h=document.documentElement,d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?h.scrollTop/d*100:0)+'%'},{passive:true})</script><script src="/media/article-tracker.js?v=20261006-readable-intros" defer></script></body></html>
