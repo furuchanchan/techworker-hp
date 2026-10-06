@@ -14,12 +14,12 @@
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AIインタビューのデメリットと限界｜精度を落とさないための設計【2026】 — AIインタビュー・ラボ</title>
-<meta name="description" content="AIインタビューの限界は5つあり、いずれも影響の範囲と補完策を特定でき、導入前チェックリスト10項目で判断できます。 導入を検討する段階で「できないこと」を知りたい調査・マーケティング担当の方に向けた記事です。 提供者の立場から開示する、限界ごとの影響と補完策、精度を落とさない設計、向かないテーマが分かります。">
+<meta name="description" content="AIインタビューで捉えにくい非言語情報や、深掘りのばらつきを確認します。人の聞き手で補う場面と、AIに任せにくい調査テーマを示します。">
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
 <link rel="canonical" href="https://techworker.co.jp/media/interview/ai-interview-limitations">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AIインタビューのデメリットと限界｜精度を落とさないための設計【2026】">
-<meta property="og:description" content="AIインタビューの限界は5つあり、いずれも影響の範囲と補完策を特定でき、導入前チェックリスト10項目で判断できます。 導入を検討する段階で「できないこと」を知りたい調査・マーケティング担当の方に向けた記事です。 提供者の立場から開示する、限界ごとの影響と補完策、精度を落とさない設計、向かないテーマが分かります。">
+<meta property="og:description" content="AIインタビューで捉えにくい非言語情報や、深掘りのばらつきを確認します。人の聞き手で補う場面と、AIに任せにくい調査テーマを示します。">
 <meta property="og:image" content="https://techworker.co.jp/media/interview/covers/ai-interview-limitations.png">
 <meta property="og:url" content="https://techworker.co.jp/media/interview/ai-interview-limitations">
 <meta property="og:site_name" content="AIインタビュー・ラボ">
@@ -29,9 +29,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../article.css?v=20261006-source-first">
+<link rel="stylesheet" href="../article.css?v=20261006-source-notes">
 <link rel="stylesheet" href="lab.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AIインタビューのデメリットと限界｜精度を落とさないための設計【2026】", "description": "AIインタビューの限界は5つあり、いずれも影響の範囲と補完策を特定でき、導入前チェックリスト10項目で判断できます。 導入を検討する段階で「できないこと」を知りたい調査・マーケティング担当の方に向けた記事です。 提供者の立場から開示する、限界ごとの影響と補完策、精度を落とさない設計、向かないテーマが分かります。", "datePublished": "2026-07-29", "dateModified": "2026-10-06", "inLanguage": "ja", "image": "https://techworker.co.jp/media/interview/covers/ai-interview-limitations.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/interview/ai-interview-limitations"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AIインタビューのデメリットと限界｜精度を落とさないための設計【2026】", "description": "AIインタビューで捉えにくい非言語情報や、深掘りのばらつきを確認します。人の聞き手で補う場面と、AIに任せにくい調査テーマを示します。", "datePublished": "2026-07-29", "dateModified": "2026-10-06", "inLanguage": "ja", "image": "https://techworker.co.jp/media/interview/covers/ai-interview-limitations.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/interview/ai-interview-limitations"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "AIインタビュー・ラボ", "item": "https://techworker.co.jp/media/interview/"}, {"@type": "ListItem", "position": 4, "name": "AIインタビューのデメリットと限界", "item": "https://techworker.co.jp/media/interview/ai-interview-limitations"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "AIインタビューでは本音を引き出せないのではないですか？", "acceptedAnswer": {"@type": "Answer", "text": "条件次第です。相手をAIだと認識すると、判断される恐れや取り繕いが下がることを示した実験研究があります。一方、開示の親密さは人間相手と変わらないという報告もあります。不満や率直な指摘のように、評価者がいないほうが話しやすいテーマでは効きやすくなります。深い信頼関係を前提とするテーマでは、人間が向きます。賛否の研究は研究ノート「人はAIに本音を話すのか」で原典つきで整理しています。"}}, {"@type": "Question", "name": "AIの深掘りは人間のモデレーターより劣りますか？", "acceptedAnswer": {"@type": "Answer", "text": "一律には比べられません。全員へ共通の質問ガイドを適用できますが、追質問の品質まで一貫するとは限りません。音声型AIインタビュアーの検証研究でも、追質問の質のばらつきが指摘されています。設計外の発言を新しい焦点にする判断は、現行システムへ安定して任せる根拠が不足するため、人の中間レビューへ戻します。深掘りポイントの設計と、人間リサーチャーによる全件レビューをセットにするのが実務的な対処です。"}}, {"@type": "Question", "name": "AIインタビューに向かないテーマはありますか？", "acceptedAnswer": {"@type": "Answer", "text": "あります。表情や動作の観察が本質の調査は向きません。深い信頼関係の構築が前提のセンシティブなテーマや、代表性のある定量推定・統計検定を目的とする調査も向きません。これらは、対面の定性調査や標本設計されたアンケートの領分です。向かないテーマを無理にAIで行うより、AIで論点を広く集めてから重要な相手に対面で深く聞く併用が結果につながります。"}}, {"@type": "Question", "name": "デメリットが心配な場合、何から確認すればよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "本記事の導入前チェックリストの順で確認してください。要点は3つです。1つ目は、知りたいことが発話で語れる内容かです（テーマ選定）。2つ目は、深掘りポイントと誘導の排除まで設計し、パイロットを回すかです（設計）。3つ目は、人間リサーチャーが全件をレビューする体制があるかです（運用体制）。3つが揃わない場合は、設計と検品まで含めて任せられるマネージド型の利用も選択肢になります。"}}]}</script>
 <!-- Meta Pixel Code -->
@@ -66,7 +66,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIインタビュー・ラボ</a><span class="sep">/</span>AIインタビューのデメリットと限界</nav>
   <div class="kicker">基礎・費用・ツール選び</div>
   <h1>AIインタビューのデメリットと限界｜精度を落とさないための設計</h1>
-  <p class="dek">非言語情報、ラポール、脱線、回答体験への慣れ、深掘りのばらつきを、影響と補完策で見分けます。</p>
+  <p class="dek">AIインタビューで捉えにくい非言語情報や、深掘りのばらつきを確認します。人の聞き手で補う場面と、AIに任せにくい調査テーマを示します。</p>
   <div class="a-meta">
     <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.29</span><span class="dot">·</span><span>最終更新 2026.10.06</span><span class="dot">·</span><span>読了 9分</span>
   </div>
