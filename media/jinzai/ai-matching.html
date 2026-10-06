@@ -13,30 +13,30 @@
 <script src="/assets/tw-track.js" defer></script>
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>生成AIで人材マッチングの精度を上げる｜求人票・候補者要件・推薦コメントの最適化【2026】 — TechWorker</title>
-<meta name="description" content="人材紹介・派遣・採用支援の現場で、生成AIを使ってマッチング精度を上げる実践ガイド。求人票/JDの言語化、候補者要件のmust/want構造化、推薦コメント生成、ミスマッチを減らす運用とAI提案の検証方法を、上場企業を含む37社・2,500名の支援知見をもとに整理します。">
+<title>生成AIで人材マッチングを補助する｜要件整理・根拠確認・公平性【2026】 — TechWorker</title>
+<meta name="description" content="生成AIを人材マッチングに使う際の要件整理、候補者検索、スカウト文、書類選考、推薦コメントを、公正な採用選考の基準に沿って解説します。">
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
 <link rel="canonical" href="https://techworker.co.jp/media/jinzai/ai-matching">
 <meta property="og:type" content="article">
-<meta property="og:title" content="生成AIで人材マッチングの精度を上げる｜求人票・候補者要件・推薦コメントの最適化【2026】">
-<meta property="og:description" content="求人票/JDの言語化、候補者要件のmust/want構造化、推薦コメント生成、ミスマッチを減らす運用。人材ビジネスのマッチング精度を生成AIで上げる実践ガイド。">
+<meta property="og:title" content="生成AIで人材マッチングを補助する｜要件整理・根拠確認・公平性【2026】">
+<meta property="og:description" content="生成AIを人材マッチングに使う際の要件整理、候補者検索、スカウト文、書類選考、推薦コメントを、公正な採用選考の基準に沿って解説します。">
 <meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
 <meta property="og:url" content="https://techworker.co.jp/media/jinzai/ai-matching">
 <meta property="og:site_name" content="TechWorker">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="生成AIで人材マッチングの精度を上げる｜求人票・候補者要件・推薦コメントの最適化【2026】">
+<meta name="twitter:title" content="生成AIで人材マッチングを補助する｜要件整理・根拠確認・公平性【2026】">
 <meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../article.css">
+<link rel="stylesheet" href="../article.css?v=20261006-source-first">
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
   "@type":"Article",
-  "headline":"生成AIで人材マッチングの精度を上げる｜求人票・候補者要件・推薦コメントの最適化【2026】",
-  "description":"人材紹介・派遣・採用支援の現場で、求人票/JDの言語化、候補者要件のmust/want構造化、推薦コメント生成、ミスマッチを減らす運用とAI提案の検証方法を実践的に解説する。",
-  "datePublished":"2026-04-16","dateModified":"2026-04-16","inLanguage":"ja",
+  "headline":"生成AIで人材マッチングを補助する｜要件整理・根拠確認・公平性【2026】",
+  "description":"生成AIを人材マッチングに使う際の要件整理、候補者検索、スカウト文、書類選考、推薦コメントを、公正な採用選考の基準に沿って解説します。",
+  "datePublished":"2026-04-16","dateModified":"2026-10-06","inLanguage":"ja",
   "image":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630},
   "author":{"@type":"Person","name":"古野光太朗","jobTitle":"株式会社TechWorker 代表取締役 CEO兼CTO","url":"https://techworker.co.jp/company.html","image":"https://techworker.co.jp/assets/author-furuno.jpg","sameAs":["https://x.com/koutarou_furuno"],"affiliation":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"}},
   "publisher":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/","logo":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630}},
@@ -56,12 +56,33 @@
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org","@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"生成AIに任せたら、CA・RAの仕事はなくなりますか？","acceptedAnswer":{"@type":"Answer","text":"なくなりません。生成AIが得意なのは、求人票の言語化や要件の構造化、候補者リストの一次絞り込み、推薦文の下書きといった準備作業です。最終的なマッチの判断、候補者・企業との信頼関係づくり、機微な調整はCA・RAの仕事として残ります。AIは一次案を作り、人が検証して決める分担が現実的です。"}},
-    {"@type":"Question","name":"求人票や職務経歴書を生成AIに渡してよいですか？","acceptedAnswer":{"@type":"Answer","text":"個人を特定できる情報や守秘義務のある情報の扱いには注意が必要です。学習に使われない設定の法人向けプランを使う、職務経歴書は氏名・連絡先などを伏せて渡す、社内のルールを定めるといった運用を前提にしてください。何をAIに渡してよいかの線引きを最初に決めることが重要です。"}},
-    {"@type":"Question","name":"AIが出したマッチ提案はそのまま使ってよいですか？","acceptedAnswer":{"@type":"Answer","text":"そのまま使うのは避けてください。生成AIは要件と経歴の表面的な一致を拾うのは得意ですが、転職の本当の動機や、企業文化との相性、推薦理由の妥当性までは保証できません。AIの提案は一次案として受け取り、根拠が要件に紐づいているかをCA・RAが確認してから候補者・企業に提示する運用にします。"}},
-    {"@type":"Question","name":"何から始めれば効果が出やすいですか？","acceptedAnswer":{"@type":"Answer","text":"まずは求人票/JDの言語化と、候補者要件のmust/want構造化から始めるのが効果が出やすい領域です。ここが整うと、検索・スカウト・推薦のすべての精度が底上げされます。自社の過去のマッチ成功事例をAIが参照できる形に整理しておくと、提案の質がさらに上がります。"}}
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "生成AIの順位だけで候補者を不合格にしてよいですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "避けてください。AIの順位は下読みの補助として扱い、採用基準との対応、見落とし、属性による偏りを人が確認します。厚生労働省は、AIを含む方法でも適性・能力に基づく公正な採用選考を求めています。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "スカウト文を生成AIで個別化できますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "職務経歴に記載された業務、スキル、実績と求人要件の対応を根拠にできます。年齢、性別、国籍など職務と関係しない属性を訴求や優先順位の根拠にしません。送信前に経歴の取り違えを確認します。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "マッチング精度はどう測りますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AIのスコアだけでは測れません。推薦後の書類通過、面談で判明した要件不一致、企業と候補者の双方から得た理由を記録し、求人・職種ごとに確認します。"
+      }
+    }
   ]
 }
 </script>
@@ -94,272 +115,45 @@ fbq('init','1264057945446029');fbq('track','PageView');
 </div>
 
 <header class="art-head">
-  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">人材</a><span class="sep">/</span>人材マッチングの精度を上げる</nav>
-  <div class="kicker">マッチング × AI</div>
-  <h1>生成AIで人材マッチングの精度を上げる｜求人票・候補者要件・推薦コメントの最適化</h1>
-  <p class="dek">マッチングの精度は、AIの賢さではなく「要件をどれだけ言葉にできているか」で決まる。求人票の言語化、候補者要件のmust/want構造化、推薦コメントの最適化——人材紹介・派遣・採用支援の現場で、AIをマッチング精度の底上げにどう使うかを整理する。</p>
-  <div class="a-meta">
-    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.04.16</span><span class="dot">·</span><span>最終更新 2026.04.16</span><span class="dot">·</span><span>読了 9分</span>
-  </div>
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">人材</a><span class="sep">/</span>生成AIで人材マッチングを補助する</nav>
+  <div class="kicker">人材マッチング / Matching</div>
+  <h1>生成AIで人材マッチングを補助する——要件整理・根拠確認・公平性</h1>
+  <p class="dek">生成AIは求人要件と候補者情報の対応を整理できます。採否や推薦を自動で正解にするものではありません。スカウトと書類選考を含め、根拠を人が追える運用へ組み直します。</p>
+  <div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.04.16</span><span class="dot">·</span><span>最終更新 2026.10.06</span><span class="dot">·</span><span>読了 8分</span></div>
 </header>
 
-<style>
-.mt-cv{max-width:var(--measure);margin:32px auto 4px;border:1px solid var(--line);border-radius:14px;background:var(--white);overflow:hidden;font-family:var(--jp);}
-.mt-head{display:flex;align-items:baseline;gap:10px;padding:15px 20px 13px;border-bottom:1px solid var(--line);flex-wrap:wrap;}
-.mt-title{font-size:13.5px;font-weight:600;color:var(--ink);letter-spacing:.01em;}
-.mt-sub{font-family:var(--en);font-size:11px;color:var(--slate);}
-.mt-smp{margin-left:auto;font-family:var(--en);font-size:10.5px;color:var(--slate);letter-spacing:.02em;}
-.mt-scroll{width:100%;}
-.mt-tbl{width:100%;border-collapse:collapse;font-size:13px;}
-.mt-tbl th,.mt-tbl td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap;}
-.mt-tbl thead th{font-family:var(--en);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--slate);background:var(--paper);}
-.mt-tbl thead th.mt-c,.mt-tbl td.mt-c{text-align:center;}
-.mt-tbl thead th.mt-fit,.mt-tbl td.mt-fit{text-align:right;}
-.mt-name{font-weight:600;color:var(--ink);font-size:13.5px;}
-.mt-role{display:block;font-family:var(--en);font-size:10.5px;font-weight:400;color:var(--slate);margin-top:2px;letter-spacing:.01em;}
-.mt-mark{font-family:var(--en);font-size:14px;font-weight:600;color:var(--ink-soft);}
-.mt-mark.g{color:var(--ink);}
-.mt-mark.m{color:var(--slate);}
-.mt-mark.b{color:var(--slate);opacity:.55;}
-.mt-tbl tbody tr.mt-best{background:rgba(0,94,255,.08);}
-.mt-best .mt-name{color:var(--electric);}
-.mt-best .mt-mark.g{color:var(--electric);}
-.mt-pct{font-family:var(--en);font-weight:600;font-size:13px;color:var(--ink-soft);font-feature-settings:"tnum" 1;}
-.mt-best .mt-pct{color:var(--electric);}
-.mt-pct .mt-note{font-family:var(--en);font-weight:400;font-size:10px;color:var(--slate);margin-left:6px;letter-spacing:.01em;}
-.mt-tbl tbody tr:last-child td{border-bottom:none;}
-@media(max-width:560px){
-  .mt-scroll{overflow-x:hidden;}
-  .mt-tbl{font-size:12px;}
-  .mt-tbl th,.mt-tbl td{padding:10px 9px;}
-  .mt-pct .mt-note{display:block;margin-left:0;margin-top:2px;}
-}
-</style>
-<div class="art-cover-v6 mt-cv">
-  <div class="mt-head">
-    <span class="mt-title">候補者 × 求人 適合マトリクス</span>
-    <span class="mt-sub">SaaS法人営業 / req-2041</span>
-    <span class="mt-smp">※サンプル・実在の候補者ではありません</span>
-  </div>
-  <div class="mt-scroll">
-    <table class="mt-tbl">
-      <thead>
-        <tr>
-          <th>候補者</th>
-          <th class="mt-c">経験</th>
-          <th class="mt-c">スキル</th>
-          <th class="mt-c">勤務条件</th>
-          <th class="mt-fit">適合度</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="mt-best">
-          <td><span class="mt-name">田中さん</span><span class="mt-role">無形商材 法人営業 5年</span></td>
-          <td class="mt-c"><span class="mt-mark g">◎</span></td>
-          <td class="mt-c"><span class="mt-mark g">◎</span></td>
-          <td class="mt-c"><span class="mt-mark g">○</span></td>
-          <td class="mt-fit"><span class="mt-pct">92%<span class="mt-note">※サンプル</span></span></td>
-        </tr>
-        <tr>
-          <td><span class="mt-name">佐藤さん</span><span class="mt-role">SaaS カスタマーサクセス 3年</span></td>
-          <td class="mt-c"><span class="mt-mark">○</span></td>
-          <td class="mt-c"><span class="mt-mark g">◎</span></td>
-          <td class="mt-c"><span class="mt-mark m">△</span></td>
-          <td class="mt-fit"><span class="mt-pct">71%</span></td>
-        </tr>
-        <tr>
-          <td><span class="mt-name">鈴木さん</span><span class="mt-role">人材サービス 法人営業 2年</span></td>
-          <td class="mt-c"><span class="mt-mark m">△</span></td>
-          <td class="mt-c"><span class="mt-mark">○</span></td>
-          <td class="mt-c"><span class="mt-mark g">◎</span></td>
-          <td class="mt-fit"><span class="mt-pct">58%</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
 <div class="art-layout">
-  <nav class="art-toc" aria-label="目次">
-    <div class="art-toc-inner">
-      <div class="toc-h">目次</div>
-      <a href="#s1">生成AIマッチングとは</a>
-      <a href="#s2">求人票・JDを言語化する</a>
-      <a href="#s3">候補者要件をmust/wantに</a>
-      <a href="#s4">推薦コメントを最適化する</a>
-      <a href="#s5">ミスマッチを減らす運用</a>
+  <nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div>
+      <a href="#source">厚労省資料が示す採用の基準</a>
+      <a href="#s1">求人要件を評価可能な言葉にする</a>
+      <a href="#s2">スカウトと書類選考へ展開する</a>
+      <a href="#s3">推薦理由を根拠付きで作る</a>
+      <a href="#s4">自動除外を避けて検証する</a>
       <a href="#faq">よくある質問</a>
-    </div>
-  </nav>
-
-  <article class="art-body rv">
-    <div class="lede">
-      <div class="lede-h">この記事の要点</div>
-      <ul>
-        <li>マッチング精度は<strong>「要件と候補者をどれだけ言葉にできているか」</strong>で決まる。AIの性能より、渡すコンテキストの質が支配的。</li>
-        <li>効くのは ①求人票・JDを「検索される言葉」に言語化 ②候補者要件を<strong>must/want</strong>に構造化 ③推薦コメントの最適化、の3点。</li>
-        <li>AIの提案は一次案。なぜそのマッチかの根拠を要件に紐づけ、<strong>CA・RAが検証してから</strong>候補者・企業に出す運用がミスマッチを減らす。</li>
-      </ul>
-    </div>
-
-    <aside class="inline-dx-cta" style="margin:6px 0 40px;border:1px solid var(--line-2);border-radius:12px;background:var(--white);padding:22px 26px;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
-  <div style="flex:1;min-width:240px;">
-    <div style="font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);">診断ツール ・ 無料 ・ 5分</div>
-    <div style="font-family:var(--jp);font-weight:700;font-size:16.5px;color:var(--ink);line-height:1.55;margin-top:8px;">自社の生成AI活用度を診断する</div>
-    <div style="font-size:13.5px;color:var(--slate);line-height:1.8;margin-top:5px;">Microsoftの成熟度モデルに沿って現在地を可視化し、業界別の活用事例と次の一手をその場で提示します。</div>
-  </div>
-  <a href="../../ai-assessment.html" class="btn" style="white-space:nowrap;flex:none;color:var(--paper);border-bottom:none;">無料で診断する <i>&rarr;</i></a>
-</aside>
-      <h2 id="s1">生成AIマッチングとは？精度はどこで決まるか</h2>
-    <p class="answer">求人と候補者を、要件を言葉にしてAIに突き合わせる手法。精度はモデルの賢さでなく、要件と候補者情報の言語化の質で決まる。</p>
-    <aside class="kn-side">
-      <img src="../avatars/f40-0.svg" alt="" loading="lazy" width="36" height="36">
-      <div><div class="r">RAの視点</div><p>企業の言う「即戦力」が何を指すのか、毎回聞き直していた。</p></div>
-    </aside>
-    <p>「生成AIで人材マッチング」と聞くと、職務経歴書と求人票を放り込めば最適な候補者が出てくる仕組みを想像するかもしれません。しかし現場で精度を分けるのは、AIの性能ではなく<strong>そもそも要件と候補者がどれだけ言葉になっているか</strong>です。求人票に「コミュニケーション能力の高い方」としか書かれていなければ、AIも曖昧なまま突き合わせるしかありません。「AIはエンジンだ。コンテキストは燃料だ」という考え方の通り、燃料である求人票・要件・候補者情報が粗いと、エンジンがどれだけ高性能でも良い結果は出ません。</p>
-    <p>つまり生成AIマッチングの実体は、CA（キャリアアドバイザー）やRA（リクルーティングアドバイザー）が頭の中で行っている要件整理と候補者理解を、<strong>AIが扱える言葉に変換する作業</strong>です。マッチング観点ごとに、AIの使いどころと人の役割を整理すると次のようになります。</p>
-    <div class="tbl-wrap">
-      <table>
-        <tr><th>マッチング観点</th><th>生成AIの使い方</th><th>人（CA・RA）の役割</th></tr>
-        <tr><td>スキル・資格</td><td>JDと職務経歴書から保有スキルを抽出し充足度を一覧化</td><td>実務で通用するレベルかを判断</td></tr>
-        <tr><td>経験・実績</td><td>経歴を要約し、求人の要件との重なりを言語化</td><td>再現性のある実績かを見極める</td></tr>
-        <tr><td>志向・転職動機</td><td>面談記録から動機・希望条件を構造化</td><td>本音と建前を聞き分け深掘りする</td></tr>
-        <tr><td>カルチャー適合</td><td>企業の価値観と候補者の志向の論点を抽出</td><td>相性を対話で確かめ最終判断する</td></tr>
-        <tr><td>条件（年収・勤務地等）</td><td>must/wantと求人条件の不一致を自動で検出</td><td>交渉余地を読み調整する</td></tr>
-      </table>
-    </div>
-    <div class="callout"><p>AIは「要件と経歴の表面的な一致」を高速に拾うのが得意。一方で、転職の本当の動機やカルチャーの相性は人が確かめる領域。役割を分けることが精度の前提になる。</p></div>
-
-    <h2 id="s2">求人票・JDを「検索される言葉」に言語化する</h2>
-    <p class="answer">採用企業の頭の中にある暗黙の要件を、候補者や検索に引っかかる具体語に翻訳すること。ここがマッチングの起点になる。</p>
-    <aside class="kn-side">
-      <img src="../avatars/m30-6.svg" alt="" loading="lazy" width="36" height="36">
-      <div><div class="r">マーケの視点</div><p>検索される言葉と、社内で使う言葉が違う。</p></div>
-    </aside>
-    <p>マッチング精度の出発点は求人票・JD（職務記述書）です。採用企業から渡される求人票は、しばしば「優秀な方」「即戦力」「コミュニケーション能力」といった抽象語で埋まっています。これでは候補者にも検索エンジンにもAIにも、何を求めているかが伝わりません。生成AIは、この<strong>暗黙の要件を具体的な言葉に開く</strong>作業の強力な相棒になります。</p>
-    <ol>
-      <li><strong>抽象語を分解する。</strong>「コミュニケーション能力」を「他部署を巻き込んで合意形成した経験」のように、行動・経験のレベルまでAIに言い換えさせる。</li>
-      <li><strong>必須と歓迎を切り分ける。</strong>求人票の文章から、本当に外せない条件と、あれば望ましい条件を仕分けする草案を作らせる。</li>
-      <li><strong>候補者目線に翻訳する。</strong>企業内の役職名・社内用語を、候補者が自分の経歴と照らせる一般的な言葉に置き換える。</li>
-      <li><strong>採用企業に確認する。</strong>AIが作った草案を採用企業にぶつけ、認識のズレをその場で埋める。確認は必ず人が行う。</li>
-    </ol>
-    <div class="tbl-wrap">
-      <table>
-        <tr><th>曖昧な求人票の表現</th><th>言語化したJD（具体語）</th></tr>
-        <tr><td>コミュニケーション能力が高い方</td><td>営業と開発の間に立ち、要件の食い違いを調整した経験がある方</td></tr>
-        <tr><td>即戦力を求めています</td><td>入社1〜2か月でSaaSの導入提案を独力で進められる方</td></tr>
-        <tr><td>マネジメント経験のある方</td><td>5名以上のチームで目標管理・評価・育成を1年以上担った方</td></tr>
-        <tr><td>当社の文化にフィットする方</td><td>裁量の大きい環境で、自分で論点を立てて動くことを好む方</td></tr>
-      </table>
-    </div>
-    <div class="callout"><p>言語化したJDは、候補者への訴求文・スカウト文・検索条件にそのまま再利用できる。求人票を一度きちんと言葉にしておくと、後工程すべての精度が底上げされる。</p></div>
-
-    
-    <aside class="kn-take">
-      <img class="kn-take-av" src="../avatars/f20-2.svg" alt="" loading="lazy" width="56" height="56">
-      <div class="kn-take-body">
-        <div class="kn-take-role">CAの視点</div>
-        <p>must と want を分けていなかった。<em>そこが曖昧なまま</em>推薦していた。</p>
-      </div>
-    </aside>
-<h2 id="s3">候補者要件を must / want に構造化する</h2>
-    <p class="answer">要件を「外せない条件（must）」と「あれば望ましい条件（want）」に分け、優先順位を構造で持つこと。曖昧な要件はミスマッチの最大要因。</p>
-    <p>求人票を言語化したら、次はそれを<strong>マッチング判定に使える構造</strong>に落とします。鍵はmust（必須）とwant（歓迎）の切り分けです。すべてを必須にすると候補者が一人も見つからず、すべてを歓迎にすると基準が消えます。生成AIは、求人票と採用企業との会話メモから、この仕分けの草案を素早く作れます。下の対比のように、曖昧なままの要件と構造化した要件では、AIに渡したときの結果が大きく変わります。</p>
-    <div class="tbl-wrap">
-      <table>
-        <tr><th>項目</th><th>曖昧な要件（NG）</th><th>構造化した要件（must / want）</th></tr>
-        <tr><td>経験</td><td>営業経験がある方</td><td><strong>must:</strong> 法人向け無形商材の営業3年以上 ／ <strong>want:</strong> SaaS/IT領域の経験</td></tr>
-        <tr><td>スキル</td><td>数字に強い方</td><td><strong>must:</strong> 予実管理の実務経験 ／ <strong>want:</strong> SQLでの簡易抽出</td></tr>
-        <tr><td>志向</td><td>成長意欲のある方</td><td><strong>must:</strong> 裁量のある環境を希望 ／ <strong>want:</strong> 将来のマネジメント志向</td></tr>
-        <tr><td>条件</td><td>柔軟に対応できる方</td><td><strong>must:</strong> 週2出社が可能 ／ <strong>want:</strong> 年収600万以上を希望</td></tr>
-      </table>
-    </div>
-    <p>このmust/want構造を持っておくと、候補者ごとに「mustを何項目満たしているか」「wantをどれだけ満たすか」をAIに一次評価させ、スコアの形で並べられます。注意したいのは、<strong>スコアは並び替えの補助線であって合否そのものではない</strong>こと。AIが何を根拠にそのスコアを付けたかを必ず添えさせ、CA・RAが中身を読んで判断します。下は、マッチング業務にかける時間の使われ方が、AI導入でどう変わるかのイメージです。</p>
-    <figure class="cmp-chart" aria-label="マッチング業務にかける時間の使われ方（導入前後のイメージ）">
-      <figcaption class="cc-top"><span class="dot"></span>マッチング業務の時間の使われ方（イメージ）</figcaption>
-      <div class="cc-row"><span class="cc-lab">AI導入前</span><div class="cc-stack"><i class="s-a" style="width:79%"></i><i class="s-b" style="width:21%"></i></div></div>
-      <div class="cc-row"><span class="cc-lab">AI導入後</span><div class="cc-stack"><i class="s-a" style="width:35%"></i><i class="s-b" style="width:65%"></i></div></div>
-      <div class="cc-legend"><span><i class="s-a"></i>突合・整理（AIが圧縮）</span><span><i class="s-b"></i>推薦の見極め・提案（人の判断）</span></div>
-      <div class="cc-cap">※イメージ図です。実測値ではなく、AIが要件と経歴の突合・整理を圧縮し、人が推薦の見極めと提案に時間を回せる——その方向を表しています。</div>
-    </figure>
-    <div class="quote-box"><p>マッチングの精度は、AIを賢くすることではなく、要件を構造にすることで上がる。</p></div>
-
-    <h2 id="s4">推薦コメントを最適化する</h2>
-    <p class="answer">候補者の経歴を、その求人のmust/wantに紐づけて「なぜこの人か」を一貫した言葉で説明する文章にすること。</p>
-    <aside class="kn-side">
-      <img src="../avatars/f50-6.svg" alt="" loading="lazy" width="36" height="36">
-      <div><div class="r">CAの視点</div><p>推薦コメントは<em>候補者の言葉</em>を残すほど通りやすい。</p></div>
-    </aside>
-    <p>マッチングの成否は、採用企業に出す推薦コメント（推薦状）の質にも大きく左右されます。良い推薦コメントは、候補者の経歴を羅列するのではなく、<strong>その求人の要件に対して「なぜこの候補者なのか」を要件ごとに結びつけて</strong>説明します。生成AIは、言語化したJD・must/want・職務経歴書・面談記録を渡せば、この紐づけの下書きを素早く作れます。ただし下書きはあくまで素材で、整えるのはCA・RAの仕事です。</p>
-    <ol>
-      <li><strong>要件起点で構成させる。</strong>「mustのこの条件に対し、候補者のこの経験が該当」という対応表をまずAIに作らせる。</li>
-      <li><strong>具体のエピソードを足す。</strong>面談で聞いた具体的な実績や言葉を加え、AIの一般論を現場の生きた言葉に上書きする。</li>
-      <li><strong>懸念点も正直に書く。</strong>満たさないwantや確認すべき点を伏せず添える。隠すと入社後のミスマッチにつながる。</li>
-      <li><strong>事実確認をする。</strong>AIが盛った表現や、経歴にない断定が混じっていないかを必ず人が点検してから提出する。</li>
-    </ol>
-    <div class="callout"><p>推薦コメントでAIに任せてよいのは「構成の下書き」と「要件との紐づけ整理」まで。候補者本人を見て確かめた言葉と、最終的な事実確認は人にしかできない。</p></div>
-    <div class="ui-mock">
-      <div class="um-bar"><span class="um-dot"></span><span class="um-dot"></span><span class="um-dot"></span><span class="um-name">AI ASSISTANT — 使い方の例</span></div>
-      <div class="um-row">
-        <div class="um-label">あなたの指示（CA／RA）</div>
-        <div class="um-text prompt">この求人票とこの職務経歴書を突き合わせて、適合点・確認したい点・推薦コメントの下書きを出して。
-【求人】SaaSの法人営業／must:無形商材3年以上・予実管理 want:IT領域経験・将来のマネジメント志向
-【職務経歴書】人材サービスの法人営業5年／新規開拓と既存深耕／予実管理あり（要点のみ）
-要件ごとに根拠を紐づけ、満たさないwantも正直に。</div>
-      </div>
-      <div class="um-row">
-        <div class="um-label ai">AIの下書き</div>
-        <div class="um-text">【適合】must「無形商材3年以上」→人材サービスの法人営業5年で充足。must「予実管理」→担当領域で経験あり。want「将来のマネジメント志向」→面談で確認できれば加点。
-【確認したい点】IT/SaaS領域は未経験のため立ち上がりの想定をすり合わせたい。マネジメント志向は本人の意向を要確認。
-【推薦コメント案】無形商材の法人営業で新規開拓から予実管理まで一気通貫で担われた経験があり、貴社の営業要件のmustを満たします。SaaS領域は未経験ですが、商談設計の型をお持ちで早期キャッチアップが見込めます。</div>
-      </div>
-    </div>
-    <p class="fig-cap">図：求人票と職務経歴書の要点を渡し、要件ごとの紐づけと下書きだけをAIに作らせる例。経歴の事実確認・懸念の扱い・提出可否は必ず人が判断します。</p>
-    <div class="ba-grid">
-      <div class="ba-card before">
-        <span class="ba-tag">Before — 曖昧な推薦コメント</span>
-        <div class="ba-body">「コミュニケーション能力が高く、営業経験も豊富で即戦力としてご活躍いただける方です。ぜひ前向きにご検討ください。」</div>
-      </div>
-      <div class="ba-card after">
-        <span class="ba-tag">After — 要件に紐づけた推薦コメント</span>
-        <div class="ba-body">「mustの『無形商材3年以上・予実管理』を、人材サービスの法人営業5年で満たします。SaaS領域は未経験ですが商談設計の型をお持ちで、早期の立ち上がりが見込めます（要確認点として記載）。」</div>
-      </div>
-    </div>
-    <p class="fig-cap">図：同じ候補者でも、要件のmust/wantに紐づけて根拠と懸念を示すと、推薦コメントの説得力と検証可能性が変わる（例）。</p>
-    <p>こうした下書きの生成は、上場企業を含む37社・2,500名の生成AI活用支援で繰り返し見てきた「人の判断を残しながら準備を速くする」使い方の典型です。候補者を見つける前段のスカウト設計については<a href="ai-scouting.html">AIスカウトの記事</a>、採用業務全体での生成AI活用は<a href="recruitment-ai.html">採用業務の生成AI活用の記事</a>もあわせてご覧ください。</p>
-
-    
-    <aside class="kn-take">
-      <img class="kn-take-av" src="../avatars/m50-0.svg" alt="" loading="lazy" width="56" height="56">
-      <div class="kn-take-body">
-        <div class="kn-take-role">支店長の視点</div>
-        <p>精度はツールでなく、要件の言語化で決まる部分が大きい。</p>
-      </div>
-    </aside>
-<h2 id="s5">ミスマッチを減らす運用と、人の検証</h2>
-    <p class="answer">AIの提案を一次案として受け取り、根拠が要件に紐づくかをCA・RAが検証してから出す。この一手間がミスマッチを減らす。</p>
-    <p>マッチング精度を上げる取り組みが逆効果になるのは、AIの提案をそのまま候補者・企業に流してしまう運用です。AIは要件と経歴の一致を拾うのは得意でも、<strong>転職の本当の動機・カルチャーの相性・推薦理由の妥当性までは保証できません</strong>。だからこそ、AIの提案には必ず人の検証を挟みます。運用の型としては、次の流れで回すとミスマッチが起きにくくなります。</p>
-    <ol>
-      <li><strong>AIが一次案を作る。</strong>言語化したJDとmust/wantをもとに、候補者の充足度・スコア・推薦下書きを生成する。</li>
-      <li><strong>根拠を要件に照合する。</strong>スコアの根拠が要件に正しく紐づいているか、思い込みや飛躍がないかをCA・RAが点検する。</li>
-      <li><strong>人にしか分からない点を補う。</strong>面談で確かめた動機・相性・温度感を加え、AIが見落とす機微を埋める。</li>
-      <li><strong>結果を要件設計に戻す。</strong>マッチ/ミスマッチの結果を振り返り、must/wantの設計やJDの言語化を継続的に改善する。</li>
-    </ol>
-    <div class="tbl-wrap">
-      <table>
-        <tr><th>段階</th><th>AIに任せること</th><th>人が検証すること</th></tr>
-        <tr><td>候補者の一次絞り込み</td><td>must/want充足度でリストを並べる</td><td>機械的に落ちた候補者に拾うべき人がいないか</td></tr>
-        <tr><td>マッチ提案</td><td>要件と経歴の一致点を提示する</td><td>動機・相性・推薦理由が妥当か</td></tr>
-        <tr><td>推薦コメント</td><td>要件起点で下書きを生成する</td><td>事実か、懸念を隠していないか</td></tr>
-      </table>
-    </div>
-    <p>この「AIが速く、人が確かめる」分担を運用に組み込むと、CA・RAは要件整理や下書き作成の時間を、候補者・企業との対話という最も価値の高い仕事に振り向けられます。土台になるのは、<strong>自社の求人票・要件・過去のマッチ成功事例をAIが扱える形に整えておくこと</strong>——このコンテキストの整備こそが、マッチング精度を継続的に上げる仕組みになります。TechWorkerでは、人材ビジネスの業務文脈をAIが扱える形に整える<a href="../../contact.html">生成AI活用の設計支援</a>を行っています。</p>
-
+  </div></nav>
+  <article class="art-body">
+    <h2 id="source">厚労省資料が示す採用の基準</h2>
+    <figure class="fig-inline source-figure"><a class="source-image" href="figs/mhlw-fair-selection-criteria.png" target="_blank" rel="noopener" aria-label="厚生労働省の採用基準・選考方法のページを拡大する"><img src="figs/mhlw-fair-selection-criteria.png" alt="厚生労働省の公正採用選考パンフレット。採用基準をあらかじめ明確にし、適性・能力を客観的に評価する選考方法を示している。" width="1191" height="1684" decoding="async" fetchpriority="high"></a><figcaption><span class="source-label">公的資料の説明引用</span>上段は「採用基準をあらかじめ明確にする」「適性・能力に基づく」と示し、下段は求人条件に合う人へ門戸を開くことと、基準に合う選考方法を求めています。AIによる順位付けも、この基準の外には置けません。<br>出典：<a href="https://kouseisaiyou.mhlw.go.jp/assets/pdf/basic/01.pdf?202504_04=" target="_blank" rel="noopener">厚生労働省「公正な採用選考をめざして」</a>PDF16ページ・冊子15ページ（2025年4月版、2026年10月6日確認）。</figcaption></figure>
+    <p>厚生労働省は、採用基準を面接後に考えるのではなく、あらかじめ明確にするよう求めています。基準は職務に必要な適性・能力に基づき、選考方法もそれを客観的に評価できるものにします。<a href="https://kouseisaiyou.mhlw.go.jp/question.html" target="_blank" rel="noopener">同省のFAQ</a>は、AIを使う選考でもこの基本は変わらないと明記しています。</p>
+    <aside class="inline-dx-cta" style="margin:34px 0 40px;border:1px solid var(--line-2);border-radius:12px;background:var(--white);padding:22px 26px;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap;"><div style="flex:1;min-width:240px;"><div style="font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);">診断ツール ・ 無料 ・ 5分</div><div style="font-family:var(--jp);font-weight:700;font-size:16.5px;color:var(--ink);line-height:1.55;margin-top:8px;">自社の生成AI活用度を診断する</div><div style="font-size:13.5px;color:var(--slate);line-height:1.8;margin-top:5px;">現在地と次に試す業務を確認できます。</div></div><a href="../../ai-assessment.html" class="btn" style="white-space:nowrap;flex:none;color:var(--paper);border-bottom:none;">無料で診断する <i>&rarr;</i></a></aside>
+    <h2 id="s1">求人要件を「評価できる言葉」に変える</h2>
+    <p>「コミュニケーション力が高い」「カルチャーに合う」では、評価者ごとに意味が変わります。まず職務を分解し、入社時点で必要な経験、入社後に学べるもの、確認方法を決めます。生成AIは、求人票や現場ヒアリングから候補を抜き出す補助に使えますが、採用基準の確定は人が行います。</p>
+    <div class="tbl-wrap"><table><tr><th>曖昧な要件</th><th>確認可能な表現例</th><th>確認方法</th></tr><tr><td>調整力</td><td>営業・開発の要望を整理し、合意事項を文書化した経験</td><td>担当案件と本人の役割を聞く</td></tr><tr><td>即戦力</td><td>法人向けクラウドサービス（SaaS）の新規開拓を一人で進めた経験</td><td>顧客層、期間、実施範囲を確認</td></tr><tr><td>リーダーシップ</td><td>3人以上のチームで優先順位を決めた経験</td><td>判断場面と結果を確認</td></tr></table></div>
+    <p>数字は基準を具体化しますが、根拠なく足してはいけません。「経験3年以上」が本当に職務遂行に必要か、同じ能力を別の経験で示せないかも確認します。</p>
+    <h2 id="s2">スカウトと書類選考へ、同じ要件台帳から展開する</h2>
+    <p>求人要件、候補者経歴、対応する根拠を一つの表で持ち、候補者検索、スカウト文、書類の下読みで同じ基準を参照します。文面ごとにAIへ基準を考え直させると、ある工程で歓迎条件が必須条件へ変わるなどのずれが起こり得ます。</p>
+    <div class="callout"><p><strong>TechWorkerの設計例：</strong>候補者ごとに「要件」「経歴の該当箇所」「不足情報」「人の判断」を記録します。AIに推測で空欄を埋めさせず、情報がなければ面談の確認事項に回します。</p></div>
+    <p>スカウト文は、経歴に書かれた実績と募集職務の接点だけを個別化します。「若いから伸びそう」「女性向けの職場」といった属性による訴求は避けます。書類選考では、AIが見つけた一致だけでなく、不一致と不明を分けます。不明は不合格理由ではありません。</p><p>送信前には、人が宛先、経歴の事実、求人条件を照合して確定します。求人別に送信数、返信率、返信理由、事実の訂正件数を記録します。返信が増えても、要件の一致や本人の希望を確認するまではマッチング精度が上がったとは扱いません。</p>
+    <h2 id="s3">推薦コメントは、評価でなく根拠の案内にする</h2>
+    <p>推薦コメントに必要なのは「優秀です」という評価語ではなく、どの要件に、どの経歴が対応するかです。AIには求人要件と職務経歴の該当箇所を引用させ、推測を分離させます。転職理由や希望条件は本人が話した内容だけを使い、AIが筋の通る物語へ補わないようにします。</p>
+    <p>候補者へ提示する内容と企業へ送る内容は、本人の認識と合っているか確認します。誤った推薦文は選考通過率以前に、候補者と企業の双方の判断をゆがめます。</p>
+    <h2 id="s4">自動除外を避け、見落としと偏りを検証する</h2>
+    <p>AIのスコアや順位は、候補を読む順番の参考にはなります。一定点未満を自動で不合格にすると、曖昧な要件や入力不足がそのまま排除へ変わります。特に初期運用では、人が全件または無作為抽出を再確認し、AIが低く評価した候補者に妥当な人が含まれていないかを調べます。</p>
+    <p>検証では、推薦後の書類通過だけでなく、面談で判明した要件不一致、AIの見落とし、確認に要した時間を求人別に記録します。属性別の差を確認する場合も、差が生じた理由を採用基準と入力データまで戻って調べます。精度向上を先に宣言せず、運用データで判断します。</p>
     <h2 id="faq">よくある質問</h2>
-    <div class="faq"><div class="q">生成AIに任せたら、CA・RAの仕事はなくなりますか？</div><p class="a">なくなりません。生成AIが得意なのは、求人票の言語化や要件の構造化、候補者リストの一次絞り込み、推薦文の下書きといった準備作業です。最終的なマッチの判断、候補者・企業との信頼関係づくり、機微な調整はCA・RAの仕事として残ります。AIは一次案を作り、人が検証して決める分担が現実的です。</p></div>
-    <div class="faq"><div class="q">求人票や職務経歴書を生成AIに渡してよいですか？</div><p class="a">個人を特定できる情報や守秘義務のある情報の扱いには注意が必要です。学習に使われない設定の法人向けプランを使う、職務経歴書は氏名・連絡先などを伏せて渡す、社内のルールを定めるといった運用を前提にしてください。何をAIに渡してよいかの線引きを最初に決めることが重要です。</p></div>
-    <div class="faq"><div class="q">AIが出したマッチ提案はそのまま使ってよいですか？</div><p class="a">そのまま使うのは避けてください。生成AIは要件と経歴の表面的な一致を拾うのは得意ですが、転職の本当の動機や、企業文化との相性、推薦理由の妥当性までは保証できません。AIの提案は一次案として受け取り、根拠が要件に紐づいているかをCA・RAが確認してから候補者・企業に提示する運用にします。</p></div>
-    <div class="faq"><div class="q">何から始めれば効果が出やすいですか？</div><p class="a">まずは求人票/JDの言語化と、候補者要件のmust/want構造化から始めるのが効果が出やすい領域です。ここが整うと、検索・スカウト・推薦のすべての精度が底上げされます。自社の過去のマッチ成功事例をAIが参照できる形に整理しておくと、提案の質がさらに上がります。<a href="ai-scouting.html">AIスカウト</a>の設計とあわせて検討すると効果的です。</p></div>
+    <div class="faq"><div class="q">生成AIの順位だけで候補者を不合格にしてよいですか？</div><p class="a">避けてください。AIの順位は下読みの補助として扱い、採用基準との対応、見落とし、属性による偏りを人が確認します。厚生労働省は、AIを含む方法でも適性・能力に基づく公正な採用選考を求めています。</p></div>
+    <div class="faq"><div class="q">スカウト文を生成AIで個別化できますか？</div><p class="a">職務経歴に記載された業務、スキル、実績と求人要件の対応を根拠にできます。年齢、性別、国籍など職務と関係しない属性を訴求や優先順位の根拠にしません。送信前に経歴の取り違えを確認します。</p></div>
+    <div class="faq"><div class="q">マッチング精度はどう測りますか？</div><p class="a">AIのスコアだけでは測れません。推薦後の書類通過、面談で判明した要件不一致、企業と候補者の双方から得た理由を記録し、求人・職種ごとに確認します。</p></div>
   </article>
 </div>
 
@@ -373,8 +167,8 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
 <div class="art-cta"><div class="inner">
   <div>
-    <h3>人材ビジネスのマッチング精度を、生成AIで底上げします。</h3>
-    <p>求人票の言語化、候補者要件のmust/want構造化、推薦コメントの最適化、ミスマッチを減らす運用設計まで。上場企業を含む37社・2,500名の支援知見をもとに、人材紹介・派遣・採用支援の業務に合わせて伴走します。検討段階のご相談だけでも歓迎です。</p>
+    <h3>要件、候補者情報、推薦理由を追跡できる形にします。</h3>
+    <p>スカウト、書類の下読み、推薦コメントを同じ採用基準につなぎ、AIの順位だけで判断しない確認手順を設計します。</p>
   </div>
   <a href="../../contact.html" class="btn">無料で相談する <i>→</i></a>
 </div></div>
@@ -385,8 +179,8 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <section class="related"><div class="container">
   <div class="rl-h">Related</div>
   <div class="related-grid">
-    <a href="recruitment-ai.html" class="related-card"><span class="rc-cat">採用業務</span><div class="rc-title">人材業界の採用業務を生成AIで効率化｜求人作成から候補者対応まで</div></a>
-    <a href="ai-scouting.html" class="related-card"><span class="rc-cat">スカウト</span><div class="rc-title">生成AIで候補者ソーシング・スカウトを変える｜検索とスカウト文の最適化</div></a>
+    <a href="recruitment-ai.html" class="related-card"><span class="rc-cat">採用業務</span><div class="rc-title">人材紹介・派遣の生成AI活用——CA・RA業務の入力ルールと確認手順</div></a>
+
     <a href="index.html" class="related-card"><span class="rc-cat">メディア</span><div class="rc-title">人材業界向け 生成AI活用｜マッチング・スカウト・採用の実践知</div></a>
   </div>
 </div></section>

@@ -13,30 +13,30 @@
 <script src="/assets/tw-track.js" defer></script>
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>人材紹介・人材派遣の生成AI活用とは｜CA・RA業務が変わる場面と始め方【2026】 — TechWorker</title>
-<meta name="description" content="人材紹介・人材派遣・採用支援・スカウト媒体で働く人が、自社の人材ビジネスに生成AIをどう使うか。候補者ソーシング・スカウト文・職務経歴書の要約・求人票・面談記録・推薦文など、CA・RA業務の各場面でのAI活用、スモールスタートの始め方、個人情報・公平性・最終判断などの注意点を整理します。">
+<title>人材紹介・派遣の生成AI活用｜CA・RA業務の入力ルールと確認手順【2026】 — TechWorker</title>
+<meta name="description" content="人材紹介・派遣のCA・RA業務で生成AIを使う範囲を解説。候補者データの入力条件、面談メモの構造化、求人要件整理、対外送信前の確認手順を示します。">
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
 <link rel="canonical" href="https://techworker.co.jp/media/jinzai/recruitment-ai">
 <meta property="og:type" content="article">
-<meta property="og:title" content="人材紹介・人材派遣の生成AI活用とは｜CA・RA業務が変わる場面と始め方【2026】">
-<meta property="og:description" content="人材ビジネスで生成AIをどう使うかの全体像。候補者ソーシング・スカウト文・職務経歴書の要約・求人票・面談記録・推薦文でのAI活用、始め方、使う前の注意点を実務目線で整理します。">
+<meta property="og:title" content="人材紹介・派遣の生成AI活用｜CA・RA業務の入力ルールと確認手順【2026】">
+<meta property="og:description" content="人材紹介・派遣のCA・RA業務で生成AIを使う範囲を解説。候補者データの入力条件、面談メモの構造化、求人要件整理、対外送信前の確認手順を示します。">
 <meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
 <meta property="og:url" content="https://techworker.co.jp/media/jinzai/recruitment-ai">
 <meta property="og:site_name" content="TechWorker">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="人材紹介・人材派遣の生成AI活用とは｜CA・RA業務が変わる場面と始め方【2026】">
+<meta name="twitter:title" content="人材紹介・派遣の生成AI活用｜CA・RA業務の入力ルールと確認手順【2026】">
 <meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../article.css">
+<link rel="stylesheet" href="../article.css?v=20261006-source-first">
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
   "@type":"Article",
-  "headline":"人材紹介・人材派遣の生成AI活用とは｜CA・RA業務が変わる場面と始め方【2026】",
-  "description":"人材紹介・派遣・採用支援・スカウト媒体で働く人が、自社の人材ビジネスに生成AIをどう使うかの全体像。候補者ソーシング・スカウト文・職務経歴書の要約・求人票・面談記録・推薦文でのAI活用、スモールスタートの始め方、個人情報・公平性・最終判断の注意点を整理する。",
-  "datePublished":"2026-04-14","dateModified":"2026-04-14","inLanguage":"ja",
+  "headline":"人材紹介・派遣の生成AI活用｜CA・RA業務の入力ルールと確認手順【2026】",
+  "description":"人材紹介・派遣のCA・RA業務で生成AIを使う範囲を解説。候補者データの入力条件、面談メモの構造化、求人要件整理、対外送信前の確認手順を示します。",
+  "datePublished":"2026-04-14","dateModified":"2026-10-06","inLanguage":"ja",
   "image":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630},
   "author":{"@type":"Person","name":"古野光太朗","jobTitle":"株式会社TechWorker 代表取締役 CEO兼CTO","url":"https://techworker.co.jp/company.html","image":"https://techworker.co.jp/assets/author-furuno.jpg","sameAs":["https://x.com/koutarou_furuno"],"affiliation":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/"}},
   "publisher":{"@type":"Organization","name":"株式会社TechWorker","url":"https://techworker.co.jp/","logo":{"@type":"ImageObject","url":"https://techworker.co.jp/assets/ogp.png","width":1200,"height":630}},
@@ -56,12 +56,33 @@
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org","@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"人材紹介・派遣の現場で、生成AIはまず何に使うのが効果的ですか？","acceptedAnswer":{"@type":"Answer","text":"最初は「下書きを書く」「長い文章を要約する」といった、人が必ず最後に確認する作業から始めるのが効果的です。スカウト文の初稿、職務経歴書の要約、面談メモの整形などは、効果が見えやすく失敗してもリカバリしやすいため、スモールスタートに向いています。"}},
-    {"@type":"Question","name":"候補者や企業の個人情報を生成AIに入力しても大丈夫ですか？","acceptedAnswer":{"@type":"Answer","text":"利用するサービスの規約と自社の個人情報の取り扱い方針を必ず確認してください。入力したデータが学習に使われない設定の法人向けサービスを選ぶ、個人を特定する情報はマスキングしてから入力する、といった運用ルールを先に決めることが前提になります。"}},
-    {"@type":"Question","name":"AIに任せると、CAやRAの仕事はなくなりますか？","acceptedAnswer":{"@type":"Answer","text":"なくなりません。AIが担うのは下書きや要約・整理といった準備作業で、候補者との信頼関係づくり、見極め、最終的な推薦判断は人にしかできない領域です。AIで準備を速くした分、候補者・企業と向き合う時間を増やすのが本来の使い方です。"}},
-    {"@type":"Question","name":"生成AIの出力をそのまま候補者や求人企業に送ってよいですか？","acceptedAnswer":{"@type":"Answer","text":"そのまま送るのは避けてください。生成AIは事実と異なる内容（ハルシネーション）を自然な文章で出力することがあります。経歴・スキル・求人条件などの事実は元データと照合し、必ず人が確認・修正してから送る運用にします。"}}
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "候補者の個人情報を生成AIへ入力してよいですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "利用目的の範囲内か、サービス提供者が入力を機械学習など別目的に使うかを確認します。本人同意、契約、社内規程、保存先を確認できない状態では入力しません。氏名を消すだけで十分とは限りません。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "面談の録音やメモをAIで整理できますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "録音する場合は目的、処理するサービス、保存期間、共有範囲を説明し、必要な同意を得ます。AIの要約は原記録と照合し、固有名詞、数値、希望条件、本人の発言を確認します。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "どの業務から試すべきですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "利用条件を確認できるデータで、出力を人が全件確認できる一工程から始めます。たとえば架空データによる求人要件整理や、承認済みメモの項目分けです。時間短縮は同じ件数と確認基準で測ります。"
+      }
+    }
   ]
 }
 </script>
@@ -94,229 +115,45 @@ fbq('init','1264057945446029');fbq('track','PageView');
 </div>
 
 <header class="art-head">
-  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">人材</a><span class="sep">/</span>人材紹介・人材派遣の生成AI活用とは</nav>
-  <div class="kicker">人材業界 × AI</div>
-  <h1>人材紹介・人材派遣の生成AI活用とは｜CA・RA業務が変わる場面と始め方</h1>
-  <p class="dek">候補者ソーシング、スカウト文、職務経歴書の要約、求人票、面談記録、推薦文——人材ビジネスの一日は「書く・読む・まとめる」で埋まっている。その準備作業に生成AIを入れると、CA・RAの時間はどこに戻ってくるのか。全体像と始め方を、2026年の実務を前提に整理する。</p>
-  <div class="a-meta">
-    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.04.14</span><span class="dot">·</span><span>最終更新 2026.04.14</span><span class="dot">·</span><span>読了 9分</span>
-  </div>
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">人材</a><span class="sep">/</span>人材紹介・派遣の生成AI活用</nav>
+  <div class="kicker">人材業務 / Recruitment Operations</div>
+  <h1>人材紹介・派遣の生成AI活用——CA・RA業務の入力ルールと確認手順</h1>
+  <p class="dek">CA・RA業務では、文章作成より先に候補者データの扱いを決めます。求人要件、面談記録、推薦文を同じ証拠から作り、外部へ出す前に人が確認する運用をまとめます。</p>
+  <div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.04.14</span><span class="dot">·</span><span>最終更新 2026.10.06</span><span class="dot">·</span><span>読了 8分</span></div>
 </header>
 
-<style>
-/* recruitment-ai cover — 業務時間の再配分 before/after 横棒比較（scoped: rc-） */
-.rc-cover{padding:24px 28px 22px;}
-.rc-head{font-family:var(--jp);font-size:14px;font-weight:600;color:var(--ink);letter-spacing:-.01em;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:20px;}
-.rc-head .rc-smp{font-family:var(--en);font-size:11px;font-weight:400;color:var(--slate);letter-spacing:.01em;}
-.rc-chart{display:flex;flex-direction:column;gap:14px;}
-.rc-row{display:flex;align-items:center;gap:14px;}
-.rc-tag{flex:0 0 46px;font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);text-align:right;}
-.rc-row.rc-after .rc-tag{color:var(--ink);}
-.rc-track{flex:1;min-width:0;display:flex;height:32px;border-radius:7px;overflow:hidden;background:var(--paper-2);}
-.rc-seg{height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--jp);font-size:11px;font-weight:600;color:var(--slate);white-space:nowrap;overflow:hidden;transition:flex-basis .2s;}
-.rc-seg.s-doc{background:var(--paper-2);}
-.rc-seg.s-other{background:#E0E5EC;}
-.rc-seg.s-mtg{background:#C9D0DA;color:var(--ink-soft);}
-.rc-seg.s-cand{background:rgba(0,94,255,.16);color:var(--electric);}
-.rc-row.rc-after .rc-seg.s-cand{background:var(--electric);color:var(--white);}
-.rc-legend{display:flex;flex-wrap:wrap;gap:6px 20px;margin:20px 0 0 60px;padding-top:14px;border-top:1px solid var(--line);}
-.rc-lg{display:flex;align-items:center;gap:7px;font-family:var(--jp);font-size:11.5px;color:var(--slate);}
-.rc-sw{width:11px;height:11px;border-radius:3px;flex:none;}
-.rc-sw.s-doc{background:var(--paper-2);border:1px solid var(--line);}
-.rc-sw.s-cand{background:var(--electric);}
-.rc-sw.s-mtg{background:#C9D0DA;}
-.rc-sw.s-other{background:#E0E5EC;border:1px solid var(--line);}
-@media(max-width:560px){
-  .rc-cover{padding:20px 18px 18px;}
-  .rc-tag{flex-basis:38px;font-size:10px;}
-  .rc-row{gap:10px;}
-  .rc-seg{font-size:0;}
-  .rc-legend{margin-left:0;gap:6px 14px;}
-}
-</style>
-<div class="art-cover-v6 rc-cover">
-  <div class="rc-head">AI導入で、時間はどこへ戻るか<span class="rc-smp">※サンプル・CA／RAの一日の時間配分イメージ</span></div>
-  <div class="rc-chart">
-    <div class="rc-row rc-before">
-      <span class="rc-tag">Before</span>
-      <div class="rc-track" role="img" aria-label="AIなし：書類作成が大半を占める一日">
-        <div class="rc-seg s-doc" style="flex-basis:52%">書類作成</div>
-        <div class="rc-seg s-cand" style="flex-basis:22%">候補者対応</div>
-        <div class="rc-seg s-mtg" style="flex-basis:15%">面談</div>
-        <div class="rc-seg s-other" style="flex-basis:11%">その他</div>
-      </div>
-    </div>
-    <div class="rc-row rc-after">
-      <span class="rc-tag">After</span>
-      <div class="rc-track" role="img" aria-label="AIあり：候補者対応の時間が大きく増えた一日">
-        <div class="rc-seg s-doc" style="flex-basis:22%">書類作成</div>
-        <div class="rc-seg s-cand" style="flex-basis:48%">候補者対応</div>
-        <div class="rc-seg s-mtg" style="flex-basis:20%">面談</div>
-        <div class="rc-seg s-other" style="flex-basis:10%">その他</div>
-      </div>
-    </div>
-  </div>
-  <div class="rc-legend">
-    <span class="rc-lg"><span class="rc-sw s-doc"></span>書類作成（AIで時短）</span>
-    <span class="rc-lg"><span class="rc-sw s-cand"></span>候補者対応（時間が戻る）</span>
-    <span class="rc-lg"><span class="rc-sw s-mtg"></span>面談</span>
-    <span class="rc-lg"><span class="rc-sw s-other"></span>その他</span>
-  </div>
-</div>
-
 <div class="art-layout">
-  <nav class="art-toc" aria-label="目次">
-    <div class="art-toc-inner">
-      <div class="toc-h">目次</div>
-      <a href="#s1">何に使えるのか（全体像）</a>
-      <a href="#s2">CA・RA業務はどう変わるか</a>
-      <a href="#s3">まず何から始めるか</a>
-      <a href="#s4">使う前に押さえる注意点</a>
+  <nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div>
+      <a href="#source">個人情報保護委員会の注意点</a>
+      <a href="#s1">業務を入力・生成・判断に分ける</a>
+      <a href="#s2">面談メモを証拠付きで構造化する</a>
+      <a href="#s3">対外文面は元データへ戻して確認する</a>
+      <a href="#s4">小さく始める単位を決める</a>
       <a href="#faq">よくある質問</a>
-    </div>
-  </nav>
-
-  <article class="art-body rv">
-    <div class="lede">
-      <div class="lede-h">この記事の要点</div>
-      <ul>
-        <li>人材業界の生成AI活用とは、人材紹介・派遣・採用支援といった<strong>自社の人材ビジネスそのものを生成AIで速く・厚くする</strong>こと。社員のAI研修の話ではなく、CA・RAの日々の業務が対象。</li>
-        <li>効きどころは「書く・読む・まとめる」が多い準備作業——スカウト文の初稿、職務経歴書の要約、求人票の整形、面談記録、推薦文の下書き。<strong>人が最後に確認する前提</strong>でAIに任せる。</li>
-        <li>始め方は、効果が見えやすい1業務から小さく試す。使う前に、個人情報の扱い・公平性／バイアス・ハルシネーション・人の最終判断の4点を必ず押さえる。</li>
-      </ul>
-    </div>
-
-    <aside class="inline-dx-cta" style="margin:6px 0 40px;border:1px solid var(--line-2);border-radius:12px;background:var(--white);padding:22px 26px;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
-  <div style="flex:1;min-width:240px;">
-    <div style="font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);">診断ツール ・ 無料 ・ 5分</div>
-    <div style="font-family:var(--jp);font-weight:700;font-size:16.5px;color:var(--ink);line-height:1.55;margin-top:8px;">自社の生成AI活用度を診断する</div>
-    <div style="font-size:13.5px;color:var(--slate);line-height:1.8;margin-top:5px;">Microsoftの成熟度モデルに沿って現在地を可視化し、業界別の活用事例と次の一手をその場で提示します。</div>
-  </div>
-  <a href="../../ai-assessment.html" class="btn" style="white-space:nowrap;flex:none;color:var(--paper);border-bottom:none;">無料で診断する <i>&rarr;</i></a>
-</aside>
-      <h2 id="s1">人材業界で生成AIは何に使えるのか？</h2>
-    <p class="answer">候補者ソーシングからスカウト文、要約、求人票、面談記録、推薦文まで、人材ビジネスの「書く・読む・まとめる」準備作業を速くできる。</p>
-    <aside class="kn-side">
-      <img src="../avatars/f20-0.svg" alt="" loading="lazy" width="36" height="36">
-      <div><div class="r">RAの視点</div><p>忙しさの中身が「調べる・書く・入力する」に偏っている自覚はあった。</p></div>
-    </aside>
-    <p>人材紹介・人材派遣・採用支援の仕事は、突き詰めると<strong>大量の文章を読み、書き、まとめる</strong>作業の連続です。求職者の職務経歴書を読み込み、企業の求人票を理解し、スカウト文を書き、面談を記録し、推薦文をまとめる。生成AIが最も効くのは、まさにこの文章まわりの準備作業です。AIに任せられるのは「下書き」と「要約・整理」であって、見極めや関係づくりといった人にしかできない部分は残ります。「AIはエンジンだ。コンテキストは燃料だ」という言い方をすれば、求職者・求人・自社の判断基準というコンテキストを渡すほど、AIは現場で使える出力を返します。</p>
-    <div class="tbl-wrap">
-      <table>
-        <tr><th>業務場面</th><th>AIの使い方</th><th>期待できること</th></tr>
-        <tr><td>候補者ソーシング</td><td>求人要件から検索キーワード・想定ターゲット像を言語化して下書き</td><td>探し始めの当たりを早くつける</td></tr>
-        <tr><td>スカウト文</td><td>候補者の経歴と求人の魅力を踏まえた初稿を生成</td><td>一斉送信の量産でなく一人ずつの初稿づくりを時短</td></tr>
-        <tr><td>職務経歴書の要約</td><td>長い経歴を要点・強み・確認したい点に整理</td><td>読み込みの時間を短縮し見落としを減らす</td></tr>
-        <tr><td>求人票・JDの作成</td><td>企業ヒアリングメモから求人票の素案を整形</td><td>たたき台を早く出し企業との往復を減らす</td></tr>
-        <tr><td>面談記録</td><td>面談メモや文字起こしを要点・次アクションに整形</td><td>記録の手間を減らし対話に集中する</td></tr>
-        <tr><td>推薦文</td><td>経歴と求人要件の合致点を踏まえた推薦コメントの下書き</td><td>推薦の質を保ちつつ作成を時短</td></tr>
-      </table>
-    </div>
-    <div class="callout"><p>共通するのは「ゼロから書く」を「直して仕上げる」に変えること。白紙からの執筆をAIの初稿に置き換えるだけで、一件あたりの所要時間は大きく変わる。最後に人が確認・修正する前提は崩さない。</p></div>
-
-    
-    <aside class="kn-take">
-      <img class="kn-take-av" src="../avatars/f40-0.svg" alt="" loading="lazy" width="56" height="56">
-      <div class="kn-take-body">
-        <div class="kn-take-role">CAの視点</div>
-        <p>業務全部ではなく<em>下書きが要る工程</em>だけ切り出す。それなら明日から試せる。</p>
-      </div>
-    </aside>
-<h2 id="s2">CA・RA業務のどこが、どう変わるのか？</h2>
-    <p class="answer">下書きと要約をAIに任せ、CA・RAは候補者・企業と向き合う時間に振り直せる。仕事は減るのではなく中身が変わる。</p>
-    <p>生成AIを入れて変わるのは「作業の中身」です。これまでCA（キャリアアドバイザー）やRA（リクルーティングアドバイザー）が時間を使ってきた文章の準備が短くなり、その分を見極め・関係づくり・候補者体験（CX）の向上に回せます。下のbefore/afterは、AIなしとAIありで一日の使い方がどう変わるかのイメージです。</p>
-    <div class="tbl-wrap">
-      <table>
-        <tr><th>場面</th><th>AIなしのCAの一日</th><th>AIありのCAの一日</th></tr>
-        <tr><td>朝</td><td>新着の職務経歴書を一件ずつ読み込む</td><td>AI要約で要点を把握し、気になる候補者を深く読む</td></tr>
-        <tr><td>午前</td><td>スカウト文を一人ずつ白紙から書く</td><td>AI初稿を一人ずつ手直し、刺さる一文を自分で足す</td></tr>
-        <tr><td>面談後</td><td>記憶を頼りに面談メモを清書する</td><td>文字起こしをAIで整形し、見極めの所感を加える</td></tr>
-        <tr><td>夕方</td><td>推薦文を一から書き、求人票を整える</td><td>下書きを仕上げ、空いた時間で候補者へ追加連絡</td></tr>
-        <tr><td>一日の重心</td><td>書類づくりに追われる</td><td>人と向き合う対話・見極めに時間が戻る</td></tr>
-      </table>
-    </div>
-    <p>たとえば面談後の記録は、CA・RAが毎日くり返す作業の代表格です。次回担当者が読む引き継ぎ用に要点だけを残したい——そんなときに、面談メモを渡して整形だけをAIに任せると、清書の時間を対話の振り返りに回せます。下は、面談メモを要約させるときの指示と下書きのイメージです。</p>
-    <div class="ui-mock">
-      <div class="um-bar"><span class="um-dot"></span><span class="um-dot"></span><span class="um-dot"></span><span class="um-name">AI ASSISTANT — 使い方の例</span></div>
-      <div class="um-row">
-        <div class="um-label">あなたの指示（CA／RA）</div>
-        <div class="um-text prompt">次の面談メモを、次回担当者が読む用に要点だけ要約して。本人の希望条件・懸念・次アクションを箇条書きで。
-【面談メモ】法人営業7年。今は評価制度に納得感がなく転職を検討。年収は現状維持以上が希望だが、それより裁量と評価の透明性を重視。家庭の事情で転居は不可。来週まで返答待ちの他社選考が1件あるとのこと。</div>
-      </div>
-      <div class="um-row">
-        <div class="um-label ai">AIの下書き</div>
-        <div class="um-text">【希望条件】
-・裁量の大きさと評価の透明性を最優先
-・年収は現状維持以上（額面より制度への納得感を重視）
-・転居不可（家庭の事情）
-
-【懸念】
-・現職の評価制度への不信感
-・他社選考が1件進行中（来週まで返答待ち）
-
-【次アクション】
-・透明性の高い評価制度を持つ求人を優先提示
-・他社の返答期限（来週）を踏まえてスピード感を合わせる</div>
-      </div>
-    </div>
-    <p class="fig-cap">図：面談メモを渡し、引き継ぎ用の要約だけをAIに作らせる例。事実の取り違えや本人の意図のズレがないかは、必ず人が確認してから記録に残します。</p>
-    <div class="quote-box"><p>AIが奪うのは作業であって、仕事ではない。空いた時間を候補者と企業に返せるかどうかが、これからのCA・RAの差になる。</p></div>
-    <p>人材ビジネスのオペレーション全体で見ると、AIが入る場面は一つではありません。下は、CA・RAの時間の使われ方が、AI導入でどう変わるかのイメージです。</p>
-    <figure class="cmp-chart" aria-label="CA・RAの時間の使われ方（導入前後のイメージ）">
-      <figcaption class="cc-top"><span class="dot"></span>CA・RAの時間の使われ方（イメージ）</figcaption>
-      <div class="cc-row"><span class="cc-lab">AI導入前</span><div class="cc-stack"><i class="s-a" style="width:80%"></i><i class="s-b" style="width:20%"></i></div></div>
-      <div class="cc-row"><span class="cc-lab">AI導入後</span><div class="cc-stack"><i class="s-a" style="width:35%"></i><i class="s-b" style="width:65%"></i></div></div>
-      <div class="cc-legend"><span><i class="s-a"></i>書く・読む・まとめる（AIが圧縮）</span><span><i class="s-b"></i>候補者と向き合う・見立て（人の判断）</span></div>
-      <div class="cc-cap">※イメージ図です。実測値ではなく、AIが書く・読む・まとめる作業を圧縮し、人が候補者と向き合う見立てに時間を回せる——その方向を表しています。</div>
-    </figure>
-
-    <h2 id="s3">まず何から始めるか（スモールスタート）</h2>
-    <p class="answer">効果が見えやすく失敗してもリカバリしやすい1業務に絞り、人が必ず最後に確認する形で小さく試す。</p>
-    <aside class="kn-side">
-      <img src="../avatars/m30-6.svg" alt="" loading="lazy" width="36" height="36">
-      <div><div class="r">マネージャーの視点</div><p>全社展開の前に、<em>1業務で結果を出す</em>ほうが説得が早い。</p></div>
-    </aside>
-    <p>いきなり全業務に広げようとすると、ルールも品質も追いつかず止まります。人材業界での生成AI活用は、<strong>一番痛い・一番多い作業を一つだけ選んで試す</strong>のが現実的です。次の順番で進めると、現場が無理なく使い始められます。</p>
-    <ol>
-      <li><strong>痛い作業を一つ選ぶ。</strong>「スカウト文の初稿づくり」「職務経歴書の要約」など、件数が多く時間を食っている作業を一つに絞る。</li>
-      <li><strong>入力ルールを先に決める。</strong>個人を特定する情報はマスキングする、入力データが学習に使われない法人向けサービスを使う、といった取り扱いルールを先に決める。</li>
-      <li><strong>型（プロンプト）をつくる。</strong>「誰に・何を・どんなトーンで」を埋めるだけで使える指示文の雛形を用意し、現場が毎回ゼロから書かなくて済むようにする。</li>
-      <li><strong>人が確認して送る。</strong>AIの出力は必ずCA・RAが読み、事実とトーンを直してから候補者・企業に届ける。出しっぱなしにしない。</li>
-      <li><strong>効果を測って広げる。</strong>一件あたりの所要時間や着手のしやすさが変わったかを確かめ、手応えがあれば次の業務へ広げる。</li>
-    </ol>
-    <div class="callout"><p>最初の一歩は「AIに正解を出させる」ことではなく「AIに下書きを出させて、人が仕上げる」流れを現場に根づかせること。完璧な自動化を狙うより、確認込みで速くなる体験を一つ作るほうが定着する。</p></div>
-
-    
-    <aside class="kn-take">
-      <img class="kn-take-av" src="../avatars/m50-2.svg" alt="" loading="lazy" width="56" height="56">
-      <div class="kn-take-body">
-        <div class="kn-take-role">支店長の視点</div>
-        <p>最終判断は人、というルールを先に置いたほうが現場は動きやすい。</p>
-      </div>
-    </aside>
-<h2 id="s4">使う前に押さえる注意点（個人情報・公平性・最終判断）</h2>
-    <p class="answer">候補者の個人情報、公平性／バイアス、ハルシネーション、人の最終判断——この4点を運用ルールに落としてから使う。</p>
-    <aside class="kn-side">
-      <img src="../avatars/f50-6.svg" alt="" loading="lazy" width="36" height="36">
-      <div><div class="r">管理部の視点</div><p>候補者情報を扱う以上、入力してよい範囲を決めないと始められない。</p></div>
-    </aside>
-    <p>人材ビジネスは、人の経歴・評価・将来を扱う仕事です。便利さだけで導入すると、信頼を損なうリスクがあります。使い始める前に、最低限この4つを社内のルールとして決めておきます。</p>
-    <div class="tbl-wrap">
-      <table>
-        <tr><th>論点</th><th>何が問題になりうるか</th><th>運用での備え</th></tr>
-        <tr><td>個人情報の扱い</td><td>候補者・企業の情報が外部に渡る／学習に使われる懸念</td><td>入力データが学習に使われない法人向けサービスを選び、特定情報はマスキング。利用規約と自社方針を先に確認</td></tr>
-        <tr><td>公平性／バイアス</td><td>性別・年齢・出身などで不利な扱いが生まれる懸念</td><td>選考・推薦の最終判断はAIに委ねず人が行う。AIは候補の整理・下書きまでにとどめる</td></tr>
-        <tr><td>ハルシネーション</td><td>経歴やスキルなど事実と異なる内容を自然な文章で生成</td><td>経歴・条件などの事実は元データと必ず照合し、人が確認・修正してから送る</td></tr>
-        <tr><td>人の最終判断</td><td>AI任せで見極めや責任の所在があいまいになる</td><td>候補者への連絡・推薦・採否に関わる判断は必ず人が担い、AIは準備役と位置づける</td></tr>
-      </table>
-    </div>
-    <p>言い換えると、生成AIは<strong>候補者と向き合う前の準備を速くする道具</strong>であって、見極めや推薦の判断を肩代わりするものではありません。この線引きを最初にチームで合意できているかどうかが、現場が安心してAIを使えるかの分かれ目になります。なお、こうした「自社の業務文脈をAIが扱える形に整える」設計こそが活用の土台です。上場企業を含む37社・2,500名の生成AI支援を通じても、ルールと型を先に整えた現場ほど活用が止まらず広がる、という傾向が見えています。具体的な業務別の使い方は、<a href="ai-scouting.html">AIスカウト</a>や<a href="ai-matching.html">AIマッチング</a>の記事もあわせてご覧ください。</p>
-
+  </div></nav>
+  <article class="art-body">
+    <h2 id="source">個人情報保護委員会は、入力前の確認を求めている</h2>
+    <figure class="fig-inline source-figure"><a class="source-image" href="figs/ppc-generative-ai-personal-data.png" target="_blank" rel="noopener" aria-label="個人情報保護委員会の生成AI注意喚起を拡大する"><img src="figs/ppc-generative-ai-personal-data.png" alt="個人情報保護委員会の生成AI注意喚起。個人情報を含むプロンプトは利用目的の範囲を確認し、個人データが機械学習に使われないことなどを確認するよう示している。" width="1191" height="1684" decoding="async" fetchpriority="high"></a><figcaption><span class="source-label">公的資料の説明引用</span>中央の「個人情報取扱事業者における注意点」は、個人情報を含む入力が利用目的の範囲内かを確認するよう示しています。本人同意なく個人データを入力する場合は、サービス提供者が機械学習へ利用しないことなどの確認も必要です。<br>出典：<a href="https://www.ppc.go.jp/files/pdf/230602_kouhou_houdou.pdf" target="_blank" rel="noopener">個人情報保護委員会「生成AIサービスの利用に関する注意喚起等について」</a>3ページ（2023年6月2日公表、2026年10月6日確認）。</figcaption></figure>
+    <p>人材紹介・派遣では、職務経歴、希望条件、面談記録など、本人を識別できる情報を日常的に扱います。個人情報保護委員会の注意喚起は、個人情報を含むプロンプトが利用目的の範囲内か、入力した個人データが応答以外の目的で扱われないかを確認するよう求めています。「法人向けプランだから安全」と一括りにせず、実際の契約と設定を確認する必要があります。</p>
+    <aside class="inline-dx-cta" style="margin:34px 0 40px;border:1px solid var(--line-2);border-radius:12px;background:var(--white);padding:22px 26px;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap;"><div style="flex:1;min-width:240px;"><div style="font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);">診断ツール ・ 無料 ・ 5分</div><div style="font-family:var(--jp);font-weight:700;font-size:16.5px;color:var(--ink);line-height:1.55;margin-top:8px;">自社の生成AI活用度を診断する</div><div style="font-size:13.5px;color:var(--slate);line-height:1.8;margin-top:5px;">現在地と次に試す業務を確認できます。</div></div><a href="../../ai-assessment.html" class="btn" style="white-space:nowrap;flex:none;color:var(--paper);border-bottom:none;">無料で診断する <i>&rarr;</i></a></aside>
+    <h2 id="s1">CA・RA業務を「入力」「生成」「判断」に分ける</h2>
+    <p>候補者側を担当するCAと、求人企業側を担当するRAでは、扱う情報や判断が異なります。生成AIを入れる業務名だけを決めても、安全な範囲は分かりません。面談、求人ヒアリング、候補者推薦を、入力する情報、AIに作らせるもの、人が決めることへ分けます。</p>
+    <div class="tbl-wrap"><table><tr><th>工程</th><th>AIに渡すもの</th><th>AIの出力</th><th>人が決めること</th></tr><tr><td>求人ヒアリング</td><td>確認済みの職務・条件</td><td>要件の項目分け、質問案</td><td>採用基準、条件、掲載内容</td></tr><tr><td>候補者面談</td><td>利用条件を満たす面談記録</td><td>事実、希望、確認事項の整理</td><td>評価、推薦可否、次の質問</td></tr><tr><td>推薦</td><td>求人要件と確認済み経歴</td><td>対応根拠と推薦文の下書き</td><td>本人確認、企業への送信</td></tr></table></div>
+    <p>氏名や連絡先を消しても、勤務先、職種、時期、固有の実績の組み合わせから本人が分かる場合があります。マスキングだけに頼らず、そもそもそのサービスへ入力してよいかを判断します。</p>
+    <h2 id="s2">面談メモは、本人の発言と担当者の評価を分ける</h2>
+    <p>面談記録は、次の担当者が本人の希望と担当者の判断を区別できる形で残します。録音を使う場合は、録音目的、処理するサービス、保存期間、共有範囲を候補者へ説明し、必要な同意を得ます。</p>
+    <div class="callout"><p><strong>TechWorkerの設計例：</strong>面談記録を「本人が述べた事実」「希望条件」「担当者の所見」「未確認」「次回の質問」に分けます。AIに不足情報を補わせず、未確認のまま残します。</p></div>
+    <p>AIの要約後は、会社名、役職、在籍期間、数値、希望年収、入社可能時期を原記録と照合します。「成長したい」といった言葉を、本人が述べていない転職理由へ広げないことも重要です。項目を分けた記録は、採用管理システム（ATS）や顧客管理システム（CRM）の既存項目に合わせ、誰がいつ確認したかを残します。</p>
+    <h2 id="s3">対外文面は、元データへ戻って確認する</h2>
+    <p>求人票、スカウト、推薦コメント、面談後の連絡は、文章が自然なほど誤りを見落としやすくなります。外部へ送る前に、求人条件は求人事実台帳、候補者経歴は職務経歴書と面談記録へ戻って照合します。</p>
+    <p>AIの文章に「最適」「即戦力」「強く推薦」といった評価語が入っても、それ自体は根拠になりません。求人要件のどこに、候補者のどの経験が対応するかを書きます。候補者本人が企業へ伝えることを望んでいない情報は、推薦文へ移しません。</p>
+    <h2 id="s4">最初は、全件を人が確認できる一工程に限る</h2>
+    <p>開始単位は「CA業務全体」では広すぎます。利用条件を確認した環境で、架空データによる求人要件整理、または承認済み面談メモの項目分けなど、一つの工程を選びます。担当者、入力可能な情報、確認項目、保存先、削除方法を先に決めます。</p>
+    <p>効果測定では、同じ件数について下書き時間と確認時間を分けて記録します。AIで下書きが短くなっても、誤りの確認に時間が増えれば総時間は減っていません。修正件数、重大な誤り、本人や求人企業からの訂正も記録し、継続範囲を決めます。</p>
     <h2 id="faq">よくある質問</h2>
-    <div class="faq"><div class="q">人材紹介・派遣の現場で、生成AIはまず何に使うのが効果的ですか？</div><p class="a">最初は「下書きを書く」「長い文章を要約する」といった、人が必ず最後に確認する作業から始めるのが効果的です。スカウト文の初稿、職務経歴書の要約、面談メモの整形などは、効果が見えやすく失敗してもリカバリしやすいため、スモールスタートに向いています。詳しい使い方は<a href="ai-scouting.html">AIスカウト</a>の記事もご覧ください。</p></div>
-    <div class="faq"><div class="q">候補者や企業の個人情報を生成AIに入力しても大丈夫ですか？</div><p class="a">利用するサービスの規約と自社の個人情報の取り扱い方針を必ず確認してください。入力したデータが学習に使われない設定の法人向けサービスを選ぶ、個人を特定する情報はマスキングしてから入力する、といった運用ルールを先に決めることが前提になります。</p></div>
-    <div class="faq"><div class="q">AIに任せると、CAやRAの仕事はなくなりますか？</div><p class="a">なくなりません。AIが担うのは下書きや要約・整理といった準備作業で、候補者との信頼関係づくり、見極め、最終的な推薦判断は人にしかできない領域です。AIで準備を速くした分、候補者・企業と向き合う時間を増やすのが本来の使い方です。</p></div>
-    <div class="faq"><div class="q">生成AIの出力をそのまま候補者や求人企業に送ってよいですか？</div><p class="a">そのまま送るのは避けてください。生成AIは事実と異なる内容（ハルシネーション）を自然な文章で出力することがあります。経歴・スキル・求人条件などの事実は元データと照合し、必ず人が確認・修正してから送る運用にします。</p></div>
+    <div class="faq"><div class="q">候補者の個人情報を生成AIへ入力してよいですか？</div><p class="a">利用目的の範囲内か、サービス提供者が入力を機械学習など別目的に使うかを確認します。本人同意、契約、社内規程、保存先を確認できない状態では入力しません。氏名を消すだけで十分とは限りません。</p></div>
+    <div class="faq"><div class="q">面談の録音やメモをAIで整理できますか？</div><p class="a">録音する場合は目的、処理するサービス、保存期間、共有範囲を説明し、必要な同意を得ます。AIの要約は原記録と照合し、固有名詞、数値、希望条件、本人の発言を確認します。</p></div>
+    <div class="faq"><div class="q">どの業務から試すべきですか？</div><p class="a">利用条件を確認できるデータで、出力を人が全件確認できる一工程から始めます。たとえば架空データによる求人要件整理や、承認済みメモの項目分けです。時間短縮は同じ件数と確認基準で測ります。</p></div>
   </article>
 </div>
 
@@ -330,8 +167,8 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
 <div class="art-cta"><div class="inner">
   <div>
-    <h3>人材ビジネスの「どこにAIを入れるか」を一緒に設計します。</h3>
-    <p>候補者ソーシングからスカウト・要約・推薦まで、人材紹介・派遣・採用支援の業務に生成AIをどう接続するか。上場企業を含む37社・2,500名の支援知見をもとに、スモールスタートの設計から運用ルールづくりまで伴走します。検討段階のご相談だけでも歓迎です。</p>
+    <h3>候補者データを扱える範囲から、AI導入を設計します。</h3>
+    <p>入力条件、面談記録の構造、対外送信前の照合、効果測定を一工程ずつ決めます。人材紹介・派遣の既存業務に合わせた相談窓口です。</p>
   </div>
   <a href="../../contact.html" class="btn">AI活用の相談をする <i>→</i></a>
 </div></div>
@@ -342,10 +179,10 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <section class="related"><div class="container">
   <div class="rl-h">Related</div>
   <div class="related-grid">
-    <a href="ai-scouting.html" class="related-card"><span class="rc-cat">スカウト</span><div class="rc-title">AIスカウトとは｜返信される候補者ソーシングとスカウト文の作り方</div></a>
-    <a href="ai-matching.html" class="related-card"><span class="rc-cat">マッチング</span><div class="rc-title">AIマッチングとは｜求人と候補者の精度を上げる人材紹介のAI活用</div></a>
-    <a href="ai-job-posting.html" class="related-card"><span class="rc-cat">求人原稿</span><div class="rc-title">生成AIで求人票を作る｜応募が集まる原稿の書き方</div></a>
-    <a href="ai-interview-notes.html" class="related-card"><span class="rc-cat">面談記録</span><div class="rc-title">面談メモ・議事録を生成AIで構造化する｜CA業務の時短</div></a>
+
+    <a href="ai-matching.html" class="related-card"><span class="rc-cat">マッチング</span><div class="rc-title">生成AIで人材マッチングを補助する——要件整理・根拠確認・公平性</div></a>
+    <a href="ai-job-posting.html" class="related-card"><span class="rc-cat">求人原稿</span><div class="rc-title">生成AIで求人票を作る——労働条件を守る原稿作成と確認手順</div></a>
+
 
   </div>
 </div></section>

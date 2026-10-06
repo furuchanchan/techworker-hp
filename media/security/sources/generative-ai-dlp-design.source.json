@@ -1,0 +1,13 @@
+{
+  "article": "media/security/generative-ai-dlp-design.html",
+  "checked_at": "2026-10-06",
+  "sourceURL": "https://developers.cloudflare.com/reference-architecture/architectures/ai-security-for-apps/",
+  "quoted": null,
+  "imageURL": "https://raw.githubusercontent.com/cloudflare/cloudflare-docs/production/src/assets/images/reference-architecture/ai-security-for-apps/fig12-pii-exposure-mitigation.png",
+  "additional_sources": [
+    "https://developers.cloudflare.com/ai-gateway/features/dlp/"
+  ],
+  "verified_scope": "AI Gateway DLPはBeta。AI Gatewayを通る要求・応答本文のテキストを検査し、base64・バイナリ・外部URLは検査しない。応答側SSEは全応答を蓄積してから検査する。公式処理はFlagとBlock。",
+  "techworker_design_boundary": "伏せ字・置換、RAGの閲覧権限、記録の保存制御はCloudflare機能の説明ではなく、TechWorkerの製品横断設計。",
+  "reuse_basis": "cloudflare-docs収録画像。CC BY 4.0。入力側PII検知の図である範囲をcaptionで限定。"
+}
