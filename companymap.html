@@ -14,14 +14,14 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CompanyMap AI｜会社の仕事を、AI前提の設計図に — TechWorker</title>
-<meta name="description" content="部署ごとの仕事の流れを洗い出し、1枚の業務図にします。詰まっている所、あの人しか分からない所、AIに任せられる所まで、ひと目で。AI前提の業務の設計図。株式会社TechWorker。">
+<title>CompanyMap AI｜現場の仕事を、1枚の図に。AIに任せる仕事が、決まります。 — TechWorker</title>
+<meta name="description" content="CompanyMap AIは、担当者への聞き取りや手元の資料から、仕事の流れを1枚の業務図にするサービスです。AIに任せる仕事と人が判断する仕事を分け、実装担当（FDE）が構築から効果の確認まで一緒に進めます。株式会社TechWorker。">
 <link rel="canonical" href="https://techworker.co.jp/companymap">
 <link rel="icon" type="image/svg+xml" href="/assets/companymap/favicon.svg">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TechWorker">
-<meta property="og:title" content="CompanyMap AI｜会社の仕事を、AI前提の設計図に">
-<meta property="og:description" content="部署ごとの仕事の流れを洗い出し、1枚の業務図にします。詰まっている所、あの人しか分からない所、AIに任せられる所まで、ひと目で。AI前提の業務の設計図。株式会社TechWorker。">
+<meta property="og:title" content="CompanyMap AI｜現場の仕事を、1枚の図に。AIに任せる仕事が、決まります。">
+<meta property="og:description" content="CompanyMap AIは、担当者への聞き取りや手元の資料から、仕事の流れを1枚の業務図にするサービスです。AIに任せる仕事と人が判断する仕事を分け、実装担当（FDE）が構築から効果の確認まで一緒に進めます。株式会社TechWorker。">
 <meta property="og:url" content="https://techworker.co.jp/companymap">
 <meta property="og:image" content="https://techworker.co.jp/assets/companymap/ogp.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -29,316 +29,126 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Inter+Tight:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/companymap/style.css?v=20260929c">
-<script type="application/ld+json">
-{
+<script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Service",
-      "name": "CompanyMap AI",
-      "url": "https://techworker.co.jp/companymap",
-      "description": "部署ごとの仕事の流れを洗い出し、1枚の業務図にします。詰まっている所、あの人しか分からない所、AIに任せられる所まで、ひと目で。AI前提の業務の設計図。株式会社TechWorker。",
-      "serviceType": "業務の見える化と生成AIの業務への定着",
-      "areaServed": "JP",
-      "inLanguage": "ja",
-      "provider": {
-        "@type": "Organization",
-        "name": "株式会社TechWorker",
-        "url": "https://techworker.co.jp/"
-      }
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "どんな資料があればいいですか。",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "手順書、マニュアル、Excel、議事録など、いまあるもので始められます。資料がない業務も、お話をうかがえば描けます。"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "研修で作ったプロンプトも使えますか。",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "使えます。業務図の中で、どの工程で使うか、だれが確かめるかを一緒に決めます。"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "社内の担当者も業務図を直せますか。",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "直せます。TechWorkerとお客さまは同じ画面を使い、直したところは版として残ります。"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "どこが提供していますか。",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "株式会社TechWorkerが提供しています。生成AIの研修・導入支援で、37社・2,500名の方とご一緒してきました。"
-          }
-        }
-      ]
-    }
-  ]
-}
-</script>
+  "@type": "Service",
+  "name": "CompanyMap AI",
+  "url": "https://techworker.co.jp/companymap",
+  "description": "CompanyMap AIは、担当者への聞き取りや手元の資料から、仕事の流れを1枚の業務図にするサービスです。AIに任せる仕事と人が判断する仕事を分け、実装担当（FDE）が構築から効果の確認まで一緒に進めます。株式会社TechWorker。",
+  "serviceType": "業務整理・業務図の作成と、AI導入の実装支援",
+  "areaServed": "JP",
+  "inLanguage": "ja",
+  "provider": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}
+}</script>
+<link rel="stylesheet" href="/assets/companymap/delivery.css?v=20261006g">
+<link rel="stylesheet" href="/assets/companymap/lp-x1.css?v=20261007a">
 </head>
-<body>
-
-<svg width="0" height="0" style="position:absolute">
-  <defs>
-    <symbol id="logo" viewBox="0 0 30 30">
-      <rect width="30" height="30" rx="8" fill="#0B0B0C"/>
-      <path d="M4 10.5h22M4 19.5h22" stroke="#FFFFFF" stroke-opacity=".3" stroke-width="1.2"/>
-      <path d="M5 6.5c3 0 3.5 2 5.5 2s1.6-2.4 3.4-1.4c1.4.8-.4 3.1.6 5.9.6 1.8 2.5 2.2 2.5 3.9v4.3h7.5" fill="none" stroke="#FFFFFF" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="24.6" cy="23.1" r="2.2" fill="#FFFFFF"/>
-    </symbol>
-    <symbol id="topo" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
-      <g fill="none" stroke="#0B0B0C" stroke-opacity=".05" stroke-width="1.2">
-        <path d="M-40 160C160 80 300 220 470 170s260-150 430-60 250 170 580 60"/>
-        <path d="M-40 210C150 130 310 270 480 225s250-140 420-55 260 180 580 70"/>
-        <path d="M-40 265C140 185 320 320 495 285s245-130 410-50 270 185 575 80"/>
-        <path d="M-40 330C130 250 330 380 510 350s240-120 400-40 280 190 570 90"/>
-        <path d="M1040 520c80-60 210-50 250 20s-30 150-130 150-170-110-120-170z"/>
-        <path d="M1010 515c95-85 260-70 305 20s-40 190-165 190-215-130-140-210z"/>
-        <path d="M980 505c110-110 310-95 360 20s-50 230-200 230-260-150-160-250z"/>
-      </g>
-    </symbol>
-  </defs>
-</svg>
-
-<nav class="nav"><div class="wrap">
-  <a class="brand" href="/companymap"><svg class="mark"><use href="#logo"/></svg><span class="word">CompanyMap</span><span class="ai">AI</span></a>
-  <div class="links"><a href="#how">しくみ</a><a href="#others">他社の事例</a><a href="#faq">よくある質問</a></div>
-  <a class="btn sm" href="/companymap/contact">相談する</a>
-</div></nav>
-
-<header class="hero">
-  <svg class="topo"><use href="#topo"/></svg>
-  <div class="wrap" style="position:relative">
-    <span class="pill">会社の業務マップをつくるサービス</span>
-    <h1>会社の仕事を、<br>AI前提の設計図に。</h1>
-    <p class="lead">部署ごとの仕事の流れを洗い出し、1枚の業務図にします。詰まっている所、あの人しか分からない所、AIに任せられる所まで、ひと目で。</p>
-    <div class="acts"><a class="btn" href="/companymap/contact">無料で相談する <i>→</i></a><a class="btn ghost" href="#how">しくみを見る</a></div>
-    <div class="meta"><span>提供：株式会社TechWorker（生成AIの研修・導入支援 <b>37</b>社・<b>2,500</b>名）</span><span>国内上場企業の生成AI活用事例 <b>4,864</b>件を収録</span></div>
-
-    <div class="stage">
-      <div class="frags">
-        <div class="frag file" style="left:0;top:40px;transform:rotate(-4deg)"><i class="doc"></i><span><span class="k">共有フォルダ ・ 最終更新 半年前</span><b>プロンプト集_最終版.docx</b></span></div>
-        <div class="frag" style="left:190px;top:150px;transform:rotate(3deg);width:220px"><span class="k">Excel ・ 本人しか触らない</span><b>受注管理_田中.xlsx</b></div>
-        <div class="frag chat" style="left:0;top:250px;transform:rotate(-2deg);width:240px"><span class="k">チャット</span>この見積、田中さんに聞いてください</div>
-        <div class="frag" style="left:215px;top:318px;transform:rotate(5deg);width:250px"><span class="k">メール ・ 返事待ち 2日</span><b>【再送】単価の確認をお願いします</b></div>
-        <div class="frag file hide-sp" style="left:30px;top:430px;transform:rotate(3deg)"><i class="fold"></i><span><span class="k">社内GPT ・ 先月の利用 2回</span><b>見積チェックGPT</b></span></div>
-        <div class="frag sticky hide-sp" style="left:250px;top:505px;transform:rotate(-5deg);width:190px"><span class="k">付せん</span><b>例外は部長に確認（いつも）</b></div>
-        <div class="frag file hide-sp" style="left:20px;top:585px;transform:rotate(-2deg)"><i class="ppt"></i><span><span class="k">退職まで あと3か月</span><b>引き継ぎ資料_作成中.docx</b></span></div>
-      </div>
-      <svg class="route" viewBox="0 0 1144 720" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M120 120c70 30 160 0 170 60s-120 50-100 120 160 10 180 80-170 40-150 110 140 30 190 0 80-80 40-110-110 40-30 70 60 0 110 0H440" fill="none" stroke="#0B0B0C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
-        <circle cx="440" cy="400" r="6" fill="#0B0B0C"/>
-      </svg>
-      <span class="tagl" style="left:0;top:0">いま：仕事の流れが、<b>どこにも描かれていない</b></span>
-      <span class="tagl" style="left:37%;top:0">CompanyMap AI：業務図に、<b>仕事の流れを</b></span>
-      <div class="map" data-zoom="/assets/companymap/hero-diagram.jpg" data-zoom-alt="業務図の画面"><picture><source media="(max-width:900px)" srcset="/assets/companymap/hero-diagram-sp.jpg"><img src="/assets/companymap/hero-diagram.jpg" width="2400" height="1500" alt="CompanyMap AIの業務図の画面。社外・社内・ツールとAI・データの層に工程が並び、AIが受け持つ工程に印が付いている"></picture></div>
-      <div class="kpi">
-        <span class="k">見積の作成 ・ 工程3</span>
-        <b class="t">値引きの判断</b>
-        <div class="row3"><div><small>できる人</small><b>：田中さんだけ</b></div><div><small>詰まり</small><b>：部長の確認待ちで2日</b></div><div><small>AIに任せる</small><b>：過去の見積を集めて下書き</b></div></div>
-      </div>
-    </div>
+<body class="discovery-lp lp-x1"><svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="logo" viewBox="0 0 30 30"><rect width="30" height="30" rx="8" fill="#0B0B0C"/><path d="M4 10.5h22M4 19.5h22" stroke="#FFFFFF" stroke-opacity=".3" stroke-width="1.2"/><path d="M5 6.5c3 0 3.5 2 5.5 2s1.6-2.4 3.4-1.4c1.4.8-.4 3.1.6 5.9.6 1.8 2.5 2.2 2.5 3.9v4.3h7.5" fill="none" stroke="#FFFFFF" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24.6" cy="23.1" r="2.2" fill="#FFFFFF"/></symbol>
+<symbol id="topo" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="#0B0B0C" stroke-opacity=".05" stroke-width="1.2"><path d="M-40 160C160 80 300 220 470 170s260-150 430-60 250 170 580 60"/><path d="M-40 210C150 130 310 270 480 225s250-140 420-55 260 180 580 70"/><path d="M-40 265C140 185 320 320 495 285s245-130 410-50 270 185 575 80"/><path d="M-40 330C130 250 330 380 510 350s240-120 400-40 280 190 570 90"/><path d="M1040 520c80-60 210-50 250 20s-30 150-130 150-170-110-120-170z"/><path d="M1010 515c95-85 260-70 305 20s-40 190-165 190-215-130-140-210z"/><path d="M980 505c110-110 310-95 360 20s-50 230-200 230-260-150-160-250z"/></g></symbol>
+</defs></svg>
+<nav class="nav"><div class="wrap"><a class="brand" href="/companymap"><svg class="mark"><use href="#logo"/></svg><span class="word">CompanyMap</span><span class="ai">AI</span></a>
+<div class="links"><a href="#pains">よくある課題</a><a href="#approach">できること</a><a href="#roles">進め方</a><a href="#start">始め方</a><a href="#resources">資料</a></div><a class="btn sm" href="/companymap/contact">相談する</a></div></nav>
+<main>
+<header class="hero discovery-hero"><svg class="topo" aria-hidden="true"><use href="#topo"/></svg><div class="wrap hero-inner">
+<span class="pill">業務の整理から、AIの導入・効果の確認まで</span>
+<h1>現場の仕事を、1枚の図に。<br>AIに任せる仕事が、決まります。</h1>
+<p class="lead">CompanyMap AIは、担当者への聞き取りや手元の資料から、仕事の流れを1枚の図（業務図）にするサービスです。<br>図を見ながら、AIに任せる仕事と、人が判断する仕事を分けます。決まったあとは、実装担当（FDE）が構築から効果の確認まで一緒に進めます。</p>
+<div class="acts"><a class="btn" href="/companymap/contact">無料相談を申し込む <i>→</i></a></div>
+<div class="stage discovery-stage">
+  <span class="tagl input-tag">集める情報：<b>聞き取り・資料・記録</b></span><span class="tagl map-tag">できあがる<b>業務図</b></span>
+  <div class="frags">
+    <div class="frag chat input-interview"><span class="k">インタビュー</span><b>「この条件のときだけ、<br>部長に確認しています」</b></div>
+    <div class="frag file input-doc"><i class="doc"></i><span><span class="k">既存の資料</span><b>受注処理マニュアル.docx</b></span></div>
+    <div class="frag file input-sheet"><i></i><span><span class="k">Excel ・ 担当者の管理表</span><b>月次集計_最新版.xlsx</b></span></div>
+    <div class="frag input-log"><span class="k">業務システムの履歴</span><b>受付 → 差し戻し → 再申請</b><div class="log-dots"><i></i><span></span><i></i><span></span><i></i></div></div>
+    <div class="frag input-screen"><span class="k">共有された操作・画面の記録</span><b>転記と確認が、何度も続く</b><div class="mini-screen"><i></i><i></i><i></i><i></i><i></i></div></div>
   </div>
-</header>
+  <svg class="route" viewBox="0 0 1144 610" preserveAspectRatio="none" aria-hidden="true"><path d="M70 150C310 60 155 255 300 240S210 450 340 440C500 430 405 310 470 310H590" fill="none" stroke="#0B0B0C" stroke-width="2.5" stroke-linecap="round"/><circle cx="590" cy="310" r="5" fill="#0B0B0C"/></svg>
+  <div class="map" data-zoom="/assets/companymap/home-h3.jpg" data-zoom-alt="CompanyMap AIの業務図の画面"><img src="/assets/companymap/home-h3.jpg" width="2400" height="1500" alt="CompanyMap AIの業務図の画面"></div>
+  <div class="decision-note"><span>図を見ながら決めます</span><b>この入力は、AIに任せる。<br>この判断は、人が行う。</b></div>
+</div>
 
-<section class="sec" id="pains"><div class="wrap">
-  <span class="kick">いまの課題</span>
-  <h2 class="h2">仕事を変えようとして、<br>こんなところで止まっていませんか。</h2>
-  <div class="pains">
-    <div class="pn"><span class="n">01</span><h4>業務の<wbr>属人化・<wbr>暗黙知の消失</h4><p class="voice">「その仕事、<wbr>あの人しか分からない」</p><p>手順はベテランの頭の中。その人が異動や退職をすると、やり方ごと消えてしまいます。引き継ぎの資料を作ろうにも、何から書けばいいのかが分かりません。</p></div>
-    <div class="pn"><span class="n">02</span><h4>業務の<wbr>ブラックボックス化</h4><p class="voice">「どこで止まっているのか、<wbr>だれも分からない」</p><p>確認待ち、差し戻し、二重入力。部署をまたぐと、仕事がどこで止まっているのかが見えなくなります。忙しいのに、どこから手を付ければいいかが決まりません。</p></div>
-    <div class="pn"><span class="n">03</span><h4>AI活用の<wbr>形骸化</h4><p class="voice">「研修のあと、<wbr>だれも開かなくなった」</p><p>研修で作ったプロンプト集は、共有フォルダの奥。毎日の仕事は、前と同じ流れのままです。仕事の流れがどこにも書いていないので、どこをAIに任せるかが決まりません。</p></div>
-  </div>
-  <p class="lead2">3つとも、根っこは同じです。会社の仕事の流れが、どこにも描かれていないこと。CompanyMap AIは、まず仕事を洗い出して業務図にし、詰まっている所、あの人しかできない所、AIに任せられる所を1枚で見えるようにします。</p>
+</div></header>
+<section class="sec pain-sec v1 w2" id="pains"><div class="wrap">
+<span class="kick">よくある課題</span><h2 class="h2">AIを使いたい。でも、<br>どの業務から始めればいいか分からない。</h2><p class="lead2">決める前に、現場の仕事そのものが、こんなところで止まっています。<br><span class="ev40">2026年の国内調査では、「生成AIを活用すべき業務の範囲」を課題に挙げた企業が <b>40.0%</b>。</span></p>
+<div class="w2-grid x-grid">
+ <article><div class="scene sc" aria-hidden="true">
+ <div class="cal"><div class="cal-m">11月</div><div class="cal-d"><b>1</b><span>担当交代</span></div><div class="cal-g"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+ <div class="xls"><div class="x-t"><i>X</i>業務一覧.xlsx</div><div class="x-r f"><span>受注の登録</span><span>田中</span><span>済</span></div><div class="x-r f"><span>納期の回答</span><span>田中</span><span>済</span></div><div class="x-r"><span>在庫の確認</span><span></span><span></span></div><div class="x-r"><span>請求書の発行</span><span></span><span></span></div><div class="x-r"><span>月次の集計</span><span></span><span></span></div><div class="x-foot">洗い出し　<b>2</b> / 7業務</div></div>
+ <div class="sticky">引き継ぎ資料_作成中.docx<br><b>最終更新　3週間前</b></div>
+</div>
+<div class="t"><h3>来春、あの人が辞める。<br>この部署の仕事を、誰も引き継げない。</h3><p>退職・異動・定年、システムの入れ替え。期限は決まっているのに、業務の洗い出しが終わりません。担当・資料・例外の対応が散らばっていて、説明と確認を何度も繰り返しています。</p><small class="ev">担当者が休むと業務が回らない 52.3%</small></div></article>
+ <article><div class="scene sg" aria-hidden="true">
+ <div class="ts"><div class="ts-t">月末の残業 ・ 管理部</div><div class="ts-r"><span>29日</span><em><i style="width:52%"></i></em><b>3.5h</b></div><div class="ts-r"><span>30日</span><em><i style="width:60%"></i></em><b>4.0h</b></div><div class="ts-r"><span>31日</span><em><i style="width:82%"></i></em><b>5.5h</b></div><div class="ts-r"><span>1日</span><em><i style="width:70%"></i></em><b>4.5h</b></div></div>
+ <div class="sticky">売上集計_v12.xlsm<br><b>また、途中で止まった</b></div>
+ <div class="bubble dark">締め、今月も間に合わない</div>
+</div>
+<div class="t"><h3>月末の集計が、<br>前任者のマクロで止まる。</h3><p>集計や請求が、中身を誰も知らないExcelで回っています。月末に壊れると直せる人がおらず、締めは残業で間に合わせています。</p><small class="ev">前任者の「謎マクロ・関数」に苦労した人 64.2%</small></div></article>
+ <article><div class="scene sf" aria-hidden="true">
+ <div class="doc"><div class="dc-t">要件定義書_v3.docx</div><small>新システム ・ 受注処理</small><i></i><i></i><i class="s"></i><i></i><i class="s"></i></div>
+ <div class="notes"><span>納期が短いときは、部長に確認</span><span>FAXの注文は、手で転記</span><span>得意先Aは、特例の単価</span></div>
+ <div class="bubble dark">要件に、載っていなかった</div>
+</div>
+<div class="t"><h3>システムを入れ替えたら、<br>現場の「例外」で止まった。</h3><p>要件定義に載っていたのは、手順書どおりの流れだけ。納期が短いときの確認や、FAXの注文の転記は、稼働してから分かりました。</p></div></article>
+ <article><div class="scene sb" aria-hidden="true">
+ <div class="doc"><div class="dc-t">受注処理マニュアル.docx</div><small>最終更新 2021/04</small><i></i><i></i><i></i><i class="s"></i><i></i><i class="s"></i></div>
+ <div class="thread"><div class="bubble">納期が短い注文、どう進めます？</div><div class="bubble">それ、田中さんに聞いて</div><div class="bubble dark">田中さん、今日お休みです…</div></div>
+</div>
+<div class="t"><h3>手順書はあるのに、<br>結局「あの人」に聞いている。</h3><p>判断の基準が、ベテランの頭の中にあります。手順書は作った日のままで、現場のやり方と食い違っています。その人が休むと、仕事が止まります。</p><small class="ev">業務のノウハウが「頭の中」か「一部だけ文書化」 62.2%</small></div></article>
+</div>
+<p class="src">出典：帝国データバンク「生成AIに関する企業の動向調査」2026年5月公表（回答10,312社）／ネオス「企業のAI活用に関する実態調査」2026年9月（就業者500名）／NTTデータ ビジネスブレインズ 営業事務221人調査 2026年7月</p>
 </div></section>
-
-<section class="sec" id="how"><div class="wrap">
-  <span class="kick">しくみ</span>
-  <h2 class="h2">2週間で、AI前提の業務の設計図をつくります。</h2>
-  <div class="line">
-    <div class="st"><div class="dot"></div><span class="n">01</span><h4>話を聞く</h4><p>担当の方とベテランの方へのヒアリングと、手元の資料から。頭の中にある判断の基準や、例外のさばき方も聞き取ります。</p></div>
-    <div class="st"><div class="dot"></div><span class="n">02</span><h4>業務図にする</h4><p>今のやり方を1枚に。詰まっている所と、あの人しかできない所に印を付けます。</p></div>
-    <div class="st"><div class="dot"></div><span class="n">03</span><h4>持ち場を決める</h4><p>どこをAIに任せ、だれが確かめるか。変える順番も一緒に。</p></div>
-    <div class="st"><div class="dot"></div><span class="n">04</span><h4>見守る</h4><p>使われているか、手が空いたかを毎月。</p></div>
-  </div>
-
-  <div class="station wide">
-    <div class="txt">
-      <div class="hd"><span class="badge"><i></i>03 持ち場を決める</span><h3>どこから任せるか、<br>順番も一緒に。</h3></div>
-      <div class="bd"><p>月にどれくらい手が空くかを見ながら、最初に任せる3つを選びます。作ったままのプロンプトやエージェントも、ここで持ち場を決めます。</p>
-      <ul><li>工程ごとに、だれが確かめるかを決める</li><li>決めることが残っている工程は、あと何を決めればよいかを表示</li></ul></div>
-    </div>
-    <div class="fig"><div class="shot" data-zoom="/assets/companymap/priority.jpg" data-zoom-alt="AIに任せる順番の画面"><picture><source media="(max-width:900px)" srcset="/assets/companymap/priority-sp.jpg" width="652" height="494"><img src="/assets/companymap/priority-wide.jpg" width="2000" height="548" loading="lazy" alt="AIに任せる順番の画面。人の作業は月69時間から29時間に。最初に任せる3つの工程と、それぞれ浮く時間"></picture></div></div>
-  </div>
-
-  <div class="station wide">
-    <div class="txt">
-      <div class="hd"><span class="badge"><i></i>04 見守る</span><h3>使われているか、<br>毎月たしかめます。</h3></div>
-      <div class="bd"><p>動きはじめたら、使われた回数、人が直した回数、浮いた時間を記録します。任せる範囲を広げたくなったら、業務図を描き足します。</p></div>
-    </div>
-    <div class="fig"><div class="shot" data-zoom="/assets/companymap/results.jpg" data-zoom-alt="浮いた時間（実績）の画面"><picture><source media="(max-width:900px)" srcset="/assets/companymap/results-sp.jpg" width="784" height="230"><img src="/assets/companymap/results.jpg" width="2000" height="429" loading="lazy" alt="浮いた時間（実績）の画面。9月に浮いた時間は4.8時間、動いているAIは12のうち1"></picture></div></div>
-  </div>
+<section class="sec approach" id="approach"><div class="wrap">
+<span class="kick">できること 1</span><h2 class="h2">業務の情報は、3つの方法で集めます。</h2><p class="lead2">担当者への聞き取り、手元の資料、業務の記録。この3つを組み合わせて、現場の仕事を1枚の図にします。3つすべてを使う必要はありません。</p>
+<div class="method-grid">
+ <article class="method"><div class="method-art interview-art" aria-hidden="true"><span>いつもと違うときは？</span><b>納期が短い場合は、<br>先に在庫を確認します。</b><i>判断の理由まで聞く</i></div><span class="method-no">01 ／ 聞く</span><h3>インタビューで聞く。</h3><p>AIが担当者に質問します。手順書にない判断や例外を、理由まで確かめます。</p></article>
+ <article class="method"><div class="method-art document-art" aria-hidden="true"><i class="sheet-back">月次集計.xlsx</i><b>業務マニュアル<span></span><span></span><span></span></b><i class="sheet-front">議事録・メール</i></div><span class="method-no">02 ／ 読む</span><h3>手元の資料を読む。</h3><p>手順書、Excel、議事録など、いまある資料から仕事の流れをたどります。</p></article>
+ <article class="method"><div class="method-art history-art" aria-hidden="true"><div><span>09:10</span><b>申請を受付</b></div><div><span>11:40</span><b>記載漏れで差し戻し</b></div><div><span>翌日</span><b>確認して、再申請</b></div></div><span class="method-no">03 ／ たどる</span><h3>業務の記録を見る。</h3><p>共有いただける履歴や画面の記録から、実際の手順と待ち時間を確かめます。</p></article>
+</div>
 </div></section>
-
-<section class="sec" id="cases"><div class="wrap">
-  <span class="kick">生成AIの活用が進んだ会社</span>
-  <h2 class="h2 phr">業務を見える化して、<br>生成AIの活用が<wbr>進んだ会社。</h2>
-  <p class="lead2">どの会社も、まず仕事を洗い出し、どこに時間がかかっているか、どこにAIが合うかを決めてから生成AIを入れています。会社の発表と記事から。</p>
-  <div class="mapcases">
-    <article class="mc" data-case="case-7i"><div class="tags"><span>セブン＆アイ</span><span>小売</span><span>マーケティング</span></div><h4>マーケティングの仕事を棚卸しし、タスクごとに書き出した</h4><p class="found"><small>見える化して分かったこと</small>メールマガジンの文章づくりなど、生成AIに任せられるタスクがあった。</p><div class="res"><b>84<i>%減</i></b><small>外部委託費</small></div><p class="sub">生成AIを組み込んだ業務の流れに組み直した。</p><p class="src">セブン＆アイ・ホールディングス／日経クロステック（2025年）。同社 デジタルマーケティングオフィサーの話から</p><button type="button" class="more" aria-haspopup="dialog">くわしく見る <i>→</i></button></article>
-    <article class="mc" data-case="case-toshiba"><div class="tags"><span>東芝</span><span>電機</span><span>全社</span></div><h4>各部門の「困りごと」を洗い出し、使う道具を仕分けた</h4><p class="found"><small>見える化して分かったこと</small>困りごとごとに、Copilot・表計算・社内検索AIのどれが合うかが決まった。</p><div class="res"><b>3<i>か月</i> → 1<i>日</i></b><small>従業員調査に寄せられた7万件のコメントの分析</small></div><p class="sub">Copilotを約1万人に展開。先に試した400人では、1人あたり月5.6時間減った。</p><p class="src">東芝／日本マイクロソフト 導入事例（2025年1月）。同社 最高デジタル責任者ほかの話から</p><button type="button" class="more" aria-haspopup="dialog">くわしく見る <i>→</i></button></article>
-    <article class="mc" data-case="case-kddi"><div class="tags"><span>KDDI</span><span>通信</span><span>法人営業</span></div><h4>営業の準備で、何に時間がかかっているかを洗い出した</h4><p class="found"><small>見える化して分かったこと</small>時間の約5割が、資料づくりのための情報集めと整理だった。</p><div class="res"><b>74<i>%減</i></b><small>資料づくりの情報集めにかかる時間（1人あたり）</small></div><p class="sub">過去の営業資料を、生成AIで探して要約できる仕組みをつくった。8割の人が時間の減少を実感。</p><p class="src">KDDI／日本マイクロソフト 導入事例（2025年3月）</p><button type="button" class="more" aria-haspopup="dialog">くわしく見る <i>→</i></button></article>
-  </div>
+<section class="sec qa1" id="outputs"><div class="wrap">
+<span class="kick">できること 2</span><h2 class="h2">お渡しするのは、業務図と、<br>AIに任せる順番です。</h2><p class="lead2">現場と一緒に確かめた業務図と、詰まり・かかる時間・AIに任せられる工程を並べた一覧をお渡しします。社内の説明や稟議に、そのまま使えます。</p>
+<div class="qa1-stack">
+ <article><div class="out-art tall" data-zoom="/assets/companymap/home-map-lp.jpg" data-zoom-alt="業務図"><img src="/assets/companymap/home-map-lp.jpg" alt="受注処理の業務図。担当・順番・判断の分かれ目と、AIに任せる工程"></div><h3><i>1</i>業務図</h3><p>担当・順番・使うツール・判断の分かれ目を、1枚にまとめます。AIに任せる工程と、人が残す判断に印が付きます。</p></article>
+ <article><div class="out-art tall" data-zoom="/assets/companymap/home-priority-lp.jpg" data-zoom-alt="AIに任せる順番"><img src="/assets/companymap/home-priority-lp.jpg" alt="AIに任せる順番。浮く時間の大きい順に並べた改善候補の一覧"></div><h3><i>2</i>改善候補の一覧</h3><p>詰まっている所、かかっている時間、AIに任せられる工程を並べ、最初に手を付ける順番を示します。動き始めたあとは、浮いた時間を毎月記録し、役員向けの1枚にまとめます。</p></article>
+</div>
 </div></section>
-
-<dialog class="cd" id="case-7i" aria-labelledby="case-7i-t">
-  <div class="in" tabindex="-1" autofocus>
-    <button type="button" class="x" aria-label="閉じる">×</button>
-    <div class="tags"><span>セブン＆アイ・ホールディングス</span><span>小売</span><span>マーケティング</span></div>
-    <h3 id="case-7i-t">マーケティングの仕事を棚卸しして、生成AIの置き場所を決めた</h3>
-    <div class="big"><b>84<i>%減</i></b><small>外部委託費</small></div>
-    <h4>進め方</h4>
-    <ol class="cd-steps">
-      <li><b>見える化</b>マーケティングの業務を棚卸しし、業務プロセスごとのタスクを洗い出した。</li>
-      <li><b>AIの置き場所を決める</b>洗い出したタスクの中から生成AIを使えるものを探し、生成AIを組み込んだ業務の流れに組み直した。</li>
-      <li><b>成果</b>メールマガジンで開封率の高い文章をつくる作業に生成AIを使うと決め、外部委託費を84%減らした。</li>
-    </ol>
-    <h4>ほかに進めていること</h4>
-    <ul><li>デジタルイノベーション部が中心になり、カスタマーサービス、社内業務の効率化、店舗の支援、顧客体験の向上、データ分析のプロジェクトも進めている。</li></ul>
-    <h4>話した人</h4>
-    <ul><li>宮路敬志 氏（デジタルイノベーション部 デジタルマーケティングオフィサー）</li></ul>
-    <p class="srcl">出典：<a href="https://active.nikkeibp.co.jp/atcl/act/19/00659/031300001/" target="_blank" rel="noopener">日経クロステック「セブン＆アイは生成AI活用で外部委託費84％減、先進20社の取り組みを一挙公開」（2025年2月）</a></p>
-    <div class="cd-cta"><a class="btn" href="/companymap/contact">無料相談を申し込む <i>→</i></a></div>
-  </div>
-</dialog>
-<dialog class="cd" id="case-toshiba" aria-labelledby="case-toshiba-t">
-  <div class="in" tabindex="-1" autofocus>
-    <button type="button" class="x" aria-label="閉じる">×</button>
-    <div class="tags"><span>東芝</span><span>電機</span><span>全社</span></div>
-    <h3 id="case-toshiba-t">部門ごとの「困りごと」を洗い出し、使う道具を仕分けてから全社に広げた</h3>
-    <div class="big"><b>3<i>か月</i> → 1<i>日</i></b><small>従業員調査に寄せられた7万件のコメントの分析（総務部門）</small></div>
-    <h4>進め方</h4>
-    <ol class="cd-steps">
-      <li><b>見える化</b>マイクロソフトの支援を受け、各部門と向き合って「困りごと」を洗い出した。</li>
-      <li><b>AIの置き場所を決める</b>困りごとごとに、Copilot・Power BI・Excel・社内検索AI（RAG）のどれが合うかを仕分けた。「業務でこう使うと、こういう回答が返ってくる」という使い方の一覧（ユースケースカタログ）をつくり、社員が選んで試せるようにした。</li>
-      <li><b>広げる</b>従業員400人のトライアルで効果を確かめてから、Microsoft 365 Copilotを従業員1万人に導入した。</li>
-    </ol>
-    <h4>成果</h4>
-    <ul>
-      <li>従業員調査に寄せられた7万件のコメントの分析が、3か月から1日に</li>
-      <li>先行導入で、従業員1人あたり月5.6時間の削減</li>
-      <li>トライアル参加者の95%が実務で利用</li>
-      <li>ストレージプロダクト事業部門では、設計の業務の流れの中でCopilotの使いどころを複数組み合わせ、流れ全体で効果を高めている</li>
-    </ul>
-    <h4>話した人</h4>
-    <ul><li>池谷光司 氏（取締役 副社長執行役員）</li><li>岡田俊輔 氏（上席常務執行役員 最高デジタル責任者）</li><li>殿塚芳和 氏（DX・デザイン&amp;コミュニケーション部 シニアフェロー）</li></ul>
-    <p class="srcl">出典：<a href="https://www.microsoft.com/ja-jp/customers/story/20561-toshiba-microsoft-copilot" target="_blank" rel="noopener">日本マイクロソフト 導入事例「「東芝再興計画」実現に向け、“稼ぐ力”を強化するために Microsoft 365 Copilot を従業員 1 万人に導入」（2025年1月）</a></p>
-    <div class="cd-cta"><a class="btn" href="/companymap/contact">無料相談を申し込む <i>→</i></a></div>
-  </div>
-</dialog>
-<dialog class="cd" id="case-kddi" aria-labelledby="case-kddi-t">
-  <div class="in" tabindex="-1" autofocus>
-    <button type="button" class="x" aria-label="閉じる">×</button>
-    <div class="tags"><span>KDDI</span><span>通信</span><span>法人営業</span></div>
-    <h3 id="case-kddi-t">営業の準備で何に時間がかかっているかを洗い出し、いちばん重い作業に生成AIを入れた</h3>
-    <div class="big"><b>74<i>%減</i></b><small>資料づくりの情報集めにかかる時間（1人あたり）</small></div>
-    <h4>見える化して分かった、営業準備の時間の内訳</h4>
-    <div class="split" role="img" aria-label="情報集めと整理がほぼ5割、資料作成が3割、レビューが2割">
-      <span style="flex:5">情報集めと整理<b>ほぼ5割</b></span><span style="flex:3">資料作成<b>3割</b></span><span style="flex:2">レビュー<b>2割</b></span>
-    </div>
-    <h4>進め方</h4>
-    <ol class="cd-steps">
-      <li><b>見える化</b>2024年4月、法人営業の本部内でヒアリングをし、営業の準備の中で何に時間がかかっているかを洗い出した。</li>
-      <li><b>AIの置き場所を決める</b>時間のほぼ5割を占めていた、資料づくりのための情報集めと整理に絞った。</li>
-      <li><b>つくったもの</b>過去の営業資料を取り込み、ページごとにスライドの画像と要約を生成して、検索できる仕組み（Azure OpenAI Service ほか）。</li>
-    </ol>
-    <h4>成果</h4>
-    <ul>
-      <li>1人あたりの情報集めの時間が、約74%減（利用者へのアンケート調査から）</li>
-      <li>80%の利用者が、情報集めの時間の減少を実感</li>
-    </ul>
-    <h4>話した人</h4>
-    <ul><li>木村塁 氏（経営戦略本部 Data&amp;AIセンター センター長）</li><li>高橋達也 氏（ビジネスデザイン本部 DX/AIビジネスグループ グループリーダー）</li></ul>
-    <p class="srcl">出典：<a href="https://www.microsoft.com/ja-jp/customers/story/22859-kddi-corporation-azure" target="_blank" rel="noopener">日本マイクロソフト 導入事例「KDDI が生成 AI 活用を加速、その 1 つである「ミドル業務革新」では Azure OpenAI Service などの活用で営業準備時間を 約 74% 削減」（2025年3月）</a></p>
-    <div class="cd-cta"><a class="btn" href="/companymap/contact">無料相談を申し込む <i>→</i></a></div>
-  </div>
-</dialog>
-
-<section class="others" id="others">
-  <svg class="topo" style="opacity:.9;filter:invert(1)"><use href="#topo"/></svg>
-  <div class="wrap" style="position:relative">
-    <span class="kick">他社の事例</span>
-    <h2 class="h2">ほかの会社は、<br>どこでAIを使っているんだろう。</h2>
-    <p class="lead2">国内の上場企業3,535社を、1社ずつ調べました。会社の発表や統合報告書、取材記事までたどって、生成AIの活用事例を出典つきで集めています。</p>
-    <div class="nums"><div><b>3,535</b><span>社の上場企業を、1社ずつ調査</span></div><div><b>1,980</b><span>社で生成AIの事例を確認</span></div><div><b>4,864</b><span>件の活用事例（すべて出典つき）</span></div></div>
-    <link rel="stylesheet" href="/assets/companymap/case-search.css?v=20260929a">
-    <div class="cs" id="case-search" data-api="https://companymap-cases.frosty-rice-fdbc.workers.dev/search">
-      <p class="cs-ask">業種や仕事の名前で、事例を探せます。</p>
-      <form class="cs-form" role="search">
-        <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13 13l4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        <input type="search" name="q" value="" placeholder="例：製造業 AIエージェント" aria-label="業種や仕事の名前" autocomplete="off" maxlength="60">
-        <button type="submit">探す</button>
-      </form>
-      <div class="cs-ex"><span>たとえば</span><button type="button" data-q="製造業 AIエージェント">製造業 AIエージェント</button><button type="button" data-q="物流 問い合わせ">物流 問い合わせ</button><button type="button" data-q="建設業 議事録">建設業 議事録</button><button type="button" data-q="営業 提案書">営業 提案書</button><button type="button" data-q="人事 採用">人事 採用</button><button type="button" data-q="経理">経理</button></div>
-      <p class="cs-jev">並べ替えには、判定に特化したAI「Jev」を使っています。一般的な生成AIの約3倍の速さです（当社調べ）。</p>
-      <div class="cs-out" aria-live="polite"></div>
-    </div>
-    <script src="/assets/companymap/case-search.js?v=20260928g" defer></script>
-  </div>
-</section>
-
-<section class="sec" id="faq"><div class="wrap">
-  <span class="kick">よくある質問</span>
-  <h2 class="h2">よくある質問</h2>
-  <div class="faq">
-    <div class="qa"><h5>どんな資料があればいいですか。</h5><p>手順書、マニュアル、Excel、議事録など、いまあるもので始められます。資料がない業務も、お話をうかがえば描けます。</p></div>
-    <div class="qa"><h5>研修で作ったプロンプトも使えますか。</h5><p>使えます。業務図の中で、どの工程で使うか、だれが確かめるかを一緒に決めます。</p></div>
-    <div class="qa"><h5>社内の担当者も業務図を直せますか。</h5><p>直せます。TechWorkerとお客さまは同じ画面を使い、直したところは版として残ります。</p></div>
-    <div class="qa"><h5>どこが提供していますか。</h5><p>株式会社TechWorkerが提供しています。生成AIの研修・導入支援で、37社・2,500名の方とご一緒してきました。</p></div>
-  </div>
+<section class="sec qa2" id="roles"><div class="wrap">
+<span class="kick">進め方</span><h2 class="h2">業務図はCompanyMap AIが作り、<br>構築は実装担当が進めます。</h2><p class="lead2">お客さまにお願いするのは、聞き取りに答えることと、変える仕事を決めることの2つです。</p>
+<div class="flow4"><div class="prod">対象業務の選定</div><div>構築</div><div>導入</div><div>効果検証</div></div>
+<div class="bbr bbr4"><div><span class="who"><i></i>CompanyMap AI</span><small>業務図を作り、任せる仕事を決めます</small></div><div><span class="who"><i class="p"></i>実装担当（FDE）</span><small>構築・導入・効果の確認を、現場で進めます</small></div></div>
+<div class="roles3">
+ <div><i></i><b>CompanyMap AI（製品）</b><p>担当者に質問し、資料と履歴を読んで、業務図の下書きを作ります。詰まりと時間の一覧、毎月の効果の記録も製品が出します。</p></div>
+ <div><i class="p"></i><b>実装担当（FDE）</b><p>だれに何を聞くかを決め、図を現場と確かめます。候補を絞り、AIとツールを組み込み、現場に説明し、毎月振り返ります。</p></div>
+ <div><i class="c"></i><b>お客さま</b><p>担当者が聞き取りに答えます。最初に任せる工程を選び、試す人を決め、現場で使い、役員に報告します。</p></div>
+</div>
 </div></section>
-
-<section class="cta" id="cta">
-  <svg class="topo" style="filter:invert(1)"><use href="#topo"/></svg>
-  <div class="wrap" style="position:relative">
-    <h2>まずは、<br>1つの仕事から。</h2>
-    <p>最初の業務図は、無料相談の時間でおつくりします。手元の資料があれば、お持ちください。</p>
-    <a class="btn blue" href="/companymap/contact">無料相談を申し込む <i>→</i></a>
-  </div>
-</section>
-
-<footer><div class="wrap">
-  <a class="brand" href="/companymap"><svg class="mark"><use href="#logo"/></svg><span class="word" style="font-size:16px">CompanyMap</span><span class="ai">AI</span></a>
-  <span>提供：<a href="/">株式会社TechWorker</a></span><a href="/privacy">プライバシーポリシー</a><span class="r">© 2026 TechWorker Inc.</span>
-</div></footer>
-
-<script>
-(function(){
-  document.querySelectorAll('.mc[data-case]').forEach(function(card){
-    var d=document.getElementById(card.dataset.case);
-    card.addEventListener('click',function(){
-      d.showModal();
-      if(typeof gtag==='function') gtag('event','companymap_case_open',{case_id:card.dataset.case});
-    });
-  });
-  document.querySelectorAll('dialog.cd').forEach(function(d){
-    d.querySelector('.x').addEventListener('click',function(){d.close();});
-    d.addEventListener('click',function(e){if(e.target===d) d.close();});
-  });
-})();
-</script>
-<script src="/assets/companymap/zoom.js?v=20260928a" defer></script>
-</body>
-</html>
+<section class="sec tl" id="start"><div class="wrap">
+<span class="kick">始め方</span><h2 class="h2">まずは1つの業務を、<br>2週間で図にします。</h2><p class="lead2">担当者への聞き取りと手元の資料があれば始められます。構築に進むかどうかは、図を見てから決めていただけます。</p>
+<div class="tline t3">
+ <div class="now"><h3>聞き取りと読み込み <small>1週目</small></h3><p>担当者とベテランに聞き取りをし、手順書・Excel・履歴を読み込みます。</p></div>
+ <div class="now"><h3>業務図と改善候補をお渡し <small>2週目</small></h3><p>1枚の業務図と、改善候補の一覧をお渡しします。業務の整理だけのご依頼も承ります。</p></div>
+ <div><h3>構築・導入・効果の確認 <small>対象業務ごとに</small></h3><p>決めた工程にAIやツールを組み込み、浮いた時間を毎月確かめます。実装は別途お見積もりします。</p></div>
+</div>
+<div class="acts center"><a class="btn" href="/companymap/contact">無料相談を申し込む <i>→</i></a></div>
+</div></section>
+<section class="sec proofSec" id="proof"><div class="wrap">
+<span class="kick">提供会社について</span><h2 class="h2">TechWorkerは、45社の現場で<br>生成AIの定着を支援してきました。</h2><p class="lead2">研修の受講者は2,500人以上。CompanyMap AIは、その現場で見てきた「AIが使われない理由」から生まれました。</p>
+<div class="proofM">
+ <div class="num"><span>生成AI定着支援</span><b>45<i>社</i></b></div>
+ <div class="num"><span>研修受講者</span><b>2,500<i>人以上</i></b></div>
+ <div class="ex"><img src="/assets/companymap/sakura-internet-logo.svg" alt="さくらインターネット"><p><b>さくらインターネットで、生成AIワークショップを実施</b>部門ごとの業務を踏まえ、現場での使いどころを考えるプログラムを設計しました。<a href="https://knowledge.sakura.ad.jp/40545/" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px">さくらのナレッジで内容を読む ↗</a></p></div>
+</div>
+</div></section>
+<section class="sec resM" id="resources"><div class="wrap">
+<span class="kick">検討に使える資料</span><h2 class="h2">資料3点を、無料でお渡しします。</h2><p class="lead2">サービスの全体像、業務図の実物、業務図の作り方ガイド。<br>社内で検討するときに、そのままお使いください。</p>
+<div class="resM-grid">
+ <article><a class="cvr-link" href="/assets/companymap/resources/service-introduction.pdf" target="_blank" rel="noopener"><div class="cvr c1"><span class="cv-brand"><svg class="mark"><use href="#logo"/></svg><span class="word">CompanyMap</span><span class="ai">AI</span></span><strong>サービス紹介資料</strong><small>仕事の流れを図にして、AIに任せる仕事を決める</small></div></a><h3>1. サービス紹介資料</h3><p>CompanyMap AIの全体像を1冊にまとめました。社内の共有にそのまま使えます。</p><ul><li>聞く・読む・たどる、3つの集め方</li><li>図にしてから、つくる進め方と役割分担</li><li>2週間でお渡しする3点と、実装の進め方</li></ul></article>
+ <article><a class="cvr-link" href="/assets/companymap/resources/workflow-samples.pdf" target="_blank" rel="noopener"><div class="cvr c2"><img src="/assets/companymap/home-map-lp.jpg" alt=""><span class="lbl">業務図の実物　受注処理・月次集計・問い合わせ</span></div></a><h3>2. 業務図サンプル集</h3><p>実際にお渡しする業務図を、実物の形で見られます。</p><ul><li>受注・月次集計・問い合わせの3業務</li><li>判断の分かれ目・例外・差し戻しの描き方</li><li>AIに任せる工程と、人が残す判断の印</li></ul></article>
+ <article><a class="cvr-link" href="/assets/companymap/resources/workflow-guide.pdf" target="_blank" rel="noopener"><div class="cvr c3"><span class="cv-small">CompanyMap AI</span><strong>業務図の<br>完全ガイド</strong><div class="steps"><i>01 仕事を切り出す</i><i>02 流れと判断を書く</i><i>03 実装へつなぐ</i></div></div></a><h3>3. 業務図の完全ガイド</h3><p>自社で描き始めるための手引きです。読みながら、1つの業務を図にできます。</p><ul><li>情報の集め方と、聞き取りで聞くこと</li><li>工程・担当・ツール・判断の書き方</li><li>図から実装へつなぐときの確かめ方</li></ul></article>
+</div>
+<div class="acts"><a class="btn white" href="/assets/companymap/resources/companymap-starter-kit.zip" download>資料3点をまとめてダウンロード <i>↓</i></a><a class="btn cta-outline" href="/companymap/contact">無料相談を申し込む <i>→</i></a></div>
+</div></section>
+</main><footer><div class="wrap"><a class="brand" href="/companymap"><svg class="mark"><use href="#logo"/></svg><span class="word" style="font-size:16px">CompanyMap</span><span class="ai">AI</span></a><span>提供：<a href="/">株式会社TechWorker</a></span><a href="/companymap/cases">他社のAI活用事例</a><a href="/privacy">プライバシーポリシー</a><span class="r">© 2026 TechWorker Inc.</span></div></footer>
+<script src="/assets/companymap/zoom.js?v=20260928a" defer></script></body></html>
