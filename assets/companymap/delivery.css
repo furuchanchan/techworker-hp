@@ -92,3 +92,25 @@
 .discovery-lp .delivery-faq{padding-top:5px}.discovery-lp .faq{grid-template-columns:1fr;margin-top:20px}.discovery-lp .qa{padding:23px 0}.discovery-lp .qa h3{font-size:15px}.discovery-lp .qa p{font-size:12px}.discovery-lp .cta{padding:65px 0}.discovery-lp .cta h2{font-size:35px;line-height:1.5;margin-top:19px}.discovery-lp .cta p{font-size:14px;line-height:1.95}.discovery-lp .cta .acts{margin-top:28px}.discovery-lp footer{padding:30px 0;font-size:10px}.discovery-lp footer .wrap{gap:16px}.discovery-lp footer .brand{width:100%}.discovery-lp footer .r{margin-left:0}#approach,#value,#how,#cases,#others,#resources,#faq{scroll-margin-top:77px}
 }
 @media(prefers-reduced-motion:reduce){.discovery-lp .btn,.resource-cover{transition:none}.discovery-lp .btn:hover,.resource-cover:hover{transform:none}}
+/* 課題と支援の流れを1画面で伝える。条件の詳細は開閉式FAQへ。 */
+.discovery-lp .evidence-section{background:#f5f5f6;padding:88px 0 62px}
+.evidence-section .h2{font-size:49px;line-height:1.45}
+.evidence-stat{display:flex;align-items:center;gap:31px;margin-top:31px}
+.evidence-number{font:800 108px/1.1 var(--en);letter-spacing:-.065em}.evidence-number span{font-size:47px;margin-left:5px;letter-spacing:-.03em}
+.evidence-stat p{font-size:18px;line-height:1.9;color:var(--ink-2)}.evidence-stat b{font-weight:600}
+.evidence-bridge{font-size:17px;margin-top:33px;line-height:1.9;font-weight:500}
+.simple-flow{display:grid;grid-template-columns:1.25fr 1fr 1fr 1fr;gap:28px;margin-top:42px}
+.simple-flow>div{position:relative;border:1px solid #bdbdc4;background:#fff;border-radius:13px;text-align:center;padding:20px 15px 22px}
+.simple-flow>div+div:before{content:'→';position:absolute;left:-24px;top:40%;font:400 20px var(--en);color:#6d6d76}
+.simple-flow>div.flow-discovery{background:#0b0b0c;color:#fff;border-color:#0b0b0c}
+.simple-flow>div>span{font:700 11px var(--en);color:#93939d}.simple-flow h3{font-size:23px;letter-spacing:-.025em;margin-top:6px;line-height:1.7}.simple-flow p{font-size:10px;color:#73737c;margin-top:8px}.simple-flow .flow-discovery p{color:#bcbcc5}
+.flow-roles{display:grid;grid-template-columns:1.25fr 3fr;gap:28px;margin-top:19px}.flow-roles span{padding-top:12px;border-top:1px solid #aaaab3;text-align:center;font-size:12px;font-weight:600}
+.evidence-source{font-size:10px;color:#73737c;line-height:1.9;margin-top:33px}.evidence-source a{text-decoration:underline;text-underline-offset:3px}
+.discovery-lp .case-summary{font-size:13px;color:var(--ink-2);line-height:1.95;margin-top:25px}
+.discovery-lp .reference-cases{padding-block:76px}.discovery-lp .reference-grid{margin-top:31px}
+.discovery-lp .delivery-resources{padding-bottom:76px}.discovery-lp .delivery-faq{padding-bottom:82px}
+.discovery-lp .faq{display:block;max-width:940px}.discovery-lp .qa{padding:0}.discovery-lp .qa summary{display:flex;align-items:center;justify-content:space-between;gap:20px;cursor:pointer;font-size:16px;font-weight:700;line-height:1.8;padding:22px 0;list-style:none}.qa summary::-webkit-details-marker{display:none}.qa summary:after{content:'＋';font-size:20px;font-weight:400;color:#777;flex:none}.qa[open] summary:after{content:'−'}.discovery-lp .qa p{margin:0 32px 23px 0;font-size:13px;max-width:66em}.qa summary:focus-visible{outline:2px solid #777;outline-offset:4px}
+@media(max-width:1100px){.simple-flow{gap:23px}.simple-flow h3{font-size:20px}.simple-flow>div+div:before{left:-21px}.flow-roles{gap:23px}}
+@media(max-width:900px){
+.discovery-lp .evidence-section{padding:63px 0 43px}.evidence-section .h2{font-size:31px;line-height:1.6}.evidence-stat{display:block;margin-top:25px}.evidence-number{font-size:90px}.evidence-number span{font-size:39px}.evidence-stat p{font-size:14px;margin-top:13px;line-height:1.9}.evidence-bridge{font-size:14px;margin-top:27px}.simple-flow{grid-template-columns:1fr 1fr;gap:12px;margin-top:27px}.simple-flow>div{padding:16px 9px 19px;border-radius:10px}.simple-flow h3{font-size:18px;line-height:1.65}.simple-flow p{font-size:9px;margin-top:7px}.simple-flow>div>span{font-size:10px}.simple-flow>div+div:before{display:none}.flow-roles{display:flex;flex-direction:column;gap:8px;margin-top:18px}.flow-roles span{font-size:11px;padding-top:0;border:none;text-align:left}.flow-roles span:first-child:before{content:'01　';color:#888}.flow-roles span:last-child:before{content:'02–04　';color:#888}.evidence-source{font-size:9px;margin-top:25px}.discovery-lp .case-summary{font-size:12px;margin-top:20px}.discovery-lp .reference-cases{padding-block:60px}.discovery-lp .delivery-resources{padding-bottom:65px}.discovery-lp .delivery-faq{padding-bottom:64px}.discovery-lp .qa summary{font-size:14px;padding-block:20px}.discovery-lp .qa p{font-size:12px}.discovery-lp .approach-note{font-size:11px}
+}
