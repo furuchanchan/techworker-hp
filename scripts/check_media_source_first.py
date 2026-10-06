@@ -21,9 +21,13 @@ class Tags(HTMLParser):
         super().__init__()
         self.images = []
         self.links = []
+        self.descriptions = {}
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
+        key = attrs.get('name') or attrs.get('property')
+        if tag == 'meta' and key in ('description', 'og:description', 'twitter:description'):
+            self.descriptions[key] = attrs.get('content', '').strip()
         if tag == 'img':
             self.images.append(attrs)
         if tag == 'a' and attrs.get('href'):
@@ -32,6 +36,16 @@ class Tags(HTMLParser):
 
 def text(markup):
     return html.unescape(re.sub(r'<[^>]*>', '', markup)).strip()
+
+
+def schema_nodes(value):
+    if isinstance(value, dict):
+        yield value
+        for child in value.values():
+            yield from schema_nodes(child)
+    elif isinstance(value, list):
+        for child in value:
+            yield from schema_nodes(child)
 
 
 def local_path(page, value):
@@ -47,6 +61,14 @@ def local_path(page, value):
 def check(page):
     issues = []
     markup = page.read_text()
+    head = Tags()
+    head.feed(markup.split('</head>', 1)[0])
+    summary = head.descriptions.get('description', '')
+    if not summary:
+        issues.append('article summary is missing')
+    for field, value in head.descriptions.items():
+        if value != summary:
+            issues.append('article summary differs in ' + field)
     if len(re.findall(r'<h1\b', markup)) != 1:
         issues.append('article must have exactly one main heading')
     header = re.search(r'<header\b[^>]*class=["\']art-head["\'][^>]*>(.*?)</header>', markup, re.S)
@@ -104,7 +126,13 @@ def check(page):
                 issues.append('table of contents target missing: ' + anchor)
     for match in re.finditer(r'<script\b[^>]*type=["\']application/ld\+json["\'][^>]*>(.*?)</script>', markup, re.S):
         try:
-            json.loads(match[1])
+            for node in schema_nodes(json.loads(match[1])):
+                kinds = node.get('@type', [])
+                if isinstance(kinds, str):
+                    kinds = [kinds]
+                if any(kind in ('Article', 'BlogPosting', 'NewsArticle') for kind in kinds):
+                    if node.get('description', '').strip() != summary:
+                        issues.append('article summary differs in JSON-LD')
         except json.JSONDecodeError:
             issues.append('invalid JSON-LD')
     return issues
