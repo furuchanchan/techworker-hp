@@ -93,6 +93,17 @@ def check(page):
     if re.search(r'<(?:img|div|figure)\b[^>]*class=["\'][^"\']*\b(?:daily-cover|art-cover(?:-[\w-]+)?)\b', markup):
         issues.append('decorative cover duplicates the opening source visual')
 
+    for quote in re.findall(r'<blockquote\b[^>]*class=["\'][^"\']*source-quote[^"\']*["\'][^>]*>.*?</blockquote>', body, re.S):
+        first = re.search(r'<p\b[^>]*>(.*?)</p>', quote, re.S)
+        first_text = text(first[1]) if first else ''
+        english = re.search(r'lang=["\']en["\']', quote) or (
+            re.search(r'[A-Za-z]{3,}', first_text) and not re.search(r'[ぁ-んァ-ン一-龯]', first_text))
+        if english:
+            translation = re.search(r'<p\b[^>]*class=["\'][^"\']*source-translation[^"\']*["\'][^>]*>(.*?)</p>', quote, re.S)
+            translated_text = re.sub(r'<span\b[^>]*class="source-label"[^>]*>.*?</span>', '', translation[1], flags=re.S) if translation else ''
+            if not translation or '日本語訳' not in text(translation[1]) or not re.search(r'[ぁ-んァ-ン一-龯]', text(translated_text)):
+                issues.append('English source quote needs a labeled Japanese translation')
+
     tags = Tags()
     tags.feed(body)
     if not tags.images:

@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../article.css?v=20261006-source-notes">
+<link rel="stylesheet" href="../article.css?v=20261006-bilingual-quotes">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Codex・Claude Codeの活用事例｜自社の改修記録と企業の公開事例", "description": "TechWorkerがCodexで行った55記事の改修と、Claude Codeの企業公開事例を紹介します。任せた範囲、失敗の直し方、公開前後の検査から、自社で使う手順を考えます。", "datePublished": "2026-08-01", "dateModified": "2026-10-06", "inLanguage": "ja", "image": "https://techworker.co.jp/media/kenshu/figs/claude-code-jirei-1.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/claude-code-jirei"}}</script>
 <script type="application/ld+json">
 {
@@ -147,8 +147,8 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <p>この一件から、時間短縮率やCodexとClaude Codeの優劣は算出できません。Webページの改稿で確かめた工程を、別のシステムへ移す場合は、そのシステムの試験に置き換えます。</p>
 
 <h2 id="source">公式の権限文書は、人が判断する境界を示す</h2>
-<blockquote class="source-quote"><p>“fine-grained permission rules, modes, and managed policies”</p><footer>出典：<a href="https://code.claude.com/docs/en/permissions" target="_blank" rel="noopener noreferrer">Anthropic「Configure permissions」</a>（2026年10月6日確認）</footer></blockquote>
-<p>公式文は、操作範囲を権限規則と管理ポリシーで制御できると説明しています。事例を読むときも、成果だけでなく、どの操作を人が確認したかを残します。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“fine-grained permission rules, modes, and managed policies”</span></p><p class="source-translation"><span class="source-label">日本語訳（TechWorker）</span>細かな権限ルール、動作モード、管理ポリシー。</p><footer>出典：<a href="https://code.claude.com/docs/en/permissions" target="_blank" rel="noopener noreferrer">Anthropic「Configure permissions」</a>（2026年10月6日確認）</footer></blockquote>
+<p>引用は、Claude Codeのアクセス先と操作を制御する手段を列挙した箇所です。事例を自社で試すときも、成果だけでなく、どこまでAIに許可し、どの操作を人が確認するかを決めます。</p>
 
 <h2 id="question">Claude Codeの事例は、何を残せば別チームでも再現できますか？</h2>
 <p class="answer">入力、変更差分、実行コマンド、テスト結果、人の判断を一つの記録に残します。</p>

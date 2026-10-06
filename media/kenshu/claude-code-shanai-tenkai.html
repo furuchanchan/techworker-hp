@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../article.css?v=20261006-source-notes">
+<link rel="stylesheet" href="../article.css?v=20261006-bilingual-quotes">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Claude Codeの社内展開｜社内データの扱い・設定配布・ルール雛形【2026】", "description": "Claude Codeの社内展開は、既存コードの理解、修正、テストを一続きで練習します。非エンジニアへ広げる前に、操作範囲とレビュー担当を固定します。", "datePublished": "2026-07-29", "dateModified": "2026-10-06", "inLanguage": "ja", "image": "https://techworker.co.jp/media/kenshu/covers/claude-code-shanai-tenkai.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/claude-code-shanai-tenkai"}}</script>
 <script type="application/ld+json">
 {
@@ -116,8 +116,8 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <article class="art-body">
 <p>Claude Codeを配っても、誰がどのファイルを変更してよいかが曖昧なままでは、チームで使い続けられません。最初に決めるのは、練習する作業と、変更を確認する人です。権限設定を手がかりに、段階的に広げる順番を考えます。</p>
 <h2 id="source">権限設定から、社内で許す操作を決める</h2>
-<blockquote class="source-quote"><p>“Claude Code supports fine-grained permissions”</p><footer>出典：<a href="https://code.claude.com/docs/en/permissions" target="_blank" rel="noopener noreferrer">Anthropic「Configure permissions」</a>（2026年10月6日確認）</footer></blockquote>
-<p>公式文は、権限規則、実行モード、管理ポリシーで操作範囲を制御できると説明しています。全社配布より先に、対象リポジトリと許可できる操作をチーム単位で決めます。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“Control what Claude Code can access and do with fine-grained permission rules, modes, and managed policies.”</span></p><p class="source-translation"><span class="source-label">日本語訳（TechWorker）</span>細かな権限ルール、動作モード、管理ポリシーを使って、Claude Codeがアクセスできる対象と実行できる操作を制御します。</p><footer>出典：<a href="https://code.claude.com/docs/en/permissions" target="_blank" rel="noopener noreferrer">Anthropic「Configure permissions」</a>（2026年10月6日確認）</footer></blockquote>
+<p>社内展開では、全員へ配る前に、対象リポジトリと許可する操作をチーム単位で決めます。たとえば、コードを読む作業と、変更を書き込む作業は分けて設計します。</p>
 
 <h2 id="question">Claude Codeを社内へ広げる順番はどうしますか？</h2>
 <p class="answer">既存コードの読解から始め、Plan mode、限定修正、テストの順に権限を広げます。</p>
