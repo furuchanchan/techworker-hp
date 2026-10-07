@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js" data-media="kenshu">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}gtag('config', 'G-3V34NWXVCJ');
+</script>
+<script src="/assets/tw-track.js" defer></script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClaudeをGoogle Docs・Sheets・Slidesで使う｜承認と保存の確認点 — TechWorker</title>
+<meta name="description" content="Google Workspace用のClaudeアドオンが公開ベータに入りました。情シスは、対象ファイル、編集の承認範囲、保存条件をそろえてから試行を始めます。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/kenshu/claude-google-workspace-trial">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ClaudeをGoogle Docs・Sheets・Slidesで使う｜承認と保存の確認点">
+<meta property="og:description" content="Google Workspace用のClaudeアドオンが公開ベータに入りました。情シスは、対象ファイル、編集の承認範囲、保存条件をそろえてから試行を始めます。">
+<meta property="og:image" content="https://techworker.co.jp/media/kenshu/covers/claude-google-workspace-trial.png">
+<meta property="og:url" content="https://techworker.co.jp/media/kenshu/claude-google-workspace-trial">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ClaudeをGoogle Docs・Sheets・Slidesで使う｜承認と保存の確認点">
+<meta name="twitter:image" content="https://techworker.co.jp/media/kenshu/covers/claude-google-workspace-trial.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../article.css?v=20261006-source-notes">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "ClaudeをGoogle Docs・Sheets・Slidesで使う｜承認と保存の確認点", "description": "Google Workspace用のClaudeアドオンが公開ベータに入りました。情シスは、対象ファイル、編集の承認範囲、保存条件をそろえてから試行を始めます。", "datePublished": "2026-10-07", "dateModified": "2026-10-07", "inLanguage": "ja", "image": "https://techworker.co.jp/media/kenshu/covers/claude-google-workspace-trial.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/claude-google-workspace-trial"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "AI研修・導入ラボ", "item": "https://techworker.co.jp/media/kenshu/"}, {"@type": "ListItem", "position": 4, "name": "ClaudeをGoogle Docs・Sheets・Slidesで使う｜承認と保存の確認点", "item": "https://techworker.co.jp/media/kenshu/claude-google-workspace-trial"}]}</script>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<meta name="twitter:description" content="Google Workspace用のClaudeアドオンが公開ベータに入りました。情シスは、対象ファイル、編集の承認範囲、保存条件をそろえてから試行を始めます。">
+<meta property="og:image:alt" content="Googleの文書でClaudeを試す際の、対象ファイル・編集承認・保存条件の確認票">
+<link rel="stylesheet" href="/media/audience-filter.css?v=20261006-media-only">
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <a href="index.html" class="logo">AI研修・導入<i>ラボ</i></a>
+  <ul>
+    <li><a href="index.html">記事一覧</a></li>
+    <li><a href="index.html#about">このメディアについて</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="../../contact.html" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="index.html">記事一覧</a>
+  <a href="index.html#about">このメディアについて</a>
+  <a href="../../contact.html" class="m-cta">無料相談を申し込む</a>
+</div>
+
+<header class="art-head">
+<nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a></nav>
+<div class="kicker">導入と業務への組み込み</div>
+<h1>ClaudeをGoogle Docs・Sheets・Slidesで使う｜承認と保存の確認点</h1><p class="dek">Google Workspace用のClaudeアドオンが公開ベータに入りました。情シスは、対象ファイル、編集の承認範囲、保存条件をそろえてから試行を始めます。</p>
+<div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" width="36" height="36" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><time datetime="2026-10-07">2026.10.07</time><span class="dot">·</span><span>読了 5分</span></div>
+<p class="article-audience"><span class="article-audience-label">主な対象読者</span><a href="/media/kenshu/?audience=it#articles">情シス・AI導入担当</a></p>
+</header>
+<div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div><a href="#s1">文書の横で編集するアドオンと、Claudeから使うコネクタ</a><a href="#s2">試すファイルと、編集を確かめる人を先に決める</a><a href="#s3">保存条件は、普段のClaude契約と照合する</a><a href="#s4">試行例：社内説明文を直し、変更を確かめる</a><a href="#sources">出典と確認範囲</a></div></nav><article class="art-body">
+<p>Google Docsで開いた文書を、その場でClaudeに直してもらえます。Anthropicは2026年10月6日、この新しいアドオンを発表しました。Docs、Sheets、Slidesが対象で、全有料プランに提供されます。</p>
+<blockquote class="source-quote"><p class="source-original" lang="en">Claude for Google Workspace™ is now in public beta on all paid Claude plans.</p><p class="source-translation"><span class="source-label">日本語訳</span> Claude for Google Workspace™は、すべての有料Claudeプランで公開ベータとして利用できるようになりました。</p><footer><a href="https://claude.com/ja/resources/articles/claude-now-works-in-google-docs-sheets-and-slides">Anthropic公式発表</a>（2026年10月6日発表、10月7日確認）。</footer></blockquote>
+<h2 id="s1">文書の横で編集するアドオンと、Claudeから使うコネクタ</h2>
+<p class="answer">アドオンは、Googleのファイル内にClaudeのサイドバーを置きます。開いた文書や表、スライドを読んで、その場で編集します。他のDriveファイルを直接開く機能はありません。添付・貼り付け、有効なコネクタ、Web検索で渡す情報は別途確認します。<a href="https://support.claude.com/en/articles/16951679-use-claude-in-google-docs-sheets-and-slides">公式利用ガイド</a></p>
+    <figure class="fig-inline"><a href="figs/claude-google-workspace-trial-1.png" target="_blank" rel="noopener"><img src="figs/claude-google-workspace-trial-1.png" alt="アドオンはGoogleファイル内、コネクタはClaudeの会話内から操作します。試行票には対象ファイル・承認者、接続先・共有権限をそれぞれ記します。" width="1200" height="495" loading="lazy" decoding="async"></a><figcaption>公式資料を基にTechWorkerが作成。添付・貼り付け・別のコネクタ・Web検索で渡す情報は、本文の条件も確認してください。クリックで拡大できます。</figcaption></figure>
+<p>同時に発表されたDocs、Sheets、Slidesコネクタは、Claudeの会話から使います。Googleファイルの作成・編集に対応し、既存の共有権限が適用されます。TeamとEnterpriseでは、所有者による組織側の有効化が必要です。<a href="https://support.claude.com/en/articles/10166901-use-google-workspace-connectors">コネクタの公式ガイド</a></p>
+<p>この違いは、社内の利用申請にも書いておきます。「ClaudeのGoogle連携を許可」という申請だけでは、使う機能が特定できません。試行票に、入口の名前と有効にするコネクタを記す運用を推奨します。</p>
+<p>日本はClaudeの提供対象地域です。アドオンには、有料Claude契約とアプリの導入が許可されたGoogleアカウントが必要です。日本語の編集品質や、自社環境での動作は個別に確かめます。<a href="https://support.claude.com/en/articles/8461763-where-can-i-access-claude">提供地域</a>、<a href="https://support.claude.com/en/articles/16951679-use-claude-in-google-docs-sheets-and-slides">公式利用ガイド</a></p>
+<h2 id="s2">試すファイルと、編集を確かめる人を先に決める</h2>
+<p class="answer">アドオンの既定は、編集前に確認する「Ask before edits」です。通常の内容編集を続けて適用するモードもあります。Docsの編集は直接反映され、コメントの読み取り・返信・解決には対応しません。既存の提案の承認・却下もできません。<a href="https://support.claude.com/en/articles/16951679-use-claude-in-google-docs-sheets-and-slides">公式利用ガイド</a></p>
+<p>試行では、編集前の確認を維持することを推奨します。承認カードを押す人には、変更内容を判断できる業務担当者を置きます。情シスだけで数式や契約文の正しさを確かめる運用は避けます。</p>
+<p>導入範囲は、Google Workspaceの管理者が確認します。管理者はMarketplaceから、特定のグループや組織部門を選んでアドオンを配布できます。<a href="https://support.claude.com/en/articles/16951679-use-claude-in-google-docs-sheets-and-slides">公式利用ガイド</a></p>
+<p>最初の対象には、公開情報を使った社内説明文が適しています。文書の複製を用意し、直してよい見出しと本文を指定します。原本への反映は、担当者が試行結果を確認してから行います。</p>
+<p>ただし、対象の一段落を指定しても、アドオンが読む範囲をそこだけに制限したとは扱えません。試行用ファイル全体を確認し、送ってよい情報だけを入れます。別タブや末尾に顧客名が残っていないかも点検します。</p>
+<p>部署へ伝えるルールは、「機密情報を入れない」の一言で終わらせません。顧客との未公開契約、社員の個人情報、認証情報など、今回の試行で扱わない情報を具体的に書きます。既存の社内規程に例外がある場合は、その承認手順を使います。</p>
+<aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">生成AI活用事例集を受け取る</div><div class="mc-d">業務に合わせた導入・研修を考える際に、TechWorkerの支援事例をご覧ください。</div></div><a href="../../library/?doc=cases&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=claude-google-workspace-trial&amp;utm_content=mid" class="btn" data-cta="claude-google-workspace-trial-mid">事例集を受け取る <i>→</i></a></aside>
+<h2 id="s3">保存条件は、普段のClaude契約と照合する</h2>
+<p class="answer">入力と出力は、例外を除き30日以内にAnthropicのシステムから削除されます。アドオンは組織の独自保存期間を引き継がず、データを保存しないZDRにも対応しません。ブラウザ内の会話履歴は別に保存され、サイドバーの設定から消します。<a href="https://support.claude.com/en/articles/16951679-use-claude-in-google-docs-sheets-and-slides">公式利用ガイド</a></p>
+<p>「30日で必ず消える」と社内に説明するのは避けます。参照先の保存方針には、法令対応や利用ポリシー違反への対応などの例外があります。対象の契約と、試行で扱うデータに照らして確認します。<a href="https://privacy.claude.com/en/articles/7996866-how-long-do-you-store-my-organization-s-data">Anthropicの組織向け保存方針</a></p>
+<p>試行票には、対象ファイルの情報区分、許可する編集、承認者、保存条件を記します。特に保存を認めない情報は、今回のアドオン試行から外します。通常のチャットで承認済みという理由だけで、対象を広げません。</p>
+<h2 id="s4">試行例：社内説明文を直し、変更を確かめる</h2>
+<p class="answer">以下は、導入前に使う試行例の提案です。TechWorkerが、この新機能で実施した事例ではありません。</p>
+    <figure class="fig-inline"><a href="figs/claude-google-workspace-trial-2.png" target="_blank" rel="noopener"><img src="figs/claude-google-workspace-trial-2.png" alt="公開説明文を複製し、修正段落を指定して、承認前に元の文と照合します。反映後の文書も確認する提案手順です。" width="1200" height="701" loading="lazy" decoding="async"></a><figcaption>TechWorkerが提案する演習例です。この新機能での実施結果ではありません。クリックで拡大できます。</figcaption></figure>
+<p>公開済みの製品説明を、社内勉強会向けに短くする課題を用意します。Google Docsの複製には、製品名、公開済みの機能、確認日を記載します。社外へ出していない販売計画は入れません。</p>
+<p>依頼文は、修正する段落と残す情報を具体的にします。たとえば「第2段落を短くしてください。製品名と公開日を残し、新しい機能や効果は足さないでください」と指示します。これは提案する課題文で、成功を確認した指示ではありません。</p>
+<p>業務担当者は、承認前の変更案と元の文章を照合します。日付や対象プランが変わっていないかを確認します。承認後は実際の文書を読み、指示した範囲に収まったかを記録します。作業時間の短縮は、自社で測定してから判断します。</p>
+<p>当社では、今回のアドオンとコネクタの実機検証はまだ行っていません。この記事は、2026年10月7日に確認した公式資料に基づきます。ベータの仕様が変わった場合は、導入前に公式ガイドを再確認してください。</p>
+<p><a href="../../training.html">生成AI研修の相談</a>では、対象業務に合わせた課題と、変更を確認する手順を扱います。</p>
+<h2 id="sources">出典と確認範囲</h2><p>仕様の確認日：2026年10月7日。導入・利用は公式手順に基づく説明で、自社では未検証です。</p><ol class="source-list">
+<li><a href="https://claude.com/ja/resources/articles/claude-now-works-in-google-docs-sheets-and-slides">Anthropic：Claude now works with Google Docs, Sheets, and Slides</a>（2026年10月6日発表）</li>
+<li><a href="https://support.claude.com/en/articles/16951679-use-claude-in-google-docs-sheets-and-slides">Claude Help Center：Google Workspaceアドオンの利用ガイド</a>（確認時の現行仕様。更新日の確定値は未取得）</li>
+<li><a href="https://support.claude.com/en/articles/10166901-use-google-workspace-connectors">Claude Help Center：Google Workspaceコネクタ</a>（確認時の現行仕様。更新日の確定値は未取得）</li>
+<li><a href="https://support.claude.com/en/articles/8461763-where-can-i-access-claude">Claudeの提供地域</a>（2026年3月16日）</li>
+<li><a href="https://privacy.claude.com/en/articles/7996866-how-long-do-you-store-my-organization-s-data">Anthropic：組織データの保存方針</a>（2026年7月1日）</li></ol>
+</article></div>
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" width="64" height="64" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div>
+    <p>上場企業を含む37社・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner"><div><h3>業務に合わせて、生成AIの試行と研修を設計する</h3><p>使う資料、編集の承認者、確認手順を決め、社内で試す課題を組み立てます。</p></div><a href="../../training.html?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=claude-google-workspace-trial&amp;utm_content=end" class="btn">法人研修の詳細を見る <i>→</i></a></div></div>
+<div class="back-list"><a href="index.html">← AI研修・導入ラボの記事一覧に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="gemini-gems.html" class="related-card"><span class="rc-cat">導入と業務への組み込み</span><div class="rc-title">GemsからSkillsへの移行｜企業アカウントの時期と準備</div></a>
+    <a href="claude-code-shanai-tenkai.html" class="related-card"><span class="rc-cat">社内ルールと安全</span><div class="rc-title">Claude Codeの社内展開｜社内データの扱い・設定配布・ルール雛形</div></a>
+  </div>
+</div></section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">AI研修・導入<i>ラボ</i></div>
+        <p>AI研修・導入の実践知をお届けするメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+      </div>
+      <div class="footer-col"><h4>AI研修・導入ラボ</h4><a href="index.html">記事一覧</a><a href="index.html#about">このメディアについて</a></div>
+      <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../services.html">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="../../contact.html">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p style="max-width:860px;margin:26px auto 0;font-size:11.5px;line-height:1.9;color:var(--slate);opacity:.85;">本ページ・本研修は株式会社TechWorkerが独自に提供するものであり、Google LLCとの提携・後援・承認を受けたものではありません。Google、Google Workspace、Gemini、Google ドキュメント、Google スプレッドシート、Google ドライブ は Google LLC の商標です。</p>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+<script src="/media/article-tracker.js?v=20261006-readable-intros" defer></script>
+</body>
+</html>
