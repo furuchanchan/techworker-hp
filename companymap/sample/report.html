@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}gtag('config', 'G-3V34NWXVCJ');
+</script>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/assets/companymap/favicon.svg" type="image/svg+xml">
+<title>月次決算の報告会（見本）｜CompanyMap AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap">
+<style>
+/* CompanyMap AI の報告会の1枚。1920×1080 を画面に合わせて縮小。業務図は本番の配置（layoutDiagram）の列と段をそのまま広げ、押すと右から工程の文書が出る */
+:root{
+  --bg:#F5F5F2; --surface:#FFFFFF; --on-ink:#FFFFFF;
+  --ink:#15171B; --ink2:#4B5058; --ink3:#868C95; --ink4:#B5BAC1;
+  --line2:#EDEEF0; --line:#E1E3E6; --line3:#D5D8DC; --line4:#C9CDD2;
+  --soft:#FAFAF9; --soft3:#F7F8F9; --chip:#F1F2F4; --layer:#F3F4F6; --flow:#6B7079;
+  --alert:#F2B600; --alert-soft:#FFF8DE; --backdrop:rgba(21,23,27,.32);
+  --f-sans:"IBM Plex Sans JP","Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;
+}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-sans);box-sizing:border-box;padding:16px;
+  display:grid;place-items:center;overflow:hidden}
+#frame{position:relative;overflow:hidden;background:var(--surface);box-shadow:0 2px 18px rgba(0,0,0,.08)}
+#stage{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;background:var(--surface);font-feature-settings:"palt" 1}
+#stage>svg{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:visible}
+
+.brand{position:absolute;left:72px;top:34px;display:flex;align-items:center;gap:12px;font-size:20px;font-weight:600;color:var(--ink2)}
+.brand svg{width:34px;height:34px;flex:none}
+.brand b{color:var(--ink);font-weight:700}
+.brand .sep{width:1px;height:20px;background:var(--line3)}
+.headline{position:absolute;left:72px;top:82px;width:1776px;margin:0;font-size:44px;line-height:1.3;font-weight:700;letter-spacing:.005em}
+.subtitle{position:absolute;left:72px;top:150px;margin:0;font-size:21px;font-weight:500;color:var(--ink2)}
+.legend{position:absolute;right:72px;top:198px;display:flex;gap:24px;align-items:center;font-size:17px;color:var(--ink2)}
+.legend span{display:flex;align-items:center;gap:8px;white-space:nowrap}
+.legend i{display:inline-block;width:18px;height:18px;border-radius:4px;box-sizing:border-box;flex:none}
+.lg-auto{background:var(--ink)}
+.lg-draft{border:1.6px solid var(--ink);background:repeating-linear-gradient(135deg,var(--ink) 0 1.4px,var(--surface) 1.4px 5px)}
+.lg-human{border:1.6px solid var(--ink);background:var(--surface)}
+.lg-approve{border:3px solid var(--ink);background:var(--surface)}
+.lg-dec{width:15px!important;height:15px!important;border:1.6px solid var(--ink);transform:rotate(45deg);border-radius:2px!important;margin:0 2px}
+
+/* 図 */
+.band{fill:var(--layer)} .band-t{font-size:16px;font-weight:700;fill:var(--ink2);letter-spacing:.3em;text-orientation:upright}
+.lane-l{fill:var(--soft)} .lane-t{font-size:19px;font-weight:700;fill:var(--ink);letter-spacing:.12em;text-orientation:upright} .lane-p{font-size:14px;fill:var(--ink3);text-orientation:upright}
+.lane-b{fill:var(--surface)} .lane-b.ai{fill:var(--soft)}
+.hl{stroke:var(--line);stroke-width:1.2} .hl.g2{stroke:var(--line4);stroke-width:2}
+.ph{fill:var(--soft3)} .ph-t{font-size:17px;font-weight:700;fill:var(--ink2);text-anchor:middle}
+.when-t{font-size:16px;font-weight:700;fill:var(--ink);text-anchor:middle}
+.tb{fill:var(--chip);stroke:var(--ink3);stroke-width:1.5} .tb-t{font-size:15px;font-weight:600;fill:var(--ink2);text-anchor:middle}
+.edge{fill:none;stroke:var(--flow);stroke-width:1.8}
+.edge.hand{stroke-dasharray:5 4}
+.elbl{font-size:16px;fill:var(--ink2);paint-order:stroke;stroke:var(--surface);stroke-width:6px;stroke-linejoin:round}
+.ev{fill:var(--surface);stroke:var(--ink);stroke-width:1.8} .ev.end{stroke-width:4.5}
+.hit{cursor:pointer;outline:none}
+.hit .box{stroke:var(--ink);stroke-width:1.6;transition:stroke-width .12s}
+.hit.human .box{fill:var(--surface)} .hit.approve .box{fill:var(--surface);stroke-width:3}
+.hit.auto .box{fill:var(--ink)} .hit.draft .box{fill:url(#hatch)}
+.hit .t{font-size:18px;font-weight:700;fill:var(--ink)} .hit.auto .t{fill:var(--on-ink)}
+.hit .s{font-size:14.5px;fill:var(--ink2)} .hit.auto .s{fill:var(--ink4)}
+.hit.draft .t,.hit.draft .s{paint-order:stroke;stroke:var(--surface);stroke-width:5px;stroke-linejoin:round}
+.hit .no circle{fill:var(--ink)} .hit .no text{fill:var(--on-ink);font-size:13px;font-weight:700;text-anchor:middle}
+.hit.auto .no circle{fill:var(--on-ink)} .hit.auto .no text{fill:var(--ink)}
+.hit .dia{fill:var(--surface);stroke:var(--ink);stroke-width:1.8}
+.hit .q{font-size:16.5px;font-weight:600;fill:var(--ink);text-anchor:middle}
+.hit:hover .box,.hit:focus-visible .box,.hit:hover .dia,.hit:focus-visible .dia{stroke-width:3.4}
+.hit.on .ring{display:block} .ring{display:none;fill:none;stroke:var(--ink);stroke-width:2.4}
+.bub rect{fill:var(--ink)} .bub path{fill:var(--ink)} .bub text{fill:var(--on-ink);font-size:17px;font-weight:700;text-anchor:middle}
+
+/* 下の帯 */
+.who{position:absolute;left:72px;top:818px;width:1040px}
+.who h3,.fix h3{margin:0 0 10px;font-size:18px;font-weight:700}
+.who .bar{display:flex;height:16px;gap:4px;margin-bottom:12px}
+.who .bar i{display:block;border-radius:3px;box-sizing:border-box}
+.who .cols{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.who .k{display:flex;align-items:center;gap:8px;font-size:16px;font-weight:700;white-space:nowrap}
+.who .k i{width:16px;height:16px;border-radius:3px;box-sizing:border-box;flex:none}
+.who .k em{font-style:normal;font-variant-numeric:tabular-nums;color:var(--ink2);font-weight:600}
+.who ul,.fix ul{margin:6px 0 0;padding-left:1.1em;font-size:15.5px;line-height:1.55;color:var(--ink2)}
+.fix{position:absolute;left:1160px;top:818px;width:688px;border-left:1px solid var(--line);padding-left:32px;box-sizing:border-box}
+.fix ul{font-size:16px;color:var(--ink)}
+.source{position:absolute;left:72px;top:1008px;width:1640px;margin:0;font-size:15px;line-height:1.6;color:var(--ink3)}
+.page{position:absolute;right:72px;top:1032px;font-size:15px;color:var(--ink3)}
+
+/* 吹き出し（ホバー） */
+#tip{position:absolute;z-index:5;width:max-content;max-width:440px;background:var(--ink);color:var(--on-ink);padding:14px 20px 16px;
+  border-radius:8px;box-shadow:0 8px 30px rgba(0,0,0,.22);pointer-events:none}
+#tip .a{font-size:15px;color:var(--ink4)} #tip .n{font-size:24px;font-weight:700;margin-top:2px}
+#tip .x{font-size:17px;line-height:1.55;margin-top:6px} #tip .m{font-size:15px;color:var(--ink4);margin-top:6px}
+
+/* 右から出る工程の文書 */
+#scrim{position:absolute;inset:0;z-index:8;background:var(--backdrop);opacity:0;pointer-events:none;transition:opacity .25s}
+#scrim.open{opacity:1;pointer-events:auto}
+#panel{position:absolute;z-index:9;top:0;right:0;width:720px;height:1080px;background:var(--surface);border-left:1px solid var(--line);
+  box-shadow:-14px 0 40px rgba(0,0,0,.14);transform:translateX(104%);transition:transform .34s cubic-bezier(.2,.75,.2,1);
+  overflow-y:auto;box-sizing:border-box;padding:56px 64px 48px}
+#panel.open{transform:translateX(0)}
+#panel .x{position:absolute;right:48px;top:44px;width:52px;height:52px;border:1px solid var(--line3);border-radius:10px;background:var(--surface);
+  font:400 28px/1 var(--f-sans);color:var(--ink);cursor:pointer;display:grid;place-items:center}
+#panel .x:hover,#panel .x:focus-visible{border-color:var(--ink);outline:none}
+.pc>*{animation:rise .42s both;animation-delay:calc(var(--i,0) * 60ms + 120ms)}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.crumb{font-size:17px;font-weight:600;color:var(--ink3);padding-right:70px}
+.pc h2{font-size:33px;line-height:1.45;margin:12px 0 24px;white-space:pre-line}
+.facts{display:grid;grid-template-columns:1.55fr 1.3fr .55fr;gap:16px;border-top:2px solid var(--ink);border-bottom:1px solid var(--line);padding:16px 0 14px;margin:0 0 26px}
+.facts dt{font-size:15px;color:var(--ink3);font-weight:600} .facts dd{margin:6px 0 0;font-size:18px;font-weight:700;display:flex;align-items:center;gap:8px;line-height:1.4}
+.facts dd i{width:16px;height:16px;border-radius:3px;box-sizing:border-box;flex:none}
+.vis{margin:0 0 26px;background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:18px 20px 20px}
+.vis h4{margin:0 0 12px;font-size:16px;font-weight:700;color:var(--ink2)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{font-size:17px;background:var(--surface);border:1px solid var(--line3);border-radius:8px;padding:6px 12px}
+.chips span b{font-variant-numeric:tabular-nums;margin-right:6px}
+.flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:17px}
+.flow span{background:var(--surface);border:1px solid var(--line3);border-radius:8px;padding:6px 12px}
+.flow span.dark{background:var(--ink);color:var(--on-ink);border-color:var(--ink)}
+.flow i{font-style:normal;color:var(--ink3)}
+.rules{width:100%;border-collapse:collapse;font-size:17px}
+.rules td{padding:9px 6px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.rules tr:last-child td{border-bottom:0}
+.rules td:last-child{white-space:nowrap;text-align:right;font-weight:700}
+.rules .yes{display:inline-block;background:var(--ink);color:var(--on-ink);border-radius:6px;padding:1px 9px;font-size:15px}
+.rules .no{display:inline-block;border:1px solid var(--ink);border-radius:6px;padding:0 8px;font-size:15px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.two div{background:var(--surface);border:1px solid var(--line3);border-radius:10px;padding:12px 14px}
+.two b{display:block;font-size:15px;color:var(--ink3);margin-bottom:6px}
+.two span{font-size:18px;font-weight:700}
+.tbx{display:flex;gap:6px}
+.tbx span{flex:1;text-align:center;font-size:15px;font-weight:600;border-radius:6px;padding:8px 0;border:1px solid var(--ink)}
+.tbx span.auto{background:var(--ink);color:var(--on-ink)}
+.tbx span.draft{background:repeating-linear-gradient(135deg,var(--line3) 0 1.4px,var(--surface) 1.4px 5px)}
+.tbx span.approve{border-width:2.6px}
+.tbx-cap{display:flex;justify-content:space-between;font-size:15px;color:var(--ink3);margin-top:8px}
+.doc h3{font-size:18px;font-weight:700;margin:0 0 6px}
+.doc p,.doc ul{margin:0 0 22px;font-size:18px;line-height:1.75}
+.doc ul{padding-left:1.2em}
+.quote{margin:0 0 22px;background:var(--chip);border-radius:10px;padding:12px 16px;font-size:17px;line-height:1.7}
+.quote cite{display:block;font-style:normal;font-size:15px;color:var(--ink3);margin-top:4px}
+.psrc{border-top:1px solid var(--line);padding-top:14px;margin-top:4px;font-size:15px;line-height:1.7;color:var(--ink3)}
+@media (prefers-reduced-motion:reduce){#panel,#scrim,.hit .box{transition:none}.pc>*{animation:none}}
+</style>
+
+</head>
+<body>
+<div id="frame">
+  <div id="stage">
+    <div class="brand">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0B0B0C"/><path d="M44 16H31C24.4 16 19 21.4 19 28V36C19 42.6 24.4 48 31 48H44" fill="none" stroke="#FFFFFF" stroke-width="7.4" stroke-linecap="round"/><circle cx="46.5" cy="16" r="7.4" fill="#FFFFFF"/><rect x="10.5" y="23.5" width="17" height="17" rx="4" fill="#FFFFFF"/><circle cx="46.5" cy="48" r="7.4" fill="#FFFFFF"/></svg>
+      <b>CompanyMap AI</b><span class="sep"></span><span>業務の見直し　報告会</span><span class="sep"></span><span>TechWorker／経理</span>
+    </div>
+    <h1 class="headline">7工程のうち4つはAIに任せ、経営者の出番は「接続」と「承認」の2つだけです</h1>
+    <p class="subtitle">月次決算のチェック｜毎月5日の通知で始まり、会計ソフトに接続してから1時間以内に終える</p>
+    <div class="legend" aria-hidden="true">
+      <span><i class="lg-auto"></i>AIに任せる</span>
+      <span><i class="lg-draft"></i>AIが下書き・人が確かめる</span>
+      <span><i class="lg-human"></i>人が行う</span>
+      <span><i class="lg-approve"></i>人が決める</span>
+      <span><i class="lg-dec"></i>分かれ目</span>
+    </div>
+    <svg id="dia" viewBox="0 0 1920 1080" role="img" aria-label="月次決算のチェックの業務図。工程を押すと、その工程の説明が右に開きます"></svg>
+
+    <div class="who">
+      <h3>だれが何をするか（7つの工程）</h3>
+      <div class="bar" aria-hidden="true"></div>
+      <div class="cols"></div>
+    </div>
+    <div class="fix">
+      <h3>初版（9月24日）から直したところ</h3>
+      <ul>
+        <li>税理士の列と、分かれ目「税理士の判断が要る？」（4つの条件）を足した</li>
+        <li>「承認分を直して検算する」を、AIの下書きからAIに任せる工程に変えた</li>
+        <li>接続から1時間以内に終える枠と、各工程の人に回す条件を書き足した</li>
+      </ul>
+    </div>
+    <p class="source">出所：CompanyMap AI の本番の業務図（TechWorker・月次決算のチェック、2026年10月7日時点）。各工程の根拠は「月次決算チェックの手順書」と monthly-close SKILL.md（手順2〜6）。浮く時間は、聞き取りで月の回数と1回の時間を確かめてから入れる（この業務はまだ入っていない）</p>
+    <div class="page">p.1／1</div>
+    <div id="tip" hidden></div>
+    <div id="scrim"></div>
+    <aside id="panel" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="ph">
+      <button class="x" type="button" aria-label="閉じる">×</button>
+      <div class="pc" id="pc"></div>
+    </aside>
+  </div>
+</div>
+
+<script>
+(() => {
+/* ---------- 配置：本番の layoutDiagram が出した列（x・幅）と段を、スライドの横幅に広げる ---------- */
+const PX0 = 76, SX0 = 184, K = (1847.4 - SX0) / (1292 - PX0);          // 製品の座標 → スライドの座標
+const sx = x => SX0 + (x - PX0) * K;
+const COLS = [[76,86],[162,191.6],[353.6,191.6],[545.2,191.6],[736.8,191.6],[928.4,86],[1014.4,191.6],[1206,86]]
+  .map(([x, w]) => ({l:sx(x), r:sx(x + w), c:sx(x + w / 2)}));
+const ROWS = {tax:364, mgr:480, aiU:605, aiL:725};                         // 製品の段（146・294・442・554）をスライドの高さへ
+const LANES = [
+  {id:'tax', layer:'external', role:'税理士', people:'顧問税理士', top:308, h:112},
+  {id:'mgr', layer:'internal', role:'経営者', people:'', top:420, h:120},
+  {id:'ai',  layer:'ai',       role:'AI',     people:'AIアシスタント', top:540, h:250},
+];
+const LAYERS = [['external','社外'],['internal','社内'],['ai','ツール・AI']];
+const PHASES = [['準備',76,545.2],['監査',545.2,736.8],['判断',736.8,1014.4],['修正',1014.4,1292]];
+const NW = 186, NH = 96;
+const ACT = {
+  auto:{label:'AIに任せる', long:'AIに任せる（AIが自動で行う）'},
+  draft:{label:'AIが下書き・人が確かめる', long:'AIが下書きし、人が確かめてから使う'},
+  human:{label:'人が行う', long:'人が行う'},
+  approve:{label:'人が決める', long:'人が承認する'},
+};
+
+/* ---------- 工程（本番の業務図 v3 の中身。言葉は本番のまま、見出しと図だけスライド用に足した） ---------- */
+const SRC_DOC = '月次決算チェックの手順書';
+const N = [
+  {id:'n1', no:1, col:1, row:'mgr', lane:'経営者', actor:'human', phase:'準備', t:'会計ソフトに接続する', sub:'マネーフォワード会計',
+   tools:'マネーフォワード会計', when:'受信箱の登録が済んだら',
+   tip:'接続は1時間で切れるので、ここから1時間で最後まで終える',
+   head:'接続は1時間で切れるため、\nここから1時間で最後まで終えます',
+   vis:'timebox',
+   doc:[['やり方','会計ソフトの認証を行う。接続は1時間で切れるので、ここから1時間で最後まで終える。'],
+        ['始めるとき','毎月5日の通知のあと、受信箱の登録が済んだら始める。']],
+   quote:'最初に1回認証し、その1時間で全部やり切る。'},
+  {id:'n2', no:2, col:2, row:'aiL', lane:'AI（AIアシスタント）', actor:'auto', phase:'準備', t:'経営サマリーを更新する', sub:'AIに任せる',
+   tools:'マネーフォワード会計・経営サマリー',
+   tip:'月次の損益と残高を取り出し、経営サマリーの表を最新にする',
+   head:'月次の損益と残高を取り出し、\n経営サマリーを最新にします',
+   vis:'flow2',
+   doc:[['やり方','月次の損益と残高を取り出し、経営サマリーの表を最新にする。'],
+        ['人に回す条件',['仮払金・仮受金に「確認中」の残高がある → 経営者へ']]],
+   quote:'月次PL推移とBS残高を取得して経営サマリーを上書き更新する。'},
+  {id:'n3', no:3, col:3, row:'aiL', lane:'AI（AIアシスタント）', actor:'draft', phase:'監査', t:'仕訳を監査し報告する', sub:'AIが下書き',
+   tools:'マネーフォワード会計・Slack',
+   tip:'当月の仕訳を全件取り出し、7つの見分け方で怪しい仕訳を洗い出す',
+   head:'当月の仕訳を7つの見分け方で調べ、\n怪しいものをSlackで知らせます',
+   vis:'seven',
+   doc:[['やり方','当月の仕訳を全件取り出し、7つの見分け方で怪しい仕訳を洗い出す。監査レポートをSlackに送る。'],
+        ['やらないこと',['この工程では仕訳を直さない（直すのは承認の後）','金額・日付・取引日は変えない']],
+        ['人に回す条件',['10万円を超える資産かもしれない → 税理士へ']]],
+   quote:'怪しい仕訳を検出し、Slackに監査レポートを通知する。'},
+  {id:'n4', no:4, col:4, row:'mgr', lane:'経営者', actor:'approve', phase:'判断', t:'直す項目を決める', sub:'Slack',
+   tools:'Slack',
+   tip:'監査レポートを見て、直してよい項目を選ぶ',
+   head:'監査レポートを見て、\n直してよい項目を経営者が選びます',
+   vis:'choice',
+   doc:[['やり方','監査レポートを見て、直してよい項目を選ぶ（全部・番号で指定・なし）。'],
+        ['この工程があるわけ','AIは、承認のない仕訳を直さない。提案、承認、修正の順で進める。']],
+   quote:'ユーザーの明示承認を得てから実行する。提案→承認→修正の順。'},
+  {id:'D', col:5, row:'aiL', lane:'AI（AIアシスタント）', actor:'dec', phase:'判断', t:'税理士の判断が要る？',
+   tools:'—',
+   tip:'4つの条件で、AIが直すか、税理士に回すかを分ける',
+   head:'4つの条件で、AIが直すか、\n税理士に回すかを分けます',
+   vis:'rules',
+   doc:[['はいのとき','直さずに、税理士確認リストに残す。'],['いいえのとき','承認された項目を直して、検算する。']]},
+  {id:'n5', no:5, col:6, row:'aiL', lane:'AI（AIアシスタント）', actor:'auto', phase:'修正', t:'承認分を直して検算する', sub:'AIに任せる',
+   tools:'マネーフォワード会計・Slack',
+   tip:'承認された項目だけ、科目・税区分・控除区分を直し、検算して結果を送る',
+   head:'承認された項目だけを直し、\n検算して結果を知らせます',
+   vis:'keep',
+   doc:[['やり方','承認された項目だけ、科目・税区分・控除区分を直し、検算して結果を送る。'],
+        ['やらないこと',['承認のない仕訳は直さない','金額・日付・取引日は変えない']],
+        ['初版から変えたこと','初版（9月24日）ではAIの下書きを人が確かめる工程だった。いまはAIに任せる工程にしている。']],
+   quote:'OKした項目だけ修正する。金額・日付・取引日は元のまま。'},
+  {id:'n6', no:6, col:6, row:'aiU', lane:'AI（AIアシスタント）', actor:'auto', phase:'修正', t:'税理士確認リストに残す', sub:'AIに任せる',
+   tools:'税理士確認リスト',
+   tip:'税理士の判断が要る項目は直さず、税理士確認リストに書き残す',
+   head:'税理士の判断が要る項目は直さず、\n確認リストに書き残します',
+   vis:'hand',
+   doc:[['やり方','税理士の判断が要る項目は直さず、税理士確認リストに書き残す。'],
+        ['やらないこと',['税理士の判断が要る項目は直さない']]],
+   quote:'税理士マターは直さず、税理士確認タブに残す。'},
+  {id:'n7', no:7, col:6, row:'tax', lane:'税理士（顧問税理士）', actor:'human', phase:'修正', t:'確認リストを受け取る', sub:'社外',
+   tools:'税理士確認リスト',
+   tip:'税理士確認リストを受け取り、判断が要る項目を確認する',
+   head:'顧問税理士が確認リストを受け取り、\n判断が要る項目を確かめます',
+   vis:'hand',
+   doc:[['やり方','税理士確認リストを受け取り、判断が要る項目を確認する。']],
+   quote:'税理士マターは直さず、税理士確認タブに残す。'},
+];
+const BY = Object.fromEntries(N.map(n => [n.id, n]));
+N.forEach(n => {
+  n.cx = COLS[n.col].c; n.cy = ROWS[n.row];
+  if (n.actor === 'dec') { n.w = 52; n.h = 52; } else { n.w = NW; n.h = NH; }
+  n.x = n.cx - n.w / 2; n.y = n.cy - n.h / 2; n.r = n.x + n.w; n.b = n.y + n.h;
+});
+
+/* ---------- 描画 ---------- */
+const NS = 'http://www.w3.org/2000/svg';
+const el = (tag, a = {}, p, txt) => { const e = document.createElementNS(NS, tag); for (const k in a) e.setAttribute(k, a[k]); if (txt != null) e.textContent = txt; if (p) p.appendChild(e); return e; };
+const svg = document.getElementById('dia');
+const v = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const defs = el('defs', {}, svg);
+const hatch = el('pattern', {id:'hatch', width:'7', height:'7', patternUnits:'userSpaceOnUse', patternTransform:'rotate(45)'}, defs);
+el('rect', {width:'7', height:'7', fill:v('--surface')}, hatch);
+el('line', {x1:'0', y1:'0', x2:'0', y2:'7', stroke:v('--ink3'), 'stroke-width':'2.2'}, hatch);
+const ar = el('marker', {id:'ar', viewBox:'0 0 10 10', refX:'9', refY:'5', markerWidth:'11', markerHeight:'11', markerUnits:'userSpaceOnUse', orient:'auto'}, defs);
+el('path', {d:'M0,0 L10,5 L0,10 z', fill:v('--flow')}, ar);
+const ah = el('marker', {id:'ah', viewBox:'0 0 12 12', refX:'11', refY:'6', markerWidth:'13', markerHeight:'13', markerUnits:'userSpaceOnUse', orient:'auto'}, defs);
+el('path', {d:'M1,1 L11,6 L1,11 z', fill:v('--surface'), stroke:v('--flow'), 'stroke-width':'1.5'}, ah);
+
+const DX = SX0, DR = 1847.4, TOP = 240;
+// いつ・フェーズの行
+el('rect', {class:'ph', x:COLS[0].l, y:TOP, width:COLS[0].r - COLS[0].l - 3, height:34}, svg);
+el('text', {class:'when-t', x:COLS[0].c, y:TOP + 23}, svg, '毎月5日');
+{ const l = sx(166), r = sx(1202);
+  el('path', {class:'tb', d:`M${l} ${TOP + 34} V${TOP + 10} Q${l} ${TOP + 4} ${l + 6} ${TOP + 4} H${r - 6} Q${r} ${TOP + 4} ${r} ${TOP + 10} V${TOP + 34}`}, svg);
+  el('text', {class:'tb-t', x:(l + r) / 2, y:TOP + 26}, svg, '接続から1時間以内に終える'); }
+for (const [name, a, b] of PHASES) {
+  el('rect', {class:'ph', x:sx(a) + 1.5, y:TOP + 38, width:sx(b) - sx(a) - 3, height:30}, svg);
+  el('text', {class:'ph-t', x:(sx(a) + sx(b)) / 2, y:TOP + 59}, svg, name);
+}
+// 層の帯・レーン
+for (const [id, name] of LAYERS) {
+  const L = LANES.find(l => l.layer === id);
+  el('rect', {class:'band', x:72, y:L.top, width:34, height:L.h}, svg);
+  const g = el('text', {class:'band-t', x:89, y:L.top + L.h / 2, 'writing-mode':'vertical-rl', 'text-anchor':'middle', 'dominant-baseline':'central'}, svg, name);
+}
+for (const L of LANES) {
+  el('rect', {class:'lane-l', x:106, y:L.top, width:74, height:L.h}, svg);
+  el('text', {class:'lane-t', x:L.people ? 134 : 143, y:L.top + L.h / 2, 'writing-mode':'vertical-rl', 'text-anchor':'middle', 'dominant-baseline':'central'}, svg, L.role);
+  if (L.people) el('text', {class:'lane-p', x:160, y:L.top + L.h / 2, 'writing-mode':'vertical-rl', 'text-anchor':'middle', 'dominant-baseline':'central'}, svg, L.people);
+  el('rect', {class:'lane-b' + (L.layer === 'ai' ? ' ai' : ''), x:DX, y:L.top, width:DR - DX, height:L.h}, svg);
+}
+for (const L of LANES) el('line', {class:'hl' + (L.layer !== 'external' ? ' g2' : ''), x1:72, y1:L.top, x2:DR, y2:L.top}, svg);
+el('line', {class:'hl', x1:72, y1:790, x2:DR, y2:790}, svg);
+
+// 線（本番の線の引き方：右から出て、列の間で縦に曲がり、左から入る）
+const mid = (a, b) => (a + b) / 2;
+const S = {cx:COLS[0].c, cy:ROWS.mgr}, E = {cx:COLS[7].c, cy:ROWS.mgr};
+const n = BY;
+const P = [
+  `M${S.cx + 14} ${S.cy} H${n.n1.x}`,
+  `M${n.n1.r} ${n.n1.cy} H${mid(n.n1.r, n.n2.x)} V${n.n2.cy} H${n.n2.x}`,
+  `M${n.n2.r} ${n.n2.cy} H${n.n3.x}`,
+  `M${n.n3.r} ${n.n3.cy} H${mid(n.n3.r, n.n4.x)} V${n.n4.cy} H${n.n4.x}`,
+  `M${n.n4.r} ${n.n4.cy} H${mid(n.n4.r, n.D.x)} V${n.D.cy} H${n.D.x}`,
+  `M${n.D.r} ${n.D.cy} H${n.n5.x}`,
+  `M${n.D.cx} ${n.D.y} V${n.n6.cy} H${n.n6.x}`,
+  `M${n.n5.r} ${n.n5.cy} H${mid(n.n5.r, E.cx - 14)} V${E.cy} H${E.cx - 15}`,
+];
+P.forEach(d => el('path', {class:'edge', d, 'marker-end':'url(#ar)'}, svg));
+el('path', {class:'edge', d:`M${n.n6.r} ${n.n6.cy} H${mid(n.n5.r, E.cx - 14)}`}, svg);
+el('path', {class:'edge hand', d:`M${n.n6.cx} ${n.n6.y - 6} V${n.n7.b + 4}`, 'marker-end':'url(#ah)'}, svg);
+el('circle', {cx:n.n6.cx, cy:n.n6.y - 6, r:4, fill:v('--flow')}, svg);
+el('text', {class:'elbl', x:mid(n.D.r, n.n5.x), y:n.D.cy - 12, 'text-anchor':'middle'}, svg, 'いいえ');
+el('text', {class:'elbl', x:n.D.cx + 10, y:mid(n.D.y, n.n6.cy) + 6}, svg, 'はい');
+el('text', {class:'elbl', x:n.n6.cx + 12, y:mid(n.n7.b, n.n6.y) + 6}, svg, '確認を依頼');
+// 開始（時刻で始まる）と完了
+el('circle', {class:'ev', cx:S.cx, cy:S.cy, r:14}, svg);
+el('path', {d:`M${S.cx} ${S.cy - 8} V${S.cy} H${S.cx + 6}`, fill:'none', stroke:v('--ink'), 'stroke-width':'1.8', 'stroke-linecap':'round'}, svg);
+el('circle', {class:'ev end', cx:E.cx, cy:E.cy, r:13}, svg);
+
+// 工程
+for (const s of N) {
+  const g = el('g', {class:'hit ' + s.actor, tabindex:'0', role:'button', 'data-id':s.id, 'aria-label':`${s.t}の説明を開く`}, svg);
+  if (s.actor === 'dec') {
+    el('rect', {class:'ring', x:s.x - 8, y:s.y - 8, width:s.w + 16, height:s.h + 16, rx:10}, g);
+    el('path', {class:'dia', d:`M${s.cx} ${s.y} L${s.r} ${s.cy} L${s.cx} ${s.b} L${s.x} ${s.cy} Z`}, g);
+    el('path', {d:`M${s.cx - 7} ${s.cy - 7} L${s.cx + 7} ${s.cy + 7} M${s.cx + 7} ${s.cy - 7} L${s.cx - 7} ${s.cy + 7}`, stroke:v('--ink'), 'stroke-width':'1.8'}, g);
+    el('text', {class:'q', x:s.cx, y:s.b + 26}, g, s.t);
+    continue;
+  }
+  el('rect', {class:'ring', x:s.x - 6, y:s.y - 6, width:s.w + 12, height:s.h + 12, rx:12}, g);
+  el('rect', {class:'box', x:s.x, y:s.y, width:s.w, height:s.h, rx:8}, g);
+  const no = el('g', {class:'no'}, g);
+  el('circle', {cx:s.x + 22, cy:s.y + 27, r:12}, no);
+  el('text', {x:s.x + 22, y:s.y + 32}, no, s.no);
+  // 工程名は2行まで（箱の幅に合わせて折る）
+  const lines = wrap(s.t, 8);
+  lines.forEach((ln, i) => el('text', {class:'t', x:s.x + 42, y:s.y + 33 + i * 23}, g, ln));
+  el('text', {class:'s', x:s.x + 16, y:s.b - 14}, g, s.sub);
+}
+function wrap(t, n) { if (t.length <= n + 1) return [t]; const cut = [...'をにしの'].map(c => t.indexOf(c) + 1).filter(i => i > 2 && i <= n).pop() || n; return [t.slice(0, cut), t.slice(cut)]; }
+
+// 答えの吹き出し（LPと同じ型：業務図の上に黒い札を重ねる）
+const bubble = (cx, y, text, px) => {
+  const g = el('g', {class:'bub'}, svg), w = text.length * 17 + 36;
+  el('rect', {x:cx - w / 2, y, width:w, height:38, rx:9}, g);
+  el('path', {d:`M${px - 8} ${y + 37} L${px} ${y + 47} L${px + 8} ${y + 37} Z`}, g);
+  el('text', {x:cx, y:y + 25}, g, text);
+};
+bubble(n.n4.cx, n.n4.y - 58, '経営者が決めるのは、ここだけ', n.n4.cx);
+bubble(n.n3.cx - 30, n.n3.y - 58, 'AIが下書き、人が確かめる', n.n3.cx);
+bubble(1470, n.n6.y - 66, 'ここは、直さず税理士へ', n.n6.cx - 50);
+
+/* ---------- 下の帯：だれが何をするか ---------- */
+{
+  const groups = [
+    ['auto', 'AIに任せる', ['n2','n5','n6']],
+    ['draft', 'AIが下書き・人が確かめる', ['n3']],
+    ['approve', '人が決める', ['n4']],
+    ['human', '人が行う', ['n1','n7']],
+  ];
+  const bar = document.querySelector('.who .bar'), cols = document.querySelector('.who .cols');
+  const sw = a => a === 'auto' ? 'background:var(--ink)' : a === 'draft' ? 'border:1.6px solid var(--ink);background:repeating-linear-gradient(135deg,var(--ink) 0 1.4px,var(--surface) 1.4px 5px)' : a === 'approve' ? 'border:3px solid var(--ink)' : 'border:1.6px solid var(--ink)';
+  for (const [a, label, ids] of groups) {
+    bar.insertAdjacentHTML('beforeend', `<i style="flex:${ids.length};${sw(a)}"></i>`);
+    cols.insertAdjacentHTML('beforeend', `<div><div class="k"><i style="${sw(a)}"></i>${label}<em>${ids.length}</em></div><ul>${
+      ids.map(id => `<li>${BY[id].t}${id === 'n7' ? '（税理士）' : ''}</li>`).join('')}</ul></div>`);
+  }
+}
+
+/* ---------- ホバーの吹き出し ---------- */
+const tip = document.getElementById('tip');
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function showTip(s) {
+  const a = s.actor === 'dec' ? '分かれ目' : ACT[s.actor].label;
+  tip.innerHTML = `<div class="a">${s.no ? s.no + '　' : ''}${esc(s.phase)}・${esc(a)}</div><div class="n">${esc(s.t)}</div>
+    <div class="x">${esc(s.tip)}</div><div class="m">${esc(s.lane)}${s.tools !== '—' ? '　｜　' + esc(s.tools) : ''}</div>`;
+  tip.hidden = false;
+  const tw = tip.offsetWidth, th = tip.offsetHeight;
+  let left = s.x, top = s.b + (s.actor === 'dec' ? 40 : 12);
+  if (left + tw > 1900) left = s.r - tw;
+  if (top + th > 1070) top = s.y - th - 12;
+  tip.style.left = left + 'px'; tip.style.top = top + 'px';
+}
+const hideTip = () => { tip.hidden = true; };
+
+/* ---------- 工程の文書の中の図 ---------- */
+const VIS = {
+  timebox: () => `<div class="vis"><h4>接続から1時間以内に終える工程</h4><div class="tbx">${
+    ['n1','n2','n3','n4','n5'].map(id => `<span class="${BY[id].actor}">${BY[id].no}</span>`).join('')}</div>
+    <div class="tbx-cap"><span>① 接続</span><span>⑤ 直して検算</span></div></div>`,
+  flow2: () => `<div class="vis"><h4>取り出すものと、更新するもの</h4><div class="flow"><span>マネーフォワード会計</span><i>→</i><span>月次の損益・残高</span><i>→</i><span class="dark">経営サマリー</span></div></div>`,
+  seven: () => `<div class="vis"><h4>怪しい仕訳の7つの見分け方（monthly-close SKILL.md 手順2〜6）</h4><div class="chips">${
+    ['税区分','適格請求書の番号','科目と取引先の食い違い','重複','異常な金額','登録の抜け','摘要の空欄'].map((t, i) => `<span><b>${i + 1}</b>${t}</span>`).join('')}</div></div>`,
+  choice: () => `<div class="vis"><h4>選び方は3つ</h4><div class="chips"><span>全部</span><span>番号で指定</span><span>なし</span></div></div>`,
+  rules: () => `<div class="vis"><h4>税理士の判断が要るかの4つの条件</h4><table class="rules">${
+    [['税込10万円以上の物品（資産かどうか）',1],['役員報酬・源泉徴収に関わる',1],['期首残高に関わる',1],['それ以外',0]]
+      .map(([w, y]) => `<tr><td>${w}</td><td>${y ? '<span class="yes">はい・税理士へ</span>' : '<span class="no">いいえ・AIが直す</span>'}</td></tr>`).join('')}</table></div>`,
+  keep: () => `<div class="vis"><h4>直すものと、変えないもの</h4><div class="two"><div><b>直す</b><span>科目・税区分・控除区分</span></div><div><b>変えない</b><span>金額・日付・取引日</span></div></div></div>`,
+  hand: () => `<div class="vis"><h4>税理士へ回す流れ</h4><div class="flow"><span>分かれ目で「はい」</span><i>→</i><span class="dark">税理士確認リスト</span><i>→</i><span>顧問税理士が確認</span></div></div>`,
+};
+
+/* ---------- 開け閉め ---------- */
+const panel = document.getElementById('panel'), pc = document.getElementById('pc'), scrim = document.getElementById('scrim');
+let current = null;
+const swatch = a => a === 'dec' ? '' : `<i style="${a === 'auto' ? 'background:var(--ink)' : a === 'draft' ? 'border:1.6px solid var(--ink);background:repeating-linear-gradient(135deg,var(--ink) 0 1.4px,var(--surface) 1.4px 5px)' : a === 'approve' ? 'border:3px solid var(--ink)' : 'border:1.6px solid var(--ink)'}"></i>`;
+function openPanel(id) {
+  const s = BY[id]; hideTip();
+  svg.querySelectorAll('.hit.on').forEach(g => g.classList.remove('on'));
+  current = svg.querySelector(`[data-id="${id}"]`); current.classList.add('on');
+  const who = s.actor === 'dec' ? '分かれ目（AIが条件で分ける）' : ACT[s.actor].long;
+  const parts = [
+    `<div class="crumb">月次決算のチェック › ${esc(s.lane)}${s.no ? '・工程' + '①②③④⑤⑥⑦'[s.no - 1] : ''}</div>`,
+    `<h2 id="ph">${esc(s.head)}</h2>`,
+    `<dl class="facts"><div><dt>だれが</dt><dd>${swatch(s.actor)}${esc(s.actor === 'dec' ? '分かれ目' : ACT[s.actor].label)}</dd></div><div><dt>使う道具</dt><dd>${esc(s.tools)}</dd></div><div><dt>段階</dt><dd>${esc(s.phase)}</dd></div></dl>`,
+    VIS[s.vis](),
+    `<div class="doc">${s.doc.map(([h, b]) => `<h3>${esc(h)}</h3>${Array.isArray(b) ? `<ul>${b.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : `<p>${esc(b)}</p>`}`).join('')}</div>`,
+    s.quote ? `<div class="quote">「${esc(s.quote)}」<cite>根拠：${SRC_DOC}</cite></div>` : '',
+    `<p class="psrc">出所：CompanyMap AI の本番の業務図（2026年10月7日時点）。担い手は「${esc(who)}」。この工程の月の回数と1回の時間は、まだ入っていない</p>`,
+  ].filter(Boolean);
+  pc.innerHTML = parts.map((p, i) => p.replace(/^<(\w+)/, `<$1 style="--i:${i}"`)).join('');
+  panel.scrollTop = 0;
+  panel.classList.add('open'); scrim.classList.add('open'); panel.setAttribute('aria-hidden', 'false');
+  panel.querySelector('.x').focus({preventScroll:true});
+}
+function closePanel() {
+  if (!panel.classList.contains('open')) return;
+  panel.classList.remove('open'); scrim.classList.remove('open'); panel.setAttribute('aria-hidden', 'true');
+  if (current) { current.classList.remove('on'); current.focus({preventScroll:true}); }
+}
+svg.querySelectorAll('.hit').forEach(g => {
+  const s = BY[g.dataset.id];
+  g.addEventListener('mouseenter', () => { if (!panel.classList.contains('open')) showTip(s); });
+  g.addEventListener('mouseleave', hideTip);
+  g.addEventListener('focus', () => { if (!panel.classList.contains('open')) showTip(s); });
+  g.addEventListener('blur', hideTip);
+  g.addEventListener('click', () => openPanel(s.id));
+  g.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openPanel(s.id); } });
+});
+panel.querySelector('.x').addEventListener('click', closePanel);
+scrim.addEventListener('click', closePanel);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
+
+/* ---------- 画面に合わせて縮小 ---------- */
+const frame = document.getElementById('frame'), stage = document.getElementById('stage');
+function fit() {
+  const k = Math.min((innerWidth - 32) / 1920, (innerHeight - 32) / 1080);
+  frame.style.width = 1920 * k + 'px'; frame.style.height = 1080 * k + 'px';
+  stage.style.transform = `scale(${k})`;
+}
+addEventListener('resize', fit); fit();
+})();
+</script>
+</body>
+</html>
