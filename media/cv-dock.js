@@ -47,10 +47,10 @@
   function companymap(where, img) {
     return {
       kind: "無料相談・30分", img: img || "/media/cv/companymap.jpg", offer: "companymap_consult",
-      title: where + "の1つの業務を、30分のオンライン相談で業務図にします",
-      points: ["仕事の流れを伺いながら、その場で一緒に描きます", "詰まっている所、AIに任せられる所まで1枚で分かります", "手順書やExcelがあれば、その場で使います（なくても描けます）"],
+      title: where + "の1つの業務を、30分の無料相談でAIが業務図にします",
+      points: ["お仕事の流れを伺いながら、その場でAIが業務図を作ります", "詰まっている所、AIに任せられる所まで1枚で分かります", "手順書やExcelがあれば、その場で使います（なくてもお話から作れます）"],
       note: "最初の1枚は無料。申込みの入力は1分です",
-      cta: "無料で業務図をつくる", mcta: "申し込む", href: "/companymap/contact", short: "業務図を無料でつくる", mt: "最初の業務図を無料でつくる（30分）"
+      cta: "無料相談を申し込む", mcta: "申し込む", href: "/companymap/contact", short: "業務図の無料相談を申し込む", mt: "AIが最初の業務図を作る無料相談（30分）"
     };
   }
   var DIAG = { label: "まずは1分の生成AI活用度診断（登録不要）", href: "/ai-assessment.html", offer: "assessment" };
@@ -64,7 +64,7 @@
     },
     shigyo: function () { return Object.assign(companymap("事務所", "/media/cv/companymap-shigyo.jpg"), { sub: DIAG }); },
     interview: function () { return Object.assign(companymap("部署"), { sub: { label: "CompanyMap AIを見る", href: "/companymap", offer: "companymap_lp" } }); },
-    gyomuzu: function () { return Object.assign({}, TEMPLATES, { sub: { label: "自社の業務図を30分の無料相談でつくる", href: "/companymap/contact", offer: "companymap_consult" } }); },
+    gyomuzu: function () { return Object.assign({}, TEMPLATES, { sub: { label: "30分の無料相談で、AIが自社の業務図を作ります", href: "/companymap/contact", offer: "companymap_consult" } }); },
     security: function () { return Object.assign({}, GUIDE, { sub: { label: "社内のAI利用ルールを相談する（30分・無料）", href: "/contact.html?type=consultation", offer: "consult_security" } }); },
     infra: function () { return Object.assign({}, GUIDE, { sub: DIAG }); },
     simulation: function () { return Object.assign({}, CASES, { sub: { label: "発売前の検証を相談する", href: "/launch-simulation/", offer: "launch_simulation" } }); }

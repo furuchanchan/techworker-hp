@@ -1,6 +1,6 @@
 ---
 title: よくある質問
-description: 費用、社内の手間、聞き取りの答えの扱い、業務図の描き方など、ご相談のときによく聞かれることです。
+description: 費用、社内の手間、聞き取りの答えの扱い、業務図の作り方など、ご相談のときによく聞かれることです。
 updated: 2026-10-07
 ---
 ## 進め方と費用
@@ -19,7 +19,7 @@ updated: 2026-10-07
 窓口の方1名と、その業務の担当者・ベテランの方です。聞き取りは1人15分ほどです。詳しくは[最初の2週間](/companymap/docs/first-two-weeks)をご覧ください。
 </div></details>
 <details markdown="1"><summary>資料がなくても始められますか。</summary><div markdown="1">
-はい。手順書やExcelがあれば使いますが、なくてもお話から描けます。
+はい。手順書やExcelがあれば使いますが、なくてもお話からAIが作れます。
 </div></details>
 <details markdown="1"><summary>どんな業務が向いていますか。</summary><div markdown="1">
 部署の中で、名前で言える業務です。受注処理、月次の集計、見積の作成、請求書の発行などです。合わない使い方は[向いていない使い方](/companymap/docs/not-fit)にまとめています。
@@ -49,13 +49,13 @@ updated: 2026-10-07
 ## 業務図
 
 <div class="qa" markdown="1">
-<details markdown="1"><summary>どのくらい細かく描きますか。</summary><div markdown="1">
+<details markdown="1"><summary>どのくらい細かく図にしますか。</summary><div markdown="1">
 1つの作業が、1人で1回に終わる作業になるまで分けます。作業が10個を超えるときは、業務を2枚に分けます。
 </div></details>
 <details markdown="1"><summary>手順書と、担当者の説明が違うときは。</summary><div markdown="1">
 どちらかに決めず、どの条件で違うのかを分けて、責任者に確かめます。違いは「人による違い」として図に残します。
 </div></details>
-<details markdown="1"><summary>業務図は、一度描いたら終わりですか。</summary><div markdown="1">
+<details markdown="1"><summary>業務図は、一度作ったら終わりですか。</summary><div markdown="1">
 やり方が変わったら、新しい版を作ります。AIを入れた後の図も、前の版と並べて残します。
 </div></details>
 <details markdown="1"><summary>自社で業務図を描くこともできますか。</summary><div markdown="1">

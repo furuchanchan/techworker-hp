@@ -152,7 +152,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-sans);bo
       <span><i class="lg-back"></i>ときどき人に戻る</span>
     </div>
     <svg id="dia" viewBox="0 0 1920 1080" role="img" aria-label="月次決算のチェックの業務図。工程を押すと、その工程の説明が右に開きます"></svg>
-    <p class="source">出所：CompanyMap AI の本番の業務図（TechWorker・月次決算のチェック、2026年10月7日時点）。各工程の根拠は「月次決算チェックの手順書」と monthly-close SKILL.md（手順2〜6）。下の帯は工程の順番で、点の間隔は時間を表さない（作業時間はまだ入っていない）</p>
+    <p class="source">出所：CompanyMap AI の本番の業務図（TechWorker・月次決算のチェック、2026年10月7日時点）。各工程の根拠は、月次決算チェックの手順書（手順2〜6）。下の帯は工程の順番で、点の間隔は時間を表さない（作業時間はまだ入っていない）</p>
     <div class="page">p.1／1</div>
     <div id="tip" hidden></div>
     <div id="scrim"></div>
@@ -362,7 +362,7 @@ const hideTip = () => { tip.hidden = true; };
 const VIS = {
   hour: () => `<div class="vis"><h4>接続から1時間以内に終える流れ</h4><div class="flow"><span class="you">① 接続</span><i>→</i><span class="dark">サマリー更新</span><i>→</i><span class="dark">監査と報告</span><i>→</i><span class="you">② 承認</span><i>→</i><span class="dark">直して検算</span></div><p class="cap">②の承認も、この1時間の中に入る</p></div>`,
   back2: () => `<div class="vis"><h4>経営者に戻るとき</h4><div class="back-box"><b>条件</b><span>仮払金・仮受金に「確認中」の残高がある → 経営者が確かめる</span></div></div>`,
-  seven: () => `<div class="vis"><h4>怪しい仕訳の7つの見分け方（monthly-close SKILL.md 手順2〜6）</h4><div class="chips">${
+  seven: () => `<div class="vis"><h4>怪しい仕訳の7つの見分け方（手順書の手順2〜6）</h4><div class="chips">${
     ['税区分','適格請求書の番号','科目と取引先の食い違い','重複','異常な金額','登録の抜け','摘要の空欄'].map((t, i) => `<span><b>${i + 1}</b>${t}</span>`).join('')}</div>
     <div class="back-box" style="margin-top:14px"><b>人に戻るとき</b><span>10万円を超える資産かもしれない → 税理士が確かめる</span></div></div>`,
   choice: () => `<div class="vis"><h4>選び方は3つ</h4><div class="chips"><span>全部</span><span>番号で指定</span><span>なし</span></div><p class="cap">接続から1時間以内に選ぶ（この後の修正まで1時間の枠に入る）</p></div>`,

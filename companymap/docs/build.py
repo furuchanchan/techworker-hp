@@ -183,7 +183,7 @@ def page_html(slug: str, meta: dict[str, str], body_html: str, h2: list[tuple[st
 <meta property="og:title" content="{html.escape(page_title)}">
 <meta property="og:description" content="{html.escape(desc)}">
 <meta property="og:url" content="{canon}">
-<meta property="og:image" content="{SITE}/assets/companymap/ogp.png">
+<meta property="og:image" content="{SITE}/assets/companymap/ogp.png?v=20261007">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -204,7 +204,7 @@ def page_html(slug: str, meta: dict[str, str], body_html: str, h2: list[tuple[st
 <p class="upd">最終更新：{meta["updated"]}</p>
 </article>
 <section class="cta" aria-label="相談と資料">
-<div><b>まずは1つの業務を、図にしてみませんか。</b><span>30分の無料相談で、その部署の業務図を1枚おつくりします。</span></div>
+<div><b>まずは1つの業務を、図にしてみませんか。</b><span>30分の無料相談で、AIがその部署の業務図を1枚作ります。</span></div>
 <div class="acts"><a class="btn" href="/companymap/contact">無料相談を申し込む <i>→</i></a><a class="btn ghost" href="/companymap/download">資料をダウンロード</a></div>
 </section>
 {pager}
@@ -221,7 +221,7 @@ def llms_txt(metas: dict[str, dict[str, str]]) -> str:
     lines = [
         "# CompanyMap AI Docs",
         "",
-        "> CompanyMap AI（株式会社TechWorker）は、担当者への聞き取りや手元の資料から、仕事の流れを1枚の業務図にするサービスです。図を見ながらAIに任せる仕事と人が判断する仕事を分け、実装担当（FDE）が構築から効果の確認まで一緒に進めます。",
+        "> CompanyMap AI（株式会社TechWorker）は、担当者への聞き取り・手元の資料・業務の記録の3つから、AIが仕事の流れを1枚の業務図にするサービスです。図を見てAIに任せる仕事と人が判断する仕事を分け、実装担当（FDE）が構築から効果の確認まで一緒に進めます。",
         "",
         "各ページは .md でも読めます。",
         "",
