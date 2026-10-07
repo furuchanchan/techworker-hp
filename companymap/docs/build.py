@@ -54,7 +54,7 @@ FLAT = [(g, s, label) for g, items in PAGES for s, label in items]
 
 
 def url(slug: str) -> str:
-    return BASE if slug == "index" else f"{BASE}/{slug}"
+    return f"{BASE}/" if slug == "index" else f"{BASE}/{slug}"
 
 
 def parse(path: Path) -> tuple[dict[str, str], str]:
@@ -117,7 +117,7 @@ def page_html(slug: str, meta: dict[str, str], body_html: str, h2: list[tuple[st
     is_top = slug == "index"
     page_title = "CompanyMap AI Docs｜サービスの説明と導入の資料 — TechWorker" if is_top else f"{title}｜CompanyMap AI Docs — TechWorker"
 
-    crumbs = [("CompanyMap AI", "/companymap"), ("Docs", BASE)]
+    crumbs = [("CompanyMap AI", "/companymap"), ("Docs", f"{BASE}/")]
     if not is_top:
         crumbs.append((title, url(slug)))
     ld = {
@@ -192,7 +192,7 @@ def page_html(slug: str, meta: dict[str, str], body_html: str, h2: list[tuple[st
 <script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>
 </head>
 <body class="docs{' top' if is_top else ''}">{SVG_DEFS}
-<nav class="nav"><div class="bar"><a class="brand" href="/companymap"><svg class="mark"><use href="#logo"/></svg><span class="word">CompanyMap</span><span class="ai">AI</span></a><a class="dl" href="{BASE}">Docs</a>
+<nav class="nav"><div class="bar"><a class="brand" href="/companymap"><svg class="mark"><use href="#logo"/></svg><span class="word">CompanyMap</span><span class="ai">AI</span></a><a class="dl" href="{BASE}/">Docs</a>
 <div class="links"><a href="/companymap">サービスの紹介</a><a href="/companymap/download">資料ダウンロード</a></div><a class="btn sm" href="/companymap/contact">相談する</a></div></nav>
 <div class="layout">
 <aside class="side" aria-label="Docsの目次">{sidebar(slug)}</aside>
@@ -211,7 +211,7 @@ def page_html(slug: str, meta: dict[str, str], body_html: str, h2: list[tuple[st
 </main>
 {toc}
 </div>
-<footer><div class="bar"><a class="brand" href="/companymap"><svg class="mark"><use href="#logo"/></svg><span class="word">CompanyMap</span><span class="ai">AI</span></a><span>提供：<a href="/">株式会社TechWorker</a></span><a href="{BASE}">Docs</a><a href="/companymap/cases">他社のAI活用事例</a><a href="/privacy">プライバシーポリシー</a><span class="r">© 2026 TechWorker Inc.</span></div></footer>
+<footer><div class="bar"><a class="brand" href="/companymap"><svg class="mark"><use href="#logo"/></svg><span class="word">CompanyMap</span><span class="ai">AI</span></a><span>提供：<a href="/">株式会社TechWorker</a></span><a href="{BASE}/">Docs</a><a href="/companymap/cases">他社のAI活用事例</a><a href="/privacy">プライバシーポリシー</a><span class="r">© 2026 TechWorker Inc.</span></div></footer>
 </body>
 </html>
 """
