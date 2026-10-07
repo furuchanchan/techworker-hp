@@ -8,7 +8,7 @@ updated: 2026-10-07
 <div class="cards three">
 <div class="card"><p class="k">01 聞く</p><b>インタビューで聞く</b><span>AIが担当者に質問します。手順書にない判断や例外を、理由まで確かめます。</span></div>
 <div class="card"><p class="k">02 読む</p><b>手元の資料を読む</b><span>手順書、Excel、議事録など、いまある資料から仕事の流れをたどります。</span></div>
-<div class="card"><p class="k">03 たどる</p><b>業務の記録を見る</b><span>共有いただける履歴や画面の記録から、実際の手順と待ち時間を確かめます。</span></div>
+<div class="card"><p class="k">03 たどる</p><b>業務の記録を見る</b><span>業務システムの履歴や画面の記録があれば、実際の手順と待ち時間を確かめます。</span></div>
 </div>
 
 資料がなくても、お話から描けます。社員の方のパソコンに、記録用のソフトを入れる必要はありません。

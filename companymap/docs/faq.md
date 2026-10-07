@@ -59,6 +59,6 @@ updated: 2026-10-07
 やり方が変わったら、新しい版を作ります。AIを入れた後の図も、前の版と並べて残します。
 </div></details>
 <details markdown="1"><summary>自社で業務図を描くこともできますか。</summary><div markdown="1">
-描けます。描き方は、無料の[業務図の完全ガイド](/companymap/download)にまとめています。
+描けます。描き方は、無料の[業務図の完全ガイド](/companymap/download)にまとめています。CompanyMap AIをお使いの場合は、図を描く作業はAIが行います。
 </div></details>
 </div>
