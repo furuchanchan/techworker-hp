@@ -54,13 +54,14 @@ updated: 2026-10-07
 
 | 使う場面 | AI | 経路 |
 |---|---|---|
-| 資料からの業務図の下書き、直し方の提案 | Anthropic Claude | Cloudflare AI Gateway を経由 |
+| 資料からの業務図の下書き、直し方の提案 | Anthropic Claude | Anthropic の API へ直接送ります |
 | 聞き取りの質問と聞き返し | Anthropic Claude | 聞き取りの基盤 CoeSignal から |
 | 聞き取りの書き起こし | Cloudflare Workers AI（音声の文字起こし） | Cloudflare の中 |
 | 他社事例の検索の並べ替え | Cloudflare Workers AI | Cloudflare の中（検索の言葉と公開の事例だけを渡します） |
 
 - AIは、業務図の直し方を提案するだけです。業務図を変えるのは、編集できる方です。
 - Anthropic と Cloudflare は、法人向けの規約で、送った内容をAIの学習に使わないとしています（[Anthropic の規約](https://www.anthropic.com/legal/commercial-terms)、[Cloudflare Workers AI の説明](https://developers.cloudflare.com/workers-ai/platform/data-usage/)）。
+- Anthropic の API に送った入力と出力は、Anthropic が30日以内に削除します。規約に反する疑いがあると判定されたものだけは、最長2年残ります（[Anthropic の説明](https://privacy.claude.com/en/articles/7996866)、2026年7月1日更新）。
 - 聞き取りの同意画面では、処理を任せる会社として OpenAI も示しています。聞き取りの基盤 CoeSignal の別の機能で使うためで、CompanyMap AI の聞き取りでは使っていません。
 
 ## 保管と削除
