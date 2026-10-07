@@ -2,6 +2,13 @@
 
 TechWorkerコーポレートサイトの主な変更を記録します。
 
+## 2026-10-07 — CompanyMap AI Docs を公開
+
+- `/companymap/docs` に、サービスの中身・進め方・お渡しするもの・機能の提供状況・データの取り扱い・導入前の確認事項など14ページのDocsを追加。サービス紹介資料・LPと食い違うときの最新の内容とする。
+- 元の文章は `companymap/docs/*.md`（AI向けにそのまま公開し、`llms.txt` も置く）。`uv run --with markdown companymap/docs/build.py` でHTMLとsitemapの行を作る。
+- データの取り扱いと提供状況は、2026-10-05時点の業務図アプリ（workflow-portal）と聞き取りの基盤（CoeSignal）のコードで確かめた内容だけを書いた。
+- LP・相談・資料ダウンロード・事例のページのフッターに Docs へのリンクを追加。
+
 ## 未公開 — CompanyMap AIの提供構成（2026-10-06）
 
 - LPを、顧客の課題から業務整理・改善設計・FDEによる実装と検証へつなぐ構成に変更。
