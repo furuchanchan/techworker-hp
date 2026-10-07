@@ -50,19 +50,19 @@
 <tbody>
 <tr>
 <td>ログイン</td>
-<td>ご招待した方だけ。メールアドレスに届く確認コードでログインします（Cloudflare Access）。</td>
+<td>業務図の画面は、ご招待した方だけが使えます。メールアドレスに届く確認コードでログインします（Cloudflare Access）。</td>
 </tr>
 <tr>
 <td>会社ごとの区切り</td>
-<td>すべての画面と通信で、ご自身の会社の情報かを確かめます。他社の情報は見られません。</td>
+<td>画面と通信のたびに、ご自身の会社の情報かを確かめます。ほかのお客さまの情報は見られません。</td>
 </tr>
 <tr>
 <td>操作の記録</td>
-<td>画面を開いた操作と、変更・削除の操作を記録します。</td>
+<td>画面の表示と、変更・削除の操作を記録します。</td>
 </tr>
 <tr>
 <td>保存先</td>
-<td>Cloudflareのデータベースとストレージ。日本国内に限る設定はしていません。</td>
+<td>Cloudflare のデータベース（D1）とストレージ（R2）。保存時も通信時も暗号化されます。日本国内に限る設定はしていません。</td>
 </tr>
 <tr>
 <td>使うAI</td>
@@ -90,12 +90,22 @@
 <tbody>
 <tr>
 <td>業務図、資料の本文、コメント、操作の記録</td>
-<td>Cloudflare D1（データベース）</td>
+<td>Cloudflare D1</td>
 <td>—</td>
 </tr>
 <tr>
+<td>業務図に取り込んだ聞き取りの答え</td>
+<td>Cloudflare D1（名前を伏せた答えの本文と人数）</td>
+<td>名前、連絡先、部署</td>
+</tr>
+<tr>
+<td>聞き取りの録音・書き起こし・答え</td>
+<td>聞き取りの基盤 CoeSignal（Cloudflare R2 と D1）</td>
+<td>名前、連絡先、部署</td>
+</tr>
+<tr>
 <td>Excelの点検</td>
-<td>Cloudflare D1。ブック名、シート名、数式の形（中の文字は印に置き換え）、エラーの位置、マクロの名前、点検の結果</td>
+<td>Cloudflare D1。ブック名、シート名、数式の形、エラーの位置、マクロの名前、点検の結果。数式の中の文字は印に置き換えます（数字・関数名・シート名は残ります）</td>
 <td>ファイル本体、セルの値、マクロのコード、パスワード</td>
 </tr>
 <tr>
@@ -103,24 +113,51 @@
 <td>保存しません（お使いのブラウザの中だけで調べます）</td>
 <td>調べた値、条件、結果</td>
 </tr>
+</tbody>
+</table>
+<ul>
+<li>保存するデータは、保存時に暗号化（AES-256）され、通信も暗号化（TLS）されます（出典：Cloudflare の <a href="https://developers.cloudflare.com/d1/reference/data-security/">D1</a>・<a href="https://developers.cloudflare.com/r2/reference/data-security/">R2</a> の説明）。</li>
+<li>保存する地域を日本国内に限る設定は、いまはしていません。日本国内だけでの保存が必要なときは、個別にご相談ください。</li>
+</ul>
+<h2 id="見られる人">見られる人</h2>
+<ul>
+<li><strong>業務図の画面</strong>：お客さまがご招待した方と、TechWorkerの担当者です。メールアドレスに届く確認コードでログインし、画面と通信のたびにログインを確かめます。</li>
+<li><strong>権限</strong>：「編集できる」と「提案だけ」があります。提案だけの方は、図に直接手を入れられず、直し方の提案とコメントだけを残せます。</li>
+<li><strong>聞き取りの答え</strong>：答え全体を見るのは、聞き取りを運用するTechWorkerの担当者と品質管理の担当者です。お客さまの画面には、だれが答えたかは出しません。業務図の作業ごとに、根拠として、名前を伏せた答えの一文と「何人中何人がこう答えたか」を示します。</li>
+</ul>
+<h2 id="ログインのいらない入口">ログインのいらない入口</h2>
+<p>次の3つは、ログインなしで開けます。</p>
+<table>
+<thead>
 <tr>
-<td>聞き取りの録音・書き起こし・答え</td>
-<td>聞き取りの基盤 CoeSignal（Cloudflare R2）</td>
-<td>名前、連絡先、部署</td>
+<th>入口</th>
+<th>中身</th>
+<th>守り方</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>聞き取りの答える画面</td>
+<td>答える方が使う画面</td>
+<td>推測できない鍵の付いたURL。名前や連絡先の登録はいりません</td>
+</tr>
+<tr>
+<td>手順書をAIに読ませる専用のURL</td>
+<td>業務図から書き出した手順書（読むだけ）</td>
+<td>推測できない鍵の付いたURL。実装担当が発行し、いつでも取り消せます。発行と取り消しは記録に残ります</td>
+</tr>
+<tr>
+<td>他社事例の検索</td>
+<td>公開情報から集めた他社の事例</td>
+<td>お客さまの情報は含みません</td>
 </tr>
 </tbody>
 </table>
-<p>保存する地域を日本国内に限る設定は、いまはしていません。日本国内だけでの保存が必要なときは、個別にご相談ください。</p>
-<h2 id="見られる人">見られる人</h2>
-<ul>
-<li><strong>業務図の画面</strong>：お客さまがご招待した方と、TechWorkerの担当者です。メールアドレスに届く確認コードでログインし、すべての通信でログインを確かめます。</li>
-<li><strong>権限</strong>：「編集できる」と「提案だけ」があります。提案だけの方は、図に直接手を入れられず、直し方の提案とコメントだけを残せます。</li>
-<li><strong>聞き取りの答え</strong>：答えそのものを見るのは、TechWorkerの担当者（品質の確認を含む）です。お客さまの画面には、一人ひとりの答えは出しません。業務図の作業ごとに、根拠として「何人中何人がこう答えたか」を示します。</li>
-</ul>
 <h2 id="操作の記録">操作の記録</h2>
 <ul>
-<li>画面を開いた操作と、変更・削除の操作について、日時、アカウント、会社、操作の種類を記録します。書いた本文は記録しません。</li>
+<li>画面の表示と、変更・削除の操作について、日時、アカウント、会社、操作の種類を記録します。書いた本文は記録しません。</li>
 <li>お客さまの編集できる方は、自社の記録をCSVで書き出せます（既定は直近90日）。</li>
+<li>会社の情報を削除するときは、記録もまとめて消え、削除したことだけを記録に残します。</li>
 </ul>
 <h2 id="aiの使い方">AIの使い方</h2>
 <table>
@@ -150,25 +187,26 @@
 <tr>
 <td>他社事例の検索の並べ替え</td>
 <td>Cloudflare Workers AI</td>
-<td>Cloudflare の中</td>
+<td>Cloudflare の中（検索の言葉と公開の事例だけを渡します）</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>AIは、業務図の直し方を提案するだけです。業務図を変えるのは人です。</li>
-<li>AIの提供会社は、法人向けの規約で、送った内容を自社のAIの学習に使わないとしています。</li>
+<li>AIは、業務図の直し方を提案するだけです。業務図を変えるのは、編集できる方です。</li>
+<li>Anthropic と Cloudflare は、法人向けの規約で、送った内容をAIの学習に使わないとしています（<a href="https://www.anthropic.com/legal/commercial-terms">Anthropic の規約</a>、<a href="https://developers.cloudflare.com/workers-ai/platform/data-usage/">Cloudflare Workers AI の説明</a>）。</li>
+<li>聞き取りの同意画面では、処理を任せる会社として OpenAI も示しています。聞き取りの基盤 CoeSignal の別の機能で使うためで、CompanyMap AI の聞き取りでは使っていません。</li>
 </ul>
 <h2 id="保管と削除">保管と削除</h2>
 <ul>
-<li><strong>業務図、資料、コメント、操作の記録、Excelの点検の結果</strong>：ご契約の終了時に、会社の情報をまとめて削除します。削除したことは記録に残します。</li>
+<li><strong>業務図、資料、コメント、操作の記録、Excelの点検の結果</strong>：ご契約の終了時に、TechWorkerが会社の情報をまとめて削除します。削除の後も、データベースの復元用の履歴には最大30日残ります。</li>
 <li><strong>聞き取りの録音・書き起こし・答え</strong>：保管の期間と削除の時期は、ご契約で決めます。答える方の画面にも、そのことを示しています。</li>
 </ul>
 <h2 id="聞き取りの同意と匿名の扱い">聞き取りの同意と匿名の扱い</h2>
 <ul>
 <li>答える方には、最初の画面で、実施する会社、答えを見る人、保管の期間、問い合わせの窓口を示し、同意を得てから始めます。</li>
-<li>名前・連絡先・部署は聞きません。同じ役割の方が5人未満のときは、役割を伏せて、ほかの答えとまとめます。</li>
+<li>名前・連絡先・部署は聞きません。同じ役割の方が5人未満のときは、役割を伏せます。</li>
 <li>答えの中身から、だれの答えか推測できてしまうことがあります。そのため「完全な匿名」とはお伝えしていません。</li>
-<li>聞き取りは業務を図にするためのもので、人事評価には使いません。人事評価や給与、退職の意向などは聞かないように設定しています。</li>
+<li>聞き取りの答えは、業務図をつくるために使います。人事評価には使いません。人事評価や給与、退職の意向などは、聞き取りの質問に入れません。</li>
 </ul>
 <p>聞き取りの流れは<a href="/companymap/docs/collecting">業務の情報の集め方</a>をご覧ください。聞き取りの基盤 CoeSignal（TechWorkerが開発・運用）の情報の取り扱いは、<a href="https://coesignal.techworker.co.jp/docs/security">CoeSignal Docs</a> にも載せています。</p>
 <h2 id="いまは対応していないこと">いまは対応していないこと</h2>
@@ -186,7 +224,7 @@
 </section>
 <nav class="pager" aria-label="前後のページ"><a class="prev" href="/companymap/docs/status"><small>前へ</small>機能と提供状況</a><a class="next" href="/companymap/docs/procurement"><small>次へ</small>導入前の確認事項</a></nav>
 </main>
-<aside class="toc" aria-label="このページの見出し"><p>このページ</p><ol><li><a href="#まとめ">まとめ</a></li><li><a href="#保存する情報と場所">保存する情報と場所</a></li><li><a href="#見られる人">見られる人</a></li><li><a href="#操作の記録">操作の記録</a></li><li><a href="#aiの使い方">AIの使い方</a></li><li><a href="#保管と削除">保管と削除</a></li><li><a href="#聞き取りの同意と匿名の扱い">聞き取りの同意と匿名の扱い</a></li><li><a href="#いまは対応していないこと">いまは対応していないこと</a></li></ol></aside>
+<aside class="toc" aria-label="このページの見出し"><p>このページ</p><ol><li><a href="#まとめ">まとめ</a></li><li><a href="#保存する情報と場所">保存する情報と場所</a></li><li><a href="#見られる人">見られる人</a></li><li><a href="#ログインのいらない入口">ログインのいらない入口</a></li><li><a href="#操作の記録">操作の記録</a></li><li><a href="#aiの使い方">AIの使い方</a></li><li><a href="#保管と削除">保管と削除</a></li><li><a href="#聞き取りの同意と匿名の扱い">聞き取りの同意と匿名の扱い</a></li><li><a href="#いまは対応していないこと">いまは対応していないこと</a></li></ol></aside>
 </div>
 <footer><div class="bar"><a class="brand" href="/companymap"><svg class="mark"><use href="#logo"/></svg><span class="word">CompanyMap</span><span class="ai">AI</span></a><span>提供：<a href="/">株式会社TechWorker</a></span><a href="/companymap/docs">Docs</a><a href="/companymap/cases">他社のAI活用事例</a><a href="/privacy">プライバシーポリシー</a><span class="r">© 2026 TechWorker Inc.</span></div></footer>
 </body>
