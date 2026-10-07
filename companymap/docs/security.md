@@ -11,7 +11,7 @@ updated: 2026-10-07
 | 会社ごとの区切り | 画面と通信のたびに、ご自身の会社の情報かを確かめます。ほかのお客さまの情報は見られません。 |
 | 操作の記録 | 画面の表示と、変更・削除の操作を記録します。 |
 | 保存先 | Cloudflare のデータベース（D1）とストレージ（R2）。保存時も通信時も暗号化されます。日本国内に限る設定はしていません。 |
-| 使うAI | Anthropic の Claude と、Cloudflare の Workers AI。AIは直し方を提案するだけで、業務図を変えるのは人です。 |
+| 使うAI | Anthropic の Claude と、Cloudflare の Workers AI。AIは資料から業務図の最初の下書きを作り、そのあとは直し方を提案します。提案を業務図に入れるのは人です。 |
 | 聞き取り | 名前・連絡先・部署は聞きません。会話は録音し、書き起こしと分析に使います。 |
 | 削除 | ご契約の終了時に、業務図・資料・操作の記録と、聞き取りの録音・書き起こし・答えを、会社ごとまとめて削除します。聞き取りの保管期間は、ご契約で決めます。 |
 
@@ -59,7 +59,7 @@ updated: 2026-10-07
 | 聞き取りの書き起こし | Cloudflare Workers AI（音声の文字起こし） | Cloudflare の中 |
 | 他社事例の検索の並べ替え | Cloudflare Workers AI | Cloudflare の中（検索の言葉と公開の事例だけを渡します） |
 
-- AIは、業務図の直し方を提案するだけです。業務図を変えるのは、編集できる方です。
+- AIは、資料から業務図の最初の下書きを作ります。そのあとの変更は、AIが直し方を提案し、編集できる方が採用したものだけが業務図に入ります。
 - Anthropic と Cloudflare は、法人向けの規約で、送った内容をAIの学習に使わないとしています（[Anthropic の規約](https://www.anthropic.com/legal/commercial-terms)、[Cloudflare Workers AI の説明](https://developers.cloudflare.com/workers-ai/platform/data-usage/)）。
 - Anthropic の API に送った入力と出力は、Anthropic が30日以内に削除します。規約に反する疑いがあると判定されたものだけは、最長2年残ります（[Anthropic の説明](https://privacy.claude.com/en/articles/7996866)、2026年7月1日更新）。
 - 聞き取りの同意画面では、処理を任せる会社として OpenAI も示しています。聞き取りの基盤 CoeSignal の別の機能で使うためで、CompanyMap AI の聞き取りでは使っていません。

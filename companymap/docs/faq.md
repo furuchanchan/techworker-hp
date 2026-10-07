@@ -7,7 +7,7 @@ updated: 2026-10-07
 
 <div class="qa" markdown="1">
 <details markdown="1"><summary>費用はいくらですか。</summary><div markdown="1">
-30分の無料相談で、最初の業務図を1枚おつくりします。最初の2週間と、構築以降の費用は、対象の業務と範囲を伺ってお見積もりします。
+30分の無料相談で、AIが最初の業務図を1枚作ります。最初の2週間と、構築以降の費用は、対象の業務と範囲を伺ってお見積もりします。
 </div></details>
 <details markdown="1"><summary>構築まで頼まないといけませんか。</summary><div markdown="1">
 いいえ。構築に進むかどうかは、業務図を見てから決めていただけます。業務の整理だけのご依頼も承ります。
@@ -59,6 +59,6 @@ updated: 2026-10-07
 やり方が変わったら、新しい版を作ります。AIを入れた後の図も、前の版と並べて残します。
 </div></details>
 <details markdown="1"><summary>自社で業務図を描くこともできますか。</summary><div markdown="1">
-描けます。描き方は、無料の[業務図の完全ガイド](/companymap/download)にまとめています。
+描けます。描き方は、無料の[業務図の完全ガイド](/companymap/download)にまとめています。CompanyMap AIをお使いの場合、図はAIが作ります。
 </div></details>
 </div>
