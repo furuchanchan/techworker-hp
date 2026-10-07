@@ -82,7 +82,7 @@ def render_md(body: str) -> tuple[str, list[tuple[str, str]]]:
     return out, h2
 
 
-SVG_DEFS = """<svg width="0" height="0" style="position:absolute"><defs><symbol id="logo" viewBox="0 0 30 30"><rect width="30" height="30" rx="8" fill="#0B0B0C"/><path d="M4 10.5h22M4 19.5h22" stroke="#FFFFFF" stroke-opacity=".3" stroke-width="1.2"/><path d="M5 6.5c3 0 3.5 2 5.5 2s1.6-2.4 3.4-1.4c1.4.8-.4 3.1.6 5.9.6 1.8 2.5 2.2 2.5 3.9v4.3h7.5" fill="none" stroke="#FFFFFF" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24.6" cy="23.1" r="2.2" fill="#FFFFFF"/></symbol></defs></svg>"""
+SVG_DEFS = """<svg width="0" height="0" style="position:absolute"><defs><symbol id="logo" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#0B0B0C"/><path d="M45 17H30C23.9 17 19 21.9 19 28V36C19 42.1 23.9 47 30 47H45" fill="none" stroke="#FFFFFF" stroke-width="5.2" stroke-linecap="round"/><circle cx="47" cy="17" r="5.6" fill="#FFFFFF"/><rect x="12.5" y="25.5" width="13" height="13" rx="3.5" fill="#0B0B0C" stroke="#FFFFFF" stroke-width="4.4"/><circle cx="47" cy="47" r="5.6" fill="#FFFFFF"/></symbol></defs></svg>"""
 
 GTAG = """<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
 <script>
@@ -176,6 +176,8 @@ def page_html(slug: str, meta: dict[str, str], body_html: str, h2: list[tuple[st
 <link rel="canonical" href="{canon}">
 <link rel="alternate" type="text/markdown" href="{BASE}/{slug}.md">
 <link rel="icon" type="image/svg+xml" href="/assets/companymap/favicon.svg">
+<link rel="icon" href="/assets/companymap/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/assets/companymap/apple-touch-icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="TechWorker">
 <meta property="og:title" content="{html.escape(page_title)}">
