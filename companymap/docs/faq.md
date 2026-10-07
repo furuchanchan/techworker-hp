@@ -12,6 +12,9 @@ updated: 2026-10-07
 <details markdown="1"><summary>構築まで頼まないといけませんか。</summary><div markdown="1">
 いいえ。構築に進むかどうかは、業務図を見てから決めていただけます。業務の整理だけのご依頼も承ります。
 </div></details>
+<details markdown="1"><summary>構築のあと、契約はずっと続きますか。</summary><div markdown="1">
+いいえ。構築・導入が終わったところで、自社で回す（ここで終了）、TechWorkerが動かし続ける（年のご契約）、次の部署へ広げる、の3つからお選びいただけます。自社で回すときも、業務図・手順書・作った仕組みをそろえてお渡しします。詳しくは[進め方と分担](/companymap/docs/how-it-works)をご覧ください。
+</div></details>
 <details markdown="1"><summary>社内のだれに、どれくらい時間をもらいますか。</summary><div markdown="1">
 窓口の方1名と、その業務の担当者・ベテランの方です。聞き取りは1人15分ほどです。詳しくは[最初の2週間](/companymap/docs/first-two-weeks)をご覧ください。
 </div></details>
