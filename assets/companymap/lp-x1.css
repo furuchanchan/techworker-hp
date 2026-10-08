@@ -220,3 +220,19 @@
 .teamM .catch{margin:12px 0 8px;font-size:15.5px;font-weight:700;line-height:1.7;color:var(--ink);word-break:auto-phrase}
 .teamM .bio{margin:0;font-size:14px;line-height:1.95;color:var(--ink-2);word-break:auto-phrase}
 @media(max-width:900px){.teamM{grid-template-columns:1fr;gap:36px;margin-top:40px;padding-top:32px}.teamM article{grid-template-columns:84px 1fr;column-gap:16px;row-gap:0}.teamM article>div{display:contents}.teamM img{grid-row:1/3;width:84px;height:84px;border-radius:12px}.teamM .role{grid-column:2;align-self:end}.teamM h4{grid-column:2;align-self:start;font-size:22px}.teamM .catch,.teamM .bio{grid-column:1/-1}.teamM .catch{font-size:15px;margin-top:16px}}
+
+/* 提供会社の節の「お知らせ」（HP のニュースへのリンクだけ。本文は HP のニュースが正本） */
+.newsM{margin-top:48px;padding-top:32px;border-top:1px solid var(--line-2)}
+.newsM .newsH{margin:0;font-size:12px;font-weight:700;color:var(--mute);letter-spacing:.04em}
+.newsM ul{list-style:none;margin:14px 0 0;padding:0}
+.newsM li a{display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line-2);color:var(--ink);text-decoration:none}
+.newsM time{font:600 13px var(--en);color:var(--mute);letter-spacing:.02em}
+.newsM li span{font-size:14.5px;font-weight:700;line-height:1.7;word-break:auto-phrase}
+.newsM li i{font-style:normal;color:var(--mute)}
+.newsM li a:hover span{text-decoration:underline;text-underline-offset:3px}
+.newsM .newsAll{display:inline-block;margin-top:14px;font-size:13px;font-weight:700;color:var(--ink-2);text-decoration:underline;text-underline-offset:3px}
+/* 資料の節：情報システム部門の方への入口 */
+.resM .resM-sec{margin-top:28px;font-size:13px;color:#b4b4bc}
+.resM .resM-sec span{margin-right:14px}
+.resM .resM-sec a{color:#fff;font-weight:700;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+@media(max-width:900px){.newsM{margin-top:40px;padding-top:28px}.newsM li a{grid-template-columns:1fr auto;gap:4px 12px}.newsM time{grid-column:1/-1;font-size:12px}.newsM li span{font-size:14px}.resM .resM-sec{line-height:1.9}.resM .resM-sec span{display:block;margin:0 0 2px}}
