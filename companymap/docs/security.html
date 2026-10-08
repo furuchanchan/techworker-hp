@@ -30,7 +30,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Inter+Tight:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/companymap/docs.css?v=20261007a">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "TechArticle", "headline": "データの取り扱い", "description": "業務図・資料・聞き取りの情報を、どこに保存し、だれが見られ、AIにどう渡すかをまとめました。情報システム・人事のご確認にお使いください。", "url": "https://techworker.co.jp/companymap/docs/security", "inLanguage": "ja", "dateModified": "2026-10-07", "about": {"@type": "Service", "name": "CompanyMap AI", "url": "https://techworker.co.jp/companymap"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "CompanyMap AI", "item": "https://techworker.co.jp/companymap"}, {"@type": "ListItem", "position": 2, "name": "Docs", "item": "https://techworker.co.jp/companymap/docs/"}, {"@type": "ListItem", "position": 3, "name": "データの取り扱い", "item": "https://techworker.co.jp/companymap/docs/security"}]}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "TechArticle", "headline": "データの取り扱い", "description": "業務図・資料・聞き取りの情報を、どこに保存し、だれが見られ、AIにどう渡すかをまとめました。情報システム・人事のご確認にお使いください。", "url": "https://techworker.co.jp/companymap/docs/security", "inLanguage": "ja", "dateModified": "2026-10-08", "about": {"@type": "Service", "name": "CompanyMap AI", "url": "https://techworker.co.jp/companymap"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "CompanyMap AI", "item": "https://techworker.co.jp/companymap"}, {"@type": "ListItem", "position": 2, "name": "Docs", "item": "https://techworker.co.jp/companymap/docs/"}, {"@type": "ListItem", "position": 3, "name": "データの取り扱い", "item": "https://techworker.co.jp/companymap/docs/security"}]}]}</script>
 </head>
 <body class="docs"><svg width="0" height="0" style="position:absolute"><defs><symbol id="logo" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#0B0B0C"/><path d="M45 17H30C23.9 17 19 21.9 19 28V36C19 42.1 23.9 47 30 47H45" fill="none" stroke="#FFFFFF" stroke-width="5.2" stroke-linecap="round"/><circle cx="47" cy="17" r="5.6" fill="#FFFFFF"/><rect x="12.5" y="25.5" width="13" height="13" rx="3.5" fill="#0B0B0C" stroke="#FFFFFF" stroke-width="4.4"/><circle cx="47" cy="47" r="5.6" fill="#FFFFFF"/></symbol></defs></svg>
 <nav class="nav"><div class="bar"><a class="brand" href="/companymap"><svg class="mark"><use href="#logo"/></svg><span class="word">CompanyMap</span><span class="ai">AI</span></a><a class="dl" href="/companymap/docs/">Docs</a>
@@ -68,11 +68,11 @@
 </tr>
 <tr>
 <td>使うAI</td>
-<td>Anthropic の Claude と、Cloudflare の Workers AI。AIは資料から業務図の最初の下書きを作り、そのあとは直し方を提案します。提案を業務図に入れるのは人です。</td>
+<td>Anthropic の Claude と、Cloudflare の Workers AI。AIは資料から業務図の最初の下書きと、工程の説明の空欄を直接書きます。そのあとの変更は提案として出し、業務図に入れるのは人です。</td>
 </tr>
 <tr>
 <td>聞き取り</td>
-<td>名前・連絡先・部署は聞きません。会話は録音し、書き起こしと分析に使います。</td>
+<td>名前・連絡先は聞きません。最初の質問で役割を選んでもらいます。会話は録音し、書き起こしと分析に使います。</td>
 </tr>
 <tr>
 <td>削除</td>
@@ -97,13 +97,13 @@
 </tr>
 <tr>
 <td>業務図に取り込んだ聞き取りの答え</td>
-<td>Cloudflare D1（名前を伏せた答えの本文と人数）</td>
-<td>名前、連絡先、部署</td>
+<td>Cloudflare D1（回答者の名前を付けない答えの本文と人数。本文に出てくる人名などは、自動では伏せません）</td>
+<td>回答者の名前、連絡先</td>
 </tr>
 <tr>
 <td>聞き取りの録音・書き起こし・答え</td>
 <td>聞き取りの基盤 CoeSignal（Cloudflare R2）</td>
-<td>名前、連絡先、部署</td>
+<td>回答者の名前、連絡先</td>
 </tr>
 <tr>
 <td>Excelの点検</td>
@@ -125,7 +125,7 @@
 <ul>
 <li><strong>業務図の画面</strong>：お客さまがご招待した方と、TechWorkerの担当者です。メールアドレスに届く確認コードでログインし、画面と通信のたびにログインを確かめます。</li>
 <li><strong>権限</strong>：「編集できる」と「提案だけ」があります。提案だけの方は、図に直接手を入れられず、直し方の提案とコメントだけを残せます。</li>
-<li><strong>聞き取りの答え</strong>：答え全体を見るのは、聞き取りを運用するTechWorkerの担当者と品質管理の担当者です。お客さまの画面には、だれが答えたかは出しません。業務図の作業ごとに、根拠として、名前を伏せた答えの一文と「何人中何人がこう答えたか」を示します。</li>
+<li><strong>聞き取りの答え</strong>：答え全体を見るのは、聞き取りを運用するTechWorkerの担当者と品質管理の担当者です。お客さまの画面には、だれが答えたかは出しません。業務図の作業ごとに、根拠として、回答者の名前を付けない答えの一文と「何人中何人がこう答えたか」を示します。</li>
 </ul>
 <h2 id="ログインのいらない入口">ログインのいらない入口</h2>
 <p>次の3つは、ログインなしで開けます。</p>
@@ -188,20 +188,22 @@
 </tr>
 <tr>
 <td>他社事例の検索の並べ替え</td>
-<td>Cloudflare Workers AI</td>
-<td>Cloudflare の中（検索の言葉と公開の事例だけを渡します）</td>
+<td>TypeSafe 社のモデル（Cloudflare Workers AI 上で動く第三者のモデル）</td>
+<td>検索の言葉と公開の事例だけを渡します。お客さまの情報は渡さず、データを保持しない設定です</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>AIは、資料から業務図の最初の下書きを作ります。そのあとの変更は、AIが直し方を提案し、編集できる方が採用したものだけが業務図に入ります。</li>
+<li>AIが業務図を直接書くのは、資料から作る最初の下書きと、工程の説明の空欄だけです。そのあとの変更は、AIが提案として出し、編集できる方が採用したものだけが業務図に入ります。</li>
 <li>Anthropic と Cloudflare は、法人向けの規約で、送った内容をAIの学習に使わないとしています（<a href="https://www.anthropic.com/legal/commercial-terms">Anthropic の規約</a>、<a href="https://developers.cloudflare.com/workers-ai/platform/data-usage/">Cloudflare Workers AI の説明</a>）。</li>
-<li>Anthropic の API に送った入力と出力は、Anthropic が30日以内に削除します。規約に反する疑いがあると判定されたものだけは、最長2年残ります（<a href="https://privacy.claude.com/en/articles/7996866">Anthropic の説明</a>、2026年7月1日更新）。</li>
+<li>資料や聞き取りの答えをAIに渡すとき、内容は米国の Anthropic に送られます。</li>
+<li>Anthropic の API に送った入力と出力は、Anthropic が原則30日以内に削除すると説明しています。規約に反する疑いがあると判定されたものは最長2年、安全のための分類の点数は最長7年残ることがあります（<a href="https://privacy.claude.com/en/articles/7996866">Anthropic の説明</a>、2026年7月1日更新）。入力を一切保存しない契約（Zero Data Retention）は結んでいません。</li>
 <li>聞き取りの同意画面では、処理を任せる会社として OpenAI も示しています。聞き取りの基盤 CoeSignal の別の機能で使うためで、CompanyMap AI の聞き取りでは使っていません。</li>
 </ul>
 <h2 id="保管と削除">保管と削除</h2>
 <ul>
 <li><strong>業務図、資料、コメント、操作の記録、Excelの点検の結果</strong>：ご契約の終了時に、TechWorkerが会社の情報をまとめて削除します。削除の後も、データベースの復元用の履歴には最大30日残ります。</li>
+<li><strong>AIに送った内容</strong>：削除しても、Anthropic 側に原則30日以内（規約に反する疑いがあると判定されたものは最長2年）残ることがあります。</li>
 <li><strong>聞き取りの録音・書き起こし・答え</strong>：保管の期間は、ご契約で決めます。答える方の画面にも、そのことを示しています。ご契約の終了時には、業務図などと同じ操作で、その会社の聞き取りをすべて削除します。</li>
 </ul>
 <h3 id="削除の手順">削除の手順</h3>
@@ -239,7 +241,7 @@
 </tr>
 <tr>
 <td>残るもの</td>
-<td>削除したことの記録（日時、会社名、聞き取りの名前、件数）だけが残ります。録音・書き起こし・答えの中身は残りません</td>
+<td>削除したことの記録（日時、会社名、聞き取りの名前、件数）が残ります。この記録に、録音・書き起こし・答えの中身は含みません。このほか、データベースの復元用の履歴に最大30日、Anthropic 側に原則30日以内（規約に反する疑いがあると判定されたものは最長2年）残ることがあります</td>
 </tr>
 <tr>
 <td>お知らせ</td>
@@ -251,8 +253,8 @@
 <h2 id="聞き取りの同意と匿名の扱い">聞き取りの同意と匿名の扱い</h2>
 <ul>
 <li>答える方には、最初の画面で、実施する会社、答えを見る人、使い道（人事評価には使わないこと）、保管の期間、問い合わせの窓口を示し、同意を得てから始めます。</li>
-<li>名前・連絡先・部署は聞きません。同じ役割の方が5人未満のときは、役割を伏せます。</li>
-<li>答えの中身から、だれの答えか推測できてしまうことがあります。そのため「完全な匿名」とはお伝えしていません。</li>
+<li>名前・連絡先は聞きません。最初の質問で、役割（例：営業、経理・総務）を選んでもらいます。同じ役割の方が5人未満のときは、役割を伏せます。</li>
+<li>取り込んだ答えは回答者の名前を付けずに保存しますが、答えの本文に出てくる人名などは、自動では伏せません。答えの中身から、だれの答えか推測できてしまうこともあります。そのため「完全な匿名」とはお伝えしていません。</li>
 <li>聞き取りの答えは、業務図をつくるために使います。人事評価には使いません。人事評価や給与、退職の意向などは、聞き取りの質問に入れません。</li>
 </ul>
 <p>聞き取りの流れは<a href="/companymap/docs/collecting">業務の情報の集め方</a>をご覧ください。聞き取りの基盤 CoeSignal（TechWorkerが開発・運用）の情報の取り扱いは、<a href="https://coesignal.techworker.co.jp/docs/security">CoeSignal Docs</a> にも載せています。</p>
@@ -262,8 +264,8 @@
 <li>日本国内だけでの保存</li>
 <li>第三者による脆弱性診断の結果のご提出</li>
 </ul>
-<p>いずれも、必要なときは個別にご相談ください。対応できるかと、その時期をお伝えします。</p>
-<p class="upd">最終更新：2026-10-07</p>
+<p>いずれも、必要なときは個別にご相談ください。対応できるかと、その時期は、ご相談のうえでお伝えします。</p>
+<p class="upd">最終更新：2026-10-08</p>
 </article>
 <section class="cta" aria-label="相談と資料">
 <div><b>まずは1つの業務を、図にしてみませんか。</b><span>30分の無料相談で、AIがその部署の業務図を1枚作ります。</span></div>
