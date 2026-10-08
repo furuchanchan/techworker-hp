@@ -30,7 +30,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Inter+Tight:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/companymap/docs.css?v=20261007a">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "TechArticle", "headline": "導入前の確認事項", "description": "稟議、社内の運用、情報システム、法務・個人情報のご確認で聞かれやすいことを、確認表にまとめました。", "url": "https://techworker.co.jp/companymap/docs/procurement", "inLanguage": "ja", "dateModified": "2026-10-07", "about": {"@type": "Service", "name": "CompanyMap AI", "url": "https://techworker.co.jp/companymap"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "CompanyMap AI", "item": "https://techworker.co.jp/companymap"}, {"@type": "ListItem", "position": 2, "name": "Docs", "item": "https://techworker.co.jp/companymap/docs/"}, {"@type": "ListItem", "position": 3, "name": "導入前の確認事項", "item": "https://techworker.co.jp/companymap/docs/procurement"}]}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "TechArticle", "headline": "導入前の確認事項", "description": "稟議、社内の運用、情報システム、法務・個人情報のご確認で聞かれやすいことを、確認表にまとめました。", "url": "https://techworker.co.jp/companymap/docs/procurement", "inLanguage": "ja", "dateModified": "2026-10-08", "about": {"@type": "Service", "name": "CompanyMap AI", "url": "https://techworker.co.jp/companymap"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "CompanyMap AI", "item": "https://techworker.co.jp/companymap"}, {"@type": "ListItem", "position": 2, "name": "Docs", "item": "https://techworker.co.jp/companymap/docs/"}, {"@type": "ListItem", "position": 3, "name": "導入前の確認事項", "item": "https://techworker.co.jp/companymap/docs/procurement"}]}]}</script>
 </head>
 <body class="docs"><svg width="0" height="0" style="position:absolute"><defs><symbol id="logo" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#0B0B0C"/><path d="M45 17H30C23.9 17 19 21.9 19 28V36C19 42.1 23.9 47 30 47H45" fill="none" stroke="#FFFFFF" stroke-width="5.2" stroke-linecap="round"/><circle cx="47" cy="17" r="5.6" fill="#FFFFFF"/><rect x="12.5" y="25.5" width="13" height="13" rx="3.5" fill="#0B0B0C" stroke="#FFFFFF" stroke-width="4.4"/><circle cx="47" cy="47" r="5.6" fill="#FFFFFF"/></symbol></defs></svg>
 <nav class="nav"><div class="bar"><a class="brand" href="/companymap"><svg class="mark"><use href="#logo"/></svg><span class="word">CompanyMap</span><span class="ai">AI</span></a><a class="dl" href="/companymap/docs/">Docs</a>
@@ -64,18 +64,19 @@
 <li>ログイン：メールアドレスに届く確認コード（Cloudflare Access）。SSOは未対応です</li>
 <li>使う端末：ブラウザだけで使えます。社員の方のパソコンにソフトを入れる必要はありません</li>
 <li>保存先：Cloudflare D1・R2。保存時も通信時も暗号化。日本国内に限る設定はしていません</li>
-<li>使うAIと経路：Anthropic Claude（Anthropic の API へ直接と、聞き取りの基盤 CoeSignal から）、Cloudflare Workers AI。いずれも送った内容をAIの学習に使わない規約です</li>
+<li>使うAIと経路：Anthropic Claude（Anthropic の API へ直接と、聞き取りの基盤 CoeSignal から）、Cloudflare Workers AI。いずれも送った内容をAIの学習に使わない規約です。AIは資料から業務図の最初の下書きと工程の説明の空欄を直接書き、そのあとの変更は提案として出します</li>
+<li>他社事例の検索：並べ替えは TypeSafe 社のモデル（Cloudflare 経由で呼び出す第三者のモデル。Cloudflare の表示では、データを保持しないモデル）で、渡すのは検索の言葉と公開の事例だけです</li>
 <li>Excel：ブックはブラウザの中で読み、保存するのは構造だけ。セルの値とマクロのコードは保存しません</li>
 <li>操作の記録：画面の表示と変更・削除の操作を記録し、CSVで書き出せます</li>
 <li>ログインのいらない入口：聞き取りの答える画面と、手順書をAIに読ませるURL（どちらも推測できない鍵付き）、他社事例の検索</li>
-<li>削除：契約の終了時に、業務図・資料・記録と、聞き取りの録音・書き起こし・答えを会社ごとまとめて削除（業務図などは復元用の履歴に最大30日残ります）。聞き取りの保管期間は契約で決めます</li>
+<li>削除：契約の終了時に、業務図・資料・記録と、聞き取りの録音・書き起こし・答えを会社ごとまとめて削除（業務図などは復元用の履歴に最大30日、AIに送った内容は Anthropic 側に原則30日以内、規約に反する疑いがあると判定されたものは最長2年残ることがあります）。聞き取りの保管期間は契約で決めます</li>
 </ul>
 
 <p>詳しくは<a href="/companymap/docs/security">データの取り扱い</a>をご覧ください。</p>
 <h2 id="法務個人情報">法務・個人情報</h2>
 <ul class="check">
 <li>聞き取りの同意：答える方の最初の画面で、取り扱いを示して同意を得ます</li>
-<li>匿名の扱い：名前・連絡先・部署は聞きません。同じ役割が5人未満なら役割を伏せます。お客さまの画面には、名前を伏せた答えの一文が業務図の根拠として出ます。完全な匿名とはお伝えしていません</li>
+<li>匿名の扱い：名前・連絡先は聞きません。最初の質問で役割を選んでもらい、同じ役割が5人未満なら役割を伏せます。取り込んだ答えは回答者の名前を付けずに保存しますが、本文に出てくる人名などは自動では伏せません。お客さまの画面には、答えの一文が業務図の根拠として出ます。完全な匿名とはお伝えしていません</li>
 <li>録音：会話を録音し、書き起こしと分析に使います。保管の期間はご契約で決めます</li>
 <li>処理を任せる会社：Cloudflare、Anthropic（聞き取りの同意画面には、CoeSignal の別の機能で使う OpenAI も示しています）</li>
 <li>使い道：聞き取りの答えは業務図をつくるために使い、人事評価には使いません</li>
@@ -83,7 +84,7 @@
 
 <h2 id="貴社の確認票について">貴社の確認票について</h2>
 <p>社内のセキュリティの確認票（チェックシート）がある場合は、<a href="/companymap/contact">無料相談</a>のときにお知らせください。このDocsにない項目は、個別にお答えします。</p>
-<p class="upd">最終更新：2026-10-07</p>
+<p class="upd">最終更新：2026-10-08</p>
 </article>
 <section class="cta" aria-label="相談と資料">
 <div><b>まずは1つの業務を、図にしてみませんか。</b><span>30分の無料相談で、AIがその部署の業務図を1枚作ります。</span></div>

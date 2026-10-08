@@ -1,7 +1,7 @@
 ---
 title: お渡しするもの
 description: 現場と一緒に確かめた業務図と、詰まり・かかる時間・AIに任せられる作業を並べた改善候補の一覧をお渡しします。社内の説明や稟議に、そのまま使えます。
-updated: 2026-10-07
+updated: 2026-10-08
 ---
 ## 業務図
 
@@ -9,7 +9,7 @@ updated: 2026-10-07
 
 <figure class="figure"><a href="/assets/companymap/home-map-lp.jpg"><img src="/assets/companymap/home-map-lp.jpg" width="2400" height="1280" alt="受注処理の業務図。担当・順番・判断の分かれ目と、AIに任せる作業" loading="lazy"></a><figcaption>業務図（受注処理の例。会社・担当者・数字は説明用の例です）</figcaption></figure>
 
-作業の箱を開くと、やり方、例外とやり方の違い、担当とAIとの分担、量と詰まり、確かめてほしいこと、根拠（名前を伏せた答えの一文と人数、どの資料から分かったか）が並びます。図の読み方は[業務図の読み方](/companymap/docs/reading-the-map)にまとめています。
+作業の箱を開くと、やり方、例外とやり方の違い、担当とAIとの分担、量と詰まり、確かめてほしいこと、根拠（回答者の名前を付けない答えの一文と人数、どの資料から分かったか）が並びます。図の読み方は[業務図の読み方](/companymap/docs/reading-the-map)にまとめています。
 
 業務図は、見直す前と見直した後を版として残します。前の版に戻すこともできます。
 

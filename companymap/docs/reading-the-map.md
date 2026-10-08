@@ -1,7 +1,7 @@
 ---
 title: 業務図の読み方
 description: 業務図の記号と、描き方の決まりごとです。社内で図を見せるときのご説明にお使いください。
-updated: 2026-10-07
+updated: 2026-10-08
 ---
 <figure class="figure"><a href="/assets/companymap/diagram-focus.jpg"><img src="/assets/companymap/diagram-focus.jpg" width="1092" height="620" alt="業務図の一部。社内の営業の段と、ツール・AIの段に作業の箱が並ぶ" loading="lazy"></a><figcaption>業務図の一部（TechWorkerの商談準備の例）</figcaption></figure>
 
@@ -65,6 +65,6 @@ updated: 2026-10-07
 4. 担当と、AIとの分担
 5. 量と詰まり
 6. 確かめてほしいこと
-7. 根拠（名前を伏せた答えの一文と人数、どの資料から分かったか）
+7. 根拠（回答者の名前を付けない答えの一文と人数、どの資料から分かったか）
 
 ご自身で業務図を描くときの手順は、無料の[業務図の完全ガイド](/companymap/download)にまとめています。

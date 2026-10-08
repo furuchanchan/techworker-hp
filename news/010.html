@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}gtag('config', 'G-3V34NWXVCJ');
+</script>
+<script src="/assets/tw-track.js" defer></script>
+
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CoeSignal と CompanyMap AI の、セキュリティとデータの取り扱いをまとめました — TechWorker</title>
+<meta name="description" content="CoeSignal と CompanyMap AI の、ログインと権限、データの保存先、AIの扱い、データの削除などをまとめたページを、現在の仕様に合わせて更新しました。">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CoeSignal と CompanyMap AI の、セキュリティとデータの取り扱いをまとめました">
+<meta property="og:description" content="導入のご検討で確認される点を、ページにまとめました。導入審査のチェックシートには、個別に回答します。">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/news/010">
+<link rel="canonical" href="https://techworker.co.jp/news/010">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CoeSignal と CompanyMap AI の、セキュリティとデータの取り扱いをまとめました">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Sans+JP:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "CoeSignal と CompanyMap AI の、セキュリティとデータの取り扱いをまとめました",
+  "description": "CoeSignal と CompanyMap AI の、ログインと権限、データの保存先、AIの扱い、データの削除などをまとめたページを、現在の仕様に合わせて更新しました。",
+  "datePublished": "2026-10-08",
+  "dateModified": "2026-10-08",
+  "inLanguage": "ja",
+  "author": {
+    "@type": "Person",
+    "name": "古野光太朗",
+    "url": "https://x.com/koutarou_furuno"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "株式会社TechWorker",
+    "url": "https://techworker.co.jp/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://techworker.co.jp/assets/ogp.png",
+      "width": 1200,
+      "height": 630
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://techworker.co.jp/news/010"
+  },
+  "about": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "CoeSignal",
+      "alternateName": "コエシグナル",
+      "url": "https://coesignal.techworker.co.jp/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "CompanyMap AI",
+      "url": "https://techworker.co.jp/companymap",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web"
+    }
+  ],
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://techworker.co.jp/assets/ogp.png",
+    "width": 1200,
+    "height": 630
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://techworker.co.jp/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "ニュース",
+      "item": "https://techworker.co.jp/news.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "セキュリティとデータの取り扱い",
+      "item": "https://techworker.co.jp/news/010"
+    }
+  ]
+}
+</script>
+<style>
+/* ===== TOKENS ===== */
+:root{
+  --ink:#0D1117; --paper:#F4F6F9; --paper-2:#ECEFF3; --white:#FBFCFD;
+  --electric:#005EFF; --electric-dark:#003DAA;
+  --slate:#5A6677; --line:rgba(13,17,23,.12); --line-2:rgba(13,17,23,.20);
+  --emerald:#00B894; --violet:#7C3AED;
+  --jp:'IBM Plex Sans JP','IBM Plex Sans',system-ui,sans-serif;
+  --en:'IBM Plex Sans','IBM Plex Sans JP',system-ui,sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{overflow-x:hidden;scroll-behavior:smooth;}
+body{font-family:var(--jp);background:var(--white);color:var(--ink);line-height:1.85;font-size:16px;-webkit-font-smoothing:antialiased;font-feature-settings:"palt" 1;overflow-x:hidden;}
+::selection{background:var(--electric);color:var(--paper);}
+a{color:inherit;}
+img{display:block;max-width:100%;}
+
+/* ===== SHARED ===== */
+.container{max-width:1280px;margin:0 auto;padding:0 48px;width:100%;}
+.tag{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--electric);display:inline-flex;align-items:center;gap:11px;padding-left:14px;border-left:3px solid var(--electric);}
+.tag span{color:var(--slate);font-weight:500;letter-spacing:.02em;text-transform:none;font-size:13px;}
+.tag.ev{color:var(--violet);border-left-color:var(--violet);}
+.btn{font-family:var(--jp);font-size:14.5px;font-weight:600;color:var(--paper);background:var(--electric);text-decoration:none;border-radius:5px;padding:15px 30px;display:inline-flex;align-items:center;gap:11px;transition:background .25s,transform .25s;border:none;cursor:pointer;}
+.btn:hover{background:var(--electric-dark);transform:translateY(-1px);}
+.btn i{font-style:normal;transition:transform .25s;}
+.btn:hover i{transform:translateX(4px);}
+.btn--ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line-2);}
+.btn--ghost:hover{background:transparent;border-color:var(--electric);color:var(--electric);}
+.btn--on-blue{background:var(--paper);color:var(--electric);}
+.btn--on-blue:hover{background:var(--white);}
+.btn--on-blue-ghost{background:transparent;color:var(--paper);border:1.5px solid rgba(244,246,249,.5);}
+.btn--on-blue-ghost:hover{background:rgba(244,246,249,.1);border-color:var(--paper);}
+
+/* ===== NAV ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:68px;background:rgba(244,246,249,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transition:box-shadow .3s,height .3s cubic-bezier(.2,.8,.2,1),background .3s;}
+nav.scrolled{box-shadow:0 1px 16px rgba(0,94,255,.06);height:58px;background:rgba(244,246,249,.92);}
+nav .logo{transition:font-size .3s cubic-bezier(.2,.8,.2,1);}
+nav.scrolled .logo{font-size:18px;}
+nav .logo{font-family:var(--en);font-weight:700;font-size:20px;letter-spacing:-.01em;text-decoration:none;color:var(--ink);}
+nav .logo i{font-style:normal;color:var(--electric);}
+nav ul{list-style:none;display:flex;gap:34px;}
+nav ul a{font-size:14px;font-weight:500;color:var(--ink);text-decoration:none;position:relative;}
+nav ul a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--electric);transition:width .28s cubic-bezier(.2,.8,.2,1);}
+nav ul a:hover::after,nav ul a.active::after{width:100%;}
+nav ul a.active{color:var(--electric);}
+nav .nav-right{display:flex;align-items:center;gap:18px;}
+nav .nav-cta{font-family:var(--jp);font-size:13.5px;font-weight:600;color:var(--paper);background:var(--electric);text-decoration:none;padding:10px 22px;border-radius:4px;transition:background .25s;}
+nav .nav-cta:hover{background:var(--electric-dark);}
+nav .nav-cta .short{display:none;}
+nav .lang{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.04em;}
+nav .lang a{color:var(--slate);text-decoration:none;}
+nav .lang .cur{color:var(--electric);}
+
+/* hamburger */
+.hamb{display:none;width:44px;height:44px;border:none;background:none;cursor:pointer;position:relative;margin-left:2px;}
+.hamb span{position:absolute;left:11px;width:22px;height:2px;background:var(--ink);transition:transform .3s,opacity .2s;}
+.hamb span:nth-child(1){top:15px;} .hamb span:nth-child(2){top:21px;} .hamb span:nth-child(3){top:27px;}
+body.menu-open .hamb span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+body.menu-open .hamb span:nth-child(2){opacity:0;}
+body.menu-open .hamb span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+.mmenu{position:fixed;inset:68px 0 0;z-index:45;background:var(--paper);transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);visibility:hidden;display:flex;flex-direction:column;padding:18px 24px 40px;}
+body.menu-open .mmenu{transform:none;visibility:visible;}
+.mmenu a{font-size:19px;font-weight:600;color:var(--ink);text-decoration:none;padding:20px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;}
+.mmenu a::after{content:"→";color:var(--electric);font-family:var(--en);}
+.mmenu .m-cta{margin-top:28px;background:var(--electric);color:var(--paper);justify-content:center;border-radius:5px;border:none;padding:17px;}
+.mmenu .m-cta::after{content:none;}
+.mmenu .m-lang{margin-top:auto;border:none;font-family:var(--en);font-size:13px;color:var(--slate);}
+.mmenu .m-lang::after{content:none;}
+
+/* ===== FOOTER ===== */
+footer{background:var(--white);border-top:1px solid var(--line);padding:64px 0 40px;}
+.footer-inner{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;}
+.footer-brand .logo{font-family:var(--en);font-size:19px;font-weight:700;color:var(--ink);}
+.footer-brand .logo i{font-style:normal;color:var(--electric);}
+.footer-brand p{font-size:13px;color:var(--slate);line-height:1.7;margin-top:12px;}
+.footer-brand .x{display:inline-flex;align-items:center;gap:7px;margin-top:16px;font-size:13px;font-weight:600;color:var(--slate);text-decoration:none;}
+.footer-brand .x:hover{color:var(--electric);}
+.footer-col h4{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:16px;}
+.footer-col a{display:block;font-size:13px;color:var(--slate);text-decoration:none;margin-bottom:10px;}
+.footer-col a:hover{color:var(--electric);}
+.footer-col p{font-size:13px;color:var(--slate);line-height:1.7;margin-top:12px;}
+.copyright{text-align:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-family:var(--en);font-size:12px;color:var(--slate);}
+
+/* ===== focus visibility ===== */
+a:focus-visible,button:focus-visible{outline:2px solid var(--electric);outline-offset:3px;border-radius:3px;}
+:focus:not(:focus-visible){outline:none;}
+
+/* ===== reduced motion ===== */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *{animation-duration:.001ms!important;transition-duration:.001ms!important;}
+}
+
+/* ===== scrollbar ===== */
+@media (pointer:fine){
+  *{scrollbar-width:thin;scrollbar-color:#c3ccd8 transparent;}
+  ::-webkit-scrollbar{width:12px;height:12px;}
+  ::-webkit-scrollbar-thumb{background:#c3ccd8;border-radius:10px;border:3px solid var(--paper);}
+  ::-webkit-scrollbar-thumb:hover{background:#9aa7b8;}
+  ::-webkit-scrollbar-track{background:transparent;}
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1000px){
+  .footer-inner{grid-template-columns:1fr 1fr;gap:32px;}
+}
+@media(max-width:860px){
+  nav ul{display:none;}
+  nav .nav-cta{padding:8px 14px;font-size:12.5px;}nav .nav-cta .full{display:none;}nav .nav-cta .short{display:inline;}
+  nav .lang{display:none;}
+  .hamb{display:block;}
+  .art-head{padding:112px 24px 0;}
+  .article-hero{padding:0 24px;}
+}
+@media(max-width:560px){
+  .container{padding:0 22px;}
+  .art-head{padding:96px 22px 0;}
+  .art-head .crumb{margin-bottom:36px;}
+  .a-topline{align-items:flex-start;flex-direction:column;margin-bottom:19px;}
+  .a-share-label{display:none;}
+  .art-head h1{font-size:34px;line-height:1.35;}
+  .art-head .lead{margin-top:20px;font-size:15.5px;}
+  .article-hero{margin-top:42px;padding:0;}
+  .article-hero-frame{border-right:none;border-left:none;border-radius:0;}
+  .article-hero figcaption{padding:0 22px;}
+  .art-wrap{padding:54px 0 88px;}
+  .art-body p,.art-body li{font-size:15.5px;}
+  .art-body h2{margin-top:52px;font-size:24px;}
+  nav{padding:0 10px 0 18px;height:60px;}
+  .mmenu{top:60px;}
+}
+@media print{
+  body{background:#fff;color:#000;}
+  nav,.mmenu,.hamb,.a-share{display:none;}
+}
+</style>
+<link rel="stylesheet" href="article.css?v=20261006-source-first">
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1264057945446029');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1264057945446029&amp;ev=PageView&amp;noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body class="article-page">
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="../index.html" class="logo">Tech<i>Worker</i></a>
+  <ul>
+    <li><a href="../index.html">ホーム</a></li>
+    <li><a href="../services.html">サービス</a></li>
+    <li><a href="../cases.html">実績</a></li>
+    <li><a href="../media/">メディア</a></li>
+    <li><a href="../library/">資料</a></li>
+    <li><a href="../news.html" class="active">ニュース</a></li>
+    <li><a href="../company.html">会社概要</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="../contact.html" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
+    <span class="lang"><span class="cur">JP</span> / <a href="../en/index.html">EN</a></span>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="../index.html">ホーム</a>
+  <a href="../services.html">サービス</a>
+  <a href="../cases.html">実績</a>
+  <a href="../media/">メディア</a>
+  <a href="../library/">資料ダウンロード</a>
+  <a href="../news.html">ニュース</a>
+  <a href="../company.html">会社概要</a>
+  <a href="../contact.html" class="m-cta">無料相談を申し込む</a>
+  <a href="../en/index.html" class="m-lang">English ↗</a>
+</div>
+
+<main>
+<!-- ARTICLE HEAD -->
+<header class="art-head">
+  <div class="crumb" role="navigation" aria-label="パンくず"><a href="../index.html">ホーム</a><span class="sep">/</span><a href="../news.html">ニュース</a><span class="sep">/</span><span class="cur">セキュリティとデータの取り扱い</span></div>
+  <div class="a-topline">
+    <div class="a-meta">
+      <time class="a-date" datetime="2026-10-08">2026.10.08</time>
+      <span class="a-cat">お知らせ</span>
+    </div>
+    <div class="a-share" aria-label="この記事を共有">
+      <span class="a-share-label">Share</span>
+      <a href="https://x.com/intent/post?url=https%3A%2F%2Ftechworker.co.jp%2Fnews%2F010&amp;text=CoeSignal%20%E3%81%A8%20CompanyMap%20AI%20%E3%81%AE%E3%80%81%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%81%A8%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%8F%96%E3%82%8A%E6%89%B1%E3%81%84%E3%82%92%E3%81%BE%E3%81%A8%E3%82%81%E3%81%BE%E3%81%97%E3%81%9F" target="_blank" rel="noopener noreferrer" aria-label="Xで共有">X</a>
+      <button type="button" id="copyLink" aria-label="記事のリンクをコピー">Link</button>
+    </div>
+  </div>
+  <h1>CoeSignal と CompanyMap AI の、セキュリティとデータの取り扱いをまとめました</h1>
+  <p class="lead">導入のご検討で確認される点を、ページにまとめました。導入審査のチェックシートには、個別に回答します。</p>
+</header>
+
+<!-- ARTICLE BODY -->
+<section class="art-wrap">
+  <div class="container">
+    <div class="art-body">
+
+      <p>株式会社TechWorker（本社：東京都新宿区、代表取締役 CEO兼CTO：古野光太朗）は、AIインタビューサービス「CoeSignal」と、業務図サービス「CompanyMap AI」について、セキュリティとデータの取り扱いをまとめたページを、現在の仕様に合わせて更新しました。情報システム部門や人事・法務の方が、導入を検討するときに、データがどう扱われるかを確かめられるようにしています。</p>
+
+      <h2>ページ</h2>
+
+      <ul>
+        <li>CoeSignal：<a href="https://coesignal.techworker.co.jp/docs/security">https://coesignal.techworker.co.jp/docs/security</a></li>
+        <li>CompanyMap AI：<a href="https://techworker.co.jp/companymap/docs/security">https://techworker.co.jp/companymap/docs/security</a></li>
+      </ul>
+
+      <h2>載せている項目</h2>
+
+      <ul>
+        <li>ログインと権限</li>
+        <li>操作の記録</li>
+        <li>データの保存先と暗号化</li>
+        <li>AIの提供元と、学習の扱い</li>
+        <li>データの削除</li>
+        <li>外部の委託先</li>
+        <li>現在提供していないこと</li>
+      </ul>
+
+      <p>各ページは、現在の仕様に合わせて書いています。現在提供していないことも、あわせて載せています。仕様が変わったときは、ページを更新します。</p>
+
+      <h2>導入審査のチェックシートについて</h2>
+
+      <p>貴社の導入審査用のチェックシートがある場合は、個別に回答します。<a href="../contact.html">お問い合わせ</a>から、チェックシートがあることをお知らせください。</p>
+
+      <div class="article-service">
+        <p><strong>CoeSignal（コエシグナル）／CompanyMap AI</strong><br>提供：株式会社TechWorker<br><a href="https://coesignal.techworker.co.jp/">CoeSignal公式サイトを見る</a> ／ <a href="../companymap">CompanyMap AIを見る</a> ／ <a href="../contact.html">お問い合わせ</a></p>
+      </div>
+
+    </div>
+
+    <div class="back-list">
+      <a href="../news.html">← ニュース一覧に戻る</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">Tech<i>Worker</i></div>
+        <p>企業向け生成AIコンサルティング<br>株式会社TechWorker</p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+      </div>
+      <div class="footer-col">
+        <h4>サービス</h4>
+        <a href="../services.html">生成AIコンサル</a>
+      </div>
+      <div class="footer-col">
+        <h4>サイト</h4>
+        <a href="../media/">メディア</a>
+        <a href="../news.html">ニュース</a>
+        <a href="../cases.html">実績</a>
+        <a href="../company.html">会社概要</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="../contact.html">無料相談</a>
+        <a href="../contact.html?type=document">資料請求</a>
+        <a href="../privacy.html">プライバシーポリシー</a>
+        <p>〒169-0051<br>東京都新宿区西早稲田一丁目22番3号</p>
+      </div>
+    </div>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+/* nav shadow on scroll */
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>40);},{passive:true});
+
+/* mobile menu */
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(open){
+    document.body.classList.toggle('menu-open',open);
+    hamb.setAttribute('aria-expanded',open?'true':'false');
+    hamb.setAttribute('aria-label',open?'メニューを閉じる':'メニューを開く');
+    mmenu.setAttribute('aria-hidden',open?'false':'true');
+    document.body.style.overflow=open?'hidden':'';
+  }
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+  matchMedia('(min-width:861px)').addEventListener('change',function(e){if(e.matches)setMenu(false);});
+})();
+
+</script>
+<script src="article.js"></script>
+</body>
+</html>
