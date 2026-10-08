@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js" data-media="gyomuzu">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}gtag('config', 'G-3V34NWXVCJ');
+</script>
+<script src="/assets/tw-track.js" defer></script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>問い合わせ一次対応のAI活用｜定型回答と個別判断を分ける業務図 — TechWorker</title>
+<meta name="description" content="問い合わせのAI活用は、回答案を作る条件と、人へ渡す条件を先に決めます。公開済みの業務図を使い、対応責任者が試す範囲と確認者を決める手順を紹介します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/gyomuzu/support-first-response-process-map">
+<meta property="og:type" content="article">
+<meta property="og:title" content="問い合わせ一次対応のAI活用｜定型回答と個別判断を分ける業務図">
+<meta property="og:description" content="問い合わせのAI活用は、回答案を作る条件と、人へ渡す条件を先に決めます。公開済みの業務図を使い、対応責任者が試す範囲と確認者を決める手順を紹介します。">
+<meta property="og:image" content="https://techworker.co.jp/media/gyomuzu/covers/support-first-response-process-map.png">
+<meta property="og:url" content="https://techworker.co.jp/media/gyomuzu/support-first-response-process-map">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="問い合わせ一次対応のAI活用｜定型回答と個別判断を分ける業務図">
+<meta name="twitter:image" content="https://techworker.co.jp/media/gyomuzu/covers/support-first-response-process-map.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../article.css?v=20261006-source-notes">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "問い合わせ一次対応のAI活用｜定型回答と個別判断を分ける業務図", "description": "問い合わせのAI活用は、回答案を作る条件と、人へ渡す条件を先に決めます。公開済みの業務図を使い、対応責任者が試す範囲と確認者を決める手順を紹介します。", "datePublished": "2026-10-09", "dateModified": "2026-10-09", "inLanguage": "ja", "image": "https://techworker.co.jp/media/gyomuzu/covers/support-first-response-process-map.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/gyomuzu/support-first-response-process-map"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "業務図ラボ", "item": "https://techworker.co.jp/media/gyomuzu/"}, {"@type": "ListItem", "position": 4, "name": "問い合わせ一次対応のAI活用｜定型回答と個別判断を分ける業務図", "item": "https://techworker.co.jp/media/gyomuzu/support-first-response-process-map"}]}</script>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<meta name="twitter:description" content="問い合わせのAI活用は、回答案を作る条件と、人へ渡す条件を先に決めます。公開済みの業務図を使い、対応責任者が試す範囲と確認者を決める手順を紹介します。">
+<meta property="og:image:alt" content="問い合わせの一次対応。回答元を決め、個別の質問は人へ渡し、担当者が返信前に確認する設計例">
+<link rel="stylesheet" href="/media/audience-filter.css?v=20261006-media-only">
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <a href="index.html" class="logo">業務図<i>ラボ</i></a>
+  <ul>
+    <li><a href="index.html">記事一覧</a></li>
+    <li><a href="../../companymap?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=support-first-response-process-map&amp;utm_content=nav">CompanyMap AIについて</a></li>
+    <li><a href="../../index.html">TechWorkerとは</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="../../companymap/contact?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=support-first-response-process-map&amp;utm_content=nav_cta" class="nav-cta"><span class="full">無料相談を申し込む</span><span class="short">無料相談</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="index.html">記事一覧</a>
+  <a href="../../companymap?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=support-first-response-process-map&amp;utm_content=menu">CompanyMap AIについて</a>
+  <a href="../../index.html">TechWorkerとは</a>
+  <a href="../../companymap/contact?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=support-first-response-process-map&amp;utm_content=menu_cta" class="m-cta">無料相談を申し込む</a>
+</div>
+
+<header class="art-head">
+<nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">業務図ラボ</a><span class="sep">/</span>問い合わせ一次対応のAI活用</nav>
+<div class="kicker">部署別の業務図</div><h1>問い合わせ一次対応のAI活用｜定型回答と個別判断を分ける業務図</h1><p class="dek">問い合わせのAI活用は、回答案を作る条件と、人へ渡す条件を先に決めます。公開済みの業務図を使い、対応責任者が試す範囲と確認者を決める手順を紹介します。</p>
+<div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" width="36" height="36" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><time datetime="2026-10-09">2026.10.09</time><span class="dot">·</span><span>読了 5分</span></div>
+<p class="article-audience"><span class="article-audience-label">主な対象読者</span><a href="/media/gyomuzu/?audience=operations#articles">業務責任者</a></p>
+</header>
+<div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div><a href="#s1">公開テンプレートでは、どこを人が引き取るか</a><a href="#s2">任せる範囲は、回答元と例外の条件で決める</a><a href="#s3">個別の質問を、回答案づくりへ流さない</a><a href="#s4">最初の試用は、送信しない範囲で確かめる</a><a href="#s5">業務図を導入の判断へつなぐ</a><a href="#sources">出典と確認した範囲</a></div></nav><article class="art-body">
+<p>問い合わせの返信をAIに任せたいとき、最初に決めたいのは対応の範囲です。営業時間の案内と、返品の可否を決める返信では、必要な確認が変わります。</p>
+<p>TechWorkerは、部署別の業務図テンプレート集を公開しています。今回は、その問い合わせ一次対応の設計例を読み解きます。実稼働や時間削減を検証した事例ではありません。</p>
+<h2 id="s1">公開テンプレートでは、どこを人が引き取るか</h2>
+<p class="answer">定型の質問はAIが回答案を作り、個別の事情がある質問は担当者へ渡す設計です。</p>
+<figure class="fig-inline source-figure"><a class="source-image" href="../../library/figs/gyomuzu/support.png" target="_blank" rel="noopener"><img src="../../library/figs/gyomuzu/support.png" width="1200" height="667" alt="TechWorkerの公開設計例。AIが問い合わせを分類し、定型質問は下書き、個別質問は人へ渡し、担当者が確認して返信する業務図。" loading="eager" decoding="async"></a><figcaption><span class="source-label">TechWorkerの公開設計例</span>出典：<a href="../../library/gyomuzu-templates.html#c2">部署別 業務図テンプレート集</a>（2026年10月2日公開、10月9日確認）。TechWorker作成の図を再掲しています。実稼働の記録ではありません。画像を押すと拡大できます。</figcaption></figure>
+<p>図の中央に「定型の質問か」という判断があります。定型の質問は、AIが下書きを作る工程へ進みます。個別の事情を含む質問は、対応担当が原文を確認します。どちらの経路でも、返信は人が確かめてから行います。</p>
+<p>図で確かめられるのは、担当と仕事の順序です。分類の正確さや返信速度は、この図からは分かりません。「AIが自動で」という札も、稼働や性能を保証する表示ではありません。</p>
+<p>たとえば営業時間を聞かれたときは、承認済みの案内に沿う回答案を用意できます。購入日や利用状況を見て返金を判断する質問は、個別の事情の確認が必要です。この2つは、記事で説明するための記入例です。</p>
+<h2 id="s2">任せる範囲は、回答元と例外の条件で決める</h2>
+<p class="answer">回答元を指定し、判断に足りない情報があるときは人へ渡す条件を書きます。</p>
+<p>試す前に、回答案の根拠に使う資料を決めます。料金表、営業時間、配送案内などから、現在有効なものを選びます。同じ内容の古い資料が残っていれば、参照対象から外します。</p>
+<p>次に、人が対応する質問を具体的に書きます。返品・補償の可否、契約条件の変更、個人情報の訂正などです。資料の記載が食い違うときや、該当する案内がないときも、担当者へ渡します。</p>
+<p>これは公開テンプレートを使う際の試用案です。TechWorkerがこの条件で顧客対応を運用した実績ではありません。自社の商品、契約、対応方針に合わせて条件を直してください。</p>
+<div class="tbl-wrap"><table><thead><tr><th>決める項目</th><th>記入例</th></tr></thead><tbody><tr><td>回答元</td><td>責任者が確認した営業時間と配送案内の現行版</td></tr><tr><td>AIが作るもの</td><td>回答案、参照した箇所、未確認の項目</td></tr><tr><td>人へ渡す条件</td><td>返金・補償の判断、資料の食い違い、根拠の不足</td></tr><tr><td>任せない操作</td><td>顧客への返信、契約の変更、登録情報の書き換え</td></tr><tr><td>確認する人</td><td>対応担当。不在時は対応責任者が引き取る</td></tr></tbody></table></div>
+<p>AIの回答が流暢でも、資料にない約束はできません。担当者が回答元まで辿れる状態にして、文面と根拠を一緒に受け取ります。</p>
+<aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">部署別 業務図テンプレート集</div><div class="mc-d">AIに任せる工程の見つけ方つき。担当と確認者を決める際に使える設計例です。</div></div><a href="../../library/?doc=gyomuzu&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=support-first-response-process-map&amp;utm_content=mid" class="btn" data-cta="support-first-response-process-map-mid">無料で受け取る <i>→</i></a></aside>
+<h2 id="s3">個別の質問を、回答案づくりへ流さない</h2>
+<p class="answer">分類で迷う質問は原文を担当者へ渡し、判断が済んでから次へ進めます。</p>
+    <figure class="fig-inline"><a href="figs/support-first-response-process-map-1.png" target="_blank" rel="noopener"><img src="figs/support-first-response-process-map-1.png" alt="問い合わせ一次対応の設計例。定型質問はAIが回答案を作り、個別または分類に迷う質問は原文と理由を対応担当へ渡します。両経路とも担当者が根拠を確認して返信します。" width="1200" height="696" loading="lazy" decoding="async"></a><figcaption>TechWorker作成の設計例。公開テンプレートの分担と、本記事の引き継ぎ条件を示しています。実稼働の結果ではありません。</figcaption></figure>
+<p>定型と個別を分ける際は、質問の短さだけで決めません。「返品できますか」の一言にも、購入時期や商品の状態などの確認が必要です。</p>
+<p>判断できない質問には、もっともらしい回答案を付けずに引き継ぎます。担当者が受け取るのは、質問の原文、参照できた資料、止まった理由です。添付資料がある場合も、自社で許可した範囲だけ扱います。</p>
+<p>この図は、公開テンプレートの分担を短く示した設計例です。AIによる分類の実装や、問い合わせ管理システムとの接続を示す実画面ではありません。</p>
+<h2 id="s4">最初の試用は、送信しない範囲で確かめる</h2>
+<p class="answer">個人情報を除いた質問例で回答案を作り、担当者が元資料と照合します。</p>
+<p>最初は、顧客へ送信しない試用環境で確かめます。利用するAIの保存条件と社内ルールを確認してから、公開情報や個人情報を除いた質問例を渡します。実際の顧客データの持ち込みは、その確認を済ませてから判断します。</p>
+<p>質問例には、定型質問と個別質問の両方を含めます。営業時間の質問なら、回答元と文面が一致するかを見ます。返金の質問なら、人へ引き継がれたかを見ます。根拠のない約束を補った場合は、対象の質問と参照資料を記録します。</p>
+<p>確認記録は、次の項目で残せます。これは試用用の記入例です。</p>
+<div class="tbl-wrap"><table><thead><tr><th>記録する項目</th><th>記入例</th></tr></thead><tbody><tr><td>質問と分類</td><td>営業時間の質問／定型</td></tr><tr><td>使った資料</td><td>営業時間の現行案内、確認日</td></tr><tr><td>AIが出した結果</td><td>回答案と案内の参照箇所</td></tr><tr><td>担当者の確認</td><td>案内と一致／修正が必要</td></tr><tr><td>次の処理</td><td>下書きまで試用を続ける／条件を直して再確認</td></tr></tbody></table></div>
+<p>分類の誤り、根拠の不足、確認者が引き取れない状態があれば、対象を広げません。実際に試した件数と修正内容を記録してから、次の判断をします。この記事には、合格率や削減時間の実測値はありません。</p>
+<h2 id="s5">業務図を導入の判断へつなぐ</h2>
+<p class="answer">自部署の回答元、例外、確認者を埋めてから、試す仕事を一つ選びます。</p>
+<p>問い合わせ対応のどこで仕事が止まるかを見ます。受付が詰まるのか、回答案づくりなのか、担当者の確認待ちなのかで、試す工程が変わります。対応件数だけでは、その場所を判断できません。</p>
+<p>テンプレートを使う場合は、担当者への聞き取りで現在の流れを確かめます。既存の案内や対応記録も合わせて、例外が発生する工程に書き込みます。人が判断する部分を残したまま、下書きの試用から始められます。</p>
+<p>CompanyMap AIでは、聞き取り・資料・業務の記録の3つから、AIが部署の業務図を作ります。お客さまには、案内を配り、担当者が1人15分ほど答え、できた図を確認していただきます。図を確かめてから、任せる仕事を決めます。</p>
+<h2 id="sources">出典と確認した範囲</h2>
+<ul class="source-list"><li><a href="../../library/gyomuzu-templates.html#c2">TechWorker「部署別 業務図テンプレート集」</a>。2026年10月2日公開。問い合わせ一次対応の図と分担を、10月9日に確認しました。</li><li><a href="../../companymap/docs/reading-the-map">CompanyMap AI「業務図の読み方」</a>。2026年10月8日更新。AIの下書きには確認する人を決めるという、自社の描き方の条件を確認しました。</li><li><a href="../../companymap">CompanyMap AI</a>。2026年10月9日確認。3つの情報から部署の業務図を作るサービスの説明を確認しました。</li></ul>
+<p>公開テンプレートは設計例です。本記事の質問例、依頼項目、試用の記録欄は追加の試用案です。顧客への実導入、分類精度、削減効果は未検証です。</p>
+</article></div>
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" width="64" height="64" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div>
+    <p>株式会社TechWorker代表取締役。企業の生成AI導入と、業務への組み込みを支援しています。</p>
+  </div>
+</div></div>
+
+<section class="related"><div class="container">
+  <h2 class="rl-h">あわせて読む</h2>
+  <div class="related-grid">
+    <a href="ai-task-allocation-process-map.html" class="related-card"><span class="rc-cat">任せる工程を決める</span><div class="rc-title">AIに任せる業務の決め方｜商談業務図で読む、下書きと実行の境界</div></a>
+    <a href="../kenshu/claude-code-jirei.html" class="related-card"><span class="rc-cat">実際の改修記録を読む</span><div class="rc-title">Codex・Claude Codeの活用事例｜自社の改修記録と企業の公開事例</div></a>
+  </div>
+</div></section>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>部署の仕事の流れを、3つの情報からAIが業務図にします。</h3>
+    <p>CompanyMap AIは、担当者への聞き取り・手元の資料・業務の記録の3つから、AIが部署の仕事の流れを1枚の業務図にするサービスです。任せる工程を決める前に、部署の仕事を確かめられます。</p>
+  </div>
+  <a href="../../companymap/contact?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=support-first-response-process-map&amp;utm_content=end" class="btn">無料相談を申し込む <i>→</i></a>
+</div></div>
+<div class="back-list"><a href="index.html">← 業務図ラボの記事一覧に戻る</a></div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">業務図<i>ラボ</i></div>
+        <p>業務図・業務フローの描き方と、AIに任せる工程の決め方をお届けするメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
+      </div>
+      <div class="footer-col"><h4>業務図ラボ</h4><a href="index.html">記事一覧</a><a href="../../companymap">CompanyMap AIについて</a></div>
+      <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../services.html">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="../../contact.html">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+<script src="/media/article-tracker.js?v=20261006-readable-intros" defer></script>
+</body>
+</html>
