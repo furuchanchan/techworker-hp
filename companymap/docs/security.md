@@ -57,11 +57,11 @@ updated: 2026-10-08
 | 資料からの業務図の下書き、直し方の提案 | Anthropic Claude | Anthropic の API へ直接送ります |
 | 聞き取りの質問と聞き返し | Anthropic Claude | 聞き取りの基盤 CoeSignal から |
 | 聞き取りの書き起こし | Cloudflare Workers AI（音声の文字起こし） | Cloudflare の中 |
-| 他社事例の検索の並べ替え | TypeSafe 社のモデル（Cloudflare Workers AI 上で動く第三者のモデル） | 検索の言葉と公開の事例だけを渡します。お客さまの情報は渡さず、データを保持しない設定です |
+| 他社事例の検索の並べ替え | TypeSafe 社のモデル（Cloudflare 経由で呼び出す第三者のモデル） | 検索の言葉と公開の事例だけを渡します。お客さまの情報は渡しません。Cloudflare の表示では、データを保持しないモデルです |
 
 - AIが業務図を直接書くのは、資料から作る最初の下書きと、工程の説明の空欄だけです。そのあとの変更は、AIが提案として出し、編集できる方が採用したものだけが業務図に入ります。
 - Anthropic と Cloudflare は、法人向けの規約で、送った内容をAIの学習に使わないとしています（[Anthropic の規約](https://www.anthropic.com/legal/commercial-terms)、[Cloudflare Workers AI の説明](https://developers.cloudflare.com/workers-ai/platform/data-usage/)）。
-- 資料や聞き取りの答えをAIに渡すとき、内容は米国の Anthropic に送られます。
+- 資料や聞き取りの答えを Claude に渡すとき、内容は米国の Anthropic に送られます。
 - Anthropic の API に送った入力と出力は、Anthropic が原則30日以内に削除すると説明しています。規約に反する疑いがあると判定されたものは最長2年、安全のための分類の点数は最長7年残ることがあります（[Anthropic の説明](https://privacy.claude.com/en/articles/7996866)、2026年7月1日更新）。入力を一切保存しない契約（Zero Data Retention）は結んでいません。
 - 聞き取りの同意画面では、処理を任せる会社として OpenAI も示しています。聞き取りの基盤 CoeSignal の別の機能で使うためで、CompanyMap AI の聞き取りでは使っていません。
 
