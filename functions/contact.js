@@ -79,7 +79,7 @@ function computeIntent(data) {
 // 本文が書かれた送信だけを Claude Haiku に判定させる。
 // 判定できない（キー未設定・タイムアウト・APIエラー）ときは通す：
 // 本物の相談を取りこぼす損のほうが、営業が1通混ざる損より大きいため。
-const SALES_MODEL = 'claude-haiku-4-5-20251001';
+const SALES_MODEL = 'claude-haiku-5-5';
 const SALES_STATUS = '営業（自動判定）';
 const SALES_SYSTEM = `あなたは株式会社TechWorker（法人向け生成AI研修・AI活用支援・業務図サービスCompanyMap AIを提供）の問い合わせフォームの受付係です。
 送られてきた問い合わせが「TechWorkerに対する営業・売り込み」かどうかを判定してください。
