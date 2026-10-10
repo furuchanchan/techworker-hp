@@ -27,9 +27,10 @@ function isAllowedSource(request) {
   try { return ALLOWED_ORIGINS.has(new URL(ref).origin); } catch { return false; }
 }
 
-// 感動体験のため品質最優先で Opus 4.8。速さ優先に戻すなら 'claude-sonnet-4-6'（速い）/ 'claude-haiku-4-5'（最速）。
-const MODEL = 'claude-opus-4-8';
-const MAX_TOKENS = 1600;
+// 感動体験のため品質最優先で Opus 5.5。速さ優先に戻すなら 'claude-sonnet-5-5'（速い）/ 'claude-haiku-5-5'（最速）。
+// Opus 5.5 は thinking を切れず max_tokens を食うため、effort は明示し、上限は余裕を持たせる。
+const MODEL = 'claude-opus-5-5';
+const MAX_TOKENS = 4000;
 
 export async function onRequestOptions({ request }) {
   return new Response(null, { status: 204, headers: corsHeaders(request) });
@@ -118,10 +119,14 @@ export async function onRequestPost({ request, env }) {
         'content-type': 'application/json',
         'x-api-key': env.ANTHROPIC_API_KEY,
         'anthropic-version': '2023-06-01',
+        // 安全分類で拒否されたとき、Anthropic推奨のモデルでサーバー側が再実行する
+        'anthropic-beta': 'server-side-fallback-2026-07-01',
       },
       body: JSON.stringify({
         model: MODEL,
         max_tokens: MAX_TOKENS,
+        output_config: { effort: 'low' },
+        fallbacks: 'default',
         system: sys,
         messages: [{ role: 'user', content: user }],
       }),
@@ -143,7 +148,12 @@ export async function onRequestPost({ request, env }) {
     return json({ ok: false, fallback: true, reason: 'bad_response' });
   }
 
-  const text = out && out.content && out.content[0] && out.content[0].text ? out.content[0].text : '';
+  // 拒否（refusal）は定型表示に落とす。応答の先頭は thinking ブロックになり得るので text ブロックを探す
+  if (out && out.stop_reason === 'refusal') {
+    return json({ ok: false, fallback: true, reason: 'refusal' });
+  }
+  const textBlock = out && Array.isArray(out.content) ? out.content.find((c) => c.type === 'text') : null;
+  const text = textBlock && textBlock.text ? textBlock.text : '';
   let parsed = null;
   try {
     const m = text.match(/\{[\s\S]*\}/);
