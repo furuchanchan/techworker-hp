@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js" data-media="gyomuzu">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}if(location.hostname==='techworker.co.jp')gtag('config', 'G-3V34NWXVCJ');
+</script>
+<script src="/assets/tw-track.js" defer></script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>月次締めのAI活用｜仕訳案・照合・資料作成を分ける業務図 — TechWorker</title>
+<meta name="description" content="月次締めでAIに任せる範囲は、作業ごとに決めます。公開済みの設計例から、経理責任者が下書き・登録・差異調査の担当を分ける手順を紹介します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/gyomuzu/accounting-monthly-close-process-map">
+<meta property="og:type" content="article">
+<meta property="og:title" content="月次締めのAI活用｜仕訳案・照合・資料作成を分ける業務図">
+<meta property="og:description" content="月次締めでAIに任せる範囲は、作業ごとに決めます。公開済みの設計例から、経理責任者が下書き・登録・差異調査の担当を分ける手順を紹介します。">
+<meta property="og:image" content="https://techworker.co.jp/media/gyomuzu/covers/accounting-monthly-close-process-map.png">
+<meta property="og:url" content="https://techworker.co.jp/media/gyomuzu/accounting-monthly-close-process-map">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="月次締めのAI活用｜仕訳案・照合・資料作成を分ける業務図">
+<meta name="twitter:image" content="https://techworker.co.jp/media/gyomuzu/covers/accounting-monthly-close-process-map.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../article.css?v=20261006-source-notes">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "月次締めのAI活用｜仕訳案・照合・資料作成を分ける業務図", "description": "月次締めでAIに任せる範囲は、作業ごとに決めます。公開済みの設計例から、経理責任者が下書き・登録・差異調査の担当を分ける手順を紹介します。", "datePublished": "2026-10-12", "dateModified": "2026-10-12", "inLanguage": "ja", "image": "https://techworker.co.jp/media/gyomuzu/covers/accounting-monthly-close-process-map.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/gyomuzu/accounting-monthly-close-process-map"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "業務図ラボ", "item": "https://techworker.co.jp/media/gyomuzu/"}, {"@type": "ListItem", "position": 4, "name": "月次締めのAI活用｜仕訳案・照合・資料作成を分ける業務図", "item": "https://techworker.co.jp/media/gyomuzu/accounting-monthly-close-process-map"}]}</script>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<meta name="twitter:description" content="月次締めでAIに任せる範囲は、作業ごとに決めます。公開済みの設計例から、経理責任者が下書き・登録・差異調査の担当を分ける手順を紹介します。">
+<meta property="og:image:alt" content="月次締めの設計例。AIが差異候補を整理し、経理担当が調査と登録、責任者が締めを確認する">
+<link rel="stylesheet" href="/media/audience-filter.css?v=20261006-media-only">
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <a href="index.html" class="logo">業務図<i>ラボ</i></a>
+  <ul>
+    <li><a href="index.html">記事一覧</a></li>
+    <li><a href="../../companymap?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=accounting-monthly-close-process-map&amp;utm_content=nav">CompanyMap AIについて</a></li>
+    <li><a href="../../index.html">TechWorkerとは</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="../../companymap/contact?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=accounting-monthly-close-process-map&amp;utm_content=nav_cta" class="nav-cta"><span class="full">無料相談を申し込む</span><span class="short">詳細</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="index.html">記事一覧</a>
+  <a href="../../companymap?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=accounting-monthly-close-process-map&amp;utm_content=menu">CompanyMap AIについて</a>
+  <a href="../../index.html">TechWorkerとは</a>
+  <a href="../../companymap/contact?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=accounting-monthly-close-process-map&amp;utm_content=menu_cta" class="m-cta">無料相談を申し込む</a>
+</div>
+
+<header class="art-head">
+<nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">業務図ラボ</a><span class="sep">/</span>月次締めのAI活用</nav>
+<div class="kicker">部署別の業務図</div><h1>月次締めのAI活用｜仕訳案・照合・資料作成を分ける業務図</h1><p class="dek">月次締めでAIに任せる範囲は、作業ごとに決めます。公開済みの設計例から、経理責任者が下書き・登録・差異調査の担当を分ける手順を紹介します。</p>
+<div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" width="36" height="36" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><time datetime="2026-10-12">2026.10.12</time><span class="dot">·</span><span>読了 5分</span></div>
+<p class="article-audience"><span class="article-audience-label">主な対象読者</span><a href="/media/gyomuzu/?audience=operations#articles">業務責任者</a></p>
+</header>
+<div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div><a href="#s1">公開図では、登録と締めの判断を人に残しています</a><a href="#s2">先に決めるのは、読み込む資料と書き換えない範囲です</a><a href="#s3">照合の差異は、元資料と一緒に人へ渡します</a><a href="#s4">試すときは、完成した資料との違いを確かめます</a><a href="#s5">自社の締めで止まる工程から書き出します</a><a href="#sources">出典と、本記事で提案した範囲</a></div></nav><article class="art-body">
+<h2 id="s1">公開図では、登録と締めの判断を人に残しています</h2>
+<p class="answer">月次資料が早く届いても、差異の理由が分からなければ締められません。AIに渡す作業を決めるときは、資料を作る工程と、その数字を確定する工程を分けます。</p>
+<p>TechWorkerの「部署別 業務図テンプレート集」にある経理の図を見てみます。これは一般的な流れをもとにした設計例です。TechWorkerの経理で稼働させた記録や、効果測定の結果ではありません。</p>
+<figure class="fig-inline source-figure"><a class="source-image" href="../../library/figs/gyomuzu/accounting.png" target="_blank" rel="noopener"><img src="../../library/figs/gyomuzu/accounting.png" width="1200" height="831" alt="TechWorkerの公開設計例。AIが仕訳案、残高と明細の照合、月次資料案を担当し、人が登録、差異調査、締めを行う7工程。" loading="eager" decoding="async"></a><figcaption><span class="source-label">TechWorkerの公開設計例</span>出典：<a href="../../library/gyomuzu-templates.html#c2">部署別 業務図テンプレート集</a>（2026年10月2日公開、10月12日確認）。TechWorker作成の図を再掲しています。実稼働の記録ではありません。画像を押すと拡大できます。</figcaption></figure>
+<p>図は、各部署が経費・請求書を提出するところから始まります。AIが仕訳案を作り、経理担当が確認して登録します。その後に残高と明細を照合し、差異を人が調べて直します。最後はAIが月次資料を下書きし、経理責任者が確認して締めます。</p>
+<p>見る場所は、人の帯に戻る矢印です。仕訳案の後には登録、照合の後には差異の調査があります。AIが作業を終えた時点と、経理が結果を確定した時点を分けています。</p>
+<p>図の「AIが自動で」は、任せ方の候補を示す札です。特定製品の照合精度や、接続済みの会計ソフトを示していません。この図だけで本番の自動実行を始める判断はできません。</p>
+<h2 id="s2">先に決めるのは、読み込む資料と書き換えない範囲です</h2>
+<p class="answer">最初の試用は、確認済み資料の写しを使う範囲に絞ります。会計ソフトへの登録や既存データの修正は、試用の対象から外します。</p>
+<p>公開テンプレートには、AIが会計ソフトの登録内容を書き換えない条件があります。確認前の資料も共有しません。これを自社で使う場合は、どの帳票を読むか、どこへ出力するかまで書き添えます。</p>
+<p>たとえば、対象月の明細と残高表を渡す設計なら、双方の対象期間をそろえます。科目名や集計単位が違う場合は、対応関係を経理担当が確認します。AIが不明な対応を推測で埋めた状態では、照合結果を確定しません。</p>
+<p>次は、本記事で提案する試用範囲の記入例です。現在のTechWorkerの経理手順ではありません。自社の規程、契約、保存先の条件に合わせて置き換えてください。</p>
+<div class="tbl-wrap"><table><thead><tr><th>決めること</th><th>試用時の記入例</th></tr></thead><tbody><tr><td>対象資料</td><td>対象月と版を確認した、明細・残高表の写し</td></tr><tr><td>作るもの</td><td>仕訳案、差異候補の一覧、月次資料の下書き</td></tr><tr><td>任せない操作</td><td>会計ソフトへの登録、登録内容の修正、資料の共有</td></tr><tr><td>止める条件</td><td>対象月や単位が不明、資料が不足、資料間で数値が一致しない</td></tr><tr><td>戻す相手</td><td>経理担当。締めの判断は経理責任者</td></tr></tbody></table></div>
+<aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">部署別 業務図テンプレート集</div><div class="mc-d">AIに任せる工程の見つけ方つき。担当と確認者を決める際に使える設計例です。</div></div><a href="../../library/?doc=gyomuzu&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=accounting-monthly-close-process-map&amp;utm_content=mid" class="btn" data-cta="accounting-monthly-close-process-map-mid">無料で受け取る <i>→</i></a></aside>
+<h2 id="s3">照合の差異は、元資料と一緒に人へ渡します</h2>
+<p class="answer">差異が見つかったら、その理由を確認する工程へ渡します。AIの出力には、確認した元資料と未確認の項目を添えます。</p>
+    <figure class="fig-inline"><a href="figs/accounting-monthly-close-process-map-1.png" target="_blank" rel="noopener"><img src="figs/accounting-monthly-close-process-map-1.png" alt="本記事で提案する分担の設計例。担当者が資料の写しを準備し、AIが差異候補と参照を整理します。経理担当が調査・修正・登録し、責任者が締めを確認します。試用では登録・締めは行いません。" width="1200" height="812" loading="lazy" decoding="async"></a><figcaption>TechWorker作成：本記事の分担案をもとにした設計例。試用では差異候補と元資料の確認までを検査し、登録・締めは行いません。AIに会計ソフトの書込権限を渡さない条件です。実稼働の記録ではありません。</figcaption></figure>
+<p>残高と明細に差があっても、その原因は図から分かりません。入力漏れなのか、対象期間の違いなのかを、元資料へ戻って調べる必要があります。理由が確認できないまま帳簿の数値を合わせる操作は、AIへ任せません。</p>
+<p>差異候補を受け取る記録には、対象月、資料名と版、比較した項目を書きます。さらに、差異候補、参照箇所、確認者、調査状況を残します。AIが示した理由は仮説として扱い、確認できた理由と区別します。</p>
+<p>記録例なら、「対象期間がそろっているか未確認。担当者が元帳と照合する」と書けます。「解決済み」と記すのは、担当者が根拠を確かめた後です。これは引き継ぎ方の例であり、特定の会計上の判断を示すものではありません。</p>
+<p>担当者が不在のときに止まる場所も決めます。未確認のまま月次資料を確定せず、確認待ちの置き場所と代わりの確認者を指定します。資料づくりの進捗と、締めの完了は別々に記録します。</p>
+<h2 id="s4">試すときは、完成した資料との違いを確かめます</h2>
+<p class="answer">試用では、登録も共有もしない環境で出力を確かめます。人が確認済みの資料と照らし、見落としや修正の内容を記録します。</p>
+<p>ここからは本記事の試用案です。使うAIサービスに資料を渡せるか、経理責任者と情報管理の担当者が先に確認します。契約上の利用条件や保存条件が確認できない場合は、資料を渡す前に止めます。</p>
+<p>試す対象は、確認済みの一つの月と一つの資料群から選びます。元データは保持し、AIの出力は別の保存先へ置きます。確認者は、出力の数値と参照箇所が対応しているかを元資料で見ます。</p>
+<p>差異を見つけた件数だけでは、良し悪しを決められません。存在する差異を見落としていないか、差異がない箇所を候補にしていないかも確認します。正解を確かめられる資料がない場合は、検証の条件が足りません。</p>
+<p>確認にかかった時間と、直した箇所も残します。資料作成が早くなっても、人の調査や修正が増える場合があります。工程ごとに結果を見て、同じ範囲で試すか、任せる作業を狭めるかを決めます。削減率や精度は、この試用案から算出できません。</p>
+<h2 id="s5">自社の締めで止まる工程から書き出します</h2>
+<p class="answer">まず、提出待ち、差異調査、責任者の確認待ちのどこで止まるかを書きます。その工程の入力、出力、担当を確かめてから、AIへ任せる候補を選びます。</p>
+<p>資料がそろわないことが原因なら、AIの資料案を増やすだけでは解決しません。誰から何を受け取るかを業務図に書き、次の担当へ渡せる条件を決めます。読み取れない資料や例外が多い場合も、その条件を確認してから試用へ進めます。</p>
+<p>CompanyMap AIは、聞き取り・資料・業務の記録の3つから、AIが部署の業務図を作るサービスです。お客さまには聞き取りの案内を配っていただきます。担当者が1人15分ほど答え、AIが作った図を確かめて任せる仕事を決めます。締めの判断や会計処理の責任を代わりに引き受けるものではありません。</p>
+<h2 id="sources">出典と、本記事で提案した範囲</h2>
+<ul class="source-list"><li><a href="../../library/gyomuzu-templates.html#c2">TechWorker「部署別 業務図テンプレート集」</a>。2026年10月2日公開。第2章の経理例、第3章の記入欄、第4章の札の付け方を、2026年10月12日に確認しました。</li></ul>
+<p>経理の図と禁止操作は公開資料に記載された設計例です。試用の資料範囲、差異候補の引き継ぎ記録、検証手順は本記事の提案です。会計・税務の個別判断、製品の精度、接続可否、実測効果は検証していません。</p>
+</article></div>
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" width="64" height="64" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div>
+    <p>株式会社TechWorker代表取締役。企業の生成AI導入と、業務への組み込みを支援しています。</p>
+  </div>
+</div></div>
+
+<section class="related"><div class="container">
+  <h2 class="rl-h">あわせて読む</h2>
+  <div class="related-grid">
+    <a href="ai-task-allocation-process-map.html" class="related-card"><span class="rc-cat">任せる工程を決める</span><div class="rc-title">AIに任せる業務の決め方｜商談業務図で読む、下書きと実行の境界</div></a>
+    <a href="../kenshu/claude-code-jirei.html" class="related-card"><span class="rc-cat">実際の改修記録を読む</span><div class="rc-title">Codex・Claude Codeの活用事例｜自社の改修記録と企業の公開事例</div></a>
+  </div>
+</div></section>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>部署の仕事の流れを、3つの情報からAIが業務図にします。</h3>
+    <p>CompanyMap AIは、担当者への聞き取り・手元の資料・業務の記録の3つから、AIが部署の仕事の流れを1枚の業務図にするサービスです。任せる工程を決める前に、部署の仕事を確かめられます。</p>
+  </div>
+  <a href="../../companymap/contact?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=accounting-monthly-close-process-map&amp;utm_content=end" class="btn">無料相談を申し込む <i>→</i></a>
+</div></div>
+<div class="back-list"><a href="index.html">← 業務図ラボの記事一覧に戻る</a></div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">業務図<i>ラボ</i></div>
+        <p>業務図・業務フローの描き方と、AIに任せる工程の決め方をお届けするメディア。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
+      </div>
+      <div class="footer-col"><h4>業務図ラボ</h4><a href="index.html">記事一覧</a><a href="../../companymap">CompanyMap AIについて</a></div>
+      <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../services.html">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="../../contact.html">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+<script src="/media/article-tracker.js?v=20261006-readable-intros" defer></script>
+</body>
+</html>
