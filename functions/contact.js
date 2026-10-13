@@ -40,11 +40,12 @@ function isAllowedSource(request) {
 // 営業の連絡に使うため、すべてのフォームで必須にしている項目。空や形式違いの送信は受け付けない
 const REQUIRED_FIELDS = ['name', 'company', 'email', 'phone', 'department', 'position'];
 
-// 電材卸向けサイトの実演申込は、部署・役職を求めない
-const DENZAI_REQUIRED_FIELDS = ['name', 'company', 'email', 'phone'];
+// 電材卸向けサイトの実演申込・承継HD向けサイトの相談は、部署・役職を求めない
+const SHORT_FORM_TYPES = new Set(['denzai_demo', 'shokei_consult']);
+const SHORT_FORM_REQUIRED_FIELDS = ['name', 'company', 'email', 'phone'];
 
 function invalidFields(data) {
-  const required = data.inquiry_type === 'denzai_demo' ? DENZAI_REQUIRED_FIELDS : REQUIRED_FIELDS;
+  const required = SHORT_FORM_TYPES.has(data.inquiry_type) ? SHORT_FORM_REQUIRED_FIELDS : REQUIRED_FIELDS;
   const bad = required.filter((k) => !data[k]);
   if (data.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) bad.push('email');
   const digits = data.phone.replace(/\D/g, '').length;
@@ -56,6 +57,7 @@ const INQUIRY_MAP = {
   consultation: '無料相談',
   document:     '資料請求',
   denzai_demo:  '電材卸の見積の実演',
+  shokei_consult: '承継の買収後100日の相談',
 };
 
 // ===== Intent scoring =====
@@ -109,6 +111,7 @@ const SALES_SYSTEM = `あなたは株式会社TechWorker（法人向け生成AI�
 営業ではない（sales=false）の例:
 - TechWorkerの研修・AI活用支援・CompanyMap AIの導入検討、見積・資料請求・質問
 - 自社のAI活用の悩みの相談
+- 事業承継・M&Aで会社を買った（買う）側が、買収後の引き継ぎ・PMIについて相談しているもの
 - 取材依頼（掲載料を求めないもの）、採用への応募
 - 定型文（例:「【資料ダウンロード】…」「ご希望: …」）だけの送信
 
@@ -277,7 +280,7 @@ async function sendSlackNotification(data, webhookUrl) {
     ...(hasUtm(first.intent_utm) ? [`UTM: ${first.intent_utm}`] : []),
     ...(data.intent_landing ? [`今回: ${visitSummary(data)}`] : []),
   ].join('\n');
-  const typeTag = data.inquiry_type === 'denzai_demo' ? `【${type}】` : '';
+  const typeTag = SHORT_FORM_TYPES.has(data.inquiry_type) ? `【${type}】` : '';
   const headerText = `${intent.emoji ? intent.emoji + ' ' + intent.label + '｜' : ''}${typeTag}問い合わせ: ${data.name || '(名前なし)'}`;
   const payload = {
     text: `${intent.emoji ? intent.emoji + ' ' : ''}${typeTag}HP問い合わせ: ${data.name || '(名前なし)'} / ${data.company || '(会社名なし)'}`,
@@ -371,6 +374,11 @@ export async function onRequestPost({ request, env }) {
   if (data.inquiry_type === 'denzai_demo') {
     const quotes = String(data.quotes_per_month ?? '').trim().slice(0, 50);
     data.message = [String(data.message ?? '').trim(), quotes ? `見積は月に${quotes}件` : ''].filter(Boolean).join('\n');
+  }
+  if (data.inquiry_type === 'shokei_consult') {
+    const deals = String(data.deals ?? '').trim().slice(0, 50);
+    const diag = String(data.diag ?? '').trim().slice(0, 1000);
+    data.message = [String(data.message ?? '').trim(), deals ? `買収の頻度: ${deals}` : '', diag ? `診断: ${diag}` : ''].filter(Boolean).join('\n');
   }
   const invalid = invalidFields(data);
   if (invalid.length) {
