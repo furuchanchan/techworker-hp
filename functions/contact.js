@@ -41,7 +41,7 @@ function isAllowedSource(request) {
 const REQUIRED_FIELDS = ['name', 'company', 'email', 'phone', 'department', 'position'];
 
 // 電材卸向けサイトの実演申込・承継HD向けサイトの相談は、部署・役職を求めない
-const SHORT_FORM_TYPES = new Set(['denzai_demo', 'shokei_consult']);
+const SHORT_FORM_TYPES = new Set(['denzai_demo', 'denzai_document', 'shokei_consult']);
 const SHORT_FORM_REQUIRED_FIELDS = ['name', 'company', 'email', 'phone'];
 
 function invalidFields(data) {
@@ -57,6 +57,7 @@ const INQUIRY_MAP = {
   consultation: '無料相談',
   document:     '資料請求',
   denzai_demo:  '電材卸の見積の実演',
+  denzai_document: '電材卸の資料ダウンロード',
   shokei_consult: '承継の買収後100日の相談',
 };
 
