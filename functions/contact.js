@@ -6,7 +6,17 @@ const ALLOWED_ORIGINS = new Set([
   'https://www.techworker.co.jp',
 ]);
 
-// リクエスト Origin が許可リストにあればその値を反映（無ければ ACAO を付けずブラウザ側で遮断）
+// 自サイトに加え、techworker.co.jp 配下のサブドメイン（電材卸向けサイトなど）の https オリジンも許可する
+function isAllowedOrigin(origin) {
+  if (ALLOWED_ORIGINS.has(origin)) return true;
+  try {
+    const u = new URL(origin);
+    if (u.origin !== origin || u.protocol !== 'https:') return false;
+    return u.hostname === 'techworker.co.jp' || u.hostname.endsWith('.techworker.co.jp');
+  } catch { return false; }
+}
+
+// リクエスト Origin が許可されていればその値を反映（無ければ ACAO を付けずブラウザ側で遮断）
 function corsHeaders(request) {
   const origin = request.headers.get('Origin') || '';
   const h = {
@@ -14,24 +24,28 @@ function corsHeaders(request) {
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
     'Vary': 'Origin',
   };
-  if (ALLOWED_ORIGINS.has(origin)) h['Access-Control-Allow-Origin'] = origin;
+  if (isAllowedOrigin(origin)) h['Access-Control-Allow-Origin'] = origin;
   return h;
 }
 
 // サーバ側でも送信元を検証（CORSはブラウザ越しのみ。Origin/Referer で他サイト発を弾く）
 function isAllowedSource(request) {
   const origin = request.headers.get('Origin');
-  if (origin) return ALLOWED_ORIGINS.has(origin);
+  if (origin) return isAllowedOrigin(origin);
   // 同一オリジンPOSTで Origin が省略される場合は Referer のオリジンで判定
   const ref = request.headers.get('Referer') || '';
-  try { return ALLOWED_ORIGINS.has(new URL(ref).origin); } catch { return false; }
+  try { return isAllowedOrigin(new URL(ref).origin); } catch { return false; }
 }
 
 // 営業の連絡に使うため、すべてのフォームで必須にしている項目。空や形式違いの送信は受け付けない
 const REQUIRED_FIELDS = ['name', 'company', 'email', 'phone', 'department', 'position'];
 
+// 電材卸向けサイトの実演申込は、部署・役職を求めない
+const DENZAI_REQUIRED_FIELDS = ['name', 'company', 'email', 'phone'];
+
 function invalidFields(data) {
-  const bad = REQUIRED_FIELDS.filter((k) => !data[k]);
+  const required = data.inquiry_type === 'denzai_demo' ? DENZAI_REQUIRED_FIELDS : REQUIRED_FIELDS;
+  const bad = required.filter((k) => !data[k]);
   if (data.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) bad.push('email');
   const digits = data.phone.replace(/\D/g, '').length;
   if (data.phone && (digits < 10 || digits > 15)) bad.push('phone');
@@ -41,6 +55,7 @@ function invalidFields(data) {
 const INQUIRY_MAP = {
   consultation: '無料相談',
   document:     '資料請求',
+  denzai_demo:  '電材卸の見積の実演',
 };
 
 // ===== Intent scoring =====
@@ -262,9 +277,10 @@ async function sendSlackNotification(data, webhookUrl) {
     ...(hasUtm(first.intent_utm) ? [`UTM: ${first.intent_utm}`] : []),
     ...(data.intent_landing ? [`今回: ${visitSummary(data)}`] : []),
   ].join('\n');
-  const headerText = `${intent.emoji ? intent.emoji + ' ' + intent.label + '｜' : ''}問い合わせ: ${data.name || '(名前なし)'}`;
+  const typeTag = data.inquiry_type === 'denzai_demo' ? `【${type}】` : '';
+  const headerText = `${intent.emoji ? intent.emoji + ' ' + intent.label + '｜' : ''}${typeTag}問い合わせ: ${data.name || '(名前なし)'}`;
   const payload = {
-    text: `${intent.emoji ? intent.emoji + ' ' : ''}HP問い合わせ: ${data.name || '(名前なし)'} / ${data.company || '(会社名なし)'}`,
+    text: `${intent.emoji ? intent.emoji + ' ' : ''}${typeTag}HP問い合わせ: ${data.name || '(名前なし)'} / ${data.company || '(会社名なし)'}`,
     blocks: [
       {
         type: 'header',
@@ -352,6 +368,10 @@ export async function onRequestPost({ request, env }) {
   // 必須項目チェック: 全角で入力された電話番号は半角にそろえてから数字の桁数を見る
   for (const k of REQUIRED_FIELDS) data[k] = String(data[k] ?? '').trim();
   data.phone = data.phone.normalize('NFKC');
+  if (data.inquiry_type === 'denzai_demo') {
+    const quotes = String(data.quotes_per_month ?? '').trim().slice(0, 50);
+    data.message = [String(data.message ?? '').trim(), quotes ? `見積は月に${quotes}件` : ''].filter(Boolean).join('\n');
+  }
   const invalid = invalidFields(data);
   if (invalid.length) {
     return new Response(JSON.stringify({ error: 'Missing required fields', fields: invalid }), {
