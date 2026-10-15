@@ -43,7 +43,7 @@ const REQUIRED_FIELDS = ['name', 'company', 'email', 'phone', 'department', 'pos
 // 電材卸向けサイトの実演申込・承継HD向けサイトの相談は、部署・役職を求めない
 const SHORT_FORM_TYPES = new Set(['denzai_demo', 'denzai_document', 'shokei_consult']);
 // 本体以外のサイト（電材卸・卸・商社・承継HD）からの申込。Slack の件名の頭に【種別】を付ける
-const SITE_FORM_TYPES = new Set([...SHORT_FORM_TYPES, 'sokumitsu_demo']);
+const SITE_FORM_TYPES = new Set([...SHORT_FORM_TYPES, 'sokumitsu_demo', 'kenshu_consult', 'kenshu_document']);
 const SHORT_FORM_REQUIRED_FIELDS = ['name', 'company', 'email', 'phone'];
 
 function invalidFields(data) {
@@ -62,6 +62,8 @@ const INQUIRY_MAP = {
   denzai_document: '電材卸の資料ダウンロード',
   shokei_consult: '承継の買収後100日の相談',
   sokumitsu_demo: '卸・商社の見積の実演',
+  kenshu_consult: '研修の相談',
+  kenshu_document: '研修の資料ダウンロード',
 };
 
 // ===== Intent scoring =====
