@@ -42,6 +42,8 @@ const REQUIRED_FIELDS = ['name', 'company', 'email', 'phone', 'department', 'pos
 
 // 電材卸向けサイトの実演申込・承継HD向けサイトの相談は、部署・役職を求めない
 const SHORT_FORM_TYPES = new Set(['denzai_demo', 'denzai_document', 'shokei_consult']);
+// 本体以外のサイト（電材卸・卸・商社・承継HD）からの申込。Slack の件名の頭に【種別】を付ける
+const SITE_FORM_TYPES = new Set([...SHORT_FORM_TYPES, 'sokumitsu_demo']);
 const SHORT_FORM_REQUIRED_FIELDS = ['name', 'company', 'email', 'phone'];
 
 function invalidFields(data) {
@@ -282,7 +284,7 @@ async function sendSlackNotification(data, webhookUrl) {
     ...(hasUtm(first.intent_utm) ? [`UTM: ${first.intent_utm}`] : []),
     ...(data.intent_landing ? [`今回: ${visitSummary(data)}`] : []),
   ].join('\n');
-  const typeTag = SHORT_FORM_TYPES.has(data.inquiry_type) ? `【${type}】` : '';
+  const typeTag = SITE_FORM_TYPES.has(data.inquiry_type) ? `【${type}】` : '';
   const headerText = `${intent.emoji ? intent.emoji + ' ' + intent.label + '｜' : ''}${typeTag}問い合わせ: ${data.name || '(名前なし)'}`;
   const payload = {
     text: `${intent.emoji ? intent.emoji + ' ' : ''}${typeTag}HP問い合わせ: ${data.name || '(名前なし)'} / ${data.company || '(会社名なし)'}`,
@@ -375,7 +377,7 @@ export async function onRequestPost({ request, env }) {
   data.phone = data.phone.normalize('NFKC');
   if (data.inquiry_type === 'denzai_demo' || data.inquiry_type === 'sokumitsu_demo') {
     const quotes = String(data.quotes_per_month ?? '').trim().slice(0, 50);
-    data.message = [String(data.message ?? '').trim(), quotes ? `見積は月に${quotes}件` : ''].filter(Boolean).join('\n');
+    data.message = [String(data.message ?? '').trim(), quotes ? `見積の月の件数：${quotes}` : ''].filter(Boolean).join('\n');
   }
   if (data.inquiry_type === 'shokei_consult') {
     const deals = String(data.deals ?? '').trim().slice(0, 50);
