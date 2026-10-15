@@ -59,6 +59,7 @@ const INQUIRY_MAP = {
   denzai_demo:  '電材卸の見積の実演',
   denzai_document: '電材卸の資料ダウンロード',
   shokei_consult: '承継の買収後100日の相談',
+  sokumitsu_demo: '卸・商社の見積の実演',
 };
 
 // ===== Intent scoring =====
@@ -372,7 +373,7 @@ export async function onRequestPost({ request, env }) {
   // 必須項目チェック: 全角で入力された電話番号は半角にそろえてから数字の桁数を見る
   for (const k of REQUIRED_FIELDS) data[k] = String(data[k] ?? '').trim();
   data.phone = data.phone.normalize('NFKC');
-  if (data.inquiry_type === 'denzai_demo') {
+  if (data.inquiry_type === 'denzai_demo' || data.inquiry_type === 'sokumitsu_demo') {
     const quotes = String(data.quotes_per_month ?? '').trim().slice(0, 50);
     data.message = [String(data.message ?? '').trim(), quotes ? `見積は月に${quotes}件` : ''].filter(Boolean).join('\n');
   }
