@@ -57,10 +57,10 @@
 
   var OFFERS = {
     kenshu: function () {
-      if (slug === "claude-code-cost") return Object.assign({}, RINGI, { sub: { label: "Claude Code研修の内容を見る", href: "/training.html#claude-code", offer: "training_claude_code" } });
-      if (/claude-code/.test(slug)) return Object.assign({}, GUIDE, { sub: { label: "Claude Code研修の内容を見る", href: "/training.html#claude-code", offer: "training_claude_code" } });
-      if (/copilot|m365/.test(slug)) return Object.assign({}, CASES, { sub: { label: "Copilotの定着・研修を相談する", href: "/copilot.html#consult", offer: "consult_copilot" } });
-      return Object.assign({}, CASES, { sub: DIAG });
+      if (slug === "claude-code-cost") return Object.assign({}, RINGI, { sub: { label: "Claude Code研修の内容を見る", href: "https://kenshu.techworker.co.jp/program/#claude-code", offer: "training_claude_code" } });
+      if (/claude-code/.test(slug)) return Object.assign({}, GUIDE, { sub: { label: "Claude Code研修の内容を見る", href: "https://kenshu.techworker.co.jp/program/#claude-code", offer: "training_claude_code" } });
+      if (/copilot|m365/.test(slug)) return Object.assign({}, CASES, { sub: { label: "Copilot研修の内容を見る", href: "https://kenshu.techworker.co.jp/program/#copilot", offer: "training_copilot" } });
+      return Object.assign({}, CASES, { sub: { label: "研修の内容と教材の更新履歴を見る", href: "https://kenshu.techworker.co.jp/", offer: "training_site" } });
     },
     shigyo: function () { return Object.assign(companymap("事務所", "/media/cv/companymap-shigyo.jpg"), { sub: DIAG }); },
     interview: function () { return Object.assign(companymap("部署"), { sub: { label: "CompanyMap AIを見る", href: "/companymap", offer: "companymap_lp" } }); },
