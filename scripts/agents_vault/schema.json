@@ -14,7 +14,7 @@
     "department": {"type": "string", "enum": ["総務", "人事", "経理", "営業", "マーケティング", "情報システム", "法務", "カスタマーサポート", "経営企画", "開発", "全部署"]},
     "task": {"type": "string", "description": "対象の業務名。例: 社内規程への問い合わせ対応"},
     "product": {"type": "string", "enum": ["Microsoft 365 Copilot", "Copilot Studio", "Claude", "Claude Code", "Gemini"]},
-    "product_feature": {"type": "string", "description": "使う機能の公式の名前だけ。20字以内。製品名とテンプレート名は入れない（テンプレート名は steps に書く）。例: エージェント ビルダー／プロジェクト／スキル／サブエージェント／Gem"},
+    "product_feature": {"type": "string", "description": "使う機能の公式の名前だけ。20字以内。テンプレート名や公開先の説明は入れず steps に書く。例: エージェント ビルダー／プロジェクト／スキル／サブエージェント／Claude Tag（Slack）／Gem"},
     "required_plan": {"type": "string", "description": "必要な契約・ライセンスを60字以内の1行で。公式の情報で確かめた範囲だけ。課金の方式などの詳しい話は admin に書く"},
     "build_time": {"type": "string", "enum": ["30分ほど", "半日ほど", "1〜2日"]},
     "difficulty": {"type": "string", "enum": ["はじめて", "慣れてきたら", "情報システム部門と一緒に"]},

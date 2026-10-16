@@ -63,7 +63,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 </div>
 <header class="av-hero">
   <nav class="crumb" aria-label="パンくず"><a href="/">ホーム</a><span class="sep">/</span><a href="/media/">メディア</a><span class="sep">/</span><a href="/media/agents/">エージェント保管庫</a></nav>
-  <div class="av-chips"><span class="av-prod"><img src="/assets/copilot/ai-tools/claude.svg" alt="" width="20" height="20">Claude</span><span class="av-tag av-tag-feat">channel memory</span><span class="av-dept">全部署</span><span class="av-tag">作る時間 半日ほど</span><span class="av-tag">情報システム部門と一緒に</span></div>
+  <div class="av-chips"><span class="av-prod"><img src="/assets/copilot/ai-tools/claude.svg" alt="" width="20" height="20">Claude</span><span class="av-tag av-tag-feat">Claude Tag（Slack）</span><span class="av-dept">全部署</span><span class="av-tag">作る時間 半日ほど</span><span class="av-tag">情報システム部門と一緒に</span></div>
   <h1>会議の文字起こしから決定事項と宿題をまとめるエージェント</h1>
   <p class="av-sum">Slack のチャンネルに投稿された会議の文字起こしを Claude が読み、決定事項と宿題を担当者と期限つきでスレッドに返します。出席者が返信で直し、確かめた宿題だけを課題管理に起票します。</p>
   <div class="av-meta"><span>公開 2026.10.16</span><span>公式の情報で確認 2026.10.16</span><span>監修 古野光太朗（TechWorker 代表）</span></div>
@@ -77,7 +77,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
       <dt>部署</dt><dd>全部署</dd>
       <dt>業務</dt><dd>会議のあとの議事録づくりと宿題の共有（決定事項、宿題、持ち越しの整理）</dd>
       <dt>製品</dt><dd>Claude</dd>
-      <dt>使う機能</dt><dd>channel memory</dd>
+      <dt>使う機能</dt><dd>Claude Tag（Slack）</dd>
       <dt>必要な契約</dt><dd>Claude の組織で Claude Tag を有効にすること（公開ベータ。チャンネルでの利用分は組織に課金）</dd>
       <dt>作る時間</dt><dd>半日ほど</dd>
       <dt>難しさ</dt><dd>情報システム部門と一緒に</dd>
@@ -100,7 +100,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <div class="av-flow">
     <div class="fl-box"><span class="fl-tag">受け取るもの</span><p>録音アプリか担当者がチャンネルに投稿した会議の文字起こし（@Claude つき）、会議名と日付、スレッドでの訂正や起票の依頼</p></div>
     <div class="fl-arr" aria-hidden="true"></div>
-    <div class="fl-box fl-ai"><span class="fl-tag ai"><img src="/assets/copilot/ai-tools/claude.svg" alt="" width="16" height="16">エージェント</span><p class="fl-feat">Claude　channel memory</p>
+    <div class="fl-box fl-ai"><span class="fl-tag ai"><img src="/assets/copilot/ai-tools/claude.svg" alt="" width="16" height="16">エージェント</span><p class="fl-feat">Claude　Claude Tag（Slack）</p>
       <div class="fl-part"><b>指示文</b><p>役割と進め方、答え方を決める（04 指示文）</p></div>
       <div class="fl-part"><b>渡す資料</b><ul><li>チャンネルのメモリに保存した当社の議事録の決まり（このページの指示文）</li><li>チャンネルにピン留めした議事録の見本</li><li>チャンネルにピン留めした担当者の呼び名の一覧</li></ul></div>
       <div class="fl-part"><b>つなぐ道具</b><ul><li>Slack のチャンネルに追加した Claude（Claude Tag）</li><li>課題管理の接続（Linear、Jira、Asana など。起票するチャンネルだけ）</li></ul></div>
@@ -113,13 +113,13 @@ fbq('init','1264057945446029');fbq('track','PageView');
 </section>
 
 <section id="s3" class="av-sec"><h2><span>03</span>作り方</h2>
-  <ol class="av-steps"><li><span class="st-n">1</span><div><h3>管理者と会議記録のチャンネルを決める</h3><p>Claude の組織の Owner か Claude Tag admin に、会議の文字起こしをまとめるチャンネルを使いたいと伝えます。Claude Tag がそのチャンネルで有効になっているかも確かめてもらいます。チャンネルにはゲストを入れません。ゲストのいるチャンネルでは、既定で Claude が返事をしません。社外の会社と共有する Slack Connect のチャンネルでも、既定で Claude は動きません。チャンネルができたら、メッセージ欄に /invite @Claude と入れて送ります。スレッドの中から送ると Slack に断られます。</p></div></li><li><span class="st-n">2</span><div><h3>チャンネルから届く範囲を確かめる</h3><p>チャンネルで「@Claude what can you access from this channel?」と送ります。返事に並ぶのが、このチャンネルから Claude が使える接続です。宿題を起票させたいときに要るのは、Linear、Jira、Asana などの課題管理の接続です。入っていなければ管理者に追加を頼みます。接続がなくても、決定事項と宿題のまとめは Slack の中だけで作れます。</p></div></li><li><span class="st-n">3</span><div><h3>文字起こしの渡し方を決める</h3><p>録音アプリが文字起こしをチャンネルに投稿する場合は、投稿に @Claude が入るように録音アプリを設定します。ほかのアプリやボットの投稿は、@Claude が入っていないと読むだけで返事をしません。チャンネルの Respond automatically がオフのときも、ボットの @Claude には返事をしません。録音アプリを使わない場合は、担当者が会議のあとに文字起こしのファイルを添付し、@Claude をつけて投稿します。PDF は1つ5MBまで、テキストや文書のファイルは1つ100MBまでで、1回の投稿に5つまで添付できます。</p></div></li><li><span class="st-n">4</span><div><h3>決まりをチャンネルのメモリに入れる</h3><p>このページの指示文の［　］を書き換えます。書き換えた指示文は、チャンネルのメッセージ欄から1回だけ送ります。スレッドの中から送るのは避けてください。「remember for this channel」と頼んだ内容の保存先はチャンネルのメモリで、チャンネルのすべての人のスレッドに効きます。保存されたかは「@Claude what do you remember about this channel?」と聞いて確かめます。議事録の見本と担当者の呼び名の一覧も、チャンネルにピン留めしておいてください。</p></div></li><li><span class="st-n">5</span><div><h3>過去の会議で試して見比べる</h3><p>まず、議事録がすでにある過去の会議の文字起こしを1件投稿します。返ってきた決定事項と宿題は、人が書いた議事録と見比べてください。抜けや担当者の違いがあれば、そのスレッドに返信して直させます。メッセージを編集しても直しの指示としては届かないので、直しは新しい返信で書いてください。思ったとおりにまとまるまで、指示文を直してメモリに入れ直します。</p></div></li><li><span class="st-n">6</span><div><h3>スレッドで確かめてから起票する</h3><p>本番の会議では、出席者が宿題を文字起こしと照らし、担当者や期限の誤りをスレッドの返信で直します。Claude が作業に取り込むのは、スレッドにいる誰の返信でも同じです。宿題が確定したら「この宿題を［ボード名］に起票してください」と返信してください。起票した課題は Claude のアカウントの名前で作られ、リンクがスレッドに投稿されます。ボードが複数あるときは、ボードの名前も書いてください。</p></div></li><li><span class="st-n">7</span><div><h3>返事が止まっていないかを見る</h3><p>10日を超えて誰も @Claude をつけず、Claude も投稿していないチャンネルでは、Claude がメッセージを読むのをやめます。投稿の数が多くなったときにも読むのをやめます。どちらの場合も通知は出ません。文字起こしに返事がこないときは、人が @Claude をつけて投稿します。録音アプリの @Claude で読み直しが始まるのは、10日の無投稿で止まったときだけです。</p></div></li></ol>
+  <ol class="av-steps"><li><span class="st-n">1</span><div><h3>管理者と会議記録のチャンネルを決める</h3><p>Claude の組織の Owner か Claude Tag admin に、会議の文字起こしをまとめるチャンネルを使いたいと伝えます。Claude Tag がそのチャンネルで有効になっているかも確かめてもらいます。チャンネルにはゲストを入れません。ゲストのいるチャンネルでは、既定で Claude が返事をしません。社外の会社と共有する Slack Connect のチャンネルでは Claude は動きません。会議の記録は社内だけのチャンネルで扱ってください。チャンネルができたら、メッセージ欄に /invite @Claude と入れて送ります。スレッドの中から送ると Slack に断られます。</p></div></li><li><span class="st-n">2</span><div><h3>チャンネルから届く範囲を確かめる</h3><p>チャンネルで「@Claude what can you access from this channel?」と送ります。返事に並ぶのが、このチャンネルから Claude が使える接続です。宿題を起票させたいときに要るのは、Linear、Jira、Asana などの課題管理の接続です。入っていなければ管理者に追加を頼みます。接続がなくても、決定事項と宿題のまとめは Slack の中だけで作れます。</p></div></li><li><span class="st-n">3</span><div><h3>文字起こしの渡し方を決める</h3><p>録音アプリが文字起こしをチャンネルに投稿する場合は、投稿に @Claude が入るように録音アプリを設定します。ほかのアプリやボットの投稿は、@Claude が入っていないと読むだけで返事をしません。チャンネルの Respond automatically がオフのときも、ボットの @Claude には返事をしません。録音アプリを使わない場合は、担当者が会議のあとに文字起こしのファイルを添付し、@Claude をつけて投稿します。PDF は1つ5MBまで、テキストや文書のファイルは1つ100MBまでで、1回の投稿に5つまで添付できます。</p></div></li><li><span class="st-n">4</span><div><h3>決まりをチャンネルのメモリに入れる</h3><p>このページの指示文の［　］を書き換えます。書き換えた指示文は、チャンネルのメッセージ欄から1回だけ送ります。スレッドの中から送るのは避けてください。「remember for this channel」と頼んだ内容の保存先はチャンネルのメモリで、チャンネルのすべての人のスレッドに効きます。保存されたかは「@Claude what do you remember about this channel?」と聞いて確かめます。議事録の見本と担当者の呼び名の一覧も、チャンネルにピン留めしておいてください。</p></div></li><li><span class="st-n">5</span><div><h3>過去の会議で試して見比べる</h3><p>まず、議事録がすでにある過去の会議の文字起こしを1件投稿します。返ってきた決定事項と宿題は、人が書いた議事録と見比べてください。抜けや担当者の違いがあれば、そのスレッドに返信して直させます。メッセージを編集すると Claude に知らせは届きますが、直しが取り込まれるとは限りません。直しは新しい返信で書いてください。思ったとおりにまとまるまで、指示文を直してメモリに入れ直します。</p></div></li><li><span class="st-n">6</span><div><h3>スレッドで確かめてから起票する</h3><p>本番の会議では、出席者が宿題を文字起こしと照らし、担当者や期限の誤りをスレッドの返信で直します。Claude が作業に取り込むのは、スレッドにいる誰の返信でも同じです。宿題が確定したら「この宿題を［ボード名］に起票してください」と返信してください。起票した課題は Claude のアカウントの名前で作られ、リンクがスレッドに投稿されます。ボードが複数あるときは、ボードの名前も書いてください。</p></div></li><li><span class="st-n">7</span><div><h3>返事が止まっていないかを見る</h3><p>10日を超えて誰も @Claude をつけず、Claude も投稿していないチャンネルでは、Claude がメッセージを読むのをやめます。投稿の数が多くなったときにも読むのをやめます。どちらの場合も通知は出ません。文字起こしに返事がこないときは、人が @Claude をつけて投稿します。録音アプリの @Claude で読み直しが始まるのは、10日の無投稿で止まったときだけです。</p></div></li></ol>
 </section>
 
 <section id="s4" class="av-sec"><h2><span>04</span>指示文（そのまま貼れます）</h2>
   <p class="av-lead">会議記録用の Slack チャンネルのメッセージ欄（スレッドの外）から @Claude をつけて送り、チャンネルのメモリに保存しますに貼ります。［　］のところは自社の言葉に置き換えてください。</p>
   <div class="av-prompt">
-    <div class="pr-bar"><span class="pr-dots"><i></i><i></i><i></i></span><span class="pr-name">指示文 — Claude channel memory</span><button type="button" class="pr-copy" data-copy="pr-meeting-decisions-action-items-claude-tag">コピー</button></div>
+    <div class="pr-bar"><span class="pr-dots"><i></i><i></i><i></i></span><span class="pr-name">指示文 — Claude Claude Tag（Slack）</span><button type="button" class="pr-copy" data-copy="pr-meeting-decisions-action-items-claude-tag">コピー</button></div>
     <pre id="pr-meeting-decisions-action-items-claude-tag">@Claude このチャンネルについて、次の決まりを覚えておいてください（remember for this channel）。
 
 # 役割
@@ -183,7 +183,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 </section>
 
 <section id="s7" class="av-sec"><h2><span>07</span>うまくいかないとき</h2>
-  <div class="av-rows pit"><div class="av-row"><h3>録音アプリが文字起こしを投稿しても返事がない</h3><p>投稿に @Claude が入っているかを確かめます。チャンネルの Respond automatically がオンかも見てください。投稿の数が多くて Claude が読むのをやめているときは、録音アプリの @Claude では再開しません。人が @Claude をつけて投稿します。</p></div><div class="av-row"><h3>宿題の担当者や期限が違う、または「未定」が多い</h3><p>出席者がスレッドに返信して、正しい担当者と期限を伝えます。編集した投稿は直しの指示として届かないので、新しい返信で書いてください。発言者の名前が文字起こしに入っていないときは、録音アプリの話者の表示をオンにします。担当者の呼び名の一覧をピン留めしておくと、表記がそろいやすくなります。</p></div><div class="av-row"><h3>起票を頼んでも課題ができない、または違うボードにできる</h3><p>「@Claude what can you access from this channel?」で、チャンネルの接続を確かめます。課題管理の接続がなければ、管理者に追加を頼んでください。接続を足したあとは新しいスレッドで頼み直し、ボードの名前を書きます。</p></div><div class="av-row"><h3>長い会議で「This conversation is too long for me to process」と返る、またはファイルが読まれない</h3><p>スレッドが長くなりすぎると、そのスレッドでは続けられません。新しいスレッドを立て、文字起こしを前半と後半に分けて投稿します。PDF は5MBを超えると読まれないので、分けるかテキストのファイルにします。</p></div></div>
+  <div class="av-rows pit"><div class="av-row"><h3>録音アプリが文字起こしを投稿しても返事がない</h3><p>投稿に @Claude が入っているかを確かめます。チャンネルの Respond automatically がオンかも見てください。投稿の数が多くて Claude が読むのをやめているときは、録音アプリの @Claude では再開しません。人が @Claude をつけて投稿します。</p></div><div class="av-row"><h3>宿題の担当者や期限が違う、または「未定」が多い</h3><p>出席者がスレッドに返信して、正しい担当者と期限を伝えます。投稿を編集しても、直しが取り込まれるとは限りません。直しは新しい返信で書いてください。発言者の名前が文字起こしに入っていないときは、録音アプリの話者の表示をオンにします。担当者の呼び名の一覧をピン留めしておくと、表記がそろいやすくなります。</p></div><div class="av-row"><h3>起票を頼んでも課題ができない、または違うボードにできる</h3><p>「@Claude what can you access from this channel?」で、チャンネルの接続を確かめます。課題管理の接続がなければ、管理者に追加を頼んでください。接続を足したあとは新しいスレッドで頼み直し、ボードの名前を書きます。</p></div><div class="av-row"><h3>長い会議で「This conversation is too long for me to process」と返る、またはファイルが読まれない</h3><p>スレッドが長くなりすぎると、そのスレッドでは続けられません。新しいスレッドを立て、文字起こしを前半と後半に分けて投稿します。PDF は5MBを超えると読まれないので、分けるかテキストのファイルにします。</p></div></div>
 </section>
 
 <section id="s8" class="av-sec"><h2><span>08</span>30日後に測ること</h2>
