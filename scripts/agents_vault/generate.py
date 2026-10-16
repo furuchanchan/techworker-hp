@@ -24,7 +24,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 import vault  # noqa: E402
 
 MODEL = "claude-opus-5-5"
-MAX_RUN_USD = 2.5
+MAX_RUN_USD = 3.5
 MONTHLY_CAP = 25
 MAX_REVISIONS = 2
 TOPICS = Path(__file__).parent / "topics.json"
@@ -121,7 +121,7 @@ def call(client, budget, system, messages, tools, effort="high"):
     """1往復。pause_turn は続きを頼み、tool_use か end_turn で返す。2回目以降は読み込み済みの分をキャッシュから読む。"""
     for _ in range(6):
         with client.beta.messages.stream(
-            model=MODEL, max_tokens=32000, system=system, messages=messages, tools=tools,
+            model=MODEL, max_tokens=64000, system=system, messages=messages, tools=tools,
             thinking={"type": "adaptive"}, output_config={"effort": effort}, cache_control={"type": "ephemeral"},
             betas=["server-side-fallback-2026-07-01"], fallbacks="default",
         ) as stream:
@@ -130,6 +130,8 @@ def call(client, budget, system, messages, tools, effort="high"):
         messages.append({"role": "assistant", "content": msg.content})
         if msg.stop_reason == "refusal":
             raise SystemExit(f"断られました: {getattr(msg, 'stop_details', None)}")
+        if msg.stop_reason == "max_tokens":
+            raise SystemExit("出力が max_tokens で切れました（提出が途中で切れるため止めます）")
         if msg.stop_reason != "pause_turn":
             return msg
     raise SystemExit("pause_turn が続いたので止めます")
@@ -284,6 +286,8 @@ def publish(topic, existing, dry):
     for round_ in range(MAX_REVISIONS + 1):
         result = review(client, budget, entry)
         print(f"  review: {result['verdict']} {result['summary']}", flush=True)
+        for p in result["problems"]:
+            print(f"    - [{'直す' if p['blocking'] else '参考'}] {p['field']}：{p['issue']} → {p['fix']}", flush=True)
         blocking = [p for p in result["problems"] if p["blocking"]]
         if result["verdict"] == "PASS" and not blocking:
             break
