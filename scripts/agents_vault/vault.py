@@ -102,8 +102,8 @@ def validate(entry, filename_slug=None):
         errs.append("slug がファイル名と違う")
     if PRODUCTS[entry["product"]]["token"] not in slug:
         errs.append(f"slug に製品の印（{PRODUCTS[entry['product']]['token']}）が無い")
-    if len(entry["product_feature"]) > 20 or entry["product"] in entry["product_feature"]:
-        errs.append("product_feature: 機能の公式名だけを20字以内で（製品名やテンプレート名は入れない）")
+    if len(entry["product_feature"]) > 20:
+        errs.append("product_feature: 機能の公式名だけを20字以内で（テンプレート名や公開先の説明は steps に書く）")
     if len(entry["required_plan"]) > 60:
         errs.append("required_plan: 60字以内の1行で（課金の方式などの詳しい話は admin へ）")
     if not entry["title"].endswith("エージェント") or len(entry["title"]) > 40:
