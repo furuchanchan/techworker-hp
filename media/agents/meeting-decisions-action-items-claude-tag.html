@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}if(location.hostname==='techworker.co.jp')gtag('config', 'G-3V34NWXVCJ');
+</script>
+<script src="/assets/tw-track.js" defer></script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>会議の文字起こしから決定事項と宿題をまとめるエージェント｜Claudeでの作り方 — エージェント保管庫</title>
+<meta name="description" content="Slack のチャンネルに投稿された会議の文字起こしを Claude が読み、決定事項と宿題を担当者と期限つきでスレッドに返します。出席者が返信で直し、確かめた宿題だけを課題管理に起票します。 できること、作り方、そのまま貼れる指示文、管理者が先に決める設定をまとめています。">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/agents/meeting-decisions-action-items-claude-tag">
+<meta property="og:type" content="article">
+<meta property="og:title" content="会議の文字起こしから決定事項と宿題をまとめるエージェント｜Claudeでの作り方 — エージェント保管庫">
+<meta property="og:description" content="Slack のチャンネルに投稿された会議の文字起こしを Claude が読み、決定事項と宿題を担当者と期限つきでスレッドに返します。出席者が返信で直し、確かめた宿題だけを課題管理に起票します。 できること、作り方、そのまま貼れる指示文、管理者が先に決める設定をまとめています。">
+<meta property="og:image" content="https://techworker.co.jp/media/agents/covers/meeting-decisions-action-items-claude-tag.png">
+<meta property="og:url" content="https://techworker.co.jp/media/agents/meeting-decisions-action-items-claude-tag">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="会議の文字起こしから決定事項と宿題をまとめるエージェント｜Claudeでの作り方 — エージェント保管庫">
+<meta name="twitter:image" content="https://techworker.co.jp/media/agents/covers/meeting-decisions-action-items-claude-tag.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/media/article.css?v=20261006-source-notes">
+<link rel="stylesheet" href="/media/agents/vault.css?v=20261016-vault">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "会議の文字起こしから決定事項と宿題をまとめるエージェント｜Claudeでの作り方", "description": "Slack のチャンネルに投稿された会議の文字起こしを Claude が読み、決定事項と宿題を担当者と期限つきでスレッドに返します。出席者が返信で直し、確かめた宿題だけを課題管理に起票します。", "datePublished": "2026-10-16", "dateModified": "2026-10-16", "inLanguage": "ja", "image": "https://techworker.co.jp/media/agents/covers/meeting-decisions-action-items-claude-tag.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/agents/meeting-decisions-action-items-claude-tag"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "エージェント保管庫", "item": "https://techworker.co.jp/media/agents/"}, {"@type": "ListItem", "position": 4, "name": "会議の文字起こしから決定事項と宿題をまとめるエージェント", "item": "https://techworker.co.jp/media/agents/meeting-decisions-action-items-claude-tag"}]}</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<nav id="nav">
+  <a href="/media/agents/" class="logo">エージェント<i>保管庫</i></a>
+  <ul>
+    <li><a href="/media/agents/#list">一覧</a></li>
+    <li><a href="/media/agents/#format">1件の読み方</a></li>
+    <li><a href="/media/">メディア</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://kenshu.techworker.co.jp/contact/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_content=nav" class="nav-cta"><span class="full">研修の相談</span><span class="short">相談</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="/media/agents/#list">エージェントの一覧</a>
+  <a href="/media/agents/#format">1件の読み方</a>
+  <a href="/media/">TechWorker Media</a>
+  <a href="https://kenshu.techworker.co.jp/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_content=menu">研修のご案内</a>
+  <a href="https://kenshu.techworker.co.jp/contact/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_content=menu" class="m-cta">研修の相談をする</a>
+</div>
+<header class="av-hero">
+  <nav class="crumb" aria-label="パンくず"><a href="/">ホーム</a><span class="sep">/</span><a href="/media/">メディア</a><span class="sep">/</span><a href="/media/agents/">エージェント保管庫</a></nav>
+  <div class="av-chips"><span class="av-prod"><img src="/assets/copilot/ai-tools/claude.svg" alt="" width="20" height="20">Claude</span><span class="av-tag av-tag-feat">channel memory</span><span class="av-dept">全部署</span><span class="av-tag">作る時間 半日ほど</span><span class="av-tag">情報システム部門と一緒に</span></div>
+  <h1>会議の文字起こしから決定事項と宿題をまとめるエージェント</h1>
+  <p class="av-sum">Slack のチャンネルに投稿された会議の文字起こしを Claude が読み、決定事項と宿題を担当者と期限つきでスレッドに返します。出席者が返信で直し、確かめた宿題だけを課題管理に起票します。</p>
+  <div class="av-meta"><span>公開 2026.10.16</span><span>公式の情報で確認 2026.10.16</span><span>監修 古野光太朗（TechWorker 代表）</span></div>
+</header>
+
+<div class="av-layout">
+<aside class="av-spec" aria-label="このエージェントの設計書">
+  <div class="av-spec-in">
+    <div class="av-spec-h">このエージェントの設計書</div>
+    <dl>
+      <dt>部署</dt><dd>全部署</dd>
+      <dt>業務</dt><dd>会議のあとの議事録づくりと宿題の共有（決定事項、宿題、持ち越しの整理）</dd>
+      <dt>製品</dt><dd>Claude</dd>
+      <dt>使う機能</dt><dd>channel memory</dd>
+      <dt>必要な契約</dt><dd>Claude の組織で Claude Tag を有効にすること（公開ベータ。チャンネルでの利用分は組織に課金）</dd>
+      <dt>作る時間</dt><dd>半日ほど</dd>
+      <dt>難しさ</dt><dd>情報システム部門と一緒に</dd>
+    </dl>
+    <a class="av-spec-btn" href="#s4">指示文を見る <span aria-hidden="true">↓</span></a>
+    <nav class="av-toc" aria-label="目次"><a href="#s1">できること</a><a href="#s2">仕組み</a><a href="#s3">作り方</a><a href="#s4">指示文</a><a href="#s5">管理者が先に決めること</a><a href="#s6">人が確かめるところ</a><a href="#s7">うまくいかないとき</a><a href="#s8">30日後に測ること</a><a href="#s9">広げ方</a></nav>
+  </div>
+</aside>
+
+<main class="av-main">
+<section id="s1" class="av-sec"><h2><span>01</span>できること</h2>
+  <div class="av-ba">
+    <div class="av-ba-c before"><div class="av-ba-h">これまで</div><ul><li>会議のあとに書記の担当者が録音や文字起こしを聞き返し、議事録を手で書いています。</li><li>決定事項と宿題が議事録の文章に埋もれ、誰がいつまでに何をするかが読み取りにくくなっています。</li><li>宿題を課題管理に写す作業が人任せになり、写し忘れや担当者の書き違いが起きています。</li><li>議事録が出るまでに日がかかり、出席者の記憶があいまいになってから確かめることになります。</li></ul></div>
+    <div class="av-ba-c after"><div class="av-ba-h">このエージェントを使うと</div><ul><li>文字起こしが投稿されると、同じスレッドに決定事項と宿題と持ち越しのまとめが返ります。</li><li>宿題には担当者と期限と根拠の発言が並ぶので、出席者は文字起こしと照らして確かめられます。</li><li>担当者や期限の誤りは出席者がスレッドに返信するだけで直せます。</li><li>確かめ終えた宿題だけを、頼んだときに課題管理へ起票できます。</li></ul></div>
+  </div>
+</section>
+
+<section id="s2" class="av-sec"><h2><span>02</span>仕組み</h2>
+  <p class="av-lead">エージェントが何を受け取り、何を見て、何を返すか。最後に人が確かめるところまでを1枚にしています。</p>
+  <div class="av-flow">
+    <div class="fl-box"><span class="fl-tag">受け取るもの</span><p>録音アプリか担当者がチャンネルに投稿した会議の文字起こし（@Claude つき）、会議名と日付、スレッドでの訂正や起票の依頼</p></div>
+    <div class="fl-arr" aria-hidden="true"></div>
+    <div class="fl-box fl-ai"><span class="fl-tag ai"><img src="/assets/copilot/ai-tools/claude.svg" alt="" width="16" height="16">エージェント</span><p class="fl-feat">Claude　channel memory</p>
+      <div class="fl-part"><b>指示文</b><p>役割と進め方、答え方を決める（04 指示文）</p></div>
+      <div class="fl-part"><b>渡す資料</b><ul><li>チャンネルのメモリに保存した当社の議事録の決まり（このページの指示文）</li><li>チャンネルにピン留めした議事録の見本</li><li>チャンネルにピン留めした担当者の呼び名の一覧</li></ul></div>
+      <div class="fl-part"><b>つなぐ道具</b><ul><li>Slack のチャンネルに追加した Claude（Claude Tag）</li><li>課題管理の接続（Linear、Jira、Asana など。起票するチャンネルだけ）</li></ul></div>
+    </div>
+    <div class="fl-arr" aria-hidden="true"></div>
+    <div class="fl-box"><span class="fl-tag">返すもの</span><p>文字起こしの投稿のスレッドへの返信（会議の情報、決定事項、担当者と期限と根拠つきの宿題、持ち越し、確かめたいこと）と、頼まれたときに起票した課題のリンク</p></div>
+    <div class="fl-arr" aria-hidden="true"></div>
+    <div class="fl-box fl-human"><span class="fl-tag human">人が確かめる</span><p>会議の主催者と出席者が、決定事項と宿題の担当者と期限を文字起こしと照らして確かめ、起票するかどうかを決めます。</p></div>
+  </div>
+</section>
+
+<section id="s3" class="av-sec"><h2><span>03</span>作り方</h2>
+  <ol class="av-steps"><li><span class="st-n">1</span><div><h3>管理者と会議記録のチャンネルを決める</h3><p>Claude の組織の Owner か Claude Tag admin に、会議の文字起こしをまとめるチャンネルを使いたいと伝えます。Claude Tag がそのチャンネルで有効になっているかも確かめてもらいます。チャンネルにはゲストを入れません。ゲストのいるチャンネルでは、既定で Claude が返事をしません。社外の会社と共有する Slack Connect のチャンネルでも、既定で Claude は動きません。チャンネルができたら、メッセージ欄に /invite @Claude と入れて送ります。スレッドの中から送ると Slack に断られます。</p></div></li><li><span class="st-n">2</span><div><h3>チャンネルから届く範囲を確かめる</h3><p>チャンネルで「@Claude what can you access from this channel?」と送ります。返事に並ぶのが、このチャンネルから Claude が使える接続です。宿題を起票させたいときに要るのは、Linear、Jira、Asana などの課題管理の接続です。入っていなければ管理者に追加を頼みます。接続がなくても、決定事項と宿題のまとめは Slack の中だけで作れます。</p></div></li><li><span class="st-n">3</span><div><h3>文字起こしの渡し方を決める</h3><p>録音アプリが文字起こしをチャンネルに投稿する場合は、投稿に @Claude が入るように録音アプリを設定します。ほかのアプリやボットの投稿は、@Claude が入っていないと読むだけで返事をしません。チャンネルの Respond automatically がオフのときも、ボットの @Claude には返事をしません。録音アプリを使わない場合は、担当者が会議のあとに文字起こしのファイルを添付し、@Claude をつけて投稿します。PDF は1つ5MBまで、テキストや文書のファイルは1つ100MBまでで、1回の投稿に5つまで添付できます。</p></div></li><li><span class="st-n">4</span><div><h3>決まりをチャンネルのメモリに入れる</h3><p>このページの指示文の［　］を書き換えます。書き換えた指示文は、チャンネルのメッセージ欄から1回だけ送ります。スレッドの中から送るのは避けてください。「remember for this channel」と頼んだ内容の保存先はチャンネルのメモリで、チャンネルのすべての人のスレッドに効きます。保存されたかは「@Claude what do you remember about this channel?」と聞いて確かめます。議事録の見本と担当者の呼び名の一覧も、チャンネルにピン留めしておいてください。</p></div></li><li><span class="st-n">5</span><div><h3>過去の会議で試して見比べる</h3><p>まず、議事録がすでにある過去の会議の文字起こしを1件投稿します。返ってきた決定事項と宿題は、人が書いた議事録と見比べてください。抜けや担当者の違いがあれば、そのスレッドに返信して直させます。メッセージを編集しても直しの指示としては届かないので、直しは新しい返信で書いてください。思ったとおりにまとまるまで、指示文を直してメモリに入れ直します。</p></div></li><li><span class="st-n">6</span><div><h3>スレッドで確かめてから起票する</h3><p>本番の会議では、出席者が宿題を文字起こしと照らし、担当者や期限の誤りをスレッドの返信で直します。Claude が作業に取り込むのは、スレッドにいる誰の返信でも同じです。宿題が確定したら「この宿題を［ボード名］に起票してください」と返信してください。起票した課題は Claude のアカウントの名前で作られ、リンクがスレッドに投稿されます。ボードが複数あるときは、ボードの名前も書いてください。</p></div></li><li><span class="st-n">7</span><div><h3>返事が止まっていないかを見る</h3><p>10日を超えて誰も @Claude をつけず、Claude も投稿していないチャンネルでは、Claude がメッセージを読むのをやめます。投稿の数が多くなったときにも読むのをやめます。どちらの場合も通知は出ません。文字起こしに返事がこないときは、人が @Claude をつけて投稿します。録音アプリの @Claude で読み直しが始まるのは、10日の無投稿で止まったときだけです。</p></div></li></ol>
+</section>
+
+<section id="s4" class="av-sec"><h2><span>04</span>指示文（そのまま貼れます）</h2>
+  <p class="av-lead">会議記録用の Slack チャンネルのメッセージ欄（スレッドの外）から @Claude をつけて送り、チャンネルのメモリに保存しますに貼ります。［　］のところは自社の言葉に置き換えてください。</p>
+  <div class="av-prompt">
+    <div class="pr-bar"><span class="pr-dots"><i></i><i></i><i></i></span><span class="pr-name">指示文 — Claude channel memory</span><button type="button" class="pr-copy" data-copy="pr-meeting-decisions-action-items-claude-tag">コピー</button></div>
+    <pre id="pr-meeting-decisions-action-items-claude-tag">@Claude このチャンネルについて、次の決まりを覚えておいてください（remember for this channel）。
+
+# 役割
+あなたは当社の会議の記録係です。このチャンネルに投稿された会議の文字起こしを読み、決定事項と宿題のまとめの下書きを、その投稿のスレッドに返します。まとめを確かめて決めるのは会議の出席者です。
+
+# 受け取るもの
+- 録音アプリが投稿した文字起こし、または担当者が添付か貼りつけで投稿した文字起こし
+- 会議名、日付、出席者（投稿やファイルに書いてあれば）
+- スレッドでの出席者からの訂正や追加の依頼
+
+# 進め方
+1. 文字起こしの投稿を見つけたら、そのスレッドで返事をします。
+2. 会議名、日付、出席者を文字起こしから読み取ります。読み取れない項目は「不明」と書きます。
+3. 会議で決まったことを抜き出します。案が出ただけのことや、意見が割れたままのことは決定事項に入れません。
+4. 誰かが引き受けた作業を宿題として抜き出し、担当者と期限をつけます。
+5. 結論が出ずに次回へ持ち越したことを分けて書きます。
+6. 出席者に確かめてほしい点を最後にまとめます。
+
+# 答え方
+次の見出しの順で、1つのメッセージにまとめます。
+【会議】会議名／日付／出席者
+【決定事項】1行に1件。番号をつけます。
+【宿題】「番号．内容／担当者／期限／根拠」の形で1行に1件。
+【持ち越し】1行に1件。
+【確かめたいこと】担当者や期限があいまいな点など。
+文末は「です」「ます」にします。1件で1つのことだけ短く書きます。担当者の名前は文字起こしの表記のまま書き、［担当者の呼び名の一覧］がピン留めされていれば、それに合わせます。
+
+# 根拠の示し方
+- 決定事項と宿題には、もとになった発言の時刻か発言者を添えます。
+- 迷う箇所には、発言の短い引用を添えます。
+
+# わからないときの返し方
+- 担当者が発言から決められないときは「担当者：未定（要確認）」と書きます。
+- 「来週中」「月末まで」のような期限は、発言どおりに書いて【確かめたいこと】に入れます。
+- 文字起こしが途中で切れている、または発言者が分からないときは、まとめの最初にそのことを書きます。
+- 推測で埋めません。
+
+# 訂正と起票
+- スレッドで訂正を受けたら、直した箇所がわかるようにまとめを出し直します。
+- 課題管理への起票は、出席者がスレッドで「起票してください」と頼んだときだけ、［ボード名］に1件ずつ作ります。作ったらリンクをスレッドに貼ります。このチャンネルの接続で起票できないときは、その旨を返します。
+
+# させないこと
+- 文字起こしにない決定事項や宿題を作りません。
+- 社外の人や個人へのメッセージを送りません。ほかのチャンネルにも投稿しません。
+- 発言の良し悪しや、出席者の働きぶりを評価しません。
+- 文字起こしに出た電話番号、住所、健康や人事の話は、まとめに書き写しません。
+- 文字起こしの全文をスレッドに貼り直しません。
+
+# 最後に添える一文
+まとめの最後に「この下書きは生成 AI が作りました。着手の前に、担当者と期限を文字起こしと照らして確かめてください。」と添えます。</pre>
+  </div>
+</section>
+
+<section id="s5" class="av-sec"><h2><span>05</span>管理者が先に決めること</h2>
+  <p class="av-lead">使い始める前に、Claude の管理者が決めておく設定です。ここを決めてから配ると、情報の扱いで止まりにくくなります。</p>
+  <div class="av-rows"><div class="av-row"><h3>Claude Tag を使うチャンネルとゲストの扱い</h3><p>Owner か Claude Tag admin が、Organization settings &gt; Claude Tag の Channels タブでチャンネルごとの設定を開きます。Claude Tag のオンとオフは、すべての Slack、ワークスペース、チャンネルの単位で切り替えが可能です。ゲストのいるチャンネルでは既定で Claude が動きません。変えるときは Advanced の「Allow Claude to work in channels with guests」を使います。社外の人が出た会議の文字起こしをどのチャンネルに置いてよいかは、先に決めておいてください。</p></div><div class="av-row"><h3>Claude を呼び出せる人の範囲</h3><p>既定では、チャンネルで @Claude を使う人に Claude のアカウントは要らず、利用分は組織に課金されます。Claude を呼び出せる人は、管理者が member access setting で絞れます。会議記録のチャンネルを全社に開くか、部署やプロジェクトの人に絞るかを決めてください。</p></div><div class="av-row"><h3>チャンネルにつなぐ接続と起票の権限</h3><p>接続を付ける先は、すべての Slack、1つのワークスペース、1つのチャンネルのどれかです。付け方は直接かバンドルを選べます。チャンネルの接続は Claude のサービス アカウントで認証されます。チャンネルにいる全員が同じ範囲を使えるので、課題管理の接続は起票するチャンネルだけに付けてください。起票してよいボードも決めておきます。</p></div><div class="av-row"><h3>自動の返事とチャンネルの設定を変えられる人</h3><p>Respond automatically はチャンネルごとの設定で、既定はオンです。録音アプリの投稿に返事をさせるにはオンのままにします。Channel member edits を Block にすると、チャンネルのメンバーはこの設定を変えられません。Owner と Claude Tag admin は、Claude Tag admin settings から変えられます。メンバーに任せるか、管理者だけが変えるかを決めてください。</p></div><div class="av-row"><h3>利用の上限と記録の残り方</h3><p>組織の使用クレジットが足りないと作業が途中で止まり、管理者が claude.ai で使用クレジットを有効にするか購入します。利用の上限に達したときも止まるので、会議記録のチャンネルにどこまで使わせるかを決めます。スレッドのやり取りはセッションの記録として残り、Slack でメッセージを編集したり消したりしても記録からは消えません。人事や機密の会議の文字起こしを投稿してよいかの決まりを、使い始める前に出しておきます。</p></div></div>
+</section>
+
+<section id="s6" class="av-sec"><h2><span>06</span>人が確かめるところ</h2>
+  <ul class="av-checks"><li>宿題に着手する前に、会議に出た人が担当者と期限を文字起こしと照らして確かめます。</li><li>課題管理への起票は、出席者がスレッドで頼んだときだけにします。社外へのまとめの送付は人がします。</li><li>人事、評価、契約交渉などの機密の会議は、チャンネルに文字起こしを投稿しません。</li><li>まとめを出席者の発言の評価や人事評価に使いません。</li></ul>
+</section>
+
+<section id="s7" class="av-sec"><h2><span>07</span>うまくいかないとき</h2>
+  <div class="av-rows pit"><div class="av-row"><h3>録音アプリが文字起こしを投稿しても返事がない</h3><p>投稿に @Claude が入っているかを確かめます。チャンネルの Respond automatically がオンかも見てください。投稿の数が多くて Claude が読むのをやめているときは、録音アプリの @Claude では再開しません。人が @Claude をつけて投稿します。</p></div><div class="av-row"><h3>宿題の担当者や期限が違う、または「未定」が多い</h3><p>出席者がスレッドに返信して、正しい担当者と期限を伝えます。編集した投稿は直しの指示として届かないので、新しい返信で書いてください。発言者の名前が文字起こしに入っていないときは、録音アプリの話者の表示をオンにします。担当者の呼び名の一覧をピン留めしておくと、表記がそろいやすくなります。</p></div><div class="av-row"><h3>起票を頼んでも課題ができない、または違うボードにできる</h3><p>「@Claude what can you access from this channel?」で、チャンネルの接続を確かめます。課題管理の接続がなければ、管理者に追加を頼んでください。接続を足したあとは新しいスレッドで頼み直し、ボードの名前を書きます。</p></div><div class="av-row"><h3>長い会議で「This conversation is too long for me to process」と返る、またはファイルが読まれない</h3><p>スレッドが長くなりすぎると、そのスレッドでは続けられません。新しいスレッドを立て、文字起こしを前半と後半に分けて投稿します。PDF は5MBを超えると読まれないので、分けるかテキストのファイルにします。</p></div></div>
+</section>
+
+<section id="s8" class="av-sec"><h2><span>08</span>30日後に測ること</h2>
+  <p class="av-lead">使われているか、どれだけ時間が浮いたか、出来は十分か。使い始めて30日後に、次の点を確かめます。</p>
+  <div class="av-meas-g"><div class="av-meas"><h3>使われているか：まとめが返った会議の数</h3><p>会議記録のチャンネルで、30日間に投稿された文字起こしの数と、Claude のまとめが返ったスレッドの数を数えます。返事がなかった投稿は理由を1行で書き残し、渡し方か設定を直します。</p></div><div class="av-meas"><h3>時間：会議の終わりから決定事項と宿題が出席者に共有されるまでの時間</h3><p>議事録をメールやチャンネルで共有した時刻と会議の終了時刻の差を、使い始める前の30日分集めます。使い始めた後の30日分は出席者がスレッドに「確かめました」と返信した時刻で同じように測ります。結果は会議ごとに表にまとめてください。</p></div><div class="av-meas"><h3>出来：まとめの直しと抜けの数</h3><p>会議ごとに、スレッドで担当者、期限、決定事項を直した返信の数を数えます。あとから見つかった宿題の抜けも、同じ表に足してください。直しの原因が文字起こしの質か指示文かを書き分け、月末に指示文を見直します。</p></div></div>
+</section>
+
+<section id="s9" class="av-sec"><h2><span>09</span>広げ方</h2>
+  <ul class="av-vars"><li>1つの論点が決まった会議で、まとめの代わりに決めたことと退けた案と理由を1枚の文書にする版</li><li>お客さまとの打ち合わせの文字起こしから、社内向けの宿題と、担当者が送る返事の下書きを作る版</li><li>部内の定例会議で、まとめを claude.ai のページとして公開し、次の会議の前に読み返す版</li></ul>
+</section>
+
+<section class="av-sec av-src"><h2>公式の情報</h2>
+  <ul><li><a href="https://academy.claude.com/use-cases/meeting-notes-and-filed-tasks-from-a-call-transcript" target="_blank" rel="noopener">Create meeting notes and tasks from a call transcript</a><span>Claude Academy（Anthropic）</span></li><li><a href="https://claude.com/docs/claude-tag/users/getting-started" target="_blank" rel="noopener">Get started（Claude Tag）</a><span>Anthropic</span></li><li><a href="https://claude.com/docs/claude-tag/users/when-claude-responds" target="_blank" rel="noopener">Control when Claude Tag responds</a><span>Anthropic</span></li><li><a href="https://claude.com/docs/claude-tag/users/use-cases/create-artifacts" target="_blank" rel="noopener">Turn threads into docs and tickets</a><span>Anthropic</span></li><li><a href="https://claude.com/docs/claude-tag/concepts/how-it-works" target="_blank" rel="noopener">How Claude Tag works</a><span>Anthropic</span></li><li><a href="https://claude.com/docs/claude-tag/users/troubleshooting" target="_blank" rel="noopener">Troubleshoot Claude Tag in channels and DMs</a><span>Anthropic</span></li></ul>
+  <p>機能と画面の名前は、2026.10.16 に上の公式の情報で確かめました。業務での使い方は TechWorker の例です。</p>
+</section>
+</main>
+</div>
+
+<div class="art-cta" data-cta-placement="vault_end"><div class="inner"><div><h3>このエージェントを、御社の業務で作ります。</h3><p>TechWorker の研修では、受講者の実際の業務を1つ選び、研修の中でこの形のエージェントを作ります。教材は毎週更新し、受講から30日後に使われ方を測ってご報告します（Claude Code 編）。</p></div><a href="https://kenshu.techworker.co.jp/program/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_campaign=meeting-decisions-action-items-claude-tag&amp;utm_content=end#claude-code" class="btn">研修の内容を見る <i>→</i></a></div></div>
+
+<section class="av-related"><div class="av-wrap"><h2>ほかのエージェント</h2><div class="av-grid"><a class="av-card" href="/media/agents/nda-review-claude-projects" data-dept="法務" data-prod="Claude"><div class="av-card-vis"><div class="av-card-top"><span class="av-prod"><img src="/assets/copilot/ai-tools/claude.svg" alt="" width="20" height="20">Claude</span><span class="av-dept">法務</span></div><div class="av-mf" aria-hidden="true"><span class="mf-box"><b>受け取る</b><span class="mf-t">相手方の秘密保持契約の本文（Word か PDF）と、依頼部署、取引の目的、開示する情報の種類</span></span><i class="mf-arr"></i><span class="mf-box mf-ai"><img src="/assets/copilot/ai-tools/claude.svg" alt="" width="18" height="18"><b>エージェント</b><span class="mf-t">プロジェクト</span></span><i class="mf-arr"></i><span class="mf-box"><b>返す</b><span class="mf-t">上長確認の要否、重要度の高い指摘の数、条項ごとの指摘と修正案の表、相手方へのコメント文案</span></span><i class="mf-arr"></i><span class="mf-box mf-human"><b>人が確かめる</b><span class="mf-t">指摘を採るかどうか、相手方に何を求めるか、契約を受け入れてよいかは法務担当者が決めます。</span></span></div></div><div class="av-card-b"><span class="av-card-t">秘密保持契約を自社の基準で読むエージェント</span><span class="av-card-s">相手方から届いた秘密保持契約を、当社の審査基準とひな形に照らして読み、条項ごとの指摘と修正案の下書きを作ります。法務担当者は下書きを確かめて判断するところから始められます。</span><span class="av-card-m"><span>作る時間 半日ほど</span><span>はじめて</span><span>2026.10.16</span></span></div></a><a class="av-card" href="/media/agents/expense-check-claude-skills" data-dept="経理" data-prod="Claude"><div class="av-card-vis"><div class="av-card-top"><span class="av-prod"><img src="/assets/copilot/ai-tools/claude.svg" alt="" width="20" height="20">Claude</span><span class="av-dept">経理</span></div><div class="av-mf" aria-hidden="true"><span class="mf-box"><b>受け取る</b><span class="mf-t">経費精算システムから書き出した申請の一覧（CSV か Excel）と、領収書や請求書の画像、PDF</span></span><i class="mf-arr"></i><span class="mf-box mf-ai"><img src="/assets/copilot/ai-tools/claude.svg" alt="" width="18" height="18"><b>エージェント</b><span class="mf-t">スキル</span></span><i class="mf-arr"></i><span class="mf-box"><b>返す</b><span class="mf-t">点検した件数と内訳、「要確認」の申請の表（申請番号、点検項目、気になった点、規程の該当箇所、確かめてほしいこと）</span></span><i class="mf-arr"></i><span class="mf-box mf-human"><b>人が確かめる</b><span class="mf-t">差し戻すか、承認するか、申請者に何を聞くかは経理担当者が決めます。</span></span></div></div><div class="av-card-b"><span class="av-card-t">経費精算の申請を規程どおりに点検するエージェント</span><span class="av-card-s">経費精算システムから書き出した申請の一覧を、当社の経費規程に照らして1件ずつ点検し、確かめが要る申請と理由を一覧にします。経理担当者は一覧の申請から順に確かめられます。</span><span class="av-card-m"><span>作る時間 1〜2日</span><span>慣れてきたら</span><span>2026.10.16</span></span></div></a><a class="av-card" href="/media/agents/training-quiz-tutor-copilot" data-dept="人事" data-prod="Microsoft 365 Copilot"><div class="av-card-vis"><div class="av-card-top"><span class="av-prod"><img src="/assets/copilot/microsoft/copilot.svg" alt="" width="20" height="20">Microsoft 365 Copilot</span><span class="av-dept">人事</span></div><div class="av-mf" aria-hidden="true"><span class="mf-box"><b>受け取る</b><span class="mf-t">受講者が選んだ研修の名前と章、問題の数の希望、出題した問題への受講者の答え</span></span><i class="mf-arr"></i><span class="mf-box mf-ai"><img src="/assets/copilot/microsoft/copilot.svg" alt="" width="18" height="18"><b>エージェント</b><span class="mf-t">エージェント ビルダー</span></span><i class="mf-arr"></i><span class="mf-box"><b>返す</b><span class="mf-t">1問ずつの問題、正誤と解説、参照した資料の名前と見出し、終わったときの正解の数と読み返す見出し</span></span><i class="mf-arr"></i><span class="mf-box mf-human"><b>人が確かめる</b><span class="mf-t">研修資料の内容の正しさと、修了の判定や評価は研修担当が決めます。</span></span></div></div><div class="av-card-b"><span class="av-card-t">研修資料から小テストを作り、1問ずつ出して解説するエージェント</span><span class="av-card-s">当社の研修資料だけを根拠に小テストを作り、受講者に1問ずつ出題します。答えには正誤と解説、読み返す資料の見出しを返し、研修のあとの復習を手伝います。</span><span class="av-card-m"><span>作る時間 半日ほど</span><span>はじめて</span><span>2026.10.16</span></span></div></a></div><a class="av-more" href="/media/agents/#list">保管庫の一覧に戻る <span aria-hidden="true">→</span></a></div></section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">エージェント<i>保管庫</i></div>
+        <p>業務ごとのAIエージェントの作り方をまとめた見本帳。<span class="pub">発行：<a href="/">株式会社TechWorker</a></span></p>
+      </div>
+      <div class="footer-col"><h4>エージェント保管庫</h4><a href="/media/agents/#list">一覧</a><a href="/media/agents/#format">1件の読み方</a></div>
+      <div class="footer-col"><h4>TechWorker Media</h4><a href="/media/kenshu/">AI研修・導入ラボ</a><a href="/media/security/">AIセキュリティ・ラボ</a><a href="/media/gyomuzu/">業務図ラボ</a></div>
+      <div class="footer-col"><h4>運営会社</h4><a href="https://kenshu.techworker.co.jp/">生成AI研修</a><a href="/company.html">会社概要</a><a href="/privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p class="av-legal">Microsoft、Microsoft 365、Copilot は Microsoft グループの商標です。Claude は Anthropic の商標です。Gemini は Google LLC の商標です。TechWorker は各社と提携していません。画面や機能は変わることがあります。最新の情報は各社の公式ページでご確認ください。</p>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+</script>
+<script src="/media/agents/vault.js?v=20261016-vault" defer></script>
+<script src="/media/article-tracker.js?v=20261006-media-home" defer></script>
+</body>
+</html>
