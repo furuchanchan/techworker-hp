@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - master
+  # エージェント保管庫の定時実行（agents-vault.yml）が master に書いたあとに呼ぶ。
+  # GITHUB_TOKEN での push では push のきっかけが動かないため。
+  workflow_dispatch:
 
 jobs:
   deploy:

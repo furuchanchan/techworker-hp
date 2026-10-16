@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}if(location.hostname==='techworker.co.jp')gtag('config', 'G-3V34NWXVCJ');
+</script>
+<script src="/assets/tw-track.js" defer></script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>社内規程に条文つきで答えるエージェント｜Microsoft 365 Copilotでの作り方 — エージェント保管庫</title>
+<meta name="description" content="社員から届く規程の質問に、SharePoint に置いた当社の規程だけを根拠にして答えます。どの回答にも規程名と条番号がつくので、社員はその場で原文を確かめられます。 できること、作り方、そのまま貼れる指示文、管理者が先に決める設定をまとめています。">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/agents/company-policy-answer-copilot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="社内規程に条文つきで答えるエージェント｜Microsoft 365 Copilotでの作り方 — エージェント保管庫">
+<meta property="og:description" content="社員から届く規程の質問に、SharePoint に置いた当社の規程だけを根拠にして答えます。どの回答にも規程名と条番号がつくので、社員はその場で原文を確かめられます。 できること、作り方、そのまま貼れる指示文、管理者が先に決める設定をまとめています。">
+<meta property="og:image" content="https://techworker.co.jp/media/agents/covers/company-policy-answer-copilot.png">
+<meta property="og:url" content="https://techworker.co.jp/media/agents/company-policy-answer-copilot">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="社内規程に条文つきで答えるエージェント｜Microsoft 365 Copilotでの作り方 — エージェント保管庫">
+<meta name="twitter:image" content="https://techworker.co.jp/media/agents/covers/company-policy-answer-copilot.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/media/article.css?v=20261006-source-notes">
+<link rel="stylesheet" href="/media/agents/vault.css?v=20261016-vault">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "社内規程に条文つきで答えるエージェント｜Microsoft 365 Copilotでの作り方", "description": "社員から届く規程の質問に、SharePoint に置いた当社の規程だけを根拠にして答えます。どの回答にも規程名と条番号がつくので、社員はその場で原文を確かめられます。", "datePublished": "2026-10-16", "dateModified": "2026-10-16", "inLanguage": "ja", "image": "https://techworker.co.jp/media/agents/covers/company-policy-answer-copilot.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/agents/company-policy-answer-copilot"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "エージェント保管庫", "item": "https://techworker.co.jp/media/agents/"}, {"@type": "ListItem", "position": 4, "name": "社内規程に条文つきで答えるエージェント", "item": "https://techworker.co.jp/media/agents/company-policy-answer-copilot"}]}</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<nav id="nav">
+  <a href="/media/agents/" class="logo">エージェント<i>保管庫</i></a>
+  <ul>
+    <li><a href="/media/agents/#list">一覧</a></li>
+    <li><a href="/media/agents/#format">1件の読み方</a></li>
+    <li><a href="/media/">メディア</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://kenshu.techworker.co.jp/contact/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_content=nav" class="nav-cta"><span class="full">研修の相談</span><span class="short">相談</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="/media/agents/#list">エージェントの一覧</a>
+  <a href="/media/agents/#format">1件の読み方</a>
+  <a href="/media/">TechWorker Media</a>
+  <a href="https://kenshu.techworker.co.jp/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_content=menu">研修のご案内</a>
+  <a href="https://kenshu.techworker.co.jp/contact/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_content=menu" class="m-cta">研修の相談をする</a>
+</div>
+<header class="av-hero">
+  <nav class="crumb" aria-label="パンくず"><a href="/">ホーム</a><span class="sep">/</span><a href="/media/">メディア</a><span class="sep">/</span><a href="/media/agents/">エージェント保管庫</a></nav>
+  <div class="av-chips"><span class="av-prod"><img src="/assets/copilot/microsoft/copilot.svg" alt="" width="20" height="20">Microsoft 365 Copilot</span><span class="av-tag av-tag-feat">エージェント ビルダー</span><span class="av-dept">総務</span><span class="av-tag">作る時間 半日ほど</span><span class="av-tag">はじめて</span></div>
+  <h1>社内規程に条文つきで答えるエージェント</h1>
+  <p class="av-sum">社員から届く規程の質問に、SharePoint に置いた当社の規程だけを根拠にして答えます。どの回答にも規程名と条番号がつくので、社員はその場で原文を確かめられます。</p>
+  <div class="av-meta"><span>公開 2026.10.16</span><span>公式の情報で確認 2026.10.16</span><span>監修 古野光太朗（TechWorker 代表）</span></div>
+</header>
+
+<div class="av-layout">
+<aside class="av-spec" aria-label="このエージェントの設計書">
+  <div class="av-spec-in">
+    <div class="av-spec-h">このエージェントの設計書</div>
+    <dl>
+      <dt>部署</dt><dd>総務</dd>
+      <dt>業務</dt><dd>社内規程への問い合わせ対応</dd>
+      <dt>製品</dt><dd>Microsoft 365 Copilot</dd>
+      <dt>使う機能</dt><dd>エージェント ビルダー</dd>
+      <dt>必要な契約</dt><dd>Microsoft 365 Copilot ライセンス、または Copilot Studio の従量課金制</dd>
+      <dt>作る時間</dt><dd>半日ほど</dd>
+      <dt>難しさ</dt><dd>はじめて</dd>
+    </dl>
+    <a class="av-spec-btn" href="#s4">指示文を見る <span aria-hidden="true">↓</span></a>
+    <nav class="av-toc" aria-label="目次"><a href="#s1">できること</a><a href="#s2">仕組み</a><a href="#s3">作り方</a><a href="#s4">指示文</a><a href="#s5">管理者が先に決めること</a><a href="#s6">人が確かめるところ</a><a href="#s7">うまくいかないとき</a><a href="#s8">30日後に測ること</a><a href="#s9">広げ方</a></nav>
+  </div>
+</aside>
+
+<main class="av-main">
+<section id="s1" class="av-sec"><h2><span>01</span>できること</h2>
+  <div class="av-ba">
+    <div class="av-ba-c before"><div class="av-ba-h">これまで</div><ul><li>休暇や経費の決まりについて、同じ質問がメールや Teams で毎日のように届きます。</li><li>担当者が規程集を開いて条文を探し、回答を書いて返しています。</li><li>担当者によって、答え方や案内する条文が少しずつ違います。</li><li>改定した規程が伝わらず、古い決まりのまま手続きされることがあります。</li></ul></div>
+    <div class="av-ba-c after"><div class="av-ba-h">このエージェントを使うと</div><ul><li>社員は質問を書くだけで、結論と根拠の条文をその場で受け取れます。</li><li>回答には規程名と条番号がつくので、社員も担当者も原文をすぐ確かめられます。</li><li>規程の置き場所を SharePoint の1か所に決めるので、どの版が正しいかで迷わなくなります。</li><li>担当者は規程に書いていない判断や例外の相談に時間を使えます。</li></ul></div>
+  </div>
+</section>
+
+<section id="s2" class="av-sec"><h2><span>02</span>仕組み</h2>
+  <p class="av-lead">エージェントが何を受け取り、何を見て、何を返すか。最後に人が確かめるところまでを1枚にしています。</p>
+  <div class="av-flow">
+    <div class="fl-box"><span class="fl-tag">受け取るもの</span><p>社員が書いた規程についての質問（例：時間単位の有給休暇は何時間まで取れますか）</p></div>
+    <div class="fl-arr" aria-hidden="true"></div>
+    <div class="fl-box fl-ai"><span class="fl-tag ai"><img src="/assets/copilot/microsoft/copilot.svg" alt="" width="16" height="16">エージェント</span><p class="fl-feat">Microsoft 365 Copilot　エージェント ビルダー</p>
+      <div class="fl-part"><b>指示文</b><p>役割と進め方、答え方を決める（04 指示文）</p></div>
+      <div class="fl-part"><b>渡す資料</b><ul><li>SharePoint の規程フォルダーにある就業規則と各種規程（Word または PDF）</li><li>規程ごとの改定履歴の一覧</li><li>総務の問い合わせ窓口と申請様式の案内</li></ul></div>
+      <div class="fl-part"><b>つなぐ道具</b><ul><li>なし（つなぐ道具は使いません）</li></ul></div>
+    </div>
+    <div class="fl-arr" aria-hidden="true"></div>
+    <div class="fl-box"><span class="fl-tag">返すもの</span><p>結論、根拠の条文（規程名、条番号、引用）、必要な手続き、確認先</p></div>
+    <div class="fl-arr" aria-hidden="true"></div>
+    <div class="fl-box fl-human"><span class="fl-tag human">人が確かめる</span><p>条文にない例外の扱いや、個人の事情が関わる判断は、総務の担当者が決めます。</p></div>
+  </div>
+</section>
+
+<section id="s3" class="av-sec"><h2><span>03</span>作り方</h2>
+  <ol class="av-steps"><li><span class="st-n">1</span><div><h3>テンプレートから始める</h3><p>Microsoft 365 Copilot の左側のウィンドウで「新しいエージェント」を選びます。「テンプレートで開始」から「会社のポリシー」を選びます。説明と指示と推奨プロンプトが入った状態で編集が始まります。 Microsoft 365 Copilot ライセンス、または Copilot Studio の従量課金制（Copilot クレジット）を有効にしたテナントが要ります。SharePoint をナレッジにするには、このどちらかが必要です。従量課金制の場合は、課金ポリシーを SharePoint エージェント サービスに接続し、利用者を課金ポリシーに割り当てたセキュリティ グループに入れます。</p></div></li><li><span class="st-n">2</span><div><h3>規程の置き場所を整える</h3><p>SharePoint に、規程だけを置いたフォルダーを1つ作ります。古い版は別のフォルダーへ移し、ファイル名に規程名と改定日を入れます。1つのエージェントで選べる SharePoint のファイルは100個までです。</p></div></li><li><span class="st-n">3</span><div><h3>名前と指示を入れる</h3><p>「構成」タブを開き、「名前」に「規程案内（総務）」のような30文字以内の名前を入れます。「説明」には、誰が何を聞くためのエージェントかを短く書きます。「指示」にこのページの指示文を貼り、窓口名と内線番号を当社のものに書き換えます。</p></div></li><li><span class="st-n">4</span><div><h3>ナレッジに規程フォルダーを入れる</h3><p>「ナレッジ」の欄で、手順2のフォルダーを参照して選ぶか、URL を貼ります。「指定したソースのみを使用する」をオンにします。追加した直後のファイルは「準備中」と表示され、準備が終わるまで回答に使われません。</p></div></li><li><span class="st-n">5</span><div><h3>スターター プロンプトを決める</h3><p>「スターター プロンプト」に、社員がよく聞く質問を3〜5個入れます。たとえば、慶弔休暇の日数、出張の日当、在宅勤務の申請方法を入れます。</p></div></li><li><span class="st-n">6</span><div><h3>「試してみる」で確かめる</h3><p>「試してみる」タブで、答えが分かっている質問を20問ほど聞きます。結論、条番号、引用が規程と合っているかを1問ずつ照らし合わせます。規程にない質問もして、窓口へ案内されるかを確かめます。</p></div></li><li><span class="st-n">7</span><div><h3>作成して共有する</h3><p>「作成」を選ぶと、はじめは自分だけが使える状態で作られます。「共有」を選び、使う社員のグループを「チャット可能」で追加します。指示や資料を直したあとは、右上の「更新」を選ぶと利用者に反映されます。</p></div></li></ol>
+</section>
+
+<section id="s4" class="av-sec"><h2><span>04</span>指示文（そのまま貼れます）</h2>
+  <p class="av-lead">エージェント ビルダーの「構成」タブにある「指示」欄（8,000文字まで）に貼ります。［　］のところは自社の言葉に置き換えてください。</p>
+  <div class="av-prompt">
+    <div class="pr-bar"><span class="pr-dots"><i></i><i></i><i></i></span><span class="pr-name">指示文 — Microsoft 365 Copilot エージェント ビルダー</span><button type="button" class="pr-copy" data-copy="pr-company-policy-answer-copilot">コピー</button></div>
+    <pre id="pr-company-policy-answer-copilot"># 役割
+あなたは当社の総務部の規程案内係です。社員から届く社内規程の質問に、ナレッジにある当社の規程だけを根拠にして答えます。
+
+# 受け取るもの
+社員が書いた質問を1件受け取ります。休暇、勤務、経費、出張、備品、社内手続きについての質問が中心です。
+
+# 進め方
+1. 質問がどの規程に関係するかを考えます。
+2. ナレッジの規程から、該当する条文を探します。
+3. 条文が複数あるときは、それぞれ確かめます。改定日が新しい版を優先します。
+4. 雇用区分や勤務地で答えが変わるときは、先に確認の質問を1つだけします。
+5. 条文の内容を、職場でふだん使う言葉に言い換えて答えます。
+
+# 答え方
+- 最初に結論を1〜2文で書きます。
+- 次に「根拠」として、規程名、条番号、項番号を示し、条文の該当部分を引用します。
+- 手続きが要るときは、「手続き」として順番に書きます。申請先や様式名は、規程に書いてあるとおりに示します。
+- 最後に「確認先」として、総務部の窓口（内線〇〇〇〇）を案内します。
+- 文末は「です」「ます」にし、1つの文に1つのことだけを書きます。
+
+# 根拠の示し方
+- どの回答にも、根拠にした規程名と条番号を示します。
+- 引用は条文の文言を変えずに示します。
+- 言い換えた説明と条文の引用は、分けて書きます。
+
+# わからないときの返し方
+- ナレッジに該当する条文がないときは、推測で答えません。「該当する規程が見つかりませんでした。総務部（内線〇〇〇〇）にお問い合わせください。」と返します。
+- 条文の読み方が分かれそうなときは、条文を示したうえで「解釈は総務部の担当者が判断します」と書き添えます。
+
+# させないこと
+- 一般常識、他社の例、法律の一般論で答えを補いません。
+- 人事評価、懲戒、給与の額、休職の可否のように、個人の判断が関わる質問には答えず、担当者へ案内します。
+- 社員の個人情報を聞き出しません。
+- 規程の改定案を示したり、例外を約束したりしません。</pre>
+  </div>
+</section>
+
+<section id="s5" class="av-sec"><h2><span>05</span>管理者が先に決めること</h2>
+  <p class="av-lead">使い始める前に、Microsoft 365 Copilot の管理者が決めておく設定です。ここを決めてから配ると、情報の扱いで止まりにくくなります。</p>
+  <div class="av-rows"><div class="av-row"><h3>ナレッジにする SharePoint サイトとフォルダーのアクセス許可</h3><p>エージェントは SharePoint の既存のアクセス許可と秘密度ラベルに従って答えます。規程を全社員が読める場所に置かないと、読めない社員には答えが返りません。人事の内部資料が同じ場所にあると、読める人の回答に混ざるおそれがあります。</p></div><div class="av-row"><h3>制限付き SharePoint 検索の設定</h3><p>制限付き SharePoint 検索が有効なテナントでは、SharePoint をナレッジに使えません。作り始める前に、SharePoint の管理者と設定を確かめます。</p></div><div class="av-row"><h3>エージェントを組織全体へ共有できる人</h3><p>Microsoft 365 管理センターでは、組織全体への共有を「すべてのユーザー」「特定のユーザーまたはグループ」「ユーザーなし」から選べます。総務が作ったエージェントを誰が全社に公開できるかを、先に決めておきます。</p></div><div class="av-row"><h3>端末からアップロードするファイルの扱い</h3><p>端末からアップロードしたファイルの内容は、エージェントを使える人全員が回答として見られます。Microsoft Purview 情報バリアも効きません。規程は SharePoint に置き、アップロードは使わない決まりにします。</p></div><div class="av-row"><h3>やり取りの記録を確かめる人</h3><p>社員とエージェントのやり取りは、Microsoft Purview ポータルの「監査」で CopilotInteraction として記録されます。記録には回答のために参照したファイルも含まれます。誰が記録を確かめるかを、情報システム部門と決めておきます。</p></div></div>
+</section>
+
+<section id="s6" class="av-sec"><h2><span>06</span>人が確かめるところ</h2>
+  <ul class="av-checks"><li>回答の根拠にされた条文が最新の版かどうかを、総務の担当者が月に1回抜き出して確かめます。</li><li>規程にない例外や、個人の事情が関わる判断はエージェントに任せず、担当者が決めます。</li><li>規程を改定したら、古い版を規程フォルダーから外し、よく聞かれる質問を「試してみる」で聞き直します。</li></ul>
+</section>
+
+<section id="s7" class="av-sec"><h2><span>07</span>うまくいかないとき</h2>
+  <div class="av-rows pit"><div class="av-row"><h3>規程に書いていない一般論で答えてしまう</h3><p>「指定したソースのみを使用する」は、ナレッジを優先させる設定です。一般的な AI の知識による回答が残ることがあります。指示文の「させないこと」を残し、規程にないときの返し方を指示に書いておきます。</p></div><div class="av-row"><h3>古い版の規程を引用する</h3><p>規程フォルダーに旧版が残っていないかを確かめます。旧版は別のフォルダーへ移し、ファイル名に改定日を入れます。</p></div><div class="av-row"><h3>一度に2つ以上聞くと、片方の答えが抜ける</h3><p>このテンプレートは一度に1つの質問に答える作りです。スターター プロンプトの説明に「1回に1つずつ聞いてください」と書いておきます。</p></div><div class="av-row"><h3>追加したばかりの規程が回答に出てこない</h3><p>「構成」タブの「ナレッジ」で、ファイルが「準備中」になっていないかを見ます。数分待ってから、ナレッジ欄の上にある更新ボタンで状態を読み込み直します。</p></div></div>
+</section>
+
+<section id="s8" class="av-sec"><h2><span>08</span>30日後に測ること</h2>
+  <p class="av-lead">使われているか、どれだけ時間が浮いたか、出来は十分か。使い始めて30日後に、次の点を確かめます。</p>
+  <div class="av-meas-g"><div class="av-meas"><h3>使われているか：このエージェントのアクティブ ユーザー数</h3><p>Microsoft 365 管理センターの「レポート」から「使用状況」を開き、「Microsoft Copilot」の「エージェント」を選びます。このエージェントの「アクティブ ユーザー」と「ユーザーに送信された応答」を見ます。対象の社員数と並べて、使っていない部署を探します。</p></div><div class="av-meas"><h3>時間：総務に直接届く規程の質問の件数</h3><p>使い始める前の2週間と、30日後の2週間で、総務の共有メールボックスと Teams に届いた規程の質問を数えます。担当者が1件の回答に使った時間も10件ほど記録し、前後で比べます。</p></div><div class="av-meas"><h3>出来：結論と条番号がそろって正しい回答の数</h3><p>答えが分かっている質問を20問用意し、30日後にもう一度聞きます。結論、規程名、条番号の3点がすべて合っている回答を数えます。外れた質問は規程の置き方と指示文のどちらを直すかを書き残します。</p></div></div>
+</section>
+
+<section id="s9" class="av-sec"><h2><span>09</span>広げ方</h2>
+  <ul class="av-vars"><li>情報システム部門がパソコンやアカウントの決まりに答える版</li><li>経理が経費精算のルールと勘定科目の選び方に答える版</li><li>入社したばかりの社員に、最初の3か月に必要な手続きを案内する版</li></ul>
+</section>
+
+<section class="av-sec av-src"><h2>公式の情報</h2>
+  <ul><li><a href="https://learn.microsoft.com/ja-jp/microsoft-365/copilot/extensibility/agent-template-my-company-policy" target="_blank" rel="noopener">マイ カンパニー ポリシー テンプレートを使用してエージェントを構築する</a><span>Microsoft Learn</span></li><li><a href="https://learn.microsoft.com/ja-jp/microsoft-365/copilot/extensibility/agent-builder-build-agents" target="_blank" rel="noopener">エージェント ビルダーでエージェントを構築する</a><span>Microsoft Learn</span></li><li><a href="https://learn.microsoft.com/ja-jp/microsoft-365/copilot/extensibility/agent-builder-add-knowledge" target="_blank" rel="noopener">エージェント ビルダーでエージェントにナレッジ ソースを追加する</a><span>Microsoft Learn</span></li><li><a href="https://learn.microsoft.com/ja-jp/microsoft-365/copilot/extensibility/prerequisites" target="_blank" rel="noopener">Microsoft 365 Copilot プラグイン用の開発環境をセットアップする（エージェントの機能とライセンス モデル）</a><span>Microsoft Learn</span></li><li><a href="https://learn.microsoft.com/ja-jp/microsoft-365/copilot/extensibility/agent-builder-share-manage-agents" target="_blank" rel="noopener">Agent Builder に組み込まれたエージェントの共有と管理</a><span>Microsoft Learn</span></li><li><a href="https://learn.microsoft.com/ja-jp/purview/audit-copilot" target="_blank" rel="noopener">Copilot および AI アプリケーションの監査ログ</a><span>Microsoft Learn</span></li></ul>
+  <p>機能と画面の名前は、2026.10.16 に上の公式の情報で確かめました。業務での使い方は TechWorker の例です。</p>
+</section>
+</main>
+</div>
+
+<div class="art-cta" data-cta-placement="vault_end"><div class="inner"><div><h3>このエージェントを、御社の業務で作ります。</h3><p>TechWorker の研修では、受講者の実際の業務を1つ選び、研修の中でこの形のエージェントを作ります。教材は毎週更新し、受講から30日後に使われ方を測ってご報告します（Microsoft 365 Copilot 編）。</p></div><a href="https://kenshu.techworker.co.jp/program/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_campaign=company-policy-answer-copilot&amp;utm_content=end#copilot" class="btn">研修の内容を見る <i>→</i></a></div></div>
+
+<section class="av-related"><div class="av-wrap"><h2>ほかのエージェント</h2><div class="av-grid"><a class="av-card" href="/media/agents/interview-questions-copilot" data-dept="人事" data-prod="Microsoft 365 Copilot"><div class="av-card-vis"><div class="av-card-top"><span class="av-prod"><img src="/assets/copilot/microsoft/copilot.svg" alt="" width="20" height="20">Microsoft 365 Copilot</span><span class="av-dept">人事</span></div><div class="av-mf" aria-hidden="true"><span class="mf-box"><b>受け取る</b><span class="mf-t">求人票の本文（職務内容、必須要件、歓迎要件）、等級、面接の回（一次面接か最終面接か）</span></span><i class="mf-arr"></i><span class="mf-box mf-ai"><img src="/assets/copilot/microsoft/copilot.svg" alt="" width="18" height="18"><b>エージェント</b><span class="mf-t">エージェント ビルダー</span></span><i class="mf-arr"></i><span class="mf-box"><b>返す</b><span class="mf-t">要件ごとの質問、深掘りの質問、よい回答の目安、面接官への注意点</span></span><i class="mf-arr"></i><span class="mf-box mf-human"><b>人が確かめる</b><span class="mf-t">どの質問を使うかと評価の物差しは、人事と面接官が決めます。</span></span></div></div><div class="av-card-b"><span class="av-card-t">求人票から面接の質問を作るエージェント</span><span class="av-card-s">求人票を貼ると、必須要件と歓迎要件ごとに面接の質問と深掘りの質問を下書きします。よい回答の目安もそろうので、面接官ごとの聞き方の差を小さくできます。</span><span class="av-card-m"><span>作る時間 30分ほど</span><span>はじめて</span><span>2026.10.16</span></span></div></a><a class="av-card" href="/media/agents/executive-briefing-copilot" data-dept="経営企画" data-prod="Microsoft 365 Copilot"><div class="av-card-vis"><div class="av-card-top"><span class="av-prod"><img src="/assets/copilot/microsoft/copilot.svg" alt="" width="20" height="20">Microsoft 365 Copilot</span><span class="av-dept">経営企画</span></div><div class="av-mf" aria-hidden="true"><span class="mf-box"><b>受け取る</b><span class="mf-t">会議名、開催日、議題（1回に1つ）、出席する役員の役職、読ませたい資料と会議の名前</span></span><i class="mf-arr"></i><span class="mf-box mf-ai"><img src="/assets/copilot/microsoft/copilot.svg" alt="" width="18" height="18"><b>エージェント</b><span class="mf-t">エージェント ビルダー</span></span><i class="mf-arr"></i><span class="mf-box"><b>返す</b><span class="mf-t">A4 1枚分の論点メモの下書き（決めること、背景、選択肢、担当部署の推奨、想定される質問、前回からの宿題、足りない情報）</span></span><i class="mf-arr"></i><span class="mf-box mf-human"><b>人が確かめる</b><span class="mf-t">推奨案の中身と、役員に渡す最終版は、経営企画の責任者が決めます。</span></span></div></div><div class="av-card-b"><span class="av-card-t">役員会の前に論点を1枚にまとめるエージェント</span><span class="av-card-s">役員会の議題と資料を指定すると、決めること、背景の事実、選択肢、想定される質問を A4 1枚分の下書きにまとめます。資料にない点は足りない情報として示します。</span><span class="av-card-m"><span>作る時間 半日ほど</span><span>慣れてきたら</span><span>2026.10.16</span></span></div></a><a class="av-card" href="/media/agents/product-faq-copilot-studio" data-dept="カスタマーサポート" data-prod="Copilot Studio"><div class="av-card-vis"><div class="av-card-top"><span class="av-prod"><img src="/assets/copilot/microsoft/studio.svg" alt="" width="20" height="20">Copilot Studio</span><span class="av-dept">カスタマーサポート</span></div><div class="av-mf" aria-hidden="true"><span class="mf-box"><b>受け取る</b><span class="mf-t">お客さまが当社サイトのチャット欄に書いた質問</span></span><i class="mf-arr"></i><span class="mf-box mf-ai"><img src="/assets/copilot/microsoft/studio.svg" alt="" width="18" height="18"><b>エージェント</b><span class="mf-t">エージェント（Web サイトに公開）</span></span><i class="mf-arr"></i><span class="mf-box"><b>返す</b><span class="mf-t">結論、手順、参照した資料の名前、解決しないときの問い合わせ先</span></span><i class="mf-arr"></i><span class="mf-box mf-human"><b>人が確かめる</b><span class="mf-t">返品や修理の可否、補償、価格や納期の約束は、サポートの担当者が決めます。</span></span></div></div><div class="av-card-b"><span class="av-card-t">製品のよくある質問にお客さま向けに答えるエージェント</span><span class="av-card-s">当社サイトのお客さま窓口に置き、製品マニュアルと公開中のよくある質問だけを根拠に答えます。答えられない質問は問い合わせフォームへ案内します。</span><span class="av-card-m"><span>作る時間 1〜2日</span><span>情報システム部門と一緒に</span><span>2026.10.16</span></span></div></a></div><a class="av-more" href="/media/agents/#list">保管庫の一覧に戻る <span aria-hidden="true">→</span></a></div></section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">エージェント<i>保管庫</i></div>
+        <p>業務ごとのAIエージェントの作り方をまとめた見本帳。<span class="pub">発行：<a href="/">株式会社TechWorker</a></span></p>
+      </div>
+      <div class="footer-col"><h4>エージェント保管庫</h4><a href="/media/agents/#list">一覧</a><a href="/media/agents/#format">1件の読み方</a></div>
+      <div class="footer-col"><h4>TechWorker Media</h4><a href="/media/kenshu/">AI研修・導入ラボ</a><a href="/media/security/">AIセキュリティ・ラボ</a><a href="/media/gyomuzu/">業務図ラボ</a></div>
+      <div class="footer-col"><h4>運営会社</h4><a href="https://kenshu.techworker.co.jp/">生成AI研修</a><a href="/company.html">会社概要</a><a href="/privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p class="av-legal">Microsoft、Microsoft 365、Copilot は Microsoft グループの商標です。Claude は Anthropic の商標です。Gemini は Google LLC の商標です。TechWorker は各社と提携していません。画面や機能は変わることがあります。最新の情報は各社の公式ページでご確認ください。</p>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+</script>
+<script src="/media/agents/vault.js?v=20261016-vault" defer></script>
+<script src="/media/article-tracker.js?v=20261006-media-home" defer></script>
+</body>
+</html>

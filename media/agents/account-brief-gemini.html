@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}if(location.hostname==='techworker.co.jp')gtag('config', 'G-3V34NWXVCJ');
+</script>
+<script src="/assets/tw-track.js" defer></script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>商談の前に取引先の下調べを1枚にまとめるエージェント｜Geminiでの作り方 — エージェント保管庫</title>
+<meta name="description" content="取引先の名前と商談の目的を渡すと、会社の概要、最近の動き、当社とのこれまでのやり取り、聞くべき質問を、出典つきで1枚の下調べシートにまとめます。営業担当者は確かめて足すところから始められます。 できること、作り方、そのまま貼れる指示文、管理者が先に決める設定をまとめています。">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/agents/account-brief-gemini">
+<meta property="og:type" content="article">
+<meta property="og:title" content="商談の前に取引先の下調べを1枚にまとめるエージェント｜Geminiでの作り方 — エージェント保管庫">
+<meta property="og:description" content="取引先の名前と商談の目的を渡すと、会社の概要、最近の動き、当社とのこれまでのやり取り、聞くべき質問を、出典つきで1枚の下調べシートにまとめます。営業担当者は確かめて足すところから始められます。 できること、作り方、そのまま貼れる指示文、管理者が先に決める設定をまとめています。">
+<meta property="og:image" content="https://techworker.co.jp/media/agents/covers/account-brief-gemini.png">
+<meta property="og:url" content="https://techworker.co.jp/media/agents/account-brief-gemini">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="商談の前に取引先の下調べを1枚にまとめるエージェント｜Geminiでの作り方 — エージェント保管庫">
+<meta name="twitter:image" content="https://techworker.co.jp/media/agents/covers/account-brief-gemini.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/media/article.css?v=20261006-source-notes">
+<link rel="stylesheet" href="/media/agents/vault.css?v=20261016-vault">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "商談の前に取引先の下調べを1枚にまとめるエージェント｜Geminiでの作り方", "description": "取引先の名前と商談の目的を渡すと、会社の概要、最近の動き、当社とのこれまでのやり取り、聞くべき質問を、出典つきで1枚の下調べシートにまとめます。営業担当者は確かめて足すところから始められます。", "datePublished": "2026-10-16", "dateModified": "2026-10-16", "inLanguage": "ja", "image": "https://techworker.co.jp/media/agents/covers/account-brief-gemini.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/agents/account-brief-gemini"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "エージェント保管庫", "item": "https://techworker.co.jp/media/agents/"}, {"@type": "ListItem", "position": 4, "name": "商談の前に取引先の下調べを1枚にまとめるエージェント", "item": "https://techworker.co.jp/media/agents/account-brief-gemini"}]}</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<nav id="nav">
+  <a href="/media/agents/" class="logo">エージェント<i>保管庫</i></a>
+  <ul>
+    <li><a href="/media/agents/#list">一覧</a></li>
+    <li><a href="/media/agents/#format">1件の読み方</a></li>
+    <li><a href="/media/">メディア</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://kenshu.techworker.co.jp/contact/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_content=nav" class="nav-cta"><span class="full">研修の相談</span><span class="short">相談</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="/media/agents/#list">エージェントの一覧</a>
+  <a href="/media/agents/#format">1件の読み方</a>
+  <a href="/media/">TechWorker Media</a>
+  <a href="https://kenshu.techworker.co.jp/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_content=menu">研修のご案内</a>
+  <a href="https://kenshu.techworker.co.jp/contact/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_content=menu" class="m-cta">研修の相談をする</a>
+</div>
+<header class="av-hero">
+  <nav class="crumb" aria-label="パンくず"><a href="/">ホーム</a><span class="sep">/</span><a href="/media/">メディア</a><span class="sep">/</span><a href="/media/agents/">エージェント保管庫</a></nav>
+  <div class="av-chips"><span class="av-prod"><img src="/assets/copilot/ai-tools/gemini.svg" alt="" width="20" height="20">Gemini</span><span class="av-tag av-tag-feat">スキル</span><span class="av-dept">営業</span><span class="av-tag">作る時間 30分ほど</span><span class="av-tag">慣れてきたら</span></div>
+  <h1>商談の前に取引先の下調べを1枚にまとめるエージェント</h1>
+  <p class="av-sum">取引先の名前と商談の目的を渡すと、会社の概要、最近の動き、当社とのこれまでのやり取り、聞くべき質問を、出典つきで1枚の下調べシートにまとめます。営業担当者は確かめて足すところから始められます。</p>
+  <div class="av-meta"><span>公開 2026.10.16</span><span>公式の情報で確認 2026.10.16</span><span>監修 古野光太朗（TechWorker 代表）</span></div>
+</header>
+
+<div class="av-layout">
+<aside class="av-spec" aria-label="このエージェントの設計書">
+  <div class="av-spec-in">
+    <div class="av-spec-h">このエージェントの設計書</div>
+    <dl>
+      <dt>部署</dt><dd>営業</dd>
+      <dt>業務</dt><dd>商談前の取引先の下調べ</dd>
+      <dt>製品</dt><dd>Gemini</dd>
+      <dt>使う機能</dt><dd>スキル</dd>
+      <dt>必要な契約</dt><dd>Google Workspace のビジネス エディションかエンタープライズ エディション</dd>
+      <dt>作る時間</dt><dd>30分ほど</dd>
+      <dt>難しさ</dt><dd>慣れてきたら</dd>
+    </dl>
+    <a class="av-spec-btn" href="#s4">指示文を見る <span aria-hidden="true">↓</span></a>
+    <nav class="av-toc" aria-label="目次"><a href="#s1">できること</a><a href="#s2">仕組み</a><a href="#s3">作り方</a><a href="#s4">指示文</a><a href="#s5">管理者が先に決めること</a><a href="#s6">人が確かめるところ</a><a href="#s7">うまくいかないとき</a><a href="#s8">30日後に測ること</a><a href="#s9">広げ方</a></nav>
+  </div>
+</aside>
+
+<main class="av-main">
+<section id="s1" class="av-sec"><h2><span>01</span>できること</h2>
+  <div class="av-ba">
+    <div class="av-ba-c before"><div class="av-ba-h">これまで</div><ul><li>商談の前に、担当者ごとに公式サイトやニュースを開き、メモの書き方もばらばらです。</li><li>過去のメールや提案資料を探すのに時間がかかり、前任者とのやり取りを見落とします。</li><li>上長が商談の前に確認しようにも、下調べの中身が人によって違います。</li></ul></div>
+    <div class="av-ba-c after"><div class="av-ba-h">このエージェントを使うと</div><ul><li>どの担当者の下調べも、同じ見出しの1枚にそろいます。</li><li>事実には出典が付き、見つからなかった項目もわかります。</li><li>当社のサービスと照らし合わせた、聞くべき質問の案から準備を始められます。</li><li>上長は同じ型のシートを見て、商談の前に助言できます。</li></ul></div>
+  </div>
+</section>
+
+<section id="s2" class="av-sec"><h2><span>02</span>仕組み</h2>
+  <p class="av-lead">エージェントが何を受け取り、何を見て、何を返すか。最後に人が確かめるところまでを1枚にしています。</p>
+  <div class="av-flow">
+    <div class="fl-box"><span class="fl-tag">受け取るもの</span><p>取引先の会社名と公式サイトのURL、商談の日付と目的、相手の部署と役職、担当者が持っている資料</p></div>
+    <div class="fl-arr" aria-hidden="true"></div>
+    <div class="fl-box fl-ai"><span class="fl-tag ai"><img src="/assets/copilot/ai-tools/gemini.svg" alt="" width="16" height="16">エージェント</span><p class="fl-feat">Gemini　スキル</p>
+      <div class="fl-part"><b>指示文</b><p>役割と進め方、答え方を決める（04 指示文）</p></div>
+      <div class="fl-part"><b>渡す資料</b><ul><li>brief-template.md（下調べシートの型）</li><li>our-services.md（当社のサービスと、よくある導入のきっかけ）</li><li>questions.md（業種ごとの質問の例）</li></ul></div>
+      <div class="fl-part"><b>つなぐ道具</b><ul><li>Gmail、Google ドライブ（Gemini アプリに接続した Workspace アプリ）</li></ul></div>
+    </div>
+    <div class="fl-arr" aria-hidden="true"></div>
+    <div class="fl-box"><span class="fl-tag">返すもの</span><p>会社の概要、最近の動き、これまでのやり取り、当社が役に立てそうな場面、聞くべき質問、確かめきれなかったことを並べた1枚の下調べシート</p></div>
+    <div class="fl-arr" aria-hidden="true"></div>
+    <div class="fl-box fl-human"><span class="fl-tag human">人が確かめる</span><p>どの提案を持っていくか、商談で何を約束するかは、営業担当者と上長が決めます。</p></div>
+  </div>
+</section>
+
+<section id="s3" class="av-sec"><h2><span>03</span>作り方</h2>
+  <ol class="av-steps"><li><span class="st-n">1</span><div><h3>スキルのフォルダを作る</h3><p>account-brief という名前のフォルダを作り、下の内容を SKILL.md として保存します。同じフォルダに brief-template.md、our-services.md、questions.md を入れます。名前はすべて小文字にし、単語をハイフンでつなぎます。</p></div></li><li><span class="st-n">2</span><div><h3>参照ファイルの形式をそろえる</h3><p>参照ファイルは、テキスト（.md、.txt など）、PDF、画像で用意します。.docx や .xlsx はそのままでは入れられません。ファイルの合計は100MB以下にし、.DS_Store のような隠しファイルを消しておきます。</p></div></li><li><span class="st-n">3</span><div><h3>スキルをアップロードする</h3><p>パソコンで gemini.google.com を開き、メニューの [カスタマイズ] から [スキル] を開きます。[スキル] ページの作成アイコンからアップロード アイコンを選び、account-brief フォルダを選んで [開く] をクリックします。中身を確かめて [作成] をクリックします。アップロードは Gemini ウェブアプリでだけできます。</p></div></li><li><span class="st-n">4</span><div><h3>チャットで呼び出して試す</h3><p>チャットで「/」と入力し、account-brief を選んで、取引先の名前、URL、商談の目的を伝えます。過去の商談3件で動かし、上長が商談前に書いていたメモと比べます。足りない見出しや質問の例があれば、参照ファイルを直してスキルを置き換えます。</p></div></li><li><span class="st-n">5</span><div><h3>自動で使われる範囲を決める</h3><p>Gemini は、オンになっているスキルを依頼の内容に合わせて自動で使うことがあります。決まった場面だけで使いたいときは、description に使う場面を具体的に書きます。使わせたくないときは、[スキル] ページで [無効にする] を選びます。</p></div></li><li><span class="st-n">6</span><div><h3>営業部に配る</h3><p>[スキル] ページで account-brief の [ダウンロード] を選ぶと、スキルが .zip ファイルで手に入ります。部の共有ドライブに元のファイルとして置き、各担当者が同じ手順でアップロードします。スキルの共有機能は今後数週間のうちに使えるようになると案内されています。</p></div></li></ol>
+</section>
+
+<section id="s4" class="av-sec"><h2><span>04</span>指示文（そのまま貼れます）</h2>
+  <p class="av-lead">account-brief/SKILL.md（参照ファイルと同じフォルダに入れ、[スキル] ページからフォルダごとアップロードします）に貼ります。［　］のところは自社の言葉に置き換えてください。</p>
+  <div class="av-prompt">
+    <div class="pr-bar"><span class="pr-dots"><i></i><i></i><i></i></span><span class="pr-name">指示文 — Gemini スキル</span><button type="button" class="pr-copy" data-copy="pr-account-brief-gemini">コピー</button></div>
+    <pre id="pr-account-brief-gemini">---
+name: account-brief
+description: 商談の前に取引先の下調べを1枚にまとめる。取引先名と商談の目的を受け取り、会社の概要、最近の動き、当社とのやり取り、聞くべき質問を出典つきで整理する。商談準備や取引先の下調べを頼まれたときに使う。
+---
+
+# 商談前の取引先の下調べ
+
+## 役割
+あなたは当社営業部の商談準備を手伝う担当です。営業担当者が商談の前日までに読む下調べを1枚にまとめます。
+
+## 受け取るもの
+- 取引先の会社名と公式サイトのURL
+- 商談の日付、目的、相手の部署と役職（わかる範囲）
+- 担当者が持っている資料（会社案内、決算の資料など。あれば）
+
+## 使う資料（このスキルのファイル）
+- brief-template.md：下調べシートの型
+- our-services.md：当社のサービスと、よくある導入のきっかけ
+- questions.md：業種ごとの質問の例
+
+## 進め方
+1. 会社名と公式サイトのURLで、取引先を取り違えていないかを最初に確かめます。同じ名前の会社が複数あるときは、候補を並べて担当者に選んでもらいます。
+2. 公開されている情報から、事業、規模、拠点、最近の発表を集めます。
+3. 担当者が Gmail と Google ドライブを接続しているときは、取引先とのこれまでのやり取りと提案資料を探します。
+4. our-services.md と照らし合わせ、当社が役に立てそうな場面を2つまで挙げます。
+5. questions.md を元に、この商談で聞くべき質問を5つまで作ります。
+
+## 答え方
+brief-template.md の型に沿って、次の見出しで書きます。全体を A4 で1枚に収まる長さにします。
+1. 会社の概要
+2. 最近の動き（日付つき）
+3. 当社とのこれまでのやり取り
+4. 当社が役に立てそうな場面
+5. 聞くべき質問
+6. 確かめきれなかったこと
+
+## 根拠の示し方
+- 事実には出典（URL、ファイル名、メールの日付）を付けます。
+- 出典のない内容は書きません。推測は「仮説」と書いて分けます。
+
+## わからないとき
+- 情報が見つからない項目は「見つかりませんでした」と書きます。空いた項目を推測で埋めません。
+
+## させないこと
+- 相手の担当者の私生活や、商談に関係のない個人の情報は調べません。
+- 価格、値引き、納期など、約束になる文言は書きません。
+- 社外秘の資料の中身を、取引先に送る文面にそのまま入れません。
+</pre>
+  </div>
+</section>
+
+<section id="s5" class="av-sec"><h2><span>05</span>管理者が先に決めること</h2>
+  <p class="av-lead">使い始める前に、Gemini の管理者が決めておく設定です。ここを決めてから配ると、情報の扱いで止まりにくくなります。</p>
+  <div class="av-rows"><div class="av-row"><h3>Google 管理コンソールの [生成 AI] &gt; [Gemini アプリ] &gt; [アプリ] で、[Workspace アプリ]（Gmail、ドライブ、カレンダーなど）へのアクセスを許可するかを決めます。</h3><p>許可すると、Gemini アプリが Gmail やドライブの中身から取引先とのやり取りを探せます。変更には Gemini の「設定」管理者権限が必要です。</p></div><div class="av-row"><h3>Gemini 会話履歴を有効にするかを決めます。</h3><p>Gemini で Workspace アプリを使うには、Gemini 会話履歴を有効にする必要があります。会話の記録を残す範囲と合わせて決めます。</p></div><div class="av-row"><h3>組織でスキルが使える状態かを確かめ、Gem の提供が終わる日程を営業部に知らせます。</h3><p>ビジネスとエンタープライズでは、2027年3月1日以降に Gem の作成、編集、使用ができなくなります。管理者向けの案内ではスキルを早めに試してもらうことと、大事な Gem をスキルで作り直すことが勧められています。</p></div><div class="av-row"><h3>スキルの参照ファイルに入れてよい情報の範囲を決めます。</h3><p>スキルは .zip でダウンロードして配れます。参照ファイルには当社のサービス資料と質問の例だけを入れ、顧客の個人情報や見積もりの条件は入れない決まりにします。</p></div><div class="av-row"><h3>使う人の条件</h3><p>Google Workspace のビジネス エディションかエンタープライズ エディション（Gemini アプリがコアサービスとして含まれます）。スキルを使うには、18歳以上で、[アクティビティの保存] がオンであることが必要です。</p></div></div>
+</section>
+
+<section id="s6" class="av-sec"><h2><span>06</span>人が確かめるところ</h2>
+  <ul class="av-checks"><li>取引先の取り違えがないか、最近の動きの日付と出典が正しいかを担当者が確かめます。</li><li>「仮説」と書かれた内容を商談で話すかどうかは担当者が決めます。</li><li>提案の内容、価格、取引先への連絡はAIにさせません。</li></ul>
+</section>
+
+<section id="s7" class="av-sec"><h2><span>07</span>うまくいかないとき</h2>
+  <div class="av-rows pit"><div class="av-row"><h3>[カスタマイズ] の中に [スキル] が出てきません。</h3><p>Gemini アプリのスキルは2026年10月13日から11月中旬にかけて順に届きます。届くまでは同じ指示で Gem を作れます。Gem は2027年3月以降に下書きのスキルへ自動で移るので、移ったあとに中身を確かめて有効にします。</p></div><div class="av-row"><h3>フォルダのアップロードが失敗します。</h3><p>SKILL.md がフォルダのいちばん上にあるか、フォルダ名とスキル名が同じか、.docx や隠しファイルが入っていないかを確かめます。</p></div><div class="av-row"><h3>同じ名前の別の会社の情報が混ざります。</h3><p>依頼のときに公式サイトのURLも渡します。指示文のとおり、候補が複数あるときは担当者に選んでもらいます。</p></div><div class="av-row"><h3>過去のメールや提案資料が下調べに入りません。</h3><p>担当者が Gemini アプリに Workspace アプリを接続しているか、管理者が [Workspace アプリ] を許可しているかを確かめます。</p></div></div>
+</section>
+
+<section id="s8" class="av-sec"><h2><span>08</span>30日後に測ること</h2>
+  <p class="av-lead">使われているか、どれだけ時間が浮いたか、出来は十分か。使い始めて30日後に、次の点を確かめます。</p>
+  <div class="av-meas-g"><div class="av-meas"><h3>使われているか：下調べシートが付いた商談の割合</h3><p>顧客管理の商談記録に下調べシートを添付する欄を作り、30日間の初回商談のうち添付があった件数の割合を数えます。</p></div><div class="av-meas"><h3>時間：商談の準備にかかった時間</h3><p>営業担当者が商談ごとに準備の時間を商談記録に書き、使い始める前の30日間と比べます。</p></div><div class="av-meas"><h3>出来：上長が直した事実の誤りと、商談で役に立った質問の数</h3><p>上長が商談前の確認で直した事実の誤りを数えます。商談のあとに、シートの質問のうち実際に聞いて話が進んだものに印を付けて数えます。</p></div></div>
+</section>
+
+<section id="s9" class="av-sec"><h2><span>09</span>広げ方</h2>
+  <ul class="av-vars"><li>同じ作りで、商談のあとにメモから議事録と次の打ち手をまとめるスキルを作り、続けて使えます。</li><li>既存の取引先向けに、更新の時期の前に利用の状況と過去のやり取りを1枚にまとめる使い方に広げられます。</li><li>展示会で名刺を交換した会社の一覧から、優先して連絡する先を選ぶための下調べにも使えます。</li></ul>
+</section>
+
+<section class="av-sec av-src"><h2>公式の情報</h2>
+  <ul><li><a href="https://support.google.com/gemini/answer/17094296?hl=ja" target="_blank" rel="noopener">Gemini アプリ向けのスキルを作成して管理する</a><span>Google（Gemini アプリ ヘルプ）</span></li><li><a href="https://support.google.com/gemini/answer/18560919?hl=ja" target="_blank" rel="noopener">Gem からスキルへの移行について</a><span>Google（Gemini アプリ ヘルプ）</span></li><li><a href="https://knowledge.workspace.google.com/admin/generative-ai/gemini-app/about-the-transition-to-skills" target="_blank" rel="noopener">Gem からスキルへの移行について（管理者向け）</a><span>Google（Google Workspace ヘルプ）</span></li><li><a href="https://support.google.com/a/answer/15293691?hl=ja" target="_blank" rel="noopener">Gemini アプリによる Workspace サービスへのアクセスを制御する</a><span>Google（Google Workspace ヘルプ）</span></li><li><a href="https://support.google.com/gemini/answer/15146780?hl=ja" target="_blank" rel="noopener">Gemini アプリで Gem を使用する</a><span>Google（Gemini アプリ ヘルプ）</span></li><li><a href="https://blog.google/products-and-platforms/products/gemini/automate-tasks-with-skills/" target="_blank" rel="noopener">Automate repetitive tasks with Skills</a><span>Google（The Keyword）</span></li></ul>
+  <p>機能と画面の名前は、2026.10.16 に上の公式の情報で確かめました。業務での使い方は TechWorker の例です。</p>
+</section>
+</main>
+</div>
+
+<div class="art-cta" data-cta-placement="vault_end"><div class="inner"><div><h3>このエージェントを、御社の業務で作ります。</h3><p>TechWorker の研修では、受講者の実際の業務を1つ選び、研修の中でこの形のエージェントを作ります。教材は毎週更新し、受講から30日後に使われ方を測ってご報告します（Gemini 編）。</p></div><a href="https://kenshu.techworker.co.jp/program/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_campaign=account-brief-gemini&amp;utm_content=end#gemini" class="btn">研修の内容を見る <i>→</i></a></div></div>
+
+<section class="av-related"><div class="av-wrap"><h2>ほかのエージェント</h2><div class="av-grid"><a class="av-card" href="/media/agents/product-faq-copilot-studio" data-dept="カスタマーサポート" data-prod="Copilot Studio"><div class="av-card-vis"><div class="av-card-top"><span class="av-prod"><img src="/assets/copilot/microsoft/studio.svg" alt="" width="20" height="20">Copilot Studio</span><span class="av-dept">カスタマーサポート</span></div><div class="av-mf" aria-hidden="true"><span class="mf-box"><b>受け取る</b><span class="mf-t">お客さまが当社サイトのチャット欄に書いた質問</span></span><i class="mf-arr"></i><span class="mf-box mf-ai"><img src="/assets/copilot/microsoft/studio.svg" alt="" width="18" height="18"><b>エージェント</b><span class="mf-t">エージェント（Web サイトに公開）</span></span><i class="mf-arr"></i><span class="mf-box"><b>返す</b><span class="mf-t">結論、手順、参照した資料の名前、解決しないときの問い合わせ先</span></span><i class="mf-arr"></i><span class="mf-box mf-human"><b>人が確かめる</b><span class="mf-t">返品や修理の可否、補償、価格や納期の約束は、サポートの担当者が決めます。</span></span></div></div><div class="av-card-b"><span class="av-card-t">製品のよくある質問にお客さま向けに答えるエージェント</span><span class="av-card-s">当社サイトのお客さま窓口に置き、製品マニュアルと公開中のよくある質問だけを根拠に答えます。答えられない質問は問い合わせフォームへ案内します。</span><span class="av-card-m"><span>作る時間 1〜2日</span><span>情報システム部門と一緒に</span><span>2026.10.16</span></span></div></a><a class="av-card" href="/media/agents/nda-review-claude-projects" data-dept="法務" data-prod="Claude"><div class="av-card-vis"><div class="av-card-top"><span class="av-prod"><img src="/assets/copilot/ai-tools/claude.svg" alt="" width="20" height="20">Claude</span><span class="av-dept">法務</span></div><div class="av-mf" aria-hidden="true"><span class="mf-box"><b>受け取る</b><span class="mf-t">相手方の秘密保持契約の本文（Word か PDF）と、依頼部署、取引の目的、開示する情報の種類</span></span><i class="mf-arr"></i><span class="mf-box mf-ai"><img src="/assets/copilot/ai-tools/claude.svg" alt="" width="18" height="18"><b>エージェント</b><span class="mf-t">プロジェクト</span></span><i class="mf-arr"></i><span class="mf-box"><b>返す</b><span class="mf-t">上長確認の要否、重要度の高い指摘の数、条項ごとの指摘と修正案の表、相手方へのコメント文案</span></span><i class="mf-arr"></i><span class="mf-box mf-human"><b>人が確かめる</b><span class="mf-t">指摘を採るかどうか、相手方に何を求めるか、契約を受け入れてよいかは法務担当者が決めます。</span></span></div></div><div class="av-card-b"><span class="av-card-t">秘密保持契約を自社の基準で読むエージェント</span><span class="av-card-s">相手方から届いた秘密保持契約を、当社の審査基準とひな形に照らして読み、条項ごとの指摘と修正案の下書きを作ります。法務担当者は下書きを確かめて判断するところから始められます。</span><span class="av-card-m"><span>作る時間 半日ほど</span><span>はじめて</span><span>2026.10.16</span></span></div></a><a class="av-card" href="/media/agents/interview-questions-copilot" data-dept="人事" data-prod="Microsoft 365 Copilot"><div class="av-card-vis"><div class="av-card-top"><span class="av-prod"><img src="/assets/copilot/microsoft/copilot.svg" alt="" width="20" height="20">Microsoft 365 Copilot</span><span class="av-dept">人事</span></div><div class="av-mf" aria-hidden="true"><span class="mf-box"><b>受け取る</b><span class="mf-t">求人票の本文（職務内容、必須要件、歓迎要件）、等級、面接の回（一次面接か最終面接か）</span></span><i class="mf-arr"></i><span class="mf-box mf-ai"><img src="/assets/copilot/microsoft/copilot.svg" alt="" width="18" height="18"><b>エージェント</b><span class="mf-t">エージェント ビルダー</span></span><i class="mf-arr"></i><span class="mf-box"><b>返す</b><span class="mf-t">要件ごとの質問、深掘りの質問、よい回答の目安、面接官への注意点</span></span><i class="mf-arr"></i><span class="mf-box mf-human"><b>人が確かめる</b><span class="mf-t">どの質問を使うかと評価の物差しは、人事と面接官が決めます。</span></span></div></div><div class="av-card-b"><span class="av-card-t">求人票から面接の質問を作るエージェント</span><span class="av-card-s">求人票を貼ると、必須要件と歓迎要件ごとに面接の質問と深掘りの質問を下書きします。よい回答の目安もそろうので、面接官ごとの聞き方の差を小さくできます。</span><span class="av-card-m"><span>作る時間 30分ほど</span><span>はじめて</span><span>2026.10.16</span></span></div></a></div><a class="av-more" href="/media/agents/#list">保管庫の一覧に戻る <span aria-hidden="true">→</span></a></div></section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">エージェント<i>保管庫</i></div>
+        <p>業務ごとのAIエージェントの作り方をまとめた見本帳。<span class="pub">発行：<a href="/">株式会社TechWorker</a></span></p>
+      </div>
+      <div class="footer-col"><h4>エージェント保管庫</h4><a href="/media/agents/#list">一覧</a><a href="/media/agents/#format">1件の読み方</a></div>
+      <div class="footer-col"><h4>TechWorker Media</h4><a href="/media/kenshu/">AI研修・導入ラボ</a><a href="/media/security/">AIセキュリティ・ラボ</a><a href="/media/gyomuzu/">業務図ラボ</a></div>
+      <div class="footer-col"><h4>運営会社</h4><a href="https://kenshu.techworker.co.jp/">生成AI研修</a><a href="/company.html">会社概要</a><a href="/privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p class="av-legal">Microsoft、Microsoft 365、Copilot は Microsoft グループの商標です。Claude は Anthropic の商標です。Gemini は Google LLC の商標です。TechWorker は各社と提携していません。画面や機能は変わることがあります。最新の情報は各社の公式ページでご確認ください。</p>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+</script>
+<script src="/media/agents/vault.js?v=20261016-vault" defer></script>
+<script src="/media/article-tracker.js?v=20261006-media-home" defer></script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}if(location.hostname==='techworker.co.jp')gtag('config', 'G-3V34NWXVCJ');
+</script>
+<script src="/assets/tw-track.js" defer></script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>障害のログを読み取り専用で整理するエージェント｜Claude Codeでの作り方 — エージェント保管庫</title>
+<meta name="description" content="障害が起きたときに、書き出したログのフォルダを読むだけの道具で調べ、時系列、影響範囲、原因の候補を一次報告の下書きにまとめます。ファイルの変更やコマンドの実行はできない作りにします。 できること、作り方、そのまま貼れる指示文、管理者が先に決める設定をまとめています。">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/agents/incident-log-triage-claude-code">
+<meta property="og:type" content="article">
+<meta property="og:title" content="障害のログを読み取り専用で整理するエージェント｜Claude Codeでの作り方 — エージェント保管庫">
+<meta property="og:description" content="障害が起きたときに、書き出したログのフォルダを読むだけの道具で調べ、時系列、影響範囲、原因の候補を一次報告の下書きにまとめます。ファイルの変更やコマンドの実行はできない作りにします。 できること、作り方、そのまま貼れる指示文、管理者が先に決める設定をまとめています。">
+<meta property="og:image" content="https://techworker.co.jp/media/agents/covers/incident-log-triage-claude-code.png">
+<meta property="og:url" content="https://techworker.co.jp/media/agents/incident-log-triage-claude-code">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="障害のログを読み取り専用で整理するエージェント｜Claude Codeでの作り方 — エージェント保管庫">
+<meta name="twitter:image" content="https://techworker.co.jp/media/agents/covers/incident-log-triage-claude-code.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/media/article.css?v=20261006-source-notes">
+<link rel="stylesheet" href="/media/agents/vault.css?v=20261016-vault">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "障害のログを読み取り専用で整理するエージェント｜Claude Codeでの作り方", "description": "障害が起きたときに、書き出したログのフォルダを読むだけの道具で調べ、時系列、影響範囲、原因の候補を一次報告の下書きにまとめます。ファイルの変更やコマンドの実行はできない作りにします。", "datePublished": "2026-10-16", "dateModified": "2026-10-16", "inLanguage": "ja", "image": "https://techworker.co.jp/media/agents/covers/incident-log-triage-claude-code.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/agents/incident-log-triage-claude-code"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "エージェント保管庫", "item": "https://techworker.co.jp/media/agents/"}, {"@type": "ListItem", "position": 4, "name": "障害のログを読み取り専用で整理するエージェント", "item": "https://techworker.co.jp/media/agents/incident-log-triage-claude-code"}]}</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<nav id="nav">
+  <a href="/media/agents/" class="logo">エージェント<i>保管庫</i></a>
+  <ul>
+    <li><a href="/media/agents/#list">一覧</a></li>
+    <li><a href="/media/agents/#format">1件の読み方</a></li>
+    <li><a href="/media/">メディア</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://kenshu.techworker.co.jp/contact/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_content=nav" class="nav-cta"><span class="full">研修の相談</span><span class="short">相談</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="/media/agents/#list">エージェントの一覧</a>
+  <a href="/media/agents/#format">1件の読み方</a>
+  <a href="/media/">TechWorker Media</a>
+  <a href="https://kenshu.techworker.co.jp/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_content=menu">研修のご案内</a>
+  <a href="https://kenshu.techworker.co.jp/contact/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_content=menu" class="m-cta">研修の相談をする</a>
+</div>
+<header class="av-hero">
+  <nav class="crumb" aria-label="パンくず"><a href="/">ホーム</a><span class="sep">/</span><a href="/media/">メディア</a><span class="sep">/</span><a href="/media/agents/">エージェント保管庫</a></nav>
+  <div class="av-chips"><span class="av-prod"><img src="/assets/copilot/ai-tools/claude.svg" alt="" width="20" height="20">Claude Code</span><span class="av-tag av-tag-feat">サブエージェント</span><span class="av-dept">情報システム</span><span class="av-tag">作る時間 半日ほど</span><span class="av-tag">情報システム部門と一緒に</span></div>
+  <h1>障害のログを読み取り専用で整理するエージェント</h1>
+  <p class="av-sum">障害が起きたときに、書き出したログのフォルダを読むだけの道具で調べ、時系列、影響範囲、原因の候補を一次報告の下書きにまとめます。ファイルの変更やコマンドの実行はできない作りにします。</p>
+  <div class="av-meta"><span>公開 2026.10.16</span><span>公式の情報で確認 2026.10.16</span><span>監修 古野光太朗（TechWorker 代表）</span></div>
+</header>
+
+<div class="av-layout">
+<aside class="av-spec" aria-label="このエージェントの設計書">
+  <div class="av-spec-in">
+    <div class="av-spec-h">このエージェントの設計書</div>
+    <dl>
+      <dt>部署</dt><dd>情報システム</dd>
+      <dt>業務</dt><dd>障害発生時のログの整理と一次報告の下書き</dd>
+      <dt>製品</dt><dd>Claude Code</dd>
+      <dt>使う機能</dt><dd>サブエージェント</dd>
+      <dt>必要な契約</dt><dd>Claude のサブスクリプション、または Anthropic Console のアカウントが必要です。</dd>
+      <dt>作る時間</dt><dd>半日ほど</dd>
+      <dt>難しさ</dt><dd>情報システム部門と一緒に</dd>
+    </dl>
+    <a class="av-spec-btn" href="#s4">指示文を見る <span aria-hidden="true">↓</span></a>
+    <nav class="av-toc" aria-label="目次"><a href="#s1">できること</a><a href="#s2">仕組み</a><a href="#s3">作り方</a><a href="#s4">指示文</a><a href="#s5">管理者が先に決めること</a><a href="#s6">人が確かめるところ</a><a href="#s7">うまくいかないとき</a><a href="#s8">30日後に測ること</a><a href="#s9">広げ方</a></nav>
+  </div>
+</aside>
+
+<main class="av-main">
+<section id="s1" class="av-sec"><h2><span>01</span>できること</h2>
+  <div class="av-ba">
+    <div class="av-ba-c before"><div class="av-ba-h">これまで</div><ul><li>障害のたびに、担当者が複数のサーバーのログを開き、時刻をそろえて並べ直しています。</li><li>一次報告の時系列づくりに手を取られ、復旧の判断が後ろにずれます。</li><li>ログを調べる道具に書き込みの権限まで付いていて、調査中の誤操作が心配です。</li></ul></div>
+    <div class="av-ba-c after"><div class="av-ba-h">このエージェントを使うと</div><ul><li>担当者は時系列と根拠の行がそろった下書きから確認を始められます。</li><li>サブエージェントは読む道具しか持たないため、調査の途中でファイルを書き換えることがありません。</li><li>原因の候補ごとに、支える根拠と打ち消す根拠が並ぶので、確かめる順番を決めやすくなります。</li><li>調べた内容はサブエージェントの側で処理され、本体の会話には要約だけが戻ります。</li></ul></div>
+  </div>
+</section>
+
+<section id="s2" class="av-sec"><h2><span>02</span>仕組み</h2>
+  <p class="av-lead">エージェントが何を受け取り、何を見て、何を返すか。最後に人が確かめるところまでを1枚にしています。</p>
+  <div class="av-flow">
+    <div class="fl-box"><span class="fl-tag">受け取るもの</span><p>書き出したログの置き場所（フォルダ）、障害の症状、気づいた時刻、影響を受けたと思われるサービス名</p></div>
+    <div class="fl-arr" aria-hidden="true"></div>
+    <div class="fl-box fl-ai"><span class="fl-tag ai"><img src="/assets/copilot/ai-tools/claude.svg" alt="" width="16" height="16">エージェント</span><p class="fl-feat">Claude Code　サブエージェント</p>
+      <div class="fl-part"><b>指示文</b><p>役割と進め方、答え方を決める（04 指示文）</p></div>
+      <div class="fl-part"><b>渡す資料</b><ul><li>障害対応の一次報告の型（社内の報告書のひな形）</li><li>サービスとサーバーの対応表</li></ul></div>
+      <div class="fl-part"><b>つなぐ道具</b><ul><li>Read、Grep、Glob（ファイルを読む、探す、一覧にする道具だけ）</li></ul></div>
+    </div>
+    <div class="fl-arr" aria-hidden="true"></div>
+    <div class="fl-box"><span class="fl-tag">返すもの</span><p>要約、時系列の表、影響範囲、原因の候補（根拠つき）、次に確かめることを並べた一次報告の下書き</p></div>
+    <div class="fl-arr" aria-hidden="true"></div>
+    <div class="fl-box fl-human"><span class="fl-tag human">人が確かめる</span><p>原因の特定、復旧の手順、関係者への連絡と報告の文面は、障害対応の責任者が決めます。</p></div>
+  </div>
+</section>
+
+<section id="s3" class="av-sec"><h2><span>03</span>作り方</h2>
+  <ol class="av-steps"><li><span class="st-n">1</span><div><h3>ログの書き出し先を決める</h3><p>障害のときにログを書き出すフォルダを、プロジェクトの中に決めます（例：incident/2026-10-16/）。サブエージェントはこのフォルダのファイルを読むだけにします。ログは今までどおり担当者が集めます。</p></div></li><li><span class="st-n">2</span><div><h3>サブエージェントのファイルを作る</h3><p>プロジェクトの .claude/agents/ に incident-log-triage.md を作り、下の内容をそのまま保存します。先頭の --- はファイルの1行目に置きます。name と description は必須です。</p></div></li><li><span class="st-n">3</span><div><h3>使える道具を読むものだけに絞る</h3><p>先頭の設定の tools に Read、Grep、Glob だけを書きます。tools を書くと、それ以外の道具（ファイルの書き込み、Bash、MCP の道具）は使えなくなります。</p></div></li><li><span class="st-n">4</span><div><h3>読ませないファイルを決める</h3><p>プロジェクトの .claude/settings.json の permissions.deny に、Read(./.env) や Read(./secrets/**) のように、鍵や秘密の情報を置く場所を書きます。Read の deny は Grep と Glob の検索にもかかります。</p></div></li><li><span class="st-n">5</span><div><h3>呼び出して試す</h3><p>Claude Code で @ を入力し、候補から incident-log-triage を選んで、ログのフォルダと症状を伝えます。名前を書いて頼むこともできます。.claude/agents/ のフォルダを初めて作ったときは、Claude Code を一度再起動します。</p></div></li><li><span class="st-n">6</span><div><h3>過去の障害で答え合わせをする</h3><p>振り返りが終わった過去の障害のログで動かし、実際の報告書と比べます。根拠の行が違う、原因の候補に真の原因が入らないといったずれがあれば、ファイルの本文を直します。</p></div></li><li><span class="st-n">7</span><div><h3>チームで同じ定義を使う</h3><p>.claude/agents/ のファイルをリポジトリに入れて、チームで同じ定義を使います。会社として固定したい場合は、管理者が管理設定のディレクトリの .claude/agents/ に置きます。管理設定の定義は同じ名前のプロジェクトやユーザーの定義より優先されます。</p></div></li></ol>
+</section>
+
+<section id="s4" class="av-sec"><h2><span>04</span>指示文（そのまま貼れます）</h2>
+  <p class="av-lead">.claude/agents/incident-log-triage.md（プロジェクトのフォルダの中）に貼ります。［　］のところは自社の言葉に置き換えてください。</p>
+  <div class="av-prompt">
+    <div class="pr-bar"><span class="pr-dots"><i></i><i></i><i></i></span><span class="pr-name">指示文 — Claude Code サブエージェント</span><button type="button" class="pr-copy" data-copy="pr-incident-log-triage-claude-code">コピー</button></div>
+    <pre id="pr-incident-log-triage-claude-code">---
+name: incident-log-triage
+description: 障害のログを読み取り専用で調べ、時系列、影響範囲、原因の候補を一次報告の下書きにまとめる。障害対応でログの整理を頼まれたときに使う。
+tools: Read, Grep, Glob
+---
+
+あなたは当社情報システム部の障害対応を手伝うログ整理の担当です。渡されたフォルダのログを読むだけで、ファイルの変更やコマンドの実行はしません。
+
+## 受け取るもの
+- ログの置き場所（例：incident/2026-10-16/）
+- 障害の症状、気づいた時刻、影響を受けたと思われるサービス名
+
+## 進め方
+1. Glob でフォルダのファイルを一覧にし、どのサービスのどの期間のログかを確かめます。
+2. 気づいた時刻の前後30分に絞り、Grep で ERROR、WARN、timeout、5xx、再起動を示す行を探します。
+3. 最初に異常が出た時刻と、その直前の変更（デプロイ、設定の変更、証明書の更新など）の記録を探します。
+4. サービスごとの出来事を時刻順に並べ、つながりを確かめます。時刻のタイムゾーンがファイルごとに違うときは、そろえてから並べます。
+5. 同じエラーが何件、いつからいつまで出たかを数えます。
+
+## 答え方
+次の順に書きます。
+1. 要約（3行まで）：何が起きたか、いつからいつまでか、影響を受けたサービス
+2. 時系列の表：時刻（タイムゾーンつき）、サービス、出来事、根拠
+3. 影響範囲：ログから言えることと、言えないこと
+4. 原因の候補：確からしい順に3つまで。それぞれを支える根拠と、打ち消す根拠
+5. 次に確かめること：担当者が見るべきログ、画面、設定
+
+## 根拠の示し方
+- 出来事と原因の候補には、ファイル名と行番号、ログの1行を引用します。
+- 引用の中にパスワード、トークン、メールアドレス、電話番号があるときは、その部分を **** に置き換えます。
+
+## わからないとき
+- ログが足りない、時刻が合わないときは、足りないログの種類と期間を書いて止まります。
+- 推測には「推測」と書き、根拠の行がある事実と分けます。
+
+## させないこと
+- 原因の断定、復旧の作業、関係者への連絡はしません。決めるのは障害対応の責任者です。
+- 指定されたフォルダの外のファイルは読みません。
+- .env や鍵のファイルは開きません。
+</pre>
+  </div>
+</section>
+
+<section id="s5" class="av-sec"><h2><span>05</span>管理者が先に決めること</h2>
+  <p class="av-lead">使い始める前に、Claude Code の管理者が決めておく設定です。ここを決めてから配ると、情報の扱いで止まりにくくなります。</p>
+  <div class="av-rows"><div class="av-row"><h3>管理設定の permissions.deny に、読ませない場所（Read(./.env)、Read(./secrets/**)、個人情報を含むフォルダなど）を書いて配ります。</h3><p>管理設定の deny は、利用者の設定やコマンドラインの引数で上書きできません。どの利用者のサブエージェントにも同じ制限がかかります。</p></div><div class="av-row"><h3>管理設定で permissions.disableBypassPermissionsMode を &quot;disable&quot; にするかを決めます。</h3><p>本体の会話が確認をすべて飛ばすモードで動いていると、サブエージェントもそのモードで動きます。このモードを使えなくすると、確認なしの操作を防げます。</p></div><div class="av-row"><h3>会社として固定するサブエージェントを、管理設定のディレクトリの .claude/agents/ に置くかを決めます。</h3><p>管理設定の定義は、同じ名前のプロジェクトとユーザーの定義より優先されます。現場で書き換えた版より、会社の版が使われます。</p></div><div class="av-row"><h3>管理設定の env で CLAUDE_CODE_ENABLE_TELEMETRY を有効にし、ログの送り先を決めます。OTEL_LOG_TOOL_DETAILS と OTEL_LOG_USER_PROMPTS を有効にするかも決めます。</h3><p>ツールの実行と、権限の承認や拒否の記録が残ります。ツールの引数とプロンプトの中身は初期設定では記録されません。中身まで残すかは、ログに個人情報が入る可能性と合わせて決めます。</p></div></div>
+</section>
+
+<section id="s6" class="av-sec"><h2><span>06</span>人が確かめるところ</h2>
+  <ul class="av-checks"><li>時系列の根拠として引用された行が、実際のログと合っているかを担当者が確かめます。</li><li>原因の特定と復旧の手順は障害対応の責任者が決め、AIには作業をさせません。</li><li>社外や経営層への報告の文面は、担当者が下書きを元に書き、責任者が確かめます。</li></ul>
+</section>
+
+<section id="s7" class="av-sec"><h2><span>07</span>うまくいかないとき</h2>
+  <div class="av-rows pit"><div class="av-row"><h3>サブエージェントが一覧に出ず、呼び出せません。</h3><p>先頭の --- が1行目にあるか、name と description があるかを確かめます。.claude/agents/ のフォルダを新しく作った場合は Claude Code を再起動します。読み込まれない理由は claude --debug で記録を出して確かめます。</p></div><div class="av-row"><h3>起動しようとすると、使える道具がないというエラーになります。</h3><p>tools の道具の名前の書き間違いを確かめます。Read、Grep、Glob は大文字と小文字もこのとおりに書きます。</p></div><div class="av-row"><h3>根拠の行がないまま、原因を言い切った下書きが出ます。</h3><p>本文の「推測には推測と書く」の指示を残したまま、過去の障害で試し、言い切った例を本文の「させないこと」に足します。</p></div><div class="av-row"><h3>ログが大きく、途中までしか読まれません。</h3><p>障害の前後の時間とサービスで、書き出すログを先に絞ります。フォルダをサービスごとに分けて渡します。</p></div></div>
+</section>
+
+<section id="s8" class="av-sec"><h2><span>08</span>30日後に測ること</h2>
+  <p class="av-lead">使われているか、どれだけ時間が浮いたか、出来は十分か。使い始めて30日後に、次の点を確かめます。</p>
+  <div class="av-meas-g"><div class="av-meas"><h3>使われているか：下書きを使った障害の割合</h3><p>障害の記録票に「サブエージェントの下書きを使ったか」の欄を足し、30日間の障害の件数のうち、使った件数を数えます。</p></div><div class="av-meas"><h3>時間：障害に気づいてから一次報告を出すまでの時間</h3><p>障害の記録票の検知時刻と一次報告の送信時刻から時間を出し、使い始める前の30日間の平均と比べます。</p></div><div class="av-meas"><h3>出来：根拠の行の誤りと、原因の候補の当たり</h3><p>振り返りの会で、下書きの根拠の行のうち実際のログと合わなかった件数と、原因の候補に真の原因が入っていたかを記録します。</p></div></div>
+</section>
+
+<section id="s9" class="av-sec"><h2><span>09</span>広げ方</h2>
+  <ul class="av-vars"><li>同じ作りで、権限の変更記録や監査ログを読み、いつだれが何を変えたかを整理する担当を作れます。</li><li>障害の振り返りの会の前に、過去の似た障害の報告書を探して並べる担当に広げられます。</li><li>夜間のバッチ処理のログを毎朝読み、失敗したジョブと原因の候補を一覧にする使い方にもできます。</li></ul>
+</section>
+
+<section class="av-sec av-src"><h2>公式の情報</h2>
+  <ul><li><a href="https://code.claude.com/docs/ja/sub-agents" target="_blank" rel="noopener">カスタムサブエージェントの作成</a><span>Anthropic（Claude Code ドキュメント）</span></li><li><a href="https://code.claude.com/docs/ja/permissions" target="_blank" rel="noopener">権限を設定する</a><span>Anthropic（Claude Code ドキュメント）</span></li><li><a href="https://code.claude.com/docs/ja/monitoring-usage" target="_blank" rel="noopener">監視</a><span>Anthropic（Claude Code ドキュメント）</span></li><li><a href="https://code.claude.com/docs/ja/overview" target="_blank" rel="noopener">概要</a><span>Anthropic（Claude Code ドキュメント）</span></li></ul>
+  <p>機能と画面の名前は、2026.10.16 に上の公式の情報で確かめました。業務での使い方は TechWorker の例です。</p>
+</section>
+</main>
+</div>
+
+<div class="art-cta" data-cta-placement="vault_end"><div class="inner"><div><h3>このエージェントを、御社の業務で作ります。</h3><p>TechWorker の研修では、受講者の実際の業務を1つ選び、研修の中でこの形のエージェントを作ります。教材は毎週更新し、受講から30日後に使われ方を測ってご報告します（Claude Code 編）。</p></div><a href="https://kenshu.techworker.co.jp/program/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_campaign=incident-log-triage-claude-code&amp;utm_content=end#claude-code" class="btn">研修の内容を見る <i>→</i></a></div></div>
+
+<section class="av-related"><div class="av-wrap"><h2>ほかのエージェント</h2><div class="av-grid"><a class="av-card" href="/media/agents/product-faq-copilot-studio" data-dept="カスタマーサポート" data-prod="Copilot Studio"><div class="av-card-vis"><div class="av-card-top"><span class="av-prod"><img src="/assets/copilot/microsoft/studio.svg" alt="" width="20" height="20">Copilot Studio</span><span class="av-dept">カスタマーサポート</span></div><div class="av-mf" aria-hidden="true"><span class="mf-box"><b>受け取る</b><span class="mf-t">お客さまが当社サイトのチャット欄に書いた質問</span></span><i class="mf-arr"></i><span class="mf-box mf-ai"><img src="/assets/copilot/microsoft/studio.svg" alt="" width="18" height="18"><b>エージェント</b><span class="mf-t">エージェント（Web サイトに公開）</span></span><i class="mf-arr"></i><span class="mf-box"><b>返す</b><span class="mf-t">結論、手順、参照した資料の名前、解決しないときの問い合わせ先</span></span><i class="mf-arr"></i><span class="mf-box mf-human"><b>人が確かめる</b><span class="mf-t">返品や修理の可否、補償、価格や納期の約束は、サポートの担当者が決めます。</span></span></div></div><div class="av-card-b"><span class="av-card-t">製品のよくある質問にお客さま向けに答えるエージェント</span><span class="av-card-s">当社サイトのお客さま窓口に置き、製品マニュアルと公開中のよくある質問だけを根拠に答えます。答えられない質問は問い合わせフォームへ案内します。</span><span class="av-card-m"><span>作る時間 1〜2日</span><span>情報システム部門と一緒に</span><span>2026.10.16</span></span></div></a><a class="av-card" href="/media/agents/nda-review-claude-projects" data-dept="法務" data-prod="Claude"><div class="av-card-vis"><div class="av-card-top"><span class="av-prod"><img src="/assets/copilot/ai-tools/claude.svg" alt="" width="20" height="20">Claude</span><span class="av-dept">法務</span></div><div class="av-mf" aria-hidden="true"><span class="mf-box"><b>受け取る</b><span class="mf-t">相手方の秘密保持契約の本文（Word か PDF）と、依頼部署、取引の目的、開示する情報の種類</span></span><i class="mf-arr"></i><span class="mf-box mf-ai"><img src="/assets/copilot/ai-tools/claude.svg" alt="" width="18" height="18"><b>エージェント</b><span class="mf-t">プロジェクト</span></span><i class="mf-arr"></i><span class="mf-box"><b>返す</b><span class="mf-t">上長確認の要否、重要度の高い指摘の数、条項ごとの指摘と修正案の表、相手方へのコメント文案</span></span><i class="mf-arr"></i><span class="mf-box mf-human"><b>人が確かめる</b><span class="mf-t">指摘を採るかどうか、相手方に何を求めるか、契約を受け入れてよいかは法務担当者が決めます。</span></span></div></div><div class="av-card-b"><span class="av-card-t">秘密保持契約を自社の基準で読むエージェント</span><span class="av-card-s">相手方から届いた秘密保持契約を、当社の審査基準とひな形に照らして読み、条項ごとの指摘と修正案の下書きを作ります。法務担当者は下書きを確かめて判断するところから始められます。</span><span class="av-card-m"><span>作る時間 半日ほど</span><span>はじめて</span><span>2026.10.16</span></span></div></a><a class="av-card" href="/media/agents/interview-questions-copilot" data-dept="人事" data-prod="Microsoft 365 Copilot"><div class="av-card-vis"><div class="av-card-top"><span class="av-prod"><img src="/assets/copilot/microsoft/copilot.svg" alt="" width="20" height="20">Microsoft 365 Copilot</span><span class="av-dept">人事</span></div><div class="av-mf" aria-hidden="true"><span class="mf-box"><b>受け取る</b><span class="mf-t">求人票の本文（職務内容、必須要件、歓迎要件）、等級、面接の回（一次面接か最終面接か）</span></span><i class="mf-arr"></i><span class="mf-box mf-ai"><img src="/assets/copilot/microsoft/copilot.svg" alt="" width="18" height="18"><b>エージェント</b><span class="mf-t">エージェント ビルダー</span></span><i class="mf-arr"></i><span class="mf-box"><b>返す</b><span class="mf-t">要件ごとの質問、深掘りの質問、よい回答の目安、面接官への注意点</span></span><i class="mf-arr"></i><span class="mf-box mf-human"><b>人が確かめる</b><span class="mf-t">どの質問を使うかと評価の物差しは、人事と面接官が決めます。</span></span></div></div><div class="av-card-b"><span class="av-card-t">求人票から面接の質問を作るエージェント</span><span class="av-card-s">求人票を貼ると、必須要件と歓迎要件ごとに面接の質問と深掘りの質問を下書きします。よい回答の目安もそろうので、面接官ごとの聞き方の差を小さくできます。</span><span class="av-card-m"><span>作る時間 30分ほど</span><span>はじめて</span><span>2026.10.16</span></span></div></a></div><a class="av-more" href="/media/agents/#list">保管庫の一覧に戻る <span aria-hidden="true">→</span></a></div></section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">エージェント<i>保管庫</i></div>
+        <p>業務ごとのAIエージェントの作り方をまとめた見本帳。<span class="pub">発行：<a href="/">株式会社TechWorker</a></span></p>
+      </div>
+      <div class="footer-col"><h4>エージェント保管庫</h4><a href="/media/agents/#list">一覧</a><a href="/media/agents/#format">1件の読み方</a></div>
+      <div class="footer-col"><h4>TechWorker Media</h4><a href="/media/kenshu/">AI研修・導入ラボ</a><a href="/media/security/">AIセキュリティ・ラボ</a><a href="/media/gyomuzu/">業務図ラボ</a></div>
+      <div class="footer-col"><h4>運営会社</h4><a href="https://kenshu.techworker.co.jp/">生成AI研修</a><a href="/company.html">会社概要</a><a href="/privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p class="av-legal">Microsoft、Microsoft 365、Copilot は Microsoft グループの商標です。Claude は Anthropic の商標です。Gemini は Google LLC の商標です。TechWorker は各社と提携していません。画面や機能は変わることがあります。最新の情報は各社の公式ページでご確認ください。</p>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+</script>
+<script src="/media/agents/vault.js?v=20261016-vault" defer></script>
+<script src="/media/article-tracker.js?v=20261006-media-home" defer></script>
+</body>
+</html>

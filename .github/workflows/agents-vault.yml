@@ -1,0 +1,111 @@
+name: Agents vault daily entry
+
+# エージェント保管庫（/media/agents/）に平日1件ずつ足す。Mac が眠っていても動くよう GitHub 上で回す。
+# 仕組みと上限は scripts/agents_vault/README.md。
+on:
+  schedule:
+    - cron: "30 22 * * 0-4" # 平日 7:30 JST（UTC の前日 22:30、日〜木）
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "書き出さずに1件を試す（結果は artifact に残す）"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: agents-vault
+  cancel-in-progress: false
+
+jobs:
+  add-entry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        run: pip install --quiet anthropic==0.115.0
+
+      - name: Write, check and review one entry
+        id: gen
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          VAULT_DRY_OUT: ${{ runner.temp }}
+          DRY: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
+        run: |
+          set -euo pipefail
+          if [ -z "${ANTHROPIC_API_KEY:-}" ]; then echo "::error::ANTHROPIC_API_KEY が登録されていません"; exit 1; fi
+          if [ "$DRY" = "true" ]; then python3 scripts/agents_vault/generate.py --dry-run; else python3 scripts/agents_vault/generate.py; fi
+
+      - name: Keep the dry-run entry
+        if: always() && github.event_name == 'workflow_dispatch' && inputs.dry_run
+        uses: actions/upload-artifact@v4
+        with:
+          name: dry-run-entry
+          path: ${{ runner.temp }}/*.json
+          if-no-files-found: ignore
+
+      - name: Render cover
+        if: steps.gen.outputs.slug != ''
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq && sudo apt-get install -y -qq fonts-noto-cjk >/dev/null
+          npm install --no-save --no-package-lock --silent playwright@1.63.0
+          npx playwright install --with-deps chromium >/dev/null
+          python3 scripts/agents_vault/vault.py covers "$RUNNER_TEMP/covers"
+          node scripts/agents_vault/cover.cjs "$RUNNER_TEMP/covers" media/agents/covers
+          test -s "media/agents/covers/${{ steps.gen.outputs.slug }}.png"
+
+      - name: Commit and push
+        if: steps.gen.outputs.slug != ''
+        env:
+          TITLE: ${{ steps.gen.outputs.title }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add media/agents media/index.html sitemap.xml scripts/agents_vault/topics.json
+          git commit -q -m "エージェント保管庫: ${TITLE}"
+          git pull --rebase -q origin master
+          git push -q origin HEAD:master
+
+      - name: Put a failed topic at the end of the queue
+        if: failure() && steps.gen.outputs.rotated == '1'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scripts/agents_vault/topics.json
+          git commit -q -m "エージェント保管庫: 通らなかった題材を待ち行列の最後に回す" || exit 0
+          git pull --rebase -q origin master
+          git push -q origin HEAD:master
+
+      - name: Deploy
+        if: steps.gen.outputs.slug != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy.yml --ref master
+
+      - name: Check production
+        if: steps.gen.outputs.slug != ''
+        env:
+          SLUG: ${{ steps.gen.outputs.slug }}
+          TITLE: ${{ steps.gen.outputs.title }}
+        run: |
+          set -euo pipefail
+          url="https://techworker.co.jp/media/agents/${SLUG}"
+          for i in $(seq 1 30); do
+            if curl -fsS "$url" -o page.html && grep -qF "$TITLE" page.html; then
+              echo "公開を確認: $url（費用の目安 \$${{ steps.gen.outputs.cost }}）"; exit 0
+            fi
+            sleep 20
+          done
+          echo "::error::10分待っても本番で見つかりません: $url"; exit 1

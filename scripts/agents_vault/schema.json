@@ -1,0 +1,91 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "slug", "title", "summary", "department", "task", "product", "product_feature",
+    "required_plan", "build_time", "difficulty", "before", "after", "flow", "steps",
+    "prompt", "prompt_where", "admin", "human_checks", "pitfalls", "measure",
+    "variations", "sources", "training"
+  ],
+  "properties": {
+    "slug": {"type": "string", "description": "URLの末尾。英小文字・数字・ハイフンのみ。例: company-policy-answer-copilot"},
+    "title": {"type": "string", "description": "「〜エージェント」で終わる名前。業務と結果が分かる。40字以内"},
+    "summary": {"type": "string", "description": "このエージェントでできることを1〜2文で。60〜120字"},
+    "department": {"type": "string", "enum": ["総務", "人事", "経理", "営業", "マーケティング", "情報システム", "法務", "カスタマーサポート", "経営企画", "開発", "全部署"]},
+    "task": {"type": "string", "description": "対象の業務名。例: 社内規程への問い合わせ対応"},
+    "product": {"type": "string", "enum": ["Microsoft 365 Copilot", "Copilot Studio", "Claude", "Claude Code", "Gemini"]},
+    "product_feature": {"type": "string", "description": "使う機能の公式の名前だけ。20字以内。製品名とテンプレート名は入れない（テンプレート名は steps に書く）。例: エージェント ビルダー／プロジェクト／スキル／サブエージェント／Gem"},
+    "required_plan": {"type": "string", "description": "必要な契約・ライセンスを60字以内の1行で。公式の情報で確かめた範囲だけ。課金の方式などの詳しい話は admin に書く"},
+    "build_time": {"type": "string", "enum": ["30分ほど", "半日ほど", "1〜2日"]},
+    "difficulty": {"type": "string", "enum": ["はじめて", "慣れてきたら", "情報システム部門と一緒に"]},
+    "before": {"type": "array", "items": {"type": "string"}, "description": "これまでの仕事の様子。2〜4項目"},
+    "after": {"type": "array", "items": {"type": "string"}, "description": "このエージェントを使うとどうなるか。2〜4項目。数字は書かない"},
+    "flow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["input", "knowledge", "tools", "output", "human"],
+      "properties": {
+        "input": {"type": "string", "description": "エージェントが受け取るもの"},
+        "knowledge": {"type": "array", "items": {"type": "string"}, "description": "渡す資料。1〜4項目"},
+        "tools": {"type": "array", "items": {"type": "string"}, "description": "つなぐ道具・接続。無ければ空の配列"},
+        "output": {"type": "string", "description": "エージェントが返すもの"},
+        "human": {"type": "string", "description": "人が確かめて決めること"}
+      }
+    },
+    "steps": {
+      "type": "array",
+      "description": "作り方。4〜7手順。画面の名前は公式の情報どおり",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["title", "body"],
+        "properties": {"title": {"type": "string"}, "body": {"type": "string"}}
+      }
+    },
+    "prompt": {"type": "string", "description": "そのまま貼れる指示文。日本語。役割・進め方・答え方・させないことを含む。400〜2,000字"},
+    "prompt_where": {"type": "string", "description": "指示文を貼る場所。例: エージェント ビルダーの「指示」欄"},
+    "admin": {
+      "type": "array",
+      "description": "管理者が先に決めること。2〜5項目",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["item", "why"],
+        "properties": {"item": {"type": "string"}, "why": {"type": "string"}}
+      }
+    },
+    "human_checks": {"type": "array", "items": {"type": "string"}, "description": "人が確かめるところ・AIにさせないこと。2〜4項目"},
+    "pitfalls": {
+      "type": "array",
+      "description": "うまくいかないときの症状と直し方。2〜4項目",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["symptom", "fix"],
+        "properties": {"symptom": {"type": "string"}, "fix": {"type": "string"}}
+      }
+    },
+    "measure": {
+      "type": "array",
+      "description": "使い始めて30日後に測ること。2〜3項目",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["metric", "how"],
+        "properties": {"metric": {"type": "string"}, "how": {"type": "string"}}
+      }
+    },
+    "variations": {"type": "array", "items": {"type": "string"}, "description": "同じ作りで広げられる使い方。2〜3項目"},
+    "sources": {
+      "type": "array",
+      "description": "公式の情報。2〜6件。製品の提供元の公式ドメインだけ",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["title", "url", "publisher"],
+        "properties": {"title": {"type": "string"}, "url": {"type": "string"}, "publisher": {"type": "string"}}
+      }
+    },
+    "training": {"type": "string", "enum": ["common", "copilot", "claude-code", "gemini"], "description": "研修サイトの対応する編。Copilot系=copilot、Claude/Claude Code=claude-code、Gemini=gemini"}
+  }
+}

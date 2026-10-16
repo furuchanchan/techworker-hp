@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}if(location.hostname==='techworker.co.jp')gtag('config', 'G-3V34NWXVCJ');
+</script>
+<script src="/assets/tw-track.js" defer></script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>求人票から面接の質問を作るエージェント｜Microsoft 365 Copilotでの作り方 — エージェント保管庫</title>
+<meta name="description" content="求人票を貼ると、必須要件と歓迎要件ごとに面接の質問と深掘りの質問を下書きします。よい回答の目安もそろうので、面接官ごとの聞き方の差を小さくできます。 できること、作り方、そのまま貼れる指示文、管理者が先に決める設定をまとめています。">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/agents/interview-questions-copilot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="求人票から面接の質問を作るエージェント｜Microsoft 365 Copilotでの作り方 — エージェント保管庫">
+<meta property="og:description" content="求人票を貼ると、必須要件と歓迎要件ごとに面接の質問と深掘りの質問を下書きします。よい回答の目安もそろうので、面接官ごとの聞き方の差を小さくできます。 できること、作り方、そのまま貼れる指示文、管理者が先に決める設定をまとめています。">
+<meta property="og:image" content="https://techworker.co.jp/media/agents/covers/interview-questions-copilot.png">
+<meta property="og:url" content="https://techworker.co.jp/media/agents/interview-questions-copilot">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="求人票から面接の質問を作るエージェント｜Microsoft 365 Copilotでの作り方 — エージェント保管庫">
+<meta name="twitter:image" content="https://techworker.co.jp/media/agents/covers/interview-questions-copilot.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/media/article.css?v=20261006-source-notes">
+<link rel="stylesheet" href="/media/agents/vault.css?v=20261016-vault">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "求人票から面接の質問を作るエージェント｜Microsoft 365 Copilotでの作り方", "description": "求人票を貼ると、必須要件と歓迎要件ごとに面接の質問と深掘りの質問を下書きします。よい回答の目安もそろうので、面接官ごとの聞き方の差を小さくできます。", "datePublished": "2026-10-16", "dateModified": "2026-10-16", "inLanguage": "ja", "image": "https://techworker.co.jp/media/agents/covers/interview-questions-copilot.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/agents/interview-questions-copilot"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "エージェント保管庫", "item": "https://techworker.co.jp/media/agents/"}, {"@type": "ListItem", "position": 4, "name": "求人票から面接の質問を作るエージェント", "item": "https://techworker.co.jp/media/agents/interview-questions-copilot"}]}</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<nav id="nav">
+  <a href="/media/agents/" class="logo">エージェント<i>保管庫</i></a>
+  <ul>
+    <li><a href="/media/agents/#list">一覧</a></li>
+    <li><a href="/media/agents/#format">1件の読み方</a></li>
+    <li><a href="/media/">メディア</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://kenshu.techworker.co.jp/contact/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_content=nav" class="nav-cta"><span class="full">研修の相談</span><span class="short">相談</span></a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="/media/agents/#list">エージェントの一覧</a>
+  <a href="/media/agents/#format">1件の読み方</a>
+  <a href="/media/">TechWorker Media</a>
+  <a href="https://kenshu.techworker.co.jp/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_content=menu">研修のご案内</a>
+  <a href="https://kenshu.techworker.co.jp/contact/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_content=menu" class="m-cta">研修の相談をする</a>
+</div>
+<header class="av-hero">
+  <nav class="crumb" aria-label="パンくず"><a href="/">ホーム</a><span class="sep">/</span><a href="/media/">メディア</a><span class="sep">/</span><a href="/media/agents/">エージェント保管庫</a></nav>
+  <div class="av-chips"><span class="av-prod"><img src="/assets/copilot/microsoft/copilot.svg" alt="" width="20" height="20">Microsoft 365 Copilot</span><span class="av-tag av-tag-feat">エージェント ビルダー</span><span class="av-dept">人事</span><span class="av-tag">作る時間 30分ほど</span><span class="av-tag">はじめて</span></div>
+  <h1>求人票から面接の質問を作るエージェント</h1>
+  <p class="av-sum">求人票を貼ると、必須要件と歓迎要件ごとに面接の質問と深掘りの質問を下書きします。よい回答の目安もそろうので、面接官ごとの聞き方の差を小さくできます。</p>
+  <div class="av-meta"><span>公開 2026.10.16</span><span>公式の情報で確認 2026.10.16</span><span>監修 古野光太朗（TechWorker 代表）</span></div>
+</header>
+
+<div class="av-layout">
+<aside class="av-spec" aria-label="このエージェントの設計書">
+  <div class="av-spec-in">
+    <div class="av-spec-h">このエージェントの設計書</div>
+    <dl>
+      <dt>部署</dt><dd>人事</dd>
+      <dt>業務</dt><dd>面接の準備（質問づくりと面接官への共有）</dd>
+      <dt>製品</dt><dd>Microsoft 365 Copilot</dd>
+      <dt>使う機能</dt><dd>エージェント ビルダー</dd>
+      <dt>必要な契約</dt><dd>Microsoft 365 Copilot ライセンス、または Copilot Studio の従量課金制</dd>
+      <dt>作る時間</dt><dd>30分ほど</dd>
+      <dt>難しさ</dt><dd>はじめて</dd>
+    </dl>
+    <a class="av-spec-btn" href="#s4">指示文を見る <span aria-hidden="true">↓</span></a>
+    <nav class="av-toc" aria-label="目次"><a href="#s1">できること</a><a href="#s2">仕組み</a><a href="#s3">作り方</a><a href="#s4">指示文</a><a href="#s5">管理者が先に決めること</a><a href="#s6">人が確かめるところ</a><a href="#s7">うまくいかないとき</a><a href="#s8">30日後に測ること</a><a href="#s9">広げ方</a></nav>
+  </div>
+</aside>
+
+<main class="av-main">
+<section id="s1" class="av-sec"><h2><span>01</span>できること</h2>
+  <div class="av-ba">
+    <div class="av-ba-c before"><div class="av-ba-h">これまで</div><ul><li>面接官がそれぞれ自分で質問を考えるので、候補者ごとに聞く内容がばらつきます。</li><li>求人票の要件と面接の質問が結びついておらず、面接後の評価がしにくくなっています。</li><li>初めて面接を担当する社員が、何をどう聞けばよいかを人事に相談しています。</li></ul></div>
+    <div class="av-ba-c after"><div class="av-ba-h">このエージェントを使うと</div><ul><li>求人票を貼るだけで、要件ごとの質問と深掘りの質問が下書きされます。</li><li>よい回答の目安がつくので、面接官どうしで評価の物差しをそろえやすくなります。</li><li>聞いてはいけない質問の一覧を指示文に入れるので、下書きの段階で避けやすくなります。</li><li>人事は下書きを直して面接官に渡すところに時間を使えます。</li></ul></div>
+  </div>
+</section>
+
+<section id="s2" class="av-sec"><h2><span>02</span>仕組み</h2>
+  <p class="av-lead">エージェントが何を受け取り、何を見て、何を返すか。最後に人が確かめるところまでを1枚にしています。</p>
+  <div class="av-flow">
+    <div class="fl-box"><span class="fl-tag">受け取るもの</span><p>求人票の本文（職務内容、必須要件、歓迎要件）、等級、面接の回（一次面接か最終面接か）</p></div>
+    <div class="fl-arr" aria-hidden="true"></div>
+    <div class="fl-box fl-ai"><span class="fl-tag ai"><img src="/assets/copilot/microsoft/copilot.svg" alt="" width="16" height="16">エージェント</span><p class="fl-feat">Microsoft 365 Copilot　エージェント ビルダー</p>
+      <div class="fl-part"><b>指示文</b><p>役割と進め方、答え方を決める（04 指示文）</p></div>
+      <div class="fl-part"><b>渡す資料</b><ul><li>当社の評価項目と評価の物差し（Word）</li><li>面接で聞いてはいけない質問の一覧（社内の採用ガイド）</li><li>職種別の質問集（応募者の個人情報を消したもの）</li></ul></div>
+      <div class="fl-part"><b>つなぐ道具</b><ul><li>なし（つなぐ道具は使いません）</li></ul></div>
+    </div>
+    <div class="fl-arr" aria-hidden="true"></div>
+    <div class="fl-box"><span class="fl-tag">返すもの</span><p>要件ごとの質問、深掘りの質問、よい回答の目安、面接官への注意点</p></div>
+    <div class="fl-arr" aria-hidden="true"></div>
+    <div class="fl-box fl-human"><span class="fl-tag human">人が確かめる</span><p>どの質問を使うかと評価の物差しは、人事と面接官が決めます。</p></div>
+  </div>
+</section>
+
+<section id="s3" class="av-sec"><h2><span>03</span>作り方</h2>
+  <ol class="av-steps"><li><span class="st-n">1</span><div><h3>テンプレートから始める</h3><p>Microsoft 365 Copilot の左側のウィンドウで「新しいエージェント」を選びます。「テンプレートで開始」から「面接の質問アシスタント」を選びます。説明と指示と推奨プロンプトが入った状態で編集が始まります。</p></div></li><li><span class="st-n">2</span><div><h3>名前と説明を入れる</h3><p>「構成」タブを開き、「名前」に「面接質問の下書き（人事）」のような30文字以内の名前を入れます。「説明」には、面接官が求人票から質問を作るためのエージェントであることを書きます。</p></div></li><li><span class="st-n">3</span><div><h3>指示を貼る</h3><p>「指示」にこのページの指示文を貼ります。評価項目の名前を、当社の評価シートで使っている言葉に書き換えます。</p></div></li><li><span class="st-n">4</span><div><h3>評価項目と採用ガイドをナレッジに入れる</h3><p>「ナレッジ」の欄で、SharePoint の採用フォルダーにある評価項目と採用ガイドを選びます。応募者の履歴書や面接の記録は入れません。</p></div></li><li><span class="st-n">5</span><div><h3>「試してみる」で確かめる</h3><p>「試してみる」タブで、過去の求人票を2〜3件貼って質問を作らせます。人事の担当者が下書きを読み、聞いてはいけない質問が混ざっていないかを確かめます。</p></div></li><li><span class="st-n">6</span><div><h3>作成して面接官と共有する</h3><p>「作成」を選んだあと、「共有」を開きます。面接官のグループを「チャット可能」で追加します。指示文を直す人事の担当者は、1人ずつ「編集可能」で追加します。</p></div></li></ol>
+</section>
+
+<section id="s4" class="av-sec"><h2><span>04</span>指示文（そのまま貼れます）</h2>
+  <p class="av-lead">エージェント ビルダーの「構成」タブにある「指示」欄（8,000文字まで）に貼ります。［　］のところは自社の言葉に置き換えてください。</p>
+  <div class="av-prompt">
+    <div class="pr-bar"><span class="pr-dots"><i></i><i></i><i></i></span><span class="pr-name">指示文 — Microsoft 365 Copilot エージェント ビルダー</span><button type="button" class="pr-copy" data-copy="pr-interview-questions-copilot">コピー</button></div>
+    <pre id="pr-interview-questions-copilot"># 役割
+あなたは当社の人事部で、面接の準備を手伝う担当です。求人票をもとに、面接官が使う質問の下書きを作ります。
+
+# 受け取るもの
+- 求人票の本文（職務内容、必須要件、歓迎要件）
+- 等級や役職
+- 面接の回（一次面接、二次面接、最終面接）
+
+# 進め方
+1. 求人票から、必須要件と歓迎要件を1つずつ抜き出します。
+2. ナレッジにある当社の評価項目と結びつけます。
+3. 要件ごとに、過去の行動を聞く質問を1つ作ります。
+4. 答えを深く聞くための深掘りの質問を2つ作ります。
+5. 等級と面接の回に合わせて、質問の難しさを変えます。
+6. 最後に、聞いてはいけない質問が混ざっていないかを、採用ガイドの一覧と照らし合わせます。
+
+# 答え方
+要件ごとに、次の形で書きます。
+- 要件：求人票の文言をそのまま書きます。
+- 評価項目：当社の評価項目の名前を書きます。
+- 質問：候補者に聞く質問を1文で書きます。
+- 深掘りの質問：2つ書きます。
+- よい回答の目安：具体的な行動や結果が語られているかの目安を、2〜3行で書きます。
+- 面接官への注意：聞き方で気をつける点を1行で書きます。
+最後に、面接の時間配分の目安を書きます。文末は「です」「ます」にします。
+
+# 根拠の示し方
+- 評価項目と採用ガイドを使った箇所には、資料名を添えます。
+- 求人票に書いていない要件を足したときは、「求人票に記載なし」と書き添えます。
+
+# わからないときの返し方
+- 求人票の要件があいまいなときは、下書きの前に、確かめたい点を3つまで質問します。
+- 評価項目に当てはまらない要件には、「評価項目の追加を人事で検討」と書きます。
+
+# させないこと
+- 本籍、出生地、家族、住まい、宗教、支持政党、思想、尊敬する人物、愛読書など、本人の適性や能力と関係のない事柄を聞く質問を作りません。
+- 年齢、性別、結婚や出産の予定を聞く質問を作りません。
+- 応募者の名前や経歴などの個人情報は受け取りません。書かれたときは、その部分を使いません。
+- 合否や点数を判断しません。</pre>
+  </div>
+</section>
+
+<section id="s5" class="av-sec"><h2><span>05</span>管理者が先に決めること</h2>
+  <p class="av-lead">使い始める前に、Microsoft 365 Copilot の管理者が決めておく設定です。ここを決めてから配ると、情報の扱いで止まりにくくなります。</p>
+  <div class="av-rows"><div class="av-row"><h3>ナレッジに入れてよい資料の範囲</h3><p>このテンプレートの注意書きでは、個人情報や機密情報の扱いは利用する会社の責任とされています。応募者の履歴書や面接の記録はナレッジに入れない、と先に決めておきます。</p></div><div class="av-row"><h3>共有の範囲</h3><p>共有ダイアログで面接官のグループを「チャット可能」で追加し、「チャット アクセスの組織全体で共有する」はオンにしません。組織全体へ共有できる人は、Microsoft 365 管理センターの「エージェント」の「設定」にある「共有」で決められます。</p></div><div class="av-row"><h3>面接官のライセンス</h3><p>共有された人はエージェントに設定した機能に合うライセンスを持っていないと使えません。面接官全員が Microsoft 365 Copilot ライセンスか従量課金制の対象になっているかを、共有の前に確かめます。</p></div><div class="av-row"><h3>エージェント フィードバックの共有</h3><p>Microsoft 365 管理センターの「エージェント」の「設定」にある「エージェント フィードバックの共有」で、利用者の評価やコメントを作成者が受け取れるかを決めます。人事が質問の出来を直せるよう、このエージェントを「選択されたエージェント」に入れておきます。</p></div><div class="av-row"><h3>ライセンスと課金の方式</h3><p>Microsoft 365 Copilot ライセンス、または Copilot Studio の従量課金制（Copilot クレジット）を有効にしたテナントが要ります。当社の評価項目や採用ガイドを SharePoint やアップロードしたファイルから読ませるには、このどちらかが必要です。</p></div></div>
+</section>
+
+<section id="s6" class="av-sec"><h2><span>06</span>人が確かめるところ</h2>
+  <ul class="av-checks"><li>応募者の名前や履歴書の内容は、エージェントに貼りません。</li><li>下書きの質問は、人事の担当者が採用ガイドと照らし合わせてから面接官に渡します。</li><li>合否や評価の判断はエージェントに任せず、面接官と人事が決めます。</li></ul>
+</section>
+
+<section id="s7" class="av-sec"><h2><span>07</span>うまくいかないとき</h2>
+  <div class="av-rows pit"><div class="av-row"><h3>どの職種でも似た質問ばかり出る</h3><p>求人票の必須要件を箇条書きにして貼ります。指示文の評価項目を当社の言葉に書き換え、職種別の質問集をナレッジに足します。</p></div><div class="av-row"><h3>家族や出身地に触れる質問が混ざる</h3><p>聞いてはいけない質問の一覧をナレッジに入れ、指示文の「させないこと」にも同じ項目を書きます。混ざった例を「試してみる」で再現し、直ったかを確かめます。</p></div><div class="av-row"><h3>一次面接と最終面接で同じ深さの質問になる</h3><p>このテンプレートは役職のレベルに合わせて質問の難しさを変えられます。スターター プロンプトの文面に、面接の回と等級を書く欄を入れておきます。</p></div></div>
+</section>
+
+<section id="s8" class="av-sec"><h2><span>08</span>30日後に測ること</h2>
+  <p class="av-lead">使われているか、どれだけ時間が浮いたか、出来は十分か。使い始めて30日後に、次の点を確かめます。</p>
+  <div class="av-meas-g"><div class="av-meas"><h3>使われているか：面接の前に使った面接官の数</h3><p>Microsoft 365 管理センターの「レポート」から「使用状況」を開き、「Microsoft Copilot」の「エージェント」を選びます（プレビュー）。このエージェントのアクティブ ユーザー数を、30日間に面接を担当した面接官の人数と比べます。</p></div><div class="av-meas"><h3>時間：面接官に質問を渡すまでの時間</h3><p>求人票を受け取ってから、面接官に質問を渡すまでの時間を記録します。使い始める前の5件と、使い始めた後の5件で比べます。</p></div><div class="av-meas"><h3>出来：手直しなしで使えた質問の割合</h3><p>人事の担当者が下書きの質問を「そのまま使う」「直して使う」「使わない」に分けて数えます。「使わない」の理由を書き残し、指示文の直しに使います。</p></div></div>
+</section>
+
+<section id="s9" class="av-sec"><h2><span>09</span>広げ方</h2>
+  <ul class="av-vars"><li>社内公募や異動の面談で使う質問を作る版</li><li>新しく面接官になる社員の練習相手として、質問の作り方を教える版</li><li>インターンシップの選考で使う質問を作る版</li></ul>
+</section>
+
+<section class="av-sec av-src"><h2>公式の情報</h2>
+  <ul><li><a href="https://learn.microsoft.com/ja-jp/microsoft-365/copilot/extensibility/agent-template-interview-questions" target="_blank" rel="noopener">テンプレートから面接質問アシスタント エージェントを作成する</a><span>Microsoft Learn</span></li><li><a href="https://learn.microsoft.com/ja-jp/microsoft-365/copilot/extensibility/agent-builder-build-agents" target="_blank" rel="noopener">エージェント ビルダーでエージェントを構築する</a><span>Microsoft Learn</span></li><li><a href="https://learn.microsoft.com/ja-jp/microsoft-365/copilot/extensibility/prerequisites" target="_blank" rel="noopener">Microsoft 365 Copilot プラグイン用の開発環境をセットアップする（エージェントの機能とライセンス モデル）</a><span>Microsoft Learn</span></li><li><a href="https://learn.microsoft.com/ja-jp/microsoft-365/copilot/extensibility/agent-builder-share-manage-agents" target="_blank" rel="noopener">Agent Builder に組み込まれたエージェントの共有と管理</a><span>Microsoft Learn</span></li><li><a href="https://learn.microsoft.com/ja-jp/microsoft-365/admin/manage/agent-settings" target="_blank" rel="noopener">Microsoft 365 管理センターのエージェント設定</a><span>Microsoft Learn</span></li><li><a href="https://learn.microsoft.com/ja-jp/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new?view=o365-worldwide" target="_blank" rel="noopener">Microsoft Copilot エージェントの使用状況レポート (プレビュー)</a><span>Microsoft Learn</span></li></ul>
+  <p>機能と画面の名前は、2026.10.16 に上の公式の情報で確かめました。業務での使い方は TechWorker の例です。</p>
+</section>
+</main>
+</div>
+
+<div class="art-cta" data-cta-placement="vault_end"><div class="inner"><div><h3>このエージェントを、御社の業務で作ります。</h3><p>TechWorker の研修では、受講者の実際の業務を1つ選び、研修の中でこの形のエージェントを作ります。教材は毎週更新し、受講から30日後に使われ方を測ってご報告します（Microsoft 365 Copilot 編）。</p></div><a href="https://kenshu.techworker.co.jp/program/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_campaign=interview-questions-copilot&amp;utm_content=end#copilot" class="btn">研修の内容を見る <i>→</i></a></div></div>
+
+<section class="av-related"><div class="av-wrap"><h2>ほかのエージェント</h2><div class="av-grid"><a class="av-card" href="/media/agents/executive-briefing-copilot" data-dept="経営企画" data-prod="Microsoft 365 Copilot"><div class="av-card-vis"><div class="av-card-top"><span class="av-prod"><img src="/assets/copilot/microsoft/copilot.svg" alt="" width="20" height="20">Microsoft 365 Copilot</span><span class="av-dept">経営企画</span></div><div class="av-mf" aria-hidden="true"><span class="mf-box"><b>受け取る</b><span class="mf-t">会議名、開催日、議題（1回に1つ）、出席する役員の役職、読ませたい資料と会議の名前</span></span><i class="mf-arr"></i><span class="mf-box mf-ai"><img src="/assets/copilot/microsoft/copilot.svg" alt="" width="18" height="18"><b>エージェント</b><span class="mf-t">エージェント ビルダー</span></span><i class="mf-arr"></i><span class="mf-box"><b>返す</b><span class="mf-t">A4 1枚分の論点メモの下書き（決めること、背景、選択肢、担当部署の推奨、想定される質問、前回からの宿題、足りない情報）</span></span><i class="mf-arr"></i><span class="mf-box mf-human"><b>人が確かめる</b><span class="mf-t">推奨案の中身と、役員に渡す最終版は、経営企画の責任者が決めます。</span></span></div></div><div class="av-card-b"><span class="av-card-t">役員会の前に論点を1枚にまとめるエージェント</span><span class="av-card-s">役員会の議題と資料を指定すると、決めること、背景の事実、選択肢、想定される質問を A4 1枚分の下書きにまとめます。資料にない点は足りない情報として示します。</span><span class="av-card-m"><span>作る時間 半日ほど</span><span>慣れてきたら</span><span>2026.10.16</span></span></div></a><a class="av-card" href="/media/agents/company-policy-answer-copilot" data-dept="総務" data-prod="Microsoft 365 Copilot"><div class="av-card-vis"><div class="av-card-top"><span class="av-prod"><img src="/assets/copilot/microsoft/copilot.svg" alt="" width="20" height="20">Microsoft 365 Copilot</span><span class="av-dept">総務</span></div><div class="av-mf" aria-hidden="true"><span class="mf-box"><b>受け取る</b><span class="mf-t">社員が書いた規程についての質問（例：時間単位の有給休暇は何時間まで取れますか）</span></span><i class="mf-arr"></i><span class="mf-box mf-ai"><img src="/assets/copilot/microsoft/copilot.svg" alt="" width="18" height="18"><b>エージェント</b><span class="mf-t">エージェント ビルダー</span></span><i class="mf-arr"></i><span class="mf-box"><b>返す</b><span class="mf-t">結論、根拠の条文（規程名、条番号、引用）、必要な手続き、確認先</span></span><i class="mf-arr"></i><span class="mf-box mf-human"><b>人が確かめる</b><span class="mf-t">条文にない例外の扱いや、個人の事情が関わる判断は、総務の担当者が決めます。</span></span></div></div><div class="av-card-b"><span class="av-card-t">社内規程に条文つきで答えるエージェント</span><span class="av-card-s">社員から届く規程の質問に、SharePoint に置いた当社の規程だけを根拠にして答えます。どの回答にも規程名と条番号がつくので、社員はその場で原文を確かめられます。</span><span class="av-card-m"><span>作る時間 半日ほど</span><span>はじめて</span><span>2026.10.16</span></span></div></a><a class="av-card" href="/media/agents/product-faq-copilot-studio" data-dept="カスタマーサポート" data-prod="Copilot Studio"><div class="av-card-vis"><div class="av-card-top"><span class="av-prod"><img src="/assets/copilot/microsoft/studio.svg" alt="" width="20" height="20">Copilot Studio</span><span class="av-dept">カスタマーサポート</span></div><div class="av-mf" aria-hidden="true"><span class="mf-box"><b>受け取る</b><span class="mf-t">お客さまが当社サイトのチャット欄に書いた質問</span></span><i class="mf-arr"></i><span class="mf-box mf-ai"><img src="/assets/copilot/microsoft/studio.svg" alt="" width="18" height="18"><b>エージェント</b><span class="mf-t">エージェント（Web サイトに公開）</span></span><i class="mf-arr"></i><span class="mf-box"><b>返す</b><span class="mf-t">結論、手順、参照した資料の名前、解決しないときの問い合わせ先</span></span><i class="mf-arr"></i><span class="mf-box mf-human"><b>人が確かめる</b><span class="mf-t">返品や修理の可否、補償、価格や納期の約束は、サポートの担当者が決めます。</span></span></div></div><div class="av-card-b"><span class="av-card-t">製品のよくある質問にお客さま向けに答えるエージェント</span><span class="av-card-s">当社サイトのお客さま窓口に置き、製品マニュアルと公開中のよくある質問だけを根拠に答えます。答えられない質問は問い合わせフォームへ案内します。</span><span class="av-card-m"><span>作る時間 1〜2日</span><span>情報システム部門と一緒に</span><span>2026.10.16</span></span></div></a></div><a class="av-more" href="/media/agents/#list">保管庫の一覧に戻る <span aria-hidden="true">→</span></a></div></section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">エージェント<i>保管庫</i></div>
+        <p>業務ごとのAIエージェントの作り方をまとめた見本帳。<span class="pub">発行：<a href="/">株式会社TechWorker</a></span></p>
+      </div>
+      <div class="footer-col"><h4>エージェント保管庫</h4><a href="/media/agents/#list">一覧</a><a href="/media/agents/#format">1件の読み方</a></div>
+      <div class="footer-col"><h4>TechWorker Media</h4><a href="/media/kenshu/">AI研修・導入ラボ</a><a href="/media/security/">AIセキュリティ・ラボ</a><a href="/media/gyomuzu/">業務図ラボ</a></div>
+      <div class="footer-col"><h4>運営会社</h4><a href="https://kenshu.techworker.co.jp/">生成AI研修</a><a href="/company.html">会社概要</a><a href="/privacy.html">プライバシーポリシー</a></div>
+    </div>
+    <p class="av-legal">Microsoft、Microsoft 365、Copilot は Microsoft グループの商標です。Claude は Anthropic の商標です。Gemini は Google LLC の商標です。TechWorker は各社と提携していません。画面や機能は変わることがあります。最新の情報は各社の公式ページでご確認ください。</p>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+</script>
+<script src="/media/agents/vault.js?v=20261016-vault" defer></script>
+<script src="/media/article-tracker.js?v=20261006-media-home" defer></script>
+</body>
+</html>

@@ -65,6 +65,10 @@
     shigyo: function () { return Object.assign(companymap("事務所", "/media/cv/companymap-shigyo.jpg"), { sub: DIAG }); },
     interview: function () { return Object.assign(companymap("部署"), { sub: { label: "CompanyMap AIを見る", href: "/companymap", offer: "companymap_lp" } }); },
     gyomuzu: function () { return Object.assign({}, TEMPLATES, { sub: { label: "30分の無料相談で、AIが自社の業務図を作ります", href: "/companymap/contact", offer: "companymap_consult" } }); },
+    agents: function () {
+      var anchor = /claude/.test(slug) ? "claude-code" : /gemini/.test(slug) ? "gemini" : /copilot/.test(slug) ? "copilot" : "";
+      return Object.assign({}, CASES, { sub: { label: "このエージェントを研修で作る", href: "https://kenshu.techworker.co.jp/program/" + (anchor ? "#" + anchor : ""), offer: "training_agents" } });
+    },
     security: function () { return Object.assign({}, GUIDE, { sub: { label: "社内のAI利用ルールを相談する（30分・無料）", href: "/contact.html?type=consultation", offer: "consult_security" } }); },
     infra: function () { return Object.assign({}, GUIDE, { sub: DIAG }); },
     simulation: function () { return Object.assign({}, CASES, { sub: { label: "発売前の検証を相談する", href: "/launch-simulation/", offer: "launch_simulation" } }); }
