@@ -24,7 +24,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 import vault  # noqa: E402
 
 MODEL = "claude-opus-5-5"
-MAX_RUN_USD = 4.0
+MAX_RUN_USD = 2.5
 MONTHLY_CAP = 25
 MAX_REVISIONS = 2
 TOPICS = Path(__file__).parent / "topics.json"
@@ -94,9 +94,10 @@ ENTRY_TOOL = {"name": "submit_entry", "description": "エージェント保管�
 
 
 def web_tools(search=True):
-    tools = [{"type": "web_fetch_20260209", "name": "web_fetch", "max_uses": 12, "allowed_domains": ALLOWED}]
+    # 読むページの量が費用の大半になる（1回目の試しで入力が約80万トークン）。1ページ6,000トークン、閲覧8件、検索4回まで
+    tools = [{"type": "web_fetch_20260209", "name": "web_fetch", "max_uses": 8, "max_content_tokens": 6000, "allowed_domains": ALLOWED}]
     if search:
-        tools.insert(0, {"type": "web_search_20260209", "name": "web_search", "max_uses": 6, "allowed_domains": ALLOWED})
+        tools.insert(0, {"type": "web_search_20260209", "name": "web_search", "max_uses": 4, "allowed_domains": ALLOWED})
     return tools
 
 
@@ -110,17 +111,18 @@ class Budget:
         stu = getattr(usage, "server_tool_use", None)
         cost += (getattr(stu, "web_search_requests", 0) or 0) * 0.01
         self.usd += cost
-        print(f"  cost +${cost:.3f} (total ${self.usd:.3f})", flush=True)
+        print(f"  cost +${cost:.3f} (total ${self.usd:.3f}) in={usage.input_tokens} cache_read={usage.cache_read_input_tokens or 0} "
+              f"cache_write={usage.cache_creation_input_tokens or 0} out={usage.output_tokens}", flush=True)
         if self.usd > MAX_RUN_USD:
             raise SystemExit(f"1回の上限 ${MAX_RUN_USD} を超えたので止めます")
 
 
-def call(client, budget, system, messages, tools):
-    """1往復。pause_turn は続きを頼み、tool_use か end_turn で返す。"""
+def call(client, budget, system, messages, tools, effort="high"):
+    """1往復。pause_turn は続きを頼み、tool_use か end_turn で返す。2回目以降は読み込み済みの分をキャッシュから読む。"""
     for _ in range(6):
         with client.beta.messages.stream(
             model=MODEL, max_tokens=32000, system=system, messages=messages, tools=tools,
-            thinking={"type": "adaptive"}, output_config={"effort": "high"},
+            thinking={"type": "adaptive"}, output_config={"effort": effort}, cache_control={"type": "ephemeral"},
             betas=["server-side-fallback-2026-07-01"], fallbacks="default",
         ) as stream:
             msg = stream.get_final_message()
@@ -230,11 +232,11 @@ def write(client, budget, topic, existing):
 
 def review(client, budget, entry):
     messages = [{"role": "user", "content": "次の1件を審査してください。\n\n" + json.dumps(entry, ensure_ascii=False, indent=1)}]
-    msg = call(client, budget, REVIEW_SYSTEM, messages, web_tools(search=False) + [REVIEW_TOOL])
+    msg = call(client, budget, REVIEW_SYSTEM, messages, web_tools(search=False) + [REVIEW_TOOL], effort="medium")
     use = tool_call(msg, "submit_review")
     if not use:
         messages.append({"role": "user", "content": "submit_review で結果を返してください。"})
-        msg = call(client, budget, REVIEW_SYSTEM, messages, web_tools(search=False) + [REVIEW_TOOL])
+        msg = call(client, budget, REVIEW_SYSTEM, messages, web_tools(search=False) + [REVIEW_TOOL], effort="medium")
         use = tool_call(msg, "submit_review")
     if not use:
         raise SystemExit("審査の結果が返りませんでした")
