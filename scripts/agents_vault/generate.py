@@ -252,7 +252,8 @@ def main():
     if sum(x["published_on"].startswith(month) for x in existing) >= MONTHLY_CAP:
         print(f"今月はすでに {MONTHLY_CAP} 件を公開したので、今日は足しません")
         return 0
-    if any(x["published_on"] == TODAY for x in existing) and not dry:
+    # 同じ日の2件目は足さない。手で起動したとき（--allow-same-day）だけは足してよい
+    if any(x["published_on"] == TODAY for x in existing) and not dry and "--allow-same-day" not in sys.argv:
         print("今日の分はすでに公開済みです")
         return 0
     topics = json.loads(TOPICS.read_text())
