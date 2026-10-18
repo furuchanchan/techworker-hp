@@ -100,12 +100,23 @@ function computeIntent(data) {
 }
 
 // ===== 営業・売り込みの自動判定 =====
-// 本文が書かれた送信だけを Claude Haiku に判定させる。
+// 人が書いた本文がある送信だけを Claude Haiku に判定させる。
 // 判定できない（キー未設定・タイムアウト・APIエラー）ときは通す：
 // 本物の相談を取りこぼす損のほうが、営業が1通混ざる損より大きいため。
 const SALES_MODEL = 'claude-haiku-5-5';
 const SALES_STATUS = '営業（自動判定）';
-const SALES_SYSTEM = `あなたは株式会社TechWorker（法人向け生成AI研修・AI活用支援・業務図サービスCompanyMap AIを提供）の問い合わせフォームの受付係です。
+
+// 各サイトのフォームが本文の頭に入れる定型の1行（site.js の message_prefix。例「資料の請求：…」「ご用件：研修内容・費用を相談したい」）
+const PREFIX_LINE = /^(資料の請求|ご用件)：/;
+
+// 人が書いた本文。定型の1行を除いて空なら、判定にかけない
+function writtenMessage(message) {
+  const lines = String(message ?? '').trim().split('\n');
+  if (PREFIX_LINE.test(lines[0])) lines.shift();
+  return lines.join('\n').trim();
+}
+
+const SALES_SYSTEM = `あなたは株式会社TechWorker（法人向け生成AI研修・AI活用支援・業務図サービスCompanyMap AI・見積AI（電材卸向けのデンミツAI、卸・商社向けのソクミツAI）を提供）の問い合わせフォームの受付係です。
 送られてきた問い合わせが「TechWorkerに対する営業・売り込み」かどうかを判定してください。
 
 営業・売り込み（sales=true）の例:
@@ -116,8 +127,9 @@ const SALES_SYSTEM = `あなたは株式会社TechWorker（法人向け生成AI�
 - 「貴社のお役に立てると思い」「ご提案させていただきたく」など、送信者側が提供する立場で連絡している
 
 営業ではない（sales=false）の例:
-- TechWorkerの研修・AI活用支援・CompanyMap AIの導入検討、見積・資料請求・質問
+- TechWorkerの研修・AI活用支援・CompanyMap AI・見積AI（デンミツAI・ソクミツAI）の導入検討、実演・見積・資料・レポートの申込、質問
 - 自社のAI活用の悩みの相談
+- 公募・協創プログラム・オープンイノベーションの窓口、自治体・業界団体・大企業の担当者が、TechWorkerのサービスの導入・実証・共同の取り組みを相談しているもの（「協業のご相談」と書かれていても、送信者が自社の商品を売り込んでいなければ営業ではない）
 - 事業承継・M&Aで会社を買った（買う）側が、買収後の引き継ぎ・PMIについて相談しているもの
 - 取材依頼（掲載料を求めないもの）、採用への応募
 - 定型文（例:「【資料ダウンロード】…」「ご希望: …」）だけの送信
@@ -233,7 +245,7 @@ async function saveToNotion(data, apiKey, salesReason = null) {
   let msg = ((data.diag_score != null)
     ? `【📊AI活用度診断 ${data.diag_band || ''}（${data.diag_score}/${data.diag_max || 100}）】\n${data.diag_answers || ''}\n${data.message || ''}`
     : (data.message || '')).trim();
-  if (salesReason) msg = `【営業と自動判定・送信を停止】${salesReason}\n${msg}`;
+  if (salesReason) msg = `【営業と自動判定・Slackに流さず】${salesReason}\n${msg}`;
   msg = msg.slice(0, 1900);
   const properties = {
     'お名前':     { title:     [{ text: { content: data.name    || '' } }] },
@@ -378,6 +390,8 @@ export async function onRequestPost({ request, env }) {
   // 必須項目チェック: 全角で入力された電話番号は半角にそろえてから数字の桁数を見る
   for (const k of REQUIRED_FIELDS) data[k] = String(data[k] ?? '').trim();
   data.phone = data.phone.normalize('NFKC');
+  // 下でサーバーが足す定型の行（見積の月の件数・買収の頻度など）より前に、人が書いた本文があるかを見ておく
+  const written = writtenMessage(data.message);
   if (data.inquiry_type === 'denzai_demo' || data.inquiry_type === 'sokumitsu_demo') {
     const quotes = String(data.quotes_per_month ?? '').trim().slice(0, 50);
     data.message = [String(data.message ?? '').trim(), quotes ? `見積の月の件数：${quotes}` : ''].filter(Boolean).join('\n');
@@ -403,24 +417,17 @@ export async function onRequestPost({ request, env }) {
   if (data.intent_referrer)       data.intent_referrer       = normalizeReferrer(String(data.intent_referrer));
   if (data.intent_first_referrer) data.intent_first_referrer = normalizeReferrer(String(data.intent_first_referrer));
 
-  // 営業・売り込みと判定したら送信を止める。誤判定をあとで拾えるよう Notion には残し、Slack には流さない
-  const verdict = await classifySales(data, env.ANTHROPIC_API_KEY);
+  // 営業・売り込みと判定した送信は Slack に流さず、Notion に「営業（自動判定）」で残す。
+  // 送った人には受付の画面を出す（公募・協創窓口の「協業のご相談」のような本物を誤って止めても、相手に失敗と見せない。
+  // 拾い直しは朝の1通に出る件数から Notion を見る）
+  const verdict = written ? await classifySales(data, env.ANTHROPIC_API_KEY) : null;
   console.log('Sales verdict:', verdict ? JSON.stringify(verdict) : 'skipped');
-  if (verdict?.sales) {
-    try {
-      await saveToNotion(data, env.NOTION_API_KEY, verdict.reason || '理由なし');
-    } catch (err) {
-      console.error('Notion save (sales) failed:', err.message);
-    }
-    return new Response(JSON.stringify({ error: 'sales_blocked' }), {
-      status: 422, headers: { ...CORS, 'Content-Type': 'application/json' },
-    });
-  }
+  const salesReason = verdict?.sales ? (verdict.reason || '理由なし') : null;
 
   // Run Notion + Slack in parallel
   const [notionResult, slackResult] = await Promise.allSettled([
-    saveToNotion(data, env.NOTION_API_KEY),
-    sendSlackNotification(data, env.SLACK_WEBHOOK_URL),
+    saveToNotion(data, env.NOTION_API_KEY, salesReason),
+    salesReason ? 'skipped (sales)' : sendSlackNotification(data, env.SLACK_WEBHOOK_URL),
   ]);
 
   console.log('Notion result:', notionResult.status, notionResult.reason?.message || '');

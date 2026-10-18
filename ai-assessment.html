@@ -1044,14 +1044,13 @@ lf.addEventListener('submit',async function(e){
     data.industry=selectedIndustry;if(d.ai_summary)data.ai_summary=d.ai_summary;
     if(window.twIntent)Object.assign(data,twIntent());
     var res=await fetch('/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
-    if(res.status===422)throw new Error('sales');
     if(!res.ok)throw new Error('server');
     if(typeof fbq==='function')fbq('track','Lead');
     if(typeof gtag==='function')gtag('event','generate_lead',{inquiry_type:'consultation',source:'AI活用度診断'});
     lf.style.display='none';document.querySelector('.result-actions').style.display='none';
     document.getElementById('thanks').classList.add('show');
     document.getElementById('thanks').scrollIntoView({behavior:'smooth',block:'center'});
-  }catch(err){btn.disabled=false;btn.style.opacity='1';btn.textContent='改善ロードマップを受け取る（無料）';alert(err.message==='sales'?'営業・売り込みを目的としたご連絡は、このフォームではお受けしておりません。サービスのご相談の場合は、ご検討中の内容を具体的にご記入のうえ、もう一度お送りください。':'送信に失敗しました。お手数ですが、しばらく経ってから再度お試しください。');}
+  }catch(err){btn.disabled=false;btn.style.opacity='1';btn.textContent='改善ロードマップを受け取る（無料）';alert('送信に失敗しました。お手数ですが、しばらく経ってから再度お試しください。');}
 });})();
 </script>
 </body>
