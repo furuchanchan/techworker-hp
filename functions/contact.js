@@ -40,8 +40,8 @@ function isAllowedSource(request) {
 // 営業の連絡に使うため、すべてのフォームで必須にしている項目。空や形式違いの送信は受け付けない
 const REQUIRED_FIELDS = ['name', 'company', 'email', 'phone', 'department', 'position'];
 
-// 電材卸向けサイトの実演申込・承継HD向けサイトの相談は、部署・役職を求めない
-const SHORT_FORM_TYPES = new Set(['denzai_demo', 'denzai_document', 'shokei_consult']);
+// 電材卸向けサイトの実演申込・承継HD向けサイトの相談・研修サイトの点検30分の申込は、部署・役職を求めない
+const SHORT_FORM_TYPES = new Set(['denzai_demo', 'denzai_document', 'shokei_consult', 'kenshu_check']);
 // 本体以外のサイト（電材卸・卸・商社・承継HD）からの申込。Slack の件名の頭に【種別】を付ける
 const SITE_FORM_TYPES = new Set([...SHORT_FORM_TYPES, 'sokumitsu_demo', 'sokumitsu_report', 'kenshu_consult', 'kenshu_document', 'kenshu_check']);
 const SHORT_FORM_REQUIRED_FIELDS = ['name', 'company', 'email', 'phone'];
