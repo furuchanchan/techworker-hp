@@ -32,6 +32,7 @@
     if (href.indexOf("type=document") !== -1) return "download";
     if (href.indexOf("contact") !== -1 || href.indexOf("appointments") !== -1) return "consultation";
     if (href.indexOf("ai-assessment") !== -1) return "assessment";
+    if (href.indexOf("kenshu.techworker.co.jp") !== -1) return href.indexOf("/check/") !== -1 ? "assessment" : "service";  // 研修サイト（2026-10-15 に独立）
     if (href.indexOf("library") !== -1 || anchor.hasAttribute("download")) return "download";
     if (/training|new-business|launch-simulation|coesignal|companymap/.test(href)) return "service";
     if (href.indexOf("/media/") !== -1 || href.indexOf(".html") !== -1) return "internal";
@@ -59,6 +60,8 @@
     if (/training/.test(href)) return "training";
     if (/contact/.test(href)) return "contact";
     if (/ai-assessment/.test(href)) return "assessment";
+    if (/kenshu\.techworker\.co\.jp\/check\//.test(href)) return "training_check";
+    if (/kenshu\.techworker\.co\.jp/.test(href)) return "training";
     return "";
   }
 

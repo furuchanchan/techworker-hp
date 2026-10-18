@@ -1,7 +1,7 @@
 /* メディアの申込み（CVの入口）。media/article-tracker.js が全ページで読み込む。
    1) 右下の枠: 媒体ごとに、その読者がいちばん受け取りやすい申込みを1つ。見本・題・ボタン・一言だけに絞る。
       受け取る物の見本（資料の表紙・業務図）と、中身の具体例3つ、受け取り方（送信後すぐ読める等）を見せる。
-   2) 記事中の申込み（.mid-cta）にも、同じ見本と中身の具体例を足す。
+   2) 記事中の申込み（.mid-cta）にも、同じ見本と中身の具体例を足す。研修・セキュリティの記事は、記事末の申込み（.art-cta）に研修サイトの安全度チェックへの1行を足す。
    中身の具体例は、実在する資料・ページに書いてあることだけ（library/cases-2026.html・claude-code-security.html・gyomuzu-templates.html・claude-code-ringi.html・companymap）。
    - 出す時: ページを2割読んだ時か、12秒たった時（一覧・ホームはスクロールを始めた時）
    - 記事の図・表紙、記事中・記事末の申込み、フッターが見えている間は隠す。×で小さな札にたたむ（同じタブの間は維持）
@@ -135,6 +135,7 @@
     ".mid-cta.rich .mc-note{grid-column:2;font-size:12px;color:var(--slate,#5A6677);margin-top:-12px}" +
     "@media(max-width:720px){.mid-cta.rich{grid-template-columns:1fr;gap:14px}.mid-cta.rich .btn,.mid-cta.rich .mc-note{grid-column:1}.mid-cta.rich .mc-note{margin-top:-8px}}" +
     "@media(min-width:761px) and (max-height:760px){.twd-img{display:none}}" +
+    ".art-cta .art-chk{color:var(--ink,#11161D)}.art-cta .art-chk a{color:" + A + ";font-weight:700;text-underline-offset:3px}" +
     "@media(prefers-reduced-motion:reduce){.twd,.twd-b{transition:none}}";
 
   function build() {
@@ -186,6 +187,24 @@
     });
   }
 
+  // 研修とセキュリティの記事の末尾の申込み（.art-cta）に、研修サイトの安全度チェック（3分・登録不要）への1行を足す
+  function addCheckToArtCta() {
+    if (seg !== "kenshu" && seg !== "security") return;
+    var head = document.querySelector(".art-cta .inner > div");
+    if (!head || head.querySelector(".art-chk")) return;
+    var u = new URL("https://kenshu.techworker.co.jp/check/");
+    u.searchParams.set("utm_source", "techworker_media");
+    u.searchParams.set("utm_medium", "article_end");
+    u.searchParams.set("utm_campaign", media);
+    u.searchParams.set("utm_content", slug);
+    var p = el("p", "art-chk");
+    p.appendChild(document.createTextNode("自社の穴を先に知りたい方は、"));
+    var a = el("a", "", "3分の安全度チェック"); a.href = u.toString(); a.setAttribute("data-cta-offer", "training_check");
+    p.appendChild(a);
+    p.appendChild(document.createTextNode("（無料・お名前不要）をお使いください。"));
+    head.appendChild(p);
+  }
+
   var box, shown = false, blocked = 0;
   var KEY = "tw_dock_min";
   function isMin() { try { return sessionStorage.getItem(KEY) === "1"; } catch (e) { return false; } }
@@ -202,6 +221,7 @@
   function init() {
     var st = el("style"); st.textContent = css; document.head.appendChild(st);
     enrichMidCta();
+    addCheckToArtCta();
     box = build();
     // 本文の右側にカードを置く余白がなければ、最初は小さな案内にする。
     // 読者がボタンを押したときは、従来どおり展開できる。
