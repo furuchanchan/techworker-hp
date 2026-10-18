@@ -107,6 +107,10 @@ function computeIntent(data) {
 // 本物の相談を取りこぼす損のほうが、営業が1通混ざる損より大きいため。
 const SALES_MODEL = 'claude-haiku-5-5';
 const SALES_STATUS = '営業（自動判定）';
+// Notion の「Slack通知」の値。朝の1通は「届かず」の数を出す
+const SLACK_SENT = '届いた';
+const SLACK_FAILED = '届かず';
+const SLACK_SKIPPED = '流さず（営業）';
 
 // 各サイトのフォームが本文の頭に入れる定型の1行（site.js の message_prefix。例「資料の請求：…」「ご用件：研修内容・費用を相談したい」）
 const PREFIX_LINE = /^(資料の請求|ご用件)：/;
@@ -243,7 +247,7 @@ function visitSummary(data) {
   return `${data.intent_visits || '1'}回目の訪問${first}｜今回の流入元 ${data.intent_referrer || '-'}（${classifyChannel(data)}）｜${data.intent_pages || '-'}`;
 }
 
-async function saveToNotion(data, apiKey, salesReason = null) {
+async function saveToNotion(data, apiKey, salesReason, slackStatus) {
   let msg = ((data.diag_score != null)
     ? `【📊AI活用度診断 ${data.diag_band || ''}（${data.diag_score}/${data.diag_max || 100}）】\n${data.diag_answers || ''}\n${data.message || ''}`
     : (data.message || '')).trim();
@@ -254,6 +258,7 @@ async function saveToNotion(data, apiKey, salesReason = null) {
     '会社名':     { rich_text: [{ text: { content: data.company || '' } }] },
     '相談内容':   { rich_text: [{ text: { content: msg } }] },
     'ステータス': { select:    { name: salesReason ? SALES_STATUS : '未対応' } },
+    'Slack通知':  { select:    { name: slackStatus } },
   };
   if (data.email)        properties['メール']         = { email:        data.email };
   if (data.phone)        properties['電話番号']       = { phone_number: data.phone };
@@ -287,10 +292,7 @@ async function saveToNotion(data, apiKey, salesReason = null) {
 }
 
 async function sendSlackNotification(data, webhookUrl) {
-  if (!webhookUrl) {
-    console.error('SLACK_WEBHOOK_URL is not set');
-    return;
-  }
+  if (!webhookUrl) throw new Error('SLACK_WEBHOOK_URL is not set');
   const type = INQUIRY_MAP[data.inquiry_type] || data.inquiry_type || '-';
   const intent = computeIntent(data);
   const first = firstTouch(data);
@@ -352,10 +354,7 @@ async function sendSlackNotification(data, webhookUrl) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
   });
-  if (!res.ok) {
-    const body = await res.text();
-    console.error('Slack webhook error:', res.status, body);
-  }
+  if (!res.ok) throw new Error(`Slack ${res.status}: ${await res.text()}`);
 }
 
 export async function onRequestOptions({ request }) {
@@ -431,24 +430,30 @@ export async function onRequestPost({ request, env }) {
   console.log('Sales verdict:', verdict ? JSON.stringify(verdict) : 'skipped');
   const salesReason = verdict?.sales ? (verdict.reason || '理由なし') : null;
 
-  // Run Notion + Slack in parallel
-  const [notionResult, slackResult] = await Promise.allSettled([
-    saveToNotion(data, env.NOTION_API_KEY, salesReason),
-    salesReason ? 'skipped (sales)' : sendSlackNotification(data, env.SLACK_WEBHOOK_URL),
-  ]);
-
-  console.log('Notion result:', notionResult.status, notionResult.reason?.message || '');
-  console.log('Slack result:', slackResult.status, slackResult.reason?.message || '');
-
-  if (notionResult.status === 'fulfilled' && notionResult.value) {
-    return new Response(JSON.stringify({ success: true }), {
-      status: 200, headers: { ...CORS, 'Content-Type': 'application/json' },
-    });
+  // Slack に届かなくても受付は Notion に残し、送った人には受付の画面を出す。
+  // 届かなかったことは Notion の「Slack通知」に「届かず」で残し、朝の1通の件数で気づく
+  let slackStatus = SLACK_SKIPPED;
+  if (!salesReason) {
+    slackStatus = SLACK_SENT;
+    try {
+      await sendSlackNotification(data, env.SLACK_WEBHOOK_URL);
+    } catch (err) {
+      console.error('Slack notification failed:', err.message);
+      slackStatus = SLACK_FAILED;
+    }
   }
 
-  const errMsg = notionResult.reason?.message || 'unknown';
-  console.error('Notion save failed:', errMsg);
-  return new Response(JSON.stringify({ error: 'Failed to save', detail: String(errMsg) }), {
-    status: 500, headers: { ...CORS, 'Content-Type': 'application/json' },
+  try {
+    await saveToNotion(data, env.NOTION_API_KEY, salesReason, slackStatus);
+  } catch (err) {
+    console.error('Notion save failed:', err.message);
+    return new Response(JSON.stringify({ error: 'Failed to save', detail: String(err.message) }), {
+      status: 500, headers: { ...CORS, 'Content-Type': 'application/json' },
+    });
+  }
+  console.log('Slack result:', slackStatus);
+
+  return new Response(JSON.stringify({ success: true }), {
+    status: 200, headers: { ...CORS, 'Content-Type': 'application/json' },
   });
 }
