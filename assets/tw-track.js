@@ -8,7 +8,7 @@
       var q = new URLSearchParams(location.search);
       var here = {
         ref: document.referrer || '',
-        landing: location.pathname,
+        landing: location.pathname + (q.get('r') ? '?r=' + q.get('r') : ''),  // r＝打診の本文のリンクに付けた会社ごとの印。問い合わせと打診を結ぶ
         title: document.title,
         utm: ['utm_source', 'utm_medium', 'utm_campaign'].map(function (k) { return q.get(k) || ''; }).join('|'),
         at: new Date().toISOString().slice(0, 10),
