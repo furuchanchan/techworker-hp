@@ -43,7 +43,7 @@ const REQUIRED_FIELDS = ['name', 'company', 'email', 'phone', 'department', 'pos
 // 電材卸向けサイトの実演申込・承継HD向けサイトの相談は、部署・役職を求めない
 const SHORT_FORM_TYPES = new Set(['denzai_demo', 'denzai_document', 'shokei_consult']);
 // 本体以外のサイト（電材卸・卸・商社・承継HD）からの申込。Slack の件名の頭に【種別】を付ける
-const SITE_FORM_TYPES = new Set([...SHORT_FORM_TYPES, 'sokumitsu_demo', 'sokumitsu_report', 'kenshu_consult', 'kenshu_document']);
+const SITE_FORM_TYPES = new Set([...SHORT_FORM_TYPES, 'sokumitsu_demo', 'sokumitsu_report', 'kenshu_consult', 'kenshu_document', 'kenshu_check']);
 const SHORT_FORM_REQUIRED_FIELDS = ['name', 'company', 'email', 'phone'];
 
 function invalidFields(data) {
@@ -65,6 +65,7 @@ const INQUIRY_MAP = {
   sokumitsu_report: '卸・商社のAI活用レポート',
   kenshu_consult: '研修の相談',
   kenshu_document: '研修の資料ダウンロード',
+  kenshu_check: '研修の点検30分の申込',
 };
 
 // ===== Intent scoring =====
@@ -88,6 +89,7 @@ function computeIntent(data) {
   if (nCases)    { score += Math.min(nCases * 2, 4);     reasons.push(`実績/事例${nCases}回`); }
   if (nLP)       { score += Math.min(nLP * 2, 4);        reasons.push(`シミュLP${nLP}回`); }
   if (isDiag)    { score += 4;                           reasons.push('AI活用度診断を実施'); }
+  if (data.inquiry_type === 'kenshu_check') { score += 4; reasons.push('安全度チェックに回答'); }
   if (nLibrary)  { score += Math.min(nLibrary, 2);       reasons.push(`資料DL${nLibrary}回`); }
   if (nMedia)    { score += 1;                           reasons.push('メディア閲覧'); }
   if (visits >= 3)      { score += 3; reasons.push(`${visits}回目の訪問`); }
@@ -395,6 +397,11 @@ export async function onRequestPost({ request, env }) {
   if (data.inquiry_type === 'denzai_demo' || data.inquiry_type === 'sokumitsu_demo') {
     const quotes = String(data.quotes_per_month ?? '').trim().slice(0, 50);
     data.message = [String(data.message ?? '').trim(), quotes ? `見積の月の件数：${quotes}` : ''].filter(Boolean).join('\n');
+  }
+  if (data.inquiry_type === 'kenshu_check') {
+    // 研修サイトの安全度チェック（15問）の点数と回答。人が書いた本文ではないので、営業の判定より後に足す
+    const result = String(data.check_result ?? '').trim().slice(0, 1000);
+    data.message = [String(data.message ?? '').trim(), result ? `安全度チェック: ${result}` : ''].filter(Boolean).join('\n');
   }
   if (data.inquiry_type === 'shokei_consult') {
     const deals = String(data.deals ?? '').trim().slice(0, 50);
