@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Inter+Tight:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/companymap/docs.css?v=20261007a">
+<link rel="stylesheet" href="/assets/companymap/docs.css?v=20261019a">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "TechArticle", "headline": "データの取り扱い", "description": "業務図・資料・聞き取りの情報を、どこに保存し、だれが見られ、AIにどう渡すかをまとめました。情報システム・人事のご確認にお使いください。", "url": "https://techworker.co.jp/companymap/docs/security", "inLanguage": "ja", "dateModified": "2026-10-19", "about": {"@type": "Service", "name": "CompanyMap AI", "url": "https://techworker.co.jp/companymap"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "CompanyMap AI", "item": "https://techworker.co.jp/companymap"}, {"@type": "ListItem", "position": 2, "name": "Docs", "item": "https://techworker.co.jp/companymap/docs/"}, {"@type": "ListItem", "position": 3, "name": "データの取り扱い", "item": "https://techworker.co.jp/companymap/docs/security"}]}]}</script>
 </head>
 <body class="docs"><svg width="0" height="0" style="position:absolute"><defs><symbol id="logo" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#0B0B0C"/><path d="M45 17H30C23.9 17 19 21.9 19 28V36C19 42.1 23.9 47 30 47H45" fill="none" stroke="#FFFFFF" stroke-width="5.2" stroke-linecap="round"/><circle cx="47" cy="17" r="5.6" fill="#FFFFFF"/><rect x="12.5" y="25.5" width="13" height="13" rx="3.5" fill="#0B0B0C" stroke="#FFFFFF" stroke-width="4.4"/><circle cx="47" cy="47" r="5.6" fill="#FFFFFF"/></symbol></defs></svg>
@@ -56,7 +56,7 @@
 </tr>
 <tr>
 <td>会社ごとの区切り</td>
-<td>画面と通信のたびに、ご自身の会社の情報かを確かめます。ほかのお客さまの情報は見られません。</td>
+<td>データベースは、ほかのお客さまと共通の1つです。情報に会社の印を付けて分けています。画面と通信のたびに、ご自身の会社の情報かを確かめます。ほかのお客さまの情報は見られません。</td>
 </tr>
 <tr>
 <td>操作の記録</td>
@@ -64,11 +64,11 @@
 </tr>
 <tr>
 <td>保存先</td>
-<td>Cloudflare のデータベース（D1）とストレージ（R2）。保存時も通信時も暗号化されます。日本国内に限る設定はしていません。</td>
+<td>Cloudflare のデータベース（D1）。地域はアジア太平洋を指定しています（Cloudflare は場所を保証していません）。保存時も通信時も暗号化されます。日本国内に限る設定はしていません。</td>
 </tr>
 <tr>
 <td>使うAI</td>
-<td>Anthropic の Claude と、Cloudflare の Workers AI。聞き取りの問いの読み上げには OpenAI を使います（送るのは問いの文だけです）。AIは資料から業務図の最初の下書きと、工程の説明の空欄を直接書きます。そのあとの変更は提案として出し、業務図に入れるのは人です。</td>
+<td>Anthropic の Claude と、Cloudflare の Workers AI。聞き取りの聞き手には OpenAI を使います（既定の会話の形では、答える方の声も送ります）。AIは資料から業務図の最初の下書きと、空欄の工程の説明を書きます。そのあとの変更は提案として出し、業務図に入れるのは人です。</td>
 </tr>
 <tr>
 <td>聞き取り</td>
@@ -76,7 +76,7 @@
 </tr>
 <tr>
 <td>削除</td>
-<td>ご契約の終了時に、業務図・資料・操作の記録と、聞き取りの答えを、会社ごとまとめて削除します。聞き取りの保管期間は、ご契約で決めます。</td>
+<td>ご契約の終了から30日以内に、業務図・資料・操作の記録と、聞き取りの答えを、会社ごとまとめて削除します。聞き取りの保管期間は、ご契約で決めます。</td>
 </tr>
 </tbody>
 </table>
@@ -133,7 +133,7 @@
 <li><strong>聞き取りの答え</strong>：答え全体を見るのは、聞き取りを運用するTechWorkerの担当者と品質管理の担当者です。お客さまの画面には、だれが答えたかは出しません。業務図の作業ごとに、根拠として、回答者の名前を付けない答えの一文と「何人中何人がこう答えたか」を示します。</li>
 </ul>
 <h2 id="ログインのいらない入口">ログインのいらない入口</h2>
-<p>次の3つは、ログインなしで開けます。</p>
+<p>次の2つは、ログインなしで開けます。</p>
 <table>
 <thead>
 <tr>
@@ -147,11 +147,6 @@
 <td>聞き取りの答える画面</td>
 <td>答える方が使う画面</td>
 <td>推測できない鍵の付いたURL。名前や連絡先の登録はいりません</td>
-</tr>
-<tr>
-<td>手順書をAIに読ませる専用のURL</td>
-<td>業務図から書き出した手順書（読むだけ）</td>
-<td>推測できない鍵の付いたURL。運用担当が発行し、いつでも取り消せます。発行と取り消しは記録に残ります</td>
 </tr>
 <tr>
 <td>他社事例の検索</td>
@@ -197,7 +192,12 @@
 <td>Cloudflare の中。声は文字にしたあと残しません</td>
 </tr>
 <tr>
-<td>聞き取りの問いの読み上げ</td>
+<td>聞き取りの聞き手（既定の会話の形）</td>
+<td>OpenAI（会話の音声）</td>
+<td>問いの文と、答える方の声を送ります。OpenAI 側に会話を保存しない設定で送ります</td>
+</tr>
+<tr>
+<td>聞き取りの問いの読み上げ（読み上げの形を選んだとき）</td>
 <td>OpenAI（読み上げ専用の音声）</td>
 <td>問いの文だけを送ります。答える方の声は送りません</td>
 </tr>
@@ -206,14 +206,14 @@
 <ul>
 <li>AIが業務図を直接書くのは、資料から作る最初の下書きと、工程の説明の空欄だけです。そのあとの変更は、AIが提案として出し、編集できる方が採用したものだけが業務図に入ります。</li>
 <li>Anthropic と Cloudflare は、法人向けの規約で、送った内容をAIの学習に使わないとしています（<a href="https://www.anthropic.com/legal/commercial-terms">Anthropic の規約</a>、<a href="https://developers.cloudflare.com/workers-ai/platform/data-usage/">Cloudflare Workers AI の説明</a>）。</li>
-<li>資料や聞き取りの答えを Claude に渡すとき、内容は米国の Anthropic に送られます。</li>
+<li>資料や聞き取りの答えを Claude に渡すとき、内容は米国の Anthropic に送られます。AIの処理の地域は、いまは指定していません。米国以外の設備で処理されることがあります。</li>
 <li>Anthropic の API に送った入力と出力は、Anthropic が原則30日以内に削除すると説明しています。規約に反する疑いがあると判定されたものは最長2年、安全のための分類の点数は最長7年残ることがあります（<a href="https://privacy.claude.com/en/articles/7996866">Anthropic の説明</a>、2026年7月1日更新）。入力を一切保存しない契約（Zero Data Retention）は結んでいません。</li>
 <li>他社事例の検索は、データベースの中で並べ替えます。AIは使いません。</li>
-<li>聞き取りには、声で会話する形（試験中）もあります。この形を選んだときだけ、答える方の声が OpenAI に送られます（OpenAI 側に会話を保存しない設定で送ります）。既定は、問いを読み上げて答えを文字にする形です。</li>
+<li>聞き取りの既定は、声で会話する形です。この形では、答える方の声が OpenAI に送られます（OpenAI 側に会話を保存しない設定で送ります）。記録に残す字は、OpenAI ではなく Cloudflare の文字起こしで作ります。問いを読み上げて答えを文字にする形も選べます。この形では、OpenAI に送るのは問いの文だけです。</li>
 </ul>
 <h2 id="保管と削除">保管と削除</h2>
 <ul>
-<li><strong>業務図、資料、コメント、操作の記録、Excelの点検の結果</strong>：ご契約の終了時に、TechWorkerが会社の情報をまとめて削除します。削除の後も、データベースの復元用の履歴には最大30日残ります。</li>
+<li><strong>業務図、資料、コメント、操作の記録、Excelの点検の結果</strong>：ご契約が終わったら、一式をお返しし、30日以内にTechWorkerが会社の情報をまとめて削除します。削除の後も、データベースの復元用の履歴には最大30日残ります。</li>
 <li><strong>AIに送った内容</strong>：削除しても、Anthropic 側に原則30日以内（規約に反する疑いがあると判定されたものは最長2年）残ることがあります。</li>
 <li><strong>聞き取りの答え</strong>：保管の期間は、ご契約で決めます。答える方の画面にも、そのことを示しています。ご契約の終了時には、業務図などと同じ操作で、その会社の聞き取りをすべて削除します。2026年10月18日より前に聞き取りの基盤 CoeSignal で作った聞き取りは、録音・書き起こしも同じ操作で削除します。</li>
 </ul>
@@ -232,7 +232,7 @@
 </tr>
 <tr>
 <td>時期</td>
-<td>ご契約の終了時。会社ごとの削除のご依頼があったときは、その時</td>
+<td>ご契約の終了から30日以内。会社ごとの削除のご依頼があったときは、その時</td>
 </tr>
 <tr>
 <td>消えるもの</td>

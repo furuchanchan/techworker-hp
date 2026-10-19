@@ -7,7 +7,7 @@ updated: 2026-10-19
 
 <div class="qa" markdown="1">
 <details markdown="1"><summary>費用はいくらですか。</summary><div markdown="1">
-30分のご相談と、2週間の無料検証は無料です。本導入と短期契約は月額でお引き受けします。額は、無料検証の報告会でお見積もりします。
+30分のご相談と、2週間の無料検証は無料です。本導入と短期契約は月額でお引き受けします。額は、無料検証の報告会でお見積りします。
 </div></details>
 <details markdown="1"><summary>2週間の無料検証だけで終えても、費用はかかりますか。</summary><div markdown="1">
 かかりません。お借りした物は、報告会から14日以内に消します。
@@ -21,14 +21,14 @@ updated: 2026-10-19
 <details markdown="1"><summary>やめるときは、どうなりますか。</summary><div markdown="1">
 引き継ぎ書・手順・記録をすべてお返しします。
 </div></details>
-<details markdown="1"><summary>社内のだれに、どれくらい時間をもらいますか。</summary><div markdown="1">
-窓口の方1名と、その業務の担当者・ベテランの方です。聞き取りは1人15分ほどです。報告会には、決める方に出ていただきます。詳しくは[無料検証の2週間](/companymap/docs/first-two-weeks)をご覧ください。
+<details markdown="1"><summary>どなたに、どれくらいお時間をいただきますか。</summary><div markdown="1">
+窓口の方1名と、その業務の担当者・ベテランの方です。聞き取りは1人15分ほどです。報告会には、導入を決める方に出ていただきます。詳しくは[無料検証の2週間](/companymap/docs/first-two-weeks)をご覧ください。
 </div></details>
 <details markdown="1"><summary>資料がなくても始められますか。</summary><div markdown="1">
 はい。手順書やExcelがあれば使いますが、なくてもお話からAIが作れます。
 </div></details>
 <details markdown="1"><summary>どんな業務が向いていますか。</summary><div markdown="1">
-「〇〇さんに聞かないと決まらない」仕事です。たとえば、返金・値引きの判断、月次の差異の理由の説明、納期が短い注文の受け方などです。合わない使い方は[向いていない使い方](/companymap/docs/not-fit)にまとめています。
+「〇〇さんに聞かないと決まらない」仕事です。たとえば、返金・値引きの判断、月次の数字がずれた理由の説明、納期が短い注文の受け方などです。合わない使い方は[向いていない使い方](/companymap/docs/not-fit)にまとめています。
 </div></details>
 </div>
 

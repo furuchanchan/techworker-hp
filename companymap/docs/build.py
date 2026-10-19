@@ -22,7 +22,7 @@ ROOT = Path(__file__).resolve().parents[2]
 DOCS = ROOT / "companymap" / "docs"
 SITE = "https://techworker.co.jp"
 BASE = "/companymap/docs"
-CSS_VER = "20261007a"
+CSS_VER = "20261019a"
 
 # (グループ名, [(slug, サイドバーの表示名)])。slug "index" は Docs のトップ
 PAGES: list[tuple[str, list[tuple[str, str]]]] = [
