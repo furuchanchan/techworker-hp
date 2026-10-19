@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}if(location.hostname==='techworker.co.jp')gtag('config', 'G-3V34NWXVCJ');
+</script>
+<script src="/assets/tw-track.js" defer></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>国内上場企業の生成AI活用データ — TechWorker</title>
+<meta name="description" content="国内の上場企業が、生成AIを使っていると公表しているかを、東証33業種ごとに数えたデータです。公表している会社と、出典と照合した事例を、出典のリンクつきで探せます。毎日更新。CC BY 4.0 で自由に使えます。">
+<link rel="canonical" href="https://techworker.co.jp/genai-data/">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TechWorker">
+<meta property="og:title" content="国内上場企業の生成AI活用データ — TechWorker">
+<meta property="og:description" content="国内の上場企業が、生成AIを使っていると公表しているかを、東証33業種ごとに数えたデータです。公表している会社と、出典と照合した事例を、出典のリンクつきで探せます。">
+<meta property="og:url" content="https://techworker.co.jp/genai-data/">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/genai-data/genai-data.css?v=20261019a">
+<script type="application/ld+json" id="ld-dataset">{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "国内上場企業の生成AI活用データ",
+  "description": "国内の上場企業が、自社で生成AIを使っている・試している・導入したと公表しているかを、東証33業種ごとに数えたデータ。公表している会社の一覧と、出典と照合した事例を含む。割合の分母は調べた会社。毎日更新。",
+  "url": "https://techworker.co.jp/genai-data/",
+  "sameAs": "https://github.com/techworker-jp/jp-listed-genai",
+  "inLanguage": "ja",
+  "isAccessibleForFree": true,
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "creator": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"},
+  "spatialCoverage": "日本",
+  "keywords": ["生成AI", "上場企業", "東証33業種", "活用事例"],
+  "distribution": [
+    {"@type": "DataDownload", "encodingFormat": "text/csv", "name": "業種ごとの割合", "contentUrl": "https://raw.githubusercontent.com/techworker-jp/jp-listed-genai/main/data/industries.csv"},
+    {"@type": "DataDownload", "encodingFormat": "text/csv", "name": "公表している会社", "contentUrl": "https://raw.githubusercontent.com/techworker-jp/jp-listed-genai/main/data/companies.csv"},
+    {"@type": "DataDownload", "encodingFormat": "text/csv", "name": "出典と照合した事例", "contentUrl": "https://raw.githubusercontent.com/techworker-jp/jp-listed-genai/main/data/cases.csv"}
+  ],
+  "dateModified": "2026-10-19"
+}</script>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="/" class="logo">Tech<i>Worker</i></a>
+  <ul>
+    <li><a href="/">ホーム</a></li>
+    <li><a href="/services">サービス</a></li>
+    <li><a href="/cases">実績</a></li>
+    <li><a href="/media/">メディア</a></li>
+    <li><a href="/library/">資料</a></li>
+    <li><a href="/news">ニュース</a></li>
+    <li><a href="/company">会社概要</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="/contact" class="nav-cta">無料相談</a>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="/">ホーム</a>
+  <a href="/services">サービス</a>
+  <a href="/cases">実績</a>
+  <a href="/media/">メディア</a>
+  <a href="/library/">資料ダウンロード</a>
+  <a href="/news">ニュース</a>
+  <a href="/company">会社概要</a>
+  <a href="/contact" class="m-cta">無料相談を申し込む</a>
+</div>
+
+<main class="container">
+  <header class="head">
+    <h1>国内上場企業の<wbr>生成AI活用データ</h1>
+    <p class="lead">上場企業が、生成AIを使っていると公表しているかを、業種ごとに数えました。公表している会社と事例は、すべて出典のリンクつきです。</p>
+    <p class="meta"><span>最後に確かめた日 <b id="m-checked">—</b></span><span>データの版 <b id="m-version">—</b></span><span>毎日更新</span></p>
+  </header>
+
+  <div id="app">
+    <p class="loading" id="loading">データを読み込んでいます…</p>
+  </div>
+
+  <section class="blk" id="download">
+    <div class="two">
+      <div>
+        <h2>データの取り出し</h2>
+        <p class="sub">CSV でそのまま使えます。CC BY 4.0（出典を書けば、商用でも自由に使える）で公開しています。</p>
+        <div class="links">
+          <a href="https://raw.githubusercontent.com/techworker-jp/jp-listed-genai/main/data/industries.csv" data-ga="csv" data-ga-file="industries">業種ごとの割合（CSV）<small>industries.csv</small></a>
+          <a href="https://raw.githubusercontent.com/techworker-jp/jp-listed-genai/main/data/companies.csv" data-ga="csv" data-ga-file="companies">公表している会社（CSV）<small>companies.csv</small></a>
+          <a href="https://raw.githubusercontent.com/techworker-jp/jp-listed-genai/main/data/cases.csv" data-ga="csv" data-ga-file="cases">出典と照合した事例（CSV）<small>cases.csv</small></a>
+          <a href="https://github.com/techworker-jp/jp-listed-genai" target="_blank" rel="noopener" data-ga="github">GitHub で全部のデータと変更の記録を見る<small>↗</small></a>
+        </div>
+        <p class="cite">使うときは、次のように出典を書いてください。<code id="cite-text">出典：TechWorker『国内上場企業の生成AI活用データ』</code><button class="copy" type="button" id="copy-cite">出典の書き方をコピー</button></p>
+      </div>
+      <div id="fix">
+        <h2>掲載の追加・訂正</h2>
+        <p class="sub">載っていない公表や、内容の誤りがあれば教えてください。出典を確かめてから、データに反映します。</p>
+        <div class="links">
+          <a href="https://github.com/techworker-jp/jp-listed-genai/issues/new/choose" target="_blank" rel="noopener" data-ga="correction" data-ga-via="github">GitHub の Issue で送る<small>↗</small></a>
+          <a href="/contact" data-ga="correction" data-ga-via="contact">問い合わせフォームで送る<small>→</small></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <aside class="map">
+    <p>自社のどの業務にAIを入れるかを、1枚の図にします。</p>
+    <a href="/companymap" data-ga="companymap">CompanyMap AI を見る →</a>
+  </aside>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">Tech<i>Worker</i></div>
+        <p>企業向け生成AIコンサルティング<br>株式会社TechWorker</p>
+      </div>
+      <div class="footer-col">
+        <h4>サービス</h4>
+        <a href="/services">生成AIコンサル</a>
+        <a href="/companymap">CompanyMap AI</a>
+      </div>
+      <div class="footer-col">
+        <h4>サイト</h4>
+        <a href="/media/">メディア</a>
+        <a href="/news">ニュース</a>
+        <a href="/cases">実績</a>
+        <a href="/company">会社概要</a>
+      </div>
+      <div class="footer-col">
+        <h4>お問い合わせ</h4>
+        <a href="/contact">無料相談</a>
+        <a href="/privacy">プライバシーポリシー</a>
+        <p>〒169-0051<br>東京都新宿区西早稲田一丁目22番3号</p>
+      </div>
+    </div>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="/genai-data/genai-data.js?v=20261019a"></script>
+</body>
+</html>
