@@ -32,7 +32,7 @@ PAGES: list[tuple[str, list[tuple[str, str]]]] = [
     ]),
     ("進め方", [
         ("how-it-works", "進め方と分担"),
-        ("first-two-weeks", "最初の2週間"),
+        ("first-two-weeks", "無料検証の2週間"),
         ("collecting", "業務の情報の集め方"),
         ("deliverables", "お渡しするもの"),
         ("reading-the-map", "業務図の読み方"),
@@ -221,7 +221,7 @@ def llms_txt(metas: dict[str, dict[str, str]]) -> str:
     lines = [
         "# CompanyMap AI Docs",
         "",
-        "> CompanyMap AI（株式会社TechWorker）は、担当者への聞き取り・手元の資料・業務の記録の3つから、AIが仕事の流れを1枚の業務図にするサービスです。図を見てAIに任せる仕事と人が判断する仕事を分け、実装担当（FDE）が構築から効果の確認まで一緒に進めます。",
+        "> CompanyMap AI（株式会社TechWorker）は、ベテランに聞かないと決まらない仕事を1つ選び、2週間の無料検証で引き継ぎ書（業務図・判断の一覧など）にしてお返しするサービスです。そのあと約1か月で御社のAIの上で動かし、運用担当が毎月採点して直します。",
         "",
         "各ページは .md でも読めます。",
         "",

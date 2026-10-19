@@ -1,28 +1,34 @@
 ---
 title: よくある質問
 description: 費用、社内の手間、聞き取りの答えの扱い、業務図の作り方など、ご相談のときによく聞かれることです。
-updated: 2026-10-08
+updated: 2026-10-19
 ---
 ## 進め方と費用
 
 <div class="qa" markdown="1">
 <details markdown="1"><summary>費用はいくらですか。</summary><div markdown="1">
-30分の無料相談で、AIが最初の業務図を1枚作ります。最初の2週間と、構築以降の費用は、対象の業務と範囲を伺ってお見積もりします。
+30分のご相談と、2週間の無料検証は無料です。本導入と短期契約は月額でお引き受けします。額は、無料検証の報告会でお見積もりします。
 </div></details>
-<details markdown="1"><summary>構築まで頼まないといけませんか。</summary><div markdown="1">
-いいえ。構築に進むかどうかは、業務図を見てから決めていただけます。業務の整理だけのご依頼も承ります。
+<details markdown="1"><summary>2週間の無料検証だけで終えても、費用はかかりますか。</summary><div markdown="1">
+かかりません。お借りした物は、報告会から14日以内に消します。
 </div></details>
-<details markdown="1"><summary>構築のあと、契約はずっと続きますか。</summary><div markdown="1">
-いいえ。構築・導入が終わったところで、自社で回す（ここで終了）、TechWorkerが動かし続ける（運用のご契約）、次の部署へ広げる、の3つからお選びいただけます。自社で回すときも、業務図・手順書・作った仕組みをそろえてお渡しします。詳しくは[進め方と分担](/companymap/docs/how-it-works)をご覧ください。
+<details markdown="1"><summary>秘密保持契約は、どちらのひな形を使いますか。</summary><div markdown="1">
+当社のひな形をお送りします。御社のひな形でも構いません。
+</div></details>
+<details markdown="1"><summary>本導入と短期契約は、どう違いますか。</summary><div markdown="1">
+本導入は、約1か月でその業務を御社のAIの上で動かし、使い始めてからは毎月採点して直します。短期契約は、いきなり本導入が難しい会社向けで、1〜3か月、人の作業と並べてAIを動かし、任せられる所を確かめます。本導入に進むときは、作った物と採点の記録をそのまま引き継ぎます。詳しくは[進め方と分担](/companymap/docs/how-it-works)をご覧ください。
+</div></details>
+<details markdown="1"><summary>やめるときは、どうなりますか。</summary><div markdown="1">
+引き継ぎ書・手順・記録をすべてお返しします。
 </div></details>
 <details markdown="1"><summary>社内のだれに、どれくらい時間をもらいますか。</summary><div markdown="1">
-窓口の方1名と、その業務の担当者・ベテランの方です。聞き取りは1人15分ほどです。詳しくは[最初の2週間](/companymap/docs/first-two-weeks)をご覧ください。
+窓口の方1名と、その業務の担当者・ベテランの方です。聞き取りは1人15分ほどです。報告会には、決める方に出ていただきます。詳しくは[無料検証の2週間](/companymap/docs/first-two-weeks)をご覧ください。
 </div></details>
 <details markdown="1"><summary>資料がなくても始められますか。</summary><div markdown="1">
 はい。手順書やExcelがあれば使いますが、なくてもお話からAIが作れます。
 </div></details>
 <details markdown="1"><summary>どんな業務が向いていますか。</summary><div markdown="1">
-部署の中で、名前で言える業務です。受注処理、月次の集計、見積の作成、請求書の発行などです。合わない使い方は[向いていない使い方](/companymap/docs/not-fit)にまとめています。
+「〇〇さんに聞かないと決まらない」仕事です。たとえば、返金・値引きの判断、月次の差異の理由の説明、納期が短い注文の受け方などです。合わない使い方は[向いていない使い方](/companymap/docs/not-fit)にまとめています。
 </div></details>
 </div>
 
@@ -33,10 +39,10 @@ updated: 2026-10-08
 名前・連絡先は聞かず、お客さまの画面にも、だれが答えたかは出しません。最初の質問で役割を選んでもらいます。業務図には、根拠として、回答者の名前を付けない答えの一文と「何人中何人がこう答えたか」を示します。同じ役割の方が5人未満のときは、役割も伏せます。答えの本文に出てくる人名などは、自動では伏せません。答えの中身から推測できてしまうこともあるため、「完全な匿名」とはお伝えしていません。
 </div></details>
 <details markdown="1"><summary>聞き取りの録音は残りますか。</summary><div markdown="1">
-会話は録音し、AIによる書き起こしと分析に使います。保管の期間は、ご契約で決めます。答える方の最初の画面にも、そのことを示しています。
+残りません。声は文字にするためだけに使い、録音は残しません。残るのは、答える方が画面で確かめて送った文だけです。答えの保管の期間は、ご契約で決めます。答える方の最初の画面にも、そのことを示しています。
 </div></details>
 <details markdown="1"><summary>業務の情報が、AIの学習に使われませんか。</summary><div markdown="1">
-使っているAIの提供会社（Anthropic、Cloudflare）は、法人向けの規約で、送った内容をAIの学習に使わないとしています。詳しくは[データの取り扱い](/companymap/docs/security)をご覧ください。
+使っているAIの提供会社（Anthropic、Cloudflare）は、法人向けの規約で、送った内容をAIの学習に使わないとしています。本導入のあとにAIを動かす場所は御社がお使いのAIで、その取り扱いは御社の契約によります。詳しくは[データの取り扱い](/companymap/docs/security)をご覧ください。
 </div></details>
 <details markdown="1"><summary>社員のパソコンに、何か入れる必要がありますか。</summary><div markdown="1">
 ありません。答える方も、業務図を見る方も、ブラウザだけで使えます。
@@ -56,7 +62,7 @@ updated: 2026-10-08
 どちらかに決めず、どの条件で違うのかを分けて、責任者に確かめます。違いは「人による違い」として図に残します。
 </div></details>
 <details markdown="1"><summary>業務図は、一度作ったら終わりですか。</summary><div markdown="1">
-やり方が変わったら、新しい版を作ります。AIを入れた後の図も、前の版と並べて残します。
+やり方が変わったら、新しい版を作ります。AIを入れた後の図も、前の版と並べて残します。使い始めてからは、運用担当が毎月の採点とあわせて図を直します。
 </div></details>
 <details markdown="1"><summary>自社で業務図を描くこともできますか。</summary><div markdown="1">
 描けます。描き方は、無料の[業務図の完全ガイド](/companymap/download)にまとめています。CompanyMap AIをお使いの場合、図はAIが作ります。
