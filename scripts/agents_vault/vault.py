@@ -498,10 +498,18 @@ def index_page(entries):
 
 <section class="av-list" id="list"><div class="av-wrap">
   <div class="av-sec-h"><h2>エージェントを探す</h2><p class="av-count" aria-live="polite"><b id="av-n">{n}</b>件</p></div>
+  <p class="av-ac">当社で動いている実物は、<a href="/agent-cases/" data-ac-location="vault_list" data-ac-case="vault" data-ac-offering="agent_cases">AIエージェントの事例</a>へ。</p>
   <div class="av-filters"><div class="av-frow" role="group" aria-label="部署で絞り込む">{dchips}</div><div class="av-frow" role="group" aria-label="製品で絞り込む">{pchips}</div></div>
   <div class="av-grid" id="av-grid">{cards}</div>
   <p class="av-empty" hidden>この組み合わせのエージェントは、まだありません。</p>
 </div></section>
+<script>
+/* 事例への案内のクリックを GA4 の agent_case_cta_click で数える（case_id・offering・location） */
+document.addEventListener('click',function(ev){{
+  var a=ev.target.closest&&ev.target.closest('[data-ac-location]');if(!a||typeof gtag!=='function')return;
+  gtag('event','agent_case_cta_click',{{case_id:a.dataset.acCase,offering:a.dataset.acOffering,location:a.dataset.acLocation}});
+}});
+</script>
 
 <section class="av-wrap"><div class="mh-band av-band" data-cta-placement="vault_band">
   <div><h2>自社の業務で、1本作ってみませんか。</h2><p>TechWorker の生成AI研修では、受講者の実際の業務を1つ選び、研修の中でエージェントを作ります。教材は毎週更新し、受講から30日後に使われ方を測ってご報告します。</p></div>
