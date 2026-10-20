@@ -158,6 +158,16 @@ body.menu-open .mmenu{transform:none;visibility:visible;}
 }
 
 
+/* ===== AIエージェントの事例への入口 ===== */
+.ac-band{display:flex;align-items:center;justify-content:space-between;gap:32px;margin-top:34px;padding:30px 36px;background:var(--white);border:1px solid var(--line);border-radius:5px;}
+.ac-band h2{font-family:var(--jp);font-weight:700;font-size:20px;line-height:1.5;}
+.ac-band p{font-size:14px;color:var(--slate);line-height:1.8;margin-top:6px;}
+.ac-band .btn{flex-shrink:0;}
+.hcase-ac{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-size:14px;font-weight:600;color:var(--electric);text-decoration:none;}
+.hcase-ac:hover{text-decoration:underline;}
+.hcase-ac i{font-style:normal;}
+@media(max-width:860px){.ac-band{flex-direction:column;align-items:flex-start;gap:18px;padding:24px 22px;}}
+
 /* ===== EDITORIAL CASE BLOCKS (hcase reference) ===== */
 .cases-wrap{padding-bottom:30px;}
 .hcase{padding-top:28px;}
@@ -468,6 +478,10 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
         <span class="rs-result"><span class="m jp">全社</span>横断のAI導入を設計し、段階展開中</span>
       </div>
     </div>
+    <div class="ac-band rv">
+      <div><h2>AIエージェントの事例</h2><p>AIが読む物、AIの処理、人が決めることを、14件の事例で1件ずつ紹介しています。</p></div>
+      <a class="btn" href="/agent-cases/" data-ac-location="cases_band" data-ac-case="cases" data-ac-offering="agent_cases">事例を見る <i>→</i></a>
+    </div>
   </div>
 </section>
 
@@ -507,6 +521,7 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
       <span class="pl">Point</span>
       <p>単なるコスト削減ではなく、<strong>R&Dの意思決定スピードと質を根本から変えた</strong>事例。知的生産プロセスそのものをAIで再設計しました。</p>
     </div>
+    <a class="hcase-ac" href="/agent-cases/official-chemical" data-ac-location="cases_case01" data-ac-case="official-chemical" data-ac-offering="agent_cases">この事例のAIの使い方を、事例のページで読む <i>→</i></a>
   </div>
 
   <!-- CASE 02 -->
@@ -540,8 +555,9 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
     </div>
     <div class="hcase-point rv">
       <span class="pl">Point</span>
-      <p>外注費の削減だけでなく、<strong>「リサーチ力」という組織ケイパビリティそのもの</strong>を獲得。自社の意思決定を外部に依存しない体制への転換を実現しました。</p>
+      <p>外注費の削減だけでなく、<strong>「リサーチ力」という組織ケイパビリティそのもの</strong>が社内に育ちました。自社の意思決定を外部に依存しない体制への転換を実現しました。</p>
     </div>
+    <a class="hcase-ac" href="/agent-cases/official-pharma" data-ac-location="cases_case02" data-ac-case="official-pharma" data-ac-offering="agent_cases">この事例のAIの使い方を、事例のページで読む <i>→</i></a>
   </div>
 
   <!-- CASE 03 -->
@@ -612,6 +628,7 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
       <span class="pl">Point</span>
       <p>組織全体でのAI活用定着を目指し、<strong>「一部門の成功」を「全社の標準」に変える</strong>ための伴走支援を継続しています。</p>
     </div>
+    <a class="hcase-ac" href="/agent-cases/official-construction" data-ac-location="cases_case04" data-ac-case="official-construction" data-ac-offering="agent_cases">この事例のAIの使い方を、事例のページで読む <i>→</i></a>
   </div>
 
 </section>
@@ -734,6 +751,13 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a){
     var t=document.querySelector(id);if(!t)return;e.preventDefault();
     scrollTo({top:t.getBoundingClientRect().top+scrollY-80,behavior:'smooth'});
   });
+});
+</script>
+<script>
+/* 案内のクリックを GA4 の agent_case_cta_click で数える（case_id・offering・location） */
+document.addEventListener('click',function(ev){
+  var a=ev.target.closest&&ev.target.closest('[data-ac-location]');if(!a||typeof gtag!=='function')return;
+  gtag('event','agent_case_cta_click',{case_id:a.dataset.acCase,offering:a.dataset.acOffering,location:a.dataset.acLocation});
 });
 </script>
 </body>
