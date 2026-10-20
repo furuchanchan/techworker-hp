@@ -43,7 +43,7 @@ const REQUIRED_FIELDS = ['name', 'company', 'email', 'phone', 'department', 'pos
 // 電材卸向けサイトの実演申込・承継HD向けサイトの相談・研修サイトの点検30分の申込は、部署・役職を求めない
 const SHORT_FORM_TYPES = new Set(['denzai_demo', 'denzai_document', 'shokei_consult', 'kenshu_check']);
 // 本体以外のサイト（電材卸・卸・商社・承継HD）からの申込。Slack の件名の頭に【種別】を付ける
-const SITE_FORM_TYPES = new Set([...SHORT_FORM_TYPES, 'sokumitsu_demo', 'sokumitsu_report', 'kenshu_consult', 'kenshu_document', 'kenshu_check']);
+const SITE_FORM_TYPES = new Set([...SHORT_FORM_TYPES, 'sokumitsu_demo', 'sokumitsu_report', 'sokumitsu_partner', 'kenshu_consult', 'kenshu_document', 'kenshu_check']);
 const SHORT_FORM_REQUIRED_FIELDS = ['name', 'company', 'email', 'phone'];
 
 function invalidFields(data) {
@@ -63,6 +63,7 @@ const INQUIRY_MAP = {
   shokei_consult: '承継の買収後100日の相談',
   sokumitsu_demo: '卸・商社の見積の実演',
   sokumitsu_report: '卸・商社のAI活用レポート',
+  sokumitsu_partner: 'パートナーの個別説明会',
   kenshu_consult: '研修の相談',
   kenshu_document: '研修の資料ダウンロード',
   kenshu_check: '研修の点検30分の申込',
@@ -112,8 +113,8 @@ const SLACK_SENT = '届いた';
 const SLACK_FAILED = '届かず';
 const SLACK_SKIPPED = '流さず（営業）';
 
-// 各サイトのフォームが本文の頭に入れる定型の1行（site.js の message_prefix。例「資料の請求：…」「ご用件：研修内容・費用を相談したい」）
-const PREFIX_LINE = /^(資料の請求|ご用件)：/;
+// 各サイトのフォームが本文の頭に入れる定型の1行（site.js の message_prefix。例「資料の請求：…」「ご用件：研修内容・費用を相談したい」「関心のある型：販売パートナー」）
+const PREFIX_LINE = /^(資料の請求|ご用件|関心のある型)：/;
 
 // 人が書いた本文。定型の1行を除いて空なら、判定にかけない
 function writtenMessage(message) {
@@ -137,6 +138,7 @@ const SALES_SYSTEM = `あなたは株式会社TechWorker（法人向け生成AI�
 - 自社のAI活用の悩みの相談
 - 公募・協創プログラム・オープンイノベーションの窓口、自治体・業界団体・大企業の担当者が、TechWorkerのサービスの導入・実証・共同の取り組みを相談しているもの（「協業のご相談」と書かれていても、送信者が自社の商品を売り込んでいなければ営業ではない）
 - 事業承継・M&Aで会社を買った（買う）側が、買収後の引き継ぎ・PMIについて相談しているもの
+- 見積AI（デンミツAI・ソクミツAI）のパートナー制度（紹介・販売・連携と導入）の個別説明会の申込（ご用件が「パートナーの個別説明会」。送信者が販売管理ソフトの会社・IT販売店などで、自社の製品と組み合わせたい・代理店として売りたいと書いていても、TechWorkerの製品を売る側になる申込なので営業ではない）
 - 取材依頼（掲載料を求めないもの）、採用への応募
 - 定型文（例:「【資料ダウンロード】…」「ご希望: …」）だけの送信
 
