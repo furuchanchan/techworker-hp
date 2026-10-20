@@ -45,7 +45,7 @@
     if (el) return el.getAttribute("data-cta-placement");
     if (anchor.closest(".mid-cta")) return "mid";
     if (anchor.closest(".art-cta")) return "end";
-    if (anchor.closest("#nav, .mmenu")) return "nav";
+    if (anchor.closest(".hd, .subnav")) return "nav";  // 共通の頭と、メディアの帯（2026-10-20）
     if (anchor.closest(".mh-band, .lb-cta")) return "band";
     return "body";
   }

@@ -26,9 +26,6 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AIインタビュー・ラボ｜「なぜ」を聞いて意思決定に変える定性調査メディア">
 <meta name="twitter:image" content="https://techworker.co.jp/media/interview/covers/portal-cs.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../article.css?v=20261006-source-notes">
 <link rel="stylesheet" href="lab.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "AIインタビュー・ラボ｜「なぜ」を聞いて意思決定に変える定性調査メディア", "description": "AIインタビュー（AIモデレート定性調査）で従業員・顧客・現場の「なぜ」を速く深く聞き、意思決定に使う実務知を、経営企画・人事・商品企画・リサーチ・CX/VOC担当向けに発信する単独メディア。社内ヒアリングの設計や国内外の活用事例を、上場企業を含む45社・2,500名の支援知見をもとに扱う。", "url": "https://techworker.co.jp/media/interview/", "inLanguage": "ja", "isPartOf": {"@type": "WebSite", "name": "TechWorker", "url": "https://techworker.co.jp/"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}, "about": {"@type": "SoftwareApplication", "name": "CoeSignal", "url": "https://coesignal.techworker.co.jp/", "applicationCategory": "BusinessApplication", "operatingSystem": "Web"}, "mainEntity": {"@type": "ItemList", "itemListElement": [{"@type": "ListItem", "position": 1, "url": "https://techworker.co.jp/media/interview/ai-interview-consent-design", "name": "AIインタビューの同意設計｜録音・個人情報・撤回を回答者へどう説明するか【2026】"}, {"@type": "ListItem", "position": 2, "url": "https://techworker.co.jp/media/interview/interview-tools-comparison", "name": "AIインタビューツール比較｜セルフ型とマネージド型の選び方"}, {"@type": "ListItem", "position": 3, "url": "https://techworker.co.jp/media/interview/internal-interview-cases", "name": "社内AIインタビューの活用事例10選"}, {"@type": "ListItem", "position": 4, "url": "https://techworker.co.jp/media/interview/ai-interview-limitations", "name": "AIインタビューのデメリットと限界｜精度を落とさないための設計"}, {"@type": "ListItem", "position": 5, "url": "https://techworker.co.jp/media/interview/ai-mensetsu-vs-ai-interview", "name": "「AI面接」と「AIインタビュー」の違い"}, {"@type": "ListItem", "position": 6, "url": "https://techworker.co.jp/media/interview/ai-moderator", "name": "AIモデレーターとは｜人間モデレーターとの違いと使い分け"}, {"@type": "ListItem", "position": 7, "url": "https://techworker.co.jp/media/interview/ai-interview-cost", "name": "AIインタビューの料金・費用相場"}, {"@type": "ListItem", "position": 8, "url": "https://techworker.co.jp/media/interview/interview-analysis", "name": "インタビュー分析を生成AIで速くする——発話データを判断材料に変える"}, {"@type": "ListItem", "position": 9, "url": "https://techworker.co.jp/media/interview/how-many-interviews", "name": "インタビューは何人に聞けば十分か｜「12人で飽和」の2006年原著と2022年レビュー"}, {"@type": "ListItem", "position": 10, "url": "https://techworker.co.jp/media/interview/honesty-with-ai", "name": "人はAIに本音を話すのか｜「機械相手だと話しやすい」研究の実像と限界"}]}}</script>
@@ -44,27 +41,32 @@ fbq('init','1264057945446029');fbq('track','PageView');
 /* ===== AIインタビュー・ラボ portal — lb-* namespace
    Anthropic Newsroom（巨大な媒体名＋ユーティリティ行／特集スタック／行テーブル一覧）
    × SmartHR Mag（カテゴリチップ・日付明示・媒体ステートメント帯）のハイブリッド。
-   v6トークン: インク基調 / 青は差し色 / IBM Plexゴシック / ヘアライン罫。 ===== */
+   v6トークン: インク基調 / 青は差し色 / 游ゴシックゴシック / ヘアライン罫。 ===== */
+
 .lb-wrap{max-width:1180px;margin:0 auto;padding:0 48px;}
 
 /* 1) masthead — 縦積み構成: どの幅でも崩れない（固定サイズ円のflex折返し） */
+
+
 .lb-mast{padding-top:104px;}
 .lb-kicker{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--electric);display:inline-flex;align-items:center;gap:9px;}
 .lb-kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--electric);}
-.lb-mast h1{font-family:var(--jp);font-weight:900;font-size:clamp(38px,4.5vw,60px);line-height:1.2;letter-spacing:-.03em;color:var(--ink);margin-top:20px;}
+.lb-mast h1{font-family:var(--jp);font-weight:900;font-size:clamp(38px,4.5vw,60px);line-height:1.2;letter-spacing:.02em;color:var(--ink);margin-top:20px;}
 .lb-mast h1 .nb{display:inline-block;}
 .lb-mast h1 em{font-style:normal;color:var(--electric);}
 .lb-def{font-size:15.5px;color:var(--slate);line-height:1.9;margin-top:18px;max-width:62ch;}
 /* 回答者アバターの帯: 円は固定サイズ（clamp）・flexで折返すだけ＝伸縮で歪まない */
+
 .lb-faces{display:flex;flex-wrap:wrap;column-gap:clamp(10px,1.6vw,18px);row-gap:clamp(20px,2.2vw,28px);margin-top:44px;}
 .lb-faces .fc{position:relative;width:clamp(62px,7vw,96px);aspect-ratio:1;flex:none;}
 .lb-faces .fc .av{display:block;width:100%;height:100%;border-radius:50%;border:1px solid var(--line);overflow:hidden;background:var(--paper-2);}
 .lb-faces .fc:nth-child(3n) .av{background:var(--cream);}
-.lb-faces .fc:nth-child(3n+2) .av{background:#fff;}
+.lb-faces .fc:nth-child(3n+2) .av{background:#FCFCFB;}
 .lb-faces .fc img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
 /* 喋ってる風の吹き出し（CSSのみ・時間差で数人ずつ・円の真上センター＝端でもはみ出さない） */
-.fc .say{position:absolute;left:50%;bottom:calc(100% - 2px);z-index:3;white-space:nowrap;font-size:11px;font-weight:700;line-height:1;color:var(--ink-soft);background:#fff;border:1.5px solid rgba(15,107,77,.45);border-radius:10px;padding:6px 10px;box-shadow:0 2px 8px rgba(21,32,28,.10);opacity:0;transform:translateX(-50%) scale(.5);transform-origin:bottom center;animation:lb-say 10.5s infinite;animation-delay:var(--sayo,0s);pointer-events:none;}
-.fc .say::after{content:"";position:absolute;left:50%;bottom:-4.5px;width:7px;height:7px;background:#fff;border-right:1.5px solid rgba(15,107,77,.45);border-bottom:1.5px solid rgba(15,107,77,.45);transform:translateX(-50%) rotate(45deg);}
+
+.fc .say{position:absolute;left:50%;bottom:calc(100% - 2px);z-index:3;white-space:nowrap;font-size:11px;font-weight:700;line-height:1;color:var(--ink-soft);background:#FCFCFB;border:1.5px solid rgba(15,107,77,.45);border-radius:10px;padding:6px 10px;box-shadow:0 2px 8px rgba(21,32,28,.10);opacity:0;transform:translateX(-50%) scale(.5);transform-origin:bottom center;animation:lb-say 10.5s infinite;animation-delay:var(--sayo,0s);pointer-events:none;}
+.fc .say::after{content:"";position:absolute;left:50%;bottom:-4.5px;width:7px;height:7px;background:#FCFCFB;border-bottom:1.5px solid rgba(15,107,77,.45);transform:translateX(-50%) rotate(45deg);}
 @keyframes lb-say{0%,3%{opacity:0;transform:translateX(-50%) scale(.5)}7%,18%{opacity:1;transform:translateX(-50%) scale(1)}23%,100%{opacity:0;transform:translateX(-50%) scale(.5)}}
 .lb-faces-cap{display:flex;align-items:center;gap:9px;white-space:nowrap;font-size:12.5px;font-weight:700;color:var(--electric);margin-top:18px;}
 .lb-faces-cap::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--electric);flex:none;}
@@ -74,6 +76,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 @keyframes lb-wave{0%,100%{transform:scaleY(.45)}50%{transform:scaleY(1.1)}}
 @media (prefers-reduced-motion:reduce){.fc .say{animation:none;opacity:0;}.lb-faces-cap .w i{animation:none;}}
 /* ユーティリティ: 広い幅は横3列・狭い幅は縦積み（gridの列数が変わるだけ） */
+
 .lb-util{display:grid;grid-template-columns:repeat(3,1fr);column-gap:44px;margin-top:30px;border-bottom:1px solid var(--line-2);padding-bottom:26px;}
 .lb-util a{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px 2px;border-top:1px solid var(--line);text-decoration:none;font-family:var(--jp);font-size:14px;font-weight:600;color:var(--ink);transition:color .18s;}
 .lb-util a .ar{font-family:var(--en);color:var(--slate);flex:none;transition:transform .2s,color .2s;}
@@ -81,13 +84,17 @@ fbq('init','1264057945446029');fbq('track','PageView');
 .lb-util a:hover .ar{color:var(--electric);transform:translateX(3px);}
 
 /* shared: section header / category chip */
+
+
 .lb-sh{display:flex;align-items:center;gap:16px;margin-bottom:24px;}
-.lb-sh .h{font-family:var(--jp);font-weight:700;font-size:20px;letter-spacing:-.01em;color:var(--ink);flex:none;}
+.lb-sh .h{font-family:var(--jp);font-weight:700;font-size:20px;letter-spacing:.02em;color:var(--ink);flex:none;}
 .lb-sh .ln{flex:1;height:1px;background:var(--line);}
 .lb-chip{display:inline-flex;align-items:center;gap:7px;font-family:var(--jp);font-size:12px;font-weight:600;color:var(--slate);white-space:nowrap;}
 .lb-chip::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--electric);flex:none;}
 
 /* 2) featured */
+
+
 .lb-feat-sec{margin-top:56px;}
 .lb-feat{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);gap:clamp(28px,3.5vw,56px);align-items:center;}
 .lb-feat-cover{display:block;position:relative;text-decoration:none;transition:transform .3s cubic-bezier(.2,.8,.2,1);}
@@ -95,7 +102,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 .lb-feat-cover .product-shot{margin:0;transition:box-shadow .3s,border-color .25s;}
 .lb-feat-cover:hover .product-shot{border-color:var(--line-2);box-shadow:0 24px 48px rgba(21,32,28,.12);}
 .lb-feat-lead{display:block;text-decoration:none;color:inherit;}
-.lb-feat-lead h2{font-family:var(--jp);font-weight:700;font-size:clamp(24px,2.6vw,33px);line-height:1.34;letter-spacing:-.022em;color:var(--ink);margin:12px 0 0;transition:color .2s;}
+.lb-feat-lead h2{font-family:var(--jp);font-weight:700;font-size:clamp(24px,2.6vw,33px);line-height:1.34;letter-spacing:.02em;color:var(--ink);margin:12px 0 0;transition:color .2s;}
 .lb-feat-lead:hover h2{color:var(--electric);}
 .lb-feat-lead .dek{font-size:14.5px;line-height:1.85;color:var(--slate);margin-top:14px;max-width:46ch;}
 .lb-feat-lead .meta{display:flex;align-items:center;gap:16px;margin-top:16px;}
@@ -105,6 +112,8 @@ fbq('init','1264057945446029');fbq('track','PageView');
 .lb-feat-lead:hover .read .ar{transform:translateX(4px);}
 
 /* 3) 記事一覧（カードグリッド） */
+
+
 .lb-index{margin-top:88px;}
 .lb-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
 .lb-card{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--line-2);border-radius:12px;overflow:hidden;text-decoration:none;color:inherit;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s,border-color .2s;}
@@ -120,6 +129,8 @@ fbq('init','1264057945446029');fbq('track','PageView');
 @media(max-width:640px){.lb-cards{grid-template-columns:1fr;gap:20px;}}
 
 /* 4) 扱うテーマ */
+
+
 .lb-themes{margin-top:96px;}
 .lb-th-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:44px;border-top:1px solid var(--line);padding-top:44px;}
 .lb-th .n{font-family:var(--en);font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--electric);font-feature-settings:"tnum" 1;}
@@ -127,9 +138,11 @@ fbq('init','1264057945446029');fbq('track','PageView');
 .lb-th .u{font-size:13px;color:var(--slate);line-height:1.8;}
 
 /* 5) 媒体ステートメント帯（#about） */
+
+
 .lb-about{margin-top:104px;background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
 .lb-about-in{max-width:1180px;margin:0 auto;padding:88px 48px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(36px,5vw,80px);align-items:start;}
-.lb-about .copy{font-family:var(--jp);font-weight:700;font-size:clamp(28px,3.4vw,42px);line-height:1.42;letter-spacing:-.03em;color:var(--ink);}
+.lb-about .copy{font-family:var(--jp);font-weight:700;font-size:clamp(28px,3.4vw,42px);line-height:1.42;letter-spacing:.02em;color:var(--ink);}
 .lb-about .body p{font-size:14px;color:var(--slate);line-height:1.95;}
 .lb-about .body p+p{margin-top:14px;}
 .lb-about .body a{color:var(--electric);text-decoration:none;border-bottom:1px solid rgba(15,107,77,.3);}
@@ -139,6 +152,8 @@ fbq('init','1264057945446029');fbq('track','PageView');
 .lb-about .site:hover .ar{transform:translateX(3px);}
 
 /* 6) 体験CTA帯 */
+
+
 .lb-cta-sec{margin:72px 0 104px;}
 .lb-cta{border:1px solid var(--line-2);border-radius:14px;background:var(--white);padding:30px 32px;display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap;}
 .lb-cta .k{font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);}
@@ -146,6 +161,8 @@ fbq('init','1264057945446029');fbq('track','PageView');
 .lb-cta .d{font-size:14px;color:var(--slate);line-height:1.85;margin-top:7px;max-width:54ch;}
 
 /* responsive */
+
+
 @media(max-width:880px){
   .lb-wrap{padding:0 22px;}
   .lb-mast{padding-top:100px;}
@@ -165,24 +182,27 @@ fbq('init','1264057945446029');fbq('track','PageView');
 </style>
 <link rel="stylesheet" href="/media/audience-filter.css?v=20261006-media-only">
 <script src="/media/audience-filter.js?v=20261006-media-only" defer></script>
+<link rel="stylesheet" href="/assets/site/site.css">
 </head>
 <body>
 
-<nav id="nav">
-  <a href="index.html" class="cs-logo"><img src="brand/coesignal-logo.svg" alt="CoeSignal" height="26"><span class="lab-tag">AIインタビュー・ラボ</span></a>
-  <ul>
-    <li><a href="index.html">記事一覧</a></li>
-    <li><a href="index.html#about">このメディアについて</a></li>
-  </ul>
-  <div class="nav-right">
-    <a href="https://coesignal.techworker.co.jp/" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
-    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+<header class="hd hd--solid">
+  <a class="logo" href="/" aria-label="TechWorker ホーム">Tech<i>Worker</i></a>
+  <nav id="hd-nav" aria-label="主な行き先">
+    <a href="/services">事業・サービス</a>
+    <a href="/#concept">考え方</a>
+    <a href="/agent-cases/">事例</a>
+    <a href="/news">ニュース</a>
+    <a href="/company">会社情報</a>
+    <a href="/contact">お問い合わせ</a>
+  </nav>
+  <button class="menu" type="button" aria-label="メニューを開く" aria-controls="hd-nav" aria-expanded="false"></button>
+</header>
+<div class="subnav">
+  <div class="wrap subnav__in">
+    <a class="subnav__name" href="index.html">AIインタビュー・ラボ</a>
+    <nav aria-label="メディアの行き先"><a href="index.html#about">このメディアについて</a><a href="https://coesignal.techworker.co.jp/" class="subnav__cta">無料相談</a></nav>
   </div>
-</nav>
-<div class="mmenu" id="mmenu" aria-hidden="true">
-  <a href="index.html">記事一覧</a>
-  <a href="index.html#about">このメディアについて</a>
-  <a href="https://coesignal.techworker.co.jp/" class="m-cta">AIインタビューを無料で相談する</a>
 </div>
 
 <main>
@@ -380,35 +400,42 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
 </main>
 
-<footer>
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <div class="cs-logo"><img src="brand/coesignal-logo.svg" alt="CoeSignal" height="26"><span class="lab-tag">AIインタビュー・ラボ</span></div>
-        <p>「なぜ」を聞いて、意思決定に変える。<span class="pub">発行：<a href="../../index.html">株式会社TechWorker</a></span></p>
-        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__in">
+      <div>
+        <p class="ft__name">株式会社TechWorker</p>
+        <p class="ft__addr">〒169-0051 東京都新宿区西早稲田一丁目22番3号<br>早稲田アントレプレナーシップセンター</p>
       </div>
-      <div class="footer-col"><h4>AIインタビュー・ラボ</h4><a href="index.html">記事一覧</a>AIインタビューとは<a href="internal-interview-cases.html">社内AIインタビュー活用事例10選</a>従業員の本音を聞くデプスインタビュー解約理由・VoC深掘り</div>
-      <div class="footer-col"><h4>運営会社 TechWorker</h4><a href="../../services.html">サービス</a><a href="../../cases.html">導入事例</a><a href="../../company.html">会社概要</a></div>
-      <div class="footer-col"><h4>Contact</h4><a href="https://coesignal.techworker.co.jp/" target="_blank" rel="noopener noreferrer">CoeSignal 公式サイト</a><a href="https://coesignal.techworker.co.jp/">無料相談</a><a href="../../privacy.html">プライバシーポリシー</a></div>
+      <nav aria-label="フッターの行き先">
+        <a href="/services">事業・サービス</a>
+        <a href="/company">会社情報</a>
+        <a href="/news">ニュース</a>
+        <a href="/#concept">考え方</a>
+        <a href="/agent-cases/">事例</a>
+        <a href="/contact">お問い合わせ</a>
+        <a href="/privacy">プライバシーポリシー</a>
+      </nav>
     </div>
-    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+    <small>© TechWorker Inc.</small>
   </div>
 </footer>
 
 <script>
-var nav=document.getElementById('nav');
-addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
-(function(){
-  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
-  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
-  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
-  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
-  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
-})();
 var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
 </script>
 <script src="/media/article-tracker.js?v=20261006-readable-intros" defer></script>
+<script>
+// スマホの行き先：右上の釦で開け閉めする。行き先を押したら閉じる。スクロールしたら頭に暗い面を敷く
+(() => {
+  const hd = document.querySelector('.hd'), btn = hd.querySelector('.menu');
+  const set = open => { hd.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く'); };
+  btn.addEventListener('click', () => set(!hd.classList.contains('is-open')));
+  hd.querySelector('nav').addEventListener('click', e => { if (e.target.closest('a')) set(false); });
+  const onScroll = () => hd.classList.toggle('is-scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+})();
+</script>
 </body>
 </html>

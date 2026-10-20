@@ -24,9 +24,6 @@
 <meta property="og:url" content="https://techworker.co.jp/genai-data/">
 <meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/genai-data/genai-data.css?v=20261019a">
 <script type="application/ld+json" id="ld-dataset">{
   "@context": "https://schema.org",
@@ -48,42 +45,36 @@
   ],
   "dateModified": "2026-10-19"
 }</script>
+<link rel="stylesheet" href="/assets/site/site.css">
 </head>
 <body>
 
-<nav id="nav">
-  <a href="/" class="logo">Tech<i>Worker</i></a>
-  <ul>
-    <li><a href="/">ホーム</a></li>
-    <li><a href="/services">サービス</a></li>
-    <li><a href="/cases">実績</a></li>
-    <li><a href="/media/">メディア</a></li>
-    <li><a href="/library/">資料</a></li>
-    <li><a href="/news">ニュース</a></li>
-    <li><a href="/company">会社概要</a></li>
-  </ul>
-  <div class="nav-right">
-    <a href="/contact" class="nav-cta">無料相談</a>
-    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
-  </div>
-</nav>
-<div class="mmenu" id="mmenu" aria-hidden="true">
-  <a href="/">ホーム</a>
-  <a href="/services">サービス</a>
-  <a href="/cases">実績</a>
-  <a href="/media/">メディア</a>
-  <a href="/library/">資料ダウンロード</a>
-  <a href="/news">ニュース</a>
-  <a href="/company">会社概要</a>
-  <a href="/contact" class="m-cta">無料相談を申し込む</a>
-</div>
+<header class="hd">
+  <a class="logo" href="/" aria-label="TechWorker ホーム">Tech<i>Worker</i></a>
+  <nav id="hd-nav" aria-label="主な行き先">
+    <a href="/services">事業・サービス</a>
+    <a href="/#concept">考え方</a>
+    <a href="/agent-cases/">事例</a>
+    <a href="/news">ニュース</a>
+    <a href="/company">会社情報</a>
+    <a href="/contact">お問い合わせ</a>
+  </nav>
+  <button class="menu" type="button" aria-label="メニューを開く" aria-controls="hd-nav" aria-expanded="false"></button>
+</header>
 
-<main class="container">
-  <header class="head">
+<section class="ph">
+  <picture class="screen" aria-hidden="true">
+    <source media="(max-width: 760px)" srcset="/assets/top/bg-map-sp.jpg">
+    <img src="/assets/top/bg-map.jpg" alt="">
+  </picture>
+  <div class="wrap ph__in">
     <h1>国内上場企業の<wbr>生成AI活用データ</h1>
-    <p class="lead">上場企業が、生成AIを使っていると公表しているかを、業種ごとに数えました。公表している会社と事例は、すべて出典のリンクつきです。</p>
-    <p class="meta"><span>最後に確かめた日 <b id="m-checked">—</b></span><span>データの版 <b id="m-version">—</b></span><span>毎日更新</span></p>
-  </header>
+    <p>上場企業が、生成AIを使っていると公表しているかを、業種ごとに数えました。公表している会社と事例は、すべて出典のリンクつきです。</p>
+    <p class="ph__meta"><span>最後に確かめた日 <b id="m-checked">—</b></span><span>データの版 <b id="m-version">—</b></span><span>毎日更新</span></p>
+  </div>
+</section>
+<main class="container">
+
 
   <div id="app">
     <p class="loading" id="loading">データを読み込んでいます…</p>
@@ -119,36 +110,38 @@
   </aside>
 </main>
 
-<footer>
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <div class="logo">Tech<i>Worker</i></div>
-        <p>企業向け生成AIコンサルティング<br>株式会社TechWorker</p>
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__in">
+      <div>
+        <p class="ft__name">株式会社TechWorker</p>
+        <p class="ft__addr">〒169-0051 東京都新宿区西早稲田一丁目22番3号<br>早稲田アントレプレナーシップセンター</p>
       </div>
-      <div class="footer-col">
-        <h4>サービス</h4>
-        <a href="/services">生成AIコンサル</a>
-        <a href="/companymap">ギョウムズAI</a>
-      </div>
-      <div class="footer-col">
-        <h4>サイト</h4>
-        <a href="/media/">メディア</a>
+      <nav aria-label="フッターの行き先">
+        <a href="/services">事業・サービス</a>
+        <a href="/company">会社情報</a>
         <a href="/news">ニュース</a>
-        <a href="/cases">実績</a>
-        <a href="/company">会社概要</a>
-      </div>
-      <div class="footer-col">
-        <h4>お問い合わせ</h4>
-        <a href="/contact">無料相談</a>
+        <a href="/#concept">考え方</a>
+        <a href="/agent-cases/">事例</a>
+        <a href="/contact">お問い合わせ</a>
         <a href="/privacy">プライバシーポリシー</a>
-        <p>〒169-0051<br>東京都新宿区西早稲田一丁目22番3号</p>
-      </div>
+      </nav>
     </div>
-    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+    <small>© TechWorker Inc.</small>
   </div>
 </footer>
 
 <script src="/genai-data/genai-data.js?v=20261019a"></script>
+<script>
+// スマホの行き先：右上の釦で開け閉めする。行き先を押したら閉じる。スクロールしたら頭に暗い面を敷く
+(() => {
+  const hd = document.querySelector('.hd'), btn = hd.querySelector('.menu');
+  const set = open => { hd.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く'); };
+  btn.addEventListener('click', () => set(!hd.classList.contains('is-open')));
+  hd.querySelector('nav').addEventListener('click', e => { if (e.target.closest('a')) set(false); });
+  const onScroll = () => hd.classList.toggle('is-scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+})();
+</script>
 </body>
 </html>
