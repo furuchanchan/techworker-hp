@@ -31,433 +31,90 @@
 <link rel="alternate" hreflang="ja" href="https://techworker.co.jp/">
 <link rel="alternate" hreflang="en" href="https://techworker.co.jp/en/">
 <link rel="alternate" hreflang="x-default" href="https://techworker.co.jp/">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site/site.css">
 <style>
-/* ===== TOKENS ===== */
-:root{
-  --ink:#0D1117; --paper:#F4F6F9; --paper-2:#ECEFF3; --white:#FBFCFD;
-  --electric:#005EFF; --electric-dark:#003DAA;
-  --slate:#4A5666; --line:rgba(13,17,23,.12); --line-2:rgba(13,17,23,.20);
-  --emerald:#00B894; --violet:#7C3AED;
-  --jp:'IBM Plex Sans JP','IBM Plex Sans',system-ui,sans-serif;
-  --en:'IBM Plex Sans','IBM Plex Sans JP',system-ui,sans-serif;
+/* Top (en): same order as the Japanese top. Hero, figures, services, approach, case studies, news, FAQ, free resources, contact band */
+.hero { position: relative; min-height: 760px; height: 100vh; max-height: 940px; color: var(--on-dark); overflow: hidden; }
+.hero .screen img { object-position: 0 0; }
+.hero .screen::after { background: linear-gradient(90deg, rgba(13,17,23,.9) 0%, rgba(13,17,23,.84) 48%, rgba(13,17,23,.6) 100%); }
+.hero__in { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 40px 130px 120px; }
+.hero h1 { font: 400 76px/1.2 var(--f-min); letter-spacing: .01em; }
+.hero__line { margin-top: 36px; font: 400 28px/1.5 var(--f-min); letter-spacing: .02em; }
+.hero__desc { margin-top: 18px; max-width: 40em; font-size: 15px; line-height: 1.9; color: var(--on-dark-sub); }
+.hero .btn { margin-top: 44px; align-self: flex-start; }
+.hero__sub { margin-top: 22px; font-size: 13px; color: var(--on-dark-sub); }
+.hero__sub a { text-decoration: underline 1px; text-underline-offset: 5px; }
+.hero__sub a:hover { color: var(--gold-b); }
+.figs { padding: 52px 0 48px; background: var(--paper); }
+.figs ul { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; text-align: center; }
+.figs b { display: block; font: 600 50px/1.1 var(--f-gill); letter-spacing: .01em; font-variant-numeric: lining-nums; }
+.figs b small { font: 700 20px/1 var(--f-gill); margin-left: .05em; }
+.figs span { display: block; margin-top: 8px; font-size: 13px; font-weight: 700; color: var(--sub); }
+.more { margin-top: 48px; }
+.eng .dl dt { font: 400 22px/1.4 var(--f-min); }
+.eng .dl dd { color: var(--ink); font-weight: 700; }
+.idea { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; align-items: start; }
+.idea h3 { font: 400 24px/1.4 var(--f-min); }
+.idea ul { margin-top: 20px; border-bottom: 1px solid var(--line); }
+.idea ul li { padding: 14px 2px; border-top: 1px solid var(--line); }
+.idea__ans { margin-top: 24px; color: var(--sub); }
+.idea__ans em { font-style: normal; font-weight: 700; color: var(--ink); }
+.pts li + li { margin-top: 36px; padding-top: 36px; border-top: 1px solid var(--line); }
+.pts p { margin-top: 10px; color: var(--sub); }
+.rs { border-bottom: 1px solid var(--line); }
+.rs > a { display: grid; grid-template-columns: 220px minmax(0, 1fr) minmax(0, 1fr) 46px; gap: 28px; align-items: baseline; padding: 24px 4px; border-top: 1px solid var(--line); transition: background-color .2s; }
+.rs > a:hover { background: var(--paper); }
+.rs .ind { font-weight: 700; }
+.rs .tt { font-weight: 700; }
+.rs .res { color: var(--sub); }
+.rs svg { align-self: center; width: 46px; height: 8px; fill: none; stroke: currentColor; stroke-width: 1; }
+.voices { margin-top: 64px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; }
+.voices blockquote { margin: 0; padding-top: 24px; border-top: 1px solid var(--ink); }
+.voices p { font-size: 14.5px; line-height: 1.9; }
+.voices footer { margin-top: 18px; font-size: 13px; line-height: 1.7; color: var(--sub); }
+.voices footer b { display: block; color: var(--ink); }
+.faq dt { font-weight: 700; color: var(--ink); }
+.res-dl { border-bottom: 1px solid var(--line); }
+.res-dl li { display: grid; grid-template-columns: 220px minmax(0, 1fr) auto; gap: 28px; align-items: center; padding: 28px 4px; border-top: 1px solid var(--line); }
+.res-dl .k { font-size: 13px; font-weight: 700; letter-spacing: .08em; color: var(--gold-a); }
+.res-dl h3 { font: 400 22px/1.45 var(--f-min); }
+.res-dl p { margin-top: 8px; font-size: 14px; color: var(--sub); }
+.sec .nl { margin-top: 0; }
+@media (max-width: 1100px) {
+  .hero__in { padding: 40px 64px 120px; }
+  .rs > a { grid-template-columns: 180px minmax(0, 1fr) minmax(0, 1fr); }
+  .rs svg { display: none; }
 }
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:76px;}
-body{font-family:var(--jp);background-color:var(--paper);background-image:repeating-linear-gradient(0deg,rgba(13,17,23,.04) 0 1px,transparent 1px 40px),repeating-linear-gradient(90deg,rgba(13,17,23,.04) 0 1px,transparent 1px 40px);color:var(--ink);line-height:1.85;font-size:16px;-webkit-font-smoothing:antialiased;font-feature-settings:"palt" 1;overflow-x:hidden;}
-body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(900px 480px at 70% -60px,rgba(0,94,255,.06),transparent 70%);transform-origin:70% 0;will-change:transform,opacity;animation:twGlowBreathe 16s ease-in-out infinite;}
-@keyframes twGlowBreathe{0%,100%{opacity:.78;transform:scale(1);}50%{opacity:1;transform:scale(1.03);}}
-@media (prefers-reduced-motion:reduce){body::before{animation:none!important;opacity:1!important;transform:none!important;}}
-::selection{background:var(--electric);color:var(--paper);}
-a{color:inherit;}
-img{display:block;max-width:100%;}
-
-/* ===== SHARED ===== */
-.container{max-width:1280px;margin:0 auto;padding:0 48px;width:100%;}
-.tag{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--electric);display:inline-flex;align-items:center;gap:11px;padding-left:14px;border-left:3px solid var(--electric);}
-.tag span{color:var(--slate);font-weight:500;letter-spacing:.02em;text-transform:none;font-size:13px;}
-.sec-head h2{font-family:var(--jp);font-weight:700;font-size:clamp(26px,3.4vw,42px);line-height:1.4;letter-spacing:-.02em;margin-top:22px;}
-.sec-head .lead{font-size:16px;color:var(--slate);line-height:2.05;margin-top:22px;max-width:62ch;}
-.sec-head .lead strong{color:var(--ink);font-weight:600;}
-.btn{font-family:var(--jp);font-size:14.5px;font-weight:600;color:var(--paper);background:var(--electric);text-decoration:none;border-radius:5px;padding:15px 30px;display:inline-flex;align-items:center;gap:11px;transition:background .25s,transform .25s;border:none;cursor:pointer;}
-.btn:hover{background:var(--electric-dark);transform:translateY(-1px);}
-.btn i{font-style:normal;transition:transform .25s;}
-.btn:hover i{transform:translateX(4px);}
-.btn--ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line-2);}
-.btn--ghost:hover{background:transparent;border-color:var(--electric);color:var(--electric);}
-.btn--on-blue{background:var(--paper);color:var(--electric);}
-.btn--on-blue:hover{background:var(--white);}
-.btn--on-blue-ghost{background:transparent;color:var(--paper);border:1.5px solid rgba(244,246,249,.5);}
-.btn--on-blue-ghost:hover{background:rgba(244,246,249,.1);border-color:var(--paper);}
-
-/* ===== NAV ===== */
-nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:68px;background:rgba(244,246,249,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transition:box-shadow .3s,height .3s cubic-bezier(.2,.8,.2,1),background .3s;}
-nav.scrolled{box-shadow:0 1px 16px rgba(0,94,255,.06);height:58px;background:rgba(244,246,249,.92);}
-nav .logo{transition:font-size .3s cubic-bezier(.2,.8,.2,1);}
-nav.scrolled .logo{font-size:18px;}
-nav .logo{font-family:var(--en);font-weight:700;font-size:20px;letter-spacing:-.01em;text-decoration:none;color:var(--ink);}
-nav .logo i{font-style:normal;color:var(--electric);}
-nav ul{list-style:none;display:flex;gap:34px;}
-nav ul a{font-size:14px;font-weight:500;color:var(--ink);text-decoration:none;position:relative;}
-nav ul a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--electric);transition:width .28s cubic-bezier(.2,.8,.2,1);}
-nav ul a:hover::after{width:100%;}
-nav .nav-right{display:flex;align-items:center;gap:18px;}
-nav .nav-cta{font-family:var(--jp);font-size:13.5px;font-weight:600;color:var(--paper);background:var(--electric);text-decoration:none;padding:10px 22px;border-radius:4px;transition:background .25s;}
-nav .nav-cta:hover{background:var(--electric-dark);}
-nav .nav-cta .short{display:none;}
-nav .lang{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.04em;}
-nav .lang a{color:var(--slate);text-decoration:none;}
-nav .lang .cur{color:var(--electric);}
-
-/* hamburger */
-.hamb{display:none;width:44px;height:44px;border:none;background:none;cursor:pointer;position:relative;margin-left:2px;}
-.hamb span{position:absolute;left:11px;width:22px;height:2px;background:var(--ink);transition:transform .3s,opacity .2s;}
-.hamb span:nth-child(1){top:15px;} .hamb span:nth-child(2){top:21px;} .hamb span:nth-child(3){top:27px;}
-body.menu-open .hamb span:nth-child(1){transform:translateY(6px) rotate(45deg);}
-body.menu-open .hamb span:nth-child(2){opacity:0;}
-body.menu-open .hamb span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
-/* mobile menu panel */
-.mmenu{position:fixed;inset:68px 0 0;z-index:45;background:var(--paper);transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);visibility:hidden;display:flex;flex-direction:column;padding:18px 24px 40px;}
-body.menu-open .mmenu{transform:none;visibility:visible;}
-.mmenu a{font-size:19px;font-weight:600;color:var(--ink);text-decoration:none;padding:20px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;}
-.mmenu a::after{content:"→";color:var(--electric);font-family:var(--en);}
-.mmenu .m-cta{margin-top:28px;background:var(--electric);color:var(--paper);justify-content:center;border-radius:5px;border:none;padding:17px;}
-.mmenu .m-cta::after{content:none;}
-.mmenu .m-lang{margin-top:auto;border:none;font-family:var(--en);font-size:13px;color:var(--slate);}
-.mmenu .m-lang::after{content:none;}
-
-/* ===== HERO ===== */
-.hero{max-width:1280px;margin:0 auto;padding:168px 48px 70px;}
-.hero .tag{margin-bottom:40px;}
-.hero h1{font-family:var(--jp);font-weight:700;font-size:clamp(38px,6.4vw,90px);line-height:1.26;letter-spacing:-.02em;}
-.hero h1 .en{font-family:var(--en);font-weight:600;letter-spacing:-.01em;}
-.hero h1 .u{background:linear-gradient(transparent 80%,var(--electric) 80%,var(--electric) 91%,transparent 91%);}
-.hero-foot{display:grid;grid-template-columns:1fr auto;gap:48px;align-items:end;margin-top:52px;padding-top:34px;border-top:1px solid var(--line);}
-.hero-foot p{font-size:16px;color:var(--slate);max-width:48ch;line-height:2.05;}
-.hero-foot p strong{color:var(--ink);font-weight:600;}
-.hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
-
-/* ===== FIGURES BAND ===== */
-.figures{max-width:1280px;margin:0 auto;padding:24px 48px 86px;}
-.figures .row{display:grid;grid-template-columns:repeat(4,1fr);}
-.fig{padding:30px 28px 26px;border-left:1px solid var(--line);}
-.fig:first-child{border-left:none;padding-left:0;}
-.fig .n{font-family:var(--en);font-weight:600;font-size:clamp(44px,5vw,72px);line-height:1;letter-spacing:-.03em;font-feature-settings:"tnum" 1;}
-.fig .n sub{font-size:.4em;vertical-align:baseline;font-weight:600;}
-.fig:nth-child(1) .n,.fig:nth-child(3) .n{color:var(--electric);}
-.fig .l{font-size:13px;color:var(--slate);margin-top:13px;}
-
-/* ===== AI TOOLS STRIP ===== */
-.tools{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--white);}
-.tools .container{padding-top:40px;padding-bottom:40px;display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center;}
-.tools .tools-lead{max-width:200px;}
-.tools .tools-lead .t{font-size:14px;font-weight:600;line-height:1.7;}
-.tools .tools-lead .s{font-size:12px;color:var(--slate);margin-top:6px;}
-.tools .tools-grid{display:flex;flex-wrap:wrap;gap:14px 30px;align-items:center;}
-.tool-item{display:inline-flex;align-items:center;gap:10px;}
-.tool-item img{width:24px;height:24px;object-fit:contain;}
-.tool-item span{font-size:14px;font-weight:500;color:var(--ink);}
-
-/* ===== NEWS ===== */
-.news{padding:90px 0;}
-.news .news-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:14px;}
-.news .news-top a{font-family:var(--en);font-size:13px;font-weight:600;color:var(--electric);text-decoration:none;letter-spacing:.02em;}
-.news .news-top a:hover{text-decoration:underline;}
-.news-list{border-top:1px solid var(--line);}
-.news-row{display:grid;grid-template-columns:130px 96px 1fr;gap:24px;align-items:center;padding:22px 0;border-bottom:1px solid var(--line);text-decoration:none;transition:background .2s;}
-.news-row:hover{background:var(--paper-2);}
-.news-row .d{font-family:var(--en);font-size:14px;color:var(--slate);font-feature-settings:"tnum" 1;}
-.news-row .tg{font-size:12px;font-weight:600;color:var(--electric);}
-.news-row .tg.ev{color:var(--violet);}
-.news-row .tt{font-size:15px;font-weight:500;color:var(--ink);line-height:1.6;}
-.news-row:hover .tt{color:var(--electric);}
-
-/* ===== MACRO ===== */
-.macro{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:96px 0;}
-.macro h2 .mk{color:var(--electric);}
-.macro .lead{margin-top:22px;font-size:16px;color:#28313f;line-height:2.05;max-width:70ch;}
-.macro .lead strong{color:var(--ink);font-weight:600;}
-.macro-impact{display:grid;grid-template-columns:auto 1fr;gap:70px;align-items:center;margin-top:52px;padding-top:50px;border-top:1px solid var(--line);}
-.mi-stat{flex-shrink:0;}
-.mi-n{font-family:var(--en);font-weight:700;font-size:clamp(104px,15vw,210px);line-height:.86;letter-spacing:-.06em;color:var(--electric);}
-.mi-n .pct{font-size:.4em;font-weight:600;vertical-align:super;margin-left:4px;letter-spacing:-.02em;}
-.mi-cap{font-size:14.5px;color:#28313f;line-height:1.75;margin-top:18px;max-width:32ch;font-weight:500;}
-.mi-cap .src{display:inline-block;margin-top:12px;font-family:var(--en);font-size:11px;letter-spacing:.08em;color:var(--slate);border:1px solid var(--line-2);border-radius:3px;padding:3px 9px;}
-.mi-body p{font-size:16px;color:#28313f;line-height:2.05;margin-bottom:18px;}
-.mi-body p:last-child{margin-bottom:0;}
-.mi-body strong{color:var(--ink);font-weight:700;}
-.macro-bottom{margin-top:54px;padding-top:38px;border-top:2px solid var(--ink);}
-.macro-bottom p{font-family:var(--jp);font-weight:700;font-size:clamp(20px,2.8vw,32px);line-height:1.55;letter-spacing:-.02em;}
-.macro-bottom .mk2{color:var(--electric);}
-
-/* ===== PROBLEM ===== */
-.problem{padding:96px 0;}
-.problem-grid{margin-top:50px;border-top:1px solid var(--line);}
-.problem-row{display:grid;grid-template-columns:84px 1fr;gap:8px;padding:28px 0;border-bottom:1px solid var(--line);align-items:baseline;}
-.problem-row .pn{font-family:var(--en);font-weight:600;font-size:22px;color:var(--electric);letter-spacing:-.02em;}
-.problem-row p{font-size:17px;line-height:1.7;color:var(--ink);font-weight:500;}
-.problem-answer{margin-top:50px;background:var(--electric-dark);color:var(--paper);padding:48px 52px;border-radius:4px;}
-.problem-answer p{font-family:var(--jp);font-weight:500;font-size:clamp(17px,2vw,21px);line-height:1.95;letter-spacing:-.01em;}
-.problem-answer em{font-style:normal;color:#fff;font-weight:700;background:linear-gradient(transparent 82%,rgba(255,255,255,.32) 82%,rgba(255,255,255,.32) 92%,transparent 92%);padding:0 .02em;}
-
-/* ===== APPROACH ===== */
-.approach{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:96px 0;}
-.approach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:56px;border-top:1px solid var(--line);}
-.approach-col{padding:36px 30px 10px;border-left:1px solid var(--line);}
-.approach-col:first-child{border-left:none;padding-left:0;}
-.approach-col .an{font-family:var(--en);font-weight:600;font-size:18px;color:var(--electric);letter-spacing:.04em;}
-.approach-col h3{font-family:var(--jp);font-weight:700;font-size:19px;line-height:1.5;margin:16px 0 12px;letter-spacing:-.01em;}
-.approach-col p{font-size:14px;color:var(--slate);line-height:1.95;}
-
-/* ===== RESULTS STATEMENT ===== */
-.results-st{padding:96px 0 70px;}
-.results-st h2{font-family:var(--jp);font-weight:700;font-size:clamp(26px,3.4vw,44px);line-height:1.4;letter-spacing:-.02em;margin-top:22px;}
-.results-st h2 .mk{color:var(--electric);}
-
-/* ===== HOME CASE ===== */
-.hcase{padding-bottom:30px;}
-.hcase-top{display:grid;grid-template-columns:auto 1fr;gap:60px;align-items:center;padding:46px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-.hcase-num .s{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);}
-.hcase-num .big{display:flex;align-items:baseline;gap:8px;margin-top:6px;}
-.hcase-num .big b{font-family:var(--en);font-weight:600;font-size:clamp(56px,7vw,92px);line-height:1;color:var(--electric);letter-spacing:-.03em;}
-.hcase-num .big i{font-style:normal;font-size:22px;font-weight:600;}
-.hcase-num .desc{font-size:13px;color:var(--slate);margin-top:6px;}
-.hcase-meta .mtag{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
-.hcase-meta .badge{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.12em;color:var(--paper);background:var(--electric);padding:4px 10px;border-radius:3px;}
-.hcase-meta .ind{font-size:13px;color:var(--slate);font-weight:500;}
-.hcase-meta h3{font-family:var(--jp);font-weight:700;font-size:clamp(22px,2.6vw,32px);line-height:1.4;letter-spacing:-.02em;}
-.hcase-meta .co{font-size:14px;color:var(--slate);margin-top:8px;}
-.hcase-ba{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid var(--line);}
-.hcase-ba > div{padding:38px 40px 38px 0;}
-.hcase-ba > div:last-child{padding-left:48px;border-left:1px solid var(--line);}
-.hcase-ba .col-l{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.14em;color:var(--slate);margin-bottom:14px;}
-.hcase-ba .col-l.aft{color:var(--electric);}
-.hcase-ba p{font-size:15px;color:#28313f;line-height:1.95;}
-.hcase-ba ul{list-style:none;}
-.hcase-ba li{display:flex;gap:12px;align-items:flex-start;padding:7px 0;font-size:15px;line-height:1.7;}
-.hcase-ba li svg{flex-shrink:0;margin-top:5px;color:var(--electric);}
-.hcase-others{padding:46px 0 0;}
-.hcase-others .ogrid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);}
-.ocard{padding:30px 28px;border-left:1px solid var(--line);text-decoration:none;display:block;transition:background .2s;}
-.ocard:first-child{border-left:none;padding-left:0;}
-.ocard .oi{font-size:12px;color:var(--slate);font-weight:500;}
-.ocard strong{display:block;font-size:16px;font-weight:600;line-height:1.5;margin:10px 0;color:var(--ink);}
-.ocard .om{font-family:var(--en);font-size:13px;font-weight:600;color:var(--electric);}
-.ocard:hover strong{color:var(--electric);}
-.hcase-others .more{text-align:center;margin-top:42px;}
-
-/* ===== VOICE / CLIENTS ===== */
-.voice{padding:96px 0;border-top:1px solid var(--line);}
-.clients{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:42px;padding:26px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-.clients-label{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);padding-left:12px;border-left:3px solid var(--electric);}
-.client-name{font-family:var(--jp);font-weight:700;font-size:19px;letter-spacing:-.01em;}
-.clients-more{font-size:13px;color:var(--slate);}
-.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:42px;}
-.voice-card{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:28px 30px 26px;display:flex;flex-direction:column;}
-.voice-card::before{content:"\201C";font-family:var(--en);font-size:52px;line-height:0;height:26px;color:var(--electric);opacity:.28;display:block;}
-.voice-card p{font-family:var(--jp);font-weight:600;font-size:15.5px;line-height:1.95;letter-spacing:-.01em;color:var(--ink);flex:1;margin-top:6px;}
-.voice-card footer{margin-top:22px;padding-top:18px;border-top:1px solid var(--line);}
-.v-person{display:flex;align-items:center;gap:12px;}
-.v-avatar{width:42px;height:42px;border-radius:8px;background:var(--paper-2);border:1px solid var(--line-2);color:var(--electric);font-family:var(--jp);font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.voice-card .vrole{display:block;font-weight:700;font-size:14px;}
-.voice-card .vco{display:block;font-size:12px;color:var(--slate);margin-top:2px;line-height:1.45;}
-.v-service{display:inline-block;margin-top:14px;font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.03em;color:var(--slate);padding:4px 11px;border:1px solid var(--line);border-radius:4px;}
-.v-service b{color:var(--electric);font-weight:600;}
-
-/* ===== SERVICES ===== */
-.services{padding:96px 0;background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-.svc-overview{margin-top:46px;max-width:560px;border:1px solid var(--line);background:var(--white);padding:34px 36px;border-radius:4px;}
-.svc-overview .sn{font-family:var(--en);font-weight:600;font-size:16px;color:var(--electric);}
-.svc-overview h3{font-family:var(--jp);font-weight:700;font-size:22px;margin:10px 0 12px;letter-spacing:-.01em;}
-.svc-overview p{font-size:14.5px;color:var(--slate);line-height:1.95;}
-.svc-overview a{display:inline-block;margin-top:18px;font-family:var(--en);font-size:13px;font-weight:600;color:var(--electric);text-decoration:none;}
-.svc-overview a:hover{text-decoration:underline;}
-.programs-label{display:block;font-family:var(--en);font-size:13px;font-weight:600;letter-spacing:.06em;color:var(--slate);margin:56px 0 22px;text-transform:uppercase;}
-.svc-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.svc-c{background:var(--white);border:1px solid var(--line);border-radius:4px;padding:30px 28px;display:flex;flex-direction:column;transition:border-color .25s,transform .25s;}
-.svc-c:hover{border-color:var(--electric);transform:translateY(-3px);}
-.svc-c .pnum{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.1em;color:var(--electric);text-transform:uppercase;}
-.svc-c h3{font-family:var(--jp);font-weight:700;font-size:19px;line-height:1.5;margin:12px 0;letter-spacing:-.01em;}
-.svc-c .tl{font-size:13.5px;color:var(--slate);line-height:1.85;padding-bottom:20px;border-bottom:1px solid var(--line);margin-bottom:18px;}
-.svc-meta{display:grid;grid-template-columns:54px 1fr;gap:6px 12px;font-size:13px;margin-bottom:6px;}
-.svc-meta .k{color:var(--slate);font-weight:600;}
-.svc-meta .v{color:var(--ink);line-height:1.6;}
-.svc-c .q{margin-top:auto;padding-top:20px;font-family:var(--jp);font-weight:600;font-size:13.5px;color:var(--ink);line-height:1.7;border-top:1px solid var(--line);margin-top:20px;}
-.svc-consult{margin-top:40px;background:var(--electric-dark);color:var(--paper);border-radius:8px;padding:42px 46px;display:grid;grid-template-columns:1fr auto;gap:36px;align-items:center;}
-.svc-consult h3{font-family:var(--jp);font-weight:700;font-size:clamp(20px,2.4vw,28px);line-height:1.5;letter-spacing:-.01em;color:var(--paper);}
-.svc-consult p{font-size:14.5px;color:rgba(244,246,249,.82);margin-top:12px;line-height:1.9;max-width:52ch;}
-.svc-consult .btn{background:var(--paper);color:var(--electric);white-space:nowrap;}
-.svc-consult .btn:hover{background:#fff;}
-
-/* ===== FLOW ===== */
-.flow{padding:96px 0;}
-.flow-steps{display:grid;grid-template-columns:repeat(5,1fr);margin-top:50px;border-top:1px solid var(--line);}
-.flow-step{padding:32px 22px 10px;border-left:1px solid var(--line);}
-.flow-step:first-child{border-left:none;padding-left:0;}
-.flow-step .sn{font-family:var(--en);font-weight:600;font-size:15px;color:var(--paper);background:var(--electric);width:30px;height:30px;border-radius:5px;display:flex;align-items:center;justify-content:center;}
-.flow-step h3{font-family:var(--jp);font-weight:700;font-size:16px;margin:16px 0 10px;letter-spacing:-.01em;}
-.flow-step p{font-size:13px;color:var(--slate);line-height:1.85;}
-
-/* ===== MESSAGE / DIRECTOR ===== */
-.person{padding:90px 0;border-top:1px solid var(--line);}
-.person .container{display:grid;grid-template-columns:340px 1fr;gap:64px;align-items:start;}
-.person.rev .container{grid-template-columns:1fr 340px;}
-.person.rev .p-photo{order:2;}
-.p-photo{aspect-ratio:1/1;border-radius:6px;overflow:hidden;background:var(--paper-2);border:1px solid var(--line);}
-.p-photo img{width:100%;height:100%;object-fit:cover;}
-.p-text h2{font-family:var(--jp);font-weight:700;font-size:30px;letter-spacing:-.01em;margin-top:18px;}
-.p-text .role{font-size:13px;color:var(--slate);margin-top:8px;line-height:1.7;}
-.p-text .role a{color:var(--electric);text-decoration:none;font-weight:600;}
-.p-text blockquote{margin-top:26px;font-size:16px;line-height:2.1;color:#28313f;}
-.p-text blockquote strong{color:var(--ink);font-weight:600;}
-
-/* ===== FAQ ===== */
-.faq{padding:96px 0;background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-.faq-list{margin-top:46px;border-top:1px solid var(--line);}
-.faq-item{border-bottom:1px solid var(--line);}
-.faq-q{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:24px 0;cursor:pointer;font-family:var(--jp);font-weight:600;font-size:16px;color:var(--ink);width:100%;text-align:left;background:none;border:none;line-height:1.6;}
-.faq-q .ar{flex-shrink:0;width:22px;height:22px;position:relative;}
-.faq-q .ar::before,.faq-q .ar::after{content:"";position:absolute;background:var(--electric);transition:transform .3s;}
-.faq-q .ar::before{top:10px;left:3px;width:16px;height:2px;}
-.faq-q .ar::after{top:3px;left:10px;width:2px;height:16px;}
-.faq-item.open .faq-q .ar::after{transform:scaleY(0);}
-.faq-a{overflow:hidden;max-height:0;transition:max-height .35s ease,padding .35s ease;}
-.faq-a p{font-size:14.5px;color:var(--slate);line-height:1.95;padding-bottom:0;}
-.faq-item.open .faq-a{padding-bottom:24px;}
-
-/* ===== COMPANY ===== */
-.company{padding:96px 0;}
-.company-table{margin-top:40px;max-width:640px;border-collapse:collapse;width:100%;}
-.company-table tr{border-bottom:1px solid var(--line);}
-.company-table tr:first-child{border-top:1px solid var(--line);}
-.company-table th{text-align:left;font-size:13px;font-weight:600;color:var(--slate);padding:18px 0;width:160px;vertical-align:top;}
-.company-table td{font-size:15px;padding:18px 0;line-height:1.7;}
-.company .more{margin-top:34px;}
-
-/* ===== RESOURCES BAND ===== */
-.resources-band{padding:96px 0;border-top:1px solid var(--line);}
-.rb-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:46px;}
-.rb-card{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--line);border-radius:6px;padding:34px 34px 30px;text-decoration:none;color:inherit;transition:border-color .25s,transform .25s,box-shadow .25s;position:relative;overflow:hidden;}
-.rb-card::after{content:"";position:absolute;top:0;left:0;height:3px;width:0;background:var(--electric);transition:width .35s cubic-bezier(.2,.8,.2,1);}
-.rb-card:hover{border-color:var(--electric);transform:translateY(-3px);box-shadow:0 18px 44px rgba(13,17,23,.07);}
-.rb-card:hover::after{width:100%;}
-.rb-kind{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);padding-left:12px;border-left:3px solid var(--electric);align-self:flex-start;}
-.rb-card h3{font-family:var(--jp);font-weight:700;font-size:21px;line-height:1.5;margin:16px 0 12px;letter-spacing:-.01em;}
-.rb-card p{font-size:14px;color:var(--slate);line-height:1.9;}
-.rb-dl{margin-top:auto;padding-top:20px;font-family:var(--jp);font-weight:700;font-size:14px;color:var(--electric);display:inline-flex;align-items:center;gap:8px;}
-.rb-dl i{font-style:normal;transition:transform .25s;}
-.rb-card:hover .rb-dl i{transform:translateY(3px);}
-.rb-inside-label{display:block;font-family:var(--en);font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin:20px 0 9px;}
-.rb-inside{list-style:none;margin-bottom:4px;}
-.rb-inside li{font-size:13px;color:#28313f;line-height:1.55;padding:5px 0 5px 20px;position:relative;}
-.rb-inside li::before{content:"";position:absolute;left:2px;top:11px;width:8px;height:2px;background:var(--electric);}
-
-/* ===== FINAL CTA ===== */
-.final{background:var(--electric);color:var(--paper);padding:104px 0;text-align:center;}
-.final h2{font-family:var(--jp);font-weight:700;font-size:clamp(28px,3.6vw,46px);line-height:1.4;letter-spacing:-.02em;}
-.final p{font-size:16px;color:rgba(244,246,249,.85);margin-top:18px;}
-.final .actions{display:flex;gap:14px;justify-content:center;margin-top:36px;flex-wrap:wrap;}
-
-/* ===== FOOTER ===== */
-footer{background:var(--white);border-top:1px solid var(--line);padding:64px 0 40px;}
-.footer-inner{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;}
-.footer-brand .logo{font-family:var(--en);font-size:19px;font-weight:700;color:var(--ink);}
-.footer-brand .logo i{font-style:normal;color:var(--electric);}
-.footer-brand p{font-size:13px;color:var(--slate);line-height:1.7;margin-top:12px;}
-.footer-brand .x{display:inline-flex;align-items:center;gap:7px;margin-top:16px;font-size:13px;font-weight:600;color:var(--slate);text-decoration:none;}
-.footer-brand .x:hover{color:var(--electric);}
-.footer-col h4{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:16px;}
-.footer-col a{display:block;font-size:13px;color:var(--slate);text-decoration:none;margin-bottom:10px;}
-.footer-col a:hover{color:var(--electric);}
-.footer-col p{font-size:13px;color:var(--slate);line-height:1.7;margin-top:12px;}
-.copyright{text-align:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-family:var(--en);font-size:12px;color:var(--slate);}
-
-/* ===== reveal (progressive enhancement: visible without JS) ===== */
-html.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
-html.js .rv.show{opacity:1;transform:none;}
-
-/* ===== focus visibility (keyboard) ===== */
-a:focus-visible,button:focus-visible,.faq-q:focus-visible{outline:2px solid var(--electric);outline-offset:3px;border-radius:3px;}
-:focus:not(:focus-visible){outline:none;}
-
-/* ===== reduced motion ===== */
-@media (prefers-reduced-motion: reduce){
-  html{scroll-behavior:auto;}
-  html.js .rv{opacity:1;transform:none;transition:none;}
-  html.js .rvg>*{opacity:1;transform:none;}
-  *{animation-duration:.001ms!important;transition-duration:.001ms!important;}
+@media (max-width: 760px) {
+  .hero { min-height: 0; height: 760px; max-height: none; }
+  .hero__in { padding: 64px 24px 100px; }
+  .hero h1 { font-size: 42px; line-height: 1.2; }
+  .hero__line { margin-top: 24px; font-size: 19px; }
+  .hero__desc { font-size: 13.5px; }
+  .hero .btn { margin-top: 30px; }
+  .figs { padding: 36px 0 32px; }
+  .figs ul { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 12px; }
+  .figs b { font-size: 34px; }
+  .figs b small { font-size: 15px; }
+  .figs span { font-size: 11.5px; }
+  .idea { grid-template-columns: 1fr; gap: 48px; }
+  .rs > a { grid-template-columns: 1fr; gap: 4px; padding: 20px 2px; }
+  .voices { grid-template-columns: 1fr; gap: 32px; margin-top: 48px; }
+  .res-dl li { grid-template-columns: 1fr; gap: 10px; padding: 24px 2px; }
 }
-
-/* ===== UI: hero orchestration ===== */
-@keyframes heroIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
-@keyframes drawLine{to{background-size:100% 100%;}}
-html.js .hero .tag{animation:heroIn .7s .05s both cubic-bezier(.16,1,.3,1);}
-html.js .hero h1{animation:heroIn .8s .16s both cubic-bezier(.16,1,.3,1);}
-html.js .hero-foot{animation:heroIn .8s .42s both cubic-bezier(.16,1,.3,1);}
-html.js .hero h1 .u{background-repeat:no-repeat;background-size:0% 100%;animation:drawLine .7s .8s forwards cubic-bezier(.16,1,.3,1);}
-
-/* ===== UI: staggered group reveal ===== */
-html.js .rvg>*{opacity:0;transform:translateY(18px);}
-html.js .rvg.show>*{opacity:1;transform:none;transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1);}
-html.js .rvg.show>*:nth-child(1){transition-delay:.04s;}
-html.js .rvg.show>*:nth-child(2){transition-delay:.12s;}
-html.js .rvg.show>*:nth-child(3){transition-delay:.20s;}
-html.js .rvg.show>*:nth-child(4){transition-delay:.28s;}
-html.js .rvg.show>*:nth-child(5){transition-delay:.36s;}
-
-/* ===== UI: custom scrollbar ===== */
-@media (pointer:fine){
-  *{scrollbar-width:thin;scrollbar-color:#c3ccd8 transparent;}
-  ::-webkit-scrollbar{width:12px;height:12px;}
-  ::-webkit-scrollbar-thumb{background:#c3ccd8;border-radius:10px;border:3px solid var(--paper);}
-  ::-webkit-scrollbar-thumb:hover{background:#9aa7b8;}
-  ::-webkit-scrollbar-track{background:transparent;}
-}
-
-/* ===== UI: refined hover micro-interactions ===== */
-.btn:active{transform:translateY(0);}
-.news-row .tt{transition:color .2s,transform .25s cubic-bezier(.2,.8,.2,1);}
-.news-row:hover .tt{transform:translateX(5px);}
-.svc-c{position:relative;overflow:hidden;}
-.svc-c::after{content:"";position:absolute;top:0;left:0;height:3px;width:0;background:var(--electric);transition:width .35s cubic-bezier(.2,.8,.2,1);}
-.svc-c:hover::after{width:100%;}
-.ocard strong{transition:color .2s,transform .25s cubic-bezier(.2,.8,.2,1);}
-.ocard:hover strong{transform:translateX(4px);}
-.tool-item{transition:transform .2s ease;}
-.tool-item:hover{transform:translateY(-2px);}
-.company-table tr{transition:background .2s;}
-.company-table tr:hover{background:rgba(0,94,255,.03);}
-
-/* ===== RESPONSIVE ===== */
-@media(max-width:1000px){
-  .footer-inner{grid-template-columns:1fr 1fr;gap:32px;}
-  .approach-grid{grid-template-columns:1fr;}
-  .approach-col{border-left:none;border-top:1px solid var(--line);padding:30px 0 6px;}
-  .svc-cards{grid-template-columns:1fr;}
-  .voice-grid{grid-template-columns:1fr;}
-  .svc-consult{grid-template-columns:1fr;gap:24px;padding:32px 26px;}
-  .rb-grid{grid-template-columns:1fr;}
-  .flow-steps{grid-template-columns:1fr 1fr;}
-  .flow-step{border-left:none;border-top:1px solid var(--line);padding:26px 0 6px;}
-}
-@media(max-width:860px){
-  nav ul{display:none;}
-  nav .nav-cta{padding:8px 14px;font-size:12.5px;}nav .nav-cta .full{display:none;}nav .nav-cta .short{display:inline;}
-  nav .lang{display:none;}
-  .hamb{display:block;}
-  .hero{padding:120px 24px 56px;}
-  .hero-foot{grid-template-columns:1fr;gap:26px;align-items:start;}
-  .figures{padding:14px 24px 64px;}
-  .figures .row{grid-template-columns:1fr 1fr;}
-  .fig{padding:22px 0;}
-  .fig:nth-child(even){padding-left:22px;border-left:1px solid var(--line);}
-  .fig:nth-child(odd){border-left:none;}
-  .fig:nth-child(n+3){border-top:1px solid var(--line);}
-  .macro-impact{grid-template-columns:1fr;gap:28px;}
-  .mi-n{font-size:clamp(88px,26vw,150px);}
-  .tools .container{grid-template-columns:1fr;gap:22px;}
-  .news-row{grid-template-columns:96px 1fr;gap:8px 16px;}
-  .news-row .tg{display:none;}
-  .hcase-top{grid-template-columns:1fr;gap:28px;}
-  .hcase-ba{grid-template-columns:1fr;}
-  .hcase-ba > div{padding:28px 0;}
-  .hcase-ba > div:last-child{border-left:none;border-top:1px solid var(--line);padding-left:0;}
-  .hcase-others .ogrid{grid-template-columns:1fr;}
-  .ocard{border-left:none;border-top:1px solid var(--line);padding:26px 0;}
-  .ocard:first-child{border-top:none;}
-  .person .container,.person.rev .container{grid-template-columns:1fr;gap:30px;}
-  .person.rev .p-photo{order:0;}
-  .p-photo{max-width:280px;}
-}
-@media(max-width:560px){
-  .container{padding:0 22px;}
-  nav{padding:0 10px 0 18px;height:60px;}
-  .mmenu{top:60px;}
-  .problem-row{grid-template-columns:54px 1fr;}
-  .problem-answer{padding:34px 26px;}
-  .flow-steps{grid-template-columns:1fr;}
+.nl { border-bottom: 1px solid var(--line); }
+.nl a { display: grid; grid-template-columns: 120px 150px minmax(0, 1fr) 46px; gap: 28px; align-items: baseline; padding: 26px 8px; border-top: 1px solid var(--line); transition: background-color .2s; }
+.nl a:hover { background: var(--paper); }
+.nl time { font: 400 16px/1.6 var(--f-gill); letter-spacing: .06em; }
+.nl .tg { justify-self: start; padding: 3px 14px 2px; border: 1px solid var(--ink); border-radius: 20px; font-size: 12px; line-height: 1.4; letter-spacing: .14em; white-space: nowrap; }
+.nl .tt { font-weight: 700; line-height: 1.8; text-wrap: pretty; }
+.nl .tt small { display: block; margin-top: 4px; font-size: 13px; font-weight: 500; color: var(--sub); }
+.nl svg { align-self: center; width: 46px; height: 8px; fill: none; stroke: currentColor; stroke-width: 1; transition: transform .2s; }
+.nl a:hover svg { transform: translateX(4px); }
+@media (max-width: 760px) {
+  .nl a { grid-template-columns: auto minmax(0, 1fr); gap: 8px 14px; padding: 22px 2px; }
+  .nl .tt { grid-column: 1 / -1; }
+  .nl svg { display: none; }
 }
 </style>
 <!-- Meta Pixel Code -->
@@ -581,459 +238,175 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="nav">
-  <a href="index.html" class="logo">Tech<i>Worker</i></a>
-  <ul>
-    <li><a href="index.html" class="active">Home</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="cases.html">Case Studies</a></li>
-    <li><a href="news.html">News</a></li>
-    <li><a href="company.html">Company</a></li>
-  </ul>
-  <div class="nav-right">
-    <a href="contact.html" class="nav-cta"><span class="full">Free Consultation</span><span class="short">Contact</span></a>
-    <span class="lang"><a href="../index.html">JP</a> / <span class="cur">EN</span></span>
-    <button class="hamb" id="hamb" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
-  </div>
-</nav>
-
-<!-- MOBILE MENU -->
-<div class="mmenu" id="mmenu" aria-hidden="true">
-  <a href="index.html">Home</a>
-  <a href="services.html">Services</a>
-  <a href="cases.html">Case Studies</a>
-  <a href="news.html">News</a>
-  <a href="company.html">Company</a>
-  <a href="contact.html" class="m-cta">Book a Free Consultation</a>
-  <a href="../index.html" class="m-lang">日本語 ↗</a>
-</div>
-
-<!-- HERO -->
-<header class="hero">
-  <div class="tag">Enterprise AI <span>Turn your company's context into AI power</span></div>
-  <h1>AI is the <span class="en">engine</span>.<br><span class="u">Context</span> is the fuel.</h1>
-  <div class="hero-foot">
-    <p><strong>Deploying tools alone does not make AI work.</strong> Our job is to shape your operational context into a form AI can use. We have delivered results across 45 companies and 2,500 professionals, including publicly listed enterprises.</p>
-    <div class="hero-actions">
-      <a href="contact.html" class="btn">Free Consultation <i>→</i></a>
-      <a href="contact.html?type=document" class="btn btn--ghost" onclick="fbq('track','Lead');">Request the 2026 AI Use-Case Report <i>↓</i></a>
-    </div>
-  </div>
+<header class="hd">
+  <a class="logo" href="/en/" aria-label="TechWorker home">Tech<i>Worker</i></a>
+  <nav id="hd-nav" aria-label="Main">
+    <a href="/en/services">Services</a>
+    <a href="#concept">Approach</a>
+    <a href="/en/cases">Case Studies</a>
+    <a href="/en/news">News</a>
+    <a href="/en/company">Company</a>
+    <a href="/en/contact">Contact</a>
+  </nav>
+  <button class="menu" type="button" aria-label="Open menu" aria-controls="hd-nav" aria-expanded="false"></button>
 </header>
 
-<!-- FIGURES -->
-<section class="figures">
-  <div class="row rvg">
-    <div class="fig"><div class="n">45<sub>+</sub></div><div class="l">Companies served (incl. listed enterprises)</div></div>
-    <div class="fig"><div class="n">2,500<sub>+</sub></div><div class="l">Training participants</div></div>
-    <div class="fig"><div class="n">300<sub>+</sub></div><div class="l">Webinar attendees</div></div>
-    <div class="fig"><div class="n">7<sub>+</sub></div><div class="l">Industries covered</div></div>
+<main>
+<section class="hero">
+  <picture class="screen" aria-hidden="true">
+    <source media="(max-width: 760px)" srcset="/assets/top/bg-map-sp.jpg">
+    <img src="/assets/top/bg-map.jpg" alt="">
+  </picture>
+  <div class="hero__in">
+    <h1>AI is the engine.<br>Context is the fuel.</h1>
+    <p class="hero__line">Turn your company’s context into AI power.</p>
+    <p class="hero__desc">Deploying tools alone does not make AI work. Our job is to shape your operational context into a form AI can use. We have delivered results across 45 companies and 2,500 professionals, including publicly listed enterprises.</p>
+    <a class="btn" href="contact.html">Free Consultation<svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a>
+    <p class="hero__sub"><a href="contact.html?type=document" onclick="fbq('track','Lead');">Request the 2026 AI Use-Case Report</a></p>
   </div>
 </section>
 
-<!-- AI TOOLS -->
-<section class="tools">
-  <div class="container">
-    <div class="tools-lead">
-      <div class="t">Compatible with every<br>major AI service</div>
-      <div class="s">Multi-AI support, with no dependence on any single tool</div>
-    </div>
-    <div class="tools-grid">
-      <div class="tool-item"><img src="../assets/logos/claude.svg" alt="Claude"><span>Claude</span></div>
-      <div class="tool-item"><img src="../assets/logos/chatgpt.png" alt="ChatGPT"><span>ChatGPT</span></div>
-      <div class="tool-item"><img src="../assets/logos/copilot.webp" alt="Microsoft Copilot"><span>Microsoft Copilot</span></div>
-      <div class="tool-item"><img src="../assets/logos/gemini.svg" alt="Gemini"><span>Gemini</span></div>
-      <div class="tool-item"><img src="../assets/logos/perplexity.png" alt="Perplexity"><span>Perplexity</span></div>
-      <div class="tool-item"><img src="../assets/logos/notion.png" alt="Notion AI"><span>Notion AI</span></div>
-      <div class="tool-item"><img src="../assets/logos/github-copilot.png" alt="GitHub Copilot"><span>GitHub Copilot</span></div>
-    </div>
+<section class="figs" id="record" aria-label="Results in numbers">
+  <div class="wrap">
+    <ul>
+      <li><b>45<small>+</small></b><span>Companies served (incl. listed enterprises)</span></li>
+      <li><b>2,500<small>+</small></b><span>Training participants</span></li>
+      <li><b>300<small>+</small></b><span>Webinar attendees</span></li>
+      <li><b>7<small>+</small></b><span>Industries covered</span></li>
+    </ul>
   </div>
 </section>
 
-<!-- NEWS -->
-<section class="news" id="news">
-  <div class="container">
-    <div class="news-top rv">
-      <div class="sec-head"><span class="tag">News <span>Updates</span></span></div>
-      <a href="news.html">View all →</a>
-    </div>
-    <div class="news-list rvg">
-      <a href="news/001.html" class="news-row"><span class="d">2026.03.20</span><span class="tg">Announcement</span><span class="tt">We published our generative-AI use-case white paper</span></a>
-      <a href="news/002.html" class="news-row"><span class="d">2026.03.14</span><span class="tg">Announcement</span><span class="tt">We refreshed our service lineup</span></a>
-      <a href="news/003.html" class="news-row"><span class="d">2026.02.28</span><span class="tg ev">Event</span><span class="tt">Free webinar: "The Pitfalls of AI Adoption"</span></a>
-    </div>
+<section class="sec sec--paper eng" id="services">
+  <div class="wrap">
+    <div class="sec__hd"><h2 class="h2">Services</h2><p class="lead">We connect generative AI to results for your business.</p></div>
+    <dl class="dl">
+      <div><dt>General-purpose engines</dt><dd>Gyomuzu AI<br>Security × Generative AI Training</dd></div>
+      <div><dt>Industry-specific engines</dt><dd>Denmitsu AI<br>Sokumitsu AI<br>Uketsugi</dd></div>
+    </dl>
+    <p class="more"><a class="btn" href="/en/services">View services<svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></p>
   </div>
 </section>
 
-<!-- MACRO -->
-<section class="macro" id="macro">
-  <div class="container">
-    <div class="sec-head rv">
-      <span class="tag">Why Now <span>Why act now</span></span>
-      <h2>OpenAI and Anthropic alike.<br>The very companies that built AI are now moving into <span class="mk">adoption support</span>.</h2>
-    </div>
-    <div class="macro-impact rv">
-      <div class="mi-stat">
-        <div class="mi-n">95<span class="pct">%</span></div>
-        <div class="mi-cap">About 95% of enterprise generative-AI initiatives stall without ever producing results.<span class="src">Source: MIT, 2025</span></div>
-      </div>
-      <div class="mi-body">
-        <p>No one understands this reality better than the model developers themselves. In 2026, <strong>OpenAI is hiring hundreds of deployment consultants</strong> and has formed major partnerships with the likes of McKinsey, BCG, and Accenture. <strong>Anthropic, too, has partnered with leading consulting firms</strong> and is rapidly building out a large-scale partner network.</p>
-        <p>Why are the very creators of AI investing so heavily in "adoption support"? The answer is simple. <strong>The tools are already more than capable enough.</strong></p>
-      </div>
-    </div>
-    <div class="macro-bottom rv">
-      <p>What separates success from failure is not the performance of the AI.<br>It is the <span class="mk2">adoption design</span> that feeds your business context into AI.</p>
-    </div>
-  </div>
-</section>
-
-<!-- PROBLEM -->
-<section class="problem" id="problem">
-  <div class="container">
-    <div class="sec-head rv"><span class="tag">The Problem <span>Challenges</span></span><h2>Does any of this sound familiar?</h2></div>
-    <style>
-    .v6fig{--v6card:#fff;--v6ink:#16181D;--v6slate:#565E6A;--v6muted:#878E99;--v6hair:#ECEEF1;--v6hair2:#E2E4E9;--v6soft2:#FAFBFC;--v6blue:#005EFF;--v6blueink:#003DAA;--v6bluesoft:#EFF3FF;color:var(--v6ink);line-height:1.6;letter-spacing:.003em;font-feature-settings:normal}
-    .v6fig *{box-sizing:border-box}
-    .v6fig .v6cl{border:1px solid var(--v6hair2);border-radius:13px;overflow:hidden;background:var(--v6card);box-shadow:0 18px 40px -28px rgba(20,23,28,.26);max-width:760px}
-    .v6fig .v6clrow{display:flex;align-items:flex-start;gap:14px;padding:16px 22px;font-size:15px;color:var(--v6ink);line-height:1.55}
-    .v6fig .v6clrow+.v6clrow{border-top:1px solid var(--v6hair)}
-    .v6fig .v6cbx{width:21px;height:21px;border-radius:6px;background:var(--v6blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-    .v6fig .v6clf{padding:15px 22px;background:var(--v6bluesoft);font-size:14px;color:var(--v6blueink);font-weight:600}
-    </style>
-    <div class="v6fig rv">
-      <div class="v6cl">
-        <div class="v6clrow"><span class="v6cbx"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6.2l2.6 2.6L10 3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>You signed up for ChatGPT or Copilot, but only a handful of employees actually use it.</div>
-        <div class="v6clrow"><span class="v6cbx"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6.2l2.6 2.6L10 3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>The PoC is complete — yet there is no clear path to company-wide rollout.</div>
-        <div class="v6clrow"><span class="v6cbx"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6.2l2.6 2.6L10 3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Leadership is championing AI, but teams on the ground don't know where to start.</div>
-        <div class="v6clrow"><span class="v6cbx"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6.2l2.6 2.6L10 3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>The tools are deployed, but working hours haven't gone down.</div>
-        <div class="v6clf">If even one of these applies, there's room for context engineering.</div>
-      </div>
-    </div>
-    <div class="problem-answer rv">
-      <p>In most cases, the reason AI fails to deliver is not the tool. The root cause is that your organization's operational knowledge, decision criteria, and decision-making processes have never been put into a form AI can use. We call solving this <em>"context engineering."</em></p>
-    </div>
-  </div>
-</section>
-
-<!-- APPROACH -->
-<section class="approach" id="approach">
-  <div class="container">
-    <div class="sec-head rv">
-      <span class="tag">Our Approach <span>Our strengths</span></span>
-      <h2>Context engineering is<br>the foundation of the AI era.</h2>
-      <p class="lead">Operations manuals, tacit knowledge, decision criteria, internal terminology, approval workflows — these are all "context." People share them naturally with one another, but you cannot hand them to AI as-is. We are a team of specialists who shape that context into a form AI can understand and put to work.</p>
-    </div>
-    <style>
-    .v6fig-cp{--v6card:#fff;--v6ink:#16181D;--v6muted:#878E99;--v6hair:#ECEEF1;--v6hair2:#E2E4E9;--v6soft2:#FAFBFC;--v6blue:#005EFF;--v6bluesoft:#EFF3FF;--v6green:#1A8F5E;--v6greensoft:#E9F6EF;color:var(--v6ink);line-height:1.6;letter-spacing:.003em;font-feature-settings:normal;margin:0 auto 40px;max-width:560px}
-    .v6fig-cp *{box-sizing:border-box}
-    .v6fig-cp .v6cap{font-size:13px;color:var(--v6muted);margin:0 0 14px;font-weight:600;text-align:center}
-    .v6fig-cp .v6ctxpack{border:1px solid var(--v6hair2);border-radius:13px;background:var(--v6card);overflow:hidden;box-shadow:0 18px 40px -28px rgba(20,23,28,.28)}
-    .v6fig-cp .v6ph{display:flex;align-items:center;gap:9px;padding:13px 18px;border-bottom:1px solid var(--v6hair);background:var(--v6soft2);font-weight:700;font-size:13.5px;color:var(--v6ink)}
-    .v6fig-cp .v6pst{margin-left:auto;font-size:11px;font-weight:600;color:var(--v6green);background:var(--v6greensoft);padding:3px 9px;border-radius:6px}
-    .v6fig-cp .v6ctxrow{display:flex;align-items:center;gap:11px;padding:12px 18px;font-size:13.5px;color:var(--v6ink)}
-    .v6fig-cp .v6ctxrow+.v6ctxrow{border-top:1px solid var(--v6hair)}
-    .v6fig-cp .v6cc{width:18px;height:18px;border-radius:5px;background:var(--v6bluesoft);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-    .v6fig-cp .v6cm{margin-left:auto;font-size:11.5px;color:var(--v6muted)}
-    </style>
-    <div class="v6fig-cp rv">
-      <div class="v6cap">What a "Context Pack" looks like once organized (sample)</div>
-      <div class="v6ctxpack">
-        <div class="v6ph">Context Pack / Sales<span class="v6pst">Ready</span></div>
-        <div class="v6ctxrow"><span class="v6cc"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 6.5l2.5 2.5L10 3" stroke="#005EFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Proposal &amp; quote procedures<span class="v6cm">42</span></div>
-        <div class="v6ctxrow"><span class="v6cc"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 6.5l2.5 2.5L10 3" stroke="#005EFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Discount &amp; credit criteria<span class="v6cm">Approved</span></div>
-        <div class="v6ctxrow"><span class="v6cc"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 6.5l2.5 2.5L10 3" stroke="#005EFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Internal terms &amp; glossary<span class="v6cm">318</span></div>
-        <div class="v6ctxrow"><span class="v6cc"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 6.5l2.5 2.5L10 3" stroke="#005EFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Past deals &amp; loss reasons<span class="v6cm">1,204</span></div>
-      </div>
-    </div>
-    <div class="approach-grid rvg">
-      <div class="approach-col"><div class="an">01</div><h3>Deep expertise in context engineering</h3><p>A proprietary method for shaping operational knowledge, decision criteria, and unwritten rules into a form AI can use. Before choosing a tool, we start with the context.</p></div>
-      <div class="approach-col"><div class="an">02</div><h3>End-to-end support for major AI tools, from rollout to adoption</h3><p>For Microsoft Copilot, Claude Code, ChatGPT, Gemini, and more, we handle everything from tool selection and setup to security design and lasting adoption. We are not tied to any single tool.</p></div>
-      <div class="approach-col"><div class="an">03</div><h3>A proven track record across 45 companies and 2,500 professionals</h3><p>A versatile framework that has delivered results regardless of industry — pharmaceuticals, construction, chemicals, food, IT, entertainment, and beyond.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- RESULTS STATEMENT + CASE -->
-<section class="results-st" id="results">
-  <div class="container">
-    <div class="rv"><span class="tag">Results <span>Case studies</span></span>
-    <h2>45 companies, 2,500 professionals.<br>We have delivered <span class="mk">results</span> across every industry.</h2></div>
-  </div>
-  <div class="container hcase">
-    <div class="hcase-top rv">
-      <div class="hcase-num">
-        <div class="s">Ideation Time</div>
-        <div class="big"><b>1</b><i>hour</i></div>
-        <div class="desc">From idea generation to convergence, fully completed</div>
-      </div>
-      <div class="hcase-meta">
-        <div class="mtag"><span class="badge">PICKUP</span><span class="ind">Chemicals / Materials</span></div>
-        <h3>Reinventing new-materials ideation</h3>
-        <div class="co">TSE Prime-listed diversified chemical manufacturer</div>
-      </div>
-    </div>
-    <div class="hcase-ba rv">
+<section class="sec" id="concept">
+  <div class="wrap">
+    <div class="sec__hd"><h2 class="h2">Context engineering is<br class="pc"> the foundation of the AI era.</h2><p class="lead">Operations manuals, tacit knowledge, decision criteria, internal terminology, approval workflows — these are all "context." People share them naturally with one another, but you cannot hand them to AI as-is. We are a team of specialists who shape that context into a form AI can understand and put to work.</p></div>
+    <div class="idea">
       <div>
-        <div class="col-l">Before</div>
-        <p>Finding applications for new materials depended on researchers' experience and intuition — a success rate of just 3 in 1,000. Combining speed and scale was nearly impossible.</p>
-      </div>
-      <div>
-        <div class="col-l aft">After</div>
+        <h3>Does any of this sound familiar?</h3>
         <ul>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Established a method that takes ideation from generation to convergence in one hour</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>A business-model patent application is now pending</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>AI surfaced new applications the company could not have reached on its own</li>
+          <li>You signed up for ChatGPT or Copilot, but only a handful of employees actually use it.</li>
+          <li>The PoC is complete — yet there is no clear path to company-wide rollout.</li>
+          <li>Leadership is championing AI, but teams on the ground don't know where to start.</li>
+          <li>The tools are deployed, but working hours haven't gone down.</li>
         </ul>
+        <p class="idea__ans">In most cases, the reason AI fails to deliver is not the tool. The root cause is that your organization's operational knowledge, decision criteria, and decision-making processes have never been put into a form AI can use. We call solving this <em>"context engineering."</em></p>
       </div>
+      <ul class="pts">
+        <li><h3>Deep expertise in context engineering</h3><p>A proprietary method for shaping operational knowledge, decision criteria, and unwritten rules into a form AI can use. Before choosing a tool, we start with the context.</p></li>
+        <li><h3>End-to-end support for major AI tools, from rollout to adoption</h3><p>For Microsoft Copilot, Claude Code, ChatGPT, Gemini, and more, we handle everything from tool selection and setup to security design and lasting adoption. We are not tied to any single tool.</p></li>
+        <li><h3>A proven track record across 45 companies and 2,500 professionals</h3><p>A versatile framework that has delivered results regardless of industry — pharmaceuticals, construction, chemicals, food, IT, entertainment, and beyond.</p></li>
+      </ul>
     </div>
-    <div class="hcase-others rv">
-      <div class="ogrid">
-        <a href="cases.html" class="ocard"><span class="oi">Pharma / Healthcare</span><strong>Major cut in research outsourcing costs</strong><span class="om">Millions of yen saved per year</span></a>
-        <a href="cases.html" class="ocard"><span class="oi">IT / Cloud</span><strong>Sakura Internet — company-wide AI training for 300 staff</strong><span class="om">300 people using AI independently</span></a>
-        <a href="cases.html" class="ocard"><span class="oi">Construction / Real Estate</span><strong>Company-wide AI adoption support</strong><span class="om">Phased rollout across multiple divisions</span></a>
+  </div>
+</section>
+
+<section class="sec sec--paper" id="results">
+  <div class="wrap">
+    <div class="sec__hd"><h2 class="h2">Case studies</h2><p class="lead">45 companies, 2,500 professionals. We have delivered results across every industry.</p></div>
+    <div class="rs">
+      <a href="cases.html"><span class="ind">Chemicals / Materials</span><span class="tt">Reinventing new-materials ideation</span><span class="res">From idea generation to convergence, fully completed</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a>
+      <a href="cases.html"><span class="ind">Pharma / Healthcare</span><span class="tt">Major cut in research outsourcing costs</span><span class="res">Millions of yen saved per year</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a>
+      <a href="cases.html"><span class="ind">IT / Cloud</span><span class="tt">Sakura Internet — company-wide AI training for 300 staff</span><span class="res">300 people using AI independently</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a>
+      <a href="cases.html"><span class="ind">Construction / Real Estate</span><span class="tt">Company-wide AI adoption support</span><span class="res">Phased rollout across multiple divisions</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a>
+    </div>
+    <div class="voices">
+      <blockquote><p>The search for new-material applications used to rely on experience and intuition; now we get multiple ideas in an hour. The breadth of thinking we could never reach on our own has clearly expanded.</p><footer><b>Manager, R&D Division</b>TSE Prime-listed diversified chemical manufacturer<br>Engagement: Generative-AI consulting (R&D)</footer></blockquote>
+      <blockquote><p>Market research we used to outsource is now something we can run in-house. Outsourcing costs dropped, but more than that, the very speed of our decision-making has changed.</p><footer><b>DX Promotion Dept.</b>Major foreign-affiliated pharmaceutical company<br>Engagement: Generative-AI consulting + in-house training</footer></blockquote>
+      <blockquote><p>They helped us untangle the personalized, scattered decision criteria and operational knowledge, one piece at a time, into a form AI can use. With our once-fragmented assumptions aligned, our teams now operate from the same page — and that, above all, is the real value.</p><footer><b>General Manager, Corporate Planning</b>Mid-sized manufacturer<br>Engagement: Generative-AI consulting (context engineering)</footer></blockquote>
+    </div>
+    <p class="more"><a class="btn" href="cases.html">View case studies<svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></p>
+  </div>
+</section>
+
+<section class="sec" id="news">
+  <div class="wrap">
+    <h2 class="h2 sec__hd">News</h2>
+    <ul class="nl">
+      <li><a href="news/001.html"><time datetime="2026-03-20">2026.03.20</time><span class="tg">Announcement</span><span class="tt">We published our generative-AI use-case white paper</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+      <li><a href="news/002.html"><time datetime="2026-03-14">2026.03.14</time><span class="tg">Announcement</span><span class="tt">We refreshed our service lineup</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+      <li><a href="news/003.html"><time datetime="2026-02-28">2026.02.28</time><span class="tg">Event</span><span class="tt">Free webinar: "The Pitfalls of AI Adoption"</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+    </ul>
+    <p class="more"><a class="btn btn--line" href="news.html">View all news<svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></p>
+  </div>
+</section>
+
+<section class="sec sec--paper faq" id="faq">
+  <div class="wrap">
+    <h2 class="h2 sec__hd">Frequently asked questions</h2>
+    <dl class="dl">
+      <div><dt>Most of our employees have no AI expertise. Is that a problem?</dt><dd>Not at all. We support you end-to-end, from training through to workflow implementation. No specialist knowledge is required.</dd></div>
+      <div><dt>Which AI tools do you support?</dt><dd>We support all major tools, including Claude, ChatGPT, and Microsoft Copilot. We are not tied to any single tool.</dd></div>
+      <div><dt>Can you work with large enterprises?</dt><dd>Yes. Our 37 engagements include TSE Prime-listed companies, and we handle organization-wide design and rollout.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="sec" id="resources-dl">
+  <div class="wrap">
+    <div class="sec__hd"><h2 class="h2">Free resources</h2><p class="lead">We share field-tested insights, free of charge.</p></div>
+    <ul class="res-dl">
+      <li><span class="k">Use-case report</span><div><h3>2026 Generative-AI Use-Case Report</h3><p>A single report that answers "how did other companies actually get results?" with concrete numbers — ready to use as evidence for internal proposals and approvals.</p></div><a class="btn btn--line" href="contact.html?type=document" onclick="fbq('track','Lead');">Request for free<svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+      <li><span class="k">Security</span><div><h3>Claude Code for the enterprise:<br>a practical security &amp; setup guide</h3><p>A report to clear the "we want to use it, but IT keeps blocking it" hurdle. We lay out the design for safe, company-wide rollout in the language of management.</p></div><a class="btn btn--line" href="contact.html?type=document" onclick="fbq('track','Lead');">Request for free<svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <picture class="screen" aria-hidden="true">
+    <source media="(max-width: 760px)" srcset="/assets/top/cta-map-sp.jpg">
+    <img src="/assets/top/cta-map.jpg" alt="" loading="lazy">
+  </picture>
+  <div class="wrap cta__in">
+    <p>Get your AI to the point<br class="sp"> where it delivers.</p>
+    <a class="btn" href="contact.html">Book a free consultation<svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a>
+    <p class="cta__sub"><a href="contact.html?type=document" onclick="fbq('track','Lead');">Request the 2026 AI Use-Case Report</a></p>
+  </div>
+</section>
+</main>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__in">
+      <div>
+        <p class="ft__name">TechWorker Inc.</p>
+        <p class="ft__addr">1-22-3 Nishiwaseda, Shinjuku-ku,<br>Tokyo 169-0051, Japan</p>
       </div>
-      <div class="more"><a href="cases.html" class="btn btn--ghost">View more case studies <i>→</i></a></div>
+      <nav aria-label="Footer">
+        <a href="/en/services">Services</a>
+        <a href="/en/company">Company</a>
+        <a href="/en/news">News</a>
+        <a href="#concept">Approach</a>
+        <a href="/en/cases">Case Studies</a>
+        <a href="/en/contact">Contact</a>
+        <a href="/en/privacy">Privacy Policy</a>
+        <a href="/" hreflang="ja" lang="ja">日本語</a>
+      </nav>
     </div>
-  </div>
-</section>
-
-<!-- VOICE / CLIENTS -->
-<section class="voice" id="voice">
-  <div class="container">
-    <div class="sec-head rv"><span class="tag">Voice <span>Client voices</span></span><h2>Real voices from the field.</h2></div>
-    <div class="clients rv">
-      <span class="clients-label">Client</span>
-      <span class="client-name">Sakura Internet Inc.</span>
-      <span class="clients-more">…and 45 companies in total, including publicly listed enterprises, that we have supported.</span>
-    </div>
-    <div class="voice-grid rvg">
-      <blockquote class="voice-card">
-        <p>The search for new-material applications used to rely on experience and intuition; now we get multiple ideas in an hour. The breadth of thinking we could never reach on our own has clearly expanded.</p>
-        <footer>
-          <div class="v-person"><span class="v-avatar">C</span><div><span class="vrole">Manager, R&D Division</span><span class="vco">TSE Prime-listed diversified chemical manufacturer</span></div></div>
-          <span class="v-service"><b>Engagement</b>: Generative-AI consulting (R&D)</span>
-        </footer>
-      </blockquote>
-      <blockquote class="voice-card">
-        <p>Market research we used to outsource is now something we can run in-house. Outsourcing costs dropped, but more than that, the very speed of our decision-making has changed.</p>
-        <footer>
-          <div class="v-person"><span class="v-avatar">P</span><div><span class="vrole">DX Promotion Dept.</span><span class="vco">Major foreign-affiliated pharmaceutical company</span></div></div>
-          <span class="v-service"><b>Engagement</b>: Generative-AI consulting + in-house training</span>
-        </footer>
-      </blockquote>
-      <blockquote class="voice-card">
-        <p>They helped us untangle the personalized, scattered decision criteria and operational knowledge, one piece at a time, into a form AI can use. With our once-fragmented assumptions aligned, our teams now operate from the same page — and that, above all, is the real value.</p>
-        <footer>
-          <div class="v-person"><span class="v-avatar">M</span><div><span class="vrole">General Manager, Corporate Planning</span><span class="vco">Mid-sized manufacturer</span></div></div>
-          <span class="v-service"><b>Engagement</b>: Generative-AI consulting (context engineering)</span>
-        </footer>
-      </blockquote>
-    </div>
-    <div class="more rv" style="margin-top:34px;"><a href="cases.html" class="btn btn--ghost">Read more client voices <i>→</i></a></div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section class="services" id="services">
-  <div class="container">
-    <div class="sec-head rv"><span class="tag">Services <span>Services</span></span><h2>What we do</h2><p class="lead">We connect generative AI to results for your business.</p></div>
-    <div class="svc-overview rv">
-      <div class="sn">01</div>
-      <h3>Generative-AI consulting</h3>
-      <p>Hands-on support for your AI adoption — from context engineering and workflow design to lasting adoption across your organization, all in one engagement.</p>
-      <a href="services.html#services">See program details →</a>
-    </div>
-    <div class="more rv" style="margin-top:40px;"><a href="services.html" class="btn">View service details <i>→</i></a></div>
-  </div>
-</section>
-
-<!-- MESSAGE (CEO) -->
-<section class="person" id="message">
-  <div class="container rv">
-    <div class="p-photo"><img src="../assets/ceo-portrait.jpg" alt="Kotaro Furuno - CEO and CTO, TechWorker Inc." style="object-position:50% 30%;transform:scale(2);transform-origin:50% 30%;"></div>
-    <div class="p-text">
-      <span class="tag">Message <span>From our CEO and CTO</span></span>
-      <h2>Kotaro Furuno</h2>
-      <p class="role">CEO and CTO, TechWorker Inc. <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" style="vertical-align:-1px;margin-right:2px;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a></p>
-      <blockquote>
-        We are not a company that sells AI tools. We shape a company's operational knowledge, decision criteria, and unwritten rules — its "context" — into a form that can be handed to AI. <strong>We specialize in this context engineering, and we have supported 45 companies, including publicly listed enterprises, and 2,500 professionals.</strong> Our job is to create the conditions in which the work itself is fundamentally transformed by AI.
-      </blockquote>
-    </div>
-  </div>
-</section>
-
-<!-- DIRECTOR -->
-<section class="person rev">
-  <div class="container rv">
-    <div class="p-photo"><img src="../assets/director-yamamoto.jpg" alt="Toshiyuki Yamamoto - Director, TechWorker Inc."></div>
-    <div class="p-text">
-      <span class="tag">Director <span>Director</span></span>
-      <h2>Toshiyuki Yamamoto</h2>
-      <p class="role">Director, TechWorker Inc.<br>Founder of Chatwork Inc. / CEO of Power Angels / Representative Director, Japan Angel Investors Association</p>
-      <blockquote>
-        <strong>No matter how excellent the technology, it will never be used inside a company without someone to connect it to the real context of the work on the ground.</strong> TechWorker will serve as that bridge, advancing AI adoption across Japanese enterprises.
-      </blockquote>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="faq" id="faq">
-  <div class="container">
-    <div class="sec-head rv"><span class="tag">FAQ <span>Frequently asked questions</span></span><h2>Frequently asked questions</h2></div>
-    <div class="faq-list rv">
-      <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false">Most of our employees have no AI expertise. Is that a problem?<span class="ar"></span></button><div class="faq-a"><p>Not at all. We support you end-to-end, from training through to workflow implementation. No specialist knowledge is required.</p></div></div>
-      <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false">Which AI tools do you support?<span class="ar"></span></button><div class="faq-a"><p>We support all major tools, including Claude, ChatGPT, and Microsoft Copilot. We are not tied to any single tool.</p></div></div>
-      <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false">Can you work with large enterprises?<span class="ar"></span></button><div class="faq-a"><p>Yes. Our 37 engagements include TSE Prime-listed companies, and we handle organization-wide design and rollout.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- COMPANY -->
-<section class="company" id="company">
-  <div class="container">
-    <div class="sec-head rv"><span class="tag">Company <span>Company overview</span></span><h2>Company overview</h2></div>
-    <div class="more rv" style="margin-top:34px;"><a href="company.html" class="btn btn--ghost">View company overview <i>→</i></a></div>
-  </div>
-</section>
-
-<!-- RESOURCES BAND -->
-<section class="resources-band" id="resources-dl">
-  <div class="container">
-    <div class="sec-head rv">
-      <span class="tag">Free Resources <span>Free resources</span></span>
-      <h2>We share field-tested insights, free of charge.</h2>
-    </div>
-    <div class="rb-grid rvg">
-      <a href="contact.html?type=document" class="rb-card" onclick="fbq('track','Lead');">
-        <span class="rb-kind">Use-case report</span>
-        <h3>2026 Generative-AI Use-Case Report</h3>
-        <p>A single report that answers "how did other companies actually get results?" with concrete numbers — ready to use as evidence for internal proposals and approvals.</p>
-        <span class="rb-inside-label">What's inside</span>
-        <ul class="rb-inside"><li>Real examples by industry — chemicals, pharma, IT, construction, and more</li><li>The "challenge → action → result (with numbers)" of each case</li><li>The common patterns shared by companies that get results</li></ul>
-        <span class="rb-dl">Request for free <i>↓</i></span>
-      </a>
-      <a href="contact.html?type=document" class="rb-card" onclick="fbq('track','Lead');">
-        <span class="rb-kind">Security</span>
-        <h3>Claude Code for the enterprise:<br>a practical security &amp; setup guide</h3>
-        <p>A report to clear the "we want to use it, but IT keeps blocking it" hurdle. We lay out the design for safe, company-wide rollout in the language of management.</p>
-        <span class="rb-inside-label">What's inside</span>
-        <ul class="rb-inside"><li>The three biggest generative-AI risks, and how to counter them</li><li>Five principles for a secure setup</li><li>A 10-point checklist before company-wide rollout</li></ul>
-        <span class="rb-dl">Request for free <i>↓</i></span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- FINAL CTA -->
-<section class="final" id="cta">
-  <div class="container">
-    <h2>Get your AI to the point where it delivers.</h2>
-    <p>We don't stop at deploying the tools. With methods honed across 45 companies and 2,500 professionals,<br>we partner with you in earnest until your teams are producing real results.</p>
-    <div class="actions">
-      <a href="contact.html" class="btn btn--on-blue">Book a free consultation</a>
-      <a href="contact.html?type=document" class="btn btn--on-blue-ghost" onclick="fbq('track','Lead');">Request the 2026 AI Use-Case Report</a>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <div class="logo">Tech<i>Worker</i></div>
-        <p>Enterprise generative-AI consulting<br>TechWorker Inc.</p>
-        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
-      </div>
-      <div class="footer-col">
-        <h4>Services</h4>
-        <a href="index.html#services">Generative-AI consulting</a>
-      </div>
-      <div class="footer-col">
-        <h4>Site</h4>
-        <a href="news.html">News</a>
-        <a href="cases.html">Case Studies</a>
-        <a href="company.html">Company</a>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <a href="contact.html">Free Consultation</a>
-        <a href="contact.html?type=document">Request Materials</a>
-        <a href="privacy.html">Privacy Policy</a>
-        <p>1-22-3 Nishiwaseda<br>Shinjuku-ku, Tokyo 169-0051</p>
-      </div>
-    </div>
-    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+    <small>© TechWorker Inc.</small>
   </div>
 </footer>
 
 <script>
-/* nav shadow on scroll */
-var nav=document.getElementById('nav');
-addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>40);},{passive:true});
-
-/* mobile menu */
-(function(){
-  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
-  function setMenu(open){
-    document.body.classList.toggle('menu-open',open);
-    hamb.setAttribute('aria-expanded',open?'true':'false');
-    hamb.setAttribute('aria-label',open?'Close menu':'Open menu');
-    mmenu.setAttribute('aria-hidden',open?'false':'true');
-    document.body.style.overflow=open?'hidden':'';
-  }
-  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
-  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
-  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
-  matchMedia('(min-width:861px)').addEventListener('change',function(e){if(e.matches)setMenu(false);});
+// Mobile menu: the top-right button opens and closes it; tapping a link closes it. After scrolling, the header gets a dark backdrop
+(() => {
+  const hd = document.querySelector('.hd'), btn = hd.querySelector('.menu');
+  const set = open => { hd.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); };
+  btn.addEventListener('click', () => set(!hd.classList.contains('is-open')));
+  hd.querySelector('nav').addEventListener('click', e => { if (e.target.closest('a')) set(false); });
+  const onScroll = () => hd.classList.toggle('is-scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
 })();
-
-/* FAQ accordion (keyboard-accessible buttons) */
-document.querySelectorAll('.faq-item').forEach(function(item){
-  var q=item.querySelector('.faq-q'),a=item.querySelector('.faq-a');
-  q.addEventListener('click',function(){
-    var open=item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(function(o){o.classList.remove('open');o.querySelector('.faq-a').style.maxHeight='0';o.querySelector('.faq-q').setAttribute('aria-expanded','false');});
-    if(!open){item.classList.add('open');a.style.maxHeight=(a.scrollHeight+24)+'px';q.setAttribute('aria-expanded','true');}
-  });
-});
-
-addEventListener('resize',function(){var o=document.querySelector('.faq-item.open .faq-a');if(o)o.style.maxHeight=(o.scrollHeight+24)+'px';},{passive:true});
-
-/* scroll reveal */
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.rv,.rvg').forEach(function(el){io.observe(el);});
-
-/* count-up for figures */
-function countUp(el){
-  var raw=el.textContent.trim();var suf='';var t=raw;
-  if(t.indexOf('%')>-1){suf='%';t=t.replace('%','');}
-  var dec=t.indexOf('.')>-1;
-  var target=parseFloat(t.replace(/,/g,''));if(isNaN(target))return;
-  var hasPlus=el.querySelector('sub')?'+':'';
-  var start=null,dur=1500;
-  function step(ts){if(!start)start=ts;var p=Math.min((ts-start)/dur,1);var e=1-Math.pow(1-p,3);var v=e*target;
-    var out=dec?v.toFixed(1):Math.round(v).toLocaleString();
-    el.innerHTML=out+suf+(hasPlus?'<sub>+</sub>':'');
-    if(p<1)requestAnimationFrame(step);}
-  requestAnimationFrame(step);
-}
-if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
-  var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){countUp(e.target);io2.unobserve(e.target);}});},{threshold:.6});
-  document.querySelectorAll('.fig .n').forEach(function(el){io2.observe(el);});
-}
-
-/* smooth anchor offset */
-document.querySelectorAll('a[href^="#"]').forEach(function(a){
-  a.addEventListener('click',function(e){
-    var id=this.getAttribute('href');if(id==='#'||id.length<2)return;
-    var t=document.querySelector(id);if(!t)return;e.preventDefault();
-    scrollTo({top:t.getBoundingClientRect().top+scrollY-80,behavior:'smooth'});
-  });
-});
 </script>
 </body>
 </html>
