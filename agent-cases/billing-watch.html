@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}if(location.hostname==='techworker.co.jp')gtag('config', 'G-3V34NWXVCJ');
+</script>
+<script src="/assets/tw-track.js" defer></script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>想定外の課金を、AIが週2回見張ります｜AIエージェントの事例 — TechWorker</title>
+<meta name="description" content="従量課金のサービスで、想定外の課金・止まらない処理・支払いの失敗が無いかを、AIが週2回点検します。台帳の上限と比べて判定を3段で書き、警告のときだけ代表のスマホに知らせます。">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/agent-cases/billing-watch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="想定外の課金を、AIが週2回見張ります｜AIエージェントの事例 — TechWorker">
+<meta property="og:description" content="従量課金のサービスで、想定外の課金・止まらない処理・支払いの失敗が無いかを、AIが週2回点検します。台帳の上限と比べて判定を3段で書き、警告のときだけ代表のスマホに知らせます。">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/agent-cases/billing-watch">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="想定外の課金を、AIが週2回見張ります｜AIエージェントの事例 — TechWorker">
+<meta name="twitter:description" content="従量課金のサービスで、想定外の課金・止まらない処理・支払いの失敗が無いかを、AIが週2回点検します。台帳の上限と比べて判定を3段で書き、警告のときだけ代表のスマホに知らせます。">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="agent-cases.css?v=20261020">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "想定外の課金を、AIが週2回見張ります", "description": "従量課金のサービスで、想定外の課金・止まらない処理・支払いの失敗が無いかを、AIが週2回点検します。台帳の上限と比べて判定を3段で書き、警告のときだけ代表のスマホに知らせます。", "inLanguage": "ja", "image": "https://techworker.co.jp/assets/ogp.png", "datePublished": "2026-10-20", "dateModified": "2026-10-20", "author": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/agent-cases/billing-watch"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "実績", "item": "https://techworker.co.jp/cases"}, {"@type": "ListItem", "position": 3, "name": "AIエージェントの事例", "item": "https://techworker.co.jp/agent-cases/"}, {"@type": "ListItem", "position": 4, "name": "想定外の課金を、AIが週2回見張ります", "item": "https://techworker.co.jp/agent-cases/billing-watch"}]}</script>
+</head>
+<body>
+<!-- NAV -->
+<nav id="nav">
+  <a href="../index.html" class="logo">Tech<i>Worker</i></a>
+  <ul>
+    <li><a href="../index.html">ホーム</a></li>
+    <li><a href="../services.html">サービス</a></li>
+    <li><a href="../cases.html" class="active">実績</a></li>
+    <li><a href="../media/">メディア</a></li>
+    <li><a href="../library/">資料</a></li>
+    <li><a href="../news.html">ニュース</a></li>
+    <li><a href="../company.html">会社概要</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="../contact.html" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
+    <span class="lang"><span class="cur">JP</span> / <a href="../en/index.html">EN</a></span>
+    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a href="../index.html">ホーム</a>
+  <a href="../services.html">サービス</a>
+  <a href="../cases.html">実績</a>
+  <a href="../media/">メディア</a>
+  <a href="../library/">資料ダウンロード</a>
+  <a href="../news.html">ニュース</a>
+  <a href="../company.html">会社概要</a>
+  <a href="../contact.html" class="m-cta">無料相談を申し込む</a>
+  <a href="../en/index.html" class="m-lang">English ↗</a>
+</div>
+
+<main>
+<header class="ac-head">
+  <div class="crumb" role="navigation" aria-label="パンくず"><a href="../index.html">ホーム</a><span>/</span><a href="../cases.html">実績</a><span>/</span><a href="index.html">AIエージェントの事例</a></div>
+  <span class="ac-label">社内で動くAIエージェント</span>
+  <h1>想定外の課金を、AIが週2回見張ります</h1>
+  <p class="dept">経営（お金）｜クラウドの利用量と請求のメールを上限と比べ、異常のときだけ強く知らせる</p>
+  <p class="sum">従量課金のサービスで、想定外の課金・止まらない処理・支払いの失敗が無いかを、AIが週2回点検します。台帳の上限と比べて判定を3段で書き、警告のときだけ代表のスマホに知らせます。</p>
+</header>
+<section class="ac-p5" aria-label="仕組みと結果"><div class="ac-arch" aria-label="仕組みの図"><div class="ac-cols n2"><div class="win"><div class="win-h"><div class="nm"><b>課金の台帳</b><span>サービスごとの上限</span></div><i class="ex">例</i></div><div class="win-b tbl table"><table><thead><tr><th>サービス</th><th>課金の型</th><th>止まる上限</th></tr></thead><tbody><tr><td>クラウドA</td><td>定額＋従量</td><td>なし・通知</td></tr><tr><td>AIのAPI</td><td>前払い</td><td>残高まで</td></tr></tbody></table></div></div><div class="win"><div class="win-h"><div class="nm"><b>請求のメール</b><span>請求と上限の通知</span></div><i class="ex">例</i></div><div class="win-b lines mail"><p>件名：今月のご請求</p><p>件名：利用の上限に近づいています</p><p>件名：お支払いに失敗しました</p></div></div></div><div class="ac-down ac-cols n2" aria-hidden="true"><span><svg viewBox="0 0 14 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 1v14M2.5 10.5 7 15l4.5-4.5"/></svg></span><span><svg viewBox="0 0 14 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 1v14M2.5 10.5 7 15l4.5-4.5"/></svg></span></div><div class="ac-ai"><div class="ac-ai-h"><span>AIの処理</span><b>Claude の定期実行（月・木）</b></div><ol class="ac-steps"><li><b><i>1</i>利用量を読む</b><p>サービスごとの利用量を API で見ます</p></li><li><b><i>2</i>上限と比べる</b><p>月末の見込みと止まる上限を比べます</p></li><li><b><i>3</i>判定を書く</b><p>異常なし・注意・警告に分けます</p></li></ol></div><div class="ac-down ac-cols n1" aria-hidden="true"><span><svg viewBox="0 0 14 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 1v14M2.5 10.5 7 15l4.5-4.5"/></svg></span></div><div class="ac-cols n1"><div class="win"><div class="win-h"><div class="nm"><b>点検の記録</b><span>回ごとの判定</span></div><i class="ex">例</i></div><div class="win-b tbl table"><table><thead><tr><th>日付</th><th>判定</th><th>要点</th></tr></thead><tbody><tr><td>10/15</td><td>異常なし</td><td>超過の見込み $0</td></tr><tr><td>10/19</td><td>警告</td><td>1日だけ利用が急増</td></tr></tbody></table></div></div></div><dl class="ac-guard"><div><dt>人が決めること</dt><dd>止めるかどうかは代表が決めます</dd></div><div><dt>AIがしないこと</dt><dd>メールの送信・設定の変更・支払いはしません</dd></div></dl><p class="ac-note">画面の中身は例です（実際の社名・内容ではありません）</p></div><div class="ac-res"><section class="ac-issue"><h2>課題</h2><ul><li>従量課金のサービスに、止まる上限の無い物がありました</li><li>請求のメールと利用量を、まとめて見る場がありませんでした</li></ul></section><div class="ac-tri" aria-hidden="true"></div><section class="ac-result"><h2>改善結果</h2><div class="ac-nums"><div class="nm"><div class="v">6<sub>回</sub></div><div class="w">10月8日〜19日に6回点検</div><div class="a">2026年10月19日時点</div></div><div class="nm"><div class="v">15<sub>サービス</sub></div><div class="w">台帳に15のサービスを登録</div><div class="a">2026年10月19日時点</div></div></div><h3>動き方</h3><ul><li>2026年10月8日から月曜・木曜の8:30に起動</li><li>警告のときだけスマホに1行で知らせる</li></ul><h3>回数</h3><ul><li>判定は異常なし3・注意2・警告1</li></ul></section><div class="ac-mini"><a href="/companymap/contact" class="btn" data-ac-location="result" data-ac-case="billing-watch" data-ac-offering="companymap">2週間の無料検証を相談する <i>→</i></a></div></div></section>
+<section class="ac-more"><div><h2>背景</h2><p>クラウドとAIの利用は、使った分だけ請求が増える形が多くあります。他社で約1万ドルの課金の事故が起きたのを受け、2026年10月8日に点検の決まりと台帳を作りました。AIは読むだけで、設定の変更や支払いはしません。</p><p class="src">出典：社内の定期実行の設定と課金の台帳（2026年10月19日時点）／注：画面の中身は例</p></div></section>
+<section class="ac-cta" id="consult"><div class="inner"><h2>この形を、御社の仕事で試せます。</h2><p>業務図とAIの運用（CompanyMap AI）は、2週間の無料検証から始められます。AIに任せる仕事の引き継ぎ書（業務図・判断の一覧など）を作ってお渡しします。</p><div class="acts"><a href="/companymap/contact" class="btn btn--on-blue" data-ac-location="end" data-ac-case="billing-watch" data-ac-offering="companymap">2週間の無料検証を相談する <i>→</i></a></div><span class="sub">ほかのご相談は<a href="/contact.html" data-ac-location="end_contact" data-ac-case="billing-watch" data-ac-offering="contact">お問い合わせ</a>から。<a href="/companymap" data-ac-location="end_sub" data-ac-case="billing-watch" data-ac-offering="companymap">業務図（CompanyMap AI）の紹介</a>も見られます。</span></div></section>
+<section class="ac-others"><div class="h"><h2>ほかの事例</h2><a href="index.html">事例の一覧へ →</a></div><div class="ac-list"><a class="ac-row" href="site-improvement-cycle.html" data-kubun="internal" data-area="発信"><span class="lb">当社｜発信<small>社内で動くAIエージェント</small></span><span><h3>サイトの数字を見て、AIが毎週1つ直します</h3><p>毎週月曜、スクリプトが自社サイトの数字を集め、AIがその報告を読んで改善を1つ選びます。直して本番で確かめ、狙いの数字と結果を見る日を台帳に書きます。</p></span><span class="m">10<sub>件</sub><small>9月28日〜10月19日に施策10件を記録</small></span><span class="go" aria-hidden="true">→</span></a><a class="ac-row" href="company-memory-dream.html" data-kubun="internal" data-area="全社"><span class="lb">当社｜全社<small>社内で動くAIエージェント</small></span><span><h3>会社の記憶を、AIが毎晩2時に整理します</h3><p>社内の決定・会話・案件の記録を、毎晩2時に整理します。事実を抜き出し、ページのつながりと重みを直し、検索の準備を補います。朝の報告や役割ごとのAIは、整理された記憶を読んで動きます。</p></span><span class="m">125<sub>夜</sub><small>6月18日〜10月19日に125夜起動</small></span><span class="go" aria-hidden="true">→</span></a><a class="ac-row" href="grok-sales-replies.html" data-kubun="internal" data-area="営業"><span class="lb">当社｜営業<small>社内で動くAIエージェント</small></span><span><h3>返事と面談の準備を、AIが平日に3回拾います</h3><p>平日の9時・13時・17時に、AIが受信箱と予定表を読みます。声をかけた相手からの人の返事と、今日・明日の面談を拾い、返信は下書きまで作ります。代表には送信の承認と日程だけを送ります。</p></span><span class="m">6<sub>回</sub><small>10月16日の試しの3回を含め計6回の記録</small></span><span class="go" aria-hidden="true">→</span></a></div></section>
+</main>
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">Tech<i>Worker</i></div>
+        <p>企業向け生成AIコンサルティング<br>株式会社TechWorker</p>
+        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+      </div>
+      <div class="footer-col">
+        <h4>サービス</h4>
+        <a href="../companymap">業務図（CompanyMap AI）</a>
+        <a href="https://denmitsu.techworker.co.jp/">デンミツAI</a>
+        <a href="https://sokumitsu.techworker.co.jp/">ソクミツAI</a>
+        <a href="https://kenshu.techworker.co.jp/">セキュリティ×生成AI研修</a>
+        <a href="https://shokei.techworker.co.jp/">ウケツギ</a>
+      </div>
+      <div class="footer-col">
+        <h4>サイト</h4>
+        <a href="../media/">メディア</a>
+        <a href="../news.html">ニュース</a>
+        <a href="../cases.html">実績</a>
+        <a href="index.html">AIエージェントの事例</a>
+        <a href="../company.html">会社概要</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="../contact.html">無料相談</a>
+        <a href="../contact.html?type=document">資料請求</a>
+        <a href="../privacy.html">プライバシーポリシー</a>
+        <p>〒169-0051<br>東京都新宿区西早稲田一丁目22番3号</p>
+      </div>
+    </div>
+    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>40);},{passive:true});
+(function(){
+  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
+  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');hamb.setAttribute('aria-label',o?'メニューを閉じる':'メニューを開く');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
+  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+})();
+/* 案内のクリックを GA4 の agent_case_cta_click で数える（case_id・offering・location） */
+document.addEventListener('click',function(ev){
+  var a=ev.target.closest&&ev.target.closest('[data-ac-location]');if(!a||typeof gtag!=='function')return;
+  gtag('event','agent_case_cta_click',{case_id:a.dataset.acCase,offering:a.dataset.acOffering,location:a.dataset.acLocation});
+});
+</script>
+</body>
+</html>
