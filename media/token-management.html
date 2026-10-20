@@ -13,24 +13,24 @@
 <script src="/assets/tw-track.js" defer></script>
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>トークンマネジメントとは｜品質を保って費用を見直す実践ガイド — TechWorker</title>
-<meta name="description" content="生成AIの品質を保ちながら、利用量と費用を管理する方法を示します。TechWorkerのCodex改修を記入例に、記録する項目と、費用を比較するための条件を説明します。">
+<title>トークンマネジメントとは｜トークンマキシングとの使い分けと、AIのトークンコストの見直し方 — TechWorker</title>
+<meta name="description" content="AIのトークンコストを、品質を落とさずに見直す方法です。難しい仕事には惜しまず使い（トークンマキシング）、定型の仕事は絞る。その分け方と、作業ごとに記録する項目を、TechWorkerの記入例とCSVのひな型つきで説明します。">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="canonical" href="https://techworker.co.jp/media/token-management">
 <meta property="og:type" content="article">
-<meta property="og:title" content="トークンマネジメントとは｜品質を保って費用を見直す実践ガイド">
-<meta property="og:description" content="生成AIの品質を保ちながら、利用量と費用を管理する方法を示します。TechWorkerのCodex改修を記入例に、記録する項目と、費用を比較するための条件を説明します。">
+<meta property="og:title" content="トークンマネジメントとは｜トークンマキシングとの使い分けと、AIのトークンコストの見直し方">
+<meta property="og:description" content="AIのトークンコストを、品質を落とさずに見直す方法です。難しい仕事には惜しまず使い（トークンマキシング）、定型の仕事は絞る。その分け方と、作業ごとに記録する項目を、TechWorkerの記入例とCSVのひな型つきで説明します。">
 <meta property="og:image" content="https://techworker.co.jp/media/figs/token-management-1.png">
 <meta property="og:url" content="https://techworker.co.jp/media/token-management">
 <meta property="og:site_name" content="TechWorker">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="トークンマネジメントとは｜品質を保って費用を見直す実践ガイド">
+<meta name="twitter:title" content="トークンマネジメントとは｜トークンマキシングとの使い分けと、AIのトークンコストの見直し方">
 <meta name="twitter:image" content="https://techworker.co.jp/media/figs/token-management-1.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="article.css?v=20261006-source-notes">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "トークンマネジメントとは｜品質を保って費用を見直す実践ガイド", "description": "生成AIの品質を保ちながら、利用量と費用を管理する方法を示します。TechWorkerのCodex改修を記入例に、記録する項目と、費用を比較するための条件を説明します。", "datePublished": "2026-06-13", "dateModified": "2026-10-06", "inLanguage": "ja", "image": "https://techworker.co.jp/media/figs/token-management-1.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/token-management.html"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "トークンマネジメントとは｜トークンマキシングとの使い分けと、AIのトークンコストの見直し方", "description": "AIのトークンコストを、品質を落とさずに見直す方法です。難しい仕事には惜しまず使い（トークンマキシング）、定型の仕事は絞る。その分け方と、作業ごとに記録する項目を、TechWorkerの記入例とCSVのひな型つきで説明します。", "datePublished": "2026-06-13", "dateModified": "2026-10-06", "inLanguage": "ja", "image": "https://techworker.co.jp/media/figs/token-management-1.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/token-management.html"}}</script>
 <script type="application/ld+json">
 {
   "@context":"https://schema.org","@type":"BreadcrumbList",
@@ -74,8 +74,8 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <header class="art-head">
   <nav class="crumb" aria-label="パンくず"><a href="../index.html">ホーム</a><span class="sep">/</span><a href="index.html">メディア</a><span class="sep">/</span>トークンマネジメント</nav>
   <div class="kicker">Token Strategy</div>
-  <h1>トークンマネジメントとは｜品質を保って費用を見直す実践ガイド</h1>
-  <p class="dek">生成AIの品質を保ちながら、利用量と費用を管理する方法を示します。TechWorkerのCodex改修を記入例に、記録する項目と、費用を比較するための条件を説明します。</p>
+  <h1>トークンマネジメントとは｜トークンマキシングとの使い分けと、AIのトークンコストの見直し方</h1>
+  <p class="dek">AIのトークンコストを、品質を落とさずに見直す方法です。難しい仕事には惜しまず使い（トークンマキシング）、定型の仕事は絞る。その分け方と、作業ごとに記録する項目を、TechWorkerの記入例とCSVのひな型つきで説明します。</p>
   <div class="a-meta">
     <img class="av" src="../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.06.13</span><span class="dot">·</span><span>最終更新 2026.10.06</span><span class="dot">·</span><span>読了 7分</span>
   </div>
@@ -112,6 +112,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <p><a href="resources/ai-work-log-template.csv" download>作業記録のCSVひな型をダウンロード</a>できます。ひな型は空欄です。実行したモデル・版・設定を確かめ、作業範囲と品質条件を決めてから使います。設定の既定値だけで、実行モデルを埋めないでください。</p>
 <p>サブスクリプションの支払額、実際のAPI請求額、API単価による参考換算額は別の欄へ記録します。Claude Codeの<a href="kenshu/claude-code-cost">TechWorkerの利用記録</a>でも、API換算額と実際の支払いを分けています。製品間の比較は、これらの区別と品質条件がそろってから行います。</p>
 <h2 id="spend">惜しまず使う仕事と絞る仕事を分ける</h2>
+<p>難しい仕事に、追加の原文・推論・検証を惜しまず使う考え方を、トークンマキシングと呼ぶことがあります。統一された用語ではありません。ここでは、使う量でなく、品質が費用を上回る仕事かどうかで分けます。</p>
 <p>難しい判断では、入力、推論、出力の上限を早く絞りすぎません。長い資料の突合、複数段階のツール利用、失敗コストの高いレビューでは、思考と回答が途中で切れない上限を与えます。</p>
 <p>一方、形式が固定された抽出や整形は、小さいモデルと低い推論強度で足ります。多く使うこと自体を品質指標にはしません。<code>stop_reason</code>、欠落、誤り、手戻りで判断します。</p>
 <h2 id="reduce">キャッシュ・文脈・モデルをこの順で見直す</h2>
