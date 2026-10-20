@@ -30,241 +30,22 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ニュース — TechWorker">
 <meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site/site.css">
 <style>
-/* ===== TOKENS ===== */
-:root{
-  --ink:#0D1117; --paper:#F4F6F9; --paper-2:#ECEFF3; --white:#FBFCFD;
-  --electric:#005EFF; --electric-dark:#003DAA;
-  --slate:#5A6677; --line:rgba(13,17,23,.12); --line-2:rgba(13,17,23,.20);
-  --emerald:#00B894; --violet:#7C3AED;
-  --jp:'IBM Plex Sans JP','IBM Plex Sans',system-ui,sans-serif;
-  --en:'IBM Plex Sans','IBM Plex Sans JP',system-ui,sans-serif;
-}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{overflow-x:hidden;scroll-behavior:smooth;}
-body{font-family:var(--jp);background:var(--paper);color:var(--ink);line-height:1.85;font-size:16px;-webkit-font-smoothing:antialiased;font-feature-settings:"palt" 1;overflow-x:hidden;}
-::selection{background:var(--electric);color:var(--paper);}
-a{color:inherit;}
-img{display:block;max-width:100%;}
-
-/* ===== SHARED ===== */
-.container{max-width:1280px;margin:0 auto;padding:0 48px;width:100%;}
-.tag{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--electric);display:inline-flex;align-items:center;gap:11px;padding-left:14px;border-left:3px solid var(--electric);}
-.tag span{color:var(--slate);font-weight:500;letter-spacing:.02em;text-transform:none;font-size:13px;}
-.btn{font-family:var(--jp);font-size:14.5px;font-weight:600;color:var(--paper);background:var(--electric);text-decoration:none;border-radius:5px;padding:15px 30px;display:inline-flex;align-items:center;gap:11px;transition:background .25s,transform .25s;border:none;cursor:pointer;}
-.btn:hover{background:var(--electric-dark);transform:translateY(-1px);}
-.btn i{font-style:normal;transition:transform .25s;}
-.btn:hover i{transform:translateX(4px);}
-.btn--ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line-2);}
-.btn--ghost:hover{background:transparent;border-color:var(--electric);color:var(--electric);}
-.btn--on-blue{background:var(--paper);color:var(--electric);}
-.btn--on-blue:hover{background:var(--white);}
-.btn--on-blue-ghost{background:transparent;color:var(--paper);border:1.5px solid rgba(244,246,249,.5);}
-.btn--on-blue-ghost:hover{background:rgba(244,246,249,.1);border-color:var(--paper);}
-
-/* ===== NAV ===== */
-nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:68px;background:rgba(244,246,249,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transition:box-shadow .3s,height .3s cubic-bezier(.2,.8,.2,1),background .3s;}
-nav.scrolled{box-shadow:0 1px 16px rgba(0,94,255,.06);height:58px;background:rgba(244,246,249,.92);}
-nav .logo{transition:font-size .3s cubic-bezier(.2,.8,.2,1);}
-nav.scrolled .logo{font-size:18px;}
-nav .logo{font-family:var(--en);font-weight:700;font-size:20px;letter-spacing:-.01em;text-decoration:none;color:var(--ink);}
-nav .logo i{font-style:normal;color:var(--electric);}
-nav ul{list-style:none;display:flex;gap:34px;}
-nav ul a{font-size:14px;font-weight:500;color:var(--ink);text-decoration:none;position:relative;}
-nav ul a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--electric);transition:width .28s cubic-bezier(.2,.8,.2,1);}
-nav ul a:hover::after,nav ul a.active::after{width:100%;}
-nav ul a.active{color:var(--electric);}
-nav .nav-right{display:flex;align-items:center;gap:18px;}
-nav .nav-cta{font-family:var(--jp);font-size:13.5px;font-weight:600;color:var(--paper);background:var(--electric);text-decoration:none;padding:10px 22px;border-radius:4px;transition:background .25s;}
-nav .nav-cta:hover{background:var(--electric-dark);}
-nav .nav-cta .short{display:none;}
-nav .lang{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.04em;}
-nav .lang a{color:var(--slate);text-decoration:none;}
-nav .lang .cur{color:var(--electric);}
-
-/* hamburger */
-.hamb{display:none;width:44px;height:44px;border:none;background:none;cursor:pointer;position:relative;margin-left:2px;}
-.hamb span{position:absolute;left:11px;width:22px;height:2px;background:var(--ink);transition:transform .3s,opacity .2s;}
-.hamb span:nth-child(1){top:15px;} .hamb span:nth-child(2){top:21px;} .hamb span:nth-child(3){top:27px;}
-body.menu-open .hamb span:nth-child(1){transform:translateY(6px) rotate(45deg);}
-body.menu-open .hamb span:nth-child(2){opacity:0;}
-body.menu-open .hamb span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
-/* mobile menu panel */
-.mmenu{position:fixed;inset:68px 0 0;z-index:45;background:var(--paper);transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);visibility:hidden;display:flex;flex-direction:column;padding:18px 24px 40px;}
-body.menu-open .mmenu{transform:none;visibility:visible;}
-.mmenu a{font-size:19px;font-weight:600;color:var(--ink);text-decoration:none;padding:20px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;}
-.mmenu a::after{content:"→";color:var(--electric);font-family:var(--en);}
-.mmenu .m-cta{margin-top:28px;background:var(--electric);color:var(--paper);justify-content:center;border-radius:5px;border:none;padding:17px;}
-.mmenu .m-cta::after{content:none;}
-.mmenu .m-lang{margin-top:auto;border:none;font-family:var(--en);font-size:13px;color:var(--slate);}
-.mmenu .m-lang::after{content:none;}
-
-/* ===== NEWS CANVAS ===== */
-.news-shell{background-image:linear-gradient(rgba(13,17,23,.038) 1px,transparent 1px),linear-gradient(90deg,rgba(13,17,23,.038) 1px,transparent 1px);background-size:56px 56px;}
-
-/* ===== PAGE HEAD ===== */
-.page-head{max-width:1280px;margin:0 auto;padding:132px 48px 0;}
-.page-head .crumb{font-family:var(--en);font-size:12px;color:var(--slate);margin-bottom:28px;letter-spacing:.02em;}
-.page-head .crumb a{color:var(--slate);text-decoration:none;transition:color .2s;}
-.page-head .crumb a:hover{color:var(--electric);}
-.page-head .crumb .sep{margin:0 9px;opacity:.5;}
-.page-head .crumb .cur{color:var(--ink);}
-.page-head h1{font-family:var(--jp);font-weight:700;font-size:clamp(38px,4.8vw,62px);line-height:1.2;letter-spacing:-.035em;margin-top:18px;}
-.page-head .lead{font-size:15.5px;color:var(--slate);line-height:1.9;margin-top:14px;max-width:68ch;}
-
-/* ===== FEATURED NEWS ===== */
-.news-section{padding:34px 0 104px;}
-.news-feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;}
-.news-card{position:relative;display:flex;min-width:0;min-height:500px;flex-direction:column;overflow:hidden;color:var(--ink);background:rgba(251,252,253,.96);border:1px solid var(--line-2);border-radius:8px;text-decoration:none;box-shadow:0 10px 28px rgba(13,17,23,.035);transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s ease,border-color .25s ease;}
-.news-card:hover{transform:translateY(-4px);border-color:rgba(0,94,255,.38);box-shadow:0 22px 44px -28px rgba(13,17,23,.28);}
-.news-card.is-featured{border-color:var(--electric);box-shadow:0 0 0 1px rgba(0,94,255,.05),0 12px 30px rgba(13,17,23,.04);}
-.news-card-visual{position:relative;display:flex;aspect-ratio:16/9;align-items:center;justify-content:center;overflow:hidden;background:#f7f8fa;border-bottom:1px solid var(--line);}
-.news-card-visual::after{content:"";position:absolute;z-index:5;top:17px;right:18px;width:18px;height:4px;background:var(--electric);}
-.news-card-visual img{width:100%;height:100%;object-fit:cover;object-position:top left;transition:transform .45s cubic-bezier(.16,1,.3,1);}
-.news-card:hover .news-card-visual img{transform:scale(1.018);}
-.news-featured-label{position:absolute;z-index:6;top:13px;left:14px;padding:6px 10px;color:#fff;background:var(--electric);border-radius:3px;font-family:var(--en);font-size:10px;font-weight:700;letter-spacing:.04em;}
-.news-card-body{display:flex;flex:1;flex-direction:column;padding:20px 22px 18px;}
-.news-card-meta{display:flex;align-items:center;gap:14px;margin-bottom:15px;}
-.news-kind{display:inline-flex;align-items:center;padding:4px 9px;color:var(--electric);background:var(--white);border:1px solid var(--line-2);border-radius:999px;font-size:10.5px;font-weight:700;line-height:1.3;white-space:nowrap;}
-.news-date{font-family:var(--en);font-size:12px;color:var(--slate);font-feature-settings:"tnum" 1;}
-.news-card-title{font-size:18px;font-weight:700;line-height:1.55;letter-spacing:-.018em;}
-.news-card-summary{margin-top:12px;color:var(--slate);font-size:13px;line-height:1.8;}
-.news-card-link{display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:17px;border-top:1px solid var(--line);color:var(--electric);font-size:12.5px;font-weight:700;}
-.news-card-link i{font-family:var(--en);font-style:normal;transition:transform .25s cubic-bezier(.16,1,.3,1);}
-.news-card:hover .news-card-link i{transform:translateX(5px);}
-
-/* factual event visual: no stock photography */
-.news-visual-event{align-items:stretch;justify-content:stretch;padding:24px;background:repeating-linear-gradient(0deg,rgba(13,17,23,.035) 0 1px,transparent 1px 34px),repeating-linear-gradient(90deg,rgba(13,17,23,.035) 0 1px,transparent 1px 34px),#f4f4f2;}
-.event-poster{display:flex;width:100%;flex-direction:column;justify-content:space-between;padding:24px;background:rgba(251,252,253,.92);border:1px solid var(--line-2);}
-.event-poster .kicker{color:var(--electric);font-family:var(--en);font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;}
-.event-poster strong{max-width:15ch;font-size:23px;line-height:1.42;letter-spacing:-.025em;}
-.event-poster .partners{display:flex;align-items:center;gap:9px;color:var(--slate);font-family:var(--en);font-size:10px;font-weight:600;}
-.event-poster .partners b{color:var(--ink);font-size:11px;}
-.event-poster .partners i{width:18px;height:1px;background:var(--electric);}
-
-/* factual document cover built from the published title */
-.news-visual-document{padding:24px;background:#f0f1f3;}
-.document-stack{position:relative;width:82%;height:84%;}
-.document-page{position:absolute;display:flex;flex-direction:column;padding:20px 18px;background:#fff;border:1px solid var(--line);box-shadow:0 12px 24px rgba(13,17,23,.08);}
-.document-page.back{inset:12% -3% 2% 32%;transform:rotate(5deg);}
-.document-page.mid{inset:5% 8% 6% 17%;transform:rotate(1.8deg);}
-.document-page.front{inset:0 35% 0 0;justify-content:space-between;}
-.document-page .doc-num{color:var(--electric);font-family:var(--en);font-size:9px;font-weight:700;letter-spacing:.08em;}
-.document-page strong{font-size:16px;line-height:1.42;letter-spacing:-.02em;}
-.document-page .doc-rule{height:5px;background:linear-gradient(90deg,var(--electric) 0 48%,rgba(0,94,255,.2) 48% 72%,transparent 72%);}
-.document-page .doc-lines{height:42%;background:repeating-linear-gradient(0deg,rgba(13,17,23,.15) 0 1px,transparent 1px 8px);}
-
-/* ===== NEWS LIST ===== */
-.latest-head{display:flex;align-items:center;justify-content:space-between;margin-top:44px;padding-bottom:13px;border-bottom:1px solid var(--line-2);}
-.latest-head h2{color:var(--electric);font-family:var(--en);font-size:13px;font-weight:700;letter-spacing:.045em;}
-.latest-head span{color:var(--slate);font-size:11px;}
-.news-list{border-top:1px solid var(--line);}
-.news-row{display:grid;grid-template-columns:140px 110px 1fr auto;gap:28px;align-items:center;padding:26px 0;border-bottom:1px solid var(--line);text-decoration:none;transition:background .2s;}
-.news-row:hover{background:var(--paper-2);}
-.news-row .d{font-family:var(--en);font-size:14.5px;color:var(--slate);font-feature-settings:"tnum" 1;letter-spacing:.01em;}
-.news-row .tg{font-size:12px;font-weight:600;color:var(--electric);letter-spacing:.02em;}
-.news-row .tt{font-size:16px;font-weight:500;color:var(--ink);line-height:1.6;transition:color .2s,transform .25s cubic-bezier(.2,.8,.2,1);}
-.news-row:hover .tt{color:var(--electric);transform:translateX(5px);}
-.news-row .ar{font-family:var(--en);color:var(--electric);font-size:15px;opacity:0;transition:opacity .25s,transform .25s cubic-bezier(.2,.8,.2,1);transform:translateX(-4px);}
-.news-row:hover .ar{opacity:1;transform:none;}
-
-/* ===== RESOURCES CTA ===== */
-.news-cta{background:var(--electric);color:var(--paper);padding:96px 0;text-align:center;}
-.news-cta h2{font-family:var(--jp);font-weight:700;font-size:clamp(26px,3.4vw,42px);line-height:1.4;letter-spacing:-.02em;}
-.news-cta p{font-size:16px;color:rgba(244,246,249,.85);margin-top:18px;}
-.news-cta .actions{display:flex;gap:14px;justify-content:center;margin-top:36px;flex-wrap:wrap;}
-
-/* ===== FOOTER ===== */
-footer{background:var(--white);border-top:1px solid var(--line);padding:64px 0 40px;}
-.footer-inner{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;}
-.footer-brand .logo{font-family:var(--en);font-size:19px;font-weight:700;color:var(--ink);}
-.footer-brand .logo i{font-style:normal;color:var(--electric);}
-.footer-brand p{font-size:13px;color:var(--slate);line-height:1.7;margin-top:12px;}
-.footer-brand .x{display:inline-flex;align-items:center;gap:7px;margin-top:16px;font-size:13px;font-weight:600;color:var(--slate);text-decoration:none;}
-.footer-brand .x:hover{color:var(--electric);}
-.footer-col h4{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:16px;}
-.footer-col a{display:block;font-size:13px;color:var(--slate);text-decoration:none;margin-bottom:10px;}
-.footer-col a:hover{color:var(--electric);}
-.footer-col p{font-size:13px;color:var(--slate);line-height:1.7;margin-top:12px;}
-.copyright{text-align:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-family:var(--en);font-size:12px;color:var(--slate);}
-
-/* ===== reveal ===== */
-html.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
-html.js .rv.show{opacity:1;transform:none;}
-html.js .rvg>*{opacity:0;transform:translateY(18px);}
-html.js .rvg.show>*{opacity:1;transform:none;transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1);}
-html.js .rvg.show>*:nth-child(1){transition-delay:.04s;}
-html.js .rvg.show>*:nth-child(2){transition-delay:.10s;}
-html.js .rvg.show>*:nth-child(3){transition-delay:.16s;}
-html.js .rvg.show>*:nth-child(4){transition-delay:.22s;}
-html.js .rvg.show>*:nth-child(5){transition-delay:.28s;}
-
-/* ===== focus visibility ===== */
-a:focus-visible,button:focus-visible{outline:2px solid var(--electric);outline-offset:3px;border-radius:3px;}
-:focus:not(:focus-visible){outline:none;}
-
-/* ===== reduced motion ===== */
-@media (prefers-reduced-motion: reduce){
-  html{scroll-behavior:auto;}
-  html.js .rv{opacity:1;transform:none;transition:none;}
-  html.js .rvg>*{opacity:1;transform:none;}
-  *{animation-duration:.001ms!important;transition-duration:.001ms!important;}
-}
-
-/* ===== scrollbar ===== */
-@media (pointer:fine){
-  *{scrollbar-width:thin;scrollbar-color:#c3ccd8 transparent;}
-  ::-webkit-scrollbar{width:12px;height:12px;}
-  ::-webkit-scrollbar-thumb{background:#c3ccd8;border-radius:10px;border:3px solid var(--paper);}
-  ::-webkit-scrollbar-thumb:hover{background:#9aa7b8;}
-  ::-webkit-scrollbar-track{background:transparent;}
-}
-
-/* ===== RESPONSIVE ===== */
-@media(max-width:1000px){
-  .news-feature-grid{grid-template-columns:1fr;}
-  .news-card{display:grid;grid-template-columns:minmax(280px,42%) 1fr;min-height:0;}
-  .news-card-visual{height:100%;min-height:248px;aspect-ratio:auto;border-right:1px solid var(--line);border-bottom:none;}
-  .news-card-body{min-height:248px;}
-  .footer-inner{grid-template-columns:1fr 1fr;gap:32px;}
-}
-@media(max-width:860px){
-  nav ul{display:none;}
-  nav .nav-cta{padding:8px 14px;font-size:12.5px;}nav .nav-cta .full{display:none;}nav .nav-cta .short{display:inline;}
-  nav .lang{display:none;}
-  .hamb{display:block;}
-  .page-head{padding:108px 24px 0;}
-  .news-row{grid-template-columns:104px 1fr;gap:6px 16px;}
-  .news-row .tg{display:none;}
-  .news-row .ar{display:none;}
-}
-@media(max-width:560px){
-  .container{padding:0 22px;}
-  .page-head{padding:94px 22px 0;}
-  .page-head .crumb{margin-bottom:22px;}
-  .page-head h1{font-size:38px;}
-  .news-section{padding-top:26px;padding-bottom:78px;}
-  .news-feature-grid{gap:15px;}
-  .news-card{display:flex;min-height:0;}
-  .news-card-visual{height:auto;min-height:0;aspect-ratio:16/9;border-right:none;border-bottom:1px solid var(--line);}
-  .news-card-body{min-height:280px;padding:19px 19px 17px;}
-  .news-card-title{font-size:17px;}
-  .news-card-summary{font-size:12.5px;}
-  .event-poster{padding:18px;}
-  .event-poster strong{font-size:20px;}
-  .latest-head{margin-top:36px;}
-  nav{padding:0 10px 0 18px;height:60px;}
-  .mmenu{top:60px;}
-}
-@media(max-width:600px){
-  footer a{display:inline-block;padding-top:7px;padding-bottom:7px;}
-}
-@media print{
-  body{background:#fff;color:#000;}
-  nav,.mmenu,.hamb,.news-cta{display:none;}
+/* ニュース：日付・分類・題の1行ずつの一覧 */
+.nl { border-bottom: 1px solid var(--line); }
+.nl a { display: grid; grid-template-columns: 120px 150px minmax(0, 1fr) 46px; gap: 28px; align-items: baseline; padding: 26px 8px; border-top: 1px solid var(--line); transition: background-color .2s; }
+.nl a:hover { background: var(--paper); }
+.nl time { font: 400 16px/1.6 var(--f-gill); letter-spacing: .06em; }
+.nl .tg { justify-self: start; padding: 3px 14px 2px; border: 1px solid var(--ink); border-radius: 20px; font-size: 12px; line-height: 1.4; letter-spacing: .14em; white-space: nowrap; }
+.nl .tt { font-weight: 700; line-height: 1.8; text-wrap: pretty; }
+.nl .tt small { display: block; margin-top: 4px; font-size: 13px; font-weight: 500; color: var(--sub); }
+.nl svg { align-self: center; width: 46px; height: 8px; fill: none; stroke: currentColor; stroke-width: 1; transition: transform .2s; }
+.nl a:hover svg { transform: translateX(4px); }
+@media (max-width: 760px) {
+  .nl a { grid-template-columns: auto minmax(0, 1fr); gap: 8px 14px; padding: 22px 2px; }
+  .nl .tt { grid-column: 1 / -1; }
+  .nl svg { display: none; }
 }
 </style>
 <!-- Meta Pixel Code -->
@@ -378,190 +159,94 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="nav">
-  <a href="index.html" class="logo">Tech<i>Worker</i></a>
-  <ul>
-    <li><a href="index.html">ホーム</a></li>
-    <li><a href="services.html">サービス</a></li>
-    <li><a href="cases.html">実績</a></li>
-    <li><a href="media/">メディア</a></li>
-    <li><a href="library/">資料</a></li>
-    <li><a href="news.html" class="active">ニュース</a></li>
-    <li><a href="company.html">会社概要</a></li>
-  </ul>
-  <div class="nav-right">
-    <a href="contact.html" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
-    <span class="lang"><span class="cur">JP</span> / <a href="en/index.html">EN</a></span>
-    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
-  </div>
-</nav>
-
-<!-- MOBILE MENU -->
-<div class="mmenu" id="mmenu" aria-hidden="true">
-  <a href="index.html">ホーム</a>
-  <a href="services.html">サービス</a>
-  <a href="cases.html">実績</a>
-  <a href="media/">メディア</a>
-  <a href="library/">資料ダウンロード</a>
-  <a href="news.html">ニュース</a>
-  <a href="company.html">会社概要</a>
-  <a href="contact.html" class="m-cta">無料相談を申し込む</a>
-  <a href="en/index.html" class="m-lang">English ↗</a>
-</div>
-
-<main>
-
-<div class="news-shell">
-<!-- PAGE HEAD -->
-<header class="page-head">
-  <div class="crumb" aria-label="パンくず"><a href="index.html">ホーム</a><span class="sep">/</span><span class="cur">ニュース</span></div>
-  <div class="rv">
-    <span class="tag">News <span>最新情報</span></span>
-    <h1>TechWorkerの、いま。</h1>
-    <p class="lead">プロダクト、顧客との取り組み、イベントなどの最新情報をお届けします。</p>
-  </div>
+<header class="hd">
+  <a class="logo" href="/" aria-label="TechWorker ホーム">Tech<i>Worker</i></a>
+  <nav id="hd-nav" aria-label="主な行き先">
+    <a href="/services">事業・サービス</a>
+    <a href="/#concept">考え方</a>
+    <a href="/agent-cases/">事例</a>
+    <a href="/news" aria-current="page">ニュース</a>
+    <a href="/company">会社情報</a>
+    <a href="/contact">お問い合わせ</a>
+  </nav>
+  <button class="menu" type="button" aria-label="メニューを開く" aria-controls="hd-nav" aria-expanded="false"></button>
 </header>
 
-<!-- FEATURED NEWS -->
-<section class="news-section">
-  <div class="container">
-    <div class="news-feature-grid rvg" aria-label="注目のニュース">
-      <a href="news/009.html" class="news-card is-featured">
-        <div class="news-card-visual">
-          <span class="news-featured-label">FEATURED</span>
-          <img src="media/interview/product-ui/coesignal-workspace-home.png" alt="AIインタビューサービスCoeSignalのワークスペース画面" width="1280" height="900" loading="eager" decoding="async">
-        </div>
-        <div class="news-card-body">
-          <div class="news-card-meta"><span class="news-kind">プロダクト</span><time class="news-date" datetime="2026-08-28">2026.08.28</time></div>
-          <h2 class="news-card-title">現場の声を、意思決定の証拠へ。AIインタビューサービス「CoeSignal」を正式ローンチ</h2>
-          <p class="news-card-summary">顧客や従業員へのヒアリングから、原発言まで遡れる意思決定用の報告をつくります。</p>
-          <span class="news-card-link">詳しく見る <i>→</i></span>
-        </div>
-      </a>
-
-      <a href="news/004.html" class="news-card">
-        <div class="news-card-visual news-visual-event" aria-hidden="true">
-          <div class="event-poster">
-            <span class="kicker">Enterprise AI Seminar</span>
-            <strong>生成AIを、<br>現場の力に。</strong>
-            <span class="partners"><b>TechWorker</b><i></i><span>さくらインターネット株式会社</span></span>
-          </div>
-        </div>
-        <div class="news-card-body">
-          <div class="news-card-meta"><span class="news-kind">登壇・イベント</span><time class="news-date" datetime="2024-05-07">2024.05.07</time></div>
-          <h2 class="news-card-title">さくらインターネット株式会社の社内セミナーに代表・古野が講師として登壇</h2>
-          <p class="news-card-summary">生成AIに関する基礎知識と、実務で活用するための考え方を共有しました。</p>
-          <span class="news-card-link">詳しく見る <i>→</i></span>
-        </div>
-      </a>
-
-      <a href="news/001.html" class="news-card">
-        <div class="news-card-visual news-visual-document" aria-hidden="true">
-          <div class="document-stack">
-            <span class="document-page back"><span class="doc-num">03 / RESULTS</span><span class="doc-lines"></span><span class="doc-rule"></span></span>
-            <span class="document-page mid"><span class="doc-num">02 / PROCESS</span><span class="doc-lines"></span><span class="doc-rule"></span></span>
-            <span class="document-page front"><span class="doc-num">TECHWORKER REPORT</span><strong>2026年版<br>生成AI活用<br>事例集</strong><span class="doc-rule"></span></span>
-          </div>
-        </div>
-        <div class="news-card-body">
-          <div class="news-card-meta"><span class="news-kind">レポート・資料</span><time class="news-date" datetime="2026-03-20">2026.03.20</time></div>
-          <h2 class="news-card-title">生成AI活用事例ホワイトペーパーを公開しました</h2>
-          <p class="news-card-summary">7業種・45社の導入から見えた、成果につながる実践パターンをまとめています。</p>
-          <span class="news-card-link">詳しく見る <i>→</i></span>
-        </div>
-      </a>
-    </div>
-
-    <div class="latest-head rv">
-      <h2>LATEST NEWS</h2>
-      <span>その他のニュース</span>
-    </div>
-    <div class="news-list rvg">
-      <a href="news/012.html" class="news-row"><time class="d" datetime="2026-10-08">2026.10.08</time><span class="tg">コーポレート</span><span class="tt">Cloudflare社のスタートアップ向けプログラム「Cloudflare for Startups」に採択されました</span><span class="ar">→</span></a>
-      <a href="news/011.html" class="news-row"><time class="d" datetime="2026-10-07">2026.10.07</time><span class="tg">コーポレート</span><span class="tt">Anthropic 社のスタートアップ支援プログラム「Claude for Startups」に採択されました</span><span class="ar">→</span></a>
-      <a href="news/010.html" class="news-row"><time class="d" datetime="2026-10-08">2026.10.08</time><span class="tg">プロダクト</span><span class="tt">CoeSignal とギョウムズAIの、セキュリティとデータの取り扱いをまとめました</span><span class="ar">→</span></a>
-      <a href="news/005.html" class="news-row"><time class="d" datetime="2026-06-06">2026.06.06</time><span class="tg">コーポレート</span><span class="tt">ホームページをアップデートしました</span><span class="ar">→</span></a>
-      <a href="news/008.html" class="news-row"><time class="d" datetime="2026-04-20">2026.04.20</time><span class="tg">お知らせ</span><span class="tt">生成AI×士業メディアの運用を開始しました</span><span class="ar">→</span></a>
-      <a href="news/007.html" class="news-row"><time class="d" datetime="2026-04-10">2026.04.10</time><span class="tg">お知らせ</span><span class="tt">生成AI×人材メディアの運用を開始しました</span><span class="ar">→</span></a>
-      <a href="news/002.html" class="news-row"><time class="d" datetime="2026-03-14">2026.03.14</time><span class="tg">サービス</span><span class="tt">サービスラインナップを刷新しました</span><span class="ar">→</span></a>
-      <a href="news/003.html" class="news-row"><time class="d" datetime="2026-02-28">2026.02.28</time><span class="tg">イベント</span><span class="tt">「AI導入の落とし穴」無料ウェビナー開催のお知らせ</span><span class="ar">→</span></a>
-      <a href="news/006.html" class="news-row"><time class="d" datetime="2025-05-01">2025.05.01</time><span class="tg">イベント</span><span class="tt">毎週、生成AI活用の無料ウェビナーを開催しています</span><span class="ar">→</span></a>
-    </div>
-  </div>
-</section>
-</div>
-
-<!-- CTA -->
-<section class="news-cta">
-  <div class="container">
-    <h2>AIを、成果が出る状態に。</h2>
-    <p>現状の課題をお聞きし、最適な始め方をその場で整理します。<br>検討段階のご相談だけでも歓迎です。</p>
-    <div class="actions">
-      <a href="contact.html" class="btn btn--on-blue">無料相談に申し込む</a>
-      <a href="library/" class="btn btn--on-blue-ghost">無料資料をダウンロード</a>
-    </div>
+<main>
+<section class="ph" style="--ph-pos: 0 100%;">
+  <picture class="screen" aria-hidden="true">
+    <source media="(max-width: 760px)" srcset="/assets/top/bg-map-sp.jpg">
+    <img src="/assets/top/bg-map.jpg" alt="">
+  </picture>
+  <div class="wrap ph__in">
+    <h1>ニュース</h1>
+    <p>プロダクト、顧客との取り組み、イベントなどの最新情報をお届けします。</p>
   </div>
 </section>
 
+<section class="sec">
+  <div class="wrap">
+    <ul class="nl">
+      <li><a href="/news/012.html"><time datetime="2026-10-08">2026.10.08</time><span class="tg">コーポレート</span><span class="tt">Cloudflare社のスタートアップ向けプログラム「Cloudflare for Startups」に採択されました</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+      <li><a href="/news/010.html"><time datetime="2026-10-08">2026.10.08</time><span class="tg">プロダクト</span><span class="tt">CoeSignal とギョウムズAIの、セキュリティとデータの取り扱いをまとめました</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+      <li><a href="/news/011.html"><time datetime="2026-10-07">2026.10.07</time><span class="tg">コーポレート</span><span class="tt">Anthropic 社のスタートアップ支援プログラム「Claude for Startups」に採択されました</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+      <li><a href="/news/009.html"><time datetime="2026-08-28">2026.08.28</time><span class="tg">プロダクト</span><span class="tt">現場の声を、意思決定の証拠へ。AIインタビューサービス「CoeSignal」を正式ローンチ<small>顧客や従業員へのヒアリングから、原発言まで遡れる意思決定用の報告をつくります。</small></span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+      <li><a href="/news/005.html"><time datetime="2026-06-06">2026.06.06</time><span class="tg">コーポレート</span><span class="tt">ホームページをアップデートしました</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+      <li><a href="/news/008.html"><time datetime="2026-04-20">2026.04.20</time><span class="tg">お知らせ</span><span class="tt">生成AI×士業メディアの運用を開始しました</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+      <li><a href="/news/007.html"><time datetime="2026-04-10">2026.04.10</time><span class="tg">お知らせ</span><span class="tt">生成AI×人材メディアの運用を開始しました</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+      <li><a href="/news/001.html"><time datetime="2026-03-20">2026.03.20</time><span class="tg">レポート・資料</span><span class="tt">生成AI活用事例ホワイトペーパーを公開しました<small>7業種・45社の導入から見えた、成果につながる実践パターンをまとめています。</small></span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+      <li><a href="/news/002.html"><time datetime="2026-03-14">2026.03.14</time><span class="tg">サービス</span><span class="tt">サービスラインナップを刷新しました</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+      <li><a href="/news/003.html"><time datetime="2026-02-28">2026.02.28</time><span class="tg">イベント</span><span class="tt">「AI導入の落とし穴」無料ウェビナー開催のお知らせ</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+      <li><a href="/news/006.html"><time datetime="2025-05-01">2025.05.01</time><span class="tg">イベント</span><span class="tt">毎週、生成AI活用の無料ウェビナーを開催しています</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+      <li><a href="/news/004.html"><time datetime="2024-05-07">2024.05.07</time><span class="tg">登壇・イベント</span><span class="tt">さくらインターネット株式会社の社内セミナーに代表・古野が講師として登壇<small>生成AIに関する基礎知識と、実務で活用するための考え方を共有しました。</small></span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <picture class="screen" aria-hidden="true">
+    <source media="(max-width: 760px)" srcset="/assets/top/cta-map-sp.jpg">
+    <img src="/assets/top/cta-map.jpg" alt="" loading="lazy">
+  </picture>
+  <div class="wrap cta__in">
+    <p>AIを、<br class="sp">成果が出る状態に。</p>
+    <a class="btn" href="/contact">無料相談に申し込む<svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a>
+    <p class="cta__sub"><a href="/library/">無料資料をダウンロード</a></p>
+  </div>
+</section>
 </main>
 
-<!-- FOOTER -->
-<footer>
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <div class="logo">Tech<i>Worker</i></div>
-        <p>企業向け生成AIコンサルティング<br>株式会社TechWorker</p>
-        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__in">
+      <div>
+        <p class="ft__name">株式会社TechWorker</p>
+        <p class="ft__addr">〒169-0051 東京都新宿区西早稲田一丁目22番3号<br>早稲田アントレプレナーシップセンター</p>
       </div>
-      <div class="footer-col">
-        <h4>サービス</h4>
-        <a href="services.html">生成AIコンサル</a>
-      </div>
-      <div class="footer-col">
-        <h4>サイト</h4>
-        <a href="media/">メディア</a>
-        <a href="news.html">ニュース</a>
-        <a href="cases.html">実績</a>
-        <a href="company.html">会社概要</a>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <a href="contact.html">無料相談</a>
-        <a href="contact.html?type=document">資料請求</a>
-        <a href="privacy.html">プライバシーポリシー</a>
-        <p>〒169-0051<br>東京都新宿区西早稲田一丁目22番3号</p>
-      </div>
+      <nav aria-label="フッターの行き先">
+        <a href="/services">事業・サービス</a>
+        <a href="/company">会社情報</a>
+        <a href="/news">ニュース</a>
+        <a href="/#concept">考え方</a>
+        <a href="/agent-cases/">事例</a>
+        <a href="/contact">お問い合わせ</a>
+        <a href="/privacy">プライバシーポリシー</a>
+      </nav>
     </div>
-    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+    <small>© TechWorker Inc.</small>
   </div>
 </footer>
 
 <script>
-/* nav shadow on scroll */
-var nav=document.getElementById('nav');
-addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>40);},{passive:true});
-
-/* mobile menu */
-(function(){
-  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
-  function setMenu(open){
-    document.body.classList.toggle('menu-open',open);
-    hamb.setAttribute('aria-expanded',open?'true':'false');
-    hamb.setAttribute('aria-label',open?'メニューを閉じる':'メニューを開く');
-    mmenu.setAttribute('aria-hidden',open?'false':'true');
-    document.body.style.overflow=open?'hidden':'';
-  }
-  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
-  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
-  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
-  matchMedia('(min-width:861px)').addEventListener('change',function(e){if(e.matches)setMenu(false);});
+// スマホの行き先：右上の釦で開け閉めする。行き先を押したら閉じる。スクロールしたら頭に暗い面を敷く
+(() => {
+  const hd = document.querySelector('.hd'), btn = hd.querySelector('.menu');
+  const set = open => { hd.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く'); };
+  btn.addEventListener('click', () => set(!hd.classList.contains('is-open')));
+  hd.querySelector('nav').addEventListener('click', e => { if (e.target.closest('a')) set(false); });
+  const onScroll = () => hd.classList.toggle('is-scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
 })();
-
-/* scroll reveal */
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.rv,.rvg').forEach(function(el){io.observe(el);});
 </script>
 </body>
 </html>

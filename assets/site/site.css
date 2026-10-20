@@ -1,0 +1,132 @@
+/* 本体HPの共通の見た目。トップ（index.html）の <style> から、色の札・書体・.wrap・.h2・.lead・金の釦・頭・足・節の地を写した物。
+ * トップの見た目を変えたら、ここも同じに直す。書体はすべて OS の物で、外へ読みに行かない。 */
+:root {
+  --ink: #0D1117;
+  --sub: #4A5059;
+  --mute: #6B7079;
+  --paper: #FCFCFB;
+  --ground: #F1F1F1;
+  --line: #D9D9D6;
+  --on-dark: #F4F2EE;
+  --on-dark-sub: #C9C7C2;
+  --gold-a: #A47948;
+  --gold-b: #C5A27C;
+  --gold: linear-gradient(90deg, var(--gold-a), var(--gold-b));
+  --veil: rgba(13, 17, 23, .72);
+  --f-min: "游明朝体", "Yu Mincho", YuMincho, "ヒラギノ明朝 ProN", "Hiragino Mincho ProN", serif;
+  --f-gill: "Gill Sans", "Gill Sans MT", "游ゴシック体", "Yu Gothic", YuGothic, sans-serif;
+  --f-body: "游ゴシック体", "Yu Gothic", YuGothic, "Hiragino Sans", sans-serif;
+  --wrap: 1180px;
+  --pad: 32px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 88px; }
+body { margin: 0; background: var(--ground); color: var(--ink); font: 500 15px/1.9 var(--f-body); letter-spacing: .04em; overflow-x: hidden; }
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, p, ul, ol, figure { margin: 0; padding: 0; }
+ul { list-style: none; }
+.wrap { max-width: calc(var(--wrap) + var(--pad) * 2); margin: 0 auto; padding: 0 var(--pad); }
+.h2 { font: 400 56px/1.25 var(--f-min); letter-spacing: .02em; }
+.h2 + .lead { margin-top: 24px; }
+.lead { font-size: 15px; color: var(--sub); }
+.kw { word-break: keep-all; }
+.sp { display: none; }
+
+/* 金の釦：角の無い四角、金のグラデ、細い線の矢印 */
+.btn { display: inline-flex; align-items: center; gap: 22px; min-height: 44px; padding: 0 24px; border: 0; background: var(--gold); color: var(--paper); font: 700 14px/1 var(--f-body); letter-spacing: .12em; cursor: pointer; transition: filter .2s; }
+.btn:hover { filter: brightness(1.08); }
+.btn svg { width: 46px; height: 8px; fill: none; stroke: currentColor; stroke-width: 1; }
+/* 2つ目の釦：金の地を持たず、細い線で囲む */
+.btn--line { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.btn--line:hover { filter: none; background: var(--paper); }
+
+/* ヘッダー：ページの頭の暗い面に乗る。スクロールしたら暗い面を敷く。スマホは右上の釦で行き先を開く */
+.hd { position: fixed; inset: 0 0 auto; z-index: 50; transition: background-color .25s, box-shadow .25s; display: flex; align-items: center; justify-content: space-between; height: 80px; padding: 0 44px; color: var(--on-dark); }
+.logo { font: 600 22px/1 var(--f-gill); letter-spacing: .04em; }
+.logo i { font-style: normal; color: #005EFF; }
+.hd nav { display: flex; gap: 30px; font-size: 13px; font-weight: 700; letter-spacing: .1em; }
+.hd nav a:hover { color: var(--gold-b); }
+.hd nav a[aria-current="page"] { color: var(--gold-b); text-decoration: underline 1px; text-underline-offset: 9px; }
+.hd.is-scrolled { background: rgba(13, 17, 23, .94); box-shadow: 0 1px 0 rgba(244, 246, 249, .08); }
+.menu { display: none; width: 44px; height: 44px; margin-right: -5px; padding: 0; border: 0; background: none; cursor: pointer; position: relative; }
+.menu::before, .menu::after { content: ""; position: absolute; left: 5px; right: 5px; border-top: 1px solid var(--on-dark); transition: transform .2s; }
+.menu::before { top: 17px; }
+.menu::after { top: 26px; }
+.hd.is-open .menu::before { transform: translateY(4.5px) rotate(20deg); }
+.hd.is-open .menu::after { transform: translateY(-4.5px) rotate(-20deg); }
+
+/* 本物の画面を反転して暗く敷く面（トップの1画面目・最後の帯と同じ作り） */
+.screen { position: absolute; inset: 0; }
+.screen img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) invert(1) brightness(.9); }
+.screen::after { content: ""; position: absolute; inset: 0; background: var(--veil); }
+
+/* ページの頭：トップの1画面目を小さくした物。高さは画面の4割前後 */
+.ph { position: relative; height: 42vh; min-height: 380px; max-height: 460px; color: var(--on-dark); overflow: hidden; }
+.ph .screen img { object-position: var(--ph-pos, 0 0); }
+.ph .screen::after { background: linear-gradient(90deg, rgba(13,17,23,.9) 0%, rgba(13,17,23,.84) 48%, rgba(13,17,23,.62) 100%); }
+.ph__in { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 64px; }
+.ph h1 { font: 400 52px/1.3 var(--f-min); letter-spacing: .06em; }
+.ph p { margin-top: 18px; max-width: 40em; font-size: 15px; line-height: 1.9; color: var(--on-dark-sub); }
+
+/* 節：地は #F1F1F1、白い地の節は .sec--paper */
+.sec { padding: 104px 0; background: var(--ground); }
+.sec + .sec { border-top: 1px solid #E4E4E1; }
+.sec--paper { background: var(--paper); }
+.sec__hd { margin-bottom: 56px; }
+
+/* 表：項目と中身の2列。罫線は上下だけ */
+.dl { border-bottom: 1px solid var(--line); }
+.dl > div { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 24px; padding: 22px 4px; border-top: 1px solid var(--line); }
+.dl dt { font-weight: 700; }
+.dl dd { margin: 0; color: var(--sub); }
+
+/* お問い合わせの帯：トップの最後の帯と同じ作り */
+.cta { position: relative; padding: 130px 0; color: var(--on-dark); text-align: center; overflow: hidden; }
+.cta .screen img { object-position: 50% 50%; }
+.cta .screen::after { background: radial-gradient(ellipse 62% 75% at 50% 50%, rgba(13, 17, 23, .9), rgba(13, 17, 23, .74)); }
+.cta__in { position: relative; z-index: 2; }
+.cta p { font: 400 42px/1.6 var(--f-min); letter-spacing: .1em; }
+.cta .btn { margin-top: 44px; }
+.cta .cta__sub { margin-top: 26px; font: 500 13px/1.8 var(--f-body); letter-spacing: .06em; color: var(--on-dark-sub); }
+.cta__sub a { text-decoration: underline 1px; text-underline-offset: 5px; }
+.cta__sub a:hover { color: var(--gold-b); }
+
+/* フッター */
+.ft { padding: 72px 0 40px; background: var(--paper); font-size: 13px; color: var(--sub); }
+.ft__in { display: flex; justify-content: space-between; gap: 40px; }
+.ft__name { font-weight: 700; color: var(--ink); font-size: 15px; }
+.ft__addr { margin-top: 10px; line-height: 1.9; }
+.ft nav { display: grid; grid-template-columns: repeat(3, auto); gap: 10px 48px; align-content: start; font-weight: 700; color: var(--ink); }
+.ft nav a:hover { color: var(--gold-a); }
+.ft small { display: block; margin-top: 56px; font: 400 12px/1 var(--f-gill); letter-spacing: .08em; color: var(--mute); }
+
+@media (max-width: 1100px) {
+  .hd nav { gap: 20px; }
+}
+@media (max-width: 760px) {
+  :root { --pad: 20px; }
+  body { font-size: 14px; }
+  .sp { display: inline; }
+  .pc { display: none; }
+  .h2 { font-size: 36px; }
+  .hd { height: 64px; padding: 0 20px; }
+  .menu { display: block; }
+  .hd nav { display: none; position: absolute; top: 64px; left: 12px; right: 12px; flex-direction: column; gap: 0; padding: 8px 20px; background: var(--paper); color: var(--ink); border-radius: 4px; box-shadow: 0 16px 36px -12px rgba(0, 0, 0, .5); font-size: 15px; }
+  .hd nav a { padding: 14px 0; border-top: 1px solid var(--line); }
+  .hd nav a:first-child { border-top: 0; }
+  .hd nav a:hover { color: var(--gold-a); }
+  .hd nav a[aria-current="page"] { color: var(--gold-a); }
+  .hd.is-open nav { display: flex; }
+  .ph { height: 40vh; min-height: 320px; max-height: 380px; }
+  .ph__in { padding-bottom: 44px; }
+  .ph h1 { font-size: 32px; line-height: 1.4; letter-spacing: .04em; }
+  .ph p { margin-top: 12px; font-size: 13.5px; }
+  .sec { padding: 72px 0; }
+  .sec__hd { margin-bottom: 36px; }
+  .dl > div { grid-template-columns: 1fr; gap: 4px; padding: 18px 2px; }
+  .cta { padding: 110px 0; }
+  .cta p { font-size: 23px; letter-spacing: .06em; }
+  .ft__in { flex-direction: column; }
+  .ft nav { grid-template-columns: repeat(2, auto); justify-content: start; gap: 10px 32px; }
+}
