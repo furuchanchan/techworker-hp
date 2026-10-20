@@ -135,11 +135,14 @@ ul { list-style: none; }
 .btn svg { width: 46px; height: 8px; fill: none; stroke: currentColor; stroke-width: 1; }
 
 /* ヘッダー：1画面目の暗い面に乗る。スマホは右上の釦で行き先を開く */
-.hd { position: absolute; inset: 0 0 auto; z-index: 5; display: flex; align-items: center; justify-content: space-between; height: 80px; padding: 0 44px; color: var(--on-dark); }
+.hd { position: fixed; inset: 0 0 auto; z-index: 50; transition: background-color .25s, box-shadow .25s; display: flex; align-items: center; justify-content: space-between; height: 80px; padding: 0 44px; color: var(--on-dark); }
 .logo { font: 600 22px/1 var(--f-gill); letter-spacing: .04em; }
 .logo i { font-style: normal; color: #005EFF; }
 .hd nav { display: flex; gap: 30px; font-size: 13px; font-weight: 700; letter-spacing: .1em; }
 .hd nav a:hover { color: var(--gold-b); }
+/* スクロールしたら、ヘッダーに暗い面を敷いて行き先を読めるようにする（1画面目の上では透明のまま） */
+html { scroll-padding-top: 88px; } /* #concept などへ飛んだとき、固定のヘッダーの下に見出しが隠れないように */
+.hd.is-scrolled { background: rgba(13, 17, 23, .94); box-shadow: 0 1px 0 rgba(244, 246, 249, .08); }
 .menu { display: none; width: 44px; height: 44px; margin-right: -5px; padding: 0; border: 0; background: none; cursor: pointer; position: relative; }
 .menu::before, .menu::after { content: ""; position: absolute; left: 5px; right: 5px; border-top: 1px solid var(--on-dark); transition: transform .2s; }
 .menu::before { top: 17px; }
@@ -649,6 +652,8 @@ ul { list-style: none; }
   const set = open => { hd.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く'); };
   btn.addEventListener('click', () => set(!hd.classList.contains('is-open')));
   hd.querySelector('nav').addEventListener('click', e => { if (e.target.closest('a')) set(false); });
+  const onScroll = () => hd.classList.toggle('is-scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
 })();
 // 横に送る列：左右の釦でカード1枚ぶん送る。端に着いたら、その向きの釦を薄くする
 document.querySelectorAll('[data-rail]').forEach(rail => {
