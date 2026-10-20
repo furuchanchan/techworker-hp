@@ -14,15 +14,15 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>無料相談｜CompanyMap AI — TechWorker</title>
-<meta name="description" content="無料相談の30分で、AIが業務図を1枚作ります。部署を選んでお申し込みください。伺ったお話から、AIに任せられるところが分かる図にします。CompanyMap AI（提供：株式会社TechWorker）">
+<title>無料相談｜ギョウムズAI — TechWorker</title>
+<meta name="description" content="無料相談の30分で、AIが業務図を1枚作ります。部署を選んでお申し込みください。伺ったお話から、AIに任せられるところが分かる図にします。ギョウムズAI（提供：株式会社TechWorker）">
 <link rel="canonical" href="https://techworker.co.jp/companymap/contact">
 <link rel="icon" type="image/svg+xml" href="/assets/companymap/favicon.svg">
 <link rel="icon" href="/assets/companymap/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/assets/companymap/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TechWorker">
-<meta property="og:title" content="無料相談｜CompanyMap AI">
+<meta property="og:title" content="無料相談｜ギョウムズAI">
 <meta property="og:description" content="無料相談の30分で、AIが業務図を1枚作ります。部署を選んでお申し込みください。伺ったお話から、AIに任せられるところが分かる図にします。">
 <meta property="og:url" content="https://techworker.co.jp/companymap/contact">
 <meta property="og:image" content="https://techworker.co.jp/assets/companymap/ogp.png?v=20261007">
@@ -35,13 +35,13 @@
 {
   "@context": "https://schema.org",
   "@type": "ContactPage",
-  "name": "無料相談｜CompanyMap AI",
+  "name": "無料相談｜ギョウムズAI",
   "url": "https://techworker.co.jp/companymap/contact",
-  "description": "無料相談の30分で、AIが業務図を1枚作ります。部署を選んでお申し込みください。伺ったお話から、AIに任せられるところが分かる図にします。CompanyMap AI（提供：株式会社TechWorker）",
+  "description": "無料相談の30分で、AIが業務図を1枚作ります。部署を選んでお申し込みください。伺ったお話から、AIに任せられるところが分かる図にします。ギョウムズAI（提供：株式会社TechWorker）",
   "inLanguage": "ja",
   "about": {
     "@type": "Service",
-    "name": "CompanyMap AI",
+    "name": "ギョウムズAI",
     "url": "https://techworker.co.jp/companymap",
     "provider": {
       "@type": "Organization",
@@ -77,7 +77,7 @@
 </svg>
 
 <nav class="nav"><div class="wrap">
-  <a class="brand" href="/companymap"><svg class="mark"><use href="#logo"/></svg><span class="word">CompanyMap</span><span class="ai">AI</span></a>
+  <a class="brand" href="/companymap"><svg class="mark"><use href="#logo"/></svg><span class="word">ギョウムズ</span><span class="ai">AI</span></a>
   <div class="links"><a href="/companymap#pains">よくある課題</a><a href="/companymap#approach">できること</a><a href="/companymap#roles">進め方</a><a href="/companymap#resources">資料</a></div>
   <a class="btn sm ghost" href="/companymap">サービスを見る</a>
 </div></nav>
@@ -123,7 +123,7 @@
 </main>
 
 <footer><div class="wrap">
-  <a class="brand" href="/companymap"><svg class="mark"><use href="#logo"/></svg><span class="word" style="font-size:16px">CompanyMap</span><span class="ai">AI</span></a>
+  <a class="brand" href="/companymap"><svg class="mark"><use href="#logo"/></svg><span class="word" style="font-size:16px">ギョウムズ</span><span class="ai">AI</span></a>
   <span>提供：<a href="/">株式会社TechWorker</a></span><a href="/companymap/docs/">Docs</a><a href="/privacy">プライバシーポリシー</a><span class="r">© 2026 TechWorker Inc.</span>
 </div></footer>
 
@@ -154,13 +154,13 @@
       name:v('name'), company:v('company'), email:v('email'), phone:v('phone'),
       department:v('department'), position:v('position'),
       message:'【生成AIの導入をうまく進めたい部署】'+v('inquiry')+(v('message')?'\n【いまの課題】'+v('message'):''),
-      inquiry_type:'consultation', source:'CompanyMap AI', website:v('website')
+      inquiry_type:'consultation', source:'ギョウムズAI', website:v('website')
     };
     if(window.twIntent)Object.assign(data,twIntent());
     try{
       var res=await fetch('/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
       if(!res.ok) throw new Error('status '+res.status);
-      try{if(typeof gtag==='function')gtag('event','generate_lead',{inquiry_type:'consultation',source:'CompanyMap AI'});}catch(e){}
+      try{if(typeof gtag==='function')gtag('event','generate_lead',{inquiry_type:'consultation',source:'ギョウムズAI'});}catch(e){}
       box.classList.add('done');
       document.getElementById('thanks').focus();
       window.scrollTo({top:0,behavior:'smooth'});
