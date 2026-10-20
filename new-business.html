@@ -697,11 +697,7 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
 ]}
 </script>
 <style>
-/* hero: generative flow canvas — homepage parity (ink + electric particles) */
-
-
 .hero{position:relative;overflow:hidden;}
-.hero-flow{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;}
 .hero::before{content:"";position:absolute;top:-14%;right:-6%;width:56%;height:128%;background:radial-gradient(closest-side,rgba(164,121,72,.10),rgba(164,121,72,0) 72%);pointer-events:none;z-index:0;}
 .hero .wrap{position:relative;z-index:1;}
 </style>
@@ -721,6 +717,7 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
 h1, h2, .hero h1 { font-weight: 400; }
 .lr .lk { display: none; }
 .lr { grid-template-columns: 1fr !important; }
+.ledger .lv .big { font: inherit; color: inherit; margin-right: 0; }
 .band { background: var(--ink); }
 .hero::before { display: none; }
 .flow .fn { width: auto; height: auto; border-radius: 0; background: none; color: var(--gold-a); font: 400 30px/1 var(--f-gill); }
@@ -793,7 +790,6 @@ h1, h2, .hero h1 { font-weight: 400; }
 
 <!-- HERO -->
 <section class="hero">
-  <canvas class="hero-flow" aria-hidden="true"></canvas>
   <div class="wrap"><div class="col">
     <div class="hero-top rv">
       <span class="tag">新規事業・インキュベーション・R&D 部門向け</span>
@@ -1654,35 +1650,6 @@ function submitTraining(e){
     alert('送信に失敗しました。お手数ですが時間をおいて再度お試しください。');
   });
 }
-</script>
-<script>
-/* Hero generative flow — homepage parity (ink + electric) */
-(function(){
-  var canvas=document.querySelector('.hero-flow'); if(!canvas) return;
-  var hero=canvas.parentElement;
-  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var ctx=canvas.getContext('2d'); if(!ctx) return;
-  var dpr=Math.min(window.devicePixelRatio||1,2);
-  var W=0,H=0,parts=[],raf=null,running=false,t=0;
-  var mouse={x:-9999,y:-9999,on:false};
-  function size(){ W=canvas.clientWidth||hero.clientWidth; H=canvas.clientHeight||hero.clientHeight; canvas.width=Math.round(W*dpr); canvas.height=Math.round(H*dpr); ctx.setTransform(dpr,0,0,dpr,0,0); }
-  function seed(){ var count=Math.max(34, Math.min(Math.round(W*H/9500), W<700?60:142)); parts=[]; for(var i=0;i<count;i++) parts.push({ x:Math.random()*W, y:Math.random()*H, vx:0, vy:0, s:0.7+Math.random()*1.3, blue:Math.random()<0.14, sp:0.55+Math.random()*0.7 }); }
-  function ang(x,y){ return (Math.sin(x*0.0016+t*0.00040)+Math.cos(y*0.0019-t*0.00033)+Math.sin((x+y)*0.0011+t*0.00026))*1.05; }
-  function draw(stat){ ctx.clearRect(0,0,W,H); for(var i=0;i<parts.length;i++){ var p=parts[i]; if(!stat){ var a=ang(p.x,p.y)*Math.PI, ax=Math.cos(a)*0.09*p.sp, ay=Math.sin(a)*0.09*p.sp; if(mouse.on){ var dx=p.x-mouse.x, dy=p.y-mouse.y, R=150, d2=dx*dx+dy*dy; if(d2<R*R){ var d=Math.sqrt(d2)||1, f=(1-d/R)*1.25; ax+=dx/d*f; ay+=dy/d*f; } } p.vx=(p.vx+ax)*0.94; p.vy=(p.vy+ay)*0.94; var spd=Math.hypot(p.vx,p.vy), mn=0.4*p.sp; if(spd>0&&spd<mn){ p.vx=p.vx/spd*mn; p.vy=p.vy/spd*mn; } p.x+=p.vx; p.y+=p.vy; if(p.x<-14)p.x=W+14; else if(p.x>W+14)p.x=-14; if(p.y<-14)p.y=H+14; else if(p.y>H+14)p.y=-14; } var k=8; ctx.beginPath(); ctx.moveTo(p.x-p.vx*k,p.y-p.vy*k); ctx.lineTo(p.x,p.y); ctx.lineWidth=p.s; ctx.lineCap='round'; ctx.strokeStyle=p.blue?'rgba(164,121,72,0.55)':'rgba(13,17,23,0.18)'; ctx.stroke(); ctx.beginPath(); ctx.arc(p.x,p.y,p.s*0.95,0,6.2832); ctx.fillStyle=p.blue?'rgba(164,121,72,0.62)':'rgba(13,17,23,0.22)'; ctx.fill(); } }
-  function step(){ t+=16; draw(false); raf=requestAnimationFrame(step); }
-  function start(){ if(running||reduce)return; running=true; raf=requestAnimationFrame(step); }
-  function stop(){ running=false; if(raf)cancelAnimationFrame(raf); raf=null; }
-  size(); seed();
-  if(reduce){ draw(true); }
-  else{ start();
-    window.addEventListener('mousemove',function(e){ var r=canvas.getBoundingClientRect(); mouse.x=e.clientX-r.left; mouse.y=e.clientY-r.top; mouse.on=true; },{passive:true});
-    window.addEventListener('mouseout',function(){ mouse.on=false; });
-    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ e.isIntersecting?start():stop(); }); },{threshold:0});
-    io.observe(hero);
-    document.addEventListener('visibilitychange',function(){ document.hidden?stop():start(); });
-  }
-  var rt; window.addEventListener('resize',function(){ clearTimeout(rt); rt=setTimeout(function(){ var run=running; stop(); size(); seed(); if(reduce)draw(true); else if(run)start(); },180); },{passive:true});
-})();
 </script>
 <script>
 // スマホの行き先：右上の釦で開け閉めする。行き先を押したら閉じる。スクロールしたら頭に暗い面を敷く
