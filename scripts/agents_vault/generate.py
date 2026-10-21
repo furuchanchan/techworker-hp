@@ -295,15 +295,21 @@ def publish(topic, existing, dry):
         if round_ >= MAX_REVISIONS:
             raise SystemExit(f"審査に通りませんでした: {json.dumps(result, ensure_ascii=False)}")
         notes = "\n".join(f"- {p['field']}：{p['issue']} → {p['fix']}" for p in result["problems"])
-        feedback(messages, use_id, "審査で次の点が見つかりました。公式のページで確かめて直し、submit_entry を呼び直してください。\n" + notes)
-        msg = call(client, budget, WRITER_SYSTEM, messages, web_tools() + [ENTRY_TOOL])
-        use = tool_call(msg, "submit_entry")
-        if not use:
-            raise SystemExit("書き直しが提出されませんでした")
-        use_id, entry = use.id, dict(use.input)
-        errs = check(entry, existing)
-        if errs:
-            raise SystemExit(f"書き直しが検証に通りませんでした: {errs}")
+        feedback(messages, use_id, "審査で次の点が見つかりました。公式のページで確かめて直し、直していない項目も省かずに全項目を入れて submit_entry を呼び直してください。\n" + notes)
+        # 直した項目だけを出してくることがある（2026-10-21 の失敗）。検証の結果を返して1回だけ出し直させる
+        for retry in range(2):
+            msg = call(client, budget, WRITER_SYSTEM, messages, web_tools() + [ENTRY_TOOL])
+            use = tool_call(msg, "submit_entry")
+            if not use:
+                raise SystemExit("書き直しが提出されませんでした")
+            use_id, entry = use.id, dict(use.input)
+            errs = check(entry, existing)
+            if not errs:
+                break
+            if retry:
+                raise SystemExit(f"書き直しが検証に通りませんでした: {errs}")
+            print(f"  validation: {errs}", flush=True)
+            feedback(messages, use_id, "検証で次の点が見つかりました。直した項目だけでなく、全項目を入れて submit_entry を呼び直してください。\n- " + "\n- ".join(errs))
 
     entry["published_on"] = TODAY
     entry["checked_on"] = TODAY
