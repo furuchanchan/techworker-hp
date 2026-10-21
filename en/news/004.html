@@ -28,9 +28,6 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="CEO Kotaro Furuno delivered a keynote seminar at Sakura Internet Inc. — TechWorker">
 <meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -94,224 +91,22 @@
   ]
 }
 </script>
+<link rel="stylesheet" href="/assets/site/site.css">
 <style>
-/* ===== TOKENS ===== */
-:root{
-  --ink:#0D1117; --paper:#F4F6F9; --paper-2:#ECEFF3; --white:#FBFCFD;
-  --electric:#005EFF; --electric-dark:#003DAA;
-  --slate:#5A6677; --line:rgba(13,17,23,.12); --line-2:rgba(13,17,23,.20);
-  --emerald:#00B894; --violet:#7C3AED;
-  --jp:'IBM Plex Sans JP','IBM Plex Sans',system-ui,sans-serif;
-  --en:'IBM Plex Sans','IBM Plex Sans JP',system-ui,sans-serif;
-}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{overflow-x:hidden;scroll-behavior:smooth;}
-body{font-family:var(--jp);background:var(--paper);color:var(--ink);line-height:1.85;font-size:16px;-webkit-font-smoothing:antialiased;font-feature-settings:"palt" 1;overflow-x:hidden;}
-::selection{background:var(--electric);color:var(--paper);}
-a{color:inherit;}
-img{display:block;max-width:100%;}
-
-/* ===== SHARED ===== */
-.container{max-width:1280px;margin:0 auto;padding:0 48px;width:100%;}
-.tag{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--electric);display:inline-flex;align-items:center;gap:11px;padding-left:14px;border-left:3px solid var(--electric);}
-.tag span{color:var(--slate);font-weight:500;letter-spacing:.02em;text-transform:none;font-size:13px;}
-.tag.ev{color:var(--violet);border-left-color:var(--violet);}
-.btn{font-family:var(--jp);font-size:14.5px;font-weight:600;color:var(--paper);background:var(--electric);text-decoration:none;border-radius:5px;padding:15px 30px;display:inline-flex;align-items:center;gap:11px;transition:background .25s,transform .25s;border:none;cursor:pointer;}
-.btn:hover{background:var(--electric-dark);transform:translateY(-1px);}
-.btn i{font-style:normal;transition:transform .25s;}
-.btn:hover i{transform:translateX(4px);}
-.btn--ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line-2);}
-.btn--ghost:hover{background:transparent;border-color:var(--electric);color:var(--electric);}
-.btn--on-blue{background:var(--paper);color:var(--electric);}
-.btn--on-blue:hover{background:var(--white);}
-.btn--on-blue-ghost{background:transparent;color:var(--paper);border:1.5px solid rgba(244,246,249,.5);}
-.btn--on-blue-ghost:hover{background:rgba(244,246,249,.1);border-color:var(--paper);}
-
-/* ===== NAV ===== */
-nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:68px;background:rgba(244,246,249,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transition:box-shadow .3s,height .3s cubic-bezier(.2,.8,.2,1),background .3s;}
-nav.scrolled{box-shadow:0 1px 16px rgba(0,94,255,.06);height:58px;background:rgba(244,246,249,.92);}
-nav .logo{transition:font-size .3s cubic-bezier(.2,.8,.2,1);}
-nav.scrolled .logo{font-size:18px;}
-nav .logo{font-family:var(--en);font-weight:700;font-size:20px;letter-spacing:-.01em;text-decoration:none;color:var(--ink);}
-nav .logo i{font-style:normal;color:var(--electric);}
-nav ul{list-style:none;display:flex;gap:34px;}
-nav ul a{font-size:14px;font-weight:500;color:var(--ink);text-decoration:none;position:relative;}
-nav ul a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--electric);transition:width .28s cubic-bezier(.2,.8,.2,1);}
-nav ul a:hover::after,nav ul a.active::after{width:100%;}
-nav ul a.active{color:var(--electric);}
-nav .nav-right{display:flex;align-items:center;gap:18px;}
-nav .nav-cta{font-family:var(--jp);font-size:13.5px;font-weight:600;color:var(--paper);background:var(--electric);text-decoration:none;padding:10px 22px;border-radius:4px;transition:background .25s;}
-nav .nav-cta:hover{background:var(--electric-dark);}
-nav .nav-cta .short{display:none;}
-nav .lang{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.04em;}
-nav .lang a{color:var(--slate);text-decoration:none;}
-nav .lang .cur{color:var(--electric);}
-
-/* hamburger */
-.hamb{display:none;width:44px;height:44px;border:none;background:none;cursor:pointer;position:relative;margin-left:2px;}
-.hamb span{position:absolute;left:11px;width:22px;height:2px;background:var(--ink);transition:transform .3s,opacity .2s;}
-.hamb span:nth-child(1){top:15px;} .hamb span:nth-child(2){top:21px;} .hamb span:nth-child(3){top:27px;}
-body.menu-open .hamb span:nth-child(1){transform:translateY(6px) rotate(45deg);}
-body.menu-open .hamb span:nth-child(2){opacity:0;}
-body.menu-open .hamb span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
-.mmenu{position:fixed;inset:68px 0 0;z-index:45;background:var(--paper);transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);visibility:hidden;display:flex;flex-direction:column;padding:18px 24px 40px;}
-body.menu-open .mmenu{transform:none;visibility:visible;}
-.mmenu a{font-size:19px;font-weight:600;color:var(--ink);text-decoration:none;padding:20px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;}
-.mmenu a::after{content:"→";color:var(--electric);font-family:var(--en);}
-.mmenu .m-cta{margin-top:28px;background:var(--electric);color:var(--paper);justify-content:center;border-radius:5px;border:none;padding:17px;}
-.mmenu .m-cta::after{content:none;}
-.mmenu .m-lang{margin-top:auto;border:none;font-family:var(--en);font-size:13px;color:var(--slate);}
-.mmenu .m-lang::after{content:none;}
-
-/* ===== ARTICLE HEAD ===== */
-.art-head{max-width:1280px;margin:0 auto;padding:150px 48px 0;}
-.art-head .crumb{font-family:var(--en);font-size:12px;color:var(--slate);margin-bottom:40px;letter-spacing:.02em;}
-.art-head .crumb a{color:var(--slate);text-decoration:none;transition:color .2s;}
-.art-head .crumb a:hover{color:var(--electric);}
-.art-head .crumb .sep{margin:0 9px;opacity:.5;}
-.art-head .crumb .cur{color:var(--ink);}
-.art-head .a-meta{display:flex;align-items:center;gap:18px;margin:22px 0 18px;}
-.art-head .a-date{font-family:var(--en);font-size:14px;color:var(--slate);font-feature-settings:"tnum" 1;letter-spacing:.01em;}
-.art-head .a-cat{font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--electric);}
-.art-head .a-cat.ev{color:var(--violet);}
-.art-head h1{font-family:var(--jp);font-weight:700;font-size:clamp(28px,4vw,50px);line-height:1.34;letter-spacing:-.02em;max-width:24ch;}
-.art-rule{max-width:1280px;margin:46px auto 0;padding:0 48px;}
-.art-rule hr{border:none;border-top:1px solid var(--line);}
-
-/* ===== ARTICLE BODY ===== */
-.art-wrap{padding:54px 0 70px;}
-.art-body{max-width:760px;margin:0 auto;}
-.art-body p{font-size:16px;color:#28313f;line-height:2.05;margin-bottom:30px;}
-.art-body p:last-child{margin-bottom:0;}
-.art-body p strong{color:var(--ink);font-weight:600;}
-.art-body a{color:var(--electric);text-decoration:none;border-bottom:1px solid rgba(0,94,255,.3);transition:border-color .2s;}
-.art-body a:hover{border-color:var(--electric);}
-.art-body h2{font-family:var(--jp);font-weight:700;font-size:22px;line-height:1.5;letter-spacing:-.01em;margin:48px 0 18px;padding-left:16px;border-left:3px solid var(--electric);}
-.art-body h2:first-child{margin-top:0;}
-.art-body ul{list-style:none;margin:0 0 30px;}
-.art-body li{position:relative;font-size:16px;color:#28313f;line-height:1.95;padding:6px 0 6px 24px;}
-.art-body li::before{content:"";position:absolute;left:0;top:16px;width:7px;height:7px;background:var(--electric);border-radius:1px;}
-.art-body .info-box{margin:0 0 30px;border:1px solid var(--line);background:var(--white);border-radius:6px;padding:8px 28px;}
-.art-body .info-table{width:100%;border-collapse:collapse;}
-.art-body .info-table tr{border-bottom:1px solid var(--line);}
-.art-body .info-table tr:last-child{border-bottom:none;}
-.art-body .info-table th{text-align:left;font-size:13px;font-weight:600;color:var(--slate);padding:16px 18px 16px 0;width:118px;vertical-align:top;white-space:nowrap;}
-.art-body .info-table td{font-size:15px;color:var(--ink);padding:16px 0;line-height:1.7;}
-.art-body .quote-box{margin:0 0 30px;border-left:3px solid var(--electric);background:var(--paper-2);padding:24px 28px;border-radius:0 6px 6px 0;}
-.art-body .quote-box p{margin:0;font-family:var(--jp);font-weight:500;font-size:16px;line-height:1.95;color:var(--ink);}
-.art-body .a-link{font-size:14px;}
-
-/* article CTA */
-.art-cta{max-width:760px;margin:48px auto 0;background:var(--electric-dark);color:var(--paper);border-radius:8px;padding:40px 44px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;}
-.art-cta h3{font-family:var(--jp);font-weight:700;font-size:clamp(18px,2.2vw,24px);line-height:1.5;letter-spacing:-.01em;color:var(--paper);}
-.art-cta p{font-size:14px;color:rgba(244,246,249,.82);margin-top:10px;line-height:1.9;max-width:46ch;}
-.art-cta .btn{background:var(--paper);color:var(--electric);white-space:nowrap;}
-.art-cta .btn:hover{background:var(--white);}
-
-/* back to list */
-.back-list{max-width:760px;margin:46px auto 0;padding-top:32px;border-top:1px solid var(--line);}
-.back-list a{display:inline-flex;align-items:center;gap:9px;font-family:var(--jp);font-size:14.5px;font-weight:600;color:var(--electric);text-decoration:none;transition:gap .2s;}
-.back-list a:hover{gap:13px;}
-
-/* prev/next pager */
-.pager{max-width:760px;margin:0 auto;padding:40px 0;display:grid;grid-template-columns:1fr 1fr;gap:24px;}
-.pager-card{display:block;text-decoration:none;color:inherit;padding:26px 28px;background:var(--white);border:1px solid var(--line);border-radius:8px;transition:border-color .25s,transform .25s,box-shadow .25s;}
-.pager-card:hover{border-color:var(--electric);transform:translateY(-3px);box-shadow:0 14px 34px rgba(13,17,23,.07);}
-.pager-label{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--electric);display:block;margin-bottom:10px;}
-.pager-title{font-size:15px;font-weight:600;line-height:1.55;color:var(--ink);transition:color .2s;}
-.pager-card:hover .pager-title{color:var(--electric);}
-.pager-date{font-family:var(--en);font-size:12px;color:var(--slate);margin-top:9px;font-feature-settings:"tnum" 1;}
-.pager-next{text-align:right;}
-.pager-placeholder{visibility:hidden;}
-
-/* related */
-.related{padding:60px 0 96px;border-top:1px solid var(--line);}
-.related .container{max-width:1280px;}
-.related h2{font-family:var(--jp);font-weight:700;font-size:clamp(22px,2.6vw,30px);line-height:1.4;letter-spacing:-.02em;margin-top:18px;}
-.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:40px;border-top:1px solid var(--line);}
-.related-card{display:block;text-decoration:none;color:inherit;padding:30px 28px 30px 0;border-bottom:1px solid var(--line);border-left:1px solid var(--line);padding-left:28px;transition:background .2s;}
-.related-card:first-child{border-left:none;padding-left:0;}
-.related-card:hover{background:var(--paper-2);}
-.related-card .rc-meta{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
-.related-card .rc-date{font-family:var(--en);font-size:13px;color:var(--slate);font-feature-settings:"tnum" 1;}
-.related-card .rc-cat{font-size:11px;font-weight:600;letter-spacing:.04em;color:var(--electric);}
-.related-card .rc-cat.ev{color:var(--violet);}
-.related-card .rc-title{font-size:15px;font-weight:600;line-height:1.6;color:var(--ink);transition:color .2s,transform .25s cubic-bezier(.2,.8,.2,1);}
-.related-card:hover .rc-title{color:var(--electric);transform:translateX(4px);}
-
-/* ===== FOOTER ===== */
-footer{background:var(--white);border-top:1px solid var(--line);padding:64px 0 40px;}
-.footer-inner{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;}
-.footer-brand .logo{font-family:var(--en);font-size:19px;font-weight:700;color:var(--ink);}
-.footer-brand .logo i{font-style:normal;color:var(--electric);}
-.footer-brand p{font-size:13px;color:var(--slate);line-height:1.7;margin-top:12px;}
-.footer-brand .x{display:inline-flex;align-items:center;gap:7px;margin-top:16px;font-size:13px;font-weight:600;color:var(--slate);text-decoration:none;}
-.footer-brand .x:hover{color:var(--electric);}
-.footer-col h4{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:16px;}
-.footer-col a{display:block;font-size:13px;color:var(--slate);text-decoration:none;margin-bottom:10px;}
-.footer-col a:hover{color:var(--electric);}
-.footer-col p{font-size:13px;color:var(--slate);line-height:1.7;margin-top:12px;}
-.copyright{text-align:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-family:var(--en);font-size:12px;color:var(--slate);}
-
-/* ===== reveal ===== */
-html.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
-html.js .rv.show{opacity:1;transform:none;}
-html.js .rvg>*{opacity:0;transform:translateY(18px);}
-html.js .rvg.show>*{opacity:1;transform:none;transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1);}
-html.js .rvg.show>*:nth-child(1){transition-delay:.04s;}
-html.js .rvg.show>*:nth-child(2){transition-delay:.12s;}
-html.js .rvg.show>*:nth-child(3){transition-delay:.20s;}
-
-/* ===== focus visibility ===== */
-a:focus-visible,button:focus-visible{outline:2px solid var(--electric);outline-offset:3px;border-radius:3px;}
-:focus:not(:focus-visible){outline:none;}
-
-/* ===== reduced motion ===== */
-@media (prefers-reduced-motion: reduce){
-  html{scroll-behavior:auto;}
-  html.js .rv{opacity:1;transform:none;transition:none;}
-  html.js .rvg>*{opacity:1;transform:none;}
-  *{animation-duration:.001ms!important;transition-duration:.001ms!important;}
-}
-
-/* ===== scrollbar ===== */
-@media (pointer:fine){
-  *{scrollbar-width:thin;scrollbar-color:#c3ccd8 transparent;}
-  ::-webkit-scrollbar{width:12px;height:12px;}
-  ::-webkit-scrollbar-thumb{background:#c3ccd8;border-radius:10px;border:3px solid var(--paper);}
-  ::-webkit-scrollbar-thumb:hover{background:#9aa7b8;}
-  ::-webkit-scrollbar-track{background:transparent;}
-}
-
-/* ===== RESPONSIVE ===== */
-@media(max-width:1000px){
-  .footer-inner{grid-template-columns:1fr 1fr;gap:32px;}
-  .related-grid{grid-template-columns:1fr;}
-  .related-card{border-left:none;padding-left:0;}
-}
-@media(max-width:860px){
-  nav ul{display:none;}
-  nav .nav-cta{padding:8px 14px;font-size:12.5px;}nav .nav-cta .full{display:none;}nav .nav-cta .short{display:inline;}
-  nav .lang{display:none;}
-  .hamb{display:block;}
-  .art-head{padding:118px 24px 0;}
-  .art-rule{padding:0 24px;}
-  .art-cta{grid-template-columns:1fr;gap:22px;padding:30px 26px;}
-  .pager{grid-template-columns:1fr;}
-  .pager-next{text-align:left;}
-  .pager-placeholder{display:none;}
-}
-@media(max-width:560px){
-  .container{padding:0 22px;}
-  .art-head{padding:108px 22px 0;}
-  .art-rule{padding:0 22px;}
-  nav{padding:0 10px 0 18px;height:60px;}
-  .mmenu{top:60px;}
-  .art-head .info-table th{width:96px;}
-}
-@media print{
-  body{background:#fff;color:#000;}
-  nav,.mmenu,.hamb,.art-cta,.pager,.related{display:none;}
+/* News article: the body text is unchanged. Shared article styles live in site.css under the en label */
+.nl { border-bottom: 1px solid var(--line); }
+.nl a { display: grid; grid-template-columns: 120px 150px minmax(0, 1fr) 46px; gap: 28px; align-items: baseline; padding: 26px 8px; border-top: 1px solid var(--line); transition: background-color .2s; }
+.nl a:hover { background: var(--paper); }
+.nl time { font: 400 16px/1.6 var(--f-gill); letter-spacing: .06em; }
+.nl .tg { justify-self: start; padding: 3px 14px 2px; border: 1px solid var(--ink); border-radius: 20px; font-size: 12px; line-height: 1.4; letter-spacing: .14em; white-space: nowrap; }
+.nl .tt { font-weight: 700; line-height: 1.8; text-wrap: pretty; }
+.nl .tt small { display: block; margin-top: 4px; font-size: 13px; font-weight: 500; color: var(--sub); }
+.nl svg { align-self: center; width: 46px; height: 8px; fill: none; stroke: currentColor; stroke-width: 1; transition: transform .2s; }
+.nl a:hover svg { transform: translateX(4px); }
+@media (max-width: 760px) {
+  .nl a { grid-template-columns: auto minmax(0, 1fr); gap: 8px 14px; padding: 22px 2px; }
+  .nl .tt { grid-column: 1 / -1; }
+  .nl svg { display: none; }
 }
 </style>
 <!-- Meta Pixel Code -->
@@ -334,50 +129,34 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="nav">
-  <a href="../index.html" class="logo">Tech<i>Worker</i></a>
-  <ul>
-    <li><a href="../index.html">Home</a></li>
-    <li><a href="../index.html#services">Services</a></li>
-    <li><a href="../cases.html">Case Studies</a></li>
-    <li><a href="../news.html">News</a></li>
-    <li><a href="../company.html">Company</a></li>
-  </ul>
-  <div class="nav-right">
-    <a href="../contact.html" class="nav-cta"><span class="full">Free Consultation</span><span class="short">Contact</span></a>
-    <span class="lang"><a href="../../index.html">JP</a> / <span class="cur">EN</span></span>
-    <button class="hamb" id="hamb" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
-  </div>
-</nav>
-
-<!-- MOBILE MENU -->
-<div class="mmenu" id="mmenu" aria-hidden="true">
-  <a href="../index.html">Home</a>
-  <a href="../index.html#services">Services</a>
-  <a href="../cases.html">Case Studies</a>
-  <a href="../news.html">News</a>
-  <a href="../company.html">Company</a>
-  <a href="../contact.html" class="m-cta">Book a Free Consultation</a>
-  <a href="../../index.html" class="m-lang">日本語 ↗</a>
-</div>
-
-<!-- ARTICLE HEAD -->
-<header class="art-head">
-  <div class="crumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><a href="../news.html">News</a><span class="sep">/</span><span class="cur">Speaking Report</span></div>
-  <span class="tag ev">Event <span>Event</span></span>
-  <div class="a-meta">
-    <span class="a-date">2024.05.07</span>
-    <span class="a-cat ev">Event</span>
-  </div>
-  <h1>CEO Kotaro Furuno delivered a keynote seminar at Sakura Internet Inc.</h1>
+<header class="hd">
+  <a class="logo" href="/en/" aria-label="TechWorker home">Tech<i>Worker</i></a>
+  <nav id="hd-nav" aria-label="Main">
+    <a href="/en/services">Services</a>
+    <a href="/en/#concept">Approach</a>
+    <a href="/en/cases">Case Studies</a>
+    <a href="/en/news" aria-current="page">News</a>
+    <a href="/en/company">Company</a>
+    <a href="/en/contact">Contact</a>
+  </nav>
+  <button class="menu" type="button" aria-label="Open menu" aria-controls="hd-nav" aria-expanded="false"></button>
 </header>
-<div class="art-rule"><hr></div>
 
-<!-- ARTICLE BODY -->
-<section class="art-wrap">
-  <div class="container">
-    <div class="art-body rv">
+<main>
+<section class="ph ph--art" style="--ph-pos: 0 30%;">
+  <picture class="screen" aria-hidden="true">
+    <source media="(max-width: 760px)" srcset="/assets/top/bg-map-sp.jpg">
+    <img src="/assets/top/bg-map.jpg" alt="">
+  </picture>
+  <div class="wrap ph__in">
+    <h1>CEO Kotaro Furuno delivered a keynote seminar at Sakura Internet Inc.</h1>
+    <p><time datetime="2024-05-07">2024.05.07</time>　Event</p>
+  </div>
+</section>
+
+<section class="art">
+  <div class="wrap">
+    <div class="art-body">
 
       <p>Kotaro Furuno, CEO of TechWorker Inc. — a company providing generative AI adoption support — served as the lead speaker at an internal seminar on generative AI held by Sakura Internet Inc.</p>
 
@@ -414,12 +193,12 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
     </div>
 
     <!-- CTA -->
-    <div class="art-cta rv">
+    <div class="art-cta">
       <div>
         <h3>We accept requests for training and speaking engagements.</h3>
         <p>We're happy to discuss corporate generative AI training and talks — as well as any challenges you're facing with AI adoption. Feel free to reach out.</p>
       </div>
-      <a href="../contact.html" class="btn">Book a Free Consultation <i>→</i></a>
+      <a href="../contact.html" class="btn">Book a Free Consultation<svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a>
     </div>
 
     <div class="back-list">
@@ -437,83 +216,50 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
   </div>
 </section>
 
-<!-- RELATED -->
-<section class="related">
-  <div class="container">
-    <span class="tag">Related <span>Related News</span></span>
-    <h2>Related News</h2>
-    <div class="related-grid rvg">
-      <a href="001.html" class="related-card">
-        <div class="rc-meta"><span class="rc-date">2026.03.20</span><span class="rc-cat">Announcement</span></div>
-        <div class="rc-title">We published our Generative AI Use Cases white paper</div>
-      </a>
-      <a href="002.html" class="related-card">
-        <div class="rc-meta"><span class="rc-date">2026.03.14</span><span class="rc-cat">Announcement</span></div>
-        <div class="rc-title">We refreshed our service lineup</div>
-      </a>
-      <a href="003.html" class="related-card">
-        <div class="rc-meta"><span class="rc-date">2026.02.28</span><span class="rc-cat ev">Event</span></div>
-        <div class="rc-title">Free Webinar: The Pitfalls of AI Adoption</div>
-      </a>
-    </div>
+<section class="sec" id="related">
+  <div class="wrap">
+    <h2 class="h2 sec__hd">Related News</h2>
+    <ul class="nl">
+      <li><a href="001.html"><time datetime="2026-03-20">2026.03.20</time><span class="tg">Announcement</span><span class="tt">We published our Generative AI Use Cases white paper</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+      <li><a href="002.html"><time datetime="2026-03-14">2026.03.14</time><span class="tg">Announcement</span><span class="tt">We refreshed our service lineup</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+      <li><a href="003.html"><time datetime="2026-02-28">2026.02.28</time><span class="tg">Event</span><span class="tt">Free Webinar: The Pitfalls of AI Adoption</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+    </ul>
   </div>
 </section>
+</main>
 
-<!-- FOOTER -->
-<footer>
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <div class="logo">Tech<i>Worker</i></div>
-        <p>Enterprise Generative AI Consulting<br>TechWorker Inc.</p>
-        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__in">
+      <div>
+        <p class="ft__name">TechWorker Inc.</p>
+        <p class="ft__addr">1-22-3 Nishiwaseda, Shinjuku-ku,<br>Tokyo 169-0051, Japan</p>
       </div>
-      <div class="footer-col">
-        <h4>Services</h4>
-        <a href="../index.html#services">Generative AI Consulting</a>
-      </div>
-      <div class="footer-col">
-        <h4>Site</h4>
-        <a href="../news.html">News</a>
-        <a href="../cases.html">Case Studies</a>
-        <a href="../company.html">Company</a>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <a href="../contact.html">Free Consultation</a>
-        <a href="../contact.html?type=document">Request Materials</a>
-        <a href="../privacy.html">Privacy Policy</a>
-        <p>1-22-3 Nishiwaseda, Shinjuku-ku, Tokyo 169-0051, Japan</p>
-      </div>
+      <nav aria-label="Footer">
+        <a href="/en/services">Services</a>
+        <a href="/en/company">Company</a>
+        <a href="/en/news">News</a>
+        <a href="/en/#concept">Approach</a>
+        <a href="/en/cases">Case Studies</a>
+        <a href="/en/contact">Contact</a>
+        <a href="/en/privacy">Privacy Policy</a>
+        <a href="/news/004" hreflang="ja" lang="ja">日本語</a>
+      </nav>
     </div>
-    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+    <small>© TechWorker Inc.</small>
   </div>
 </footer>
 
 <script>
-/* nav shadow on scroll */
-var nav=document.getElementById('nav');
-addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>40);},{passive:true});
-
-/* mobile menu */
-(function(){
-  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
-  function setMenu(open){
-    document.body.classList.toggle('menu-open',open);
-    hamb.setAttribute('aria-expanded',open?'true':'false');
-    hamb.setAttribute('aria-label',open?'Close menu':'Open menu');
-    mmenu.setAttribute('aria-hidden',open?'false':'true');
-    document.body.style.overflow=open?'hidden':'';
-  }
-  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
-  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
-  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
-  matchMedia('(min-width:861px)').addEventListener('change',function(e){if(e.matches)setMenu(false);});
+// Mobile menu: the top-right button opens and closes it; tapping a link closes it. After scrolling, the header gets a dark backdrop
+(() => {
+  const hd = document.querySelector('.hd'), btn = hd.querySelector('.menu');
+  const set = open => { hd.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); };
+  btn.addEventListener('click', () => set(!hd.classList.contains('is-open')));
+  hd.querySelector('nav').addEventListener('click', e => { if (e.target.closest('a')) set(false); });
+  const onScroll = () => hd.classList.toggle('is-scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
 })();
-
-/* scroll reveal */
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.rv,.rvg').forEach(function(el){io.observe(el);});
 </script>
 </body>
 </html>
