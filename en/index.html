@@ -34,17 +34,17 @@
 <link rel="stylesheet" href="/assets/site/site.css">
 <style>
 /* Top (en): same order as the Japanese top. Hero, figures, services, approach, case studies, news, FAQ, free resources, contact band */
-.hero { position: relative; min-height: 760px; height: 100vh; max-height: 940px; color: var(--on-dark); overflow: hidden; }
-.hero .screen img { object-position: 0 0; }
-.hero .screen::after { background: linear-gradient(90deg, rgba(13,17,23,.9) 0%, rgba(13,17,23,.84) 48%, rgba(13,17,23,.6) 100%); }
+.hero { position: relative; min-height: 760px; height: 100vh; max-height: 940px; color: var(--ink); background: var(--ground); overflow: hidden; } /* 2026-10-21 日本語のトップと同じ明るい地 */
+.hero .screen img { object-position: 0 0; filter: grayscale(1); opacity: .4; }
+.hero .screen::after { background: linear-gradient(90deg, rgba(241,241,241,.97) 0%, rgba(241,241,241,.9) 48%, rgba(241,241,241,.55) 100%); }
 .hero__in { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 40px 130px 120px; }
 .hero h1 { font: 400 76px/1.2 var(--f-min); letter-spacing: .01em; }
 .hero__line { margin-top: 36px; font: 400 28px/1.5 var(--f-min); letter-spacing: .02em; }
-.hero__desc { margin-top: 18px; max-width: 40em; font-size: 15px; line-height: 1.9; color: var(--on-dark-sub); }
+.hero__desc { margin-top: 18px; max-width: 40em; font-size: 15px; line-height: 1.9; color: var(--sub); }
 .hero .btn { margin-top: 44px; align-self: flex-start; }
-.hero__sub { margin-top: 22px; font-size: 13px; color: var(--on-dark-sub); }
+.hero__sub { margin-top: 22px; font-size: 13px; color: var(--sub); }
 .hero__sub a { text-decoration: underline 1px; text-underline-offset: 5px; }
-.hero__sub a:hover { color: var(--gold-b); }
+.hero__sub a:hover { color: var(--gold-a); }
 .figs { padding: 52px 0 48px; background: var(--paper); }
 .figs ul { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; text-align: center; }
 .figs b { display: block; font: 600 50px/1.1 var(--f-gill); letter-spacing: .01em; font-variant-numeric: lining-nums; }

@@ -134,38 +134,36 @@ ul { list-style: none; }
 .btn:hover { filter: brightness(1.08); }
 .btn svg { width: 46px; height: 8px; fill: none; stroke: currentColor; stroke-width: 1; }
 
-/* ヘッダー：1画面目の暗い面に乗る。スマホは右上の釦で行き先を開く */
-.hd { position: fixed; inset: 0 0 auto; z-index: 50; transition: background-color .25s, box-shadow .25s; display: flex; align-items: center; justify-content: space-between; height: 80px; padding: 0 44px; color: var(--on-dark); }
+/* ヘッダー：白い地が基本（2026-10-21 古野さん「上部ヘッダーが真っ黒なのが気になる。ベースは白の方が良さそう」）。スマホは右上の釦で行き先を開く */
+.hd { position: fixed; inset: 0 0 auto; z-index: 50; display: flex; align-items: center; justify-content: space-between; height: 80px; padding: 0 44px; color: var(--ink); background: rgba(252, 252, 251, .97); box-shadow: 0 1px 0 var(--line); }
 .logo { font: 600 22px/1 var(--f-gill); letter-spacing: .04em; }
 .logo i { font-style: normal; color: #005EFF; }
 .hd nav { display: flex; gap: 30px; font-size: 13px; font-weight: 700; letter-spacing: .1em; }
-.hd nav a:hover { color: var(--gold-b); }
-/* スクロールしたら、ヘッダーに暗い面を敷いて行き先を読めるようにする（1画面目の上では透明のまま） */
+.hd nav a:hover { color: var(--gold-a); }
 html { scroll-padding-top: 88px; } /* #concept などへ飛んだとき、固定のヘッダーの下に見出しが隠れないように */
-.hd.is-scrolled { background: rgba(13, 17, 23, .94); box-shadow: 0 1px 0 rgba(244, 246, 249, .08); }
 .menu { display: none; width: 44px; height: 44px; margin-right: -5px; padding: 0; border: 0; background: none; cursor: pointer; position: relative; }
-.menu::before, .menu::after { content: ""; position: absolute; left: 5px; right: 5px; border-top: 1px solid var(--on-dark); transition: transform .2s; }
+.menu::before, .menu::after { content: ""; position: absolute; left: 5px; right: 5px; border-top: 1px solid var(--ink); transition: transform .2s; }
 .menu::before { top: 17px; }
 .menu::after { top: 26px; }
 .hd.is-open .menu::before { transform: translateY(4.5px) rotate(20deg); }
 .hd.is-open .menu::after { transform: translateY(-4.5px) rotate(-20deg); }
 
-/* 1画面目：業務図の本物の画面を全幅に敷き、暗い膜をかける */
-.hero { position: relative; min-height: 900px; height: 100vh; max-height: 1000px; color: var(--on-dark); overflow: hidden; }
+/* 1画面目：明るい地に業務図の本物の画面をうっすら敷く（2026-10-21 暗い面から替えた） */
+.hero { position: relative; min-height: 900px; height: 100vh; max-height: 1000px; color: var(--ink); background: var(--ground); overflow: hidden; }
 .screen { position: absolute; inset: 0; }
 .screen img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) invert(1) brightness(.9); }
 /* 白い地の画面を反転して暗い画面にし、膜をかける。線と枠だけが点の模様のように残る（avilen.jp の点の模様の位置） */
 .screen::after { content: ""; position: absolute; inset: 0; background: var(--veil); }
-.hero .screen img { object-position: 0 0; }
-.hero .screen::after { background: linear-gradient(90deg, rgba(13,17,23,.9) 0%, rgba(13,17,23,.84) 48%, rgba(13,17,23,.6) 100%); } /* 見出しの後ろだけ画面を沈める */
+.hero .screen img { object-position: 0 0; filter: grayscale(1); opacity: .4; }
+.hero .screen::after { background: linear-gradient(90deg, rgba(241,241,241,.97) 0%, rgba(241,241,241,.9) 48%, rgba(241,241,241,.55) 100%); } /* 見出しの後ろだけ画面を薄める */
 .hero__in { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 40px 130px 120px; }
 .hero h1 { font: 400 76px/1.32 var(--f-min); letter-spacing: .06em; }
 .hero__line { margin-top: 40px; font: 400 28px/1.6 var(--f-min); letter-spacing: .12em; }
-.hero__desc { margin-top: 18px; max-width: 34em; font-size: 15px; line-height: 2; color: var(--on-dark-sub); }
+.hero__desc { margin-top: 18px; max-width: 34em; font-size: 15px; line-height: 2; color: var(--sub); }
 .hero .btn { margin-top: 44px; align-self: flex-start; }
 .scroll { position: absolute; z-index: 2; left: 130px; bottom: 0; display: flex; flex-direction: column; align-items: center; gap: 14px; }
-.scroll__t { writing-mode: vertical-rl; font: 400 11px/1 var(--f-gill); letter-spacing: .4em; color: var(--gold-b); }
-.scroll::after { content: ""; width: 1px; height: 130px; background: var(--gold-b); }
+.scroll__t { writing-mode: vertical-rl; font: 400 11px/1 var(--f-gill); letter-spacing: .4em; color: var(--gold-a); }
+.scroll::after { content: ""; width: 1px; height: 130px; background: var(--gold-a); }
 
 /* 実績の帯：1画面目の直下に、金の月桂樹で数字を挟む印（10/17 の型）を見出しなしで4つ。数字は Gill Sans */
 .rec { padding: 52px 0 48px; background: var(--paper); }

@@ -41,16 +41,15 @@ ul { list-style: none; }
 .btn--line { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
 .btn--line:hover { filter: none; background: var(--paper); }
 
-/* ヘッダー：ページの頭の暗い面に乗る。スクロールしたら暗い面を敷く。スマホは右上の釦で行き先を開く */
-.hd { position: fixed; inset: 0 0 auto; z-index: 50; transition: background-color .25s, box-shadow .25s; display: flex; align-items: center; justify-content: space-between; height: 80px; padding: 0 44px; color: var(--on-dark); }
+/* ヘッダー：白い地が基本（2026-10-21 古野さん「上部ヘッダーが真っ黒なのが気になる。ベースは白の方が良さそう」）。スマホは右上の釦で行き先を開く */
+.hd { position: fixed; inset: 0 0 auto; z-index: 50; display: flex; align-items: center; justify-content: space-between; height: 80px; padding: 0 44px; color: var(--ink); background: rgba(252, 252, 251, .97); box-shadow: 0 1px 0 var(--line); }
 .logo { font: 600 22px/1 var(--f-gill); letter-spacing: .04em; }
 .logo i { font-style: normal; color: #005EFF; }
 .hd nav { display: flex; gap: 30px; font-size: 13px; font-weight: 700; letter-spacing: .1em; }
-.hd nav a:hover { color: var(--gold-b); }
-.hd nav a[aria-current="page"] { color: var(--gold-b); text-decoration: underline 1px; text-underline-offset: 9px; }
-.hd.is-scrolled { background: rgba(13, 17, 23, .94); box-shadow: 0 1px 0 rgba(244, 246, 249, .08); }
+.hd nav a:hover { color: var(--gold-a); }
+.hd nav a[aria-current="page"] { color: var(--gold-a); text-decoration: underline 1px; text-underline-offset: 9px; }
 .menu { display: none; width: 44px; height: 44px; margin-right: -5px; padding: 0; border: 0; background: none; cursor: pointer; position: relative; }
-.menu::before, .menu::after { content: ""; position: absolute; left: 5px; right: 5px; border-top: 1px solid var(--on-dark); transition: transform .2s; }
+.menu::before, .menu::after { content: ""; position: absolute; left: 5px; right: 5px; border-top: 1px solid var(--ink); transition: transform .2s; }
 .menu::before { top: 17px; }
 .menu::after { top: 26px; }
 .hd.is-open .menu::before { transform: translateY(4.5px) rotate(20deg); }
@@ -61,13 +60,13 @@ ul { list-style: none; }
 .screen img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) invert(1) brightness(.9); }
 .screen::after { content: ""; position: absolute; inset: 0; background: var(--veil); }
 
-/* ページの頭：トップの1画面目を小さくした物。高さは画面の4割前後 */
-.ph { position: relative; height: 42vh; min-height: 380px; max-height: 460px; color: var(--on-dark); overflow: hidden; }
-.ph .screen img { object-position: var(--ph-pos, 0 0); }
-.ph .screen::after { background: linear-gradient(90deg, rgba(13,17,23,.9) 0%, rgba(13,17,23,.84) 48%, rgba(13,17,23,.62) 100%); }
+/* ページの頭：明るい地に業務図の画面をうっすら敷く（2026-10-21 暗い面から替えた）。高さは画面の4割前後 */
+.ph { position: relative; height: 42vh; min-height: 380px; max-height: 460px; color: var(--ink); background: var(--ground); overflow: hidden; border-bottom: 1px solid var(--line); }
+.ph .screen img { object-position: var(--ph-pos, 0 0); filter: grayscale(1); opacity: .32; }
+.ph .screen::after { background: linear-gradient(90deg, rgba(241,241,241,.97) 0%, rgba(241,241,241,.92) 50%, rgba(241,241,241,.72) 100%); }
 .ph__in { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 64px; }
 .ph h1 { font: 400 52px/1.3 var(--f-min); letter-spacing: .06em; }
-.ph p { margin-top: 18px; max-width: 40em; font-size: 15px; line-height: 1.9; color: var(--on-dark-sub); }
+.ph p { margin-top: 18px; max-width: 40em; font-size: 15px; line-height: 1.9; color: var(--sub); }
 
 /* 節：地は #F1F1F1、白い地の節は .sec--paper */
 .sec { padding: 104px 0; background: var(--ground); }
@@ -186,9 +185,9 @@ html[lang="en"] .pager-date { margin-top: 4px; font: 400 13px/1.4 var(--f-gill);
   html[lang="en"] .art-cta { flex-direction: column; align-items: flex-start; padding: 28px 22px; gap: 20px; }
   html[lang="en"] .pager { grid-template-columns: 1fr; gap: 0; }
   html[lang="en"] .pager-next { text-align: left; border-top: 1px solid var(--line); }
+}
 /* 記事・事例・資料のページ（2026-10-20 追加）
  * 頭の下に暗いページの頭が無いページは、頭に最初から暗い面を敷く */
-.hd--solid { background: rgba(13, 17, 23, .94); box-shadow: 0 1px 0 rgba(244, 246, 249, .08); }
 /* メディアのページの2段目：ラボの名前と、その行き先 */
 .subnav { margin-top: 80px; background: var(--paper); border-bottom: 1px solid var(--line); }
 .subnav__in { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 60px; }

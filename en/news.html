@@ -33,19 +33,23 @@
 <meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
 <link rel="stylesheet" href="/assets/site/site.css">
 <style>
-/* News: one line per item, with date, category, and title */
+/* ニュース：画像・日付と分類・題の一覧（2026-10-21 古野さん「画像がないとなかなかタップしようとならない」で画像を足した） */
 .nl { border-bottom: 1px solid var(--line); }
-.nl a { display: grid; grid-template-columns: 120px 150px minmax(0, 1fr) 46px; gap: 28px; align-items: baseline; padding: 26px 8px; border-top: 1px solid var(--line); transition: background-color .2s; }
-.nl a:hover { background: var(--paper); }
-.nl time { font: 400 16px/1.6 var(--f-gill); letter-spacing: .06em; }
-.nl .tg { justify-self: start; padding: 3px 14px 2px; border: 1px solid var(--ink); border-radius: 20px; font-size: 12px; line-height: 1.4; letter-spacing: .14em; white-space: nowrap; }
-.nl .tt { font-weight: 700; line-height: 1.8; text-wrap: pretty; }
-.nl .tt small { display: block; margin-top: 4px; font-size: 13px; font-weight: 500; color: var(--sub); }
-.nl svg { align-self: center; width: 46px; height: 8px; fill: none; stroke: currentColor; stroke-width: 1; transition: transform .2s; }
+.nl a { display: grid; grid-template-columns: 210px auto minmax(0, 1fr) 46px; grid-template-areas: "th ti tg ar" "th tt tt ar"; column-gap: 36px; row-gap: 10px; align-content: center; padding: 28px 0; border-top: 1px solid var(--line); }
+.nl .th { grid-area: th; align-self: center; width: 210px; aspect-ratio: 3 / 2; height: auto; object-fit: cover; box-shadow: 0 0 0 1px var(--line); }
+.nl time { grid-area: ti; align-self: end; font: 400 15px/1.4 var(--f-gill); letter-spacing: .06em; color: var(--sub); }
+.nl .tg { grid-area: tg; align-self: end; justify-self: start; margin-left: -20px; font-size: 12px; font-weight: 700; line-height: 1.6; letter-spacing: .14em; color: var(--gold-a); white-space: nowrap; }
+.nl .tt { grid-area: tt; align-self: start; font: 400 20px/1.5 var(--f-gill); letter-spacing: .01em; text-wrap: pretty; }
+.nl .tt small { display: block; margin-top: 6px; font: 500 13px/1.8 var(--f-body); letter-spacing: .04em; color: var(--sub); }
+.nl a:hover .tt { color: var(--gold-a); }
+.nl svg { grid-area: ar; align-self: center; width: 46px; height: 8px; fill: none; stroke: currentColor; stroke-width: 1; transition: transform .2s; }
 .nl a:hover svg { transform: translateX(4px); }
 @media (max-width: 760px) {
-  .nl a { grid-template-columns: auto minmax(0, 1fr); gap: 8px 14px; padding: 22px 2px; }
-  .nl .tt { grid-column: 1 / -1; }
+  .nl a { grid-template-columns: 116px auto minmax(0, 1fr); grid-template-areas: "th ti tg" "th tt tt"; column-gap: 14px; row-gap: 4px; padding: 20px 0; }
+  .nl .th { width: 116px; align-self: start; }
+  .nl .tg { margin-left: 0; }
+  .nl .tt { font-size: 15px; line-height: 1.6; }
+  .nl .tt small { display: none; }
   .nl svg { display: none; }
 }
 </style>
@@ -199,10 +203,10 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
 <section class="sec">
   <div class="wrap">
     <ul class="nl">
-      <li><a href="news/001.html"><time datetime="2026-03-20">2026.03.20</time><span class="tg">Announcement</span><span class="tt">We published our Generative AI Use Cases white paper</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
-      <li><a href="news/002.html"><time datetime="2026-03-14">2026.03.14</time><span class="tg">Announcement</span><span class="tt">We refreshed our service lineup</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
-      <li><a href="news/003.html"><time datetime="2026-02-28">2026.02.28</time><span class="tg">Event</span><span class="tt">Free Webinar: The Pitfalls of AI Adoption</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
-      <li><a href="news/004.html"><time datetime="2024-05-07">2024.05.07</time><span class="tg">Event</span><span class="tt">CEO Kotaro Furuno delivered a keynote seminar at Sakura Internet Inc.</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+      <li><a href="news/001.html"><img class="th" src="/assets/news/001-thumb.jpg" alt="" width="600" height="400" loading="lazy"><time datetime="2026-03-20">2026.03.20</time><span class="tg">Announcement</span><span class="tt">We published our Generative AI Use Cases white paper</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+      <li><a href="news/002.html"><img class="th" src="/assets/news/002-thumb.jpg" alt="" width="600" height="400" loading="lazy"><time datetime="2026-03-14">2026.03.14</time><span class="tg">Announcement</span><span class="tt">We refreshed our service lineup</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+      <li><a href="news/003.html"><img class="th" src="/assets/news/003-thumb.jpg" alt="" width="600" height="400" loading="lazy"><time datetime="2026-02-28">2026.02.28</time><span class="tg">Event</span><span class="tt">Free Webinar: The Pitfalls of AI Adoption</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+      <li><a href="news/004.html"><img class="th" src="/assets/news/004-thumb.jpg" alt="" width="600" height="400" loading="lazy"><time datetime="2024-05-07">2024.05.07</time><span class="tg">Event</span><span class="tt">CEO Kotaro Furuno delivered a keynote seminar at Sakura Internet Inc.</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
     </ul>
   </div>
 </section>

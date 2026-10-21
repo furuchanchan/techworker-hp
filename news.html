@@ -32,19 +32,23 @@
 <meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
 <link rel="stylesheet" href="/assets/site/site.css">
 <style>
-/* ニュース：日付・分類・題の1行ずつの一覧 */
+/* ニュース：画像・日付と分類・題の一覧（2026-10-21 古野さん「画像がないとなかなかタップしようとならない」で画像を足した） */
 .nl { border-bottom: 1px solid var(--line); }
-.nl a { display: grid; grid-template-columns: 120px 150px minmax(0, 1fr) 46px; gap: 28px; align-items: baseline; padding: 26px 8px; border-top: 1px solid var(--line); transition: background-color .2s; }
-.nl a:hover { background: var(--paper); }
-.nl time { font: 400 16px/1.6 var(--f-gill); letter-spacing: .06em; }
-.nl .tg { justify-self: start; padding: 3px 14px 2px; border: 1px solid var(--ink); border-radius: 20px; font-size: 12px; line-height: 1.4; letter-spacing: .14em; white-space: nowrap; }
-.nl .tt { font-weight: 700; line-height: 1.8; text-wrap: pretty; }
-.nl .tt small { display: block; margin-top: 4px; font-size: 13px; font-weight: 500; color: var(--sub); }
-.nl svg { align-self: center; width: 46px; height: 8px; fill: none; stroke: currentColor; stroke-width: 1; transition: transform .2s; }
+.nl a { display: grid; grid-template-columns: 210px auto minmax(0, 1fr) 46px; grid-template-areas: "th ti tg ar" "th tt tt ar"; column-gap: 36px; row-gap: 10px; align-content: center; padding: 28px 0; border-top: 1px solid var(--line); }
+.nl .th { grid-area: th; align-self: center; width: 210px; aspect-ratio: 3 / 2; height: auto; object-fit: cover; box-shadow: 0 0 0 1px var(--line); }
+.nl time { grid-area: ti; align-self: end; font: 400 15px/1.4 var(--f-gill); letter-spacing: .06em; color: var(--sub); }
+.nl .tg { grid-area: tg; align-self: end; justify-self: start; margin-left: -20px; font-size: 12px; font-weight: 700; line-height: 1.6; letter-spacing: .14em; color: var(--gold-a); white-space: nowrap; }
+.nl .tt { grid-area: tt; align-self: start; font: 400 19px/1.7 var(--f-min); letter-spacing: .04em; text-wrap: pretty; }
+.nl .tt small { display: block; margin-top: 6px; font: 500 13px/1.8 var(--f-body); letter-spacing: .04em; color: var(--sub); }
+.nl a:hover .tt { color: var(--gold-a); }
+.nl svg { grid-area: ar; align-self: center; width: 46px; height: 8px; fill: none; stroke: currentColor; stroke-width: 1; transition: transform .2s; }
 .nl a:hover svg { transform: translateX(4px); }
 @media (max-width: 760px) {
-  .nl a { grid-template-columns: auto minmax(0, 1fr); gap: 8px 14px; padding: 22px 2px; }
-  .nl .tt { grid-column: 1 / -1; }
+  .nl a { grid-template-columns: 116px auto minmax(0, 1fr); grid-template-areas: "th ti tg" "th tt tt"; column-gap: 14px; row-gap: 4px; padding: 20px 0; }
+  .nl .th { width: 116px; align-self: start; }
+  .nl .tg { margin-left: 0; }
+  .nl .tt { font-size: 15px; line-height: 1.6; }
+  .nl .tt small { display: none; }
   .nl svg { display: none; }
 }
 </style>
@@ -187,18 +191,18 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
 <section class="sec">
   <div class="wrap">
     <ul class="nl">
-      <li><a href="/news/012.html"><time datetime="2026-10-08">2026.10.08</time><span class="tg">コーポレート</span><span class="tt">Cloudflare社のスタートアップ向けプログラム「Cloudflare for Startups」に採択されました</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
-      <li><a href="/news/010.html"><time datetime="2026-10-08">2026.10.08</time><span class="tg">プロダクト</span><span class="tt">CoeSignal とギョウムズAIの、セキュリティとデータの取り扱いをまとめました</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
-      <li><a href="/news/011.html"><time datetime="2026-10-07">2026.10.07</time><span class="tg">コーポレート</span><span class="tt">Anthropic 社のスタートアップ支援プログラム「Claude for Startups」に採択されました</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
-      <li><a href="/news/009.html"><time datetime="2026-08-28">2026.08.28</time><span class="tg">プロダクト</span><span class="tt">現場の声を、意思決定の証拠へ。AIインタビューサービス「CoeSignal」を正式ローンチ<small>顧客や従業員へのヒアリングから、原発言まで遡れる意思決定用の報告をつくります。</small></span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
-      <li><a href="/news/005.html"><time datetime="2026-06-06">2026.06.06</time><span class="tg">コーポレート</span><span class="tt">ホームページをアップデートしました</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
-      <li><a href="/news/008.html"><time datetime="2026-04-20">2026.04.20</time><span class="tg">お知らせ</span><span class="tt">生成AI×士業メディアの運用を開始しました</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
-      <li><a href="/news/007.html"><time datetime="2026-04-10">2026.04.10</time><span class="tg">お知らせ</span><span class="tt">生成AI×人材メディアの運用を開始しました</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
-      <li><a href="/news/001.html"><time datetime="2026-03-20">2026.03.20</time><span class="tg">レポート・資料</span><span class="tt">生成AI活用事例ホワイトペーパーを公開しました<small>7業種・45社の導入から見えた、成果につながる実践パターンをまとめています。</small></span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
-      <li><a href="/news/002.html"><time datetime="2026-03-14">2026.03.14</time><span class="tg">サービス</span><span class="tt">サービスラインナップを刷新しました</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
-      <li><a href="/news/003.html"><time datetime="2026-02-28">2026.02.28</time><span class="tg">イベント</span><span class="tt">「AI導入の落とし穴」無料ウェビナー開催のお知らせ</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
-      <li><a href="/news/006.html"><time datetime="2025-05-01">2025.05.01</time><span class="tg">イベント</span><span class="tt">毎週、生成AI活用の無料ウェビナーを開催しています</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
-      <li><a href="/news/004.html"><time datetime="2024-05-07">2024.05.07</time><span class="tg">登壇・イベント</span><span class="tt">さくらインターネット株式会社の社内セミナーに代表・古野が講師として登壇<small>生成AIに関する基礎知識と、実務で活用するための考え方を共有しました。</small></span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+      <li><a href="/news/012.html"><img class="th" src="/assets/news/012-thumb.jpg" alt="" width="600" height="400" loading="lazy"><time datetime="2026-10-08">2026.10.08</time><span class="tg">コーポレート</span><span class="tt">Cloudflare社のスタートアップ向けプログラム「Cloudflare for Startups」に採択されました</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+      <li><a href="/news/010.html"><img class="th" src="/assets/news/010-thumb.jpg" alt="" width="600" height="400" loading="lazy"><time datetime="2026-10-08">2026.10.08</time><span class="tg">プロダクト</span><span class="tt">CoeSignal とギョウムズAIの、セキュリティとデータの取り扱いをまとめました</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+      <li><a href="/news/011.html"><img class="th" src="/assets/news/011-thumb.jpg" alt="" width="600" height="400" loading="lazy"><time datetime="2026-10-07">2026.10.07</time><span class="tg">コーポレート</span><span class="tt">Anthropic 社のスタートアップ支援プログラム「Claude for Startups」に採択されました</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+      <li><a href="/news/009.html"><img class="th" src="/assets/news/009-thumb.jpg" alt="" width="600" height="400" loading="lazy"><time datetime="2026-08-28">2026.08.28</time><span class="tg">プロダクト</span><span class="tt">現場の声を、意思決定の証拠へ。AIインタビューサービス「CoeSignal」を正式ローンチ<small>顧客や従業員へのヒアリングから、原発言まで遡れる意思決定用の報告をつくります。</small></span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+      <li><a href="/news/005.html"><img class="th" src="/assets/news/005-thumb.jpg" alt="" width="600" height="400" loading="lazy"><time datetime="2026-06-06">2026.06.06</time><span class="tg">コーポレート</span><span class="tt">ホームページをアップデートしました</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+      <li><a href="/news/008.html"><img class="th" src="/assets/news/008-thumb.jpg" alt="" width="600" height="400" loading="lazy"><time datetime="2026-04-20">2026.04.20</time><span class="tg">お知らせ</span><span class="tt">生成AI×士業メディアの運用を開始しました</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+      <li><a href="/news/007.html"><img class="th" src="/assets/news/007-thumb.jpg" alt="" width="600" height="400" loading="lazy"><time datetime="2026-04-10">2026.04.10</time><span class="tg">お知らせ</span><span class="tt">生成AI×人材メディアの運用を開始しました</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+      <li><a href="/news/001.html"><img class="th" src="/assets/news/001-thumb.jpg" alt="" width="600" height="400" loading="lazy"><time datetime="2026-03-20">2026.03.20</time><span class="tg">レポート・資料</span><span class="tt">生成AI活用事例ホワイトペーパーを公開しました<small>7業種・45社の導入から見えた、成果につながる実践パターンをまとめています。</small></span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+      <li><a href="/news/002.html"><img class="th" src="/assets/news/002-thumb.jpg" alt="" width="600" height="400" loading="lazy"><time datetime="2026-03-14">2026.03.14</time><span class="tg">サービス</span><span class="tt">サービスラインナップを刷新しました</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+      <li><a href="/news/003.html"><img class="th" src="/assets/news/003-thumb.jpg" alt="" width="600" height="400" loading="lazy"><time datetime="2026-02-28">2026.02.28</time><span class="tg">イベント</span><span class="tt">「AI導入の落とし穴」無料ウェビナー開催のお知らせ</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+      <li><a href="/news/006.html"><img class="th" src="/assets/news/006-thumb.jpg" alt="" width="600" height="400" loading="lazy"><time datetime="2025-05-01">2025.05.01</time><span class="tg">イベント</span><span class="tt">毎週、生成AI活用の無料ウェビナーを開催しています</span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
+      <li><a href="/news/004.html"><img class="th" src="/assets/news/004-thumb.jpg" alt="" width="600" height="400" loading="lazy"><time datetime="2024-05-07">2024.05.07</time><span class="tg">登壇・イベント</span><span class="tt">さくらインターネット株式会社の社内セミナーに代表・古野が講師として登壇<small>生成AIに関する基礎知識と、実務で活用するための考え方を共有しました。</small></span><svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></li>
     </ul>
   </div>
 </section>

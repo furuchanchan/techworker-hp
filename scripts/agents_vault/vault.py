@@ -22,7 +22,7 @@ DATA = VAULT / "data"
 SCHEMA = json.loads((Path(__file__).parent / "schema.json").read_text())
 SITE = "https://techworker.co.jp"
 BASE = SITE + "/media/agents/"
-CSS_V = "20261016-vault"
+CSS_V = "20261021-vault"
 META_KEYS = {"published_on", "checked_on"}
 
 PRODUCTS = {
@@ -192,9 +192,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel Code -->"""
 
-FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">\n'
-         '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
-         '<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">')
+# 書体は OS の物だけ（共通の見た目 /assets/site/site.css。2026-10-21 外の Web フォントをやめた）
 
 
 def head(title, desc, canonical, image, og_type, ld):
@@ -218,58 +216,62 @@ def head(title, desc, canonical, image, og_type, ld):
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{e(title)}">
 <meta name="twitter:image" content="{image}">
-{FONTS}
 <link rel="stylesheet" href="/media/article.css?v=20261006-source-notes">
+<link rel="stylesheet" href="/assets/site/site.css">
 <link rel="stylesheet" href="/media/agents/vault.css?v={CSS_V}">
 {lds}
 </head>
 <body>"""
 
 
-NAV = """<nav id="nav">
-  <a href="/media/agents/" class="logo">エージェント<i>保管庫</i></a>
-  <ul>
-    <li><a href="/media/agents/#list">一覧</a></li>
-    <li><a href="/media/agents/#format">1件の読み方</a></li>
-    <li><a href="/media/">メディア</a></li>
-  </ul>
-  <div class="nav-right">
-    <a href="https://kenshu.techworker.co.jp/contact/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_content=nav" class="nav-cta"><span class="full">研修の相談</span><span class="short">相談</span></a>
-    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+# 頭と足は本体HPの全ページと同じ（/assets/site/site.css）。2段目に保管庫の名前と行き先
+NAV = """<header class="hd">
+  <a class="logo" href="/" aria-label="TechWorker ホーム">Tech<i>Worker</i></a>
+  <nav id="hd-nav" aria-label="主な行き先">
+    <a href="/services">事業・サービス</a>
+    <a href="/#concept">考え方</a>
+    <a href="/agent-cases/">事例</a>
+    <a href="/news">ニュース</a>
+    <a href="/company">会社情報</a>
+    <a href="/contact">お問い合わせ</a>
+  </nav>
+  <button class="menu" type="button" aria-label="メニューを開く" aria-controls="hd-nav" aria-expanded="false"></button>
+</header>
+<div class="subnav">
+  <div class="wrap subnav__in">
+    <a class="subnav__name" href="/media/agents/">エージェント保管庫</a>
+    <nav aria-label="メディアの行き先"><a href="/media/agents/#list">一覧</a><a href="/media/agents/#format">1件の読み方</a><a href="/media/">メディア</a><a href="https://kenshu.techworker.co.jp/contact/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_content=nav" class="subnav__cta">研修の相談</a></nav>
   </div>
-</nav>
-<div class="mmenu" id="mmenu" aria-hidden="true">
-  <a href="/media/agents/#list">エージェントの一覧</a>
-  <a href="/media/agents/#format">1件の読み方</a>
-  <a href="/media/">TechWorker Media</a>
-  <a href="https://kenshu.techworker.co.jp/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_content=menu">研修のご案内</a>
-  <a href="https://kenshu.techworker.co.jp/contact/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_content=menu" class="m-cta">研修の相談をする</a>
 </div>"""
 
-FOOT = """<footer>
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <div class="logo">エージェント<i>保管庫</i></div>
-        <p>業務ごとのAIエージェントの作り方をまとめた見本帳。<span class="pub">発行：<a href="/">株式会社TechWorker</a></span></p>
+FOOT = """<footer class="ft">
+  <div class="wrap">
+    <div class="ft__in">
+      <div>
+        <p class="ft__name">株式会社TechWorker</p>
+        <p class="ft__addr">〒169-0051 東京都新宿区西早稲田一丁目22番3号<br>早稲田アントレプレナーシップセンター</p>
       </div>
-      <div class="footer-col"><h4>エージェント保管庫</h4><a href="/media/agents/#list">一覧</a><a href="/media/agents/#format">1件の読み方</a></div>
-      <div class="footer-col"><h4>TechWorker Media</h4><a href="/media/kenshu/">AI研修・導入ラボ</a><a href="/media/security/">AIセキュリティ・ラボ</a><a href="/media/gyomuzu/">業務図ラボ</a></div>
-      <div class="footer-col"><h4>運営会社</h4><a href="https://kenshu.techworker.co.jp/">生成AI研修</a><a href="/company.html">会社概要</a><a href="/privacy.html">プライバシーポリシー</a></div>
+      <nav aria-label="フッターの行き先">
+        <a href="/services">事業・サービス</a>
+        <a href="/company">会社情報</a>
+        <a href="/news">ニュース</a>
+        <a href="/#concept">考え方</a>
+        <a href="/agent-cases/">事例</a>
+        <a href="/contact">お問い合わせ</a>
+        <a href="/privacy">プライバシーポリシー</a>
+      </nav>
     </div>
-    <p class="av-legal">Microsoft、Microsoft 365、Copilot は Microsoft グループの商標です。Claude は Anthropic の商標です。Gemini は Google LLC の商標です。TechWorker は各社と提携していません。画面や機能は変わることがあります。最新の情報は各社の公式ページでご確認ください。</p>
-    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+    <p class="ft__note">Microsoft、Microsoft 365、Copilot は Microsoft グループの商標です。Claude は Anthropic の商標です。Gemini は Google LLC の商標です。TechWorker は各社と提携していません。画面や機能は変わることがあります。最新の情報は各社の公式ページでご確認ください。</p>
+    <small>© TechWorker Inc.</small>
   </div>
 </footer>
 <script>
-var nav=document.getElementById('nav');
-addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
-(function(){
-  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
-  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
-  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
-  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
-  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
+// スマホの行き先：右上の釦で開け閉めする。行き先を押したら閉じる
+(() => {
+  const hd = document.querySelector('.hd'), btn = hd.querySelector('.menu');
+  const set = open => { hd.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く'); };
+  btn.addEventListener('click', () => set(!hd.classList.contains('is-open')));
+  hd.querySelector('nav').addEventListener('click', e => { if (e.target.closest('a')) set(false); });
 })();
 </script>
 <script src="/media/agents/vault.js?v=__CSSV__" defer></script>
