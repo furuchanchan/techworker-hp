@@ -1,21 +1,21 @@
 ---
 title: はじめに
-description: CompanyMap AIのサービスの中身、進め方、お渡しするもの、データの取り扱いをまとめた資料です。社内でのご説明や、情報システム・人事のご確認にお使いください。
+description: ギョウムズAIのサービスの中身、進め方、お渡しするもの、データの取り扱いをまとめた資料です。社内でのご説明や、情報システム・人事のご確認にお使いください。
 updated: 2026-10-19
 ---
 <div class="hero" markdown="1">
-<span class="pill">CompanyMap AI Docs</span>
+<span class="pill">ギョウムズAI Docs</span>
 
-# CompanyMap AIの、サービスと導入の資料
+# ギョウムズAIの、サービスと導入の資料
 
-CompanyMap AIは、ベテランに聞かないと決まらない仕事を1つ選び、2週間の無料検証で、その仕事の引き継ぎ書を作ってお渡しするサービスです。そのあと約1か月で、御社がお使いのAIで動かし、AIの答えを毎月採点して直します。このDocsには、サービスの中身、進め方、お渡しするもの、データの取り扱いをまとめています。社内でのご説明や、情報システム・人事のご確認にお使いください。
+ギョウムズAIは、ベテランに聞かないと決まらない仕事を1つ選び、2週間の無料検証で、その仕事の引き継ぎ書を作ってお渡しするサービスです。そのあと約1か月で、御社がお使いのAIで動かし、AIの答えを毎月採点して直します。このDocsには、サービスの中身、進め方、お渡しするもの、データの取り扱いをまとめています。社内でのご説明や、情報システム・人事のご確認にお使いください。
 </div>
 
 ## 知りたいことから探す
 
 | 知りたいこと | 読むページ |
 |---|---|
-| どんなサービスか、ひと通り知りたい | [CompanyMap AIとは](/companymap/docs/overview) |
+| どんなサービスか、ひと通り知りたい | [ギョウムズAIとは](/companymap/docs/overview) |
 | 何をどの順で進め、だれが何をするのか | [進め方と分担](/companymap/docs/how-it-works) |
 | 2週間の無料検証で、どなたに、どれくらいお時間をいただくのか | [無料検証の2週間](/companymap/docs/first-two-weeks) |
 | 手元に何が残るのか | [お渡しするもの](/companymap/docs/deliverables) |
@@ -28,7 +28,7 @@ CompanyMap AIは、ベテランに聞かないと決まらない仕事を1つ選
 <div class="cards three">
 <a class="card" href="/companymap/docs/how-it-works"><p class="k">DX推進・業務改革のご担当</p><b>進め方と分担</b><span>次に「無料検証の2週間」「お渡しするもの」へ。</span></a>
 <a class="card" href="/companymap/docs/security"><p class="k">情報システム・人事のご担当</p><b>データの取り扱い</b><span>次に「機能と提供状況」「導入前の確認事項」へ。</span></a>
-<a class="card" href="/companymap/docs/overview"><p class="k">役員・部門長</p><b>CompanyMap AIとは</b><span>次に「お渡しするもの」「運営会社と実績」へ。</span></a>
+<a class="card" href="/companymap/docs/overview"><p class="k">役員・部門長</p><b>ギョウムズAIとは</b><span>次に「お渡しするもの」「運営会社と実績」へ。</span></a>
 </div>
 
 ## このDocsについて

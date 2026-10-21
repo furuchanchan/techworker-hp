@@ -13,7 +13,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="/assets/companymap/favicon.svg" type="image/svg+xml">
-<title>月次決算の報告会（見本）｜CompanyMap AI</title>
+<title>月次決算の報告会（見本）｜ギョウムズAI</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap">
@@ -141,7 +141,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-sans);bo
   <div id="stage">
     <div class="brand">
       <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0B0B0C"/><path d="M44 16H31C24.4 16 19 21.4 19 28V36C19 42.6 24.4 48 31 48H44" fill="none" stroke="#FFFFFF" stroke-width="7.4" stroke-linecap="round"/><circle cx="46.5" cy="16" r="7.4" fill="#FFFFFF"/><rect x="10.5" y="23.5" width="17" height="17" rx="4" fill="#FFFFFF"/><circle cx="46.5" cy="48" r="7.4" fill="#FFFFFF"/></svg>
-      <b>CompanyMap AI</b><span class="sep"></span><span>業務の見直し　報告会</span><span class="sep"></span><span>TechWorker／経理</span>
+      <b>ギョウムズAI</b><span class="sep"></span><span>業務の見直し　報告会</span><span class="sep"></span><span>TechWorker／経理</span>
     </div>
     <h1 class="headline">経営者がやるのは「接続」と「承認」の2つ。承認は接続から1時間以内に済ませます</h1>
     <p class="subtitle">月次決算のチェックで、毎月5日の通知から税理士への確認依頼まで、だれが何をするか（あとはAIが進める）</p>
@@ -152,7 +152,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-sans);bo
       <span><i class="lg-back"></i>ときどき人に戻る</span>
     </div>
     <svg id="dia" viewBox="0 0 1920 1080" role="img" aria-label="月次決算のチェックの業務図。工程を押すと、その工程の説明が右に開きます"></svg>
-    <p class="source">出所：CompanyMap AI の本番の業務図（TechWorker・月次決算のチェック、2026年10月7日時点）。各工程の根拠は、月次決算チェックの手順書（手順2〜6）。下の帯は工程の順番で、点の間隔は時間を表さない（作業時間はまだ入っていない）</p>
+    <p class="source">出所：ギョウムズAIの本番の業務図（TechWorker・月次決算のチェック、2026年10月7日時点）。各工程の根拠は、月次決算チェックの手順書（手順2〜6）。下の帯は工程の順番で、点の間隔は時間を表さない（作業時間はまだ入っていない）</p>
     <div class="page">p.1／1</div>
     <div id="tip" hidden></div>
     <div id="scrim"></div>
@@ -388,7 +388,7 @@ function openPanel(id) {
     VIS[s.vis](),
     `<div class="doc">${s.secs.map(([h, items]) => `<h3>${esc(h)}</h3><ul>${items.map(x => `<li>${esc(x)}</li>`).join('')}</ul>`).join('')}</div>`,
     s.quote ? `<div class="quote">「${esc(s.quote)}」<cite>根拠：${DOC}</cite></div>` : '',
-    `<p class="psrc">出所：CompanyMap AI の本番の業務図（2026年10月7日時点）。この工程の月の回数と1回の時間は、まだ入っていない</p>`,
+    `<p class="psrc">出所：ギョウムズAIの本番の業務図（2026年10月7日時点）。この工程の月の回数と1回の時間は、まだ入っていない</p>`,
   ].filter(Boolean);
   pc.innerHTML = parts.map((p, i) => p.replace(/^<(\w+)/, `<$1 style="--i:${i}"`)).join('');
   panel.scrollTop = 0;

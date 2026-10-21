@@ -1,4 +1,4 @@
-"""CompanyMap AI Docs を Markdown から HTML に組み立てる。
+"""ギョウムズAI Docs を Markdown から HTML に組み立てる。
 
 使い方（リポジトリのルートで）:
   uv run --with markdown companymap/docs/build.py
@@ -28,7 +28,7 @@ CSS_VER = "20261019a"
 PAGES: list[tuple[str, list[tuple[str, str]]]] = [
     ("はじめに", [
         ("index", "はじめに"),
-        ("overview", "CompanyMap AIとは"),
+        ("overview", "ギョウムズAIとは"),
     ]),
     ("進め方", [
         ("how-it-works", "進め方と分担"),
@@ -115,9 +115,9 @@ def page_html(slug: str, meta: dict[str, str], body_html: str, h2: list[tuple[st
     desc = meta["description"]
     canon = SITE + url(slug)
     is_top = slug == "index"
-    page_title = "CompanyMap AI Docs｜サービスの説明と導入の資料 — TechWorker" if is_top else f"{title}｜CompanyMap AI Docs — TechWorker"
+    page_title = "ギョウムズAI Docs｜サービスの説明と導入の資料 — TechWorker" if is_top else f"{title}｜ギョウムズAI Docs — TechWorker"
 
-    crumbs = [("CompanyMap AI", "/companymap"), ("Docs", f"{BASE}/")]
+    crumbs = [("ギョウムズAI", "/companymap"), ("Docs", f"{BASE}/")]
     if not is_top:
         crumbs.append((title, url(slug)))
     ld = {
@@ -130,7 +130,7 @@ def page_html(slug: str, meta: dict[str, str], body_html: str, h2: list[tuple[st
                 "url": canon,
                 "inLanguage": "ja",
                 "dateModified": meta["updated"],
-                "about": {"@type": "Service", "name": "CompanyMap AI", "url": SITE + "/companymap"},
+                "about": {"@type": "Service", "name": "ギョウムズAI", "url": SITE + "/companymap"},
                 "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": SITE + "/"},
             },
             {
@@ -144,7 +144,7 @@ def page_html(slug: str, meta: dict[str, str], body_html: str, h2: list[tuple[st
     }
     crumb_html = " <span>/</span> ".join(
         f'<a href="{href}">{html.escape(name)}</a>' for name, href in crumbs[:-1]
-    ) if not is_top else '<a href="/companymap">CompanyMap AI</a>'
+    ) if not is_top else '<a href="/companymap">ギョウムズAI</a>'
 
     toc = ""
     if len(h2) >= 2:
@@ -192,7 +192,7 @@ def page_html(slug: str, meta: dict[str, str], body_html: str, h2: list[tuple[st
 <script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>
 </head>
 <body class="docs{' top' if is_top else ''}">{SVG_DEFS}
-<nav class="nav"><div class="bar"><a class="brand" href="/companymap"><svg class="mark"><use href="#logo"/></svg><span class="word">CompanyMap</span><span class="ai">AI</span></a><a class="dl" href="{BASE}/">Docs</a>
+<nav class="nav"><div class="bar"><a class="brand" href="/companymap"><svg class="mark"><use href="#logo"/></svg><span class="word">ギョウムズ</span><span class="ai">AI</span></a><a class="dl" href="{BASE}/">Docs</a>
 <div class="links"><a href="/companymap">サービスの紹介</a><a href="/companymap/download">資料ダウンロード</a></div><a class="btn sm" href="/companymap/contact">相談する</a></div></nav>
 <div class="layout">
 <aside class="side" aria-label="Docsの目次">{sidebar(slug)}</aside>
@@ -211,7 +211,7 @@ def page_html(slug: str, meta: dict[str, str], body_html: str, h2: list[tuple[st
 </main>
 {toc}
 </div>
-<footer><div class="bar"><a class="brand" href="/companymap"><svg class="mark"><use href="#logo"/></svg><span class="word">CompanyMap</span><span class="ai">AI</span></a><span>提供：<a href="/">株式会社TechWorker</a></span><a href="{BASE}/">Docs</a><a href="/companymap/cases">他社のAI活用事例</a><a href="/privacy">プライバシーポリシー</a><span class="r">© 2026 TechWorker Inc.</span></div></footer>
+<footer><div class="bar"><a class="brand" href="/companymap"><svg class="mark"><use href="#logo"/></svg><span class="word">ギョウムズ</span><span class="ai">AI</span></a><span>提供：<a href="/">株式会社TechWorker</a></span><a href="{BASE}/">Docs</a><a href="/companymap/cases">他社のAI活用事例</a><a href="/privacy">プライバシーポリシー</a><span class="r">© 2026 TechWorker Inc.</span></div></footer>
 </body>
 </html>
 """
@@ -219,9 +219,9 @@ def page_html(slug: str, meta: dict[str, str], body_html: str, h2: list[tuple[st
 
 def llms_txt(metas: dict[str, dict[str, str]]) -> str:
     lines = [
-        "# CompanyMap AI Docs",
+        "# ギョウムズAI Docs",
         "",
-        "> CompanyMap AI（株式会社TechWorker）は、ベテランに聞かないと決まらない仕事を1つ選び、2週間の無料検証で引き継ぎ書（業務図・判断の一覧など）にしてお返しするサービスです。そのあと約1か月で御社のAIの上で動かし、運用担当が毎月採点して直します。",
+        "> ギョウムズAI（株式会社TechWorker）は、ベテランに聞かないと決まらない仕事を1つ選び、2週間の無料検証で引き継ぎ書（業務図・判断の一覧など）にしてお返しするサービスです。そのあと約1か月で御社のAIの上で動かし、運用担当が毎月採点して直します。",
         "",
         "各ページは .md でも読めます。",
         "",

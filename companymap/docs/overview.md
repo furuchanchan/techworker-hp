@@ -1,15 +1,15 @@
 ---
-title: CompanyMap AIとは
+title: ギョウムズAIとは
 description: ベテランに聞かないと決まらない仕事を1つ選び、2週間の無料検証で、その仕事の引き継ぎ書を作ってお渡しします。そのあと約1か月で、御社がお使いのAIで動かし、運用担当がAIの答えを毎月採点して直すサービスです。
 updated: 2026-10-19
 ---
 ## ひとことで
 
-CompanyMap AIは、ベテランに聞かないと決まらない仕事を1つ選び、2週間の無料検証で、その仕事の引き継ぎ書を作ってお渡しするサービスです。そのあと約1か月で、その仕事を御社がお使いのAI（Microsoft 365 Copilot・ChatGPT・Claude など）で動かし、AIの答えを毎月採点して直します。
+ギョウムズAIは、ベテランに聞かないと決まらない仕事を1つ選び、2週間の無料検証で、その仕事の引き継ぎ書を作ってお渡しするサービスです。そのあと約1か月で、その仕事を御社がお使いのAI（Microsoft 365 Copilot・ChatGPT・Claude など）で動かし、AIの答えを毎月採点して直します。
 
 引き継ぎ書の中心は、担当者への聞き取り・手元の資料・業務の記録の3つからAIが作る、1枚の図（業務図）です。AIを動かし続けるのは、TechWorkerの運用担当です。
 
-<figure class="figure"><a href="/assets/companymap/home-h3.jpg"><img src="/assets/companymap/home-h3.jpg" width="2400" height="1500" alt="CompanyMap AIの業務図の画面" loading="lazy"></a><figcaption>CompanyMap AIの業務図の画面（説明用の例）</figcaption></figure>
+<figure class="figure"><a href="/assets/companymap/home-h3.jpg"><img src="/assets/companymap/home-h3.jpg" width="2400" height="1500" alt="ギョウムズAIの業務図の画面" loading="lazy"></a><figcaption>ギョウムズAIの業務図の画面（説明用の例）</figcaption></figure>
 
 ## こんなときにお使いいただけます
 
