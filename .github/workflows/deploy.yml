@@ -28,12 +28,33 @@ jobs:
           echo "sha=$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
           echo "branch=${GITHUB_REF#refs/heads/}" >> "$GITHUB_OUTPUT"
 
+      # 公開するのはサイトの中身だけ。リポジトリの直下をそのまま出すと、
+      # ワークフロー・スクリプト・変更履歴、wrangler-action が置く package.json まで誰でも読めてしまう。
+      # functions/ は出力に入れなくても、作業フォルダ直下から Pages Functions として組み込まれる。
+      - name: Stage site files
+        run: |
+          rsync -a --exclude-from=- ./ _site/ <<'EOF'
+          .git/
+          .github/
+          .gitignore
+          _site/
+          .wrangler/
+          functions/
+          scripts/
+          node_modules/
+          package.json
+          package-lock.json
+          CHANGELOG.md
+          VERSION
+          *.py
+          EOF
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy . --project-name techworker-hp --branch ${{ steps.meta.outputs.branch }} --commit-hash ${{ steps.meta.outputs.sha }} --commit-message "Deploy ${{ steps.meta.outputs.sha }}" --commit-dirty true
+          command: pages deploy _site --project-name techworker-hp --branch ${{ steps.meta.outputs.branch }} --commit-hash ${{ steps.meta.outputs.sha }} --commit-message "Deploy ${{ steps.meta.outputs.sha }}" --commit-dirty true
 
       # Notify Bing etc. (IndexNow) of pages changed by this push.
       # Runs after the deploy; a non-200/202 response fails this step only.
