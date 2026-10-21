@@ -1,10 +1,11 @@
 /* エージェント保管庫 — article.css（v6：インク×紙・青は差し色・細い罫）の上に重ねる。生成元は scripts/agents_vault/vault.py */
-:root{--av-line:#E4E7EC;--av-soft:#F7F8FA;--av-ai:#005EFF;--av-ai-bg:#EEF4FF;--av-human:#0F7A55;--av-human-bg:#EAF6F0;--av-text:#3A4452;}
+:root{--av-line:#E4E7EC;--av-soft:#F7F8FA;--av-ai:#A47948;--av-ai-bg:#F4EFE8;--av-human:#0F7A55;--av-human-bg:#EAF6F0;--av-text:#3A4452;}
 body{background:var(--paper);}
 .av-wrap{max-width:1180px;margin:0 auto;padding:0 40px;}
-#nav .logo i{font-style:normal;color:var(--electric);}
 
 /* 製品・部署の札 */
+
+
 .av-chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:22px;}
 .av-prod{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:var(--ink);background:var(--white);border:1px solid var(--av-line);border-radius:999px;padding:5px 12px 5px 7px;line-height:1.3;}
 .av-prod img{width:20px;height:20px;object-fit:contain;}
@@ -16,15 +17,19 @@ body{background:var(--paper);}
 .fl-feat{font-size:13px!important;font-weight:600;color:var(--ink)!important;}
 
 /* 1件：見出し */
+
+
 .av-hero{max-width:1100px;margin:0 auto;padding:108px 40px 0;}
 .av-hero .crumb{font-family:var(--en);font-size:12px;color:var(--slate);}
 .av-hero .crumb a{color:var(--slate);text-decoration:none;}
 .av-hero .crumb .sep{margin:0 8px;opacity:.5;}
-.av-hero h1{font-family:var(--jp);font-weight:700;font-size:clamp(28px,3.6vw,42px);line-height:1.38;letter-spacing:-.025em;margin-top:18px;word-break:auto-phrase;text-wrap:pretty;max-width:22em;}
+.av-hero h1{font-family:var(--jp);font-weight:700;font-size:clamp(28px,3.6vw,42px);line-height:1.38;letter-spacing:.02em;margin-top:18px;word-break:auto-phrase;text-wrap:pretty;max-width:22em;}
 .av-sum{font-size:18px;line-height:1.8;color:var(--av-text);margin-top:16px;max-width:40em;}
 .av-meta{display:flex;flex-wrap:wrap;gap:6px 22px;font-size:13px;color:var(--slate);margin-top:24px;padding:13px 0;border-top:1px solid var(--av-line);border-bottom:1px solid var(--av-line);}
 
 /* 1件：本文と設計書 */
+
+
 .av-layout{max-width:1100px;margin:44px auto 0;padding:0 40px;display:grid;grid-template-columns:260px minmax(0,1fr);gap:56px;align-items:start;}
 .av-spec{position:sticky;top:86px;}
 .av-spec-in{background:var(--white);border:1px solid var(--av-line);border-radius:14px;padding:20px 20px 16px;}
@@ -40,16 +45,18 @@ body{background:var(--paper);}
 .av-main{min-width:0;max-width:780px;}
 .av-sec{padding:8px 0 44px;scroll-margin-top:90px;}
 .av-sec+.av-sec{border-top:1px solid var(--av-line);padding-top:40px;}
-.av-sec h2{font-family:var(--jp);font-size:clamp(22px,2.4vw,27px);font-weight:700;letter-spacing:-.02em;line-height:1.45;color:var(--ink);display:flex;align-items:baseline;gap:12px;}
+.av-sec h2{font-family:var(--jp);font-size:clamp(22px,2.4vw,27px);font-weight:700;letter-spacing:.02em;line-height:1.45;color:var(--ink);display:flex;align-items:baseline;gap:12px;}
 .av-sec h2 span{font-family:var(--en);font-size:14px;font-weight:600;color:var(--electric);letter-spacing:.04em;}
 .av-sec h3{font-size:16px;font-weight:700;line-height:1.6;color:var(--ink);}
 .av-sec p,.av-sec li{font-size:16px;line-height:1.85;color:var(--av-text);word-break:normal;overflow-wrap:anywhere;}
 .av-lead{margin-top:10px;}
 
 /* 01 できること */
+
+
 .av-ba{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;}
 .av-ba-c{border-radius:14px;padding:20px 22px;background:var(--white);border:1px solid var(--av-line);}
-.av-ba-c.after{background:var(--av-ai-bg);border-color:#D6E4FF;}
+.av-ba-c.after{background:var(--av-ai-bg);border-color:#EADFD0;}
 .av-ba-h{font-size:13px;font-weight:700;color:var(--slate);margin-bottom:8px;}
 .av-ba-c.after .av-ba-h{color:var(--av-ai);}
 .av-ba ul{list-style:none;}
@@ -58,6 +65,8 @@ body{background:var(--paper);}
 .av-ba-c.after li::before{background:var(--av-ai);}
 
 /* 02 仕組み */
+
+
 .av-flow{display:grid;grid-template-columns:minmax(0,1fr) 22px minmax(0,1.7fr) 22px minmax(0,1fr) 22px minmax(0,1fr);align-items:stretch;margin-top:20px;}
 .fl-box{background:var(--white);border:1px solid var(--av-line);border-radius:12px;padding:14px 14px 12px;}
 .fl-box p,.fl-box li{font-size:14px;line-height:1.65;color:var(--av-text);}
@@ -65,18 +74,20 @@ body{background:var(--paper);}
 .fl-tag img{width:16px;height:16px;object-fit:contain;}
 .fl-tag.ai{color:var(--av-ai);}
 .fl-tag.human{color:var(--av-human);}
-.fl-ai{background:var(--av-ai-bg);border-color:#D6E4FF;}
+.fl-ai{background:var(--av-ai-bg);border-color:#EADFD0;}
 .fl-human{background:var(--av-human-bg);border-color:#CDE9DC;}
-.fl-part{border-top:1px solid #D6E4FF;padding-top:8px;margin-top:8px;}
+.fl-part{border-top:1px solid #EADFD0;padding-top:8px;margin-top:8px;}
 .fl-part b{font-size:13px;color:var(--ink);}
 .fl-part ul{list-style:none;}
 .fl-part li{padding-left:12px;position:relative;}
 .fl-part li::before{content:"・";position:absolute;left:-2px;}
 .fl-arr{position:relative;}
 .fl-arr::before{content:"";position:absolute;left:4px;right:6px;top:50%;height:1px;background:var(--line-2);}
-.fl-arr::after{content:"";position:absolute;right:4px;top:calc(50% - 4px);border:4px solid transparent;border-left:6px solid var(--line-2);border-right:0;}
+.fl-arr::after{content:"";position:absolute;right:4px;top:calc(50% - 4px);border:4px solid transparent;border-right:0;}
 
 /* 03 作り方 */
+
+
 .av-steps{list-style:none;margin-top:18px;}
 .av-steps li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:14px;padding:14px 0;}
 .av-steps li+li{border-top:1px solid var(--av-line);}
@@ -84,6 +95,8 @@ body{background:var(--paper);}
 .av-steps p{margin-top:4px;}
 
 /* 04 指示文 */
+
+
 .av-prompt{margin-top:18px;border:1px solid var(--av-line);border-radius:14px;overflow:hidden;background:var(--white);}
 .pr-bar{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--av-soft);border-bottom:1px solid var(--av-line);}
 .pr-dots{display:inline-flex;gap:5px;}
@@ -95,6 +108,8 @@ body{background:var(--paper);}
 .av-prompt pre{margin:0;padding:18px 20px;font-family:var(--jp);font-size:14.5px;line-height:1.8;color:var(--ink-soft);white-space:pre-wrap;word-break:normal;overflow-wrap:anywhere;}
 
 /* 05・07 行 */
+
+
 .av-rows{margin-top:16px;}
 .av-row{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.5fr);gap:20px;padding:16px 0;border-top:1px solid var(--av-line);}
 .av-row:last-child{border-bottom:1px solid var(--av-line);}
@@ -102,6 +117,8 @@ body{background:var(--paper);}
 .av-rows.pit .av-row h3::before{content:"症状";display:inline-block;font-size:11.5px;font-weight:700;color:#B4541A;background:#FFF2E8;border-radius:4px;padding:1px 7px;margin-right:8px;vertical-align:2px;}
 
 /* 06 人が確かめる */
+
+
 .av-checks{list-style:none;margin-top:16px;}
 .av-checks li{position:relative;padding:12px 0 12px 34px;border-top:1px solid var(--av-line);}
 .av-checks li:last-child{border-bottom:1px solid var(--av-line);}
@@ -109,11 +126,15 @@ body{background:var(--paper);}
 .av-checks li::after{content:"";position:absolute;left:10px;top:20px;width:5px;height:9px;border:solid var(--av-human);border-width:0 2px 2px 0;transform:rotate(45deg);}
 
 /* 08 測ること */
+
+
 .av-meas-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:18px;}
 .av-meas{background:var(--white);border:1px solid var(--av-line);border-radius:12px;padding:16px 18px;}
 .av-meas p{font-size:14.5px;margin-top:6px;}
 
 /* 09 広げ方・出典 */
+
+
 .av-vars{margin-top:14px;padding-left:1.2em;}
 .av-vars li{margin-top:6px;}
 .av-src ul{list-style:none;margin-top:12px;}
@@ -124,14 +145,18 @@ body{background:var(--paper);}
 .av-sec.av-src h2{font-size:18px;}
 
 /* 申込み・関連 */
+
+
 .art-cta{margin-top:24px;}
 .av-related{margin:72px 0 80px;}
-.av-related h2,.av-sec-h h2{font-family:var(--jp);font-size:22px;font-weight:700;letter-spacing:-.02em;color:var(--ink);}
+.av-related h2,.av-sec-h h2{font-family:var(--jp);font-size:22px;font-weight:700;letter-spacing:.02em;color:var(--ink);}
 .av-related h2{margin-bottom:20px;}
 .av-more{display:inline-block;margin-top:20px;font-size:14px;font-weight:600;color:var(--electric);text-decoration:none;}
 .av-legal{font-size:12px;line-height:1.8;color:var(--slate);margin:24px 0 8px;max-width:60em;}
 
 /* カード（一覧・関連・メディアトップ） */
+
+
 .av-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;}
 .av-card{display:flex;flex-direction:column;text-decoration:none;color:var(--ink);background:var(--white);border:1px solid var(--av-line);border-radius:16px;overflow:hidden;transition:border-color .2s,transform .2s;}
 .av-card:hover{border-color:var(--line-2);transform:translateY(-2px);}
@@ -143,25 +168,29 @@ body{background:var(--paper);}
 .av-card-top .av-prod img{width:18px;height:18px;}
 .av-card-top .av-dept{font-size:12.5px;padding:4px 10px;background:var(--white);border:1px solid var(--av-line);}
 .av-card-b{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1;}
-.av-card-t{font-size:17px;font-weight:700;line-height:1.55;letter-spacing:-.01em;word-break:auto-phrase;}
+.av-card-t{font-size:17px;font-weight:700;line-height:1.55;letter-spacing:.02em;word-break:auto-phrase;}
 .av-card:hover .av-card-t{color:var(--electric);}
 .av-card-s{font-size:14.5px;line-height:1.75;color:var(--av-text);margin-top:8px;}
 .av-card-m{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:auto;padding-top:14px;font-size:12.5px;color:var(--slate);}
 
 /* 小さな図（カード）：縦に4行 */
+
+
 .av-mf{display:flex;flex-direction:column;gap:0;margin-top:12px;position:relative;}
 .av-mf .mf-box{display:grid;grid-template-columns:7.2em minmax(0,1fr);gap:8px;align-items:center;font-size:13px;line-height:1.5;color:var(--av-text);padding:6px 10px;background:var(--white);border:1px solid var(--av-line);border-radius:8px;}
 .av-mf .mf-t{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .av-mf .mf-box+.mf-box{margin-top:6px;}
 .av-mf .mf-box b{font-size:12px;font-weight:700;color:var(--slate);}
 .av-mf .mf-box img{display:none;}
-.av-mf .mf-ai{background:var(--av-ai-bg);border-color:#D6E4FF;}
+.av-mf .mf-ai{background:var(--av-ai-bg);border-color:#EADFD0;}
 .av-mf .mf-ai b{color:var(--av-ai);}
 .av-mf .mf-human{background:var(--av-human-bg);border-color:#CDE9DC;}
 .av-mf .mf-human b{color:var(--av-human);}
 .av-mf .mf-arr{display:none;}
 
 /* 大きな図（新着・表紙）：横に4つ */
+
+
 .av-mf.big{flex-direction:row;align-items:stretch;gap:0;margin-top:18px;}
 .av-mf.big .mf-box{display:flex;flex-direction:column;align-items:flex-start;gap:4px;flex:1;white-space:normal;padding:12px 12px;font-size:13.5px;line-height:1.55;border-radius:10px;}
 .av-mf.big .mf-box+.mf-box{margin-top:0;}
@@ -170,28 +199,32 @@ body{background:var(--paper);}
 .av-mf.big .mf-t{white-space:normal;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
 .av-mf.big .mf-arr{display:block;flex:0 0 16px;position:relative;}
 .av-mf.big .mf-arr::before{content:"";position:absolute;left:3px;right:5px;top:50%;height:1px;background:var(--line-2);}
-.av-mf.big .mf-arr::after{content:"";position:absolute;right:2px;top:calc(50% - 4px);border:4px solid transparent;border-left:6px solid var(--line-2);border-right:0;}
+.av-mf.big .mf-arr::after{content:"";position:absolute;right:2px;top:calc(50% - 4px);border:4px solid transparent;border-right:0;}
 
 /* 一覧：見出し */
+
+
 .av-ihero{padding:104px 0 8px;}
 .av-ihero .av-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:48px;align-items:center;}
 .av-ihero .crumb{font-family:var(--en);font-size:12px;color:var(--slate);margin-bottom:18px;}
 .av-ihero .crumb a{color:var(--slate);text-decoration:none;}
 .av-ihero .crumb .sep{margin:0 8px;opacity:.5;}
 .av-kicker{display:block;font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.08em;color:var(--electric);}
-.av-ihero h1{font-family:var(--jp);font-size:clamp(32px,4vw,48px);font-weight:700;letter-spacing:-.03em;line-height:1.25;margin-top:8px;color:var(--ink);}
+.av-ihero h1{font-family:var(--jp);font-size:clamp(32px,4vw,48px);font-weight:700;letter-spacing:.02em;line-height:1.25;margin-top:8px;color:var(--ink);}
 .av-ihero p{font-size:16.5px;line-height:1.9;color:var(--av-text);margin-top:16px;max-width:32em;}
 .av-stats{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:24px;padding-top:18px;border-top:1px solid var(--av-line);font-size:13px;color:var(--slate);}
-.av-stats b{display:block;font-family:var(--en);font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.01em;line-height:1.3;}
+.av-stats b{display:block;font-family:var(--en);font-size:22px;font-weight:700;color:var(--ink);letter-spacing:.02em;line-height:1.3;}
 .av-feat-card{display:block;text-decoration:none;color:var(--ink);background:var(--white);border:1px solid var(--av-line);border-radius:18px;overflow:hidden;}
 .av-feat-card:hover .av-feat-t{color:var(--electric);}
 .av-feat-vis{background:var(--av-soft);border-bottom:1px solid var(--av-line);padding:20px 20px 18px;}
 .av-feat-b{padding:18px 22px 20px;display:flex;flex-direction:column;}
-.av-new{align-self:flex-start;font-size:12px;font-weight:700;color:var(--electric);border:1px solid #CFE0FF;border-radius:999px;padding:2px 10px;}
-.av-feat-t{font-size:22px;font-weight:700;line-height:1.5;letter-spacing:-.015em;margin-top:10px;word-break:auto-phrase;}
+.av-new{align-self:flex-start;font-size:12px;font-weight:700;color:var(--electric);border:1px solid #EADFD0;border-radius:999px;padding:2px 10px;}
+.av-feat-t{font-size:22px;font-weight:700;line-height:1.5;letter-spacing:.02em;margin-top:10px;word-break:auto-phrase;}
 .av-feat-b .av-more{margin-top:12px;}
 
 /* 一覧：1件の読み方 */
+
+
 .av-format{margin-top:56px;}
 .av-sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:20px;}
 .av-sec-h p{font-size:13.5px;color:var(--slate);}
@@ -202,6 +235,8 @@ body{background:var(--paper);}
 .av-fmt li p{font-size:14px;line-height:1.75;color:var(--av-text);margin-top:4px;}
 
 /* 一覧：絞り込み */
+
+
 .av-list{margin-top:64px;scroll-margin-top:80px;}
 .av-count{font-size:14px;color:var(--slate);}
 .av-count b{font-family:var(--en);font-size:18px;color:var(--ink);margin-right:2px;}
@@ -217,9 +252,13 @@ body{background:var(--paper);}
 .av-band{margin:84px 0 96px;}
 
 /* メディアトップの枠 */
+
+
 .av-home .av-more{margin-top:18px;}
 
 /* 表紙 1200×630 */
+
+
 .av-cover-body{margin:0;background:transparent;}
 .av-cover{width:1200px;height:630px;box-sizing:border-box;padding:56px 64px;background:var(--paper);display:flex;flex-direction:column;font-family:var(--jp);}
 .cv-top{display:flex;justify-content:space-between;align-items:center;}
@@ -229,7 +268,7 @@ body{background:var(--paper);}
 .cv-prod{display:flex;align-items:center;gap:14px;margin-top:40px;font-size:22px;font-weight:600;color:var(--ink);}
 .cv-prod img{width:40px;height:40px;object-fit:contain;}
 .cv-prod em{font-style:normal;color:var(--slate);font-weight:500;margin-left:10px;}
-.av-cover h1{font-size:56px;line-height:1.32;font-weight:700;letter-spacing:-.03em;color:var(--ink);margin-top:14px;word-break:auto-phrase;}
+.av-cover h1{font-size:56px;line-height:1.32;font-weight:700;letter-spacing:.02em;color:var(--ink);margin-top:14px;word-break:auto-phrase;}
 .cv-sum{font-size:23px;line-height:1.65;color:var(--av-text);margin-top:16px;max-width:46em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
 .av-cover .av-mf.big{margin-top:auto;}
 .av-cover .av-mf.big .mf-box{font-size:17px;line-height:1.5;padding:14px 16px;}
@@ -265,3 +304,100 @@ body{background:var(--paper);}
   .av-ihero{padding-top:88px;}
   .av-prompt pre{font-size:14px;padding:14px 14px;}
 }
+
+/* ===== 2026-10-21 作り直し：本体HPの家族に寄せる =====
+ * 古野さん「エージェント保管庫の記事のデザインが明らかにAIが作ったっぽすぎる」。
+ * 角の丸い箱・薄い色の地・丸い札・窓の点・緑のチェック・色の札をやめ、細い罫・明朝400の見出し・Gill Sans の数字・金の差し色だけにする。 */
+:root{--av-line:#D9D9D6;--av-text:#3A3F47;}
+body{background:var(--ground,#F1F1F1);}
+.av-hero{padding-top:64px;}
+.av-hero h1,.av-ihero h1{font:400 clamp(28px,3.4vw,44px)/1.45 var(--f-min);letter-spacing:.04em;}
+.av-sum{font-size:16.5px;color:var(--sub,#4A5059);}
+.av-meta{font-family:var(--f-gill);letter-spacing:.06em;}
+/* 札：枠も地も持たない文字だけ。製品のマークは小さく残す */
+.av-prod,.av-dept,.av-card-top .av-prod,.av-card-top .av-dept,.av-cover .av-dept{background:none;border:0;border-radius:0;padding:0;font-weight:700;}
+.av-dept{color:var(--sub,#4A5059);}
+.av-chips{gap:6px 18px;}
+.av-chips .av-dept::before,.av-card-top .av-dept::before{content:"／";margin-right:10px;color:var(--av-line);font-weight:400;}
+.av-tag{padding:0;}
+/* 左の設計書：箱でなく上下の罫 */
+.av-spec-in{background:none;border:0;border-top:1px solid var(--ink);border-bottom:1px solid var(--av-line);border-radius:0;padding:18px 0 14px;}
+.av-spec-h{font:400 15px/1.5 var(--f-min);letter-spacing:.06em;}
+.av-spec-btn{border-radius:0;background:var(--gold);letter-spacing:.1em;}
+.av-spec-btn:hover{background:var(--gold);filter:brightness(1.08);}
+.av-toc a:hover,.av-toc a.active{color:var(--gold-a);}
+/* 見出し */
+.av-sec h2{font:400 clamp(22px,2.4vw,28px)/1.45 var(--f-min);letter-spacing:.06em;}
+.av-sec h2 span{font:400 15px/1 var(--f-gill);color:var(--gold-a);letter-spacing:.08em;}
+.av-sec+.av-sec{border-top-color:var(--av-line);}
+/* 01 できること：2つの箱 → 縦の罫で分けた2列 */
+.av-ba{gap:0;border-top:1px solid var(--ink);}
+.av-ba-c,.av-ba-c.after{background:none;border:0;border-radius:0;padding:18px 24px 6px 0;}
+.av-ba-c.after{padding:18px 0 6px 24px;border-left:1px solid var(--av-line);}
+.av-ba-h{font:400 14px/1.5 var(--f-min);letter-spacing:.08em;color:var(--sub,#4A5059);}
+.av-ba-c.after .av-ba-h{color:var(--gold-a);}
+.av-ba li::before,.av-ba-c.after li::before{width:8px;height:1px;border-radius:0;top:.95em;background:var(--ink);}
+.av-ba-c.after li::before{background:var(--gold-a);}
+/* 02 仕組み：色の箱 → 上に罫を引いた列。エージェントの列だけ金の罫 */
+.fl-box,.fl-ai,.fl-human{background:none;border:0;border-top:1px solid var(--ink);border-radius:0;padding:14px 4px 4px 0;}
+.fl-ai{border-top:2px solid var(--gold-a);}
+.fl-tag,.fl-tag.ai,.fl-tag.human{font:400 13.5px/1.4 var(--f-min);letter-spacing:.06em;color:var(--ink);}
+.fl-tag.ai{color:var(--gold-a);}
+.fl-part{border-top-color:var(--av-line);}
+/* 03 作り方：黒い丸の番号 → Gill Sans の金の数字 */
+.st-n{width:auto;height:auto;border-radius:0;background:none;color:var(--gold-a);font:400 18px/1.4 var(--f-gill);letter-spacing:.04em;justify-content:flex-start;margin-top:0;}
+/* 04 指示文：窓の点と丸い枠をやめ、上に罫を引いた紙の面 */
+.av-prompt{border:0;border-top:1px solid var(--ink);border-radius:0;background:var(--paper,#FCFCFB);}
+.pr-bar{background:none;border-bottom:1px solid var(--av-line);padding:12px 20px;}
+.pr-dots{display:none;}
+.pr-name{font:400 14px/1.4 var(--f-min);letter-spacing:.06em;color:var(--ink);}
+.pr-copy{border-radius:0;background:none;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink);font-weight:700;letter-spacing:.08em;}
+.pr-copy:hover{background:var(--ink);color:var(--paper,#FCFCFB);}
+.pr-copy.done{background:var(--gold-a);color:var(--paper,#FCFCFB);box-shadow:none;}
+.av-prompt pre{font-family:var(--f-body);color:var(--ink);}
+/* 05・07 行：オレンジの「症状」の札をやめる */
+.av-rows.pit .av-row h3::before{content:none;}
+.av-row:first-child{border-top-color:var(--ink);}
+/* 06 人が確かめる：緑の箱のチェック → 細い線の印 */
+.av-checks li:first-child{border-top-color:var(--ink);}
+.av-checks li::before{width:14px;height:1px;border:0;border-radius:0;background:var(--gold-a);top:1.45em;left:2px;}
+.av-checks li::after{content:none;}
+/* 08 測ること：箱 → 上に罫 */
+.av-meas{background:none;border:0;border-top:1px solid var(--ink);border-radius:0;padding:14px 4px 0 0;}
+.av-meas h3{font:400 16px/1.5 var(--f-min);letter-spacing:.04em;}
+/* 出典・関連 */
+.av-src li a,.av-more,.av-ac a{color:var(--ink);text-decoration:underline 1px;text-underline-offset:4px;}
+.av-related h2,.av-sec-h h2{font:400 26px/1.4 var(--f-min);letter-spacing:.06em;}
+/* カード（一覧・関連・メディアトップ）：角を立て、浮かせない。小さな図は罫だけ */
+.av-card,.av-feat-card{border-radius:0;border:0;border-top:1px solid var(--ink);background:var(--paper,#FCFCFB);transition:none;}
+.av-card:hover{transform:none;}
+.av-card:hover .av-card-t,.av-feat-card:hover .av-feat-t{color:var(--gold-a);}
+.av-card-vis,.av-feat-vis{background:none;border-bottom:1px solid var(--av-line);}
+.av-card-t,.av-feat-t{font:400 18px/1.6 var(--f-min);letter-spacing:.04em;}
+.av-feat-t{font-size:23px;}
+.av-card-m{font-family:var(--f-gill);letter-spacing:.06em;}
+.av-mf .mf-box,.av-mf .mf-ai,.av-mf .mf-human{background:none;border:0;border-radius:0;border-top:1px solid var(--av-line);padding:6px 0;}
+.av-mf .mf-box+.mf-box{margin-top:0;}
+.av-mf .mf-box b,.av-mf .mf-human b{font-weight:700;color:var(--sub,#4A5059);}
+.av-mf .mf-ai b{color:var(--gold-a);}
+.av-mf.big .mf-box{border-top:1px solid var(--ink);border-radius:0;padding:10px 8px 4px 0;}
+.av-mf.big .mf-ai{border-top:2px solid var(--gold-a);}
+.av-new{border:0;border-radius:0;padding:0;color:var(--gold-a);font:400 13px/1 var(--f-gill);letter-spacing:.12em;}
+/* 一覧の頭：英字の小さな飾り見出しを出さない。数字は Gill Sans */
+.av-ihero{padding-top:64px;}
+.av-kicker{display:none;}
+.av-stats b{font:400 26px/1.3 var(--f-gill);}
+.av-fmt{border-top-color:var(--ink);}
+.av-fmt li span{font:400 14px/1 var(--f-gill);color:var(--gold-a);letter-spacing:.08em;}
+.av-fmt li b{font:400 17px/1.5 var(--f-min);letter-spacing:.04em;}
+/* 絞り込み：丸い札 → 角の立った線の釦 */
+.av-f{border-radius:0;background:none;border-color:var(--av-line);}
+.av-f[aria-pressed="true"]{background:var(--ink);color:var(--paper,#FCFCFB);}
+@media(max-width:720px){
+  .av-hero,.av-ihero{padding-top:40px;}
+  .av-ba-c,.av-ba-c.after{padding:16px 0 4px;border-left:0;}
+  .av-ba-c.after{border-top:1px solid var(--av-line);}
+}
+.av-steps li{align-items:start;}
+.st-n{align-self:start;padding-top:2px;}
+.av-checks li::before,.av-checks li:first-child::before{background:var(--gold-a);}

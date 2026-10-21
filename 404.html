@@ -14,50 +14,92 @@
 <title>ページが見つかりません（404） — TechWorker</title>
 <meta name="robots" content="noindex,follow">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site/site.css">
 <style>
-:root{
-  --ink:#0D1117; --paper:#F4F6F9;
-  --electric:#005EFF; --electric-dark:#003DAA;
-  --slate:#4A5568; --line-2:#D5DAE2;
-  --jp:'IBM Plex Sans JP','IBM Plex Sans',system-ui,sans-serif;
-  --mono:'IBM Plex Mono',monospace;
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:var(--jp);background-color:var(--paper);background-image:repeating-linear-gradient(0deg,rgba(13,17,23,.04) 0 1px,transparent 1px 40px),repeating-linear-gradient(90deg,rgba(13,17,23,.04) 0 1px,transparent 1px 40px);color:var(--ink);line-height:1.85;font-size:16px;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;}
-::selection{background:var(--electric);color:var(--paper);}
-.wrap{max-width:560px;width:100%;}
-.code{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.14em;color:var(--electric);border-left:3px solid var(--electric);padding-left:14px;}
-h1{font-weight:700;font-size:clamp(24px,4.6vw,34px);line-height:1.4;letter-spacing:-.02em;margin:20px 0 14px;}
-p{color:var(--slate);font-size:15px;margin-bottom:34px;}
-.btns{display:flex;gap:14px;flex-wrap:wrap;}
-.btn{font-family:var(--jp);font-size:14.5px;font-weight:600;color:var(--paper);background:var(--electric);text-decoration:none;border-radius:5px;padding:14px 26px;display:inline-flex;align-items:center;gap:10px;transition:background .25s,transform .25s;}
-.btn:hover{background:var(--electric-dark);transform:translateY(-1px);}
-.btn--ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line-2);}
-.btn--ghost:hover{border-color:var(--electric);color:var(--electric);background:transparent;}
-.links{margin-top:38px;padding-top:24px;border-top:1px solid var(--line-2);font-size:14px;}
-.links a{color:var(--slate);text-decoration:none;margin-right:20px;}
-.links a:hover{color:var(--electric);}
+/* 404：ページの頭に知らせ、下に戻り先 */
+.nf { padding: 72px 0 110px; }
+.nf__btns { display: flex; flex-wrap: wrap; gap: 14px; }
+.nf__links { margin-top: 48px; display: flex; flex-wrap: wrap; gap: 10px 32px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 14px; font-weight: 700; }
+.nf__links a:hover { color: var(--gold-a); }
+.ph .ph__code { margin: 0 0 16px; font: 400 18px/1 var(--f-gill); letter-spacing: .12em; color: var(--gold-b); }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="code">404 NOT FOUND</div>
-  <h1>お探しのページは見つかりませんでした。</h1>
-  <p>URLが変更されたか、ページが削除された可能性があります。お手数ですが、トップページまたは下記のリンクからお探しください。</p>
-  <div class="btns">
-    <a class="btn" href="/">トップページへ &rarr;</a>
-    <a class="btn btn--ghost" href="/contact">お問い合わせ</a>
+
+<header class="hd">
+  <a class="logo" href="/" aria-label="TechWorker ホーム">Tech<i>Worker</i></a>
+  <nav id="hd-nav" aria-label="主な行き先">
+    <a href="/services">事業・サービス</a>
+    <a href="/#concept" aria-current="page">考え方</a>
+    <a href="/agent-cases/">事例</a>
+    <a href="/news">ニュース</a>
+    <a href="/company">会社情報</a>
+    <a href="/contact">お問い合わせ</a>
+  </nav>
+  <button class="menu" type="button" aria-label="メニューを開く" aria-controls="hd-nav" aria-expanded="false"></button>
+</header>
+
+<main>
+<section class="ph" style="--ph-pos: 0 30%;">
+  <picture class="screen" aria-hidden="true">
+    <source media="(max-width: 760px)" srcset="/assets/top/bg-map-sp.jpg">
+    <img src="/assets/top/bg-map.jpg" alt="">
+  </picture>
+  <div class="wrap ph__in">
+    <p class="ph__code">404</p>
+    <h1>お探しのページは見つかりませんでした。</h1>
+    <p>URLが変更されたか、ページが削除された可能性があります。お手数ですが、トップページまたは下記のリンクからお探しください。</p>
   </div>
-  <div class="links">
-    <a href="/services">サービス</a>
-    <a href="https://kenshu.techworker.co.jp/">法人研修</a>
-    <a href="/cases">実績・事例</a>
-    <a href="/media/">メディア</a>
-    <a href="/company">会社概要</a>
+</section>
+
+<section class="nf">
+  <div class="wrap">
+    <div class="nf__btns">
+      <a class="btn" href="/">トップページへ<svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a>
+      <a class="btn btn--line" href="/contact">お問い合わせ</a>
+    </div>
+    <nav class="nf__links" aria-label="ほかの行き先">
+      <a href="/services">サービス</a>
+      <a href="https://kenshu.techworker.co.jp/">法人研修</a>
+      <a href="/cases">実績・事例</a>
+      <a href="/media/">メディア</a>
+      <a href="/company">会社概要</a>
+    </nav>
   </div>
-</div>
+</section>
+</main>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__in">
+      <div>
+        <p class="ft__name">株式会社TechWorker</p>
+        <p class="ft__addr">〒169-0051 東京都新宿区西早稲田一丁目22番3号<br>早稲田アントレプレナーシップセンター</p>
+      </div>
+      <nav aria-label="フッターの行き先">
+        <a href="/services">事業・サービス</a>
+        <a href="/company">会社情報</a>
+        <a href="/news">ニュース</a>
+        <a href="/#concept">考え方</a>
+        <a href="/agent-cases/">事例</a>
+        <a href="/contact">お問い合わせ</a>
+        <a href="/privacy">プライバシーポリシー</a>
+      </nav>
+    </div>
+    <small>© TechWorker Inc.</small>
+  </div>
+</footer>
+
+<script>
+// スマホの行き先：右上の釦で開け閉めする。行き先を押したら閉じる。スクロールしたら頭に暗い面を敷く
+(() => {
+  const hd = document.querySelector('.hd'), btn = hd.querySelector('.menu');
+  const set = open => { hd.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く'); };
+  btn.addEventListener('click', () => set(!hd.classList.contains('is-open')));
+  hd.querySelector('nav').addEventListener('click', e => { if (e.target.closest('a')) set(false); });
+  const onScroll = () => hd.classList.toggle('is-scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+})();
+</script>
 </body>
 </html>

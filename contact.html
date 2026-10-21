@@ -30,251 +30,73 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="お問い合わせ | TechWorker">
 <meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site/site.css">
 <style>
-/* ===== TOKENS ===== */
-:root{
-  --ink:#0D1117; --paper:#F4F6F9; --paper-2:#ECEFF3; --white:#FBFCFD;
-  --electric:#005EFF; --electric-dark:#003DAA;
-  --slate:#4A5666; --line:rgba(13,17,23,.12); --line-2:rgba(13,17,23,.20);
-  --emerald:#00B894; --violet:#7C3AED;
-  --jp:'IBM Plex Sans JP','IBM Plex Sans',system-ui,sans-serif;
-  --en:'IBM Plex Sans','IBM Plex Sans JP',system-ui,sans-serif;
+/* お問い合わせ：予約の帯・フォーム・横の案内。フォームの中身は元のまま、見た目だけ共通の家族にそろえる */
+.ct { padding: 88px 0 110px; }
+.book { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: center; padding: 36px 40px; background: var(--paper); }
+.book .bk-ey { font-size: 12px; font-weight: 700; letter-spacing: .12em; color: var(--gold-a); }
+.book h2 { margin-top: 8px; font: 400 28px/1.45 var(--f-min); letter-spacing: .06em; }
+.book p { margin-top: 10px; font-size: 14px; color: var(--sub); max-width: 56ch; }
+.proof { margin-top: 16px; font-size: 13px; color: var(--sub); }
+.proof strong { color: var(--ink); }
+.book-or { margin: 56px 0 40px; padding-top: 40px; border-top: 1px solid var(--line); font: 400 22px/1.5 var(--f-min); letter-spacing: .06em; }
+.contact-layout { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 64px; align-items: start; }
+.form-group { margin-bottom: 26px; }
+.form-group label { display: block; font-size: 14px; font-weight: 700; margin-bottom: 9px; }
+.form-group label .required { color: var(--gold-a); font-size: 12px; font-weight: 700; margin-left: 8px; }
+.form-group label .optional { color: var(--mute); font-size: 12px; font-weight: 500; margin-left: 8px; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 14px 16px; border: 1px solid var(--line); border-radius: 0; background: var(--paper); color: var(--ink); font: 500 15px/1.6 var(--f-body); letter-spacing: .04em; transition: border-color .2s, box-shadow .2s; }
+.form-group input:hover, .form-group select:hover, .form-group textarea:hover { border-color: var(--mute); }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--gold-a); box-shadow: 0 0 0 3px rgba(164, 121, 72, .16); }
+.form-group input::placeholder, .form-group textarea::placeholder { color: #9A9EA5; }
+.form-group textarea { resize: vertical; min-height: 140px; }
+.form-group select { appearance: none; cursor: pointer; }
+.select-wrapper { position: relative; }
+.select-wrapper::after { content: ""; position: absolute; right: 18px; top: 50%; width: 7px; height: 7px; border-right: 1px solid var(--ink); border-bottom: 1px solid var(--ink); transform: translateY(-70%) rotate(45deg); pointer-events: none; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.form-group.invalid input, .form-group.invalid select, .form-group.invalid textarea { border-color: #C2413A; box-shadow: 0 0 0 3px rgba(194, 65, 58, .1); }
+.field-error { display: none; color: #C2413A; font-size: 12.5px; margin-top: 7px; line-height: 1.5; }
+.form-group.invalid .field-error { display: block; }
+.reassure { margin: 8px 0 22px; border-bottom: 1px solid var(--line); }
+.reassure li { display: flex; gap: 10px; padding: 10px 2px; border-top: 1px solid var(--line); font-size: 13.5px; line-height: 1.7; color: var(--sub); }
+.reassure svg, .side svg { flex: none; width: 13px; height: 13px; margin-top: 5px; color: var(--gold-a); }
+.reassure strong { color: var(--ink); }
+.form-checkbox { display: flex; align-items: flex-start; gap: 11px; margin: 6px 0 26px; }
+.form-checkbox input[type="checkbox"] { width: 18px; height: 18px; margin-top: 4px; accent-color: var(--gold-a); flex-shrink: 0; }
+.form-checkbox label { font-size: 13.5px; color: var(--sub); line-height: 1.7; }
+.form-checkbox label a { color: var(--ink); text-decoration: underline 1px; text-underline-offset: 4px; font-weight: 700; }
+.btn-submit { display: inline-flex; align-items: center; justify-content: center; gap: 12px; width: 100%; min-height: 56px; border: 0; background: var(--gold); color: var(--paper); font: 700 15px/1 var(--f-body); letter-spacing: .14em; cursor: pointer; transition: filter .2s; }
+.btn-submit:hover { filter: brightness(1.08); }
+.btn-submit svg { width: 18px; height: 18px; }
+.thank-you { display: none; text-align: center; padding: 72px 40px; background: var(--paper); }
+.thank-you.show { display: block; }
+.thank-you .check-icon { display: inline-flex; margin-bottom: 20px; }
+.thank-you .check-icon svg { width: 34px; height: 34px; color: var(--gold-a); }
+.thank-you h2 { font: 400 28px/1.5 var(--f-min); letter-spacing: .06em; margin-bottom: 14px; }
+.thank-you p { font-size: 15px; color: var(--sub); line-height: 1.9; margin: 0 auto 32px; max-width: 46ch; }
+.thank-you .dl-btn { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 28px; background: var(--gold); color: var(--paper); font: 700 14px/1 var(--f-body); letter-spacing: .1em; margin-bottom: 8px; }
+.thank-you .back-link { display: block; margin-top: 18px; font-size: 13px; font-weight: 700; text-decoration: underline 1px; text-underline-offset: 4px; }
+.side { display: grid; gap: 20px; }
+.sidebar-card { padding: 30px 30px 32px; background: var(--paper); }
+.sidebar-card .rb-kind { display: block; font-size: 12px; font-weight: 700; letter-spacing: .12em; color: var(--gold-a); }
+.sidebar-card h3 { margin-top: 6px; font: 400 21px/1.5 var(--f-min); letter-spacing: .06em; }
+.sidebar-card p { margin-top: 12px; font-size: 13.5px; line-height: 1.85; color: var(--sub); }
+.sidebar-card ul, .wp-contents { margin-top: 16px; border-bottom: 1px solid var(--line); }
+.sidebar-card li, .wp-item { display: flex; gap: 10px; padding: 9px 2px; border-top: 1px solid var(--line); font-size: 13.5px; line-height: 1.7; }
+.sidebar-card .sidebar-meta { margin-top: 16px; }
+.sidebar-card .sidebar-meta strong { color: var(--ink); }
+@media (max-width: 960px) {
+  .contact-layout { grid-template-columns: 1fr; gap: 48px; }
 }
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:76px;}
-body{font-family:var(--jp);background:var(--paper);color:var(--ink);line-height:1.85;font-size:16px;-webkit-font-smoothing:antialiased;font-feature-settings:"palt" 1;overflow-x:hidden;}
-::selection{background:var(--electric);color:var(--paper);}
-a{color:inherit;}
-img{display:block;max-width:100%;}
-
-/* ===== SHARED ===== */
-.container{max-width:1280px;margin:0 auto;padding:0 48px;width:100%;}
-.tag{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--electric);display:inline-flex;align-items:center;gap:11px;padding-left:14px;border-left:3px solid var(--electric);}
-.tag span{color:var(--slate);font-weight:500;letter-spacing:.02em;text-transform:none;font-size:13px;}
-.btn{font-family:var(--jp);font-size:14.5px;font-weight:600;color:var(--paper);background:var(--electric);text-decoration:none;border-radius:5px;padding:15px 30px;display:inline-flex;align-items:center;gap:11px;transition:background .25s,transform .25s;border:none;cursor:pointer;}
-.btn:hover{background:var(--electric-dark);transform:translateY(-1px);}
-.btn i{font-style:normal;transition:transform .25s;}
-.btn:hover i{transform:translateX(4px);}
-.btn--ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line-2);}
-.btn--ghost:hover{background:transparent;border-color:var(--electric);color:var(--electric);}
-
-/* ===== NAV ===== */
-nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:68px;background:rgba(244,246,249,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transition:box-shadow .3s,height .3s cubic-bezier(.2,.8,.2,1),background .3s;}
-nav.scrolled{box-shadow:0 1px 16px rgba(0,94,255,.06);height:58px;background:rgba(244,246,249,.92);}
-nav .logo{transition:font-size .3s cubic-bezier(.2,.8,.2,1);}
-nav.scrolled .logo{font-size:18px;}
-nav .logo{font-family:var(--en);font-weight:700;font-size:20px;letter-spacing:-.01em;text-decoration:none;color:var(--ink);}
-nav .logo i{font-style:normal;color:var(--electric);}
-nav ul{list-style:none;display:flex;gap:34px;}
-nav ul a{font-size:14px;font-weight:500;color:var(--ink);text-decoration:none;position:relative;}
-nav ul a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--electric);transition:width .28s cubic-bezier(.2,.8,.2,1);}
-nav ul a:hover::after,nav ul a.active::after{width:100%;}
-nav ul a.active{color:var(--electric);}
-nav .nav-right{display:flex;align-items:center;gap:18px;}
-nav .nav-cta{font-family:var(--jp);font-size:13.5px;font-weight:600;color:var(--paper);background:var(--electric);text-decoration:none;padding:10px 22px;border-radius:4px;transition:background .25s;}
-nav .nav-cta:hover{background:var(--electric-dark);}
-nav .nav-cta .short{display:none;}
-nav .lang{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.04em;}
-nav .lang a{color:var(--slate);text-decoration:none;}
-nav .lang .cur{color:var(--electric);}
-
-/* hamburger */
-.hamb{display:none;width:44px;height:44px;border:none;background:none;cursor:pointer;position:relative;margin-left:2px;}
-.hamb span{position:absolute;left:11px;width:22px;height:2px;background:var(--ink);transition:transform .3s,opacity .2s;}
-.hamb span:nth-child(1){top:15px;} .hamb span:nth-child(2){top:21px;} .hamb span:nth-child(3){top:27px;}
-body.menu-open .hamb span:nth-child(1){transform:translateY(6px) rotate(45deg);}
-body.menu-open .hamb span:nth-child(2){opacity:0;}
-body.menu-open .hamb span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
-/* mobile menu panel */
-.mmenu{position:fixed;inset:68px 0 0;z-index:45;background:var(--paper);transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);visibility:hidden;display:flex;flex-direction:column;padding:18px 24px 40px;}
-body.menu-open .mmenu{transform:none;visibility:visible;}
-.mmenu a{font-size:19px;font-weight:600;color:var(--ink);text-decoration:none;padding:20px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;}
-.mmenu a::after{content:"→";color:var(--electric);font-family:var(--en);}
-.mmenu .m-cta{margin-top:28px;background:var(--electric);color:var(--paper);justify-content:center;border-radius:5px;border:none;padding:17px;}
-.mmenu .m-cta::after{content:none;}
-.mmenu .m-lang{margin-top:auto;border:none;font-family:var(--en);font-size:13px;color:var(--slate);}
-.mmenu .m-lang::after{content:none;}
-
-/* ===== PAGE HEADER ===== */
-.page-header{padding:148px 0 64px;border-bottom:1px solid var(--line);}
-.page-header .tag{margin-bottom:28px;}
-.page-header h1{font-family:var(--jp);font-weight:700;font-size:clamp(30px,4.4vw,52px);line-height:1.3;letter-spacing:-.02em;}
-.page-header p{font-size:16px;color:var(--slate);line-height:2.05;margin-top:22px;max-width:60ch;}
-.page-header p strong{color:var(--ink);font-weight:600;}
-
-/* ===== CONTACT LAYOUT ===== */
-.contact-section{padding:72px 0 112px;}
-.contact-layout{display:grid;grid-template-columns:1fr 360px;gap:72px;align-items:start;}
-
-/* ===== INQUIRY TYPE SELECT (optional) ===== */
-.form-section-label{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);padding-left:12px;border-left:3px solid var(--electric);display:block;margin-bottom:24px;}
-
-/* ===== FORM ===== */
-.form-group{margin-bottom:26px;}
-.form-group label{display:block;font-size:14px;font-weight:600;margin-bottom:9px;letter-spacing:-.01em;}
-.form-group label .required{color:var(--electric);font-size:12px;font-weight:600;margin-left:6px;}
-.form-group label .optional{color:var(--slate);font-size:12px;font-weight:500;margin-left:6px;}
-.form-group input,
-.form-group select,
-.form-group textarea{
-  width:100%;padding:14px 16px;
-  font-size:15px;font-family:inherit;line-height:1.6;
-  border:1px solid var(--line);
-  border-radius:6px;background:var(--white);
-  color:var(--ink);
-  transition:border-color .2s,box-shadow .2s;
-}
-.form-group input:hover,
-.form-group select:hover,
-.form-group textarea:hover{border-color:var(--line-2);}
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus{
-  outline:none;
-  border-color:var(--electric);
-  box-shadow:0 0 0 3px rgba(0,94,255,.12);
-}
-.form-group input::placeholder,
-.form-group textarea::placeholder{color:#9AA7B8;}
-.form-group textarea{resize:vertical;min-height:130px;}
-.form-group select{appearance:none;cursor:pointer;}
-.select-wrapper{position:relative;}
-.select-wrapper::after{
-  content:'';position:absolute;right:16px;top:50%;
-  transform:translateY(-50%);
-  width:0;height:0;
-  border-left:5px solid transparent;
-  border-right:5px solid transparent;
-  border-top:6px solid var(--slate);
-  pointer-events:none;
-}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
-.form-checkbox{display:flex;align-items:flex-start;gap:11px;margin:6px 0 8px;}
-.form-checkbox input[type="checkbox"]{width:18px;height:18px;margin-top:3px;accent-color:var(--electric);flex-shrink:0;}
-.form-checkbox label{font-size:13.5px;color:var(--slate);line-height:1.7;}
-.form-checkbox label a{color:var(--electric);text-decoration:none;font-weight:600;}
-.form-checkbox label a:hover{text-decoration:underline;}
-
-/* ===== INLINE VALIDATION ===== */
-.form-group.invalid input,.form-group.invalid select,.form-group.invalid textarea{border-color:#E5484D;box-shadow:0 0 0 3px rgba(229,72,77,.10);}
-.field-error{display:none;color:#E5484D;font-size:12.5px;margin-top:7px;line-height:1.5;}
-.form-group.invalid .field-error{display:block;}
-
-/* ===== REASSURANCE MICROCOPY ===== */
-.reassure{list-style:none;margin:24px 0 22px;padding:22px 24px;background:var(--white);border:1px solid var(--line);border-radius:6px;}
-.reassure li{display:flex;align-items:flex-start;gap:11px;font-size:13.5px;color:#28313f;line-height:1.7;padding:5px 0;}
-.reassure li svg{flex-shrink:0;margin-top:4px;color:var(--electric);}
-.reassure li strong{color:var(--ink);font-weight:600;}
-
-.btn-submit{
-  display:flex;align-items:center;justify-content:center;
-  gap:10px;width:100%;padding:17px;
-  background:var(--electric);color:var(--paper);
-  font-family:var(--jp);font-size:15.5px;font-weight:600;border:none;
-  border-radius:6px;cursor:pointer;
-  transition:background .25s,transform .25s;
-}
-.btn-submit:hover{background:var(--electric-dark);transform:translateY(-1px);}
-.btn-submit:active{transform:translateY(0);}
-.btn-submit svg{width:20px;height:20px;}
-
-/* ===== SIDEBAR ===== */
-.sidebar-card{background:var(--white);border:1px solid var(--line);border-radius:6px;padding:30px 30px 26px;margin-bottom:22px;}
-.sidebar-card .rb-kind{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);padding-left:12px;border-left:3px solid var(--electric);display:inline-block;margin-bottom:14px;}
-.sidebar-card h3{font-family:var(--jp);font-weight:700;font-size:19px;line-height:1.5;margin-bottom:14px;letter-spacing:-.01em;}
-.sidebar-card p{font-size:14px;color:var(--slate);line-height:1.9;margin-bottom:14px;}
-.sidebar-card p:last-child{margin-bottom:0;}
-.sidebar-card ul{list-style:none;}
-.sidebar-card ul li{font-size:13.5px;color:#28313f;line-height:1.8;padding:9px 0;border-bottom:1px solid var(--line);display:flex;align-items:flex-start;gap:11px;}
-.sidebar-card ul li:last-child{border-bottom:none;}
-.sidebar-card ul li svg{flex-shrink:0;margin-top:5px;color:var(--electric);}
-.sidebar-meta{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--slate);line-height:1.9;}
-.sidebar-meta strong{color:var(--ink);font-weight:600;}
-.wp-contents{display:flex;flex-direction:column;gap:11px;margin-top:16px;}
-.wp-contents .wp-item{display:flex;align-items:flex-start;gap:11px;font-size:13.5px;color:var(--ink);font-weight:500;line-height:1.6;}
-.wp-contents .wp-item svg{flex-shrink:0;margin-top:4px;color:var(--electric);}
-
-/* ===== THANK YOU (hidden by default) ===== */
-.thank-you{display:none;text-align:center;padding:72px 40px;background:var(--white);border-radius:8px;border:1px solid var(--line);}
-.thank-you.show{display:block;}
-.thank-you .check-icon{width:76px;height:76px;border-radius:50%;background:rgba(0,94,255,.08);display:inline-flex;align-items:center;justify-content:center;margin-bottom:24px;}
-.thank-you .check-icon svg{width:38px;height:38px;color:var(--electric);}
-.thank-you h2{font-family:var(--jp);font-weight:700;font-size:24px;margin-bottom:14px;letter-spacing:-.01em;}
-.thank-you p{font-size:15px;color:var(--slate);line-height:1.9;margin-bottom:32px;max-width:46ch;margin-left:auto;margin-right:auto;}
-.thank-you .dl-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;background:var(--electric);color:var(--paper);font-family:var(--jp);font-size:15px;font-weight:600;border-radius:6px;text-decoration:none;transition:background .25s,transform .25s;margin-bottom:8px;}
-.thank-you .dl-btn:hover{background:var(--electric-dark);transform:translateY(-1px);}
-.thank-you .back-link{display:block;font-size:13px;color:var(--electric);text-decoration:none;margin-top:18px;font-weight:600;}
-.thank-you .back-link:hover{text-decoration:underline;}
-
-/* ===== BOOKING CTA (Google カレンダー予約) ===== */
-.book-cta{border:1px solid var(--line-2);border-radius:12px;background:var(--white);padding:30px 34px;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;margin-bottom:16px;box-shadow:0 18px 40px -30px rgba(13,17,23,.4);}
-.book-cta .bk-ey{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);}
-.book-cta h2{font-family:var(--jp);font-weight:700;font-size:clamp(20px,2.6vw,26px);line-height:1.45;letter-spacing:-.01em;margin-top:10px;}
-.book-cta p{font-size:14.5px;color:var(--slate);line-height:1.9;margin-top:10px;max-width:56ch;}
-.book-or{text-align:center;font-size:13px;color:var(--slate);margin:4px 0 38px;}
-@media(max-width:560px){.book-cta{grid-template-columns:1fr;gap:18px;padding:26px;}}
-
-/* ===== FOOTER ===== */
-footer{background:var(--white);border-top:1px solid var(--line);padding:64px 0 40px;}
-.footer-inner{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;}
-.footer-brand .logo{font-family:var(--en);font-size:19px;font-weight:700;color:var(--ink);}
-.footer-brand .logo i{font-style:normal;color:var(--electric);}
-.footer-brand p{font-size:13px;color:var(--slate);line-height:1.7;margin-top:12px;}
-.footer-brand .x{display:inline-flex;align-items:center;gap:7px;margin-top:16px;font-size:13px;font-weight:600;color:var(--slate);text-decoration:none;}
-.footer-brand .x:hover{color:var(--electric);}
-.footer-col h4{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:16px;}
-.footer-col a{display:block;font-size:13px;color:var(--slate);text-decoration:none;margin-bottom:10px;}
-.footer-col a:hover{color:var(--electric);}
-.footer-col p{font-size:13px;color:var(--slate);line-height:1.7;margin-top:12px;}
-.copyright{text-align:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-family:var(--en);font-size:12px;color:var(--slate);}
-
-/* ===== focus visibility (keyboard) ===== */
-a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--electric);outline-offset:3px;border-radius:3px;}
-:focus:not(:focus-visible){outline:none;}
-
-/* ===== reduced motion ===== */
-@media (prefers-reduced-motion: reduce){
-  html{scroll-behavior:auto;}
-  *{animation-duration:.001ms!important;transition-duration:.001ms!important;}
-}
-
-/* ===== custom scrollbar ===== */
-@media (pointer:fine){
-  *{scrollbar-width:thin;scrollbar-color:#c3ccd8 transparent;}
-  ::-webkit-scrollbar{width:12px;height:12px;}
-  ::-webkit-scrollbar-thumb{background:#c3ccd8;border-radius:10px;border:3px solid var(--paper);}
-  ::-webkit-scrollbar-thumb:hover{background:#9aa7b8;}
-  ::-webkit-scrollbar-track{background:transparent;}
-}
-
-/* ===== RESPONSIVE ===== */
-@media(max-width:1000px){
-  .footer-inner{grid-template-columns:1fr 1fr;gap:32px;}
-}
-@media(max-width:860px){
-  nav ul{display:none;}
-  nav .nav-cta{padding:8px 14px;font-size:12.5px;}nav .nav-cta .full{display:none;}nav .nav-cta .short{display:inline;}
-  nav .lang{display:none;}
-  .hamb{display:block;}
-  .contact-layout{grid-template-columns:1fr;gap:48px;}
-  .page-header{padding:118px 0 48px;}
-}
-@media(max-width:560px){
-  .container{padding:0 22px;}
-  nav{padding:0 10px 0 18px;height:60px;}
-  .mmenu{top:60px;}
-  .contact-section{padding:48px 0 80px;}
-  .form-row{grid-template-columns:1fr;gap:0;}
-  .sidebar-card{padding:26px;}
-  .thank-you{padding:56px 22px;}
-  .form-group input,.form-group select,.form-group textarea{font-size:16px;}
-  .footer-inner{grid-template-columns:1fr;gap:32px;}
-}
-@media(max-width:600px){
-  footer a{display:inline-block;padding-top:7px;padding-bottom:7px;}
+@media (max-width: 760px) {
+  .ct { padding: 56px 0 80px; }
+  .book { grid-template-columns: 1fr; gap: 20px; padding: 28px 22px; }
+  .book h2 { font-size: 22px; }
+  .book-or { font-size: 18px; margin: 40px 0 28px; padding-top: 28px; }
+  .form-row { grid-template-columns: 1fr; gap: 0; }
+  .form-group input, .form-group select, .form-group textarea { font-size: 16px; }
+  .sidebar-card { padding: 26px 22px; }
 }
 </style>
 <!-- Meta Pixel Code -->
@@ -300,53 +122,34 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="nav">
-  <a href="index.html" class="logo">Tech<i>Worker</i></a>
-  <ul>
-    <li><a href="index.html">ホーム</a></li>
-    <li><a href="services.html">サービス</a></li>
-    <li><a href="cases.html">実績</a></li>
-    <li><a href="media/">メディア</a></li>
-    <li><a href="library/">資料</a></li>
-    <li><a href="news.html">ニュース</a></li>
-    <li><a href="company.html">会社概要</a></li>
-  </ul>
-  <div class="nav-right">
-    <a href="contact.html" class="nav-cta"><span class="full">無料相談</span><span class="short">相談</span></a>
-    <span class="lang"><span class="cur">JP</span> / <a href="en/contact.html">EN</a></span>
-    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
-  </div>
-</nav>
-
-<!-- MOBILE MENU -->
-<div class="mmenu" id="mmenu" aria-hidden="true">
-  <a href="index.html">ホーム</a>
-  <a href="services.html">サービス</a>
-  <a href="cases.html">実績</a>
-  <a href="media/">メディア</a>
-  <a href="library/">資料ダウンロード</a>
-  <a href="news.html">ニュース</a>
-  <a href="company.html">会社概要</a>
-  <a href="contact.html" class="m-cta">無料相談を申し込む</a>
-  <a href="en/contact.html" class="m-lang">English ↗</a>
-</div>
+<header class="hd">
+  <a class="logo" href="/" aria-label="TechWorker ホーム">Tech<i>Worker</i></a>
+  <nav id="hd-nav" aria-label="主な行き先">
+    <a href="/services">事業・サービス</a>
+    <a href="/#concept">考え方</a>
+    <a href="/agent-cases/">事例</a>
+    <a href="/news">ニュース</a>
+    <a href="/company">会社情報</a>
+    <a href="/contact" aria-current="page">お問い合わせ</a>
+  </nav>
+  <button class="menu" type="button" aria-label="メニューを開く" aria-controls="hd-nav" aria-expanded="false"></button>
+</header>
 
 <main>
-
-<!-- PAGE HEADER -->
-<section class="page-header">
-  <div class="container">
-    <span class="tag">Contact <span>お問い合わせ</span></span>
-    <h1>まずは、お話を聞かせてください。</h1>
-    <p>無料相談・資料請求を承っております。<strong>検討段階のご相談だけでも歓迎です。</strong>必要な項目は4つだけ。1分ほどでお送りいただけます。</p>
+<section class="ph" style="--ph-pos: 0 20%;">
+  <picture class="screen" aria-hidden="true">
+    <source media="(max-width: 760px)" srcset="/assets/top/bg-map-sp.jpg">
+    <img src="/assets/top/bg-map.jpg" alt="">
+  </picture>
+  <div class="wrap ph__in">
+    <h1>お問い合わせ</h1>
+    <p>無料相談・資料請求を承っております。検討段階のご相談だけでも歓迎です。</p>
   </div>
 </section>
 
-<!-- CONTACT FORM -->
-<section class="contact-section">
-  <div class="container">
-    <div class="book-cta">
+<section class="ct">
+  <div class="wrap">
+    <div class="book">
       <div>
         <div class="bk-ey">最短ルート ・ オンライン30分 ・ 無料</div>
         <h2>日程をその場で選んで、相談を予約する</h2>
@@ -354,16 +157,11 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
       </div>
       <a href="https://calendar.app.google/ETTj3WQZZ8qJCSfu6" target="_blank" rel="noopener" class="btn" style="white-space:nowrap;" onclick="try{if(typeof fbq==='function')fbq('track','Lead',{content_name:'booking'});if(typeof gtag==='function')gtag('event','generate_lead',{inquiry_type:'booking',source:'HP本体'});}catch(e){}">日程を選んで予約する <i>&rarr;</i></a>
     </div>
-    <div class="book-proof" style="display:flex;flex-wrap:wrap;align-items:center;gap:9px 16px;margin:0 0 16px;padding:13px 18px;border:1px solid var(--line);border-radius:10px;background:var(--white);font-size:13px;color:var(--slate);line-height:1.7;">
-      <span style="font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--electric);">Trusted by</span>
-      <span><strong style="color:var(--ink);">さくらインターネット株式会社</strong> ほか、上場企業を含む <strong style="color:var(--ink);">45社・2,500名</strong> の生成AI活用を支援</span>
-    </div>
-    <div class="book-or">または、下のフォームから（資料請求・取材・その他のご相談も）</div>
+    <p class="proof"><strong>さくらインターネット株式会社</strong> ほか、上場企業を含む <strong>45社・2,500名</strong> の生成AI活用を支援</p>
+    <h2 class="book-or">または、下のフォームから（資料請求・取材・その他のご相談も）</h2>
 
     <div class="contact-layout">
-      <!-- FORM -->
       <div>
-        <span class="form-section-label">Inquiry Form</span>
         <form id="contactForm" onsubmit="handleSubmit(event)">
           <input type="hidden" id="inquiryType" name="inquiry_type" value="consultation">
           <!-- ハニーポット: 人間には不可視。botが埋めるとサーバ側で破棄される -->
@@ -450,8 +248,7 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
         </div>
       </div>
 
-      <!-- SIDEBAR -->
-      <aside>
+      <aside class="side">
         <div class="sidebar-card">
           <span class="rb-kind">無料配布中</span>
           <h3>生成AI活用事例集</h3>
@@ -478,62 +275,39 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
     </div>
   </div>
 </section>
-
 </main>
 
-<!-- FOOTER -->
-<footer>
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <div class="logo">Tech<i>Worker</i></div>
-        <p>企業向け生成AIコンサルティング<br>株式会社TechWorker</p>
-        <a href="https://x.com/koutarou_furuno" target="_blank" rel="noopener noreferrer" class="x"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@koutarou_furuno</a>
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__in">
+      <div>
+        <p class="ft__name">株式会社TechWorker</p>
+        <p class="ft__addr">〒169-0051 東京都新宿区西早稲田一丁目22番3号<br>早稲田アントレプレナーシップセンター</p>
       </div>
-      <div class="footer-col">
-        <h4>サービス</h4>
-        <a href="services.html">生成AIコンサル</a>
-      </div>
-      <div class="footer-col">
-        <h4>サイト</h4>
-        <a href="media/">メディア</a>
-        <a href="news.html">ニュース</a>
-        <a href="cases.html">実績</a>
-        <a href="company.html">会社概要</a>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <a href="contact.html">無料相談</a>
-        <a href="contact.html?type=document">資料請求</a>
-        <a href="privacy.html">プライバシーポリシー</a>
-        <p>〒169-0051<br>東京都新宿区西早稲田一丁目22番3号</p>
-      </div>
+      <nav aria-label="フッターの行き先">
+        <a href="/services">事業・サービス</a>
+        <a href="/company">会社情報</a>
+        <a href="/news">ニュース</a>
+        <a href="/#concept">考え方</a>
+        <a href="/agent-cases/">事例</a>
+        <a href="/contact">お問い合わせ</a>
+        <a href="/privacy">プライバシーポリシー</a>
+      </nav>
     </div>
-    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+    <small>© TechWorker Inc.</small>
   </div>
 </footer>
 
 <script>
-/* nav shadow on scroll */
-var nav=document.getElementById('nav');
-addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>40);},{passive:true});
-
-/* mobile menu */
-(function(){
-  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
-  function setMenu(open){
-    document.body.classList.toggle('menu-open',open);
-    hamb.setAttribute('aria-expanded',open?'true':'false');
-    hamb.setAttribute('aria-label',open?'メニューを閉じる':'メニューを開く');
-    mmenu.setAttribute('aria-hidden',open?'false':'true');
-    document.body.style.overflow=open?'hidden':'';
-  }
-  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
-  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
-  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
-  matchMedia('(min-width:861px)').addEventListener('change',function(e){if(e.matches)setMenu(false);});
+// スマホの行き先：右上の釦で開け閉めする。行き先を押したら閉じる。スクロールしたら頭に暗い面を敷く
+(() => {
+  const hd = document.querySelector('.hd'), btn = hd.querySelector('.menu');
+  const set = open => { hd.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く'); };
+  btn.addEventListener('click', () => set(!hd.classList.contains('is-open')));
+  hd.querySelector('nav').addEventListener('click', e => { if (e.target.closest('a')) set(false); });
+  const onScroll = () => hd.classList.toggle('is-scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
 })();
-
 /* inquiry type handling (consultation / document / other) */
 function applyInquiryType(type){
   document.getElementById('inquiryType').value=type;
@@ -651,6 +425,5 @@ async function handleSubmit(e){
   }
 }
 </script>
-
 </body>
 </html>

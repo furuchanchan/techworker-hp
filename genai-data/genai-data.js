@@ -251,11 +251,4 @@ var LOCAL_BASE = '/genai-data-sample/';
     if (navigator.clipboard) navigator.clipboard.writeText(t).then(function () { e.target.textContent = 'コピーしました'; });
   });
 
-  var hamb = document.getElementById('hamb'), mmenu = document.getElementById('mmenu');
-  hamb.addEventListener('click', function () {
-    var open = !document.body.classList.contains('menu-open');
-    document.body.classList.toggle('menu-open', open);
-    hamb.setAttribute('aria-expanded', open ? 'true' : 'false');
-    mmenu.setAttribute('aria-hidden', open ? 'false' : 'true');
-  });
 })();
