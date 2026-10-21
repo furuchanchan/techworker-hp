@@ -186,4 +186,66 @@ html[lang="en"] .pager-date { margin-top: 4px; font: 400 13px/1.4 var(--f-gill);
   html[lang="en"] .art-cta { flex-direction: column; align-items: flex-start; padding: 28px 22px; gap: 20px; }
   html[lang="en"] .pager { grid-template-columns: 1fr; gap: 0; }
   html[lang="en"] .pager-next { text-align: left; border-top: 1px solid var(--line); }
+/* 記事・事例・資料のページ（2026-10-20 追加）
+ * 頭の下に暗いページの頭が無いページは、頭に最初から暗い面を敷く */
+.hd--solid { background: rgba(13, 17, 23, .94); box-shadow: 0 1px 0 rgba(244, 246, 249, .08); }
+/* メディアのページの2段目：ラボの名前と、その行き先 */
+.subnav { margin-top: 80px; background: var(--paper); border-bottom: 1px solid var(--line); }
+.subnav__in { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 60px; }
+.subnav__name { font: 400 19px/1.4 var(--f-min); letter-spacing: .06em; white-space: nowrap; }
+.subnav nav { display: flex; align-items: center; gap: 28px; font-size: 13px; font-weight: 700; letter-spacing: .08em; }
+.subnav nav a { white-space: nowrap; }
+.subnav nav a:hover { color: var(--gold-a); }
+.subnav nav .subnav__cta { padding: 9px 18px; background: var(--gold); color: var(--paper); }
+.subnav nav .subnav__cta:hover { color: var(--paper); filter: brightness(1.08); }
+/* 足の断り書き（商標など） */
+.ft__note { margin-top: 32px; max-width: 760px; font-size: 11.5px; line-height: 1.9; color: var(--mute); }
+@media (max-width: 760px) {
+  .subnav { margin-top: 64px; }
+  .subnav__in { min-height: 52px; gap: 16px; }
+  .subnav__name { font-size: 16px; }
+  .subnav nav a:not(.subnav__cta) { display: none; }
+  .subnav nav .subnav__cta { padding: 8px 14px; font-size: 12px; }
+}
+
+/* 記事のページの見出し：トップと同じ明朝400。本文は游ゴシックのまま */
+.art-head h1, .art-body h2, .article-page .art-head h1, .article-page .art-body h2, .hero-document-sheet strong, .hero-programs-head, .hero-program strong, .hero-event-copy strong, .idx-head h1, .jz-hero h1, .av-hero h1, .av-ihero h1, .ac-head h1, .art-cta h3, .ac-cta h2 {
+  font-family: var(--f-min); font-weight: 400; letter-spacing: .04em;
+}
+.art-head h1 { line-height: 1.5; }
+.art-body h2 { line-height: 1.6; }
+/* 帯の下は、頭の高さの分の余白を持たない */
+.subnav ~ .art-head, .subnav ~ .av-hero, .subnav ~ main .av-ihero, .subnav ~ main .jz-hero, .subnav ~ main .idx-head, .subnav ~ .idx-head { padding-top: 56px; }
+@media (max-width: 760px) {
+  .subnav ~ .art-head, .subnav ~ .av-hero, .subnav ~ main .av-ihero, .subnav ~ main .jz-hero, .subnav ~ main .idx-head, .subnav ~ .idx-head { padding-top: 36px; }
+}
+/* 英字の小さな飾り見出しは使わない：共有の札は消し、「Related」は日本語にする */
+.a-share-label, .hero-kicker { display: none; }
+.related .rl-h { font-size: 0; letter-spacing: 0; }
+.related .rl-h::before { content: "関連する記事"; font: 400 22px/1.4 var(--f-min); letter-spacing: .06em; color: var(--ink); }
+/* 一覧と絵の中の英字の札（AI Security・Week 1・PROGRAM 01 など）も出さない */
+.jz-hero .kicker, .idx-head .kicker, .av-kicker, .ct-en, .kn-stamp, .sj-stamp, .hero-program b, .hero-event-copy small { display: none; }
+.ph .ph__meta { margin-top: 10px; font-size: 12.5px; }
+.ph .ph__meta span + span { margin-left: 18px; }
+/* 色の地の帯（事例の最後の相談）は、トップの最後の帯と同じ暗い面にする */
+.ac-cta { position: relative; overflow: hidden; background: var(--ink); color: var(--on-dark); }
+.ac-cta::before { content: ""; position: absolute; inset: 0; background: url(/assets/top/cta-map.jpg) 50% 50% / cover; filter: grayscale(1) invert(1) brightness(.9); opacity: .22; }
+.ac-cta .inner { position: relative; }
+.ac-cta .btn { background: var(--gold); color: var(--paper); border-radius: 0; }
+/* 色の地の箱は暗い面にする。釦は角を立てる */
+.ac-result h2, .final, aside.map { background: var(--ink); color: var(--on-dark); }
+.btn { border-radius: 0; }
+/* 一覧のページ：ページの頭のすぐ下に余白を置く。文の多い頭は高さを文に合わせる */
+.ph + .ac-filter { margin-top: 64px; }
+.ph + main.mh-wrap, .ph + main.container { padding-top: 72px; }
+.ph--tall { height: auto; max-height: none; }
+.ph--tall .ph__in { padding-top: 150px; }
+@media (max-width: 760px) {
+  .ph + .ac-filter { margin-top: 40px; }
+  .ph + main.mh-wrap, .ph + main.container { padding-top: 44px; }
+  .ph--tall .ph__in { padding-top: 110px; }
+}
+.subnav button.subnav__cta { border: 0; font: inherit; cursor: pointer; }
+@media print {
+  .hd, .subnav, .ft { display: none; }
 }

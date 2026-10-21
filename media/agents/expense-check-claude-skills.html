@@ -32,34 +32,31 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="経費精算の申請を規程どおりに点検するエージェント｜Claudeでの作り方 — エージェント保管庫">
 <meta name="twitter:image" content="https://techworker.co.jp/media/agents/covers/expense-check-claude-skills.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/media/article.css?v=20261006-source-notes">
 <link rel="stylesheet" href="/media/agents/vault.css?v=20261016-vault">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "経費精算の申請を規程どおりに点検するエージェント｜Claudeでの作り方", "description": "経費精算システムから書き出した申請の一覧を、当社の経費規程に照らして1件ずつ点検し、確かめが要る申請と理由を一覧にします。経理担当者は一覧の申請から順に確かめられます。", "datePublished": "2026-10-16", "dateModified": "2026-10-16", "inLanguage": "ja", "image": "https://techworker.co.jp/media/agents/covers/expense-check-claude-skills.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/agents/expense-check-claude-skills"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "エージェント保管庫", "item": "https://techworker.co.jp/media/agents/"}, {"@type": "ListItem", "position": 4, "name": "経費精算の申請を規程どおりに点検するエージェント", "item": "https://techworker.co.jp/media/agents/expense-check-claude-skills"}]}</script>
+<link rel="stylesheet" href="/assets/site/site.css">
 </head>
 <body>
 <div class="progress" id="progress"></div>
-<nav id="nav">
-  <a href="/media/agents/" class="logo">エージェント<i>保管庫</i></a>
-  <ul>
-    <li><a href="/media/agents/#list">一覧</a></li>
-    <li><a href="/media/agents/#format">1件の読み方</a></li>
-    <li><a href="/media/">メディア</a></li>
-  </ul>
-  <div class="nav-right">
-    <a href="https://kenshu.techworker.co.jp/contact/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_content=nav" class="nav-cta"><span class="full">研修の相談</span><span class="short">相談</span></a>
-    <button class="hamb" id="hamb" aria-label="メニューを開く" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+<header class="hd hd--solid">
+  <a class="logo" href="/" aria-label="TechWorker ホーム">Tech<i>Worker</i></a>
+  <nav id="hd-nav" aria-label="主な行き先">
+    <a href="/services">事業・サービス</a>
+    <a href="/#concept">考え方</a>
+    <a href="/agent-cases/">事例</a>
+    <a href="/news">ニュース</a>
+    <a href="/company">会社情報</a>
+    <a href="/contact">お問い合わせ</a>
+  </nav>
+  <button class="menu" type="button" aria-label="メニューを開く" aria-controls="hd-nav" aria-expanded="false"></button>
+</header>
+<div class="subnav">
+  <div class="wrap subnav__in">
+    <a class="subnav__name" href="/media/agents/">エージェント保管庫</a>
+    <nav aria-label="メディアの行き先"><a href="/media/agents/#list">一覧</a><a href="/media/agents/#format">1件の読み方</a><a href="/media/">メディア</a><a href="https://kenshu.techworker.co.jp/contact/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_content=nav" class="subnav__cta">研修の相談</a></nav>
   </div>
-</nav>
-<div class="mmenu" id="mmenu" aria-hidden="true">
-  <a href="/media/agents/#list">エージェントの一覧</a>
-  <a href="/media/agents/#format">1件の読み方</a>
-  <a href="/media/">TechWorker Media</a>
-  <a href="https://kenshu.techworker.co.jp/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_content=menu">研修のご案内</a>
-  <a href="https://kenshu.techworker.co.jp/contact/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_content=menu" class="m-cta">研修の相談をする</a>
 </div>
 <header class="av-hero">
   <nav class="crumb" aria-label="パンくず"><a href="/">ホーム</a><span class="sep">/</span><a href="/media/">メディア</a><span class="sep">/</span><a href="/media/agents/">エージェント保管庫</a></nav>
@@ -201,33 +198,39 @@ description: 経費精算の申請を当社の経費規程で点検し、確か�
 
 <section class="av-related"><div class="av-wrap"><h2>ほかのエージェント</h2><div class="av-grid"><a class="av-card" href="/media/agents/monthly-budget-variance-memo-claude" data-dept="経理" data-prod="Claude"><div class="av-card-vis"><div class="av-card-top"><span class="av-prod"><img src="/assets/copilot/ai-tools/claude.svg" alt="" width="20" height="20">Claude</span><span class="av-dept">経理</span></div><div class="av-mf" aria-hidden="true"><span class="mf-box"><b>受け取る</b><span class="mf-t">対象の月とメモを読む人を書いた依頼の文、作業フォルダーに置いたその月の実績、前月の実績、年度の予算</span></span><i class="mf-arr"></i><span class="mf-box mf-ai"><img src="/assets/copilot/ai-tools/claude.svg" alt="" width="18" height="18"><b>エージェント</b><span class="mf-t">Cowork のプロジェクト</span></span><i class="mf-arr"></i><span class="mf-box"><b>返す</b><span class="mf-t">05_出力フォルダーに置く差異一覧表（Excel）と説明メモの下書き（Word）、チャットで返す「確かめてほしい所」の一覧</span></span><i class="mf-arr"></i><span class="mf-box mf-human"><b>人が確かめる</b><span class="mf-t">数字が元データと合っているか、差の理由が正しいか、メモを経営会議に出すかどうかは、経理担当と経理課長が確かめて決めます。</span></span></div></div><div class="av-card-b"><span class="av-card-t">月次の実績と予算の差を説明するメモを下書きするエージェント</span><span class="av-card-s">月次の実績と予算を作業フォルダーから読み、基準を超えた差のある科目を選んで説明メモを下書きします。理由は部門の補足と明細から書き、読み取れない所は確かめる所として残します。</span><span class="av-card-m"><span>作る時間 半日ほど</span><span>慣れてきたら</span><span>2026.10.20</span></span></div></a><a class="av-card" href="/media/agents/nda-review-claude-projects" data-dept="法務" data-prod="Claude"><div class="av-card-vis"><div class="av-card-top"><span class="av-prod"><img src="/assets/copilot/ai-tools/claude.svg" alt="" width="20" height="20">Claude</span><span class="av-dept">法務</span></div><div class="av-mf" aria-hidden="true"><span class="mf-box"><b>受け取る</b><span class="mf-t">相手方の秘密保持契約の本文（Word か PDF）と、依頼部署、取引の目的、開示する情報の種類</span></span><i class="mf-arr"></i><span class="mf-box mf-ai"><img src="/assets/copilot/ai-tools/claude.svg" alt="" width="18" height="18"><b>エージェント</b><span class="mf-t">プロジェクト</span></span><i class="mf-arr"></i><span class="mf-box"><b>返す</b><span class="mf-t">上長確認の要否、重要度の高い指摘の数、条項ごとの指摘と修正案の表、相手方へのコメント文案</span></span><i class="mf-arr"></i><span class="mf-box mf-human"><b>人が確かめる</b><span class="mf-t">指摘を採るかどうか、相手方に何を求めるか、契約を受け入れてよいかは法務担当者が決めます。</span></span></div></div><div class="av-card-b"><span class="av-card-t">秘密保持契約を自社の基準で読むエージェント</span><span class="av-card-s">相手方から届いた秘密保持契約を、当社の審査基準とひな形に照らして読み、条項ごとの指摘と修正案の下書きを作ります。法務担当者は下書きを確かめて判断するところから始められます。</span><span class="av-card-m"><span>作る時間 半日ほど</span><span>はじめて</span><span>2026.10.16</span></span></div></a><a class="av-card" href="/media/agents/meeting-decisions-action-items-claude-tag" data-dept="全部署" data-prod="Claude"><div class="av-card-vis"><div class="av-card-top"><span class="av-prod"><img src="/assets/copilot/ai-tools/claude.svg" alt="" width="20" height="20">Claude</span><span class="av-dept">全部署</span></div><div class="av-mf" aria-hidden="true"><span class="mf-box"><b>受け取る</b><span class="mf-t">録音アプリか担当者がチャンネルに投稿した会議の文字起こし（@Claude つき）、会議名と日付、スレッドでの訂正や起票の依頼</span></span><i class="mf-arr"></i><span class="mf-box mf-ai"><img src="/assets/copilot/ai-tools/claude.svg" alt="" width="18" height="18"><b>エージェント</b><span class="mf-t">Claude Tag（Slack）</span></span><i class="mf-arr"></i><span class="mf-box"><b>返す</b><span class="mf-t">文字起こしの投稿のスレッドへの返信（会議の情報、決定事項、担当者と期限と根拠つきの宿題、持ち越し、確かめたいこと）と、頼まれたときに起票した課題のリンク</span></span><i class="mf-arr"></i><span class="mf-box mf-human"><b>人が確かめる</b><span class="mf-t">会議の主催者と出席者が、決定事項と宿題の担当者と期限を文字起こしと照らして確かめ、起票するかどうかを決めます。</span></span></div></div><div class="av-card-b"><span class="av-card-t">会議の文字起こしから決定事項と宿題をまとめるエージェント</span><span class="av-card-s">Slack のチャンネルに投稿された会議の文字起こしを Claude が読み、決定事項と宿題を担当者と期限つきでスレッドに返します。出席者が返信で直し、確かめた宿題だけを課題管理に起票します。</span><span class="av-card-m"><span>作る時間 半日ほど</span><span>情報システム部門と一緒に</span><span>2026.10.16</span></span></div></a></div><a class="av-more" href="/media/agents/#list">保管庫の一覧に戻る <span aria-hidden="true">→</span></a></div></section>
 
-<footer>
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <div class="logo">エージェント<i>保管庫</i></div>
-        <p>業務ごとのAIエージェントの作り方をまとめた見本帳。<span class="pub">発行：<a href="/">株式会社TechWorker</a></span></p>
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__in">
+      <div>
+        <p class="ft__name">株式会社TechWorker</p>
+        <p class="ft__addr">〒169-0051 東京都新宿区西早稲田一丁目22番3号<br>早稲田アントレプレナーシップセンター</p>
       </div>
-      <div class="footer-col"><h4>エージェント保管庫</h4><a href="/media/agents/#list">一覧</a><a href="/media/agents/#format">1件の読み方</a></div>
-      <div class="footer-col"><h4>TechWorker Media</h4><a href="/media/kenshu/">AI研修・導入ラボ</a><a href="/media/security/">AIセキュリティ・ラボ</a><a href="/media/gyomuzu/">業務図ラボ</a></div>
-      <div class="footer-col"><h4>運営会社</h4><a href="https://kenshu.techworker.co.jp/">生成AI研修</a><a href="/company.html">会社概要</a><a href="/privacy.html">プライバシーポリシー</a></div>
+      <nav aria-label="フッターの行き先">
+        <a href="/services">事業・サービス</a>
+        <a href="/company">会社情報</a>
+        <a href="/news">ニュース</a>
+        <a href="/#concept">考え方</a>
+        <a href="/agent-cases/">事例</a>
+        <a href="/contact">お問い合わせ</a>
+        <a href="/privacy">プライバシーポリシー</a>
+      </nav>
     </div>
-    <p class="av-legal">Microsoft、Microsoft 365、Copilot は Microsoft グループの商標です。Claude は Anthropic の商標です。Gemini は Google LLC の商標です。TechWorker は各社と提携していません。画面や機能は変わることがあります。最新の情報は各社の公式ページでご確認ください。</p>
-    <p class="copyright">© 2026 TechWorker Inc. All rights reserved.</p>
+    <p class="ft__note">Microsoft、Microsoft 365、Copilot は Microsoft グループの商標です。Claude は Anthropic の商標です。Gemini は Google LLC の商標です。TechWorker は各社と提携していません。画面や機能は変わることがあります。最新の情報は各社の公式ページでご確認ください。</p>
+    <small>© TechWorker Inc.</small>
   </div>
 </footer>
-<script>
-var nav=document.getElementById('nav');
-addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);},{passive:true});
-(function(){
-  var hamb=document.getElementById('hamb'),mmenu=document.getElementById('mmenu');
-  function setMenu(o){document.body.classList.toggle('menu-open',o);hamb.setAttribute('aria-expanded',o?'true':'false');mmenu.setAttribute('aria-hidden',o?'false':'true');document.body.style.overflow=o?'hidden':'';}
-  hamb.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'));});
-  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
-  addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open'))setMenu(false);});
-})();
-</script>
 <script src="/media/agents/vault.js?v=20261016-vault" defer></script>
 <script src="/media/article-tracker.js?v=20261006-media-home" defer></script>
+<script>
+// スマホの行き先：右上の釦で開け閉めする。行き先を押したら閉じる。スクロールしたら頭に暗い面を敷く
+(() => {
+  const hd = document.querySelector('.hd'), btn = hd.querySelector('.menu');
+  const set = open => { hd.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く'); };
+  btn.addEventListener('click', () => set(!hd.classList.contains('is-open')));
+  hd.querySelector('nav').addEventListener('click', e => { if (e.target.closest('a')) set(false); });
+  const onScroll = () => hd.classList.toggle('is-scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+})();
+</script>
 </body>
 </html>
