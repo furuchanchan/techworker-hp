@@ -1,0 +1,123 @@
+/* 効果の試算（/companymap/sim、2026-10-22）。主役は積み上がる効果のグラフ。サイトは白黒なので、色は墨（AIが引き受ける作業）と薄い灰（聞く・待つ時間の減り）の2つだけ */
+.simsec{--k1:#0B0B0C;--k2:#B4B4BA;padding:40px 0 0}
+.simh .kick{display:block}
+.simh h1{font-size:40px;line-height:1.35;letter-spacing:-.04em;font-weight:900;margin-top:10px}
+.simh p{font-size:16px;color:var(--ink-2);line-height:1.9;margin-top:12px;font-weight:500;max-width:48em}
+.simhero{margin-top:28px;border:1px solid var(--line-2);border-radius:16px;background:#fff;padding:30px 36px 22px}
+.shead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 32px}
+.sk{font-weight:700;font-size:20px;line-height:1.5}
+.sk b{font-weight:900}
+.snum{display:flex;white-space:nowrap;align-items:baseline;gap:4px;line-height:1;margin-top:8px;color:var(--ink)}
+.snum .plus{font-size:56px;font-weight:800;font-family:var(--en)}
+.snum b{font-size:104px;font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums;font-family:var(--en)}
+.snum .u{font-size:40px;font-weight:900}
+.ssub{margin-top:12px;font-weight:700;font-size:17px;color:var(--ink-2)}
+.ssub b{color:var(--ink);font-weight:900;font-size:19px;font-variant-numeric:tabular-nums}
+.srng{margin-top:6px;font-size:15px;font-weight:700;color:var(--mute)}
+.srng b{color:var(--ink-2);font-variant-numeric:tabular-nums}
+.sctl{display:flex;flex-wrap:wrap;gap:10px}
+.sseg{display:flex;border:1.5px solid var(--ink);border-radius:999px;padding:3px}
+.sseg button{font:700 16px var(--jp);border:0;background:transparent;color:var(--ink);border-radius:999px;padding:8px 20px;cursor:pointer;min-height:40px}
+.sseg button[aria-pressed=true]{background:var(--ink);color:#fff}
+.slegend{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:22px;font-size:14px;font-weight:700;color:var(--ink-2);list-style:none}
+.slegend li,.stip span{display:flex;align-items:center;gap:8px}
+.slegend i,.stip i{width:14px;height:14px;border-radius:3px;flex:none}
+.k1{background:var(--k1)}.k2{background:var(--k2)}
+.slegend i.kd,.stip i.kd{height:0;border-radius:0;border-top:2.5px dashed var(--mute)}
+.schart{position:relative;margin-top:8px;touch-action:pan-y}
+.schart svg{display:block;width:100%;overflow:visible}
+.schart .gd{stroke:#ebebee;stroke-width:1}
+.schart .g0{stroke:var(--ink);stroke-width:1.5}
+.schart .ty,.schart .tx{font:500 12.5px var(--jp);fill:var(--mute)}
+.schart .a1{fill:var(--k1);opacity:.92}
+.schart .a2{fill:var(--k2);opacity:.4}
+.schart .l1{fill:none;stroke:#fff;stroke-width:2}
+.schart .ld{fill:none;stroke:var(--mute);stroke-width:2;stroke-dasharray:6 5}
+.schart .pv.sub{font-size:13px;fill:var(--ink-2);font-weight:700}
+.schart .l2{fill:none;stroke:var(--ink);stroke-width:3;stroke-linejoin:round}
+.schart .pt{fill:var(--ink);stroke:#fff;stroke-width:2.5}
+.schart .pv{font:800 14px var(--en);fill:var(--ink)}
+.schart .pv.end{font-size:15.5px}
+.schart .cx{stroke:var(--ink);stroke-width:1;stroke-dasharray:3 3}
+.stip{position:absolute;pointer-events:none;background:#fff;border:1px solid var(--line-2);border-radius:10px;box-shadow:0 8px 20px -10px rgba(0,0,0,.35);padding:10px 14px;font-size:13.5px;line-height:1.6;display:grid;gap:2px;white-space:nowrap}
+.stip[hidden]{display:none}
+.stip b{font-weight:900;font-size:14.5px}
+.snote1{margin-top:6px;font-size:13px;color:var(--mute)}
+/* 入力：スライダーと数字の箱 */
+.simf{margin-top:44px}
+.simf h2{font-size:24px;letter-spacing:-.03em}
+.simf .sh2{font-size:15px;color:var(--ink-2);margin-top:4px}
+.smore{margin-top:28px;border-top:1px solid var(--line);padding-top:16px}
+.smore summary{cursor:pointer;font-weight:700;font-size:16px;list-style:none;display:flex;align-items:center;gap:8px;min-height:44px}
+.smore summary::-webkit-details-marker{display:none}
+.smore summary::before{content:'＋';font-weight:900}
+.smore[open] summary::before{content:'−'}
+.smore h3{font-size:17px;margin-top:28px}
+.stw{margin-top:10px}
+.sst{border-collapse:collapse;font-size:14px;line-height:1.6;width:100%}
+.sst th,.sst td{border-bottom:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+.sst thead th{font-size:13px;color:var(--ink-2)}
+.sst tbody th{white-space:nowrap}
+.sst td:nth-child(2),.sst td:nth-child(3){white-space:nowrap;font-weight:700}
+.sgrid{margin-top:20px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px 28px}
+.ss{display:grid;gap:6px;align-content:start}
+.sl{display:flex;align-items:center;gap:8px;font-weight:700;font-size:15px}
+.sv{display:flex;align-items:baseline;gap:6px}
+.sv input{width:6.2em;height:44px;font:800 24px var(--en);border:0;border-bottom:1.5px solid var(--ink);border-radius:0;padding:0 2px;color:var(--ink);background:transparent;font-variant-numeric:tabular-nums;-moz-appearance:textfield}
+.sv input::-webkit-inner-spin-button{-webkit-appearance:none}
+.sv i{font-style:normal;font-weight:700;font-size:15px}
+.ss input[type=range]{width:100%;accent-color:#0b0b0c;height:28px;margin-top:2px}
+.ss small{font-size:12.5px;color:var(--mute);line-height:1.55}
+/* 内訳の2枚と申込 */
+.simr{margin-top:44px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
+.sres{border:1px solid var(--line-2);border-radius:12px;background:#fff;padding:22px 24px}
+.sres h3{font-size:17px;font-weight:900;line-height:1.5;letter-spacing:-.02em}
+.sres .big{margin-top:6px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.sres .big b{font-size:40px;font-weight:800;line-height:1.15;font-variant-numeric:tabular-nums;font-family:var(--en)}
+.sres .big small{font-size:15px;font-weight:700}
+.sbar{margin-top:12px;display:grid;gap:8px}
+.sbar p{display:grid;grid-template-columns:6.5em minmax(0,1fr) 5.5em;align-items:center;gap:8px;font-size:13px;font-weight:700}
+.sbar i{display:block;height:12px;border-radius:3px;background:#dcdce0;max-width:100%;transition:width .4s cubic-bezier(.32,.72,0,1)}
+.sbar .on i{background:var(--k1)}
+.sbar .on.k2{background:none}.sbar .on.k2 i{background:var(--k2)}
+.sbar em{font-style:normal;text-align:right;font-variant-numeric:tabular-nums}
+.sl3{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;list-style:none}
+.sl3 li{display:grid;gap:2px}
+.sl3 span{font-size:12.5px;color:var(--ink-2);font-weight:700}
+.sl3 b{font-size:15.5px;font-weight:900;font-variant-numeric:tabular-nums;word-break:keep-all}
+.sact{background:var(--paper-2);border-radius:12px;padding:22px;display:flex;flex-direction:column;justify-content:center;gap:14px}
+.sact p{font-weight:900;font-size:18px;line-height:1.6;letter-spacing:-.02em}
+.sact .btn{width:100%;justify-content:center}
+.swhy{margin-top:64px;padding:36px 0 96px;border-top:1px solid var(--line);max-width:820px}
+.swhy h2{font-size:26px;letter-spacing:-.03em}
+.swhy h2+p{margin-top:12px;font-size:16px;color:var(--ink-2);line-height:1.95}
+.swhy h3{font-size:17px;margin-top:28px}
+.ssrc{margin-top:8px;display:grid;gap:8px;font-size:14.5px;line-height:1.7;list-style:disc;padding-left:1.3em}
+.ssrc a{font-weight:700;white-space:nowrap;text-decoration:underline;text-underline-offset:3px}
+.snote{margin-top:16px;font-size:14px;color:var(--mute)}
+/* スマホの下の帯：スライダーを動かしている間もグラフの合計が見えるよう、合計を出す（押すとグラフへ） */
+.simmini{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);box-shadow:0 -1px 0 var(--line-2);transition:transform .25s,visibility .25s;padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
+.simmini:not(.on){transform:translateY(100%);visibility:hidden}
+.simmini a{display:flex;align-items:center;gap:8px;width:100%;text-decoration:none;font-size:13px;font-weight:700;line-height:1.2}
+.simmini span{display:flex;align-items:baseline;gap:2px;white-space:nowrap}
+.simmini .t{font-weight:900}
+.simmini b{font-size:22px;font-weight:800;font-family:var(--en);font-variant-numeric:tabular-nums}
+.simmini em{margin-left:auto;font-style:normal;background:var(--ink);color:#fff;border-radius:999px;padding:6px 12px;white-space:nowrap}
+@media(min-width:901px){.simmini{display:none}}
+@media(max-width:1023px){.sgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.simr{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.sact{grid-column:1/-1}.snum b{font-size:84px}}
+@media(max-width:900px){.simh h1{font-size:27px;line-height:1.45}.simh p{font-size:14.5px;margin-top:10px}.simhero{margin-top:20px}}
+@media(max-width:600px){
+ .simsec{padding-top:28px}
+ .simhero{padding:22px 16px 16px;border-radius:12px}
+ .sk{font-size:17px}.snum .plus{font-size:36px}.snum b{font-size:64px}.snum .u{font-size:28px}.ssub{font-size:15px}.ssub b{font-size:16px}
+ .sctl{width:100%;flex-direction:column}.sseg{width:100%}.sseg button{flex:1;padding:8px 0}
+ .schart .pv{font-size:12px}.schart .pv.end{font-size:14px}.schart .ty,.schart .tx{font-size:11px}
+ .sgrid{grid-template-columns:minmax(0,1fr);gap:18px}
+ .simr{grid-template-columns:minmax(0,1fr)}
+ .sres{padding:20px 18px}.sres .big b{font-size:36px}
+ .sl3{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.sl3 li:last-child{grid-column:1/-1}
+ .swhy{padding-bottom:72px}
+}
+@media(min-width:1024px){.simhero{display:grid;grid-template-columns:minmax(0,440px) minmax(0,1fr);gap:24px 40px;align-items:center}.shead{flex-direction:column;align-items:flex-start}.snum b{font-size:80px}.snum .plus{font-size:48px}.snum .u{font-size:34px}.slegend{flex-direction:column;margin-top:24px}.schart{margin-top:0}}
+@media(min-width:1024px) and (max-width:1199px){.simhero{grid-template-columns:minmax(0,360px) minmax(0,1fr)}.snum b{font-size:64px}}
+@media(max-width:600px){.sst thead{display:none}.sst tr{display:grid;grid-template-columns:auto auto 1fr;gap:2px 14px;padding:12px 0;border-bottom:1px solid var(--line)}.sst th,.sst td{border:0;padding:0}.sst td:last-child{grid-column:1/-1;font-size:13.5px;color:var(--ink-2)}.sst td:nth-child(2)::before{content:'任せる '}.sst td:nth-child(3)::before{content:'聞く時間 '}}
