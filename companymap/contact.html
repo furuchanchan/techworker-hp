@@ -156,6 +156,7 @@
       message:'【生成AIの導入をうまく進めたい部署】'+v('inquiry')+(v('message')?'\n【いまの課題】'+v('message'):''),
       inquiry_type:'consultation', source:'ギョウムズAI', website:v('website')
     };
+    try{var sim=sessionStorage.getItem('tw_sim');if(sim)data.message+='\n'+sim;}catch(e){}
     if(window.twIntent)Object.assign(data,twIntent());
     try{
       var res=await fetch('/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
