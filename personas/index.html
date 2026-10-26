@@ -384,6 +384,11 @@
 
   .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.in { opacity: 1; transform: none; }
+/* 足の会員バッジ（NVIDIA Inception program）。公式の画像をそのまま使い、高さだけを決める */
+.nv-badge{display:flex;align-items:center;gap:20px;margin-top:40px}
+.nv-badge img{display:block;width:auto;height:40px}
+.nv-badge p{margin:0;max-width:560px;font-size:11px;line-height:1.8;opacity:.8}
+@media(max-width:760px){.nv-badge{flex-direction:column;align-items:flex-start;gap:10px}}
 </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -808,6 +813,7 @@ seg = ds.<span class="f">filter</span>(<span class="k">lambda</span> r: r[<span 
         <a href="https://techworker.co.jp/launch-simulation/" target="_blank" rel="noopener">日本語版（生活者デジタルツイン）↗</a>
       </div>
     </div>
+    <div class="nv-badge"><a href="/news/013"><img src="/assets/badges/nvidia-inception-program.svg" alt="NVIDIA Inception Program" width="93" height="40" loading="lazy"></a><p>NVIDIA, the NVIDIA logo, and NVIDIA Inception are trademarks and/or registered trademarks of NVIDIA Corporation in the U.S. and other countries.</p></div>
     <div class="fbot">
       <span>© 2026 TechWorker Inc. — Data under CC BY 4.0</span>
       <span>Base: NVIDIA Nemotron-Personas-Japan · Grounding: e-Stat (MHLW / MIC)</span>
