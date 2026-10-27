@@ -3353,14 +3353,16 @@ Fill in the JSON below per the rules above (no comments):
         const detail = await res.text().catch(() => '');
         throw new Error(`HTTP ${res.status} ${detail}`);
       }
+      // 営業と自動判定した送信は申込みに数えない（サーバーが lead:false を返す）
+      const lead = (await res.json().catch(() => ({}))).lead !== false;
       // Success: show step 3
       const email = fd.get('email') || '';
       document.getElementById('cf-success-email').textContent = email;
       document.getElementById('cf-ref').textContent = generateRef();
       goToStep(3);
-      if (typeof gtag === 'function') gtag('event', 'generate_lead', { inquiry_type: 'consultation', source: 'launch-simulation' });
+      if (lead && typeof gtag === 'function') gtag('event', 'generate_lead', { inquiry_type: 'consultation', source: 'launch-simulation' });
       // Meta Pixel: lead conversion
-      if (typeof fbq === 'function') {
+      if (lead && typeof fbq === 'function') {
         try { fbq('track', 'Lead', { content_name: 'Launch Simulation LP' }); } catch (_) {}
       }
     } catch (err) {

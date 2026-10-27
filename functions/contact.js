@@ -455,7 +455,9 @@ export async function onRequestPost({ request, env }) {
   }
   console.log('Slack result:', slackStatus);
 
-  return new Response(JSON.stringify({ success: true }), {
+  // lead: 申込みとして数えてよいか。営業と判定した送信は false にし、画面側で GA4・Meta の申込みを送らない
+  // （2026-10-20〜26 は generate_lead 11件がすべて営業の送信で、本物の申込みは0件だった）
+  return new Response(JSON.stringify({ success: true, lead: !salesReason }), {
     status: 200, headers: { ...CORS, 'Content-Type': 'application/json' },
   });
 }
