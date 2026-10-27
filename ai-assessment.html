@@ -1043,8 +1043,10 @@ lf.addEventListener('submit',async function(e){
     if(window.twIntent)Object.assign(data,twIntent());
     var res=await fetch('/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
     if(!res.ok)throw new Error('server');
-    if(typeof fbq==='function')fbq('track','Lead');
-    if(typeof gtag==='function')gtag('event','generate_lead',{inquiry_type:'consultation',source:'AI活用度診断'});
+    // 営業と自動判定した送信は申込みに数えない（サーバーが lead:false を返す）
+    var lead=(await res.json().catch(function(){return {};})).lead!==false;
+    if(lead&&typeof fbq==='function')fbq('track','Lead');
+    if(lead&&typeof gtag==='function')gtag('event','generate_lead',{inquiry_type:'consultation',source:'AI活用度診断'});
     lf.style.display='none';document.querySelector('.result-actions').style.display='none';
     document.getElementById('thanks').classList.add('show');
     document.getElementById('thanks').scrollIntoView({behavior:'smooth',block:'center'});

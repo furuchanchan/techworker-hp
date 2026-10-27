@@ -161,7 +161,9 @@
     try{
       var res=await fetch('/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
       if(!res.ok) throw new Error('status '+res.status);
-      try{if(typeof gtag==='function')gtag('event','generate_lead',{inquiry_type:'consultation',source:'ギョウムズAI'});}catch(e){}
+      // 営業と自動判定した送信は申込みに数えない（サーバーが lead:false を返す）
+      var lead=(await res.json().catch(function(){return {};})).lead!==false;
+      try{if(lead&&typeof gtag==='function')gtag('event','generate_lead',{inquiry_type:'consultation',source:'ギョウムズAI'});}catch(e){}
       box.classList.add('done');
       document.getElementById('thanks').focus();
       window.scrollTo({top:0,behavior:'smooth'});

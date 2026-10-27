@@ -451,9 +451,11 @@ async function handleSubmit(e){
     });
 
     if(!res.ok)throw new Error('server error');
+    // 営業と自動判定した送信は申込みに数えない（サーバーが lead:false を返す）
+    var lead=(await res.json().catch(function(){return {};})).lead!==false;
 
-    if(typeof fbq==='function'){fbq('track','Lead');}
-    if(typeof gtag==='function'){gtag('event','generate_lead',{inquiry_type:type,source:'HP本体'});}
+    if(lead&&typeof fbq==='function'){fbq('track','Lead');}
+    if(lead&&typeof gtag==='function'){gtag('event','generate_lead',{inquiry_type:type,source:'HP本体'});}
 
     form.style.display='none';
     thanks.classList.add('show');

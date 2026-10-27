@@ -421,8 +421,10 @@ addEventListener('scroll',function(){var n=document.querySelector('nav');if(n)n.
     try{
       var res=await fetch('/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
       if(!res.ok)throw new Error('HTTP '+res.status);
+      // 営業と自動判定した送信は申込みに数えない（サーバーが lead:false を返す）
+      var lead=(await res.json().catch(function(){return {};})).lead!==false;
       setUnlocked();
-      if(typeof gtag==='function'){gtag('event','generate_lead',{inquiry_type:'document',source:'library'});}
+      if(lead&&typeof gtag==='function'){gtag('event','generate_lead',{inquiry_type:'document',source:'library'});}
       if(typeof fbq==='function'){try{fbq('track','Lead',{content_name:info?info.title:currentDoc});}catch(_){}}
       if(info&&document.getElementById('dlNewsletter').checked){
         var nlTopic=info.nl,nlEmail=String(fd.get('email')||'').trim();
