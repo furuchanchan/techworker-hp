@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js" data-media="gyomuzu">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}if(location.hostname==='techworker.co.jp')gtag('config', 'G-3V34NWXVCJ');
+</script>
+<script src="/assets/tw-track.js" defer></script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>見積のAI活用｜下書き・確認・送信を分ける業務図 — TechWorker</title>
+<meta name="description" content="電材・電線卸の見積業務を、デンミツAIの公開画面から読み解きます。品番・数量・単価を人へ戻す条件と、試行時に残す記録を設計例で示します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/gyomuzu/quotation-draft-review-process-map">
+<meta property="og:type" content="article">
+<meta property="og:title" content="見積のAI活用｜下書き・確認・送信を分ける業務図">
+<meta property="og:description" content="電材・電線卸の見積業務を、デンミツAIの公開画面から読み解きます。品番・数量・単価を人へ戻す条件と、試行時に残す記録を設計例で示します。">
+<meta property="og:image" content="https://techworker.co.jp/media/gyomuzu/covers/quotation-draft-review-process-map.png">
+<meta property="og:url" content="https://techworker.co.jp/media/gyomuzu/quotation-draft-review-process-map">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="見積のAI活用｜下書き・確認・送信を分ける業務図">
+<meta name="twitter:image" content="https://techworker.co.jp/media/gyomuzu/covers/quotation-draft-review-process-map.png">
+<link rel="stylesheet" href="../article.css?v=20261006-source-notes">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "見積のAI活用｜下書き・確認・送信を分ける業務図", "description": "電材・電線卸の見積業務を、デンミツAIの公開画面から読み解きます。品番・数量・単価を人へ戻す条件と、試行時に残す記録を設計例で示します。", "datePublished": "2026-10-27", "dateModified": "2026-10-27", "inLanguage": "ja", "image": "https://techworker.co.jp/media/gyomuzu/covers/quotation-draft-review-process-map.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/gyomuzu/quotation-draft-review-process-map"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "業務図ラボ", "item": "https://techworker.co.jp/media/gyomuzu/"}, {"@type": "ListItem", "position": 4, "name": "見積のAI活用｜下書き・確認・送信を分ける業務図", "item": "https://techworker.co.jp/media/gyomuzu/quotation-draft-review-process-map"}]}</script>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<link rel="stylesheet" href="/assets/site/site.css">
+<link rel="stylesheet" href="/media/audience-filter.css?v=20261006-media-only">
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header class="hd hd--solid">
+  <a class="logo" href="/" aria-label="TechWorker ホーム">Tech<i>Worker</i></a>
+  <nav id="hd-nav" aria-label="主な行き先">
+    <a href="/services">事業・サービス</a>
+    <a href="/#concept">考え方</a>
+    <a href="/agent-cases/">事例</a>
+    <a href="/news">ニュース</a>
+    <a href="/company">会社情報</a>
+    <a href="/contact">お問い合わせ</a>
+  </nav>
+  <button class="menu" type="button" aria-label="メニューを開く" aria-controls="hd-nav" aria-expanded="false"></button>
+</header>
+<div class="subnav">
+  <div class="wrap subnav__in">
+    <a class="subnav__name" href="index.html">業務図ラボ</a>
+    <nav aria-label="メディアの行き先"><a href="../../companymap?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=quotation-draft-review-process-map&amp;utm_content=nav">ギョウムズAIについて</a><a href="../../companymap?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=quotation-draft-review-process-map&amp;utm_content=nav_cta" class="subnav__cta">ギョウムズAIを見る</a></nav>
+  </div>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">業務図ラボ</a><span class="sep">/</span>見積のAI活用</nav>
+  <div class="kicker">部署別の業務図</div>
+  <h1>見積のAI活用｜下書き・確認・送信を分ける業務図</h1>
+  <p class="dek">電材・電線卸の見積業務を、デンミツAIの公開画面から読み解きます。品番・数量・単価を人へ戻す条件と、試行時に残す記録を設計例で示します。</p>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.10.27</span><span class="dot">·</span><span>読了 5分</span>
+  </div>
+<p class="article-audience"><span class="article-audience-label">主な対象読者</span><a href="/media/gyomuzu/?audience=operations#articles">業務責任者</a></p>
+</header>
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次">
+    <div class="art-toc-inner">
+      <div class="toc-h">目次</div>
+<a href="#s1">原本と明細を並べて確かめる行を残す</a><a href="#s2">下書き・確認・承認・送信を業務図に分ける</a><a href="#s3">品番・数量・単価の未確認を、人へ戻す条件にする</a><a href="#s4">最初の試行では直した行と確認時間を残す</a><a href="#sources">出典と設計例の範囲</a>
+</div>
+  </nav>
+
+  <article class="art-body">
+<h2 id="s1">原本と明細を並べて確かめる行を残す</h2>
+<p>FAXの「PF管 16」だけでは、単層か複層かを決めきれない場合があります。AIが品番の候補を出した後も、担当者が確かめる仕事が残ります。</p>
+<p>次はTechWorkerの「デンミツAI」が公開している見積の下書き画面です。会社名と数字は見本です。この記事では、この画面を手がかりに業務を分ける設計例を示します。</p>
+<figure class="fig-inline source-figure"><a class="source-image" href="figs/quotation-draft-review-process-map-source.png" target="_blank" rel="noopener"><img src="figs/quotation-draft-review-process-map-source.png" width="2528" height="1616" alt="デンミツAIの公開見本画面。左にFAX原本、右に明細と品番候補が並び、未確認項目と灰色の承認ボタンが表示された状態。" loading="eager" decoding="async"></a><figcaption><span class="source-label">自社製品の公開見本画面</span>出典：<a href="https://denmitsu.techworker.co.jp/">デンミツAI公式サイト</a>。株式会社TechWorker作成。公開日は記載なし、2026年10月27日確認。自社保有の画像を掲載しています。会社名と数字は見本です。押すと拡大できます。</figcaption></figure>
+<p>左のFAXと右の明細で、依頼の言い方と変換後の品番を見比べられます。「PF管 16」の行には候補が並び、選択を待っています。画面下には、得意先・宛先・単価などの未確認項目が残ります。</p>
+<p>ここから読み取れるのは、下書きの作成後にも確認の工程を設けていることです。この見本画面から、読み取りの精度や時間の削減率は分かりません。</p>
+<h2 id="s2">下書き・確認・承認・送信を業務図に分ける</h2>
+<p class="answer">AIが下書きを作り、担当者が原本と照合します。社内で承認を経て、担当者が取引先へ送る設計例です。</p>
+    <figure class="fig-inline"><a href="figs/quotation-draft-review-process-map-1.png" target="_blank" rel="noopener"><img src="figs/quotation-draft-review-process-map-1.png" alt="AIが下書きを作り、見積担当が原本と照合して迷う行を確認します。承認担当が内容を承認した後、見積担当が送信する設計例です。" width="1200" height="716" loading="lazy" decoding="async"></a><figcaption>TechWorker作成の設計例。承認担当は自部署の決まりに合わせます。製品の全機能や導入効果を示す図ではありません。</figcaption></figure>
+<p>デンミツAIの公式サイトはAIの役目をFAXの字を読み、品目表から当てはまる行を探すところまでと説明しています。値段は得意先ごとの単価表を使い、表にない品は担当者へ回します。</p>
+<p>この範囲を業務図にすると、最初に整えるものも見えてきます。読み取る原本、使ってよい品目表と単価表、迷う行を引き取る担当者です。社内の承認担当は自部署の決まりに合わせて割り当てます。</p>
+<p>下書きが完成した時点で「送信済み」にしないことも、工程を分ける理由です。見積の内容を確定する仕事と、相手へ届ける仕事には、それぞれ完了の記録を残します。</p>
+<aside class="mid-cta"><p class="tag">無料ダウンロード</p><h3>部署別 業務図テンプレート集（AIに任せる工程の見つけ方つき）</h3><p>原本、下書き、確認、送信の担当を、自部署の仕事に合わせて書き込めます。</p><a class="btn" href="../../library/?doc=gyomuzu&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=quotation-draft-review-process-map&amp;utm_content=mid">無料で受け取る →</a></aside>
+<h2 id="s3">品番・数量・単価の未確認を、人へ戻す条件にする</h2>
+<p>候補が出たことと、その候補を採用できることは別々に確かめます。次の表は自部署で試すための記入例です。実際の会社で運用された手順を示すものではありません。</p>
+<div class="tbl-wrap"><table><thead><tr><th>確かめる項目</th><th>人へ戻す条件の記入例</th><th>引き取る人</th></tr></thead><tbody>
+<tr><td>品番</td><td>複数の候補が残る、品目表に該当品がない</td><td>品目を判断できる見積担当</td></tr>
+<tr><td>数量と単位</td><td>原本と明細の単位が異なり、換算の根拠がない</td><td>原本と品目表を照合する担当</td></tr>
+<tr><td>単価</td><td>使う単価表が未確定、該当する値段がない</td><td>社内の価格決定ルールに従う担当</td></tr>
+<tr><td>宛先と送付</td><td>送付先が不明、承認が済んでいない</td><td>承認・送信を担う担当</td></tr>
+</tbody></table></div>
+<p>単位の換算を追加で任せたい場合も、先に根拠を決めます。たとえば箱と個の換算には、対象品の入数が必要です。根拠がないまま過去の別の品から推測して埋める運用は避けます。</p>
+<p>この表の停止条件は、TechWorkerが提案する設計例です。デンミツAIの全機能や、自動で検知できる項目の一覧ではありません。製品を選ぶ際は、実際の原本を使い、どの条件で止まるかを個別に確かめてください。</p>
+<h2 id="s4">最初の試行では直した行と確認時間を残す</h2>
+<p>まず対象の営業所や担当を絞り、扱ってよい見積依頼を選びます。品目表・単価表の持ち出しや利用の許可も、試行前に確認します。</p>
+<p>試行用の記録には原本の参照先、候補を採用した行、直した行、判断できず戻した行を残します。確認担当と送信まで進んだかも記録します。顧客名や単価が含まれる記録は社内で権限を決めて保管します。</p>
+<p>確認にかかった時間は原本を開いてから下書きを確定するまで、など区間をそろえて測ります。待ち時間や取引先への確認が混ざった場合は、その時間を分けて書きます。AIの処理時間だけでは、担当者の仕事が減ったかを判断できません。</p>
+<p>品目表にない品が多い、単価を決める人が不在、といった状態では、下書きの後で仕事が止まります。試行の結果を見て、品目表の整備や担当の割り当てから始める判断もできます。</p>
+<h2 id="sources">出典と設計例の範囲</h2>
+<ul class="source-list"><li><a href="https://denmitsu.techworker.co.jp/">デンミツAI公式サイト</a>。公開見本画面、AIの役目、品目表・単価表、担当者による送信。2026年10月27日確認。</li><li><a href="ai-task-allocation-process-map.html">AIに任せる業務の決め方</a>。担当と実行の境界を考えるための、TechWorkerの公開済み業務図。</li></ul>
+<p class="source-note">本記事は自社製品の公開画面を基にした設計例です。担当分担、停止条件、試行の記録項目はTechWorkerの提案です。実顧客の精度・削減時間・受注の効果を示す記事ではありません。</p>
+</article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div>
+    <p>株式会社TechWorker代表取締役。企業の生成AI導入と、業務への組み込みを支援しています。</p>
+  </div>
+</div></div>
+
+<section class="related"><div class="container">
+  <h2 class="rl-h">あわせて読む</h2>
+  <div class="related-grid">
+    <a href="ai-task-allocation-process-map.html" class="related-card"><span class="rc-cat">任せる工程を決める</span><div class="rc-title">AIに任せる業務の決め方｜商談業務図で読む、下書きと実行の境界</div></a>
+    <a href="../kenshu/claude-code-jirei.html" class="related-card"><span class="rc-cat">実際の改修記録を読む</span><div class="rc-title">Codex・Claude Codeの活用事例｜自社の改修記録と企業の公開事例</div></a>
+  </div>
+</div></section>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>部署の仕事の流れを、3つの情報からAIが業務図にします。</h3>
+    <p>ギョウムズAIは、担当者への聞き取り・手元の資料・業務の記録の3つから、AIが部署の仕事の流れを1枚の業務図にするサービスです。任せる工程を決める前に、部署の仕事を確かめられます。</p>
+  </div>
+  <a href="../../companymap/contact?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=quotation-draft-review-process-map&amp;utm_content=end" class="btn">30分の無料相談 <i>→</i></a>
+</div></div>
+<div class="back-list"><a href="index.html">← 業務図ラボの記事一覧に戻る</a></div>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__in">
+      <div>
+        <p class="ft__name">株式会社TechWorker</p>
+        <p class="ft__addr">〒169-0051 東京都新宿区西早稲田一丁目22番3号<br>早稲田アントレプレナーシップセンター</p>
+      </div>
+      <nav aria-label="フッターの行き先">
+        <a href="/services">事業・サービス</a>
+        <a href="/company">会社情報</a>
+        <a href="/news">ニュース</a>
+        <a href="/#concept">考え方</a>
+        <a href="/agent-cases/">事例</a>
+        <a href="/contact">お問い合わせ</a>
+        <a href="/privacy">プライバシーポリシー</a>
+      </nav>
+    </div>
+    <small>© TechWorker Inc.</small>
+  </div>
+</footer>
+
+
+<script>
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+<script src="/media/article-tracker.js?v=20261006-readable-intros" defer></script>
+<script>
+// スマホの行き先：右上の釦で開け閉めする。行き先を押したら閉じる。スクロールしたら頭に暗い面を敷く
+(() => {
+  const hd = document.querySelector('.hd'), btn = hd.querySelector('.menu');
+  const set = open => { hd.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く'); };
+  btn.addEventListener('click', () => set(!hd.classList.contains('is-open')));
+  hd.querySelector('nav').addEventListener('click', e => { if (e.target.closest('a')) set(false); });
+  const onScroll = () => hd.classList.toggle('is-scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+})();
+</script>
+</body>
+</html>
