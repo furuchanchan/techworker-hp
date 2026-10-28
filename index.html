@@ -11,6 +11,7 @@
   try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}if(location.hostname==='techworker.co.jp')gtag('config', 'G-3V34NWXVCJ');
 </script>
 <script src="/assets/tw-track.js" defer></script>
+<script src="/assets/tw-event.js" defer></script>
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -374,6 +375,18 @@ html { scroll-padding-top: 88px; } /* #concept などへ飛んだとき、固定
 .ax--sp .a { font-size: 12.5px; }
 .ax--sp .lb { font-size: 11px; }
 @media (max-width: 760px) { .ax--pc { display: none; } .ax--sp { display: block; } }
+/* 開催前のウェビナーの段（終わると assets/tw-event.js が data-tw-until を見て消す） */
+.wb { padding: 72px 0; background: var(--paper); border-top: 1px solid var(--line); }
+.wb__in { display: grid; grid-template-columns: minmax(0, 560px) minmax(0, 1fr); gap: 52px; align-items: center; }
+.wb__img img { display: block; width: 100%; height: auto; box-shadow: 0 14px 30px -18px rgba(13, 17, 23, .5); }
+.wb__k { font: 700 13px/1 var(--f-body); letter-spacing: .12em; color: var(--gold-a); }
+.wb__h { margin-top: 14px; font: 400 38px/1.4 var(--f-min); letter-spacing: .02em; }
+.wb__tx > p:not(.wb__k) { margin-top: 12px; }
+.wb__dl { margin: 18px 0 26px; border-top: 1px solid var(--line); font-size: 14.5px; }
+.wb__dl div { display: flex; gap: 18px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.wb__dl dt { flex: none; width: 3em; color: #6b6b73; }
+.wb__dl dd { margin: 0; font-weight: 700; }
+@media (max-width: 760px) { .wb { padding: 48px 0; } .wb__in { grid-template-columns: 1fr; gap: 22px; } .wb__h { font-size: 28px; } }
 </style>
 </head>
 <body>
@@ -416,6 +429,24 @@ html { scroll-padding-top: 88px; } /* #concept などへ飛んだとき、固定
     </ul>
   </div>
 </section>
+
+<section class="wb" id="webinar" data-tw-until="2026-11-03T17:40:00+09:00" aria-label="開催予定のウェビナー">
+  <div class="wrap wb__in">
+    <a class="wb__img" href="https://sokumitsu.techworker.co.jp/webinar/2026-11-03/?utm_source=techworker.co.jp&amp;utm_campaign=wb-2026-11-03&amp;utm_medium=band" data-top="webinar_img"><img src="/assets/event/webinar-2026-11-03.jpg" alt="商社・卸の見積AI入門。見積AIで何が変わる？任せる所・任せない所、どこまで読める？" width="1200" height="630" loading="lazy"></a>
+    <div class="wb__tx">
+      <p class="wb__k">開催予定のウェビナー</p>
+      <h2 class="wb__h">商社・卸の見積AI入門</h2>
+      <p>FAX・メールで届く見積依頼が、品番と単価の下書きになるまでを、実演を交えて40分でご紹介します。</p>
+      <dl class="wb__dl">
+        <div><dt>日時</dt><dd>2026年11月3日（火・祝）17:00〜17:40</dd></div>
+        <div><dt>会場</dt><dd>オンライン（Google Meet）・参加無料</dd></div>
+        <div><dt>登壇</dt><dd>古野 光太朗（代表取締役）</dd></div>
+      </dl>
+      <a class="btn" href="https://sokumitsu.techworker.co.jp/webinar/2026-11-03/?utm_source=techworker.co.jp&amp;utm_campaign=wb-2026-11-03&amp;utm_medium=band" data-top="webinar_btn">無料で申し込む<svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a>
+    </div>
+  </div>
+</section>
+
 
 <section class="sol" id="solution">
   <div class="screen" aria-hidden="true"><img src="/assets/top/bg-map-tall.jpg" alt="" loading="lazy"></div>
@@ -621,6 +652,14 @@ html { scroll-padding-top: 88px; } /* #concept などへ飛んだとき、固定
     </div>
   </div>
   <ul class="rail" data-rail>
+    <li><a class="card" href="https://sokumitsu.techworker.co.jp/webinar/2026-11-03/?utm_source=techworker.co.jp&amp;utm_campaign=wb-2026-11-03&amp;utm_medium=news" data-top="news_webinar-2026-11-03">
+      <img src="/assets/top/webinar-2026-11-03.jpg" alt="ウェビナー 商社・卸の見積AI入門 11月3日" loading="lazy">
+      <div class="card__body">
+        <p class="card__meta"><time datetime="2026-10-28">2026.10.28</time><span class="tag">イベント</span></p>
+        <h3>11月3日（火・祝）17時から、無料ウェビナー「商社・卸の見積AI入門」を開催します</h3>
+        <span class="more"><i><svg viewBox="0 0 8 8" aria-hidden="true"><path d="M2.5 1l3 3-3 3"/></svg></i>さらに詳しく</span>
+      </div>
+    </a></li>
     <li><a class="card card--case" href="/agent-cases/official-chemical" data-top="case_official-chemical">
       <span class="face"><img src="/assets/top/cases/case-01.jpg" alt="" loading="lazy"><b>化学メーカー｜研究開発</b></span>
       <div class="card__body">
