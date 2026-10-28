@@ -4,12 +4,12 @@
 // 次の回に替えるときは EV だけを書き換える。ほかのサイトからは https://techworker.co.jp/assets/tw-event.js を読み、上の帯が要らなければ data-bar="0" を付ける。
 (function () {
   var EV = {
-    id: 'wb-2026-11-03',
-    until: '2026-11-03T17:40:00+09:00',
-    url: 'https://sokumitsu.techworker.co.jp/webinar/2026-11-03/',
-    img: 'https://techworker.co.jp/assets/event/webinar-2026-11-03.jpg',
-    when: '11/3（火・祝）17:00〜17:40',
-    whenShort: '11/3（火・祝）',
+    id: 'wb-2026-11-04',
+    until: '2026-11-04T17:40:00+09:00',
+    url: 'https://sokumitsu.techworker.co.jp/webinar/2026-11-04/',
+    img: 'https://techworker.co.jp/assets/event/webinar-2026-11-04.jpg',
+    when: '11/4（水）17:00〜17:40',
+    whenShort: '11/4（水）',
     title: '商社・卸の見積AI入門',
     titleShort: '見積AI入門',
     lead: '届いた見積依頼を、自社の品番と単価に',
