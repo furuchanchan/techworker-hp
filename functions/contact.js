@@ -43,7 +43,7 @@ const REQUIRED_FIELDS = ['name', 'company', 'email', 'phone', 'department', 'pos
 // 電材卸向けサイトの実演申込・承継HD向けサイトの相談・研修サイトの点検30分の申込は、部署・役職を求めない
 const SHORT_FORM_TYPES = new Set(['denzai_demo', 'denzai_document', 'shokei_consult', 'kenshu_check']);
 // 本体以外のサイト（電材卸・卸・商社・承継HD）からの申込。Slack の件名の頭に【種別】を付ける
-const SITE_FORM_TYPES = new Set([...SHORT_FORM_TYPES, 'sokumitsu_demo', 'sokumitsu_report', 'sokumitsu_partner', 'kenshu_consult', 'kenshu_document', 'kenshu_check']);
+const SITE_FORM_TYPES = new Set([...SHORT_FORM_TYPES, 'sokumitsu_demo', 'sokumitsu_report', 'sokumitsu_partner', 'sokumitsu_webinar', 'kenshu_consult', 'kenshu_document', 'kenshu_check']);
 const SHORT_FORM_REQUIRED_FIELDS = ['name', 'company', 'email', 'phone'];
 
 function invalidFields(data) {
@@ -64,6 +64,7 @@ const INQUIRY_MAP = {
   sokumitsu_demo: '卸・商社の見積の実演',
   sokumitsu_report: '卸・商社のAI活用レポート',
   sokumitsu_partner: 'パートナーの個別説明会',
+  sokumitsu_webinar: '卸・商社の見積AIのウェビナー',
   kenshu_consult: '研修の相談',
   kenshu_document: '研修の資料ダウンロード',
   kenshu_check: '研修の点検30分の申込',
@@ -114,7 +115,7 @@ const SLACK_FAILED = '届かず';
 const SLACK_SKIPPED = '流さず（営業）';
 
 // 各サイトのフォームが本文の頭に入れる定型の1行（site.js の message_prefix。例「資料の請求：…」「ご用件：研修内容・費用を相談したい」「関心のある型：販売パートナー」）
-const PREFIX_LINE = /^(資料の請求|ご用件|関心のある型)：/;
+const PREFIX_LINE = /^(資料の請求|ご用件|関心のある型|ウェビナーの申込)：/;
 
 // 人が書いた本文。定型の1行を除いて空なら、判定にかけない
 function writtenMessage(message) {
