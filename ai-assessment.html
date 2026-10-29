@@ -363,8 +363,8 @@ body.assessing footer,body.assessing .refs{display:none;}
 .fg label{display:block;font-size:13.5px;font-weight:600;margin-bottom:8px;}
 .fg label .req{color:var(--electric);font-size:11.5px;margin-left:6px;}
 .fg label .opt2{color:var(--slate);font-size:11.5px;margin-left:6px;font-weight:500;}
-.fg input,.fg textarea{width:100%;padding:14px 15px;font-size:15px;font-family:inherit;border:1px solid var(--line);border-radius:8px;background:var(--white);color:var(--ink);transition:border-color .2s,box-shadow .2s;}
-.fg input:focus,.fg textarea:focus{outline:none;border-color:var(--electric);box-shadow:0 0 0 3px rgba(164,121,72,.12);}
+.fg input,.fg textarea,.fg select{width:100%;padding:14px 15px;font-size:15px;font-family:inherit;border:1px solid var(--line);border-radius:8px;background:var(--white);color:var(--ink);transition:border-color .2s,box-shadow .2s;}
+.fg input:focus,.fg textarea:focus,.fg select:focus{outline:none;border-color:var(--electric);box-shadow:0 0 0 3px rgba(164,121,72,.12);}
 .fg.invalid input,.fg.invalid textarea{border-color:var(--slate);box-shadow:0 0 0 3px rgba(74,86,102,.16);}
 .field-error{display:none;color:var(--slate);font-weight:600;font-size:12.5px;margin-top:6px;}
 .fg.invalid .field-error{display:block;}
@@ -463,7 +463,7 @@ body.assessing footer,body.assessing .refs{display:none;}
   .q-block,.lv-band,.bench,.themes,.breakdown,.lead,.ai-report{padding-left:20px;padding-right:20px;}
   .q-block h3{font-size:17.5px;}
   .opt{font-size:15px;}
-  .fg input,.fg textarea{font-size:16px;}
+  .fg input,.fg textarea,.fg select{font-size:16px;}
   /* 5段階ゲージ: ラベルを1行固定で潰れ・折返しを防ぐ */
   
   .lv-scale{gap:5px;align-items:flex-start;}
@@ -656,6 +656,7 @@ body.assessing footer,body.assessing .refs{display:none;}
           <div class="fg"><label for="lf-email">会社メールアドレス<span class="req">必須</span></label><input id="lf-email" type="email" name="email" placeholder="taro@example.co.jp" autocomplete="email" required aria-required="true"></div>
           <div class="fg"><label for="lf-phone">電話番号<span class="req">必須</span></label><input id="lf-phone" type="tel" name="phone" placeholder="03-1234-5678" autocomplete="tel" pattern="[^0-9０-９]*([0-9０-９][^0-9０-９]*){10,15}" required aria-required="true"></div>
           <div class="fg"><label for="lf-message">ご質問・補足<span class="opt2">任意</span></label><textarea id="lf-message" name="message" placeholder="特に気になっている点があればお書きください（任意）"></textarea></div>
+          <div class="fg"><label for="lf-heard">当社を知ったきっかけ<span class="opt2">任意</span></label><select id="lf-heard" name="heard_from"><option value="">選んでください</option><option>LinkedIn</option><option>X（旧Twitter）</option><option>検索（Google・Yahoo! など）</option><option>AI（ChatGPT など）</option><option>当社からのご連絡（メール・お手紙・お電話）</option><option>知人・取引先・団体からの紹介</option><option>展示会・セミナー</option><option>その他</option></select></div>
           <ul class="reassure2">
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span><strong>売り込みは一切しません。</strong>1営業日以内にご返信します。</span></li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>まずは資料だけ受け取る、でも大丈夫です。相談は任意です。</span></li>

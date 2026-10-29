@@ -70,6 +70,19 @@ const INQUIRY_MAP = {
   kenshu_check: '研修の点検30分の申込',
 };
 
+// フォームの任意の問い「当社を知ったきっかけ」の選択肢（Notion の「知ったきっかけ」の select と同じ名前）。
+// 選択肢に無い値は捨てる（Notion に勝手な選択肢を増やさない）
+const HEARD_FROM = new Set([
+  'LinkedIn',
+  'X（旧Twitter）',
+  '検索（Google・Yahoo! など）',
+  'AI（ChatGPT など）',
+  '当社からのご連絡（メール・お手紙・お電話）',
+  '知人・取引先・団体からの紹介',
+  '展示会・セミナー',
+  'その他',
+]);
+
 // ===== Intent scoring =====
 // 既存の sessionStorage 計測(intent_pages / intent_visits / source 等)を
 // スコア化し、高意図リードを Slack で優先表示する。
@@ -269,6 +282,7 @@ async function saveToNotion(data, apiKey, salesReason, slackStatus) {
   if (data.position)     properties['役職']           = { rich_text: [{ text: { content: data.position } }] };
   if (data.inquiry_type) properties['問い合わせ種別'] = { select:       { name: INQUIRY_MAP[data.inquiry_type] || '無料相談' } };
   if (data.source)       properties['ソース']         = { select:       { name: data.source } };
+  if (data.heard_from)   properties['知ったきっかけ'] = { select:       { name: data.heard_from } };
   const first = firstTouch(data);
   const text = (v) => ({ rich_text: [{ text: { content: String(v).slice(0, 1900) } }] });
   properties['流入チャネル'] = { select: { name: classifyChannel(first) } };
@@ -329,6 +343,7 @@ async function sendSlackNotification(data, webhookUrl) {
           { type: 'mrkdwn', text: `*ソース*\n${data.source || 'HP本体'}` },
           { type: 'mrkdwn', text: `*メール*\n${data.email || '-'}` },
           { type: 'mrkdwn', text: `*電話番号*\n${data.phone || '-'}` },
+          { type: 'mrkdwn', text: `*知ったきっかけ*\n${data.heard_from || '-'}` },
         ],
       },
       {
@@ -410,6 +425,8 @@ export async function onRequestPost({ request, env }) {
     const diag = String(data.diag ?? '').trim().slice(0, 1000);
     data.message = [String(data.message ?? '').trim(), deals ? `買収の頻度: ${deals}` : '', diag ? `診断: ${diag}` : ''].filter(Boolean).join('\n');
   }
+  data.heard_from = String(data.heard_from ?? '').trim();
+  if (!HEARD_FROM.has(data.heard_from)) data.heard_from = '';
   const invalid = invalidFields(data);
   if (invalid.length) {
     return new Response(JSON.stringify({ error: 'Missing required fields', fields: invalid }), {

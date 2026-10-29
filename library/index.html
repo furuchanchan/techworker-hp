@@ -122,7 +122,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--electric);outline-o
 .modal label.field{display:block;margin-bottom:13px;}
 .modal label.field span{display:block;font-size:12px;font-weight:600;color:var(--slate);margin-bottom:6px;}
 .modal label.field span em{color:#c0392b;font-style:normal;}
-.modal input,.modal textarea{width:100%;padding:12px 14px;border:1px solid var(--line-2);border-radius:7px;font-family:inherit;font-size:14px;background:var(--white);transition:border-color .2s,box-shadow .2s;}
+.modal input,.modal textarea,.modal select{width:100%;padding:12px 14px;border:1px solid var(--line-2);border-radius:7px;font-family:inherit;font-size:14px;background:var(--white);transition:border-color .2s,box-shadow .2s;}
 .modal textarea{resize:vertical;min-height:84px;line-height:1.7;}
 .modal label.field span em.opt{color:var(--slate);font-weight:500;}
 .modal input:focus{outline:none;border-color:var(--electric);box-shadow:0 0 0 3px var(--focus-ring,rgba(164,121,72,.12));}
@@ -319,6 +319,7 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
         <label class="field"><span>メールアドレス <em>*</em></span><input type="email" name="email" required autocomplete="email"></label>
         <label class="field"><span>電話番号 <em>*</em></span><input type="tel" name="phone" required autocomplete="tel" placeholder="例：03-1234-5678" pattern="[^0-9０-９]*([0-9０-９][^0-9０-９]*){10,15}" title="電話番号を数字10桁以上でご入力ください（例：03-1234-5678）"></label>
         <label class="field"><span>ご相談内容・お悩み <em class="opt">任意</em></span><textarea name="note" rows="3" placeholder="AI活用でお困りのこと、知りたいテーマなどがあればお書きください"></textarea></label>
+        <label class="field"><span>当社を知ったきっかけ <em class="opt">任意</em></span><select name="heard_from"><option value="">選んでください</option><option>LinkedIn</option><option>X（旧Twitter）</option><option>検索（Google・Yahoo! など）</option><option>AI（ChatGPT など）</option><option>当社からのご連絡（メール・お手紙・お電話）</option><option>知人・取引先・団体からの紹介</option><option>展示会・セミナー</option><option>その他</option></select></label>
         <label class="agree"><input type="checkbox" id="dlAgree" required><span><a href="../privacy.html" target="_blank">プライバシーポリシー</a>に同意します。ご登録のメールアドレスに、関連資料のご案内をお送りする場合があります。</span></label>
         <label class="agree"><input type="checkbox" id="dlNewsletter"><span>TechWorker Mediaの新着記事をメールで受け取る（週1回・いつでも停止できます）</span></label>
         <button type="submit" class="btn" id="dlSubmit">ダウンロードする</button>
@@ -413,7 +414,7 @@ addEventListener('scroll',function(){var n=document.querySelector('nav');if(n)n.
     var note=fd.get('note')||'';
     var payload={
       name:fd.get('name')||'',company:fd.get('company')||'',email:fd.get('email')||'',position:fd.get('position')||'',phone:fd.get('phone')||'',
-      department:fd.get('department')||'',
+      department:fd.get('department')||'',heard_from:fd.get('heard_from')||'',
       inquiry_type:'document',
       message:'【資料ダウンロード】'+(info?info.title:currentDoc)+'（役職: '+(fd.get('position')||'-')+'）'+(note?'\n【ご相談内容】'+note:''),
       source:'library'
