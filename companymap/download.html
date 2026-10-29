@@ -111,6 +111,7 @@
           <label><span>電話番号</span><input name="phone" type="tel" maxlength="40" autocomplete="tel" inputmode="tel" placeholder="03-1234-5678" required></label>
         </div>
         <label><span>いまの課題<em>（任意）</em></span><textarea name="message" rows="3" placeholder="例：AIが現場に定着しない／投資対効果を示せない／業務が属人化している"></textarea></label>
+        <label><span>当社を知ったきっかけ<em>（任意）</em></span><select name="heard_from"><option value="">選んでください</option><option>LinkedIn</option><option>X（旧Twitter）</option><option>検索（Google・Yahoo! など）</option><option>AI（ChatGPT など）</option><option>当社からのご連絡（メール・お手紙・お電話）</option><option>知人・取引先・団体からの紹介</option><option>展示会・セミナー</option><option>その他</option></select></label>
         <div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
         <button type="submit" class="btn">入力して、資料をダウンロード <i>↓</i></button>
         <p class="status" id="contact-status" role="status" aria-live="polite">送信いただいた内容は<a href="/privacy" target="_blank" rel="noopener">プライバシーポリシー</a>に基づき、資料のご提供とご案内にのみ利用します。</p>
@@ -159,7 +160,7 @@
       name:v('name'), company:v('company'), email:v('email'), phone:v('phone'),
       department:v('department'), position:v('position'),
       message:'【資料ダウンロード】サービス紹介資料・業務図サンプル集・業務図の完全ガイド\n【生成AIの導入をうまく進めたい部署】'+v('inquiry')+(v('message')?'\n【いまの課題】'+v('message'):''),
-      inquiry_type:'document', source:'ギョウムズAI', website:v('website')
+      inquiry_type:'document', source:'ギョウムズAI', website:v('website'), heard_from:v('heard_from')
     };
     if(window.twIntent)Object.assign(data,twIntent());
     try{

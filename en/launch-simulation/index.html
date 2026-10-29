@@ -2326,6 +2326,10 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
           <textarea name="notes" id="cf-notes" rows="3" placeholder="Specific questions you'd like answered (optional)"></textarea>
         </label>
 
+        <label class="cf-field"><span class="cf-l">How did you hear about us? (optional)</span>
+          <select name="heard_from" id="cf-heard"><option value="">Please select</option><option value="LinkedIn">LinkedIn</option><option value="X（旧Twitter）">X (Twitter)</option><option value="検索（Google・Yahoo! など）">Search engine (Google, etc.)</option><option value="AI（ChatGPT など）">AI assistant (ChatGPT, etc.)</option><option value="当社からのご連絡（メール・お手紙・お電話）">Contact from us (email, letter, phone)</option><option value="知人・取引先・団体からの紹介">Referral (colleague, partner, association)</option><option value="展示会・セミナー">Event or seminar</option><option value="その他">Other</option></select>
+        </label>
+
         <label class="cf-checkbox-line">
           <input type="checkbox" id="cf-agree" required/>
           <span>I agree to the <a href="https://techworker.co.jp/en/privacy.html" target="_blank">Privacy Policy</a> <em>Required</em></span>
@@ -3341,6 +3345,7 @@ Fill in the JSON below per the rules above (no comments):
       inquiry_type: 'consultation',
       message:      messageParts.join('\n'),
       source:       'launch-simulation',
+      heard_from:   fd.get('heard_from') || '',
     };
     if (window.twIntent) Object.assign(payload, twIntent());
 
