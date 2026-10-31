@@ -4,12 +4,13 @@
 使い方: python3 scripts/geo_enrich.py [フォルダ]   （省略時はリポジトリの直下。deploy.yml は _site に対して毎回走らせる）
 
 - 記事（media/<分野>/<slug>.html と media/token-management.html。noindex は除く）の Article の構造化データに、
-  無い時だけ inLanguage・publisher.logo・citation（本文の外部の出典の URL）を足す。何度走らせても同じ結果になる。
+  無い時だけ inLanguage・publisher.logo・citation（本文の外部の出典の URL。無ければ「出典」の節のリンク）を足す。何度走らせても同じ結果になる。
 - llms.txt（サイトの説明・主なページ・分野ごとの記事の一覧）を書き出す。llmstxt.org の提案（Jeremy Howard, 2024）の形。
 根拠: Aggarwal ほか「GEO」（KDD 2024）は出典・数字を本文に示すと AI の答えでの見え方が上がると報告。
 Google Search Central「AI features and your website」は、構造化データを見えている中身と合わせることを求める。
 """
 import html, json, pathlib, re, sys
+from urllib.parse import urljoin
 
 ROOT = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else pathlib.Path(__file__).resolve().parent.parent)
 SITE = "https://techworker.co.jp"
@@ -39,8 +40,21 @@ def body_links(t):
     return seen
 
 
+def source_links(p, t):
+    """本文の「出典」の節に並ぶリンク（自社の事例・公開資料も含む）。外部の出典が無い記事の citation に使う。"""
+    m = re.search(r"<h2[^>]*>[^<]*出典.*?(?=<h2|</article>)", t, re.S)
+    page = f"{SITE}/{p.relative_to(ROOT).with_suffix('')}"
+    seen = []
+    caps = "".join(re.findall(r'出典：\s*<a href="[^"#]+', t))  # 図の下の「出典：<a …>」
+    for u in re.findall(r'href="([^"#]+)', (m.group(0) if m else "") + caps):
+        u = urljoin(page, html.unescape(u)).removesuffix(".html").removesuffix("index")
+        if u.startswith("http") and u != page and not any(h in u for h in SKIP_HOSTS[1:]) and u not in seen:
+            seen.append(u)
+    return seen
+
+
 def enrich(p, t):
-    links = body_links(t)
+    links = body_links(t) or source_links(p, t)
 
     def fix(m):
         try:
