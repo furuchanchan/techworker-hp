@@ -43,7 +43,7 @@ const REQUIRED_FIELDS = ['name', 'company', 'email', 'phone', 'department', 'pos
 // 電材卸向けサイトの実演申込・承継HD向けサイトの相談・研修サイトの点検30分の申込は、部署・役職を求めない
 const SHORT_FORM_TYPES = new Set(['denzai_demo', 'denzai_document', 'shokei_consult', 'kenshu_check']);
 // 本体以外のサイト（電材卸・卸・商社・承継HD）からの申込。Slack の件名の頭に【種別】を付ける
-const SITE_FORM_TYPES = new Set([...SHORT_FORM_TYPES, 'sokumitsu_demo', 'sokumitsu_report', 'sokumitsu_partner', 'sokumitsu_webinar', 'kenshu_consult', 'kenshu_document', 'kenshu_check']);
+const SITE_FORM_TYPES = new Set([...SHORT_FORM_TYPES, 'sokumitsu_demo', 'sokumitsu_report', 'sokumitsu_partner', 'sokumitsu_webinar', 'kenshu_consult', 'kenshu_document', 'kenshu_check', 'shokei_document']);
 const SHORT_FORM_REQUIRED_FIELDS = ['name', 'company', 'email', 'phone'];
 
 function invalidFields(data) {
@@ -61,6 +61,7 @@ const INQUIRY_MAP = {
   denzai_demo:  '電材卸の見積の実演',
   denzai_document: '電材卸の資料ダウンロード',
   shokei_consult: '承継の買収後100日の相談',
+  shokei_document: '承継の資料ダウンロード',
   sokumitsu_demo: '卸・商社の見積の実演',
   sokumitsu_report: '卸・商社のAI活用レポート',
   sokumitsu_partner: 'パートナーの個別説明会',
