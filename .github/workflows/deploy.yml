@@ -49,6 +49,10 @@ jobs:
           *.py
           EOF
 
+      # 記事の構造化データ（inLanguage・発行元のロゴ・出典の URL）と llms.txt を毎回そろえる（AI の検索向け。scripts/geo_enrich.py）
+      - name: GEO enrich
+        run: python3 scripts/geo_enrich.py _site
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
