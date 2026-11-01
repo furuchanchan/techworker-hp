@@ -90,10 +90,16 @@ def title(t):
 def llms(arts):
     top = (ROOT / "index.html").read_text(encoding="utf-8")
     out = [f"# 株式会社TechWorker\n\n> {meta(top, 'description')}\n",
-           "所在地は日本。代表取締役 CEO兼CTO 古野光太朗。\n",
+           "所在地は東京都新宿区西早稲田一丁目22番3号（2023年12月設立）。代表取締役 CEO兼CTO 古野光太朗。\n",
+           "## 売っている製品とサービス\n",
+           "- [デンミツAI](https://denmitsu.techworker.co.jp/)：電材・電線卸向け。工事店から FAX・メールで届く拾い出し表を、その卸の品番と単価に直した見積の下書きにする。60分の無料の実演と、これまでの見積20件で確かめる2週間の無料検証から始める",
+           "- [ソクミツAI](https://sokumitsu.techworker.co.jp/)：機械工具・管材・ねじ・包装資材など、定価と掛率で見積を出す卸・商社向けの見積の下書き。始め方はデンミツAIと同じ",
+           "- [ウケツギ](https://shokei.techworker.co.jp/)：会社を譲り受けた経営者・承継ホールディングス向け。前社長の判断（誰に・いくらで・どの順で）を聞き取り、業務の流れの図と判断の台帳にして、最初の30日で新しい担当が1つの業務を回せるところまで進める。株式会社UKETUGI とは別の会社・別のサービス",
+           "- [生成AI研修](https://techworker.co.jp/training)・[Microsoft Copilot の導入支援](https://techworker.co.jp/copilot)",
+           "",
            "## 主なページ\n",
            f"- [会社概要]({SITE}/company)", f"- [サービス]({SITE}/services)", f"- [生成AI研修]({SITE}/training)",
-           f"- [Microsoft Copilot の導入支援]({SITE}/copilot)", f"- [CompanyMap AI]({SITE}/companymap)",
+           f"- [Microsoft Copilot の導入支援]({SITE}/copilot)", f"- [ギョウムズAI（旧 CompanyMap AI。業務図をつくる作り方の名前）]({SITE}/companymap)",
            f"- [支援事例]({SITE}/cases)", f"- [お知らせ]({SITE}/news)", f"- [TechWorker Media（記事の一覧）]({SITE}/media/)", ""]
     by = {}
     for p, t in arts:
