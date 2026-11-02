@@ -2,6 +2,10 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
+<script>
+  // 末尾に「)」「.」「、」などが付いたURL（Markdownのリンクの読み違い）は、外した道筋へ送り直す
+  (function(){try{var p=location.pathname,q=decodeURIComponent(p).replace(/[)\]）」』。、.,]+$/,"");if(q&&q!==decodeURIComponent(p))location.replace(q+location.search+location.hash);}catch(e){}})();
+</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
 <script>
