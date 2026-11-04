@@ -1,18 +1,22 @@
-// 開催前のイベント（ウェビナー）を、全ページの上の帯と右下の小窓で知らせる。
-// - 終わった時刻（until）を過ぎたら何も出さず、ページの中の data-tw-until 付きの段も消す。
-// - 上の帯は × で7日出さない。小窓は少し読み進めたら出し、1日1回まで・× で7日出さない。
-// 次の回に替えるときは EV だけを書き換える。ほかのサイトからは https://techworker.co.jp/assets/tw-event.js を読み、上の帯が要らなければ data-bar="0" を付ける。
+// 右下の小窓で、研修（kenshu.techworker.co.jp）の安全度チェックへ案内する。
+// - 2026-11-04 のウェビナーが終わったので、本人指示（11/5「右下に一旦研修のポップアップを出しておいて」）で研修に替えた。
+// - 小窓は少し読み進めたら出し、1日1回まで・× で7日出さない。上の帯は出さない（bar: false。ウェビナーのときだけ true にする）。
+// - until を過ぎたら何も出さず、ページの中の data-tw-until 付きの段も消す。
+// 次の告知に替えるときは EV だけを書き換える。ほかのサイトからは https://techworker.co.jp/assets/tw-event.js を読み、上の帯が要らなければ data-bar="0" を付ける。
 (function () {
   var EV = {
-    id: 'wb-2026-11-04',
-    until: '2026-11-04T17:40:00+09:00',
-    url: 'https://sokumitsu.techworker.co.jp/webinar/2026-11-04/',
-    img: 'https://techworker.co.jp/assets/event/webinar-2026-11-04.jpg',
-    when: '11/4（水）17:00〜17:40',
-    whenShort: '11/4（水）',
-    title: '商社・卸の見積AI入門',
-    titleShort: '見積AI入門',
-    lead: '届いた見積依頼を、自社の品番と単価に',
+    id: 'kenshu-2026-11',
+    bar: false,
+    until: '2027-03-31T23:59:00+09:00',
+    url: 'https://kenshu.techworker.co.jp/check/',
+    img: 'https://techworker.co.jp/assets/event/kenshu-cover-2026-10-30.jpg',
+    when: '',
+    whenShort: '',
+    title: 'セキュリティ×生成AI研修',
+    titleShort: '生成AI研修',
+    lead: '教材を毎週更新・30日後に測って報告',
+    kicker: '3分の安全度チェック・無料',
+    cta: '安全度チェックを受ける →',
   };
   var me = document.currentScript, now = Date.now();
   document.querySelectorAll('[data-tw-until]').forEach(function (el) {
@@ -51,7 +55,7 @@
   document.head.appendChild(css);
 
   // 上の帯
-  if (!(me && me.dataset.bar === '0') && !closedRecently('bar_closed')) {
+  if (EV.bar && !(me && me.dataset.bar === '0') && !closedRecently('bar_closed')) {
     var bar = document.createElement('div');
     bar.className = 'twev-bar';
     bar.innerHTML = '<a href="' + link('bar') + '"><span class="k">無料<span class="lg">ウェビナー</span></span><span class="t">' + EV.whenShort + '<span class="lg">17:00〜17:40　' + EV.title + '　〜' + EV.lead + '〜</span><span class="sp">' + EV.titleShort + '</span></span><span class="m">詳しく見る →</span></a><button type="button" class="twev-x" aria-label="閉じる">×</button>';
@@ -77,8 +81,8 @@
   if (/^\/contact/.test(location.pathname) || closedRecently('pop_closed') || get('pop_day') === today) return;
   var pop = document.createElement('aside');
   pop.className = 'twev-pop';
-  pop.setAttribute('aria-label', '開催予定のウェビナー');
-  pop.innerHTML = '<a href="' + link('pop') + '"><img src="' + EV.img + '" alt="' + EV.title + '" width="1200" height="630" loading="lazy"><span class="b"><span class="w">' + EV.whenShort + '17:00〜・無料</span><span class="h" style="display:block">' + EV.title + '</span><span class="m">申し込む →</span></span></a><button type="button" class="twev-x" aria-label="閉じる">×</button>';
+  pop.setAttribute('aria-label', EV.title + 'のご案内');
+  pop.innerHTML = '<a href="' + link('pop') + '"><img src="' + EV.img + '" alt="' + EV.title + '" width="1600" height="900" loading="lazy"><span class="b"><span class="w">' + EV.kicker + '</span><span class="h" style="display:block">' + EV.title + '</span><span class="w" style="margin-bottom:8px">' + EV.lead + '</span><span class="m">' + EV.cta + '</span></span></a><button type="button" class="twev-x" aria-label="閉じる">×</button>';
   function show() {
     if (window.scrollY < window.innerHeight * 0.6) return;
     var band = document.querySelector('[data-tw-until]');  // 同じ告知の段が見えている間は出さない
