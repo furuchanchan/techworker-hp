@@ -9,7 +9,7 @@
     bar: false,
     until: '2027-03-31T23:59:00+09:00',
     url: 'https://kenshu.techworker.co.jp/check/',
-    img: 'https://techworker.co.jp/assets/event/kenshu-cover-2026-10-30.jpg',
+    img: 'https://techworker.co.jp/assets/event/kenshu-slide-input-2026-10-30.jpg',
     when: '',
     whenShort: '',
     title: 'セキュリティ×生成AI研修',
