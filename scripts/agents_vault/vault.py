@@ -544,6 +544,11 @@ def sitemap_block(entries):
     return "\n" + "\n".join(rows) + "\n  "
 
 
+FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">\n'
+         '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
+         '<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">')
+
+
 # ---------- 表紙（1200×630） ----------
 
 def cover_html(entry):
