@@ -4,7 +4,7 @@ name: Agents vault daily entry
 # 仕組みと上限は scripts/agents_vault/README.md。
 on:
   schedule:
-    - cron: "30 22 * * 0-4" # 平日 7:30 JST（UTC の前日 22:30、日〜木）
+    - cron: "0 21 * * 0-4" # 平日 6:00 JST（UTC の前日 21:00、日〜木）
   workflow_dispatch:
     inputs:
       dry_run:
