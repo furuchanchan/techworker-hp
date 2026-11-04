@@ -240,7 +240,7 @@ NAV = """<header class="hd">
 <div class="subnav">
   <div class="wrap subnav__in">
     <a class="subnav__name" href="/media/agents/">エージェント保管庫</a>
-    <nav aria-label="メディアの行き先"><a href="/media/agents/#list">一覧</a><a href="/media/agents/#format">1件の読み方</a><a href="/media/">メディア</a><a href="https://kenshu.techworker.co.jp/contact/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_content=nav" class="subnav__cta">研修の相談</a></nav>
+    <nav aria-label="メディアの行き先"><a href="/media/agents/#list">一覧</a><a href="/media/">メディア</a><a href="https://kenshu.techworker.co.jp/contact/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_content=nav" class="subnav__cta">研修の相談</a></nav>
   </div>
 </div>"""
 
@@ -462,14 +462,6 @@ def index_page(entries):
     chip = lambda kind, v, label: f'<button type="button" class="av-f" data-kind="{kind}" data-val="{e(v)}" aria-pressed="{"true" if v == "" else "false"}">{e(label)}</button>'
     dchips = chip("dept", "", "すべての部署") + "".join(chip("dept", d, d) for d in depts)
     pchips = chip("prod", "", "すべての製品") + "".join(chip("prod", d, d) for d in prods)
-    fmt = "".join(f'<li><span>{a}</span><b>{b}</b><p>{c}</p></li>' for a, b, c in FORMAT_ITEMS)
-    feat = entries[0] if entries else None
-    feat_html = ""
-    if feat:
-        feat_html = (f'<a class="av-feat-card" href="/media/agents/{feat["slug"]}"><div class="av-feat-vis">'
-                     f'<div class="av-card-top">{product_chip(feat, False)}<span class="av-dept">{e(feat["department"])}</span></div>{mini_flow(feat, big=True)}</div>'
-                     f'<div class="av-feat-b"><span class="av-new">新着</span><span class="av-feat-t">{e(feat["title"])}</span><span class="av-card-s">{e(feat["summary"])}</span>'
-                     f'<span class="av-more">作り方を見る <span aria-hidden="true">→</span></span></div></a>')
     title = "エージェント保管庫｜業務ごとのAIエージェントの作り方 — TechWorker Media"
     desc = "Microsoft 365 Copilot、Copilot Studio、Claude、Claude Code、Gemini で作る業務のAIエージェントを、できること・作り方・そのまま貼れる指示文・管理者が先に決める設定の決まった形でまとめた見本帳です。平日に1件ずつ増えます。"
     ld = [{"@context": "https://schema.org", "@type": "CollectionPage", "name": "エージェント保管庫", "description": desc, "url": BASE, "inLanguage": "ja",
@@ -478,27 +470,18 @@ def index_page(entries):
            "mainEntity": {"@type": "ItemList", "numberOfItems": n, "itemListElement": [
                {"@type": "ListItem", "position": i, "url": BASE + x["slug"], "name": x["title"]} for i, x in enumerate(entries, 1)]}}]
     cards = "".join(card(x) for x in entries)
-    image = (f"{BASE}covers/{feat['slug']}.png" if feat else SITE + "/assets/ogp.png")
-    return head(title, desc, BASE, image, "website", ld) + f"""
+    image = (f"{BASE}covers/{entries[0]['slug']}.png" if entries else SITE + "/assets/ogp.png")
+    return head(title, desc, BASE, image, "website", ld).replace('</head>', '<link rel="stylesheet" href="/media/home.css?v=20261105-media-look">\n</head>').replace('<body>', '<body class="hm">') + f"""
 {NAV}
 <main>
-<header class="av-ihero"><div class="av-wrap">
-  <div class="av-ihero-copy">
-    <nav class="crumb" aria-label="パンくず"><a href="/">ホーム</a><span class="sep">/</span><a href="/media/">メディア</a></nav>
-    <span class="av-kicker">TechWorker Media</span>
-    <h1>エージェント保管庫</h1>
-    <p>いつもの業務を、AIエージェントに任せるための見本帳です。1件ごとに、できること、作り方、そのまま貼れる指示文、管理者が先に決める設定を、同じ形でまとめています。</p>
-    <div class="av-stats"><span><b>{n}</b>件のエージェント</span><span><b>平日</b>に1件ずつ追加</span><span><b>{dot(latest)}</b>最終更新</span></div>
-  </div>
-  {feat_html}
-</div></header>
+<header class="phead"><div class="wrap"><h1 class="ptitle">エージェント保管庫</h1><p>いつもの業務をAIエージェントに任せるための見本帳。{n}件を、できること・作り方・そのまま貼れる指示文・管理者が先に決める設定の同じ形で。平日に1件ずつ、最終更新 {dot(latest)}。</p><nav class="crumb" aria-label="パンくず"><a href="/">トップ</a> ＞ <a href="/media/">メディア</a> ＞ <span>エージェント保管庫</span></nav></div></header>
 
-<section class="av-format" id="format"><div class="av-wrap">
-  <div class="av-sec-h"><h2>1件に入っていること</h2><p>どのエージェントも、この6つを同じ順番で載せています</p></div>
-  <ol class="av-fmt">{fmt}</ol>
+<section class="sec mono" id="gyomuzu"><div class="wrap">
+  <div class="gzx"><div class="sc"><img src="/media/img/gz-dev.png?v=20261105" alt="弊社の業務図「開発の依頼・検証・本番反映」。工程ごとに人とAIの持ち場を分けた図" width="3370" height="807" loading="eager"></div><span class="hint">横に動かせます →</span><span class="fade"></span></div>
+  <p class="cap">弊社の業務図「開発の依頼・検証・本番反映」（ギョウムズAI、2026-11-04）。人は依頼と確認、AIが実装・テスト・PR。保管庫の1件は、こうした図のAIの工程1つ分。</p>
 </div></section>
 
-<section class="av-list" id="list"><div class="av-wrap">
+<section class="sec alt mono vlist" id="list"><div class="av-wrap">
   <div class="av-sec-h"><h2>エージェントを探す</h2><p class="av-count" aria-live="polite"><b id="av-n">{n}</b>件</p></div>
   <p class="av-ac">当社で動いている実物は、<a href="/agent-cases/" data-ac-location="vault_list" data-ac-case="vault" data-ac-offering="agent_cases">AIエージェントの事例</a>へ。</p>
   <div class="av-filters"><div class="av-frow" role="group" aria-label="部署で絞り込む">{dchips}</div><div class="av-frow" role="group" aria-label="製品で絞り込む">{pchips}</div></div>
@@ -513,9 +496,10 @@ document.addEventListener('click',function(ev){{
 }});
 </script>
 
-<section class="av-wrap"><div class="mh-band av-band" data-cta-placement="vault_band">
-  <div><h2>自社の業務で、1本作ってみませんか。</h2><p>TechWorker の生成AI研修では、受講者の実際の業務を1つ選び、研修の中でエージェントを作ります。教材は毎週更新し、受講から30日後に使われ方を測ってご報告します。</p></div>
-  <div class="mh-btns"><a class="btn" href="https://kenshu.techworker.co.jp/program/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_content=band">研修の内容を見る</a><a class="mh-btn2" href="https://kenshu.techworker.co.jp/contact/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_content=band">研修の相談をする</a></div>
+<section class="sec" id="kenshu" data-cta-placement="vault_band"><div class="wrap">
+  <h2 class="mh2">研修のご案内</h2><p class="intro">受講者の実際の業務を1つ選び、研修の中でエージェントを作ります。教材は毎週更新し、受講から30日後に使われ方を測ってご報告します。</p>
+  <img src="/media/img/kenshu-menu.jpg?v=20261105" alt="主な研修メニュー：目的と対象に応じた6つのプログラム" width="1920" height="1080" loading="lazy" style="display:block;width:100%;height:auto;border:1px solid var(--hl);border-radius:8px">
+  <div style="display:flex;gap:12px;margin-top:22px;flex-wrap:wrap"><a class="btn blue" href="https://kenshu.techworker.co.jp/download/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_content=band">研修のご案内を受け取る（無料）</a><a class="btn line" href="https://kenshu.techworker.co.jp/check/?utm_source=techworker_media&amp;utm_medium=agents_vault&amp;utm_content=band">15問の安全度チェック（3分）</a></div>
 </div></section>
 </main>
 {FOOT}"""
@@ -532,10 +516,12 @@ def replace_block(text, name, body, path):
 
 
 def media_home_block(entries):
-    cards = "".join(card(x, "media_home") for x in entries[:3])
-    return (f'\n<section class="mh-sec av-home" id="agents">\n  <div class="mh-sec-h"><h2>エージェント保管庫</h2>'
-            f'<p>業務ごとのAIエージェントの作り方を、決まった形で。平日に1件ずつ増えます</p></div>\n'
-            f'  <div class="av-grid">{cards}</div>\n  <a class="av-more" href="agents/">保管庫のエージェントをすべて見る（{len(entries)}件） <span aria-hidden="true">→</span></a>\n</section>\n')
+    f = entries[0]
+    feat = (f'<a class="feat" href="/media/agents/{f["slug"]}"><div class="av-card-vis"><div class="av-card-top">{product_chip(f, False)}<span class="av-dept">{e(f["department"])}</span></div>{mini_flow(f, big=True)}</div>'
+            f'<div><span class="pill">新着・{len(entries)}件</span><h2>{e(f["title"])}</h2><p>{e(f["summary"])}</p><span class="meta"><time datetime="{f["published_on"]}">{dot(f["published_on"])}</time>・作る時間 {e(f["build_time"])}・{e(f["difficulty"])}</span><span class="btn">作り方を見る</span></div></a>')
+    cards = "".join(card(x, "media_home") for x in entries[1:4])
+    return (f'\n<section class="sec mfeat mono" id="agents"><div class="wrap">\n  <h2 class="mh2">エージェント保管庫<small>業務ごとのAIエージェントの作り方を、決まった形で。平日に1件ずつ</small></h2>\n  {feat}\n'
+            f'  <div class="av-grid" style="margin-top:40px">{cards}</div>\n  <p style="margin:18px 0 0"><a href="agents/" style="font-weight:700;text-decoration:underline;text-underline-offset:4px">保管庫のエージェントをすべて見る（{len(entries)}件） →</a></p>\n</div></section>\n')
 
 
 def sitemap_block(entries):
