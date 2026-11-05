@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js" data-media="kenshu">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}if(location.hostname==='techworker.co.jp')gtag('config', 'G-3V34NWXVCJ');
+</script>
+<script src="/assets/tw-track.js" defer></script>
+<script src="/assets/tw-event.js" defer></script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gemini NotebookがGeminiアプリで既定オンに｜管理者が見る2つの設定【2026】 — TechWorker</title>
+<meta name="description" content="10月23日から、Geminiのチャットでノートブックを作れるようになりました。使えるのはGeminiとGemini Notebookの両方がオンの人です。情シスが確かめる設定と、部署ごとの決め方を示します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/kenshu/gemini-notebook-in-gemini-app">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gemini NotebookがGeminiアプリで既定オンに｜管理者が見る2つの設定【2026】">
+<meta property="og:description" content="10月23日から、Geminiのチャットでノートブックを作れるようになりました。使えるのはGeminiとGemini Notebookの両方がオンの人です。情シスが確かめる設定と、部署ごとの決め方を示します。">
+<meta property="og:image" content="https://techworker.co.jp/media/kenshu/covers/gemini-notebook-in-gemini-app.png">
+<meta property="og:url" content="https://techworker.co.jp/media/kenshu/gemini-notebook-in-gemini-app">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gemini NotebookがGeminiアプリで既定オンに｜管理者が見る2つの設定【2026】">
+<meta name="twitter:image" content="https://techworker.co.jp/media/kenshu/covers/gemini-notebook-in-gemini-app.png">
+<link rel="stylesheet" href="../article.css?v=20261006-bilingual-quotes">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Gemini NotebookがGeminiアプリで既定オンに｜管理者が見る2つの設定【2026】", "description": "10月23日から、Geminiのチャットでノートブックを作れるようになりました。使えるのはGeminiとGemini Notebookの両方がオンの人です。情シスが確かめる設定と、部署ごとの決め方を示します。", "datePublished": "2026-11-06", "dateModified": "2026-11-06", "inLanguage": "ja", "image": "https://techworker.co.jp/media/kenshu/covers/gemini-notebook-in-gemini-app.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/gemini-notebook-in-gemini-app"}, "citation": ["https://workspaceupdates.googleblog.com/2026/10/take-actions-on-your-notebooks-from-Gemini-Notebook-directly-in-the-Gemini-app.html", "https://knowledge.workspace.google.com/admin/generative-ai/gemini-notebook/turn-gemini-notebook-on-or-off-for-users", "https://knowledge.workspace.google.com/admin/generative-ai/gemini-app/turn-the-gemini-app-on-or-off", "https://support.google.com/gemini/answer/13695044"]}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://techworker.co.jp/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "メディア",
+      "item": "https://techworker.co.jp/media/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "AI研修・導入ラボ",
+      "item": "https://techworker.co.jp/media/kenshu/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Gemini Notebookの既定オン",
+      "item": "https://techworker.co.jp/media/kenshu/gemini-notebook-in-gemini-app"
+    }
+  ]
+}
+</script>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<link rel="stylesheet" href="/media/audience-filter.css?v=20261006-media-only">
+<link rel="stylesheet" href="/assets/site/site.css">
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header class="hd hd--solid">
+  <a class="logo" href="/" aria-label="TechWorker ホーム">Tech<i>Worker</i></a>
+  <nav id="hd-nav" aria-label="主な行き先">
+    <a href="/services">事業・サービス</a>
+    <a href="/#concept">考え方</a>
+    <a href="/agent-cases/">事例</a>
+    <a href="/news">ニュース</a>
+    <a href="/company">会社情報</a>
+    <a href="/contact">お問い合わせ</a>
+  </nav>
+  <button class="menu" type="button" aria-label="メニューを開く" aria-controls="hd-nav" aria-expanded="false"></button>
+</header>
+<div class="subnav">
+  <div class="wrap subnav__in">
+    <a class="subnav__name" href="index.html">AI研修・導入ラボ</a>
+    <nav aria-label="メディアの行き先"><a href="index.html#about">このメディアについて</a><a href="https://kenshu.techworker.co.jp/contact/" class="subnav__cta">無料相談</a></nav>
+  </div>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a><span class="sep">/</span>Gemini Notebookの既定オン</nav>
+  <div class="kicker">社内ルールと安全</div>
+  <h1>Gemini NotebookがGeminiアプリで既定オンに｜管理者が見る2つの設定</h1>
+  <p class="dek">10月23日から、Geminiのチャットでノートブックを作れるようになりました。使えるのはGeminiとGemini Notebookの両方がオンの人です。情シスが確かめる設定と、部署ごとの決め方を示します。</p>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.11.06</span><span class="dot">·</span><span>読了 5分</span>
+  </div>
+<p class="article-audience"><span class="article-audience-label">主な対象読者</span><a href="/media/kenshu/?audience=it#articles">情シス・AI導入担当</a></p>
+</header>
+
+
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div>
+      <a href="#source">10月23日から、Geminiのチャットでノートブックを作れる</a>
+      <a href="#settings">使えるのは、2つの設定がどちらもオンの人</a>
+      <a href="#data">ドライブの資料は、閲覧権限のある人だけが入れられる</a>
+      <a href="#decide">止めるか残すかは、部署ごとに決める</a>
+      <a href="#steps">今日やること：設定を見て、社内の1行を決める</a>
+      <a href="#sources">出典と確認範囲</a>
+    </div></nav>
+
+  <article class="art-body">
+<p>Geminiのチャットで頼むだけで、Gemini Notebook（旧NotebookLM）に資料を足せるようになりました。Googleの告知では、管理者側のアクセスは最初からオンです。どの部署で使わせるかを決める前から、社員が使える状態になっています。この記事では、情シスが確かめる設定と、部署ごとの決め方を説明します。</p>
+<h2 id="source">10月23日から、Geminiのチャットでノートブックを作れる</h2>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“Gemini Notebook is now also available as a Connected App in the Gemini app. This new integration allows you to manage and query notebooks directly within your chats using natural language.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>Gemini Notebookは、Geminiアプリの連携アプリとしても使えるようになりました。この連携により、チャットの中から普段の言葉でノートブックを管理し、中身について質問できます。</p><footer>出典：<a href="https://workspaceupdates.googleblog.com/2026/10/take-actions-on-your-notebooks-from-Gemini-Notebook-directly-in-the-Gemini-app.html" target="_blank" rel="noopener noreferrer">Google Workspace Updates「Take actions on your notebooks from Gemini Notebook directly in the Gemini app」</a>（2026年10月23日公開、11月6日確認）</footer></blockquote>
+<figure class="source-figure fig-inline"><a class="source-image" href="sources/gemini-notebook-in-gemini-app.png" target="_blank" rel="noopener"><img src="sources/gemini-notebook-in-gemini-app.png" width="1018" height="1043" alt="Googleが告知に載せたGeminiアプリの画面。チャットの回答の後に「@Gemini Notebook」で保存を頼み、「Added to Solar Farm Market Trends」と表示されています。" loading="lazy" decoding="async"></a><figcaption><span class="source-label">Googleの告知の画面（引用）</span>出典：<a href="https://workspaceupdates.googleblog.com/2026/10/take-actions-on-your-notebooks-from-Gemini-Notebook-directly-in-the-Gemini-app.html" target="_blank" rel="noopener noreferrer">Google Workspace Updates</a>。権利者：Google。公開日2026年10月23日、確認日11月6日。チャットからノートブックへ足す操作を解説するため、公式画像1点を引用しています。押すと拡大できます。</figcaption></figure>
+<p>画面の下の方で、利用者は「@Gemini Notebook」と書き、直前の回答を自分のノートブックへ足すよう頼んでいます。Geminiは「Added to Solar Farm Market Trends」と返し、保存先のノートブック名を示しています。告知が挙げる操作は、ノートブックの作成・編集・削除、資料の追加・更新・削除、一覧の表示、中身を使った回答の4種類です。「@」を付けなくても、Geminiが連携アプリを使う場面を自分で判断することがあります。この画面からは、会社のアカウントでどの資料が入るかまでは分かりません。それは次の設定と共有の条件で決まります。</p>
+<figure class="slide4" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:24px 0"><a href="https://kenshu.techworker.co.jp/assets/updates/2026-10-30/gemini-notebook-1.jpg"><img src="https://kenshu.techworker.co.jp/assets/updates/2026-10-30/gemini-notebook-1.jpg" alt="Gemini Notebook が Gemini アプリから既定でオンに（10月23日）。管理者が見る2つの設定と、今日やること（1/4）" width="1600" height="900" loading="lazy" style="width:100%;height:auto;border:1px solid #e5e5e5;border-radius:8px"></a><a href="https://kenshu.techworker.co.jp/assets/updates/2026-10-30/gemini-notebook-2.jpg"><img src="https://kenshu.techworker.co.jp/assets/updates/2026-10-30/gemini-notebook-2.jpg" alt="Gemini Notebook が Gemini アプリから既定でオンに（10月23日）。管理者が見る2つの設定と、今日やること（2/4）" width="1600" height="900" loading="lazy" style="width:100%;height:auto;border:1px solid #e5e5e5;border-radius:8px"></a><a href="https://kenshu.techworker.co.jp/assets/updates/2026-10-30/gemini-notebook-3.jpg"><img src="https://kenshu.techworker.co.jp/assets/updates/2026-10-30/gemini-notebook-3.jpg" alt="Gemini Notebook が Gemini アプリから既定でオンに（10月23日）。管理者が見る2つの設定と、今日やること（3/4）" width="1600" height="900" loading="lazy" style="width:100%;height:auto;border:1px solid #e5e5e5;border-radius:8px"></a><a href="https://kenshu.techworker.co.jp/assets/updates/2026-10-30/gemini-notebook-4.jpg"><img src="https://kenshu.techworker.co.jp/assets/updates/2026-10-30/gemini-notebook-4.jpg" alt="Gemini Notebook が Gemini アプリから既定でオンに（10月23日）。管理者が見る2つの設定と、今日やること（4/4）" width="1600" height="900" loading="lazy" style="width:100%;height:auto;border:1px solid #e5e5e5;border-radius:8px"></a><figcaption style="grid-column:1/-1">4枚で見る：Gemini Notebook が Gemini アプリから既定でオンに（10月23日）。管理者が見る2つの設定と、今日やること。<a href="https://kenshu.techworker.co.jp/updates/#u-2026-10-30">研修サイトの教材の更新履歴</a>より</figcaption></figure>
+<h2 id="settings">使えるのは、2つの設定がどちらもオンの人</h2>
+<p class="answer">管理者が見るのは、Geminiアプリの設定とGemini Notebookの設定の2つです。両方がオンの組織部門やグループの人だけが、チャットからノートブックを使えます。</p>
+<p>告知は、管理者側のアクセスをGeminiとGemini Notebookの2つの設定で制御すると説明しています。利用者も、Geminiアプリの「設定 &gt; 連携アプリ（Connected Apps）」で自分の分を切り替えられます。</p>
+<div class="tbl-wrap"><table><thead><tr><th>どこで決まるか</th><th>最初の状態</th><th>確かめること</th></tr></thead><tbody>
+<tr><td>管理コンソールのGeminiアプリ</td><td>組織の設定による</td><td>どの組織部門・グループでオンか</td></tr>
+<tr><td>管理コンソールのGemini Notebook</td><td>組織の設定による</td><td>上と同じ範囲でオンか</td></tr>
+<tr><td>連携アプリとしての利用（管理者側）</td><td>オン</td><td>上の2つが両方オンの人が使える</td></tr>
+<tr><td>利用者のGeminiアプリの設定</td><td>オン（欧州経済領域はオフ）</td><td>利用者が自分で切り替えられる</td></tr>
+</tbody></table></div>
+<p>提供はRapid ReleaseとScheduled Releaseの両方で、告知の時点で始まっています。対象は、すべてのGoogle Workspaceの契約者、Workspace Individual、個人のGoogleアカウントです。</p>
+<aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">生成AI活用事例集を受け取る</div><div class="mc-d">TechWorkerが支援した企業の生成AI活用事例をまとめた資料です。記事のテーマと合わせてご覧ください。</div></div><a href="../../library/?doc=cases&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=gemini-notebook-in-gemini-app&amp;utm_content=mid" class="btn" data-cta="gemini-notebook-in-gemini-app-mid">事例集を受け取る <i>&rarr;</i></a></aside>
+<h2 id="data">ドライブの資料は、閲覧権限のある人だけが入れられる</h2>
+<p class="answer">ドライブのファイルは、元のファイルを閲覧できる人だけがノートブックの資料にできます。一方、データリージョンの設定は、Gemini Notebookが処理・キャッシュするデータには適用されません。</p>
+<p>Googleの<a href="https://knowledge.workspace.google.com/admin/generative-ai/gemini-notebook/turn-gemini-notebook-on-or-off-for-users" target="_blank" rel="noopener noreferrer">管理者ヘルプ</a>は、ノートブックに入れたドライブのファイルが自動で同期されると説明しています。組織の共有設定はそのまま効きます。性能のため、ドライブのファイルはGemini Notebook側でキャッシュされます。</p>
+<p>ここで分かるのは、見えない資料が新しく見えるようにはならない、という点です。それでもTechWorkerは、お客さまの資料を扱う部署では「どの資料をノートブックに入れてよいか」を先に決めることを勧めます。データの保存場所を契約や規程で決めている会社は、データリージョンの例外にも注意が必要です。</p>
+<h2 id="decide">止めるか残すかは、部署ごとに決める</h2>
+<p class="answer">TechWorkerは、部署ごとに条件を見て決める方法を勧めます。止める部署は、組織部門かアクセスグループでGemini Notebookをオフにします。</p>
+    <figure class="fig-inline"><a href="figs/gemini-notebook-in-gemini-app-1.png" target="_blank" rel="noopener"><img src="figs/gemini-notebook-in-gemini-app-1.png" alt="部署ごとの判断の順番。データの保存場所を決めている部署はオフ、入れてよい資料が未定の部署は1行を決めてから使い、それ以外はオンのまま研修で使い方をそろえる。" width="1200" height="800" loading="lazy" decoding="async"></a><figcaption>TechWorker作成：部署ごとに Gemini Notebook を残すか決める判断例。Googleが定めた手順ではありません。</figcaption></figure>
+<p>次の図は、TechWorkerが勧める判断の順番です。Googleが定めた手順ではありません。データの保存場所を決めている部署と、入れてよい資料が決まっていない部署を先に分けます。</p>
+<p>オフにする操作は、管理コンソールの「生成AI &gt; Gemini Notebook &gt; サービスのステータス」で行います。この操作には、Gemini設定の管理者権限が要ります。親の設定が変わっても今の設定を保つときは「Override（オーバーライド）」を選びます。</p>
+<p>オンのまま残す部署では、TechWorkerの研修で使い方をそろえます。たとえば、会議の要点をノートブックに足す、自分のノートブックの中身を聞く、という2つの操作から始めます。保存先のノートブック名は、回答の表示で毎回確かめる習慣にします。</p>
+<h2 id="steps">今日やること：設定を見て、社内の1行を決める</h2>
+<ol>
+<li>管理コンソールで、Geminiアプリと Gemini Notebook がオンになっている組織部門・グループを確かめます。</li>
+<li>データの保存場所を決めている部署があれば、その部署だけ Gemini Notebook をオフにします。サービスごとの設定なので、オフにするとGemini Notebook本体も使えなくなると考えられます（TechWorkerの見立て）。そのため、使わせたい部署は残します。</li>
+<li>「ノートブックに入れてよい資料・入れない資料」を1行で決め、全員に配ります。例：「お客さまの資料は、ノートブックに入れない」。</li>
+<li>他の生成AIの設定も気になる場合は、研修サイトの<a href="https://kenshu.techworker.co.jp/check/?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=gemini-notebook-in-gemini-app&amp;utm_content=body">生成AI利用の安全度チェック</a>で確かめます。</li>
+</ol>
+<p>会社アカウントの設定全体は<a href="gemini-dounyu.html">Geminiの法人導入</a>で扱っています。Gemini アプリでファイルを作る機能など、10月のほかの変更は<a href="gemini-vs-copilot.html#oct">GeminiとCopilotの比較</a>にまとめました。</p>
+<h2 id="sources">出典と確認範囲</h2>
+<p class="source-note">確認日：2026年11月6日。提供の条件と設定はGoogleの公式告知と管理者ヘルプ、部署ごとの判断の順番と社内の1行はTechWorkerの提案です。TechWorkerの環境でこの連携を試した記録はまだありません。自社の組織部門での表示は、管理者が実環境で確かめてください。</p>
+<ol class="source-list">
+<li><a href="https://workspaceupdates.googleblog.com/2026/10/take-actions-on-your-notebooks-from-Gemini-Notebook-directly-in-the-Gemini-app.html" target="_blank" rel="noopener noreferrer">Google Workspace Updates：Gemini アプリからGemini Notebookを操作する（2026年10月23日）</a></li>
+<li><a href="https://knowledge.workspace.google.com/admin/generative-ai/gemini-notebook/turn-gemini-notebook-on-or-off-for-users" target="_blank" rel="noopener noreferrer">Google Workspace 管理者ヘルプ：Gemini Notebookのオン・オフとデータの扱い（2026年10月26日更新）</a></li>
+<li><a href="https://knowledge.workspace.google.com/admin/generative-ai/gemini-app/turn-the-gemini-app-on-or-off" target="_blank" rel="noopener noreferrer">Google Workspace 管理者ヘルプ：Gemini アプリのオン・オフ</a></li>
+<li><a href="https://support.google.com/gemini/answer/13695044" target="_blank" rel="noopener noreferrer">Gemini アプリ ヘルプ：連携アプリの使い方と管理</a></li>
+</ol>
+</article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div>
+    <p>上場企業を含む45社・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>Gemini の設定と社内のルールを、研修でそろえます。</h3>
+    <p>TechWorkerの研修は、教材を毎週更新し、受講者の実業務1本を題材にします。Gemini Notebookのような設定の変更も、更新履歴に載せて教材へ反映します。30日後には、使い方が定着したかを測定します。</p>
+  </div>
+  <a href="https://kenshu.techworker.co.jp/?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=gemini-notebook-in-gemini-app&amp;utm_content=end" class="btn">研修の内容と教材の更新履歴を見る <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="https://kenshu.techworker.co.jp/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">生成AI法人研修（TechWorker）</a>　／　<a href="../../contact.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">無料相談</a>　／　<a href="../../library/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">事例集（無料DL）</a></p>
+<div class="back-list"><a href="index.html">← AI研修・導入ラボの記事一覧に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="gemini-dounyu.html" class="related-card"><span class="rc-cat">導入</span><div class="rc-title">Geminiの法人導入｜会社アカウントでの管理設定と全社展開の進め方</div></a>
+
+    <a href="gemini-vs-copilot.html" class="related-card"><span class="rc-cat">比較</span><div class="rc-title">GeminiとCopilotどっちがいい？違いと料金を法人向けに比較</div></a>
+
+    <a href="gemini-gems.html" class="related-card"><span class="rc-cat">導入</span><div class="rc-title">GemsからSkillsへの移行｜企業アカウントの時期と準備</div></a>
+  </div>
+</div></section>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__in">
+      <div>
+        <p class="ft__name">株式会社TechWorker</p>
+        <p class="ft__addr">〒169-0051 東京都新宿区西早稲田一丁目22番3号<br>早稲田アントレプレナーシップセンター</p>
+      </div>
+      <nav aria-label="フッターの行き先">
+        <a href="/services">事業・サービス</a>
+        <a href="/company">会社情報</a>
+        <a href="/news">ニュース</a>
+        <a href="/#concept">考え方</a>
+        <a href="/agent-cases/">事例</a>
+        <a href="/contact">お問い合わせ</a>
+        <a href="/privacy">プライバシーポリシー</a>
+      </nav>
+    </div>
+    <p class="ft__note">本ページ・本研修は株式会社TechWorkerが独自に提供するものであり、Google LLC および Microsoft Corporationとの提携・後援・承認を受けたものではありません。Google、Google Workspace、Gemini、Google ドキュメント、Google スプレッドシート、Google ドライブ は Google LLC の商標です。Microsoft、Copilot、Copilot Studio は Microsoft グループ企業の商標です。</p>
+    <div class="nv-badge"><a href="/news/013"><img src="/assets/badges/nvidia-inception-program.svg" alt="NVIDIA Inception Program" width="93" height="40" loading="lazy"></a><p>NVIDIA、NVIDIA ロゴ、NVIDIA Inception は、米国およびその他の国における NVIDIA Corporation の商標および/または登録商標です。</p></div>
+    <small>© TechWorker Inc.</small>
+  </div>
+</footer>
+
+<script>
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+<script src="/media/article-tracker.js?v=20261006-readable-intros" defer></script>
+<script>
+// スマホの行き先：右上の釦で開け閉めする。行き先を押したら閉じる。スクロールしたら頭に暗い面を敷く
+(() => {
+  const hd = document.querySelector('.hd'), btn = hd.querySelector('.menu');
+  const set = open => { hd.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く'); };
+  btn.addEventListener('click', () => set(!hd.classList.contains('is-open')));
+  hd.querySelector('nav').addEventListener('click', e => { if (e.target.closest('a')) set(false); });
+  const onScroll = () => hd.classList.toggle('is-scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+})();
+</script>
+</body>
+</html>
