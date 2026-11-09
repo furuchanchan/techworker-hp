@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js" data-media="kenshu">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}if(location.hostname==='techworker.co.jp')gtag('config', 'G-3V34NWXVCJ');
+</script>
+<script src="/assets/tw-track.js" defer></script>
+<script src="/assets/tw-event.js" defer></script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Enterpriseのセキュリティセンター｜推奨の設定と見比べる手順【2026】 — TechWorker</title>
+<meta name="description" content="11月5日、Claude Enterpriseにセキュリティセンター（ベータ）が加わりました。今の設定とAnthropicの推奨の値を1ページで見比べられます。開ける人、見える内容、社内の点検での使い方を示します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/kenshu/claude-enterprise-security-center">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Claude Enterpriseのセキュリティセンター｜推奨の設定と見比べる手順【2026】">
+<meta property="og:description" content="11月5日、Claude Enterpriseにセキュリティセンター（ベータ）が加わりました。今の設定とAnthropicの推奨の値を1ページで見比べられます。開ける人、見える内容、社内の点検での使い方を示します。">
+<meta property="og:image" content="https://techworker.co.jp/media/kenshu/covers/claude-enterprise-security-center.png">
+<meta property="og:url" content="https://techworker.co.jp/media/kenshu/claude-enterprise-security-center">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Enterpriseのセキュリティセンター｜推奨の設定と見比べる手順【2026】">
+<meta name="twitter:image" content="https://techworker.co.jp/media/kenshu/covers/claude-enterprise-security-center.png">
+<link rel="stylesheet" href="../article.css?v=20261006-bilingual-quotes">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Claude Enterpriseのセキュリティセンター｜推奨の設定と見比べる手順【2026】", "description": "11月5日、Claude Enterpriseにセキュリティセンター（ベータ）が加わりました。今の設定とAnthropicの推奨の値を1ページで見比べられます。開ける人、見える内容、社内の点検での使い方を示します。", "datePublished": "2026-11-10", "dateModified": "2026-11-10", "inLanguage": "ja", "image": "https://techworker.co.jp/media/kenshu/covers/claude-enterprise-security-center.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/claude-enterprise-security-center"}, "citation": ["https://claude.com/resources/articles/claude-enterprise-security-updates", "https://support.claude.com/en/articles/18246629-review-your-organization-s-security-posture-with-the-security-center", "https://support.claude.com/en/articles/16059458-inference-hooks-overview"]}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://techworker.co.jp/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "メディア",
+      "item": "https://techworker.co.jp/media/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "AI研修・導入ラボ",
+      "item": "https://techworker.co.jp/media/kenshu/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Claudeのセキュリティセンター",
+      "item": "https://techworker.co.jp/media/kenshu/claude-enterprise-security-center"
+    }
+  ]
+}
+</script>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<link rel="stylesheet" href="/assets/site/site.css">
+<link rel="stylesheet" href="/media/audience-filter.css?v=20261006-media-only">
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header class="hd hd--solid">
+  <a class="logo" href="/" aria-label="TechWorker ホーム">Tech<i>Worker</i></a>
+  <nav id="hd-nav" aria-label="主な行き先">
+    <a href="/services">事業・サービス</a>
+    <a href="/#concept">考え方</a>
+    <a href="/agent-cases/">事例</a>
+    <a href="/news">ニュース</a>
+    <a href="/company">会社情報</a>
+    <a href="/contact">お問い合わせ</a>
+  </nav>
+  <button class="menu" type="button" aria-label="メニューを開く" aria-controls="hd-nav" aria-expanded="false"></button>
+</header>
+<div class="subnav">
+  <div class="wrap subnav__in">
+    <a class="subnav__name" href="index.html">AI研修・導入ラボ</a>
+    <nav aria-label="メディアの行き先"><a href="index.html#about">このメディアについて</a><a href="https://kenshu.techworker.co.jp/contact/" class="subnav__cta">無料相談</a></nav>
+  </div>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a><span class="sep">/</span>Claudeのセキュリティセンター</nav>
+  <div class="kicker">社内ルールと安全</div>
+  <h1>Claude Enterpriseのセキュリティセンター｜推奨の設定と見比べる手順</h1>
+  <p class="dek">11月5日、Claude Enterpriseにセキュリティセンター（ベータ）が加わりました。今の設定とAnthropicの推奨の値を1ページで見比べられます。開ける人、見える内容、社内の点検での使い方を示します。</p>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.11.10</span><span class="dot">·</span><span>読了 5分</span>
+  </div>
+<p class="article-audience"><span class="article-audience-label">主な対象読者</span><a href="/media/kenshu/?audience=it#articles">情シス・AI導入担当</a></p>
+</header>
+
+
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div>
+      <a href="#source">11月5日、設定を1ページで見比べる画面が加わった</a>
+      <a href="#who">ヘルプでは開けるのはオーナーだけで、画面は見るだけ</a>
+      <a href="#manual">自動で確かめられない設定は、人が確認して記録する</a>
+      <a href="#order">見る順番：Failedから片づけ、月1回見直す</a>
+      <a href="#steps">今日やること：オーナーが画面を開き、担当を決める</a>
+      <a href="#sources">出典と確認範囲</a>
+    </div></nav>
+
+  <article class="art-body">
+<p>Claudeを全社に配った情シスは、今の設定で足りているかを説明する場面があります。11月5日に、Claude Enterpriseの設定を1ページでまとめて見比べる画面が加わりました。この記事では、何が見えて、誰が開けて、社内の点検でどう使うかを説明します。</p>
+<h2 id="source">11月5日、設定を1ページで見比べる画面が加わった</h2>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“For each control, the security center shows the current value, the recommended value where there is one, and a link to the setting where you can change it. It also shows which settings are new or recently changed.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>セキュリティセンターは、項目ごとに、現在の値、推奨の値（ある場合）、変更できる設定へのリンクを表示します。新しい設定や最近変わった設定も示します。</p><footer>出典：<a href="https://claude.com/resources/articles/claude-enterprise-security-updates" target="_blank" rel="noopener noreferrer">Claude「More visibility and control over Claude Enterprise for security teams」</a>（2026年11月5日公開、11月10日確認）</footer></blockquote>
+<figure class="source-figure fig-inline"><a class="source-image" href="sources/claude-enterprise-security-center.png" target="_blank" rel="noopener"><img src="sources/claude-enterprise-security-center.png" width="1200" height="675" alt="Anthropicの告知に載ったSecurity postureの画面。16項目中13項目が合格（81%）と表示され、Org・Cowork・Claude Codeごとの合格数と、Failedの項目の一覧が並んでいます。" loading="lazy" decoding="async"></a><figcaption><span class="source-label">Anthropicの告知の画面（引用）</span>出典：<a href="https://claude.com/resources/articles/claude-enterprise-security-updates" target="_blank" rel="noopener noreferrer">Claude（Anthropic）</a>。権利者：Anthropic。公開日2026年11月5日、確認日11月10日。画面の読み方を解説するため、公式画像1点を引用しています。押すと拡大できます。</figcaption></figure>
+<p>画面は、Organization settingsの「Security posture」です。上の段に、割り当てた人数や使っている人数、コネクタの数、オーナーの人数が並びます。中央の円は、16項目のうち13項目が合格（81%）という結果です。右側は、Org・Cowork・Claude Codeのグループごとの合格数です。下の一覧には、Failedの項目と今の値が出ます。この例では「Group mappings」がオフです。「Always allow tool approvals by default」はオンです。右上には「Download report」のボタンがあります。</p>
+<p>この数字は、告知に例として載った画面の値です。自社でどの項目が推奨と違うかは、実際に開くまで分かりません。推奨の値そのものの一覧も、告知には載っていません。</p>
+<figure class="slide4" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:24px 0"><a href="https://kenshu.techworker.co.jp/assets/updates/2026-11-06/claude-security-center-1.jpg"><img src="https://kenshu.techworker.co.jp/assets/updates/2026-11-06/claude-security-center-1.jpg" alt="Claude Enterprise にセキュリティセンター（11月5日）。今の設定と推奨の値を1ページで見比べる（1/4）" width="1600" height="900" loading="lazy" style="width:100%;height:auto;border:1px solid #e5e5e5;border-radius:8px"></a><a href="https://kenshu.techworker.co.jp/assets/updates/2026-11-06/claude-security-center-2.jpg"><img src="https://kenshu.techworker.co.jp/assets/updates/2026-11-06/claude-security-center-2.jpg" alt="Claude Enterprise にセキュリティセンター（11月5日）。今の設定と推奨の値を1ページで見比べる（2/4）" width="1600" height="900" loading="lazy" style="width:100%;height:auto;border:1px solid #e5e5e5;border-radius:8px"></a><a href="https://kenshu.techworker.co.jp/assets/updates/2026-11-06/claude-security-center-3.jpg"><img src="https://kenshu.techworker.co.jp/assets/updates/2026-11-06/claude-security-center-3.jpg" alt="Claude Enterprise にセキュリティセンター（11月5日）。今の設定と推奨の値を1ページで見比べる（3/4）" width="1600" height="900" loading="lazy" style="width:100%;height:auto;border:1px solid #e5e5e5;border-radius:8px"></a><a href="https://kenshu.techworker.co.jp/assets/updates/2026-11-06/claude-security-center-4.jpg"><img src="https://kenshu.techworker.co.jp/assets/updates/2026-11-06/claude-security-center-4.jpg" alt="Claude Enterprise にセキュリティセンター（11月5日）。今の設定と推奨の値を1ページで見比べる（4/4）" width="1600" height="900" loading="lazy" style="width:100%;height:auto;border:1px solid #e5e5e5;border-radius:8px"></a><figcaption style="grid-column:1/-1">4枚で見る：Claude Enterprise にセキュリティセンター（11月5日）。今の設定と推奨の値を1ページで見比べる。<a href="https://kenshu.techworker.co.jp/updates/#u-2026-11-06">研修サイトの教材の更新履歴</a>より</figcaption></figure>
+<h2 id="who">ヘルプでは開けるのはオーナーだけで、画面は見るだけ</h2>
+<p class="answer">ヘルプセンターによると、開けるのはOwnerとPrimary Ownerです。AdminとUserは開けません。画面は見るだけで、設定の変更はそれぞれの設定ページで行います。</p>
+<p>開き方は、Claudeのアカウントメニューから「Organization settings」を選び、「Security posture」を押します。対象はClaude Enterpriseで、今はベータです。告知の文には、Adminがセキュリティセンターを管理できるとも書かれています。誰が開けるかは、自社の画面でも確かめてください。</p>
+<p>項目は、組織・チャット・Cowork・Claude Codeの4つのグループに分かれます。それぞれに合格の数が出ます。判定は次の4種類です。</p>
+<div class="tbl-wrap"><table><thead><tr><th>表示</th><th>意味（ヘルプセンター）</th><th>情シスがすること</th></tr></thead><tbody>
+<tr><td>Passed</td><td>推奨の値と合っている</td><td>そのまま残す</td></tr>
+<tr><td>Failed</td><td>推奨と違う。理由と変える場所が出る</td><td>変えるか、変えない理由を社内で記録する</td></tr>
+<tr><td>Not attested</td><td>人の確認が要る</td><td>担当者と確かめて記録する</td></tr>
+<tr><td>Shown for information</td><td>参考の表示で、判定はしない</td><td>値だけ控える</td></tr>
+</tbody></table></div>
+<p>ほかに、結果の推移、メンバーの利用状況、カスタムロールがコネクタやClaudeの機能で何を許すかも見られます。</p>
+<aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">生成AI活用事例集を受け取る</div><div class="mc-d">TechWorkerが支援した企業の生成AI活用事例をまとめた資料です。記事のテーマと合わせてご覧ください。</div></div><a href="../../library/?doc=cases&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=claude-enterprise-security-center&amp;utm_content=mid" class="btn" data-cta="claude-enterprise-security-center-mid">事例集を受け取る <i>&rarr;</i></a></aside>
+<h2 id="manual">自動で確かめられない設定は、人が確認して記録する</h2>
+<p class="answer">端末の管理ツールやClaude Codeの管理設定で決める項目は、画面から読めません。こうした項目は「Check manually」と出るので、今の状態を確かめて記録します。</p>
+<p>この記録を、Anthropicは「attestation（確認の記録）」と呼んでいます。項目ごとに今の状態を書き、リスクを受け入れるか、問題として印を付けるかを選べます。誰がいつ記録したかも残ります。ヘルプでは、レポートに「オーナーが確かめた項目」として載ります。告知は、この記録をAdminが共同で使う場と説明しています。</p>
+<p>レポートはブラウザで「Download report」を押し、PDFで保存します。自動で確かめた項目と、オーナーが確かめた項目が分けて載ります。Compliance APIを使っている組織は、同じ結果をAPIでも読めます。</p>
+<p>ただし、Anthropicは「認証や法令への準拠の保証ではない」と書いています。PDFは、Anthropicの推奨と比べた社内の点検記録として扱うのが安全です。外部の監査に出す場合は、監査人が何を求めるかを先に確かめてください。</p>
+<h2 id="order">見る順番：Failedから片づけ、月1回見直す</h2>
+<p class="answer">TechWorkerは、Failedを1つずつ判断し、次に手で確かめる項目を担当者と記録する順を勧めます。PDFを保存したら、月1回、新しい項目と変わった値を見ます。</p>
+    <figure class="fig-inline"><a href="figs/claude-enterprise-security-center-1.png" target="_blank" rel="noopener"><img src="figs/claude-enterprise-security-center-1.png" alt="TechWorkerが勧める4つの手順。Failedの設定を1つずつ見る、手で確かめる設定を担当者と見る、レポートをPDFで保存する、新しい設定と変わった値を月1回見る。" width="1200" height="701" loading="lazy" decoding="async"></a><figcaption>TechWorker作成：セキュリティセンターを見る順番の提案。Anthropicが定めた手順ではありません。</figcaption></figure>
+<p>次の図は、TechWorkerが勧める順番です。Anthropicが定めた手順ではありません。</p>
+<p>Failedは、すべてを推奨に合わせる必要はありません。業務の都合で推奨と違う値にしている設定は、変えない理由を社内の記録に残す方法もあります。これはTechWorkerの提案で、画面の機能ではありません。</p>
+<p>手で確かめる項目は、端末管理やClaude Codeの管理設定の担当者と一緒に見ます。担当が分かれている場合は、先に担当者を決めます。研修で設定を説明するときも、この画面の判定と同じ言葉を使うと、社内の説明がそろいます。</p>
+<p>同じ告知で、推論フックが一般提供と案内されました。プロンプトとツールの呼び出しを、自社のセキュリティの道具で確かめる仕組みです。複数の組織を1つの管理画面でまとめる機能は、ベータで始まりました。初期設定は元に戻せないため、親組織の管理者を先に決めるよう告知は求めています。</p>
+<h2 id="steps">今日やること：オーナーが画面を開き、担当を決める</h2>
+<ol>
+<li>Ownerの人が「Organization settings」の「Security posture」を開き、Failedの数を確かめます。</li>
+<li>Failedの項目ごとに、変えるか、変えない理由を社内で記録するかを決めます。</li>
+<li>「Check manually」の項目を、端末管理とClaude Codeの管理設定の担当者と確かめ、記録します。</li>
+<li>PDFを保存し、次に見る日を決めます。</li>
+<li>Claude以外の生成AIの設定も気になる場合は、研修サイトの<a href="https://kenshu.techworker.co.jp/check/?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=claude-enterprise-security-center&amp;utm_content=body">生成AI利用の安全度チェック</a>で確かめます。</li>
+</ol>
+<p>Claudeの契約の選び方は<a href="claude-code-cost.html">Claudeの法人契約と料金</a>で、Claude Codeの設定の配り方は<a href="claude-code-shanai-tenkai.html">Claude Codeの社内展開</a>で扱っています。</p>
+<h2 id="sources">出典と確認範囲</h2>
+<p class="source-note">確認日：2026年11月10日。機能・開ける人・表示の種類はAnthropicの告知とヘルプセンター、見る順番と今日やることはTechWorkerの提案です。TechWorkerの環境でセキュリティセンターを開いた記録はまだありません。自社の画面での表示は、Ownerが確かめてください。</p>
+<ol class="source-list">
+<li><a href="https://claude.com/resources/articles/claude-enterprise-security-updates" target="_blank" rel="noopener noreferrer">Claude：More visibility and control over Claude Enterprise for security teams（2026年11月5日）</a></li>
+<li><a href="https://support.claude.com/en/articles/18246629-review-your-organization-s-security-posture-with-the-security-center" target="_blank" rel="noopener noreferrer">Claude Help Center：Review your organization's security posture with the security center</a></li>
+<li><a href="https://support.claude.com/en/articles/16059458-inference-hooks-overview" target="_blank" rel="noopener noreferrer">Claude Help Center：Inference hooks overview</a></li>
+</ol>
+</article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div>
+    <p>上場企業を含む45社・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>Claude の設定と社内のルールを、研修でそろえます。</h3>
+    <p>TechWorkerの研修は、教材を毎週更新し、受講者の実業務1本を題材にします。セキュリティセンターのような管理画面の変更も、更新履歴に載せて教材へ反映します。30日後には、使い方が定着したかを測定します。</p>
+  </div>
+  <a href="https://kenshu.techworker.co.jp/?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=claude-enterprise-security-center&amp;utm_content=end" class="btn">研修の内容と教材の更新履歴を見る <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="https://kenshu.techworker.co.jp/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">生成AI法人研修（TechWorker）</a>　／　<a href="https://kenshu.techworker.co.jp/contact/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">無料相談</a>　／　<a href="../../library/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">事例集（無料DL）</a></p>
+<div class="back-list"><a href="index.html">← AI研修・導入ラボの記事一覧に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="claude-code-cost.html" class="related-card"><span class="rc-cat">料金</span><div class="rc-title">Claudeの法人契約と料金｜Team・Enterprise・APIとClaude Codeの選び方</div></a>
+
+    <a href="claude-code-shanai-tenkai.html" class="related-card"><span class="rc-cat">導入</span><div class="rc-title">Claude Codeの社内展開｜社内データの扱い・設定配布・ルール雛形</div></a>
+
+    <a href="claude-google-workspace-trial.html" class="related-card"><span class="rc-cat">導入</span><div class="rc-title">ClaudeをGoogle Docs・Sheets・Slidesで使う｜承認と保存の確認点</div></a>
+  </div>
+</div></section>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__in">
+      <div>
+        <p class="ft__name">株式会社TechWorker</p>
+        <p class="ft__addr">〒169-0051 東京都新宿区西早稲田一丁目22番3号<br>早稲田アントレプレナーシップセンター</p>
+      </div>
+      <nav aria-label="フッターの行き先">
+        <a href="/services">事業・サービス</a>
+        <a href="/company">会社情報</a>
+        <a href="/news">ニュース</a>
+        <a href="/#concept">考え方</a>
+        <a href="/agent-cases/">事例</a>
+        <a href="/contact">お問い合わせ</a>
+        <a href="/privacy">プライバシーポリシー</a>
+      </nav>
+    </div>
+    <p class="ft__note">本ページ・本研修は株式会社TechWorkerが独自に提供するものであり、Anthropic PBCとの提携・後援・承認を受けたものではありません。Claude、Claude Code、Claude Cowork は Anthropic PBC の商標です。</p>
+    <div class="nv-badge"><a href="/news/013"><img src="/assets/badges/nvidia-inception-program.svg" alt="NVIDIA Inception Program" width="93" height="40" loading="lazy"></a><p>NVIDIA、NVIDIA ロゴ、NVIDIA Inception は、米国およびその他の国における NVIDIA Corporation の商標および/または登録商標です。</p></div>
+    <small>© TechWorker Inc.</small>
+  </div>
+</footer>
+
+<script>
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+<script src="/media/article-tracker.js?v=20261006-readable-intros" defer></script>
+<script>
+// スマホの行き先：右上の釦で開け閉めする。行き先を押したら閉じる。スクロールしたら頭に暗い面を敷く
+(() => {
+  const hd = document.querySelector('.hd'), btn = hd.querySelector('.menu');
+  const set = open => { hd.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く'); };
+  btn.addEventListener('click', () => set(!hd.classList.contains('is-open')));
+  hd.querySelector('nav').addEventListener('click', e => { if (e.target.closest('a')) set(false); });
+  const onScroll = () => hd.classList.toggle('is-scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+})();
+</script>
+</body>
+</html>
