@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js" data-media="kenshu">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}if(location.hostname==='techworker.co.jp')gtag('config', 'G-3V34NWXVCJ');
+</script>
+<script src="/assets/tw-track.js" defer></script>
+<script src="/assets/tw-event.js" defer></script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Copilotのエージェント利用状況レポート｜広げる・止めるを決める見方【2026】 — TechWorker</title>
+<meta name="description" content="11月4日、Microsoft 365 管理センターのエージェントの利用状況レポートが新しくなりました。ライセンスの有無と、作った人の種類で分けて使われ方を見られます。開き方と、広げる・止めるの判断への使い方を示します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/kenshu/copilot-agent-usage-report">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Copilotのエージェント利用状況レポート｜広げる・止めるを決める見方【2026】">
+<meta property="og:description" content="11月4日、Microsoft 365 管理センターのエージェントの利用状況レポートが新しくなりました。ライセンスの有無と、作った人の種類で分けて使われ方を見られます。開き方と、広げる・止めるの判断への使い方を示します。">
+<meta property="og:image" content="https://techworker.co.jp/media/kenshu/covers/copilot-agent-usage-report.png">
+<meta property="og:url" content="https://techworker.co.jp/media/kenshu/copilot-agent-usage-report">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Copilotのエージェント利用状況レポート｜広げる・止めるを決める見方【2026】">
+<meta name="twitter:image" content="https://techworker.co.jp/media/kenshu/covers/copilot-agent-usage-report.png">
+<link rel="stylesheet" href="../article.css?v=20261006-bilingual-quotes">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Copilotのエージェント利用状況レポート｜広げる・止めるを決める見方【2026】", "description": "11月4日、Microsoft 365 管理センターのエージェントの利用状況レポートが新しくなりました。ライセンスの有無と、作った人の種類で分けて使われ方を見られます。開き方と、広げる・止めるの判断への使い方を示します。", "datePublished": "2026-11-11", "dateModified": "2026-11-11", "inLanguage": "ja", "image": "https://techworker.co.jp/media/kenshu/covers/copilot-agent-usage-report.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/copilot-agent-usage-report"}, "citation": ["https://learn.microsoft.com/en-us/copilot/microsoft-365/release-notes", "https://learn.microsoft.com/en-us/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new", "https://learn.microsoft.com/en-us/microsoft-365/admin/activity-reports/activity-reports"]}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://techworker.co.jp/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "メディア",
+      "item": "https://techworker.co.jp/media/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "AI研修・導入ラボ",
+      "item": "https://techworker.co.jp/media/kenshu/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Copilotのエージェント利用状況",
+      "item": "https://techworker.co.jp/media/kenshu/copilot-agent-usage-report"
+    }
+  ]
+}
+</script>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<link rel="stylesheet" href="/assets/site/site.css">
+<link rel="stylesheet" href="/media/audience-filter.css?v=20261006-media-only">
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header class="hd hd--solid">
+  <a class="logo" href="/" aria-label="TechWorker ホーム">Tech<i>Worker</i></a>
+  <nav id="hd-nav" aria-label="主な行き先">
+    <a href="/services">事業・サービス</a>
+    <a href="/#concept">考え方</a>
+    <a href="/agent-cases/">事例</a>
+    <a href="/news">ニュース</a>
+    <a href="/company">会社情報</a>
+    <a href="/contact">お問い合わせ</a>
+  </nav>
+  <button class="menu" type="button" aria-label="メニューを開く" aria-controls="hd-nav" aria-expanded="false"></button>
+</header>
+<div class="subnav">
+  <div class="wrap subnav__in">
+    <a class="subnav__name" href="index.html">AI研修・導入ラボ</a>
+    <nav aria-label="メディアの行き先"><a href="index.html#about">このメディアについて</a><a href="https://kenshu.techworker.co.jp/contact/" class="subnav__cta">無料相談</a></nav>
+  </div>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a><span class="sep">/</span>Copilotのエージェント利用状況</nav>
+  <div class="kicker">定着と効果測定</div>
+  <h1>Copilotのエージェント利用状況レポート｜広げる・止めるを決める見方</h1>
+  <p class="dek">11月4日、Microsoft 365 管理センターのエージェントの利用状況レポートが新しくなりました。ライセンスの有無と、作った人の種類で分けて使われ方を見られます。開き方と、広げる・止めるの判断への使い方を示します。</p>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.11.11</span><span class="dot">·</span><span>読了 5分</span>
+  </div>
+<p class="article-audience"><span class="article-audience-label">主な対象読者</span><a href="/media/kenshu/?audience=it#articles">情シス・AI導入担当</a></p>
+</header>
+
+
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div>
+      <a href="#source">11月4日、エージェントの利用状況レポートが新しくなった</a>
+      <a href="#open">開き方と、作った人の種類</a>
+      <a href="#limits">数に入らない利用と、合計が合わないとき</a>
+      <a href="#decide">見る順番：広げる・止める・配り方を見直す</a>
+      <a href="#steps">今日やること：30日分の一覧を書き出す</a>
+      <a href="#sources">出典と確認範囲</a>
+    </div></nav>
+
+  <article class="art-body">
+<p>Copilot Chat や Microsoft 365 Copilot を配った会社では、社員が作ったエージェントが少しずつ増えていきます。これまでの管理センターの「Agents」レポートは、社内で作ったエージェントだけが対象でした。誰がどのエージェントを使ったかも見られませんでした。11月4日のリリースノートで、新しいレポートが案内されました。旧版の説明ページには、新版を使うよう書かれています。この記事では、見える数字と開き方、広げる・止めるの判断への使い方を説明します。</p>
+<h2 id="source">11月4日、エージェントの利用状況レポートが新しくなった</h2>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“The report will be scoped to include agents in Microsoft 365 Copilot and Copilot Chat with usage by both M365 Copilot licensed and unlicensed users.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>このレポートは、Microsoft 365 Copilot と Copilot Chat のエージェントを対象とし、M365 Copilot のライセンスがある利用者とない利用者の両方の利用を含みます。</p><footer>出典：<a href="https://learn.microsoft.com/en-us/copilot/microsoft-365/release-notes" target="_blank" rel="noopener noreferrer">Microsoft Learn「Microsoft 365 Copilot release notes」</a>の2026年11月4日の項（Agents usage report）。11月11日確認。</footer></blockquote>
+<figure class="fig-inline source-figure"><a class="source-image" href="sources/copilot-agent-usage-report-metrics.png" target="_blank" rel="noopener"><img src="sources/copilot-agent-usage-report-metrics.png" width="1200" height="475" alt="Microsoft 365 管理センターのAgentsレポートの上部。期間の選択と、エージェントを使った人の合計、ライセンスがある人、ない人、使われたエージェントの数の4つの数字が並んでいます。" loading="lazy" decoding="async"></a><figcaption><span class="source-label">公式資料</span> <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new" target="_blank" rel="noopener noreferrer">Microsoft Learn「Microsoft Copilot Agents Usage Report (Preview)」</a>（2026年11月9日更新、11月11日確認）。CC BY 4.0（MicrosoftDocsリポジトリ）。<a href="https://github.com/MicrosoftDocs/microsoft-365-docs/blob/public/LICENSE" target="_blank" rel="noopener noreferrer">利用条件</a>。押すと拡大できます。</figcaption></figure>
+<p>画面の上で期間を選び、その下に4つの数字が並びます。左から、エージェントを使った人の合計、そのうちCopilotのライセンスがある人、ない人、使われたエージェントの数です。</p>
+<p>「使った人」は、エージェントに質問して回答を受け取った人を指します。画像の数字と2025年の期間は、Microsoftの説明ページに載った画面の例です。自社の値は、管理センターで開くまで分かりません。</p>
+<p>旧版の説明ページには、今は「deprecated（非推奨）」と書かれ、新版を使うよう案内があります。旧版は Microsoft や他社が作ったエージェントを数えず、人ごとの利用も見られませんでした。新版では、この2つが見られます。</p>
+<h2 id="open">開き方と、作った人の種類</h2>
+<p class="answer">Microsoft 365 管理センターで「Reports」から「Usage」を開き、「Microsoft Copilot」の「Agents」を選びます。説明ページでは、今はプレビューの扱いです。</p>
+<p>期間は過去7日と30日から選べます。旧版にあった90日と180日は、今後の更新で加えると書かれています。使ってから1時間以内に、数字に反映されると説明されています。</p>
+<p>レポートを見るのに要る管理者の役割は、利用状況レポート全般の説明ページに載っています。利用者の名前は、初期設定では伏せて表示されます。名前を出す設定は、グローバル管理者が変えます。Microsoftは、権限の小さい役割を使うよう勧めています。グローバル管理者は、ほかの役割で対応できない緊急時に限るとしています。</p>
+<p>エージェントは、作った人の種類で分けて数えます。種類は次の4つです。ほかに、すべてをまとめて絞り込む「Any」があります。</p>
+<div class="tbl-wrap"><table><thead><tr><th>表示</th><th>どんなエージェントか（説明ページ）</th></tr></thead><tbody>
+<tr><td>Your Users</td><td>社員が agent builder などで作ったもの。組織のカタログには載らず、本人が使うか、リンクで社内の人に共有する</td></tr>
+<tr><td>Your org</td><td>社員が Copilot Studio や Microsoft 365 Agents Toolkit で作り、管理者が組織での利用を承認したもの</td></tr>
+<tr><td>Microsoft</td><td>Microsoftが作ったもの</td></tr>
+<tr><td>Third-party</td><td>Microsoft以外の開発者が作って公開し、管理者が承認したもの</td></tr>
+</tbody></table></div>
+<p>画面の下には、3つの一覧があります。人ごとの一覧には、使ったエージェントの数、受け取った回答の数、最後に使った日が出ます。エージェントごとの一覧には、ライセンスがある人とない人の利用者数、回答の数、最後に使われた日が出ます。もう1つは、人とエージェントの組み合わせごとの一覧です。</p>
+<figure class="fig-inline source-figure"><a class="source-image" href="sources/copilot-agent-usage-report-agents-table.png" target="_blank" rel="noopener"><img src="sources/copilot-agent-usage-report-agents-table.png" width="1200" height="341" alt="エージェントごとの一覧の画面。Agent ID、Agent name、Creator type、ライセンスがある人とない人の利用者数、回答の数、最後に使われた日の列が並び、左上にExportのボタンがあります。" loading="lazy" decoding="async"></a><figcaption><span class="source-label">公式資料</span> <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new" target="_blank" rel="noopener noreferrer">Microsoft Learn「Microsoft Copilot Agents Usage Report (Preview)」</a>のエージェントごとの一覧（2026年11月9日更新、11月11日確認）。CC BY 4.0。押すと拡大できます。</figcaption></figure>
+<p>この画面では、「Creator type」の列で作った人の種類が分かります。画面の例では「Your Users」が「User」と表示されています。左上の「Export」で、一覧を書き出せます。エージェント名や数字は、説明ページの例です。</p>
+<aside class="mid-cta"><div class="mc-body"><div class="mc-k">無料ダウンロード</div><div class="mc-t">生成AI活用事例集を受け取る</div><div class="mc-d">TechWorkerが支援した企業の生成AI活用事例をまとめた資料です。記事のテーマと合わせてご覧ください。</div></div><a href="../../library/?doc=cases&amp;utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=copilot-agent-usage-report&amp;utm_content=mid" class="btn" data-cta="copilot-agent-usage-report-mid">事例集を受け取る <i>&rarr;</i></a></aside>
+<h2 id="limits">数に入らない利用と、合計が合わないとき</h2>
+<p class="answer">Cowork の利用と、Teams で使う SharePoint のエージェントは、このレポートの数に入りません。期間中にライセンスを付け外しすると、合計と内訳が合わないことがあります。</p>
+<p>Cowork の使われ方は、別の「Cowork usage report」で見ると説明ページに書かれています。SharePoint のエージェントを Teams で使った分も、今は数えられていません。社内でよく使うエージェントが一覧に無いときは、この2つに当たらないかを先に確かめます。</p>
+<p>説明ページによると、期間の途中でライセンスを付けたり外したりすると、ある人とない人の和が合計の人数を上回ることがあります。上の画面の例でも、合計と内訳の和は一致していません。合計と内訳は、別々の数として読むのが安全です。</p>
+<p>リリースノートと説明ページでは、書き方に違いがあります。リリースノートは作った人の種類を「Microsoft partners」とし、場所を「Copilot management」の下と書いています。説明ページは「Third-party」とし、場所を「Reports」の「Usage」としています。この記事は、11月9日に更新された説明ページに合わせました。</p>
+<h2 id="decide">見る順番：広げる・止める・配り方を見直す</h2>
+<p class="answer">TechWorkerは、30日分のエージェントの一覧を書き出し、3つの判断に分けて見る使い方を勧めます。Microsoftが定めた手順ではありません。</p>
+    <figure class="fig-inline"><a href="figs/copilot-agent-usage-report-1.png" target="_blank" rel="noopener"><img src="figs/copilot-agent-usage-report-1.png" alt="TechWorkerが勧める4つの手順。30日分のエージェントの一覧を書き出す、広げるかを決める、止めるかを決める、ライセンスと研修の配り方を見直す。" width="1200" height="701" loading="lazy" decoding="async"></a><figcaption>TechWorker作成：エージェントの一覧を見る順番の提案。Microsoftが定めた手順ではありません。</figcaption></figure>
+<p>1つ目は、広げるかどうかです。「Your Users」で利用者が多いエージェントは、個人が作ってリンクで広がったものです。中身と使っているデータを確かめ、組織として案内するかを決めます。</p>
+<p>2つ目は、止めるかどうかです。最後に使われた日が古いエージェントは、作った人に続けるかを聞き、残すか止めるかを決めます。期間内に一度も使われなかったエージェントが一覧に載るかは、説明ページから確かめられませんでした。一覧に無いエージェントは、管理センターのエージェントの管理画面と見比べます。</p>
+<p>3つ目は、ライセンスと研修の配り方です。ライセンスがない人の利用者が多いエージェントは、Copilot Chat で使われています。有償のライセンスを配る先や、研修で使い方をそろえる部署を考える材料になります。人ごとに見るには、名前を出す設定と、自社のライセンスの割り当て表との突き合わせが要ります。</p>
+<p>この3つの判断と順番は、TechWorkerの提案です。レポートが自動で判断するわけではありません。1か月後に同じ一覧を書き出すと、判断の後に使われ方が変わったかを比べられます。</p>
+<h2 id="steps">今日やること：30日分の一覧を書き出す</h2>
+<ol>
+<li>管理センターで「Reports」→「Usage」→「Microsoft Copilot」→「Agents」を開き、期間を過去30日にします。</li>
+<li>エージェントごとの一覧を書き出し、作った人の種類で並べます。</li>
+<li>「Your Users」で利用者が多いものと、最後に使われた日が古いものに印を付けます。</li>
+<li>ライセンスがない人の利用が多いエージェントを、ライセンスと研修の検討に回します。</li>
+<li>1か月後に同じ一覧を書き出し、変わった所を見ます。</li>
+<li>エージェントの公開や共有のルールも確かめたい場合は、研修サイトの<a href="https://kenshu.techworker.co.jp/check/?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=copilot-agent-usage-report&amp;utm_content=body">生成AI利用の安全度チェック</a>を使います。</li>
+</ol>
+<p>Copilot全体の利用レポートと定着の進め方は<a href="copilot-adoption.html">Copilotが定着しない原因と対策</a>で扱っています。エージェントを作る側の統制は<a href="copilot-studio-governance.html">Copilot Studioのガバナンス設計</a>、研修の費用は<a href="copilot-training-cost.html">Copilot研修の費用の比較</a>にまとめています。</p>
+<h2 id="sources">出典と確認範囲</h2>
+<p class="source-note">確認日：2026年11月11日。レポートの対象・開き方・数の定義は、Microsoftのリリースノートと説明ページに基づきます。見る順番と今日やることは、TechWorkerの提案です。TechWorkerの環境でこのレポートを開いた記録はまだありません。自社の画面での表示は、管理者が確かめてください。</p>
+<ol class="source-list">
+<li><a href="https://learn.microsoft.com/en-us/copilot/microsoft-365/release-notes" target="_blank" rel="noopener noreferrer">Microsoft Learn：Microsoft 365 Copilot release notes（2026年11月4日の項）</a></li>
+<li><a href="https://learn.microsoft.com/en-us/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new" target="_blank" rel="noopener noreferrer">Microsoft Learn：Microsoft Copilot Agents Usage Report (Preview)（2026年11月9日更新）</a></li>
+<li><a href="https://learn.microsoft.com/en-us/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents" target="_blank" rel="noopener noreferrer">Microsoft Learn：Microsoft Copilot Agent Usage Report（旧版。deprecated と表示）</a></li>
+<li><a href="https://learn.microsoft.com/en-us/microsoft-365/admin/activity-reports/activity-reports" target="_blank" rel="noopener noreferrer">Microsoft Learn：Microsoft 365 admin center usage reports overview</a></li>
+</ol>
+</article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div>
+    <p>上場企業を含む45社・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>Copilotのエージェントの使い方を、研修でそろえます。</h3>
+    <p>TechWorkerの研修は、教材を毎週更新し、受講者の実業務1本を題材にします。エージェントの利用状況レポートのような管理画面の変更も、更新履歴に載せて教材へ反映します。受講から30日後には、使われ方を測って報告します。</p>
+  </div>
+  <a href="https://kenshu.techworker.co.jp/?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=copilot-agent-usage-report&amp;utm_content=end" class="btn">研修の内容と教材の更新履歴を見る <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="https://kenshu.techworker.co.jp/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">生成AI法人研修（TechWorker）</a>　／　<a href="https://kenshu.techworker.co.jp/contact/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">無料相談</a>　／　<a href="../../library/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">事例集（無料DL）</a></p>
+<div class="back-list"><a href="index.html">← AI研修・導入ラボの記事一覧に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="copilot-adoption.html" class="related-card"><span class="rc-cat">定着</span><div class="rc-title">Microsoft Copilotが定着しない原因と対策｜利用率を上げる定着支援の設計</div></a>
+
+    <a href="copilot-studio-governance.html" class="related-card"><span class="rc-cat">安全</span><div class="rc-title">Copilot Studioのガバナンス設計｜環境・DLP・公開承認を分ける</div></a>
+
+    <a href="copilot-training-cost.html" class="related-card"><span class="rc-cat">料金</span><div class="rc-title">Copilot研修の費用を比較する｜見積もりの内訳と助成金の確認点</div></a>
+  </div>
+</div></section>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__in">
+      <div>
+        <p class="ft__name">株式会社TechWorker</p>
+        <p class="ft__addr">〒169-0051 東京都新宿区西早稲田一丁目22番3号<br>早稲田アントレプレナーシップセンター</p>
+      </div>
+      <nav aria-label="フッターの行き先">
+        <a href="/services">事業・サービス</a>
+        <a href="/company">会社情報</a>
+        <a href="/news">ニュース</a>
+        <a href="/#concept">考え方</a>
+        <a href="/agent-cases/">事例</a>
+        <a href="/contact">お問い合わせ</a>
+        <a href="/privacy">プライバシーポリシー</a>
+      </nav>
+    </div>
+    <p class="ft__note">本ページ・本研修は株式会社TechWorkerが独自に提供するものであり、Microsoft Corporationとの提携・後援・承認を受けたものではありません。Microsoft、Microsoft 365、CopilotはMicrosoftグループ企業の商標です。</p>
+    <div class="nv-badge"><a href="/news/013"><img src="/assets/badges/nvidia-inception-program.svg" alt="NVIDIA Inception Program" width="93" height="40" loading="lazy"></a><p>NVIDIA、NVIDIA ロゴ、NVIDIA Inception は、米国およびその他の国における NVIDIA Corporation の商標および/または登録商標です。</p></div>
+    <small>© TechWorker Inc.</small>
+  </div>
+</footer>
+
+<script>
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+<script src="/media/article-tracker.js?v=20261006-readable-intros" defer></script>
+<script>
+// スマホの行き先：右上の釦で開け閉めする。行き先を押したら閉じる。スクロールしたら頭に暗い面を敷く
+(() => {
+  const hd = document.querySelector('.hd'), btn = hd.querySelector('.menu');
+  const set = open => { hd.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く'); };
+  btn.addEventListener('click', () => set(!hd.classList.contains('is-open')));
+  hd.querySelector('nav').addEventListener('click', e => { if (e.target.closest('a')) set(false); });
+  const onScroll = () => hd.classList.toggle('is-scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+})();
+</script>
+</body>
+</html>
