@@ -179,7 +179,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
       <li><strong>Google Workspace Studio</strong>は、プログラミングなしで反復作業を自動化するツールです。作る側の層にあたるため、開ける対象を絞る判断がしやすくなります。</li>
     </ul>
 <p>10月23日から、GeminiのチャットでGemini Notebookを使えるようになりました。管理者が見る設定は<a href="gemini-notebook-in-gemini-app.html">Gemini NotebookがGeminiアプリで既定オンに</a>で説明しています。</p>
-<p>Google CloudのGemini Notebook Enterpriseは、Workspaceの機能利用とは別に確認します。ユーザーには専用ライセンスと、少なくとも<code>アクセス権限を管理するIAMの<code>Cloud NotebookLM User</code>ロールが必要です。Google Cloud側で契約・ライセンス割当・権限を設定します。名称が似ていても、Workspaceの管理コンソールで機能をオンにするだけでは利用できません。出典：<a href="https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/set-up-licensing" target="_blank" rel="noopener">Get licenses for Gemini Notebook Enterprise</a>（ライセンス・IAM要件を2026年10月3日確認）。</p>
+<p>Google CloudのGemini Notebook Enterpriseは、Workspaceの機能利用とは別に確認します。ユーザーには専用ライセンスと、少なくともアクセス権限を管理するIAMの<code>Cloud NotebookLM User</code>ロールが必要です。Google Cloud側で契約・ライセンス割当・権限を設定します。名称が似ていても、Workspaceの管理コンソールで機能をオンにするだけでは利用できません。出典：<a href="https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/set-up-licensing" target="_blank" rel="noopener">Get licenses for Gemini Notebook Enterprise</a>（ライセンス・IAM要件を2026年10月3日確認）。</p>
     <p>設計方針は、「使う層は広く、作る層は狭く」です。日常業務のAIアシスタントも、入力範囲と確認責任を決め、部門ごとに利用状況を見ながら開けます。自動化フローやエージェントを作れる層まで一気に開けると、品質のばらつきと管理対象の増加が同時に来ます。作る層の広げ方は、<a href="gemini-gems.html">GemsとWorkspace Studioによる内製</a>で扱います。</p>
     <p>全社のエージェントを一元管理したい場合は、別建ての選択肢があります。Google Cloud側の Gemini Enterprise です。Workspace外のデータ基盤とつなぎたい場合も同じです。公式ページの案内は次のとおりです（2026年8月時点）。Business エディションは1シート月額21米ドルからです。Standard / Plus エディションは1シート月額30米ドルからです。Workspaceの機能で足りるかを先に確かめてから検討します。</p>
     <p><strong>手順4：パイロットを設計します。</strong>人数より、何をもって成功とするかを先に決めます。評価の枠は、開始前に次のように作ります。</p>
