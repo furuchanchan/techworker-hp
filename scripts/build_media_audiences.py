@@ -24,12 +24,23 @@ def required(pattern, text, label):
     return m
 
 def assets(text, catalog=False):
-    text = re.sub(r'\n?<link rel="stylesheet" href="/media/audience-filter.css\?v=[^"]+">', '', text)
-    text = re.sub(r'\n?<script src="/media/audience-filter.js\?v=[^"]+" defer></script>', '', text)
-    tags = f'<link rel="stylesheet" href="/media/audience-filter.css?v={VERSION}">\n'
+    # 既にある読込タグはその場で版だけ差し替え、無いときだけ </head> の前へ足す（他のCSSとの順を動かさない）
+    css = f'<link rel="stylesheet" href="/media/audience-filter.css?v={VERSION}">'
+    js = f'<script src="/media/audience-filter.js?v={VERSION}" defer></script>'
+    css_re = r'<link rel="stylesheet" href="/media/audience-filter.css\?v=[^"]+">'
+    js_re = r'\n?<script src="/media/audience-filter.js\?v=[^"]+" defer></script>'
+    if re.search(css_re, text):
+        text = re.sub(css_re, lambda m: css, text)
+    else:
+        text = text.replace('</head>', css + '\n</head>', 1)
     if catalog:
-        tags += f'<script src="/media/audience-filter.js?v={VERSION}" defer></script>\n'
-    return text.replace('</head>', tags + '</head>', 1)
+        if re.search(js_re, text):
+            text = re.sub(js_re, lambda m: '\n' + js if m.group(0).startswith('\n') else js, text)
+        else:
+            text = text.replace('</head>', js + '\n</head>', 1)
+    else:
+        text = re.sub(js_re, '', text)
+    return text
 
 def controls(items):
     counts = collections.Counter(ARTICLES[p] for p in items)
