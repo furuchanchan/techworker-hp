@@ -36,6 +36,18 @@ export async function onRequestOptions({ request }) {
   return new Response(null, { status: 204, headers: corsHeaders(request) });
 }
 
+// 1つの IP は1日5回、全体は1日300回まで（日付は UTC）。厳密な排他はしない（上限の目安として十分）
+const LIMIT_PER_IP = 5, LIMIT_ALL = 300;
+async function overLimit(env, ip) {
+  if (!env.ASSESS_LIMIT) return true;
+  const day = new Date().toISOString().slice(0, 10);
+  const keys = [`all:${day}`, `ip:${day}:${ip || 'unknown'}`], caps = [LIMIT_ALL, LIMIT_PER_IP];
+  const counts = await Promise.all(keys.map(async (k) => parseInt(await env.ASSESS_LIMIT.get(k), 10) || 0));
+  if (counts.some((n, i) => n >= caps[i])) return true;
+  await Promise.all(keys.map((k, i) => env.ASSESS_LIMIT.put(k, String(counts[i] + 1), { expirationTtl: 172800 })));
+  return false;
+}
+
 async function verifyTurnstile(token, secret, ip) {
   try {
     const body = new URLSearchParams();
@@ -85,6 +97,11 @@ export async function onRequestPost({ request, env }) {
   // APIキー未設定なら安全にフォールバック（課金ゼロ）
   if (!env.ANTHROPIC_API_KEY) {
     return json({ ok: false, fallback: true, reason: 'not_configured' });
+  }
+
+  // 回数の上限（KV の ASSESS_LIMIT）。Origin は偽れるので、これが課金の歯止め。数えられないときは AI を呼ばない
+  if (await overLimit(env, request.headers.get('CF-Connecting-IP'))) {
+    return json({ ok: false, fallback: true, reason: 'rate_limited' });
   }
 
   const dimText = dims.map((d) => `${(d.theme || '').toString().slice(0, 20)}: ${parseInt(d.pct, 10) || 0}%`).join(' / ');
