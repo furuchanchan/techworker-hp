@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}if(location.hostname==='techworker.co.jp')gtag('config', 'G-3V34NWXVCJ');
+</script>
+<script src="/assets/tw-track.js" defer></script>
+<script src="/assets/tw-event.js" defer></script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>トークンコストとは｜生成AIのAPI料金の計算方法と主要モデルの単価表・月額の見積もり例【2026年11月】 — TechWorker</title>
+<meta name="description" content="トークンコストは、生成AIが処理した入力・出力のトークン数に単価を掛けた利用料です。中位モデルは100万トークンあたり入力2ドル・出力10ドル。社員100人が1日20回使うと月360ドルになる計算を、3社の単価表（2026年11月11日確認）で示します。">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/token-cost">
+<meta property="og:type" content="article">
+<meta property="og:title" content="トークンコストとは｜生成AIのAPI料金の計算方法と主要モデルの単価表・月額の見積もり例【2026年11月】">
+<meta property="og:description" content="トークンコストは、生成AIが処理した入力・出力のトークン数に単価を掛けた利用料です。中位モデルは100万トークンあたり入力2ドル・出力10ドル。社員100人が1日20回使うと月360ドルになる計算を、3社の単価表（2026年11月11日確認）で示します。">
+<meta property="og:image" content="https://techworker.co.jp/media/covers/token-cost.png">
+<meta property="og:url" content="https://techworker.co.jp/media/token-cost">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="トークンコストとは｜生成AIのAPI料金の計算方法と主要モデルの単価表・月額の見積もり例【2026年11月】">
+<meta name="twitter:image" content="https://techworker.co.jp/media/covers/token-cost.png">
+<link rel="stylesheet" href="article.css?v=20261006-source-notes">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "トークンコストとは｜生成AIのAPI料金の計算方法と主要モデルの単価表・月額の見積もり例【2026年11月】", "description": "トークンコストは、生成AIが処理した入力・出力のトークン数に単価を掛けた利用料です。中位モデルは100万トークンあたり入力2ドル・出力10ドル。社員100人が1日20回使うと月360ドルになる計算を、3社の単価表（2026年11月11日確認）で示します。", "datePublished": "2026-11-11", "dateModified": "2026-11-11", "inLanguage": "ja", "image": "https://techworker.co.jp/media/covers/token-cost.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/token-cost"}, "citation": ["https://platform.claude.com/docs/en/about-claude/pricing", "https://platform.claude.com/docs/en/build-with-claude/thinking-steering-and-cost", "https://developers.openai.com/api/docs/pricing", "https://developers.openai.com/api/docs/guides/agents-api/observability", "https://aistudio.google.com/docs/pricing"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "トークンコストとは", "item": "https://techworker.co.jp/media/token-cost"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "トークンコストとは何ですか？", "acceptedAnswer": {"@type": "Answer", "text": "生成AIが処理したトークン数に単価を掛けた利用料です。入力（AIに送る文章）と出力（AIが書く文章）で単価が分かれていて、100万トークンあたりの米ドルで示されます。"}}, {"@type": "Question", "name": "1トークンは何文字ですか？", "acceptedAnswer": {"@type": "Answer", "text": "決まった換算はなく、モデルごとに違います。Anthropicは、Claude Opus 4.7以降のモデルでは同じ文章のトークン数が約30%多くなると説明しています。見積もりにはAPIの応答に入っている利用量の実測値を使います。"}}, {"@type": "Question", "name": "入力と出力は、どちらが高いですか？", "acceptedAnswer": {"@type": "Answer", "text": "出力です。Claude Sonnet 5.5、gpt-6.1-sol、Gemini 4 Argonはいずれも入力2ドル・出力10ドルで、出力が入力の5倍です。思考（推論）のトークンも出力として課金されます。"}}, {"@type": "Question", "name": "キャッシュを使うと、どれだけ安くなりますか？", "acceptedAnswer": {"@type": "Answer", "text": "キャッシュから読み出した入力の単価は、通常の入力の2.5〜10%です。Claude Sonnet 5.5では、入力2ドルに対して読み出しは0.10ドルです。安くなるのは入力のうち共通の冒頭部分だけで、出力の料金は変わりません。"}}, {"@type": "Question", "name": "ChatGPTやClaudeの月額プランでも、トークンコストはかかりますか？", "acceptedAnswer": {"@type": "Answer", "text": "定額の席契約は、利用枠の範囲なら追加の支払いはありません。ただしClaude Enterpriseは、席料金に加えて利用量をAPIの単価で支払います（2026年11月9日確認）。契約ごとの違いは「Claudeの法人契約と料金」で説明しています。"}}, {"@type": "Question", "name": "トークン単価は値上げされますか？", "acceptedAnswer": {"@type": "Answer", "text": "値上げの予定が料金表に書いてあるモデルがあります。GoogleのGemini 4 CarbonとGemini 4 Argonは2026年12月1日から、Gemini 3.8 Flashは2027年1月1日から、単価が2倍になります（2026年11月11日確認）。"}}]}</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<link rel="stylesheet" href="/assets/site/site.css">
+<link rel="stylesheet" href="/media/audience-filter.css?v=20261006-media-only">
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header class="hd hd--solid">
+  <a class="logo" href="/" aria-label="TechWorker ホーム">Tech<i>Worker</i></a>
+  <nav id="hd-nav" aria-label="主な行き先">
+    <a href="/services">事業・サービス</a>
+    <a href="/#concept">考え方</a>
+    <a href="/agent-cases/">事例</a>
+    <a href="/news">ニュース</a>
+    <a href="/company">会社情報</a>
+    <a href="/contact">お問い合わせ</a>
+  </nav>
+  <button class="menu" type="button" aria-label="メニューを開く" aria-controls="hd-nav" aria-expanded="false"></button>
+</header>
+<div class="subnav">
+  <div class="wrap subnav__in">
+    <a class="subnav__name" href="index.html">メディア</a>
+    <nav aria-label="メディアの行き先"><a href="../contact.html" class="subnav__cta">無料相談</a></nav>
+  </div>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../index.html">ホーム</a><span class="sep">/</span><a href="index.html">メディア</a><span class="sep">/</span>トークンコストとは</nav>
+  <div class="kicker">料金と計算</div>
+  <h1>トークンコストとは｜生成AIのAPI料金の計算方法と主要モデルの単価表・月額の見積もり例</h1>
+  <p class="dek">トークンコストは、生成AIが処理した入力・出力のトークン数に単価を掛けた利用料です。中位モデルは100万トークンあたり入力2ドル・出力10ドル。社員100人が1日20回使うと月360ドルになる計算を、3社の単価表（2026年11月11日確認）で示します。</p>
+  <div class="a-meta">
+    <img class="av" src="../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.11.11</span><span class="dot">·</span><span>読了 9分</span>
+  </div>
+<p class="article-audience"><span class="article-audience-label">主な対象読者</span><span class="audience-tag">情シス・AI導入担当</span></p>
+</header>
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次">
+    <div class="art-toc-inner">
+      <div class="toc-h">目次</div><a href="#what">トークンコストとは何ですか？</a><a href="#calc">トークンコストはどう計算しますか？</a><a href="#price">主要モデルのトークン単価はいくらですか？</a><a href="#estimate">月額はどう見積もりますか？</a><a href="#grow">なぜ実際の請求は見積もりより高くなるのですか？</a><a href="#reduce">トークンコストはどう下げますか？</a><a href="#start">APIの利用はどんな手順で始めますか？</a><a href="#ringi">稟議では何を聞かれますか？</a><a href="#fail">よくある失敗には、どんなものがありますか？</a><a href="#faq">よくある質問</a><a href="#sources">出典と確認範囲</a></div></nav><article class="art-body">
+<p>トークンコストとは、生成AIが処理した文字の量（トークン数）に応じて払う利用料です。計算式は「入力トークン数×入力単価＋出力トークン数×出力単価」です。単価は100万トークンあたりの米ドルで示されます。</p>
+<ul>
+<li><strong>単価の目安：</strong>3社の中位モデル（Claude Sonnet 5.5、gpt-6.1-sol、Gemini 4 Argon）は、入力2ドル・出力10ドルで並んでいます。</li>
+<li><strong>月額の目安：</strong>社員100人が1日20回使うと、中位モデルで月360ドル（約5.8万円）です。1回あたり入力2,000・出力500トークンと仮定した試算です。</li>
+<li><strong>差が出る所：</strong>同じ使い方でも、軽量モデルなら月18ドル、最上位モデルなら月1,800ドルです。</li>
+</ul>
+<p>単価はAnthropic・OpenAI・Googleの公式料金ページを2026年11月11日に確認しました。この記事はAPIを従量で使うときの計算方法と見積もりを扱います。席ごとの定額契約は<a href="kenshu/claude-code-cost.html">Claudeの法人契約と料金</a>で説明しています。</p>
+
+<h2 id="what">トークンコストとは何ですか？</h2>
+<p class="answer">生成AIのAPIを使ったときに、処理したトークン数に単価を掛けて請求される利用料です。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“MTok: Million tokens. $5 / MTok is $5 for every million tokens.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>MTokは100万トークンのことです。「$5 / MTok」は100万トークンごとに5ドルという意味です。</p><footer>出典：<a href="https://platform.claude.com/docs/en/about-claude/pricing" target="_blank" rel="noopener noreferrer">Anthropic公式「Pricing」</a>（2026年11月11日確認）</footer></blockquote>
+<p>トークンは、AIが文章を読み書きするときの最小の単位です。料金表の「$2 / MTok」は100万トークンを処理すると2ドルかかるという意味です。3社とも、この「100万トークンあたりの米ドル」で単価を示しています。</p>
+<p>1トークンが何文字にあたるかは、モデルごとに違います。Anthropicの料金ページによると、Claude Opus 4.7以降のモデルは新しいトークナイザー（文章をトークンに分ける仕組み）を使い、同じ文章でもトークン数が約30%多くなります。見積もりには文字数からの換算を使わず、APIの応答に入っている利用量（usage）の実測値を使います。</p>
+<figure class="fig-inline"><a href="figs/token-cost-1.png" target="_blank" rel="noopener"><img src="figs/token-cost-1.png" alt="トークンコストの4つの単価。Claude Sonnet 5.5の例で、入力は100万トークン2ドル、出力は10ドル、キャッシュ読み出しは0.10ドル、キャッシュ書き込みは5分保持で2.50ドル。" width="1200" height="564" loading="lazy" decoding="async"></a><figcaption><span class="source-label">TechWorker作成：</span>Anthropic公式「Pricing」（2026年11月11日確認）の単価を、課金の種類ごとに並べた図です。画像を押すと拡大できます。</figcaption></figure>
+
+<h2 id="calc">トークンコストはどう計算しますか？</h2>
+<p class="answer">入力・出力・キャッシュ読み出し・キャッシュ書き込みの4つに分け、それぞれのトークン数に単価を掛けて足します。</p>
+<ul>
+<li><strong>入力：</strong>AIに送る指示、添付した資料、それまでの会話の履歴です。</li>
+<li><strong>出力：</strong>AIが書く回答です。回答の前にAIが行う思考（推論）のトークンも、出力として課金されます。</li>
+<li><strong>キャッシュ読み出し：</strong>前回と同じ冒頭部分を読み直すときの入力です。通常の入力より安い単価になります。</li>
+<li><strong>キャッシュ書き込み：</strong>冒頭部分を初めて保存するときの入力です。Anthropicでは通常の入力の1.25倍（5分保持）か2倍（1時間保持）です。</li>
+</ul>
+<p>1回の質問で計算してみます。Claude Sonnet 5.5（入力2ドル・出力10ドル）に、入力2,000トークンを送り、出力500トークンが返ってきた場合です。</p>
+<div class="callout"><p>入力：2,000 ÷ 1,000,000 × 2ドル ＝ 0.004ドル<br>
+出力：500 ÷ 1,000,000 × 10ドル ＝ 0.005ドル<br>
+合計：0.009ドル（1ドル160円で約1.4円）</p></div>
+<p>出力は入力の4分の1の量ですが、金額は出力のほうが大きくなります。この記事の単価表では、ほとんどのモデルで出力の単価が入力の5倍です。</p>
+<p>円への換算はこの記事を通して1ドル160円で計算しています。2026年11月10日の相場（1ドル約158.6円）を切りのよい値に丸めた仮のレートです。実際の請求は支払い時のレートで決まります。</p>
+
+<h2 id="price">主要モデルのトークン単価はいくらですか？</h2>
+<p class="answer">中位モデルは3社とも入力2ドル・出力10ドルで、軽量モデルは入力0.10ドルから、最上位モデルは入力10ドルまであります。</p>
+<p class="fig-cap">単位は米ドルで、100万トークンあたりの標準料金です。表が画面に収まらない場合は、横にスクロールできます。</p>
+<div class="tbl-wrap" role="region" aria-label="主要モデルのトークン単価表" tabindex="0"><table style="white-space:nowrap">
+<thead><tr><th>提供元</th><th>モデル（公式の表記）</th><th>入力</th><th>キャッシュ読み出し</th><th>出力</th></tr></thead>
+<tbody>
+<tr><td>Anthropic</td><td>Claude Fable 5.2</td><td>8ドル</td><td>0.20ドル</td><td>40ドル</td></tr>
+<tr><td>Anthropic</td><td>Claude Opus 5.5</td><td>4ドル</td><td>0.20ドル</td><td>20ドル</td></tr>
+<tr><td>Anthropic</td><td>Claude Sonnet 5.5</td><td>2ドル</td><td>0.10ドル</td><td>10ドル</td></tr>
+<tr><td>Anthropic</td><td>Claude Haiku 5.5</td><td>0.10ドル</td><td>0.01ドル</td><td>0.50ドル</td></tr>
+<tr><td>OpenAI</td><td>gpt-6-astra</td><td>10ドル</td><td>1.00ドル</td><td>50ドル</td></tr>
+<tr><td>OpenAI</td><td>gpt-6.1-sol</td><td>2ドル</td><td>0.10ドル</td><td>10ドル</td></tr>
+<tr><td>OpenAI</td><td>gpt-6.1-terra</td><td>1ドル</td><td>0.05ドル</td><td>5ドル</td></tr>
+<tr><td>OpenAI</td><td>gpt-6-luna</td><td>0.10ドル</td><td>0.01ドル</td><td>0.50ドル</td></tr>
+<tr><td>Google</td><td>Gemini 4 Carbon</td><td>2ドル ※</td><td>0.10ドル ※</td><td>10ドル ※</td></tr>
+<tr><td>Google</td><td>Gemini 4 Argon</td><td>2ドル ※</td><td>0.10ドル ※</td><td>10ドル ※</td></tr>
+<tr><td>Google</td><td>Gemini 3.8 Flash</td><td>0.75ドル ※</td><td>0.075ドル ※</td><td>3.75ドル ※</td></tr>
+<tr><td>Google</td><td>Gemini 3.5 Flash-Lite</td><td>0.30ドル</td><td>0.03ドル</td><td>2.50ドル</td></tr>
+</tbody></table></div>
+<p class="fig-cap">※ 値上げの日付が料金表に書いてあるモデルです。Gemini 4 CarbonとGemini 4 Argonは2026年12月1日から入力4ドル・キャッシュ読み出し0.20ドル・出力20ドル、Gemini 3.8 Flashは2027年1月1日から入力1.50ドル・キャッシュ読み出し0.15ドル・出力7.50ドルになります。</p>
+<p class="fig-cap">出典：Anthropic「Pricing」、OpenAI「API Pricing」、Google「Gemini API pricing」（いずれも2026年11月11日確認）。OpenAIのモデルは料金ページに載っているモデルIDで表記しています。</p>
+<p>この表を読むときの注意は4つあります。</p>
+<ul>
+<li><strong>Googleは値上げの日付が料金表に書いてあります。</strong>Gemini 4 CarbonとGemini 4 Argonは2026年12月1日から、Gemini 3.8 Flashは2027年1月1日から、単価が2倍になります。年額の見積もりには値上げ後の単価を使います。</li>
+<li><strong>入力が長いと単価が上がるモデルがあります。</strong>Claude Haiku 5.5は、プロンプトが10万トークンを超えると入力0.50ドル・出力2.50ドルです。OpenAIの上の4モデルは、入力が27.2万トークンを超えると長文向けの料金になります（gpt-6.1-solは入力4ドル・出力15ドル）。</li>
+<li><strong>まとめて処理すると半額です。</strong>結果をすぐに受け取らなくてよい処理は、3社ともBatch API（一括処理）で入力・出力が50%引きになります。</li>
+<li><strong>出力の単価には思考の分が含まれます。</strong>Googleの料金表は出力の欄を「思考トークンを含む出力料金」と書いています。AnthropicとOpenAIも、思考（推論）のトークンを出力として数えます。</li>
+</ul>
+<p>この単価表と稟議書の雛形は、下の枠から受け取れます。</p>
+<div class="tw-lead" data-offer="ai-contract-pack" data-campaign="token-cost" data-pos="mid"></div>
+
+<h2 id="estimate">月額はどう見積もりますか？</h2>
+<p class="answer">「人数×1日の回数×営業日数」で月の回数を出し、1回あたりのトークン数と単価を掛けます。</p>
+<p>社員100人が1日20回使う場合で計算します。1回あたりのトークン数は入力2,000・出力500と仮定します。自社の数字が分かったら、この2つを実測値に置き換えてください。</p>
+<div class="callout"><p>月の回数：100人 × 20回 × 20営業日 ＝ 4万回<br>
+月の入力：4万回 × 2,000トークン ＝ 8,000万トークン<br>
+月の出力：4万回 × 500トークン ＝ 2,000万トークン<br>
+中位モデル（入力2ドル・出力10ドル）：80 × 2ドル ＋ 20 × 10ドル ＝ 360ドル</p></div>
+<p>月360ドルは1ドル160円で5万7,600円です。1人あたりでは月3.6ドル（576円）になります。同じ使い方を、ほかのモデルの単価で計算すると次のとおりです。</p>
+<figure class="fig-inline"><a href="figs/token-cost-2.png" target="_blank" rel="noopener"><img src="figs/token-cost-2.png" alt="社員100人が1日20回使う場合の月額をモデル別に比べた棒グラフ。Claude Haiku 5.5は18ドル、Claude Sonnet 5.5は360ドル、gpt-6-astraは1,800ドル。" width="1200" height="793" loading="lazy" decoding="async"></a><figcaption><span class="source-label">TechWorker作成：</span>3社の公式料金表（2026年11月11日確認）の単価による試算です。実測や請求額ではありません。</figcaption></figure>
+<div class="tbl-wrap" role="region" aria-label="モデル別の月額の試算" tabindex="0"><table>
+<thead><tr><th>モデル</th><th>入力の分</th><th>出力の分</th><th>月額</th><th>円換算（1ドル160円）</th></tr></thead>
+<tbody>
+<tr><td>Claude Haiku 5.5／gpt-6-luna</td><td>8ドル</td><td>10ドル</td><td>18ドル</td><td>2,880円</td></tr>
+<tr><td>Gemini 3.5 Flash-Lite</td><td>24ドル</td><td>50ドル</td><td>74ドル</td><td>1万1,840円</td></tr>
+<tr><td>Gemini 3.8 Flash</td><td>60ドル</td><td>75ドル</td><td>135ドル</td><td>2万1,600円</td></tr>
+<tr><td>gpt-6.1-terra</td><td>80ドル</td><td>100ドル</td><td>180ドル</td><td>2万8,800円</td></tr>
+<tr><td>Claude Sonnet 5.5／gpt-6.1-sol／Gemini 4 Argon（11月30日まで）</td><td>160ドル</td><td>200ドル</td><td>360ドル</td><td>5万7,600円</td></tr>
+<tr><td>Claude Opus 5.5／Gemini 4 Argon・Carbon（12月1日から）</td><td>320ドル</td><td>400ドル</td><td>720ドル</td><td>11万5,200円</td></tr>
+<tr><td>Claude Fable 5.2</td><td>640ドル</td><td>800ドル</td><td>1,440ドル</td><td>23万400円</td></tr>
+<tr><td>gpt-6-astra</td><td>800ドル</td><td>1,000ドル</td><td>1,800ドル</td><td>28万8,000円</td></tr>
+</tbody></table></div>
+<p class="fig-cap">月4万回、1回あたり入力2,000・出力500トークンと仮定した試算。キャッシュとBatch APIの割引は入れていません。</p>
+<p>いちばん安いモデルといちばん高いモデルで、月額は100倍違います。モデルは仕事の難しさで分けて選びます。決まった形式の抜き出しや分類は軽量モデル、ふだんの文書作成や要約は中位モデル、長い資料の突き合わせや失敗の影響が大きい判断は上位モデル、という分け方です。分け方の考え方は<a href="token-management.html">トークンマネジメントとは</a>で説明しています。</p>
+
+<h2 id="grow">なぜ実際の請求は見積もりより高くなるのですか？</h2>
+<p class="answer">会話の履歴が毎回入力として送り直されること、思考のトークンが出力に数えられることが主な理由です。</p>
+<ul>
+<li><strong>会話が続くほど入力が増えます。</strong>APIは前の会話を覚えていないので、やり取りのたびに履歴を全部送り直します。質問500トークン・回答500トークンのやり取りを10往復すると、入力の合計は5万トークンです。質問そのものは合計5,000トークンなので、10倍の入力に課金されます。</li>
+<li><strong>画面に見えない思考にも課金されます。</strong>Anthropicの資料は、請求される出力トークン数と応答に見えるトークン数は一致しないと説明しています。難しい質問ほど、思考の分で出力が増えます。</li>
+<li><strong>資料を添付すると入力が一気に増えます。</strong>長い資料を毎回送ると、入力が長文向けの料金に切り替わるモデルもあります。</li>
+<li><strong>ツールの利用料は別です。</strong>Anthropicでは、ウェブ検索などサーバー側のツールに、トークンとは別の利用料がかかります。</li>
+<li><strong>単価と為替が動きます。</strong>Googleの値上げのように単価が2倍になる例があり、請求はドル建てです。</li>
+</ul>
+<p>見積もりの段階では、1回あたりのトークン数を仮の値で置くしかありません。2〜4週間の試験運用で実測し、仮の値を置き換えてから年額を出します。</p>
+
+<h2 id="reduce">トークンコストはどう下げますか？</h2>
+<p class="answer">モデルを仕事で分ける、出力を短くする、キャッシュを使う、急がない処理をBatch APIに回す、の4つです。</p>
+<ol>
+<li><strong>モデルを仕事で分けます。</strong>上の試算では、中位モデルを軽量モデルに替えると月360ドルが18ドルになります。品質が足りる仕事だけを軽いモデルに移します。</li>
+<li><strong>出力を短くします。</strong>上の試算では、月額360ドルのうち200ドルが出力です。回答の長さを半分の250トークンにすると、月額は260ドルになります。</li>
+<li><strong>キャッシュを使います。</strong>社内ルールやマニュアルなど、毎回同じ冒頭部分を送る使い方に向いています。入力2,000トークンのうち1,500トークンが共通なら、Claude Sonnet 5.5の月額は360ドルから246ドルになります（下の計算）。</li>
+<li><strong>急がない処理をBatch APIに回します。</strong>夜間の集計や大量の分類は、3社とも50%引きで処理できます。</li>
+</ol>
+<div class="callout"><p>キャッシュを使った場合（Claude Sonnet 5.5、読み出し0.10ドル）<br>
+共通部分：4万回 × 1,500トークン ＝ 6,000万トークン × 0.10ドル ＝ 6ドル<br>
+残りの入力：4万回 × 500トークン ＝ 2,000万トークン × 2ドル ＝ 40ドル<br>
+出力：200ドル<br>
+合計：246ドル（キャッシュの書き込み分は別にかかります）</p></div>
+<p>キャッシュの読み出し単価は通常の入力に対して次の割合です。Claude Fable 5.2は2.5%、Claude Opus 5.5とClaude Sonnet 5.5は5%、Claude Haiku 5.5は10%です。gpt-6.1-solとGemini 4 Argonは5%です。</p>
+<p>下げる順番と、作業ごとに費用と品質を記録する方法は、<a href="token-management.html">トークンマネジメントとは</a>に記入例とCSVのひな型があります。費用だけが下がって手戻りが増えた変更は、採用しません。</p>
+
+<h2 id="start">APIの利用はどんな手順で始めますか？</h2>
+<p class="answer">用途を決め、APIキーを用途ごとに分け、支出の上限を置いてから、試験運用で実測します。</p>
+<ol>
+<li><strong>誰が何に使うかを決めます。</strong>社内のチャット画面に組み込むのか、夜間の自動処理に使うのかで、回数とトークン数が変わります。</li>
+<li><strong>各社の管理画面で組織のアカウントを作ります。</strong>APIキーは用途ごとに分けます。分けておくと、どの用途でいくら使ったかを後から追えます。</li>
+<li><strong>月の支出の上限を置きます。</strong>Anthropicでは、ワークスペース単位で支出上限を設定できます。ほかの2社については、上限と通知の設定方法を契約前に確かめます。</li>
+<li><strong>2〜4週間の試験運用で実測します。</strong>1回あたりの入力・出力・キャッシュのトークン数を、用途ごとに記録します。</li>
+<li><strong>実測値で年額を出します。</strong>「1回あたりの実測額×月の回数×12カ月」です。値上げ後の単価と、為替の幅も書き添えます。</li>
+</ol>
+
+<h2 id="ringi">稟議では何を聞かれますか？</h2>
+<p class="answer">月額の上限、席ごとの定額契約との違い、値上げと為替への備え、入力したデータの扱いの4つです。</p>
+<ul>
+<li><strong>月にいくらまでかかりますか。</strong>従量課金は使った分だけ増えます。支出の上限額と、上限に達したときの扱い（止めるか、承認して増やすか）を書きます。</li>
+<li><strong>定額の席契約とどちらが安いですか。</strong>上の試算では、API従量は1人あたり月3.6ドルです。Claude TeamのStandardシートは1人月20ドル（年払い、2026年11月9日確認）です。ただし席契約には、チャット画面、管理機能、利用枠が含まれます。APIでは、社員が使う画面と管理の仕組みを自社で用意します。単価だけでは比べられません。</li>
+<li><strong>値上げされたらどうなりますか。</strong>Gemini 4 Argonを選ぶと、上の試算は12月1日から月360ドルが720ドルになります。稟議には値上げ後の額を載せます。</li>
+<li><strong>入力したデータは学習に使われますか。</strong>Googleの料金表は、無料枠では入力した内容が製品の改善に使われると書いています。業務のデータは有料枠で扱い、各社の利用規約を契約前に確かめます。</li>
+</ul>
+<p>席契約の選び方と稟議の手順は<a href="kenshu/claude-code-cost.html">Claudeの法人契約と料金</a>で、Gemini 4 Argonを業務で試す範囲は<a href="kenshu/gemini-4-argon-business-trial.html">Gemini 4 Argonの業務試用</a>で扱っています。</p>
+
+<h2 id="fail">よくある失敗には、どんなものがありますか？</h2>
+<p class="answer">入力の単価だけで比べること、上限を置かずに始めること、値上げ前の単価で年額を出すことの3つが多い失敗です。</p>
+<ul>
+<li><strong>入力の単価だけでモデルを比べる。</strong>出力の単価は入力の5倍あります。回答が長い使い方では、出力の単価で月額が決まります。</li>
+<li><strong>文字数からトークン数を決め打ちする。</strong>トークン数はモデルごとに違います。実測値を使います。</li>
+<li><strong>長い会話を1つの画面で続けさせる。</strong>履歴の送り直しで入力が増えます。話題が変わったら新しい会話を始める、という使い方を社内で決めます。</li>
+<li><strong>支出の上限を置かずに従量で始める。</strong>自動処理の不具合で同じ処理が繰り返されると、請求が膨らみます。</li>
+<li><strong>値上げ前の単価で年額を出す。</strong>料金表に書いてある値上げの日付を、見積もりに反映します。</li>
+<li><strong>無料枠で業務のデータを扱う。</strong>入力した内容の扱いが、有料枠と違う場合があります。</li>
+</ul>
+
+<h2 id="faq">よくある質問</h2>
+<div class="faq"><div class="q">トークンコストとは何ですか？</div><p class="a">生成AIが処理したトークン数に単価を掛けた利用料です。入力（AIに送る文章）と出力（AIが書く文章）で単価が分かれていて、100万トークンあたりの米ドルで示されます。</p></div>
+<div class="faq"><div class="q">1トークンは何文字ですか？</div><p class="a">決まった換算はなく、モデルごとに違います。Anthropicは、Claude Opus 4.7以降のモデルでは同じ文章のトークン数が約30%多くなると説明しています。見積もりにはAPIの応答に入っている利用量の実測値を使います。</p></div>
+<div class="faq"><div class="q">入力と出力は、どちらが高いですか？</div><p class="a">出力です。Claude Sonnet 5.5、gpt-6.1-sol、Gemini 4 Argonはいずれも入力2ドル・出力10ドルで、出力が入力の5倍です。思考（推論）のトークンも出力として課金されます。</p></div>
+<div class="faq"><div class="q">キャッシュを使うと、どれだけ安くなりますか？</div><p class="a">キャッシュから読み出した入力の単価は、通常の入力の2.5〜10%です。Claude Sonnet 5.5では、入力2ドルに対して読み出しは0.10ドルです。安くなるのは入力のうち共通の冒頭部分だけで、出力の料金は変わりません。</p></div>
+<div class="faq"><div class="q">ChatGPTやClaudeの月額プランでも、トークンコストはかかりますか？</div><p class="a">定額の席契約は、利用枠の範囲なら追加の支払いはありません。ただしClaude Enterpriseは、席料金に加えて利用量をAPIの単価で支払います（2026年11月9日確認）。契約ごとの違いは「Claudeの法人契約と料金」で説明しています。</p></div>
+<div class="faq"><div class="q">トークン単価は値上げされますか？</div><p class="a">値上げの予定が料金表に書いてあるモデルがあります。GoogleのGemini 4 CarbonとGemini 4 Argonは2026年12月1日から、Gemini 3.8 Flashは2027年1月1日から、単価が2倍になります（2026年11月11日確認）。</p></div>
+
+<p>社内で比べるための料金比較表と稟議書の雛形を、資料にまとめています。</p>
+<div class="tw-lead" data-offer="ai-contract-pack" data-campaign="token-cost" data-pos="end"></div>
+
+<h2 id="sources">出典と確認範囲</h2>
+<p class="source-note">確認日：2026年11月11日。単価は標準の料金で、データ所在地の指定、高速モード、クラウド事業者経由の料金は含みません。料金は変更されるため、契約時点の公式情報を確認してください。月額の試算は1回あたりのトークン数を仮定した計算で、実測ではありません。1トークンあたりの日本語の文字数は公式資料で確かめられなかったため書いていません。</p>
+<ol class="source-list">
+<li><a href="https://platform.claude.com/docs/en/about-claude/pricing" target="_blank" rel="noopener noreferrer">Anthropic, Pricing（モデル別単価・キャッシュ・Batch・長文料金・ツール料金）</a></li>
+<li><a href="https://platform.claude.com/docs/en/build-with-claude/thinking-steering-and-cost" target="_blank" rel="noopener noreferrer">Anthropic, Steering thinking（思考トークンの課金）</a></li>
+<li><a href="https://developers.openai.com/api/docs/pricing" target="_blank" rel="noopener noreferrer">OpenAI, API Pricing（モデル別単価・Batch・長文料金）</a></li>
+<li><a href="https://developers.openai.com/api/docs/guides/agents-api/observability" target="_blank" rel="noopener noreferrer">OpenAI, Observability and usage（キャッシュと推論トークンの数え方）</a></li>
+<li><a href="https://aistudio.google.com/docs/pricing" target="_blank" rel="noopener noreferrer">Google, Gemini API pricing（モデル別単価・値上げの日付・Batch・無料枠の扱い）</a></li>
+<li><a href="https://www.x-rates.com/calculator/?from=USD&amp;to=JPY&amp;amount=1" target="_blank" rel="noopener noreferrer">x-rates.com, USD/JPY（2026年11月10日15時44分UTC、1ドル158.64円）</a></li>
+</ol>
+</article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div>
+    <p class="a">上場企業を含む45社・2,500名の生成AI導入・研修を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
+  </div>
+</div></div>
+
+<section class="related"><div class="container">
+  <h2 class="rl-h">あわせて読む</h2>
+  <div class="related-grid">
+    <a href="token-management.html" class="related-card"><span class="rc-cat">費用を見直す</span><div class="rc-title">トークンマネジメントとは｜トークンマキシングとの使い分けと、AIのトークンコストの見直し方</div></a>
+    <a href="kenshu/claude-code-cost.html" class="related-card"><span class="rc-cat">法人契約を検討する</span><div class="rc-title">Claudeの法人契約と料金｜Team・Enterprise・APIとClaude Codeの選び方</div></a>
+  </div>
+</div></section>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>生成AIの「どの契約で・どのモデルを・どう使うか」を一緒に設計します。</h3>
+    <p>契約とモデルの選定、費用の見積もり、稟議資料の組み立てから、現場が使い続けるための研修まで。上場企業を含む45社・2,500名の支援知見をもとに整理します。検討段階のご相談だけでも歓迎です。</p>
+  </div>
+  <a href="https://kenshu.techworker.co.jp/?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=token-cost&amp;utm_content=end" class="btn">研修内容・費用を相談する <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="https://kenshu.techworker.co.jp/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">生成AI法人研修（主要ツール全対応）</a>　／　<a href="../contact.html" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">無料相談</a>　／　<a href="../library/" style="color:var(--electric);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">事例集（無料DL）</a></p>
+<div class="back-list"><a href="index.html">← メディア一覧に戻る</a></div>
+
+<p style="max-width:var(--measure);margin:40px auto 0;padding:0 20px;font-size:12px;color:var(--slate);line-height:1.9;">本記事は株式会社TechWorkerが独自に作成したものであり、Anthropic、OpenAI、Googleとの提携・後援・承認を受けたものではありません。各製品名は各社の商標です。</p>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__in">
+      <div>
+        <p class="ft__name">株式会社TechWorker</p>
+        <p class="ft__addr">〒169-0051 東京都新宿区西早稲田一丁目22番3号<br>早稲田アントレプレナーシップセンター</p>
+      </div>
+      <nav aria-label="フッターの行き先">
+        <a href="/services">事業・サービス</a>
+        <a href="/company">会社情報</a>
+        <a href="/news">ニュース</a>
+        <a href="/#concept">考え方</a>
+        <a href="/agent-cases/">事例</a>
+        <a href="/contact">お問い合わせ</a>
+        <a href="/privacy">プライバシーポリシー</a>
+      </nav>
+    </div>
+    <div class="nv-badge"><a href="/news/013"><img src="/assets/badges/nvidia-inception-program.svg" alt="NVIDIA Inception Program" width="93" height="40" loading="lazy"></a><p>NVIDIA、NVIDIA ロゴ、NVIDIA Inception は、米国およびその他の国における NVIDIA Corporation の商標および/または登録商標です。</p></div>
+    <small>© TechWorker Inc.</small>
+  </div>
+</footer>
+
+<script>
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+<script src="/media/article-tracker.js?v=20261006-readable-intros" defer></script>
+<script>
+// スマホの行き先：右上の釦で開け閉めする。行き先を押したら閉じる。スクロールしたら頭に暗い面を敷く
+(() => {
+  const hd = document.querySelector('.hd'), btn = hd.querySelector('.menu');
+  const set = open => { hd.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く'); };
+  btn.addEventListener('click', () => set(!hd.classList.contains('is-open')));
+  hd.querySelector('nav').addEventListener('click', e => { if (e.target.closest('a')) set(false); });
+  const onScroll = () => hd.classList.toggle('is-scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+})();
+</script>
+<script src="lead.js" defer></script>
+<script src="lead.js" defer></script>
+</body>
+</html>

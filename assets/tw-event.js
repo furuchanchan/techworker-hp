@@ -99,6 +99,16 @@
     set('pop_day', today);
   }
   window.addEventListener('scroll', show, { passive: true });
+  // 記事の中の申込み枠（media/lead.js の .tw-lead）が見えている間は、小窓を隠して入力欄に重ねない
+  var leads = document.querySelectorAll('.tw-lead');
+  if (leads.length && 'IntersectionObserver' in window) {
+    var seenLead = new Set();
+    var lio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { e.isIntersecting ? seenLead.add(e.target) : seenLead.delete(e.target); });
+      pop.style.visibility = seenLead.size ? 'hidden' : '';
+    }, { threshold: 0 });
+    leads.forEach(function (el) { lio.observe(el); });
+  }
   pop.querySelector('a').addEventListener('click', function () { track('event_pop_click'); });
   pop.querySelector('button').addEventListener('click', function () { set('pop_closed', String(Date.now())); pop.remove(); });
 })();
