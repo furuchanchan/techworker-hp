@@ -234,7 +234,7 @@
 
     // メール登録の枠（newsletter.js）は後から差し込まれることがあるので、差し込んだ側からも登録できるようにする
     // 冒頭を読み終えるまでは、時間経過による表示でも本文を覆わない。
-    var targets = document.querySelectorAll(".art-head, .art-body > p:first-child, .mid-cta, .art-cta, .mh-band, .inline-dx-cta, footer, .lb-cta, .nl-box, .fig-inline, .product-shot, .daily-cover, .art-cover, .art-cover-v6");
+    var targets = document.querySelectorAll(".art-head, .art-body > p:first-child, .mid-cta, .tw-lead, .art-cta, .mh-band, .inline-dx-cta, footer, .lb-cta, .nl-box, .fig-inline, .product-shot, .daily-cover, .art-cover, .art-cover-v6");
     if ("IntersectionObserver" in window) {
       var seen = new Set();
       var io = new IntersectionObserver(function (es) {

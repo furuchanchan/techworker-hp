@@ -116,7 +116,7 @@
   // The media home keeps its inline offer; a floating dock obscures article choices.
   if (!/^\/media(?:\/index)?$/.test(path) && !document.querySelector('script[src="/media/cv-dock.js"], script[src^="/media/cv-dock.js?"]')) {
     var dock = document.createElement("script");
-    dock.src = "/media/cv-dock.js?v=20261007-ai-makes-map";
+    dock.src = "/media/cv-dock.js?v=20261111-lead";
     dock.defer = true;
     document.head.appendChild(dock);
   }
