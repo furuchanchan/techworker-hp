@@ -18,6 +18,17 @@
       ],
       url: "/library/ai-contract-pack.html",
       nl: "kenshu"
+    },
+    "gyomuzu-templates": {
+      title: "部署別 業務図テンプレート集",
+      sub: "経理・人事労務・カスタマー対応・総務法務・営業の業務図の例／自社用の空の型／AIに任せる範囲の札の付け方",
+      points: [
+        "5つの部署の仕事の流れを1枚の図にした例と、AIに任せる候補の工程・人が判断する工程の表",
+        "自社の担当と工程を書き込める空の型（業務図の下書き・工程ごとの書き込み表）",
+        "工程ごとに「AIが自動で／AIが下書き／人が行う」を決める3つの見方"
+      ],
+      url: "/library/gyomuzu-templates.html",
+      nl: "gyomuzu"
     }
   };
 
