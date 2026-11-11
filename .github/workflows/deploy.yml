@@ -31,6 +31,9 @@ jobs:
       # 公開するのはサイトの中身だけ。リポジトリの直下をそのまま出すと、
       # ワークフロー・スクリプト・変更履歴、wrangler-action が置く package.json まで誰でも読めてしまう。
       # functions/ は出力に入れなくても、作業フォルダ直下から Pages Functions として組み込まれる。
+      - name: Check _redirects
+        run: python3 scripts/check_redirects.py _redirects
+
       - name: Stage site files
         run: |
           rsync -a --exclude-from=- ./ _site/ <<'EOF'
