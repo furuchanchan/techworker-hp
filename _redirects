@@ -4,8 +4,6 @@
 /CHANGELOG.md / 301
 /VERSION / 301
 /.gitignore / 301
-/.github/* / 301
-/scripts/* / 301
 /companymap/docs/build.py /companymap/docs/ 301
 /training https://kenshu.techworker.co.jp/program/ 301
 /training.html https://kenshu.techworker.co.jp/program/ 301
@@ -147,8 +145,6 @@
 /media/token-maxing.html /media/token-management 301
 
 # ワイルドカード転送は個別転送の後に置く
-/media/infra/* /media/security/ 301
-/media/simulation/* /launch-simulation/ 301
 # 卸・商社のAI活用レポートは ソクミツAI のサイトへ移した（2026-10-18 本人「sokumitsu のところに添付しておいてほしい」）
 /library/oroshi-ai-report https://sokumitsu.techworker.co.jp/report/ 301
 
@@ -202,3 +198,9 @@
 /media/newbiz /media/ 301
 /media/newbiz/ /media/ 301
 /media/newbiz/index.html /media/ 301
+
+# 動的な転送（* を含む）は必ず末尾に置く。Pages は最初の動的な転送から後ろを全部動的として数え、100件で打ち切るため（2026-11-11、106件目以降が効いていなかった）。点検は scripts/check_redirects.py
+/.github/* / 301
+/scripts/* / 301
+/media/infra/* /media/security/ 301
+/media/simulation/* /launch-simulation/ 301
