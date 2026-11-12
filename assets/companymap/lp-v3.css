@@ -1,0 +1,240 @@
+/* ギョウムズAI LP 第3版（2026-11-12）。枠はホリダシAIのトップ（課題3つ→答えの図→できること→効果→始め方→人→資料）、中身はご提案資料（11/2 版）。
+   本人「営業資料とか最近作った lp とかを参考にもっと改善余地がありそう」。クラスは g3- を頭に付け、既存の style.css・lp-x1.css とぶつけない。 */
+.g3 .sec{padding:112px 0 0}
+.g3 .h2{font-size:44px;line-height:1.36}
+.g3 .lead2{margin-top:18px}
+.g3-alt{background:var(--paper-2);padding-bottom:112px!important;margin-top:112px}
+.g3-alt+.sec{padding-top:112px}
+
+/* 1画面目のボタンの下の一言 */
+.g3-acts{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+.g3-acts>div{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.g3-acts small{font-size:12.5px;color:var(--mute);font-weight:500;padding-left:18px}
+
+/* 信頼の帯（ホリダシAI・デンミツAIと同じ型） */
+.g3-trust{padding:30px 0 34px;border-bottom:1px solid var(--line)}
+.g3-trust .wrap{display:flex;align-items:center;gap:20px 44px;flex-wrap:wrap;justify-content:center}
+.g3-trust ul{display:flex;align-items:center;gap:34px;list-style:none;margin:0;padding:0}
+.g3-trust li img{height:30px;width:auto;display:block}
+.g3-trust li img.nv{height:34px}
+.g3-trust li img.sk{height:24px}
+.g3-trust p{display:flex;gap:6px 22px;flex-wrap:wrap;font-size:13.5px;color:var(--ink-2);font-weight:500;margin:0}
+.g3-trust p b{font-family:var(--en);font-weight:800;color:var(--ink);font-size:16px;margin-right:2px}
+
+/* 課題3つ */
+.g3-pains{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto 1fr auto;gap:0 20px;margin-top:44px}
+.g3-pains article{display:grid;grid-row:span 4;grid-template-rows:subgrid;background:#fff;border:1px solid var(--line-2);border-radius:16px;padding:28px 28px 26px}
+.g3-pains .no{font-family:var(--en);font-weight:800;font-size:13px;color:var(--mute)}
+.g3-pains h3{font-size:21px;line-height:1.5;font-weight:900;margin-top:10px;letter-spacing:-.01em}
+.g3-pains p{font-size:14.5px;line-height:1.9;color:var(--ink-2);margin-top:12px}
+.g3-pains .st{border-top:1px solid var(--line);margin-top:20px;padding-top:16px;display:flex;align-items:baseline;gap:12px}
+.g3-pains .st b{font-family:var(--en);font-size:34px;font-weight:800;letter-spacing:-.02em;line-height:1;white-space:nowrap}
+.g3-pains .st b i{font-style:normal;font-size:16px;margin-left:1px}
+.g3-pains .st span{font-size:12.5px;line-height:1.6;color:var(--ink-2)}
+.g3-src{font-size:11px;color:var(--mute);margin-top:18px;line-height:1.8}
+.g3-ans{margin-top:48px;text-align:center}
+.g3-ans .arw{display:block;font-size:13px;color:var(--mute);font-weight:700}
+.g3-ans p{font-size:26px;font-weight:900;line-height:1.6;letter-spacing:-.01em;margin-top:8px}
+.g3-ans p em{font-style:normal;background:linear-gradient(transparent 62%,#ececee 62%)}
+.g3-base{margin-top:36px}
+
+/* できること：見る・動かす・回す */
+.g3-svc{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto auto 1fr auto;gap:0 20px;margin-top:44px}
+.g3-svc article{display:grid;grid-row:span 5;grid-template-rows:subgrid;background:#fff;border:1px solid var(--line-2);border-radius:16px;overflow:hidden}
+.g3-svc .fig{aspect-ratio:1.6;border-bottom:1px solid var(--line);background:#fff;cursor:zoom-in;position:relative}
+.g3-svc .fig img{width:100%;height:100%;object-fit:cover;object-position:left top;display:block}
+.g3-svc .tg{display:flex;align-items:baseline;gap:10px;padding:22px 26px 0}
+.g3-svc .tg b{font-size:15px;font-weight:900}
+.g3-svc .tg span{font-size:12.5px;font-weight:700;color:var(--mute)}
+.g3-svc h3{font-size:20px;line-height:1.5;font-weight:900;padding:8px 26px 0;letter-spacing:-.01em}
+.g3-svc p{font-size:14.5px;line-height:1.9;color:var(--ink-2);padding:10px 26px 0}
+.g3-svc ul{list-style:none;margin:18px 26px 24px;padding:14px 0 0;border-top:1px solid var(--line);font-size:13.5px;line-height:1.75}
+.g3-svc ul:before{content:"お渡しするもの";display:block;font-size:11.5px;font-weight:700;color:var(--mute);margin-bottom:6px}
+.g3-svc li{padding-left:16px;position:relative;font-weight:700}
+.g3-svc li:before{content:"";position:absolute;left:2px;top:.72em;width:6px;height:6px;border-radius:50%;background:var(--ink)}
+
+/* 効果と、他の手法との違い */
+.g3-eff{margin-top:40px;background:#fff;border:1px solid var(--line-2);border-radius:16px;overflow:hidden;cursor:zoom-in;position:relative}
+.g3-eff img{display:block;width:100%;height:auto}
+.g3-note{font-size:11.5px;color:var(--mute);margin-top:12px;line-height:1.8}
+.g3-note a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;font-weight:700}
+.g3-cmpw{margin-top:56px}
+.g3-cmpw h3{font-size:22px;font-weight:900}
+.g3-cmpw>p{font-size:14.5px;color:var(--ink-2);margin-top:6px}
+.g3-cmp{margin-top:20px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.g3-cmp table{width:100%;min-width:760px;border-collapse:separate;border-spacing:0;font-size:14px;line-height:1.6;background:#fff;border:1px solid var(--line-2);border-radius:14px;overflow:hidden}
+.g3-cmp th,.g3-cmp td{padding:14px 18px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.g3-cmp tr:last-child th,.g3-cmp tr:last-child td{border-bottom:0}
+.g3-cmp thead th{font-size:13px;color:var(--ink-2);font-weight:700;background:#fafafa}
+.g3-cmp thead th small{display:block;font-size:11.5px;color:var(--mute);font-weight:500}
+.g3-cmp tbody th{font-weight:700;color:var(--ink-2);width:18%;white-space:nowrap}
+.g3-cmp td{color:var(--ink-2);width:27%}
+.g3-cmp .us{background:var(--ink);color:#fff;font-weight:700}
+.g3-cmp thead th.us{color:#fff;background:var(--ink)}
+.g3-cmp thead th.us small{color:#c9c9cf}
+.g3-cmp tbody td.us{border-bottom-color:rgba(255,255,255,.14)}
+
+/* 始め方と料金 */
+.g3-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:44px;list-style:none;padding:0}
+.g3-steps li{background:#fff;border:1px solid var(--line-2);border-radius:14px;padding:20px 18px 20px;position:relative}
+.g3-steps li.on{border:2px solid var(--ink)}
+.g3-steps .n{font-family:var(--en);font-weight:800;font-size:12.5px;color:var(--mute)}
+.g3-steps b{display:block;font-size:17px;font-weight:900;margin-top:6px}
+.g3-steps em{display:inline-block;font-style:normal;font-size:12px;font-weight:700;background:var(--paper-2);border-radius:999px;padding:2px 10px;margin-top:8px}
+.g3-steps li.on em{background:var(--ink);color:#fff}
+.g3-steps p{font-size:13px;line-height:1.75;color:var(--ink-2);margin-top:10px}
+.g3-price{display:grid;grid-template-columns:repeat(3,1fr) 1.25fr;gap:12px;margin-top:20px}
+.g3-price>div{background:#fff;border:1px solid var(--line-2);border-radius:14px;padding:20px 22px}
+.g3-price span{font-size:12.5px;font-weight:700;color:var(--mute)}
+.g3-price b{display:block;font-size:22px;font-weight:900;margin-top:4px}
+.g3-price p{font-size:13px;line-height:1.75;color:var(--ink-2);margin-top:6px}
+.g3-price .why{background:var(--ink);border-color:var(--ink);color:#fff}
+.g3-price .why span{color:#b4b4bc}
+.g3-price .why p{color:#e4e4e7;font-size:13.5px}
+.g3-price .why b{font-size:17px;line-height:1.55}
+
+/* 事例と人 */
+.g3-case{display:grid;grid-template-columns:300px 1fr;gap:0;margin-top:40px;background:#fff;border:1px solid var(--line-2);border-radius:16px;overflow:hidden}
+.g3-case .l{padding:30px 30px 28px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:14px}
+.g3-case .l img{height:26px;width:auto;align-self:flex-start}
+.g3-case .l b{font-family:var(--en);font-size:56px;font-weight:800;line-height:1;letter-spacing:-.03em}
+.g3-case .l b i{font-style:normal;font-size:20px;margin-left:2px}
+.g3-case .l span{font-size:13px;color:var(--ink-2);font-weight:700}
+.g3-case .r{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.g3-case .r>div{padding:28px 26px;border-right:1px solid var(--line)}
+.g3-case .r>div:last-child{border-right:0}
+.g3-case .r small{font-size:12px;font-weight:700;color:var(--mute)}
+.g3-case .r p{font-size:14px;line-height:1.85;color:var(--ink-2);margin-top:8px}
+.g3-case .r a{font-size:13px;font-weight:700;text-decoration:underline;text-underline-offset:3px;display:inline-block;margin-top:10px}
+.g3 .teamM{margin-top:48px}
+
+/* よくあるご質問 */
+.g3-faq{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:40px}
+.g3-faq div{background:#fff;border:1px solid var(--line-2);border-radius:14px;padding:22px 24px}
+.g3-faq b{display:block;font-size:16px;font-weight:900;line-height:1.55}
+.g3-faq b:before{content:"Q.";font-family:var(--en);margin-right:8px}
+.g3-faq p{font-size:14px;line-height:1.85;color:var(--ink-2);margin-top:8px}
+.g3-faq-more{font-size:14px;margin-top:20px}
+.g3-faq-more a{font-weight:700;text-decoration:underline;text-underline-offset:3px}
+
+/* 資料の申込（ホリダシAIの #contact と同じ組み立て：表紙を大きく＋中身3枚＋入口2つ） */
+.g3-dl{margin-top:112px;padding:96px 0 104px;background:var(--paper-2)}
+.g3-dlbox{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;background:#fff;border:1px solid var(--line-2);border-radius:20px;padding:52px 56px}
+.g3-dlbox .kick{display:inline-block}
+.g3-dlbox h2{font-size:38px;line-height:1.38;font-weight:900;letter-spacing:-.03em;margin-top:12px}
+.g3-dlbox .lead2{font-size:15.5px;margin-top:14px}
+.g3-dlbox ul{list-style:none;padding:0;margin:20px 0 0;font-size:14.5px;line-height:1.8}
+.g3-dlbox li{padding-left:24px;position:relative;font-weight:700}
+.g3-dlbox li:before{content:"";position:absolute;left:3px;top:.55em;width:11px;height:6px;border-left:2.5px solid var(--ink);border-bottom:2.5px solid var(--ink);transform:rotate(-45deg)}
+.g3-dlbox .acts{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.g3-dlbox .sub{font-size:12.5px;color:var(--mute);margin-top:12px}
+.g3-dlbox .sub a{color:var(--ink);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.g3-cv{display:block;border-radius:12px;overflow:hidden;box-shadow:0 30px 60px -32px rgba(11,11,12,.45);border:1px solid var(--line)}
+.g3-cv img{display:block;width:100%;height:auto}
+.g3-pg{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.g3-pg figure{margin:0}
+.g3-pg img{display:block;width:100%;height:auto;border:1px solid var(--line-2);border-radius:6px}
+.g3-pg figcaption{font-size:12px;line-height:1.55;color:var(--ink-2);font-weight:700;margin-top:6px}
+.g3-dlsec{display:flex;gap:6px 16px;flex-wrap:wrap;justify-content:center;font-size:13.5px;margin-top:22px;color:var(--ink-2)}
+.g3-dlsec a{font-weight:700;text-decoration:underline;text-underline-offset:3px;color:var(--ink)}
+
+@media (max-width:1080px){
+  .g3-steps{grid-template-columns:repeat(3,1fr)}
+  .g3-price{grid-template-columns:repeat(3,1fr)}
+  .g3-price .why{grid-column:1/-1}
+  .g3-dlbox{grid-template-columns:1fr;gap:36px}
+}
+@media (max-width:860px){
+  .g3-pains,.g3-svc{grid-template-columns:1fr;grid-template-rows:none;gap:14px}
+  .g3-pains article,.g3-svc article{grid-row:auto;grid-template-rows:none;display:block}
+  .g3-case{grid-template-columns:1fr}
+  .g3-case .l{border-right:0;border-bottom:1px solid var(--line)}
+  .g3-case .r{grid-template-columns:1fr}
+  .g3-case .r>div{border-right:0;border-bottom:1px solid var(--line)}
+  .g3-case .r>div:last-child{border-bottom:0}
+  .g3-faq{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .g3 .sec{padding:76px 0 0}
+  .g3 .h2{font-size:28px;line-height:1.48}
+  .g3-alt{margin-top:76px;padding-bottom:76px!important}
+  .g3-alt+.sec{padding-top:76px}
+  .g3-trust .wrap{gap:16px}
+  .g3-trust ul{gap:20px;flex-wrap:wrap;justify-content:center}
+  .g3-trust li img{height:24px}
+  .g3-trust li img.nv{height:28px}
+  .g3-trust li img.sk{height:19px}
+  .g3-trust p{justify-content:center;font-size:12.5px;gap:4px 16px}
+  .g3-ans p{font-size:19px}
+  .g3-steps{grid-template-columns:1fr}
+  .g3-price{grid-template-columns:1fr}
+  .g3-acts>div{width:100%}
+  .g3-acts .btn{width:100%;justify-content:center}
+  .g3-acts small{padding-left:0;align-self:center}
+  .g3-dl{margin-top:76px;padding:56px 0 64px}
+  .g3-dlbox{padding:30px 22px;border-radius:16px}
+  .g3-dlbox h2{font-size:27px}
+  .g3-dlbox .acts .btn{width:100%;justify-content:center}
+  .g3-case .l b{font-size:46px}
+}
+/* 2026-11-12 v3b：効果の図をHTMLに（スマホで読める）・比較表のスマホ表示・改行・余白 */
+.g3-trust li a{display:flex;align-items:center;gap:8px;color:var(--ink);text-decoration:none}
+.g3-trust li img.cl{height:26px}
+.g3-trust .clw{font-family:var(--en);font-weight:700;font-size:14px;letter-spacing:-.01em;white-space:nowrap}
+.g3-trust li img.sk{height:28px}
+.g3-ans p span{display:inline-block}
+.g3-note.c{text-align:center}
+.g3-alt+.g3-dl{margin-top:0;padding-top:0}
+.g3-eff{display:grid;grid-template-columns:1fr 300px;cursor:auto;padding:0}
+.g3-eff .bars{padding:30px 34px 28px}
+.g3-eff .cap{display:flex;flex-wrap:wrap;gap:4px 18px;align-items:center;font-size:13px;font-weight:700;color:var(--ink-2)}
+.g3-eff .cap span{display:flex;align-items:center;gap:6px;font-weight:500;color:var(--mute);font-size:12px}
+.g3-eff .cap i{display:inline-block;width:12px;height:12px;border-radius:2px}
+.g3-eff .cap i.k1{background:#e6e6e9}.g3-eff .cap i.k2{background:var(--ink);margin-left:8px}
+.g3-eff ul{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:14px}
+.g3-eff li{display:grid;grid-template-columns:230px 1fr 84px;align-items:center;gap:16px}
+.g3-eff .nm{font-size:14.5px;font-weight:700;line-height:1.5}
+.g3-eff .bar{display:block;height:30px;width:calc(var(--now) / 64 * 100%);background:#e6e6e9;border-radius:3px;overflow:hidden}
+.g3-eff .bar i{display:block;height:100%;width:calc(var(--cut) / var(--now) * 100%);background:var(--ink)}
+.g3-eff li b{font-family:var(--en);font-size:16px;font-weight:800;white-space:nowrap}
+.g3-eff li b.hu{font-family:inherit;font-size:13px;color:var(--mute);font-weight:700}
+.g3-eff .sum{border-left:1px solid var(--line);padding:30px 30px 28px;background:#fafafa}
+.g3-eff .sum>small{font-size:13px;font-weight:700;color:var(--ink-2)}
+.g3-eff .sum strong{display:block;font-family:var(--en);font-size:64px;font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-top:6px}
+.g3-eff .sum strong i{font-style:normal;font-size:20px;font-weight:800;margin-left:4px;letter-spacing:0}
+.g3-eff dl{margin:18px 0 0;display:grid;gap:8px}
+.g3-eff dl div{display:flex;justify-content:space-between;font-size:14px;color:var(--ink-2)}
+.g3-eff dd{margin:0;font-weight:800;font-family:var(--en);color:var(--ink)}
+.g3-eff .yen{border-top:1px solid var(--line);margin-top:16px;padding-top:14px}
+.g3-eff .yen span{display:block;font-size:12.5px;color:var(--ink-2)}
+.g3-eff .yen b{display:block;font-size:24px;font-weight:900;margin-top:2px}
+.g3-eff .yen small{display:block;font-size:11.5px;color:var(--mute);margin-top:2px}
+@media (max-width:860px){
+  .g3-eff{grid-template-columns:1fr}
+  .g3-eff .sum{border-left:0;border-top:1px solid var(--line)}
+}
+@media (max-width:760px){
+  .g3-eff .bars{padding:22px 18px 20px}
+  .g3-eff li{grid-template-columns:1fr auto;gap:6px 12px}
+  .g3-eff .nm{grid-column:1/-1;font-size:13.5px}
+  .g3-eff .bar{height:22px}
+  .g3-eff .sum{padding:22px 18px}
+  .g3-eff .sum strong{font-size:52px}
+  .g3-cmp{overflow:visible}
+  .g3-cmp table{min-width:0;display:block;border:0;background:none;border-radius:0}
+  .g3-cmp thead{display:none}
+  .g3-cmp tbody{display:grid;gap:10px}
+  .g3-cmp tr{display:block;background:#fff;border:1px solid var(--line-2);border-radius:12px;overflow:hidden}
+  .g3-cmp tbody th{display:block;width:auto;padding:12px 16px 4px;border:0;color:var(--ink);font-size:14.5px}
+  .g3-cmp td{display:flex;justify-content:space-between;gap:12px;width:auto;padding:8px 16px;border-bottom:0;border-top:1px solid var(--line);font-size:13.5px}
+  .g3-cmp td:before{content:attr(data-l);color:var(--mute);font-size:12px;font-weight:700;flex:none}
+  .g3-cmp td{text-align:right}
+  .g3-cmp tbody td.us{border-top-color:var(--ink)}
+  .g3-cmp td.us:before{color:#c9c9cf}
+  .g3-steps{gap:8px}
+  .g3-steps li{display:grid;grid-template-columns:auto 1fr;column-gap:12px;padding:14px 16px}
+  .g3-steps .n{grid-row:1/3;padding-top:4px}
+  .g3-steps b{display:inline;margin-top:0;font-size:16px}
+  .g3-steps em{justify-self:start;margin-top:4px}
+  .g3-steps p{grid-column:2;margin-top:6px}
+}
