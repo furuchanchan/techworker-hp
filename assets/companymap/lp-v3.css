@@ -69,10 +69,14 @@
 .g3-cmp thead th small{display:block;font-size:11.5px;color:var(--mute);font-weight:500}
 .g3-cmp tbody th{font-weight:700;color:var(--ink-2);width:18%;white-space:nowrap}
 .g3-cmp td{color:var(--ink-2);width:27%}
-.g3-cmp .us{background:var(--ink);color:#fff;font-weight:700}
-.g3-cmp thead th.us{color:#fff;background:var(--ink)}
-.g3-cmp thead th.us small{color:#c9c9cf}
-.g3-cmp tbody td.us{border-bottom-color:rgba(255,255,255,.14)}
+.g3-cmp .us{background:#fff;color:var(--ink);font-weight:700;border-left:2px solid var(--ink)}
+.g3-cmp thead th.us{color:var(--ink);background:#fff;font-size:14px}
+.g3-cmp thead th.us small{color:var(--mute)}
+.g3-cmp tbody td.us{border-bottom-color:var(--line)}
+.g3-cmp table{border-color:var(--line-2)}
+.g3-cmp th.us,.g3-cmp td.us{box-shadow:inset -2px 0 0 var(--ink)}
+.g3-cmp thead th.us{box-shadow:inset -2px 0 0 var(--ink),inset 0 2px 0 var(--ink)}
+.g3-cmp tr:last-child td.us{box-shadow:inset -2px 0 0 var(--ink),inset 0 -2px 0 var(--ink)}
 
 /* 始め方と料金 */
 .g3-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:44px;list-style:none;padding:0}
@@ -88,9 +92,9 @@
 .g3-price span{font-size:12.5px;font-weight:700;color:var(--mute)}
 .g3-price b{display:block;font-size:22px;font-weight:900;margin-top:4px}
 .g3-price p{font-size:13px;line-height:1.75;color:var(--ink-2);margin-top:6px}
-.g3-price .why{background:var(--ink);border-color:var(--ink);color:#fff}
-.g3-price .why span{color:#b4b4bc}
-.g3-price .why p{color:#e4e4e7;font-size:13.5px}
+.g3-price .why{background:#fff;border:2px solid var(--ink)}
+.g3-price .why span{color:var(--ink-2)}
+.g3-price .why p{font-size:13.5px}
 .g3-price .why b{font-size:17px;line-height:1.55}
 
 /* 事例と人 */
@@ -229,8 +233,8 @@
   .g3-cmp td{display:flex;justify-content:space-between;gap:12px;width:auto;padding:8px 16px;border-bottom:0;border-top:1px solid var(--line);font-size:13.5px}
   .g3-cmp td:before{content:attr(data-l);color:var(--mute);font-size:12px;font-weight:700;flex:none}
   .g3-cmp td{text-align:right}
-  .g3-cmp tbody td.us{border-top-color:var(--ink)}
-  .g3-cmp td.us:before{color:#c9c9cf}
+  .g3-cmp td.us,.g3-cmp tr:last-child td.us{background:#fafafa;box-shadow:none;border-left:0;font-weight:800}
+  .g3-cmp td.us:before{color:var(--ink)}
   .g3-steps{gap:8px}
   .g3-steps li{display:grid;grid-template-columns:auto 1fr;column-gap:12px;padding:14px 16px}
   .g3-steps .n{grid-row:1/3;padding-top:4px}
