@@ -77,3 +77,16 @@ test('Notion への保存が失敗したら、Slack に届いていても失敗�
   const res = await post();
   assert.equal(res.status, 500);
 });
+
+test('ホリダシAIの資料の受け取り（部署・役職の欄が無いフォーム）を受け付ける', async () => {
+  const calls = fakeFetch({ 'https://hooks.slack.test': {}, 'https://api.notion.com': {} });
+  const body = { company: '試験株式会社', name: '試験 太郎', email: 'test@example.com', phone: '03-1234-5678', inquiry_type: 'horidashi_download', source: 'ホリダシAI（資料の受け取り）', website: '' };
+  const request = new Request('https://techworker.co.jp/contact', {
+    method: 'POST',
+    headers: { Origin: 'https://horidashi.techworker.co.jp', 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  const res = await onRequestPost({ request, env: { NOTION_API_KEY: 'n', SLACK_WEBHOOK_URL: 'https://hooks.slack.test/x' } });
+  assert.equal(res.status, 200);
+  assert.equal(calls.find((c) => c.url.startsWith('https://api.notion.com')).body.properties['問い合わせ種別'].select.name, 'ホリダシAIの資料ダウンロード');
+});
