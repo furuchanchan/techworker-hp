@@ -1,14 +1,14 @@
 ---
 title: はじめに
 description: ギョウムズAIのサービスの中身、進め方、お渡しするもの、データの取り扱いをまとめた資料です。社内でのご説明や、情報システム・人事のご確認にお使いください。
-updated: 2026-10-19
+updated: 2026-11-12
 ---
 <div class="hero" markdown="1">
 <span class="pill">ギョウムズAI Docs</span>
 
 # ギョウムズAIの、サービスと導入の資料
 
-ギョウムズAIは、ベテランに聞かないと決まらない仕事を1つ選び、2週間の無料検証で、その仕事の引き継ぎ書を作ってお渡しするサービスです。そのあと約1か月で、御社がお使いのAIで動かし、AIの答えを毎月採点して直します。このDocsには、サービスの中身、進め方、お渡しするもの、データの取り扱いをまとめています。社内でのご説明や、情報システム・人事のご確認にお使いください。
+ギョウムズAIは、業務図を起点に、御社が契約中の生成AI環境（Microsoft 365・Google Workspace など）でAIエージェントを作り、毎月の検証と改善まで当社が担うサービスです。14日間の初期診断でAIに任せる業務と効果を決め、1業務ずつ広げます。このDocsには、サービスの中身、進め方、お渡しするもの、データの取り扱いをまとめています。社内でのご説明や、情報システム・人事のご確認にお使いください。
 </div>
 
 ## 知りたいことから探す
@@ -17,7 +17,7 @@ updated: 2026-10-19
 |---|---|
 | どんなサービスか、ひと通り知りたい | [ギョウムズAIとは](/companymap/docs/overview) |
 | 何をどの順で進め、だれが何をするのか | [進め方と分担](/companymap/docs/how-it-works) |
-| 2週間の無料検証で、どなたに、どれくらいお時間をいただくのか | [無料検証の2週間](/companymap/docs/first-two-weeks) |
+| 14日間の初期診断で、どなたに、どれくらいお時間をいただくのか | [初期診断の14日](/companymap/docs/first-two-weeks) |
 | 手元に何が残るのか | [お渡しするもの](/companymap/docs/deliverables) |
 | いま使える機能と、まだ使えない機能 | [機能と提供状況](/companymap/docs/status) |
 | 聞き取りの答えや業務の情報を、どこに、どう保存するのか | [データの取り扱い](/companymap/docs/security) |
@@ -26,13 +26,13 @@ updated: 2026-10-19
 ## 立場から探す
 
 <div class="cards three">
-<a class="card" href="/companymap/docs/how-it-works"><p class="k">DX推進・業務改革のご担当</p><b>進め方と分担</b><span>次に「無料検証の2週間」「お渡しするもの」へ。</span></a>
+<a class="card" href="/companymap/docs/how-it-works"><p class="k">DX推進・業務改革のご担当</p><b>進め方と分担</b><span>次に「初期診断の14日」「お渡しするもの」へ。</span></a>
 <a class="card" href="/companymap/docs/security"><p class="k">情報システム・人事のご担当</p><b>データの取り扱い</b><span>次に「機能と提供状況」「導入前の確認事項」へ。</span></a>
 <a class="card" href="/companymap/docs/overview"><p class="k">役員・部門長</p><b>ギョウムズAIとは</b><span>次に「お渡しするもの」「運営会社と実績」へ。</span></a>
 </div>
 
 ## このDocsについて
 
-- 2026年10月時点の仕様と提供条件を書いています。変わったときは[更新履歴](/companymap/docs/changelog)に残します。
+- 2026年11月時点の仕様と提供条件を書いています。変わったときは[更新履歴](/companymap/docs/changelog)に残します。
 - サービス紹介資料やLPと書き方が違うときは、このDocsの内容が最新です。
 - 各ページは、AIが読みやすいMarkdownでも公開しています（ページのURLの末尾に `.md` を付けると開けます。一覧は [llms.txt](/companymap/docs/llms.txt)）。
