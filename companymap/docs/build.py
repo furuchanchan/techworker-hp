@@ -32,7 +32,7 @@ PAGES: list[tuple[str, list[tuple[str, str]]]] = [
     ]),
     ("進め方", [
         ("how-it-works", "進め方と分担"),
-        ("first-two-weeks", "無料検証の2週間"),
+        ("first-two-weeks", "初期診断の14日"),
         ("collecting", "業務の情報の集め方"),
         ("deliverables", "お渡しするもの"),
         ("reading-the-map", "業務図の読み方"),
@@ -221,7 +221,7 @@ def llms_txt(metas: dict[str, dict[str, str]]) -> str:
     lines = [
         "# ギョウムズAI Docs",
         "",
-        "> ギョウムズAI（株式会社TechWorker）は、ベテランに聞かないと決まらない仕事を1つ選び、2週間の無料検証で引き継ぎ書（業務図・判断の一覧など）にしてお返しするサービスです。そのあと約1か月で御社のAIの上で動かし、運用担当が毎月採点して直します。",
+        "> ギョウムズAI（株式会社TechWorker）は、業務図を起点に、御社が契約中の生成AI環境（Microsoft 365・Google Workspace など）でAIエージェントを作り、毎月の検証と改善まで当社が担うサービスです。14日間の初期診断でAIに任せる業務と効果を決め、1業務ずつ広げます。",
         "",
         "各ページは .md でも読めます。",
         "",
