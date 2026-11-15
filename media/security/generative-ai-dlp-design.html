@@ -1,9 +1,10 @@
 <!DOCTYPE html><html lang="ja" class="no-js" data-media="security"><head><meta charset="UTF-8">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}if(location.hostname==='techworker.co.jp')gtag('config', 'G-3V34NWXVCJ');</script><script src="/assets/tw-track.js" defer></script>
 <script src="/assets/tw-event.js" defer></script><script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>生成AIのDLP設計｜入力・出力・検索・記録で機密データを止める【2026】 — TechWorker</title><meta name="description" content="生成AIの情報漏えい対策は、入力文だけでは足りません。モデルの出力、検索で取り出す文書、実行記録も含めて、遮断・伏せ字・通知を使い分けます。"><link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg"><link rel="canonical" href="https://techworker.co.jp/media/security/generative-ai-dlp-design">
-<meta property="og:type" content="article"><meta property="og:title" content="生成AIのDLP設計｜入力・出力・検索・記録で機密データを止める【2026】"><meta property="og:description" content="生成AIの情報漏えい対策は、入力文だけでは足りません。モデルの出力、検索で取り出す文書、実行記録も含めて、遮断・伏せ字・通知を使い分けます。"><meta property="og:image" content="https://techworker.co.jp/media/security/covers/generative-ai-dlp-design.png"><meta property="og:url" content="https://techworker.co.jp/media/security/generative-ai-dlp-design"><meta property="og:site_name" content="TechWorker"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://techworker.co.jp/media/security/covers/generative-ai-dlp-design.png">
-<link rel="stylesheet" href="../article.css?v=20261006-source-notes"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "生成AIのDLP設計｜入力・出力・検索・記録で機密データを止める【2026】", "description": "生成AIの情報漏えい対策は、入力文だけでは足りません。モデルの出力、検索で取り出す文書、実行記録も含めて、遮断・伏せ字・通知を使い分けます。", "datePublished": "2026-09-11", "dateModified": "2026-10-06", "inLanguage": "ja", "image": "https://techworker.co.jp/media/security/covers/generative-ai-dlp-design.png", "author": {"@type": "Person", "name": "古野光太朗", "url": "https://techworker.co.jp/company.html"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/security/generative-ai-dlp-design"}, "citation": ["https://developers.cloudflare.com/reference-architecture/architectures/ai-security-for-apps/", "https://github.com/cloudflare/cloudflare-docs/blob/production/LICENSE", "https://developers.cloudflare.com/ai-gateway/features/dlp/", "https://learn.microsoft.com/en-us/purview/dlp-microsoft365-copilot-location-learn-about"]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},{"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},{"@type":"ListItem","position":3,"name":"AIセキュリティ・ラボ","item":"https://techworker.co.jp/media/security/"},{"@type":"ListItem","position":4,"name":"生成AIのDLP設計｜入力・出力・検索・記録で機密データを止める【2026】","item":"https://techworker.co.jp/media/security/generative-ai-dlp-design"}]}</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>AI DLPとは｜生成AIの入力・出力・検索・記録で機密データを止める設計と製品ごとの範囲【2026年11月】 — TechWorker</title><meta name="description" content="AI DLPは、生成AIへの入力、AIの出力、AIが検索で読む社内文書、記録の4か所で機密データを見つけて止める仕組みです。Microsoft Purview・Google Workspace・Cloudflareで止められる範囲を、公式資料で比べます（2026年11月16日確認）。"><link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg"><link rel="canonical" href="https://techworker.co.jp/media/security/generative-ai-dlp-design">
+<meta property="og:type" content="article"><meta property="og:title" content="AI DLPとは｜生成AIの入力・出力・検索・記録で機密データを止める設計と製品ごとの範囲【2026年11月】"><meta property="og:description" content="AI DLPは、生成AIへの入力、AIの出力、AIが検索で読む社内文書、記録の4か所で機密データを見つけて止める仕組みです。Microsoft Purview・Google Workspace・Cloudflareで止められる範囲を、公式資料で比べます（2026年11月16日確認）。"><meta property="og:image" content="https://techworker.co.jp/media/security/covers/generative-ai-dlp-design.png"><meta property="og:url" content="https://techworker.co.jp/media/security/generative-ai-dlp-design"><meta property="og:site_name" content="TechWorker"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://techworker.co.jp/media/security/covers/generative-ai-dlp-design.png">
+<link rel="stylesheet" href="../article.css?v=20261006-source-notes"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AI DLPとは｜生成AIの入力・出力・検索・記録で機密データを止める設計と製品ごとの範囲【2026年11月】", "description": "AI DLPは、生成AIへの入力、AIの出力、AIが検索で読む社内文書、記録の4か所で機密データを見つけて止める仕組みです。Microsoft Purview・Google Workspace・Cloudflareで止められる範囲を、公式資料で比べます（2026年11月16日確認）。", "datePublished": "2026-09-11", "dateModified": "2026-11-16", "inLanguage": "ja", "image": "https://techworker.co.jp/media/security/covers/generative-ai-dlp-design.png", "author": {"@type": "Person", "name": "古野光太朗", "url": "https://techworker.co.jp/company.html"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/security/generative-ai-dlp-design"}, "citation": ["https://learn.microsoft.com/en-us/purview/dlp-microsoft365-copilot-location-learn-about", "https://knowledge.workspace.google.com/admin/security/about-dlp-for-gemini", "https://developers.cloudflare.com/ai-gateway/features/dlp/", "https://developers.cloudflare.com/reference-architecture/architectures/ai-security-for-apps/"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "AI DLPとは何ですか？", "acceptedAnswer": {"@type": "Answer", "text": "生成AIに渡る情報と、生成AIが返す情報から、機密データを見つけて止める仕組みです。止める場所は、入力、出力、AIが検索で読む社内文書、記録の4か所です。DLPはデータ損失防止（Data Loss Prevention）の略です。"}}, {"@type": "Question", "name": "社員が生成AIに社内情報を貼り付けるのを、DLPで止められますか？", "acceptedAnswer": {"@type": "Answer", "text": "会社が管理するAIの経路なら止められます。Microsoft 365 CopilotのDLPは、機密情報を含む依頼をプレビューで止められます。Cloudflare AI GatewayのDLPは、ゲートウェイを通る依頼を止められます。ただし、Copilotに添付したファイルの中身は調べません。"}}, {"@type": "Question", "name": "Google WorkspaceのBusinessプランでも、Gemini向けのDLPは使えますか？", "acceptedAnswer": {"@type": "Answer", "text": "2026年11月16日に確かめた管理者ヘルプの対象は、Frontline Standard・Plus、Enterprise Standard・Plus、Education Fundamentals・Standard・Plus、Enterprise Essentials Plusです。Business Starter・Standard・Plusは対象に書かれていません。"}}, {"@type": "Question", "name": "Copilotに添付したファイルも、DLPで調べますか？", "acceptedAnswer": {"@type": "Answer", "text": "調べません。Microsoftの資料には、依頼に直接アップロードしたファイルの中身はDLPで調べられず、調べるのは入力した文だけだと書かれています。添付してよいファイルの決まりは、研修や社内の規程で伝えます。"}}, {"@type": "Question", "name": "DLPの設定を変えてから効くまで、どれくらいかかりますか？", "acceptedAnswer": {"@type": "Answer", "text": "Microsoft 365 CopilotとCoworkでは最大4時間、Google WorkspaceのGemini向けDLPでは最大24時間かかります。Cloudflare AI Gatewayでは、キャッシュから返す応答はDLPで調べ直さないため、すぐ効かせたいときはキャッシュを使わない設定で送ります。"}}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "AIセキュリティ・ラボ", "item": "https://techworker.co.jp/media/security/"}, {"@type": "ListItem", "position": 4, "name": "AI DLPとは", "item": "https://techworker.co.jp/media/security/generative-ai-dlp-design"}]}</script>
 <link rel="stylesheet" href="/media/audience-filter.css?v=20261006-media-only">
 <link rel="stylesheet" href="/assets/site/site.css">
 </head>
@@ -25,31 +26,113 @@
     <nav aria-label="メディアの行き先"><a href="index.html#about">このメディアについて</a><a href="../../contact.html" class="subnav__cta">無料相談</a></nav>
   </div>
 </div>
-<header class="art-head"><nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIセキュリティ・ラボ</a></nav><div class="kicker">機密データの保護</div><h1>生成AIのDLP設計｜入力・出力・検索・記録で機密データを止める【2026】</h1><p class="dek">生成AIの情報漏えい対策は、入力文だけでは足りません。モデルの出力、検索で取り出す文書、実行記録も含めて、遮断・伏せ字・通知を使い分けます。</p><div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.09.11</span><span class="dot">·</span><span>最終更新 2026.10.06</span></div>
+<header class="art-head"><nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIセキュリティ・ラボ</a></nav><div class="kicker">機密データの保護</div><h1>AI DLPとは｜生成AIの入力・出力・検索・記録で機密データを止める設計と製品ごとの範囲</h1><p class="dek">AI DLPは、生成AIへの入力、AIの出力、AIが検索で読む社内文書、記録の4か所で機密データを見つけて止める仕組みです。Microsoft Purview・Google Workspace・Cloudflareで止められる範囲を、公式資料で比べます（2026年11月16日確認）。</p><div class="a-meta"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.09.11</span><span class="dot">·</span><span>最終更新 2026.11.16</span></div>
 <p class="article-audience"><span class="article-audience-label">主な対象読者</span><a href="/media/security/?audience=it#articles">情シス・AI導入担当</a></p>
-</header><div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div><a href="#source">公式図は個人を特定できる情報（PII）がモデルへ入る前の検知を示す</a><a href="#boundaries">同じ秘密が4つの経路を移動する</a><a href="#actions">遮断・伏せ字・通知を情報種別で分ける</a><a href="#logging">記録収集自体を新しい漏えい経路にしない</a><a href="#sources">出典と確認範囲</a></div></nav><article class="art-body">
-<p>生成AIへ送る入力を検査しても、検索で取り出した文書や実行記録に機密情報が残ることがあります。情報漏えいを防ぐDLPの設計では、情報が通る場所ごとに対策が必要です。Cloudflareの入力側の検知図から、その範囲を確認します。</p>
+</header><div class="art-layout"><nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div>
+      <a href="#source">AI DLPとは何ですか？</a>
+      <a href="#paste">社内情報を生成AIに貼り付けるのは、DLPで止められますか？</a>
+      <a href="#compare">Copilot・Gemini・Cloudflareで、止められる範囲はどう違いますか？</a>
+      <a href="#actions">情報の種類ごとに、止めるか記録だけにするかをどう決めますか？</a>
+      <a href="#boundaries">AIが検索で読む社内文書は、どう守りますか？</a>
+      <a href="#logging">記録を残すとき、何に気をつけますか？</a>
+      <a href="#steps">導入は、どんな順番で進めればよいですか？</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#next">次の一歩は何から始めればよいですか？</a>
+      <a href="#sources">出典と確認範囲</a>
+    </div></nav><article class="art-body">
+<p>AI DLPは、生成AIに渡る情報と、生成AIが返す情報から、機密データを見つけて止める仕組みです。止める場所は、入力、出力、AIが検索で読む社内文書、記録の4か所です。どこまで止められるかは製品で違い、たとえばMicrosoft 365 CopilotのDLPは、依頼に添付したファイルの中身を調べません。Microsoft・Google・Cloudflareの公式資料を2026年11月16日に確かめ、止められる範囲と設計の順番をまとめます。</p>
 <figure class="fig-inline source-figure">
   <a class="source-image" href="sources/cloudflare-pii-detection-mitigation.png" target="_blank" rel="noopener noreferrer"><img src="sources/cloudflare-pii-detection-mitigation.png" alt="Cloudflare AI Security for AppsがLLMへの入力文内の個人情報を検知し、WAF規則で緩和する流れ" width="2668" height="666" loading="lazy" decoding="async"></a>
-  <figcaption><span class="source-label">Cloudflare公式：個人情報漏えいの検知・緩和</span>この図は入力側の個人情報検知です。記事では出力、検索、記録まで範囲を広げて読み解きます。 画像をクリックすると原図を開きます。<a href="https://developers.cloudflare.com/reference-architecture/architectures/ai-security-for-apps/" target="_blank" rel="noopener noreferrer">原典ページ</a>／<a href="https://github.com/cloudflare/cloudflare-docs/blob/production/LICENSE" target="_blank" rel="noopener noreferrer">利用条件</a>（確認日：2026年10月6日）</figcaption>
+  <figcaption><span class="source-label">Cloudflare公式：個人情報漏えいの検知・緩和</span>この図は入力側の個人情報の検知です。記事では出力、検索、記録まで範囲を広げて読み解きます。 画像をクリックすると原図を開きます。<a href="https://developers.cloudflare.com/reference-architecture/architectures/ai-security-for-apps/" target="_blank" rel="noopener noreferrer">原典ページ</a>／<a href="https://github.com/cloudflare/cloudflare-docs/blob/production/LICENSE" target="_blank" rel="noopener noreferrer">利用条件</a>（確認日：2026年10月6日）</figcaption>
 </figure>
-<h2 id="source">公式図は個人を特定できる情報（PII）がモデルへ入る前の検知を示す</h2>
-<p>Cloudflareの図は、要求内のPIIを検知判定項目へ変換し、WAF規則で緩和する流れを示します。入力時点で止めれば、モデル提供事業者や後続記録へ渡る量を減らせます。</p>
-<p>この図はAI Security for Appsの入力側対策です。別製品のAI Gateway DLPはBetaで、AI Gatewayを通る要求・応答本文のテキストを検査します。base64で符号化した画像や添付、バイナリ部分、外部URLの内容は検査しません。</p>
-<p>応答側でSSE（逐次配信）を検査すると、応答全体を受け取ってから判定するため、最初のトークンまでの待ち時間が増えます。低遅延が必要な経路では、要求だけを検査するか、応答検査用のゲートウェイを分けます。</p>
-<h2 id="boundaries">同じ秘密が4つの経路を移動する</h2>
-<p>利用者の入力文には顧客名や契約情報が入ります。モデル出力は入力を言い換えて再掲することがあります。RAGは閲覧権限の異なる文書を検索し、観測記録は入力文と応答を長く保存します。</p>
-<p>情報漏えい防止（DLP）の規則は、この4経路ごとに置きます。入力を許可しても、別部署のRAG結果を返してよいとは限りません。</p>
-<h2 id="actions">遮断・伏せ字・通知を情報種別で分ける</h2>
-<p>AI Gateway DLPの公式資料で確認できる処理は、検知結果を付けて原文を返す<code>Flag</code>と、応答を捨ててエラーに替える<code>Block</code>です。伏せ字や置換を製品機能として扱いません。</p>
-<p>ここからはTechWorkerの製品横断設計です。パスワード、APIキー、アクセストークンは遮断します。電話番号やメールアドレスは、業務上必要ならアプリケーション側で伏せ字や置換を使います。社内用語や案件コードは誤検知が多いため、まず通知で観測し、対象業務を確認してから止めます。RAGの閲覧権限と記録の保存制御も、AI Gateway DLPとは別に実装します。</p>
-<p>規則の結果には、検知分類、処理、対象システム、例外承認者を残します。原文そのものを監査記録へ複製しない設計が必要です。</p>
-<h2 id="logging">記録収集自体を新しい漏えい経路にしない</h2>
-<p>調査のために入力文の全文を保存すると、DLPで止めた秘密を別の場所へ残します。本文を保存する必要がなければ、検知分類、ハッシュ値、要求IDだけで追跡します。</p>
-<p>保存が必要な場合は、暗号化、閲覧権限、保持期限、削除手順を先に決めます。障害対応者が復号できる条件も記録します。</p>
-<h2 id="sources">出典と確認範囲</h2><ul class="source-list"><li><a href="https://developers.cloudflare.com/ai-gateway/features/dlp/" target="_blank" rel="noopener noreferrer">Cloudflare AI Gateway, Data Loss Prevention</a></li><li><a href="https://developers.cloudflare.com/reference-architecture/architectures/ai-security-for-apps/" target="_blank" rel="noopener noreferrer">Cloudflare, AI Security for Apps Reference Architecture</a></li><li><a href="https://learn.microsoft.com/en-us/purview/dlp-microsoft365-copilot-location-learn-about" target="_blank" rel="noopener noreferrer">Microsoft Purview, DLP for Microsoft 365 Copilot</a></li></ul></article></div>
+
+<h2 id="source">AI DLPとは何ですか？</h2>
+<p class="answer">生成AIの入力と出力の中から、個人情報や秘密の鍵などの機密データを見つけ、止める・伏せる・記録するのがAI DLPです。</p>
+<p>上のCloudflareの図は、依頼の中の個人を特定できる情報（PII）を見つけ、WAF（Webアプリの防御）の規則で止める流れを示します。入力の時点で止めれば、AIの提供会社や後の記録に渡る量を減らせます。</p>
+<p>ただし、同じ秘密は入力の外も通ります。AIの出力は入力を言い換えて繰り返すことがあり、AIが検索で読む社内文書には閲覧の権限が違う文書が混ざり、記録には依頼と応答が長く残ります。AI DLPの設計では、この4か所それぞれに規則を置きます。</p>
+
+<h2 id="paste">社内情報を生成AIに貼り付けるのは、DLPで止められますか？</h2>
+<p class="answer">会社が管理するAIの経路なら止められます。ただし、添付したファイルの中身や、会社が管理していないAIへの貼り付けは、この記事で確かめた3つの仕組みの対象外です。</p>
+<ul>
+<li><strong>Microsoft 365 Copilot・Copilot Chat・Cowork：</strong>機密情報の種類（クレジットカード番号や自社で決めた種類など）を含む依頼を止める機能が、プレビューで各テナントに広がっています。同じ依頼で社外のWeb検索を使わせない設定もあります。</li>
+<li><strong>Google WorkspaceのGemini：</strong>利用者が入力した文、直接リンクした資料、Geminiが見つけたWorkspaceのデータを調べ、違反があればその資料をGeminiに使わせないか、記録だけを残します。</li>
+<li><strong>自社のAIアプリ（Cloudflare AI Gateway）：</strong>ゲートウェイを通る依頼と応答の文を調べ、見つけたら記録を付けて通すか、応答を捨ててエラーを返します。</li>
+</ul>
+<p>Microsoftの資料は、依頼に直接アップロードしたファイルの中身はDLPで調べられず、調べるのは入力した文だけだとしています。添付ファイルを使わせる部署では、何を添付してよいかを社内の決まりで先に伝えます。</p>
+
+<h2 id="compare">Copilot・Gemini・Cloudflareで、止められる範囲はどう違いますか？</h2>
+<p class="answer">MicrosoftとGoogleは「AIが読む社内の資料」を止めるのが中心で、Cloudflareは「自社アプリの依頼と応答の文」を止めるのが中心です。</p>
+<div class="tbl-wrap"><table><thead><tr><th>項目</th><th>Microsoft Purview DLP（Copilot・Cowork）</th><th>Google WorkspaceのGemini向けDLP</th><th>Cloudflare AI GatewayのDLP</th></tr></thead><tbody>
+<tr><td>守る相手</td><td>Microsoft 365 Copilot、Copilot Chat、Cowork</td><td>Geminiアプリ、WorkspaceのGemini、Workspace Studioなど</td><td>ゲートウェイを通す自社のAIアプリ</td></tr>
+<tr><td>入力した文</td><td>機密情報を含む依頼を止める（プレビュー）。社外のWeb検索を使わせない</td><td>調べる</td><td>調べる</td></tr>
+<tr><td>AIが読む社内の資料</td><td>機密ラベルの付いたファイルとメール（2025年1月1日以降に送られたもの）を使わせない。予定表の招待は対象外</td><td>ドライブを使わせない。ChatとGmailはベータ</td><td>対象外（自社で権限を設計する）</td></tr>
+<tr><td>AIの出力</td><td>この記事で確かめた範囲には記載なし</td><td>この記事で確かめた範囲には記載なし</td><td>調べる（逐次配信は全体を受け取ってから調べる）</td></tr>
+<tr><td>添付ファイル</td><td>中身を調べない</td><td>記載なし</td><td>画像や添付（base64）と外部のURLは調べない</td></tr>
+<tr><td>処理</td><td>使わせない・止める。試しに動かすシミュレーションもある</td><td>使わせない（Block data access）か、記録だけ（Audit only）</td><td>記録を付けて通す（Flag）か、止める（Block）</td></tr>
+<tr><td>効くまでの時間</td><td>最大4時間</td><td>最大24時間</td><td>キャッシュから返す応答は調べ直さない</td></tr>
+<tr><td>使える条件</td><td>Purviewのポリシーで、場所に「Microsoft Copilot, Copilot Chat, and Copilot Cowork」を選ぶ</td><td>Frontline・Enterprise Standard／Plus、Education、Enterprise Essentials Plus</td><td>AI Gatewayを通す構成</td></tr>
+</tbody></table></div>
+<p class="fig-cap">出典：Microsoft Learn「Microsoft Purview DLP for Microsoft 365 Copilot and Cowork」（2026年11月9日更新）、Google Workspace 管理者ヘルプ「About DLP for Gemini」（2026年11月12日更新）、Cloudflare「AI Gateway: Data Loss Prevention」（2026年10月12日更新）。いずれも2026年11月16日に確認。</p>
+<p>Googleのヘルプは、Gemini EnterpriseやChromeのGeminiは、このドライブの制限の対象外だと書いています。同じ会社の中でも、使うAIの製品が違えば、効くDLPの規則も違います。Copilot Coworkで止められることと止められないことは、<a href="../kenshu/copilot-cowork-toha.html">Copilot Coworkとは</a>で詳しく扱っています。</p>
+<div class="tw-lead" data-offer="ai-contract-pack" data-campaign="generative-ai-dlp-design" data-pos="mid"></div>
+
+<h2 id="actions">情報の種類ごとに、止めるか記録だけにするかをどう決めますか？</h2>
+<p class="answer">パスワードやAPIキーは止め、電話番号やメールアドレスは業務で要るなら伏せ字にし、社内用語や案件コードはまず記録だけで様子を見ます。</p>
+<div class="tbl-wrap"><table><thead><tr><th>情報の種類</th><th>最初の処理</th><th>理由</th></tr></thead><tbody>
+<tr><td>パスワード、APIキー、アクセストークン</td><td>止める</td><td>一度漏れると取り消しの手間が大きい</td></tr>
+<tr><td>電話番号、メールアドレス</td><td>業務で要るなら伏せ字にする</td><td>顧客対応では必要な場面がある</td></tr>
+<tr><td>機密ラベルの付いた文書</td><td>AIに使わせない</td><td>MicrosoftとGoogleの機能で止められる</td></tr>
+<tr><td>社内用語、案件コード</td><td>記録だけにして様子を見る</td><td>誤検知が多く、いきなり止めると業務が止まる</td></tr>
+</tbody></table></div>
+<p>この表はTechWorkerの製品をまたいだ設計の提案です。伏せ字や置き換えは、この記事で確かめた3つの製品の標準の処理には含まれていないため、アプリ側で作ります。記録だけで様子を見る段階には、Microsoftのシミュレーション、Googleの「Audit only」、Cloudflareの「Flag」が使えます。</p>
+<p>規則に当たった結果には、検知した分類、処理、対象のシステム、例外の承認者を残します。原文そのものを監査の記録に写さない設計にします。</p>
+
+<h2 id="boundaries">AIが検索で読む社内文書は、どう守りますか？</h2>
+<p class="answer">AIは利用者が開ける文書を読むため、まず文書の閲覧権限を直し、そのうえで機密ラベルの文書をAIに使わせない設定を足します。</p>
+<p>入力を許可しても、別の部署の文書をAIが検索して答えに使ってよいとは限りません。Microsoftの資料では、Copilot Coworkは利用者が開けるファイルとメールを使います。導入前の権限の見直しは、<a href="../kenshu/copilot-sharepoint-permission-audit.html">SharePointの権限の棚卸し</a>で手順を説明しています。</p>
+<p>自社で作るAIアプリ（RAG）では、検索で取り出す文書の閲覧権限をアプリ側で確かめます。Cloudflare AI GatewayのDLPは依頼と応答の文を調べる仕組みで、検索の権限は管理しません。</p>
+
+<h2 id="logging">記録を残すとき、何に気をつけますか？</h2>
+<p class="answer">依頼の全文を保存すると、DLPで止めた秘密を別の場所に残すことになります。本文が要らなければ、検知した分類、ハッシュ値、依頼のIDだけで追います。</p>
+<p>保存が必要な場合は、暗号化、閲覧権限、保存期間、削除の手順を先に決めます。障害の対応者が中身を見られる条件も記録します。Cloudflareでは、Flagで通した応答にも検知の結果が記録に残ります。</p>
+<p>応答の側で逐次配信（SSE）を調べると、応答全体を受け取ってから判定するため、最初の文字が出るまでの待ち時間が増えます。待ち時間が問題になる経路では、依頼だけを調べる設定にするか、調べる経路と調べない経路でゲートウェイを分けます。</p>
+
+<h2 id="steps">導入は、どんな順番で進めればよいですか？</h2>
+<p class="answer">使っているAIと経路を一覧にし、止める情報を決め、記録だけで試してから止めます。</p>
+<ol>
+<li><strong>AIと経路を一覧にする：</strong>Copilot、Gemini、自社のAIアプリなど、社員が使うAIと、どのDLPが効くかを書き出します。</li>
+<li><strong>止める情報を決める：</strong>上の表の4種類から始め、自社だけの情報（顧客番号など）を足します。</li>
+<li><strong>記録だけで試す：</strong>シミュレーションや「Audit only」で動かし、誤検知の件数と、止まると困る業務を確かめます。</li>
+<li><strong>止める：</strong>誤検知が許せる範囲になった規則から、止める処理に切り替えます。</li>
+<li><strong>例外の窓口を決める：</strong>止められた社員が相談する先と、例外を認める人を決めます。</li>
+</ol>
+<p>3から5はTechWorkerの提案です。記録だけで試す期間は、誤検知の件数が落ち着くまでとし、日数は決め打ちしません。</p>
+
+<h2 id="faq">よくある質問</h2>
+<div class="faq"><div class="q">AI DLPとは何ですか？</div><p class="a">生成AIに渡る情報と、生成AIが返す情報から、機密データを見つけて止める仕組みです。止める場所は、入力、出力、AIが検索で読む社内文書、記録の4か所です。DLPはデータ損失防止（Data Loss Prevention）の略です。</p></div>
+<div class="faq"><div class="q">社員が生成AIに社内情報を貼り付けるのを、DLPで止められますか？</div><p class="a">会社が管理するAIの経路なら止められます。Microsoft 365 CopilotのDLPは、機密情報を含む依頼をプレビューで止められます。Cloudflare AI GatewayのDLPは、ゲートウェイを通る依頼を止められます。ただし、Copilotに添付したファイルの中身は調べません。</p></div>
+<div class="faq"><div class="q">Google WorkspaceのBusinessプランでも、Gemini向けのDLPは使えますか？</div><p class="a">2026年11月16日に確かめた管理者ヘルプの対象は、Frontline Standard・Plus、Enterprise Standard・Plus、Education Fundamentals・Standard・Plus、Enterprise Essentials Plusです。Business Starter・Standard・Plusは対象に書かれていません。</p></div>
+<div class="faq"><div class="q">Copilotに添付したファイルも、DLPで調べますか？</div><p class="a">調べません。Microsoftの資料には、依頼に直接アップロードしたファイルの中身はDLPで調べられず、調べるのは入力した文だけだと書かれています。添付してよいファイルの決まりは、研修や社内の規程で伝えます。</p></div>
+<div class="faq"><div class="q">DLPの設定を変えてから効くまで、どれくらいかかりますか？</div><p class="a">Microsoft 365 CopilotとCoworkでは最大4時間、Google WorkspaceのGemini向けDLPでは最大24時間かかります。Cloudflare AI Gatewayでは、キャッシュから返す応答はDLPで調べ直さないため、すぐ効かせたいときはキャッシュを使わない設定で送ります。</p></div>
+
+<h2 id="next">次の一歩は何から始めればよいですか？</h2>
+<p class="answer">社員が使っているAIを一覧にし、それぞれでどのDLPが効くかを上の比較表で確かめます。</p>
+<p>生成AIの法人契約で、管理の機能と料金を比べたい方は、下の枠から主要4社の比較表を受け取れます。</p>
+<div class="tw-lead" data-offer="ai-contract-pack" data-campaign="generative-ai-dlp-design" data-pos="end"></div>
+
+<h2 id="sources">出典と確認範囲</h2>
+<p class="source-note">確認日：2026年11月16日。製品の機能と条件は各社の公式資料、情報の種類ごとの処理と導入の順番はTechWorkerの提案です。プレビューやベータの機能は、自社のテナントに届いているかを管理者が確かめてください。</p>
+<ul class="source-list">
+<li><a href="https://learn.microsoft.com/en-us/purview/dlp-microsoft365-copilot-location-learn-about" target="_blank" rel="noopener noreferrer">Microsoft Learn「Microsoft Purview DLP for Microsoft 365 Copilot and Cowork」（2026年11月9日更新）</a></li>
+<li><a href="https://knowledge.workspace.google.com/admin/security/about-dlp-for-gemini" target="_blank" rel="noopener noreferrer">Google Workspace 管理者ヘルプ「About DLP for Gemini」（2026年11月12日更新）</a></li>
+<li><a href="https://developers.cloudflare.com/ai-gateway/features/dlp/" target="_blank" rel="noopener noreferrer">Cloudflare「AI Gateway: Data Loss Prevention (DLP)」（2026年10月12日更新）</a></li>
+<li><a href="https://developers.cloudflare.com/reference-architecture/architectures/ai-security-for-apps/" target="_blank" rel="noopener noreferrer">Cloudflare「AI Security for Apps Reference Architecture」</a></li>
+</ul>
+</article></div>
 <div class="author"><div class="inner"><img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗"><div><div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div><p class="a">上場企業を含む45社・2,500名の生成AI導入・研修支援で得た実務知をもとに、導入・運用・顧客理解を扱っています。この実績はTechWorkerの生成AI支援実績であり、個別製品の導入実績を示すものではありません。</p></div></div></div>
-<div class="art-cta"><div class="inner"><div><h3>生成AIのデータ流出境界を点検する</h3><p>入力、検索、回答、記録を棚卸しし、block・警告・マスキング・承認を分けて設計します。</p></div><a href="../../contact.html?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=generative-ai-dlp-design" class="btn" data-cta="generative-ai-dlp-design">AIセキュリティを相談する <i>→</i></a></div></div><div class="back-list"><a href="index.html">← AIセキュリティ・ラボの記事一覧に戻る</a></div><section class="related"><div class="container"><div class="rl-h">Related</div><div class="related-grid"></div></div></section>
+<div class="art-cta"><div class="inner"><div><h3>生成AIのデータ流出境界を点検する</h3><p>入力、検索、回答、記録を棚卸しし、block・警告・マスキング・承認を分けて設計します。</p></div><a href="../../contact.html?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=generative-ai-dlp-design" class="btn" data-cta="generative-ai-dlp-design">AIセキュリティを相談する <i>→</i></a></div></div><div class="back-list"><a href="index.html">← AIセキュリティ・ラボの記事一覧に戻る</a></div><section class="related"><div class="container"><div class="rl-h">Related</div><div class="related-grid">
+    <a href="../kenshu/copilot-cowork-toha.html" class="related-card"><span class="rc-cat">導入と業務への組み込み</span><div class="rc-title">Copilot Coworkとは｜Copilot Chatとの違い・ライセンスと料金・管理者が決める設定</div></a>
+    <a href="../kenshu/copilot-sharepoint-permission-audit.html" class="related-card"><span class="rc-cat">社内ルールと安全</span><div class="rc-title">Microsoft 365 Copilot導入前のSharePoint権限棚卸し｜過剰共有を防ぐ実務</div></a></div></div></section>
 <footer class="ft">
   <div class="wrap">
     <div class="ft__in">
@@ -81,4 +164,5 @@
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
 })();
 </script>
+<script src="../lead.js" defer></script>
 </body></html>
