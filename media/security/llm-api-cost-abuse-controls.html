@@ -35,7 +35,7 @@
 <figure class="fig-inline"><a href="figs/llm-api-cost-abuse-controls-1.png" target="_blank" rel="noopener"><img src="figs/llm-api-cost-abuse-controls-1.png" alt="回数、費用、ツール実行の三つの上限で費用濫用を止める設計例" width="1200" height="712" loading="lazy" decoding="async"></a><figcaption><span class="source-label">TechWorker作成：</span>入口の回数、推定費用、後段の操作を別々に止める条件を図示しています。 製品の公式画面や導入効果の実測ではありません。画像を押すと拡大できます。</figcaption></figure>
 <h2 id="source">公式資料は回数と費用を別の制御としている</h2>
 <p>回数上限は要求回数を抑えます。費用上限はモデル価格とトークン使用量から金額を追います。短い要求を大量に送る事故と、少数の長い要求で費用が膨らむ事故は、同じ上限では止めにくいためです。</p>
-<p>Cloudflareは、費用上限が即時には反映されない仕組みだと説明しています。同時要求が集中すると、記録反映まで一時的に上限を超える可能性があります。</p>
+<p>Cloudflareは、費用上限が即時には反映されない仕組みだと説明しています。同時要求が集中すると、記録反映まで一時的に上限を超える可能性があります。同じAI Gatewayで、依頼と応答から機密データを止める設定は、<a href="generative-ai-dlp-design.html">AI DLPとは</a>で扱っています。</p>
 <p>この費用は、トークン数と価格が分かるモデルから計算する概算です。Cloudflareも最善努力の推定値と位置づけているため、確定額はモデル提供事業者の請求画面と照合します。価格が不明なモデルを費用上限だけで管理しません。</p>
 <h2 id="budgets">要求・金額・ツールに別の予算を持たせる</h2>
 <p>APIゲートウェイでは毎分要求数と日次・月次金額を設定します。エージェント側では、1作業あたりのモデル呼出し、検索、ブラウザ操作、外部API更新の回数を持たせます。</p>
