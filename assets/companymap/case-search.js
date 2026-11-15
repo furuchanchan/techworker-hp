@@ -1,4 +1,4 @@
-// 他社の事例を探す（/companymap の #others）。入れた言葉で、公開のWorker（companymap-cases）に問い合わせて上位の事例を描く。
+// 他社の事例を探す（/gyoumuzuai の #others）。入れた言葉で、公開のWorker（companymap-cases）に問い合わせて上位の事例を描く。
 // 最初は何も入れず、入力か「たとえば」のボタンで探す。
 // 並べ直しに判定用のAI（Jev）を使うので、1回の検索に1秒ほどかかる。
 (() => {
@@ -40,7 +40,7 @@
       </div>
       ${d.relaxed ? `<p class="cs-note">${esc(d.understood.industry)}の事例は見つからなかったので、ほかの業種の事例を出しています。</p>` : ''}
       <div class="cs-grid">${d.items.map(card).join('')}</div>
-      <div class="cs-more"><p>全<b>${num(d.total)}</b>件は、無料相談のときに画面で一緒にご覧いただけます。</p><a class="btn blue" href="/companymap/contact">無料相談を申し込む <i>→</i></a></div>`;
+      <div class="cs-more"><p>全<b>${num(d.total)}</b>件は、無料相談のときに画面で一緒にご覧いただけます。</p><a class="btn blue" href="/gyoumuzuai/contact">無料相談を申し込む <i>→</i></a></div>`;
   }
 
   async function search(q) {

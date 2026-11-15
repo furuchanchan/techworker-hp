@@ -99,7 +99,7 @@ def llms(arts):
            "",
            "## 主なページ\n",
            f"- [会社概要]({SITE}/company)", f"- [サービス]({SITE}/services)", f"- [生成AI研修]({SITE}/training)",
-           f"- [Microsoft Copilot の導入支援]({SITE}/copilot)", f"- [ギョウムズAI（旧 CompanyMap AI。業務図をつくる作り方の名前）]({SITE}/companymap)",
+           f"- [Microsoft Copilot の導入支援]({SITE}/copilot)", f"- [ギョウムズAI（旧 CompanyMap AI。業務図をつくる作り方の名前）]({SITE}/gyoumuzuai)",
            f"- [支援事例]({SITE}/cases)", f"- [お知らせ]({SITE}/news)", f"- [TechWorker Media（記事の一覧）]({SITE}/media/)", ""]
     by = {}
     for p, t in arts:

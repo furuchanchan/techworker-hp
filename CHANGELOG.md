@@ -2,6 +2,11 @@
 
 TechWorkerコーポレートサイトの主な変更を記録します。
 
+## 2026-11-15 — ギョウムズAI のURLを /gyoumuzuai へ
+
+- `/companymap`（LP・Docs・資料ダウンロード・相談・事例・試算・見本）を `/gyoumuzuai` に替えた。フォルダは `gyoumuzuai/`、Docs の作り方は `uv run --with markdown gyoumuzuai/docs/build.py`。
+- 旧URLは `_redirects` で新URLへ 301。画像とCSSの置き場 `/assets/companymap/`、計測のイベント名、過去のお知らせ（news/）は替えていない。
+
 ## 2026-10-07 — CompanyMap AI Docs を公開
 
 - `/companymap/docs` に、サービスの中身・進め方・お渡しするもの・機能の提供状況・データの取り扱い・導入前の確認事項など14ページのDocsを追加。サービス紹介資料・LPと食い違うときの最新の内容とする。

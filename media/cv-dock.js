@@ -50,7 +50,7 @@
       title: where + "の1つの業務を、30分の無料相談でAIが業務図にします",
       points: ["お仕事の流れを伺いながら、その場でAIが業務図を作ります", "詰まっている所、AIに任せられる所まで1枚で分かります", "手順書やExcelがあれば、その場で使います（なくてもお話から作れます）"],
       note: "最初の1枚は無料。申込みの入力は1分です",
-      cta: "無料相談を申し込む", mcta: "申し込む", href: "/companymap/contact", short: "業務図の無料相談を申し込む", mt: "AIが最初の業務図を作る無料相談（30分）"
+      cta: "無料相談を申し込む", mcta: "申し込む", href: "/gyoumuzuai/contact", short: "業務図の無料相談を申し込む", mt: "AIが最初の業務図を作る無料相談（30分）"
     };
   }
   var DIAG = { label: "まずは1分の生成AI活用度診断（登録不要）", href: "/ai-assessment.html", offer: "assessment" };
@@ -63,8 +63,8 @@
       return Object.assign({}, CASES, { sub: { label: "研修の内容と教材の更新履歴を見る", href: "https://kenshu.techworker.co.jp/", offer: "training_site" } });
     },
     shigyo: function () { return Object.assign(companymap("事務所", "/media/cv/companymap-shigyo.jpg"), { sub: DIAG }); },
-    interview: function () { return Object.assign(companymap("部署"), { sub: { label: "ギョウムズAIを見る", href: "/companymap", offer: "companymap_lp" } }); },
-    gyomuzu: function () { return Object.assign({}, TEMPLATES, { sub: { label: "30分の無料相談で、AIが自社の業務図を作ります", href: "/companymap/contact", offer: "companymap_consult" } }); },
+    interview: function () { return Object.assign(companymap("部署"), { sub: { label: "ギョウムズAIを見る", href: "/gyoumuzuai", offer: "companymap_lp" } }); },
+    gyomuzu: function () { return Object.assign({}, TEMPLATES, { sub: { label: "30分の無料相談で、AIが自社の業務図を作ります", href: "/gyoumuzuai/contact", offer: "companymap_consult" } }); },
     agents: function () {
       var anchor = /claude/.test(slug) ? "claude-code" : /gemini/.test(slug) ? "gemini" : /copilot/.test(slug) ? "copilot" : "";
       return Object.assign({}, CASES, { sub: { label: "このエージェントを研修で作る", href: "https://kenshu.techworker.co.jp/program/" + (anchor ? "#" + anchor : ""), offer: "training_agents" } });
@@ -173,7 +173,7 @@
       if (m.classList.contains("rich")) return;
       var a = m.querySelector('a[href*="library/?doc="]'), d;
       if (a) d = DOCS[(a.getAttribute("href").match(/doc=([a-z]+)/) || [])[1]];
-      else if ((a = m.querySelector('a[href*="companymap"]'))) d = companymap(seg === "shigyo" ? "事務所" : "部署", seg === "shigyo" ? "/media/cv/companymap-shigyo.jpg" : null);
+      else if ((a = m.querySelector('a[href*="gyoumuzuai"], a[href*="companymap"]'))) d = companymap(seg === "shigyo" ? "事務所" : "部署", seg === "shigyo" ? "/media/cv/companymap-shigyo.jpg" : null);
       if (!a || !d) return;
       var img = el("img", "mc-img"); img.src = d.img; img.alt = d.title + "の見本"; img.loading = "lazy"; img.width = 680; img.height = 300;
       m.insertBefore(img, m.firstChild);

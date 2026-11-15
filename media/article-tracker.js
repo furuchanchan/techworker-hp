@@ -34,7 +34,7 @@
     if (href.indexOf("ai-assessment") !== -1) return "assessment";
     if (href.indexOf("kenshu.techworker.co.jp") !== -1) return href.indexOf("/check/") !== -1 ? "assessment" : "service";  // 研修サイト（2026-10-15 に独立）
     if (href.indexOf("library") !== -1 || anchor.hasAttribute("download")) return "download";
-    if (/training|new-business|launch-simulation|coesignal|companymap/.test(href)) return "service";
+    if (/training|new-business|launch-simulation|coesignal|companymap|gyoumuzuai/.test(href)) return "service";
     if (href.indexOf("/media/") !== -1 || href.indexOf(".html") !== -1) return "internal";
     return "other";
   }
@@ -55,8 +55,8 @@
     var href = anchor.getAttribute("href") || "";
     var doc = href.match(/[?&]doc=([a-z]+)/);
     if (doc) return "doc_" + doc[1];
-    if (/companymap\/contact/.test(href)) return "companymap_consult";
-    if (/companymap/.test(href)) return "companymap_lp";
+    if (/(gyoumuzuai|companymap)\/contact/.test(href)) return "companymap_consult";
+    if (/gyoumuzuai|companymap/.test(href)) return "companymap_lp";
     if (/training/.test(href)) return "training";
     if (/contact/.test(href)) return "contact";
     if (/ai-assessment/.test(href)) return "assessment";

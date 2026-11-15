@@ -1,4 +1,4 @@
-// 効果の試算（/companymap/sim）の点検：例の数字と数字を替えたあとの合計・内訳・申込に添える要約、4つの幅での横のはみ出し、ページのエラー、1画面目の撮影。
+// 効果の試算（/gyoumuzuai/sim）の点検：例の数字と数字を替えたあとの合計・内訳・申込に添える要約、4つの幅での横のはみ出し、ページのエラー、1画面目の撮影。
 // 実行: node scripts/companymap_sim_check.mjs [撮影の置き場]   （Playwright は PW で場所を指定。既定は sokumitsu-site の node_modules）
 import http from 'node:http'; import fs from 'node:fs'; import path from 'node:path';
 const PW = process.env.PW || '/Users/koutaroufuruno/Projects/sokumitsu-site/node_modules/playwright/index.mjs';
@@ -6,7 +6,7 @@ const { chromium } = await import(PW);
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const shots = path.resolve(process.argv[2] || path.join(root, '.sim-shots')); fs.mkdirSync(shots, { recursive: true });
 const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.png': 'image/png', '.jpg': 'image/jpeg', '.svg': 'image/svg+xml', '.ico': 'image/x-icon' };
-// Cloudflare Pages と同じく、/companymap/sim は companymap/sim.html を返す
+// Cloudflare Pages と同じく、/gyoumuzuai/sim は gyoumuzuai/sim.html を返す
 const srv = http.createServer((q, r) => {
   let f = path.join(root, decodeURIComponent(q.url.split('?')[0]));
   if (fs.existsSync(f) && fs.statSync(f).isDirectory()) f = path.join(f, 'index.html');
@@ -15,7 +15,7 @@ const srv = http.createServer((q, r) => {
   r.writeHead(200, { 'content-type': types[path.extname(f)] || 'application/octet-stream' }); fs.createReadStream(f).pipe(r);
 });
 await new Promise(r => srv.listen(8858, r));
-const url = 'http://localhost:8858/companymap/sim';
+const url = 'http://localhost:8858/gyoumuzuai/sim';
 const b = await chromium.launch(); let errs = 0, bad = 0;
 for (const [W, H] of [[1440, 900], [1024, 768], [768, 1024], [390, 844]]) {
   const p = await (await b.newContext({ viewport: { width: W, height: H }, deviceScaleFactor: 2 })).newPage();
