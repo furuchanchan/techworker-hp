@@ -28,7 +28,7 @@
 <meta name="twitter:title" content="Claude Codeの社内展開｜社内データの扱い・設定配布・ルール雛形【2026】">
 <meta name="twitter:image" content="https://techworker.co.jp/media/kenshu/covers/claude-code-shanai-tenkai.png">
 <link rel="stylesheet" href="../article.css?v=20261006-bilingual-quotes">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Claude Codeの社内展開｜社内データの扱い・設定配布・ルール雛形【2026】", "description": "Claude Codeの社内展開は、既存コードの理解、修正、テストを一続きで練習します。非エンジニアへ広げる前に、操作範囲とレビュー担当を固定します。", "datePublished": "2026-07-29", "dateModified": "2026-10-06", "inLanguage": "ja", "image": "https://techworker.co.jp/media/kenshu/covers/claude-code-shanai-tenkai.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/claude-code-shanai-tenkai"}, "citation": ["https://code.claude.com/docs/en/permissions", "https://code.claude.com/docs/en/settings", "https://support.claude.com/en/articles/10440198-configure-custom-data-retention-controls-for-enterprise-plans", "https://support.claude.com/en/articles/15425996-data-retention-practices-for-covered-models", "https://support.claude.com/en/articles/9797531-what-is-the-enterprise-plan"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Claude Codeの社内展開｜社内データの扱い・設定配布・ルール雛形【2026】", "description": "Claude Codeの社内展開は、既存コードの理解、修正、テストを一続きで練習します。非エンジニアへ広げる前に、操作範囲とレビュー担当を固定します。", "datePublished": "2026-07-29", "dateModified": "2026-11-17", "inLanguage": "ja", "image": "https://techworker.co.jp/media/kenshu/covers/claude-code-shanai-tenkai.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/claude-code-shanai-tenkai"}, "citation": ["https://code.claude.com/docs/en/permissions", "https://code.claude.com/docs/en/settings", "https://support.claude.com/en/articles/10440198-configure-custom-data-retention-controls-for-enterprise-plans", "https://support.claude.com/en/articles/15425996-data-retention-practices-for-covered-models", "https://support.claude.com/en/articles/9797531-what-is-the-enterprise-plan"]}</script>
 <script type="application/ld+json">
 {
   "@context":"https://schema.org","@type":"BreadcrumbList",
@@ -219,12 +219,13 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <table>
 <tr><th>観点</th><th>Claude for Teams</th><th>Claude for Enterprise</th><th>Claude Console（API）</th></tr>
 <tr><td>契約・請求</td><td>セルフサービス契約・一括請求</td><td>営業経由の契約・一括請求</td><td>API従量課金</td></tr>
-<tr><td>管理機能</td><td>管理ダッシュボード・メンバー管理</td><td>SSO・ドメインキャプチャ・ロールベース権限・コンプライアンスAPI・管理ポリシー設定</td><td>メンバー招待・ロール割当（Claude Code用APIキーのみ発行できる「Claude Code」ロールあり）</td></tr>
+<tr><td>管理機能</td><td>管理ダッシュボード・メンバー管理・SSO・ドメインの確認</td><td>SSO・ドメインキャプチャ・SCIM・ロールベース権限・コンプライアンスAPI・管理ポリシー設定</td><td>メンバー招待・ロール割当（Claude Code用APIキーのみ発行できる「Claude Code」ロールあり）</td></tr>
 <tr><td>利用分析</td><td>claude.ai上の分析ダッシュボード</td><td>同左＋Analytics API（Enterpriseのみ）</td><td>Consoleダッシュボード（利用状況・支出）</td></tr>
 <tr><td>向く組織</td><td>小規模チームで早く始めたい</td><td>セキュリティ・コンプライアンス要件が重い</td><td>API基盤でコストを従量管理したい</td></tr>
 </table>
 </div>
-<p class="fig-cap">出典：Anthropic公式ドキュメント（2026年8月時点）。</p>
+<p class="fig-cap">出典：Anthropic公式ドキュメント（2026年8月時点。SSO・ドメインの確認・SCIMの行は2026年11月17日に確認して更新）。</p>
+<p>管理画面の設定のうち、自社でやる作業と支援会社に頼める作業の分け方は、<a href="claude-dounyu-shien-settei-daikou.html">Claudeの導入支援・設定代行</a>で扱っています。</p>
 <h2 id="s6">次の一歩は、何から始めればよいですか？</h2>
 <p class="answer">契約形態とデータ方針を決め、下のチェックリストを埋めながらパイロットを始めます。</p>
 <p>展開前に、次のチェックリスト（雛形）を埋めてください。</p>
