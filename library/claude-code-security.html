@@ -38,9 +38,9 @@
 
 :root{
   --ink:#0D1117; --paper:#F1F1F1; --paper-2:#E9E9E6; --white:#FCFCFB;
-  --electric:#A47948; --electric-dark:#8A6339;
+  --electric:#005EFF; --electric-dark:#0047C2;
   --slate:#4A5059; --line:rgba(13,17,23,.12); --line-2:rgba(13,17,23,.20);
-  --emerald:#00B894; --violet:#8A6339; --danger:#C0392B;
+  --emerald:#00B894; --violet:#0047C2; --danger:#C0392B;
   --jp:var(--f-body);
   --en:var(--f-gill);
 }
@@ -239,8 +239,11 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
 <style>
 /* 本体HPの共通の見た目に合わせる（2026-10-20）：見出しは明朝400、色の地の箱は暗い面、番号は色の箱に入れない、英字の札は出さない */
 .cover h1, .chapter h2, .doc-cta h2 { font-family: var(--f-min); font-weight: 700; letter-spacing: .02em; font-feature-settings: "palt"; }
-.doc-cta, .statement { background: var(--ink) !important; color: var(--on-dark) !important; border-radius: 0; }
-.ladder .rank, .steps5 .rank, .method .step .sn { background: none; color: var(--gold-a); font: 700 24px/1 var(--f-gill); }
+.doc-cta, .statement { background: var(--paper) !important; color: var(--ink) !important; border: 1px solid var(--line); border-radius: 0; }
+.doc-cta p, .doc-cta .tag, .doc-cta h2, .statement p { color: var(--ink) !important; }
+.doc-cta .tag::before { background: var(--ink); }
+.doc-cta .btn { background: var(--blue) !important; color: var(--paper) !important; }
+.ladder .rank, .steps5 .rank, .method .step .sn { background: none; color: var(--blue); font: 700 24px/1 var(--f-gill); }
 .doc .tag { font-size: 0; letter-spacing: 0; }
 .doc .tag span { font-size: 12px; letter-spacing: .08em; }
 .toc h4 { display: none; }
