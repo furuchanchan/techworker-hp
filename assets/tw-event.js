@@ -35,13 +35,13 @@
 
   var css = document.createElement('style');
   css.textContent =
-    '.twev-bar{position:fixed;top:0;left:0;right:0;z-index:1000;height:40px;display:flex;align-items:center;justify-content:center;gap:18px;padding:0 44px 0 16px;background:#0D1117;color:#FCFCFB;font:700 13.5px/1 "游ゴシック体","Yu Gothic",YuGothic,"Hiragino Sans",sans-serif;letter-spacing:.04em}' +
+    '.twev-bar{position:fixed;top:0;left:0;right:0;z-index:1000;height:40px;display:flex;align-items:center;justify-content:center;gap:18px;padding:0 44px 0 16px;background:#0D1117;color:#FCFCFB;font:700 13.5px/1 "Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;letter-spacing:.04em}' +
     '.twev-bar a{color:inherit;text-decoration:none;display:flex;align-items:center;gap:18px;min-width:0}' +
     '.twev-bar .k{flex:none;border:1px solid #A47948;color:#D8BF8F;padding:4px 10px;font-size:12px}' +
     '.twev-bar .t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}' +
     '.twev-bar .sp{display:none}.twev-bar .m{flex:none;color:#D8BF8F;border-bottom:1px solid #A47948;padding-bottom:2px}' +
     '.twev-x{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:32px;height:32px;border:0;background:none;color:inherit;font-size:18px;line-height:1;cursor:pointer;opacity:.7}' +
-    '.twev-pop{position:fixed;right:20px;bottom:20px;z-index:1000;width:300px;background:#FCFCFB;color:#0D1117;box-shadow:0 14px 34px -12px rgba(13,17,23,.45);border:1px solid #D9D9D6;font:500 13px/1.6 "游ゴシック体","Yu Gothic",YuGothic,"Hiragino Sans",sans-serif;opacity:0;transform:translateY(12px);transition:opacity .3s,transform .3s}' +
+    '.twev-pop{position:fixed;right:20px;bottom:20px;z-index:1000;width:300px;background:#FCFCFB;color:#0D1117;box-shadow:0 14px 34px -12px rgba(13,17,23,.45);border:1px solid #D9D9D6;font:500 13px/1.6 "Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;opacity:0;transform:translateY(12px);transition:opacity .3s,transform .3s}' +
     '.twev-pop.on{opacity:1;transform:none}' +
     '.twev-pop a{display:block;color:inherit;text-decoration:none}' +
     '.twev-pop img{display:block;width:100%;height:auto}' +
