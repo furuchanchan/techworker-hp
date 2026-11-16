@@ -100,7 +100,10 @@ def llms(arts):
            "## 主なページ\n",
            f"- [会社概要]({SITE}/company)", f"- [サービス]({SITE}/services)", f"- [生成AI研修]({SITE}/training)",
            f"- [Microsoft Copilot の導入支援]({SITE}/copilot)", f"- [ギョウムズAI（旧 CompanyMap AI。業務図をつくる作り方の名前）]({SITE}/gyoumuzuai)",
-           f"- [支援事例]({SITE}/cases)", f"- [お知らせ]({SITE}/news)", f"- [TechWorker Media（記事の一覧）]({SITE}/media/)", ""]
+           f"- [支援事例]({SITE}/cases)",
+           f"- [国内上場企業の生成AI活用データ]({SITE}/genai-data/)：国内の上場企業が生成AIを使っていると公表しているかを東証33業種ごとに数えたデータ。出典のリンクつき、毎日更新、CC BY 4.0",
+           f"- [AIエージェントの事例]({SITE}/agent-cases/)：TechWorkerが社内で動かしているAIエージェントと、お客さんと作ったAIの仕組みの事例",
+           f"- [お知らせ]({SITE}/news)", f"- [TechWorker Media（記事の一覧）]({SITE}/media/)", ""]
     by = {}
     for p, t in arts:
         by.setdefault(p.parent, []).append((p, t))
