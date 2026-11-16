@@ -47,7 +47,6 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="株式会社TechWorker｜AI Agent時代のインフラを整える">
 <meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
-<link rel="preload" as="image" href="/assets/top/bg-map.jpg" media="(min-width: 761px)">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -95,287 +94,363 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
   }
 }
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
-/* トップ：avilen.jp の作り（明朝400の見出し・金のグラデの四角い釦・Gill Sans の日付と数字・#F1F1F1 の節）に寄せる。
- * 暗い面は黒のベタにせず、当社の本物の画面（業務図）に暗い膜をかけて作る。書体はすべて OS の物で、外へ読みに行かない。 */
+/* 案A：欧文・数字・ロゴは製品サイトと同じ Inter Tight、和文は Noto Sans JP（見出しと札・ボタンはかな詰め palt＋字間 .02em）。
+ * 枠の寸法は Sakana AI（ヘッダー80px・中央の1画面目・節の上下112px・1pxの線・影なし）と
+ * Preferred Networks（見出し72/48px・行間1.3・字間.03em・釦52px角6px・左に見出し右に説明）の実測（measure.md）。 */
 :root {
   --ink: #0D1117;
-  --sub: #4A5059;
-  --mute: #6B7079;
-  --paper: #FCFCFB;
-  --ground: #F1F1F1;
-  --line: #D9D9D6;
-  --on-dark: #F4F2EE;
-  --on-dark-sub: #C9C7C2;
-  --gold-a: #A47948;
-  --gold-b: #C5A27C;
-  --gold: linear-gradient(90deg, var(--gold-a), var(--gold-b));
-  --veil: rgba(13, 17, 23, .72);
-  --f-min: "游明朝体", "Yu Mincho", YuMincho, "ヒラギノ明朝 ProN", "Hiragino Mincho ProN", serif;
-  --f-gill: "Gill Sans", "Gill Sans MT", "游ゴシック体", "Yu Gothic", YuGothic, sans-serif;
-  --f-body: "游ゴシック体", "Yu Gothic", YuGothic, "Hiragino Sans", sans-serif;
-  --wrap: 1180px;
-  --pad: 32px;
+  --sub: #47505C;
+  --mute: #6A7380;
+  --paper: #FAFBFC;
+  --ground: #F4F6F9;
+  --card: #FEFEFE;
+  --line: #E1E5EB;
+  --line-2: #C9D0DA;
+  --blue: #005EFF;
+  --f-ja: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+  --f-hd: "Inter Tight", "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+  --f-en: "Inter Tight", sans-serif;
+  --wrap: 1200px;
+  --pad: 40px;
+  --sec: 112px;
 }
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
-body { margin: 0; background: var(--ground); color: var(--ink); font: 500 15px/1.9 var(--f-body); letter-spacing: .04em; overflow-x: hidden; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 96px; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.9 var(--f-ja); letter-spacing: .02em; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 img { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
 h1, h2, h3, p, ul, figure { margin: 0; padding: 0; }
 ul { list-style: none; }
 .wrap { max-width: calc(var(--wrap) + var(--pad) * 2); margin: 0 auto; padding: 0 var(--pad); }
-.h2 { font: 400 56px/1.25 var(--f-min); letter-spacing: .02em; }
-.h2 + .lead { margin-top: 24px; }
-.lead { font-size: 15px; color: var(--sub); }
-.kw { word-break: keep-all; }
+.h2 { font: 700 48px/1.35 var(--f-hd); }
+.lead { font-size: 18px; font-weight: 500; line-height: 1.8; color: var(--sub); }
+.kw { word-break: keep-all; overflow-wrap: anywhere; }
+.sp { display: none; }
+/* 見出し・札・ボタンなど大きめの字：かな詰め＋字間 .02em（本文は詰めない） */
+.h2, .hero h1, .cta__say, .arc3__notes b, .case h3, .case__face b, .case__kind, .ncard h3, .btn, .hd__cta, .tag, .more, .mol__top, .mol__big small, .ph__cap b, .people b { font-feature-settings: "palt"; letter-spacing: .02em; }
 
-/* 金の釦：角の無い四角、金のグラデ、細い線の矢印（avilen.jp の釦の作り） */
-.btn { display: inline-flex; align-items: center; gap: 22px; min-height: 44px; padding: 0 24px; background: var(--gold); color: var(--paper); font: 700 14px/1 var(--f-body); letter-spacing: .12em; transition: filter .2s; }
-.btn:hover { filter: brightness(1.08); }
-.btn svg { width: 46px; height: 8px; fill: none; stroke: currentColor; stroke-width: 1; }
+.arw { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.btn { display: inline-flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 52px; padding: 0 24px; border-radius: 6px; border: 1px solid var(--blue); background: var(--blue); color: var(--paper); font: 700 16px/1 var(--f-ja); transition: background .2s, border-color .2s, color .2s; }
+.btn:hover { background: #004BD1; border-color: #004BD1; }
+.btn--line { background: var(--card); border-color: var(--line-2); color: var(--ink); min-width: 220px; }
+.btn--line:hover { background: var(--card); border-color: var(--ink); }
+.btn--line .arw { color: var(--blue); }
 
-/* ヘッダー：白い地が基本（2026-10-21 古野さん「上部ヘッダーが真っ黒なのが気になる。ベースは白の方が良さそう」）。スマホは右上の釦で行き先を開く */
-.hd { position: fixed; inset: 0 0 auto; z-index: 50; display: flex; align-items: center; justify-content: space-between; height: 80px; padding: 0 44px; color: var(--ink); background: rgba(252, 252, 251, .97); box-shadow: 0 1px 0 var(--line); }
-.logo { font: 600 22px/1 var(--f-gill); letter-spacing: .04em; }
-.logo i { font-style: normal; color: #005EFF; }
-.hd nav { display: flex; gap: 30px; font-size: 13px; font-weight: 700; letter-spacing: .1em; }
-.hd nav a:hover { color: var(--gold-a); }
-html { scroll-padding-top: 88px; } /* #concept などへ飛んだとき、固定のヘッダーの下に見出しが隠れないように */
-.menu { display: none; width: 44px; height: 44px; margin-right: -5px; padding: 0; border: 0; background: none; cursor: pointer; position: relative; }
-.menu::before, .menu::after { content: ""; position: absolute; left: 5px; right: 5px; border-top: 1px solid var(--ink); transition: transform .2s; }
+/* ヘッダー */
+.hd { position: fixed; inset: 0 0 auto; z-index: 50; display: flex; align-items: center; justify-content: space-between; height: 80px; padding: 0 var(--pad); background: var(--paper); border-bottom: 1px solid var(--line); }
+.logo { font: 800 26px/1 var(--f-en); letter-spacing: 0; }
+.logo i { font-style: normal; color: var(--blue); }
+.hd nav { display: flex; align-items: center; gap: 34px; font-size: 15px; font-weight: 500; white-space: nowrap; }
+.hd nav a { transition: color .2s; }
+.hd nav a:hover { color: var(--blue); }
+.hd nav a.hd__cta { display: inline-flex; align-items: center; height: 44px; padding: 0 20px; border-radius: 6px; background: var(--blue); color: var(--paper); font-weight: 700; }
+.hd nav a.hd__cta:hover { background: #004BD1; color: var(--paper); }
+.menu { display: none; color: var(--ink); width: 44px; height: 44px; margin-right: -8px; padding: 0; border: 0; background: none; cursor: pointer; position: relative; }
+.menu::before, .menu::after { content: ""; position: absolute; left: 9px; right: 9px; border-top: 1.5px solid var(--ink); transition: transform .2s; }
 .menu::before { top: 17px; }
 .menu::after { top: 26px; }
 .hd.is-open .menu::before { transform: translateY(4.5px) rotate(20deg); }
 .hd.is-open .menu::after { transform: translateY(-4.5px) rotate(-20deg); }
 
-/* 1画面目：明るい地に業務図の本物の画面をうっすら敷く（2026-10-21 暗い面から替えた） */
-.hero { position: relative; min-height: 900px; height: 100vh; max-height: 1000px; color: var(--ink); background: var(--ground); overflow: hidden; }
-.screen { position: absolute; inset: 0; }
-.screen img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) invert(1) brightness(.9); }
-/* 白い地の画面を反転して暗い画面にし、膜をかける。線と枠だけが点の模様のように残る（avilen.jp の点の模様の位置） */
-.screen::after { content: ""; position: absolute; inset: 0; background: var(--veil); }
-.hero .screen img { object-position: 0 0; filter: grayscale(1); opacity: .4; }
-.hero .screen::after { background: linear-gradient(90deg, rgba(241,241,241,.97) 0%, rgba(241,241,241,.9) 48%, rgba(241,241,241,.55) 100%); } /* 見出しの後ろだけ画面を薄める */
-.hero__in { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 40px 130px 120px; }
-.hero h1 { font: 400 76px/1.32 var(--f-min); letter-spacing: .06em; }
-.hero__line { margin-top: 40px; font: 400 28px/1.6 var(--f-min); letter-spacing: .12em; }
-.hero__desc { margin-top: 18px; max-width: 34em; font-size: 15px; line-height: 2; color: var(--sub); }
-.hero .btn { margin-top: 44px; align-self: flex-start; }
-.scroll { position: absolute; z-index: 2; left: 130px; bottom: 0; display: flex; flex-direction: column; align-items: center; gap: 14px; }
-.scroll__t { writing-mode: vertical-rl; font: 400 11px/1 var(--f-gill); letter-spacing: .4em; color: var(--gold-a); }
-.scroll::after { content: ""; width: 1px; height: 130px; background: var(--gold-a); }
+/* 1画面目：左に見出し・2文・ボタン、右に代表の写真を画面の右端まで（案Bの組み。寸法の出元は mock-b/measure.md の LayerX） */
+.hero { --edge: max(var(--pad), calc((100vw - var(--wrap)) / 2)); position: relative; margin-top: 80px; height: clamp(540px, calc(100svh - 270px), 720px); }
+.hero__in { height: 100%; width: 57%; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 0 24px 8px var(--edge); }
+.hero h1 { font: 800 76px/1.3 var(--f-hd); white-space: nowrap; }
+.hero__line { margin-top: 36px; font-size: 22px; font-weight: 700; line-height: 1.7; letter-spacing: .02em; word-break: auto-phrase; }
+.hero__desc { margin-top: 14px; max-width: 35em; color: var(--sub); word-break: auto-phrase; }
+.hero .btn { margin-top: 40px; min-width: 220px; }
+.hero__ph { position: absolute; top: 0; right: 0; bottom: 0; left: 57%; overflow: hidden; }
+.hero__ph img, .ph-sp img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; transform: scale(1.22); transform-origin: 52% 46%; }
+.ph__cap { position: absolute; left: 0; bottom: 0; display: flex; align-items: baseline; gap: 14px; padding: 12px 22px 12px 18px; background: var(--paper); line-height: 1.4; }
+.ph__cap span { font-size: 12px; font-weight: 500; color: var(--sub); }
+.ph__cap b { font-size: 15px; font-weight: 700; }
+.ph-sp { display: none; }
 
-/* 実績の帯：1画面目の直下に、金の月桂樹で数字を挟む印（10/17 の型）を見出しなしで4つ。数字は Gill Sans */
-.rec { padding: 52px 0 48px; background: var(--paper); }
-.mol { --mol-h: 96px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 28px 8px; }
+/* 実績：金の月桂樹（光沢なし）で数字を挟む。金はここだけ */
+.rec { position: relative; padding: 36px 0 38px; border-top: 1px solid var(--line); background: var(--paper); }
+.mol { --mol-h: 92px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 28px 8px; max-width: 1040px; margin: 0 auto; }
 .mol__i { display: flex; align-items: center; }
-/* 月桂樹：Wikimedia Commons「Greek Roman Laurel wreath vector.svg」CC0 を #C79A2E に塗った物（出典は laurel.svg の頭にも書いた） */
 .mol__br { flex: none; width: calc(var(--mol-h) * .5); height: var(--mol-h); background: url(/assets/top/laurel.svg) no-repeat; background-size: 200% 100%; }
 .mol__br--l { background-position: 0 50%; }
 .mol__br--r { background-position: 100% 50%; }
-.mol__body { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 0 4px; text-align: center; }
-.mol__top { font-size: 14px; font-weight: 700; line-height: 1.3; letter-spacing: .06em; white-space: nowrap; }
-.mol__big { min-height: 58px; display: flex; align-items: center; justify-content: center; font: 600 50px/1.05 var(--f-gill); letter-spacing: .01em; white-space: nowrap; font-variant-numeric: lining-nums; } /* 4つの印の段をそろえる */
-.mol__big small { font: 700 15px/1 var(--f-body); margin-left: .15em; letter-spacing: .04em; }
-.mol__cap { min-height: 3em; margin-top: 4px; font-size: 11.5px; font-weight: 700; line-height: 1.5; letter-spacing: .02em; color: var(--sub); white-space: nowrap; }
+.mol__body { display: flex; flex-direction: column; align-items: center; padding: 0 6px; text-align: center; }
+.mol__top { font-size: 14px; font-weight: 700; line-height: 1.4; white-space: nowrap; }
+.mol__big { min-height: 54px; display: flex; align-items: baseline; justify-content: center; font: 800 48px/1.12 var(--f-en); letter-spacing: 0; white-space: nowrap; }
+.mol__big small { font: 700 15px/1 var(--f-ja); margin-left: .2em; }
+.mol__cap { min-height: 3em; margin-top: 2px; font-size: 12px; font-weight: 500; line-height: 1.5; color: var(--sub); white-space: nowrap; }
 
-/* AIソリューション：暗い節。3つのエンジンを、今の本物の画面の切り出し1枚ずつと札で見せる */
-.sol { position: relative; color: var(--on-dark); padding: 104px 0 110px; overflow: hidden; }
-.sol .screen img { object-position: 50% 0; filter: grayscale(1) invert(1) brightness(.9) blur(2px); transform: scale(1.02); }
-/* 地は同じ業務図の下の段。手前の画面を立たせるため、ぼかして奥に置く */
-.sol .screen::after { background: rgba(13, 17, 23, .75); }
-.sol__in { position: relative; z-index: 2; }
-.sol__hd { text-align: center; }
-.sol__hd .lead { color: var(--on-dark-sub); margin-top: 22px; }
-.engines { margin-top: 64px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; align-items: start; }
-.eng img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; box-shadow: 0 18px 40px -18px rgba(0, 0, 0, .7); }
-.eng--map img { object-position: 0 0; }
-.eng--run img { object-position: 0 0; }
-.eng--use img { object-position: 50% 0; }
-.plate { position: relative; z-index: 3; margin: -30px 18px 0; padding: 18px 22px 20px; background: var(--paper); color: var(--ink); border-radius: 2px; text-align: center; box-shadow: 0 10px 24px -14px rgba(0, 0, 0, .6); }
-.plate b { display: block; word-break: keep-all; font: 400 23px/1.4 var(--f-min); letter-spacing: .08em; }
-.plate span { display: block; margin-top: 10px; font-size: 13.5px; line-height: 1.8; color: var(--sub); text-wrap: pretty; }
-.sol__more { margin-top: 64px; text-align: center; }
+/* 節 */
+.sec { padding: var(--sec) 0; }
+.sec--ground { background: var(--ground); }
+.sec--rule { border-top: 1px solid var(--line); }
+.sec__hd { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; align-items: end; }
 
-/* 考え方：明るい節。図は金の細い線と明朝の小さな字、横に3段の文 */
-.idea { padding: 110px 0 100px; background: var(--ground); }
-.idea__grid { margin-top: 64px; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 64px; align-items: center; }
+/* AIソリューション：3つのエンジンと建物の図。明るい地に墨の線 */
+.arc3 { position: relative; margin: 8px 0 0; }
+.arc3 .ax--pc { width: 66%; }
+.arc3__notes li { position: absolute; left: 68.5%; right: 0; transform: translateY(-20px); }
+.arc3__notes .n-run { top: 23.54%; } .arc3__notes .n-map { top: 55.38%; } .arc3__notes .n-use { top: 76.92%; }
+.arc3__notes b { display: block; font: 700 24px/1.6 var(--f-hd); }
+.arc3__notes span { display: block; margin-top: 6px; font-size: 14px; line-height: 1.85; color: var(--sub); }
+.ax { display: block; width: 100%; height: auto; overflow: visible; }
+.ax .ln, .ax .th, .ax .bx, .ax .ld { fill: none; stroke: var(--ink); stroke-width: 1.2; stroke-linejoin: round; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.ax .bx { fill: var(--card); }
+.ax .th { stroke-opacity: .34; stroke-width: .9; }
+.ax .ld { stroke: var(--blue); stroke-width: 1; }
+.ax .nd { fill: var(--blue); }
+.ax text { font-family: var(--f-ja); font-weight: 700; fill: var(--ink); letter-spacing: .04em; dominant-baseline: central; }
+.ax .g { font-family: var(--f-en); letter-spacing: .01em; }
+.ax .a { font-weight: 500; fill: var(--sub); }
+.ax .lb { font-weight: 700; fill: var(--blue); letter-spacing: .1em; }
+.ax .vt { writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: .12em; }
+.ax--sp { display: none; }
+.sol__more { margin-top: 72px; text-align: center; }
+
+/* 考え方 */
+.idea__grid { margin-top: 72px; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 72px; align-items: center; }
 .idea__chart { min-width: 0; }
-.idea__chart svg { width: 100%; height: auto; }
-.idea__chart text { font-family: var(--f-min); fill: var(--ink); letter-spacing: .06em; }
+.idea__chart svg { display: block; width: 100%; height: auto; }
+.idea__chart text { font-family: var(--f-ja); font-weight: 500; fill: var(--ink); letter-spacing: .02em; }
 .idea__chart .t-sub { fill: var(--sub); }
-.idea__chart .t-gold { fill: var(--gold-a); }
-.steps { border-bottom: 1px solid var(--line); }
-.steps li { padding: 24px 2px; border-top: 1px solid var(--line); font: 400 19px/1.85 var(--f-min); letter-spacing: .06em; text-wrap: pretty; }
+.idea__chart .t-blue { fill: var(--blue); font-weight: 700; }
+.idea__chart path { fill: none; }
+.c-axis { stroke: var(--ink); stroke-width: 1; }
+.c-step { stroke: var(--blue); stroke-opacity: .38; stroke-width: 1; }
+.c-flat { stroke: var(--mute); stroke-width: 1.2; stroke-dasharray: 3 5; }
+.c-main { stroke: var(--blue); stroke-width: 2.6; stroke-linecap: round; }
+.c-dot { fill: var(--blue); }
+.c-tick { stroke: var(--blue); stroke-width: 1; }
+.steps { border-bottom: 1px solid var(--line-2); }
+.steps li { padding: 26px 0; border-top: 1px solid var(--line-2); font-size: 18px; font-weight: 500; line-height: 1.85; text-wrap: pretty; }
 
-/* 横に送る列：見出しの左端から始め、画面の右端まで流す。右端のカードが途中で切れて、送れることが見える */
+/* 横に送る列 */
 .rail-hd { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+.rail-hd .lead { margin-top: 20px; }
 .rail-nav { display: flex; gap: 12px; }
-.rail-nav button { width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--ink); background: transparent; color: var(--ink); display: grid; place-items: center; cursor: pointer; transition: background .2s, color .2s; }
-.rail-nav button:hover { background: var(--ink); color: var(--paper); }
-.rail-nav button:disabled { opacity: .25; cursor: default; background: transparent; color: var(--ink); }
+.rail-nav button { width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--line-2); background: var(--card); color: var(--ink); display: grid; place-items: center; cursor: pointer; transition: border-color .2s, color .2s; }
+.rail-nav button:hover { border-color: var(--blue); color: var(--blue); }
+.rail-nav button:disabled { opacity: .35; cursor: default; border-color: var(--line-2); color: var(--ink); }
 .rail-nav svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-.rail { --edge: max(var(--pad), calc((100vw - var(--wrap)) / 2)); margin-top: 44px; display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--edge); padding: 10px var(--edge) 30px; scrollbar-width: none; }
+.rail { --edge: max(var(--pad), calc((100vw - var(--wrap)) / 2)); margin-top: 56px; display: flex; gap: 32px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--edge); padding: 0 var(--edge) 8px; scrollbar-width: none; }
 .rail::-webkit-scrollbar { display: none; }
-.rail::after { content: ""; flex: 0 0 max(1px, calc(var(--edge) - 24px)); }
-.rail > li { flex: 0 0 360px; display: flex; scroll-snap-align: start; }
-.rail > li > .card { width: 100%; }
-.rail-more { margin-top: 26px; }
-.rail-more .btn { min-width: 222px; justify-content: space-between; }
+.rail::after { content: ""; flex: 0 0 max(1px, calc(var(--edge) - 32px)); }
+.rail > li { flex: 0 0 344px; display: flex; scroll-snap-align: start; }
+.rail-more { margin-top: 48px; }
+.more { margin-top: auto; padding-top: 20px; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; }
+.more .arw { color: var(--blue); transition: transform .2s; }
+a:hover > .more .arw, a:hover .ncard__body .more .arw { transform: translateX(4px); }
 
-/* AIエージェント作成事例：14枚とも同じ上の面。1画面目と同じ業務図の画面をカードごとに別の場所で切り出し、暗い膜に白い明朝の札 */
-.cases { padding: 96px 0 88px; background: var(--ground); border-top: 1px solid #E4E4E1; }
-.cases .lead { margin-top: 20px; }
-.face { position: relative; aspect-ratio: 600 / 315; display: grid; place-items: center; overflow: hidden; }
-.face { background: #F4F6F9; }
-.face img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: left top; opacity: .55; }
-.face::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(252, 252, 251, .15), rgba(252, 252, 251, .45)); }
-.face b { position: relative; z-index: 1; padding: 6px 16px; color: var(--ink, #0D1117); background: #FCFCFB; box-shadow: 0 0 0 1px #D9D9D6; font: 700 19px/1.5 var(--f-body); letter-spacing: .04em; text-align: center; word-break: keep-all; }
-.card--case .card__body { padding: 24px 26px 26px; }
-.card--case h3 { margin-top: 16px; font: 600 20px/32px var(--f-body); }
-.card--case p.card__line { margin-top: 10px; font-size: 13px; line-height: 1.85; color: var(--sub); }
-.card--case .more { padding-top: 20px; }
+/* 事例：枠で囲まず、上の面と字だけ。上の面は当社の製品の画面の切り出しに、業種と部門 */
+.case { width: 100%; display: flex; flex-direction: column; }
+.case__face { position: relative; aspect-ratio: 600 / 315; display: grid; place-items: center; overflow: hidden; border-radius: 8px; background: var(--ground); border: 1px solid var(--line); }
+.case__face img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: left top; filter: grayscale(1); opacity: .22; }
+.case__face b { position: relative; z-index: 1; padding: 0 16px; font: 700 20px/1.5 var(--f-hd); text-align: center; word-break: keep-all; }
+.case__kind { margin-top: 20px; font-size: 13px; font-weight: 700; line-height: 1.5; color: var(--blue); }
+.case h3 { margin-top: 8px; font: 700 20px/1.6 var(--f-hd); text-wrap: pretty; transition: color .2s; }
+.case:hover h3 { color: var(--blue); }
+.case__line { margin-top: 10px; font-size: 14px; line-height: 1.85; color: var(--sub); }
 
-/* ニュース：avilen.jp と同じ形（白いカード3枚、上に画像、日付と分類の札、題、金の丸の さらに詳しく、下に金の釦） */
-.news { padding: 96px 0 96px; background: var(--ground); border-top: 1px solid #E4E4E1; }
-.news .rail > li { flex-basis: 440px; }
-.card { display: flex; flex-direction: column; background: var(--paper); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 18px -6px rgba(13, 17, 23, .14); transition: box-shadow .25s; }
-.card:hover { box-shadow: 0 10px 28px -8px rgba(13, 17, 23, .22); }
-.card > img { width: 100%; aspect-ratio: 440 / 231; object-fit: cover; }
-.card__body { flex: 1; display: flex; flex-direction: column; padding: 30px 32px 34px; }
-.card__meta { display: flex; align-items: center; gap: 10px; }
-.card time { font: 400 16px/1 var(--f-gill); letter-spacing: .06em; }
-.tag { display: inline-block; padding: 3px 14px 2px; border: 1px solid var(--ink); border-radius: 20px; font-size: 12px; line-height: 1.4; letter-spacing: .14em; }
-.card h3 { margin-top: 22px; font: 700 19px/32px var(--f-body); letter-spacing: .04em; text-wrap: pretty; }
-.more { margin-top: auto; padding-top: 26px; display: flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 700; letter-spacing: .12em; }
-.more i { width: 18px; height: 18px; border-radius: 50%; background: var(--gold-b); display: grid; place-items: center; }
-.more svg { width: 8px; height: 8px; fill: none; stroke: var(--paper); stroke-width: 1.6; }
+/* ニュース：静かな面のカード（案Cの組み：角16px・地 #FBFCFD・影なし・枠なし）。画像・日付・分類の札・題 */
+.news .rail > li { flex-basis: 400px; }
+.ncard { width: 100%; display: flex; flex-direction: column; background: #FBFCFD; border-radius: 16px; overflow: hidden; }
+.ncard h3 { transition: color .2s; }
+.ncard:hover h3 { color: var(--blue); }
+.ncard > img { width: 100%; aspect-ratio: 440 / 231; object-fit: cover; }
+.ncard__body { flex: 1; display: flex; flex-direction: column; padding: 26px 28px 28px; }
+.ncard__meta { display: flex; align-items: center; gap: 12px; }
+.ncard time { font: 700 15px/1 var(--f-en); letter-spacing: .02em; color: var(--sub); }
+.tag { display: inline-block; padding: 3px 12px; border: 1px solid var(--line-2); border-radius: 20px; font-size: 12px; font-weight: 500; line-height: 1.5; }
+.ncard h3 { margin-top: 18px; font: 700 18px/1.7 var(--f-hd); text-wrap: pretty; }
 
-/* お問い合わせ：1画面目と同じ業務図の画面（原寸 2400px から切り出し）を反転して暗く敷く */
-.cta { position: relative; padding: 130px 0; color: var(--on-dark); text-align: center; overflow: hidden; }
-.cta .screen img { object-position: 50% 50%; }
-.cta .screen::after { background: radial-gradient(ellipse 62% 75% at 50% 50%, rgba(13, 17, 23, .9), rgba(13, 17, 23, .74)); } /* 1行の後ろだけ画面を沈める */
-.cta__in { position: relative; z-index: 2; }
-.cta p { font: 400 42px/1.6 var(--f-min); letter-spacing: .1em; }
-.cta .btn { margin-top: 44px; }
+/* 最後の申込：左に一言とボタン、右に代表と取締役（案Bの組み） */
+.cta { padding: 128px 0; border-top: 1px solid var(--line); }
+.cta__in { display: flex; align-items: flex-end; justify-content: space-between; gap: 48px; }
+.cta__say { font: 700 48px/1.45 var(--f-hd); white-space: nowrap; }
+.cta .btn { margin-top: 44px; min-width: 220px; }
+.people { display: flex; gap: 28px; }
+.people img { width: 120px; height: 120px; object-fit: cover; border-radius: 8px; }
+.people figcaption { margin-top: 12px; line-height: 1.5; }
+.people span { display: block; font-size: 12px; font-weight: 500; color: var(--sub); white-space: nowrap; }
+.people b { display: block; margin-top: 2px; font-size: 15px; font-weight: 700; white-space: nowrap; }
 
 /* フッター */
-.ft { padding: 72px 0 40px; background: var(--paper); font-size: 13px; color: var(--sub); }
+.ft { padding: 72px 0 40px; background: var(--ground); border-top: 1px solid var(--line); font-size: 13px; color: var(--sub); }
 .ft__in { display: flex; justify-content: space-between; gap: 40px; }
-.ft__name { font-weight: 700; color: var(--ink); font-size: 15px; }
-.ft__addr { margin-top: 10px; line-height: 1.9; }
-.ft nav { display: grid; grid-template-columns: repeat(3, auto); gap: 10px 48px; align-content: start; font-weight: 700; color: var(--ink); }
-.ft nav a:hover { color: var(--gold-a); }
-.ft small { display: block; margin-top: 56px; font: 400 12px/1 var(--f-gill); letter-spacing: .08em; color: var(--mute); }
-/* 足の会員バッジ（NVIDIA Inception program）。公式の画像をそのまま使い、高さだけを決める。自社のロゴより大きくしない */
-.nv-badge { display: flex; align-items: center; gap: 20px; margin-top: 40px; }
+.ft__logo { font: 800 22px/1 var(--f-en); color: var(--ink); }
+.ft__logo i { font-style: normal; color: var(--blue); }
+.ft__name { margin-top: 20px; font-weight: 700; color: var(--ink); font-size: 14px; }
+.ft__addr { margin-top: 6px; line-height: 1.9; }
+.ft nav { display: grid; grid-template-columns: repeat(3, auto); gap: 12px 48px; align-content: start; font-size: 14px; font-weight: 500; color: var(--ink); }
+.ft nav a:hover { color: var(--blue); }
+.nv-badge { display: flex; align-items: center; gap: 20px; margin-top: 44px; padding-top: 28px; border-top: 1px solid var(--line-2); }
 .nv-badge a { flex: none; }
 .nv-badge img { display: block; width: auto; max-width: none; height: 40px; }
 .nv-badge p { max-width: 560px; font-size: 11px; line-height: 1.8; color: var(--mute); }
-@media (max-width: 760px) { .nv-badge { flex-direction: column; align-items: flex-start; gap: 10px; } }
+.ft small { display: block; margin-top: 36px; font: 700 12px/1 var(--f-en); letter-spacing: .04em; color: var(--mute); }
 
-.sp { display: none; }
-/* 印が1行に収まらない幅では2列にし、余った1つを中央に置く（左に寄せて残さない） */
+@media (max-width: 1100px) {
+  .hd nav { gap: 22px; }
+  .hero h1 { font-size: 5.3vw; }
+  .hero__line { font-size: 19px; }
+  .h2, .cta__say { font-size: 40px; }
+}
 @media (max-width: 960px) {
   .mol { display: grid; grid-template-columns: repeat(2, max-content); justify-content: space-around; }
   .mol__i:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; }
-}
-@media (max-width: 1100px) {
-  .hero__in { padding: 40px 64px 120px; }
-  .scroll { left: 64px; }
-  .engines { gap: 28px; }
-  .plate { margin-inline: 10px; padding-inline: 14px; }
-  .plate b { font-size: 20px; }
-  .hd nav { gap: 20px; }
-}
-@media (max-width: 760px) {
-  :root { --pad: 20px; }
-  body { font-size: 14px; }
-  .sp { display: inline; }
-  .pc { display: none; }
-  .h2 { font-size: 36px; }
-  .hd { height: 64px; padding: 0 20px; }
-  .menu { display: block; }
-  .hd nav { display: none; position: absolute; top: 64px; left: 12px; right: 12px; flex-direction: column; gap: 0; padding: 8px 20px; background: var(--paper); color: var(--ink); border-radius: 4px; box-shadow: 0 16px 36px -12px rgba(0, 0, 0, .5); font-size: 15px; }
-  .hd nav a { padding: 14px 0; border-top: 1px solid var(--line); }
-  .hd nav a:first-child { border-top: 0; }
-  .hd nav a:hover { color: var(--gold-a); }
-  .hd.is-open nav { display: flex; }
-  .hero { min-height: 0; height: 844px; max-height: none; }
-  .hero__in { justify-content: center; padding: 64px 24px 140px; }
-  .hero h1 { font-size: 38px; line-height: 1.45; letter-spacing: .03em; }
-  .hero__line { margin-top: 28px; font-size: 18px; letter-spacing: .08em; }
-  .hero__desc { font-size: 13.5px; }
-  .hero .btn { margin-top: 32px; }
-  .scroll { left: 24px; }
-  .scroll::after { height: 84px; }
-  .rec { padding: 32px 0 30px; }
-  .mol { --mol-h: 64px; display: grid; grid-template-columns: repeat(2, max-content); justify-content: center; gap: 24px 2px; }
-  .mol__body { padding: 0 1px; }
-  .mol__top { font-size: 10.5px; letter-spacing: .02em; }
-  .mol__big { font-size: 28px; min-height: 34px; }
-  .mol__big small { font-size: 11px; }
-  .mol__cap { font-size: 9.5px; }
-  .sol { padding: 88px 0 96px; }
-  .sol__hd { text-align: left; }
-  .engines { grid-template-columns: 1fr; gap: 44px; margin-top: 44px; }
-  .plate { margin: -26px 14px 0; padding: 14px 16px 16px; }
-  .plate b { font-size: 20px; }
-  .plate span { font-size: 13px; }
-  .idea { padding: 88px 0; }
-  .idea .h2 { font-size: 25px; line-height: 1.6; word-break: normal; } /* 長い見出しは1行13字。字を下げ、収まらない字の組でもはみ出さずに折る */
-  .idea__grid { grid-template-columns: 1fr; gap: 36px; margin-top: 40px; }
-  .steps li { padding: 18px 2px; font-size: 17px; }
-  .news { padding: 88px 0; }
-  .rail-nav { display: none; }
-  .rail { margin-top: 32px; gap: 16px; padding-bottom: 22px; }
-  .rail::after { flex-basis: 4px; }
-  .rail > li, .news .rail > li { flex-basis: 288px; }
-  .cases { padding: 88px 0 80px; }
-  .card--case h3 { font-size: 17px; line-height: 28px; }
-  .face b { font-size: 18px; }
-  .card__body { padding: 24px 24px 28px; }
-  .card h3 { font-size: 17px; line-height: 29px; }
-  .cta { padding: 110px 0; }
-  .cta p { font-size: 23px; letter-spacing: .06em; }
-  .ft__in { flex-direction: column; }
-  .ft nav { grid-template-columns: repeat(2, auto); justify-content: start; gap: 10px 32px; }
-}
-</style>
-<style id="sol-pattern">
-/* 案3：建物（B組の案5の発展）。基礎＝人材開発、柱＝データを整える、梁と屋根＝AIを動かす。入り口の3つは地面の下から引く線 */
-.arc3 { position: relative; max-width: 1100px; margin: 44px auto 0; }
-.arc3 .ax--pc { width: 68%; }
-.arc3__notes li { position: absolute; left: 70.5%; right: 0; transform: translateY(-19px); }
-.arc3__notes .n-run { top: 23.54%; } .arc3__notes .n-map { top: 55.38%; } .arc3__notes .n-use { top: 76.92%; }
-.arc3__notes b { display: block; font: 400 24px/1.5 var(--f-min); letter-spacing: .08em; color: var(--on-dark); }
-.arc3__notes span { display: block; margin-top: 8px; font-size: 13.5px; line-height: 1.85; color: var(--on-dark-sub); word-break: auto-phrase; text-wrap: pretty; }
-@media (max-width: 760px) {
-  .arc3 { margin-top: 40px; }
-  .arc3__notes { margin-top: 36px; display: grid; gap: 22px; }
+  .sec__hd { grid-template-columns: 1fr; gap: 20px; }
+  .arc3 { max-width: 520px; margin: 40px auto 0; }
+  .arc3 .ax--pc { display: none; }
+  .ax--sp { display: block; margin-top: -24%; }
+  .ax--sp .t { font-size: 13.5px; }
+  .ax--sp .a { font-size: 12.5px; }
+  .ax--sp .lb { font-size: 11px; }
+  .arc3__notes { margin-top: 36px; display: grid; gap: 24px; }
   .arc3__notes li { position: static; transform: none; }
-  .arc3__notes b { font-size: 19px; }
-  .arc3__notes span { font-size: 13px; margin-top: 4px; }
+  .idea__grid { grid-template-columns: 1fr; gap: 40px; margin-top: 48px; }
+  .pc { display: none; }
+  .hero { height: clamp(460px, calc(100svh - 410px), 600px); }
+  .hero__in { width: 60%; }
+  .sp.md { display: inline; }
+  .hero__ph { left: 60%; }
+  .hero__line { font-size: 18px; }
+  .cta__in { flex-direction: column; align-items: flex-start; gap: 56px; }
+  .menu { display: block; }
+  .hd nav { display: none; position: absolute; top: 80px; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; padding: 4px var(--pad) 20px; background: var(--paper); border-bottom: 1px solid var(--line); font-size: 16px; }
+  .hd nav a { padding: 15px 0; border-top: 1px solid var(--line); }
+  .hd nav a:first-child { border-top: 0; }
+  .hd nav a.hd__cta { justify-content: center; height: 52px; margin-top: 8px; border-top: 0; }
+  .hd.is-open nav { display: flex; }
+}
+@media (max-width: 760px) {
+  :root { --pad: 20px; --sec: 80px; }
+  html { scroll-padding-top: 72px; }
+  body { font-size: 15px; }
+  .sp { display: inline; }
+  .h2 { font-size: 30px; line-height: 1.45; }
+  .idea .h2 { font-size: 25px; line-height: 1.55; }
+  .lead { font-size: 15px; }
+  .hd { height: 60px; }
+  .logo { font-size: 22px; }
+  .hd nav { top: 60px; padding-inline: 20px; }
+  .hero { margin-top: 60px; height: auto; }
+  .hero__in { width: auto; height: auto; padding: 36px var(--pad) 36px; }
+  .hero h1 { font-size: 38px; line-height: 1.36; }
+  .hero__line { margin-top: 22px; font-size: 17px; line-height: 1.65; }
+  .hero__desc { margin-top: 10px; font-size: 13.5px; line-height: 1.8; }
+  .hero .btn { margin-top: 26px; min-height: 50px; }
+  .hero__ph { display: none; }
+  .ph-sp { display: block; position: relative; margin: 0 0 0 var(--pad); aspect-ratio: 5 / 4; overflow: hidden; }
+  .ph__cap { padding: 10px 16px 10px 14px; gap: 10px; }
+  .ph__cap span { font-size: 11px; }
+  .ph__cap b { font-size: 14px; }
+  .rec { padding: 24px 0 22px; }
+  .mol { --mol-h: 60px; justify-content: center; gap: 14px 6px; }
+  .mol__body { padding: 0 2px; }
+  .mol__top { font-size: 11px; }
+  .mol__big { font-size: 28px; min-height: 32px; }
+  .mol__big small { font-size: 11px; }
+  .mol__cap { min-height: 0; font-size: 10px; }
+  .arc3__notes b { font-size: 20px; }
+  .arc3__notes span { margin-top: 2px; }
+  .sol__more { margin-top: 48px; }
+  .steps li { padding: 20px 0; font-size: 16px; }
+  .rail-nav { display: none; }
+  .rail { margin-top: 36px; gap: 20px; }
+  .rail::after { flex-basis: 1px; }
+  .rail > li, .news .rail > li { flex-basis: 288px; }
+  .rail-more { margin-top: 36px; }
+  .case__face b { font-size: 18px; }
+  .case h3 { font-size: 18px; }
+  .ncard__body { padding: 22px 22px 24px; }
+  .ncard h3 { font-size: 16.5px; }
+  .cta { padding: 88px 0; }
+  .cta__say { font-size: 28px; }
+  .cta__in > div:first-child { width: 100%; }
+  .cta .btn { width: 100%; }
+  .cta .btn { margin-top: 32px; }
+  .btn--line { width: 100%; }
+  .ft { padding: 56px 0 36px; }
+  .ft__in { flex-direction: column; gap: 32px; }
+  .ft nav { grid-template-columns: repeat(2, auto); justify-content: start; gap: 12px 36px; }
+  .nv-badge { flex-direction: column; align-items: flex-start; gap: 12px; }
 }
 
-.ax { display: block; width: 100%; height: auto; overflow: visible; }
-.ax .ln, .ax .th, .ax .bx, .ax .ld { fill: none; stroke: var(--gold-b); stroke-width: 1.1; stroke-linejoin: round; stroke-linecap: round; vector-effect: non-scaling-stroke; }
-.ax .bx { fill: rgba(13, 17, 23, .6); }
-.ax .th { stroke-opacity: .5; stroke-width: .8; }
-.ax .ld { stroke-opacity: .7; stroke-width: .8; }
-.ax .nd { fill: var(--gold-b); }
-.ax text { font-family: var(--f-min); font-weight: 400; fill: var(--on-dark); letter-spacing: .08em; dominant-baseline: central; }
-.ax .t { font-size: 15px; }
-.ax .g { font-family: var(--f-gill); letter-spacing: .06em; }
-.ax .a { font-size: 14px; fill: var(--on-dark-sub); }
-.ax .lb { font-size: 11.5px; fill: var(--gold-b); letter-spacing: .24em; }
-.ax .vt { writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: .16em; }
-.ax--sp { display: none; }
-.ax--sp .t { font-size: 13.5px; }
-.ax--sp .a { font-size: 12.5px; }
-.ax--sp .lb { font-size: 11px; }
-@media (max-width: 760px) { .ax--pc { display: none; } .ax--sp { display: block; } }
+/* ===== H3：1画面目の背景＝当社が作った本物の画面と資料の壁（見積AI・ギョウムズAI・研修の教材と事例の23枚）。斜めの奥行きで並べ、6列のうち3列だけを同じ向きにゆっくり流す。意味は「たくさん」。
+ * 画面は元の色のまま。動きは流れる3列だけ（1周200秒・上向き）。 ===== */
+.hero { overflow: hidden; }
+.hero__in { position: relative; z-index: 2; }
+.wall { --gap: 18px; position: absolute; inset: 0; overflow: hidden; background: #ECEFF3; }
+.wall__cam { position: absolute; inset: 0; perspective: 1700px; perspective-origin: 60% 44%; }
+.wall__plane { position: absolute; left: 43%; top: 50%; width: 1500px; height: 0; display: flex; align-items: flex-start; gap: var(--gap); transform-origin: 0 0; transform: scale(.72) rotateY(-24deg) rotateX(12deg) rotateZ(-7deg) translateY(-1250px); }
+.wall__col { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: var(--gap); }
+.wall__col--move { animation: wall-up 400s linear infinite; will-change: transform; }
+.wall__col img { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid #D3D9E1; background: var(--card); }
+@keyframes wall-up { from { transform: translateY(0); } to { transform: translateY(calc(-20% - var(--gap) / 5)); } }
+/* 明るい膜：見出し・2文・ボタンの後ろは地の色 100%。見出しの右端から 40px 以上離れた所から画面が見え始める。下の端は実績の帯へつなぐ */
+.wall__veil { position: absolute; inset: 0; background:
+  linear-gradient(0deg, rgba(250,251,252,.9) 0, rgba(250,251,252,0) 16%),
+  linear-gradient(90deg, rgba(250,251,252,1) 0, rgba(250,251,252,1) 54%, rgba(250,251,252,.55) 60%, rgba(250,251,252,.12) 68%, rgba(250,251,252,0) 76%); }
+
+.wall--still .wall__col { animation: none; }
+@media (prefers-reduced-motion: reduce) { .wall__col { animation: none; } }
+
+/* 最後の申込：同じ壁の止めた版 */
+.cta { position: relative; overflow: hidden; }
+.cta__in { position: relative; z-index: 2; }
+.wall--still .wall__plane { left: 44%; transform: scale(.72) rotateY(-24deg) rotateX(12deg) rotateZ(-7deg) translateY(-900px); }
+.wall--still .wall__veil { background:
+  linear-gradient(0deg, rgba(250,251,252,.9) 0, rgba(250,251,252,0) 16%),
+  linear-gradient(90deg, rgba(250,251,252,1) 0, rgba(250,251,252,1) 46%, rgba(250,251,252,.55) 53%, rgba(250,251,252,.12) 62%, rgba(250,251,252,0) 72%); }
+
+@media (max-width: 1100px) {
+  .wall__plane { left: 50%; }
+  .wall__veil, .wall--still .wall__veil { background:
+    linear-gradient(0deg, rgba(250,251,252,.9) 0, rgba(250,251,252,0) 16%),
+    linear-gradient(90deg, rgba(250,251,252,1) 0, rgba(250,251,252,1) 61%, rgba(250,251,252,.55) 67%, rgba(250,251,252,.12) 76%, rgba(250,251,252,0) 84%); }
+}
+@media (max-width: 960px) {
+  .wall__plane { left: 38%; width: 1300px; }
+}
+@media (max-width: 760px) {
+  /* 電話幅：縦の構図。字とボタンの後ろは地の色 100%、ボタンの下に壁を見せる */
+  .wall { --gap: 12px; }
+  .hero__in { padding-bottom: 170px; }
+  .wall__cam { perspective: 700px; perspective-origin: 50% 80%; }
+  .wall__plane { left: -4%; top: 100%; width: 900px; transform: rotateX(34deg) rotateZ(-14deg) translateY(-900px); }
+  .wall__col img { border-radius: 6px; }
+  .wall__veil, .wall--still .wall__veil { background: linear-gradient(180deg, rgba(250,251,252,1) 0, rgba(250,251,252,1) 73%, rgba(250,251,252,.5) 79%, rgba(250,251,252,0) 88%); }
+  .wall--still .wall__plane { left: -4%; transform: rotateX(34deg) rotateZ(-14deg) translateY(-700px); }
+  .cta { padding-bottom: 190px; }
+  .wall--still .wall__veil { background: linear-gradient(180deg, rgba(250,251,252,1) 0, rgba(250,251,252,1) 58%, rgba(250,251,252,.5) 66%, rgba(250,251,252,0) 80%); }
+}
+
+/* 1画面目の壁：左の字の後ろまで画面が透けて流れる（2026-11-16）。本文の小さい字の後ろだけ楕円で少し濃く */
+.wall--hero .wall__plane { left: 6%; width: 1900px; transform: scale(.95) rotateY(-24deg) rotateX(12deg) rotateZ(-7deg) translateY(-1000px); }
+.wall--hero .wall__veil { background:
+  radial-gradient(ellipse 600px 150px at 25% 66%, rgba(250,251,252,.75) 0, rgba(250,251,252,.75) 45%, rgba(250,251,252,0) 100%),
+  linear-gradient(0deg, rgba(250,251,252,.9) 0, rgba(250,251,252,0) 16%),
+  linear-gradient(90deg, rgba(250,251,252,.8) 0, rgba(250,251,252,.8) 44%, rgba(250,251,252,.4) 56%, rgba(250,251,252,.08) 66%, rgba(250,251,252,0) 74%); }
+@media (max-width: 1100px) {
+  .wall--hero .wall__plane { left: 2%; width: 1300px; transform: scale(1.12) rotateY(-24deg) rotateX(12deg) rotateZ(-7deg) translateY(-900px); }
+  .wall--hero .wall__veil { background:
+    linear-gradient(0deg, rgba(250,251,252,.9) 0, rgba(250,251,252,0) 16%),
+    linear-gradient(90deg, rgba(250,251,252,.84) 0, rgba(250,251,252,.84) 60%, rgba(250,251,252,.4) 70%, rgba(250,251,252,.08) 80%, rgba(250,251,252,0) 86%); }
+}
+@media (max-width: 960px) {
+  .wall--hero .wall__plane { left: 0%; width: 1200px; }
+}
+@media (max-width: 760px) {
+  /* 電話幅は前の形のまま（字の後ろは地の色、ボタンの下の帯に壁） */
+  .wall--hero .wall__plane { left: -4%; width: 900px; transform: rotateX(34deg) rotateZ(-14deg) translateY(-900px); }
+  .wall--hero .wall__veil { background: linear-gradient(180deg, rgba(250,251,252,1) 0, rgba(250,251,252,1) 73%, rgba(250,251,252,.5) 79%, rgba(250,251,252,0) 88%); }
+}
 </style>
 </head>
 <body>
@@ -388,27 +463,23 @@ html { scroll-padding-top: 88px; } /* #concept などへ飛んだとき、固定
     <a href="/agent-cases/">事例</a>
     <a href="/news">ニュース</a>
     <a href="/company">会社情報</a>
-    <a href="/contact">お問い合わせ</a>
+    <a class="hd__cta" href="/contact">お問い合わせ</a>
   </nav>
   <button class="menu" type="button" aria-label="メニューを開く" aria-controls="hd-nav" aria-expanded="false"></button>
 </header>
 
 <main>
 <section class="hero">
-  <picture class="screen" aria-hidden="true">
-    <source media="(max-width: 760px)" srcset="/assets/top/bg-map-sp.jpg">
-    <img src="/assets/top/bg-map.jpg" alt="">
-  </picture>
+  <div class="wall wall--hero" aria-hidden="true"><div class="wall__cam"><div class="wall__plane"><div class="wall__col"><img src="/assets/top/wall/wf-keiyaku.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/c-excel.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/ocr-fax.jpg" alt="" width="560" height="477"><img src="/assets/top/wall/berg.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/c-report.jpg" alt="" width="560" height="351"><img src="/assets/top/wall/app-s2-hero.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/s04.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/injection.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-keiyaku.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/c-excel.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/ocr-fax.jpg" alt="" width="560" height="477"><img src="/assets/top/wall/berg.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/c-report.jpg" alt="" width="560" height="351"><img src="/assets/top/wall/app-s2-hero.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/s04.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/injection.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-keiyaku.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/c-excel.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/ocr-fax.jpg" alt="" width="560" height="477"><img src="/assets/top/wall/berg.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/c-report.jpg" alt="" width="560" height="351"><img src="/assets/top/wall/app-s2-hero.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/s04.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/injection.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-keiyaku.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/c-excel.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/ocr-fax.jpg" alt="" width="560" height="477"><img src="/assets/top/wall/berg.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/c-report.jpg" alt="" width="560" height="351"><img src="/assets/top/wall/app-s2-hero.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/s04.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/injection.jpg" alt="" width="560" height="315"></div><div class="wall__col wall__col--move"><img src="/assets/top/wall/wf-mitsumori.jpg" alt="" width="560" height="279"><img src="/assets/top/wall/cover.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-kyogi.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/c-agent.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/wf-juchu-shori.jpg" alt="" width="560" height="279"><img src="/assets/top/wall/neck.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-tehai.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/s50.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-mitsumori.jpg" alt="" width="560" height="279"><img src="/assets/top/wall/cover.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-kyogi.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/c-agent.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/wf-juchu-shori.jpg" alt="" width="560" height="279"><img src="/assets/top/wall/neck.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-tehai.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/s50.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-mitsumori.jpg" alt="" width="560" height="279"><img src="/assets/top/wall/cover.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-kyogi.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/c-agent.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/wf-juchu-shori.jpg" alt="" width="560" height="279"><img src="/assets/top/wall/neck.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-tehai.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/s50.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-mitsumori.jpg" alt="" width="560" height="279"><img src="/assets/top/wall/cover.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-kyogi.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/c-agent.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/wf-juchu-shori.jpg" alt="" width="560" height="279"><img src="/assets/top/wall/neck.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-tehai.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/s50.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-mitsumori.jpg" alt="" width="560" height="279"><img src="/assets/top/wall/cover.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-kyogi.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/c-agent.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/wf-juchu-shori.jpg" alt="" width="560" height="279"><img src="/assets/top/wall/neck.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-tehai.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/s50.jpg" alt="" width="560" height="315"></div><div class="wall__col"><img src="/assets/top/wall/berg.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/c-report.jpg" alt="" width="560" height="351"><img src="/assets/top/wall/app-s2-hero.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/s04.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/injection.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-keiyaku.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/c-excel.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/ocr-fax.jpg" alt="" width="560" height="477"><img src="/assets/top/wall/berg.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/c-report.jpg" alt="" width="560" height="351"><img src="/assets/top/wall/app-s2-hero.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/s04.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/injection.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-keiyaku.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/c-excel.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/ocr-fax.jpg" alt="" width="560" height="477"><img src="/assets/top/wall/berg.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/c-report.jpg" alt="" width="560" height="351"><img src="/assets/top/wall/app-s2-hero.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/s04.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/injection.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-keiyaku.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/c-excel.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/ocr-fax.jpg" alt="" width="560" height="477"><img src="/assets/top/wall/berg.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/c-report.jpg" alt="" width="560" height="351"><img src="/assets/top/wall/app-s2-hero.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/s04.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/injection.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-keiyaku.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/c-excel.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/ocr-fax.jpg" alt="" width="560" height="477"></div><div class="wall__col wall__col--move"><img src="/assets/top/wall/wf-juchu-shori.jpg" alt="" width="560" height="279"><img src="/assets/top/wall/neck.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-tehai.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/s50.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-mitsumori.jpg" alt="" width="560" height="279"><img src="/assets/top/wall/cover.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-kyogi.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/c-agent.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/wf-juchu-shori.jpg" alt="" width="560" height="279"><img src="/assets/top/wall/neck.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-tehai.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/s50.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-mitsumori.jpg" alt="" width="560" height="279"><img src="/assets/top/wall/cover.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-kyogi.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/c-agent.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/wf-juchu-shori.jpg" alt="" width="560" height="279"><img src="/assets/top/wall/neck.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-tehai.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/s50.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-mitsumori.jpg" alt="" width="560" height="279"><img src="/assets/top/wall/cover.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-kyogi.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/c-agent.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/wf-juchu-shori.jpg" alt="" width="560" height="279"><img src="/assets/top/wall/neck.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-tehai.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/s50.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-mitsumori.jpg" alt="" width="560" height="279"><img src="/assets/top/wall/cover.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-kyogi.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/c-agent.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/wf-juchu-shori.jpg" alt="" width="560" height="279"><img src="/assets/top/wall/neck.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-tehai.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/s50.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-mitsumori.jpg" alt="" width="560" height="279"><img src="/assets/top/wall/cover.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-kyogi.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/c-agent.jpg" alt="" width="560" height="350"></div><div class="wall__col"><img src="/assets/top/wall/s04.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/injection.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-keiyaku.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/c-excel.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/ocr-fax.jpg" alt="" width="560" height="477"><img src="/assets/top/wall/berg.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/c-report.jpg" alt="" width="560" height="351"><img src="/assets/top/wall/app-s2-hero.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/s04.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/injection.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-keiyaku.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/c-excel.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/ocr-fax.jpg" alt="" width="560" height="477"><img src="/assets/top/wall/berg.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/c-report.jpg" alt="" width="560" height="351"><img src="/assets/top/wall/app-s2-hero.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/s04.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/injection.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-keiyaku.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/c-excel.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/ocr-fax.jpg" alt="" width="560" height="477"><img src="/assets/top/wall/berg.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/c-report.jpg" alt="" width="560" height="351"><img src="/assets/top/wall/app-s2-hero.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/s04.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/injection.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-keiyaku.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/c-excel.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/ocr-fax.jpg" alt="" width="560" height="477"><img src="/assets/top/wall/berg.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/c-report.jpg" alt="" width="560" height="351"><img src="/assets/top/wall/app-s2-hero.jpg" alt="" width="560" height="350"></div><div class="wall__col wall__col--move"><img src="/assets/top/wall/wf-kyogi.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/c-agent.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/wf-juchu-shori.jpg" alt="" width="560" height="279"><img src="/assets/top/wall/neck.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-tehai.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/s50.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-mitsumori.jpg" alt="" width="560" height="279"><img src="/assets/top/wall/cover.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-kyogi.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/c-agent.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/wf-juchu-shori.jpg" alt="" width="560" height="279"><img src="/assets/top/wall/neck.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-tehai.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/s50.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-mitsumori.jpg" alt="" width="560" height="279"><img src="/assets/top/wall/cover.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-kyogi.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/c-agent.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/wf-juchu-shori.jpg" alt="" width="560" height="279"><img src="/assets/top/wall/neck.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-tehai.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/s50.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-mitsumori.jpg" alt="" width="560" height="279"><img src="/assets/top/wall/cover.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-kyogi.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/c-agent.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/wf-juchu-shori.jpg" alt="" width="560" height="279"><img src="/assets/top/wall/neck.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-tehai.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/s50.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-mitsumori.jpg" alt="" width="560" height="279"><img src="/assets/top/wall/cover.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-kyogi.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/c-agent.jpg" alt="" width="560" height="350"><img src="/assets/top/wall/wf-juchu-shori.jpg" alt="" width="560" height="279"><img src="/assets/top/wall/neck.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-tehai.jpg" alt="" width="560" height="280"><img src="/assets/top/wall/s50.jpg" alt="" width="560" height="315"><img src="/assets/top/wall/wf-mitsumori.jpg" alt="" width="560" height="279"><img src="/assets/top/wall/cover.jpg" alt="" width="560" height="315"></div></div></div><div class="wall__veil"></div></div>
   <div class="hero__in">
     <h1>AI Agent時代の<br>インフラを整える</h1>
-    <p class="hero__line">業務とコンテキストを整え、<br class="sp">AIが仕事を進められる会社へ。</p>
+    <p class="hero__line">業務とコンテキストを整え、<br class="sp md">AIが仕事を進められる会社へ。</p>
     <p class="hero__desc">株式会社TechWorkerは、AIエージェントが御社の仕事を進めるための土台を整え、AIのプロダクトとサービスで動かすAIカンパニーです。</p>
-    <a class="btn" href="#solution" data-top="hero_services">サービスを見る<svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a>
+    <a class="btn" href="#solution" data-top="hero_services">サービスを見る<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a>
   </div>
-  <span class="scroll" aria-hidden="true"><span class="scroll__t">SCROLL</span></span>
 </section>
 
-<!-- 月桂樹 /assets/top/laurel.svg：Wikimedia Commons「Greek Roman Laurel wreath vector.svg」CC0（https://commons.wikimedia.org/wiki/File:Greek_Roman_Laurel_wreath_vector.svg）を #C79A2E に塗った物 -->
+<!-- 月桂樹 assets/top/laurel.svg：Wikimedia Commons「Greek Roman Laurel wreath vector.svg」CC0 を #C79A2E に塗った物 -->
 <section class="rec" id="record" aria-label="実績">
   <div class="wrap">
     <ul class="mol" aria-label="実績">
@@ -419,190 +490,187 @@ html { scroll-padding-top: 88px; } /* #concept などへ飛んだとき、固定
   </div>
 </section>
 
-
-
-<section class="sol" id="solution">
-  <div class="screen" aria-hidden="true"><img src="/assets/top/bg-map-tall.jpg" alt="" loading="lazy"></div>
-  <div class="wrap sol__in">
-    <div class="sol__hd">
+<section class="sec sec--ground sec--rule sol" id="solution">
+  <div class="wrap">
+    <div class="sec__hd">
       <h2 class="h2">AIソリューション</h2>
       <p class="lead">日本の中小企業が、AIエージェントに仕事を任せられるように。<br class="pc">当社は、3つのエンジンを持っています。</p>
     </div>
     <div class="arc3">
       <svg class="ax ax--pc" viewBox="0 0 820 650" role="img" aria-label="3つのエンジンの仕組みの図。AIヒアリング・ログ・ファイルで集めたデータを、データを整えるエンジンがAIの使える形に整え、AIを動かすエンジン（AI Agent・ハルシネーション防止・自己改善）が仕事を進め、自己改善の線で整える側へ戻る。全体を、人材教育とセキュリティ基盤の人材開発エンジンが下から支える。">
-        <path class="ln" d="M196 176 L490 96 L784 176"/>
-        <path class="th" d="M244 168 L490 110 L736 168"/>
-        <path class="ln" d="M186 176 H794"/>
-        <rect class="bx" x="196" y="176" width="588" height="60"/>
-        <text class="t g" x="294.0" y="206" text-anchor="middle" style="font-size:16.5px">AI Agent</text>
-        <text class="t" x="490.0" y="206" text-anchor="middle" style="font-size:16.5px">ハルシネーション防止</text>
-        <path class="th" d="M392.0 186 V226"/>
-        <text class="t" x="686.0" y="206" text-anchor="middle" style="font-size:16.5px">自己改善</text>
-        <path class="th" d="M588.0 186 V226"/>
-        <path class="ln" d="M232.0 236 H272.0 V246 H232.0 Z M237.0 246 H267.0 V252 H237.0"/>
-        <path class="ln" d="M241.0 252 V404 M263.0 252 V404"/>
-        <path class="th" d="M252.0 258 V398"/>
-        <path class="ln" d="M237.0 404 H267.0 V411 H234.0 V420 H270.0 V411"/>
-        <path class="ln" d="M390.7 236 H430.7 V246 H390.7 Z M395.7 246 H425.7 V252 H395.7"/>
-        <path class="ln" d="M399.7 252 V404 M421.7 252 V404"/>
-        <path class="th" d="M410.7 258 V398"/>
-        <path class="ln" d="M395.7 404 H425.7 V411 H392.7 V420 H428.7 V411"/>
-        <path class="ln" d="M549.3 236 H589.3 V246 H549.3 Z M554.3 246 H584.3 V252 H554.3"/>
-        <path class="ln" d="M558.3 252 V404 M580.3 252 V404"/>
-        <path class="th" d="M569.3 258 V398"/>
-        <path class="ln" d="M554.3 404 H584.3 V411 H551.3 V420 H587.3 V411"/>
-        <path class="ln" d="M708.0 236 H748.0 V246 H708.0 Z M713.0 246 H743.0 V252 H713.0"/>
-        <path class="ln" d="M717.0 252 V404 M739.0 252 V404"/>
-        <path class="th" d="M728.0 258 V398"/>
-        <path class="ln" d="M713.0 404 H743.0 V411 H710.0 V420 H746.0 V411"/>
-        <text class="t vt" x="331.3" y="328" text-anchor="middle" style="font-size:16.5px">社内の暗黙知</text>
-        <text class="t vt" x="490.0" y="328" text-anchor="middle" style="font-size:16.5px">眠っているデータ</text>
-        <text class="t vt" x="648.7" y="328" text-anchor="middle" style="font-size:16.5px">AIが使える形</text>
-        <path class="ln" d="M212 428 V420 H768 V428"/>
-        <path class="ln" d="M196 436 V428 H784 V436"/>
-        <rect class="bx" x="180" y="436" width="620" height="84"/>
-        <text class="t" x="335.0" y="478" text-anchor="middle" style="font-size:16.5px">人材教育</text>
-        <text class="t" x="645.0" y="478" text-anchor="middle" style="font-size:16.5px">セキュリティ基盤</text>
-        <path class="th" d="M490.0 452 V504"/>
-        <path class="ln" d="M0 520 H820"/>
-        <path class="th" d="M184 536 l10 -10"/>
-        <path class="th" d="M200 536 l10 -10"/>
-        <path class="th" d="M216 536 l10 -10"/>
-        <path class="th" d="M232 536 l10 -10"/>
-        <path class="th" d="M248 536 l10 -10"/>
-        <path class="th" d="M264 536 l10 -10"/>
-        <path class="th" d="M280 536 l10 -10"/>
-        <path class="th" d="M296 536 l10 -10"/>
-        <path class="th" d="M312 536 l10 -10"/>
-        <path class="th" d="M328 536 l10 -10"/>
-        <path class="th" d="M344 536 l10 -10"/>
-        <path class="th" d="M360 536 l10 -10"/>
-        <path class="th" d="M376 536 l10 -10"/>
-        <path class="th" d="M392 536 l10 -10"/>
-        <path class="th" d="M408 536 l10 -10"/>
-        <path class="th" d="M424 536 l10 -10"/>
-        <path class="th" d="M440 536 l10 -10"/>
-        <path class="th" d="M456 536 l10 -10"/>
-        <path class="th" d="M472 536 l10 -10"/>
-        <path class="th" d="M488 536 l10 -10"/>
-        <path class="th" d="M504 536 l10 -10"/>
-        <path class="th" d="M520 536 l10 -10"/>
-        <path class="th" d="M536 536 l10 -10"/>
-        <path class="th" d="M552 536 l10 -10"/>
-        <path class="th" d="M568 536 l10 -10"/>
-        <path class="th" d="M584 536 l10 -10"/>
-        <path class="th" d="M600 536 l10 -10"/>
-        <path class="th" d="M616 536 l10 -10"/>
-        <path class="th" d="M632 536 l10 -10"/>
-        <path class="th" d="M648 536 l10 -10"/>
-        <path class="th" d="M664 536 l10 -10"/>
-        <path class="th" d="M680 536 l10 -10"/>
-        <path class="th" d="M696 536 l10 -10"/>
-        <path class="th" d="M712 536 l10 -10"/>
-        <path class="th" d="M728 536 l10 -10"/>
-        <path class="th" d="M744 536 l10 -10"/>
-        <path class="th" d="M760 536 l10 -10"/>
-        <path class="th" d="M776 536 l10 -10"/>
-        <path class="th" d="M792 536 l10 -10"/>
-        <path class="th" d="M784 206 H796 A14 14 0 0 1 810 220 V314 A14 14 0 0 1 796 328 H746"/>
-        <path class="ln" d="M751 323 L746 328 L751 333"/>
-        <text class="lb" x="138" y="542" text-anchor="end" style="font-size:12.5px">データの収集</text>
-        <text class="a" x="138" y="570" text-anchor="end" style="font-size:15px">AIヒアリング</text>
-        <path class="th" d="M142 570 H150 V300 H236"/>
-        <circle class="nd" cx="236" cy="300" r="2.4"/>
-        <text class="a" x="138" y="598" text-anchor="end" style="font-size:15px">ログ</text>
-        <path class="th" d="M142 598 H160 V328 H236"/>
-        <circle class="nd" cx="236" cy="328" r="2.4"/>
-        <text class="a" x="138" y="626" text-anchor="end" style="font-size:15px">ファイル</text>
-        <path class="th" d="M142 626 H170 V356 H236"/>
-        <circle class="nd" cx="236" cy="356" r="2.4"/>
-        <circle class="nd" cx="700" cy="153" r="2.6"/>
-        <path class="ld" d="M704 153 H820"/>
-        <circle class="nd" cx="743" cy="360" r="2.6"/>
-        <path class="ld" d="M747 360 H820"/>
-        <circle class="nd" cx="800" cy="500" r="2.6"/>
-        <path class="ld" d="M804 500 H820"/>
-      </svg>
+<path class="ln" d="M196 176 L490 96 L784 176"/>
+<path class="th" d="M244 168 L490 110 L736 168"/>
+<path class="ln" d="M186 176 H794"/>
+<rect class="bx" x="196" y="176" width="588" height="60"/>
+<text class="t g" x="294.0" y="206" text-anchor="middle" style="font-size:16.5px">AI Agent</text>
+<text class="t" x="490.0" y="206" text-anchor="middle" style="font-size:16.5px">ハルシネーション防止</text>
+<path class="th" d="M392.0 186 V226"/>
+<text class="t" x="686.0" y="206" text-anchor="middle" style="font-size:16.5px">自己改善</text>
+<path class="th" d="M588.0 186 V226"/>
+<path class="ln" d="M232.0 236 H272.0 V246 H232.0 Z M237.0 246 H267.0 V252 H237.0"/>
+<path class="ln" d="M241.0 252 V404 M263.0 252 V404"/>
+<path class="th" d="M252.0 258 V398"/>
+<path class="ln" d="M237.0 404 H267.0 V411 H234.0 V420 H270.0 V411"/>
+<path class="ln" d="M390.7 236 H430.7 V246 H390.7 Z M395.7 246 H425.7 V252 H395.7"/>
+<path class="ln" d="M399.7 252 V404 M421.7 252 V404"/>
+<path class="th" d="M410.7 258 V398"/>
+<path class="ln" d="M395.7 404 H425.7 V411 H392.7 V420 H428.7 V411"/>
+<path class="ln" d="M549.3 236 H589.3 V246 H549.3 Z M554.3 246 H584.3 V252 H554.3"/>
+<path class="ln" d="M558.3 252 V404 M580.3 252 V404"/>
+<path class="th" d="M569.3 258 V398"/>
+<path class="ln" d="M554.3 404 H584.3 V411 H551.3 V420 H587.3 V411"/>
+<path class="ln" d="M708.0 236 H748.0 V246 H708.0 Z M713.0 246 H743.0 V252 H713.0"/>
+<path class="ln" d="M717.0 252 V404 M739.0 252 V404"/>
+<path class="th" d="M728.0 258 V398"/>
+<path class="ln" d="M713.0 404 H743.0 V411 H710.0 V420 H746.0 V411"/>
+<text class="t vt" x="331.3" y="328" text-anchor="middle" style="font-size:16.5px">社内の暗黙知</text>
+<text class="t vt" x="490.0" y="328" text-anchor="middle" style="font-size:16.5px">眠っているデータ</text>
+<text class="t vt" x="648.7" y="328" text-anchor="middle" style="font-size:16.5px">AIが使える形</text>
+<path class="ln" d="M212 428 V420 H768 V428"/>
+<path class="ln" d="M196 436 V428 H784 V436"/>
+<rect class="bx" x="180" y="436" width="620" height="84"/>
+<text class="t" x="335.0" y="478" text-anchor="middle" style="font-size:16.5px">人材教育</text>
+<text class="t" x="645.0" y="478" text-anchor="middle" style="font-size:16.5px">セキュリティ基盤</text>
+<path class="th" d="M490.0 452 V504"/>
+<path class="ln" d="M0 520 H820"/>
+<path class="th" d="M184 536 l10 -10"/>
+<path class="th" d="M200 536 l10 -10"/>
+<path class="th" d="M216 536 l10 -10"/>
+<path class="th" d="M232 536 l10 -10"/>
+<path class="th" d="M248 536 l10 -10"/>
+<path class="th" d="M264 536 l10 -10"/>
+<path class="th" d="M280 536 l10 -10"/>
+<path class="th" d="M296 536 l10 -10"/>
+<path class="th" d="M312 536 l10 -10"/>
+<path class="th" d="M328 536 l10 -10"/>
+<path class="th" d="M344 536 l10 -10"/>
+<path class="th" d="M360 536 l10 -10"/>
+<path class="th" d="M376 536 l10 -10"/>
+<path class="th" d="M392 536 l10 -10"/>
+<path class="th" d="M408 536 l10 -10"/>
+<path class="th" d="M424 536 l10 -10"/>
+<path class="th" d="M440 536 l10 -10"/>
+<path class="th" d="M456 536 l10 -10"/>
+<path class="th" d="M472 536 l10 -10"/>
+<path class="th" d="M488 536 l10 -10"/>
+<path class="th" d="M504 536 l10 -10"/>
+<path class="th" d="M520 536 l10 -10"/>
+<path class="th" d="M536 536 l10 -10"/>
+<path class="th" d="M552 536 l10 -10"/>
+<path class="th" d="M568 536 l10 -10"/>
+<path class="th" d="M584 536 l10 -10"/>
+<path class="th" d="M600 536 l10 -10"/>
+<path class="th" d="M616 536 l10 -10"/>
+<path class="th" d="M632 536 l10 -10"/>
+<path class="th" d="M648 536 l10 -10"/>
+<path class="th" d="M664 536 l10 -10"/>
+<path class="th" d="M680 536 l10 -10"/>
+<path class="th" d="M696 536 l10 -10"/>
+<path class="th" d="M712 536 l10 -10"/>
+<path class="th" d="M728 536 l10 -10"/>
+<path class="th" d="M744 536 l10 -10"/>
+<path class="th" d="M760 536 l10 -10"/>
+<path class="th" d="M776 536 l10 -10"/>
+<path class="th" d="M792 536 l10 -10"/>
+<path class="th" d="M784 206 H796 A14 14 0 0 1 810 220 V314 A14 14 0 0 1 796 328 H746"/>
+<path class="ln" d="M751 323 L746 328 L751 333"/>
+<text class="lb" x="138" y="542" text-anchor="end" style="font-size:12.5px">データの収集</text>
+<text class="a" x="138" y="570" text-anchor="end" style="font-size:15px">AIヒアリング</text>
+<path class="th" d="M142 570 H150 V300 H236"/>
+<circle class="nd" cx="236" cy="300" r="2.4"/>
+<text class="a" x="138" y="598" text-anchor="end" style="font-size:15px">ログ</text>
+<path class="th" d="M142 598 H160 V328 H236"/>
+<circle class="nd" cx="236" cy="328" r="2.4"/>
+<text class="a" x="138" y="626" text-anchor="end" style="font-size:15px">ファイル</text>
+<path class="th" d="M142 626 H170 V356 H236"/>
+<circle class="nd" cx="236" cy="356" r="2.4"/>
+<circle class="nd" cx="700" cy="153" r="2.6"/>
+<path class="ld" d="M704 153 H820"/>
+<circle class="nd" cx="743" cy="360" r="2.6"/>
+<path class="ld" d="M747 360 H820"/>
+<circle class="nd" cx="800" cy="500" r="2.6"/>
+<path class="ld" d="M804 500 H820"/>
+</svg>
       <svg class="ax ax--sp" viewBox="0 0 350 554" role="img" aria-label="3つのエンジンの仕組みの図。AIヒアリング・ログ・ファイルで集めたデータを、データを整えるエンジンがAIの使える形に整え、AIを動かすエンジン（AI Agent・ハルシネーション防止・自己改善）が仕事を進め、自己改善の線で整える側へ戻る。全体を、人材教育とセキュリティ基盤の人材開発エンジンが下から支える。">
-        <path class="ln" d="M58 156 L189 102 L320 156"/>
-        <path class="th" d="M86 150 L189 110 L292 150"/>
-        <path class="ln" d="M52 156 H326"/>
-        <rect class="bx" x="58" y="156" width="262" height="50"/>
-        <text class="t g" x="94" y="181" text-anchor="middle" style="font-size:12px">AI Agent</text>
-        <path class="th" d="M130 164 V198 M250 164 V198"/>
-        <text class="t" x="190" y="174" text-anchor="middle" style="font-size:11.5px">ハルシネーション</text>
-        <text class="t" x="190" y="190" text-anchor="middle" style="font-size:11.5px">防止</text>
-        <text class="t" x="285" y="181" text-anchor="middle" style="font-size:12px">自己改善</text>
-        <path class="ln" d="M69.0 206 H95.0 V216 H69.0 Z M74.0 216 H90.0 V222 H74.0"/>
-        <path class="ln" d="M75.0 222 V344 M89.0 222 V344"/>
-        <path class="th" d="M82.0 228 V338"/>
-        <path class="ln" d="M71.0 344 H93.0 V351 H68.0 V360 H96.0 V351"/>
-        <path class="ln" d="M140.3 206 H166.3 V216 H140.3 Z M145.3 216 H161.3 V222 H145.3"/>
-        <path class="ln" d="M146.3 222 V344 M160.3 222 V344"/>
-        <path class="th" d="M153.3 228 V338"/>
-        <path class="ln" d="M142.3 344 H164.3 V351 H139.3 V360 H167.3 V351"/>
-        <path class="ln" d="M211.7 206 H237.7 V216 H211.7 Z M216.7 216 H232.7 V222 H216.7"/>
-        <path class="ln" d="M217.7 222 V344 M231.7 222 V344"/>
-        <path class="th" d="M224.7 228 V338"/>
-        <path class="ln" d="M213.7 344 H235.7 V351 H210.7 V360 H238.7 V351"/>
-        <path class="ln" d="M283.0 206 H309.0 V216 H283.0 Z M288.0 216 H304.0 V222 H288.0"/>
-        <path class="ln" d="M289.0 222 V344 M303.0 222 V344"/>
-        <path class="th" d="M296.0 228 V338"/>
-        <path class="ln" d="M285.0 344 H307.0 V351 H282.0 V360 H310.0 V351"/>
-        <text class="t vt" x="117.7" y="283" text-anchor="middle" style="font-size:13px">社内の暗黙知</text>
-        <text class="t vt" x="189.0" y="283" text-anchor="middle" style="font-size:13px">眠っているデータ</text>
-        <text class="t vt" x="260.3" y="283" text-anchor="middle" style="font-size:13px">AIが使える形</text>
-        <path class="ln" d="M66 366 V360 H312 V366"/>
-        <path class="ln" d="M58 372 V366 H320 V372"/>
-        <rect class="bx" x="50" y="372" width="278" height="68"/>
-        <text class="t" x="119.5" y="406" text-anchor="middle" style="font-size:13px">人材教育</text>
-        <text class="t" x="258.5" y="406" text-anchor="middle" style="font-size:13px">セキュリティ基盤</text>
-        <path class="th" d="M189.0 388 V424"/>
-        <path class="ln" d="M0 440 H350"/>
-        <path class="th" d="M320 181 H330 A8 8 0 0 1 338 189 V272 A8 8 0 0 1 330 280 H306"/>
-        <path class="ln" d="M310 276 L306 280 L310 284"/>
-        <text class="lb" x="40" y="460" text-anchor="start">データの収集</text>
-        <text class="a" x="40" y="488" text-anchor="start">AIヒアリング</text>
-        <path class="th" d="M36 488 H28 V330 H70"/>
-        <circle class="nd" cx="70" cy="330" r="2"/>
-        <text class="a" x="40" y="514" text-anchor="start">ログ</text>
-        <path class="th" d="M36 514 H20 V306 H70"/>
-        <circle class="nd" cx="70" cy="306" r="2"/>
-        <text class="a" x="40" y="540" text-anchor="start">ファイル</text>
-        <path class="th" d="M36 540 H12 V282 H70"/>
-        <circle class="nd" cx="70" cy="282" r="2"/>
-      </svg>
+<path class="ln" d="M58 156 L189 102 L320 156"/>
+<path class="th" d="M86 150 L189 110 L292 150"/>
+<path class="ln" d="M52 156 H326"/>
+<rect class="bx" x="58" y="156" width="262" height="50"/>
+<text class="t g" x="94" y="181" text-anchor="middle" style="font-size:12px">AI Agent</text>
+<path class="th" d="M130 164 V198 M250 164 V198"/>
+<text class="t" x="190" y="174" text-anchor="middle" style="font-size:11.5px">ハルシネーション</text>
+<text class="t" x="190" y="190" text-anchor="middle" style="font-size:11.5px">防止</text>
+<text class="t" x="285" y="181" text-anchor="middle" style="font-size:12px">自己改善</text>
+<path class="ln" d="M69.0 206 H95.0 V216 H69.0 Z M74.0 216 H90.0 V222 H74.0"/>
+<path class="ln" d="M75.0 222 V344 M89.0 222 V344"/>
+<path class="th" d="M82.0 228 V338"/>
+<path class="ln" d="M71.0 344 H93.0 V351 H68.0 V360 H96.0 V351"/>
+<path class="ln" d="M140.3 206 H166.3 V216 H140.3 Z M145.3 216 H161.3 V222 H145.3"/>
+<path class="ln" d="M146.3 222 V344 M160.3 222 V344"/>
+<path class="th" d="M153.3 228 V338"/>
+<path class="ln" d="M142.3 344 H164.3 V351 H139.3 V360 H167.3 V351"/>
+<path class="ln" d="M211.7 206 H237.7 V216 H211.7 Z M216.7 216 H232.7 V222 H216.7"/>
+<path class="ln" d="M217.7 222 V344 M231.7 222 V344"/>
+<path class="th" d="M224.7 228 V338"/>
+<path class="ln" d="M213.7 344 H235.7 V351 H210.7 V360 H238.7 V351"/>
+<path class="ln" d="M283.0 206 H309.0 V216 H283.0 Z M288.0 216 H304.0 V222 H288.0"/>
+<path class="ln" d="M289.0 222 V344 M303.0 222 V344"/>
+<path class="th" d="M296.0 228 V338"/>
+<path class="ln" d="M285.0 344 H307.0 V351 H282.0 V360 H310.0 V351"/>
+<text class="t vt" x="117.7" y="283" text-anchor="middle" style="font-size:13px">社内の暗黙知</text>
+<text class="t vt" x="189.0" y="283" text-anchor="middle" style="font-size:13px">眠っているデータ</text>
+<text class="t vt" x="260.3" y="283" text-anchor="middle" style="font-size:13px">AIが使える形</text>
+<path class="ln" d="M66 366 V360 H312 V366"/>
+<path class="ln" d="M58 372 V366 H320 V372"/>
+<rect class="bx" x="50" y="372" width="278" height="68"/>
+<text class="t" x="119.5" y="406" text-anchor="middle" style="font-size:13px">人材教育</text>
+<text class="t" x="258.5" y="406" text-anchor="middle" style="font-size:13px">セキュリティ基盤</text>
+<path class="th" d="M189.0 388 V424"/>
+<path class="ln" d="M0 440 H350"/>
+<path class="th" d="M320 181 H330 A8 8 0 0 1 338 189 V272 A8 8 0 0 1 330 280 H306"/>
+<path class="ln" d="M310 276 L306 280 L310 284"/>
+<text class="lb" x="40" y="460" text-anchor="start">データの収集</text>
+<text class="a" x="40" y="488" text-anchor="start">AIヒアリング</text>
+<path class="th" d="M36 488 H28 V330 H70"/>
+<circle class="nd" cx="70" cy="330" r="2"/>
+<text class="a" x="40" y="514" text-anchor="start">ログ</text>
+<path class="th" d="M36 514 H20 V306 H70"/>
+<circle class="nd" cx="70" cy="306" r="2"/>
+<text class="a" x="40" y="540" text-anchor="start">ファイル</text>
+<path class="th" d="M36 540 H12 V282 H70"/>
+<circle class="nd" cx="70" cy="282" r="2"/>
+</svg>
       <ul class="arc3__notes">
         <li class="n-run"><b>AIを動かすエンジン</b><span>整えたデータで、<br class="pc">AIエージェントが毎日の仕事を進めます。</span></li>
         <li class="n-map"><b>データを整えるエンジン</b><span>社内の暗黙知や眠っているデータを、<br class="pc">AIが使える形に整えます。</span></li>
         <li class="n-use"><b>人材開発エンジン</b><span>セキュリティを踏まえた研修で、<br class="pc">情報を守りながらAIを使いこなす人材を育てます。</span></li>
       </ul>
     </div>
-    <p class="sol__more"><a class="btn" href="/services" data-top="solution_services">サービス一覧へ<svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></p>
+    <p class="sol__more"><a class="btn btn--line" href="/services" data-top="solution_services">サービス一覧へ<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a></p>
   </div>
 </section>
 
-<section class="idea" id="concept">
+<section class="sec idea" id="concept">
   <div class="wrap">
-    <h2 class="h2 kw">社内のデータを整えるほど、<wbr>AIに任せられる仕事が増える</h2>
+    <h2 class="h2 kw">社内のデータを整えるほど、<br>AIに任せられる<wbr>仕事が増える</h2>
     <div class="idea__grid">
       <figure class="idea__chart">
         <svg viewBox="0 0 640 450" role="img" aria-label="社内のデータを1つずつ整えるほど、AIに任せられる仕事がはじめは少しずつ、あるところから一気に増えることを示すイメージの図。整えていない会社はほぼ横ばい。">
-          <path d="M64 40 L64 392 L584 392" fill="none" stroke="#0D1117" stroke-width=".8"/>
-          <text x="76" y="46" font-size="13">AIに任せられる仕事</text>
-          <text x="584" y="418" font-size="13" text-anchor="end">整えた社内のデータ</text>
-          <path d="M64.0 392.0 L91.3 392.0 L91.3 387.2 L118.6 387.2 L118.6 382.1 L145.9 382.1 L145.9 376.8 L173.2 376.8 L173.2 371.2 L200.5 371.2 L200.5 365.1 L227.8 365.1 L227.8 358.5 L255.1 358.5 L255.1 351.2 L282.4 351.2 L282.4 343.0 L309.7 343.0 L309.7 333.7 L337.0 333.7 L337.0 322.9 L364.3 322.9 L364.3 310.3 L391.6 310.3 L391.6 295.4 L418.9 295.4 L418.9 277.6 L446.2 277.6 L446.2 255.9 L473.5 255.9 L473.5 229.5 L500.8 229.5 L500.8 196.9" fill="none" stroke="#C5A27C" stroke-width=".8"/>
-          <path d="M64.0 392.0 C194.0 374.4 324.0 369.1 558.0 367.4" fill="none" stroke="#6B7079" stroke-width=".9" stroke-dasharray="3 4"/>
-          <path d="M64 392 C 200 368, 330 340, 400 292 S 520 170, 558 100.9" fill="none" stroke="#A47948" stroke-width="1.4" stroke-linecap="round"/>
-          <circle cx="558" cy="100.9" r="3" fill="#A47948"/>
-          <text x="544" y="96" font-size="15" text-anchor="end">データを整えた会社</text>
-          <text x="558" y="356" font-size="13" text-anchor="end" class="t-sub">整えていない会社</text>
-          <path d="M298 331 L298 306" stroke="#A47948" stroke-width=".8"/>
-          <text x="298" y="297" font-size="12.5" text-anchor="middle" class="t-gold">1つずつ整える</text>
-          <text x="96" y="345" font-size="13" class="t-sub">はじめは少しずつ</text>
-          <text x="436" y="226" font-size="13" text-anchor="end" class="t-sub">あるところから一気に</text>
-          <text x="584" y="444" font-size="11.5" text-anchor="end" class="t-sub">イメージ</text>
-        </svg>
+<path d="M64 40 L64 392 L584 392" fill="none" class="c-axis"/>
+<text x="76" y="46" font-size="13">AIに任せられる仕事</text>
+<text x="584" y="418" font-size="13" text-anchor="end">整えた社内のデータ</text>
+<path d="M64.0 392.0 L91.3 392.0 L91.3 387.2 L118.6 387.2 L118.6 382.1 L145.9 382.1 L145.9 376.8 L173.2 376.8 L173.2 371.2 L200.5 371.2 L200.5 365.1 L227.8 365.1 L227.8 358.5 L255.1 358.5 L255.1 351.2 L282.4 351.2 L282.4 343.0 L309.7 343.0 L309.7 333.7 L337.0 333.7 L337.0 322.9 L364.3 322.9 L364.3 310.3 L391.6 310.3 L391.6 295.4 L418.9 295.4 L418.9 277.6 L446.2 277.6 L446.2 255.9 L473.5 255.9 L473.5 229.5 L500.8 229.5 L500.8 196.9" fill="none" class="c-step"/>
+<path d="M64.0 392.0 C194.0 374.4 324.0 369.1 558.0 367.4" fill="none" class="c-flat"/>
+<path d="M64 392 C 200 368, 330 340, 400 292 S 520 170, 558 100.9" fill="none" class="c-main"/>
+<circle cx="558" cy="100.9" r="3" class="c-dot"/>
+<text x="544" y="96" font-size="15" text-anchor="end">データを整えた会社</text>
+<text x="558" y="356" font-size="13" text-anchor="end" class="t-sub">整えていない会社</text>
+<path d="M298 331 L298 306" class="c-tick"/>
+<text x="298" y="297" font-size="12.5" text-anchor="middle" class="t-blue">1つずつ整える</text>
+<text x="96" y="345" font-size="13" class="t-sub">はじめは少しずつ</text>
+<text x="436" y="226" font-size="13" text-anchor="end" class="t-sub">あるところから一気に</text>
+<text x="584" y="444" font-size="11.5" text-anchor="end" class="t-sub">イメージ</text>
+</svg>
       </figure>
       <ul class="steps">
         <li>AIエージェントは、渡されたデータと手順をもとに仕事を進めます。</li>
@@ -613,201 +681,172 @@ html { scroll-padding-top: 88px; } /* #concept などへ飛んだとき、固定
   </div>
 </section>
 
-<section class="cases" id="cases">
+<section class="sec sec--rule cases" id="cases">
   <div class="wrap rail-hd">
     <div>
       <h2 class="h2 kw">AIエージェント<wbr>作成事例</h2>
       <p class="lead">お客さんと作った仕組みと、当社で毎日動いているAIエージェントです。</p>
     </div>
     <div class="rail-nav" data-rail-nav>
-      <button type="button" data-dir="-1" aria-label="事例を前へ送る"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6l6 6"/></svg></button>
-      <button type="button" data-dir="1" aria-label="事例を次へ送る"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6l-6 6"/></svg></button>
+      <button type="button" data-dir="-1" aria-label="事例を前へ送る"><svg viewBox="0 0 20 20"><path d="M12 4.5 6.5 10l5.5 5.5"/></svg></button>
+      <button type="button" data-dir="1" aria-label="事例を次へ送る"><svg viewBox="0 0 20 20"><path d="M8 4.5 13.5 10 8 15.5"/></svg></button>
     </div>
   </div>
   <ul class="rail" data-rail>
-    <li><a class="card card--case" href="/agent-cases/official-chemical" data-top="case_official-chemical">
-      <span class="face"><img src="/assets/top/cases/case-01.jpg" alt="" loading="lazy"><b>化学メーカー｜研究開発</b></span>
-      <div class="card__body">
-        <p class="card__meta"><span class="tag">お客さんと作ったAIの仕組み</span></p>
-        <h3>新素材の用途探しを、1時間で発散から収束まで</h3>
-        <p class="card__line">研究者の経験と勘に頼っていた用途探しを、生成AIの手法にしました。</p>
-        <span class="more"><i><svg viewBox="0 0 8 8" aria-hidden="true"><path d="M2.5 1l3 3-3 3"/></svg></i>事例を見る</span>
-      </div>
+    <li><a class="case" href="/agent-cases/official-chemical" data-top="case_official-chemical">
+      <span class="case__face"><img src="/assets/top/cases/case-01.jpg" alt="" loading="lazy"><b>化学メーカー｜研究開発</b></span>
+      <p class="case__kind">お客さんと作ったAIの仕組み</p>
+      <h3>新素材の用途探しを、1時間で発散から収束まで</h3>
+      <p class="case__line">研究者の経験と勘に頼っていた用途探しを、生成AIの手法にしました。</p>
+      <span class="more">事例を見る<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span>
     </a></li>
-    <li><a class="card card--case" href="/agent-cases/cm-finance" data-top="case_cm-finance">
-      <span class="face"><img src="/assets/top/cases/case-02.jpg" alt="" loading="lazy"><b>金融機関｜全社</b></span>
-      <div class="card__body">
-        <p class="card__meta"><span class="tag">お客さんと作ったAIの仕組み</span></p>
-        <h3>40名が業務を仕分け、AIエージェントを自作</h3>
-        <p class="card__line">受講者が自分の業務から、AIに任せる作業を選んで試しました。</p>
-        <span class="more"><i><svg viewBox="0 0 8 8" aria-hidden="true"><path d="M2.5 1l3 3-3 3"/></svg></i>事例を見る</span>
-      </div>
+    <li><a class="case" href="/agent-cases/cm-finance" data-top="case_cm-finance">
+      <span class="case__face"><img src="/assets/top/cases/case-02.jpg" alt="" loading="lazy"><b>金融機関｜全社</b></span>
+      <p class="case__kind">お客さんと作ったAIの仕組み</p>
+      <h3>40名が業務を仕分け、AIエージェントを自作</h3>
+      <p class="case__line">受講者が自分の業務から、AIに任せる作業を選んで試しました。</p>
+      <span class="more">事例を見る<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span>
     </a></li>
-    <li><a class="card card--case" href="/agent-cases/official-pharma" data-top="case_official-pharma">
-      <span class="face"><img src="/assets/top/cases/case-03.jpg" alt="" loading="lazy"><b>製薬企業｜マーケティング</b></span>
-      <div class="card__body">
-        <p class="card__meta"><span class="tag">お客さんと作ったAIの仕組み</span></p>
-        <h3>市場リサーチを、外注から社内で回す形へ</h3>
-        <p class="card__line">研修と伴走で、社員が自分でリサーチを回せるようにしました。</p>
-        <span class="more"><i><svg viewBox="0 0 8 8" aria-hidden="true"><path d="M2.5 1l3 3-3 3"/></svg></i>事例を見る</span>
-      </div>
+    <li><a class="case" href="/agent-cases/official-pharma" data-top="case_official-pharma">
+      <span class="case__face"><img src="/assets/top/cases/case-03.jpg" alt="" loading="lazy"><b>製薬企業｜マーケティング</b></span>
+      <p class="case__kind">お客さんと作ったAIの仕組み</p>
+      <h3>市場リサーチを、外注から社内で回す形へ</h3>
+      <p class="case__line">研修と伴走で、社員が自分でリサーチを回せるようにしました。</p>
+      <span class="more">事例を見る<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span>
     </a></li>
-    <li><a class="card card--case" href="/agent-cases/media-articles" data-top="case_media-articles">
-      <span class="face"><img src="/assets/top/cases/case-04.jpg" alt="" loading="lazy"><b>当社｜発信</b></span>
-      <div class="card__body">
-        <p class="card__meta"><span class="tag">社内で動くAIエージェント</span></p>
-        <h3>記事の調査から公開まで、AIが平日に進めます</h3>
-        <p class="card__line">調べて書き、別の目の審査を通った回だけ公開します。</p>
-        <span class="more"><i><svg viewBox="0 0 8 8" aria-hidden="true"><path d="M2.5 1l3 3-3 3"/></svg></i>事例を見る</span>
-      </div>
+    <li><a class="case" href="/agent-cases/media-articles" data-top="case_media-articles">
+      <span class="case__face"><img src="/assets/top/cases/case-04.jpg" alt="" loading="lazy"><b>当社｜発信</b></span>
+      <p class="case__kind">社内で動くAIエージェント</p>
+      <h3>記事の調査から公開まで、AIが平日に進めます</h3>
+      <p class="case__line">調べて書き、別の目の審査を通った回だけ公開します。</p>
+      <span class="more">事例を見る<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span>
     </a></li>
-    <li><a class="card card--case" href="/agent-cases/official-construction" data-top="case_official-construction">
-      <span class="face"><img src="/assets/top/cases/case-05.jpg" alt="" loading="lazy"><b>建設企業｜全社</b></span>
-      <div class="card__body">
-        <p class="card__meta"><span class="tag">お客さんと作ったAIの仕組み</span></p>
-        <h3>部門ごとのAI導入計画を、全社展開の道筋に</h3>
-        <p class="card__line">先に進めた部門のやり方を、他の部門へ広げています。</p>
-        <span class="more"><i><svg viewBox="0 0 8 8" aria-hidden="true"><path d="M2.5 1l3 3-3 3"/></svg></i>事例を見る</span>
-      </div>
+    <li><a class="case" href="/agent-cases/official-construction" data-top="case_official-construction">
+      <span class="case__face"><img src="/assets/top/cases/case-05.jpg" alt="" loading="lazy"><b>建設企業｜全社</b></span>
+      <p class="case__kind">お客さんと作ったAIの仕組み</p>
+      <h3>部門ごとのAI導入計画を、全社展開の道筋に</h3>
+      <p class="case__line">先に進めた部門のやり方を、他の部門へ広げています。</p>
+      <span class="more">事例を見る<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span>
     </a></li>
-    <li><a class="card card--case" href="/agent-cases/public-tender-search" data-top="case_public-tender-search">
-      <span class="face"><img src="/assets/top/cases/case-06.jpg" alt="" loading="lazy"><b>当社｜営業</b></span>
-      <div class="card__body">
-        <p class="card__meta"><span class="tag">社内で動くAIエージェント</span></p>
-        <h3>全国の自治体の募集を、AIが毎日2回探します</h3>
-        <p class="card__line">参加資格と提出書類を、原文で確かめます。</p>
-        <span class="more"><i><svg viewBox="0 0 8 8" aria-hidden="true"><path d="M2.5 1l3 3-3 3"/></svg></i>事例を見る</span>
-      </div>
+    <li><a class="case" href="/agent-cases/public-tender-search" data-top="case_public-tender-search">
+      <span class="case__face"><img src="/assets/top/cases/case-06.jpg" alt="" loading="lazy"><b>当社｜営業</b></span>
+      <p class="case__kind">社内で動くAIエージェント</p>
+      <h3>全国の自治体の募集を、AIが毎日2回探します</h3>
+      <p class="case__line">参加資格と提出書類を、原文で確かめます。</p>
+      <span class="more">事例を見る<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span>
     </a></li>
-    <li><a class="card card--case" href="/agent-cases/event-matching-watch" data-top="case_event-matching-watch">
-      <span class="face"><img src="/assets/top/cases/case-07.jpg" alt="" loading="lazy"><b>当社｜営業</b></span>
-      <div class="card__body">
-        <p class="card__meta"><span class="tag">社内で動くAIエージェント</span></p>
-        <h3>商談会の依頼の返事を、AIが毎日2回見回ります</h3>
-        <p class="card__line">前回と比べ、変わった所だけを短く知らせます。</p>
-        <span class="more"><i><svg viewBox="0 0 8 8" aria-hidden="true"><path d="M2.5 1l3 3-3 3"/></svg></i>事例を見る</span>
-      </div>
+    <li><a class="case" href="/agent-cases/event-matching-watch" data-top="case_event-matching-watch">
+      <span class="case__face"><img src="/assets/top/cases/case-07.jpg" alt="" loading="lazy"><b>当社｜営業</b></span>
+      <p class="case__kind">社内で動くAIエージェント</p>
+      <h3>商談会の依頼の返事を、AIが毎日2回見回ります</h3>
+      <p class="case__line">前回と比べ、変わった所だけを短く知らせます。</p>
+      <span class="more">事例を見る<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span>
     </a></li>
-    <li><a class="card card--case" href="/agent-cases/billing-watch" data-top="case_billing-watch">
-      <span class="face"><img src="/assets/top/cases/case-08.jpg" alt="" loading="lazy"><b>当社｜経営</b></span>
-      <div class="card__body">
-        <p class="card__meta"><span class="tag">社内で動くAIエージェント</span></p>
-        <h3>想定外の課金を、AIが週2回見張ります</h3>
-        <p class="card__line">警告のときだけ、代表のスマホに知らせます。</p>
-        <span class="more"><i><svg viewBox="0 0 8 8" aria-hidden="true"><path d="M2.5 1l3 3-3 3"/></svg></i>事例を見る</span>
-      </div>
+    <li><a class="case" href="/agent-cases/billing-watch" data-top="case_billing-watch">
+      <span class="case__face"><img src="/assets/top/cases/case-08.jpg" alt="" loading="lazy"><b>当社｜経営</b></span>
+      <p class="case__kind">社内で動くAIエージェント</p>
+      <h3>想定外の課金を、AIが週2回見張ります</h3>
+      <p class="case__line">警告のときだけ、代表のスマホに知らせます。</p>
+      <span class="more">事例を見る<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span>
     </a></li>
-    <li><a class="card card--case" href="/agent-cases/site-improvement-cycle" data-top="case_site-improvement-cycle">
-      <span class="face"><img src="/assets/top/cases/case-09.jpg" alt="" loading="lazy"><b>当社｜発信</b></span>
-      <div class="card__body">
-        <p class="card__meta"><span class="tag">社内で動くAIエージェント</span></p>
-        <h3>サイトの数字を見て、AIが毎週1つ直します</h3>
-        <p class="card__line">直して本番で確かめ、結果を見る日を台帳に書きます。</p>
-        <span class="more"><i><svg viewBox="0 0 8 8" aria-hidden="true"><path d="M2.5 1l3 3-3 3"/></svg></i>事例を見る</span>
-      </div>
+    <li><a class="case" href="/agent-cases/site-improvement-cycle" data-top="case_site-improvement-cycle">
+      <span class="case__face"><img src="/assets/top/cases/case-09.jpg" alt="" loading="lazy"><b>当社｜発信</b></span>
+      <p class="case__kind">社内で動くAIエージェント</p>
+      <h3>サイトの数字を見て、AIが毎週1つ直します</h3>
+      <p class="case__line">直して本番で確かめ、結果を見る日を台帳に書きます。</p>
+      <span class="more">事例を見る<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span>
     </a></li>
-    <li><a class="card card--case" href="/agent-cases/company-memory-dream" data-top="case_company-memory-dream">
-      <span class="face"><img src="/assets/top/cases/case-10.jpg" alt="" loading="lazy"><b>当社｜全社</b></span>
-      <div class="card__body">
-        <p class="card__meta"><span class="tag">社内で動くAIエージェント</span></p>
-        <h3>会社の記憶を、AIが毎晩2時に整理します</h3>
-        <p class="card__line">朝の報告や役割ごとのAIは、整理された記憶を読んで動きます。</p>
-        <span class="more"><i><svg viewBox="0 0 8 8" aria-hidden="true"><path d="M2.5 1l3 3-3 3"/></svg></i>事例を見る</span>
-      </div>
+    <li><a class="case" href="/agent-cases/company-memory-dream" data-top="case_company-memory-dream">
+      <span class="case__face"><img src="/assets/top/cases/case-10.jpg" alt="" loading="lazy"><b>当社｜全社</b></span>
+      <p class="case__kind">社内で動くAIエージェント</p>
+      <h3>会社の記憶を、AIが毎晩2時に整理します</h3>
+      <p class="case__line">朝の報告や役割ごとのAIは、整理された記憶を読んで動きます。</p>
+      <span class="more">事例を見る<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span>
     </a></li>
-    <li><a class="card card--case" href="/agent-cases/grok-sales-replies" data-top="case_grok-sales-replies">
-      <span class="face"><img src="/assets/top/cases/case-11.jpg" alt="" loading="lazy"><b>当社｜営業</b></span>
-      <div class="card__body">
-        <p class="card__meta"><span class="tag">社内で動くAIエージェント</span></p>
-        <h3>返事と面談の準備を、AIが平日に3回拾います</h3>
-        <p class="card__line">返信は下書きまで作り、代表には承認と日程だけを送ります。</p>
-        <span class="more"><i><svg viewBox="0 0 8 8" aria-hidden="true"><path d="M2.5 1l3 3-3 3"/></svg></i>事例を見る</span>
-      </div>
+    <li><a class="case" href="/agent-cases/grok-sales-replies" data-top="case_grok-sales-replies">
+      <span class="case__face"><img src="/assets/top/cases/case-11.jpg" alt="" loading="lazy"><b>当社｜営業</b></span>
+      <p class="case__kind">社内で動くAIエージェント</p>
+      <h3>返事と面談の準備を、AIが平日に3回拾います</h3>
+      <p class="case__line">返信は下書きまで作り、代表には承認と日程だけを送ります。</p>
+      <span class="more">事例を見る<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span>
     </a></li>
-    <li><a class="card card--case" href="/agent-cases/superset-worker-ops" data-top="case_superset-worker-ops">
-      <span class="face"><img src="/assets/top/cases/case-12.jpg" alt="" loading="lazy"><b>当社｜全社</b></span>
-      <div class="card__body">
-        <p class="card__meta"><span class="tag">社内で動くAIエージェント</span></p>
-        <h3>AIの作業者に仕事を出し、合格の条件で点検します</h3>
-        <p class="card__line">代表には束ねて1回だけ報告します。</p>
-        <span class="more"><i><svg viewBox="0 0 8 8" aria-hidden="true"><path d="M2.5 1l3 3-3 3"/></svg></i>事例を見る</span>
-      </div>
+    <li><a class="case" href="/agent-cases/superset-worker-ops" data-top="case_superset-worker-ops">
+      <span class="case__face"><img src="/assets/top/cases/case-12.jpg" alt="" loading="lazy"><b>当社｜全社</b></span>
+      <p class="case__kind">社内で動くAIエージェント</p>
+      <h3>AIの作業者に仕事を出し、合格の条件で点検します</h3>
+      <p class="case__line">代表には束ねて1回だけ報告します。</p>
+      <span class="more">事例を見る<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span>
     </a></li>
-    <li><a class="card card--case" href="/agent-cases/product-companymap" data-top="case_product-companymap">
-      <span class="face"><img src="/assets/top/cases/case-13.jpg" alt="" loading="lazy"><b>当社の製品｜業務の見直し</b></span>
-      <div class="card__body">
-        <p class="card__meta"><span class="tag">自社のAI製品</span></p>
-        <h3>聞き取りと資料から、AIが業務図を作ります</h3>
-        <p class="card__line">1人15分ほどの質問と手元の資料から、業務図の下書きを作ります。</p>
-        <span class="more"><i><svg viewBox="0 0 8 8" aria-hidden="true"><path d="M2.5 1l3 3-3 3"/></svg></i>事例を見る</span>
-      </div>
+    <li><a class="case" href="/agent-cases/product-companymap" data-top="case_product-companymap">
+      <span class="case__face"><img src="/assets/top/cases/case-13.jpg" alt="" loading="lazy"><b>当社の製品｜業務の見直し</b></span>
+      <p class="case__kind">自社のAI製品</p>
+      <h3>聞き取りと資料から、AIが業務図を作ります</h3>
+      <p class="case__line">1人15分ほどの質問と手元の資料から、業務図の下書きを作ります。</p>
+      <span class="more">事例を見る<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span>
     </a></li>
-    <li><a class="card card--case" href="/agent-cases/product-quote-draft" data-top="case_product-quote-draft">
-      <span class="face"><img src="/assets/top/cases/case-14.jpg" alt="" loading="lazy"><b>当社の製品｜営業</b></span>
-      <div class="card__body">
-        <p class="card__meta"><span class="tag">自社のAI製品</span></p>
-        <h3>届いた見積の依頼を、AIが品番の下書きにします</h3>
-        <p class="card__line">FAX・メール・Excel の依頼を、品目表と単価表から下書きにします。</p>
-        <span class="more"><i><svg viewBox="0 0 8 8" aria-hidden="true"><path d="M2.5 1l3 3-3 3"/></svg></i>事例を見る</span>
-      </div>
+    <li><a class="case" href="/agent-cases/product-quote-draft" data-top="case_product-quote-draft">
+      <span class="case__face"><img src="/assets/top/cases/case-14.jpg" alt="" loading="lazy"><b>当社の製品｜営業</b></span>
+      <p class="case__kind">自社のAI製品</p>
+      <h3>届いた見積の依頼を、AIが品番の下書きにします</h3>
+      <p class="case__line">FAX・メール・Excel の依頼を、品目表と単価表から下書きにします。</p>
+      <span class="more">事例を見る<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span>
     </a></li>
   </ul>
-  <p class="wrap rail-more"><a class="btn" href="/agent-cases/" data-top="cases_all">事例一覧へ<svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></p>
+  <p class="wrap rail-more"><a class="btn btn--line" href="/agent-cases/" data-top="cases_all">事例一覧へ<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a></p>
 </section>
 
-<section class="news" id="news">
+<section class="sec sec--ground sec--rule news" id="news">
   <div class="wrap rail-hd">
     <h2 class="h2">ニュース</h2>
     <div class="rail-nav" data-rail-nav>
-      <button type="button" data-dir="-1" aria-label="ニュースを前へ送る"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6l6 6"/></svg></button>
-      <button type="button" data-dir="1" aria-label="ニュースを次へ送る"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6l-6 6"/></svg></button>
+      <button type="button" data-dir="-1" aria-label="ニュースを前へ送る"><svg viewBox="0 0 20 20"><path d="M12 4.5 6.5 10l5.5 5.5"/></svg></button>
+      <button type="button" data-dir="1" aria-label="ニュースを次へ送る"><svg viewBox="0 0 20 20"><path d="M8 4.5 13.5 10 8 15.5"/></svg></button>
     </div>
   </div>
   <ul class="rail" data-rail>
-    <li><a class="card" href="/news/013" data-top="news_013">
+    <li><a class="ncard" href="/news/013" data-top="news_013">
       <img src="/assets/top/nvidia-inception.png" alt="NVIDIA Inception Program に採択" loading="lazy">
-      <div class="card__body">
-        <p class="card__meta"><time datetime="2026-10-27">2026.10.27</time><span class="tag">プレスリリース</span></p>
+      <div class="ncard__body">
+        <p class="ncard__meta"><time datetime="2026-10-27">2026.10.27</time><span class="tag">プレスリリース</span></p>
         <h3>NVIDIA 社のスタートアップ支援「NVIDIA Inception Program」に採択されました</h3>
-        <span class="more"><i><svg viewBox="0 0 8 8" aria-hidden="true"><path d="M2.5 1l3 3-3 3"/></svg></i>さらに詳しく</span>
+        <span class="more">さらに詳しく<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span>
       </div>
     </a></li>
-    <li><a class="card" href="https://denmitsu.techworker.co.jp/news/start-denmitsu/" data-top="news_start-denmitsu">
+    <li><a class="ncard" href="https://denmitsu.techworker.co.jp/news/start-denmitsu/" data-top="news_start-denmitsu">
       <img src="/assets/top/start-denmitsu.png" alt="電材卸向け デンミツAI 提供開始" loading="lazy">
-      <div class="card__body">
-        <p class="card__meta"><time datetime="2026-10-13">2026.10.13</time><span class="tag">お知らせ</span></p>
+      <div class="ncard__body">
+        <p class="ncard__meta"><time datetime="2026-10-13">2026.10.13</time><span class="tag">お知らせ</span></p>
         <h3>電材・電線卸向けの見積の下書き「デンミツAI」の受付を始めました</h3>
-        <span class="more"><i><svg viewBox="0 0 8 8" aria-hidden="true"><path d="M2.5 1l3 3-3 3"/></svg></i>さらに詳しく</span>
+        <span class="more">さらに詳しく<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span>
       </div>
     </a></li>
-    <li><a class="card" href="/news/012" data-top="news_012">
+    <li><a class="ncard" href="/news/012" data-top="news_012">
       <img src="/assets/top/cloudflare-for-startups.png" alt="Cloudflare for Startups に採択" loading="lazy">
-      <div class="card__body">
-        <p class="card__meta"><time datetime="2026-10-08">2026.10.08</time><span class="tag">プレスリリース</span></p>
+      <div class="ncard__body">
+        <p class="ncard__meta"><time datetime="2026-10-08">2026.10.08</time><span class="tag">プレスリリース</span></p>
         <h3>Cloudflare 社のスタートアップ支援プログラム「Cloudflare for Startups」に採択されました</h3>
-        <span class="more"><i><svg viewBox="0 0 8 8" aria-hidden="true"><path d="M2.5 1l3 3-3 3"/></svg></i>さらに詳しく</span>
+        <span class="more">さらに詳しく<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span>
       </div>
     </a></li>
-    <li><a class="card" href="/news/011" data-top="news_011">
+    <li><a class="ncard" href="/news/011" data-top="news_011">
       <img src="/assets/top/claude-for-startups.png" alt="Claude for Startups に採択" loading="lazy">
-      <div class="card__body">
-        <p class="card__meta"><time datetime="2026-10-07">2026.10.07</time><span class="tag">プレスリリース</span></p>
+      <div class="ncard__body">
+        <p class="ncard__meta"><time datetime="2026-10-07">2026.10.07</time><span class="tag">プレスリリース</span></p>
         <h3>Anthropic 社のスタートアップ支援プログラム「Claude for Startups」に採択されました</h3>
-        <span class="more"><i><svg viewBox="0 0 8 8" aria-hidden="true"><path d="M2.5 1l3 3-3 3"/></svg></i>さらに詳しく</span>
+        <span class="more">さらに詳しく<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span>
       </div>
     </a></li>
   </ul>
-  <p class="wrap rail-more"><a class="btn" href="/news" data-top="news_all">ニュース一覧へ<svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a></p>
+  <p class="wrap rail-more"><a class="btn btn--line" href="/news" data-top="news_all">ニュース一覧へ<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a></p>
 </section>
 
 <section class="cta" id="contact">
-  <picture class="screen" aria-hidden="true">
-    <source media="(max-width: 760px)" srcset="/assets/top/cta-map-sp.jpg">
-    <img src="/assets/top/cta-map.jpg" alt="" loading="lazy">
-  </picture>
+  <div class="wall wall--still" aria-hidden="true"><div class="wall__cam"><div class="wall__plane"><div class="wall__col"><img src="/assets/top/wall/wf-keiyaku.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/c-excel.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/ocr-fax.jpg" alt="" width="560" height="477" loading="lazy"><img src="/assets/top/wall/berg.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/c-report.jpg" alt="" width="560" height="351" loading="lazy"><img src="/assets/top/wall/app-s2-hero.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/s04.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/injection.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-keiyaku.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/c-excel.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/ocr-fax.jpg" alt="" width="560" height="477" loading="lazy"><img src="/assets/top/wall/berg.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/c-report.jpg" alt="" width="560" height="351" loading="lazy"><img src="/assets/top/wall/app-s2-hero.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/s04.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/injection.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-keiyaku.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/c-excel.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/ocr-fax.jpg" alt="" width="560" height="477" loading="lazy"><img src="/assets/top/wall/berg.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/c-report.jpg" alt="" width="560" height="351" loading="lazy"><img src="/assets/top/wall/app-s2-hero.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/s04.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/injection.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-keiyaku.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/c-excel.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/ocr-fax.jpg" alt="" width="560" height="477" loading="lazy"><img src="/assets/top/wall/berg.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/c-report.jpg" alt="" width="560" height="351" loading="lazy"><img src="/assets/top/wall/app-s2-hero.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/s04.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/injection.jpg" alt="" width="560" height="315" loading="lazy"></div><div class="wall__col"><img src="/assets/top/wall/wf-mitsumori.jpg" alt="" width="560" height="279" loading="lazy"><img src="/assets/top/wall/cover.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-kyogi.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/c-agent.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/wf-juchu-shori.jpg" alt="" width="560" height="279" loading="lazy"><img src="/assets/top/wall/neck.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-tehai.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/s50.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-mitsumori.jpg" alt="" width="560" height="279" loading="lazy"><img src="/assets/top/wall/cover.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-kyogi.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/c-agent.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/wf-juchu-shori.jpg" alt="" width="560" height="279" loading="lazy"><img src="/assets/top/wall/neck.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-tehai.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/s50.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-mitsumori.jpg" alt="" width="560" height="279" loading="lazy"><img src="/assets/top/wall/cover.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-kyogi.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/c-agent.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/wf-juchu-shori.jpg" alt="" width="560" height="279" loading="lazy"><img src="/assets/top/wall/neck.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-tehai.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/s50.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-mitsumori.jpg" alt="" width="560" height="279" loading="lazy"><img src="/assets/top/wall/cover.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-kyogi.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/c-agent.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/wf-juchu-shori.jpg" alt="" width="560" height="279" loading="lazy"><img src="/assets/top/wall/neck.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-tehai.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/s50.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-mitsumori.jpg" alt="" width="560" height="279" loading="lazy"><img src="/assets/top/wall/cover.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-kyogi.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/c-agent.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/wf-juchu-shori.jpg" alt="" width="560" height="279" loading="lazy"><img src="/assets/top/wall/neck.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-tehai.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/s50.jpg" alt="" width="560" height="315" loading="lazy"></div><div class="wall__col"><img src="/assets/top/wall/berg.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/c-report.jpg" alt="" width="560" height="351" loading="lazy"><img src="/assets/top/wall/app-s2-hero.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/s04.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/injection.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-keiyaku.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/c-excel.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/ocr-fax.jpg" alt="" width="560" height="477" loading="lazy"><img src="/assets/top/wall/berg.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/c-report.jpg" alt="" width="560" height="351" loading="lazy"><img src="/assets/top/wall/app-s2-hero.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/s04.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/injection.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-keiyaku.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/c-excel.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/ocr-fax.jpg" alt="" width="560" height="477" loading="lazy"><img src="/assets/top/wall/berg.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/c-report.jpg" alt="" width="560" height="351" loading="lazy"><img src="/assets/top/wall/app-s2-hero.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/s04.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/injection.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-keiyaku.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/c-excel.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/ocr-fax.jpg" alt="" width="560" height="477" loading="lazy"><img src="/assets/top/wall/berg.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/c-report.jpg" alt="" width="560" height="351" loading="lazy"><img src="/assets/top/wall/app-s2-hero.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/s04.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/injection.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-keiyaku.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/c-excel.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/ocr-fax.jpg" alt="" width="560" height="477" loading="lazy"></div><div class="wall__col"><img src="/assets/top/wall/wf-juchu-shori.jpg" alt="" width="560" height="279" loading="lazy"><img src="/assets/top/wall/neck.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-tehai.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/s50.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-mitsumori.jpg" alt="" width="560" height="279" loading="lazy"><img src="/assets/top/wall/cover.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-kyogi.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/c-agent.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/wf-juchu-shori.jpg" alt="" width="560" height="279" loading="lazy"><img src="/assets/top/wall/neck.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-tehai.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/s50.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-mitsumori.jpg" alt="" width="560" height="279" loading="lazy"><img src="/assets/top/wall/cover.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-kyogi.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/c-agent.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/wf-juchu-shori.jpg" alt="" width="560" height="279" loading="lazy"><img src="/assets/top/wall/neck.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-tehai.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/s50.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-mitsumori.jpg" alt="" width="560" height="279" loading="lazy"><img src="/assets/top/wall/cover.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-kyogi.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/c-agent.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/wf-juchu-shori.jpg" alt="" width="560" height="279" loading="lazy"><img src="/assets/top/wall/neck.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-tehai.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/s50.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-mitsumori.jpg" alt="" width="560" height="279" loading="lazy"><img src="/assets/top/wall/cover.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-kyogi.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/c-agent.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/wf-juchu-shori.jpg" alt="" width="560" height="279" loading="lazy"><img src="/assets/top/wall/neck.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-tehai.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/s50.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-mitsumori.jpg" alt="" width="560" height="279" loading="lazy"><img src="/assets/top/wall/cover.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-kyogi.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/c-agent.jpg" alt="" width="560" height="350" loading="lazy"></div><div class="wall__col"><img src="/assets/top/wall/s04.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/injection.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-keiyaku.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/c-excel.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/ocr-fax.jpg" alt="" width="560" height="477" loading="lazy"><img src="/assets/top/wall/berg.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/c-report.jpg" alt="" width="560" height="351" loading="lazy"><img src="/assets/top/wall/app-s2-hero.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/s04.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/injection.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-keiyaku.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/c-excel.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/ocr-fax.jpg" alt="" width="560" height="477" loading="lazy"><img src="/assets/top/wall/berg.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/c-report.jpg" alt="" width="560" height="351" loading="lazy"><img src="/assets/top/wall/app-s2-hero.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/s04.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/injection.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-keiyaku.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/c-excel.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/ocr-fax.jpg" alt="" width="560" height="477" loading="lazy"><img src="/assets/top/wall/berg.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/c-report.jpg" alt="" width="560" height="351" loading="lazy"><img src="/assets/top/wall/app-s2-hero.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/s04.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/injection.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-keiyaku.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/c-excel.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/ocr-fax.jpg" alt="" width="560" height="477" loading="lazy"><img src="/assets/top/wall/berg.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/c-report.jpg" alt="" width="560" height="351" loading="lazy"><img src="/assets/top/wall/app-s2-hero.jpg" alt="" width="560" height="350" loading="lazy"></div><div class="wall__col"><img src="/assets/top/wall/wf-kyogi.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/c-agent.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/wf-juchu-shori.jpg" alt="" width="560" height="279" loading="lazy"><img src="/assets/top/wall/neck.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-tehai.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/s50.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-mitsumori.jpg" alt="" width="560" height="279" loading="lazy"><img src="/assets/top/wall/cover.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-kyogi.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/c-agent.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/wf-juchu-shori.jpg" alt="" width="560" height="279" loading="lazy"><img src="/assets/top/wall/neck.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-tehai.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/s50.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-mitsumori.jpg" alt="" width="560" height="279" loading="lazy"><img src="/assets/top/wall/cover.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-kyogi.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/c-agent.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/wf-juchu-shori.jpg" alt="" width="560" height="279" loading="lazy"><img src="/assets/top/wall/neck.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-tehai.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/s50.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-mitsumori.jpg" alt="" width="560" height="279" loading="lazy"><img src="/assets/top/wall/cover.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-kyogi.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/c-agent.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/wf-juchu-shori.jpg" alt="" width="560" height="279" loading="lazy"><img src="/assets/top/wall/neck.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-tehai.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/s50.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-mitsumori.jpg" alt="" width="560" height="279" loading="lazy"><img src="/assets/top/wall/cover.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-kyogi.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/c-agent.jpg" alt="" width="560" height="350" loading="lazy"><img src="/assets/top/wall/wf-juchu-shori.jpg" alt="" width="560" height="279" loading="lazy"><img src="/assets/top/wall/neck.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-tehai.jpg" alt="" width="560" height="280" loading="lazy"><img src="/assets/top/wall/s50.jpg" alt="" width="560" height="315" loading="lazy"><img src="/assets/top/wall/wf-mitsumori.jpg" alt="" width="560" height="279" loading="lazy"><img src="/assets/top/wall/cover.jpg" alt="" width="560" height="315" loading="lazy"></div></div></div><div class="wall__veil"></div></div>
   <div class="wrap cta__in">
-    <p>AIエージェント時代の<br class="sp">インフラを整える</p>
-    <a class="btn" href="/contact" data-top="cta_contact">お問い合わせ<svg viewBox="0 0 46 8" aria-hidden="true"><path d="M0 7.5h45L38 .5"/></svg></a>
+    <div>
+      <p class="cta__say">AIエージェント時代の<br>インフラを整える</p>
+      <a class="btn" href="/contact" data-top="cta_contact">お問い合わせ<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a>
+    </div>
   </div>
 </section>
 </main>
@@ -816,6 +855,7 @@ html { scroll-padding-top: 88px; } /* #concept などへ飛んだとき、固定
   <div class="wrap">
     <div class="ft__in">
       <div>
+        <p class="ft__logo">Tech<i>Worker</i></p>
         <p class="ft__name">株式会社TechWorker</p>
         <p class="ft__addr">〒169-0051 東京都新宿区西早稲田一丁目22番3号<br>早稲田アントレプレナーシップセンター</p>
       </div>
@@ -835,21 +875,19 @@ html { scroll-padding-top: 88px; } /* #concept などへ飛んだとき、固定
 </footer>
 
 <script>
-// スマホの行き先：右上の釦で開け閉めする。行き先を押したら閉じる
+// スマホの行き先：右上の釦で開け閉めする
 (() => {
   const hd = document.querySelector('.hd'), btn = hd.querySelector('.menu');
   const set = open => { hd.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く'); };
   btn.addEventListener('click', () => set(!hd.classList.contains('is-open')));
   hd.querySelector('nav').addEventListener('click', e => { if (e.target.closest('a')) set(false); });
-  const onScroll = () => hd.classList.toggle('is-scrolled', scrollY > 40);
-  addEventListener('scroll', onScroll, { passive: true }); onScroll();
 })();
-// 横に送る列：左右の釦でカード1枚ぶん送る。端に着いたら、その向きの釦を薄くする
+// 横に送る列：左右の釦で1枚ぶん送る。端に着いたら、その向きの釦を薄くする
 document.querySelectorAll('[data-rail]').forEach(rail => {
   const nav = rail.parentElement.querySelector('[data-rail-nav]');
   if (!nav) return;
   const [prev, next] = nav.querySelectorAll('button');
-  const step = () => rail.querySelector('li').getBoundingClientRect().width + 24;
+  const step = () => rail.querySelector('li').getBoundingClientRect().width + parseFloat(getComputedStyle(rail).columnGap);
   const sync = () => { prev.disabled = rail.scrollLeft < 4; next.disabled = rail.scrollLeft + rail.clientWidth > rail.scrollWidth - 4; };
   nav.addEventListener('click', e => { const b = e.target.closest('button'); if (b) rail.scrollBy({ left: step() * b.dataset.dir, behavior: 'smooth' }); });
   rail.addEventListener('scroll', sync, { passive: true });
