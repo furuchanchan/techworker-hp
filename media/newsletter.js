@@ -28,9 +28,9 @@
     ".nl-art{max-width:var(--measure,720px);margin:40px auto 0}" +
     ".nl-hubwrap{max-width:1100px;margin:56px auto 0;padding:0 48px}" +
     ".nl-k{font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--electric,#005EFF)}" +
-    ".nl-h{font-weight:700;font-size:clamp(21px,2.3vw,27px);letter-spacing:-.02em;line-height:1.45;margin-top:8px}" +
+    ".nl-h{font-weight:700;font-size:clamp(21px,2.3vw,27px);letter-spacing:.02em;line-height:1.45;margin-top:8px}" +
     ".nl-lead{font-size:14.5px;line-height:1.85;color:var(--slate,#5A6677);margin-top:8px;max-width:44em}" +
-    ".nl-compact .nl-h{font-size:17px;margin-top:0;letter-spacing:-.01em}" +
+    ".nl-compact .nl-h{font-size:17px;margin-top:0;letter-spacing:.02em}" +
     ".nl-compact .nl-lead{font-size:13.5px;margin-top:4px}" +
     ".nl-ts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:22px;border:0;padding:0}" +
     ".nl-t{display:flex;gap:12px;align-items:flex-start;padding:16px 18px;border:1px solid var(--line-2,rgba(13,17,23,.18));border-radius:12px;background:#fff;cursor:pointer;transition:border-color .15s,background .15s}" +
@@ -46,7 +46,7 @@
     ".nl-compact .nl-t{padding:7px 14px 7px 10px;border-radius:999px;align-items:center;gap:8px}" +
     ".nl-compact .nl-t input{flex-basis:16px;width:16px;height:16px;margin:0;border-radius:5px}" +
     ".nl-compact .nl-t input:checked::after{width:8px;height:5px}" +
-    ".nl-compact .nl-tn{font-size:13.5px;font-weight:600}" +
+    ".nl-compact .nl-tn{font-size:13.5px;font-weight:700}" +
     ".nl-compact .nl-td{display:none}" +
     ".nl-row{display:flex;gap:10px;margin-top:18px;max-width:560px}" +
     ".nl-in{flex:1;min-width:0;font:inherit;font-size:15px;padding:13px 14px;border:1px solid var(--line-2,rgba(13,17,23,.18));border-radius:8px;background:#fff;color:inherit}" +
@@ -56,7 +56,7 @@
     ".nl-btn[disabled]{opacity:.6;cursor:default}" +
     ".nl-note{font-size:12px;line-height:1.8;color:var(--slate,#5A6677);margin-top:10px}" +
     ".nl-note a{color:inherit}" +
-    ".nl-msg{font-size:13.5px;font-weight:600;color:#C0362C;margin-top:6px}" +
+    ".nl-msg{font-size:13.5px;font-weight:700;color:#C0362C;margin-top:6px}" +
     ".nl-msg:empty{display:none}" +
     ".nl-ok{margin-top:18px;padding:16px 18px;border-radius:12px;background:color-mix(in srgb,#0E7C66 8%,#fff);border:1px solid color-mix(in srgb,#0E7C66 35%,#fff);font-size:14.5px;line-height:1.8}" +
     ".nl-ok b{display:block;font-size:15.5px}" +

@@ -37,20 +37,20 @@
 /* Contact: booking band, form, side notes. The form itself is unchanged; only its look follows the shared family */
 .ct { padding: 88px 0 110px; }
 .book { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: center; padding: 36px 40px; background: var(--paper); }
-.book .bk-ey { font-size: 12px; font-weight: 700; letter-spacing: .12em; color: var(--gold-a); }
-.book h2 { margin-top: 8px; font: 400 28px/1.45 var(--f-min); letter-spacing: .06em; }
+.book .bk-ey { font-size: 12px; font-weight: 700; letter-spacing: .12em; color: var(--blue); }
+.book h2 { margin-top: 8px; font: 700 28px/1.45 var(--f-min); letter-spacing: .02em; font-feature-settings: "palt"; }
 .book p { margin-top: 10px; font-size: 14px; color: var(--sub); max-width: 56ch; }
 .proof { margin-top: 16px; font-size: 13px; color: var(--sub); }
 .proof strong { color: var(--ink); }
-.book-or { margin: 56px 0 40px; padding-top: 40px; border-top: 1px solid var(--line); font: 400 22px/1.5 var(--f-min); letter-spacing: .06em; }
+.book-or { margin: 56px 0 40px; padding-top: 40px; border-top: 1px solid var(--line); font: 700 22px/1.5 var(--f-min); letter-spacing: .02em; font-feature-settings: "palt"; }
 .contact-layout { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 64px; align-items: start; }
 .form-group { margin-bottom: 26px; }
 .form-group label { display: block; font-size: 14px; font-weight: 700; margin-bottom: 9px; }
-.form-group label .required { color: var(--gold-a); font-size: 12px; font-weight: 700; margin-left: 8px; }
+.form-group label .required { color: var(--blue); font-size: 12px; font-weight: 700; margin-left: 8px; }
 .form-group label .optional { color: var(--mute); font-size: 12px; font-weight: 500; margin-left: 8px; }
 .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 14px 16px; border: 1px solid var(--line); border-radius: 0; background: var(--paper); color: var(--ink); font: 500 15px/1.6 var(--f-body); letter-spacing: .04em; transition: border-color .2s, box-shadow .2s; }
 .form-group input:hover, .form-group select:hover, .form-group textarea:hover { border-color: var(--mute); }
-.form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--gold-a); box-shadow: 0 0 0 3px rgba(164, 121, 72, .16); }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(164, 121, 72, .16); }
 .form-group input::placeholder, .form-group textarea::placeholder { color: #9A9EA5; }
 .form-group textarea { resize: vertical; min-height: 140px; }
 .form-group select { appearance: none; cursor: pointer; }
@@ -62,27 +62,27 @@
 .form-group.invalid .field-error { display: block; }
 .reassure { margin: 8px 0 22px; border-bottom: 1px solid var(--line); }
 .reassure li { display: flex; gap: 10px; padding: 10px 2px; border-top: 1px solid var(--line); font-size: 13.5px; line-height: 1.7; color: var(--sub); }
-.reassure svg, .side svg { flex: none; width: 13px; height: 13px; margin-top: 5px; color: var(--gold-a); }
+.reassure svg, .side svg { flex: none; width: 13px; height: 13px; margin-top: 5px; color: var(--blue); }
 .reassure strong { color: var(--ink); }
 .form-checkbox { display: flex; align-items: flex-start; gap: 11px; margin: 6px 0 26px; }
-.form-checkbox input[type="checkbox"] { width: 18px; height: 18px; margin-top: 4px; accent-color: var(--gold-a); flex-shrink: 0; }
+.form-checkbox input[type="checkbox"] { width: 18px; height: 18px; margin-top: 4px; accent-color: var(--blue); flex-shrink: 0; }
 .form-checkbox label { font-size: 13.5px; color: var(--sub); line-height: 1.7; }
 .form-checkbox label a { color: var(--ink); text-decoration: underline 1px; text-underline-offset: 4px; font-weight: 700; }
-.btn-submit { display: inline-flex; align-items: center; justify-content: center; gap: 12px; width: 100%; min-height: 56px; border: 0; background: var(--gold); color: var(--paper); font: 700 15px/1 var(--f-body); letter-spacing: .14em; cursor: pointer; transition: filter .2s; }
+.btn-submit { display: inline-flex; align-items: center; justify-content: center; gap: 12px; width: 100%; min-height: 56px; border: 0; background: var(--blue); color: var(--paper); font: 700 15px/1 var(--f-body); letter-spacing: .14em; cursor: pointer; transition: filter .2s; }
 .btn-submit:hover { filter: brightness(1.08); }
 .btn-submit svg { width: 18px; height: 18px; }
 .thank-you { display: none; text-align: center; padding: 72px 40px; background: var(--paper); }
 .thank-you.show { display: block; }
 .thank-you .check-icon { display: inline-flex; margin-bottom: 20px; }
-.thank-you .check-icon svg { width: 34px; height: 34px; color: var(--gold-a); }
-.thank-you h2 { font: 400 28px/1.5 var(--f-min); letter-spacing: .06em; margin-bottom: 14px; }
+.thank-you .check-icon svg { width: 34px; height: 34px; color: var(--blue); }
+.thank-you h2 { font: 700 28px/1.5 var(--f-min); letter-spacing: .02em; margin-bottom: 14px; font-feature-settings: "palt"; }
 .thank-you p { font-size: 15px; color: var(--sub); line-height: 1.9; margin: 0 auto 32px; max-width: 46ch; }
-.thank-you .dl-btn { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 28px; background: var(--gold); color: var(--paper); font: 700 14px/1 var(--f-body); letter-spacing: .1em; margin-bottom: 8px; }
+.thank-you .dl-btn { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 28px; background: var(--blue); color: var(--paper); font: 700 14px/1 var(--f-body); letter-spacing: .1em; margin-bottom: 8px; }
 .thank-you .back-link { display: block; margin-top: 18px; font-size: 13px; font-weight: 700; text-decoration: underline 1px; text-underline-offset: 4px; }
 .side { display: grid; gap: 20px; }
 .sidebar-card { padding: 30px 30px 32px; background: var(--paper); }
-.sidebar-card .rb-kind { display: block; font-size: 12px; font-weight: 700; letter-spacing: .12em; color: var(--gold-a); }
-.sidebar-card h3 { margin-top: 6px; font: 400 21px/1.5 var(--f-min); letter-spacing: .06em; }
+.sidebar-card .rb-kind { display: block; font-size: 12px; font-weight: 700; letter-spacing: .12em; color: var(--blue); }
+.sidebar-card h3 { margin-top: 6px; font: 700 21px/1.5 var(--f-min); letter-spacing: .02em; font-feature-settings: "palt"; }
 .sidebar-card p { margin-top: 12px; font-size: 13.5px; line-height: 1.85; color: var(--sub); }
 .sidebar-card ul, .wp-contents { margin-top: 16px; border-bottom: 1px solid var(--line); }
 .sidebar-card li, .wp-item { display: flex; gap: 10px; padding: 9px 2px; border-top: 1px solid var(--line); font-size: 13.5px; line-height: 1.7; }

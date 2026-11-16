@@ -40,9 +40,9 @@
 .person__photo { aspect-ratio: 1 / 1; overflow: hidden; background: var(--ground); }
 .person__photo img { width: 100%; height: 100%; object-fit: cover; }
 .person__role { font-size: 13px; color: var(--sub); line-height: 1.8; }
-.person h3 { margin-top: 10px; font: 400 32px/1.4 var(--f-min); letter-spacing: .1em; }
+.person h3 { margin-top: 10px; font: 700 32px/1.4 var(--f-min); letter-spacing: .02em; font-feature-settings: "palt"; }
 .person__role a { display: inline-flex; align-items: center; gap: 4px; }
-.person__role a:hover { color: var(--gold-a); }
+.person__role a:hover { color: var(--blue); }
 .person blockquote { margin: 28px 0 0; font-size: 15px; line-height: 2.05; color: var(--ink); }
 .person blockquote strong { font-weight: 700; }
 .access { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 56px; align-items: start; }
@@ -60,11 +60,11 @@
 }
 .prod { border-bottom: 1px solid var(--line); }
 .prod li { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 24px; padding: 28px 4px; border-top: 1px solid var(--line); }
-.prod h3 { font: 400 24px/1.4 var(--f-min); }
+.prod h3 { font: 700 24px/1.4 var(--f-min); font-feature-settings: "palt"; }
 .prod p { color: var(--sub); }
 .prod .prod__links { display: flex; flex-wrap: wrap; gap: 8px 28px; margin-top: 12px; font-size: 14px; font-weight: 700; color: var(--ink); }
 .prod .prod__links a { text-decoration: underline 1px; text-underline-offset: 5px; }
-.prod .prod__links a:hover { color: var(--gold-a); }
+.prod .prod__links a:hover { color: var(--blue); }
 @media (max-width: 760px) {
   .prod li { grid-template-columns: 1fr; gap: 8px; padding: 22px 2px; }
 }
