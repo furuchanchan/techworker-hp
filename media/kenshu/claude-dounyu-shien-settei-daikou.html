@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js" data-media="kenshu">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}if(location.hostname==='techworker.co.jp')gtag('config', 'G-3V34NWXVCJ');
+</script>
+<script src="/assets/tw-track.js" defer></script>
+<script src="/assets/tw-event.js" defer></script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claudeの導入支援・設定代行は何を頼めるか｜自社でやる設定と外へ出す範囲の分け方【2026年11月】 — TechWorker</title>
+<meta name="description" content="Claudeの導入支援・設定代行で頼めることを、Team・Enterpriseの管理作業ごとに整理します。SSOや連携、保持期間の設定はオーナー以上の権限が要り、DNSとIdPの操作も自社に残ります。外へ出す範囲の分け方と頼む前の準備を、公式ヘルプ（2026年11月17日確認）で解説します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/kenshu/claude-dounyu-shien-settei-daikou">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Claudeの導入支援・設定代行は何を頼めるか｜自社でやる設定と外へ出す範囲の分け方【2026年11月】">
+<meta property="og:description" content="Claudeの導入支援・設定代行で頼めることを、Team・Enterpriseの管理作業ごとに整理します。SSOや連携、保持期間の設定はオーナー以上の権限が要り、DNSとIdPの操作も自社に残ります。外へ出す範囲の分け方と頼む前の準備を、公式ヘルプ（2026年11月17日確認）で解説します。">
+<meta property="og:image" content="https://techworker.co.jp/media/kenshu/covers/claude-dounyu-shien-settei-daikou.png">
+<meta property="og:url" content="https://techworker.co.jp/media/kenshu/claude-dounyu-shien-settei-daikou">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claudeの導入支援・設定代行は何を頼めるか｜自社でやる設定と外へ出す範囲の分け方【2026年11月】">
+<meta name="twitter:image" content="https://techworker.co.jp/media/kenshu/covers/claude-dounyu-shien-settei-daikou.png">
+<link rel="stylesheet" href="../article.css?v=20261006-bilingual-quotes">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Claudeの導入支援・設定代行は何を頼めるか｜自社でやる設定と外へ出す範囲の分け方【2026年11月】", "description": "Claudeの導入支援・設定代行で頼めることを、Team・Enterpriseの管理作業ごとに整理します。SSOや連携、保持期間の設定はオーナー以上の権限が要り、DNSとIdPの操作も自社に残ります。外へ出す範囲の分け方と頼む前の準備を、公式ヘルプ（2026年11月17日確認）で解説します。", "datePublished": "2026-11-17", "dateModified": "2026-11-17", "image": "https://techworker.co.jp/media/kenshu/covers/claude-dounyu-shien-settei-daikou.png", "inLanguage": "ja", "mainEntityOfPage": "https://techworker.co.jp/media/kenshu/claude-dounyu-shien-settei-daikou", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/favicon.svg"}}, "citation": ["https://support.claude.com/en/articles/9267276-roles-and-permissions", "https://support.claude.com/en/articles/13132885", "https://support.claude.com/en/articles/13133195", "https://support.claude.com/en/articles/14625619", "https://support.claude.com/en/articles/13133750", "https://support.claude.com/en/articles/10440198", "https://support.claude.com/en/articles/9970975", "https://support.claude.com/en/articles/12883420", "https://claude.com/pricing", "https://privacy.claude.com/en/articles/7996868-is-my-data-used-for-model-training"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "AI研修・導入ラボ", "item": "https://techworker.co.jp/media/kenshu/"}, {"@type": "ListItem", "position": 4, "name": "Claudeの導入支援・設定代行", "item": "https://techworker.co.jp/media/kenshu/claude-dounyu-shien-settei-daikou"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Claudeの設定代行を頼むと、支援会社にオーナーの権限を渡す必要がありますか？", "acceptedAnswer": {"@type": "Answer", "text": "SSO、連携の有効化、保持期間の設定は、オーナー以上の役割でないとできません。操作まで任せるなら、オーナーの役割を渡すことになります。画面共有で自社の担当者が操作する形なら、渡さずに進められます。"}}, {"@type": "Question", "name": "支援会社に管理者（Admin）の役割だけを渡すと、何ができますか？", "acceptedAnswer": {"@type": "Answer", "text": "メンバーの招待と削除、席の種類の付け替えができます。Enterpriseでは支出を除く利用状況の分析も見られます。請求、連携の有効化、SSOは扱えません。Enterpriseの監査ログと保持期間も扱えません（2026年11月17日確認）。"}}, {"@type": "Question", "name": "Teamプランでも、SSOは使えますか？", "acceptedAnswer": {"@type": "Answer", "text": "使えます。SSOとドメインの確認はTeamとEnterpriseの両方で使えます。SCIMによる利用者の自動の同期と、既存の個人アカウントを会社の組織に取り込む機能は、Enterpriseだけです。"}}, {"@type": "Question", "name": "会社で入力した内容は、Claudeの学習に使われますか？", "acceptedAnswer": {"@type": "Answer", "text": "Anthropicは法人向けの製品の入力と出力を、既定ではモデルの学習に使わないと書いています。評価のボタンなどで明示的にフィードバックを送った場合は例外です。"}}, {"@type": "Question", "name": "TechWorkerの導入支援の費用は、どう決まりますか？", "acceptedAnswer": {"@type": "Answer", "text": "1社ごとの一式（30分の点検・事前点検・研修・30日後の測定と報告）でお見積りします。1名ごとの料金ではありません。30分の点検は無料で、翌営業日に穴の一覧1枚と研修一式のお見積りをお送りします。"}}]}</script>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<link rel="stylesheet" href="/assets/site/site.css">
+<link rel="stylesheet" href="/media/audience-filter.css?v=20261006-media-only">
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header class="hd hd--solid">
+  <a class="logo" href="/" aria-label="TechWorker ホーム">Tech<i>Worker</i></a>
+  <nav id="hd-nav" aria-label="主な行き先">
+    <a href="/services">事業・サービス</a>
+    <a href="/#concept">考え方</a>
+    <a href="/agent-cases/">事例</a>
+    <a href="/news">ニュース</a>
+    <a href="/company">会社情報</a>
+    <a href="/contact">お問い合わせ</a>
+  </nav>
+  <button class="menu" type="button" aria-label="メニューを開く" aria-controls="hd-nav" aria-expanded="false"></button>
+</header>
+<div class="subnav">
+  <div class="wrap subnav__in">
+    <a class="subnav__name" href="index.html">AI研修・導入ラボ</a>
+    <nav aria-label="メディアの行き先"><a href="https://kenshu.techworker.co.jp/">生成AI研修について</a><a href="https://kenshu.techworker.co.jp/contact/" class="subnav__cta">研修の相談</a></nav>
+  </div>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a><span class="sep">/</span>Claudeの導入支援・設定代行</nav>
+  <div class="kicker">導入と業務への組み込み</div>
+  <h1>Claudeの導入支援・設定代行は何を頼めるか｜自社でやる設定と外へ出す範囲の分け方</h1>
+  <p class="dek">Claudeの導入支援・設定代行で頼めることを、Team・Enterpriseの管理作業ごとに整理します。SSOや連携、保持期間の設定はオーナー以上の権限が要り、DNSとIdPの操作も自社に残ります。外へ出す範囲の分け方と頼む前の準備を、公式ヘルプ（2026年11月17日確認）で解説します。</p>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.11.17</span><span class="dot">·</span><span>読了 8分</span>
+  </div>
+<p class="article-audience"><span class="article-audience-label">主な対象読者</span><a href="/media/kenshu/?audience=it#articles">情シス・AI導入担当</a></p>
+</header>
+
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div>
+      <a href="#source">Claudeの導入支援・設定代行では、何を頼めますか？</a>
+      <a href="#plan">TeamとEnterpriseで、要る設定はどう違いますか？</a>
+      <a href="#roles">外部の人にどの役割を渡せば、設定まで任せられますか？</a>
+      <a href="#split">どこまで自社でやり、どこを外へ出しますか？</a>
+      <a href="#vendor">支援会社を選ぶとき、何を確かめますか？</a>
+      <a href="#prep">頼む前に、自社で何を用意しますか？</a>
+      <a href="#techworker">TechWorkerの導入支援では、何をしますか？</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#next">次の一歩は何から始めればよいですか？</a>
+      <a href="#sources">出典と確認範囲</a>
+    </div></nav>
+
+  <article class="art-body">
+
+<p>Claudeの導入支援・設定代行で頼めることは、管理者の作業ごとに分けて考えると決めやすくなります。作業は契約と席、ログイン、組織の設定、社内の決まり、研修の5つです。</p>
+<ul>
+<li><strong>権限の壁：</strong>SSO、連携の有効化、保持期間、監査ログ、請求は、オーナー以上の役割でないと扱えません。管理者（Admin）の役割でできるのは、メンバーの招待と削除などです。</li>
+<li><strong>自社に残すもの：</strong>オーナーの役割と、SSOに要るDNSとIdP（社員のIDを管理する仕組み）の操作です。どちらも、会社の契約と社員のIDの仕組みに直結します。</li>
+<li><strong>外へ出しやすいもの：</strong>設定の点検と直し方、社内の決まりの案、研修と効果の測定です。</li>
+</ul>
+<p>AnthropicのヘルプセンターとClaudeの料金ページ（2026年11月17日確認）をもとに、自社でやる範囲と外へ出す範囲の分け方をまとめます。</p>
+
+<h2 id="source">Claudeの導入支援・設定代行では、何を頼めますか？</h2>
+<p class="answer">頼めるのは、設定の手順と点検、社内の決まりの案、研修です。設定の操作まで頼むかどうかは、どの役割を外部の人に渡すかで決まります。</p>
+<p>Anthropicのヘルプはメンバーの管理と請求の権限を次のように分けています。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“Organization Admins can manage members in Organization settings &gt; Members, but only Owners and Primary Owners can access Organization settings &gt; Billing.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>組織の管理者（Admin）は、組織の設定のメンバーの画面でメンバーを管理できます。請求の画面に入れるのは、オーナーとプライマリーオーナーだけです。</p><footer>出典：<a href="https://support.claude.com/en/articles/13133750" target="_blank" rel="noopener noreferrer">Claude ヘルプセンター「Manage members on Team and Enterprise plans」</a>（2026年11月17日確認）</footer></blockquote>
+<p>役割は利用者（User）、管理者（Admin）、オーナー（Owner）、プライマリーオーナー（Primary Owner）の4つです。プライマリーオーナーは1つの組織に1人だけで、席を1つ使います。</p>
+<p>導入の作業は次の5つに分かれます。</p>
+<ol>
+<li><strong>契約と席：</strong>TeamかEnterpriseかを決め、席を買い、支払い方法を登録します。</li>
+<li><strong>ログイン：</strong>会社のドメインを確認し、SSOで社員のIDから入れるようにします。</li>
+<li><strong>組織の設定：</strong>Google ドライブなどとの連携、データの保持期間、監査ログを決めます。</li>
+<li><strong>社内の決まり：</strong>入れてよい情報、使ってよい連携、困ったときの窓口を決めます。</li>
+<li><strong>研修と測定：</strong>使い方を教え、使われているかを測ります。</li>
+</ol>
+<p>1から3は管理画面の操作で、4と5は人と決まりの仕事です。社内の決まりと研修は外へ頼みやすい作業です。契約と席、ログイン、組織の設定は、誰にどの役割を渡すかを先に決めます。</p>
+
+<h2 id="plan">TeamとEnterpriseで、要る設定はどう違いますか？</h2>
+<p class="answer">SSOとドメインの確認は両方で使えます。SCIM、既存アカウントの取り込み、保持期間、監査ログはEnterpriseだけです。</p>
+<div class="tbl-wrap">
+  <table style="min-width:640px">
+    <tr><th>設定</th><th>Team</th><th>Enterprise</th><th>操作できる役割</th></tr>
+    <tr><td>SSO（社員のIDでログイン）</td><td>使える</td><td>使える</td><td>オーナー以上。DNSとIdPの権限も要る</td></tr>
+    <tr><td>ドメインの確認</td><td>使える</td><td>使える</td><td>オーナー以上（DNSにTXTレコードを登録）</td></tr>
+    <tr><td>既存の個人アカウントの取り込み</td><td>使えない（新しい個人アカウントの作成は止められる）</td><td>使える</td><td>Enterpriseの管理側（役割の明記なし）</td></tr>
+    <tr><td>SCIM（利用者の自動の同期）</td><td>使えない（JITでの自動作成は使える）</td><td>使える</td><td>オーナー以上</td></tr>
+    <tr><td>連携（コネクタ）の有効化</td><td>使える</td><td>使える</td><td>オーナー以上</td></tr>
+    <tr><td>データの保持期間</td><td>使えない</td><td>使える（最短30日）</td><td>オーナー以上</td></tr>
+    <tr><td>監査ログの書き出し</td><td>使えない</td><td>使える（過去180日分）</td><td>オーナー以上</td></tr>
+    <tr><td>利用状況の分析</td><td>使える</td><td>使える</td><td>Teamはオーナー以上。Enterpriseは管理者も（支出を除く）</td></tr>
+  </table>
+</div>
+<p class="fig-cap">出典：Claude ヘルプセンター「Roles and permissions」（2026年10月15日更新）、SSO（2026年10月13日更新）、SCIM（2026年10月15日更新）、ドメインの取り込み、保持期間、監査ログ、利用状況の分析の各記事。いずれも2026年11月17日確認。SSOは、SSOの記事と料金ページに従いTeamでも使えるとしました</p>
+<p>料金は2026年11月17日の公式料金ページで次のとおりです。Teamは2〜150人向けで、標準の席は年払いで1人月20ドル、月払いで25ドルです。利用枠が5倍のPremiumの席は、年払いで月100ドル、月払いで125ドルです。Enterpriseは1席月20ドル（年払い・最低20席）に、API料金に基づく利用料が加わります。</p>
+<p>契約の選び方と稟議の書き方は、<a href="claude-code-cost.html">Claudeの法人契約と料金</a>にまとめています。主要4社の料金比較表と、社内利用ルールの雛形は、下の枠から受け取れます。</p>
+<div class="tw-lead" data-offer="ai-contract-pack" data-campaign="claude-dounyu-shien-settei-daikou" data-pos="mid"></div>
+
+<h2 id="roles">外部の人にどの役割を渡せば、設定まで任せられますか？</h2>
+<p class="answer">SSO、連携、保持期間まで任せるなら、オーナーの役割が要ります。管理者（Admin）の役割で外部の人ができるのは、メンバーの招待と削除などに限られます。</p>
+<div class="tbl-wrap">
+  <table style="min-width:560px">
+    <tr><th>操作</th><th>管理者（Admin）</th><th>オーナー</th></tr>
+    <tr><td>メンバーの招待と削除</td><td>できる</td><td>できる</td></tr>
+    <tr><td>席の種類の付け替え</td><td>できる</td><td>できる</td></tr>
+    <tr><td>席の購入、請求、支払い方法</td><td>できない</td><td>できる</td></tr>
+    <tr><td>連携や公開プロジェクトなどの有効化</td><td>できない</td><td>できる</td></tr>
+    <tr><td>SSO・保持期間・監査ログ</td><td>できない</td><td>できる</td></tr>
+    <tr><td>管理者・オーナーの招待と役割の変更</td><td>できない</td><td>できる</td></tr>
+  </table>
+</div>
+<p class="fig-cap">出典：Claude ヘルプセンター「Roles and permissions」（2026年10月15日更新）、「Purchase and manage seats」（2026年10月16日更新）。いずれも2026年11月17日確認</p>
+<p>オーナーは請求の画面に入り、ほかの管理者やオーナーを招いたり外したりもできます。設定の操作を任せるためにオーナーの役割を付けると、外部の人が請求の画面にも入れる状態になります。</p>
+<p>SSOの設定にはClaudeのオーナーの役割に加えて、DNSとIdPへの権限も要ります。IdPはMicrosoft Entra IDやGoogle Workspaceなど、社員のIDを管理する仕組みです。SSOまで外部に任せると、自社のDNSとIdPにも外部の人が入ることになります。</p>
+<p>組織の会話データの書き出しの依頼と、プライマリーオーナーの移管は、プライマリーオーナーだけができます。プライマリーオーナーは個人に結びつかないサービス用のアカウントにもできます。ただし、Teamの席は記名の1人だけが使えるという決まりもあるため、運用の前にAnthropicへ確かめます。</p>
+
+<h2 id="split">どこまで自社でやり、どこを外へ出しますか？</h2>
+<p class="answer">オーナーの役割とDNS・IdPの操作は自社に残し、設定の手順と点検、決まりの案、研修を外へ出す分け方を、TechWorkerは勧めています。</p>
+<figure class="fig-inline"><a href="figs/claude-dounyu-shien-settei-daikou-1.png" target="_blank" rel="noopener"><img src="figs/claude-dounyu-shien-settei-daikou-1.png" alt="Claudeの導入で、自社の管理者と支援会社が分ける作業の表。契約と席の購入、SSOとドメイン、連携と保持期間の操作は自社が行い、支援会社は比較の材料・手順と点検・設定表の案を出す。社内の決まりは自社が決め、支援会社は雛形と案を出す。研修と30日後の測定は支援会社が行う。" width="1200" height="632" loading="lazy" decoding="async"></a></figure>
+<p>ここからはTechWorkerの提案です。作業ごとに、自社と支援会社の分け方を挙げます。</p>
+<ol>
+<li><strong>契約と席：</strong>席の購入と支払いは自社のオーナーが行います。支援会社には人数と使い方からTeamとEnterpriseを比べる材料を頼みます。</li>
+<li><strong>SSOとドメイン：</strong>DNSとIdPの操作は自社の担当者が行います。支援会社には手順の説明と、終わったあとの点検を頼みます。</li>
+<li><strong>連携と保持期間：</strong>オーナーが操作します。支援会社にはどの連携を開けるか、保持期間を何日にするかの設定表の案を頼みます。</li>
+<li><strong>社内の決まり：</strong>決めるのは自社です。支援会社には雛形と、決まりの案を頼みます。</li>
+<li><strong>研修と測定：</strong>支援会社に頼みやすい作業です。受講者の実際の業務を題材にし、使われたかを数で測るところまで頼みます。</li>
+</ol>
+<p>TechWorkerは操作を請けません。ほかの支援会社に操作まで任せる場合は、オーナーの役割を付ける期間と外す日を先に決め、終わったら役割を外します。これもTechWorkerの提案で、公式ヘルプに書かれた手順ではありません。</p>
+<p>Claude Codeを社内に広げるときの設定の配り方は、<a href="claude-code-shanai-tenkai.html">Claude Codeの社内展開</a>で扱っています。Enterpriseの推奨の設定を1ページで見比べる画面は、<a href="claude-enterprise-security-center.html">Claude Enterpriseのセキュリティセンター</a>で説明しました。</p>
+
+<h2 id="vendor">支援会社を選ぶとき、何を確かめますか？</h2>
+<p class="answer">IDやパスワードを預かるか、公式の権限の表で説明できるか、設定の結果を表で残すか、使われ方を測るかの4点を確かめます。</p>
+<ol>
+<li><strong>預かるもの：</strong>IDやパスワードを預かる進め方か、画面共有で自社の担当者が操作する進め方かを確かめます。</li>
+<li><strong>説明の根拠：</strong>TeamとEnterpriseの違いや役割の権限を、公式のヘルプと日付で説明できるかを見ます。</li>
+<li><strong>残るもの：</strong>終わったあとに、権限と連携の設定表が手元に残るかを確かめます。担当が替わっても、同じ設定を説明できるようにするためです。</li>
+<li><strong>測り方：</strong>研修のあとに、使った人の割合などを測るかを確かめます。設定が終わっても、使われなければ費用が残るだけです。</li>
+</ol>
+<p>この4点はTechWorkerの提案です。研修を外へ頼むときの比べ方は、<a href="generative-ai-training-rfp-vendor-selection.html">生成AI研修を外部委託するRFP</a>でも扱っています。</p>
+
+<h2 id="prep">頼む前に、自社で何を用意しますか？</h2>
+<p class="answer">契約の条件、操作する人、決まりの下書きの3つを用意します。どれも決まっていなくても相談はできますが、決まっているほど早く進みます。</p>
+<figure class="fig-inline"><a href="figs/claude-dounyu-shien-settei-daikou-2.png" target="_blank" rel="noopener"><img src="figs/claude-dounyu-shien-settei-daikou-2.png" alt="Claudeの導入を頼む前に用意する6つのこと。契約（使う人数とプラン、支払い方法）、操作する人（Claudeのオーナー、DNSとIdPの担当者）、決まり（入れてよい情報、使ってよい連携）。" width="1200" height="410" loading="lazy" decoding="async"></a></figure>
+<ul>
+<li><strong>契約：</strong>使う人数とプランの候補、支払い方法です。Teamの支払いはクレジットカードだけで、請求書払いはEnterpriseの営業経由の契約だけです。</li>
+<li><strong>操作する人：</strong>Claudeのオーナーになる人と、DNSとIdPを操作できる担当者です。</li>
+<li><strong>決まり：</strong>入れてよい情報と、使ってよい連携の下書きです。</li>
+</ul>
+<p>入力した内容の扱いは稟議でよく聞かれます。Anthropicは法人向けの製品（Claude for Work、APIなど）の入力と出力を、既定ではモデルの学習に使わないと書いています。評価のボタンなどで明示的にフィードバックを送った場合は例外です。</p>
+
+<h2 id="techworker">TechWorkerの導入支援では、何をしますか？</h2>
+<p class="answer">30分の点検、事前点検、研修、30日後の測定の順に進めます。点検は画面共有で行い、当社はIDやパスワードを預からず、操作もしません。</p>
+<div class="tbl-wrap">
+  <table style="min-width:600px">
+    <tr><th>段階</th><th>時間と費用</th><th>お渡しするもの</th></tr>
+    <tr><td>30分の点検</td><td>30分・オンライン・無料</td><td>翌営業日に、穴の一覧1枚と研修一式のお見積り</td></tr>
+    <tr><td>事前点検</td><td>管理者の方と60分。研修一式に含む（事前点検だけも可・お見積り）</td><td>穴の一覧と直し方</td></tr>
+    <tr><td>研修</td><td>1製品で1日（6時間）・1回30名まで</td><td>社内ルールの確認表、権限の設定表、業務1本の設計シート</td></tr>
+    <tr><td>30日後の測定</td><td>研修の30日後</td><td>使った人の割合・1件の時間・差し戻しの数・直した穴の数の報告書</td></tr>
+  </table>
+</div>
+<p class="fig-cap">出典：TechWorker セキュリティ×生成AI研修「進め方」（2026年11月17日確認）</p>
+<p>費用は1社ごとの一式（30分の点検・事前点検・研修・30日後の測定と報告）でお見積りします。1名ごとの料金ではありません。事前点検だけを先に頼むこともでき、60日以内に研修をお申し込みいただければ、その費用を研修代に充てます。</p>
+<p>研修のClaude Code編では安全な設定（権限、読み取りだけで始める、管理者の設定の強制）と、Team・Enterprise・APIの違いを扱います。受講の前提はClaudeの法人契約（TeamかEnterprise）かAPIキーです。契約や設定が決まっていなくても、必要なライセンスと権限を一緒に整理できます。</p>
+<p>TechWorkerは、2026年9月の記録で、Claude Codeを自社のサービスの開発や営業資料の作成に使っていました。そのときの契約と使った量は、<a href="claude-code-cost.html">Claudeの法人契約と料金</a>に載せています。</p>
+
+<h2 id="faq">よくある質問</h2>
+<div class="faq"><div class="q">Claudeの設定代行を頼むと、支援会社にオーナーの権限を渡す必要がありますか？</div><p class="a">SSO、連携の有効化、保持期間の設定は、オーナー以上の役割でないとできません。操作まで任せるなら、オーナーの役割を渡すことになります。画面共有で自社の担当者が操作する形なら、渡さずに進められます。</p></div>
+<div class="faq"><div class="q">支援会社に管理者（Admin）の役割だけを渡すと、何ができますか？</div><p class="a">メンバーの招待と削除、席の種類の付け替えができます。Enterpriseでは支出を除く利用状況の分析も見られます。請求、連携の有効化、SSOは扱えません。Enterpriseの監査ログと保持期間も扱えません（2026年11月17日確認）。</p></div>
+<div class="faq"><div class="q">Teamプランでも、SSOは使えますか？</div><p class="a">使えます。SSOとドメインの確認はTeamとEnterpriseの両方で使えます。SCIMによる利用者の自動の同期と、既存の個人アカウントを会社の組織に取り込む機能は、Enterpriseだけです。</p></div>
+<div class="faq"><div class="q">会社で入力した内容は、Claudeの学習に使われますか？</div><p class="a">Anthropicは法人向けの製品の入力と出力を、既定ではモデルの学習に使わないと書いています。評価のボタンなどで明示的にフィードバックを送った場合は例外です。</p></div>
+<div class="faq"><div class="q">TechWorkerの導入支援の費用は、どう決まりますか？</div><p class="a">1社ごとの一式（30分の点検・事前点検・研修・30日後の測定と報告）でお見積りします。1名ごとの料金ではありません。30分の点検は無料で、翌営業日に穴の一覧1枚と研修一式のお見積りをお送りします。</p></div>
+
+<h2 id="next">次の一歩は何から始めればよいですか？</h2>
+<p class="answer">オーナーになる人とDNS・IdPの担当者を決め、外へ頼む作業を一覧にすることから始めます。</p>
+<ol>
+<li>使う人数と、TeamかEnterpriseの候補を決めます。</li>
+<li>Claudeのオーナーになる人と、DNS・IdPを操作する担当者を決めます。</li>
+<li>この記事の5つの作業のうち、外へ頼む作業に印を付けて、支援会社に見せます。</li>
+</ol>
+<p>TechWorkerでは30分の点検を画面共有で無料で行い、翌営業日に穴の一覧1枚と研修一式のお見積りをお送りします。検討段階のご相談だけでも歓迎です。</p>
+<div class="tw-lead" data-offer="ai-contract-pack" data-campaign="claude-dounyu-shien-settei-daikou" data-pos="end"></div>
+
+<h2 id="sources">出典と確認範囲</h2>
+<p class="source-note">確認日：2026年11月17日。Claudeの管理画面の表示は、TechWorkerでは今回の記事のために確かめていません。機能と料金は変わるため、設定の時点で公式情報を確認してください。自社と支援会社の分け方と、支援会社を選ぶ4点はTechWorkerの提案です。</p>
+<ol class="source-list"><li><a href="https://support.claude.com/en/articles/9267276-roles-and-permissions" target="_blank" rel="noopener noreferrer">Claude ヘルプセンター「Roles and permissions」（2026年10月15日更新）</a></li><li><a href="https://support.claude.com/en/articles/13133750" target="_blank" rel="noopener noreferrer">Claude ヘルプセンター「Manage members on Team and Enterprise plans」</a></li><li><a href="https://support.claude.com/en/articles/13132885" target="_blank" rel="noopener noreferrer">Claude ヘルプセンター SSOの設定（2026年10月13日更新）</a></li><li><a href="https://support.claude.com/en/articles/13133195" target="_blank" rel="noopener noreferrer">Claude ヘルプセンター SCIMの設定（2026年10月15日更新）</a></li><li><a href="https://support.claude.com/en/articles/14625619" target="_blank" rel="noopener noreferrer">Claude ヘルプセンター ドメインの取り込み</a></li><li><a href="https://support.claude.com/en/articles/10440198" target="_blank" rel="noopener noreferrer">Claude ヘルプセンター データの保持期間</a></li><li><a href="https://support.claude.com/en/articles/9970975" target="_blank" rel="noopener noreferrer">Claude ヘルプセンター 監査ログ</a></li><li><a href="https://support.claude.com/en/articles/12883420" target="_blank" rel="noopener noreferrer">Claude ヘルプセンター 利用状況の分析</a></li><li><a href="https://claude.com/pricing" target="_blank" rel="noopener noreferrer">Claude「Pricing」</a></li><li><a href="https://privacy.claude.com/en/articles/7996868-is-my-data-used-for-model-training" target="_blank" rel="noopener noreferrer">Anthropic Privacy Center「Is my data used for model training?」（2026年8月18日更新）</a></li><li><a href="https://kenshu.techworker.co.jp/flow/" target="_blank" rel="noopener noreferrer">TechWorker セキュリティ×生成AI研修「進め方」</a></li></ol>
+
+</article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div>
+    <p>上場企業を含む45社・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>Claudeの導入を、IDを預からずに点検から研修まで支援します。</h3>
+    <p>30分の点検は画面共有で行い、当社はIDやパスワードを預からず、操作もしません。権限の設定表と社内ルールの確認表を作り、研修当日に業務1本をAIに任せる形まで作って、30日後に数で測って報告します。</p>
+  </div>
+  <a href="https://kenshu.techworker.co.jp/?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=claude-dounyu-shien-settei-daikou&amp;utm_content=end" class="btn">研修内容・費用を相談する <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="https://kenshu.techworker.co.jp/" style="color:var(--electric);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">生成AI法人研修（主要ツール全対応）</a>　／　<a href="https://kenshu.techworker.co.jp/contact/" style="color:var(--electric);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">無料相談</a></p>
+<div class="back-list"><a href="index.html">← AI研修・導入ラボの記事一覧に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="claude-code-cost.html" class="related-card"><span class="rc-cat">料金と比較</span><div class="rc-title">Claudeの法人契約と料金｜Team月20ドル〜・Enterprise・Claude Codeの選び方</div></a>
+    <a href="claude-code-shanai-tenkai.html" class="related-card"><span class="rc-cat">導入と業務への組み込み</span><div class="rc-title">Claude Codeの社内展開｜社内データの扱い・設定配布・ルール雛形</div></a>
+  </div>
+</div></section>
+
+<p style="max-width:var(--measure);margin:40px auto 0;padding:0 20px;font-size:12px;color:var(--slate);line-height:1.9;">本記事は株式会社TechWorkerが独自に作成したものであり、Anthropic PBCとの提携・後援・承認を受けたものではありません。ClaudeはAnthropic PBCの商標です。</p>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__in">
+      <div>
+        <p class="ft__name">株式会社TechWorker</p>
+        <p class="ft__addr">〒169-0051 東京都新宿区西早稲田一丁目22番3号<br>早稲田アントレプレナーシップセンター</p>
+      </div>
+      <nav aria-label="フッターの行き先">
+        <a href="/services">事業・サービス</a>
+        <a href="/company">会社情報</a>
+        <a href="/news">ニュース</a>
+        <a href="/#concept">考え方</a>
+        <a href="/agent-cases/">事例</a>
+        <a href="/contact">お問い合わせ</a>
+        <a href="/privacy">プライバシーポリシー</a>
+      </nav>
+    </div>
+    <div class="nv-badge"><a href="/news/013"><img src="/assets/badges/nvidia-inception-program.svg" alt="NVIDIA Inception Program" width="93" height="40" loading="lazy"></a><p>NVIDIA、NVIDIA ロゴ、NVIDIA Inception は、米国およびその他の国における NVIDIA Corporation の商標および/または登録商標です。</p></div>
+    <small>© TechWorker Inc.</small>
+  </div>
+</footer>
+
+<script>
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+<script src="/media/article-tracker.js?v=20261006-readable-intros" defer></script>
+<script>
+// スマホの行き先：右上の釦で開け閉めする。行き先を押したら閉じる。スクロールしたら頭に暗い面を敷く
+(() => {
+  const hd = document.querySelector('.hd'), btn = hd.querySelector('.menu');
+  const set = open => { hd.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く'); };
+  btn.addEventListener('click', () => set(!hd.classList.contains('is-open')));
+  hd.querySelector('nav').addEventListener('click', e => { if (e.target.closest('a')) set(false); });
+  const onScroll = () => hd.classList.toggle('is-scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+})();
+</script>
+<script src="../lead.js" defer></script>
+</body>
+</html>
