@@ -242,3 +242,9 @@
   .g3-steps em{justify-self:start;margin-top:4px}
   .g3-steps p{grid-column:2;margin-top:6px}
 }
+
+/* セキュリティの段（2026-11-17）：料金の札と同じ枠で4枚を等幅に */
+.g3-price.g3-sec4{grid-template-columns:repeat(4,1fr)}
+.g3-price.g3-sec4 b{font-size:19px;line-height:1.45}
+@media(max-width:1023px){.g3-price.g3-sec4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.g3-price.g3-sec4{grid-template-columns:1fr}}
