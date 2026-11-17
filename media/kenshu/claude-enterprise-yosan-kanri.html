@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js" data-media="kenshu">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}if(location.hostname==='techworker.co.jp')gtag('config', 'G-3V34NWXVCJ');
+</script>
+<script src="/assets/tw-track.js" defer></script>
+<script src="/assets/tw-event.js" defer></script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Enterpriseの予算管理｜部署ごとの共有予算・コストコード・利用レポートの設定【2026年11月】 — TechWorker</title>
+<meta name="description" content="Claude Enterpriseでは、部署などのグループごとに月の共有予算を置けます。50・75・95・100%で課金の権限を持つ人にメールが届き、使い切ると止まります。コストコードでの集計と利用レポートも含め、設定の場所と稟議に書くことを公式ヘルプ（2026年11月18日確認）で整理します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/kenshu/claude-enterprise-yosan-kanri">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Claude Enterpriseの予算管理｜部署ごとの共有予算・コストコード・利用レポートの設定【2026年11月】">
+<meta property="og:description" content="Claude Enterpriseでは、部署などのグループごとに月の共有予算を置けます。50・75・95・100%で課金の権限を持つ人にメールが届き、使い切ると止まります。コストコードでの集計と利用レポートも含め、設定の場所と稟議に書くことを公式ヘルプ（2026年11月18日確認）で整理します。">
+<meta property="og:image" content="https://techworker.co.jp/media/kenshu/covers/claude-enterprise-yosan-kanri.png">
+<meta property="og:url" content="https://techworker.co.jp/media/kenshu/claude-enterprise-yosan-kanri">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Enterpriseの予算管理｜部署ごとの共有予算・コストコード・利用レポートの設定【2026年11月】">
+<meta name="twitter:image" content="https://techworker.co.jp/media/kenshu/covers/claude-enterprise-yosan-kanri.png">
+<link rel="stylesheet" href="../article.css?v=20261006-bilingual-quotes">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Claude Enterpriseの予算管理｜部署ごとの共有予算・コストコード・利用レポートの設定【2026年11月】", "description": "Claude Enterpriseでは、部署などのグループごとに月の共有予算を置けます。50・75・95・100%で課金の権限を持つ人にメールが届き、使い切ると止まります。コストコードでの集計と利用レポートも含め、設定の場所と稟議に書くことを公式ヘルプ（2026年11月18日確認）で整理します。", "datePublished": "2026-11-18", "dateModified": "2026-11-18", "image": "https://techworker.co.jp/media/kenshu/covers/claude-enterprise-yosan-kanri.png", "inLanguage": "ja", "mainEntityOfPage": "https://techworker.co.jp/media/kenshu/claude-enterprise-yosan-kanri", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/favicon.svg"}}, "citation": ["https://claude.com/resources/articles/smart-reports-surveys-pooled-budgets", "https://support.claude.com/en/articles/17005973-manage-pooled-group-budgets-on-enterprise-plans", "https://support.claude.com/en/articles/13799932-manage-groups-and-group-spend-limits-on-enterprise-plans", "https://support.claude.com/en/articles/14782391-claude-enterprise-consumption-guide", "https://support.claude.com/en/articles/18251257-track-spend-by-cost-code-with-project-tags", "https://support.claude.com/en/articles/16893491-get-started-with-smart-reports", "https://support.claude.com/en/articles/12883420-view-usage-analytics-for-team-and-enterprise-plans", "https://support.claude.com/en/articles/12005970-manage-usage-credits-for-team-and-seat-based-enterprise-plans", "https://support.claude.com/en/articles/12138966-release-notes", "https://claude.com/pricing"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "AI研修・導入ラボ", "item": "https://techworker.co.jp/media/kenshu/"}, {"@type": "ListItem", "position": 4, "name": "Claude Enterpriseの予算管理", "item": "https://techworker.co.jp/media/kenshu/claude-enterprise-yosan-kanri"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "共有予算を使い切ると、部署の全員がClaudeを使えなくなりますか？", "acceptedAnswer": {"@type": "Answer", "text": "使用量課金のEnterpriseでは、ほかに使える共有予算が無いメンバーの利用が止まります。席に利用量が含まれる契約では、席の分は使い続けられ、使用量クレジットの分だけが止まります。管理者が額を上げると、すぐに再開できます。"}}, {"@type": "Question", "name": "Teamプランでも、部署ごとの予算を置けますか？", "acceptedAnswer": {"@type": "Answer", "text": "置けません。グループと共有予算はEnterpriseの機能です。Teamで置けるのは組織全体の月の上限で、利用者ごとの上限は使える組織と使えない組織があります。"}}, {"@type": "Question", "name": "Claude Codeの利用も、コストコードで集計できますか？", "acceptedAnswer": {"@type": "Answer", "text": "ターミナルかデスクトップのClaude Codeで、利用者が設定ファイルにプロジェクトのIDを書いた場合は集計できます。Web版のClaude Codeと、Amazon BedrockやGoogle Cloud経由の利用は対象外です。"}}, {"@type": "Question", "name": "スマートレポートで、社員一人ひとりの使い方を評価してもよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "公式のヘルプは個人の成果の評価や雇用の判断に使うべきではないと書いています。名前は既定で伏せられ、名前を表示すると記録が残ります。"}}, {"@type": "Question", "name": "共有予算の額は、APIで自動に変えられますか？", "acceptedAnswer": {"@type": "Answer", "text": "2026年11月18日に確かめた時点では、変えられません。共有予算はAdmin APIに対応しておらず、管理画面で設定します。タグの値の追加、プロジェクトへのタグの設定、支出の取得は、ベータのAPIで行えます。タグそのものは管理画面で作ります。"}}]}</script>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<link rel="stylesheet" href="/assets/site/site.css">
+<link rel="stylesheet" href="/media/audience-filter.css?v=20261006-media-only">
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header class="hd hd--solid">
+  <a class="logo" href="/" aria-label="TechWorker ホーム">Tech<i>Worker</i></a>
+  <nav id="hd-nav" aria-label="主な行き先">
+    <a href="/services">事業・サービス</a>
+    <a href="/#concept">考え方</a>
+    <a href="/agent-cases/">事例</a>
+    <a href="/news">ニュース</a>
+    <a href="/company">会社情報</a>
+    <a href="/contact">お問い合わせ</a>
+  </nav>
+  <button class="menu" type="button" aria-label="メニューを開く" aria-controls="hd-nav" aria-expanded="false"></button>
+</header>
+<div class="subnav">
+  <div class="wrap subnav__in">
+    <a class="subnav__name" href="index.html">AI研修・導入ラボ</a>
+    <nav aria-label="メディアの行き先"><a href="https://kenshu.techworker.co.jp/">生成AI研修について</a><a href="https://kenshu.techworker.co.jp/contact/" class="subnav__cta">研修の相談</a></nav>
+  </div>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a><span class="sep">/</span>Claude Enterpriseの予算管理</nav>
+  <div class="kicker">料金と比較</div>
+  <h1>Claude Enterpriseの予算管理｜部署ごとの共有予算・コストコード・利用レポートの設定</h1>
+  <p class="dek">Claude Enterpriseでは、部署などのグループごとに月の共有予算を置けます。50・75・95・100%で課金の権限を持つ人にメールが届き、使い切ると止まります。コストコードでの集計と利用レポートも含め、設定の場所と稟議に書くことを公式ヘルプ（2026年11月18日確認）で整理します。</p>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.11.18</span><span class="dot">·</span><span>読了 9分</span>
+  </div>
+<p class="article-audience"><span class="article-audience-label">主な対象読者</span><a href="/media/kenshu/?audience=it#articles">情シス・AI導入担当</a></p>
+</header>
+
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div>
+      <a href="#source">Claude Enterpriseの共有予算とは、何ですか？</a>
+      <a href="#levels">上限は何種類あり、どれが先に効きますか？</a>
+      <a href="#setup">部署の共有予算は、どこでどう設定しますか？</a>
+      <a href="#notify">予算に近づくと、誰に何が届きますか？</a>
+      <a href="#costcode">コストコードで、案件や部門ごとの支出をどう集計しますか？</a>
+      <a href="#reports">利用レポート（スマートレポート）では、何が分かりますか？</a>
+      <a href="#team">Teamプランでは、どこまで管理できますか？</a>
+      <a href="#ringi">稟議と社内の決まりに、何を書きますか？</a>
+      <a href="#today">最初の1か月は、どの順で進めますか？</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#next">次の一歩は何から始めればよいですか？</a>
+      <a href="#sources">出典と確認範囲</a>
+    </div></nav>
+
+  <article class="art-body">
+
+<p>Claude Enterpriseでは、2026年10月28日から、部署などのグループごとに月の共有予算（pooled budget）を置けるようになりました。</p>
+<ul>
+<li><strong>部署の予算：</strong>グループに月1つの予算を置き、メンバー全員がそこから使います。使い切ると、ほかに使える共有予算が無いメンバーの利用は止まります。</li>
+<li><strong>通知：</strong>予算の50%・75%・95%・100%で、課金（Billing）の権限を持つ全員にメールが届きます。</li>
+<li><strong>集計：</strong>11月6日からはプロジェクトにコストコードを付けて、案件や部門ごとの支出を集計できます（ベータ）。</li>
+</ul>
+<p>Anthropicの発表とヘルプセンターの記事（2026年11月18日確認）をもとに、上限の段の関係、設定の場所、稟議に書くことをまとめます。Teamプランで使える範囲も後半で整理します。</p>
+
+<h2 id="source">Claude Enterpriseの共有予算とは、何ですか？</h2>
+<p class="answer">グループに月1つの予算を置き、メンバー全員がそこから使う仕組みです。2026年10月28日に、Enterprise向けに一般提供になりました。</p>
+<p>Anthropicは2026年10月28日の発表で、共有予算の狙いを次のように書いています。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“Pooled group budgets give a group one shared monthly budget, so people who use Claude heavily are less likely to hit an individual limit early in the month while others leave budget unspent.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>共有予算は、グループに月1つの共有の予算を与えます。よく使う人が月の早いうちに個人の上限に当たり、ほかの人の予算が余る、ということが起きにくくなります。</p><footer>出典：<a href="https://claude.com/resources/articles/smart-reports-surveys-pooled-budgets" target="_blank" rel="noopener noreferrer">Anthropic「Smart reports, surveys, and pooled group budgets for Claude Enterprise」</a>（2026年10月28日、2026年11月18日確認）</footer></blockquote>
+<p>同じ発表で、スマートレポート（利用レポート）とアプリ内アンケートも一般提供になりました。3つとも対象はClaude Enterpriseです。</p>
+<p>グループごとの上限はこれまでも置けました。グループの上限はメンバー1人ずつに同じ額をかける設定です。共有予算はそれに加えて、グループ全体で1つの額を置きます。</p>
+<p>よく使う人の上限は高めにしておき、部署全体の額で抑える、という使い方ができます。ヘルプは1人あたりの上限を「共有予算÷人数」にすると、共有の意味が無くなると書いています。</p>
+
+<h2 id="levels">上限は何種類あり、どれが先に効きますか？</h2>
+<p class="answer">主な上限は組織・個人・グループ・共有予算の4つです。1回の利用は本人の上限と共有予算の両方に数えられ、先に尽きた方で止まります。</p>
+    <figure class="fig-inline"><a href="figs/claude-enterprise-yosan-kanri-1.png" target="_blank" rel="noopener"><img src="figs/claude-enterprise-yosan-kanri-1.png" alt="Claude Enterpriseの主な4つの上限。個人の上限はその人だけにかかりグループの上限より優先、グループの上限はメンバー1人ずつに同じ額、共有予算はグループ全体で1つの額で50・75・95・100%で通知、組織の上限は全員・全製品の合計で当たると全員が止まる。" width="1200" height="579" loading="lazy" decoding="async"></a></figure>
+<div class="tbl-wrap">
+  <table style="min-width:640px">
+    <tr><th>上限の段</th><th>何にかかるか</th><th>設定する場所</th><th>注意</th></tr>
+    <tr><td>組織の上限</td><td>全員・全製品の合計</td><td>Organization settings ＞ Usage</td><td>当たると全員が同時に止まる</td></tr>
+    <tr><td>個人の上限</td><td>その人だけ</td><td>Usage のメンバーごとの上限</td><td>グループの上限より優先される</td></tr>
+    <tr><td>グループの上限</td><td>メンバー1人ずつに同じ額</td><td>Usage ＞ Spend limits ＞ By group/tier</td><td>複数のグループに入る人は、高い方か低い方を選ぶ</td></tr>
+    <tr><td>共有予算</td><td>グループ全体で1つの額</td><td>同じ行の「Edit limit and budget」</td><td>作った後の利用だけを数え、毎月リセット</td></tr>
+  </table>
+</div>
+<p class="fig-cap">出典：Claude ヘルプセンター「Manage groups and group spend limits on Enterprise plans」「Manage pooled group budgets on Enterprise plans」「Claude Enterprise consumption guide」（2026年11月18日確認）</p>
+<p>組織の上限について、Anthropicの消費ガイドは全員と全製品の利用をまとめて抑える上限と説明しています。当たると全員が同時に止まるため、まずグループと個人の上限から始めるよう勧めています。</p>
+<p>個人の上限を置いた人には、その個人の上限が優先して使われます。複数のグループに入っている人は、「Member limit from groups」の設定で、高い方と低い方のどちらを使うかを決めます。</p>
+<p>上限ちょうどで止まるとは限りません。消費ガイドには止まる前に少し超えることがあると書かれています。</p>
+<p>Slackのチャンネルで使うClaude（Claude Tag、ベータ）は、組織の残高から引かれます。個人とグループの上限はかからないため、専用の上限の画面で別に抑えます。</p>
+<p>席と利用量の料金は<a href="claude-code-cost.html">Claudeの法人契約と料金</a>にまとめています。Claudeを含む主要4社の料金比較表と、稟議書・社内利用ルールの雛形は、下の枠から受け取れます。</p>
+<div class="tw-lead" data-offer="ai-contract-pack" data-campaign="claude-enterprise-yosan-kanri" data-pos="mid"></div>
+
+<h2 id="setup">部署の共有予算は、どこでどう設定しますか？</h2>
+<p class="answer">「Organization settings ＞ Usage」の「By group/tier」で、部署のグループの行から設定します。先にグループを作っておく必要があります。</p>
+<p>席に利用量が含まれる契約（Standard・Premiumの席）では、先に使用量クレジットを有効にします。有効にするまで、上限の表は出ません。</p>
+<p>設定できるのは、Primary Owner、Owner、課金（Billing）の権限を「Can manage」にしたカスタムの役割です。グループは手動で作るか、SCIMで社内のIdP（ID管理の仕組み）から同期します。</p>
+<ol>
+<li>Organization settings ＞ Groups で、部署のグループがあるかを確かめます。</li>
+<li>Organization settings ＞ Usage を開き、Spend limits の「By group/tier」タブを選びます。</li>
+<li>部署の行のメニューから「Edit limit and budget」を選びます。</li>
+<li>「Monthly pooled budget」で「Set amount」を選びます。直近の利用から出した額が入っているので、必要なら直します。</li>
+<li>「Member monthly limit」で1人あたりの上限を決め、「Save」を押します。</li>
+</ol>
+<p>ヘルプは最初の額を先月の実際の支出から決めるよう勧めています。目安は、共有予算が部署の先月の支出の約3倍、1人あたりの上限が最も使った人の約3倍です。</p>
+<p>ヘルプの例では、部署の先月の支出が1,450ドル、最も使った人が310ドルです。共有予算は4,350ドル、1人あたりの上限は約950ドルになります。</p>
+<p>1人が2つ以上のグループに入っているときは、既定で額の大きい共有予算から使われます。順番は「Pooled budget priority」で変えられます。</p>
+<p>止めたいときは、額を0ドルにすると凍結になります。「Paused」を選ぶと、額を残したまま止められます。</p>
+<p>注意点が2つあります。課金の権限は組織全体にかかるので、1つの部署の予算を変えられる人は、全部の部署の予算を変えられます。また、共有予算はAdmin APIからはまだ操作できず、管理画面だけで設定します。</p>
+
+<h2 id="notify">予算に近づくと、誰に何が届きますか？</h2>
+<p class="answer">50%・75%・95%・100%で、課金の権限を持つ全員にメールが届きます。利用者には、上限に当たったときだけ「Request more」の案内が出ます。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“When a pooled budget reaches 50%, 75%, 95%, and 100% of its monthly amount, everyone with the Billing permission gets an email, and a notice for the group appears at the top of Organization settings and on the Usage page.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>共有予算が月の額の50%、75%、95%、100%に達すると、課金の権限を持つ全員にメールが届きます。Organization settingsの上部とUsageのページにも、そのグループの通知が出ます。</p><footer>出典：<a href="https://support.claude.com/en/articles/17005973-manage-pooled-group-budgets-on-enterprise-plans" target="_blank" rel="noopener noreferrer">Claude ヘルプセンター「Manage pooled group budgets on Enterprise plans」</a>（2026年11月18日確認）</footer></blockquote>
+<p>Usageのページの「Pooled budget」の列では、部署ごとに使った割合が棒で見えます。棒は75%で黄色、90%で赤に変わります。</p>
+<p>利用者の画面は本人の上限に当たるか、使える共有予算がすべて尽きるまで変わりません。尽きると、入力欄に「Request more」のボタンが出ます。申請は管理者の「Review requests」に届きます。利用者からはグループの名前も予算の額も見えません。</p>
+<p>額が合っているかの見方も、ヘルプにあります。月の20日より前に75%を使っていたら、50%の引き上げを考えます。申請が続くときは、1人あたりの上限を上げます。</p>
+<p>席に利用量が含まれる契約（Standard・Premiumの席）では、共有予算は席を超えた分の使用量クレジットにだけかかります。予算が尽きても、席に含まれる分は使えます。</p>
+
+<h2 id="costcode">コストコードで、案件や部門ごとの支出をどう集計しますか？</h2>
+<p class="answer">プロジェクトに「cost_code」などのタグと値を付けると、Usageの「Spend by project」でタグごとに集計できます。2026年11月6日からのベータで、対象はEnterpriseです。</p>
+<p>タグは集計の分類（例：cost_code）と、コードの値（例：CC-1042）の2つで作ります。タグを作るのはOwner以上で、値を付けるのはプロジェクトを編集できる人です。1つのプロジェクトに16個までタグを付けられます。</p>
+<p>使えない組織もあります。HIPAAの構成、顧客管理の暗号鍵（CMEK）、ゼロデータ保持（ZDR）、最小限のデータ保持を使う組織は対象外です。データを米国の外に保存する組織と、Claude Desktopを自社のモデル提供元に通す組織も対象外です。保存先を指定している会社は先に確かめます。</p>
+<div class="tbl-wrap">
+  <table style="min-width:560px">
+    <tr><th>使う場所</th><th>プロジェクトごとに集計されるか</th></tr>
+    <tr><td>プロジェクトの中のチャット・Cowork</td><td>される</td></tr>
+    <tr><td>手元のパソコンのCoworkのタスク</td><td>される（Claude Desktop 3.6556.1以降で、プロジェクトを1つ選ぶ）</td></tr>
+    <tr><td>ターミナル・デスクトップのClaude Code</td><td>Claude Code 2.1.305以降（またはDesktop 3.6556.1以降）で、設定ファイルでプロジェクトを指定すれば、される</td></tr>
+    <tr><td>Web版のClaude Code、Claude for Office、Claude in Chrome、Slack・Teams、API、APIキーやゲートウェイ経由のClaude Code</td><td>されない</td></tr>
+  </table>
+</div>
+<p class="fig-cap">出典：Claude ヘルプセンター「Track spend by cost code with project tags」（2026年11月18日確認）</p>
+<p>Claude Codeには、プロジェクトを選ぶ画面がありません。利用者が <code>.claude/settings.json</code> に <code>"attributionProject"</code> とプロジェクトのIDを書きます。書かないと集計されず、警告も出ません。開発部門で使うときは、配る設定ファイルに入れておきます。</p>
+<p>数字を読むときの注意は次の4つです。</p>
+<ul>
+<li>タグが効くまで約2時間かかります。仕事を始める前に付けます。</li>
+<li>プロジェクトの外の利用は「Not in a project」にまとまります。</li>
+<li>金額は割引の後、クレジットの適用の前の額で、請求書と合わないことがあります。</li>
+<li>席に含まれる利用は数えません。</li>
+</ul>
+<p>タグの名前と値は、組織の全員に見えます。顧客名や公開前の案件名は値に入れず、社内の番号を使います。</p>
+<p>このベータには、タグごとの上限がありません。止めるのは共有予算、集計はコストコード、と役割を分けて使います。</p>
+
+<h2 id="reports">利用レポート（スマートレポート）では、何が分かりますか？</h2>
+<p class="answer">部署の会話の一部をClaudeが読み、仕事の種類ごとの定価での費用、作った物、つまずいた所をまとめます。月10本まで無料で、既定はオフです。</p>
+<p>スマートレポートは、チーム、最大28日の期間、製品（チャット、Claude Code、Cowork）を選んで作ります。結果は通常、数時間で届きます。オンにできるのはPrimary OwnerとOwnerです。作って見られるのは、Primary Owner、Owner、Admin、分析の閲覧の権限を持つカスタムの役割です。</p>
+<p>CMEK、HIPAAの構成、自社のクラウドで推論するハイブリッド構成の組織では使えません。Claude CodeでZDRを使う組織では、Claude Codeが集計から外れます。</p>
+<p>レポートには、仕事の流れ（workstream）ごとの定価での費用、成果物の種類ごとの1回あたりの費用、よくあるつまずきが並びます。スキルにするとよい繰り返しの仕事も挙がります。上限で仕事が止まっている人も示されます。課金の権限があり、利用者の名前を表示する設定で見ていれば、レポートから上限を上げられます。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“They aren't designed and should not be used for evaluating individual performance or making employment decisions.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>スマートレポートは、個人の成果の評価や雇用の判断のために作られておらず、そのために使うべきではありません。</p><footer>出典：<a href="https://support.claude.com/en/articles/16893491-get-started-with-smart-reports" target="_blank" rel="noopener noreferrer">Claude ヘルプセンター「Get started with smart reports」</a>（2026年11月18日確認）</footer></blockquote>
+<p>レポートの中の名前は既定で「User」に置き換わります。名前を出せるようにする設定は別にあり、名前を表示するたびに記録が残ります。</p>
+<p>数字だけが要るときは、Analyticsの「Export spend report」で、人×モデルごとのCSVを最大90日分書き出せます。EnterpriseのAdminは、支出の欄を除く分析を見られます。</p>
+<p>アプリ内アンケートでは既定で4つの質問を利用者に出せます。「明日Claudeが使えなくなったら、何が止まるか」など、価値を聞く質問です。回答はCSVで書き出せます。</p>
+
+<h2 id="team">Teamプランでは、どこまで管理できますか？</h2>
+<p class="answer">組織全体の月の上限は置けますが、グループと共有予算はEnterpriseだけの機能です。利用者ごとの上限は使えない組織もあります。</p>
+<p>Teamでは、Ownerが使用量クレジット（席の利用枠を超えた分を払う仕組み）を有効にし、組織全体の月の上限を置きます。利用者ごとの上限はすべてのTeamの組織にあるわけではありません。Usageの画面に「Spend by org member」と出る組織では使えない、とヘルプは書いています。</p>
+<div class="tbl-wrap">
+  <table style="min-width:560px">
+    <tr><th>機能</th><th>Team</th><th>Enterprise</th></tr>
+    <tr><td>組織全体の上限</td><td>使用量クレジットを有効にすると置ける</td><td>置ける</td></tr>
+    <tr><td>利用者ごとの上限</td><td>組織によっては置けない</td><td>置ける</td></tr>
+    <tr><td>グループの上限・共有予算</td><td>なし</td><td>あり</td></tr>
+    <tr><td>コストコード</td><td>なし</td><td>あり（ベータ）</td></tr>
+    <tr><td>スマートレポート</td><td>なし</td><td>あり（既定はオフ）</td></tr>
+    <tr><td>分析を見られる役割</td><td>Owner・Primary Owner</td><td>Owner・Primary Owner・Admin（Adminは支出を除く）</td></tr>
+  </table>
+</div>
+<p class="fig-cap">出典：Claude ヘルプセンター「Manage usage credits for Team and seat-based Enterprise plans」「View usage analytics for Team and Enterprise plans」ほか（2026年11月18日確認）</p>
+<p>部署ごとに予算を分けたい会社は、Enterpriseの条件（1席月20ドル・年払い、最低20席、利用量はAPIの料金で別に請求）を前提に比べます。</p>
+
+<h2 id="ringi">稟議と社内の決まりに、何を書きますか？</h2>
+<p class="answer">席の年額と、部署ごとの共有予算の合計を分けて書きます。決まりには、誰が予算を変えられるかと、レポートを人の評価に使わないことを入れます。</p>
+<p>ここからはTechWorkerの提案です。公式の仕組みから、稟議に書く項目を挙げます。</p>
+<p>費用は2行に分けます。席の年額は「20ドル×席数×12か月」で、50席なら年12,000ドルです。利用量は部署ごとの共有予算の月額を足して12倍します。3部署で月2,000ドル・3,000ドル・5,000ドルなら、月10,000ドル、年120,000ドルが上限の目安です（額は仮の例）。</p>
+<p>共有予算の目安は先月の実績の約3倍なので、上限の合計は実際の支出より大きくなります。稟議では「見込みの額」と「止める上限の額」を別の行に書きます。グループに入っていない人の利用は共有予算にかからないので、組織の上限で抑えます。Slackのチャンネルの利用（Claude Tag）は、専用のClaude Tagの上限で抑えます。</p>
+<p>社内の決まりには次の5つを書きます。</p>
+<ol>
+<li><strong>予算を変えられる人：</strong>課金の権限を持つ人の名前を書きます。1つの部署の予算を変えられる人は、全部の部署を変えられる点も書きます。</li>
+<li><strong>申請の受け方：</strong>「Review requests」を誰が見て、何日以内に答えるかを決めます。</li>
+<li><strong>部署の確認役：</strong>分析の閲覧の権限を持つカスタムの役割を作り、部署ごとに1人置きます。消費ガイドが勧める形です。閲覧の範囲は組織全体に及びます。</li>
+<li><strong>レポートの使い方：</strong>スマートレポートは導入の判断に使い、個人の評価に使わないと書きます。名前の表示を許すかも決めます。</li>
+<li><strong>タグの付け方：</strong>コストコードの値に顧客名を入れないと決めます。Claude Codeの設定ファイルに、プロジェクトのIDを入れて配ります。</li>
+</ol>
+<p>トークンの使い方と費用を作業ごとに記録する考え方は、<a href="../token-management.html">トークンマネジメント</a>の記事で扱っています。</p>
+
+<h2 id="today">最初の1か月は、どの順で進めますか？</h2>
+<p class="answer">役割を決め、部署のグループを作り、1つの部署で共有予算を試してから広げます。</p>
+    <figure class="fig-inline"><a href="figs/claude-enterprise-yosan-kanri-2.png" target="_blank" rel="noopener"><img src="figs/claude-enterprise-yosan-kanri-2.png" alt="部署の予算を置く最初の1か月の5つの手順。1 役割を決める、2 部署のグループを作る、3 先月の実績を見る、4 1つの部署で試す、5 月末に見直す。" width="1200" height="825" loading="lazy" decoding="async"></a></figure>
+<ol>
+<li><strong>役割を決める：</strong>課金の権限を持つ人と、部署の確認役を決めます。</li>
+<li><strong>グループを作る：</strong>SCIMで同期するか、手動で部署のグループを作ります。</li>
+<li><strong>先月の実績を見る：</strong>Analyticsで、部署の支出と、最も使った人の支出を確かめます。</li>
+<li><strong>1つの部署で試す：</strong>持ち主がはっきりした部署に、共有予算と1人あたりの上限を置きます。</li>
+<li><strong>月末に見直す：</strong>申請の数と使った割合を見て額を直し、ほかの部署へ広げます。</li>
+</ol>
+<p>ヘルプも、最初は持ち主がはっきりした1つのチームから始めるよう勧めています。消費ガイドには、Claude CodeとCoworkは普通のチャットよりかなり多くのトークンを使う、とも書かれています。使える人を部署ごとに段階的に広げると、予算の見直しもしやすくなります。</p>
+
+<h2 id="faq">よくある質問</h2>
+<div class="faq"><div class="q">共有予算を使い切ると、部署の全員がClaudeを使えなくなりますか？</div><p class="a">使用量課金のEnterpriseでは、ほかに使える共有予算が無いメンバーの利用が止まります。席に利用量が含まれる契約では、席の分は使い続けられ、使用量クレジットの分だけが止まります。管理者が額を上げると、すぐに再開できます。</p></div>
+<div class="faq"><div class="q">Teamプランでも、部署ごとの予算を置けますか？</div><p class="a">置けません。グループと共有予算はEnterpriseの機能です。Teamで置けるのは組織全体の月の上限で、利用者ごとの上限は使える組織と使えない組織があります。</p></div>
+<div class="faq"><div class="q">Claude Codeの利用も、コストコードで集計できますか？</div><p class="a">ターミナルかデスクトップのClaude Codeで、利用者が設定ファイルにプロジェクトのIDを書いた場合は集計できます。Web版のClaude Codeと、Amazon BedrockやGoogle Cloud経由の利用は対象外です。</p></div>
+<div class="faq"><div class="q">スマートレポートで、社員一人ひとりの使い方を評価してもよいですか？</div><p class="a">公式のヘルプは個人の成果の評価や雇用の判断に使うべきではないと書いています。名前は既定で伏せられ、名前を表示すると記録が残ります。</p></div>
+<div class="faq"><div class="q">共有予算の額は、APIで自動に変えられますか？</div><p class="a">2026年11月18日に確かめた時点では、変えられません。共有予算はAdmin APIに対応しておらず、管理画面で設定します。タグの値の追加、プロジェクトへのタグの設定、支出の取得は、ベータのAPIで行えます。タグそのものは管理画面で作ります。</p></div>
+
+<h2 id="next">次の一歩は何から始めればよいですか？</h2>
+<p class="answer">課金の権限を持つ人を決め、先月の部署ごとの支出を見ることから始めます。</p>
+<ol>
+<li>Analyticsで、部署ごとの先月の支出と、最も使った人の支出を確かめます。</li>
+<li>1つの部署に先月の約3倍で共有予算を置き、50%の通知が届くかを確かめます。</li>
+<li>稟議に、席の年額と共有予算の合計を分けて書きます。</li>
+</ol>
+<p>TechWorkerではClaudeの研修を、受講者の実際の業務1本から組みます。30分の点検は画面共有で無料で行い、IDやパスワードは預かりません。30日後に、使った人の割合と1件の時間を測って報告します。検討段階のご相談だけでも歓迎です。</p>
+<div class="tw-lead" data-offer="ai-contract-pack" data-campaign="claude-enterprise-yosan-kanri" data-pos="end"></div>
+
+<h2 id="sources">出典と確認範囲</h2>
+<p class="source-note">確認日：2026年11月18日。管理画面の実際の表示と、共有予算が尽きたときの動きは、TechWorkerの環境では確かめていません。機能と提供の条件は変わるため、設定の時点で公式情報を確認してください。稟議の額の例は仮の数字で、社内の決まりの5項目はTechWorkerの提案です。</p>
+<ol class="source-list"><li><a href="https://claude.com/resources/articles/smart-reports-surveys-pooled-budgets" target="_blank" rel="noopener noreferrer">Anthropic「Smart reports, surveys, and pooled group budgets for Claude Enterprise」（2026年10月28日）</a></li><li><a href="https://support.claude.com/en/articles/17005973-manage-pooled-group-budgets-on-enterprise-plans" target="_blank" rel="noopener noreferrer">Claude ヘルプセンター「Manage pooled group budgets on Enterprise plans」</a></li><li><a href="https://support.claude.com/en/articles/13799932-manage-groups-and-group-spend-limits-on-enterprise-plans" target="_blank" rel="noopener noreferrer">Claude ヘルプセンター「Manage groups and group spend limits on Enterprise plans」</a></li><li><a href="https://support.claude.com/en/articles/14782391-claude-enterprise-consumption-guide" target="_blank" rel="noopener noreferrer">Claude ヘルプセンター「Claude Enterprise consumption guide」</a></li><li><a href="https://support.claude.com/en/articles/18251257-track-spend-by-cost-code-with-project-tags" target="_blank" rel="noopener noreferrer">Claude ヘルプセンター「Track spend by cost code with project tags」</a></li><li><a href="https://support.claude.com/en/articles/16893491-get-started-with-smart-reports" target="_blank" rel="noopener noreferrer">Claude ヘルプセンター「Get started with smart reports」</a></li><li><a href="https://support.claude.com/en/articles/12883420-view-usage-analytics-for-team-and-enterprise-plans" target="_blank" rel="noopener noreferrer">Claude ヘルプセンター「View usage analytics for Team and Enterprise plans」</a></li><li><a href="https://support.claude.com/en/articles/12005970-manage-usage-credits-for-team-and-seat-based-enterprise-plans" target="_blank" rel="noopener noreferrer">Claude ヘルプセンター「Manage usage credits for Team and seat-based Enterprise plans」</a></li><li><a href="https://support.claude.com/en/articles/12138966-release-notes" target="_blank" rel="noopener noreferrer">Claude ヘルプセンター「Release notes」（2026年11月6日の項）</a></li><li><a href="https://claude.com/pricing" target="_blank" rel="noopener noreferrer">Claude「Pricing」</a></li></ol>
+
+</article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div>
+    <p>上場企業を含む45社・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>Claudeの研修を、受講者の実際の業務1本から組みます。</h3>
+    <p>部署ごとの予算と権限の点検から、研修当日に業務1本をAIに任せる形まで作り、30日後に数で測って報告します。30分の点検は画面共有で行い、IDやパスワードは預かりません。検討段階のご相談だけでも歓迎です。</p>
+  </div>
+  <a href="https://kenshu.techworker.co.jp/?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=claude-enterprise-yosan-kanri&amp;utm_content=end" class="btn">研修内容・費用を相談する <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="https://kenshu.techworker.co.jp/" style="color:var(--electric);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">生成AI法人研修（主要ツール全対応）</a>　／　<a href="https://kenshu.techworker.co.jp/contact/" style="color:var(--electric);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">無料相談</a></p>
+<div class="back-list"><a href="index.html">← AI研修・導入ラボの記事一覧に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="claude-code-cost.html" class="related-card"><span class="rc-cat">料金と比較</span><div class="rc-title">Claudeの法人契約と料金｜Team月20ドル〜・Enterprise・Claude Codeの選び方</div></a>
+    <a href="claude-dounyu-shien-settei-daikou.html" class="related-card"><span class="rc-cat">導入と業務への組み込み</span><div class="rc-title">Claudeの導入支援・設定代行は何を頼めるか｜自社でやる設定と外へ出す範囲の分け方</div></a>
+  </div>
+</div></section>
+
+<p style="max-width:var(--measure);margin:40px auto 0;padding:0 20px;font-size:12px;color:var(--slate);line-height:1.9;">本記事は株式会社TechWorkerが独自に作成したものであり、Anthropic PBCとの提携・後援・承認を受けたものではありません。ClaudeはAnthropic PBCの商標です。</p>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__in">
+      <div>
+        <p class="ft__name">株式会社TechWorker</p>
+        <p class="ft__addr">〒169-0051 東京都新宿区西早稲田一丁目22番3号<br>早稲田アントレプレナーシップセンター</p>
+      </div>
+      <nav aria-label="フッターの行き先">
+        <a href="/services">事業・サービス</a>
+        <a href="/company">会社情報</a>
+        <a href="/news">ニュース</a>
+        <a href="/#concept">考え方</a>
+        <a href="/agent-cases/">事例</a>
+        <a href="/contact">お問い合わせ</a>
+        <a href="/privacy">プライバシーポリシー</a>
+      </nav>
+    </div>
+    <div class="nv-badge"><a href="/news/013"><img src="/assets/badges/nvidia-inception-program.svg" alt="NVIDIA Inception Program" width="93" height="40" loading="lazy"></a><p>NVIDIA、NVIDIA ロゴ、NVIDIA Inception は、米国およびその他の国における NVIDIA Corporation の商標および/または登録商標です。</p></div>
+    <small>© TechWorker Inc.</small>
+  </div>
+</footer>
+
+<script>
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+<script src="/media/article-tracker.js?v=20261006-readable-intros" defer></script>
+<script>
+// スマホの行き先：右上の釦で開け閉めする。行き先を押したら閉じる。スクロールしたら頭に暗い面を敷く
+(() => {
+  const hd = document.querySelector('.hd'), btn = hd.querySelector('.menu');
+  const set = open => { hd.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く'); };
+  btn.addEventListener('click', () => set(!hd.classList.contains('is-open')));
+  hd.querySelector('nav').addEventListener('click', e => { if (e.target.closest('a')) set(false); });
+  const onScroll = () => hd.classList.toggle('is-scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+})();
+</script>
+<script src="../lead.js" defer></script>
+</body>
+</html>
