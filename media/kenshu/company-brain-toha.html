@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js" data-media="kenshu">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}if(location.hostname==='techworker.co.jp')gtag('config', 'G-3V34NWXVCJ');
+</script>
+<script src="/assets/tw-track.js" defer></script>
+<script src="/assets/tw-event.js" defer></script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Company Brain（会社の記憶）とは｜GBrainの料金・保存先と、社内に入れる前に決める3つのこと【2026年11月】 — TechWorker</title>
+<meta name="description" content="Company Brain（会社の記憶）は、社内のメモや議事録、決めたことを1か所にため、社員が使うAIが答える前に読む仕組みです。代表例のGBrainの料金、自社で動かす費用、保存先とSSO、日本語の検索、入れる前に決めることを、公式情報（2026年11月19日確認）とTechWorkerの運用記録で整理します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/kenshu/company-brain-toha">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Company Brain（会社の記憶）とは｜GBrainの料金・保存先と、社内に入れる前に決める3つのこと【2026年11月】">
+<meta property="og:description" content="Company Brain（会社の記憶）は、社内のメモや議事録、決めたことを1か所にため、社員が使うAIが答える前に読む仕組みです。代表例のGBrainの料金、自社で動かす費用、保存先とSSO、日本語の検索、入れる前に決めることを、公式情報（2026年11月19日確認）とTechWorkerの運用記録で整理します。">
+<meta property="og:image" content="https://techworker.co.jp/media/kenshu/covers/company-brain-toha.png">
+<meta property="og:url" content="https://techworker.co.jp/media/kenshu/company-brain-toha">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Company Brain（会社の記憶）とは｜GBrainの料金・保存先と、社内に入れる前に決める3つのこと【2026年11月】">
+<meta name="twitter:image" content="https://techworker.co.jp/media/kenshu/covers/company-brain-toha.png">
+<link rel="stylesheet" href="../article.css?v=20261006-bilingual-quotes">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Company Brain（会社の記憶）とは｜GBrainの料金・保存先と、社内に入れる前に決める3つのこと【2026年11月】", "description": "Company Brain（会社の記憶）は、社内のメモや議事録、決めたことを1か所にため、社員が使うAIが答える前に読む仕組みです。代表例のGBrainの料金、自社で動かす費用、保存先とSSO、日本語の検索、入れる前に決めることを、公式情報（2026年11月19日確認）とTechWorkerの運用記録で整理します。", "datePublished": "2026-11-19", "dateModified": "2026-11-19", "image": "https://techworker.co.jp/media/kenshu/covers/company-brain-toha.png", "inLanguage": "ja", "mainEntityOfPage": "https://techworker.co.jp/media/kenshu/company-brain-toha", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/favicon.svg"}}, "citation": ["https://github.com/garrytan/gbrain", "https://gbrain.io/pricing", "https://gbrain.io/faq", "https://gbrain.io/trust/security", "https://gbrain.io/trust/privacy", "https://gbrain.io/trust/subprocessors", "https://github.com/garrytan/gbrain/blob/master/docs/guides/multi-language-fts.md", "https://tsuguvi.com", "https://www.merge.dev/blog/what-is-a-company-brain-how-it-gives-enterprise-ai-company-context"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "AI研修・導入ラボ", "item": "https://techworker.co.jp/media/kenshu/"}, {"@type": "ListItem", "position": 4, "name": "Company Brain（会社の記憶）とは", "item": "https://techworker.co.jp/media/kenshu/company-brain-toha"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Company Brainと社内検索（エンタープライズサーチ）は、何が違いますか？", "acceptedAnswer": {"@type": "Answer", "text": "社内検索は今ある文書を探して見せる仕組みです。会社の記憶は会話や議事録から事実や決めたことを書き足し、古くなった内容を退けて、AIが答える前に読みます。GBrainのホスト版はTeamとEnterpriseでこの手入れを料金に含めています。"}}, {"@type": "Question", "name": "GBrainは日本語で使えますか？", "acceptedAnswer": {"@type": "Answer", "text": "公式の料金ページ、FAQ、READMEに、日本語への対応を明記した記載はありません。検索の手引きには、日本語・中国語・韓国語の扱いが書かれています。TechWorkerでは多言語の埋め込みモデル（bge-m3）を選び、意味で探す機能が日本語でも動いています。語で探す機能は、今のバージョンでは索引を使わない探し方になり、量が増えると遅くなります。"}}, {"@type": "Question", "name": "無料で使えますか？", "acceptedAnswer": {"@type": "Answer", "text": "本体はMITライセンスで、自社で動かすのは無料です。データベース、埋め込みのAPI、常に動かすサーバーの費用は別にかかります。ホスト版の料金ページに無料試用の記載はありません。プライバシーの規定には、支払いのないまま無料試用を終えたワークスペースは、日付を知らせるメールから5日後に削除すると書かれています。条件は申し込みの画面で確かめます。"}}, {"@type": "Question", "name": "社員の会話が、AIの学習に使われますか？", "acceptedAnswer": {"@type": "Answer", "text": "ホスト版の公式FAQはチームの中身をAIの学習に使わず、売らず、宣伝にも使わないと書いています。ただし既定で、文はAnthropic（モデル）とOpenAI（埋め込み）に、Web検索の語はExaに送られ、その先は各社の規定に従います。"}}, {"@type": "Question", "name": "解約すると、データはどうなりますか？", "acceptedAnswer": {"@type": "Answer", "text": "メモはMarkdownのファイルで持ち出せます。解約は支払った期間の終わりまで有効です。ブレインを削除すると元に戻せず、日次の控えが最大9日残ります（控えの保持期間を読めない場合は最大62日）。支払いの終わったワークスペースは12か月後に削除するとされていますが、公式はまだ実施していないと書いています。"}}]}</script>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<link rel="stylesheet" href="/assets/site/site.css">
+<link rel="stylesheet" href="/media/audience-filter.css?v=20261006-media-only">
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header class="hd hd--solid">
+  <a class="logo" href="/" aria-label="TechWorker ホーム">Tech<i>Worker</i></a>
+  <nav id="hd-nav" aria-label="主な行き先">
+    <a href="/services">事業・サービス</a>
+    <a href="/#concept">考え方</a>
+    <a href="/agent-cases/">事例</a>
+    <a href="/news">ニュース</a>
+    <a href="/company">会社情報</a>
+    <a href="/contact">お問い合わせ</a>
+  </nav>
+  <button class="menu" type="button" aria-label="メニューを開く" aria-controls="hd-nav" aria-expanded="false"></button>
+</header>
+<div class="subnav">
+  <div class="wrap subnav__in">
+    <a class="subnav__name" href="index.html">AI研修・導入ラボ</a>
+    <nav aria-label="メディアの行き先"><a href="https://kenshu.techworker.co.jp/">生成AI研修について</a><a href="https://kenshu.techworker.co.jp/contact/" class="subnav__cta">研修の相談</a></nav>
+  </div>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a><span class="sep">/</span>Company Brain（会社の記憶）とは</nav>
+  <div class="kicker">導入と業務への組み込み</div>
+  <h1>Company Brain（会社の記憶）とは｜GBrainの料金・保存先と、社内に入れる前に決める3つのこと</h1>
+  <p class="dek">Company Brain（会社の記憶）は、社内のメモや議事録、決めたことを1か所にため、社員が使うAIが答える前に読む仕組みです。代表例のGBrainの料金、自社で動かす費用、保存先とSSO、日本語の検索、入れる前に決めることを、公式情報（2026年11月19日確認）とTechWorkerの運用記録で整理します。</p>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.11.19</span><span class="dot">·</span><span>読了 10分</span>
+  </div>
+<p class="article-audience"><span class="article-audience-label">主な対象読者</span><a href="/media/kenshu/?audience=it#articles">情シス・AI導入担当</a></p>
+</header>
+
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div>
+      <a href="#source">Company Brain（会社の記憶）とは、何ですか？</a>
+      <a href="#gbrain">GBrainは、何をする道具ですか？</a>
+      <a href="#price">GBrainの料金は、いくらですか？</a>
+      <a href="#selfhost">自社で動かすと、何に費用と手間がかかりますか？</a>
+      <a href="#japan">日本の会社がホスト版を使うとき、何を確かめますか？</a>
+      <a href="#search">日本語の資料で、検索は効きますか？</a>
+      <a href="#choose">預けるか、自社で動かすか、どう決めますか？</a>
+      <a href="#decide">社内に入れる前に、何を決めますか？</a>
+      <a href="#ringi">稟議で聞かれることに、どう答えますか？</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#next">次の一歩は何から始めればよいですか？</a>
+      <a href="#sources">出典と確認範囲</a>
+    </div></nav>
+
+  <article class="art-body">
+
+<p>Company Brain（会社の記憶）は、社内のメモ、議事録、決めたことを1か所にため、社員が使うAIが答える前に読む仕組みを指す言葉です。2026年に入り、海外のAI製品の説明でよく見かけるようになりました。</p>
+<ul>
+<li><strong>代表例：</strong>Y CombinatorのGarry Tan氏が公開したオープンソースのGBrainです。GitHubのスターは約3.3万です（2026年11月19日）。</li>
+<li><strong>料金：</strong>ホスト版（gbrain.io）はPersonalが月49ドル、Teamが月199ドルです。Teamは人数に関係なく1ワークスペースの料金です。</li>
+<li><strong>確かめる点：</strong>ホスト版の保存先は米国シカゴで、SSO（シングルサインオン）は予定の段階です。日本語への対応を明記した記載はありません。</li>
+</ul>
+<p>公式情報（2026年11月19日確認）と、GBrainを社内で動かしているTechWorkerの記録をもとに、料金と費用、日本語の検索、社内に入れる前に決めることをまとめます。</p>
+
+<h2 id="source">Company Brain（会社の記憶）とは、何ですか？</h2>
+<p class="answer">社内の記録を1か所にため、社員が使うどのAIも答える前にそこを読む仕組みです。決まった定義はなく、製品によって指す範囲が違います。</p>
+<p>GBrainのGitHubのページは、冒頭で自らを次のように説明しています。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“One brain for you and your company, read by every agent you use. […] Claude Code, Codex and your other agents look there before they answer, so they stop starting from zero and work from what you and your team actually wrote down.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>あなたと会社のための1つの記憶を、使うすべてのエージェントが読みます。（中略）Claude CodeやCodexなどのエージェントは答える前にそこを見るので、毎回ゼロから始めずに、あなたとチームが実際に書き残したことをもとに仕事をします。</p><footer>出典：<a href="https://github.com/garrytan/gbrain" target="_blank" rel="noopener noreferrer">GitHub「garrytan/gbrain」README</a>（2026年11月19日確認）</footer></blockquote>
+<p>ここでのエージェントは、指示を受けて調べ物や作業を進めるAIのことです。会社の記憶があると、AIに毎回社内の事情を説明し直す手間が減ります。</p>
+<p>似た仕組みに社内検索（エンタープライズサーチ）があります。社内検索は今ある文書を探して見せます。会社の記憶は会話や議事録から事実や決めたことを書き足し、古い内容を退けていく点が違います。GBrainのホスト版はこの手入れをTeamとEnterpriseの料金に含めています。</p>
+<p>言葉の使い方はまだそろっていません。Tsuguviは自社を「A company brain」と名乗り、データ連携のMergeは、人とAIのツールが使う、組織の知識とつながりの共有の層だと説明しています。製品を比べるときは、名前でなく、何を入れ、誰が直し、どのAIが読むかで比べます。</p>
+
+<h2 id="gbrain">GBrainは、何をする道具ですか？</h2>
+<p class="answer">Markdownのメモと社内の文書をデータベースに入れ、語と意味の両方で探せるようにする道具です。Claude Code、ChatGPT、CursorなどのAIから、MCPという接続の決まりでつなぎます。</p>
+<p>元になる情報はMarkdown（見出しや箇条書きを記号で書く文書の形式）のファイルです。READMEはデータベースをファイルから作り直せる索引と位置づけています。</p>
+<ul>
+<li><strong>データベース：</strong>1人で使うなら標準のPGLite（約5万ページまで）、共有や大きな量ならPostgresにpgvectorを足して使います。</li>
+<li><strong>検索：</strong>語で探す検索と、文の意味で探す検索を組み合わせます。意味で探すには、文を数値に変える埋め込み（embedding）のAPIが要ります。</li>
+<li><strong>ライセンス：</strong>MITライセンスで、試験版を除く最新のバージョンはv0.60.739.0（2026年11月18日）です。</li>
+</ul>
+<p>APIのキーが無くても始められます。その場合、検索は語で探す方だけになります。</p>
+
+<h2 id="price">GBrainの料金は、いくらですか？</h2>
+<p class="answer">ホスト版はPersonalが月49ドル、Teamが月199ドル、Enterpriseは個別見積もりです。Teamは人数に関係なく1ワークスペースの料金で、AIのクレジットが月100ドル分含まれます。</p>
+<div class="tbl-wrap">
+  <table style="min-width:620px">
+    <tr><th>プラン</th><th>月額</th><th>主な中身</th></tr>
+    <tr><td>Personal</td><td>49ドル</td><td>1人用。メモ・スキル・アプリを、今使っているAIから使う</td></tr>
+    <tr><td>Team</td><td>199ドル</td><td>チーム全員で1つのワークスペース（人数による追加料金なし）。AIのクレジット月100ドル。記憶の手入れ（事実の抜き出し、古い内容の退避）を含む</td></tr>
+    <tr><td>Enterprise</td><td>個別見積もり</td><td>社員ごと・チームごとのワークスペース、全チームを1画面で見る機能、社外のゲスト、請求の一本化</td></tr>
+  </table>
+</div>
+<p class="fig-cap">出典：gbrain.io「Pricing」「FAQ」（2026年11月19日確認）。PersonalとTeamは月払いで、いつでも止められます</p>
+<p>月100ドルのクレジットは、ワークスペースが使うAIのモデルと、Web検索などの従量の道具に使われます。FAQには、1人の接続をその人が使うすべてのAIで使えるTools（月19ドル、最初の7日は無料）も載っています。料金ページの3つのプランとは別の商品です。</p>
+<p>人数に関係なく月199ドルなので、1人あたりの額は人数で変わります。ここからはTechWorkerの計算です。10人なら1人月約19.9ドル、30人なら約6.6ドル、50人なら約4ドルです。年額にすると2,388ドルになります。</p>
+<p>ただしTeamは全員で1つのワークスペースを使います。部署ごとに見せる範囲を分けたい会社は、Enterpriseの見積もりを前提に比べます。</p>
+<p>AIのツールを1人ずつ配る費用は、<a href="seisei-ai-houjin-hikaku.html">生成AIの法人契約の比較</a>にまとめています。主要4社の料金比較表と、稟議書・社内利用ルールの雛形は、下の枠から受け取れます。</p>
+<div class="tw-lead" data-offer="ai-contract-pack" data-campaign="company-brain-toha" data-pos="mid"></div>
+
+<h2 id="selfhost">自社で動かすと、何に費用と手間がかかりますか？</h2>
+<p class="answer">本体は無料ですが、データベース、埋め込みのAPI、常に動かすサーバーの費用がかかります。公式は月額の目安を出していません。</p>
+<p>READMEに書かれている費用のかかる所は次の4つです。</p>
+<ul>
+<li><strong>データベース：</strong>共有して使うなら、Postgresとpgvectorを自社のサーバーかクラウドで用意します。</li>
+<li><strong>埋め込み：</strong>新しく入れたときの既定はVoyageのモデルです。OpenAI、Google Gemini、手元で動くモデルなども選べます。</li>
+<li><strong>答えを作るAI：</strong>出典つきの答えを作る機能には、別にAIのモデルのAPIが要ります。</li>
+<li><strong>常に動かすサーバー：</strong>夜間の整理などを常に動かすなら、メモリ8GB以上のサーバーとAPIの利用料がかかります。</li>
+</ul>
+<p>TechWorkerは2026年6月から、社内の記憶としてGBrainを共有のデータベース（Postgres＋pgvector）で動かしています。2026年11月19日の時点で4,277ページ、26,804の断片、6,960のつながりが入っています。断片はすべて埋め込み済みです。約4,250ページの時点で、データベースは約900MBでした。</p>
+<p>運用して分かったことが2つあります。1つは、日本語の意味検索のために、多言語の埋め込みモデル（bge-m3）を選んだことです。もう1つは、バージョンの更新です。</p>
+<p>2026年11月14日に新しいバージョンへ上げたところ、無料の最小構成のデータベースでは検索に47〜187秒かかりました。その日のうちに元のバージョンへ戻しました。バージョンを上げるときは、データベースの移行と埋め込みの作り直しが要ることがあります。本番の前に、写しの環境で試します。</p>
+
+<h2 id="japan">日本の会社がホスト版を使うとき、何を確かめますか？</h2>
+<p class="answer">保存先は米国シカゴで、SSO・SCIM（社員の情報を自動で同期する仕組み）は予定の段階です。SOC 2などの第三者認証もまだありません。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“We do not offer SSO/SAML or SCIM provisioning today. Both are planned.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>SSO・SAMLとSCIMによる利用者の登録は、今は提供していません。どちらも予定しています。</p><footer>出典：<a href="https://gbrain.io/trust/security" target="_blank" rel="noopener noreferrer">gbrain.io「Security」</a>（2026年11月16日更新、2026年11月19日確認）</footer></blockquote>
+<div class="tbl-wrap">
+  <table style="min-width:600px">
+    <tr><th>確かめる点</th><th>公式の記載（2026年11月19日確認）</th></tr>
+    <tr><td>保存先</td><td>サーバーと各ブレインの計算機は、米国シカゴ（Fly.io）</td></tr>
+    <tr><td>AIへの送信</td><td>既定で、モデルはAnthropic、意味検索の埋め込みはOpenAI、Web検索はExa、Webページの取得はFirecrawl。OpenAIの窓口は地域を固定しない。管理者は自社のAIの窓口を足せる</td></tr>
+    <tr><td>学習への利用</td><td>チームの中身をAIの学習に使わない。売らない。宣伝に使わない</td></tr>
+    <tr><td>ログイン</td><td>Googleのアカウントか、メールで届くリンクでログインする。SSO・SAML・SCIMは予定</td></tr>
+    <tr><td>第三者認証</td><td>SOC 2・ISO 27001などは持っていない</td></tr>
+    <tr><td>削除と控え</td><td>ブレインの削除は元に戻せない。日次の控えは最大9日残る（保持期間を読めない控えは最大62日）</td></tr>
+    <tr><td>持ち出し</td><td>メモはMarkdownのファイル。管理者はワークスペースのデータを書き出せる</td></tr>
+    <tr><td>日本語</td><td>料金ページ・FAQ・READMEに、対応を明記した記載はない。検索の手引きに日本語・中国語・韓国語の扱いがある</td></tr>
+  </table>
+</div>
+<p class="fig-cap">出典：gbrain.io「Security」「Privacy」「Subprocessors」「FAQ」（2026年11月19日確認）</p>
+<p>国内の保存やSSOを社内の審査の条件にしている会社は、今のホスト版では条件を満たせません。自社で動かすか、条件がそろうのを待つかの判断になります。</p>
+
+<h2 id="search">日本語の資料で、検索は効きますか？</h2>
+<p class="answer">意味で探す検索は言語を問わないと手引きにあり、TechWorkerでは多言語のモデル（bge-m3）で日本語でも動いています。語で探す検索は、今のバージョンでは索引を使わず全文を順に照らすため、量が増えるほど遅くなります。</p>
+<p>GBrainの多言語の手引きは日本語を含む問いの語の検索について、次のように書いています。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“The fallback is correct but not index-accelerated: it scans content_chunks.chunk_text, so latency grows with corpus size.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>この代わりの探し方は正しく動きますが、索引で速くはなりません。断片の本文を順に照らすため、量が増えるほど時間がかかります。</p><footer>出典：<a href="https://github.com/garrytan/gbrain/blob/master/docs/guides/multi-language-fts.md" target="_blank" rel="noopener noreferrer">GitHub「garrytan/gbrain」docs/guides/multi-language-fts.md</a>（2026年11月19日確認）</footer></blockquote>
+<p>同じ手引きによると、日本語用の拡張（PGroongaなど）をデータベースに入れても、今はこの探し方になります。語と意味を組み合わせた検索では、語の側に既定で3秒の時間の枠があります。超えると候補を2,000の断片までに絞って探し直すため、語の側の結果がすべてそろわないことがあります。</p>
+<p>TechWorkerは2026年11月18日に、10万ページの試験データで、日本語の語の検索を速くする索引を比べました。データベースで直接測った結果です。</p>
+<div class="tbl-wrap">
+  <table style="min-width:600px">
+    <tr><th>探した語</th><th>索引なし</th><th>pg_trgm</th><th>pg_bigm</th><th>PGroonga</th></tr>
+    <tr><td>「条項」（2文字・3ページだけに出る語）</td><td>76ミリ秒</td><td>77ミリ秒</td><td>5ミリ秒</td><td>6ミリ秒</td></tr>
+    <tr><td>「承認」（2文字・約5%のページに出る語）</td><td>91ミリ秒</td><td>91ミリ秒</td><td>26ミリ秒</td><td>45ミリ秒</td></tr>
+  </table>
+</div>
+<p class="fig-cap">出典：TechWorkerの試験（2026年11月18日、10万ページの日本語の試験データ）。GBrainの検索を通さず、データベースで直接測った値</p>
+<p>この2つの語では、pg_bigmとPGroongaは速くなり、pg_trgmは索引なしと変わりませんでした。ただし今のGBrainはこれらの索引を日本語の検索に使いません。速さが要る会社は、導入の前に社内の言葉で試します。製品名や略語、部署の言い方など、社内の言葉で10問ほど試すと、語と意味のどちらで見つかるかが分かります。</p>
+
+<h2 id="choose">預けるか、自社で動かすか、どう決めますか？</h2>
+<p class="answer">国内の保存かSSO・第三者認証が要るかで決まります。どちらかが要るなら、今は自社で動かす形になります。</p>
+    <figure class="fig-inline"><a href="figs/company-brain-toha-1.png" target="_blank" rel="noopener"><img src="figs/company-brain-toha-1.png" alt="GBrainを預けるか自社で動かすかの判断。国内の保存かSSO・第三者認証が要るなら自社で動かす。部署や社員ごとに見せる範囲を分けるならEnterpriseの見積もり。どちらでもなければTeam（月199ドル、人数に関係なく1つのワークスペース）で1つのチームから試す。" width="1200" height="800" loading="lazy" decoding="async"></a></figure>
+<p>要らない会社はTeamで1つのチームから試せます。部署や社員ごとに分けたいなら、Enterpriseの見積もりを取ります。</p>
+<p>自社で動かすと、データベースの用意、バージョンの更新、控えの取得が自社の仕事になります。担当の人を決められないうちは、預ける形で小さく始める方が進めやすくなります。</p>
+
+<h2 id="decide">社内に入れる前に、何を決めますか？</h2>
+<p class="answer">誰が何を読めるか（権限）、どこに置きどのAIへ送るか（置き場所）、何を入れて誰が直すか（中身）の3つです。</p>
+    <figure class="fig-inline"><a href="figs/company-brain-toha-2.png" target="_blank" rel="noopener"><img src="figs/company-brain-toha-2.png" alt="社内に入れる前に決める3つのこと。誰が何を読めるか（見せない記録を分ける、分けるならEnterprise）、どこに置きどのAIへ送るか（保存先を規程と照らす、送り先のAIを見る）、何を入れ誰が直すか（書き足す流れを作る、直す担当を決める）。" width="1200" height="410" loading="lazy" decoding="async"></a></figure>
+<ol>
+<li><strong>誰が何を読めるか：</strong>Teamは全員で1つのワークスペースです。人事や役員の記録など、全員に見せない情報は入れないか、Enterpriseで社員ごと・チームごとのワークスペースに分けます。</li>
+<li><strong>どこに置き、どのAIへ送るか：</strong>保存先と、文が送られるAIの会社（既定でモデルはAnthropic、埋め込みはOpenAI、Web検索はExa）を、社内の規程と照らします。顧客の情報を入れるなら、契約で決めた保存先と合うかを確かめます。</li>
+<li><strong>何を入れ、誰が直すか：</strong>入れ物だけ用意しても、AIの答えは変わりません。議事録や決めたことを書き足す流れを先に作ります。AIが聞き違えて書いた内容も、次の答えに使われます。直す担当を決め、出典を残します。</li>
+</ol>
+<p>GBrainの公式も外から読み込んだ内容に、AIへの指示を書き換える文が混じる危険を書いています。そのうえで、ブレインの出力を判断の出発点として扱い、正しいものとして扱わないよう勧めています。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“Treat brain output as a starting point that informs your judgment, not as authoritative.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>ブレインの出力は、判断の材料になる出発点として扱い、確かなものとして扱わないでください。</p><footer>出典：<a href="https://gbrain.io/trust/security" target="_blank" rel="noopener noreferrer">gbrain.io「Security」</a>（2026年11月19日確認）</footer></blockquote>
+
+<h2 id="ringi">稟議で聞かれることに、どう答えますか？</h2>
+<p class="answer">費用、保存先、AIの学習、ログイン、やめるときの扱いを表にしておくと答えやすくなります。ホスト版と自社で動かす場合で答えが変わります。</p>
+<div class="tbl-wrap">
+  <table style="min-width:640px">
+    <tr><th>聞かれること</th><th>ホスト版（gbrain.io）</th><th>自社で動かす</th></tr>
+    <tr><td>費用</td><td>Team 月199ドル（年2,388ドル）。人数に関係なし</td><td>本体は無料。データベース・埋め込み・サーバーは別</td></tr>
+    <tr><td>保存先</td><td>米国シカゴ</td><td>自社で選ぶ（国内のクラウドも可）</td></tr>
+    <tr><td>AIの学習</td><td>使わないと公式に記載。送り先のAIは各社の規定による</td><td>送り先のAIの規定による。手元で動くモデルも選べる</td></tr>
+    <tr><td>ログイン</td><td>Googleのアカウントかメールのリンク。SSOは予定</td><td>自社の環境に合わせて用意する</td></tr>
+    <tr><td>やめるとき</td><td>Markdownで持ち出せる。削除は戻せず、控えは原則最大9日</td><td>自社で消す。ファイルは手元に残る</td></tr>
+  </table>
+</div>
+<p class="fig-cap">出典：gbrain.io「Pricing」「FAQ」「Security」「Privacy」、GitHub「garrytan/gbrain」README（2026年11月19日確認）。年額はTechWorkerの計算</p>
+<p>稟議では試す範囲も1行で書きます。1つのチームで1か月、社内の言葉で10問試し、答えに出典が付くかを見る、のように書くと判断しやすくなります。</p>
+
+<h2 id="faq">よくある質問</h2>
+<div class="faq"><div class="q">Company Brainと社内検索（エンタープライズサーチ）は、何が違いますか？</div><p class="a">社内検索は今ある文書を探して見せる仕組みです。会社の記憶は会話や議事録から事実や決めたことを書き足し、古くなった内容を退けて、AIが答える前に読みます。GBrainのホスト版はTeamとEnterpriseでこの手入れを料金に含めています。</p></div>
+<div class="faq"><div class="q">GBrainは日本語で使えますか？</div><p class="a">公式の料金ページ、FAQ、READMEに、日本語への対応を明記した記載はありません。検索の手引きには、日本語・中国語・韓国語の扱いが書かれています。TechWorkerでは多言語の埋め込みモデル（bge-m3）を選び、意味で探す機能が日本語でも動いています。語で探す機能は、今のバージョンでは索引を使わない探し方になり、量が増えると遅くなります。</p></div>
+<div class="faq"><div class="q">無料で使えますか？</div><p class="a">本体はMITライセンスで、自社で動かすのは無料です。データベース、埋め込みのAPI、常に動かすサーバーの費用は別にかかります。ホスト版の料金ページに無料試用の記載はありません。プライバシーの規定には、支払いのないまま無料試用を終えたワークスペースは、日付を知らせるメールから5日後に削除すると書かれています。条件は申し込みの画面で確かめます。</p></div>
+<div class="faq"><div class="q">社員の会話が、AIの学習に使われますか？</div><p class="a">ホスト版の公式FAQはチームの中身をAIの学習に使わず、売らず、宣伝にも使わないと書いています。ただし既定で、文はAnthropic（モデル）とOpenAI（埋め込み）に、Web検索の語はExaに送られ、その先は各社の規定に従います。</p></div>
+<div class="faq"><div class="q">解約すると、データはどうなりますか？</div><p class="a">メモはMarkdownのファイルで持ち出せます。解約は支払った期間の終わりまで有効です。ブレインを削除すると元に戻せず、日次の控えが最大9日残ります（控えの保持期間を読めない場合は最大62日）。支払いの終わったワークスペースは12か月後に削除するとされていますが、公式はまだ実施していないと書いています。</p></div>
+
+<h2 id="next">次の一歩は何から始めればよいですか？</h2>
+<p class="answer">AIに読ませてよい記録と、読ませない記録を分けることから始めます。</p>
+<ol>
+<li>議事録や決めたことのうち、AIに読ませてよい物と読ませない物を分けます。</li>
+<li>保存先、送り先のAI、ログインの3点を、情報セキュリティの担当と確かめます。</li>
+<li>1つのチームで、社内の言葉で10問試します。</li>
+</ol>
+<p>TechWorkerでは生成AIの研修を、受講者の実際の業務1本から組みます。30分の点検は画面共有で無料で行い、IDやパスワードは預かりません。30日後に、使った人の割合と1件の時間を測って報告します。検討段階のご相談だけでも歓迎です。</p>
+<div class="tw-lead" data-offer="ai-contract-pack" data-campaign="company-brain-toha" data-pos="end"></div>
+
+<h2 id="sources">出典と確認範囲</h2>
+<p class="source-note">確認日：2026年11月19日。ホスト版（gbrain.io）の画面と動きは、TechWorkerでは確かめていません。運用の数と日本語の索引の測定はTechWorkerの社内の記録で、環境によって結果は変わります。1人あたりの額と年額はTechWorkerの計算です。料金と条件は変わるため、契約の時点で公式情報を確認してください。</p>
+<ol class="source-list"><li><a href="https://github.com/garrytan/gbrain" target="_blank" rel="noopener noreferrer">GitHub「garrytan/gbrain」README</a></li><li><a href="https://gbrain.io/pricing" target="_blank" rel="noopener noreferrer">gbrain.io「Pricing」</a></li><li><a href="https://gbrain.io/faq" target="_blank" rel="noopener noreferrer">gbrain.io「FAQ」</a></li><li><a href="https://gbrain.io/trust/security" target="_blank" rel="noopener noreferrer">gbrain.io「Security」（2026年11月16日更新）</a></li><li><a href="https://gbrain.io/trust/privacy" target="_blank" rel="noopener noreferrer">gbrain.io「Privacy」（2026年11月10日更新）</a></li><li><a href="https://gbrain.io/trust/subprocessors" target="_blank" rel="noopener noreferrer">gbrain.io「Subprocessors」（2026年11月3日更新）</a></li><li><a href="https://github.com/garrytan/gbrain/blob/master/docs/guides/multi-language-fts.md" target="_blank" rel="noopener noreferrer">GitHub「garrytan/gbrain」docs/guides/multi-language-fts.md</a></li><li><a href="https://tsuguvi.com" target="_blank" rel="noopener noreferrer">Tsuguvi</a></li><li><a href="https://www.merge.dev/blog/what-is-a-company-brain-how-it-gives-enterprise-ai-company-context" target="_blank" rel="noopener noreferrer">Merge「What is a company brain?」</a></li></ol>
+
+</article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div>
+    <p>上場企業を含む50社超・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>AIに読ませる社内の情報の整理から、研修を組みます。</h3>
+    <p>何をAIに読ませ、何を読ませないかの線引きから、研修当日に業務1本をAIに任せる形まで作り、30日後に数で測って報告します。30分の点検は画面共有で行い、IDやパスワードは預かりません。検討段階のご相談だけでも歓迎です。</p>
+  </div>
+  <a href="https://kenshu.techworker.co.jp/?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=company-brain-toha&amp;utm_content=end" class="btn">研修内容・費用を相談する <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="https://kenshu.techworker.co.jp/" style="color:var(--electric);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">生成AI法人研修（主要ツール全対応）</a>　／　<a href="https://kenshu.techworker.co.jp/contact/" style="color:var(--electric);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">無料相談</a></p>
+<div class="back-list"><a href="index.html">← AI研修・導入ラボの記事一覧に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="claude-code-shanai-tenkai.html" class="related-card"><span class="rc-cat">Claude Codeの活用</span><div class="rc-title">Claude Codeの社内展開｜社内データの扱い・設定配布・ルール雛形</div></a>
+    <a href="../token-management.html" class="related-card"><span class="rc-cat">料金と比較</span><div class="rc-title">トークンマキシングとは｜意味と、トークンマネジメントでAIのコストを見直す方法</div></a>
+  </div>
+</div></section>
+
+<p style="max-width:var(--measure);margin:40px auto 0;padding:0 20px;font-size:12px;color:var(--slate);line-height:1.9;">本記事は株式会社TechWorkerが独自に作成したものであり、GBrainの開発者および運営会社との提携・後援・承認を受けたものではありません。記載の製品名は各社の商標または登録商標です。</p>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__in">
+      <div>
+        <p class="ft__name">株式会社TechWorker</p>
+        <p class="ft__addr">〒169-0051 東京都新宿区西早稲田一丁目22番3号<br>早稲田アントレプレナーシップセンター</p>
+      </div>
+      <nav aria-label="フッターの行き先">
+        <a href="/services">事業・サービス</a>
+        <a href="/company">会社情報</a>
+        <a href="/news">ニュース</a>
+        <a href="/#concept">考え方</a>
+        <a href="/agent-cases/">事例</a>
+        <a href="/contact">お問い合わせ</a>
+        <a href="/privacy">プライバシーポリシー</a>
+      </nav>
+    </div>
+    <div class="nv-badge"><a href="/news/013"><img src="/assets/badges/nvidia-inception-program.svg" alt="NVIDIA Inception Program" width="93" height="40" loading="lazy"></a><p>NVIDIA、NVIDIA ロゴ、NVIDIA Inception は、米国およびその他の国における NVIDIA Corporation の商標および/または登録商標です。</p></div>
+    <small>© TechWorker Inc.</small>
+  </div>
+</footer>
+
+<script>
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+<script src="/media/article-tracker.js?v=20261006-readable-intros" defer></script>
+<script>
+// スマホの行き先：右上の釦で開け閉めする。行き先を押したら閉じる。スクロールしたら頭に暗い面を敷く
+(() => {
+  const hd = document.querySelector('.hd'), btn = hd.querySelector('.menu');
+  const set = open => { hd.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く'); };
+  btn.addEventListener('click', () => set(!hd.classList.contains('is-open')));
+  hd.querySelector('nav').addEventListener('click', e => { if (e.target.closest('a')) set(false); });
+  const onScroll = () => hd.classList.toggle('is-scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+})();
+</script>
+<script src="../lead.js" defer></script>
+</body>
+</html>
