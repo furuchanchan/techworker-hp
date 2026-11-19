@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js" data-media="kenshu">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}if(location.hostname==='techworker.co.jp')gtag('config', 'G-3V34NWXVCJ');
+</script>
+<script src="/assets/tw-track.js" defer></script>
+<script src="/assets/tw-event.js" defer></script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Copilotの従来のスケジュールされたプロンプトは12月31日で終了｜作り直しとTeamsのAI Workflows【2026年11月】 — TechWorker</title>
+<meta name="description" content="Microsoft 365 Copilotの従来のスケジュールされたプロンプトは、2026年12月31日に廃止されます。続けたいスケジュールは、利用者が新しい「スケジュールされたタスク」として作り直します。上限、棚卸し、TeamsのAI Workflowsの扱いを公式情報（2026年11月20日確認）で整理します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/kenshu/copilot-scheduled-prompts-shuryo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Copilotの従来のスケジュールされたプロンプトは12月31日で終了｜作り直しとTeamsのAI Workflows【2026年11月】">
+<meta property="og:description" content="Microsoft 365 Copilotの従来のスケジュールされたプロンプトは、2026年12月31日に廃止されます。続けたいスケジュールは、利用者が新しい「スケジュールされたタスク」として作り直します。上限、棚卸し、TeamsのAI Workflowsの扱いを公式情報（2026年11月20日確認）で整理します。">
+<meta property="og:image" content="https://techworker.co.jp/media/kenshu/covers/copilot-scheduled-prompts-shuryo.png">
+<meta property="og:url" content="https://techworker.co.jp/media/kenshu/copilot-scheduled-prompts-shuryo">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Copilotの従来のスケジュールされたプロンプトは12月31日で終了｜作り直しとTeamsのAI Workflows【2026年11月】">
+<meta name="twitter:image" content="https://techworker.co.jp/media/kenshu/covers/copilot-scheduled-prompts-shuryo.png">
+<link rel="stylesheet" href="../article.css?v=20261006-bilingual-quotes">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Copilotの従来のスケジュールされたプロンプトは12月31日で終了｜作り直しとTeamsのAI Workflows【2026年11月】", "description": "Microsoft 365 Copilotの従来のスケジュールされたプロンプトは、2026年12月31日に廃止されます。続けたいスケジュールは、利用者が新しい「スケジュールされたタスク」として作り直します。上限、棚卸し、TeamsのAI Workflowsの扱いを公式情報（2026年11月20日確認）で整理します。", "datePublished": "2026-11-20", "dateModified": "2026-11-20", "image": "https://techworker.co.jp/media/kenshu/covers/copilot-scheduled-prompts-shuryo.png", "inLanguage": "ja", "mainEntityOfPage": "https://techworker.co.jp/media/kenshu/copilot-scheduled-prompts-shuryo", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/favicon.svg"}}, "citation": ["https://learn.microsoft.com/en-us/copilot/manage/scheduled-prompts", "https://learn.microsoft.com/en-us/copilot/manage/scheduled-prompts-inventory", "https://learn.microsoft.com/en-us/copilot/manage/scheduled-prompts-environment", "https://support.microsoft.com/en-us/topic/schedule-your-most-used-copilot-prompts-29dfd5fb-211a-4515-88a6-730b8074e489", "https://learn.microsoft.com/en-us/copilot/microsoft-365/release-notes", "https://learn.microsoft.com/en-us/power-automate/teams/teams-app-create", "https://learn.microsoft.com/en-us/microsoftteams/manage-apps", "https://techcommunity.microsoft.com/blog/microsoftteamsblog/ai-and-microsoft-teams-a-new-era-of-collaboration/4454152"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "AI研修・導入ラボ", "item": "https://techworker.co.jp/media/kenshu/"}, {"@type": "ListItem", "position": 4, "name": "Copilotの従来のスケジュールされたプロンプトの終了", "item": "https://techworker.co.jp/media/kenshu/copilot-scheduled-prompts-shuryo"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "12月31日を過ぎると、これまでの結果は消えますか？", "acceptedAnswer": {"@type": "Answer", "text": "消えません。公式は、この変更でデータは失われず、以前の実行の応答は利用者のCopilotのチャット履歴に残ると書いています。止まるのは、従来のスケジュールの実行です。"}}, {"@type": "Question", "name": "従来のスケジュールは、新しいタスクへ自動で移りますか？", "acceptedAnswer": {"@type": "Answer", "text": "公式は、続けたい利用者が期日までに新しいスケジュールされたタスクとして作り直す必要があると書いています。自動で移すという記載は確認したページにありません。"}}, {"@type": "Question", "name": "TeamsやOutlookから、新しいタスクを作れますか？", "acceptedAnswer": {"@type": "Answer", "text": "サポート記事（2026年11月18日更新）では、作れるのはCopilot Chatと、Web版・デスクトップ版のMicrosoft Copilotです。Teams、Outlook、モバイルはこの初期リリースに含まれていません。"}}, {"@type": "Question", "name": "パブリックプレビューの間に作ったスケジュールは、どこで見られますか？", "acceptedAnswer": {"@type": "Answer", "text": "Copilotのスケジュールの一覧には出ません。公式はPower Automateで表示と管理をすると書いています。2026年12月31日より前に期限が切れるまで、Power Automateで動き続けます。"}}, {"@type": "Question", "name": "TeamsのAI Workflowsは、1月以降も動きますか？", "acceptedAnswer": {"@type": "Answer", "text": "確認した公式ページに記載がありません。AI Workflowsが従来の仕組みと新しい仕組みのどちらで動くかも書かれていません。Copilot Chatで結果を見れば足りる指示は、新しいタスクでも作っておくことをTechWorkerは勧めます。"}}]}</script>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<link rel="stylesheet" href="/assets/site/site.css">
+<link rel="stylesheet" href="/media/audience-filter.css?v=20261006-media-only">
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header class="hd hd--solid">
+  <a class="logo" href="/" aria-label="TechWorker ホーム">Tech<i>Worker</i></a>
+  <nav id="hd-nav" aria-label="主な行き先">
+    <a href="/services">事業・サービス</a>
+    <a href="/#concept">考え方</a>
+    <a href="/agent-cases/">事例</a>
+    <a href="/news">ニュース</a>
+    <a href="/company">会社情報</a>
+    <a href="/contact">お問い合わせ</a>
+  </nav>
+  <button class="menu" type="button" aria-label="メニューを開く" aria-controls="hd-nav" aria-expanded="false"></button>
+</header>
+<div class="subnav">
+  <div class="wrap subnav__in">
+    <a class="subnav__name" href="index.html">AI研修・導入ラボ</a>
+    <nav aria-label="メディアの行き先"><a href="https://kenshu.techworker.co.jp/">生成AI研修について</a><a href="https://kenshu.techworker.co.jp/contact/" class="subnav__cta">研修の相談</a></nav>
+  </div>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a><span class="sep">/</span>Copilotの従来のスケジュールされたプロンプトの終了</nav>
+  <div class="kicker">導入と業務への組み込み</div>
+  <h1>Copilotの従来のスケジュールされたプロンプトは12月31日で終了｜作り直しとTeamsのAI Workflows</h1>
+  <p class="dek">Microsoft 365 Copilotの従来のスケジュールされたプロンプトは、2026年12月31日に廃止されます。続けたいスケジュールは、利用者が新しい「スケジュールされたタスク」として作り直します。上限、棚卸し、TeamsのAI Workflowsの扱いを公式情報（2026年11月20日確認）で整理します。</p>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.11.20</span><span class="dot">·</span><span>読了 9分</span>
+  </div>
+<p class="article-audience"><span class="article-audience-label">主な対象読者</span><a href="/media/kenshu/?audience=it#articles">情シス・AI導入担当</a></p>
+</header>
+
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div>
+      <a href="#source">従来のスケジュールされたプロンプトは、いつ、どう変わりますか？</a>
+      <a href="#diff">従来のものと新しいタスクは何が違いますか？</a>
+      <a href="#recreate">利用者は、どう作り直しますか？</a>
+      <a href="#inventory">だれが従来のものを使っているかは、どう調べますか？</a>
+      <a href="#control">管理者は、新しいタスクを止められますか？</a>
+      <a href="#teams">TeamsのAI Workflowsとは何で、どう扱いますか？</a>
+      <a href="#notice">社内には、どう知らせますか？</a>
+      <a href="#steps">12月31日まで、どの順で進めますか？</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#next">次の一歩は何から始めればよいですか？</a>
+      <a href="#sources">出典と確認範囲</a>
+    </div></nav>
+
+  <article class="art-body">
+
+<p>Microsoft 365 Copilotの従来のスケジュールされたプロンプト（Power Platformで動くもの）は、2026年12月31日に廃止されます。</p>
+<ul>
+<li><strong>利用者がすること：</strong>続けたいスケジュールを、12月31日までに新しい「スケジュールされたタスク」として作り直します。</li>
+<li><strong>上限：</strong>新しいタスクは、有効なスケジュールが1人10件、合計が1人50件までです。</li>
+<li><strong>管理者がすること：</strong>公式は管理者の操作を不要としています。ただし利用者が気づかないと、毎朝の要約などが年明けに止まります。使っている人を調べて知らせます。</li>
+</ul>
+<p>TeamsのWorkflowsアプリにあるAI Workflowsも、公式は「Copilotのスケジュールされたプロンプト」と説明しています。12月31日の廃止の対象かは書かれていません。公式情報（2026年11月20日確認）をもとに、作り直しの手順と棚卸しをまとめます。</p>
+
+<h2 id="source">従来のスケジュールされたプロンプトは、いつ、どう変わりますか？</h2>
+<p class="answer">Power Platformで動く従来のスケジュールされたプロンプトが、2026年12月31日に廃止されます。時刻を決めて動かす機能そのものは、Power Platformを使わない「スケジュールされたタスク」として続きます。</p>
+<p>スケジュールされたプロンプトは、Copilotへの指示を決めた時刻と頻度で自動で動かす機能です。サポート記事は毎朝の予定の要約や毎週の振り返りを例に挙げています。Microsoftの管理者向けのページは、次のように書いています。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“Power Platform scheduled prompts will be retired on December 31, 2026, and will no longer run after that date. Users who want a schedule to remain active must create it again as a new scheduled task before then. Scheduled tasks support up to 10 active and 50 total schedules per user.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>Power Platformのスケジュールされたプロンプトは2026年12月31日に廃止され、その日より後は実行されなくなります。スケジュールを有効のままにしたい利用者は、その前に新しいスケジュールされたタスクとして作り直す必要があります。スケジュールされたタスクは、利用者1人あたり有効なスケジュール10件、合計50件までに対応します。</p><footer>出典：<a href="https://learn.microsoft.com/en-us/copilot/manage/scheduled-prompts" target="_blank" rel="noopener noreferrer">Microsoft Learn「Manage scheduled prompts for Microsoft Copilot」</a>（2026年11月11日更新、2026年11月20日確認）</footer></blockquote>
+<p>この原文から分かるのは、廃止の日、利用者が作り直す必要があること、新しいタスクの件数の上限の3つです。</p>
+<p>同じページは、この変更でデータは失われないとも書いています。以前の実行の応答は利用者のCopilotのチャット履歴に残ります。廃止そのものについて、管理者の操作やポリシーの変更は不要とされています。</p>
+<p>名前も変わりました。サポート記事（2026年11月18日更新）では、スケジュールされたプロンプトを「スケジュールされたタスク（Scheduled tasks）」と呼び、タスク ハブ（Task Hub）でまとめて管理します。</p>
+
+<h2 id="diff">従来のものと新しいタスクは何が違いますか？</h2>
+<p class="answer">動く場所、管理者の設定、件数の上限の3つが違います。新しいタスクはPower Platformを使わず、接続エクスペリエンスのポリシーでは制御されません。</p>
+<div class="tbl-wrap">
+  <table style="min-width:680px">
+    <tr><th>項目</th><th>従来のスケジュールされたプロンプト</th><th>新しいスケジュールされたタスク</th></tr>
+    <tr><td>動く場所</td><td>Power Platformの「Microsoft 365」環境</td><td>Power Platformの環境を使わない。データはMicrosoft 365のコンプライアンス境界の中で処理・保存</td></tr>
+    <tr><td>いつまで</td><td>2026年12月31日に廃止。以後は実行されない</td><td>廃止の予定は記載なし</td></tr>
+    <tr><td>件数の上限</td><td>確認した3ページに記載なし</td><td>1人あたり有効10件、合計50件</td></tr>
+    <tr><td>管理者が使わせない設定</td><td>クラウド ポリシーの「Office でコネクテッド エクスペリエンスの使用を許可する」を無効にすると、利用者にスケジュールの画面が出なくなる。すでに組まれたものは終わるまで動く</td><td>個別のポリシー設定はない。左のポリシーでも制御されない</td></tr>
+    <tr><td>管理者の棚卸し</td><td>PowerShellのスクリプトで一覧にできる</td><td>公式は、この棚卸しは新しいタスクには使わないと書く</td></tr>
+    <tr><td>使える人</td><td>Copilotのライセンスを持つ利用者</td><td>Copilotのライセンスを持つ利用者</td></tr>
+  </table>
+</div>
+<p class="fig-cap">出典：Microsoft Learn「Manage scheduled prompts for Microsoft Copilot」（2026年11月11日更新）、「Inventory for scheduled prompts」「Microsoft 365 environment for scheduled prompts」。2026年11月20日確認</p>
+<p>従来のものは、テナントに1つ自動で作られる「Microsoft 365」という名前のPower Platformの環境で動きます。この環境には固定のDLPポリシーがあり、テナントや環境のDLPポリシーは当てはまりません。新しいタスクはこの環境を作らず、使いません。</p>
+<p>Copilotのライセンスの料金は<a href="copilot-houjin-keiyaku.html">Microsoft 365 Copilotの法人料金と契約</a>にまとめています。Copilotを含む主要4社の料金比較表と、稟議書・社内利用ルールの雛形は、下の枠から受け取れます。</p>
+<div class="tw-lead" data-offer="ai-contract-pack" data-campaign="copilot-scheduled-prompts-shuryo" data-pos="mid"></div>
+
+<h2 id="recreate">利用者は、どう作り直しますか？</h2>
+<p class="answer">Copilot Chatで、続けたい指示を新しいスケジュールされたタスクとして作ります。有効にできるのは1人10件までなので、先に残すものを選びます。</p>
+    <figure class="fig-inline"><a href="figs/copilot-scheduled-prompts-shuryo-1.png" target="_blank" rel="noopener"><img src="figs/copilot-scheduled-prompts-shuryo-1.png" alt="このスケジュールを作り直すかの判断。年明けに要らなくなるスケジュールはそのまま終わらせる。作り直すと有効なスケジュールが10件を超える場合は、絞ってから作り直す。どちらでもなければ、Copilot Chatで12月31日までに新しいタスクとして作り直す。" width="1200" height="767" loading="lazy" decoding="async"></a></figure>
+<p>従来のものはTeams、Office.comのチャット、Outlookで使えました。サポート記事では、新しいタスクを作れるのはCopilot Chatと、Web版・デスクトップ版のMicrosoft Copilotです。Teams、Outlook、モバイルは、この初期リリースに含まれていません。TeamsやOutlookで作っていた人は、作り直す場所が変わります。</p>
+<ol>
+<li>Copilot Chatを開き、Microsoft 365のアカウントでサインインします。</li>
+<li>続けたい指示（プロンプト）にマウスを合わせ、「これをスケジュールする（Schedule this）」を選びます。タスク ハブから作ることもできます。</li>
+<li>動かす時刻と頻度を選び、保存します。</li>
+<li>左のサイドバーのタスクのアイコンから「スケジュール済み」のタブを開き、作ったタスクが一覧にあるかを確かめます。</li>
+</ol>
+<p>一覧では、今すぐ実行、スケジュールの編集、一時停止、削除ができます。一時停止したタスクは有効でない（Inactive）側に移ります。</p>
+<p>ここからはTechWorkerの整理です。上限は有効10件・合計50件です。従来のスケジュールを11件以上動かしている人は、すべてを有効にはできません。次の順で残すものを決めます。</p>
+<ul>
+<li>年明けも要るスケジュールだけを選びます。</li>
+<li>同じ時刻に動く似た指示は、1つの指示にまとめます。</li>
+<li>たまにしか使わないものは、一時停止にして合計50件の中に置きます。</li>
+</ul>
+<p>Microsoft Learnには、スケジュールされたプロンプトはMicrosoft CopilotのWork IQのタブでだけ使えるという注記もあります。作る画面が見つからないときは、Work IQのタブを開いているかを確かめます。</p>
+
+<h2 id="inventory">だれが従来のものを使っているかは、どう調べますか？</h2>
+<p class="answer">Power Platform 管理者の役割で、Microsoftが公開しているPowerShellのスクリプトを動かすと、「Microsoft 365」環境にある従来のスケジュールの一覧をCSVに出せます。</p>
+<p>Microsoftは、廃止の日より前にこの棚卸しを使い、従来のスケジュールを持つ利用者を見つけて知らせることができると書いています。要るものは次のとおりです。</p>
+<div class="tbl-wrap">
+  <table style="min-width:600px">
+    <tr><th>項目</th><th>内容</th></tr>
+    <tr><td>役割</td><td>Power Platform 管理者。加えて、「Microsoft 365」環境のシステム管理者の役割</td></tr>
+    <tr><td>道具</td><td>PowerShell 7.0以降。Az.AccountsとMicrosoft.PowerApps.Administration.PowerShellのモジュール</td></tr>
+    <tr><td>スクリプト</td><td>棚卸しに使うのはGet-CopilotActions.ps1（一覧）。同じページのRemove-CopilotActions.ps1とClear-CopilotActions.ps1は、スケジュールを削除するスクリプト</td></tr>
+    <tr><td>一覧の出し方</td><td>テナント全体か、利用者1人を指定。Export-CsvでCSVに保存できる</td></tr>
+    <tr><td>2027年1月1日から</td><td>スケジュールされたタスクは、この一覧に出ない</td></tr>
+  </table>
+</div>
+<p class="fig-cap">出典：Microsoft Learn「Inventory for scheduled prompts」（2026年11月20日確認）</p>
+<p>進め方は4つの段です。</p>
+<ol>
+<li>Power Platform 管理センターで「Microsoft 365」環境を開き、Membershipから自分にシステム管理者の役割を足します。反映に30分ほどかかることがあります。</li>
+<li>公式ページのスクリプトを同じフォルダに保存し、Connect-AzAccountでサインインします。</li>
+<li>Get-AdminPowerAppEnvironment 'Microsoft 365' で、環境のIDを調べます。環境の名前はテナントによって違うことがあります。</li>
+<li>Get-CopilotActions.ps1に-EnvironmentIdで環境のIDを渡して一覧を出し、Export-CsvでCSVに保存します。</li>
+</ol>
+<p>公式は権限の小さい役割を使うよう勧めています。全体管理者は緊急の場合に限ります。削除のスクリプトは元に戻せないため、棚卸しだけならGet-CopilotActions.ps1だけを使います。公式ページでは削除のスクリプトの名前の書き方が、見出し（Remove-CopilotActions.ps1）と実行の例（Remove-CopilotAction.ps1）でそろっていません。スクリプトの実行はTechWorkerの環境では確かめていません。</p>
+<p>パブリックプレビューの間に作られたスケジュールは、Copilotの一覧に出ません。公式はPower Automateで表示と管理をすると書いています。この分が棚卸しの一覧に出るかは、公式に書かれていません。Power Automateでも見ておきます。</p>
+
+<h2 id="control">管理者は、新しいタスクを止められますか？</h2>
+<p class="answer">新しいスケジュールされたタスクには、個別のポリシー設定がありません。Copilotのライセンスを持つすべての利用者が使えます。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“Scheduled tasks are not a connected experience and are not controlled by the Allow the use of connected experiences in Office policy setting.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>スケジュールされたタスクは接続エクスペリエンスではなく、「Office でコネクテッド エクスペリエンスの使用を許可する」ポリシー設定では制御されません。</p><footer>出典：<a href="https://learn.microsoft.com/en-us/copilot/manage/scheduled-prompts" target="_blank" rel="noopener noreferrer">Microsoft Learn「Manage scheduled prompts for Microsoft Copilot」</a>（Before you beginの節、2026年11月11日更新、2026年11月20日確認）</footer></blockquote>
+<p>これまで、クラウド ポリシーで接続エクスペリエンスを無効にして、スケジュールされたプロンプトを止めていた会社は注意が要ります。新しいタスクは、その設定では制御されません。</p>
+<p>従来のものについても、確かめておく動きがあります。接続エクスペリエンスを無効にすると、利用者はスケジュールの画面を見られなくなります。それでも、すでに組まれたスケジュールは終わるまで動き続けます。止めたつもりで動いているものがないかは、棚卸しの一覧で確かめます。</p>
+<p>新しいタスクを使わせる範囲は、Copilotのライセンスを割り当てる人で決まります。利用の決まりは社内ルールに書きます。エージェントに仕事を任せるCoworkの設定は「<a href="copilot-cowork-toha.html">Copilot Coworkとは</a>」で扱っています。</p>
+
+<h2 id="teams">TeamsのAI Workflowsとは何で、どう扱いますか？</h2>
+<p class="answer">TeamsのWorkflowsアプリの中にある、Copilotのスケジュールされたプロンプトを使うテンプレートです。Workflowsアプリを有効にしていなければ、既定ではオフです。</p>
+<p>Microsoft 365 Copilotのリリースノートは、2026年11月4日の項で次のように書いています。見出しの対象はWindowsとMacです。2025年の通知（MC1147389）は、WebとMacと書いていました。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“Admins control access through Teams app management settings, and AI Workflows are off by default unless the Workflows app is enabled.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>管理者はTeamsのアプリ管理の設定でアクセスを制御します。AI Workflowsは、Workflowsアプリが有効になっていない限り、既定でオフです。</p><footer>出典：<a href="https://learn.microsoft.com/en-us/copilot/microsoft-365/release-notes" target="_blank" rel="noopener noreferrer">Microsoft Learn「Microsoft 365 Copilot release notes」</a>（2026年11月4日の項、Roadmap ID 500379、2026年11月20日確認）</footer></blockquote>
+<p>AI Workflowsは、利用者がテンプレートを選んで組む自動の処理です。Teamsの公式ブログ（2025年9月）は、テンプレートの例を挙げています。</p>
+<ul>
+<li><strong>Help Me Prepare for My Day：</strong>直近のチャットとメールを見て、毎朝その日の予定と残っている仕事をTeamsにまとめます。</li>
+<li><strong>Summarize Key Takeaways：</strong>Teamsの会話から、決まったこと、やること、止まっていることをまとめます。</li>
+<li><strong>Recurring Prompts for your channel's agent：</strong>チャネルのエージェントへの指示を、決めた間隔でくり返します。</li>
+</ul>
+<p>使えるのは、Microsoft 365 Copilotのライセンスを持つ利用者です。Workflowsアプリの一覧ではふつうのワークフローとAI workflowsの表示を切り替えられます。</p>
+<p>管理者が確かめたい3つの点は、公式の情報だけでは決まりません。</p>
+<div class="tbl-wrap">
+  <table style="min-width:640px">
+    <tr><th>確かめたい点</th><th>公式の書き方（2026年11月20日確認）</th><th>こちらで確かめること</th></tr>
+    <tr><td>Workflowsアプリの今の状態</td><td>Teamsのアプリ管理のページに、Workflowsアプリ個別の既定の状態は書かれていない</td><td>Teams 管理センターのアプリの管理で、Workflowsが許可かブロックかを見る</td></tr>
+    <tr><td>12月31日より後も動くか</td><td>AI Workflowsが従来の仕組みと新しい仕組みのどちらで動くかは書かれていない</td><td>使っている人に、年明けに動いたかを確かめてもらう</td></tr>
+    <tr><td>止める設定</td><td>2025年のメッセージ センターの通知（MC1147389、掲載の期限は切れている）は「オプションの接続エクスペリエンス」のポリシーを挙げる。Learn（2026年11月）は、新しいタスクが接続エクスペリエンスのポリシーで制御されないと書く。AI Workflowsがどちらに当たるかは記載なし</td><td>確実に止めたい場合は、Workflowsアプリを使える人の範囲で決める</td></tr>
+  </table>
+</div>
+<p class="fig-cap">出典：Microsoft Learn「Microsoft 365 Copilot release notes」「Manage scheduled prompts for Microsoft Copilot」「Manage your apps in the Microsoft Teams admin center」。MC1147389は公式の通知の写しで確認</p>
+<p>Teams 管理センターのアプリの管理では、アプリを許可・ブロックでき、使える人を全員、特定の利用者やグループ、なしから選べます。Power Automateの公式ページは、Workflowsアプリの中でフローを作る機能には、Teams 管理センターでアプリを有効にすることが要ると書いています。ブロックすると、AI Workflowsだけでなく、アプリの中で作るふつうのワークフローにも影響すると考えられます。すでに作ったフローが動き続けるかは、公式に書かれていません。止める前に、使っている部署を確かめます。</p>
+<p>名前が似た「Workflows agent」は、Copilotの中のエージェントです。Frontier（早期の試用）の参加者向けで、Microsoft 365 管理センターのCopilot ＞ Agentsで管理します。公式はTeamsのWorkflowsアプリのAI Workflowsと同じものか別のものかを書いていません。管理する場所は別です。</p>
+
+<h2 id="notice">社内には、どう知らせますか？</h2>
+<p class="answer">棚卸しで見つけた利用者に、止まる日、作り直す場所、件数の上限の3つを知らせます。</p>
+<p>次の文例はTechWorkerが作ったものです。［　］の中を自社に合わせて直して使えます。</p>
+<blockquote style="margin:20px 0;padding:16px 20px;border-left:3px solid #c8ccd2;background:#f6f7f9;border-radius:6px"><p style="margin:0">Copilotで時刻を決めて動かしている指示（スケジュールされたプロンプト）は、2026年12月31日で止まります。年明けも使うものは、［12月18日］までに作り直してください。<br>作り直す場所：Copilot Chatで指示にマウスを合わせ、「これをスケジュールする」を選びます。<br>上限：有効にできるのは1人10件、合計は50件までです。<br>これまでの結果：Copilotのチャット履歴に残ります。<br>困ったとき：［情シスの窓口］へ連絡してください。</p></blockquote>
+<p>知らせる相手は、棚卸しの一覧に名前がある人です。一覧を出せない場合は、Copilotのライセンスを持つ全員に同じ文を送ります。</p>
+
+<h2 id="steps">12月31日まで、どの順で進めますか？</h2>
+<p class="answer">棚卸し、知らせ、作り直し、確かめの順に進め、年末の休みの前に終えます。</p>
+    <figure class="fig-inline"><a href="figs/copilot-scheduled-prompts-shuryo-2.png" target="_blank" rel="noopener"><img src="figs/copilot-scheduled-prompts-shuryo-2.png" alt="12月31日までに進める5つの手順。1 棚卸しをする、2 使う人に知らせる、3 作り直してもらう、4 動いたかを確かめる、5 年明けに見直す。" width="1200" height="825" loading="lazy" decoding="async"></a></figure>
+<p>日付はTechWorkerの提案です。自社の年末の休みに合わせて前に寄せます。</p>
+<ol>
+<li><strong>棚卸しをする（11月27日まで）：</strong>PowerShellで従来のスケジュールの一覧をCSVに出します。</li>
+<li><strong>使う人に知らせる（12月4日まで）：</strong>止まる日、作り直す場所、上限を伝えます。</li>
+<li><strong>作り直してもらう（12月18日まで）：</strong>利用者がCopilot Chatで新しいタスクを作ります。</li>
+<li><strong>動いたかを確かめる（12月24日まで）：</strong>新しいタスクが1回動いたことを、利用者が履歴で見ます。</li>
+<li><strong>年明けに見直す（1月の最初の週）：</strong>止まったものが無いかと、TeamsのAI Workflowsが動いているかを聞きます。</li>
+</ol>
+<p>Teamsの担当者は同じ期間にWorkflowsアプリの状態を見ておきます。</p>
+
+<h2 id="faq">よくある質問</h2>
+<div class="faq"><div class="q">12月31日を過ぎると、これまでの結果は消えますか？</div><p class="a">消えません。公式は、この変更でデータは失われず、以前の実行の応答は利用者のCopilotのチャット履歴に残ると書いています。止まるのは、従来のスケジュールの実行です。</p></div>
+<div class="faq"><div class="q">従来のスケジュールは、新しいタスクへ自動で移りますか？</div><p class="a">公式は、続けたい利用者が期日までに新しいスケジュールされたタスクとして作り直す必要があると書いています。自動で移すという記載は確認したページにありません。</p></div>
+<div class="faq"><div class="q">TeamsやOutlookから、新しいタスクを作れますか？</div><p class="a">サポート記事（2026年11月18日更新）では、作れるのはCopilot Chatと、Web版・デスクトップ版のMicrosoft Copilotです。Teams、Outlook、モバイルはこの初期リリースに含まれていません。</p></div>
+<div class="faq"><div class="q">パブリックプレビューの間に作ったスケジュールは、どこで見られますか？</div><p class="a">Copilotのスケジュールの一覧には出ません。公式はPower Automateで表示と管理をすると書いています。2026年12月31日より前に期限が切れるまで、Power Automateで動き続けます。</p></div>
+<div class="faq"><div class="q">TeamsのAI Workflowsは、1月以降も動きますか？</div><p class="a">確認した公式ページに記載がありません。AI Workflowsが従来の仕組みと新しい仕組みのどちらで動くかも書かれていません。Copilot Chatで結果を見れば足りる指示は、新しいタスクでも作っておくことをTechWorkerは勧めます。</p></div>
+
+<h2 id="next">次の一歩は何から始めればよいですか？</h2>
+<p class="answer">従来のスケジュールを使っている人の一覧を出すことから始めます。</p>
+<ol>
+<li>Power Platform 管理者の役割で、棚卸しのスクリプトを動かし、CSVに出します。</li>
+<li>一覧の利用者に、文例を直して知らせます。</li>
+<li>Teams 管理センターで、Workflowsアプリが許可かブロックかを見ます。</li>
+</ol>
+<p>TechWorkerではCopilotの研修を、受講者の実際の業務1本から組みます。教材は公式の変更に合わせて毎週見直し、30日後に、使った人の割合と1件の時間を測って報告します。検討段階のご相談だけでも歓迎です。</p>
+<div class="tw-lead" data-offer="ai-contract-pack" data-campaign="copilot-scheduled-prompts-shuryo" data-pos="end"></div>
+
+<h2 id="sources">出典と確認範囲</h2>
+<p class="source-note">確認日：2026年11月20日。管理画面の実際の表示と、棚卸しのスクリプトの実行はTechWorkerの環境では確かめていません。TeamsのAI Workflowsが従来の仕組みと新しい仕組みのどちらで動くか、12月31日より後も動くか、Workflowsアプリ個別の既定の状態は、確認した公式ページに記載がありません。AI Workflowsの対応環境は、リリースノートがWindowsとMac、2025年の通知（MC1147389）がWebとMacと書いており、そろっていません。MC1147389は公式のメッセージ センターの写し（非公式の保存サイト）で読みました。残すスケジュールの選び方、社内向けの文例、進める日付はTechWorkerの提案です。機能と条件は変わるため、設定の時点で公式情報を確認してください。</p>
+<ol class="source-list"><li><a href="https://learn.microsoft.com/en-us/copilot/manage/scheduled-prompts" target="_blank" rel="noopener noreferrer">Microsoft Learn「Manage scheduled prompts for Microsoft Copilot」（2026年11月11日更新）</a></li><li><a href="https://learn.microsoft.com/en-us/copilot/manage/scheduled-prompts-inventory" target="_blank" rel="noopener noreferrer">Microsoft Learn「Inventory for scheduled prompts」</a></li><li><a href="https://learn.microsoft.com/en-us/copilot/manage/scheduled-prompts-environment" target="_blank" rel="noopener noreferrer">Microsoft Learn「Microsoft 365 environment for scheduled prompts」</a></li><li><a href="https://support.microsoft.com/en-us/topic/schedule-your-most-used-copilot-prompts-29dfd5fb-211a-4515-88a6-730b8074e489" target="_blank" rel="noopener noreferrer">Microsoft サポート「Updates to Scheduled Prompts in Copilot Chat」（2026年11月18日更新）</a></li><li><a href="https://learn.microsoft.com/en-us/copilot/microsoft-365/release-notes" target="_blank" rel="noopener noreferrer">Microsoft Learn「Microsoft 365 Copilot release notes」（2026年11月4日の項）</a></li><li><a href="https://support.microsoft.com/en-us/office/introduction-to-the-workflows-app-in-microsoft-teams-b7023604-c62a-44d3-a097-fddb68e41ff3" target="_blank" rel="noopener noreferrer">Microsoft サポート「Get started with the Workflows app in Microsoft Teams」</a></li><li><a href="https://learn.microsoft.com/en-us/power-automate/teams/teams-app-create" target="_blank" rel="noopener noreferrer">Microsoft Learn「Create flows in Microsoft Teams」（Known issuesの節）</a></li><li><a href="https://learn.microsoft.com/en-us/microsoftteams/manage-apps" target="_blank" rel="noopener noreferrer">Microsoft Learn「Manage your apps in the Microsoft Teams admin center」</a></li><li><a href="https://learn.microsoft.com/en-us/microsoftteams/app-centric-management" target="_blank" rel="noopener noreferrer">Microsoft Learn「App centric management to manage user access to Teams apps」</a></li><li><a href="https://techcommunity.microsoft.com/blog/microsoftteamsblog/ai-and-microsoft-teams-a-new-era-of-collaboration/4454152" target="_blank" rel="noopener noreferrer">Microsoft Teams Blog「AI and Microsoft Teams: A New Era of Collaboration」（2025年9月18日）</a></li><li><a href="https://support.microsoft.com/en-us/microsoft-365-copilot/get-started-with-workflows-in-microsoft-365-copilot" target="_blank" rel="noopener noreferrer">Microsoft サポート「Get started with Workflows in Microsoft Copilot」</a></li><li><a href="https://mc.merill.net/message/MC1147389" target="_blank" rel="noopener noreferrer">Microsoft 365 メッセージ センター MC1147389（2025年10月17日更新、保存サイトの写し）</a></li></ol>
+
+</article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div>
+    <p>上場企業を含む50社超・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>Copilotの研修を、受講者の実際の業務1本から組みます。</h3>
+    <p>管理者の設定と社内の決まりの点検から、研修当日に業務1本をAIに任せる形まで作り、30日後に数で測って報告します。教材は公式の変更に合わせて毎週見直します。検討段階のご相談だけでも歓迎です。</p>
+  </div>
+  <a href="https://kenshu.techworker.co.jp/?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=copilot-scheduled-prompts-shuryo&amp;utm_content=end" class="btn">研修内容・費用を相談する <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="https://kenshu.techworker.co.jp/" style="color:var(--electric);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">生成AI法人研修（主要ツール全対応）</a>　／　<a href="https://kenshu.techworker.co.jp/contact/" style="color:var(--electric);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">無料相談</a></p>
+<div class="back-list"><a href="index.html">← AI研修・導入ラボの記事一覧に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="copilot-cowork-toha.html" class="related-card"><span class="rc-cat">導入と業務への組み込み</span><div class="rc-title">Copilot Coworkとは｜Copilot Chatとの違い・ライセンスと料金・管理者が決める設定</div></a>
+    <a href="copilot-houjin-keiyaku.html" class="related-card"><span class="rc-cat">料金と比較</span><div class="rc-title">Microsoft 365 Copilotの法人料金と契約｜Copilot Chat・Business・大企業向け・従量課金の選び方</div></a>
+  </div>
+</div></section>
+
+<p style="max-width:var(--measure);margin:40px auto 0;padding:0 20px;font-size:12px;color:var(--slate);line-height:1.9;">本記事は株式会社TechWorkerが独自に作成したものであり、Microsoft Corporationとの提携・後援・承認を受けたものではありません。Microsoft、Microsoft 365、Copilot、Teams、Outlook、Power Automate、Power PlatformはMicrosoft Corporationの商標です。</p>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__in">
+      <div>
+        <p class="ft__name">株式会社TechWorker</p>
+        <p class="ft__addr">〒169-0051 東京都新宿区西早稲田一丁目22番3号<br>早稲田アントレプレナーシップセンター</p>
+      </div>
+      <nav aria-label="フッターの行き先">
+        <a href="/services">事業・サービス</a>
+        <a href="/company">会社情報</a>
+        <a href="/news">ニュース</a>
+        <a href="/#concept">考え方</a>
+        <a href="/agent-cases/">事例</a>
+        <a href="/contact">お問い合わせ</a>
+        <a href="/privacy">プライバシーポリシー</a>
+      </nav>
+    </div>
+    <div class="nv-badge"><a href="/news/013"><img src="/assets/badges/nvidia-inception-program.svg" alt="NVIDIA Inception Program" width="93" height="40" loading="lazy"></a><p>NVIDIA、NVIDIA ロゴ、NVIDIA Inception は、米国およびその他の国における NVIDIA Corporation の商標および/または登録商標です。</p></div>
+    <small>© TechWorker Inc.</small>
+  </div>
+</footer>
+
+<script>
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+<script src="/media/article-tracker.js?v=20261006-readable-intros" defer></script>
+<script>
+// スマホの行き先：右上の釦で開け閉めする。行き先を押したら閉じる。スクロールしたら頭に暗い面を敷く
+(() => {
+  const hd = document.querySelector('.hd'), btn = hd.querySelector('.menu');
+  const set = open => { hd.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く'); };
+  btn.addEventListener('click', () => set(!hd.classList.contains('is-open')));
+  hd.querySelector('nav').addEventListener('click', e => { if (e.target.closest('a')) set(false); });
+  const onScroll = () => hd.classList.toggle('is-scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+})();
+</script>
+<script src="../lead.js" defer></script>
+</body>
+</html>
