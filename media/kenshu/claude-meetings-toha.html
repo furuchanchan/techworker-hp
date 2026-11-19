@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js" data-media="kenshu">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}if(location.hostname==='techworker.co.jp')gtag('config', 'G-3V34NWXVCJ');
+</script>
+<script src="/assets/tw-track.js" defer></script>
+<script src="/assets/tw-event.js" defer></script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Meetingsとは｜Google MeetのAI議事録の料金と、管理者が決める3つの設定【2026年11月】 — TechWorker</title>
+<meta name="description" content="Claude Meetingsは、ClaudeがGoogle Meetの会議に参加者として入り、議事録と資料を作る機能です。2026年11月12日にTeamとEnterpriseでベータ提供が始まりました。Teamは既定でオンです。料金、3つの設定、同意の文例を公式情報（2026年11月20日確認）で整理します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/kenshu/claude-meetings-toha">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Claude Meetingsとは｜Google MeetのAI議事録の料金と、管理者が決める3つの設定【2026年11月】">
+<meta property="og:description" content="Claude Meetingsは、ClaudeがGoogle Meetの会議に参加者として入り、議事録と資料を作る機能です。2026年11月12日にTeamとEnterpriseでベータ提供が始まりました。Teamは既定でオンです。料金、3つの設定、同意の文例を公式情報（2026年11月20日確認）で整理します。">
+<meta property="og:image" content="https://techworker.co.jp/media/kenshu/covers/claude-meetings-toha.png">
+<meta property="og:url" content="https://techworker.co.jp/media/kenshu/claude-meetings-toha">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Meetingsとは｜Google MeetのAI議事録の料金と、管理者が決める3つの設定【2026年11月】">
+<meta name="twitter:image" content="https://techworker.co.jp/media/kenshu/covers/claude-meetings-toha.png">
+<link rel="stylesheet" href="../article.css?v=20261006-bilingual-quotes">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Claude Meetingsとは｜Google MeetのAI議事録の料金と、管理者が決める3つの設定【2026年11月】", "description": "Claude Meetingsは、ClaudeがGoogle Meetの会議に参加者として入り、議事録と資料を作る機能です。2026年11月12日にTeamとEnterpriseでベータ提供が始まりました。Teamは既定でオンです。料金、3つの設定、同意の文例を公式情報（2026年11月20日確認）で整理します。", "datePublished": "2026-11-20", "dateModified": "2026-11-20", "image": "https://techworker.co.jp/media/kenshu/covers/claude-meetings-toha.png", "inLanguage": "ja", "mainEntityOfPage": "https://techworker.co.jp/media/kenshu/claude-meetings-toha", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/favicon.svg"}}, "citation": ["https://support.claude.com/en/articles/12138966-release-notes", "https://support.claude.com/en/articles/18325154-use-claude-meetings", "https://claude.com/resources/articles/claude-meetings", "https://support.claude.com/en/articles/13930452-manage-custom-roles-on-enterprise-plans", "https://claude.com/pricing", "https://kenshu.techworker.co.jp/updates/"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "AI研修・導入ラボ", "item": "https://techworker.co.jp/media/kenshu/"}, {"@type": "ListItem", "position": 4, "name": "Claude Meetingsとは", "item": "https://techworker.co.jp/media/kenshu/claude-meetings-toha"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "ZoomやMicrosoft Teamsの会議でも使えますか？", "acceptedAnswer": {"@type": "Answer", "text": "2026年11月20日の時点で、対応する会議サービスはGoogle Meetだけです。Anthropicはほかのサービスへの対応を「coming soon（近日中）」と書いていますが、サービスの名前と日付は公表していません。"}}, {"@type": "Question", "name": "ProやMaxなど、個人向けのプランでも使えますか？", "acceptedAnswer": {"@type": "Answer", "text": "公式が対象に挙げているのはTeamとEnterpriseです。ベータの間はゼロデータ保持（ZDR）、HIPAA対応の構成、顧客管理の暗号鍵（CMEK）を使う組織など、一部の組織でも使えません。"}}, {"@type": "Question", "name": "会議の音声や録画は残りますか？", "acceptedAnswer": {"@type": "Answer", "text": "公式は文字起こし、要約、画面の説明を保存し、音声は保存しないと書いています。録画については、ヘルプ記事に記載がありません。会議ページの保存期間も書かれていません。"}}, {"@type": "Question", "name": "管理者が、全員の自動参加をまとめてオンにできますか？", "acceptedAnswer": {"@type": "Answer", "text": "できません。自動参加は、利用者が自分のSettings ＞ Capabilities ＞ Meetings ＞ Auto-joinで選びます。公式は、オーナーが利用者の代わりに設定することはできないと書いています。"}}, {"@type": "Question", "name": "日本語の会議でも、文字起こしと要約は使えますか？", "acceptedAnswer": {"@type": "Answer", "text": "公式のヘルプ記事と発表記事には、対応する言語の記載がありません。TechWorkerでも日本語の会議では確かめていません。社内の会議1本で試してから、使う範囲を決めます。"}}]}</script>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<link rel="stylesheet" href="/assets/site/site.css">
+<link rel="stylesheet" href="/media/audience-filter.css?v=20261006-media-only">
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header class="hd hd--solid">
+  <a class="logo" href="/" aria-label="TechWorker ホーム">Tech<i>Worker</i></a>
+  <nav id="hd-nav" aria-label="主な行き先">
+    <a href="/services">事業・サービス</a>
+    <a href="/#concept">考え方</a>
+    <a href="/agent-cases/">事例</a>
+    <a href="/news">ニュース</a>
+    <a href="/company">会社情報</a>
+    <a href="/contact">お問い合わせ</a>
+  </nav>
+  <button class="menu" type="button" aria-label="メニューを開く" aria-controls="hd-nav" aria-expanded="false"></button>
+</header>
+<div class="subnav">
+  <div class="wrap subnav__in">
+    <a class="subnav__name" href="index.html">AI研修・導入ラボ</a>
+    <nav aria-label="メディアの行き先"><a href="https://kenshu.techworker.co.jp/">生成AI研修について</a><a href="https://kenshu.techworker.co.jp/contact/" class="subnav__cta">研修の相談</a></nav>
+  </div>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a><span class="sep">/</span>Claude Meetingsとは</nav>
+  <div class="kicker">社内ルールと安全</div>
+  <h1>Claude Meetingsとは｜Google MeetのAI議事録の料金と、管理者が決める3つの設定</h1>
+  <p class="dek">Claude Meetingsは、ClaudeがGoogle Meetの会議に参加者として入り、議事録と資料を作る機能です。2026年11月12日にTeamとEnterpriseでベータ提供が始まりました。Teamは既定でオンです。料金、3つの設定、同意の文例を公式情報（2026年11月20日確認）で整理します。</p>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.11.20</span><span class="dot">·</span><span>読了 9分</span>
+  </div>
+<p class="article-audience"><span class="article-audience-label">主な対象読者</span><a href="/media/kenshu/?audience=it#articles">情シス・AI導入担当</a></p>
+</header>
+
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div>
+      <a href="#source">Claude Meetingsとは、何ですか？</a>
+      <a href="#price">料金は、いくらかかりますか？</a>
+      <a href="#defaults">TeamとEnterpriseで、初期設定はどう違いますか？</a>
+      <a href="#guests">社外の人がいる会議では、どう動きますか？</a>
+      <a href="#data">何が保存され、誰が見られますか？</a>
+      <a href="#decide">どの会議に、Claudeを入れてよいですか？</a>
+      <a href="#consent">参加者の同意は、どう取りますか？</a>
+      <a href="#connectors">会議中の接続ツールは、どう管理しますか？</a>
+      <a href="#rule">社内ルールには、何を書きますか？</a>
+      <a href="#steps">最初の2週間は、どの順で進めますか？</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#next">次の一歩は何から始めればよいですか？</a>
+      <a href="#sources">出典と確認範囲</a>
+    </div></nav>
+
+  <article class="art-body">
+
+<p>Claude Meetingsは、ClaudeがGoogle Meetの会議に参加者として入り、議事録と資料を作る機能です。2026年11月12日に、TeamとEnterpriseでベータ提供が始まりました。</p>
+<ul>
+<li><strong>料金：</strong>議事録と文字起こしは、TeamとEnterpriseの契約に含まれます。会議中に作る文書とホワイトボードは、2027年2月10日まで無料です。</li>
+<li><strong>初期設定：</strong>Teamは既定でオンで、社外の人がいる会議にも入れます。Enterpriseは既定でオフで、オーナーがオンにします。</li>
+<li><strong>管理者が決めること：</strong>機能のオン・オフ、社外の人がいる会議、会議中の接続ツールの3つです。</li>
+<li><strong>対象外：</strong>ゼロデータ保持（ZDR）、HIPAA対応の構成、顧客管理の暗号鍵（CMEK）を使う組織などは、ベータの間は使えません。</li>
+</ul>
+<p>Teamでは、社内の決まりを作る前から機能が既定でオンです。社員が使うには、オーナーがGoogle カレンダーを組織で有効にしている必要があります。順に提供されているため、自社の管理画面に出ているかも確かめます。Anthropicの公式情報（2026年11月20日確認）をもとに、料金、設定の場所、同意の取り方、社内ルールに書くことをまとめます。</p>
+
+<h2 id="source">Claude Meetingsとは、何ですか？</h2>
+<p class="answer">ClaudeがGoogle Meetの会議に、画面に見える参加者として入る機能です。メモを取り、質問に答え、文書やホワイトボードを会議の中で作ります。</p>
+<p>Anthropicは2026年11月12日のリリースノートで、次のように書いています。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“Claude Meetings is rolling out in beta on Team and Enterprise plans in Claude and Claude Desktop. You can add Claude to a Google Meet call as a visible participant that takes notes, answers questions, and builds artifacts, such as docs, whiteboards, and slides, during the call.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>Claude Meetingsは、ClaudeとClaude DesktopのTeamプランとEnterpriseプランで、ベータとして順に提供されています。ClaudeをGoogle Meetの通話に、見える参加者として追加できます。Claudeは通話の間にメモを取り、質問に答え、文書・ホワイトボード・スライドなどの成果物を作ります。</p><footer>出典：<a href="https://support.claude.com/en/articles/12138966-release-notes" target="_blank" rel="noopener noreferrer">Claude ヘルプセンター「Release notes」</a>（2026年11月12日の項、2026年11月20日確認）</footer></blockquote>
+<p>この原文から分かるのは、対象のプラン、対応する会議サービス、会議の中でできることの3つです。料金と管理者の設定は、ヘルプ記事「Use Claude Meetings」に書かれています。</p>
+<figure class="slide4" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:24px 0"><a href="https://kenshu.techworker.co.jp/assets/updates/2026-11-13/claude-meetings-1.jpg"><img src="https://kenshu.techworker.co.jp/assets/updates/2026-11-13/claude-meetings-1.jpg" alt="Claude が会議に入る Claude Meetings（11月12日）。Team は既定でオン、Enterprise はオフ（1/4）" width="1600" height="900" loading="lazy" style="width:100%;height:auto;border:1px solid #e5e5e5;border-radius:8px"></a><a href="https://kenshu.techworker.co.jp/assets/updates/2026-11-13/claude-meetings-2.jpg"><img src="https://kenshu.techworker.co.jp/assets/updates/2026-11-13/claude-meetings-2.jpg" alt="Claude が会議に入る Claude Meetings（11月12日）。Team は既定でオン、Enterprise はオフ（2/4）" width="1600" height="900" loading="lazy" style="width:100%;height:auto;border:1px solid #e5e5e5;border-radius:8px"></a><a href="https://kenshu.techworker.co.jp/assets/updates/2026-11-13/claude-meetings-3.jpg"><img src="https://kenshu.techworker.co.jp/assets/updates/2026-11-13/claude-meetings-3.jpg" alt="Claude が会議に入る Claude Meetings（11月12日）。Team は既定でオン、Enterprise はオフ（3/4）" width="1600" height="900" loading="lazy" style="width:100%;height:auto;border:1px solid #e5e5e5;border-radius:8px"></a><a href="https://kenshu.techworker.co.jp/assets/updates/2026-11-13/claude-meetings-4.jpg"><img src="https://kenshu.techworker.co.jp/assets/updates/2026-11-13/claude-meetings-4.jpg" alt="Claude が会議に入る Claude Meetings（11月12日）。Team は既定でオン、Enterprise はオフ（4/4）" width="1600" height="900" loading="lazy" style="width:100%;height:auto;border:1px solid #e5e5e5;border-radius:8px"></a><figcaption style="grid-column:1/-1">4枚で見る：Claude が会議に入る Claude Meetings（11月12日）。Team は既定でオン、Enterprise はオフ。<a href="https://kenshu.techworker.co.jp/updates/#u-2026-11-13">研修サイトの教材の更新履歴</a>より</figcaption></figure>
+<p>使い方の流れは次のとおりです。</p>
+<ol>
+<li><strong>追加する：</strong>ClaudeのMeetingsの画面でGoogle カレンダーをつなぎ、予定を選んで「Add Claude」を押します。カレンダーの接続は、先にオーナーが組織で有効にします。</li>
+<li><strong>会議中：</strong>「Claude」と呼びかけて話すか、Meetのチャットに書きます。答えは既定でMeetのチャットに文字で返ります。「Claude, make a doc」のように頼むと、文書やホワイトボードを作ります。</li>
+<li><strong>会議後：</strong>会議ごとのページに、要約、やること、文字起こし、作った資料が残ります。招待されていた社内の人には、ページへのリンクが付いた振り返りのメールが届きます。</li>
+</ol>
+<p>Claudeは最長8時間まで会議にいられ、出る前に知らせます。止めたいときは、聞くのをやめるよう頼むか、会議ページから止めます。</p>
+
+<h2 id="price">料金は、いくらかかりますか？</h2>
+<p class="answer">議事録、文字起こし、接続ツールを使わない答えは、TeamとEnterpriseの契約に含まれます。公式が費用が出ることがあると書いているのは、会議中に接続ツールを使ったときです。</p>
+<div class="tbl-wrap">
+  <table style="min-width:600px">
+    <tr><th>使い方</th><th>料金</th></tr>
+    <tr><td>議事録、文字起こし</td><td>TeamとEnterpriseの契約に含まれる</td></tr>
+    <tr><td>会議中の答え（接続ツールを使わない）</td><td>TeamとEnterpriseの契約に含まれる</td></tr>
+    <tr><td>会議中に作る文書、ホワイトボード</td><td>2027年2月10日まで無料。その後の扱いは公式に記載なし</td></tr>
+    <tr><td>接続ツールを使う答えと操作</td><td>頼んだ本人の利用量に数える。組織への請求が出ることがある</td></tr>
+  </table>
+</div>
+<p class="fig-cap">出典：Claude ヘルプセンター「Use Claude Meetings」のPricingの節（2026年11月20日確認）。発表記事は、メモと文字起こしと答えの無料を「ベータの間（During the beta）」と書いています</p>
+<p>ここからはTechWorkerの計算です。Claude Meetingsのために足す席の料金はありません。費用の中心はTeamの席の料金です。公式の料金ページでは、標準席が年払いで1席月20米ドル、月払いで月25米ドルです（税別）。利用枠が多いプレミアム席（年払いで月100米ドル）もあります。</p>
+<div class="tbl-wrap">
+  <table style="min-width:600px">
+    <tr><th>Teamの人数</th><th>標準席・年払い（1席月20ドル）</th><th>標準席・月払い（1席月25ドル）</th><th>Claude Meetingsの追加の席料</th></tr>
+    <tr><td>10人</td><td>月200ドル（年2,400ドル）</td><td>月250ドル</td><td>0ドル</td></tr>
+    <tr><td>20人</td><td>月400ドル（年4,800ドル）</td><td>月500ドル</td><td>0ドル</td></tr>
+    <tr><td>50人</td><td>月1,000ドル（年12,000ドル）</td><td>月1,250ドル</td><td>0ドル</td></tr>
+  </table>
+</div>
+<p class="fig-cap">席の料金は Anthropic「Pricing」（2026年11月20日確認、税別）。人数ごとの額はTechWorkerの計算</p>
+<p>Teamは2人から150人までのプランです。Enterpriseは1席月20米ドル（年払い、20席から）に、使った分のAPI料金が加わります。</p>
+<p>稟議では席の料金と、接続ツールの利用分を分けて書きます。接続ツールを会議中に使わせない設定にすれば、接続ツールの利用分は出ない見込みです。これはTechWorkerの読みで、公式の文言は「会議中に接続ツールを使えるかを制御する」です。ベータが終わった後と、2月10日より後の文書とホワイトボードの扱いは、近づいた時点で公式を確かめます。</p>
+<p>プランごとの料金と選び方は<a href="claude-code-cost.html">Claudeの法人契約と料金</a>にまとめています。Claudeを含む主要4社の料金比較表と、稟議書・社内利用ルールの雛形は、下の枠から受け取れます。</p>
+<div class="tw-lead" data-offer="ai-contract-pack" data-campaign="claude-meetings-toha" data-pos="mid"></div>
+
+<h2 id="defaults">TeamとEnterpriseで、初期設定はどう違いますか？</h2>
+<p class="answer">Teamは既定でオンで、社外の人がいる会議にも入れます。Enterpriseは既定でオフで、社内の会議だけです。設定の場所はOrganization settings ＞ Products ＞ Claude Meetings (beta)です。</p>
+<div class="tbl-wrap">
+  <table style="min-width:640px">
+    <tr><th>設定</th><th>選べる値</th><th>Teamの既定</th><th>Enterpriseの既定</th></tr>
+    <tr><td>Claude Meetings</td><td>オフ／Meetingsを含む役割だけオン／全員オン</td><td>全員オン</td><td>オフ</td></tr>
+    <tr><td>Meetings with external guests（社外の人がいる会議）</td><td>社内の会議だけ／許す</td><td>許す</td><td>社内の会議だけ</td></tr>
+    <tr><td>Members' connectors in meetings（会議中の接続ツール）</td><td>会議中にClaudeが接続ツールを使えるかを制御する（値の表記は公式に記載なし）</td><td>公式に記載なし</td><td>公式に記載なし</td></tr>
+  </table>
+</div>
+<p class="fig-cap">出典：Claude ヘルプセンター「Use Claude Meetings」のManage Claude Meetings as an ownerの節（2026年11月20日確認）</p>
+<p>変えられるのはオーナー（Owner）と主オーナー（Primary Owner）です。Enterpriseではオーナーの権限を持つカスタムの役割でも開けます。組み込みの管理者（Admin）の役割では、このページを開けません。</p>
+<p>Enterpriseでは役割ごとに使える人を絞れます。カスタムの役割には、次の2つの権限があります。</p>
+<ul>
+<li><strong>Claude Meetings (beta)：</strong>その役割の人が、自分の会議にClaudeを追加できます。</li>
+<li><strong>Meetings with external guests：</strong>その役割の人が、社外の人がいる会議にClaudeを追加できます。</li>
+</ul>
+<p>情シスの役割だけに開いて試し、決まりを作ってから広げる進め方が取れます。</p>
+<p>Teamを契約している会社は、今日のうちにオーナーが設定の画面を開きます。決まりができるまで社外の会議で使わせたくない場合は、Meetings with external guestsを社内の会議だけにします。Claudeのほかの設定の点検は<a href="claude-dounyu-shien-settei-daikou.html">Claudeの導入支援・設定代行は何を頼めるか</a>で扱っています。</p>
+
+<h2 id="guests">社外の人がいる会議では、どう動きますか？</h2>
+<p class="answer">許していない場合、Claudeは社外の人が招待された会議に入りません。許している場合は、メモを取りますが、Meetのチャットでは答えません。</p>
+<div class="tbl-wrap">
+  <table style="min-width:640px">
+    <tr><th>項目</th><th>社外の人を許していない</th><th>社外の人を許している</th></tr>
+    <tr><td>社外の人が招待された会議</td><td>Claudeは入らない</td><td>入って聞き、メモを取る</td></tr>
+    <tr><td>途中で社外の人が入った</td><td>Claudeが出る。他社の議事録ボットが入った場合も同じ</td><td>公式に記載なし</td></tr>
+    <tr><td>Meetのチャット</td><td>―</td><td>参加の知らせは出すが、答えは返さない</td></tr>
+    <tr><td>社外の人の発言</td><td>―</td><td>メモと文字起こしに入る</td></tr>
+    <tr><td>会議ページと振り返りのメール</td><td>―</td><td>社外の人には届かない</td></tr>
+  </table>
+</div>
+<p class="fig-cap">出典：Claude ヘルプセンター「Use Claude Meetings」のCalls with outside guestsの節（2026年11月20日確認）</p>
+<p>利用者にも、自分のMeetings with external guestsの設定があります。場所はSettings ＞ Capabilities ＞ Meetingsです。</p>
+<p>社外の人がいる会議では、相手の発言がメモと文字起こしに残ります。相手に会議ページは届かないため、何が残ったかを相手は確かめられません。商談や取引先との定例で使うかは、社内の会議とは別に決めます。</p>
+
+<h2 id="data">何が保存され、誰が見られますか？</h2>
+<p class="answer">会議ページに残るのは、文字起こし、要約、やること、画面の説明、会議中に作った資料、会議ページのチャットです。音声は保存しないと公式は書いています。公式が見られると書いているのは、招待されていた社内の人と、ページを共有された社内の人です。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“When Claude joins, it appears as a participant and posts a notice in the call's chat. It saves a transcript, summary, and screen descriptions, not audio.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>Claudeは参加すると、参加者として表示され、通話のチャットに知らせを投稿します。保存するのは文字起こし、要約、画面の説明で、音声は保存しません。</p><footer>出典：<a href="https://support.claude.com/en/articles/18325154-use-claude-meetings" target="_blank" rel="noopener noreferrer">Claude ヘルプセンター「Use Claude Meetings」</a>（Privacy and your dataの節、2026年11月20日確認）</footer></blockquote>
+<p>見落としやすいのは「画面の説明」です。音声が残らなくても、画面で共有した資料の中身が文章で残ることがあります。顧客の一覧や人事の資料を映す会議では、Claudeを止めるか、入れないと決めておきます。</p>
+<p>確かめておく点は3つあります。</p>
+<ul>
+<li><strong>見られる人：</strong>招待されていた社内の人は、メモを見て、Claudeが作った物を直せます。会議ページは社内のほかの人にも共有できます。管理者による閲覧など、それ以外の扱いはヘルプ記事に書かれていません。</li>
+<li><strong>2つのチャット：</strong>Meetのチャットは会議の全員に見えます。会議ページのチャットは社内だけで、社外の人には見えません。</li>
+<li><strong>保存期間：</strong>ヘルプ記事と発表記事に、会議ページの保存期間は書かれていません。議事録の保存期間を規程で決めている会社は、Anthropicの担当かサポートに確かめます。</li>
+</ul>
+<p>会議の後はふだんのチャットで、自分が見られる過去の会議についてClaudeに聞けます。Anthropicは、近いうちに文字起こしをチームが使っているツールへ送れるようになると書いています。例に挙げているのはGong、Attention、Granola、Fireflies.ai、Otter、Plaudです。始まる日は公表されていません。</p>
+
+<h2 id="decide">どの会議に、Claudeを入れてよいですか？</h2>
+<p class="answer">TechWorkerの提案では記録を残さないと決めた会議には入れません。社外の人がいる会議は、事前に伝えて了承を得た会議だけにします。残りの社内の会議は社内に知らせたうえで入れます。</p>
+    <figure class="fig-inline"><a href="figs/claude-meetings-toha-1.png" target="_blank" rel="noopener"><img src="figs/claude-meetings-toha-1.png" alt="TechWorkerが提案する、この会議にClaudeを入れてよいかの判断。人事評価・採用面接など記録を残さないと決めた会議には入れない。社外の人が参加する会議は、招待文で事前に伝えて了承を得た会議だけ。どちらでもない社内の会議は、会議の最初にClaudeが入っていると伝えて入れる。" width="1200" height="740" loading="lazy" decoding="async"></a></figure>
+<p>公式の動きと保存される物から、会議の種類ごとの判断を3つに分けました。図と表はTechWorkerの提案です。</p>
+<div class="tbl-wrap">
+  <table style="min-width:620px">
+    <tr><th>会議の種類</th><th>判断</th><th>理由</th></tr>
+    <tr><td>人事評価、採用面接、懲戒、未公表の経営の話</td><td>入れない</td><td>発言と画面の説明が残り、社内で共有できるため</td></tr>
+    <tr><td>商談、取引先との定例など、社外の人がいる会議</td><td>事前に伝え、了承を得た会議だけ</td><td>相手の発言が自社のClaudeに残り、相手には会議ページが届かないため</td></tr>
+    <tr><td>社内の定例、企画、進捗の会議</td><td>社内に知らせたうえで入れる</td><td>会議の中で資料を作る使い方が合うため</td></tr>
+  </table>
+</div>
+<p>秘密保持契約（NDA）を結んだ相手との会議は、2つ目の行に入ります。契約で情報の置き場所を決めている場合は、了承があっても入れない方が安全です。判断に迷う会議は法務の担当に確かめます。</p>
+
+<h2 id="consent">参加者の同意は、どう取りますか？</h2>
+<p class="answer">同意を取るのは、Claudeを追加する人です。Claudeは入ったときにチャットで知らせますが、参加者に同意を尋ねる画面は公式の記事に書かれていません。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“Important: Before you add Claude or turn on auto-join, make sure everyone on your call is okay with being transcribed.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>重要：Claudeを追加する前、または自動参加をオンにする前に、通話の全員が文字起こしされることを了承しているか確かめてください。</p><footer>出典：<a href="https://support.claude.com/en/articles/18325154-use-claude-meetings" target="_blank" rel="noopener noreferrer">Claude ヘルプセンター「Use Claude Meetings」</a>（Add Claude to a callの節、2026年11月20日確認）</footer></blockquote>
+<p>チャットの知らせは、会議が始まってから出ます。事前の了承には、招待文に書く方法が確実です。次の文例はTechWorkerが作ったもので、自社の言い方に直して使えます。</p>
+<p><strong>社外の人を招く会議の招待文に足す文例</strong></p>
+<blockquote style="margin:20px 0;padding:16px 20px;border-left:3px solid #c8ccd2;background:#f6f7f9;border-radius:6px"><p style="margin:0">この会議では、議事録の作成にAI（AnthropicのClaude Meetings）を使います。AIが参加者として会議に入り、発言の文字起こし、要約、共有された画面の説明をClaudeの上に保存します。音声は保存しません。保存した内容は、当社の社内で共有することがあります。差し支える場合は、会議の前にお知らせください。AIを入れずに行います。</p></blockquote>
+<p><strong>社内に知らせる文例</strong></p>
+<blockquote style="margin:20px 0;padding:16px 20px;border-left:3px solid #c8ccd2;background:#f6f7f9;border-radius:6px"><p style="margin:0">社内の会議で、Claude Meetingsを使えます。使う人は、会議の最初にClaudeが入っていることを伝えてください。人事評価、採用面接、未公表の経営の話の会議には入れません。自動参加をオンにする人は、定例の参加者へ先に伝えてください。入れてほしくない人は、Claudeを追加した人に伝えてください。</p></blockquote>
+<p>自動参加は、利用者が自分で選びます。オンにするときは、範囲を「すべての会議」か「1対1を除くすべての会議」から選びます。オーナーが利用者の代わりにオンにすることはできません。会議のホストが入室を断ると、だれかが追加し直すまで、Claudeはその会議に入り直しません。</p>
+<p>社外の人の名前と発言は、個人情報に当たることがあります。扱いは法務や個人情報の担当と確かめます。</p>
+
+<h2 id="connectors">会議中の接続ツールは、どう管理しますか？</h2>
+<p class="answer">Claudeは頼んだ本人の接続ツールを、本人の許可を得て使います。Meetのチャットに返した結果は会議の全員に見えるため、オーナーは使わせるかを先に決めます。</p>
+<p>接続ツールはSlackなど、Claudeにつないだ外のサービスです。会議中の動きは次のとおりです。</p>
+<ul>
+<li>ある人の接続ツールを初めて使うとき、Claudeは許可を求めます。一度許すと、その許可は次からも使われます。</li>
+<li>声で頼まれたときは、今のところ、だれが話しているかを毎回確かめます。</li>
+<li>許可の求めは、できる場合はMeetのチャットに出ます。Claudeのアカウントの確認が要るときは、会議ページに出ます。</li>
+<li>Slackにメッセージを送るなど、外への書き込みもできます。</li>
+</ul>
+<p>気をつけたいのは、見える範囲です。売上の資料を見られる人がClaudeに頼むと、その答えはMeetのチャットに出ます。その資料を見る権限がない参加者にも、答えが見えます。</p>
+<p>費用にも関わります。接続ツールを使う分は、頼んだ本人の利用量に数え、組織への請求が出ることがあります。</p>
+<p>オーナーは「Members' connectors in meetings」で、会議中に接続ツールを使わせるかを決められます。最初は使わせない設定にして、社内の会議で使い方を確かめてから開く順が安全です。</p>
+
+<h2 id="rule">社内ルールには、何を書きますか？</h2>
+<p class="answer">入れてよい会議、入れない会議、社外の会議での伝え方、自動参加、議事録の置き場、接続ツールの6つを書きます。</p>
+<p>次の雛形はTechWorkerの提案です。AIの利用ルールに、会議の節として足します。［　］の中は自社に合わせて直します。</p>
+<ol>
+<li><strong>使ってよい会議：</strong>社内の定例、企画、進捗の会議で使えます。使う人は、会議の最初にClaudeが入っていることを伝えます。</li>
+<li><strong>入れない会議：</strong>人事評価、採用面接、懲戒、未公表の経営の話、［自社で決めた会議］には入れません。</li>
+<li><strong>社外の人がいる会議：</strong>［使わない／招待文で事前に伝え、了承を得た会議だけ使う］。断られたら入れません。</li>
+<li><strong>自動参加：</strong>オンにする人は定例の参加者へ先に伝えます。</li>
+<li><strong>正式な議事録の置き場：</strong>正式な議事録は［社内の置き場］に置きます。Claudeの会議ページは作業用とします。</li>
+<li><strong>接続ツール：</strong>会議中の接続ツールは［使わない／社内の会議だけ使う］。画面で共有する資料にも気をつけます。</li>
+</ol>
+<p>5つ目は、保存期間が公式に書かれていないために入れています。規程で保存期間が決まっている議事録は、会議ページだけに置かないようにします。</p>
+
+<h2 id="steps">最初の2週間は、どの順で進めますか？</h2>
+<p class="answer">設定を確かめ、入れない会議を決め、文例を配ってから、社内の会議1本で試します。社外の会議と接続ツールは、その後に決めます。</p>
+    <figure class="fig-inline"><a href="figs/claude-meetings-toha-2.png" target="_blank" rel="noopener"><img src="figs/claude-meetings-toha-2.png" alt="Claude Meetingsを入れる最初の2週間の5つの手順。1 設定を確かめる、2 入れない会議を決める、3 文例を配る、4 社内の会議で試す、5 範囲を広げる。" width="1200" height="825" loading="lazy" decoding="async"></a></figure>
+<ol>
+<li><strong>設定を確かめる：</strong>Organization settings ＞ Products ＞ Claude Meetings (beta)で、3つの設定の今の値を見ます。</li>
+<li><strong>入れない会議を決める：</strong>会議の種類ごとの判断の表を、自社の会議に当てはめます。</li>
+<li><strong>文例を配る：</strong>招待文に足す文と、社内に知らせる文を配ります。</li>
+<li><strong>社内の会議で試す：</strong>情シスの定例など、社外の人がいない会議1本で使います。日本語の文字起こしと要約の出来もここで確かめます。</li>
+<li><strong>範囲を広げる：</strong>社外の会議と接続ツールを開くかを決め、社内ルールに書きます。</li>
+</ol>
+<p>試す会議では会議ページを開き、だれに見えているかと、振り返りのメールがだれに届いたかを確かめます。</p>
+
+<h2 id="faq">よくある質問</h2>
+<div class="faq"><div class="q">ZoomやMicrosoft Teamsの会議でも使えますか？</div><p class="a">2026年11月20日の時点で、対応する会議サービスはGoogle Meetだけです。Anthropicはほかのサービスへの対応を「coming soon（近日中）」と書いていますが、サービスの名前と日付は公表していません。</p></div>
+<div class="faq"><div class="q">ProやMaxなど、個人向けのプランでも使えますか？</div><p class="a">公式が対象に挙げているのはTeamとEnterpriseです。ベータの間はゼロデータ保持（ZDR）、HIPAA対応の構成、顧客管理の暗号鍵（CMEK）を使う組織など、一部の組織でも使えません。</p></div>
+<div class="faq"><div class="q">会議の音声や録画は残りますか？</div><p class="a">公式は文字起こし、要約、画面の説明を保存し、音声は保存しないと書いています。録画については、ヘルプ記事に記載がありません。会議ページの保存期間も書かれていません。</p></div>
+<div class="faq"><div class="q">管理者が、全員の自動参加をまとめてオンにできますか？</div><p class="a">できません。自動参加は、利用者が自分のSettings ＞ Capabilities ＞ Meetings ＞ Auto-joinで選びます。公式は、オーナーが利用者の代わりに設定することはできないと書いています。</p></div>
+<div class="faq"><div class="q">日本語の会議でも、文字起こしと要約は使えますか？</div><p class="a">公式のヘルプ記事と発表記事には、対応する言語の記載がありません。TechWorkerでも日本語の会議では確かめていません。社内の会議1本で試してから、使う範囲を決めます。</p></div>
+
+<h2 id="next">次の一歩は何から始めればよいですか？</h2>
+<p class="answer">Teamを契約している会社は、今日、設定の画面で社外の人がいる会議の値を確かめることから始めます。</p>
+<ol>
+<li>Organization settings ＞ Products ＞ Claude Meetings (beta)を開き、3つの設定の値を控えます。</li>
+<li>入れない会議の種類を決め、招待文と社内向けの文例を直して配ります。</li>
+<li>社内の会議1本で試し、会議ページの見える範囲を確かめます。</li>
+</ol>
+<p>TechWorkerではClaudeの研修を、受講者の実際の業務1本から組みます。30分の点検は画面共有で無料で行い、IDやパスワードは預かりません。30日後に、使った人の割合と1件の時間を測って報告します。検討段階のご相談だけでも歓迎です。</p>
+<div class="tw-lead" data-offer="ai-contract-pack" data-campaign="claude-meetings-toha" data-pos="end"></div>
+
+<h2 id="sources">出典と確認範囲</h2>
+<p class="source-note">確認日：2026年11月20日。Claude Meetingsはベータで、設定の名前、既定の値、料金は変わることがあります。管理画面の実際の表示、日本語の会議での文字起こしと要約の出来は、TechWorkerの環境では確かめていません。会議ページの保存期間、対応する言語、録画の扱い、文書とホワイトボードの2027年2月10日より後の料金、ほかの会議サービスに対応する日は、確認したヘルプ記事と発表記事に記載がありません。人数ごとの席の料金はTechWorkerの計算です。会議の種類ごとの判断、招待文と社内向けの文例、社内ルールの雛形はTechWorkerの提案で、法律上の助言ではありません。</p>
+<ol class="source-list"><li><a href="https://support.claude.com/en/articles/12138966-release-notes" target="_blank" rel="noopener noreferrer">Claude ヘルプセンター「Release notes」（2026年11月12日の項）</a></li><li><a href="https://support.claude.com/en/articles/18325154-use-claude-meetings" target="_blank" rel="noopener noreferrer">Claude ヘルプセンター「Use Claude Meetings」</a></li><li><a href="https://claude.com/resources/articles/claude-meetings" target="_blank" rel="noopener noreferrer">Anthropic「Introducing Claude Meetings」（2026年11月12日）</a></li><li><a href="https://support.claude.com/en/articles/13930452-manage-custom-roles-on-enterprise-plans" target="_blank" rel="noopener noreferrer">Claude ヘルプセンター「Manage custom roles on Enterprise plans」</a></li><li><a href="https://claude.com/pricing" target="_blank" rel="noopener noreferrer">Anthropic「Pricing」</a></li><li><a href="https://kenshu.techworker.co.jp/updates/#u-2026-11-13" target="_blank" rel="noopener noreferrer">TechWorker 研修サイト「教材の更新履歴」（2026年11月13日）</a></li></ol>
+
+</article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div>
+    <p>上場企業を含む50社超・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>Claudeの研修を、受講者の実際の業務1本から組みます。</h3>
+    <p>管理者の設定と社内の決まりの点検から、研修当日に業務1本をAIに任せる形まで作り、30日後に数で測って報告します。30分の点検は画面共有で行い、IDやパスワードは預かりません。検討段階のご相談だけでも歓迎です。</p>
+  </div>
+  <a href="https://kenshu.techworker.co.jp/?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=claude-meetings-toha&amp;utm_content=end" class="btn">研修内容・費用を相談する <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="https://kenshu.techworker.co.jp/" style="color:var(--electric);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">生成AI法人研修（主要ツール全対応）</a>　／　<a href="https://kenshu.techworker.co.jp/contact/" style="color:var(--electric);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">無料相談</a></p>
+<div class="back-list"><a href="index.html">← AI研修・導入ラボの記事一覧に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="claude-code-cost.html" class="related-card"><span class="rc-cat">料金と比較</span><div class="rc-title">Claudeの法人契約と料金｜Team月20ドル〜・Enterprise・Claude Codeの選び方</div></a>
+    <a href="claude-enterprise-security-center.html" class="related-card"><span class="rc-cat">社内ルールと安全</span><div class="rc-title">Claude Enterpriseのセキュリティセンター｜推奨の設定と見比べる手順</div></a>
+  </div>
+</div></section>
+
+<p style="max-width:var(--measure);margin:40px auto 0;padding:0 20px;font-size:12px;color:var(--slate);line-height:1.9;">本記事は株式会社TechWorkerが独自に作成したものであり、Anthropic PBCとの提携・後援・承認を受けたものではありません。ClaudeはAnthropic PBCの商標です。Google Meet、Google カレンダーは Google LLC の商標です。</p>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__in">
+      <div>
+        <p class="ft__name">株式会社TechWorker</p>
+        <p class="ft__addr">〒169-0051 東京都新宿区西早稲田一丁目22番3号<br>早稲田アントレプレナーシップセンター</p>
+      </div>
+      <nav aria-label="フッターの行き先">
+        <a href="/services">事業・サービス</a>
+        <a href="/company">会社情報</a>
+        <a href="/news">ニュース</a>
+        <a href="/#concept">考え方</a>
+        <a href="/agent-cases/">事例</a>
+        <a href="/contact">お問い合わせ</a>
+        <a href="/privacy">プライバシーポリシー</a>
+      </nav>
+    </div>
+    <div class="nv-badge"><a href="/news/013"><img src="/assets/badges/nvidia-inception-program.svg" alt="NVIDIA Inception Program" width="93" height="40" loading="lazy"></a><p>NVIDIA、NVIDIA ロゴ、NVIDIA Inception は、米国およびその他の国における NVIDIA Corporation の商標および/または登録商標です。</p></div>
+    <small>© TechWorker Inc.</small>
+  </div>
+</footer>
+
+<script>
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+<script src="/media/article-tracker.js?v=20261006-readable-intros" defer></script>
+<script>
+// スマホの行き先：右上の釦で開け閉めする。行き先を押したら閉じる。スクロールしたら頭に暗い面を敷く
+(() => {
+  const hd = document.querySelector('.hd'), btn = hd.querySelector('.menu');
+  const set = open => { hd.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く'); };
+  btn.addEventListener('click', () => set(!hd.classList.contains('is-open')));
+  hd.querySelector('nav').addEventListener('click', e => { if (e.target.closest('a')) set(false); });
+  const onScroll = () => hd.classList.toggle('is-scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+})();
+</script>
+<script src="../lead.js" defer></script>
+</body>
+</html>
