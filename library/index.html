@@ -321,7 +321,6 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
         <label class="field"><span>ご相談内容・お悩み <em class="opt">任意</em></span><textarea name="note" rows="3" placeholder="AI活用でお困りのこと、知りたいテーマなどがあればお書きください"></textarea></label>
         <label class="field"><span>当社を知ったきっかけ <em class="opt">任意</em></span><select name="heard_from"><option value="">選んでください</option><option>LinkedIn</option><option>X（旧Twitter）</option><option>検索（Google・Yahoo! など）</option><option>AI（ChatGPT など）</option><option>当社からのご連絡（メール・お手紙・お電話）</option><option>知人・取引先・団体からの紹介</option><option>展示会・セミナー</option><option>その他</option></select></label>
         <label class="agree"><input type="checkbox" id="dlAgree" required><span><a href="../privacy.html" target="_blank">プライバシーポリシー</a>に同意します。ご登録のメールアドレスに、関連資料のご案内をお送りする場合があります。</span></label>
-        <label class="agree"><input type="checkbox" id="dlNewsletter"><span>TechWorker Mediaの新着記事をメールで受け取る（週1回・いつでも停止できます）</span></label>
         <button type="submit" class="btn" id="dlSubmit">ダウンロードする</button>
         <p class="fineprint">しつこい営業は一切いたしません。<br>1クリックでいつでも配信停止できます。</p>
       </form>
@@ -428,7 +427,7 @@ addEventListener('scroll',function(){var n=document.querySelector('nav');if(n)n.
       setUnlocked();
       if(lead&&typeof gtag==='function'){gtag('event','generate_lead',{inquiry_type:'document',source:'library'});}
       if(typeof fbq==='function'){try{fbq('track','Lead',{content_name:info?info.title:currentDoc});}catch(_){}}
-      if(info&&document.getElementById('dlNewsletter').checked){
+      if(false){
         var nlTopic=info.nl,nlEmail=String(fd.get('email')||'').trim();
         fetch('/api/newsletter',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:nlEmail,topics:[nlTopic],page:'/library/?doc='+currentDoc,hp:''})})
           .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);if(typeof gtag==='function'){gtag('event','newsletter_signup',{nl_topics:nlTopic,nl_placement:'library_download',method:'library_download',transport_type:'beacon'});}})

@@ -121,11 +121,4 @@
     document.head.appendChild(dock);
   }
 
-  // メールで受け取る（テーマを選んで登録する枠）
-  if (!document.querySelector('script[src="/media/newsletter.js"]')) {
-    var nl = document.createElement("script");
-    nl.src = "/media/newsletter.js";
-    nl.defer = true;
-    document.head.appendChild(nl);
-  }
 })();
