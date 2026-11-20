@@ -1,7 +1,10 @@
 /* 記事の中で、その場で資料を受け取れる申込み枠（2026-11-11）。
    記事に <div class="tw-lead" data-offer="ai-contract-pack" data-campaign="<slug>" data-pos="mid|end"></div> を置くと、ここが中身を描く。
    入力は会社名・お名前・メールの3つだけ（電話・部署・役職は聞かない）。送ると /contact に media_document で届き（Notion と Slack）、
-   その場で資料のリンクを出す。計測: media_lead_view（枠が見えた）・media_lead_start（入力を始めた）・generate_lead（送れた）。 */
+   その場で資料のリンクを出す。計測: media_lead_view（枠が見えた）・media_lead_start（入力を始めた）・generate_lead（送れた）。
+   2026-11-20: 稟議パックの記事の途中（data-pos="mid"）は、入力の要らない安全度チェック（研修サイト /check/）への案内に替えた。
+   11/11〜11/19 に入力の枠は213回見られて入力開始0、申込みに届いた1件は安全度チェックを通っていたため。資料の枠は記事の最後に残す。
+   計測: media_check_view（案内が見えた）・media_check_click（押した）。 */
 (function () {
   "use strict";
   if (window.__twLead) return;
@@ -55,7 +58,8 @@
     ".tw-lead label.tl-nl{grid-column:1/-1;font-size:13px;color:var(--slate,#4A5059);display:flex;gap:8px;align-items:flex-start}" +
     ".tw-lead .tl-done a.tl-open{display:inline-block;margin:10px 0 6px;background:var(--electric-dark,#0047C2);color:#fff;text-decoration:none;font-weight:700;border-radius:8px;padding:12px 20px}" +
     ".tw-lead .tl-err{grid-column:1/-1;color:#B42318;font-size:13px;margin:0}" +
-    "@media (max-width:560px){.tw-lead{padding:20px 16px}.tw-lead form{grid-template-columns:1fr}.tw-lead .tl-title{font-size:18px}.tw-lead button{width:100%}}";
+    ".tw-lead a.tl-go{display:inline-block;margin:2px 0 12px;background:var(--ink,#0D1117);color:#fff;text-decoration:none;font-size:15px;font-weight:700;border-radius:8px;padding:12px 20px}" +
+    "@media (max-width:560px){.tw-lead{padding:20px 16px}.tw-lead form{grid-template-columns:1fr}.tw-lead .tl-title{font-size:18px}.tw-lead button{width:100%}.tw-lead a.tl-go{display:block;text-align:center}}";
 
   function ev(name, params) {
     if (typeof gtag === "function") { try { gtag("event", name, params); } catch (_) {} }
@@ -86,12 +90,45 @@
     box.appendChild(d);
   }
 
+  // 記事の途中：入力の要らない安全度チェックへの案内（中身は kenshu.techworker.co.jp/check/ に書いてあることだけ）
+  function renderCheck(box, camp) {
+    var u = "https://kenshu.techworker.co.jp/check/?utm_source=techworker_media&utm_medium=article_mid&utm_campaign=" +
+      encodeURIComponent((location.pathname.match(/^\/media\/([a-z]+)\//) || [])[1] || "media") + "&utm_content=" + encodeURIComponent(camp);
+    box.appendChild(el("p", { class: "tl-kicker" }, "3分・無料・お名前不要"));
+    box.appendChild(el("p", { class: "tl-title" }, "生成AI利用の安全度チェック"));
+    box.appendChild(el("p", { class: "tl-sub" }, "お使いの製品を選んで答えると、初期設定のまま開いている所と、先に直したい所3つがその場で出ます。"));
+    var ul = el("ul");
+    [
+      "Microsoft 365・Google Workspace・ChatGPT・Claude から、契約している製品を選べます",
+      "社内のルール・使われ方・製品の設定を、「はい・一部・いいえ」で答えます",
+      "メールアドレスの入力は要りません。自己申告に基づく目安です"
+    ].forEach(function (t) { ul.appendChild(el("li", null, t)); });
+    box.appendChild(ul);
+    var a = el("a", { class: "tl-go", href: u, "data-cta-offer": "training_check", "data-cta-placement": "article_mid" }, "安全度チェックを始める");
+    a.addEventListener("click", function () { ev("media_check_click", { lead_pos: "mid", campaign: camp, transport_type: "beacon" }); });
+    box.appendChild(a);
+    var fine = el("p", { class: "tl-fine" });
+    fine.appendChild(document.createTextNode("料金比較表と稟議書の雛形は、"));
+    fine.appendChild(el("a", { href: "#tw-lead-end" }, "記事の最後"));
+    fine.appendChild(document.createTextNode("で受け取れます。"));
+    box.appendChild(fine);
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (x) {
+          if (x.isIntersecting) { ev("media_check_view", { lead_pos: "mid", campaign: camp }); io.disconnect(); }
+        });
+      }, { threshold: 0.5 });
+      io.observe(box);
+    }
+  }
+
   function render(box) {
     var offer = OFFERS[box.dataset.offer];
     if (!offer) return;
     var camp = box.dataset.campaign || location.pathname;
     var pos = box.dataset.pos || "";
     box.setAttribute("id", box.id || "tw-lead-" + pos);
+    if (pos === "mid" && box.dataset.offer === "ai-contract-pack" && document.querySelector('.tw-lead[data-pos="end"]')) { renderCheck(box, camp); return; }
     if (done()) { renderDone(box, offer); return; }
 
     box.appendChild(el("p", { class: "tl-kicker" }, "無料で受け取る"));
