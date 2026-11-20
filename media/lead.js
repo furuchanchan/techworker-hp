@@ -1,7 +1,7 @@
 /* 記事の中で、その場で資料を受け取れる申込み枠（2026-11-11）。
    記事に <div class="tw-lead" data-offer="ai-contract-pack" data-campaign="<slug>" data-pos="mid|end"></div> を置くと、ここが中身を描く。
    入力は会社名・お名前・メールの3つだけ（電話・部署・役職は聞かない）。送ると /contact に media_document で届き（Notion と Slack）、
-   その場で資料のリンクを出す。計測: media_lead_view（枠が見えた）・media_lead_start（入力を始めた）・generate_lead（送れた）。
+   その場で資料のリンクを出す。計測: media_lead_view（枠が見えた）・media_calc_use（試算を触った）・media_lead_open（入力を開いた）・media_lead_start（入力を始めた）・generate_lead（送れた）。
    2026-11-20: 稟議パックの記事の途中（data-pos="mid"）は、入力の要らない安全度チェック（研修サイト /check/）への案内に替えた。
    11/11〜11/19 に入力の枠は213回見られて入力開始0、申込みに届いた1件は安全度チェックを通っていたため。資料の枠は記事の後ろに残す（途中の枠しか無い記事には本文の最後に足す）。
    計測: media_check_view（案内が見えた）・media_check_click（押した）。 */
@@ -33,6 +33,7 @@
         "2つの質問に答えると、Agent 365 の要否が出る",
         "稟議に足す行の文例と、今週決める5つの担当・期限の表"
       ],
+      calc: "copilot",
       url: "/library/copilot-ignite-sheet.html",
       nl: "kenshu"
     },
@@ -47,6 +48,7 @@
         "件名から見直しの時期まで、［　］を埋めれば出せる稟議の行の文例",
         "契約を決めて稟議に載せるまでの5つの手順と、担当・期限の表"
       ],
+      calc: "claude",
       url: "/library/claude-cost-sheet.html",
       nl: "kenshu"
     },
@@ -95,6 +97,16 @@
     ".tw-lead .tl-done a.tl-open{display:inline-block;margin:10px 0 6px;background:var(--electric-dark,#0047C2);color:#fff;text-decoration:none;font-weight:700;border-radius:8px;padding:12px 20px}" +
     ".tw-lead .tl-err{grid-column:1/-1;color:#B42318;font-size:13px;margin:0}" +
     ".tw-lead a.tl-go{display:inline-block;margin:2px 0 12px;background:var(--ink,#0D1117);color:#fff;text-decoration:none;font-size:15px;font-weight:700;border-radius:8px;padding:12px 20px}" +
+    ".tw-lead .tl-calc{margin:14px 0 4px;padding:16px;border-radius:10px;background:#f4f5f7}" +
+    ".tw-lead .tl-ch{font-size:15px;font-weight:700;color:var(--ink,#0D1117);margin:0 0 10px}" +
+    ".tw-lead .tl-cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}" +
+    ".tw-lead .tl-cg label{display:block;font-size:12.5px;font-weight:700;color:var(--slate,#4A5059)}" +
+    ".tw-lead .tl-cg input{display:block;width:100%;margin-top:4px;font:inherit;font-size:17px;font-weight:700;padding:9px 10px;border:1px solid rgba(13,17,23,.22);border-radius:8px;background:#fff;color:var(--ink,#0D1117)}" +
+    ".tw-lead .tl-co{display:flex;flex-wrap:wrap;gap:8px 28px;margin:14px 0 8px}" +
+    ".tw-lead .tl-co span{display:block;font-size:12.5px;font-weight:700;color:var(--slate,#4A5059)}" +
+    ".tw-lead .tl-co b{display:block;font-size:24px;line-height:1.3;color:var(--electric-dark,#0047C2);font-feature-settings:'tnum' 1}" +
+    ".tw-lead .tl-cgo{margin-top:12px;background:var(--electric,#005EFF);font-size:16px;padding:13px 22px}" +
+    ".tw-lead form[hidden]{display:none}" +
     "@media (max-width:560px){.tw-lead{padding:20px 16px}.tw-lead form{grid-template-columns:1fr}.tw-lead .tl-title{font-size:18px}.tw-lead button{width:100%}.tw-lead a.tl-go{display:block;text-align:center}}";
 
   // 申込みの枠で任意で選んでもらうお悩み（全資料で共通）。言葉は ~/founder-os/customer-voice/voices.jsonl の原文から
@@ -106,6 +118,65 @@
     "どのAI・契約を選ぶか迷っている",
     "社内の推進役を育てたい"
   ];
+
+  // その場の試算（2026-11-20）。11/11〜11/19 は入力の枠が213回見られて入力開始0、届いた1件は入力の要らない安全度チェックを通っていた。
+  // 名前を聞く前に、読者の数字で答えを1つ返す。押すと6項目の入力が開く。
+  var CALCS = {
+    claude: {
+      head: "席の数を入れると、年額がその場で出ます",
+      fields: [["s", "Team Standard の席", 10], ["p", "Team Premium の席", 3], ["r", "為替（1ドル＝円）", 155]],
+      out: function (v) {
+        var m = v.s * 20 + v.p * 100, y = Math.round(m * 12 * v.r * 1.1);
+        return [["月額", m.toLocaleString("ja-JP") + " ドル"], ["年額（税込）", "約 " + y.toLocaleString("ja-JP") + " 円"]];
+      },
+      note: "単価は年払い・税抜で Standard 20ドル、Premium 100ドル（2026年11月20日に公式で確認）。為替は仮の値です。",
+      go: "この試算を Excel で受け取る"
+    },
+    copilot: {
+      head: "人数を入れると、年額がその場で出ます",
+      fields: [["c", "Copilot を使う人数", 50], ["a", "Agent 365 を付ける人数", 0]],
+      out: function (v) {
+        var m = v.c * 4497 + v.a * 2248;
+        return [["月額（税抜）", m.toLocaleString("ja-JP") + " 円"], ["年額（税抜）", (m * 12).toLocaleString("ja-JP") + " 円"]];
+      },
+      note: "単価は年払い・税抜の月額相当で Copilot 4,497円、Agent 365 2,248円（2026年11月18日に公式で確認）。対象の Microsoft 365 のライセンスは別です。",
+      go: "この試算を Excel で受け取る"
+    }
+  };
+  function renderCalc(box, kind, meta, onGo) {
+    var c = CALCS[kind], w = el("div", { class: "tl-calc" });
+    w.appendChild(el("p", { class: "tl-ch" }, c.head));
+    var g = el("div", { class: "tl-cg" }), ins = {};
+    c.fields.forEach(function (f) {
+      var lb = el("label");
+      lb.appendChild(el("span", null, f[1]));
+      var i = el("input", { type: "number", inputmode: "numeric", min: "0", max: "100000", value: String(f[2]), "aria-label": f[1] });
+      ins[f[0]] = i; lb.appendChild(i); g.appendChild(lb);
+    });
+    w.appendChild(g);
+    var out = el("div", { class: "tl-co", "aria-live": "polite" });
+    w.appendChild(out);
+    function draw() {
+      var v = {};
+      for (var k in ins) v[k] = Math.max(0, Math.min(100000, Number(ins[k].value) || 0));
+      out.innerHTML = "";
+      c.out(v).forEach(function (r) {
+        var d = el("div");
+        d.appendChild(el("span", null, r[0])); d.appendChild(el("b", null, r[1])); out.appendChild(d);
+      });
+    }
+    var used = false;
+    g.addEventListener("input", function () {
+      draw();
+      if (!used) { used = true; ev("media_calc_use", meta); }
+    });
+    draw();
+    w.appendChild(el("p", { class: "tl-fine" }, c.note));
+    var b = el("button", { type: "button", class: "tl-cgo" }, c.go);
+    b.addEventListener("click", function () { ev("media_lead_open", meta); b.hidden = true; onGo(); });
+    w.appendChild(b);
+    box.appendChild(w);
+  }
 
   function ev(name, params) {
     if (typeof gtag === "function") { try { gtag("event", name, params); } catch (_) {} }
@@ -200,12 +271,17 @@
     box.appendChild(el("p", { class: "tl-kicker" }, offer.kicker || "無料で受け取る"));
     box.appendChild(el("p", { class: "tl-title" }, offer.title));
     box.appendChild(el("p", { class: "tl-sub" }, offer.sub));
+    var f = el("form", { novalidate: "" });
+    var meta = { lead_offer: box.dataset.offer, lead_pos: pos, campaign: camp };
+    if (offer.calc && CALCS[offer.calc]) {
+      f.hidden = true;
+      renderCalc(box, offer.calc, meta, function () { f.hidden = false; var i = f.querySelector("input"); if (i) i.focus(); });
+    }
     if (offer.img) box.appendChild(el("img", { class: "tl-img", src: offer.img, alt: offer.imgAlt || "", loading: "lazy", decoding: "async" }));
     var ul = el("ul");
     offer.points.forEach(function (t) { ul.appendChild(el("li", null, t)); });
     box.appendChild(ul);
 
-    var f = el("form", { novalidate: "" });
     var company = el("input", { type: "text", name: "company", placeholder: "会社名", autocomplete: "organization", required: "", "aria-label": "会社名" });
     var name = el("input", { type: "text", name: "name", placeholder: "お名前", autocomplete: "name", required: "", "aria-label": "お名前" });
     var email = el("input", { type: "email", name: "email", placeholder: "会社のメールアドレス", autocomplete: "email", required: "", class: "tl-email", "aria-label": "メールアドレス" });
