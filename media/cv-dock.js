@@ -55,7 +55,7 @@
   }
   // 研修の相談（研修・セキュリティ・エージェント・基盤の記事の右下）。見本は研修サイトに載せている教材の1枚
   var TRAINING = {
-    kind: "無料相談・30分", img: "/media/cv/kenshu.jpg?v=5", offer: "training_consult",
+    kind: "無料相談・30分", img: "/media/cv/kenshu.jpg?v=6", offer: "training_consult",
     title: "御社のAI環境とセキュリティに合わせて、生成AI研修を組みます",
     points: [],
     note: "",
@@ -110,6 +110,10 @@
     ".twd-p li{position:relative;padding-left:20px;font-size:12.5px;line-height:1.6;color:var(--ink-soft,#2A333F);margin-top:4px}" +
     ".twd-p li::before{content:'';position:absolute;left:2px;top:.42em;width:11px;height:11px;border-radius:50%;background:" + A + " url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.4l2.6 2.6L12 5.4' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E\") center/9px no-repeat}" +
     ".twd-b{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:12px;background:" + A + ";color:#FCFCFB;text-decoration:none;font-size:16.5px;font-weight:800;letter-spacing:.03em;border-radius:9px;padding:15px 14px;box-shadow:0 10px 20px -12px color-mix(in srgb," + A + " 80%,transparent);transition:transform .2s,background .2s}" +
+    ".twd-b{position:relative;overflow:hidden;animation:twdPulse 2.8s ease-in-out infinite}" +
+    ".twd-b::after{content:'';position:absolute;top:0;bottom:0;left:-60%;width:45%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.42),transparent);transform:skewX(-18deg);animation:twdShine 2.8s ease-in-out infinite;pointer-events:none}" +
+    "@keyframes twdShine{0%,55%{left:-60%}100%{left:130%}}" +
+    "@keyframes twdPulse{0%,100%{box-shadow:0 10px 20px -10px rgba(0,94,255,.55),0 0 0 0 rgba(0,94,255,.38)}60%{box-shadow:0 10px 20px -10px rgba(0,94,255,.55),0 0 0 9px rgba(0,94,255,0)}}" +
     ".twd-b:hover{background:var(--electric-dark,#003DAA);transform:translateY(-1px)}" +
     ".twd-n{font-size:11.5px;color:var(--slate,#5A6677);text-align:center;margin-top:7px}" +
     ".twd-s{display:block;text-align:center;margin-top:8px;padding-top:9px;border-top:1px solid rgba(13,17,23,.08);font-size:12.5px;font-weight:700;color:var(--ink-soft,#2A333F);text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(13,17,23,.25)}" +
@@ -136,7 +140,7 @@
     "@media(max-width:720px){.mid-cta.rich{grid-template-columns:1fr;gap:14px}.mid-cta.rich .btn,.mid-cta.rich .mc-note{grid-column:1}.mid-cta.rich .mc-note{margin-top:-8px}}" +
     "@media(min-width:761px) and (max-height:760px){.twd-img{display:none}}" +
     ".art-cta .art-chk{color:var(--ink,#11161D)}.art-cta .art-chk a{color:" + A + ";font-weight:700;text-underline-offset:3px}" +
-    "@media(prefers-reduced-motion:reduce){.twd,.twd-b{transition:none}}";
+    "@media(prefers-reduced-motion:reduce){.twd,.twd-b{transition:none}.twd-b,.twd-b::after{animation:none}.twd-b::after{display:none}}";
 
   function build() {
     var box = el("aside", "twd off");
