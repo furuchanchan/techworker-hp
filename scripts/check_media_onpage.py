@@ -13,7 +13,7 @@
 - sitemap.xml に載っている
 - 図（2026-11-20 古野さん「視覚的な情報少なすぎて最悪」「リアルタイム系は特にリアルタイムな画像を」）:
   本文の図（figure.fig-inline）が3枚以上。公式の原文を引用する記事（.source-quote がある＝発表・時事・料金の記事）は、
-  公式の画面（figure.fig-inline.fig-real。page_shot.mjs か shot.mjs で撮った実物）が2枚以上で、直後の .fig-cap に「出典：」と撮影日。
+  公式の画面（figure.fig-inline.fig-real。page_shot.mjs で撮った製品の画面）を入れるときは、直後の .fig-cap に「出典：」と撮影日。原文の切り抜き画像（-quote-N）は使わず、引用の形だけにする。
 """
 import html, json, re, sys
 from pathlib import Path
@@ -65,10 +65,10 @@ def check(f):
     body = s[s.find("<article"):s.find("</article>")] if "<article" in s else s
     figs = re.findall(r'<figure class="([^"]*\bfig-inline\b[^"]*)"', body)
     if len(figs) < 3: bad.append(f"本文の図が {len(figs)}枚（3枚以上）")
-    if 'class="source-quote"' in body:
-        real = re.findall(r'<figure class="[^"]*\bfig-real\b[^"]*">.*?</figure>\s*(<p class="fig-cap">.*?</p>)?', body, re.S)
-        if len(real) < 2: bad.append(f"公式の画面（fig-real）が {len(real)}枚（公式の原文を引用する記事は2枚以上）")
-        if any(not (c and "出典：" in c and "撮影" in c) for c in real): bad.append("公式の画面の直後に、出典と撮影日の .fig-cap が無い")
+    # 2026-11-20 本人「赤文字で引くだけのところはいらない」「視認性が下がっている」：原文の切り抜き画像は使わず、引用（blockquote.source-quote）で見せる
+    if re.search(r'figs/[a-z0-9-]+-quote-\d\.(jpg|png)', body) or "下線は弊社" in body: bad.append("原文の切り抜き画像がある（引用の形だけにする）")
+    real = re.findall(r'<figure class="[^"]*\bfig-real\b[^"]*">.*?</figure>\s*(<p class="fig-cap">.*?</p>)?', body, re.S)
+    if any(not (c and "出典：" in c and "撮影" in c) for c in real): bad.append("公式の画面の直後に、出典と撮影日の .fig-cap が無い")
     links = inbound(path)
     if len(links) < 2: bad.append(f"他の記事の本文からのリンクが {len(links)}本（2本以上）")
     if f"<loc>{SITE}{rel}</loc>" not in sitemap: bad.append("sitemap に無い")

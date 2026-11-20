@@ -407,3 +407,8 @@ html body{background:#FFFFFF;}
 /* 図の出典の1行は本文より小さく。公式の画面（.fig-real）の直後は間を詰める */
 html body .art-body p.fig-cap{font-size:13px;line-height:1.7;color:var(--slate);}
 html body .art-body .fig-real+p.fig-cap{margin-top:-18px;}
+
+/* 2026-11-20: 公式の原文は画像にせず、引用の形で見せる（本人「普通に引用っぽい形、クオートっぽい形で」）。 */
+html body .art-body blockquote.source-quote{margin:28px 0;padding:24px 28px 20px;background:#F5F5F5;border:0;border-radius:12px;}
+html body .art-body blockquote.source-quote::before{content:"\201C";display:block;height:26px;font-size:54px;line-height:1;font-weight:800;color:#B9B9B9;font-family:Georgia,serif;}
+html body .art-body blockquote.source-quote .source-translation{font-weight:700;}
