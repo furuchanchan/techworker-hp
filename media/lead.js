@@ -36,6 +36,20 @@
       url: "/library/copilot-ignite-sheet.html",
       nl: "kenshu"
     },
+    "claude-cost-sheet": {
+      kicker: "Excel を無料で受け取る",
+      title: "Claude 法人契約の費用試算シート",
+      sub: "人数と1人当たりの利用量を入れると、Team・Enterprise・API従量の月額と年額が出ます",
+      img: "/media/kenshu/figs/claude-code-cost-sheet.png",
+      imgAlt: "Excelの画面。為替、消費税率、1人当たりの利用量、契約ごとの人数を入れると、月額のドルと年額の円、合計が出る表。",
+      points: [
+        "Team Standard・Premium・Enterprise・API従量を、月額（ドル）と年額（円・税込）で1枚に（2026年11月20日に公式で確認した価格）",
+        "件名から見直しの時期まで、［　］を埋めれば出せる稟議の行の文例",
+        "契約を決めて稟議に載せるまでの5つの手順と、担当・期限の表"
+      ],
+      url: "/library/claude-cost-sheet.html",
+      nl: "kenshu"
+    },
     "gyomuzu-templates": {
       title: "部署別 業務図テンプレート集",
       sub: "経理・人事労務・カスタマー対応・総務法務・営業の業務図の例／自社用の空の型／AIに任せる範囲の札の付け方",
