@@ -212,13 +212,13 @@
 /media/newbiz/ /media/ 301
 /media/newbiz/index.html /media/ 301
 
+# メール配信の登録は 2026-11-20 に止めた。登録ページは一覧へ送る
+/media/newsletter /media/ 302
+/media/newsletter/ /media/ 302
+
 # 動的な転送（* を含む）は必ず末尾に置く。Pages は最初の動的な転送から後ろを全部動的として数え、100件で打ち切るため（2026-11-11、106件目以降が効いていなかった）。点検は scripts/check_redirects.py
 /.github/* / 301
 /scripts/* / 301
 /media/infra/* /media/security/ 301
 /media/simulation/* /launch-simulation/ 301
 /companymap/* /gyoumuzuai/:splat 301
-
-# メール配信の登録は 2026-11-20 に止めた。登録ページは一覧へ送る
-/media/newsletter /media/ 302
-/media/newsletter/ /media/ 302
