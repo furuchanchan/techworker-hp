@@ -401,3 +401,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--electric);outline-o
 .source-quote .source-original{font-size:14px;line-height:1.8;color:var(--slate);}
 .source-quote .source-translation{margin-top:16px;font-size:16px;line-height:1.9;color:var(--ink);}
 .source-quote footer{padding:0;border:0;background:transparent;font-size:12px;line-height:1.8;color:var(--slate);}
+
+/* 2026-11-20: メディアの地は白（本人「背景灰色なのはめっちゃ微妙」）。site.css の灰色の地（--ground）より後で効かせる。 */
+html body{background:#FFFFFF;}
+/* 図の出典の1行は本文より小さく。公式の画面（.fig-real）の直後は間を詰める */
+html body .art-body p.fig-cap{font-size:13px;line-height:1.7;color:var(--slate);}
+html body .art-body .fig-real+p.fig-cap{margin-top:-18px;}
