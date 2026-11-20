@@ -93,7 +93,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“MTok: Million tokens. $5 / MTok is $5 for every million tokens.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>MTokは100万トークンのことです。「$5 / MTok」は100万トークンごとに5ドルという意味です。</p><footer>出典：<a href="https://platform.claude.com/docs/en/about-claude/pricing" target="_blank" rel="noopener noreferrer">Anthropic公式「Pricing」</a>（2026年11月11日確認）</footer></blockquote>
 <p>トークンは、AIが文章を読み書きするときの最小の単位です。料金表の「$2 / MTok」は100万トークンを処理すると2ドルかかるという意味です。3社とも、この「100万トークンあたりの米ドル」で単価を示しています。</p>
 <p>1トークンが何文字にあたるかは、モデルごとに違います。Anthropicの料金ページによると、Claude Opus 4.7以降のモデルは新しいトークナイザー（文章をトークンに分ける仕組み）を使い、同じ文章でもトークン数が約30%多くなります。見積もりには文字数からの換算を使わず、APIの応答に入っている利用量（usage）の実測値を使います。</p>
-<figure class="fig-inline"><a href="figs/token-cost-1.png?v=2" target="_blank" rel="noopener"><img src="figs/token-cost-1.png?v=2" alt="トークンコストの4つの単価。Claude Sonnet 5.5の例で、入力は100万トークン2ドル、出力は10ドル、キャッシュ読み出しは0.10ドル、キャッシュ書き込みは5分保持で2.50ドル。" width="1920" height="1080" loading="lazy" decoding="async"></a><figcaption><span class="source-label">TechWorker作成：</span>Anthropic公式「Pricing」（2026年11月11日確認）の単価を、課金の種類ごとに並べた図です。画像を押すと拡大できます。</figcaption></figure>
+<figure class="fig-inline"><a href="figs/token-cost-1.png?v=3" target="_blank" rel="noopener"><img src="figs/token-cost-1.png?v=3" alt="トークンコストの4つの単価。Claude Sonnet 5.5の例で、入力は100万トークン2ドル、出力は10ドル、キャッシュ読み出しは0.10ドル、キャッシュ書き込みは5分保持で2.50ドル。" width="1920" height="1080" loading="lazy" decoding="async"></a><figcaption><span class="source-label">TechWorker作成：</span>Anthropic公式「Pricing」（2026年11月11日確認）の単価を、課金の種類ごとに並べた図です。画像を押すと拡大できます。</figcaption></figure>
 
 <h2 id="calc">トークンコストはどう計算しますか？</h2>
 <p class="answer">入力・出力・キャッシュ読み出し・キャッシュ書き込みの4つに分け、それぞれのトークン数に単価を掛けて足します。</p>
@@ -149,7 +149,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 月の出力：4万回 × 500トークン ＝ 2,000万トークン<br>
 中位モデル（入力2ドル・出力10ドル）：80 × 2ドル ＋ 20 × 10ドル ＝ 360ドル</p></div>
 <p>月360ドルは1ドル160円で5万7,600円です。1人あたりでは月3.6ドル（576円）になります。同じ使い方を、ほかのモデルの単価で計算すると次のとおりです。</p>
-<figure class="fig-inline"><a href="figs/token-cost-2.png?v=2" target="_blank" rel="noopener"><img src="figs/token-cost-2.png?v=2" alt="社員100人が1日20回使う場合の月額をモデル別に比べた棒グラフ。Claude Haiku 5.5は18ドル、Claude Sonnet 5.5は360ドル、gpt-6-astraは1,800ドル。" width="1920" height="1080" loading="lazy" decoding="async"></a><figcaption><span class="source-label">TechWorker作成：</span>3社の公式料金表（2026年11月11日確認）の単価による試算です。実測や請求額ではありません。</figcaption></figure>
+<figure class="fig-inline"><a href="figs/token-cost-2.png?v=3" target="_blank" rel="noopener"><img src="figs/token-cost-2.png?v=3" alt="社員100人が1日20回使う場合の月額をモデル別に比べた棒グラフ。Claude Haiku 5.5は18ドル、Claude Sonnet 5.5は360ドル、gpt-6-astraは1,800ドル。" width="1920" height="1080" loading="lazy" decoding="async"></a><figcaption><span class="source-label">TechWorker作成：</span>3社の公式料金表（2026年11月11日確認）の単価による試算です。実測や請求額ではありません。</figcaption></figure>
 <div class="tbl-wrap" role="region" aria-label="モデル別の月額の試算" tabindex="0"><table>
 <thead><tr><th>モデル</th><th>入力の分</th><th>出力の分</th><th>月額</th><th>円換算（1ドル160円）</th></tr></thead>
 <tbody>
