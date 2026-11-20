@@ -102,7 +102,7 @@ document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
 
 (function(){var b=document.getElementById('copy-url'),s=document.getElementById('share-status');if(!b)return;b.addEventListener('click',async function(){try{if(!navigator.clipboard)throw new Error('Clipboard unavailable');await navigator.clipboard.writeText(document.querySelector('link[rel="canonical"]').href);s.textContent='記事のURLをコピーしました。';}catch(e){s.textContent='コピーできませんでした。ブラウザのアドレス欄からコピーしてください。';}});})();
 </script>
-<script src="/media/article-tracker.js?v=20261120c" defer></script>
+<script src="/media/article-tracker.js?v=20261120d" defer></script>
 <script>
 // スマホの行き先：右上の釦で開け閉めする。行き先を押したら閉じる。スクロールしたら頭に暗い面を敷く
 (() => {
