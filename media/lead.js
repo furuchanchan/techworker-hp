@@ -3,7 +3,7 @@
    入力は会社名・お名前・メールの3つだけ（電話・部署・役職は聞かない）。送ると /contact に media_document で届き（Notion と Slack）、
    その場で資料のリンクを出す。計測: media_lead_view（枠が見えた）・media_lead_start（入力を始めた）・generate_lead（送れた）。
    2026-11-20: 稟議パックの記事の途中（data-pos="mid"）は、入力の要らない安全度チェック（研修サイト /check/）への案内に替えた。
-   11/11〜11/19 に入力の枠は213回見られて入力開始0、申込みに届いた1件は安全度チェックを通っていたため。資料の枠は記事の最後に残す。
+   11/11〜11/19 に入力の枠は213回見られて入力開始0、申込みに届いた1件は安全度チェックを通っていたため。資料の枠は記事の後ろに残す（途中の枠しか無い記事には本文の最後に足す）。
    計測: media_check_view（案内が見えた）・media_check_click（押した）。 */
 (function () {
   "use strict";
@@ -91,7 +91,7 @@
   }
 
   // 記事の途中：入力の要らない安全度チェックへの案内（中身は kenshu.techworker.co.jp/check/ に書いてあることだけ）
-  function renderCheck(box, camp) {
+  function renderCheck(box, camp, packId) {
     var u = "https://kenshu.techworker.co.jp/check/?utm_source=techworker_media&utm_medium=article_mid&utm_campaign=" +
       encodeURIComponent((location.pathname.match(/^\/media\/([a-z]+)\//) || [])[1] || "media") + "&utm_content=" + encodeURIComponent(camp);
     box.appendChild(el("p", { class: "tl-kicker" }, "3分・無料・お名前不要"));
@@ -109,7 +109,7 @@
     box.appendChild(a);
     var fine = el("p", { class: "tl-fine" });
     fine.appendChild(document.createTextNode("料金比較表と稟議書の雛形は、"));
-    fine.appendChild(el("a", { href: "#tw-lead-end" }, "記事の最後"));
+    fine.appendChild(el("a", { href: "#" + packId }, "この記事の後ろの枠"));
     fine.appendChild(document.createTextNode("で受け取れます。"));
     box.appendChild(fine);
     if ("IntersectionObserver" in window) {
@@ -122,13 +122,33 @@
     }
   }
 
+  // 途中の枠と同じ資料を渡す、記事の後ろの枠
+  function packBoxFor(box) {
+    var all = document.querySelectorAll('.tw-lead[data-offer="' + box.dataset.offer + '"]');
+    for (var i = 0; i < all.length; i++) if (all[i] !== box) return all[i];
+    return null;
+  }
+  // 途中の枠しか無い記事には、本文の最後に資料の枠を足す（途中を安全度チェックに替えても資料を受け取れるように）
+  function ensurePackBox(box) {
+    if (box.dataset.pos !== "mid" || box.dataset.offer !== "ai-contract-pack" || packBoxFor(box) || !box.parentNode) return;
+    var e = document.createElement("div");
+    e.className = "tw-lead";
+    e.setAttribute("data-offer", box.dataset.offer);
+    e.setAttribute("data-campaign", box.dataset.campaign || "");
+    e.setAttribute("data-pos", "end");
+    box.parentNode.appendChild(e);
+  }
+
   function render(box) {
     var offer = OFFERS[box.dataset.offer];
     if (!offer) return;
     var camp = box.dataset.campaign || location.pathname;
     var pos = box.dataset.pos || "";
     box.setAttribute("id", box.id || "tw-lead-" + pos);
-    if (pos === "mid" && box.dataset.offer === "ai-contract-pack" && document.querySelector('.tw-lead[data-pos="end"]')) { renderCheck(box, camp); return; }
+    if (pos === "mid" && box.dataset.offer === "ai-contract-pack") {
+      var pack = packBoxFor(box);
+      if (pack) { renderCheck(box, camp, pack.id || "tw-lead-" + (pack.dataset.pos || "")); return; }
+    }
     if (done()) { renderDone(box, offer); return; }
 
     box.appendChild(el("p", { class: "tl-kicker" }, "無料で受け取る"));
@@ -221,7 +241,8 @@
     var s = document.createElement("style");
     s.textContent = CSS;
     document.head.appendChild(s);
-    boxes.forEach(render);
+    boxes.forEach(ensurePackBox);
+    document.querySelectorAll(".tw-lead").forEach(render);
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
