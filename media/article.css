@@ -412,3 +412,11 @@ html body .art-body .fig-real+p.fig-cap{margin-top:-18px;}
 html body .art-body blockquote.source-quote{margin:28px 0;padding:24px 28px 20px;background:#F5F5F5;border:0;border-radius:12px;}
 html body .art-body blockquote.source-quote::before{content:"\201C";display:block;height:26px;font-size:54px;line-height:1;font-weight:800;color:#B9B9B9;font-family:Georgia,serif;}
 html body .art-body blockquote.source-quote .source-translation{font-weight:700;}
+
+/* 2026-11-20: 題とリードの改行（本人「ここの改行がめっちゃ変」）。語の途中で折らず、リードは本文と同じ幅まで使う。 */
+html body .art-head h1{word-break:auto-phrase;line-break:strict;text-wrap:balance;}
+html body .art-head .dek{max-width:none;word-break:auto-phrase;line-break:strict;text-wrap:pretty;}
+/* 見出しの区切り（本人「見出しの区切りがちょっと分かりにくい」）。h2 の上に線と間を置き、章の始まりが目で分かるようにする。 */
+html body .art-body h2{margin:88px 0 10px;padding-top:34px;border-top:1px solid #111;word-break:auto-phrase;text-wrap:balance;}
+html body .art-body h2:first-child{margin-top:0;}
+html body .art-body h2+p.answer+figure.fig-inline{margin-top:22px;}

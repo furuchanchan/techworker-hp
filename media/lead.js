@@ -22,6 +22,20 @@
       url: "/library/ai-contract-pack.html",
       nl: "kenshu"
     },
+    "copilot-ignite-sheet": {
+      kicker: "Excel を無料で受け取る",
+      title: "Copilot 稟議の追加分シート（Ignite 2026 対応）",
+      sub: "人数を入れると、Copilot・Agent 365・クレジットの月額と年額が出ます",
+      img: "/media/kenshu/figs/ignite-2026-copilot-sheet.png",
+      imgAlt: "Excelの画面。Copilotを使う人数、Agent 365を付ける人数、クレジットの月の上限を入れると、費用の行ごとの月額と年額、合計が出る表。",
+      points: [
+        "席の料金・Agent 365・クレジットの上限を、月額と年額で1枚に（2026年11月18日に公式で確認した価格）",
+        "2つの質問に答えると、Agent 365 の要否が出る",
+        "稟議に足す行の文例と、今週決める5つの担当・期限の表"
+      ],
+      url: "/library/copilot-ignite-sheet.html",
+      nl: "kenshu"
+    },
     "gyomuzu-templates": {
       title: "部署別 業務図テンプレート集",
       sub: "経理・人事労務・カスタマー対応・総務法務・営業の業務図の例／自社用の空の型／AIに任せる範囲の札の付け方",
@@ -39,6 +53,7 @@
     ".tw-lead{margin:40px 0;border:1px solid var(--line,rgba(13,17,23,.1));border-radius:14px;background:#fff;padding:24px 22px;box-shadow:0 1px 0 rgba(13,17,23,.04)}" +
     ".tw-lead *{box-sizing:border-box}" +
     ".tw-lead .tl-kicker{font-size:12px;letter-spacing:.06em;color:var(--electric-dark,#0047C2);font-weight:700;margin:0 0 6px}" +
+    ".tw-lead .tl-img{display:block;width:100%;height:auto;margin:14px 0 6px;border:1px solid #D9D9D9;border-radius:8px;background:#fff}" +
     ".tw-lead .tl-title{font-size:20px;line-height:1.45;font-weight:700;color:var(--ink,#0D1117);margin:0 0 4px}" +
     ".tw-lead .tl-sub{font-size:13.5px;color:var(--slate,#4A5059);margin:0 0 12px;line-height:1.7}" +
     ".tw-lead ul{margin:0 0 16px;padding:0;list-style:none}" +
@@ -151,9 +166,10 @@
     }
     if (done()) { renderDone(box, offer); return; }
 
-    box.appendChild(el("p", { class: "tl-kicker" }, "無料で受け取る"));
+    box.appendChild(el("p", { class: "tl-kicker" }, offer.kicker || "無料で受け取る"));
     box.appendChild(el("p", { class: "tl-title" }, offer.title));
     box.appendChild(el("p", { class: "tl-sub" }, offer.sub));
+    if (offer.img) box.appendChild(el("img", { class: "tl-img", src: offer.img, alt: offer.imgAlt || "", loading: "lazy", decoding: "async" }));
     var ul = el("ul");
     offer.points.forEach(function (t) { ul.appendChild(el("li", null, t)); });
     box.appendChild(ul);
