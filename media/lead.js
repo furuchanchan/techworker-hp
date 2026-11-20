@@ -69,11 +69,29 @@
     ".tw-lead button[disabled]{opacity:.6;cursor:wait}" +
     ".tw-lead .tl-fine{font-size:12px;color:var(--slate,#4A5059);line-height:1.6;margin:0}" +
     ".tw-lead .tl-fine a{color:inherit}" +
+    ".tw-lead fieldset.tl-pains{grid-column:1/-1;border:0;padding:0;margin:4px 0 0;min-width:0}" +
+    ".tw-lead .tl-pains legend{font-size:13px;font-weight:700;color:var(--ink,#0D1117);padding:0;margin:0 0 8px}" +
+    ".tw-lead .tl-pains legend span{font-weight:400;color:var(--slate,#4A5059);margin-left:6px}" +
+    ".tw-lead .tl-pains .tl-ps{display:flex;flex-wrap:wrap;gap:8px}" +
+    ".tw-lead .tl-pains label{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;line-height:1.4;color:var(--ink,#0D1117);border:1px solid rgba(13,17,23,.22);border-radius:999px;padding:7px 13px;background:#fff;cursor:pointer}" +
+    ".tw-lead .tl-pains label:has(input:checked){border-color:var(--ink,#0D1117);background:#f2f2f2;font-weight:700}" +
+    ".tw-lead .tl-pains input[type=checkbox]{width:15px;height:15px;margin:0;accent-color:#0D1117}" +
+    ".tw-lead .tl-pains input.tl-other{margin-top:8px}" +
     ".tw-lead .tl-need{grid-column:1/-1;font-size:13px;font-weight:700;color:var(--ink,#0D1117);margin:0}" +
     ".tw-lead .tl-done a.tl-open{display:inline-block;margin:10px 0 6px;background:var(--electric-dark,#0047C2);color:#fff;text-decoration:none;font-weight:700;border-radius:8px;padding:12px 20px}" +
     ".tw-lead .tl-err{grid-column:1/-1;color:#B42318;font-size:13px;margin:0}" +
     ".tw-lead a.tl-go{display:inline-block;margin:2px 0 12px;background:var(--ink,#0D1117);color:#fff;text-decoration:none;font-size:15px;font-weight:700;border-radius:8px;padding:12px 20px}" +
     "@media (max-width:560px){.tw-lead{padding:20px 16px}.tw-lead form{grid-template-columns:1fr}.tw-lead .tl-title{font-size:18px}.tw-lead button{width:100%}.tw-lead a.tl-go{display:block;text-align:center}}";
+
+  // 申込みの枠で任意で選んでもらうお悩み（全資料で共通）。言葉は ~/founder-os/customer-voice/voices.jsonl の原文から
+  var PAINS = [
+    "使う業務が分からない人が多い",
+    "使う人が一部に限られている",
+    "費用や稟議の説明に困っている",
+    "社内のルールや安全面を決めたい",
+    "どのAI・契約を選ぶか迷っている",
+    "社内の推進役を育てたい"
+  ];
 
   function ev(name, params) {
     if (typeof gtag === "function") { try { gtag("event", name, params); } catch (_) {} }
@@ -182,6 +200,25 @@
     var position = el("input", { type: "text", name: "position", placeholder: "役職", autocomplete: "organization-title", required: "", "aria-label": "役職" });
     var phone = el("input", { type: "tel", name: "phone", placeholder: "電話番号", autocomplete: "tel", required: "", "aria-label": "電話番号" });
     var need = el("p", { class: "tl-need" }, "6項目の入力で、すぐに開けます。");
+    var pains = el("fieldset", { class: "tl-pains" });
+    var lg = el("legend", null, "いま困っていること");
+    lg.appendChild(el("span", null, "任意・いくつでも"));
+    pains.appendChild(lg);
+    var ps = el("div", { class: "tl-ps" });
+    PAINS.concat(["その他"]).forEach(function (t) {
+      var lb = el("label");
+      lb.appendChild(el("input", { type: "checkbox", name: "pain", value: t }));
+      lb.appendChild(document.createTextNode(t));
+      ps.appendChild(lb);
+    });
+    pains.appendChild(ps);
+    var other = el("input", { type: "text", name: "pain_other", class: "tl-other", placeholder: "困っていることをお書きください", "aria-label": "その他の困っていること", hidden: "" });
+    pains.appendChild(other);
+    pains.addEventListener("change", function () {
+      var on = !!pains.querySelector('input[value="その他"]:checked');
+      other.hidden = !on;
+      if (on) other.focus();
+    });
     var row = el("div", { class: "tl-row" });
     var btn = el("button", { type: "submit" }, "資料を受け取る");
     var fine = el("p", { class: "tl-fine" });
@@ -189,7 +226,7 @@
     row.appendChild(btn);
     row.appendChild(fine);
     var err = el("p", { class: "tl-err", role: "alert" });
-    [need, company, department, position, name, email, phone, hp, row, err].forEach(function (x) { f.appendChild(x); });
+    [need, company, department, position, name, email, phone, hp, pains, row, err].forEach(function (x) { f.appendChild(x); });
     box.appendChild(f);
 
     var started = false;
@@ -215,10 +252,13 @@
       if (hp.value) return;
       btn.disabled = true;
       btn.textContent = "送信中…";
+      var picked = [].map.call(pains.querySelectorAll('input[name="pain"]:checked'), function (c) { return c.value; });
+      var otherText = other.hidden ? "" : other.value.trim();
+      var painLine = picked.map(function (t) { return t === "その他" && otherText ? "その他：" + otherText : t; }).join("／");
       var payload = {
         name: v.name, company: v.company, email: v.email, phone: v.phone, department: v.department, position: v.position,
         inquiry_type: "media_document",
-        message: "【記事から資料】" + offer.title + "（記事: " + location.pathname + "／位置: " + pos + "）",
+        message: "【記事から資料】" + offer.title + "（記事: " + location.pathname + "／位置: " + pos + "）" + (painLine ? "\n【困っていること】" + painLine : ""),
         source: "media"
       };
       if (window.twIntent) { try { Object.assign(payload, window.twIntent()); } catch (_) {} }
@@ -228,7 +268,7 @@
           return r.json().catch(function () { return {}; });
         })
         .then(function (j) {
-          if (j.lead !== false) ev("generate_lead", { inquiry_type: "media_document", source: "media", lead_offer: box.dataset.offer, lead_pos: pos, campaign: camp });
+          if (j.lead !== false) ev("generate_lead", { inquiry_type: "media_document", source: "media", lead_offer: box.dataset.offer, lead_pos: pos, campaign: camp, lead_pains: picked.length });
           setDone();
           document.querySelectorAll(".tw-lead").forEach(function (b) { renderDone(b, OFFERS[b.dataset.offer] || offer); });
         })
