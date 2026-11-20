@@ -4,7 +4,7 @@
    2) 記事中の申込み（.mid-cta）にも、同じ見本と中身の具体例を足す。研修・セキュリティの記事は、記事末の申込み（.art-cta）に研修サイトの安全度チェックへの1行を足す。
    中身の具体例は、実在する資料・ページに書いてあることだけ（library/cases-2026.html・claude-code-security.html・gyomuzu-templates.html・claude-code-ringi.html・companymap）。
    - 出す時: ページを2割読んだ時か、12秒たった時（一覧・ホームはスクロールを始めた時）
-   - 記事の図・表紙、記事中・記事末の申込み、フッターが見えている間は隠す。×で小さな札にたたむ（同じタブの間は維持）
+   - 記事の冒頭、記事中・記事末の申込み、フッターが見えている間は隠す（図が見えていても出したまま。2026-11-20）。×で小さな札にたたむ（同じタブの間は維持）
    - 計測: media_dock_view／close／open。クリックは article-tracker.js の media_cta_click（cta_placement=dock） */
 (function () {
   "use strict";
@@ -53,24 +53,24 @@
       cta: "無料相談を申し込む", mcta: "申し込む", href: "/gyoumuzuai/contact", short: "業務図の無料相談を申し込む", mt: "AIが最初の業務図を作る無料相談（30分）"
     };
   }
+  // 研修の相談（研修・セキュリティ・エージェント・基盤の記事の右下）。見本は研修サイトに載せている教材の1枚
+  var TRAINING = {
+    kind: "無料相談・30分", img: "/media/cv/kenshu.jpg", offer: "training_consult",
+    title: "御社のAI環境とセキュリティに合わせて、生成AI研修を組みます",
+    points: [],
+    note: "画像は研修の教材の実物です",
+    cta: "研修を相談する", mcta: "相談する", href: "https://kenshu.techworker.co.jp/contact/", short: "研修を相談する", mt: "御社の環境に合わせた生成AI研修"
+  };
   var DIAG = { label: "まずは1分の生成AI活用度診断（登録不要）", href: "/ai-assessment.html", offer: "assessment" };
 
   var OFFERS = {
-    kenshu: function () {
-      if (slug === "claude-code-cost") return Object.assign({}, RINGI, { sub: { label: "Claude Code研修の内容を見る", href: "https://kenshu.techworker.co.jp/program/#claude-code", offer: "training_claude_code" } });
-      if (/claude-code/.test(slug)) return Object.assign({}, GUIDE, { sub: { label: "Claude Code研修の内容を見る", href: "https://kenshu.techworker.co.jp/program/#claude-code", offer: "training_claude_code" } });
-      if (/copilot|m365/.test(slug)) return Object.assign({}, CASES, { sub: { label: "Copilot研修の内容を見る", href: "https://kenshu.techworker.co.jp/program/#copilot", offer: "training_copilot" } });
-      return Object.assign({}, CASES, { sub: { label: "研修の内容と教材の更新履歴を見る", href: "https://kenshu.techworker.co.jp/", offer: "training_site" } });
-    },
+    kenshu: function () { return TRAINING; },
     shigyo: function () { return Object.assign(companymap("事務所", "/media/cv/companymap-shigyo.jpg"), { sub: DIAG }); },
     interview: function () { return Object.assign(companymap("部署"), { sub: { label: "ギョウムズAIを見る", href: "/gyoumuzuai", offer: "companymap_lp" } }); },
     gyomuzu: function () { return Object.assign({}, TEMPLATES, { sub: { label: "30分の無料相談で、AIが自社の業務図を作ります", href: "/gyoumuzuai/contact", offer: "companymap_consult" } }); },
-    agents: function () {
-      var anchor = /claude/.test(slug) ? "claude-code" : /gemini/.test(slug) ? "gemini" : /copilot/.test(slug) ? "copilot" : "";
-      return Object.assign({}, CASES, { sub: { label: "このエージェントを研修で作る", href: "https://kenshu.techworker.co.jp/program/" + (anchor ? "#" + anchor : ""), offer: "training_agents" } });
-    },
-    security: function () { return Object.assign({}, GUIDE, { sub: { label: "社内のAI利用ルールを相談する（30分・無料）", href: "/contact.html?type=consultation", offer: "consult_security" } }); },
-    infra: function () { return Object.assign({}, GUIDE, { sub: DIAG }); },
+    agents: function () { return TRAINING; },
+    security: function () { return TRAINING; },
+    infra: function () { return TRAINING; },
     simulation: function () { return Object.assign({}, CASES, { sub: { label: "発売前の検証を相談する", href: "/launch-simulation/", offer: "launch_simulation" } }); }
   };
   var make = OFFERS[seg] || function () { return Object.assign({}, /token/.test(slug) ? GUIDE : CASES, { sub: DIAG }); };
@@ -84,7 +84,7 @@
     u.searchParams.set("utm_medium", "dock");
     u.searchParams.set("utm_campaign", media);
     u.searchParams.set("utm_content", (isHub ? "hub" : slug) + "-" + content);
-    return u.pathname + u.search + u.hash;
+    return u.origin === location.origin ? u.pathname + u.search + u.hash : u.toString();
   }
   function gaEvent(name, params) {
     if (typeof window.gtag !== "function") return;
@@ -102,7 +102,7 @@
     ".twd{position:fixed;right:20px;bottom:20px;z-index:60;font-family:var(--jp,'IBM Plex Sans JP',system-ui,sans-serif);color:var(--ink,#11161D);transition:opacity .35s,transform .35s}" +
     ".twd.off{opacity:0;transform:translateY(14px);pointer-events:none}" +
     ".twd-card{width:316px;background:#FCFCFB;border:1px solid rgba(13,17,23,.12);border-radius:16px;overflow:hidden;box-shadow:0 30px 70px -28px rgba(13,17,23,.5),0 2px 8px rgba(13,17,23,.06);position:relative}" +
-    ".twd-img{display:block;width:100%;height:auto;aspect-ratio:680/300;object-fit:cover;background:#EEF3FF}" +
+    ".twd-img{display:block;width:100%;height:auto;aspect-ratio:680/300;object-fit:cover;object-position:50% 12%;background:#EEF3FF}" +
     ".twd-in{padding:14px 18px 14px}" +
     ".twd-k{display:inline-block;font-size:11.5px;font-weight:700;color:" + A + ";background:color-mix(in srgb," + A + " 9%,#FCFCFB);border-radius:999px;padding:3px 10px}" +
     ".twd-t{font-size:15px;font-weight:700;line-height:1.5;margin-top:8px;letter-spacing:.02em}" +
@@ -234,7 +234,7 @@
 
     // メール登録の枠（newsletter.js）は後から差し込まれることがあるので、差し込んだ側からも登録できるようにする
     // 冒頭を読み終えるまでは、時間経過による表示でも本文を覆わない。
-    var targets = document.querySelectorAll(".art-head, .art-body > p:first-child, .mid-cta, .tw-lead, .art-cta, .mh-band, .inline-dx-cta, footer, .lb-cta, .nl-box, .fig-inline, .product-shot, .daily-cover, .art-cover, .art-cover-v6");
+    var targets = document.querySelectorAll(".art-head, .mid-cta, .tw-lead, .art-cta, .mh-band, .inline-dx-cta, footer, .lb-cta");
     if ("IntersectionObserver" in window) {
       var seen = new Set();
       var io = new IntersectionObserver(function (es) {
