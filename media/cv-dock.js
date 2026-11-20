@@ -55,7 +55,7 @@
   }
   // 研修の相談（研修・セキュリティ・エージェント・基盤の記事の右下）。見本は研修サイトに載せている教材の1枚
   var TRAINING = {
-    kind: "無料相談・30分", img: "/media/cv/kenshu.jpg?v=3", offer: "training_consult",
+    kind: "無料相談・30分", img: "/media/cv/kenshu.jpg?v=4", offer: "training_consult",
     title: "御社のAI環境とセキュリティに合わせて、生成AI研修を組みます",
     points: [],
     note: "",
