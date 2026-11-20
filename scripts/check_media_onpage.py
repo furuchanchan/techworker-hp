@@ -11,6 +11,9 @@
 - 申込み枠（.tw-lead）と lead.js（新作は記事中と記事末の2つ）
 - 他の記事から本文の中で張られたリンクが2本以上（一覧・ホーム・sitemap は数えない）
 - sitemap.xml に載っている
+- 図（2026-11-20 古野さん「視覚的な情報少なすぎて最悪」「リアルタイム系は特にリアルタイムな画像を」）:
+  本文の図（figure.fig-inline）が3枚以上。公式の原文を引用する記事（.source-quote がある＝発表・時事・料金の記事）は、
+  公式の画面（figure.fig-inline.fig-real。page_shot.mjs か shot.mjs で撮った実物）が2枚以上で、直後の .fig-cap に「出典：」と撮影日。
 """
 import html, json, re, sys
 from pathlib import Path
@@ -59,6 +62,13 @@ def check(f):
         if t not in types: bad.append(f"構造化データ {t} が無い")
     if [i for i in re.findall(r"<img[^>]*>", s) if "facebook.com/tr" not in i and not re.search(r'\balt="[^"]+"', i) and 'aria-hidden' not in i and 'avatar' not in i]: bad.append("alt の無い画像")
     if s.count('class="tw-lead"') < 1 or "lead.js" not in s: bad.append("申込み枠（.tw-lead と lead.js）が無い")
+    body = s[s.find("<article"):s.find("</article>")] if "<article" in s else s
+    figs = re.findall(r'<figure class="([^"]*\bfig-inline\b[^"]*)"', body)
+    if len(figs) < 3: bad.append(f"本文の図が {len(figs)}枚（3枚以上）")
+    if 'class="source-quote"' in body:
+        real = re.findall(r'<figure class="[^"]*\bfig-real\b[^"]*">.*?</figure>\s*(<p class="fig-cap">.*?</p>)?', body, re.S)
+        if len(real) < 2: bad.append(f"公式の画面（fig-real）が {len(real)}枚（公式の原文を引用する記事は2枚以上）")
+        if any(not (c and "出典：" in c and "撮影" in c) for c in real): bad.append("公式の画面の直後に、出典と撮影日の .fig-cap が無い")
     links = inbound(path)
     if len(links) < 2: bad.append(f"他の記事の本文からのリンクが {len(links)}本（2本以上）")
     if f"<loc>{SITE}{rel}</loc>" not in sitemap: bad.append("sitemap に無い")
