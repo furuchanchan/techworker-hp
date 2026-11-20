@@ -420,3 +420,8 @@ html body .art-head .dek{max-width:none;word-break:auto-phrase;line-break:strict
 html body .art-body h2{margin:88px 0 10px;padding-top:34px;border-top:1px solid #111;word-break:auto-phrase;text-wrap:balance;}
 html body .art-body h2:first-child{margin-top:0;}
 html body .art-body h2+p.answer+figure.fig-inline{margin-top:22px;}
+
+/* スマホ用の縦長の図を <picture> で出し分ける（2026-11-20）。a の直下が picture でも、拡大の案内と枠を同じに出す */
+.fig-inline a:has(>picture){cursor:zoom-in}
+.fig-inline a:has(>picture)::after{content:"画像を拡大 ↗";display:block;margin-top:6px;text-align:right;font-size:12px;font-weight:700;line-height:1.5;color:var(--electric)}
+.fig-inline picture{display:block}
