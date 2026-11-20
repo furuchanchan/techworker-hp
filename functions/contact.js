@@ -47,13 +47,8 @@ const SHORT_FORM_TYPES = new Set(['denzai_demo', 'denzai_document', 'shokei_cons
 const SITE_FORM_TYPES = new Set([...SHORT_FORM_TYPES, 'sokumitsu_demo', 'sokumitsu_report', 'sokumitsu_partner', 'sokumitsu_webinar', 'kenshu_consult', 'kenshu_document', 'kenshu_check', 'shokei_document']);
 const SHORT_FORM_REQUIRED_FIELDS = ['name', 'company', 'email', 'phone'];
 
-// メディアの記事の中の申込み枠（media/lead.js）。資料を受け取る入口なので、会社名・お名前・メールの3つだけ求める
-const MEDIA_FORM_TYPES = new Set(['media_document']);
-const MEDIA_FORM_REQUIRED_FIELDS = ['name', 'company', 'email'];
-
 function invalidFields(data) {
-  const required = MEDIA_FORM_TYPES.has(data.inquiry_type) ? MEDIA_FORM_REQUIRED_FIELDS
-    : SHORT_FORM_TYPES.has(data.inquiry_type) ? SHORT_FORM_REQUIRED_FIELDS : REQUIRED_FIELDS;
+  const required = SHORT_FORM_TYPES.has(data.inquiry_type) ? SHORT_FORM_REQUIRED_FIELDS : REQUIRED_FIELDS;
   const bad = required.filter((k) => !data[k]);
   if (data.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) bad.push('email');
   const digits = data.phone.replace(/\D/g, '').length;

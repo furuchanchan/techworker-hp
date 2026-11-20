@@ -4,6 +4,7 @@
  * 登録は /api/newsletter（functions/api/newsletter.js）へ送る */
 (function () {
   "use strict";
+  return; // 2026-11-20 メール配信の登録を止めた（古野さん「ニュースレターはややこしいから停止」）。記事ごとの資料の申込みに一本化
   if (window.__twNewsletterLoaded) return;
   window.__twNewsletterLoaded = true;
 

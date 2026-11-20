@@ -62,15 +62,14 @@
     ".tw-lead ul li::after{content:'';position:absolute;left:2px;top:.72em;width:6px;height:6px;border-radius:50%;background:var(--electric,#005EFF)}" +
     ".tw-lead ul li{font-size:14px;line-height:1.75;margin:2px 0;padding:0;color:var(--ink-soft,#2B3038)}" +
     ".tw-lead form{display:grid;grid-template-columns:1fr 1fr;gap:10px}" +
-    ".tw-lead input[type=text],.tw-lead input[type=email]{width:100%;font:inherit;font-size:15px;padding:11px 12px;border:1px solid rgba(13,17,23,.22);border-radius:8px;background:#fff;color:var(--ink,#0D1117)}" +
+    ".tw-lead input[type=text],.tw-lead input[type=email],.tw-lead input[type=tel]{width:100%;font:inherit;font-size:15px;padding:11px 12px;border:1px solid rgba(13,17,23,.22);border-radius:8px;background:#fff;color:var(--ink,#0D1117)}" +
     ".tw-lead input:focus{outline:2px solid var(--electric,#005EFF);outline-offset:1px}" +
-    ".tw-lead .tl-email{grid-column:1/-1}" +
     ".tw-lead .tl-row{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}" +
     ".tw-lead button{font:inherit;font-size:15px;font-weight:700;background:var(--ink,#0D1117);color:#fff;border:0;border-radius:8px;padding:12px 20px;cursor:pointer}" +
     ".tw-lead button[disabled]{opacity:.6;cursor:wait}" +
     ".tw-lead .tl-fine{font-size:12px;color:var(--slate,#4A5059);line-height:1.6;margin:0}" +
     ".tw-lead .tl-fine a{color:inherit}" +
-    ".tw-lead label.tl-nl{grid-column:1/-1;font-size:13px;color:var(--slate,#4A5059);display:flex;gap:8px;align-items:flex-start}" +
+    ".tw-lead .tl-need{grid-column:1/-1;font-size:13px;font-weight:700;color:var(--ink,#0D1117);margin:0}" +
     ".tw-lead .tl-done a.tl-open{display:inline-block;margin:10px 0 6px;background:var(--electric-dark,#0047C2);color:#fff;text-decoration:none;font-weight:700;border-radius:8px;padding:12px 20px}" +
     ".tw-lead .tl-err{grid-column:1/-1;color:#B42318;font-size:13px;margin:0}" +
     ".tw-lead a.tl-go{display:inline-block;margin:2px 0 12px;background:var(--ink,#0D1117);color:#fff;text-decoration:none;font-size:15px;font-weight:700;border-radius:8px;padding:12px 20px}" +
@@ -179,10 +178,10 @@
     var name = el("input", { type: "text", name: "name", placeholder: "お名前", autocomplete: "name", required: "", "aria-label": "お名前" });
     var email = el("input", { type: "email", name: "email", placeholder: "会社のメールアドレス", autocomplete: "email", required: "", class: "tl-email", "aria-label": "メールアドレス" });
     var hp = el("input", { type: "text", name: "website", tabindex: "-1", autocomplete: "off", style: "position:absolute;left:-9999px;width:1px;height:1px", "aria-hidden": "true" });
-    var nlLabel = el("label", { class: "tl-nl" });
-    var nl = el("input", { type: "checkbox", name: "nl" });
-    nlLabel.appendChild(nl);
-    nlLabel.appendChild(document.createTextNode("新着記事をメールで受け取る（週1回・いつでも停止できます）"));
+    var department = el("input", { type: "text", name: "department", placeholder: "部署", required: "", "aria-label": "部署" });
+    var position = el("input", { type: "text", name: "position", placeholder: "役職", autocomplete: "organization-title", required: "", "aria-label": "役職" });
+    var phone = el("input", { type: "tel", name: "phone", placeholder: "電話番号", autocomplete: "tel", required: "", "aria-label": "電話番号" });
+    var need = el("p", { class: "tl-need" }, "6項目の入力で、すぐに開けます。");
     var row = el("div", { class: "tl-row" });
     var btn = el("button", { type: "submit" }, "資料を受け取る");
     var fine = el("p", { class: "tl-fine" });
@@ -190,7 +189,7 @@
     row.appendChild(btn);
     row.appendChild(fine);
     var err = el("p", { class: "tl-err", role: "alert" });
-    [company, name, email, hp, nlLabel, row, err].forEach(function (x) { f.appendChild(x); });
+    [need, company, department, position, name, email, phone, hp, row, err].forEach(function (x) { f.appendChild(x); });
     box.appendChild(f);
 
     var started = false;
@@ -203,16 +202,21 @@
     f.addEventListener("submit", function (e) {
       e.preventDefault();
       err.textContent = "";
-      var v = { company: company.value.trim(), name: name.value.trim(), email: email.value.trim() };
-      if (!v.company || !v.name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email)) {
-        err.textContent = "会社名・お名前・メールアドレスを入れてください。";
+      var v = { company: company.value.trim(), name: name.value.trim(), email: email.value.trim(), department: department.value.trim(), position: position.value.trim(), phone: phone.value.trim().normalize("NFKC") };
+      if (!v.company || !v.department || !v.position || !v.name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email)) {
+        err.textContent = "会社名・部署・役職・お名前・メールアドレスを入れてください。";
+        return;
+      }
+      var digits = v.phone.replace(/\D/g, "").length;
+      if (digits < 10 || digits > 15) {
+        err.textContent = "電話番号を数字10桁以上で入れてください。";
         return;
       }
       if (hp.value) return;
       btn.disabled = true;
       btn.textContent = "送信中…";
       var payload = {
-        name: v.name, company: v.company, email: v.email, phone: "", department: "", position: "",
+        name: v.name, company: v.company, email: v.email, phone: v.phone, department: v.department, position: v.position,
         inquiry_type: "media_document",
         message: "【記事から資料】" + offer.title + "（記事: " + location.pathname + "／位置: " + pos + "）",
         source: "media"
@@ -225,11 +229,6 @@
         })
         .then(function (j) {
           if (j.lead !== false) ev("generate_lead", { inquiry_type: "media_document", source: "media", lead_offer: box.dataset.offer, lead_pos: pos, campaign: camp });
-          if (nl.checked) {
-            fetch("/api/newsletter", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: v.email, topics: [offer.nl], page: location.pathname, hp: "" }) })
-              .then(function (r) { if (r.ok) ev("newsletter_signup", { nl_topics: offer.nl, nl_placement: "media_lead", method: "media_lead" }); })
-              .catch(function () {});
-          }
           setDone();
           document.querySelectorAll(".tw-lead").forEach(function (b) { renderDone(b, OFFERS[b.dataset.offer] || offer); });
         })
