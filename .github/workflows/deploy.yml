@@ -60,6 +60,9 @@ jobs:
       - name: GEO enrich
         run: python3 scripts/geo_enrich.py _site
 
+      - name: Font preload in head
+        run: python3 scripts/font_head.py _site
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
