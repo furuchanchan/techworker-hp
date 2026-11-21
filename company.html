@@ -44,6 +44,11 @@
 .person__role a:hover { color: var(--blue); }
 .person blockquote { margin: 28px 0 0; font-size: 15px; line-height: 2.05; color: var(--ink); }
 .person blockquote strong { font-weight: 700; }
+.values { border-bottom: 1px solid var(--line); counter-reset: v; }
+.values > div { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: baseline; padding: 30px 4px; border-top: 1px solid var(--line); }
+.values dt { font: 700 24px/1.5 var(--f-min); letter-spacing: .02em; font-feature-settings: "palt"; word-break: keep-all; overflow-wrap: anywhere; }
+.values dd, #values .lead { word-break: keep-all; overflow-wrap: anywhere; text-wrap: balance; }
+.values dd { margin: 0; color: var(--sub); }
 .access { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 56px; align-items: start; }
 .access__addr { line-height: 2; }
 .access__addr span { color: var(--sub); font-size: 14px; }
@@ -56,6 +61,8 @@
   .person h3 { font-size: 26px; }
   .person blockquote { font-size: 14px; }
   .access { grid-template-columns: 1fr; gap: 32px; }
+  .values > div { grid-template-columns: 1fr; gap: 8px; padding: 22px 2px; }
+  .values dt { font-size: 19px; }
 }
 </style>
 <!-- Meta Pixel Code -->
@@ -218,7 +225,22 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
   </div>
 </section>
 
-<section class="sec sec--paper" id="access">
+<section class="sec sec--paper" id="values">
+  <div class="wrap">
+    <h2 class="h2">ものづくりバリュー</h2>
+    <p class="lead sec__hd">TechWorker で<wbr>物を<wbr>作るときの<wbr>6つの<wbr>約束です。作り始めてから<wbr>使われるまでの<wbr>順に<wbr>並べています。</p>
+    <dl class="values">
+      <div><dt>だれの何を変えるかを、<wbr>先に決めよう。</dt><dd>だれの、何が、どう良くなるかを<wbr>1文で<wbr>言えてから<wbr>作り始めます。</dd></div>
+      <div><dt>事実から考えよう。</dt><dd>確かめた<wbr>事実から<wbr>積み上げ、数字は<wbr>元になる<wbr>量から<wbr>計算します。</dd></div>
+      <div><dt>要件を疑って、<wbr>部品を消そう。</dt><dd>その要件が<wbr>本当に<wbr>要るかを<wbr>確かめ、部品と<wbr>手順を<wbr>減らしてから<wbr>整えます。</dd></div>
+      <div><dt>動く物を早く出して、<wbr>確かめよう。</dt><dd>動く<wbr>最小の物を<wbr>早く出し、目の前で<wbr>試して<wbr>決めます。</dd></div>
+      <div><dt>作る仕組みごと作ろう。</dt><dd>同じ作業が<wbr>2回目に<wbr>来たら、物を作る<wbr>仕組みそのものを<wbr>作ります。AI は<wbr>そのために<wbr>使います。</dd></div>
+      <div><dt>人の仕事が変わるまでやろう。</dt><dd>現場で<wbr>使われ、だれかの<wbr>仕事が<wbr>変わった日を<wbr>完成の日に<wbr>します。</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="sec" id="access">
   <div class="wrap">
     <h2 class="h2 sec__hd">アクセス</h2>
     <div class="access">
