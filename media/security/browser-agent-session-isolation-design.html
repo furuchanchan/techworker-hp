@@ -33,6 +33,7 @@
 <h2 id="profiles">3つのセッションを用途で分ける</h2>
 <p>公開情報の調査は、ログインしない使い捨てセッションで行います。社内SaaSの閲覧は、対象サービスだけへログインした専用環境にします。送信や設定変更は、別セッションで開き、実行前に人が対象と差分を確認します。</p>
 <p>普段使いの環境には、メール、請求、管理画面のセッションが混在します。便利でも、その環境をエージェントには渡しません。エージェント専用環境では、パスワード管理機能の自動入力とブラウザ同期を無効にするか、対象認証情報だけに絞ります。</p>
+<div class="tw-lead" data-offer="ai-contract-pack" data-campaign="browser-agent-session-isolation-design" data-pos="mid"></div>
 <h2 id="capture">画面記録とダウンロードを機密データとして扱う</h2>
 <p>画面記録には、本文以外に通知、タブ名、アカウント名が写ります。取得範囲を対象画面へ限定し、保存期間と閲覧者を決めます。AIへの入力や記録から機密データを止める規則は、<a href="generative-ai-dlp-design.html">AI DLPとは</a>で製品ごとに比べています。URLの問合せ文字列にトークンが入るサービスでは、アドレス欄も記録対象から外します。</p>
 <p>ダウンロードは専用フォルダーへ置き、終了時に残存を確認します。別作業が同じフォルダーや専用環境を再利用すると、前の顧客資料を次の作業が読めます。</p>
@@ -60,7 +61,8 @@
     <div class="nv-badge"><a href="/news/013"><img src="/assets/badges/nvidia-inception-program.svg" alt="NVIDIA Inception Program" width="93" height="40" loading="lazy"></a><p>NVIDIA、NVIDIA ロゴ、NVIDIA Inception は、米国およびその他の国における NVIDIA Corporation の商標および/または登録商標です。</p></div>
     <small>© TechWorker Inc.</small>
   </div>
-</footer><script>var pb=document.getElementById('progress');addEventListener('scroll',function(){var h=document.documentElement,d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?h.scrollTop/d*100:0)+'%'},{passive:true})</script><script src="/media/article-tracker.js?v=20261120i" defer></script><script>
+</footer><script>var pb=document.getElementById('progress');addEventListener('scroll',function(){var h=document.documentElement,d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?h.scrollTop/d*100:0)+'%'},{passive:true})</script><script src="/media/article-tracker.js?v=20261120i" defer></script>
+<script src="../lead.js?v=20261120f" defer></script><script>
 // スマホの行き先：右上の釦で開け閉めする。行き先を押したら閉じる。スクロールしたら頭に暗い面を敷く
 (() => {
   const hd = document.querySelector('.hd'), btn = hd.querySelector('.menu');

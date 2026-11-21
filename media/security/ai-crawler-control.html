@@ -104,6 +104,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <h2 id="robots">robots.txtは強制認証ではない</h2>
 <p>RFC 9309が定めるrobots.txtは、クローラーへ取得可否を伝える規約です。アクセス制御や本人確認の仕組みではありません。従うクローラーには有効ですが、無視するクライアントを通信で止める力はありません。</p>
 <p>そのため、robots.txt違反の観測とWAFでの強制適用を分けます。規約に従う相手へは明確な指示を出し、従わない通信は規則で止めます。</p>
+<div class="tw-lead" data-offer="ai-contract-pack" data-campaign="ai-crawler-control" data-pos="mid"></div>
 <h2 id="operate">クローラーごとに価値と負荷を見て決める</h2>
 <p>一括遮断すると、検索・回答サービスからの流入まで失う可能性があります。運営者、目的、要求量、対象パス、流入を見て決めます。会員向け資料や原価表のパスは厳しく、公開記事は引用と流入を見ながら許可する、といった分け方です。</p>
 <p>変更後は7日と28日の要求、接続元サーバーの負荷、流入を比較します。遮断件数だけを成果にしません。</p>
@@ -173,6 +174,7 @@ var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isInte
 document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
 </script>
 <script src="/media/article-tracker.js?v=20261120i" defer></script>
+<script src="../lead.js?v=20261120f" defer></script>
 <script>
 // スマホの行き先：右上の釦で開け閉めする。行き先を押したら閉じる。スクロールしたら頭に暗い面を敷く
 (() => {
