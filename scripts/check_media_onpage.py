@@ -15,7 +15,7 @@
   本文の図（figure.fig-inline）が3枚以上。公式の原文を引用する記事（.source-quote がある＝発表・時事・料金の記事）は、
   公式の画面（figure.fig-inline.fig-real。page_shot.mjs で撮った製品の画面）を入れるときは、直後の .fig-cap に「出典：」と撮影日。原文の切り抜き画像（-quote-N）は使わず、引用の形だけにする。
 """
-import html, json, re, sys
+import html, json, os, re, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -33,8 +33,16 @@ def inbound(path):
             continue
         s = p.read_text(errors="ignore")
         body = s[s.find("<article"):s.find("</article>")] if "<article" in s else ""
-        if re.search(r'href="(?:[./]*%s|/%s|%s%s)(?:\.html)?(?:[#?"])' % (re.escape(slug), re.escape(rel), re.escape(SITE), re.escape(rel)), body):
-            n.append(p.relative_to(ROOT).as_posix())
+        # 別のフォルダからの相対リンク（../gyomuzu/<slug>.html）も数える。行き先を解いて、この記事に着くかで見る。
+        for h in re.findall(r'href="([^"#?]+)', body):
+            if h.startswith(SITE):
+                h = "/" + h[len(SITE):]
+            if re.match(r"[a-z]+:", h):
+                continue
+            t = os.path.normpath(str(ROOT) + h if h.startswith("/") else str(p.parent / h))
+            if t.removesuffix(".html") == str(path)[:-5]:
+                n.append(p.relative_to(ROOT).as_posix())
+                break
     return n
 
 
