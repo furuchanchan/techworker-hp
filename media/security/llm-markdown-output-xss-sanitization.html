@@ -33,6 +33,7 @@
 <h2 id="pipeline">解析してから無害化処理し、安全な出力先へ渡す</h2>
 <p>生のHTMLは既定で無効にします。MarkdownをDOMへ変換した後、許可する要素と属性だけを無害化処理へ通します。その結果を<code>innerHTML</code>へ直接渡す箇所は1か所に集約します。</p>
 <p>無害化処理後のHTMLを文字列置換すると、無害化した構造を壊すことがあります。リンク装飾やコードの色分けは、無害化処理前後の責任範囲を決めて実装します。</p>
+<div class="tw-lead" data-offer="ai-contract-pack" data-campaign="llm-markdown-output-xss-sanitization" data-pos="mid"></div>
 <h2 id="urls">URLと画像は通信方式・ホストを絞る</h2>
 <p><code>javascript:</code>や予期しない<code>data:</code>を拒否し、通常は<code>https:</code>だけを許可します。画像の外部URLは閲覧者のIPや参照元を外部へ送るため、中継または許可ホストを使います。</p>
 <p>リンクを開く前には、表示文字列と実際のリンク先が異ならないかを確認します。短縮URLや転送先も同じ検査へ戻します。</p>
@@ -63,7 +64,8 @@
     <div class="nv-badge"><a href="/news/013"><img src="/assets/badges/nvidia-inception-program.svg" alt="NVIDIA Inception Program" width="93" height="40" loading="lazy"></a><p>NVIDIA、NVIDIA ロゴ、NVIDIA Inception は、米国およびその他の国における NVIDIA Corporation の商標および/または登録商標です。</p></div>
     <small>© TechWorker Inc.</small>
   </div>
-</footer><script>var pb=document.getElementById('progress');addEventListener('scroll',function(){var h=document.documentElement,d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?h.scrollTop/d*100:0)+'%'},{passive:true})</script><script src="/media/article-tracker.js?v=20261120i" defer></script><script>
+</footer><script>var pb=document.getElementById('progress');addEventListener('scroll',function(){var h=document.documentElement,d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?h.scrollTop/d*100:0)+'%'},{passive:true})</script><script src="/media/article-tracker.js?v=20261120i" defer></script>
+<script src="../lead.js?v=20261120f" defer></script><script>
 // スマホの行き先：右上の釦で開け閉めする。行き先を押したら閉じる。スクロールしたら頭に暗い面を敷く
 (() => {
   const hd = document.querySelector('.hd'), btn = hd.querySelector('.menu');

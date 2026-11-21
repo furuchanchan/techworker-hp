@@ -131,7 +131,8 @@ fbq('init','1264057945446029');fbq('track','PageView');
     <p>候補者側を担当するCAと、求人企業側を担当するRAでは、扱う情報や判断が異なります。生成AIを入れる業務名だけを決めても、安全な範囲は分かりません。面談、求人ヒアリング、候補者推薦を、入力する情報、AIに作らせるもの、人が決めることへ分けます。</p>
     <div class="tbl-wrap"><table><tr><th>工程</th><th>AIに渡すもの</th><th>AIの出力</th><th>人が決めること</th></tr><tr><td>求人ヒアリング</td><td>確認済みの職務・条件</td><td>要件の項目分け、質問案</td><td>採用基準、条件、掲載内容</td></tr><tr><td>候補者面談</td><td>利用条件を満たす面談記録</td><td>事実、希望、確認事項の整理</td><td>評価、推薦可否、次の質問</td></tr><tr><td>推薦</td><td>求人要件と確認済み経歴</td><td>対応根拠と推薦文の下書き</td><td>本人確認、企業への送信</td></tr></table></div>
     <p>氏名や連絡先を消しても、勤務先、職種、時期、固有の実績の組み合わせから本人が分かる場合があります。マスキングだけに頼らず、そもそもそのサービスへ入力してよいかを判断します。</p>
-    <h2 id="s2">面談メモは、本人の発言と担当者の評価を分ける</h2>
+    <div class="tw-lead" data-offer="ai-contract-pack" data-campaign="recruitment-ai" data-pos="mid"></div>
+<h2 id="s2">面談メモは、本人の発言と担当者の評価を分ける</h2>
     <p>面談記録は、次の担当者が本人の希望と担当者の判断を区別できる形で残します。録音を使う場合は、録音目的、処理するサービス、保存期間、共有範囲を候補者へ説明し、必要な同意を得ます。</p>
     <div class="callout"><p><strong>TechWorkerの設計例：</strong>面談記録を「本人が述べた事実」「希望条件」「担当者の所見」「未確認」「次回の質問」に分けます。AIに不足情報を補わせず、未確認のまま残します。</p></div>
     <p>AIの要約後は、会社名、役職、在籍期間、数値、希望年収、入社可能時期を原記録と照合します。「成長したい」といった言葉を、本人が述べていない転職理由へ広げないことも重要です。項目を分けた記録は、採用管理システム（ATS）や顧客管理システム（CRM）の既存項目に合わせ、誰がいつ確認したかを残します。</p>
@@ -212,6 +213,7 @@ var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isInte
 document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
 </script>
 <script src="/media/article-tracker.js?v=20261120i" defer></script>
+<script src="../lead.js?v=20261120f" defer></script>
 <script>
 // スマホの行き先：右上の釦で開け閉めする。行き先を押したら閉じる。スクロールしたら頭に暗い面を敷く
 (() => {

@@ -40,6 +40,7 @@
 <h2 id="budgets">要求・金額・ツールに別の予算を持たせる</h2>
 <p>APIゲートウェイでは毎分要求数と日次・月次金額を設定します。エージェント側では、1作業あたりのモデル呼出し、検索、ブラウザ操作、外部API更新の回数を持たせます。</p>
 <p>ツール予算が切れたら、途中までの結果と未実行操作を返します。黙って品質を落としたモデルへ切り替えると、利用者は結果の条件を判断できません。</p>
+<div class="tw-lead" data-offer="ai-contract-pack" data-campaign="llm-api-cost-abuse-controls" data-pos="mid"></div>
 <h2 id="identity">利用者・チーム・エージェント単位で原因を残す</h2>
 <p>全社総額だけでは原因を追えません。利用者ID、チーム、アプリケーション、エージェントIDを付随情報へ付けます。Cloudflareの<code>cf.user_id</code>を費用上限の区分に使えるのは、Accessで保護した独自ドメインへ有効な利用者トークンで届く要求です。サービストークンの要求には入らないため、機械通信はゲートウェイ側で付ける改ざん困難な別の区分キーを使います。</p>
 <p>付随情報は改ざんされない場所で付与します。クライアントが自由に利用者IDを書けると、他人の予算へ費用を寄せられます。</p>
@@ -70,7 +71,8 @@
     <div class="nv-badge"><a href="/news/013"><img src="/assets/badges/nvidia-inception-program.svg" alt="NVIDIA Inception Program" width="93" height="40" loading="lazy"></a><p>NVIDIA、NVIDIA ロゴ、NVIDIA Inception は、米国およびその他の国における NVIDIA Corporation の商標および/または登録商標です。</p></div>
     <small>© TechWorker Inc.</small>
   </div>
-</footer><script>var pb=document.getElementById('progress');addEventListener('scroll',function(){var h=document.documentElement,d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?h.scrollTop/d*100:0)+'%'},{passive:true})</script><script src="/media/article-tracker.js?v=20261120i" defer></script><script>
+</footer><script>var pb=document.getElementById('progress');addEventListener('scroll',function(){var h=document.documentElement,d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?h.scrollTop/d*100:0)+'%'},{passive:true})</script><script src="/media/article-tracker.js?v=20261120i" defer></script>
+<script src="../lead.js?v=20261120f" defer></script><script>
 // スマホの行き先：右上の釦で開け閉めする。行き先を押したら閉じる。スクロールしたら頭に暗い面を敷く
 (() => {
   const hd = document.querySelector('.hd'), btn = hd.querySelector('.menu');
