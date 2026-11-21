@@ -14,31 +14,23 @@
 <script src="/assets/tw-event.js" defer></script>
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>トークンマキシングとは｜意味と、トークンマネジメントでAIのコストを見直す方法 — TechWorker</title>
-<meta name="description" content="トークンマキシングは、難しい仕事にAIのトークンを惜しまず使う考え方です。定型の仕事は絞るトークンマネジメントでの分け方と、作業ごとに記録する項目を、記入例とCSVのひな型つきで説明します。">
+<title>トークンマキシングとは｜意味とMeta・Amazon・Uberの事例、トークンマネジメントとの違い — TechWorker</title>
+<meta name="description" content="トークンマキシング（tokenmaxxing）は、社員のAIトークン使用量を増やすことを会社が促し、評価する慣行です。2026年春に広がり、MetaとAmazonは社内の順位表を停止、Uberは年間の予算を4か月で使い切ったと報じられました。意味、各社の事例、問題点と、代わりに記録する項目を出典つきで説明します。">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="canonical" href="https://techworker.co.jp/media/token-management">
 <meta property="og:type" content="article">
-<meta property="og:title" content="トークンマキシングとは｜意味と、トークンマネジメントでAIのコストを見直す方法">
-<meta property="og:description" content="トークンマキシングは、難しい仕事にAIのトークンを惜しまず使う考え方です。定型の仕事は絞るトークンマネジメントでの分け方と、作業ごとに記録する項目を、記入例とCSVのひな型つきで説明します。">
+<meta property="og:title" content="トークンマキシングとは｜意味とMeta・Amazon・Uberの事例、トークンマネジメントとの違い">
+<meta property="og:description" content="トークンマキシング（tokenmaxxing）は、社員のAIトークン使用量を増やすことを会社が促し、評価する慣行です。2026年春に広がり、MetaとAmazonは社内の順位表を停止、Uberは年間の予算を4か月で使い切ったと報じられました。意味、各社の事例、問題点と、代わりに記録する項目を出典つきで説明します。">
 <meta property="og:image" content="https://techworker.co.jp/media/figs/token-management-1.png">
 <meta property="og:url" content="https://techworker.co.jp/media/token-management">
 <meta property="og:site_name" content="TechWorker">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="トークンマキシングとは｜意味と、トークンマネジメントでAIのコストを見直す方法">
+<meta name="twitter:title" content="トークンマキシングとは｜意味とMeta・Amazon・Uberの事例、トークンマネジメントとの違い">
 <meta name="twitter:image" content="https://techworker.co.jp/media/figs/token-management-1.png">
 <link rel="stylesheet" href="article.css?v=20261120d">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "トークンマネジメントとは｜トークンマキシングとの使い分けと、AIのトークンコストの見直し方", "description": "AIのトークンコストを、品質を落とさずに見直す方法です。難しい仕事には惜しまず使い（トークンマキシング）、定型の仕事は絞る。その分け方と、作業ごとに記録する項目を、TechWorkerの記入例とCSVのひな型つきで説明します。", "datePublished": "2026-06-13", "dateModified": "2026-10-06", "inLanguage": "ja", "image": "https://techworker.co.jp/media/figs/token-management-1.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/token-management.html"}, "citation": ["https://developers.openai.com/api/docs/guides/agents-api/observability", "https://developers.openai.com/api/docs/guides/prompt-caching", "https://platform.claude.com/docs/en/build-with-claude/thinking-steering-and-cost", "https://platform.claude.com/docs/en/about-claude/pricing"]}</script>
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org","@type":"BreadcrumbList",
-  "itemListElement":[
-    {"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},
-    {"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},
-    {"@type":"ListItem","position":3,"name":"トークンマネジメントとは","item":"https://techworker.co.jp/media/token-management.html"}
-  ]
-}
-</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "トークンマキシングとは｜意味とMeta・Amazon・Uberの事例、トークンマネジメントとの違い", "description": "トークンマキシング（tokenmaxxing）は、社員のAIトークン使用量を増やすことを会社が促し、評価する慣行です。2026年春に広がり、MetaとAmazonは社内の順位表を停止、Uberは年間の予算を4か月で使い切ったと報じられました。意味、各社の事例、問題点と、代わりに記録する項目を出典つきで説明します。", "datePublished": "2026-06-13", "dateModified": "2026-11-21", "inLanguage": "ja", "image": "https://techworker.co.jp/media/figs/token-management-1.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/token-management"}, "citation": ["https://www.ibm.com/think/topics/tokenmaxxing", "https://fortune.com/2026/04/09/meta-killed-employee-ai-token-dashboard/", "https://www.cio.com/article/4178825/amazon-deletes-devs-tokenmaxxing-leaderboard-to-minimize-costs-2.html", "https://fortune.com/2026/05/26/uber-coo-ai-spending-tokens-claude-code/", "https://www.businessinsider.jp/article/2605-ai-tokenmaxxing-fails-as-productivity-strategy-jellyfish/", "https://developers.openai.com/api/docs/guides/agents-api/observability", "https://developers.openai.com/api/docs/guides/prompt-caching", "https://platform.claude.com/docs/en/build-with-claude/thinking-steering-and-cost", "https://platform.claude.com/docs/en/about-claude/pricing"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "トークンマキシングとは", "item": "https://techworker.co.jp/media/token-management"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "トークンマキシングとはどういう意味ですか？", "acceptedAnswer": {"@type": "Answer", "text": "社員がAIに使わせたトークンの量を増やすことを、会社が促したり評価したりする慣行です。社内の順位表や、予算の使い切りで利用を促します。2026年の春に米国のIT企業で広がりました。"}}, {"@type": "Question", "name": "英語ではどう書きますか？", "acceptedAnswer": {"@type": "Answer", "text": "tokenmaxxing と書きます。token maxxing と分けて書く例もあります。語尾の -maxxing は何かを最大まで高めることを表す英語の俗語です。"}}, {"@type": "Question", "name": "トークンマキシングはなぜ問題になったのですか？", "acceptedAnswer": {"@type": "Answer", "text": "使用量を目標にした結果、数字を増やすための利用が生まれ、費用が先に増えたためです。Amazonの順位表は計算の費用が高すぎたとして停止され、Uberは2026年のAIコーディングツールの予算を4か月で使い切ったと報じられました。"}}, {"@type": "Question", "name": "トークンをたくさん使うのは悪いことですか？", "acceptedAnswer": {"@type": "Answer", "text": "悪いことではありません。長い資料の突き合わせや、誤ったときの損失が大きいレビューでは、十分な量を使ったほうが品質が上がります。問題になったのは、使用量そのものを目標や評価の材料にしたことです。"}}, {"@type": "Question", "name": "トークンマネジメントとの違いは何ですか？", "acceptedAnswer": {"@type": "Answer", "text": "トークンマキシングは使用量を増やすことを目標にします。トークンマネジメントは作業1件ごとに費用と手戻りを記録し、仕事の難しさに合わせて使う量を決める管理です。この記事でのTechWorkerの使い方で、決まった定義はありません。"}}, {"@type": "Question", "name": "社員のトークン使用量は見ないほうがよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "見ます。費用を把握するには、部署や作業ごとの使用量が要ります。やめるのは、個人の使用量を順位表にすることと、使用量を人事評価に使うことです。"}}]}</script>
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -72,12 +64,12 @@ fbq('init','1264057945446029');fbq('track','PageView');
 </div>
 
 <header class="art-head">
-  <nav class="crumb" aria-label="パンくず"><a href="../index.html">ホーム</a><span class="sep">/</span><a href="index.html">メディア</a><span class="sep">/</span>トークンマネジメント</nav>
+  <nav class="crumb" aria-label="パンくず"><a href="../index.html">ホーム</a><span class="sep">/</span><a href="index.html">メディア</a><span class="sep">/</span>トークンマキシングとは</nav>
   <div class="kicker">Token Strategy</div>
-  <h1>トークンマネジメントとは｜トークンマキシングとの使い分けと、AIのトークンコストの見直し方</h1>
-  <p class="dek">AIのトークンコストを、品質を落とさずに見直す方法です。難しい仕事には惜しまず使い（トークンマキシング）、定型の仕事は絞る。その分け方と、作業ごとに記録する項目を、TechWorkerの記入例とCSVのひな型つきで説明します。</p>
+  <h1>トークンマキシングとは｜意味とMeta・Amazon・Uberの事例、トークンマネジメントとの違い</h1>
+  <p class="dek">トークンマキシングの意味、2026年に各社で起きたこと、問題点を、IBMの解説と報道をもとに整理します。使用量の代わりに何を記録するかは、TechWorkerの記入例とCSVのひな型つきで説明します。</p>
   <div class="a-meta">
-    <img class="av" src="../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.06.13</span><span class="dot">·</span><span>最終更新 2026.10.06</span><span class="dot">·</span><span>読了 7分</span>
+    <img class="av" src="../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.06.13</span><span class="dot">·</span><span>最終更新 2026.11.21</span><span class="dot">·</span><span>読了 10分</span>
   </div>
 <p class="article-audience"><span class="article-audience-label">主な対象読者</span><span class="audience-tag">情シス・AI導入担当</span></p>
 </header>
@@ -85,44 +77,150 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <div class="art-layout">
   <nav class="art-toc" aria-label="目次">
     <div class="art-toc-inner">
-      <div class="toc-h">目次</div><a href="#source">公式の利用量項目を二重加算しない</a><a href="#measure">作業単位で品質と費用を同じ表に置く</a><a href="#worklog">実際の記入例とCSVひな型</a><a href="#spend">惜しまず使う仕事と絞る仕事を分ける</a><a href="#reduce">キャッシュ・文脈・モデルをこの順で見直す</a><a href="#sources">出典と確認範囲</a></div></nav><article class="art-body">
-<p>AIの利用費を見直すには、どの作業にいくらかかったかを、やり直しの回数や成果物の品質と一緒に記録します。その基礎になるのが、入力・出力の処理量を表すトークン数です。まず、公式資料で内訳の数え方を確かめ、自社の作業記録へつなげます。</p>
-<section class="source-quote" aria-label="一次資料の引用"><p><strong>一次資料</strong>：OpenAIの利用量の記録方法（確認：2026年10月6日）</p>
-<blockquote><p lang="en">Cached tokens are included in input_tokens, and reasoning tokens are included in output_tokens.</p></blockquote>
-<p>出典：<a href="https://developers.openai.com/api/docs/guides/agents-api/observability" target="_blank" rel="noopener noreferrer">OpenAI, Observability and usage</a>。キャッシュ済みの入力は入力トークン数に、推論で使った分は出力トークン数に含まれます。内訳を合計へもう一度足さないようにします。</p></section>
-<figure class="fig-inline"><a href="figs/token-management-1.png" target="_blank" rel="noopener"><img src="figs/token-management-1.png" alt="トークン費用を入力の再利用、モデルの使い分け、Batch API、出力制御の順で見直す図" width="1200" height="701" loading="lazy" decoding="async"></a><figcaption><span class="source-label">TechWorker作成：</span>品質条件を固定した後に、費用を見直す順番を図示しています。 製品の公式画面や導入効果の実測ではありません。画像を押すと拡大できます。</figcaption></figure>
-<h2 id="source">公式の利用量項目を二重加算しない</h2>
-<p>OpenAIの利用量では、キャッシュ済み入力は入力トークンの内訳で、推論は出力トークンの内訳です。総量へもう一度足すと、利用量を過大に報告します。補助エージェントのモデル呼出し、再試行、ウェブ検索、サンドボックスの実行時間、第三者ツール費用は別に確認します。</p>
-<p>この利用量は最善努力で記録され、未確認時は<code>null</code>になり、会計情報の到着後に件数が変わる場合があります。欠損を0件として扱わず、確定費用は提供事業者の利用量・請求記録と照合します。</p>
-<p>Anthropicも、推論トークンは出力として課金され、<code>max_tokens</code>は思考と回答を合わせた上限だと説明しています。見えている文章量だけでは費用を判断できません。</p>
-<h2 id="measure">作業単位で品質と費用を同じ表に置く</h2>
-<p>月次総額だけでは削る場所が分かりません。作業種別、モデル、推論強度、入力、キャッシュ済み入力、出力、ツール回数、成功・手戻りを1行にします。品質条件が違う作業は同じ群で比較しません。</p>
-<p>費用だけ下がり、手戻りが増えた変更は採用しません。人による確認や再実行に使った時間も、運用コストとして残します。</p>
-<p>作業開始前に、モデル呼出し回数、入力・出力トークン、ツール回数、金額または時間の上限を仮置きします。上限へ達したら未完了点を返し、人が追加予算を判断します。品質を優先する仕事でも、上限超過を自動継続しません。</p>
-<p>Claude Enterpriseでは、部署ごとの月の共有予算と、使った割合の通知を管理画面で置けます。設定の場所は<a href="kenshu/claude-enterprise-yosan-kanri.html">Claude Enterpriseの予算管理</a>にまとめています。</p>
-<h3 id="worklog">実施記録から分かる項目だけを埋める</h3>
-<p>次の表は、TechWorkerの2026年10月6日のCodex改修を、この記事用にまとめた記入例です。<a href="kenshu/resources/techworker-codex-media-verification-20261006.json">公開時の検証記録</a>で分かる項目だけを埋めています。</p>
+      <div class="toc-h">目次</div><a href="#what">トークンマキシングとは</a><a href="#why">なぜ広がったか</a><a href="#cases">各社で起きたこと</a><a href="#problem">何が問題か</a><a href="#difference">トークンマネジメントとの違い</a><a href="#measure">代わりに測るもの</a><a href="#start">自社で始めること</a><a href="#faq">よくある質問</a><a href="#sources">出典と確認範囲</a></div></nav><article class="art-body">
+<p>トークンマキシング（tokenmaxxing）とは、社員がAIに使わせたトークンの量を増やすことを、会社が促したり評価したりする慣行です。2026年の春に米国のIT企業で広がり、同じ年のうちに見直しが進みました。</p>
+<ul>
+<li><strong>意味：</strong>トークンの使用量を、AIを仕事に取り入れている度合いの目安として扱います。社内の順位表や、予算の使い切りで利用を促します。</li>
+<li><strong>起きたこと：</strong>MetaとAmazonでは社内の順位表が停止され、Uberは2026年のAIコーディングツールの予算を4か月で使い切ったと報じられました。</li>
+<li><strong>代わりに見る数：</strong>使用量の合計を目標にせず、作業1件あたりの費用と手戻りを記録します。この記事ではこの管理をトークンマネジメントと呼びます。</li>
+</ul>
+<p>各社の事例はIBMの解説と、Fortune・CIO・Business Insider Japanの記事を2026年11月21日に確認して書いています。トークンの単価と月額の計算は<a href="token-cost.html">トークンコストとは</a>で説明しています。</p>
+
+<h2 id="what">トークンマキシングとは何ですか？</h2>
+<p class="answer">社員のAIトークン使用量を最大まで増やすことを、会社が促す慣行を指す俗称です。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“the organizational practice of incentivizing employees to maximize their AI token usage”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>社員にAIトークンの使用量を最大化するよう促す、組織の慣行</p><footer>出典：<a href="https://www.ibm.com/think/topics/tokenmaxxing" target="_blank" rel="noopener noreferrer">IBM「What is tokenmaxxing?」</a>（2026年9月1日公開、2026年11月21日確認）</footer></blockquote>
+<p>トークンは、AIが文章を読み書きするときの最小の単位で、利用料の計算にも使われます。使用量が多い人ほどAIを仕事に取り入れている、という見立てがこの慣行の前提です。</p>
+<p>IBMの解説によると、会社は次の方法で使用量を増やそうとしました。</p>
+<ul>
+<li><strong>社内の順位表：</strong>チームや個人のトークン使用量を順位表にして、社内に見せます。</li>
+<li><strong>予算の使い切り：</strong>割り当てたトークンの予算を使い切らないことを、不利に扱います。</li>
+<li><strong>人事評価：</strong>AIの利用量を評価や雇用の判断の材料にします。</li>
+</ul>
+<figure class="fig-inline"><a href="figs/token-management-1.png?v=2" target="_blank" rel="noopener"><picture><source media="(max-width:640px)" srcset="figs/token-management-1-m.png?v=2" width="960" height="1688"><img src="figs/token-management-1.png?v=2" alt="トークンマキシングの説明。測るものはトークン使用量、促すしくみは社内ランキング、置いていた前提は多く使う人ほど成果が出るというもの。" width="1920" height="1080" loading="lazy" decoding="async"></picture></a><figcaption><span class="source-label">TechWorker作成：</span>IBM「What is tokenmaxxing?」（2026年9月1日）の説明を3つに分けた図です。画像を押すと拡大できます。</figcaption></figure>
+<p>英語の表記は tokenmaxxing で、token maxxing と分けて書く例もあります。語尾の -maxxing は何かを最大まで高めることを表す英語の俗語です。日本語では、Business Insider Japanがトークンマキシングと表記しています。</p>
+<p>個人の使い方を指す場合もあります。IBMの解説は、定額プランの利用枠が残っていると落ち着かないという、AI開発者のアンドレイ・カーパシー氏の発言を紹介しています。この記事では会社の慣行としての意味を中心に扱います。</p>
+
+<h2 id="why">なぜ広がったのですか？</h2>
+<p class="answer">AIへの投資の効果を測る指標が定まらないなかで、使用量が成果の代わりの数字として使われたためです。</p>
+<p>IBMの解説は、広がった理由を4つ挙げています。</p>
+<ul>
+<li><strong>効果を測る指標がなかった：</strong>生成AIとAIエージェントの導入は、生産性を測る枠組みが整うより速く進みました。確かな指標がないなかで、会社は利用量の順位表を作りました。</li>
+<li><strong>AIを売る側の発言：</strong>NVIDIAのCEOは2026年3月、年収50万ドルの技術者が年に25万ドル分以上のトークンを使っていなければ深く憂慮すると述べました。IBMは、トークンの消費が増えると利益を得る立場からの発言だと指摘しています。</li>
+<li><strong>他社との競争：</strong>AIを前提にした働き方へ早く移るために、会社は社員に利用と試行を強く促しました。</li>
+<li><strong>個人の不安：</strong>AIで生産性を上げるよう求められる圧力が、使用量を増やす行動につながりました。</li>
+</ul>
+<p>IBMは、この慣行のピークは2026年の春で、その後は下火になったと書いています。</p>
+<figure class="fig-inline"><a href="figs/token-management-2.png?v=2" target="_blank" rel="noopener"><picture><source media="(max-width:640px)" srcset="figs/token-management-2-m.png?v=2" width="960" height="1685"><img src="figs/token-management-2.png?v=2" alt="2026年の流れ。3月にNVIDIAのCEOの発言、4月にMetaの順位表が停止、5月にUberが予算を使い切りAmazonの順位表が停止、9月にIBMが下火になったと解説。" width="1920" height="1080" loading="lazy" decoding="async"></picture></a><figcaption><span class="source-label">TechWorker作成：</span>Fortune（2026年4月9日・5月26日）、CIO（5月29日）、IBM（9月1日）の記事にある出来事を、月の順に並べた図です。画像を押すと拡大できます。</figcaption></figure>
+
+<h2 id="cases">どの会社で何が起きましたか？</h2>
+<p class="answer">MetaとAmazonは社内の順位表を停止し、Uberは年間の予算を4か月で使い切ったと報じられました。</p>
 <p class="fig-cap">表が画面に収まらない場合は、横にスクロールできます。</p>
-<div class="tbl-wrap" role="region" aria-label="作業記録の記入例" tabindex="0"><table><thead><tr><th>記録する項目</th><th>今回確認できる値</th><th>比較するときの扱い</th></tr></thead><tbody>
-<tr><td>作業と範囲</td><td>Codexによる自社メディア55記事の改稿</td><td>同程度の原稿量・変更範囲・完了条件を持つ作業だけを比較</td></tr>
-<tr><td>検査結果</td><td>公開した55記事と原稿の本文が一致</td><td>記事の構造・画像・リンクの検査も通した条件を残す</td></tr>
-<tr><td>手戻り</td><td>公開前にヘッダーが欠けた12記事を修復</td><td>12は記事数。修正回数や所要時間へ読み替えない</td></tr>
-<tr><td>入力・出力・モデル別利用量</td><td>この記録では未取得</td><td>空欄またはnullで保持し、0にしない</td></tr>
-<tr><td>作業時間・請求額</td><td>この記録では未集計</td><td>速度・費用の改善率やモデルの優劣を算出しない</td></tr>
+<div class="tbl-wrap" role="region" aria-label="トークンマキシングの各社の事例" tabindex="0"><table>
+<thead><tr><th>会社</th><th>何があったか</th><th>その後</th><th>確認した記事</th></tr></thead>
+<tbody>
+<tr><td>Meta</td><td>社員が作った順位表「Claudeonomics」が、8万5,000人を超える社員のうち使用量の上位250人を表示しました。30日間の合計は60兆トークンを超えました。</td><td>報道の2日後に停止されました。Metaは、社員が自分の判断で止めたもので、会社は求めていないと説明しています。</td><td>Fortune（2026年4月9日）。最初の報道はThe Information</td></tr>
+<tr><td>Amazon</td><td>非公式の順位表「Kirorank」が、自社のAIツールKiroの利用量で社員を順位づけました。点数を上げるために、不要な作業をさせるAIエージェントを作る社員が出ました。</td><td>停止されました。上級副社長は、善意で作られたが計算の費用が高すぎたと説明しています。</td><td>CIO（2026年5月29日）。最初の報道はFinancial Times</td></tr>
+<tr><td>Uber</td><td>チーム別の利用量の順位表で利用を促したあと、2026年のAIコーディングツールの予算を4か月で使い切ったと報じられました。</td><td>社長兼COOは利用の増加と、利用者に届く機能の増加とのつながりを示しにくいと述べました。</td><td>Fortune（2026年5月26日）</td></tr>
+<tr><td>OpenAI</td><td>社員の順位表があり、最も使う利用者は2026年3月の1週間で2,100億トークンを使いました。</td><td>記事に記載なし</td><td>Fortune（2026年4月9日）</td></tr>
 </tbody></table></div>
-<p><a href="resources/ai-work-log-template.csv" download>作業記録のCSVひな型をダウンロード</a>できます。ひな型は空欄です。実行したモデル・版・設定を確かめ、作業範囲と品質条件を決めてから使います。設定の既定値だけで、実行モデルを埋めないでください。</p>
-<p>サブスクリプションの支払額、実際のAPI請求額、API単価による参考換算額は別の欄へ記録します。Claude Codeの<a href="kenshu/claude-code-cost">TechWorkerの利用記録</a>でも、API換算額と実際の支払いを分けています。製品間の比較は、これらの区別と品質条件がそろってから行います。</p>
-<h2 id="spend">惜しまず使う仕事と絞る仕事を分ける</h2>
-<p>難しい仕事に、追加の原文・推論・検証を惜しまず使う考え方を、トークンマキシングと呼ぶことがあります。統一された用語ではありません。ここでは、使う量でなく、品質が費用を上回る仕事かどうかで分けます。</p>
-<p>難しい判断では、入力、推論、出力の上限を早く絞りすぎません。長い資料の突合、複数段階のツール利用、失敗コストの高いレビューでは、思考と回答が途中で切れない上限を与えます。</p>
-<p>一方、形式が固定された抽出や整形は、小さいモデルと低い推論強度で足ります。多く使うこと自体を品質指標にはしません。<code>stop_reason</code>、欠落、誤り、手戻りで判断します。</p>
-<h2 id="reduce">キャッシュ・文脈・モデルをこの順で見直す</h2>
-<p>同じ長い共通冒頭を繰り返すなら入力文のキャッシュを使います。次に、毎回送る履歴とツール形式から不要な部分を外します。それでも同じ品質が出る作業だけ、モデルや推論強度を下げます。</p>
-<p>価格表は更新されます。記事へ固定額を写す場合は、提供事業者、モデル、処理区分、文脈長、確認日を同時に表示します。単価未確認のモデルは概算しません。</p>
-<p>入力・出力・キャッシュの単価表と月額の計算例は、<a href="token-cost.html">トークンコストとは</a>にまとめています。</p>
-<p>社内の事情を毎回AIに説明し直す代わりに、AIが答える前に読む「会社の記憶」を置く方法もあります。仕組みと費用は<a href="/media/kenshu/company-brain-toha">Company Brain（会社の記憶）とは</a>で整理しています。</p>
-<div class="tw-lead" data-offer="ai-contract-pack" data-campaign="token-management" data-pos="mid"></div>
-<h2 id="sources">出典と確認範囲</h2><ul class="source-list"><li><a href="https://developers.openai.com/api/docs/guides/agents-api/observability" target="_blank" rel="noopener noreferrer">OpenAI, Observability and usage</a></li><li><a href="https://developers.openai.com/api/docs/guides/prompt-caching" target="_blank" rel="noopener noreferrer">OpenAI, Prompt caching</a></li><li><a href="https://platform.claude.com/docs/en/build-with-claude/thinking-steering-and-cost" target="_blank" rel="noopener noreferrer">Anthropic, Steering thinking</a></li><li><a href="https://platform.claude.com/docs/en/about-claude/pricing" target="_blank" rel="noopener noreferrer">Anthropic, Pricing</a></li></ul></article>
+<p class="fig-cap">各社の事例は上の記事にもとづきます。TechWorkerが各社に確認したものではありません。</p>
+<p>Uberの社長兼COOのアンドリュー・マクドナルド氏は、Claude Codeの利用の増加が、利用者向けの機能の増加につながっているかを問われて、次のように答えています。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“That link is not there yet.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>そのつながりは、まだ見えていません。</p><footer>出典：<a href="https://fortune.com/2026/05/26/uber-coo-ai-spending-tokens-claude-code/" target="_blank" rel="noopener noreferrer">Fortune（2026年5月26日）</a>が伝えた、ポッドキャストでの発言（2026年11月21日確認）</footer></blockquote>
+<p>費用の大きさは、Fortuneの試算から見当がつきます。Metaの順位表で1位だった利用者の使用量は、30日間で平均2,810億トークンでした。Fortuneはこれを、Claude Opus 4.6のいちばん安い料金（100万トークンあたり5ドル）で計算しています。</p>
+<div class="callout"><p>2,810億トークン ÷ 100万 × 5ドル ＝ 140万5,000ドル<br>
+1ドル160円で約2億2,480万円（1人・30日間の試算）</p></div>
+<p>この金額はFortuneの単価の置き方による試算で、Metaが実際に払った額ではありません。円への換算は<a href="token-cost.html">トークンコストとは</a>と同じ1ドル160円の仮のレートです。</p>
+
+<h2 id="problem">何が問題なのですか？</h2>
+<p class="answer">使用量を目標にすると、数字を増やすための利用が生まれ、成果より先に費用が増えます。</p>
+<ul>
+<li><strong>目標にした数字はものさしとして働かなくなります。</strong>IBMはこれをグッドハートの法則で説明しています。Amazonでは、利用量の目標に届かせるために、仕事と関係のない作業にAIを使ったと社員が認めたと報じられました。</li>
+<li><strong>費用の見通しが立たなくなります。</strong>AIエージェントは、同じ作業でも使うトークンの量が毎回変わります。IBMは、使用量が予測できない形で急に増えることがあると説明しています。</li>
+<li><strong>使用量ほどには、成果が増えません。</strong>開発の分析を手がけるJellyfishの調査では、Claude Codeの利用者の上位10%は平均的な開発者の約10倍のトークンを使い、成果は約2倍でした。</li>
+<li><strong>確認する側の負担が増えます。</strong>IBMは、開発の経験がない社員に大量のコード生成を促すと、セキュリティの危険と、そのコードを確認する技術者の負担が増えると指摘しています。</li>
+</ul>
+<figure class="fig-inline"><a href="figs/token-management-3.png?v=2" target="_blank" rel="noopener"><picture><source media="(max-width:640px)" srcset="figs/token-management-3-m.png?v=2" width="960" height="1130"><img src="figs/token-management-3.png?v=2" alt="Claude Codeの利用者の上位10%は、平均的な開発者と比べてトークンの使用量が約10倍、成果は約2倍。" width="1920" height="1080" loading="lazy" decoding="async"></picture></a><figcaption><span class="source-label">TechWorker作成：</span>Jellyfishの調査（約1,000社・約20万人）を伝えたBusiness Insider Japanの記事（2026年6月26日）の数字を図にしました。画像を押すと拡大できます。</figcaption></figure>
+<p>Jellyfishの調査は約1,000社・約20万人のソフトウェア技術者のデータを分析したものです。Claude Codeの1週間の使用量は、最も多いグループで1人あたり2億2,500万トークン、平均的な技術者で3,200万トークンでした。</p>
+<p>同じ調査はAIを使うこと自体の効果も示しています。AIを積極的に導入しているチームは、導入が少ないチームより、コード開発の作業量が77%多くなりました。そのうえで同社は使用量だけでは生産性を測れないと述べ、プルリクエスト1件あたりの費用のような、成果にもとづく指標を勧めています（Business Insider Japan、2026年6月26日）。</p>
+
+<h2 id="difference">トークンマネジメントとは何が違いますか？</h2>
+<p class="answer">トークンマキシングは使用量を増やすことを目標にします。トークンマネジメントは作業ごとに費用と品質を記録し、使う量を仕事で決めます。</p>
+<p>トークンマネジメントに決まった定義はありません。この記事では、作業1件ごとにトークンの使用量・費用・手戻りを記録し、仕事の難しさに合わせて使う量を決める管理を指します。</p>
+<figure class="fig-inline"><a href="figs/token-management-4.png?v=2" target="_blank" rel="noopener"><picture><source media="(max-width:640px)" srcset="figs/token-management-4-m.png?v=2" width="960" height="1284"><img src="figs/token-management-4.png?v=2" alt="トークンマキシングとトークンマネジメントの比較表。見る数は使用量の合計と作業1件の費用と手戻り、目標は多いほど良いと仕事ごとに上限を決める、個人の順位は付けると付けない、人事評価は使用量を反映と成果で見る。" width="1920" height="1080" loading="lazy" decoding="async"></picture></a><figcaption><span class="source-label">TechWorker作成：</span>トークンマキシングの欄はIBMの解説、トークンマネジメントの欄はTechWorkerの提案をもとにしています。画像を押すと拡大できます。</figcaption></figure>
+<p>トークンを多く使うこと自体は誤りではありません。使う量は仕事の難しさで分けます。</p>
+<ul>
+<li><strong>惜しまず使う仕事：</strong>長い資料の突き合わせ、複数の段階でツールを使う作業、誤ったときの損失が大きいレビューです。思考と回答が途中で切れない上限を与えます。</li>
+<li><strong>絞る仕事：</strong>形式が決まった抜き出しや整形です。軽量モデルと、低い推論の強さで足ります。</li>
+</ul>
+<p>どちらの仕事でも、多く使ったこと自体は品質の指標にしません。回答の欠け、誤り、手戻りで判断します。モデルごとの単価の差は<a href="token-cost.html">トークンコストとは</a>の単価表で確かめられます。</p>
+<p>Claudeの契約ごとの月額と年額は、下の枠の試算で確かめられます。</p>
+<div class="tw-lead" data-offer="claude-cost-sheet" data-campaign="token-management" data-pos="mid"></div>
+
+<h2 id="measure">会社は代わりに何を測りますか？</h2>
+<p class="answer">作業1件を1行にして、モデル・トークン数・費用・検査の結果・手戻りを同じ表に記録します。</p>
+<p>月の総額だけでは、どこを見直せばよいかが分かりません。作業の種類、モデル、推論の強さ、入力、キャッシュ済みの入力、出力、ツールの回数、成功と手戻りを1行にします。品質の条件が違う作業は同じ群で比べません。</p>
+<p>費用だけが下がり、手戻りが増えた変更は採用しません。人による確認や再実行に使った時間も、運用の費用として残します。</p>
+<p>作業を始める前に、モデルを呼び出す回数、入力と出力のトークン、ツールの回数、金額または時間の上限を仮に置きます。上限に達したら、終わっていない点を返し、人が追加の予算を判断します。品質を優先する仕事でも、上限を超えたまま自動で続けません。</p>
+<p>部署ごとの月の予算は契約の管理画面で置けます。設定の場所は<a href="kenshu/claude-enterprise-yosan-kanri.html">Claude Enterpriseの予算管理</a>と<a href="kenshu/gemini-enterprise-riyou-jougen.html">Gemini Enterpriseの利用上限</a>にまとめています。</p>
+
+<h3 id="worklog">記入例とCSVのひな型</h3>
+<p>次の表はTechWorkerの2026年10月6日のCodexでの改修を、この記事用にまとめた記入例です。<a href="kenshu/resources/techworker-codex-media-verification-20261006.json">公開時の検証記録</a>で分かる項目だけを埋めています。</p>
+<p class="fig-cap">表が画面に収まらない場合は、横にスクロールできます。</p>
+<div class="tbl-wrap" role="region" aria-label="作業記録の記入例" tabindex="0"><table><thead><tr><th>記録する項目</th><th>今回確認できる値</th><th>比べるときの扱い</th></tr></thead><tbody>
+<tr><td>作業と範囲</td><td>Codexによる自社メディア55記事の改稿</td><td>原稿の量・変更の範囲・完了の条件が同じ程度の作業だけを比べる</td></tr>
+<tr><td>検査の結果</td><td>公開した55記事と原稿の本文が一致</td><td>記事の構造・画像・リンクの検査も通した条件を残す</td></tr>
+<tr><td>手戻り</td><td>公開前にヘッダーが欠けた12記事を修復</td><td>12は記事の数。修正の回数や所要時間に読み替えない</td></tr>
+<tr><td>入力・出力・モデル別の利用量</td><td>この記録では未取得</td><td>空欄またはnullで残し、0にしない</td></tr>
+<tr><td>作業時間・請求額</td><td>この記録では未集計</td><td>速度や費用の改善率、モデルの優劣を計算しない</td></tr>
+</tbody></table></div>
+<p><a href="resources/ai-work-log-template.csv" download>作業記録のCSVひな型をダウンロード</a>できます。ひな型は空欄です。実行したモデル・版・設定を確かめ、作業の範囲と品質の条件を決めてから使います。</p>
+<p>サブスクリプションの支払額、実際のAPIの請求額、APIの単価による参考の換算額は、別の欄に記録します。Claude Codeの<a href="kenshu/claude-code-cost.html">TechWorkerの利用記録</a>でも、APIの換算額と実際の支払いを分けています。</p>
+
+<h3 id="count">使用量を数えるときの注意</h3>
+<p>使用量の内訳を合計にもう一度足すと、利用量を多く報告してしまいます。OpenAIは内訳の数え方を次のように説明しています。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“Cached tokens are included in input_tokens, and reasoning tokens are included in output_tokens.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>キャッシュ済みのトークンは入力トークン数に、推論のトークンは出力トークン数に含まれます。</p><footer>出典：<a href="https://developers.openai.com/api/docs/guides/agents-api/observability" target="_blank" rel="noopener noreferrer">OpenAI「Observability and usage」</a>（2026年10月6日確認）</footer></blockquote>
+<p>この利用量は最善の努力で記録される値で、確認できないときは<code>null</code>になり、会計の情報が届いたあとに件数が変わる場合があります。欠けた値を0件として扱わず、確定した費用は提供元の利用量と請求の記録で照らし合わせます。</p>
+<p>Anthropicも、推論のトークンは出力として課金され、<code>max_tokens</code>は思考と回答を合わせた上限だと説明しています。画面に見えている文章の量だけでは、費用を判断できません。</p>
+
+<h3 id="reduce">費用を見直す順番</h3>
+<figure class="fig-inline"><a href="figs/token-management-5.png?v=2" target="_blank" rel="noopener"><picture><source media="(max-width:640px)" srcset="figs/token-management-5-m.png?v=2" width="960" height="1476"><img src="figs/token-management-5.png?v=2" alt="費用を見直す4つの順番。1 作業ごとに記録する、2 上限を置く、3 キャッシュと履歴の整理で入力を減らす、4 定型の仕事を軽いモデルへ分ける。" width="1920" height="1080" loading="lazy" decoding="async"></picture></a><figcaption><span class="source-label">TechWorker作成：</span>品質の条件を決めたあとに、費用を見直す順番を示した図です。導入効果の実測ではありません。画像を押すと拡大できます。</figcaption></figure>
+<p>記録と上限を置いたあとは、入力から見直します。同じ長い冒頭を繰り返し送る作業では、入力のキャッシュを使います。次に、毎回送る履歴とツールの定義から、不要な部分を外します。それでも同じ品質が出る作業だけ、モデルや推論の強さを下げます。</p>
+<p>社内の事情を毎回AIに説明し直す代わりに、AIが答える前に読む「会社の記憶」を置く方法もあります。仕組みと費用は<a href="kenshu/company-brain-toha.html">Company Brain（会社の記憶）とは</a>で整理しています。</p>
+
+<h2 id="start">自社では何から始めますか？</h2>
+<p class="answer">個人の順位づけをやめ、作業を3つほど選んで、1件あたりの費用と手戻りの記録から始めます。</p>
+<ol>
+<li><strong>使用量の見せ方を確かめます。</strong>個人別の使用量を順位表にしていないか、使用量を評価の材料にしていないかを確かめます。費用を把握するために使用量を見ることは続けます。</li>
+<li><strong>作業を3つ選んで記録します。</strong>毎週くり返す作業を選び、1件ごとのトークン数、費用、手戻りを2〜4週間記録します。</li>
+<li><strong>上限と予算を置きます。</strong>部署ごとの月の予算と、作業1件の上限を決めます。上限に達したら止めて、続けるかを人が判断します。</li>
+<li><strong>使い分けを教えます。</strong>難しい仕事には十分に使い、定型の仕事は軽いモデルに回す分け方を、実際の業務を題材にして伝えます。</li>
+</ol>
+<p>この4つはTechWorkerの提案です。Claude Codeを社内に広げるときの設定と決まりは<a href="kenshu/claude-code-shanai-tenkai.html">Claude Codeの社内展開</a>に、研修の組み方は<a href="kenshu/claude-code-kenshu-houjin.html">Claude Codeの法人研修</a>にまとめています。契約ごとの料金は<a href="kenshu/claude-code-cost.html">Claudeの法人契約と料金</a>で比べられます。</p>
+
+<h2 id="faq">よくある質問</h2>
+<div class="faq"><div class="q">トークンマキシングとはどういう意味ですか？</div><p class="a">社員がAIに使わせたトークンの量を増やすことを、会社が促したり評価したりする慣行です。社内の順位表や、予算の使い切りで利用を促します。2026年の春に米国のIT企業で広がりました。</p></div>
+<div class="faq"><div class="q">英語ではどう書きますか？</div><p class="a">tokenmaxxing と書きます。token maxxing と分けて書く例もあります。語尾の -maxxing は何かを最大まで高めることを表す英語の俗語です。</p></div>
+<div class="faq"><div class="q">トークンマキシングはなぜ問題になったのですか？</div><p class="a">使用量を目標にした結果、数字を増やすための利用が生まれ、費用が先に増えたためです。Amazonの順位表は計算の費用が高すぎたとして停止され、Uberは2026年のAIコーディングツールの予算を4か月で使い切ったと報じられました。</p></div>
+<div class="faq"><div class="q">トークンをたくさん使うのは悪いことですか？</div><p class="a">悪いことではありません。長い資料の突き合わせや、誤ったときの損失が大きいレビューでは、十分な量を使ったほうが品質が上がります。問題になったのは、使用量そのものを目標や評価の材料にしたことです。</p></div>
+<div class="faq"><div class="q">トークンマネジメントとの違いは何ですか？</div><p class="a">トークンマキシングは使用量を増やすことを目標にします。トークンマネジメントは作業1件ごとに費用と手戻りを記録し、仕事の難しさに合わせて使う量を決める管理です。この記事でのTechWorkerの使い方で、決まった定義はありません。</p></div>
+<div class="faq"><div class="q">社員のトークン使用量は見ないほうがよいですか？</div><p class="a">見ます。費用を把握するには、部署や作業ごとの使用量が要ります。やめるのは、個人の使用量を順位表にすることと、使用量を人事評価に使うことです。</p></div>
+
+<p>社内で比べるための料金比較表と稟議書の雛形を、資料にまとめています。</p>
+<div class="tw-lead" data-offer="ai-contract-pack" data-campaign="token-management" data-pos="end"></div>
+
+<h2 id="sources">出典と確認範囲</h2>
+<p class="source-note">確認日：2026年11月21日（OpenAIとAnthropicの資料は2026年10月6日）。各社の事例は下の記事に書かれた内容です。The InformationとFinancial Timesの元の記事は読んでいません。金額の試算はFortuneの単価の置き方によるもので、各社が払った額ではありません。トークンマネジメントの説明と、最後の4つの手順はTechWorkerの提案です。</p>
+<ol class="source-list">
+<li><a href="https://www.ibm.com/think/topics/tokenmaxxing" target="_blank" rel="noopener noreferrer">IBM, What is tokenmaxxing?（2026年9月1日。定義・広がった理由・問題点）</a></li>
+<li><a href="https://fortune.com/2026/04/09/meta-killed-employee-ai-token-dashboard/" target="_blank" rel="noopener noreferrer">Fortune, Metaの社員が作ったトークン使用量の順位表の記事（2026年4月9日）</a></li>
+<li><a href="https://www.cio.com/article/4178825/amazon-deletes-devs-tokenmaxxing-leaderboard-to-minimize-costs-2.html" target="_blank" rel="noopener noreferrer">CIO, Amazon deletes devs’ tokenmaxxing leaderboard to minimize costs（2026年5月29日。InfoWorldからの転載）</a></li>
+<li><a href="https://fortune.com/2026/05/26/uber-coo-ai-spending-tokens-claude-code/" target="_blank" rel="noopener noreferrer">Fortune, UberのCOOがAIへの支出について述べた記事（2026年5月26日）</a></li>
+<li><a href="https://www.businessinsider.jp/article/2605-ai-tokenmaxxing-fails-as-productivity-strategy-jellyfish/" target="_blank" rel="noopener noreferrer">Business Insider Japan, 「AIの使いすぎ」は逆効果？ 調査が明かす「トークンマキシング」の落とし穴（2026年6月26日。Jellyfishの調査）</a></li>
+<li><a href="https://developers.openai.com/api/docs/guides/agents-api/observability" target="_blank" rel="noopener noreferrer">OpenAI, Observability and usage（利用量の内訳）</a></li>
+<li><a href="https://developers.openai.com/api/docs/guides/prompt-caching" target="_blank" rel="noopener noreferrer">OpenAI, Prompt caching</a></li>
+<li><a href="https://platform.claude.com/docs/en/build-with-claude/thinking-steering-and-cost" target="_blank" rel="noopener noreferrer">Anthropic, Steering thinking（思考トークンの課金）</a></li>
+<li><a href="https://platform.claude.com/docs/en/about-claude/pricing" target="_blank" rel="noopener noreferrer">Anthropic, Pricing</a></li>
+</ol></article>
 </div>
 
 <div class="author"><div class="inner">
@@ -136,16 +234,18 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <section class="related"><div class="container">
   <h2 class="rl-h">あわせて読む</h2>
   <div class="related-grid">
+    <a href="token-cost.html" class="related-card"><span class="rc-cat">費用を計算する</span><div class="rc-title">トークンコストとは｜生成AIのAPI料金の計算方法と主要モデルの単価表・月額の見積もり例</div></a>
     <a href="kenshu/claude-code-cost.html" class="related-card"><span class="rc-cat">法人契約を検討する</span><div class="rc-title">Claudeの法人契約と料金｜Team・Enterprise・APIとClaude Codeの選び方</div></a>
+    <a href="kenshu/claude-enterprise-yosan-kanri.html" class="related-card"><span class="rc-cat">予算を置く</span><div class="rc-title">Claude Enterpriseの予算管理｜部署ごとの共有予算・コストコード・利用レポートの設定</div></a>
   </div>
 </div></section>
 
 <div class="art-cta"><div class="inner">
   <div>
-    <h3>生成AIのコスト設計、社内活用に迷ったら。</h3>
-    <p>「どのモデルを・どこに・どう使うか」を、上場企業含む50社超・2,500名の支援知見をもとに整理します。検討段階のご相談だけでも歓迎です。</p>
+    <h3>AIの使用量と費用の見方を、研修と設計で整えます。</h3>
+    <p>難しい仕事には十分に使い、定型の仕事は絞る。その分け方と記録の仕方を、御社の業務を題材にした研修でお伝えします。上場企業を含む50社超・2,500名の支援知見をもとに整理します。検討段階のご相談だけでも歓迎です。</p>
   </div>
-  <a href="../contact.html" class="btn">無料で相談する <i>→</i></a>
+  <a href="https://kenshu.techworker.co.jp/?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=token-management&amp;utm_content=end" class="btn">研修内容・費用を相談する <i>→</i></a>
 </div></div>
 
 <p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="https://kenshu.techworker.co.jp/" style="color:var(--electric);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">生成AI法人研修（主要ツール全対応）</a>　／　<a href="../contact.html" style="color:var(--electric);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">無料相談</a>　／　<a href="../library/" style="color:var(--electric);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">事例集（無料DL）</a></p>
