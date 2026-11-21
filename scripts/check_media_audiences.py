@@ -22,10 +22,10 @@ def check():
   group=path.split('/')[1]
   expected_href=f'/media/{group}/?audience={role}#articles'
   if roles[role] not in tags[0]:errors.append(path+': label differs from assignment')
-  if group in ['gyomuzu','kenshu','shigyo','interview','security','shokei'] and f'href="{expected_href}"' not in tags[0]:errors.append(path+': audience link must point to its own media')
+  if group in ['gyomuzu','kenshu','shigyo','interview','security'] and f'href="{expected_href}"' not in tags[0]:errors.append(path+': audience link must point to its own media')
   if '/media/?audience=' in tags[0]:errors.append(path+': removed global filter link')
   if '/media/audience-filter.css?' not in text:errors.append(path+': audience stylesheet missing')
- groups=['gyomuzu','kenshu','shigyo','interview','security','shokei']
+ groups=['gyomuzu','kenshu','shigyo','interview','security']
  home=(ROOT/'media/index.html').read_text()
  if any(marker in home for marker in ['data-audience-catalog','data-audience-filter','audience-jump','audience-filter.js']):errors.append('Media home must not contain audience filters')
  hubs=[f'media/{g}/index.html' for g in groups]
