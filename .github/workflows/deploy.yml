@@ -34,6 +34,10 @@ jobs:
       - name: Check _redirects
         run: python3 scripts/check_redirects.py _redirects
 
+      # 支援社数などの実績の数字が、ページによって割れていないかを確かめる（古い数が残っていたら止める）
+      - name: Check company facts
+        run: python3 scripts/check_company_facts.py .
+
       - name: Stage site files
         run: |
           rsync -a --exclude-from=- ./ _site/ <<'EOF'

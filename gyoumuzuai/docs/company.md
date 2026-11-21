@@ -19,7 +19,7 @@ updated: 2026-11-12
 ## 生成AIの定着支援の実績
 
 <div class="cards">
-<div class="card"><p class="k">生成AI定着支援</p><b>45社</b><span>研修の受講者は2,500人以上</span></div>
+<div class="card"><p class="k">生成AI定着支援</p><b>50社超</b><span>研修の受講者は2,500人以上</span></div>
 <div class="card"><p class="k">研修・定着支援で見てきた業務</p><b>1,300件超</b><span>受講者のワークシートから</span></div>
 </div>
 
