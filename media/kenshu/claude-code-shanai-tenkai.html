@@ -15,20 +15,22 @@
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Claude Codeの社内展開｜社内データの扱い・設定配布・ルール雛形【2026】 — TechWorker</title>
-<meta name="description" content="Claude Codeの社内展開は、既存コードの理解、修正、テストを一続きで練習します。非エンジニアへ広げる前に、操作範囲とレビュー担当を固定します。">
+<meta name="description" content="Claude Codeの社内展開は契約とデータ方針、managed-settings.jsonによる設定配布、利用ルール、監査、パイロットからの段階展開の順で進めます。手順ごとに決めることと、利用ルールの雛形、展開前のチェックリストをまとめました。">
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
 <link rel="canonical" href="https://techworker.co.jp/media/kenshu/claude-code-shanai-tenkai">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Claude Codeの社内展開｜社内データの扱い・設定配布・ルール雛形【2026】">
-<meta property="og:description" content="Claude Codeの社内展開は、既存コードの理解、修正、テストを一続きで練習します。非エンジニアへ広げる前に、操作範囲とレビュー担当を固定します。">
+<meta property="og:description" content="Claude Codeの社内展開は契約とデータ方針、managed-settings.jsonによる設定配布、利用ルール、監査、パイロットからの段階展開の順で進めます。手順ごとに決めることと、利用ルールの雛形、展開前のチェックリストをまとめました。">
 <meta property="og:image" content="https://techworker.co.jp/media/kenshu/covers/claude-code-shanai-tenkai.png">
 <meta property="og:url" content="https://techworker.co.jp/media/kenshu/claude-code-shanai-tenkai">
 <meta property="og:site_name" content="TechWorker">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Claude Codeの社内展開｜社内データの扱い・設定配布・ルール雛形【2026】">
+<meta name="twitter:description" content="Claude Codeの社内展開は契約とデータ方針、managed-settings.jsonによる設定配布、利用ルール、監査、パイロットからの段階展開の順で進めます。手順ごとに決めることと、利用ルールの雛形、展開前のチェックリストをまとめました。">
 <meta name="twitter:image" content="https://techworker.co.jp/media/kenshu/covers/claude-code-shanai-tenkai.png">
 <link rel="stylesheet" href="../article.css?v=20261120d">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Claude Codeの社内展開｜社内データの扱い・設定配布・ルール雛形【2026】", "description": "Claude Codeの社内展開は、既存コードの理解、修正、テストを一続きで練習します。非エンジニアへ広げる前に、操作範囲とレビュー担当を固定します。", "datePublished": "2026-07-29", "dateModified": "2026-11-17", "inLanguage": "ja", "image": "https://techworker.co.jp/media/kenshu/covers/claude-code-shanai-tenkai.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/claude-code-shanai-tenkai"}, "citation": ["https://code.claude.com/docs/en/permissions", "https://code.claude.com/docs/en/settings", "https://support.claude.com/en/articles/10440198-configure-custom-data-retention-controls-for-enterprise-plans", "https://support.claude.com/en/articles/15425996-data-retention-practices-for-covered-models", "https://support.claude.com/en/articles/9797531-what-is-the-enterprise-plan"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Claude Codeの社内展開｜社内データの扱い・設定配布・ルール雛形【2026】", "description": "Claude Codeの社内展開は契約とデータ方針、managed-settings.jsonによる設定配布、利用ルール、監査、パイロットからの段階展開の順で進めます。手順ごとに決めることと、利用ルールの雛形、展開前のチェックリストをまとめました。", "datePublished": "2026-07-29", "dateModified": "2026-11-21", "inLanguage": "ja", "image": "https://techworker.co.jp/media/kenshu/covers/claude-code-shanai-tenkai.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/claude-code-shanai-tenkai"}, "citation": ["https://code.claude.com/docs/en/permissions", "https://code.claude.com/docs/en/settings", "https://support.claude.com/en/articles/10440198-configure-custom-data-retention-controls-for-enterprise-plans", "https://support.claude.com/en/articles/15425996-data-retention-practices-for-covered-models", "https://support.claude.com/en/articles/9797531-what-is-the-enterprise-plan"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Claude Codeを社内に展開するときは、何から決めればよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "最初に契約形態とデータ方針を決めます。個人向けプラン（Free・Pro・Max）は消費者向け規約で提供されるため、業務コードを扱うなら、管理機能を持つClaude for Teams、Claude for Enterprise、Claude Console（API課金）のいずれかの会社契約にそろえます。そのうえで、保持条件と機密リポジトリの扱いを法務・セキュリティと合意します。"}}, {"@type": "Question", "name": "会社契約では入力したコードがAIの学習に使われますか？", "acceptedAnswer": {"@type": "Answer", "text": "公式ドキュメントは商用プラン向けに、組織が明示的にオプトインしない限り、コードやプロンプトを学習に使わないと明記しています。サーバー側の保持条件は契約、利用経路、モデルで異なり、Enterpriseのカスタム保持は最短30日です。端末にもセッション記録が既定で30日保存されます。"}}, {"@type": "Question", "name": "社員の端末に、同じ設定をそろえて配るにはどうしますか？", "acceptedAnswer": {"@type": "Answer", "text": "最上位の管理ポリシーであるmanaged-settings.jsonを、MDMやソフトウェア配布の仕組みで全端末に配置します。この設定は端末全体に適用され、利用者は上書きできません。permissionsのallow・deny・askでツールやコマンドの許可を決め、forceLoginMethodとforceLoginOrgUUIDで自社組織以外のアカウントでのログインを制限します。"}}, {"@type": "Question", "name": "社内の利用状況はどうやって監査しますか？", "acceptedAnswer": {"@type": "Answer", "text": "公式の監査手段は2層です。1層目はOpenTelemetryによるメトリクス出力で、セッション数、トークン使用量、コスト、編集されたコード行数などを自社の監視基盤へ送れます。2層目はTeam・Enterpriseの管理者向けダッシュボードで、AdminとOwnerのロールが提案の受け入れ率や日次アクティブユーザー数を閲覧できます。"}}, {"@type": "Question", "name": "Teams、Enterprise、Consoleはどう選べばよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "小規模チームで早く始めたいならTeams、セキュリティ・コンプライアンス要件が重い組織はEnterprise、API基盤でコストを従量管理したいならConsoleが向きます。SCIM、コンプライアンスAPI、Analytics APIはEnterpriseの機能です。"}}]}</script>
 <script type="application/ld+json">
 {
   "@context":"https://schema.org","@type":"BreadcrumbList",
@@ -79,7 +81,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
   <h1>Claude Codeの社内展開｜社内データの扱い・設定配布・ルール雛形</h1>
   <p class="dek">Claude Codeの社内展開は、既存コードの理解、修正、テストを一続きで練習します。非エンジニアへ広げる前に、操作範囲とレビュー担当を固定します。</p>
   <div class="a-meta">
-    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.29</span><span class="dot">·</span><span>最終更新 2026.10.06</span><span class="dot">·</span><span>読了 9分</span>
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.07.29</span><span class="dot">·</span><span>最終更新 2026.11.21</span><span class="dot">·</span><span>読了 9分</span>
   </div>
 <p class="article-audience"><span class="article-audience-label">主な対象読者</span><a href="/media/kenshu/?audience=it#articles">情シス・AI導入担当</a></p>
 </header>
@@ -112,6 +114,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
       <a href="#s4">社内展開がうまくいかない例には、どんなものがありますか？</a>
       <a href="#s5">契約形態ごとの管理機能は、どう違いますか？</a>
       <a href="#s6">次の一歩は、何から始めればよいですか？</a>
+      <a href="#faq">よくある質問</a>
       <a href="#sources">出典と確認範囲</a>
     </div></nav>
 
@@ -243,6 +246,12 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <p>展開の設計と教育を、外部の伴走で進めたい場合は、<a href="https://kenshu.techworker.co.jp/program/#claude-code">TechWorkerのClaude Code研修</a>をご覧ください。情シス向けの設定設計と、現場向けのハンズオンを一体で提供しています。</p>
 <p>研修の対象者・日数・費用の決め方と、依頼の前に決めることは<a href="claude-code-kenshu-houjin.html">Claude Codeの法人研修</a>にまとめています。</p>
 <p data-rel-links>利用が広がったあとの費用の見方は、<a href="../token-management.html">トークンマキシングとは</a>で各社の事例と記録する項目を整理しています。APIの単価と月額の計算は<a href="../token-cost.html">トークンコストとは</a>にあります。</p>
+<h2 id="faq">よくある質問</h2>
+<div class="faq"><div class="q">Claude Codeを社内に展開するときは、何から決めればよいですか？</div><p class="a">最初に契約形態とデータ方針を決めます。個人向けプラン（Free・Pro・Max）は消費者向け規約で提供されるため、業務コードを扱うなら、管理機能を持つClaude for Teams、Claude for Enterprise、Claude Console（API課金）のいずれかの会社契約にそろえます。そのうえで、保持条件と機密リポジトリの扱いを法務・セキュリティと合意します。</p></div>
+<div class="faq"><div class="q">会社契約では入力したコードがAIの学習に使われますか？</div><p class="a">公式ドキュメントは商用プラン向けに、組織が明示的にオプトインしない限り、コードやプロンプトを学習に使わないと明記しています。サーバー側の保持条件は契約、利用経路、モデルで異なり、Enterpriseのカスタム保持は最短30日です。端末にもセッション記録が既定で30日保存されます。</p></div>
+<div class="faq"><div class="q">社員の端末に、同じ設定をそろえて配るにはどうしますか？</div><p class="a">最上位の管理ポリシーであるmanaged-settings.jsonを、MDMやソフトウェア配布の仕組みで全端末に配置します。この設定は端末全体に適用され、利用者は上書きできません。permissionsのallow・deny・askでツールやコマンドの許可を決め、forceLoginMethodとforceLoginOrgUUIDで自社組織以外のアカウントでのログインを制限します。</p></div>
+<div class="faq"><div class="q">社内の利用状況はどうやって監査しますか？</div><p class="a">公式の監査手段は2層です。1層目はOpenTelemetryによるメトリクス出力で、セッション数、トークン使用量、コスト、編集されたコード行数などを自社の監視基盤へ送れます。2層目はTeam・Enterpriseの管理者向けダッシュボードで、AdminとOwnerのロールが提案の受け入れ率や日次アクティブユーザー数を閲覧できます。</p></div>
+<div class="faq"><div class="q">Teams、Enterprise、Consoleはどう選べばよいですか？</div><p class="a">小規模チームで早く始めたいならTeams、セキュリティ・コンプライアンス要件が重い組織はEnterprise、API基盤でコストを従量管理したいならConsoleが向きます。SCIM、コンプライアンスAPI、Analytics APIはEnterpriseの機能です。</p></div>
 <h2 id="sources">出典と確認範囲</h2>
 <p class="source-note">確認日：2026年10月6日。製品仕様、契約、助成要件は変更されるため、実施時点の公式情報を確認してください。</p>
 <ol class="source-list"><li><a href="https://code.claude.com/docs/en/permissions" target="_blank" rel="noopener noreferrer">Configure permissions - Claude Code Docs</a></li><li><a href="https://code.claude.com/docs/en/settings" target="_blank" rel="noopener noreferrer">Claude Code settings</a></li><li><a href="https://support.claude.com/en/articles/10440198-configure-custom-data-retention-controls-for-enterprise-plans" target="_blank" rel="noopener noreferrer">Enterpriseのカスタム保持設定</a></li><li><a href="https://support.claude.com/en/articles/15425996-data-retention-practices-for-covered-models" target="_blank" rel="noopener noreferrer">対象モデルの保持条件</a></li><li><a href="https://support.claude.com/en/articles/9797531-what-is-the-enterprise-plan" target="_blank" rel="noopener noreferrer">Claude Enterpriseの管理機能</a></li></ol>
