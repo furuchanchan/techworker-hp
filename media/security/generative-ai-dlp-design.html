@@ -108,6 +108,7 @@
 </ol>
 <p>3から5はTechWorkerの提案です。記録だけで試す期間は、誤検知の件数が落ち着くまでとし、日数は決め打ちしません。</p>
 
+<p data-rel-links>出力を画面に表示するときの危険は<a href="llm-markdown-output-xss-sanitization.html">生成AIのMarkdown表示でXSSリスクを減らす</a>で、ブラウザを操作するAIの分離は<a href="browser-agent-session-isolation-design.html">ブラウザ操作AIエージェントのセッション分離</a>で説明しています。APIの費用の上限は<a href="llm-api-cost-abuse-controls.html">LLM APIの高額請求を防ぐ</a>にまとめています。設計したあとに社内の動きを確かめる方法は、<a href="../kenshu/generative-ai-incident-tabletop-training.html">生成AI事故対応の机上演習</a>にまとめました。</p>
 <h2 id="faq">よくある質問</h2>
 <div class="faq"><div class="q">AI DLPとは何ですか？</div><p class="a">生成AIに渡る情報と、生成AIが返す情報から、機密データを見つけて止める仕組みです。止める場所は、入力、出力、AIが検索で読む社内文書、記録の4か所です。DLPはデータ損失防止（Data Loss Prevention）の略です。</p></div>
 <div class="faq"><div class="q">社員が生成AIに社内情報を貼り付けるのを、DLPで止められますか？</div><p class="a">会社が管理するAIの経路なら止められます。Microsoft 365 CopilotのDLPは、機密情報を含む依頼をプレビューで止められます。Cloudflare AI GatewayのDLPは、ゲートウェイを通る依頼を止められます。ただし、Copilotに添付したファイルの中身は調べません。</p></div>
