@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js" data-media="kenshu">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}if(location.hostname==='techworker.co.jp')gtag('config', 'G-3V34NWXVCJ');
+</script>
+<script src="/assets/tw-track.js" defer></script>
+<script src="/assets/tw-event.js" defer></script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CopilotのMCPコネクタとは｜社内システムのつなぎ方と、管理者が先に決める設定【2026年11月】 — TechWorker</title>
+<meta name="description" content="Microsoft 365 CopilotのMCPコネクタ（フェデレーテッド コネクタ）は、Slackや社内システムのデータをコピーせずに読み、書き込みもできます。社員が使える5つの条件、書き込みの承認、自社のMCPサーバーをつなぐ手順を、公式情報（11月23日確認）で整理します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/kenshu/copilot-mcp-connector">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CopilotのMCPコネクタとは｜社内システムのつなぎ方と、管理者が先に決める設定【2026年11月】">
+<meta property="og:description" content="Microsoft 365 CopilotのMCPコネクタ（フェデレーテッド コネクタ）は、Slackや社内システムのデータをコピーせずに読み、書き込みもできます。社員が使える5つの条件、書き込みの承認、自社のMCPサーバーをつなぐ手順を、公式情報（11月23日確認）で整理します。">
+<meta property="og:image" content="https://techworker.co.jp/media/kenshu/covers/copilot-mcp-connector.png">
+<meta property="og:url" content="https://techworker.co.jp/media/kenshu/copilot-mcp-connector">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CopilotのMCPコネクタとは｜社内システムのつなぎ方と、管理者が先に決める設定【2026年11月】">
+<meta name="twitter:image" content="https://techworker.co.jp/media/kenshu/covers/copilot-mcp-connector.png">
+<link rel="stylesheet" href="../article.css?v=20261120d">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "CopilotのMCPコネクタとは｜社内システムのつなぎ方と、管理者が先に決める設定【2026年11月】", "description": "Microsoft 365 CopilotのMCPコネクタ（フェデレーテッド コネクタ）は、Slackや社内システムのデータをコピーせずに読み、書き込みもできます。社員が使える5つの条件、書き込みの承認、自社のMCPサーバーをつなぐ手順を、公式情報（11月23日確認）で整理します。", "datePublished": "2026-11-23", "dateModified": "2026-11-23", "image": "https://techworker.co.jp/media/kenshu/covers/copilot-mcp-connector.png", "inLanguage": "ja", "mainEntityOfPage": "https://techworker.co.jp/media/kenshu/copilot-mcp-connector", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/favicon.svg"}}, "citation": ["https://learn.microsoft.com/en-us/microsoft-365/copilot/connectors/federated-connectors-overview", "https://learn.microsoft.com/en-us/microsoft-365/copilot/connectors/set-up-custom-federated-connectors", "https://learn.microsoft.com/en-us/copilot/microsoft-365/release-notes", "https://techcommunity.microsoft.com/blog/microsoft-copilot-blog/turn-copilot-insights-into-action-with-connector-write-capabilities/4571160", "https://techcommunity.microsoft.com/blog/microsoft-copilot-blog/microsoft-copilot-connectors-update-october-2026/4572240"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "AI研修・導入ラボ", "item": "https://techworker.co.jp/media/kenshu/"}, {"@type": "ListItem", "position": 4, "name": "CopilotのMCPコネクタとは", "item": "https://techworker.co.jp/media/kenshu/copilot-mcp-connector"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "CopilotのMCPコネクタを使うのに、追加の料金はかかりますか？", "acceptedAnswer": {"@type": "Answer", "text": "確認したMicrosoft Learnの解説に、コネクタ自体の料金の記載はありません。社員にはMicrosoft 365 Copilotのライセンスが要り、つなぐ先のサービスの契約も別に要ります。"}}, {"@type": "Question", "name": "コネクタでつないだデータは、Microsoft 365に保存されますか？", "acceptedAnswer": {"@type": "Answer", "text": "保存されません。フェデレーテッド コネクタはつないだ先のデータをMicrosoft 365にコピーせず、その場で取りに行きます。書き込みの操作では、必要な中身がつないだ先へ送られます。"}}, {"@type": "Question", "name": "社員が自分でSlackやNotionをCopilotにつなげますか？", "acceptedAnswer": {"@type": "Answer", "text": "管理者がそのコネクタを使える状態にしていれば、社員はCopilot Chatの設定にあるSourcesから、自分のアカウントでつなげます。管理者が止めたコネクタは、社員の一覧に出ません。"}}, {"@type": "Question", "name": "書き込みのツールは別にオンにする必要がありますか？", "acceptedAnswer": {"@type": "Answer", "text": "要りません。書き込み・更新・削除のツールはコネクタの一部で、コネクタを出すと一緒に使えます。書き込みのツールだけを止める手順は確認した資料にないため、出したくない場合はコネクタごと止めます。社員は自分の設定で、書き込みのツールを毎回承認に戻せます。"}}, {"@type": "Question", "name": "変更した設定はいつ社員に反映されますか？", "acceptedAnswer": {"@type": "Answer", "text": "Microsoft Learnによると、最大10分かかります。社員はサインアウトする必要はなく、Copilotを再読み込みするか、新しい会話を始めると反映されます。"}}]}</script>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<link rel="stylesheet" href="/assets/site/site.css">
+<link rel="stylesheet" href="/media/audience-filter.css?v=20261006-media-only">
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header class="hd hd--solid">
+  <a class="logo" href="/" aria-label="TechWorker ホーム">Tech<i>Worker</i></a>
+  <nav id="hd-nav" aria-label="主な行き先">
+    <a href="/services">事業・サービス</a>
+    <a href="/#concept">考え方</a>
+    <a href="/agent-cases/">事例</a>
+    <a href="/news">ニュース</a>
+    <a href="/company">会社情報</a>
+    <a href="/contact">お問い合わせ</a>
+  </nav>
+  <button class="menu" type="button" aria-label="メニューを開く" aria-controls="hd-nav" aria-expanded="false"></button>
+</header>
+<div class="subnav">
+  <div class="wrap subnav__in">
+    <a class="subnav__name" href="index.html">AI研修・導入ラボ</a>
+    <nav aria-label="メディアの行き先"><a href="https://kenshu.techworker.co.jp/">生成AI研修について</a><a href="https://kenshu.techworker.co.jp/contact/" class="subnav__cta">研修の相談</a></nav>
+  </div>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a><span class="sep">/</span>CopilotのMCPコネクタとは</nav>
+  <div class="kicker">導入と業務への組み込み</div>
+  <h1>CopilotのMCPコネクタとは｜社内システムのつなぎ方と、管理者が先に決める設定</h1>
+  <p class="dek">Microsoft 365 CopilotのMCPコネクタは、Slackや社内システムのデータをコピーせずに読み、書き込みもできます。社員が使える5つの条件、書き込みの承認、自社のMCPサーバーをつなぐ手順を、公式情報（11月23日確認）で整理します。</p>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.11.23</span><span class="dot">·</span><span>読了 8分</span>
+  </div>
+<p class="article-audience"><span class="article-audience-label">主な対象読者</span><a href="/media/kenshu/?audience=it#articles">情シス・AI導入担当</a></p>
+</header>
+
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div>
+      <a href="#what">CopilotのMCPコネクタとは何ですか？</a>
+      <a href="#when">何がいつ変わりましたか？</a>
+      <a href="#gallery">どのサービスをつなげますか？</a>
+      <a href="#default">何もしなければ社員は使える状態ですか？</a>
+      <a href="#write">Copilotはつないだ先のデータを書き換えますか？</a>
+      <a href="#custom">自社のシステムをつなぐには何が要りますか？</a>
+      <a href="#decide">情シスは今週なにを決めればよいですか？</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#next">次の一歩は何から始めればよいですか？</a>
+      <a href="#sources">出典と確認範囲</a>
+    </div></nav>
+
+  <article class="art-body">
+
+<p>Microsoft 365 Copilotには、社外のサービスや社内のシステムをMCPという共通の方式でつなぐ「フェデレーテッド コネクタ」があります。10月27日のリリースノートには、自社のMCPのコネクタを管理センターで作る機能が載りました。管理者に関わる要点は次の3つです。</p>
+<ul>
+<li><strong>仕組み：</strong>つないだ先のデータをMicrosoft 365にコピーせず、その場で読みます。社員は自分のIDでつなぎ、もともと見られる範囲だけを使います。</li>
+<li><strong>既定の状態：</strong>Microsoftが作ったコネクタは、初めの設定のままなら社員が使える対象です。</li>
+<li><strong>書き込み：</strong>書き込みや削除のツールがあるコネクタでは、社員の承認のうえで、Copilotがつないだ先のデータを書き換えます。</li>
+</ul>
+<p>公式の解説（2026年11月23日確認）をもとに、管理者が決めることを整理します。</p>
+
+<figure class="fig-inline fig-real"><a href="figs/copilot-mcp-connector-approval.jpg" target="_blank" rel="noopener"><img src="figs/copilot-mcp-connector-approval.jpg" alt="Copilotの画面。Zavaというつなぎ先で課題を作る前に、Copilotが承認を求めている。送る中身の一覧の下に、Cancel、Allow onceのボタンと、Allow for conversation、Always allowの選択肢が並ぶ。" width="1488" height="948" loading="lazy" decoding="async"></a></figure>
+<p class="fig-cap">出典：Microsoft Learn「Federated connectors overview」の画面。つないだ先へ書き込む前に、Copilotが承認を求めます（2026年11月23日に撮影）</p>
+
+<h2 id="what">CopilotのMCPコネクタとは何ですか？</h2>
+<p class="answer">社外のサービスや社内のシステムのデータを、MCPでその場で読み書きするCopilotのつなぎ口です。データをMicrosoft 365に取り込む従来のコネクタと並んで使えます。</p>
+<figure class="fig-inline"><a href="figs/copilot-mcp-connector-kata.png" target="_blank" rel="noopener"><picture><source media="(max-width:640px)" srcset="figs/copilot-mcp-connector-kata-m.png?v=1" width="960" height="1517"><img src="figs/copilot-mcp-connector-kata.png" alt="2つのつなぎ方の比較。同期型はMicrosoft 365の索引に取り込んで保存し、組織の単位でつなぐ。MCP型はMicrosoft 365にコピーせず、その場で読み書きし、社員が自分のIDでつなぐ。" width="1920" height="1080" loading="lazy" decoding="async"></picture></a></figure>
+<p>MCP（Model Context Protocol）は、AIが社外の道具につなぐ共通の方式です。2つのつなぎ方の違いは次のとおりです。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“Synced Copilot connectors index data into Microsoft Graph. Federated Copilot connectors fetch content live; no indexing takes place.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>同期型のCopilotコネクタは、データをMicrosoft Graphの索引に取り込みます。フェデレーテッドのCopilotコネクタは、中身をその場で取りに行き、索引は作りません。</p><footer>出典：<a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/connectors/federated-connectors-overview" target="_blank" rel="noopener noreferrer">Microsoft Learn「Federated connectors overview」</a>（2026年11月16日更新、2026年11月23日確認）</footer></blockquote>
+<div class="tbl-wrap">
+  <table style="min-width:600px">
+    <tr><th>項目</th><th>同期型のコネクタ</th><th>MCPのコネクタ（フェデレーテッド）</th></tr>
+    <tr><td>データの扱い</td><td>Microsoft 365の索引に取り込んで保存する</td><td>コピーせず、その場で取りに行く</td></tr>
+    <tr><td>つなぐ単位</td><td>組織の単位</td><td>社員ごとに、自分のIDでつなぐ</td></tr>
+    <tr><td>管理画面での作り方</td><td>Sync from data source</td><td>Connect to MCP server</td></tr>
+  </table>
+</div>
+<p class="fig-cap">出典：Microsoft Learn「Federated connectors overview」「Set up custom federated connectors」（2026年11月23日確認）</p>
+<p>使える場所はCopilot Chat、エージェント、Copilot Cowork、Word・Excel・PowerPoint・OutlookのCopilot、Researcherです。Researcherでは読む操作だけで、書き込みはできません。</p>
+
+<h2 id="when">何がいつ変わりましたか？</h2>
+<p class="answer">6月に一般提供が始まり、10月27日のリリースノートに自社のMCPのコネクタを作る機能が載りました。11月9日には、書き込みの操作がChatとCoworkで一般提供になりました。</p>
+<div class="tbl-wrap">
+  <table style="min-width:620px">
+    <tr><th>日付</th><th>変わったこと</th><th>出典</th></tr>
+    <tr><td>2026年6月2日</td><td>フェデレーテッド コネクタの一般提供。Copilot Chat、Researcher、ExcelのAgent Modeで使える</td><td>リリースノート</td></tr>
+    <tr><td>2026年7月15日</td><td>管理センターのCopilot、Connectorsのタブで、MCPのコネクタを配って管理できる</td><td>リリースノート</td></tr>
+    <tr><td>2026年10月27日</td><td>管理者が自社のMCPのコネクタを管理センターで作り、組織に配れる機能が載る（Roadmap ID 501585）</td><td>リリースノート</td></tr>
+    <tr><td>2026年11月9日</td><td>コネクタの書き込み（作成・更新・削除）が、Copilot ChatとCoworkで一般提供</td><td>Microsoft Copilot Blog</td></tr>
+    <tr><td>2026年11月11日</td><td>コネクタの一覧を1つにまとめ、Chat、Word、Excel、PowerPoint、Researcherで同じ一覧を使う</td><td>Microsoft Copilot Blog</td></tr>
+    <tr><td>2026年11月16日更新</td><td>解説に、作成・更新・削除のツールと、社員の承認の手順が載っている</td><td>Microsoft Learn</td></tr>
+  </table>
+</div>
+<p class="fig-cap">出典：Microsoft 365 Copilot release notes（2026年11月18日更新）、Microsoft Copilot Blog「Turn Copilot insights into action with connector write capabilities」（2026年11月9日）、「Microsoft Copilot Connectors Update: October 2026」（2026年11月11日）、Microsoft Learn「Federated connectors overview」（いずれも2026年11月23日確認）</p>
+<p>10月27日のリリースノートは自社のコネクタについて次のように書いています。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“Admins can create custom Model Context Protocol (MCP) connectors in the Microsoft 365 Admin Centre and deploy them across Microsoft 365.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>管理者はMicrosoft 365 管理センターで独自のMCPコネクタを作り、Microsoft 365全体に配ることができます。</p><footer>出典：<a href="https://learn.microsoft.com/en-us/copilot/microsoft-365/release-notes" target="_blank" rel="noopener noreferrer">Microsoft 365 Copilot release notes</a>（2026年10月27日の項、2026年11月23日確認）</footer></blockquote>
+<p>この項目に、自社のテナントで使えるようになる日と、日本での提供時期は書かれていません。管理センターの画面で確かめます。</p>
+
+<h2 id="gallery">どのサービスをつなげますか？</h2>
+<p class="answer">Microsoftのギャラリーに、16の分類でコネクタが並んでいます。Slack、Box、Notion、マネーフォワードなども入っています。</p>
+<p>ギャラリーのコネクタは、Microsoftが公開した物と、パートナーが申請してMicrosoftが承認した物です。11月23日の時点の一覧から、日本の会社でも使われているサービスをTechWorkerが選び、分類ごとに並べました。</p>
+<div class="tbl-wrap">
+  <table style="min-width:560px">
+    <tr><th>分類</th><th>サービスの例</th></tr>
+    <tr><td>会計・財務</td><td>Money Forward、Intuit QuickBooks、Square</td></tr>
+    <tr><td>共同作業</td><td>Slack、Zoom、Gmail、Atlassian Rovo、Miro、Trello</td></tr>
+    <tr><td>顧客管理（CRM）</td><td>Salesforce（プレビュー）、HubSpot、Zoho CRM、Intercom</td></tr>
+    <tr><td>ファイルと文書</td><td>Box、Dropbox、Egnyte</td></tr>
+    <tr><td>コンテンツ管理</td><td>DocuSign、Templafy</td></tr>
+    <tr><td>業務の効率化</td><td>Notion、Google Calendar、Airtable、Zapier、DeepL MCP</td></tr>
+    <tr><td>プロジェクト管理</td><td>Asana、monday.com、Smartsheet、Azure DevOps</td></tr>
+    <tr><td>ITサービス管理</td><td>ServiceNow、Cloudflare、Zoho Desk</td></tr>
+    <tr><td>法務・人事</td><td>LAWGUE、Gusto、Darwinbox、Harvey</td></tr>
+  </table>
+</div>
+<p class="fig-cap">出典：Microsoft Learn「Federated connectors overview」のコネクタの一覧（2026年11月23日確認）。一覧は変わります。自社の管理センターのギャラリーで確かめてください</p>
+<p>コネクタを使うには、つなぐ先のサービスの契約とアカウントが別に要ります。社員は自分のアカウントでサインインし、そのサービスで見られる範囲だけをCopilotから使います。</p>
+
+<h2 id="default">何もしなければ社員は使える状態ですか？</h2>
+<p class="answer">Microsoftが作ったコネクタは、初めの設定のままなら、Copilotのライセンスを持つ社員が使える対象です。外部の会社が作ったコネクタは、管理者が許可したときだけ使えます。</p>
+<figure class="fig-inline"><a href="figs/copilot-mcp-connector-jouken.png" target="_blank" rel="noopener"><picture><source media="(max-width:640px)" srcset="figs/copilot-mcp-connector-jouken-m.png?v=1" width="960" height="1710"><img src="figs/copilot-mcp-connector-jouken.png" alt="社員がコネクタを使える5つの条件。1、作り手ごとの許可か、コネクタを個別にオン。2、コネクタがオン。3、使える人の上限（既定は全員）。4、段階展開の対象。5、Copilotのライセンスがあり、本人が自分のIDでつなぐ。" width="1920" height="1080" loading="lazy" decoding="async"></picture></a></figure>
+<p>Microsoft Learnは既定の扱いを次のように書いています。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“Microsoft-built federated connectors are available by default when you select Allow agents and plugins built by Microsoft in Agent and plugin access and include the user in User access.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>Microsoftが作ったフェデレーテッド コネクタは、Agent and plugin accessでAllow agents and plugins built by Microsoftを選び、その社員をUser accessに含めていれば、既定で使えます。</p><footer>出典：<a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/connectors/federated-connectors-overview" target="_blank" rel="noopener noreferrer">Microsoft Learn「Federated connectors overview」</a>（2026年11月16日更新、2026年11月23日確認）</footer></blockquote>
+<p>User accessの既定はAll users（全員）です。社員がコネクタを使えるのは、次の5つの条件が全部そろったときです。ただし作り手ごとの許可で止めていても、管理者がそのコネクタ1つを個別にオンにすれば使えます。</p>
+<div class="tbl-wrap">
+  <table style="min-width:640px">
+    <tr><th>設定</th><th>管理センターの場所</th><th>コネクタへの効き方</th></tr>
+    <tr><td>Agent and plugin access（作り手ごとの許可）</td><td>Agents、Settings</td><td>Microsoft製・自社製・外部製ごとに、まとめて許可するか止める。今後出るコネクタにも効く</td></tr>
+    <tr><td>Enable / Disable</td><td>Copilot、Connectors、Your connections</td><td>コネクタ1つをオンにするか、設定を残して止める</td></tr>
+    <tr><td>User access（使える人の上限）</td><td>Agents、Settings</td><td>All users（既定）、指定した人とグループ、No usersから選ぶ</td></tr>
+    <tr><td>Staged rollout（段階展開）</td><td>Copilot、Connectors、Your connections</td><td>コネクタ1つを、どの人とグループに出すか決める</td></tr>
+    <tr><td>Microsoft 365 Copilotのライセンス</td><td>ライセンスの割り当て</td><td>社員ごとに要る。つなぐ先には社員が自分のIDでサインインする</td></tr>
+  </table>
+</div>
+<p class="fig-cap">出典：Microsoft Learn「Federated connectors overview」「Set up custom federated connectors」（2026年11月23日確認）。Agents、Toolsの画面でコネクタを止めても、Disableと同じ効き目です</p>
+<p>外部の会社のコネクタを止めるには、Agent and plugin accessでAllow agents and plugins built by external publishersのチェックを外します。すでに出ている外部のコネクタは、段階展開がNo usersになります。6月2日のリリースノートは、新しいコネクタが社員に出る前の7日間の確認期間に、管理者が評価するよう勧めています。</p>
+<p>Copilotの席とクレジットの年額を、人数から出せるExcelを用意しました。コネクタを試す人数の見積もりに使えます。</p>
+<div class="tw-lead" data-offer="copilot-ignite-sheet" data-campaign="copilot-mcp-connector" data-pos="mid"></div>
+
+<h2 id="write">Copilotはつないだ先のデータを書き換えますか？</h2>
+<p class="answer">作成・更新・削除のツールがあるコネクタでは、社員が承認すると書き換えます。書き込みのツールはコネクタに含まれていて、別にオンにする設定はありません。</p>
+<p>書き込みの操作は2026年11月9日の公式ブログで、Copilot ChatとCoworkでの一般提供が発表されました。冒頭の画面のとおり、Copilotは書き込む前に、送る中身を見せて承認を求めます。社員が選べるのは次の4つです。</p>
+<div class="tbl-wrap">
+  <table style="min-width:560px">
+    <tr><th>選ぶ物</th><th>何が起きるか</th></tr>
+    <tr><td>Allow once（1回だけ許可）</td><td>今回だけ実行する。次に同じツールを使うときに、また聞く</td></tr>
+    <tr><td>Allow for conversation（この会話の間は許可）</td><td>この会話の残りでは、同じツールについて聞かない</td></tr>
+    <tr><td>Always allow（常に許可）</td><td>社員が設定を戻すか、発行元がツールを変えるまで聞かない</td></tr>
+    <tr><td>Cancel（取り消す）</td><td>実行しない。つないだ先のデータは変わらない</td></tr>
+  </table>
+</div>
+<p class="fig-cap">出典：Microsoft Learn「Federated connectors overview」（2026年11月16日更新、2026年11月23日確認）</p>
+<p>読むためのツールは承認なしで動きます。書き込みのツールの既定はNeeds approval（毎回承認）で、発行元が新しい書き込みのツールを足したときも毎回承認から始まります。管理者の側の扱いは次のように書かれています。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“Write, update, and delete tools are part of the connector and aren't enabled separately.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>書き込み・更新・削除のツールはコネクタの一部で、別々にはオンにしません。</p><footer>出典：<a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/connectors/federated-connectors-overview" target="_blank" rel="noopener noreferrer">Microsoft Learn「Federated connectors overview」</a>（2026年11月16日更新、2026年11月23日確認）</footer></blockquote>
+<p>管理センターのAgents、Toolsには、ツールごとに止める機能があると書かれています。ただし書き込みのツールだけを止める手順は、確認した資料にありません。書き込みを出したくないコネクタは、コネクタごと止めるのが確実です。</p>
+<p>操作は社員の権限の範囲で行われ、管理者はMicrosoft Purviewで記録を確かめられます。Microsoftは、操作が社員自身の権限で行われることを伝えるため、書き込みのツールがあるコネクタを使う前に、社員とヘルプデスクへの案内を更新するよう勧めています。</p>
+
+<h2 id="custom">自社のシステムをつなぐには何が要りますか？</h2>
+<p class="answer">MCPサーバーのURLと、グローバル管理者かAI管理者の役割が要ります。認証を先に整え、管理センターのConnect to MCP serverから作ります。</p>
+<figure class="fig-inline fig-real"><a href="figs/copilot-mcp-connector-create.png" target="_blank" rel="noopener"><img src="figs/copilot-mcp-connector-create.png" alt="Microsoft 365 管理センターのConnectorsの画面。Custom connectorの種類として、MCPでその場でつなぐConnect to MCP serverと、Microsoft 365に取り込むSync from data sourceが並び、Connect to MCP serverが赤い枠で囲まれている。" width="1253" height="645" loading="lazy" decoding="async"></a></figure>
+<p class="fig-cap">出典：Microsoft Learn「Set up custom federated connectors」の画面。自社のコネクタはConnect to MCP serverから作ります（2026年11月23日に撮影）</p>
+<p>始める前にそろえる物は次のとおりです。</p>
+<ul>
+<li><strong>MCPサーバー：</strong>Copilotに使わせるツール（検索、取得、作成など）を出すサーバーのURL。送信元のIPで絞っている場合は、Microsoft 365 Copilotの固定のIPを許可します。</li>
+<li><strong>役割：</strong>管理センターのグローバル管理者かAI管理者。Microsoft Entraでのシングルサインオンを使うなら、Entraの管理者の役割も要ります。</li>
+<li><strong>登録：</strong>Teams Developer Portalを使える状態と、開発者名、サイト、プライバシーポリシー、利用規約のURL。</li>
+<li><strong>認証：</strong>Microsoft Entraのシングルサインオン、OAuth 2.0、認証なしの3つから選びます。</li>
+</ul>
+<p>作る手順は次のとおりです。</p>
+<ol>
+<li>選んだ認証をTeams Developer Portalに登録し、登録IDを控えます（認証なしの場合は不要）。</li>
+<li>Microsoft 365 管理センターで、Copilot、Connectors、Galleryの順に開きます。</li>
+<li>Created by your orgのCreate a new connectorで、Addを押します。</li>
+<li>Custom connectorの画面で、Connect to MCP serverのAddを押します。</li>
+<li>表示名、説明、MCPサーバーの宛先（Base URL）、登録ID（認証なしの場合は不要）を入れて保存します。</li>
+<li>Your connectionsでStaged rolloutを選び、試す人かグループを足します。全員に出すときはDeploy to all usersを押します。</li>
+</ol>
+<p>設定の変更が全体に届くまで、最大10分かかります。社員の側はCopilotを再読み込みするか、新しい会話を始めると反映されます。ギャラリーに出して他社にも使ってもらうには、Microsoftへの申請と承認が別にあります。</p>
+
+<h2 id="decide">情シスは今週なにを決めればよいですか？</h2>
+<p class="answer">外部の会社のコネクタを止めるか、使う人をどこまで絞るか、書き込みのあるコネクタを誰に出すか、「常に許可」をどこまで認めるかを決めます。</p>
+<figure class="fig-inline"><a href="figs/copilot-mcp-connector-kimeru.png" target="_blank" rel="noopener"><picture><source media="(max-width:640px)" srcset="figs/copilot-mcp-connector-kimeru-m.png?v=1" width="960" height="1572"><img src="figs/copilot-mcp-connector-kimeru.png" alt="情シスが今週決める4つ。1、外部製を止めるか。2、使う人をUser accessでグループに絞るか。3、書き込みのあるコネクタを試す人だけに段階展開する。4、常に許可を使ってよい操作を社内ルールで決める。" width="1920" height="1080" loading="lazy" decoding="async"></picture></a></figure>
+<p>ここからはTechWorkerの提案です。</p>
+<ol>
+<li><strong>外部の会社のコネクタを止めるか決める：</strong>Agent and plugin accessの3つのチェックが、いまどうなっているかを見ます。審査の前に外部のコネクタを出したくない会社は、外部製のチェックを外し、使うコネクタだけを個別にオンにします。</li>
+<li><strong>使う人を絞るか決める：</strong>User accessが全員のままなら、まずCopilotを試すグループに絞ります。</li>
+<li><strong>書き込みのあるコネクタは試す人だけに出す：</strong>Staged rolloutで情報システム部門などに出し、Purviewで操作の記録を確かめてから広げます。</li>
+<li><strong>「常に許可」の社内ルールを決める：</strong>コメントの追加は常に許可でよい、データの削除は毎回承認する、のように操作ごとに書きます。</li>
+</ol>
+<p>自社のシステムをつなぐ場合は、まず読むツールだけを出すMCPサーバーで試すと、書き込みの審査を後に回せます。Copilotの席とクレジットの全体は<a href="copilot-houjin-keiyaku.html">Microsoft 365 Copilotの法人料金と契約</a>に、Coworkの使い方とクレジットの上限は<a href="copilot-cowork-toha.html">Copilot Coworkとは</a>にまとめています。11月のIgniteで発表された管理の機能は<a href="ignite-2026-copilot.html">Microsoft Ignite 2026のCopilotまとめ</a>で扱っています。</p>
+
+<h2 id="faq">よくある質問</h2>
+<div class="faq"><div class="q">CopilotのMCPコネクタを使うのに、追加の料金はかかりますか？</div><p class="a">確認したMicrosoft Learnの解説に、コネクタ自体の料金の記載はありません。社員にはMicrosoft 365 Copilotのライセンスが要り、つなぐ先のサービスの契約も別に要ります。</p></div>
+<div class="faq"><div class="q">コネクタでつないだデータは、Microsoft 365に保存されますか？</div><p class="a">保存されません。フェデレーテッド コネクタはつないだ先のデータをMicrosoft 365にコピーせず、その場で取りに行きます。書き込みの操作では、必要な中身がつないだ先へ送られます。</p></div>
+<div class="faq"><div class="q">社員が自分でSlackやNotionをCopilotにつなげますか？</div><p class="a">管理者がそのコネクタを使える状態にしていれば、社員はCopilot Chatの設定にあるSourcesから、自分のアカウントでつなげます。管理者が止めたコネクタは、社員の一覧に出ません。</p></div>
+<div class="faq"><div class="q">書き込みのツールは別にオンにする必要がありますか？</div><p class="a">要りません。書き込み・更新・削除のツールはコネクタの一部で、コネクタを出すと一緒に使えます。書き込みのツールだけを止める手順は確認した資料にないため、出したくない場合はコネクタごと止めます。社員は自分の設定で、書き込みのツールを毎回承認に戻せます。</p></div>
+<div class="faq"><div class="q">変更した設定はいつ社員に反映されますか？</div><p class="a">Microsoft Learnによると、最大10分かかります。社員はサインアウトする必要はなく、Copilotを再読み込みするか、新しい会話を始めると反映されます。</p></div>
+
+<h2 id="next">次の一歩は何から始めればよいですか？</h2>
+<p class="answer">管理センターのAgents、Settingsで、作り手ごとの許可と使える人の設定を開くことから始めます。</p>
+<ol>
+<li>Agent and plugin accessとUser accessが、いまどうなっているかを確かめます。</li>
+<li>Copilot、Connectors、Your connectionsで、オンになっているコネクタを並べます。</li>
+<li>書き込みのあるコネクタを試すグループと、「常に許可」の社内ルールを決めます。</li>
+</ol>
+<p>TechWorkerではCopilotの研修を、受講者の実際の業務1本から組みます。教材は公式の変更に合わせて毎週見直し、30日後に使った人の割合と1件の時間を測って報告します。検討段階のご相談だけでも歓迎です。</p>
+<div class="tw-lead" data-offer="copilot-ignite-sheet" data-campaign="copilot-mcp-connector" data-pos="end"></div>
+
+<h2 id="sources">出典と確認範囲</h2>
+<p class="source-note">確認日：2026年11月23日。自社のMCPのコネクタを作る機能が自社のテナントで使える日、日本での提供時期、コネクタ自体の料金は、確認した公式の資料に書かれていません。TechWorkerの環境では、MCPのコネクタの作成と書き込みの承認の画面を確かめていません。ギャラリーの一覧は変わるため、設定の時点で自社の管理センターを確認してください。今週決めることの4項目と、読むツールから試す進め方はTechWorkerの提案です。</p>
+<ol class="source-list"><li><a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/connectors/federated-connectors-overview" target="_blank" rel="noopener noreferrer">Microsoft Learn「Federated connectors overview」（2026年11月16日更新）</a></li><li><a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/connectors/set-up-custom-federated-connectors" target="_blank" rel="noopener noreferrer">Microsoft Learn「Set up custom federated connectors」（2026年10月19日更新）</a></li><li><a href="https://learn.microsoft.com/en-us/copilot/microsoft-365/release-notes" target="_blank" rel="noopener noreferrer">Microsoft 365 Copilot release notes（2026年6月2日・7月15日・10月27日の項）</a></li><li><a href="https://techcommunity.microsoft.com/blog/microsoft-copilot-blog/turn-copilot-insights-into-action-with-connector-write-capabilities/4571160" target="_blank" rel="noopener noreferrer">Microsoft Copilot Blog「Turn Copilot insights into action with connector write capabilities」（2026年11月9日）</a></li><li><a href="https://techcommunity.microsoft.com/blog/microsoft-copilot-blog/microsoft-copilot-connectors-update-october-2026/4572240" target="_blank" rel="noopener noreferrer">Microsoft Copilot Blog「Microsoft Copilot Connectors Update: October 2026」（2026年11月11日）</a></li></ol>
+
+</article>
+</div>
+
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div>
+    <p>上場企業を含む50社超・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>Copilotの研修を、受講者の実際の業務1本から組みます。</h3>
+    <p>コネクタと管理者の設定、社内の決まりの点検から、研修当日に業務1本をAIに任せる形まで作り、30日後に数で測って報告します。教材は公式の変更に合わせて毎週見直します。検討段階のご相談だけでも歓迎です。</p>
+  </div>
+  <a href="https://kenshu.techworker.co.jp/?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=copilot-mcp-connector&amp;utm_content=end" class="btn">研修内容・費用を相談する <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="https://kenshu.techworker.co.jp/" style="color:var(--electric);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">生成AI法人研修（主要ツール全対応）</a>　／　<a href="https://kenshu.techworker.co.jp/contact/" style="color:var(--electric);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">無料相談</a></p>
+<div class="back-list"><a href="index.html">← AI研修・導入ラボの記事一覧に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="copilot-cowork-toha.html" class="related-card"><span class="rc-cat">導入と業務への組み込み</span><div class="rc-title">Copilot Coworkの料金とライセンス｜Copilot（月4,497円）＋使った分・Chatとの違い</div></a>
+    <a href="ignite-2026-copilot.html" class="related-card"><span class="rc-cat">導入と業務への組み込み</span><div class="rc-title">Microsoft Ignite 2026のCopilotまとめ｜管理者が見る発表とAgent 365・ライセンスの変更</div></a>
+  </div>
+</div></section>
+
+<p style="max-width:var(--measure);margin:40px auto 0;padding:0 20px;font-size:12px;color:var(--slate);line-height:1.9;">本記事は株式会社TechWorkerが独自に作成したものであり、Microsoft Corporationとの提携・後援・承認を受けたものではありません。Microsoft、Microsoft 365、Copilot、Microsoft Purview、Microsoft EntraはMicrosoft Corporationの商標です。そのほかの会社名・サービス名は各社の商標です。</p>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__in">
+      <div>
+        <p class="ft__name">株式会社TechWorker</p>
+        <p class="ft__addr">〒169-0051 東京都新宿区西早稲田一丁目22番3号<br>早稲田アントレプレナーシップセンター</p>
+      </div>
+      <nav aria-label="フッターの行き先">
+        <a href="/services">事業・サービス</a>
+        <a href="/company">会社情報</a>
+        <a href="/news">ニュース</a>
+        <a href="/#concept">考え方</a>
+        <a href="/agent-cases/">事例</a>
+        <a href="/contact">お問い合わせ</a>
+        <a href="/privacy">プライバシーポリシー</a>
+      </nav>
+    </div>
+    <div class="nv-badge"><a href="/news/013"><img src="/assets/badges/nvidia-inception-program.svg" alt="NVIDIA Inception Program" width="93" height="40" loading="lazy"></a><p>NVIDIA、NVIDIA ロゴ、NVIDIA Inception は、米国およびその他の国における NVIDIA Corporation の商標および/または登録商標です。</p></div>
+    <small>© TechWorker Inc.</small>
+  </div>
+</footer>
+
+<script>
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+<script src="/media/article-tracker.js?v=20261120i" defer></script>
+<script>
+// スマホの行き先：右上の釦で開け閉めする。行き先を押したら閉じる。スクロールしたら頭に暗い面を敷く
+(() => {
+  const hd = document.querySelector('.hd'), btn = hd.querySelector('.menu');
+  const set = open => { hd.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く'); };
+  btn.addEventListener('click', () => set(!hd.classList.contains('is-open')));
+  hd.querySelector('nav').addEventListener('click', e => { if (e.target.closest('a')) set(false); });
+  const onScroll = () => hd.classList.toggle('is-scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+})();
+</script>
+<script src="../lead.js?v=20261120f" defer></script>
+</body>
+</html>
