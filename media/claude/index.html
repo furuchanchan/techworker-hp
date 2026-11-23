@@ -43,7 +43,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 
 <style>
 /* ===== Claude ラボ（2026-11-23）：1画面目は本体HPの壁を Claude の色（地 #FAF9F5・差し色 #D97757）で敷く。記事は主役1本＋新着2本＋表紙の3列を1つの格子に。動きは壁の流れる3列だけ ===== */
-body.cl{--bg:#FAF9F5;--bg2:#F0EEE6;--bg3:#E8E6DC;--ln:#D1CFC5;--tx:#141413;--tx2:#30302E;--tx3:#5E5D59;--ac:#D97757;--ac-d:#C6613F;
+body.cl{--bg:#FAF9F5;--bg2:#F0EEE6;--bg3:#E8E6DC;--ln:#D1CFC5;--tx:#141413;--tx2:#30302E;--tx3:#5E5D59;--ac:#D97757;--ac-d:#C6613F;--ac-b:#B5532F;--ac-bh:#9C4527;
   --electric:#141413;--electric-dark:#30302E;--ink:#141413;--slate:#5E5D59;--white:#FFFFFF;--line:#E8E6DC;--line-2:#D1CFC5;
   --edge:calc(max(0px,(100vw - var(--wrap)) / 2) + var(--pad));background:var(--bg);color:var(--tx);font-size:16px;letter-spacing:.02em;}
 .cl h1,.cl h2,.cl h3,.cl .c-t,.cl .c-btn{font-feature-settings:"palt";letter-spacing:.02em;word-break:auto-phrase;}
@@ -51,14 +51,14 @@ body.cl{--bg:#FAF9F5;--bg2:#F0EEE6;--bg3:#E8E6DC;--ln:#D1CFC5;--tx:#141413;--tx2
 /* 上の帯と足：地の色に合わせる */
 .cl .subnav{background:var(--bg);border-bottom:1px solid var(--bg3);}
 .cl .subnav nav a:hover{color:var(--ac-d);}
-.cl .subnav nav .subnav__cta{background:var(--ac);color:var(--tx);}
-.cl .subnav nav .subnav__cta:hover{background:var(--ac-d);color:var(--tx);filter:none;}
+.cl .subnav nav .subnav__cta{background:var(--ac-b);color:#fff;}
+.cl .subnav nav .subnav__cta:hover{background:var(--ac-bh);color:#fff;filter:none;}
 .cl .ft{background:var(--bg2);}
 /* 釦 */
 .c-btn{display:inline-flex;align-items:center;gap:18px;min-height:54px;padding:0 26px;border-radius:6px;font:700 15px/1 var(--f-body);text-decoration:none;transition:background .2s,color .2s;}
 .c-btn .arw{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;}
-.c-btn--main{background:var(--ac);color:var(--tx);}
-.c-btn--main:hover{background:var(--ac-d);}
+.c-btn--main{background:var(--ac-b);color:#fff;}
+.c-btn--main:hover{background:var(--ac-bh);}
 .c-btn--sub{color:var(--tx);box-shadow:inset 0 0 0 1.5px var(--tx);}
 .c-btn--sub:hover{background:var(--bg2);}
 .c-go{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:15px;color:var(--tx);text-decoration:underline;text-decoration-color:var(--ac);text-decoration-thickness:2px;text-underline-offset:7px;}
@@ -137,8 +137,8 @@ body.cl{--bg:#FAF9F5;--bg2:#F0EEE6;--bg3:#E8E6DC;--ln:#D1CFC5;--tx:#141413;--tx2
 .c-docs .tw-lead{background:transparent;border:0;box-shadow:none;border-radius:0;padding:0;}
 
 /* 資料の欄（lead.js）と右下の小窓（cv-dock.js）の釦も、黒い地に白い字にしない。光る筋と脈打つ動きは止める */
-.cl .tw-lead button,.cl .tw-lead .tl-go,.cl .twd-b,.cl .twd-pill{background:var(--ac);color:var(--tx);box-shadow:none;}
-.cl .tw-lead button:hover,.cl .tw-lead .tl-go:hover,.cl .twd-b:hover,.cl .twd-pill:hover{background:var(--ac-d);color:var(--tx);}
+.cl .tw-lead button,.cl .tw-lead .tl-go,.cl .twd-b,.cl .twd-pill{background:var(--ac-b);color:#fff;box-shadow:none;}
+.cl .tw-lead button:hover,.cl .tw-lead .tl-go:hover,.cl .twd-b:hover,.cl .twd-pill:hover{background:var(--ac-bh);color:#fff;}
 .cl .twd-b{animation:none;}
 .cl .twd-b::after{display:none;}
 
