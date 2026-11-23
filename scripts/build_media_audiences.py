@@ -20,11 +20,13 @@ MEDIA = {'gyomuzu': '業務図ラボ', 'kenshu': '導入ラボ', 'interview': 'A
 
 def lab_of(path):
     # フォルダを動かさずに作ったラボ（labs）の記事は、そのラボの一覧に載る。それ以外はフォルダの一覧
-    folder, name = path.split('/')[1], path.rsplit('/', 1)[1]
+    # media の直下の記事（media/token-cost.html）は dir が '' のラボ（Token ラボ）に入る。ラボに入らなければ今までどおり path の2つ目を返す
+    parts = path.split('/')
+    folder, name = (parts[1] if len(parts) > 2 else ''), parts[-1]
     for key, lab in LABS.items():
         if folder == lab['dir'] and name.startswith(tuple(lab['prefixes'])):
             return key
-    return folder
+    return parts[1]
 VERSION = '20261006-media-only'
 
 def required(pattern, text, label):

@@ -6,7 +6,8 @@
 2. 元のフォルダの一覧（例 media/kenshu/index.html）からラボの記事の行を外す
 3. ラボの一覧ページ（media/<ラボ>/index.html）の記事一覧（主役1本＋新着2本＋残り）と ItemList を作り直す
 読者の絞り込み（data-audience と件数）は、最後に scripts/build_media_audiences.py を流して付ける。
-2026-11-23 に Claude ラボを作ったときに足した。"""
+2026-11-23 に Claude ラボを作ったときに足した。
+同じ日に Token ラボのため、dir が "" のラボ（media の直下の記事。パンくずにラボの段が無い）も扱えるようにした。直下の元の一覧は media/index.html（build_home.py が作る）なので、元の一覧から外す手順は飛ばす。"""
 import html
 import json
 import re
@@ -62,12 +63,18 @@ def read(path):
 
 def fix_article(path, key, lab):
     text = path.read_text()
-    hub = f"../{key}/"
+    root = lab["dir"] == ""  # media の直下の記事（Token ラボ）。ラボの一覧は1段下
+    hub = f"{key}/" if root else f"../{key}/"
     name = esc(lab["name"])
     out = one(r'<a class="subnav__name" href="[^"]*">[^<]*</a>',
               f'<a class="subnav__name" href="{hub}">{name}</a>', text, f"{path.name} 上の帯")
-    out = one(r'(<a href="\.\./index\.html">メディア</a><span class="sep">/</span>)<a href="[^"]*">[^<]*</a>',
-              lambda m: m.group(1) + f'<a href="{hub}">{name}</a>', out, f"{path.name} パンくず")
+    if root:
+        # 直下の記事のパンくずは「ホーム / メディア / 題」。ラボの段が無ければ足し、あれば付け替える
+        out = one(r'(<a href="index\.html">メディア</a><span class="sep">/</span>)(<a href="[^"]*/">[^<]*</a><span class="sep">/</span>)?',
+                  lambda m: m.group(1) + f'<a href="{hub}">{name}</a><span class="sep">/</span>', out, f"{path.name} パンくず")
+    else:
+        out = one(r'(<a href="\.\./index\.html">メディア</a><span class="sep">/</span>)<a href="[^"]*">[^<]*</a>',
+                  lambda m: m.group(1) + f'<a href="{hub}">{name}</a>', out, f"{path.name} パンくず")
     # 「一覧に戻る」は古い記事に無い物や、古い書き方（← AI研修・導入ラボに戻る など）がある。あれば付け替える
     out, n = re.subn(r'<div class="back-list"><a href="[^"]*">← [^<]*に戻る</a></div>',
                      f'<div class="back-list"><a href="{hub}">← {name}の記事一覧に戻る</a></div>', out)
@@ -80,7 +87,13 @@ def fix_article(path, key, lab):
         data = json.loads(m.group(2))
         if not isinstance(data, dict) or data.get("@type") != "BreadcrumbList":
             return m.group(0)
-        third = [x for x in data["itemListElement"] if x.get("position") == 3]
+        items = data["itemListElement"]
+        if root and not any(x.get("item") == f"{SITE}media/{key}/" for x in items):
+            if [x.get("position") for x in items] != [1, 2, 3]:
+                raise SystemExit(f"{path.name}: 直下の記事のパンくずが ホーム・メディア・題 の3段でない")
+            items.insert(2, {"@type": "ListItem", "position": 3})
+            items[3]["position"] = 4
+        third = [x for x in items if x.get("position") == 3]
         if len(third) != 1:
             raise SystemExit(f"{path.name}: パンくずの3段目が無い")
         third[0]["name"] = lab["name"]
@@ -111,7 +124,7 @@ def list_span(text, label):
 
 
 def drop_from_source(key, lab, slugs):
-    if key == lab["dir"]:  # 一覧がフォルダの一覧そのもの（導入ラボ＝kenshu）。行は render_hub が作り直す
+    if key == lab["dir"] or lab["dir"] == "":  # 一覧がフォルダの一覧そのもの（導入ラボ＝kenshu）か、直下の記事（元の一覧は build_home.py が作る）
         return 0
     path = ROOT / "media" / lab["dir"] / "index.html"
     text = path.read_text()
@@ -132,7 +145,8 @@ def card(d, i, kind, pick=""):
     """記事1本。kind は feat（主役）・side（新着の2本）・row（残り）。
     分類と日付は c-meta に入れる。build_media_audiences.py が c-meta の直後に読者の札を足すので、c-meta の中に span を入れない。"""
     slug, title = i["slug"], esc(i["title"])
-    big, small = f"../{d}/covers/{slug}.png", f"../{d}/covers/thumbs/{slug}.jpg"
+    up = f"../{d}/" if d else "../"  # ラボの一覧（media/<ラボ>/）から記事のフォルダへ
+    big, small = f"{up}covers/{slug}.png", f"{up}covers/thumbs/{slug}.jpg"
     if kind == "feat":
         img = f'<img src="{big}" alt="{title}" width="1200" height="630" fetchpriority="high">'
         shown = (i["date"] + ("（更新 " + i["modified"] + "）" if i["modified"] > i["date"] else "")).replace("-", ".")
@@ -142,7 +156,7 @@ def card(d, i, kind, pick=""):
         shown = i["date"].replace("-", ".")
     head = f'<span class="cc-pick">{esc(pick)}</span>' if pick else ""
     go = f'<span class="c-go">記事を読む{ARROW}</span>' if kind == "feat" else ""
-    return (f'<a class="cc cc--{kind}" href="../{d}/{slug}.html">{img}<span class="cc-b">{head}'
+    return (f'<a class="cc cc--{kind}" href="{up}{slug}.html">{img}<span class="cc-b">{head}'
             f'<span class="cc-m"><span class="c-meta">{esc(i["cat"])}<i>{shown}</i></span></span>'
             f'<span class="cc-t">{title}</span><span class="cc-d">{esc(i["desc"])}</span>{go}</span></a>')
 
@@ -174,7 +188,7 @@ def render_hub(key, lab, items):
             return m.group(0)
         collections += 1
         data["mainEntity"] = {"@type": "ItemList", "itemListElement": [
-            {"@type": "ListItem", "position": n + 1, "url": f"{SITE}media/{d}/{i['slug']}", "name": i["title"]}
+            {"@type": "ListItem", "position": n + 1, "url": f"{SITE}media/{d + '/' if d else ''}{i['slug']}", "name": i["title"]}
             for n, i in enumerate(items)]}
         return m.group(1) + json.dumps(data, ensure_ascii=False) + m.group(3)
 
