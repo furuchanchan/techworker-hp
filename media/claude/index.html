@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js" data-media="claude">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}if(location.hostname==='techworker.co.jp')gtag('config', 'G-3V34NWXVCJ');
+</script>
+<script src="/assets/tw-track.js" defer></script>
+<script src="/assets/tw-event.js" defer></script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude ラボ｜Claude・Claude Code を法人で使うための実務メディア</title>
+<meta name="description" content="Claude と Claude Code を法人で使うための実務メディアです。Team・Enterprise・API の契約と料金、管理者の設定とセキュリティ、Claude Code の社内展開と研修、新しい機能の使いどころを解説します。料金や機能は Anthropic の公式資料で確かめ、確かめた日付を記事に書いています。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/claude/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Claude ラボ｜Claude・Claude Code を法人で使うための実務メディア">
+<meta property="og:description" content="Claude と Claude Code を法人で使うための実務メディアです。Team・Enterprise・API の契約と料金、管理者の設定とセキュリティ、Claude Code の社内展開と研修、新しい機能の使いどころを解説します。料金や機能は Anthropic の公式資料で確かめ、確かめた日付を記事に書いています。">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/media/claude/">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude ラボ｜Claude・Claude Code を法人で使うための実務メディア">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<link rel="stylesheet" href="../article.css?v=20261120d">
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<style>
+/* ===== Claude ラボ（業務図ラボの枠を写す：題→大きく1点→表紙つきの一覧→資料） ===== */
+
+.jz-wrap{max-width:1100px;margin:0 auto;padding:0 48px;width:100%;}
+
+/* hero */
+
+
+.jz-hero{max-width:1100px;margin:0 auto;padding:140px 48px 0;}
+.jz-hero .kicker{font-family:var(--en);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--electric);}
+.jz-hero h1{font-family:var(--jp);font-weight:700;font-size:clamp(32px,5vw,58px);line-height:1.2;letter-spacing:.02em;margin-top:18px;max-width:17ch;}
+.jz-hero .lead{font-size:18px;color:var(--slate);line-height:1.9;margin-top:24px;max-width:54ch;}
+
+/* section heading */
+
+
+.jz-sec{max-width:1100px;margin:0 auto;padding:0 48px;}
+.jz-sec-h{font-family:var(--en);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--slate);margin-bottom:24px;}
+
+/* 記事一覧 = 均一なリスト行（サムネ無し・高さ均一） */
+
+
+.jz-latest{margin-top:56px;}
+.jz-list{border-top:1px solid var(--line-2);}
+.jz-list a{display:grid;grid-template-columns:176px minmax(0,1fr) 24px;gap:28px;align-items:start;padding:26px 4px;border-bottom:1px solid var(--line);text-decoration:none;color:inherit;transition:background .2s;}
+.jz-list a:hover{background:var(--white);}
+.jz-list .l-side{display:flex;flex-direction:column;gap:7px;padding-top:3px;}
+.jz-list .l-cat{font-family:var(--en);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);}
+.jz-list .l-date{font-family:var(--en);font-size:12px;color:var(--slate);font-feature-settings:"tnum" 1;font-weight:700;}
+.jz-list .l-title{font-family:var(--jp);font-weight:700;font-size:18px;line-height:1.55;letter-spacing:.02em;color:var(--ink);transition:color .2s;}
+.jz-list a:hover .l-title{color:var(--electric);}
+.jz-list .l-desc{font-size:14px;color:var(--slate);line-height:1.75;margin-top:8px;}
+.jz-list .l-arrow{font-family:var(--en);color:var(--electric);font-size:17px;justify-self:end;align-self:center;transition:transform .2s;font-weight:700;}
+.jz-list a:hover .l-arrow{transform:translateX(4px);}
+
+/* このメディアについて */
+
+
+.jz-about{margin-top:72px;padding:40px 0 48px;border-top:1px solid var(--line);}
+.jz-about .ab-body{max-width:66ch;}
+.jz-about .ab-body p{font-size:14.5px;color:var(--slate);line-height:1.95;}
+.jz-about .ab-body p+p{margin-top:12px;}
+.jz-about .ab-body a{color:var(--electric);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--electric) 30%,transparent);}
+.jz-about .ab-body a:hover{border-bottom-color:var(--electric);}
+
+@media(max-width:880px){
+  .jz-hero{padding:108px 24px 0;}
+  .jz-sec{padding:0 24px;}
+  .jz-list a{grid-template-columns:1fr;gap:9px;padding:22px 2px;}
+  .jz-list .l-side{flex-direction:row;align-items:center;gap:12px;}
+  .jz-list .l-arrow{display:none;}
+}
+:root{--electric:#005EFF;--electric-dark:#0047C2}
+.jz-hero h1,.jz-list .l-title{word-break:auto-phrase}
+.jz-list .l-cat,.cl-feat-b .l-cat{text-transform:none;letter-spacing:.04em}
+.jz-about .ab-body a{border-bottom-color:rgba(31,41,51,.3)}
+
+/* 大きく1点：いちばん読まれている記事 */
+.cl-feat{margin-top:56px;}
+.cl-feat-card{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:36px;align-items:center;text-decoration:none;color:inherit;border:1px solid var(--line-2);border-radius:14px;background:var(--white);padding:22px;transition:border-color .2s;}
+.cl-feat-card:hover{border-color:var(--electric);}
+.cl-feat-card img{display:block;width:100%;height:auto;aspect-ratio:1200/630;border-radius:10px;border:1px solid var(--line);}
+.cl-feat-b{padding-right:12px;}
+.cl-feat-b .l-cat{font-family:var(--en);font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--electric);}
+.cl-feat-t{font-family:var(--jp);font-weight:700;font-size:clamp(20px,2.4vw,26px);line-height:1.5;letter-spacing:.02em;color:var(--ink);margin-top:10px;word-break:auto-phrase;}
+.cl-feat-d{font-size:14.5px;color:var(--slate);line-height:1.85;margin-top:12px;}
+.cl-feat-m{font-family:var(--en);font-size:12px;font-weight:700;color:var(--slate);margin-top:14px;font-feature-settings:"tnum" 1;}
+.cl-feat-go{display:inline-block;margin-top:16px;font-family:var(--jp);font-weight:700;font-size:14px;color:var(--electric);}
+/* 資料 */
+.cl-docs{margin-top:64px;}
+.cl-docs .tw-lead{margin:0;}
+/* 受け取り欄の中の試算を灰色の箱にせず、欄の中に平らに置く（箱の中の箱を作らない。記事側の試算の見た目は 11/20 からの測定中なので変えない） */
+.cl-docs .tw-lead .tl-calc{background:none;padding:0;border-radius:0;}
+.cl-docs-more{font-size:14px;color:var(--slate);line-height:1.9;margin-top:16px;}
+.cl-docs-more a{color:var(--electric);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(31,41,51,.3);}
+@media(max-width:880px){
+  .cl-feat-card{grid-template-columns:1fr;gap:18px;padding:14px;}
+  .cl-feat-b{padding:0 4px 6px;}
+}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Claude ラボ", "description": "Claude と Claude Code を法人で使うための実務メディアです。Team・Enterprise・API の契約と料金、管理者の設定とセキュリティ、Claude Code の社内展開と研修、新しい機能の使いどころを解説します。料金や機能は Anthropic の公式資料で確かめ、確かめた日付を記事に書いています。", "url": "https://techworker.co.jp/media/claude/", "inLanguage": "ja", "isPartOf": {"@type": "WebSite", "name": "TechWorker", "url": "https://techworker.co.jp/"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}, "mainEntity": {"@type": "ItemList", "itemListElement": [{"@type": "ListItem", "position": 1, "url": "https://techworker.co.jp/media/kenshu/claude-meetings-toha", "name": "Claude Meetingsとは｜Google MeetのAI議事録の料金と、管理者が決める3つの設定"}, {"@type": "ListItem", "position": 2, "url": "https://techworker.co.jp/media/kenshu/claude-enterprise-yosan-kanri", "name": "Claude Enterpriseの予算管理｜部署ごとの共有予算・コストコード・利用レポートの設定"}, {"@type": "ListItem", "position": 3, "url": "https://techworker.co.jp/media/kenshu/claude-dounyu-shien-settei-daikou", "name": "Claudeの導入支援・設定代行は何を頼めるか｜自社でやる設定と外へ出す範囲の分け方"}, {"@type": "ListItem", "position": 4, "url": "https://techworker.co.jp/media/kenshu/claude-fable-5-2-houjin", "name": "Claude Fable 5.2の料金と法人利用｜Team・Enterpriseでの使い方と、管理者が11月16日までに決めること"}, {"@type": "ListItem", "position": 5, "url": "https://techworker.co.jp/media/kenshu/claude-code-kenshu-houjin", "name": "Claude Codeの法人研修｜対象者・内容・日数・費用の決め方と、依頼前に決める5つのこと"}, {"@type": "ListItem", "position": 6, "url": "https://techworker.co.jp/media/kenshu/claude-enterprise-security-center", "name": "Claude Enterpriseのセキュリティセンター｜推奨の設定と見比べる手順"}, {"@type": "ListItem", "position": 7, "url": "https://techworker.co.jp/media/kenshu/claude-google-workspace-trial", "name": "ClaudeをGoogle Docs・Sheets・Slidesで使う｜承認と保存の確認点"}, {"@type": "ListItem", "position": 8, "url": "https://techworker.co.jp/media/kenshu/claude-code-shanai-tenkai", "name": "Claude Codeの社内展開｜社内データの扱い・設定配布・ルール雛形"}, {"@type": "ListItem", "position": 9, "url": "https://techworker.co.jp/media/kenshu/claude-code-cost", "name": "Claudeの法人契約と料金｜Team・Enterprise・APIとClaude Codeの選び方"}]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "Claude ラボ", "item": "https://techworker.co.jp/media/claude/"}]}</script>
+<link rel="stylesheet" href="/media/audience-filter.css?v=20261006-media-only">
+<script src="/media/audience-filter.js?v=20261006-media-only" defer></script>
+<link rel="stylesheet" href="/assets/site/site.css">
+</head>
+<body>
+
+<header class="hd hd--solid">
+  <a class="logo" href="/" aria-label="TechWorker ホーム">Tech<i>Worker</i></a>
+  <nav id="hd-nav" aria-label="主な行き先">
+    <a href="/services">事業・サービス</a>
+    <a href="/#concept">考え方</a>
+    <a href="/agent-cases/">事例</a>
+    <a href="/news">ニュース</a>
+    <a href="/company">会社情報</a>
+    <a href="/contact">お問い合わせ</a>
+  </nav>
+  <button class="menu" type="button" aria-label="メニューを開く" aria-controls="hd-nav" aria-expanded="false"></button>
+</header>
+<div class="subnav">
+  <div class="wrap subnav__in">
+    <a class="subnav__name" href="index.html">Claude ラボ</a>
+    <nav aria-label="メディアの行き先"><a href="index.html#about">このメディアについて</a><a href="https://kenshu.techworker.co.jp/program/?utm_source=techworker_media&amp;utm_medium=hub&amp;utm_campaign=claude&amp;utm_content=nav#claude-code" class="subnav__cta">Claude Code 研修</a></nav>
+  </div>
+</div>
+
+<main>
+
+<header class="jz-hero">
+  <span class="kicker">Claude Lab</span>
+  <h1>Claude を、会社で使える形にする。</h1>
+  <p class="lead">Claude と Claude Code を法人で使うときの判断を扱うメディアです。Team・Enterprise・API の契約と料金、管理者の設定とセキュリティ、Claude Code の社内展開と研修、新しい機能の使いどころを書いています。料金や機能は Anthropic の公式資料で確かめ、確かめた日付を記事に書いています。</p>
+</header>
+
+<!-- lab-feature:start -->
+<section class="jz-sec cl-feat">
+  <div class="jz-sec-h">いちばん読まれている記事</div>
+  <a class="cl-feat-card" href="../kenshu/claude-code-cost.html"><img src="../kenshu/covers/claude-code-cost.png" alt="Claudeの法人契約と料金｜Team・Enterprise・APIとClaude Codeの選び方" width="1200" height="630"><div class="cl-feat-b"><div class="l-cat">料金と比較</div><h2 class="cl-feat-t">Claudeの法人契約と料金｜Team・Enterprise・APIとClaude Codeの選び方</h2><p class="cl-feat-d">Claudeの法人契約は、Team・Enterprise・API従量の3つです。Teamは1人月20ドルから（年払い）で、支払いはカードだけです。請求書払いは営業経由のEnterpriseです。料金表、日本円の目安、適格請求書、稟議の手順を公式資料（2026年11月21日確認）で整理します。</p><div class="cl-feat-m">更新 2026.11.21</div><span class="cl-feat-go">記事を読む &rarr;</span></div></a>
+</section>
+<!-- lab-feature:end -->
+
+<!-- articles -->
+<section id="articles" data-audience-catalog class="jz-sec jz-latest">
+  <div class="jz-sec-h">記事一覧</div>
+<div class="audience-controls" role="group" aria-label="対象読者で絞り込む" hidden><button type="button" data-audience-filter="all" data-audience-label="すべて" aria-pressed="true" aria-controls="audience-results">すべて<span class="audience-count">9</span></button><button type="button" data-audience-filter="it" data-audience-label="情シス・AI導入担当" aria-pressed="false" aria-controls="audience-results">情シス・AI導入担当<span class="audience-count">8</span></button><button type="button" data-audience-filter="hr" data-audience-label="人事・研修担当" aria-pressed="false" aria-controls="audience-results">人事・研修担当<span class="audience-count">1</span></button><button type="button" data-audience-filter="operations" data-audience-label="業務責任者" aria-pressed="false" aria-controls="audience-results" hidden>業務責任者<span class="audience-count">0</span></button><button type="button" data-audience-filter="executive" data-audience-label="経営者・経営幹部" aria-pressed="false" aria-controls="audience-results" hidden>経営者・経営幹部<span class="audience-count">0</span></button></div>
+<p class="audience-result" role="status" aria-live="polite" aria-atomic="true">すべて：9件</p>
+<div id="audience-results" class="jz-list has-thumb rv">
+<a data-audience-item data-audience="it" href="../kenshu/claude-meetings-toha.html"><img class="l-thumb" src="../kenshu/covers/thumbs/claude-meetings-toha.jpg" alt="Claude Meetingsとは｜Google MeetのAI議事録の料金と、管理者が決める3つの設定" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">社内ルールと安全</div><div class="l-date">2026.11.20</div></div><div><div class="l-title">Claude Meetingsとは｜Google MeetのAI議事録の料金と、管理者が決める3つの設定</div><div class="l-desc">Claude Meetingsは、ClaudeがGoogle Meetの会議に参加者として入り、議事録と資料を作る機能です。2026年11月12日にTeamとEnterpriseでベータ提供が始まりました。Teamは既定でオンです。料金、3つの設定、同意の文例を公式情報（2026年11月20日確認）で整理します。</div><span class="audience-tag">情シス・AI導入担当</span></div><div class="l-arrow">&rarr;</div></a>
+<a data-audience-item data-audience="it" href="../kenshu/claude-enterprise-yosan-kanri.html"><img class="l-thumb" src="../kenshu/covers/thumbs/claude-enterprise-yosan-kanri.jpg" alt="Claude Enterpriseの予算管理｜部署ごとの共有予算・コストコード・利用レポートの設定" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">料金と比較</div><div class="l-date">2026.11.18</div></div><div><div class="l-title">Claude Enterpriseの予算管理｜部署ごとの共有予算・コストコード・利用レポートの設定</div><div class="l-desc">Claude Enterpriseでは、部署などのグループごとに月の共有予算を置けます。50・75・95・100%で課金の権限を持つ人にメールが届き、使い切ると止まります。コストコードでの集計と利用レポートも含め、設定の場所と稟議に書くことを公式ヘルプ（2026年11月18日確認）で整理します。</div><span class="audience-tag">情シス・AI導入担当</span></div><div class="l-arrow">&rarr;</div></a>
+<a data-audience-item data-audience="it" href="../kenshu/claude-dounyu-shien-settei-daikou.html"><img class="l-thumb" src="../kenshu/covers/thumbs/claude-dounyu-shien-settei-daikou.jpg" alt="Claudeの導入支援・設定代行は何を頼めるか｜自社でやる設定と外へ出す範囲の分け方" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">導入と業務への組み込み</div><div class="l-date">2026.11.17</div></div><div><div class="l-title">Claudeの導入支援・設定代行は何を頼めるか｜自社でやる設定と外へ出す範囲の分け方</div><div class="l-desc">Claudeの導入支援・設定代行で頼めることを、Team・Enterpriseの管理作業ごとに整理します。SSOや連携、保持期間の設定はオーナー以上の権限が要り、DNSとIdPの操作も自社に残ります。外へ出す範囲の分け方と頼む前の準備を、公式ヘルプ（2026年11月17日確認）で解説します。</div><span class="audience-tag">情シス・AI導入担当</span></div><div class="l-arrow">&rarr;</div></a>
+<a data-audience-item data-audience="it" href="../kenshu/claude-fable-5-2-houjin.html"><img class="l-thumb" src="../kenshu/covers/thumbs/claude-fable-5-2-houjin.jpg" alt="Claude Fable 5.2の料金と法人利用｜Team・Enterpriseでの使い方と、管理者が11月16日までに決めること" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">料金と比較</div><div class="l-date">2026.11.12</div></div><div><div class="l-title">Claude Fable 5.2の料金と法人利用｜Team・Enterpriseでの使い方と、管理者が11月16日までに決めること</div><div class="l-desc">Claude Fable 5.2は2026年11月9日に出た上位モデルで、APIは100万トークン当たり入力8ドル・出力40ドルです。Teamのプレミアム席は週の利用枠の半分まで追加料金なし、標準席は使った分の支払いです。公式情報（11月12日確認）で整理します。</div><span class="audience-tag">情シス・AI導入担当</span></div><div class="l-arrow">&rarr;</div></a>
+<a data-audience-item data-audience="hr" href="../kenshu/claude-code-kenshu-houjin.html"><img class="l-thumb" src="../kenshu/covers/thumbs/claude-code-kenshu-houjin.jpg" alt="Claude Codeの法人研修｜対象者・内容・日数・費用の決め方と、依頼前に決める5つのこと" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">研修の設計と運営</div><div class="l-date">2026.11.12</div></div><div><div class="l-title">Claude Codeの法人研修｜対象者・内容・日数・費用の決め方と、依頼前に決める5つのこと</div><div class="l-desc">Claude Codeの法人研修は、コードを書かない部署でも受けられます。対象者・内容・日数・費用の決め方と、契約や管理者の設定など依頼前に決める5つのことを、公式資料（2026年11月12日確認）とTechWorkerの研修の組み方で示します。</div><span class="audience-tag">人事・研修担当</span></div><div class="l-arrow">&rarr;</div></a>
+<a data-audience-item data-audience="it" href="../kenshu/claude-enterprise-security-center.html"><img class="l-thumb" src="../kenshu/covers/thumbs/claude-enterprise-security-center.jpg" alt="Claude Enterpriseのセキュリティセンター｜推奨の設定と見比べる手順" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">社内ルールと安全</div><div class="l-date">2026.11.10</div></div><div><div class="l-title">Claude Enterpriseのセキュリティセンター｜推奨の設定と見比べる手順</div><div class="l-desc">11月5日、Claude Enterpriseにセキュリティセンター（ベータ）が加わりました。今の設定とAnthropicの推奨の値を1ページで見比べられます。開ける人、見える内容、社内の点検での使い方を示します。</div><span class="audience-tag">情シス・AI導入担当</span></div><div class="l-arrow">&rarr;</div></a>
+<a data-audience-item data-audience="it" href="../kenshu/claude-google-workspace-trial.html"><img class="l-thumb" src="../kenshu/covers/thumbs/claude-google-workspace-trial.jpg" alt="ClaudeをGoogle Docs・Sheets・Slidesで使う｜承認と保存の確認点" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">導入と業務への組み込み</div><div class="l-date">2026.10.07</div></div><div><div class="l-title">ClaudeをGoogle Docs・Sheets・Slidesで使う｜承認と保存の確認点</div><div class="l-desc">Google Workspace用のClaudeアドオンが公開ベータに入りました。情シスは、対象ファイル、編集の承認範囲、保存条件をそろえてから試行を始めます。</div><span class="audience-tag">情シス・AI導入担当</span></div><div class="l-arrow">&rarr;</div></a>
+<a data-audience-item data-audience="it" href="../kenshu/claude-code-shanai-tenkai.html"><img class="l-thumb" src="../kenshu/covers/thumbs/claude-code-shanai-tenkai.jpg" alt="Claude Codeの社内展開｜社内データの扱い・設定配布・ルール雛形" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">Claude Codeの活用</div><div class="l-date">2026.07.29</div></div><div><div class="l-title">Claude Codeの社内展開｜社内データの扱い・設定配布・ルール雛形</div><div class="l-desc">Claude Codeの社内展開は契約とデータ方針、managed-settings.jsonによる設定配布、利用ルール、監査、パイロットからの段階展開の順で進めます。手順ごとに決めることと、利用ルールの雛形、展開前のチェックリストをまとめました。</div><span class="audience-tag">情シス・AI導入担当</span></div><div class="l-arrow">&rarr;</div></a>
+<a data-audience-item data-audience="it" href="../kenshu/claude-code-cost.html"><img class="l-thumb" src="../kenshu/covers/thumbs/claude-code-cost.jpg" alt="Claudeの法人契約と料金｜Team・Enterprise・APIとClaude Codeの選び方" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">料金と比較</div><div class="l-date">2026.07.22</div></div><div><div class="l-title">Claudeの法人契約と料金｜Team・Enterprise・APIとClaude Codeの選び方</div><div class="l-desc">Claudeの法人契約は、Team・Enterprise・API従量の3つです。Teamは1人月20ドルから（年払い）で、支払いはカードだけです。請求書払いは営業経由のEnterpriseです。料金表、日本円の目安、適格請求書、稟議の手順を公式資料（2026年11月21日確認）で整理します。</div><span class="audience-tag">情シス・AI導入担当</span></div><div class="l-arrow">&rarr;</div></a>
+    </div>
+<p class="audience-empty" hidden>このメディアには、選んだ読者向けの記事がまだありません。<br><a href="/media/#media">ほかのメディアを見る</a></p><button type="button" class="audience-more" aria-controls="audience-results" hidden>もっと見る</button></section>
+
+<!-- documents -->
+<section class="jz-sec cl-docs" id="docs">
+  <div class="jz-sec-h">資料</div>
+  <div class="tw-lead" data-offer="claude-cost-sheet" data-campaign="claude-lab" data-pos="hub"></div>
+  <p class="cl-docs-more">ほかの資料：<a href="../../library/?doc=ringi&amp;utm_source=techworker_media&amp;utm_medium=hub&amp;utm_campaign=claude&amp;utm_content=docs_ringi">Claude Code 法人導入 稟議書テンプレート</a>／<a href="../../library/?doc=security&amp;utm_source=techworker_media&amp;utm_medium=hub&amp;utm_campaign=claude&amp;utm_content=docs_security">Claude Code 企業導入 セキュリティ＆セットアップ実践ガイド</a></p>
+</section>
+
+<!-- training -->
+<section class="jz-sec" style="margin-top:40px;">
+  <aside class="inline-dx-cta" data-cta-placement="band" style="border:1px solid var(--line-2);border-radius:14px;background:var(--white);padding:30px 32px;display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
+    <div style="flex:1;min-width:260px;">
+      <div style="font-family:var(--jp);font-size:12px;font-weight:700;color:var(--electric);">法人研修</div>
+      <div style="font-family:var(--jp);font-weight:700;font-size:clamp(18px,2.4vw,22px);color:var(--ink);line-height:1.5;margin-top:9px;">Claude Code 研修</div>
+      <div style="font-size:14px;color:var(--slate);line-height:1.85;margin-top:7px;max-width:54ch;">セットアップと安全な設定から、手元の Excel と文書を読んで下書きを作る道具づくりまでを、1日（6時間）の講義と操作演習で行います。コードを書く経験は要りません。</div>
+    </div>
+    <a href="https://kenshu.techworker.co.jp/program/?utm_source=techworker_media&amp;utm_medium=hub&amp;utm_campaign=claude&amp;utm_content=band#claude-code" class="btn" style="white-space:nowrap;flex:none;color:var(--paper);border-bottom:none;">研修の内容を見る <i>&rarr;</i></a>
+  </aside>
+</section>
+
+<section class="jz-sec jz-about" id="about">
+  <div class="jz-sec-h">このメディアについて</div>
+  <div class="ab-body">
+    <p>「Claude ラボ」は、生成AIの法人研修と導入支援を行う<a href="../../index.html">株式会社TechWorker</a>が運営するメディアです。TechWorker は Anthropic 社のスタートアップ支援プログラム「<a href="../../news/011">Claude for Startups</a>」に採択されています。</p>
+    <p>記事は Anthropic の公式の料金表・ヘルプ・発表をもとに書き、料金や機能は確かめた日付を記事に書いています。</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__in">
+      <div>
+        <p class="ft__name">株式会社TechWorker</p>
+        <p class="ft__addr">〒169-0051 東京都新宿区西早稲田一丁目22番3号<br>早稲田アントレプレナーシップセンター</p>
+      </div>
+      <nav aria-label="フッターの行き先">
+        <a href="/services">事業・サービス</a>
+        <a href="/company">会社情報</a>
+        <a href="/news">ニュース</a>
+        <a href="/#concept">考え方</a>
+        <a href="/agent-cases/">事例</a>
+        <a href="/contact">お問い合わせ</a>
+        <a href="/privacy">プライバシーポリシー</a>
+      </nav>
+    </div>
+    <div class="nv-badge"><a href="/news/013"><img src="/assets/badges/nvidia-inception-program.svg" alt="NVIDIA Inception Program" width="93" height="40" loading="lazy"></a><p>NVIDIA、NVIDIA ロゴ、NVIDIA Inception は、米国およびその他の国における NVIDIA Corporation の商標および/または登録商標です。</p></div>
+    <small>© TechWorker Inc.</small>
+  </div>
+</footer>
+
+<script>
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+<script src="../lead.js?v=20261120f" defer></script>
+<script src="/media/article-tracker.js?v=20261120i" defer></script>
+<script>
+// スマホの行き先：右上の釦で開け閉めする。行き先を押したら閉じる。スクロールしたら頭に暗い面を敷く
+(() => {
+  const hd = document.querySelector('.hd'), btn = hd.querySelector('.menu');
+  const set = open => { hd.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く'); };
+  btn.addEventListener('click', () => set(!hd.classList.contains('is-open')));
+  hd.querySelector('nav').addEventListener('click', e => { if (e.target.closest('a')) set(false); });
+  const onScroll = () => hd.classList.toggle('is-scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+})();
+</script>
+</body>
+</html>

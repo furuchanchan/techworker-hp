@@ -5,6 +5,7 @@ Run after article and hub generation: python3 scripts/build_media_audiences.py
 from pathlib import Path
 from urllib.parse import urlsplit
 import collections
+import posixpath
 import html
 import json
 import re
@@ -14,7 +15,16 @@ ROOT = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else Path(__file__).reso
 DATA = json.loads((ROOT / 'media/audiences.json').read_text())
 ROLES = DATA['roles']
 ARTICLES = DATA['articles']
-MEDIA = {'gyomuzu': '業務図ラボ', 'kenshu': 'AI研修・導入ラボ', 'interview': 'AIインタビュー・ラボ', 'security': 'AIセキュリティ・ラボ'}
+LABS = DATA.get('labs', {})
+MEDIA = {'gyomuzu': '業務図ラボ', 'kenshu': 'AI研修・導入ラボ', 'interview': 'AIインタビュー・ラボ', 'security': 'AIセキュリティ・ラボ'} | {k: v['name'] for k, v in LABS.items()}
+
+def lab_of(path):
+    # フォルダを動かさずに作ったラボ（labs）の記事は、そのラボの一覧に載る。それ以外はフォルダの一覧
+    folder, name = path.split('/')[1], path.rsplit('/', 1)[1]
+    for key, lab in LABS.items():
+        if folder == lab['dir'] and name.startswith(tuple(lab['prefixes'])):
+            return key
+    return folder
 VERSION = '20261006-media-only'
 
 def required(pattern, text, label):
@@ -47,7 +57,9 @@ def controls(items):
     buttons = []
     for key, label in [('all', 'すべて'), *ROLES.items()]:
         count = len(items) if key == 'all' else counts[key]
-        buttons.append(f'<button type="button" data-audience-filter="{key}" data-audience-label="{label}" aria-pressed="{str(key == "all").lower()}" aria-controls="audience-results">{label}<span class="audience-count">{count}</span></button>')
+        # 0件の読者の釦は押しても空なので隠す（2026-11-23、Claude ラボで 0 の釦が2つ並んだ）
+        hidden = ' hidden' if key != 'all' and count == 0 else ''
+        buttons.append(f'<button type="button" data-audience-filter="{key}" data-audience-label="{label}" aria-pressed="{str(key == "all").lower()}" aria-controls="audience-results"{hidden}>{label}<span class="audience-count">{count}</span></button>')
     return '<div class="audience-controls" role="group" aria-label="対象読者で絞り込む" hidden>' + ''.join(buttons) + '</div>\n' + f'<p class="audience-result" role="status" aria-live="polite" aria-atomic="true">すべて：{len(items)}件</p>\n'
 
 def ending():
@@ -67,7 +79,7 @@ def build():
         text = (ROOT / path).read_text()
         text = re.sub(r'\s*<p class="article-audience"[^>]*>.*?</p>\s*', '', text, flags=re.S)
         head = required(r'<header class="art-head">.*?</header>', text, path)
-        group = path.split('/')[1]
+        group = lab_of(path)
         reader = f'<a href="/media/{group}/?audience={role}#articles">{ROLES[role]}</a>' if group in MEDIA else tag(role)
         label = f'\n<p class="article-audience"><span class="article-audience-label">主な対象読者</span>{reader}</p>\n'
         updated = head[0][:-len('</header>')].rstrip() + label + '</header>'
@@ -93,13 +105,15 @@ def build():
             fragment = match[0]
             href = required(r'href="([^"]+)"', fragment, path)[1]
             part = urlsplit(html.unescape(href)).path
-            article_path = f'media/{media}/{part}'
+            article_path = posixpath.normpath(f'media/{media}/{part}')
             if not article_path.endswith('.html'):
                 article_path += '.html'
             if article_path not in ARTICLES:
                 raise ValueError(f'{path}: unclassified card {href}')
             if article_path in members:
                 raise ValueError(f'{path}: duplicate card {href}')
+            if lab_of(article_path) != media:
+                raise ValueError(f'{path}: {article_path} belongs to {lab_of(article_path)} (scripts/build_lab_hubs.py moves it)')
             members.append(article_path)
             role = ARTICLES[article_path]
             fragment = fragment.replace('<a ', f'<a data-audience-item data-audience="{role}" ', 1)
@@ -119,7 +133,7 @@ def build():
         changes[path] = assets(text[:start] + section + text[end:], catalog=True)
 
     # Archived media remain reachable at their existing article URLs but are not reintroduced into active navigation.
-    expected = {p for p in ARTICLES if p.split('/')[1] in MEDIA}
+    expected = {p for p in ARTICLES if lab_of(p) in MEDIA}
     if listed != expected:
         raise ValueError(f'Hub coverage mismatch: missing={sorted(expected-listed)}, extra={sorted(listed-expected)}')
     # All inventory and markup checks pass before the first write.
