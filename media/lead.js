@@ -19,6 +19,9 @@
         "件名から承認者まで、［　］を埋めれば出せる稟議書の文例",
         "入力してよい情報・だめな情報を決める、社内利用ルールの雛形"
       ],
+logos: [["/assets/logos/chatgpt.png", "ChatGPT"], ["/assets/logos/claude.svg", "Claude"], ["/assets/logos/gemini-2025.png", "Gemini"], ["/assets/copilot/microsoft/copilot.svg", "Microsoft 365 Copilot"]],
+      img: "/library/figs/ai-contract-pack-table.jpg",
+      imgAlt: "4社の法人プランの比較表。ChatGPT・Claude・Gemini・Microsoft 365 Copilot の入口の契約と、1人当たりの月額を並べた表。",
       url: "/library/ai-contract-pack.html",
       nl: "kenshu"
     },
@@ -33,6 +36,7 @@
         "2つの質問に答えると、Agent 365 の要否が出る",
         "稟議に足す行の文例と、今週決める5つの担当・期限の表"
       ],
+logos: [["/assets/copilot/microsoft/copilot.svg", "Microsoft 365 Copilot"], ["/assets/copilot/microsoft/excel.svg", "Excel"]],
       calc: "copilot",
       url: "/library/copilot-ignite-sheet.html",
       nl: "kenshu"
@@ -48,6 +52,7 @@
         "件名から見直しの時期まで、［　］を埋めれば出せる稟議の行の文例",
         "契約を決めて稟議に載せるまでの5つの手順と、担当・期限の表"
       ],
+logos: [["/assets/logos/claude.svg", "Claude"], ["/assets/copilot/microsoft/excel.svg", "Excel"]],
       calc: "claude",
       url: "/library/claude-cost-sheet.html",
       nl: "kenshu"
@@ -60,6 +65,8 @@
         "自社の担当と工程を書き込める空の型（業務図の下書き・工程ごとの書き込み表）",
         "工程ごとに「AIが自動で／AIが下書き／人が行う」を決める3つの見方"
       ],
+img: "/library/figs/gyomuzu/accounting.png",
+      imgAlt: "経理の月次の締めの業務図の例。各部署・経理担当・経理責任者・AIの段に、工程ごとの担当が並ぶ。",
       url: "/library/gyomuzu-templates.html",
       nl: "gyomuzu"
     }
@@ -69,6 +76,9 @@
     ".tw-lead{margin:40px 0;border:1px solid var(--line,rgba(13,17,23,.1));border-radius:14px;background:#fff;padding:24px 22px;box-shadow:0 1px 0 rgba(13,17,23,.04)}" +
     ".tw-lead *{box-sizing:border-box}" +
     ".tw-lead .tl-kicker{font-size:12px;letter-spacing:.06em;color:var(--electric-dark,#0047C2);font-weight:700;margin:0 0 6px}" +
+    ".tw-lead .tl-lg{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 12px}" +
+    ".tw-lead .tl-lg span{display:inline-flex;align-items:center;gap:8px;border:1px solid #D5D9E0;border-radius:6px;background:#fff;padding:5px 12px 5px 8px;font-size:13px;font-weight:700;color:var(--ink,#0D1117)}" +
+    ".tw-lead .tl-lg img{display:block;height:22px;width:auto}" +
     ".tw-lead .tl-img{display:block;width:100%;height:auto;margin:14px 0 6px;border:1px solid #D9D9D9;border-radius:8px;background:#fff}" +
     ".tw-lead .tl-title{font-size:20px;line-height:1.45;font-weight:700;color:var(--ink,#0D1117);margin:0 0 4px}" +
     ".tw-lead .tl-sub{font-size:13.5px;color:var(--slate,#4A5059);margin:0 0 12px;line-height:1.7}" +
@@ -269,6 +279,12 @@
     if (done()) { renderDone(box, offer); return; }
 
     box.appendChild(el("p", { class: "tl-kicker" }, offer.kicker || "無料で受け取る"));
+    if (offer.logos) {
+      // 公式ロゴ（加工しない）で、何の資料かを先に見せる（2026-11-23 古野さん「ロゴとかそういうものがあったりするとめっちゃ安心する」）
+      var lgs = el("div", { class: "tl-lg" });
+      offer.logos.forEach(function (l) { var c = el("span"); c.appendChild(el("img", { src: l[0], alt: "", width: "22", height: "22" })); c.appendChild(document.createTextNode(l[1])); lgs.appendChild(c); });
+      box.appendChild(lgs);
+    }
     box.appendChild(el("p", { class: "tl-title" }, offer.title));
     box.appendChild(el("p", { class: "tl-sub" }, offer.sub));
     var f = el("form", { novalidate: "" });

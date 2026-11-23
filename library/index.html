@@ -87,6 +87,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--electric);outline-o
 .res-card:not(.is-soon):hover{border-color:var(--electric);transform:translateY(-4px);box-shadow:0 18px 44px rgba(13,17,23,.08);}
 .res-card:not(.is-soon):hover::after{width:100%;}
 .res-card.security::after{background:var(--violet);}
+.res-img{display:block;width:calc(100% + 60px);max-width:none;height:auto;aspect-ratio:680/300;object-fit:cover;margin:-32px -30px 22px;border-bottom:1px solid var(--line);background:#EEF0F3;}
+.res-lg{display:flex;gap:8px;margin:0 0 14px;}
+.res-lg img{display:block;height:32px;width:auto;}
 .res-kind{font-family:var(--en);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);padding-left:11px;align-self:flex-start;}
 .res-card.security .res-kind{color:var(--violet);border-color:var(--violet);}
 .res-card.soon .res-kind{color:var(--slate);border-color:var(--line-2);}
@@ -197,6 +200,7 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
 
       <!-- MICROSOFT COPILOT USE CASES -->
       <article class="res-card">
+        <div class="res-lg" aria-hidden="true"><img src="/assets/copilot/microsoft/studio.svg" alt="" width="32" height="32"></div>
         <span class="res-kind">社内問い合わせ</span>
         <h3>社内規程の問い合わせ対応エージェント</h3>
         <p>SharePointの規程やマニュアルを参照し、質問に応じて必要な情報と参照先を案内する社内エージェント。</p>
@@ -205,6 +209,7 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
       </article>
 
       <article class="res-card">
+        <div class="res-lg" aria-hidden="true"><img src="/assets/copilot/microsoft/automate.svg" alt="" width="32" height="32"></div>
         <span class="res-kind">申請・承認</span>
         <h3>申請受付・承認・通知の自動連携</h3>
         <p>申請データを起点に、担当者への承認依頼、結果の記録、申請者への通知を一つのフローに。</p>
@@ -213,6 +218,7 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
       </article>
 
       <article class="res-card">
+        <div class="res-lg" aria-hidden="true"><img src="/assets/copilot/microsoft/copilot.svg" alt="" width="32" height="32"><img src="/assets/copilot/microsoft/teams.svg" alt="" width="32" height="32"></div>
         <span class="res-kind">会議・情報共有</span>
         <h3>会議から議事録・次のアクションを整理</h3>
         <p>会議の議論から、決定事項・未決事項・担当者と期限を整理。議事録のたたき台を作成します。</p>
@@ -221,6 +227,7 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
       </article>
 
       <article class="res-card">
+        <div class="res-lg" aria-hidden="true"><img src="/assets/copilot/microsoft/copilot.svg" alt="" width="32" height="32"><img src="/assets/copilot/microsoft/word.svg" alt="" width="32" height="32"></div>
         <span class="res-kind">営業・企画</span>
         <h3>商談メモから提案書の骨子を作成</h3>
         <p>顧客の課題、提案の方向性、未確認事項を整理し、検討に使える文書のたたき台へ。</p>
@@ -229,6 +236,7 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
       </article>
 
       <article class="res-card">
+        <div class="res-lg" aria-hidden="true"><img src="/assets/copilot/microsoft/copilot.svg" alt="" width="32" height="32"><img src="/assets/copilot/microsoft/excel.svg" alt="" width="32" height="32"></div>
         <span class="res-kind">集計・分析</span>
         <h3>売上データの傾向分析と確認ポイント</h3>
         <p>部門別・商品別のデータをもとに、変化や差分を整理。分析の入口となる気づきを得ます。</p>
@@ -237,6 +245,7 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
       </article>
 
       <article class="res-card">
+        <div class="res-lg" aria-hidden="true"><img src="/assets/copilot/microsoft/copilot.svg" alt="" width="32" height="32"><img src="/assets/copilot/microsoft/powerpoint.svg" alt="" width="32" height="32"></div>
         <span class="res-kind">報告・資料作成</span>
         <h3>報告メモからスライドの構成を作成</h3>
         <p>報告メモをもとに、結論・根拠・課題・次の打ち手を整理し、資料づくりの初稿を支援します。</p>
@@ -245,6 +254,7 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
       </article>
 
       <article class="res-card">
+        <div class="res-lg" aria-hidden="true"><img src="/assets/copilot/microsoft/copilot.svg" alt="" width="32" height="32"><img src="/assets/copilot/microsoft/outlook.svg" alt="" width="32" height="32"></div>
         <span class="res-kind">メール対応</span>
         <h3>メールの要点整理と返信案の作成</h3>
         <p>メールの経緯や依頼事項を整理し、相手に合わせた返信案の作成を支援します。</p>
@@ -254,6 +264,7 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
 
       <!-- CASES (live) -->
       <article class="res-card">
+        <img class="res-img" src="/media/cv/cases.jpg?v=20261123-logo" alt="2026年版 生成AI活用事例集の中身の1ページ" width="680" height="300" loading="lazy">
         <span class="res-kind">活用事例集</span>
         <h3>2026年版<br>生成AI活用事例集</h3>
         <p>業種別に「成果が出た現場」をBefore→Afterと数値で収録。社内提案・意思決定の判断材料にそのまま使えます。</p>
@@ -263,6 +274,7 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
 
       <!-- SECURITY (live) -->
       <article class="res-card security">
+        <img class="res-img" src="/media/cv/security.jpg?v=20261123-logo" alt="Claude Code 企業導入 セキュリティ＆セットアップ実践ガイドの中身の1ページ" width="680" height="300" loading="lazy">
         <span class="res-kind">セキュリティ</span>
         <h3>Claude Code 企業導入<br>セキュリティ＆セットアップ実践ガイド</h3>
         <p>「使いたいが、情シスが止める」を外す。生成AIコーディングを安全に全社展開するための設計を、経営の言葉で解説します。</p>
@@ -272,6 +284,7 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
 
       <!-- RINGI (live) -->
       <article class="res-card">
+        <img class="res-img" src="/media/cv/ringi.jpg?v=20261123-logo" alt="Claude Code 法人導入 稟議書テンプレートの中身の1ページ" width="680" height="300" loading="lazy">
         <span class="res-kind">稟議書</span>
         <h3>Claude Code 法人導入<br>稟議書テンプレート</h3>
         <p>Team・Enterprise・API従量の料金比較表と、［　］を埋めて使える稟議書の文例をまとめました。</p>
@@ -281,11 +294,42 @@ src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"
 
       <!-- GYOMUZU (live) -->
       <article class="res-card">
+        <img class="res-img" src="/media/cv/gyomuzu.jpg?v=20261123-logo" alt="部署別 業務図テンプレート集 AIに任せる工程の見つけ方つきの中身の1ページ" width="680" height="300" loading="lazy">
         <span class="res-kind">業務図</span>
         <h3>部署別 業務図テンプレート集<br>AIに任せる工程の見つけ方つき</h3>
         <p>5部署の業務図の例と、自社用の空の型、AIに任せる工程の札の付け方をまとめました。</p>
         <div class="res-meta"><span>5部署の例</span><span>空の型つき</span><span>PDF / Web</span></div>
         <div class="res-actions"><button class="btn js-download" data-doc="gyomuzu">無料でダウンロード <i>↓</i></button></div>
+      </article>
+
+      <!-- AI CONTRACT PACK (live) -->
+      <article class="res-card">
+        <img class="res-img" src="/media/cv/contract.jpg?v=20261123-logo" alt="生成AIの法人契約 稟議パックの中身の1ページ" width="680" height="300" loading="lazy">
+        <span class="res-kind">稟議パック</span>
+        <h3>生成AIの法人契約<br>稟議パック</h3>
+        <p>ChatGPT・Claude・Gemini・Microsoft 365 Copilot の法人プランの比較表と、稟議書・社内利用ルールの雛形をまとめました。</p>
+        <div class="res-meta"><span>4社の比較表</span><span>雛形2つ</span><span>PDF / Web</span></div>
+        <div class="res-actions"><button class="btn js-download" data-doc="contract">無料でダウンロード <i>↓</i></button></div>
+      </article>
+
+      <!-- CLAUDE COST SHEET (live) -->
+      <article class="res-card">
+        <img class="res-img" src="/media/cv/claude-cost.jpg?v=20261123-logo" alt="Claude 法人契約の 費用試算シートの中身の1ページ" width="680" height="300" loading="lazy">
+        <span class="res-kind">Excel</span>
+        <h3>Claude 法人契約の<br>費用試算シート</h3>
+        <p>人数と1人当たりの利用量を入れると、Team・Enterprise・API従量の月額と年額、稟議に載せる行が出ます。</p>
+        <div class="res-meta"><span>4シート</span><span>2026年11月20日の価格</span><span>Excel</span></div>
+        <div class="res-actions"><button class="btn js-download" data-doc="claudecost">無料でダウンロード <i>↓</i></button></div>
+      </article>
+
+      <!-- COPILOT IGNITE SHEET (live) -->
+      <article class="res-card">
+        <img class="res-img" src="/media/cv/copilot-ignite.jpg?v=20261123-logo" alt="Copilot 稟議の 追加分シートの中身の1ページ" width="680" height="300" loading="lazy">
+        <span class="res-kind">Excel</span>
+        <h3>Copilot 稟議の<br>追加分シート</h3>
+        <p>Microsoft Ignite 2026 を受けて、人数と上限を入れると Copilot・Agent 365・クレジットの月額と年額、稟議に貼る文が出ます。</p>
+        <div class="res-meta"><span>5シート</span><span>2026年11月18日の価格</span><span>Excel</span></div>
+        <div class="res-actions"><button class="btn js-download" data-doc="copilotsheet">無料でダウンロード <i>↓</i></button></div>
       </article>
 
       <!-- ROADMAP (coming soon) -->
@@ -370,6 +414,9 @@ addEventListener('scroll',function(){var n=document.querySelector('nav');if(n)n.
     cases:{nl:'kenshu',title:'2026年版 生成AI活用事例集',url:'cases-2026.html',points:['化学メーカー：新素材のアイデア出しを、発散から収束まで1時間で','大手製薬：市場リサーチを内製化し、外注費を削減','さくらインターネット：全社300名のAI研修']},
     security:{nl:'security',title:'Claude Code 企業導入 セキュリティ＆セットアップ実践ガイド',url:'claude-code-security.html',points:['情シスの確認にそのまま使える10項目のチェックリスト','情報漏洩・過剰な権限・外部依存の3大リスク','権限・シークレット・監査ログなど5つの設計原則']},
     ringi:{nl:'kenshu',title:'Claude Code 法人導入 稟議書テンプレート｜料金比較表つき',url:'claude-code-ringi.html',points:['Team・Enterprise・API従量の料金比較表（2026年9月30日確認）','人数と統制の要件で選ぶ、規模別の契約の選び方','件名から承認者まで、［　］を埋めて使える稟議書の文例']},
+    claudecost:{nl:'kenshu',title:'Claude 法人契約の費用試算シート（Excel）',url:'claude-cost-sheet.html',points:['Team Standard・Premium・Enterprise・API従量を、月額（ドル）と年額（円・税込）で1枚に（2026年11月20日に公式で確認した価格）','件名から見直しの時期まで、［　］を埋めれば出せる稟議の行の文例','契約を決めて稟議に載せるまでの5つの手順と、担当・期限の表']},
+    copilotsheet:{nl:'kenshu',title:'Copilot 稟議の追加分シート（Ignite 2026 対応・Excel）',url:'copilot-ignite-sheet.html',points:['席の料金・Agent 365・クレジットの上限を、月額と年額で1枚に（2026年11月18日に公式で確認した価格）','2つの質問に答えると、Agent 365 の要否が出る','稟議に足す行の文例と、今週決める5つの担当・期限の表']},
+    contract:{nl:'kenshu',title:'生成AIの法人契約 稟議パック｜4社の料金比較表つき',url:'ai-contract-pack.html',points:['4社の法人プランの料金・最低席数・データの扱いを1枚に（公式で確認した日付つき）','件名から承認者まで、［　］を埋めれば出せる稟議書の文例','入力してよい情報・だめな情報を決める、社内利用ルールの雛形']},
     gyomuzu:{nl:'gyomuzu',title:'部署別 業務図テンプレート集｜AIに任せる工程の見つけ方つき',url:'gyomuzu-templates.html',points:['経理・人事労務・カスタマー対応・総務法務・営業の5部署の業務図の例','自社の業務をそのまま書き込める空の型','AIに任せる工程を決める札の付け方（2つの質問）'],color:'#1F2933',colorDark:'#0B0F14',focusRing:'rgba(31,41,51,.12)'}
   };
   var STORE_KEY='tw_library_unlocked';
@@ -398,7 +445,7 @@ addEventListener('scroll',function(){var n=document.querySelector('nav');if(n)n.
       openModal(doc);
     });
   });
-  // ?doc=cases / ?doc=security / ?doc=gyomuzu / ?doc=ringi で開くと、その資料の受け取りを最初から開く（メディアの申込み枠から来た時）
+  // ?doc=cases / ?doc=security / ?doc=gyomuzu / ?doc=ringi / ?doc=claudecost / ?doc=copilotsheet / ?doc=contract で開くと、その資料の受け取りを最初から開く（メディアの申込み枠から来た時）
   (function(){var d=new URLSearchParams(location.search).get('doc');if(!d||!DOCS[d])return;if(isUnlocked()){location.replace(DOCS[d].url);return;}openModal(d);})();
   document.getElementById('modalClose').addEventListener('click',closeModal);
   overlay.addEventListener('keydown',function(e){if(e.key!=='Tab')return;var els=overlay.querySelectorAll('a[href],button:not([disabled]),input,textarea');if(!els.length)return;var first=els[0],last=els[els.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}});
