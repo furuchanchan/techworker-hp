@@ -21,7 +21,8 @@ LD = re.compile(r'(<script type="application/ld\+json">)(.*?)(</script>)', re.S)
 
 
 def articles():
-    for p in sorted((ROOT / "media").glob("*/*.html")) + [ROOT / "media" / "token-management.html"]:
+    # media の直下の記事は Token ラボの token-* だけ（2026-11-23。前は token-management だけを名指しで読み、11/11 の token-cost が抜けていた）
+    for p in sorted((ROOT / "media").glob("*/*.html")) + sorted((ROOT / "media").glob("token-*.html")):
         if p.name == "index.html" or not p.exists():
             continue
         t = p.read_text(encoding="utf-8")
@@ -109,7 +110,8 @@ def llms(arts):
     labs = json.loads(aud.read_text(encoding="utf-8")).get("labs", {}) if aud.exists() else {}
     def hub(p):
         for key, lab in labs.items():
-            if p.parent.name == lab["dir"] and p.stem.startswith(tuple(lab["prefixes"])):
+            d = "" if p.parent == ROOT / "media" else p.parent.name  # dir が "" のラボは media の直下の記事（Token ラボ）
+            if d == lab["dir"] and p.stem.startswith(tuple(lab["prefixes"])):
                 return ROOT / "media" / key
         return p.parent
     by = {}

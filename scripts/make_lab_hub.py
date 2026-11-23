@@ -169,6 +169,29 @@ LABS = {
                  "how-many-interviews-s1", "how-many-interviews-s2", "internal-interview-cases-s1", "interview-analysis-s1",
                  "interview-tools-comparison-s2"],
     },
+    # Token ラボ（2026-11-23）：media の直下の token-* の記事（URL は /media/token-cost のまま）。案内は研修。TechWorker の色。
+    # 図の中に製品のロゴがある token-cost-2・token-management-1 は壁に使わない
+    "token": {
+        "name": "Token ラボ",
+        "colors": ["#FAFBFC", "#F0F2F5", "#E6E9EE", "#D5D9E0", "#11161D", "#2B323C", "#5A6677",
+                   "#005EFF", "#0050D9", "#005EFF", "#0047C2", "#EDF0F4", "#D9DEE5", "250,251,252"],
+        "color_note": "TechWorker の色（地 #FAFBFC・差し色 #005EFF）",
+        "title": "Token ラボ｜生成AIのトークンの費用と使い方を決めるための実務メディア",
+        "desc": ("生成AIのトークンの費用と使い方を決めるための実務メディアです。トークンコストの計算と主要モデルの単価、社員の利用からの月額の見積もり、"
+                 "トークンマキシングの事例と問題点、代わりに記録する項目を、各社の公式の料金表と報道をもとに、確かめた日付つきで解説します。"),
+        "h1": "AIのトークンを、",
+        "h1_rest": '<span class="nw">費用と成果で<br class="sp">決める。</span>',
+        "line": "生成AIのトークンの費用の見積もり方と、使い方の決め方を扱うメディアです。",
+        "lead": "トークンコストの計算と主要モデルの単価表、社員の利用からの月額の見積もり、トークンマキシングの事例と問題点、作業ごとに記録する項目を書いています。",
+        "train_anchor": "how",
+        "train_name": "生成AI研修",
+        "train_text": ("最初の60分は全員が共通編を受け、そのあと、お使いの製品の編に進みます。"
+                       "受講者は全員、事前に実際の業務を1つ書き、研修の中でその業務をAIに任せる形まで作ります。"),
+        "offer": "ai-contract-pack",
+        "docs": [("cases", "2026年版 生成AI活用事例集")],
+        "about": "料金の記事は各社の公式の料金表を、事例の記事は各社の報道と解説をもとに書き、確かめた日付を記事に書いています。",
+        "figs": ["token-cost-1", "token-management-2"],
+    },
 }
 
 # 研修へ案内するラボの既定。研修以外へ案内するラボは LABS に cta（行き先・上の札・釦の字）を書く

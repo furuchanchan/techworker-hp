@@ -10,9 +10,9 @@ class Markup(HTMLParser):
  def handle_starttag(self,tag,attrs):self.tags.append((tag,dict(attrs)))
 def check():
  data=json.loads((ROOT/'media/audiences.json').read_text());roles=data['roles'];articles=data['articles'];errors=[];labs=data.get('labs',{})
- def lab_of(path):
-  folder,name=path.split('/')[1],path.rsplit('/',1)[1]
-  return next((k for k,l in labs.items() if folder==l['dir'] and name.startswith(tuple(l['prefixes']))),folder)
+ def lab_of(path):  # media の直下の記事は dir が '' のラボ（Token ラボ）に入る
+  parts=path.split('/');folder,name=(parts[1] if len(parts)>2 else ''),parts[-1]
+  return next((k for k,l in labs.items() if folder==l['dir'] and name.startswith(tuple(l['prefixes']))),parts[1])
  actual={str(p.relative_to(ROOT)) for p in (ROOT/'media').rglob('*.html') if re.search(r'<article\b[^>]*class="[^"]*art-body',p.read_text())}
  if actual!=set(articles):errors.append('Article inventory does not match audience assignments')
  if set(roles)!={'it','hr','operations','executive'}:errors.append('Expected four approved audiences')
