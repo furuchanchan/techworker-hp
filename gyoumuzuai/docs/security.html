@@ -30,7 +30,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Inter+Tight:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/companymap/docs.css?v=20261019a">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "TechArticle", "headline": "データの取り扱い", "description": "業務図・資料・聞き取りの情報を、どこに保存し、だれが見られ、AIにどう渡すかをまとめました。情報システム・人事のご確認にお使いください。", "url": "https://techworker.co.jp/gyoumuzuai/docs/security", "inLanguage": "ja", "dateModified": "2026-10-24", "about": {"@type": "Service", "name": "ギョウムズAI", "url": "https://techworker.co.jp/gyoumuzuai"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ギョウムズAI", "item": "https://techworker.co.jp/gyoumuzuai"}, {"@type": "ListItem", "position": 2, "name": "Docs", "item": "https://techworker.co.jp/gyoumuzuai/docs/"}, {"@type": "ListItem", "position": 3, "name": "データの取り扱い", "item": "https://techworker.co.jp/gyoumuzuai/docs/security"}]}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "TechArticle", "headline": "データの取り扱い", "description": "業務図・資料・聞き取りの情報を、どこに保存し、だれが見られ、AIにどう渡すかをまとめました。情報システム・人事のご確認にお使いください。", "url": "https://techworker.co.jp/gyoumuzuai/docs/security", "inLanguage": "ja", "dateModified": "2026-11-23", "about": {"@type": "Service", "name": "ギョウムズAI", "url": "https://techworker.co.jp/gyoumuzuai"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ギョウムズAI", "item": "https://techworker.co.jp/gyoumuzuai"}, {"@type": "ListItem", "position": 2, "name": "Docs", "item": "https://techworker.co.jp/gyoumuzuai/docs/"}, {"@type": "ListItem", "position": 3, "name": "データの取り扱い", "item": "https://techworker.co.jp/gyoumuzuai/docs/security"}]}]}</script>
 </head>
 <body class="docs"><svg width="0" height="0" style="position:absolute"><defs><symbol id="logo" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#0B0B0C"/><path d="M45 17H30C23.9 17 19 21.9 19 28V36C19 42.1 23.9 47 30 47H45" fill="none" stroke="#FFFFFF" stroke-width="5.2" stroke-linecap="round"/><circle cx="47" cy="17" r="5.6" fill="#FFFFFF"/><rect x="12.5" y="25.5" width="13" height="13" rx="3.5" fill="#0B0B0C" stroke="#FFFFFF" stroke-width="4.4"/><circle cx="47" cy="47" r="5.6" fill="#FFFFFF"/></symbol></defs></svg>
 <nav class="nav"><div class="bar"><a class="brand" href="/gyoumuzuai"><svg class="mark"><use href="#logo"/></svg><span class="word">ギョウムズ</span><span class="ai">AI</span></a><a class="dl" href="/gyoumuzuai/docs/">Docs</a>
@@ -73,6 +73,10 @@
 <tr>
 <td>聞き取り</td>
 <td>名前・連絡先は聞きません。最初の質問で役割を選んでもらいます。声は文字にするためだけに使い、録音は残しません。残るのは、答える方が画面で確かめて送った文だけです。</td>
+</tr>
+<tr>
+<td>サービスの改善に使う範囲</td>
+<td>弊社がサービスの改善に使うのは、会社名・数値・判断の中身を除いた質問の形と工程の骨組みだけです。</td>
 </tr>
 <tr>
 <td>削除</td>
@@ -206,6 +210,7 @@
 <ul>
 <li>AIが業務図を直接書くのは、資料から作る最初の下書きと、工程の説明の空欄だけです。そのあとの変更は、AIが提案として出し、編集できる方が採用したものだけが業務図に入ります。</li>
 <li>Anthropic と Cloudflare は、法人向けの規約で、送った内容をAIの学習に使わないとしています（<a href="https://www.anthropic.com/legal/commercial-terms">Anthropic の規約</a>、<a href="https://developers.cloudflare.com/workers-ai/platform/data-usage/">Cloudflare Workers AI の説明</a>）。</li>
+<li>弊社がサービスの改善に使うのは、会社名・数値・判断の中身を除いた質問の形と工程の骨組みだけです。</li>
 <li>資料や聞き取りの答えを Claude に渡すとき、内容は米国の Anthropic に送られます。AIの処理の地域は、いまは指定していません。米国以外の設備で処理されることがあります。</li>
 <li>Anthropic の API に送った入力と出力は、Anthropic が原則30日以内に削除すると説明しています。規約に反する疑いがあると判定されたものは最長2年、安全のための分類の点数は最長7年残ることがあります（<a href="https://privacy.claude.com/en/articles/7996866">Anthropic の説明</a>、2026年7月1日更新）。入力を一切保存しない契約（Zero Data Retention）は結んでいません。</li>
 <li>他社事例の検索は、データベースの中で並べ替えます。AIは使いません。</li>
@@ -276,7 +281,7 @@
 <li>第三者による脆弱性診断の結果のご提出</li>
 </ul>
 <p>いずれも、必要なときは個別にご相談ください。対応できるかと、その時期は、ご相談のうえでお伝えします。</p>
-<p class="upd">最終更新：2026-10-24</p>
+<p class="upd">最終更新：2026-11-23</p>
 </article>
 <section class="cta" aria-label="相談と資料">
 <div><b>まずは1つの業務を、図にしてみませんか。</b><span>30分の無料相談で、AIがその部署の業務図を1枚作ります。</span></div>
