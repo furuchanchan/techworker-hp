@@ -14,7 +14,7 @@ ROOT = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else Path(__file__).reso
 DATA = json.loads((ROOT / 'media/audiences.json').read_text())
 ROLES = DATA['roles']
 ARTICLES = DATA['articles']
-MEDIA = {'gyomuzu': '業務図ラボ', 'kenshu': 'AI研修・導入ラボ', 'shigyo': '士業AIジャーナル', 'interview': 'AIインタビュー・ラボ', 'security': 'AIセキュリティ・ラボ'}
+MEDIA = {'gyomuzu': '業務図ラボ', 'kenshu': 'AI研修・導入ラボ', 'interview': 'AIインタビュー・ラボ', 'security': 'AIセキュリティ・ラボ'}
 VERSION = '20261006-media-only'
 
 def required(pattern, text, label):
