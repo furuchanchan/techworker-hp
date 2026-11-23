@@ -72,19 +72,25 @@ body{background:var(--hp);}
 .hm .mh-pop-card .mh-t{font-size:19px;}
 .hm .mh-card:hover .mh-t{text-decoration:underline;text-underline-offset:4px;}
 .hm .mh-read{display:block;margin-top:8px;font-size:13.5px;font-weight:700;color:var(--hsub);}
-/* 資料ダウンロード：表紙3枚 */
-.dl{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.dl a{display:flex;flex-direction:column;background:var(--hp);border:1px solid var(--hl);border-radius:8px;padding:14px;text-decoration:none;color:var(--hink);}
-.dl img{display:block;width:100%;height:auto;border:1px solid var(--hl);}
-.dl b{display:block;font-size:15.5px;line-height:1.5;margin:12px 0 4px;}
-.dl small{display:block;font-size:12.5px;color:var(--hmute);line-height:1.7;margin-bottom:12px;}
-.dl .btn{margin-top:auto;width:100%;min-height:42px;font-size:14px;}
-/* 業務図：横に動かせる図 */
-.gzx{position:relative;border:1px solid var(--hl);border-radius:8px;background:#FCFCFB;overflow:hidden;}
-.gzx .sc{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:thin;}
-.gzx .sc img{display:block;height:400px;width:auto;max-width:none;}
-.gzx .hint{position:absolute;right:12px;top:12px;font-size:12.5px;font-weight:700;color:var(--hsub);background:rgba(244,246,249,.95);border:1px solid var(--hl);padding:4px 10px;border-radius:999px;pointer-events:none;}
-.gzx .fade{position:absolute;top:0;bottom:0;right:0;width:56px;background:linear-gradient(90deg,rgba(252,252,251,0),#FCFCFB);pointer-events:none;}
+/* 資料ダウンロード：中身のページ1枚を大きく＋要点3つ＋2つの入口（表紙は並べない。lp-craft の u5set の型） */
+.dlset{background:#fff;border:1px solid var(--hl);padding:36px 40px 32px;}
+.dlset-hd{text-align:center;}
+.dlset-tag{display:inline-block;font-size:13px;font-weight:700;border:1.5px solid var(--hink);padding:2px 10px;margin:0 0 12px;line-height:1.7;}
+.dlset-hd h3{font-size:26px;font-weight:700;line-height:1.45;margin:0;}
+.dlset-hd>p:last-child{margin:8px auto 0;max-width:640px;font-size:16px;color:var(--hsub);word-break:auto-phrase;}
+.dlset-img{margin:24px auto 0;max-width:880px;}
+.dlset-img a{display:block;}
+.dlset-img img{display:block;width:100%;height:auto;border:1px solid var(--hl);}
+.dlset-img figcaption{margin-top:8px;font-size:13px;color:var(--hmute);text-align:center;}
+.dlset-pts{list-style:none;margin:24px auto 0;padding:0;max-width:880px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;}
+.dlset-pts li{display:flex;gap:8px;align-items:flex-start;font-size:15px;font-weight:700;line-height:1.6;word-break:auto-phrase;}
+.dlset-pts li svg{flex:none;margin-top:2px;color:var(--hblue);}
+.dlset .acts{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:26px;}
+/* 業務図：横に動かさず、2段に分けた図を幅いっぱいに。押すと元の図を開く */
+.gzx{position:relative;display:block;border:1px solid var(--hl);background:#FCFCFB;}
+.gzx img{display:block;width:100%;height:auto;}
+.gzx .hint{position:absolute;right:12px;top:12px;font-size:12.5px;font-weight:700;color:var(--hsub);background:#fff;border:1px solid var(--hl);padding:4px 10px;}
+.gzx:hover .hint{color:var(--hblue);border-color:var(--hblue);}
 .cap{font-size:13px;color:var(--hmute);margin:8px 0 0;}
 .gzx+.cap{margin-bottom:28px;}
 /* 研修のご案内 */
@@ -129,4 +135,4 @@ body{background:var(--hp);}
 @media(min-width:1024px){.feat{grid-template-columns:7fr 5fr;align-items:center;gap:40px;}}
 @media(max-width:767px){:root{--hpad:48px}.subnav.hm-sub .subnav__name{font-size:15px;}.phead{padding:28px 0 20px;}.phead .ptitle{font-size:26px;}.phead p{font-size:15px;}.sec .mh2{font-size:23px;}
 .mgrid,.hm .mh-new,.hm .mh-popular,.dl,.hm .mh-media{grid-template-columns:1fr;}.feat h2{font-size:23px;}.feat .cov .tx span,.cov .tx span{font-size:17px;}
-.gzx .sc img{height:300px;}.kx h2{font-size:24px;}.kx .nums{flex-wrap:wrap;gap:16px 24px;}.subnav.hm-sub nav{gap:8px;}.subnav.hm-sub nav .btn{display:inline-flex;padding:0 10px;min-height:34px;font-size:12px;letter-spacing:.02em;}}
+.dlset{padding:24px 16px;}.dlset-hd h3{font-size:22px;}.dlset-pts{grid-template-columns:1fr;gap:10px;}.dlset .acts .btn{width:100%;}.kx h2{font-size:24px;}.kx .nums{flex-wrap:wrap;gap:16px 24px;}.subnav.hm-sub nav{gap:8px;}.subnav.hm-sub nav .btn{display:inline-flex;padding:0 10px;min-height:34px;font-size:12px;letter-spacing:.02em;}}
