@@ -81,7 +81,7 @@
     ".tw-lead input[type=text],.tw-lead input[type=email],.tw-lead input[type=tel]{width:100%;font:inherit;font-size:15px;padding:11px 12px;border:1px solid rgba(13,17,23,.22);border-radius:8px;background:#fff;color:var(--ink,#0D1117)}" +
     ".tw-lead input:focus{outline:2px solid var(--electric,#005EFF);outline-offset:1px}" +
     ".tw-lead .tl-row{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}" +
-    ".tw-lead button{font:inherit;font-size:15px;font-weight:700;background:var(--ink,#0D1117);color:#fff;border:0;border-radius:8px;padding:12px 20px;cursor:pointer}" +
+    ".tw-lead button{font:inherit;font-size:15px;font-weight:700;background:var(--electric,#005EFF);color:#fff;border:0;border-radius:8px;padding:12px 20px;cursor:pointer}" +
     ".tw-lead button[disabled]{opacity:.6;cursor:wait}" +
     ".tw-lead .tl-fine{font-size:12px;color:var(--slate,#4A5059);line-height:1.6;margin:0}" +
     ".tw-lead .tl-fine a{color:inherit}" +
@@ -96,7 +96,7 @@
     ".tw-lead .tl-need{grid-column:1/-1;font-size:13px;font-weight:700;color:var(--ink,#0D1117);margin:0}" +
     ".tw-lead .tl-done a.tl-open{display:inline-block;margin:10px 0 6px;background:var(--electric-dark,#0047C2);color:#fff;text-decoration:none;font-weight:700;border-radius:8px;padding:12px 20px}" +
     ".tw-lead .tl-err{grid-column:1/-1;color:#B42318;font-size:13px;margin:0}" +
-    ".tw-lead a.tl-go{display:inline-block;margin:2px 0 12px;background:var(--ink,#0D1117);color:#fff;text-decoration:none;font-size:15px;font-weight:700;border-radius:8px;padding:12px 20px}" +
+    ".tw-lead a.tl-go{display:inline-block;margin:2px 0 12px;background:var(--electric,#005EFF);color:#fff;text-decoration:none;font-size:15px;font-weight:700;border-radius:8px;padding:12px 20px}" +
     ".tw-lead .tl-calc{margin:14px 0 4px;padding:16px;border-radius:10px;background:#f4f5f7}" +
     ".tw-lead .tl-ch{font-size:15px;font-weight:700;color:var(--ink,#0D1117);margin:0 0 10px}" +
     ".tw-lead .tl-cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}" +
