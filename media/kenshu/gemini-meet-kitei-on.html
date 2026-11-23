@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js" data-media="kenshu">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}if(location.hostname==='techworker.co.jp')gtag('config', 'G-3V34NWXVCJ');
+</script>
+<script src="/assets/tw-track.js" defer></script>
+<script src="/assets/tw-event.js" defer></script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google MeetのGeminiが既定でオンに｜音声翻訳とChatへの会議の要約を管理者が見直す設定【2026年11月】 — TechWorker</title>
+<meta name="description" content="Google Meetの音声翻訳と、Chatに届く会議の要約が、2026年10月から対象のWorkspaceで既定でオンです。社外のゲストも翻訳を使え、要約には社員の設定がありません。管理コンソールで止める場所と、メモの共有先の決め方を、公式ヘルプ（2026年11月24日確認）で整理します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/kenshu/gemini-meet-kitei-on">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Google MeetのGeminiが既定でオンに｜音声翻訳とChatへの会議の要約を管理者が見直す設定【2026年11月】">
+<meta property="og:description" content="Google Meetの音声翻訳と、Chatに届く会議の要約が、2026年10月から対象のWorkspaceで既定でオンです。社外のゲストも翻訳を使え、要約には社員の設定がありません。管理コンソールで止める場所と、メモの共有先の決め方を、公式ヘルプ（2026年11月24日確認）で整理します。">
+<meta property="og:image" content="https://techworker.co.jp/media/kenshu/covers/gemini-meet-kitei-on.png">
+<meta property="og:url" content="https://techworker.co.jp/media/kenshu/gemini-meet-kitei-on">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Google MeetのGeminiが既定でオンに｜音声翻訳とChatへの会議の要約を管理者が見直す設定【2026年11月】">
+<meta name="twitter:image" content="https://techworker.co.jp/media/kenshu/covers/gemini-meet-kitei-on.png">
+<link rel="stylesheet" href="../article.css?v=20261120d">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Google MeetのGeminiが既定でオンに｜音声翻訳とChatへの会議の要約を管理者が見直す設定【2026年11月】", "description": "Google Meetの音声翻訳と、Chatに届く会議の要約が、2026年10月から対象のWorkspaceで既定でオンです。社外のゲストも翻訳を使え、要約には社員の設定がありません。管理コンソールで止める場所と、メモの共有先の決め方を、公式ヘルプ（2026年11月24日確認）で整理します。", "datePublished": "2026-11-24", "dateModified": "2026-11-24", "image": "https://techworker.co.jp/media/kenshu/covers/gemini-meet-kitei-on.png", "inLanguage": "ja", "mainEntityOfPage": "https://techworker.co.jp/media/kenshu/gemini-meet-kitei-on", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/favicon.svg"}}, "citation": ["https://workspaceupdates.googleblog.com/2026/10/real-time-speech-translation-in-google-Meet-expands-to-63-languages-with-automatic-language-detection.html", "https://workspaceupdates.googleblog.com/2026/10/follow-through-on-your-meeting-tasks-with-meeting-recaps-in-Google-Chat.html", "https://knowledge.workspace.google.com/admin/meet/turn-speech-translation-on-or-off-for-meet?hl=ja", "https://knowledge.workspace.google.com/admin/meet/let-google-meet-ai-take-notes-for-my-users?hl=ja", "https://support.google.com/meet/answer/16221730?hl=en"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "Gemini ラボ", "item": "https://techworker.co.jp/media/gemini/"}, {"@type": "ListItem", "position": 4, "name": "MeetのGeminiが既定でオンに", "item": "https://techworker.co.jp/media/kenshu/gemini-meet-kitei-on"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Meetの音声翻訳は日本語に対応していますか？", "acceptedAnswer": {"@type": "Answer", "text": "対応しています。Google Meetのヘルプの対応言語の一覧に日本語が載っています（2026年11月24日確認）。2026年10月22日の発表で対応は63の言語に広がり、話している言語を自動で見分けて、聞く人ごとに選んだ言語へ訳します。"}}, {"@type": "Question", "name": "音声翻訳とChatへの会議の要約に追加の料金はかかりますか？", "acceptedAnswer": {"@type": "Answer", "text": "2つの発表に、追加料金の記載はありません。対象のエディションはどちらもBusiness Standard・Plus、Enterprise Standard・Plus、Frontline Plusなどです。Business Starterはどちらの対象にも挙がっていません。"}}, {"@type": "Question", "name": "社外のゲストが音声翻訳を使うと、会議の声は保存されますか？", "acceptedAnswer": {"@type": "Answer", "text": "Googleは声のデータを保存せず、声でモデルを学習しないと発表に書いています。会議の録画では音声翻訳は使えない、とも書かれています。"}}, {"@type": "Question", "name": "Chatに届いた会議の要約は消せますか？", "acceptedAnswer": {"@type": "Answer", "text": "消せます。会議の会話の参加者なら誰でも、カードのその他のオプション（縦の3点）から削除できます。カードを消しても、メモの文書はGoogle ドライブに残ります。"}}, {"@type": "Question", "name": "要約のカードだけを止めて、メモ生成は残せますか？", "acceptedAnswer": {"@type": "Answer", "text": "要約のカードだけを止める専用の設定は、2026年11月24日に確かめた発表と管理者ヘルプには見当たりません。発表は、主催者がメモの送り先を主催者と共同主催者のみにすると、カードは載らないと書いています。そうすると、ほかの参加者はメモを開けなくなります。"}}]}</script>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<link rel="stylesheet" href="/assets/site/site.css">
+<link rel="stylesheet" href="/media/audience-filter.css?v=20261006-media-only">
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header class="hd hd--solid">
+  <a class="logo" href="/" aria-label="TechWorker ホーム">Tech<i>Worker</i></a>
+  <nav id="hd-nav" aria-label="主な行き先">
+    <a href="/services">事業・サービス</a>
+    <a href="/#concept">考え方</a>
+    <a href="/agent-cases/">事例</a>
+    <a href="/news">ニュース</a>
+    <a href="/company">会社情報</a>
+    <a href="/contact">お問い合わせ</a>
+  </nav>
+  <button class="menu" type="button" aria-label="メニューを開く" aria-controls="hd-nav" aria-expanded="false"></button>
+</header>
+<div class="subnav">
+  <div class="wrap subnav__in">
+    <a class="subnav__name" href="../gemini/">Gemini ラボ</a>
+    <nav aria-label="メディアの行き先"><a href="https://kenshu.techworker.co.jp/">生成AI研修について</a><a href="https://kenshu.techworker.co.jp/contact/" class="subnav__cta">研修の相談</a></nav>
+  </div>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="../gemini/">Gemini ラボ</a><span class="sep">/</span>MeetのGeminiが既定でオンに</nav>
+  <div class="kicker">社内ルールと安全</div>
+  <h1>Google MeetのGeminiが既定でオンに｜音声翻訳とChatへの会議の要約を管理者が見直す設定</h1>
+  <p class="dek">Google Meetの音声翻訳と、Chatに届く会議の要約が、2026年10月から対象のWorkspaceで既定でオンです。社外のゲストも翻訳を使え、要約には社員の設定がありません。管理コンソールで止める場所と、メモの共有先の決め方を、公式ヘルプ（2026年11月24日確認）で整理します。</p>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.11.24</span><span class="dot">·</span><span>読了 8分</span>
+  </div>
+<p class="article-audience"><span class="article-audience-label">主な対象読者</span><a href="/media/gemini/?audience=it#articles">情シス・AI導入担当</a></p>
+</header>
+
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div>
+      <a href="#kawaru">Meetで何が既定でオンになりましたか？</a>
+      <a href="#honyaku">音声翻訳で管理者が確かめることは何ですか？</a>
+      <a href="#recap">Chatに届く会議の要約とはどんな機能ですか？</a>
+      <a href="#joken">会議の要約がChatに載るのはどんなときですか？</a>
+      <a href="#settei">管理コンソールのどこで変えますか？</a>
+      <a href="#kimeru">管理者が今週決めることは何ですか？</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#next">次の一歩は何から始めればよいですか？</a>
+      <a href="#sources">出典と確認範囲</a>
+    </div></nav>
+
+  <article class="art-body">
+
+<p>Google MeetのGeminiの2つの機能が、2026年10月から、対象のGoogle Workspaceで既定でオンになりました。会議の声をその場で訳す音声翻訳と、会議の後にGoogle Chatへ届く会議の要約です。</p>
+<ul>
+<li><strong>音声翻訳：</strong>63の言語に対応し、日本語も含みます。対象の契約の社員が主催すれば、社外のゲストも使えます。管理者は組織部門かグループの単位で止められます。</li>
+<li><strong>Chatへの会議の要約：</strong>Geminiのメモ生成を使った会議の後、会議に紐づくChatの会話に要約が自動で載ります。社員の側で止める設定はありません。</li>
+<li><strong>管理者が決めること：</strong>社外との会議で翻訳を使わせるかと、会議のメモと要約を誰に見せるかの2つです。</li>
+</ul>
+<p>Google Workspace Updatesの2つの発表と、管理者向けのヘルプ（2026年11月24日確認）をもとに、設定の場所と決め方をまとめます。</p>
+
+<h2 id="kawaru">Meetで何が既定でオンになりましたか？</h2>
+<p class="answer">音声翻訳と、Chatへの会議の要約の2つです。どちらも管理者の側で既定でオンで、計画的リリースの組織でも11月上旬までに展開が始まっています。</p>
+<figure class="fig-inline"><a href="figs/gemini-meet-kitei-on-futatsu.png" target="_blank" rel="noopener"><picture><source media="(max-width:640px)" srcset="figs/gemini-meet-kitei-on-futatsu-m.png?v=1" width="960" height="1439"><img src="figs/gemini-meet-kitei-on-futatsu.png" alt="Meetで既定でオンになった2つのAI機能の比較。音声翻訳は10月22日から、Chatへの会議の要約は10月16日から既定でオン。社員の設定は、音声翻訳が会議ごとに自分でオン、要約は設定なしで自動で届く。止める場所は、音声翻訳がMeetの音声翻訳の設定、要約がメモ生成と共有の設定。" width="1920" height="1080" loading="lazy" decoding="async"></picture></a><figcaption><span class="source-label">TechWorker作成：</span>本文の2つの機能の違いを図にしました。画像を押すと拡大できます。</figcaption></figure>
+<p>音声翻訳の発表は管理者の既定を次のように書いています。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“Speech translation is ON by default for eligible Google Workspace editions (when the Gemini for Meet admin setting is enabled) and can be disabled or enabled at the organizational unit (OU) or group level in the Admin console under Apps &gt; Google Workspace &gt; Google Meet &gt; Gemini settings.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>音声翻訳は、対象のGoogle Workspaceのエディションで既定でオンです（MeetのGeminiの管理者設定がオンの場合）。管理コンソールの［アプリ］＞［Google Workspace］＞［Google Meet］＞［Gemini の設定］で、組織部門かグループの単位でオフにもオンにもできます。</p><footer>出典：<a href="https://workspaceupdates.googleblog.com/2026/10/real-time-speech-translation-in-google-Meet-expands-to-63-languages-with-automatic-language-detection.html" target="_blank" rel="noopener noreferrer">Google Workspace Updates「Real-time speech translation in Google Meet expands to 63 languages with automatic language detection」</a>（2026年10月22日、2026年11月24日確認）</footer></blockquote>
+<div class="tbl-wrap">
+  <table style="min-width:640px">
+    <tr><th>機能</th><th>即時リリースの組織</th><th>計画的リリースの組織</th><th>対象のエディション</th></tr>
+    <tr><td>音声翻訳</td><td>10月22日から（1〜3日で表示）</td><td>11月2日から（最長15日）</td><td>Business Standard・Plus、Enterprise Standard・Plus、Frontline Plus、Google AI Pro for Educationなど</td></tr>
+    <tr><td>Chatへの会議の要約</td><td>10月16日から（最長15日）</td><td>10月27日から（最長15日）</td><td>Business Standard・Plus、Enterprise Standard・Plus、Frontline Plus</td></tr>
+  </table>
+</div>
+<p class="fig-cap">出典：Google Workspace Updates（2026年10月22日、10月19日）、いずれも2026年11月24日確認</p>
+<p>どちらの対象にも、Business Starterは挙がっていません。11月10日からはGmailの要約とHelp me writeも既定でオンになりました。止め方は<a href="gemini-gmail-kitei-on.html">GmailのGeminiが既定でオンに</a>で扱っています。</p>
+
+<h2 id="honyaku">音声翻訳で管理者が確かめることは何ですか？</h2>
+<p class="answer">社外のゲストも主催者の契約で翻訳を使えること、基本の契約では1回の会議で90分までであること、声のデータを保存しないと説明されていることの3つです。そのうえで、社外との会議で使わせるかを決めます。</p>
+<figure class="fig-inline"><a href="figs/gemini-meet-kitei-on-honyaku.png" target="_blank" rel="noopener"><picture><source media="(max-width:640px)" srcset="figs/gemini-meet-kitei-on-honyaku-m.png?v=1" width="960" height="1835"><img src="figs/gemini-meet-kitei-on-honyaku.png" alt="音声翻訳で管理者が確かめる3つ。使える人は参加者全員で、対象の契約の社員が主催すれば他社のゲストも使える。基本の契約では1回の会議で90分まで。声のデータは保存しないとGoogleは説明している。" width="1920" height="1080" loading="lazy" decoding="async"></picture></a><figcaption><span class="source-label">TechWorker作成：</span>本文の音声翻訳の条件を図にしました。画像を押すと拡大できます。</figcaption></figure>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“Speech translation is available to all meeting participants, including guests from other domains, when the meeting is organized by a user with an eligible Google Workspace or Google AI plan.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>対象のGoogle WorkspaceかGoogle AIのプランを持つ人が主催する会議では、他のドメインのゲストを含む参加者全員が音声翻訳を使えます。</p><footer>出典：<a href="https://workspaceupdates.googleblog.com/2026/10/real-time-speech-translation-in-google-Meet-expands-to-63-languages-with-automatic-language-detection.html" target="_blank" rel="noopener noreferrer">Google Workspace Updates（2026年10月22日）</a>（2026年11月24日確認）</footer></blockquote>
+<p>発表とMeetのヘルプに書かれた条件は、次のとおりです。</p>
+<ul>
+<li><strong>言語：</strong>63の言語に対応し、ヘルプの一覧に日本語があります。話している言語を自動で見分け、聞く人ごとに選んだ言語へ訳します。</li>
+<li><strong>使い始め：</strong>会議の始めはオフです。参加者がそれぞれ、ツールバーの翻訳のボタンから自分でオンにします。</li>
+<li><strong>時間の上限：</strong>Business・Enterpriseの基本の契約とGoogle AI Proは1回の会議で90分、AI Expanded Access・AI Ultra Access・Google AI Ultraは8時間です。</li>
+<li><strong>使えない場面：</strong>ライブ配信、会議の録画、クライアントサイド暗号化（CSE）の会議、電話での参加、他社の会議システムとの相互接続、適応型音声（adaptive audio）を使うときです。</li>
+<li><strong>会議室：</strong>Meetのハードウェアの会議室では、訳された声は聞けますが、会議室からの声は訳されません。</li>
+<li><strong>声のデータ：</strong>Googleは声のデータを保存せず、声でモデルを学習しないと書いています。</li>
+</ul>
+<p>社外の取引先との会議でも、自社の社員が主催すれば、相手は翻訳を使えます。TechWorkerは、訳の誤りがそのまま相手に伝わることを避けるため、翻訳を使う商談や契約の会議では、金額や納期などの条件を文字でも確かめる、と社内の決まりに書くことを勧めます。</p>
+<p>Geminiの各エディションの料金は<a href="gemini-houjin-keiyaku.html">Geminiの法人契約と料金</a>にまとめています。主要4社の料金比較表と、社内利用ルールの雛形は、下の枠から受け取れます。</p>
+<div class="tw-lead" data-offer="ai-contract-pack" data-campaign="gemini-meet-kitei-on" data-pos="mid"></div>
+
+<h2 id="recap">Chatに届く会議の要約とはどんな機能ですか？</h2>
+<p class="answer">会議の後、要約、決まったこと、担当者つきの次の作業、メモや録画へのリンクを、会議に紐づくChatの会話にカードで載せる機能です。会議に出られなかった会話のメンバーも、カードで内容を追えます。</p>
+<figure class="fig-inline fig-real"><a href="figs/gemini-meet-kitei-on-page-1.jpg" target="_blank" rel="noopener"><img src="figs/gemini-meet-kitei-on-page-1.jpg" alt="Google Chatの会議の会話に、Google Meetから届いた会議の要約のカード。会議名と日時、メモの文書へのリンク、話題ごとの要点、担当者の名前つきの次の作業が並び、最後に全文のメモへのリンクがある。" width="1238" height="1008" loading="lazy" decoding="async"></a></figure>
+<p class="fig-cap">出典：Google「Google Workspace Updates」（Follow through on your meeting tasks with meeting recaps in Google Chat）の画面（2026年11月24日に撮影）</p>
+<p>2026年10月19日の発表によると、カードには次の4つが入ります。</p>
+<ul>
+<li>会議の要約：話し合った主な話題と結論</li>
+<li>リンク：Geminiのメモの文書、会議の録画、文字起こし</li>
+<li>決まったこと：会議で合意した結論</li>
+<li>次の作業：担当者を付けた、次にやること</li>
+</ul>
+<p>カードは会話を太字にせず、未読の印も付けずに届きます。会話の参加者なら誰でも、カードのその他のオプションから削除できます。消してもメモの文書はGoogle ドライブに残ります。社員の側の設定について、発表は次のように書いています。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“There is no end-user setting for this feature. Meeting recaps will automatically appear in the meeting’s chat conversation once the call ends.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>この機能に利用者の設定はありません。会議の要約は、通話が終わると会議のチャットの会話に自動で表示されます。</p><footer>出典：<a href="https://workspaceupdates.googleblog.com/2026/10/follow-through-on-your-meeting-tasks-with-meeting-recaps-in-Google-Chat.html" target="_blank" rel="noopener noreferrer">Google Workspace Updates「Follow through on your meeting tasks with meeting recaps in Google Chat」</a>（2026年10月19日、2026年11月24日確認）</footer></blockquote>
+<p>管理者向けには、Gemini for Google Workspaceがオンの組織で既定でオンになり、メモ生成とGeminiの既存の管理者設定に従う、と書かれています。要約のカードだけを止める専用の設定は、発表にも管理者ヘルプにも見当たりません。</p>
+
+<h2 id="joken">会議の要約がChatに載るのはどんなときですか？</h2>
+<p class="answer">Geminiのメモ生成が会議中に動き、会議に紐づくChatの会話があり、メモの共有先が主催者と共同主催者だけでないときです。3つがそろうと、会議の後にカードが届きます。</p>
+<figure class="fig-inline"><a href="figs/gemini-meet-kitei-on-recap.png" target="_blank" rel="noopener"><picture><source media="(max-width:640px)" srcset="figs/gemini-meet-kitei-on-recap-m.png?v=1" width="960" height="1902"><img src="figs/gemini-meet-kitei-on-recap.png" alt="Chatに会議の要約のカードが届くまでの4つ。1 メモを取るが会議中に動いた。2 会議に紐づくChatの会話がある。3 メモの共有先が主催者だけでない。既定は組織内の招待済みゲスト。4 Chatに要約のカードが届く。通知は鳴らず、参加者は誰でも消せる。共有先を主催者と共同主催者にするとChatに載らない。" width="1920" height="1080" loading="lazy" decoding="async"></picture></a><figcaption><span class="source-label">TechWorker作成：</span>本文の要約のカードが届く条件を図にしました。画像を押すと拡大できます。</figcaption></figure>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“If the meeting host sets “Send notes to” in Google Meet to “Hosts and co-hosts only,” a recap card will not be posted to the group chat.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>会議の主催者がGoogle Meetのメモの送り先を「主催者と共同主催者のみ」にすると、要約のカードはグループのチャットに載りません。</p><footer>出典：<a href="https://workspaceupdates.googleblog.com/2026/10/follow-through-on-your-meeting-tasks-with-meeting-recaps-in-Google-Chat.html" target="_blank" rel="noopener noreferrer">Google Workspace Updates（2026年10月19日）</a>（2026年11月24日確認）</footer></blockquote>
+<p>管理者はメモの既定の共有先を次の3つから選べます。主催者が会議中に共有先を変えられるかも、管理者が決めます。</p>
+<ul>
+<li><strong>招待されたすべてのゲスト：</strong>社外を含め、招待した全員がメモを開けます。</li>
+<li><strong>組織内の招待済みゲスト（既定）：</strong>招待した人のうち、自社の人だけがメモを開けます。</li>
+<li><strong>主催者と共同主催者：</strong>主催者と共同主催者だけがメモを開けます。</li>
+</ul>
+<p>発表に書かれているのは、主催者が送り先を変えた場合です。管理者の既定を主催者と共同主催者にして、主催者が変えられないようにした場合も同じ扱いになるかは、発表にもヘルプにも書かれていません。この形にすると、ほかの参加者はメモを開けなくなります。試す組織部門で会議を1回開き、カードが載らないことを確かめてから広げる、というのがTechWorkerの提案です。</p>
+<p>もう1つ、ヘルプはGeminiのメモ生成を、一度に1つの言語にだけ対応するとしています。会議で複数の言語が話される場合は動かない、と書かれています。2つの記載を合わせると、日本語と英語を訳し合う会議では、メモも要約のカードも作られない可能性があります。</p>
+
+<h2 id="settei">管理コンソールのどこで変えますか？</h2>
+<p class="answer">どちらの設定も管理コンソールの［アプリ］＞［Google Workspace］＞［Google Meet］＞［Gemini の設定］にあります。変更は最長24時間で反映されます。</p>
+<div class="tbl-wrap">
+  <table style="min-width:640px">
+    <tr><th>変えたいこと</th><th>［Gemini の設定］の中の場所</th><th>選べること</th></tr>
+    <tr><td>音声翻訳を止める</td><td>［音声翻訳］</td><td>［会議の参加者全員の音声翻訳を有効にすることを許可します］のチェックを外す。組織部門かグループの単位</td></tr>
+    <tr><td>メモ生成を止める（要約のカードも出ない）</td><td>［Gemini のメモ生成機能］</td><td>［Gemini のメモ生成機能を会議で使用できるようにします］のチェックを外す</td></tr>
+    <tr><td>メモと要約を見せる相手を決める</td><td>［Gemini メモの共有］</td><td>主催者が共有先を変えられるか。既定の共有先（招待されたすべてのゲスト／組織内の招待済みゲスト／主催者と共同主催者）</td></tr>
+  </table>
+</div>
+<p class="fig-cap">出典：Google Workspace 管理者ヘルプ「Meet の音声翻訳を有効または無効にする」「Google Meet の AI がユーザーに代わってメモを作成できるようにする」（いずれも2026年11月12日更新、2026年11月24日確認）</p>
+<p>設定を変えるには、Google Meetの管理者権限が要ります。組織部門とグループの両方で設定した場合は、グループの設定が優先されます。</p>
+<p>メモの共有の設定が効くのは、Google カレンダーで予定を入れた会議だけです。予定を入れない即席の会議で招待した人がいない場合は、共有先は主催者と共同主催者だけになります。</p>
+
+<h2 id="kimeru">管理者が今週決めることは何ですか？</h2>
+<p class="answer">社外との会議で翻訳を使わせるかと、会議のメモと要約を誰に見せるかを決め、社員に1枚で伝えます。</p>
+<p>ここからはTechWorkerの提案です。公式の設定と条件から、決める項目を5つに分けました。</p>
+<ol>
+<li><strong>今の状態を確かめる：</strong>自社のエディションと、MeetのGeminiの設定がオンかどうかを、管理コンソールで見ます。</li>
+<li><strong>音声翻訳：</strong>社外との会議で使ってよいかを決めます。使うなら、金額や納期などの条件は文字でも確かめると書きます。</li>
+<li><strong>メモの共有先：</strong>既定の組織内の招待済みゲストのままにするか、部署によって主催者と共同主催者にするかを決めます。</li>
+<li><strong>Chatの会話の顔ぶれ：</strong>要約のカードは会話のメンバーが読めます。人事や評価の会議を、メンバーの多いChatの会話に紐づけないようにします。</li>
+<li><strong>社員への周知：</strong>カードは参加者なら消せること、消してもメモの文書はドライブに残ることを伝えます。</li>
+</ol>
+<p>Geminiの会社アカウントの設定全体は<a href="gemini-dounyu.html">Geminiの法人導入</a>に、11月9日から既定でオンになったスキルの設定は<a href="google-workspace-skills.html">Google Workspaceのスキルとは</a>にまとめています。</p>
+
+<h2 id="faq">よくある質問</h2>
+<div class="faq"><div class="q">Meetの音声翻訳は日本語に対応していますか？</div><p class="a">対応しています。Google Meetのヘルプの対応言語の一覧に日本語が載っています（2026年11月24日確認）。2026年10月22日の発表で対応は63の言語に広がり、話している言語を自動で見分けて、聞く人ごとに選んだ言語へ訳します。</p></div>
+<div class="faq"><div class="q">音声翻訳とChatへの会議の要約に追加の料金はかかりますか？</div><p class="a">2つの発表に、追加料金の記載はありません。対象のエディションはどちらもBusiness Standard・Plus、Enterprise Standard・Plus、Frontline Plusなどです。Business Starterはどちらの対象にも挙がっていません。</p></div>
+<div class="faq"><div class="q">社外のゲストが音声翻訳を使うと、会議の声は保存されますか？</div><p class="a">Googleは声のデータを保存せず、声でモデルを学習しないと発表に書いています。会議の録画では音声翻訳は使えない、とも書かれています。</p></div>
+<div class="faq"><div class="q">Chatに届いた会議の要約は消せますか？</div><p class="a">消せます。会議の会話の参加者なら誰でも、カードのその他のオプション（縦の3点）から削除できます。カードを消しても、メモの文書はGoogle ドライブに残ります。</p></div>
+<div class="faq"><div class="q">要約のカードだけを止めて、メモ生成は残せますか？</div><p class="a">要約のカードだけを止める専用の設定は、2026年11月24日に確かめた発表と管理者ヘルプには見当たりません。発表は、主催者がメモの送り先を主催者と共同主催者のみにすると、カードは載らないと書いています。そうすると、ほかの参加者はメモを開けなくなります。</p></div>
+
+<h2 id="next">次の一歩は何から始めればよいですか？</h2>
+<p class="answer">管理コンソールの［Gemini の設定］で、音声翻訳とメモの共有の今の設定を確かめることから始めます。</p>
+<ol>
+<li>［Gemini の設定］で、音声翻訳とメモ生成とメモの共有の3つの今の状態を見ます。</li>
+<li>社外との会議で翻訳を使わせるかと、メモの既定の共有先を決めます。</li>
+<li>社員に、翻訳の使い方と要約のカードの扱いを1枚で配ります。</li>
+</ol>
+<p>TechWorkerではGeminiを含む生成AIの研修を、受講者の実際の業務1本から組みます。30日後に、使った人の割合と1件の時間を測って報告します。検討段階のご相談だけでも歓迎です。</p>
+<div class="tw-lead" data-offer="ai-contract-pack" data-campaign="gemini-meet-kitei-on" data-pos="end"></div>
+
+<h2 id="sources">出典と確認範囲</h2>
+<p class="source-note">確認日：2026年11月24日。管理コンソールの画面と、音声翻訳と要約の日本語での出来は、TechWorkerでは確かめていません。管理者の既定の共有先を主催者と共同主催者にしたときに要約のカードが載らないかは、公式の資料に書かれておらず確かめていません。機能と提供の条件は変わるため、設定の時点で公式情報を確認してください。社内の決まりの5項目はTechWorkerの提案です。</p>
+<ol class="source-list"><li><a href="https://workspaceupdates.googleblog.com/2026/10/real-time-speech-translation-in-google-Meet-expands-to-63-languages-with-automatic-language-detection.html" target="_blank" rel="noopener noreferrer">Google Workspace Updates「Real-time speech translation in Google Meet expands to 63 languages with automatic language detection」（2026年10月22日）</a></li><li><a href="https://workspaceupdates.googleblog.com/2026/10/follow-through-on-your-meeting-tasks-with-meeting-recaps-in-Google-Chat.html" target="_blank" rel="noopener noreferrer">Google Workspace Updates「Follow through on your meeting tasks with meeting recaps in Google Chat」（2026年10月19日）</a></li><li><a href="https://knowledge.workspace.google.com/admin/meet/turn-speech-translation-on-or-off-for-meet?hl=ja" target="_blank" rel="noopener noreferrer">Google Workspace 管理者ヘルプ「Meet の音声翻訳を有効または無効にする」（2026年11月12日更新）</a></li><li><a href="https://knowledge.workspace.google.com/admin/meet/let-google-meet-ai-take-notes-for-my-users?hl=ja" target="_blank" rel="noopener noreferrer">Google Workspace 管理者ヘルプ「Google Meet の AI がユーザーに代わってメモを作成できるようにする」（2026年11月12日更新）</a></li><li><a href="https://support.google.com/meet/answer/16221730?hl=en" target="_blank" rel="noopener noreferrer">Google Meet ヘルプ「Learn about Speech Translation」</a></li></ol>
+
+</article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div>
+    <p>上場企業を含む50社超・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>Geminiの研修を、受講者の実際の業務1本から組みます。</h3>
+    <p>管理者の設定と社内の決まりの点検から、研修当日に業務1本をAIに任せる形まで作り、30日後に数で測って報告します。教材は公式の変更に合わせて毎週見直します。検討段階のご相談だけでも歓迎です。</p>
+  </div>
+  <a href="https://kenshu.techworker.co.jp/?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=gemini-meet-kitei-on&amp;utm_content=end" class="btn">研修内容・費用を相談する <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="https://kenshu.techworker.co.jp/" style="color:var(--electric);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">生成AI法人研修（主要ツール全対応）</a>　／　<a href="https://kenshu.techworker.co.jp/contact/" style="color:var(--electric);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">無料相談</a></p>
+<div class="back-list"><a href="../gemini/">← Gemini ラボの記事一覧に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="gemini-gmail-kitei-on.html" class="related-card"><span class="rc-cat">社内ルールと安全</span><div class="rc-title">GmailのGeminiが既定でオンに｜AI要約とHelp me writeを管理者が止める方法</div></a>
+    <a href="google-workspace-skills.html" class="related-card"><span class="rc-cat">社内ルールと安全</span><div class="rc-title">Google Workspaceのスキルとは｜既定でオンの管理者設定と、11月30日の展開前に決めること</div></a>
+  </div>
+</div></section>
+
+<p style="max-width:var(--measure);margin:40px auto 0;padding:0 20px;font-size:12px;color:var(--slate);line-height:1.9;">本記事は株式会社TechWorkerが独自に作成したものであり、Google LLCとの提携・後援・承認を受けたものではありません。Google Workspace、Google Meet、Google Chat、GeminiはGoogle LLCの商標です。</p>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__in">
+      <div>
+        <p class="ft__name">株式会社TechWorker</p>
+        <p class="ft__addr">〒169-0051 東京都新宿区西早稲田一丁目22番3号<br>早稲田アントレプレナーシップセンター</p>
+      </div>
+      <nav aria-label="フッターの行き先">
+        <a href="/services">事業・サービス</a>
+        <a href="/company">会社情報</a>
+        <a href="/news">ニュース</a>
+        <a href="/#concept">考え方</a>
+        <a href="/agent-cases/">事例</a>
+        <a href="/contact">お問い合わせ</a>
+        <a href="/privacy">プライバシーポリシー</a>
+      </nav>
+    </div>
+    <div class="nv-badge"><a href="/news/013"><img src="/assets/badges/nvidia-inception-program.svg" alt="NVIDIA Inception Program" width="93" height="40" loading="lazy"></a><p>NVIDIA、NVIDIA ロゴ、NVIDIA Inception は、米国およびその他の国における NVIDIA Corporation の商標および/または登録商標です。</p></div>
+    <small>© TechWorker Inc.</small>
+  </div>
+</footer>
+
+<script>
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+<script src="/media/article-tracker.js?v=20261120i" defer></script>
+<script>
+// スマホの行き先：右上の釦で開け閉めする。行き先を押したら閉じる。スクロールしたら頭に暗い面を敷く
+(() => {
+  const hd = document.querySelector('.hd'), btn = hd.querySelector('.menu');
+  const set = open => { hd.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く'); };
+  btn.addEventListener('click', () => set(!hd.classList.contains('is-open')));
+  hd.querySelector('nav').addEventListener('click', e => { if (e.target.closest('a')) set(false); });
+  const onScroll = () => hd.classList.toggle('is-scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+})();
+</script>
+<script src="../lead.js?v=20261120f" defer></script>
+</body>
+</html>
