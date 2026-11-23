@@ -36,7 +36,8 @@ n = "|".join(STALE)
 PATTERNS = [
     re.compile(rf"(?<![0-9,.])(?:{n})社"),
     re.compile(rf"(?<![0-9,.$])(?:{n})\+? (?:compan|client)"),
-    re.compile(rf">(?:{n})<small>(?:社|\+)"),
+    # 数字と「社」の間にタグが入る形（>45<small>社、<b>45</b>社）。2026-11-23 に <b>45</b>社 を見落としていた
+    re.compile(rf">(?:{n})(?:</?[a-z]+[^>]*>)+(?:社|\+)"),
     re.compile(rf'class="num">(?:{n})<'),
     # 束ねた JS（assets/copilot）の中の数字
     re.compile(rf"`(?:{n})`,\(0,\w+\.jsx\)\(`small`,\{{children:`社"),
