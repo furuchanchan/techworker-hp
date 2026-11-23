@@ -116,7 +116,7 @@
   // The media home keeps its inline offer; a floating dock obscures article choices.
   if (!/^\/media(?:\/index)?$/.test(path) && !document.querySelector('script[src="/media/cv-dock.js"], script[src^="/media/cv-dock.js?"]')) {
     var dock = document.createElement("script");
-    dock.src = "/media/cv-dock.js?v=20261123-white";
+    dock.src = "/media/cv-dock.js?v=20261123-token";
     dock.defer = true;
     document.head.appendChild(dock);
   }

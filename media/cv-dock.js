@@ -98,9 +98,12 @@
     claude: function () { return Object.assign({}, CLAUDE_SHEET, { sub: DIAG }); },
     copilot: function () { return Object.assign({}, COPILOT_SHEET, { sub: DIAG }); },
     gemini: function () { return Object.assign({}, CONTRACT, { sub: DIAG }); },
+    // Token ラボ（/media/token/ と media 直下の token-* の記事）。記事は複数社のモデルの単価を比べるので、4社の料金比較表つきの稟議パック。
+    // 11/23 まで Claude Code のセキュリティの手引きを出していて、11/11〜11/22 の表示 412回・開いた 0回だった
+    token: function () { return Object.assign({}, CONTRACT, { sub: DIAG }); },
     simulation: function () { return Object.assign({}, CASES, { sub: { label: "発売前の検証を相談する", href: "/launch-simulation/", offer: "launch_simulation" } }); }
   };
-  var make = OFFERS[seg] || function () { return Object.assign({}, /token/.test(slug) ? GUIDE : CASES, { sub: DIAG }); };
+  var make = OFFERS[seg] || (/^token-/.test(slug) ? OFFERS.token : function () { return Object.assign({}, CASES, { sub: DIAG }); });
   var o = make();
   var media = seg || "home";
   var DOCS = { security: GUIDE, cases: CASES, gyomuzu: TEMPLATES, ringi: RINGI, claudecost: CLAUDE_SHEET, copilotsheet: COPILOT_SHEET, contract: CONTRACT };
