@@ -87,7 +87,7 @@ LABS = {
         "offer": "ai-contract-pack",
         "docs": [("cases", "2026年版 生成AI活用事例集")],
         "about": ("料金や契約の記事は各社の公式の料金表・ヘルプ・発表を、助成金の記事は厚生労働省の資料をもとに書き、確かめた日付を記事に書いています。"),
-        "figs": ["ai-training-outcome-first-exercise-s1", "ai-training-outcome-first-exercise-s2", "chatgpt-houjin-keiyaku-2", "company-brain-toha-s1",
+        "figs": ["ai-training-outcome-first-exercise-s1", "ai-training-outcome-first-exercise-s2", "chatgpt-houjin-keiyaku-2",
                  "cursor-houjin-keiyaku-hikaku", "cursor-houjin-keiyaku-seki", "cursor-houjin-keiyaku-shiharai", "cursor-houjin-keiyaku-tasha",
                  "generative-ai-incident-tabletop-training-s1", "generative-ai-kenshu-joseikin-s1", "generative-ai-training-effectiveness-s1",
                  "generative-ai-training-effectiveness-s2", "generative-ai-training-rfp-vendor-selection-s1", "generative-ai-training-rfp-vendor-selection-s2"],
@@ -191,6 +191,53 @@ LABS = {
         "docs": [("cases", "2026年版 生成AI活用事例集")],
         "about": "料金の記事は各社の公式の料金表を、事例の記事は各社の報道と解説をもとに書き、確かめた日付を記事に書いています。",
         "figs": ["token-cost-1", "token-management-2"],
+    },
+    # Codex ラボ（2026-11-23）：/media/kenshu/ の codex- の記事。案内は研修（研修サイトの組み方の段：ChatGPT の管理設定は共通編と30分の点検で扱う）。
+    # OpenAI の画面の色は黒の地に白い字になるので、TechWorker の色にした
+    "codex": {
+        "name": "Codex ラボ",
+        "colors": ["#FAFBFC", "#F0F2F5", "#E6E9EE", "#D5D9E0", "#11161D", "#2B323C", "#5A6677",
+                   "#005EFF", "#0050D9", "#005EFF", "#0047C2", "#EDF0F4", "#D9DEE5", "250,251,252"],
+        "color_note": "TechWorker の色（地 #FAFBFC・差し色 #005EFF）",
+        "title": "Codex ラボ｜OpenAI の Codex を会社で使うための実務メディア",
+        "desc": ("OpenAI のコーディングエージェント Codex を会社で使うための実務メディアです。ChatGPT Business・Enterprise での席と利用枠、API キーとの違い、"
+                 "管理者の設定、サンドボックスと承認、データの扱い、社内への広げ方を、OpenAI の公式資料で確かめた日付つきで解説します。"),
+        "h1": "Codex を、",
+        "line": "OpenAI の Codex を会社で使うときの、契約と料金、管理者の設定、社内への広げ方を扱うメディアです。",
+        "lead": "ChatGPT Business・Enterprise での席と利用枠、API キーとの違い、管理者の設定、サンドボックスと承認、データの扱いを書いています。",
+        "train_anchor": "common",
+        "train_name": "生成AI研修",
+        "train_text": ("最初の60分は全員が共通編を受け、情報漏えい・誤った出力・指示の乗っ取りを防ぐ使い方をそろえます。"
+                       "ChatGPT の管理設定は、共通編と30分の点検で扱います。"),
+        "offer": "ai-contract-pack",
+        "docs": [("cases", "2026年版 生成AI活用事例集")],
+        "about": "記事は OpenAI の公式の料金表・ヘルプ・開発者向けの文書をもとに書き、料金や機能は確かめた日付を記事に書いています。",
+        "figs": ["codex-houjin-keiyaku-ryokin-plans", "codex-houjin-keiyaku-ryokin-cost", "codex-houjin-keiyaku-ryokin-choose",
+                 "codex-shanai-donyu-settei-areas", "codex-shanai-donyu-settei-sandbox", "codex-shanai-donyu-settei-token"],
+    },
+    # 暗黙知ラボ（2026-11-23）：/media/kenshu/ の anmokuchi-・gijutsu-shokei-・company-brain- の記事。案内はギョウムズAI（聞き取りから業務図を作る）
+    "anmokuchi": {
+        "name": "暗黙知ラボ",
+        "colors": ["#FAFBFC", "#F0F2F5", "#E6E9EE", "#D5D9E0", "#11161D", "#2B323C", "#5A6677",
+                   "#005EFF", "#0050D9", "#005EFF", "#0047C2", "#EDF0F4", "#D9DEE5", "250,251,252"],
+        "color_note": "TechWorker の色（地 #FAFBFC・差し色 #005EFF）",
+        "title": "暗黙知ラボ｜人の頭の中にある仕事の判断を、会社に残すための実務メディア",
+        "desc": ("担当者の頭の中にある仕事の判断（暗黙知）を、異動や退職の前に会社に残すための実務メディアです。暗黙知と形式知の違い、聞き取りで残す手順、"
+                 "技術承継・技能伝承の進め方、AIが会社の記録を読んで答える仕組みを、原典と公的な資料をもとに解説します。"),
+        "h1": "暗黙知を、",
+        "h1_rest": '<span class="nw">会社に<br class="sp">残す。</span>',
+        "line": "人の頭の中にある仕事の判断を、異動や退職の前に会社に残すためのメディアです。",
+        "lead": "暗黙知と形式知の違い、業務の暗黙知を聞き取りで残す手順、技術承継・技能伝承の進め方、AIが会社の記録を読んで答える仕組みを書いています。",
+        "train_anchor": "",
+        "train_name": "ギョウムズAI",
+        "train_text": "担当者への聞き取りと手元の資料から、AIが部署の仕事の流れを業務図にします。業務図を起点に、貴社の生成AI環境でAIエージェントを構築します。",
+        "cta": {"url": "../../gyoumuzuai", "k": "AIが聞き取る業務図", "btn": "ギョウムズAIを見る"},
+        "offer": "gyomuzu-templates",
+        "docs": [("cases", "2026年版 生成AI活用事例集")],
+        "about_who": "業務図を起点にAIエージェントを作るギョウムズAIを提供する",
+        "about": "記事は原典の書籍・論文と、省庁の白書などの公的な資料をもとに書き、出典を記事に載せています。",
+        "figs": ["anmokuchi-toha-chigai", "anmokuchi-toha-houhou", "anmokuchi-toha-kiku", "company-brain-toha-s1",
+                 "gijutsu-shokei-ai-now", "gijutsu-shokei-ai-steps", "gijutsu-shokei-ai-ai"],
     },
 }
 

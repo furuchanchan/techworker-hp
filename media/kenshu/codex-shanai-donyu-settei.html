@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js" data-media="kenshu">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}if(location.hostname==='techworker.co.jp')gtag('config', 'G-3V34NWXVCJ');
+</script>
+<script src="/assets/tw-track.js" defer></script>
+<script src="/assets/tw-event.js" defer></script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Codexの社内導入｜管理者の設定・サンドボックスと承認・データの扱いを決める手順 — TechWorker</title>
+<meta name="description" content="Codexを社内に広げる前に情シスが決めることを、OpenAIの公式文書（2026年11月23日確認）で整理します。6つの管理範囲、requirements.tomlでの承認とサンドボックスの固定、Codex Cloudの接続先、データと監査、自動化の認証、展開の順番まで扱います。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/kenshu/codex-shanai-donyu-settei">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Codexの社内導入｜管理者の設定・サンドボックスと承認・データの扱いを決める手順">
+<meta property="og:description" content="Codexを社内に広げる前に情シスが決めることを、OpenAIの公式文書（2026年11月23日確認）で整理します。6つの管理範囲、requirements.tomlでの承認とサンドボックスの固定、Codex Cloudの接続先、データと監査、自動化の認証、展開の順番まで扱います。">
+<meta property="og:image" content="https://techworker.co.jp/media/kenshu/covers/codex-shanai-donyu-settei.png">
+<meta property="og:url" content="https://techworker.co.jp/media/kenshu/codex-shanai-donyu-settei">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Codexの社内導入｜管理者の設定・サンドボックスと承認・データの扱いを決める手順">
+<meta name="twitter:description" content="Codexを社内に広げる前に情シスが決めることを、OpenAIの公式文書（2026年11月23日確認）で整理します。6つの管理範囲、requirements.tomlでの承認とサンドボックスの固定、Codex Cloudの接続先、データと監査、自動化の認証、展開の順番まで扱います。">
+<meta name="twitter:image" content="https://techworker.co.jp/media/kenshu/covers/codex-shanai-donyu-settei.png">
+<link rel="stylesheet" href="../article.css?v=20261120d">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Codexで入力したコードや業務データは、学習に使われますか？", "acceptedAnswer": {"@type": "Answer", "text": "BusinessとEnterpriseでは、既定で学習に使われません。OpenAIはChatGPT Business、Enterprise、Edu、APIのデータを、入力と出力を含めて既定で学習に使わないと書いています（2026年11月23日確認）。"}}, {"@type": "Question", "name": "Businessでも、グループごとに機能を分けるRBACを使えますか？", "acceptedAnswer": {"@type": "Answer", "text": "使えません。RBACとカスタムロールは、EnterpriseとEduの機能です。Businessの組み込みのロールはメンバー、管理者、オーナーの3つです。"}}, {"@type": "Question", "name": "社員がフルアクセス（--yolo）でCodexを動かすのを禁止できますか？", "acceptedAnswer": {"@type": "Answer", "text": "できます。requirements.tomlの allowed_sandbox_modes に read-only と workspace-write だけを書くと、フルアクセスを選べなくなります。allowed_approval_policies から never を外せば、承認なしの実行も選べません。"}}, {"@type": "Question", "name": "EnterpriseでCodex Cloudは、最初から使えますか？", "acceptedAnswer": {"@type": "Answer", "text": "既定ではオフです。管理者がクラウドでCodexを使う権限を対象の社員に付けます。以前のCodex Cloudで有効にしていたワークスペースは、その設定を引き継ぎます。"}}, {"@type": "Question", "name": "CodexアクセストークンはPlusやProでも使えますか？", "acceptedAnswer": {"@type": "Answer", "text": "使えません。Codexアクセストークンを使えるのは、ChatGPT BusinessとChatGPT Enterpriseのワークスペースです。CIなどの自動化にはPlatformのAPIキーも使えます。その場合はAPI料金で払います。"}}, {"@type": "Question", "name": "Codexのデータを日本に保存できますか？", "acceptedAnswer": {"@type": "Answer", "text": "対象のEnterprise、Edu、APIの利用者は、保存するデータの置き場所に日本を選べます。米国外に置く設定では、GPT-6 Astraの安全性の監視でタスクが止まると、そのタスクは再開できずに終わります。"}}, {"@type": "Question", "name": "自動レビューを使えば、人の承認は要らなくなりますか？", "acceptedAnswer": {"@type": "Answer", "text": "承認の依頼の多くを、レビュー担当のエージェントが代わりに審査します。ただし公式の説明では、安全を保証する仕組みではありません。判断を誤ることがあるため、サンドボックスの設計と監視は残すのが前提です。"}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Codexの社内導入｜管理者の設定・サンドボックスと承認・データの扱いを決める手順", "description": "Codexを社内に広げる前に情シスが決めることを、OpenAIの公式文書（2026年11月23日確認）で整理します。6つの管理範囲、requirements.tomlでの承認とサンドボックスの固定、Codex Cloudの接続先、データと監査、自動化の認証、展開の順番まで扱います。", "datePublished": "2026-11-23", "dateModified": "2026-11-23", "inLanguage": "ja", "image": "https://techworker.co.jp/media/kenshu/covers/codex-shanai-donyu-settei.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/kenshu/codex-shanai-donyu-settei"}, "citation": ["https://help.openai.com/en/articles/11750701-rbac", "https://learn.chatgpt.com/docs/agent-approvals-security?site_locale=en", "https://learn.chatgpt.com/ja-JP/docs/agent-approvals-security", "https://learn.chatgpt.com/ja-JP/docs/auth", "https://learn.chatgpt.com/ja-JP/docs/cloud", "https://learn.chatgpt.com/ja-JP/docs/cloud/internet-access", "https://learn.chatgpt.com/ja-JP/docs/enterprise/access-tokens", "https://learn.chatgpt.com/ja-JP/docs/enterprise/admin-setup", "https://learn.chatgpt.com/ja-JP/docs/enterprise/compliance-api", "https://learn.chatgpt.com/ja-JP/docs/enterprise/governance", "https://learn.chatgpt.com/ja-JP/docs/enterprise/managed-configuration", "https://learn.chatgpt.com/ja-JP/docs/enterprise/roles-and-workspace-permissions", "https://learn.chatgpt.com/ja-JP/docs/enterprise/workspace-model-availability", "https://learn.chatgpt.com/ja-JP/docs/environments/cloud-environments", "https://learn.chatgpt.com/ja-JP/docs/permissions", "https://learn.chatgpt.com/ja-JP/docs/pricing", "https://learn.chatgpt.com/ja-JP/docs/sandboxing", "https://learn.chatgpt.com/ja-JP/docs/sandboxing/auto-review", "https://openai.com/business-data/"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "Codex ラボ", "item": "https://techworker.co.jp/media/codex/"}, {"@type": "ListItem", "position": 4, "name": "Codexの社内導入と管理者の設定", "item": "https://techworker.co.jp/media/kenshu/codex-shanai-donyu-settei"}]}</script>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<link rel="stylesheet" href="/assets/site/site.css">
+<link rel="stylesheet" href="/media/audience-filter.css?v=20261006-media-only">
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header class="hd hd--solid">
+  <a class="logo" href="/" aria-label="TechWorker ホーム">Tech<i>Worker</i></a>
+  <nav id="hd-nav" aria-label="主な行き先">
+    <a href="/services">事業・サービス</a>
+    <a href="/#concept">考え方</a>
+    <a href="/agent-cases/">事例</a>
+    <a href="/news">ニュース</a>
+    <a href="/company">会社情報</a>
+    <a href="/contact">お問い合わせ</a>
+  </nav>
+  <button class="menu" type="button" aria-label="メニューを開く" aria-controls="hd-nav" aria-expanded="false"></button>
+</header>
+<div class="subnav">
+  <div class="wrap subnav__in">
+    <a class="subnav__name" href="../codex/">Codex ラボ</a>
+    <nav aria-label="メディアの行き先"><a href="https://kenshu.techworker.co.jp/">生成AI研修について</a><a href="https://kenshu.techworker.co.jp/contact/" class="subnav__cta">研修の相談</a></nav>
+  </div>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="../codex/">Codex ラボ</a><span class="sep">/</span>Codexの社内導入と管理者の設定</nav>
+  <div class="kicker">社内ルールと安全</div>
+  <h1>Codexの社内導入｜管理者が決める設定・サンドボックスと承認・データの扱い</h1>
+  <p class="dek">Codexを社内に広げる前に情シスが決めることを、OpenAIの公式文書（2026年11月23日確認）で整理します。6つの管理範囲、requirements.tomlでの承認とサンドボックスの固定、Codex Cloudの接続先、データと監査、自動化の認証、展開の順番まで扱います。</p>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.11.23</span><span class="dot">·</span><span>読了 12分</span>
+  </div>
+<p class="article-audience"><span class="article-audience-label">主な対象読者</span><a href="/media/codex/?audience=it#articles">情シス・AI導入担当</a></p>
+</header>
+
+<style>
+/* codex-shanai-donyu-settei：設定の例（scoped: cx-） */
+.cx-code{margin:0 0 26px;padding:16px 20px;border:1px solid var(--line);border-radius:8px;background:#fff;overflow-x:auto;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px;line-height:1.75;color:var(--ink);white-space:pre;}
+</style>
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div>
+      <a href="#scope">許可は6つの管理範囲に分かれる</a>
+      <a href="#plan">BusinessとEnterpriseでは、管理できることがどう違いますか？</a>
+      <a href="#roles">誰にCodexを使わせるかは、どこで決めますか？</a>
+      <a href="#local">ローカルのCodexは、どこまで自分で実行できますか？</a>
+      <a href="#require">社員が設定を緩めないようにするには、どうしますか？</a>
+      <a href="#cloud">Codex Cloudのインターネット接続は、どう制御しますか？</a>
+      <a href="#data">データは学習に使われますか？保持と監査はどうなりますか？</a>
+      <a href="#token">CIなどの自動化には、アクセストークンとAPIキーのどちらを使いますか？</a>
+      <a href="#rollout">展開はどの順番で進め、稟議で何を聞かれますか？</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#sources">出典と確認範囲</a>
+    </div></nav>
+
+  <article class="art-body">
+<p>Codexを社内に広げる前に、情シスが決めることは次の3つです。</p>
+<ul>
+<li><strong>誰に使わせるか：</strong>ワークスペースのシートとロールで決めます。グループごとに機能を分けるカスタムロール（RBAC）は、EnterpriseとEduの機能です。</li>
+<li><strong>何を自分で実行させるか：</strong>requirements.toml（管理者が配る要件のファイル）で、承認とサンドボックスの選べる値を絞ります。社員はこの要件を上書きできません。</li>
+<li><strong>データをどう扱うか：</strong>BusinessもEnterpriseも、既定では業務データを学習に使いません。保持期間の設定、データの置き場所の指定、監査ログはEnterpriseとEduの機能です。</li>
+</ul>
+<p>料金とプランの選び方は、<a href="codex-houjin-keiyaku-ryokin.html">Codexの法人契約と料金</a>にまとめています。この記事では、OpenAIの公式文書（2026年11月23日確認）をもとに、設定と展開の手順を扱います。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“By default, the agent runs with network access turned off. Locally, Codex uses an OS-enforced sandbox that limits what it can touch (typically to the current workspace), plus an approval policy that controls when it must stop and ask you before acting.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>既定では、エージェントはネットワークにつながない状態で動きます。ローカルでは、OSが強制するサンドボックスが、Codexの触れる範囲を制限します（通常は今の作業フォルダ）。さらに承認の方針が、Codexが作業を止めて利用者に確認する場面を決めます。</p><footer>出典：<a href="https://learn.chatgpt.com/docs/agent-approvals-security?site_locale=en" target="_blank" rel="noopener noreferrer">OpenAI「Agent approvals &amp; security」</a>（2026年11月23日確認）</footer></blockquote>
+<p>管理者の仕事はこの既定の範囲を会社の決まりとして固定し、必要な所だけ広げることです。</p>
+<figure class="fig-inline"><a href="figs/codex-shanai-donyu-settei-areas.png?v=1" target="_blank" rel="noopener"><picture><source media="(max-width:640px)" srcset="figs/codex-shanai-donyu-settei-areas-m.png?v=1" width="960" height="2451"><img src="figs/codex-shanai-donyu-settei-areas.png?v=1" alt="Codexの許可は6つの管理範囲に分かれる。ChatGPTワークスペース、ローカルのクライアント、Codex Cloud、Platform API、プラグイン、接続先のシステム。" width="1920" height="1080" loading="lazy" decoding="async"></picture></a><figcaption>出典：<a href="https://learn.chatgpt.com/ja-JP/docs/enterprise/roles-and-workspace-permissions" target="_blank" rel="noopener noreferrer">OpenAI「ロールとワークスペースの権限」</a>（2026年11月23日確認）</figcaption></figure>
+
+<h2 id="scope">許可は6つの管理範囲に分かれる</h2>
+<p class="answer">公式の「ロールとワークスペースの権限」は、許可を6つの管理範囲に分けています。ある範囲で許可しても、ほかの範囲は自動では許可されません。</p>
+<p>たとえば、ワークスペースでCodexを使えるようにしても、GitHubのリポジトリを読む権限は付きません。リポジトリの権限はGitHubの側で決まります。ローカルの権限の設定でも、モデルを使う権利は与えられません。</p>
+<p>リクエストが通るのは、関係するすべての範囲で許可されているときだけです。設定の担当を、この6つの範囲ごとに決めておくと漏れが減ります。</p>
+
+<h2 id="plan">BusinessとEnterpriseでは、管理できることがどう違いますか？</h2>
+<p class="answer">既定で学習に使わないこと、SAML SSOとMFA、クラウドで管理する設定は両方にあります。RBAC、SCIM、データ保持とデータレジデンシー、監査ログはEnterpriseとEduだけです。</p>
+<figure class="fig-inline"><a href="figs/codex-shanai-donyu-settei-plan.png?v=1" target="_blank" rel="noopener"><picture><source media="(max-width:640px)" srcset="figs/codex-shanai-donyu-settei-plan-m.png?v=1" width="960" height="1736"><img src="figs/codex-shanai-donyu-settei-plan.png?v=1" alt="BusinessとEnterpriseの管理機能の比較表。学習に使わない、SAML SSOとMFA、クラウドで管理する設定は両方にあり、RBAC、SCIM、データ保持、Compliance APIはEnterpriseだけ。" width="1920" height="1080" loading="lazy" decoding="async"></picture></a><figcaption>出典：<a href="https://learn.chatgpt.com/ja-JP/docs/pricing" target="_blank" rel="noopener noreferrer">OpenAI「料金」の機能の表</a>（2026年11月23日確認）</figcaption></figure>
+<div class="tbl-wrap">
+  <table style="min-width:560px">
+    <tr><th>管理・セキュリティの機能</th><th>Business</th><th>Enterprise・Edu</th></tr>
+    <tr><td>既定でビジネスデータを学習に使わない</td><td>あり</td><td>あり</td></tr>
+    <tr><td>SAML SSO、MFA、ワークスペースのユーザー管理</td><td>あり</td><td>あり</td></tr>
+    <tr><td>requirements.tomlによる設定管理</td><td>あり</td><td>あり</td></tr>
+    <tr><td>クラウドで管理する設定ポリシー</td><td>あり</td><td>あり</td></tr>
+    <tr><td>自動化のためのCodexアクセストークン</td><td>あり</td><td>あり</td></tr>
+    <tr><td>RBACとカスタムロール</td><td>なし</td><td>あり</td></tr>
+    <tr><td>SCIM、EKM、ドメイン検証</td><td>なし</td><td>あり</td></tr>
+    <tr><td>データ保持とデータレジデンシーの管理</td><td>なし</td><td>あり</td></tr>
+    <tr><td>分析ダッシュボード、分析API</td><td>なし</td><td>あり</td></tr>
+    <tr><td>Compliance APIと監査ログ</td><td>なし</td><td>あり</td></tr>
+    <tr><td>接続済みのGitHubリポジトリ向けのCodex Security</td><td>なし</td><td>あり</td></tr>
+  </table>
+</div>
+<p class="fig-cap">出典：OpenAI「料金」の機能の表、管理・セキュリティ・分析の行（2026年11月23日確認）。公式の日本語版はAIによる翻訳と明記されています。</p>
+<p>BusinessはSSOとMFAを使える専用のワークスペースです。ただし、社員の追加と削除をID基盤から自動で同期するSCIMはありません。監査や調査の記録をSIEM（セキュリティのログを集める仕組み）へ送るなら、Enterpriseを選びます。</p>
+<p>Businessの料金と、Enterpriseの見積もりの取り方は、<a href="codex-houjin-keiyaku-ryokin.html">Codexの法人契約と料金</a>で扱っています。</p>
+<div class="tw-lead" data-offer="ai-contract-pack" data-campaign="codex-shanai-donyu-settei" data-pos="mid"></div>
+
+<h2 id="roles">誰にCodexを使わせるかは、どこで決めますか？</h2>
+<p class="answer">ワークスペースの管理画面で決めます。シートが使える製品の範囲を決め、組み込みのロールが管理の権限を決めます。</p>
+<p>組み込みのロールはオーナー、管理者、メンバー、分析閲覧者です。オーナーはワークスペース全体の設定を管理します。メンバーには管理の権限がありません。</p>
+<p>EnterpriseとEduでは、カスタムロールで機能ごとの許可を分けられます。作れるのはオーナーだけで、割り当てる先はグループです。グループは手で作るか、SCIMで同期します。運用では次の2点に気をつけます。</p>
+<ul>
+<li><strong>ロールの許可は足し算です。</strong>割り当てたロールのどれか1つが許可すれば、ほかのロールでオフにしていても使えます。</li>
+<li><strong>変更が反映されるまで、最大5分かかります。</strong>ロールを変えた直後の確認は、5分ほど待ってからが確実です。</li>
+</ul>
+<h3>Codex Cloudとモデルの初期設定</h3>
+<p>Enterpriseのワークスペースでは、Codex Cloudは既定でオフです。クラウドでCodexを使う権限と、共有の環境を作り変える権限は別に付けます。後者のワークスペース環境を管理する権限も、既定でオフです。</p>
+<p>使えるモデルも管理者が決めます。EnterpriseとEduでは、GPT-6.2 Astra、GPT-6.2 Sol、GPT-6.1 Solが既定で無効です。管理者がワークスペースのモデル設定で有効にします。Enterpriseの管理者はモデルごとに推論強度と速度の上限も置けます。</p>
+<p>チャット向けのモデル設定はCodexのCLIやIDE拡張機能にそのまま適用されるとは限りません。初期設定は、Chat向けと、Work・Codex向けを別々に指定できます。</p>
+
+<h2 id="local">ローカルのCodexは、どこまで自分で実行できますか？</h2>
+<p class="answer">既定では、書き込めるのは作業中のフォルダの中だけで、ネットワークには出られません。その外へ出る操作の前に、承認を求めます。</p>
+<figure class="fig-inline"><a href="figs/codex-shanai-donyu-settei-sandbox.png?v=1" target="_blank" rel="noopener"><picture><source media="(max-width:640px)" srcset="figs/codex-shanai-donyu-settei-sandbox-m.png?v=1" width="960" height="1739"><img src="figs/codex-shanai-donyu-settei-sandbox.png?v=1" alt="Codexのサンドボックスの3つのモード。read-onlyは読むだけ、既定のworkspace-writeは作業フォルダの中だけ書けてネットワークはオフ、danger-full-accessは制限なしで管理者が禁止できる。" width="1920" height="1080" loading="lazy" decoding="async"></picture></a><figcaption>出典：<a href="https://learn.chatgpt.com/ja-JP/docs/sandboxing" target="_blank" rel="noopener noreferrer">OpenAI「サンドボックス」ほか</a>（2026年11月23日確認）</figcaption></figure>
+<p>仕組みは2つの組み合わせです。サンドボックスは技術的にできることの範囲を決めます。承認の方針はその範囲を超える前に止まって確認する場面を決めます。</p>
+<div class="tbl-wrap">
+  <table>
+    <tr><th>サンドボックスのモード</th><th>できること</th></tr>
+    <tr><td>read-only</td><td>ファイルを読むだけのモードです。編集には承認が要ります。</td></tr>
+    <tr><td>workspace-write（既定）</td><td>作業フォルダの中で編集し、日常のコマンドを実行できます。フォルダの外の編集とネットワークは、承認が条件です。</td></tr>
+    <tr><td>danger-full-access</td><td>ファイルとネットワークの制限が外れます。</td></tr>
+  </table>
+</div>
+<p>workspace-writeでも、.git、.agents、.codex、.awsの各フォルダは読み取り専用で守られます。承認の方針はon-request（必要なときに確認する）とnever（確認しない）の2つです。以前のuntrustedは廃止され、設定に残っていると起動できない場合があります。</p>
+<h3>承認を別のエージェントに任せる自動レビュー</h3>
+<p>approvals_reviewer = "auto_review" にすると、承認の依頼を、人の代わりにレビュー担当のエージェントが審査します。デスクトップアプリでは「代わりに承認（Approve for me）」として選べます。自動レビューが止めるように作られているのは、次の4種類の操作です。</p>
+<ul>
+<li>非公開のデータや認証情報を、信頼できない宛先へ送る操作</li>
+<li>認証情報、トークン、Cookieを探り出す操作</li>
+<li>セキュリティを広く、または続けて弱める変更</li>
+<li>取り返しのつかない損害を出すおそれが高い、破壊的な操作</li>
+</ul>
+<p>同じターン（1回の依頼への応答）で3回続けて拒否されると、Codex CLIはそのターンを止めます。直近50件のレビューで拒否が10回に達した場合も止まります。</p>
+<p>公式の説明では、自動レビューは安全を保証する仕組みではありません。判断を誤ることがあり、サンドボックスの設計と監視の代わりにはなりません。レビューのためにモデルを追加で呼ぶので、使用量が増えることもあります。</p>
+
+<h2 id="require">社員が設定を緩めないようにするには、どうしますか？</h2>
+<p class="answer">requirements.toml（管理者が適用する要件）で、社員が選べる値を絞ります。要件は社員が上書きできません。</p>
+<p>要件で絞れるのは、承認の方針、承認のレビュー担当、サンドボックスのモード、権限プロファイル、ウェブ検索、MCPサーバー、プラグインの入手元などです。社員の設定が要件に反すると、Codexは要件に合う値に切り替えて知らせます。</p>
+<p>公式の例では次の2行で --ask-for-approval never と、フルアクセス（--yoloを含む）を止めます。</p>
+<pre class="cx-code"><code>allowed_approval_policies = ["untrusted", "on-request"]
+allowed_sandbox_modes = ["read-only", "workspace-write"]</code></pre>
+<p>ここで許可リストに入れるuntrustedは、プロジェクトの信頼レベルに基づく厳しい承認を残すための値です。廃止された approval_policy = "untrusted" を使えるようにするものではありません。</p>
+<p>Codex 0.138.0以降はsandbox_modeの代わりに権限プロファイルを使うよう推奨されています。管理者向け導入ガイドの例は次のとおりです。</p>
+<pre class="cx-code"><code>default_permissions = ":workspace"
+[allowed_permission_profiles]
+":read-only" = true
+":workspace" = true</code></pre>
+<p>ほかによく使う要件を、3つ挙げます。</p>
+<ul>
+<li><strong>ウェブ検索をキャッシュだけにする：</strong>allowed_web_search_modes = ["cached"] です。フルアクセスのセッションでも、その場の検索はできなくなります。</li>
+<li><strong>サインインを会社のワークスペースに限る：</strong>forced_login_method = "chatgpt" と forced_chatgpt_workspace_id の2つです。条件に合わない認証では、Codexはログアウトして終わります。</li>
+<li><strong>MCPサーバーを許可リストで絞る：</strong>名前と識別情報の両方が一致したサーバーだけが有効になります。</li>
+</ul>
+<p>配り方は2つです。管理コンソールのエージェントセキュリティから配るか、端末やシステムにファイルを置きます。エージェントセキュリティではワークスペース全体の既定のほかに、ユーザー、グループ、ロールごとの上書きも作れます。</p>
+
+<h2 id="cloud">Codex Cloudのインターネット接続は、どう制御しますか？</h2>
+<p class="answer">環境ごとに、公開インターネットへ接続する範囲を選びます。すべての接続を許す設定をオフにして、パッケージマネージャーか、許可したドメインだけを通します。</p>
+<p>Codex Cloudはクラウドの環境でタスクを実行する機能です。環境の設定画面には、次の3つの設定があります。</p>
+<ul>
+<li>すべての公開インターネットへの接続を許可する設定</li>
+<li>パッケージマネージャーのプリセット（npm、PyPI、crates.io、Mavenなどのレジストリ）</li>
+<li>追加で許可するドメイン</li>
+</ul>
+<p>社内の非公開のサービスへはこれとは別のVPNの設定（Tailscale）でつなぎます。接続を許しても、そのサービスの認証情報や権限は付きません。</p>
+<p>Codex Cloud（レガシー）の公式の解説は、エージェントに接続を許すと、次の危険が高まると書いています。接続を広げる前に、自社の対策を確かめます。</p>
+<ul>
+<li>信頼できないウェブの内容に紛れた指示（プロンプトインジェクション）</li>
+<li>コードやシークレットの外部への流出</li>
+<li>マルウェアや脆弱性のある依存関係の取り込み</li>
+<li>ライセンス上の制約がある内容の取り込み</li>
+</ul>
+<h3>認証情報の渡し方</h3>
+<p>APIの鍵などはネットワークシークレットとして登録します。プログラムに渡るのは、置き換え用の文字列だけです。許可したドメインへのHTTPSの通信のときに、プロキシが本物の値に置き換えます。本物の値は環境の中のプロセスやファイルには渡りません。</p>
+<p>クラウドの環境は社員の端末の設定やMDM（端末管理の仕組み）を引き継ぎません。端末に配った要件とは別に、クラウド側の要件を確かめます。</p>
+<p>メールアドレスとパスワードでログインする社員は、Codex Cloudを使う前にMFA（多要素認証）の設定が必須です。SSOで入る会社には、SSOの管理者が全員にMFAを求めるよう、公式は案内しています。</p>
+
+<h2 id="data">データは学習に使われますか？保持と監査はどうなりますか？</h2>
+<p class="answer">Business、Enterprise、Edu、APIの業務データは、既定では学習に使われません。保持期間の設定、データレジデンシー、監査ログはEnterpriseとEduの機能です。</p>
+<p>OpenAIの「Business data privacy, security, and compliance」によると、データは保存時にAES-256、通信時にTLS 1.2以上で暗号化されます。EKMを使うと、暗号鍵を自社で管理できます。</p>
+<p>データレジデンシーは保存するデータの置き場所を地域で選ぶ仕組みです。対象のEnterprise、Edu、ChatGPT for Healthcare、APIの利用者は、日本を含む10の地域から選べます。</p>
+<h3>日本にデータを置くときの注意</h3>
+<p>GPT-6 Astraには、危険が疑われる動きを見つけるとタスクを止める、安全性の監視があります。米国外にデータを置く設定では、止まったタスクの検出結果を見られず、再開もできません。タスクはそのまま終わります。ゼロデータ保持の設定でも同じです。</p>
+<p>日本にデータを置く会社は、試験導入の段階で、タスクが途中で終わったときの扱いを決めておきます。</p>
+<h3>監査ログと分析の使い分け</h3>
+<p>監査や調査には、Compliance APIを使います。記録をSIEMや電子証拠開示の仕組みへ書き出す用途です。公式は、このAPIをコードの品質や個人の業績の推定に使わないよう書いています。</p>
+<p>利用の広がりを見る道具は、ワークスペース分析とAnalytics APIです。書き出した記録は自社の保存の決まりに従って守ります。OpenAI側の保存期間を、自社の保存の決まりの代わりにしないことも公式の注意点です。</p>
+
+<h2 id="token">CIなどの自動化には、アクセストークンとAPIキーのどちらを使いますか？</h2>
+<p class="answer">PlatformのAPIキーで済む自動化は、APIキーのままにします。ワークスペースの利用枠や管理の設定が要る、信頼できる自動化だけにCodexアクセストークンを使います。</p>
+<figure class="fig-inline"><a href="figs/codex-shanai-donyu-settei-token.png?v=1" target="_blank" rel="noopener"><picture><source media="(max-width:640px)" srcset="figs/codex-shanai-donyu-settei-token-m.png?v=1" width="960" height="1443"><img src="figs/codex-shanai-donyu-settei-token.png?v=1" alt="自動化の認証の使い分け。Platform APIキーはAPI料金で動きクラウドの機能は使えない。CodexアクセストークンはBusinessとEnterpriseで使え、作った社員として動く。" width="1920" height="1080" loading="lazy" decoding="async"></picture></a><figcaption>出典：<a href="https://learn.chatgpt.com/ja-JP/docs/enterprise/access-tokens" target="_blank" rel="noopener noreferrer">OpenAI「アクセストークン」ほか</a>（2026年11月23日確認）</figcaption></figure>
+<div class="tbl-wrap">
+  <table style="min-width:600px">
+    <tr><th>項目</th><th>Platform APIキー</th><th>Codexアクセストークン</th></tr>
+    <tr><td>誰として動くか</td><td>キーに紐づくAPIの組織とプロジェクト</td><td>トークンを作った社員</td></tr>
+    <tr><td>使う枠と料金</td><td>利用量に応じたAPI料金。ChatGPTの利用枠は使わない</td><td>ワークスペースで管理される利用資格を使う</td></tr>
+    <tr><td>使える所</td><td>CLI、SDK、IDE拡張機能。GitHubのコードレビューなどのクラウドの機能は使えない</td><td>Codex CLIとApp Serverによる、信頼できる環境での実行</td></tr>
+    <tr><td>使えるプラン</td><td>APIの契約</td><td>BusinessとEnterprise</td></tr>
+  </table>
+</div>
+<p>アクセストークンは、作った社員として動きます。漏れると、手に入れた人が誰でもその社員として実行を始められます。公式が求める使い方は、次の4つです。</p>
+<ul>
+<li>シークレットの管理の仕組みに保管し、ログに出さない</li>
+<li>公開のCI、フォークからのプルリクエスト、共有のマシンでは使わない</li>
+<li>関係のない複数のチームで、1人のトークンを使い回さない</li>
+<li>有効期限を付け、使わなくなったら取り消す</li>
+</ul>
+<p>有効期限は7日、30日、60日、90日などから選び、最短は1日です。オーナーは新しいトークンに付けられる期限の上限を決められます。トークンを作れるのは、オーナーが権限を与えた社員だけです。</p>
+<p>社員のローカル利用の権限を外しても、その社員のトークンは一時停止するだけで、取り消されません。退職や異動のときは、アクセストークンの画面でトークンを取り消します。オーナーと管理者は、ワークスペースのどのトークンでも取り消せます。</p>
+<p>入れ替えの手順は4つです。新しいトークンを作り、実行環境のシークレットを更新します。新しいトークンで試しに動かし、最後に古いトークンを取り消します。</p>
+
+<h2 id="rollout">展開はどの順番で進め、稟議で何を聞かれますか？</h2>
+<p class="answer">公式の管理者向け導入ガイドは8つの段階を示しています。担当と範囲を決め、アクセスと要件を設定し、試験導入で確かめてから広げる流れです。</p>
+<ol>
+<li><strong>担当と範囲を決める：</strong>ワークスペース、ローカルの要件、Codex Cloud、接続先、記録の5つの領域ごとに担当を置きます。</li>
+<li><strong>アクセスとIDを設定する：</strong>割り当てるのは、シート、グループ、ロールです。</li>
+<li><strong>ローカルの実行の要件を配る：</strong>requirements.tomlで、承認とサンドボックスの範囲を固定します。</li>
+<li><strong>リポジトリの設定をそろえる：</strong>設定、ルール、スキルの置き場所は、.codexか.agentsです。</li>
+<li><strong>Codex Cloudを設定する：</strong>使う人、つなぐリポジトリ、接続先を決めます。</li>
+<li><strong>プラグインと連携を確かめる：</strong>提供元、管理責任者、対象者、レビュー日を記録します。</li>
+<li><strong>監査と分析を設定する：</strong>連携に使う認証情報の置き場所は、自社のシークレットの管理の仕組みです。</li>
+<li><strong>試験導入で確かめる：</strong>許可した操作と止めた操作の両方を試します。</li>
+</ol>
+<p>試す人数は、公式には決まりがありません。公式は、対象の利用者と管理者を代表するアカウントで、すべての管理範囲を確かめるよう求めています。実際に適用された設定と、各テストの結果を記録します。</p>
+<p>TechWorkerも自社メディアの改修にCodexを使いました。2026年10月6日に記事55本を書き直し、公開前の点検で見つかった見出しの不具合12件を直しています。この点検はCodexが行ったもので、人が55本を1本ずつ確かめた記録とは扱いません。作業時間と費用も、<a href="resources/techworker-codex-media-verification-20261006.json">公開用の記録</a>からは分かりません。</p>
+<p>稟議では次の項目を聞かれます。上から埋めると、決裁者が確かめたい点をひととおり押さえられます。</p>
+<div class="callout">
+  <p><strong>Codexの社内導入の稟議で聞かれること</strong></p>
+  <p>□ 対象の部署・人数・期間と、ローカルとクラウドのどちらを使うか<br>
+  □ プランの根拠（BusinessとEnterpriseの違いのうち、どれが要るか）<br>
+  □ 6つの管理範囲ごとの担当者<br>
+  □ requirements.tomlで禁じる設定（フルアクセス、承認なしの実行、その場のウェブ検索など）<br>
+  □ データの扱い（学習、保持期間、置き場所）<br>
+  □ 監査ログの取り方と、書き出した記録の保存の決まり<br>
+  □ 自動化の認証の種類、トークンの期限と入れ替えの担当<br>
+  □ 見直す条件（止めたはずの操作が止まらないとき、利用が広がらないとき）</p>
+</div>
+<p>社内の利用ルールの文面は、<a href="claude-code-shanai-tenkai.html">Claude Codeの社内展開</a>のルールの雛形も参考になります。</p>
+
+<h2 id="faq">よくある質問</h2>
+<div class="faq"><div class="q">Codexで入力したコードや業務データは、学習に使われますか？</div><p class="a">BusinessとEnterpriseでは、既定で学習に使われません。OpenAIはChatGPT Business、Enterprise、Edu、APIのデータを、入力と出力を含めて既定で学習に使わないと書いています（2026年11月23日確認）。</p></div>
+<div class="faq"><div class="q">Businessでも、グループごとに機能を分けるRBACを使えますか？</div><p class="a">使えません。RBACとカスタムロールは、EnterpriseとEduの機能です。Businessの組み込みのロールはメンバー、管理者、オーナーの3つです。</p></div>
+<div class="faq"><div class="q">社員がフルアクセス（--yolo）でCodexを動かすのを禁止できますか？</div><p class="a">できます。requirements.tomlの allowed_sandbox_modes に read-only と workspace-write だけを書くと、フルアクセスを選べなくなります。allowed_approval_policies から never を外せば、承認なしの実行も選べません。</p></div>
+<div class="faq"><div class="q">EnterpriseでCodex Cloudは、最初から使えますか？</div><p class="a">既定ではオフです。管理者がクラウドでCodexを使う権限を対象の社員に付けます。以前のCodex Cloudで有効にしていたワークスペースは、その設定を引き継ぎます。</p></div>
+<div class="faq"><div class="q">CodexアクセストークンはPlusやProでも使えますか？</div><p class="a">使えません。Codexアクセストークンを使えるのは、ChatGPT BusinessとChatGPT Enterpriseのワークスペースです。CIなどの自動化にはPlatformのAPIキーも使えます。その場合はAPI料金で払います。</p></div>
+<div class="faq"><div class="q">Codexのデータを日本に保存できますか？</div><p class="a">対象のEnterprise、Edu、APIの利用者は、保存するデータの置き場所に日本を選べます。米国外に置く設定では、GPT-6 Astraの安全性の監視でタスクが止まると、そのタスクは再開できずに終わります。</p></div>
+<div class="faq"><div class="q">自動レビューを使えば、人の承認は要らなくなりますか？</div><p class="a">承認の依頼の多くを、レビュー担当のエージェントが代わりに審査します。ただし公式の説明では、安全を保証する仕組みではありません。判断を誤ることがあるため、サンドボックスの設計と監視は残すのが前提です。</p></div>
+<div class="tw-lead" data-offer="ai-contract-pack" data-campaign="codex-shanai-donyu-settei" data-pos="end"></div>
+
+<h2 id="sources">出典と確認範囲</h2>
+<p class="source-note">確認日：2026年11月23日。OpenAIの開発者向け文書の日本語版は、AIによる翻訳と明記されています。製品の仕様、設定の名前、画面の項目は変わるため、設定する時点の公式文書を確かめてください。</p>
+<ol class="source-list">
+<li><a href="https://learn.chatgpt.com/ja-JP/docs/enterprise/roles-and-workspace-permissions" target="_blank" rel="noopener noreferrer">OpenAI「ロールとワークスペースの権限」（6つの管理範囲、組み込みのロール、Codex Cloudの権限）</a></li>
+<li><a href="https://learn.chatgpt.com/ja-JP/docs/pricing" target="_blank" rel="noopener noreferrer">OpenAI「料金」（プランごとの機能の表、APIキーの扱い）</a></li>
+<li><a href="https://learn.chatgpt.com/ja-JP/docs/enterprise/admin-setup" target="_blank" rel="noopener noreferrer">OpenAI「管理者向け導入ガイド」（8つの段階、Codex Cloudの既定、権限プロファイルの例）</a></li>
+<li><a href="https://learn.chatgpt.com/ja-JP/docs/agent-approvals-security" target="_blank" rel="noopener noreferrer">OpenAI「エージェントの承認とセキュリティ」（既定の動き、保護されるフォルダ、安全性の監視）</a>／<a href="https://learn.chatgpt.com/docs/agent-approvals-security?site_locale=en" target="_blank" rel="noopener noreferrer">英語の原文</a></li>
+<li><a href="https://learn.chatgpt.com/ja-JP/docs/sandboxing" target="_blank" rel="noopener noreferrer">OpenAI「サンドボックス」（3つのモードと承認の方針）</a></li>
+<li><a href="https://learn.chatgpt.com/ja-JP/docs/sandboxing/auto-review" target="_blank" rel="noopener noreferrer">OpenAI「自動レビュー」（対象、止める操作、拒否の上限、制約）</a></li>
+<li><a href="https://learn.chatgpt.com/ja-JP/docs/enterprise/managed-configuration" target="_blank" rel="noopener noreferrer">OpenAI「管理対象の構成」（requirements.toml、エージェントセキュリティ）</a></li>
+<li><a href="https://learn.chatgpt.com/ja-JP/docs/permissions" target="_blank" rel="noopener noreferrer">OpenAI「権限」（権限プロファイル）</a></li>
+<li><a href="https://learn.chatgpt.com/ja-JP/docs/auth" target="_blank" rel="noopener noreferrer">OpenAI「認証」（ログイン方法の制限、Codex CloudのMFA）</a></li>
+<li><a href="https://learn.chatgpt.com/ja-JP/docs/cloud" target="_blank" rel="noopener noreferrer">OpenAI「クラウドでのコーディングタスクの実行」</a></li>
+<li><a href="https://learn.chatgpt.com/ja-JP/docs/environments/cloud-environments" target="_blank" rel="noopener noreferrer">OpenAI「クラウド環境」（接続先の設定、ネットワークシークレット、VPN）</a></li>
+<li><a href="https://learn.chatgpt.com/ja-JP/docs/cloud/internet-access" target="_blank" rel="noopener noreferrer">OpenAI「Codex Cloud（レガシー）のインターネットアクセス」（接続を許す危険）</a></li>
+<li><a href="https://learn.chatgpt.com/ja-JP/docs/enterprise/workspace-model-availability" target="_blank" rel="noopener noreferrer">OpenAI「ワークスペースで利用できるモデル」</a></li>
+<li><a href="https://learn.chatgpt.com/ja-JP/docs/enterprise/access-tokens" target="_blank" rel="noopener noreferrer">OpenAI「アクセストークン」</a></li>
+<li><a href="https://learn.chatgpt.com/ja-JP/docs/enterprise/governance" target="_blank" rel="noopener noreferrer">OpenAI「ガバナンス」</a>、<a href="https://learn.chatgpt.com/ja-JP/docs/enterprise/compliance-api" target="_blank" rel="noopener noreferrer">「Compliance API と監査イベント」</a></li>
+<li><a href="https://openai.com/business-data/" target="_blank" rel="noopener noreferrer">OpenAI「Business data privacy, security, and compliance」（学習、暗号化、データレジデンシー）</a></li>
+<li><a href="https://help.openai.com/en/articles/11750701-rbac" target="_blank" rel="noopener noreferrer">OpenAI Help Center「Managing feature access with role-based access control in ChatGPT」</a></li>
+</ol>
+</article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div>
+    <p>上場企業を含む50社超・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>Codexを社内に広げる前の、設定と利用ルールを一緒に決めます。</h3>
+    <p>プラン選定・管理者の設定・社内の利用ルール・稟議資料の組み立てから、現場が使い続けるための研修・伴走まで。上場企業を含む50社超・2,500名の支援知見をもとに、自社の業務に引きつけた形で設計します。検討段階のご相談だけでも歓迎です。</p>
+  </div>
+  <a href="https://kenshu.techworker.co.jp/?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=codex-shanai-donyu-settei&amp;utm_content=end" class="btn">研修内容・費用を相談する <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="https://kenshu.techworker.co.jp/" style="color:var(--electric);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">生成AI法人研修（主要ツール全対応）</a>　／　<a href="https://kenshu.techworker.co.jp/contact/" style="color:var(--electric);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">無料相談</a></p>
+<div class="back-list"><a href="../codex/">← Codex ラボの記事一覧に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="codex-houjin-keiyaku-ryokin.html" class="related-card"><span class="rc-cat">料金と比較</span><div class="rc-title">Codexの法人契約と料金</div></a>
+    <a href="claude-code-shanai-tenkai.html" class="related-card"><span class="rc-cat">社内展開</span><div class="rc-title">Claude Codeの社内展開｜社内データの扱い・設定配布・ルール雛形</div></a>
+  </div>
+</div></section>
+
+<p style="max-width:var(--measure);margin:40px auto 0;padding:0 20px;font-size:12px;color:var(--slate);line-height:1.9;">本記事は株式会社TechWorkerが独自に作成したものであり、OpenAIとの提携・後援・承認を受けたものではありません。Codex、ChatGPTはOpenAIの商標です。</p>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__in">
+      <div>
+        <p class="ft__name">株式会社TechWorker</p>
+        <p class="ft__addr">〒169-0051 東京都新宿区西早稲田一丁目22番3号<br>早稲田アントレプレナーシップセンター</p>
+      </div>
+      <nav aria-label="フッターの行き先">
+        <a href="/services">事業・サービス</a>
+        <a href="/company">会社情報</a>
+        <a href="/news">ニュース</a>
+        <a href="/#concept">考え方</a>
+        <a href="/agent-cases/">事例</a>
+        <a href="/contact">お問い合わせ</a>
+        <a href="/privacy">プライバシーポリシー</a>
+      </nav>
+    </div>
+    <div class="nv-badge"><a href="/news/013"><img src="/assets/badges/nvidia-inception-program.svg" alt="NVIDIA Inception Program" width="93" height="40" loading="lazy"></a><p>NVIDIA、NVIDIA ロゴ、NVIDIA Inception は、米国およびその他の国における NVIDIA Corporation の商標および/または登録商標です。</p></div>
+    <small>© TechWorker Inc.</small>
+  </div>
+</footer>
+
+<script>
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+<script src="/media/article-tracker.js?v=20261120i" defer></script>
+<script>
+// スマホの行き先：右上の釦で開け閉めする。行き先を押したら閉じる。スクロールしたら頭に暗い面を敷く
+(() => {
+  const hd = document.querySelector('.hd'), btn = hd.querySelector('.menu');
+  const set = open => { hd.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く'); };
+  btn.addEventListener('click', () => set(!hd.classList.contains('is-open')));
+  hd.querySelector('nav').addEventListener('click', e => { if (e.target.closest('a')) set(false); });
+  const onScroll = () => hd.classList.toggle('is-scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+})();
+</script>
+<script src="../lead.js?v=20261120f" defer></script>
+</body>
+</html>
