@@ -2,10 +2,10 @@
 """ラボの一覧ページ（media/<ラボ>/index.html）を、Claude ラボの一覧（media/claude/index.html）を型にして作る。
 使い方: python3 scripts/make_lab_hub.py <ラボ> [リポジトリ]   例: python3 scripts/make_lab_hub.py copilot
 - 色・文・研修と資料の行き先・壁の画像を、下の LABS の値に置き換える。型の中で置き換える所が見つからなければ止まる。
-- 壁の画像は、記事の図（media/kenshu/figs/<名前>.png、1920×1080）の上下の札を切って 560×254 にした物（f-）と、ラボの記事の表紙を 560×294 にした物（c-）を media/<ラボ>/wall/ に作り、交互に並べる。表紙を描き直したら流し直す。
+- 壁の画像は、記事の図（media/<フォルダ>/figs/<名前>.png、1920×1080）の上下の札を切って 560×254 にした物（f-）と、ラボの記事の表紙を 560×294 にした物（c-）を media/<ラボ>/wall/ に作り、交互に並べる。表紙を描き直したら流し直す。
   図の中に製品のロゴが入っている物は使わない（ラボは公式のロゴを使わない）。
 - 記事の一覧と ItemList は空のまま。続けて media/audiences.json の labs に足し、scripts/build_lab_hubs.py を流すと入る。
-2026-11-23 に Copilot ラボ・Gemini ラボを作るときに足した。"""
+2026-11-23 に Copilot ラボ・Gemini ラボを作るときに足した。同じ日に、研修以外へ案内するラボ（業務図ラボ→ギョウムズAI）と運営元の書き方を、LABS の cta・about_who で変えられるようにした。"""
 import json
 import re
 import sys
@@ -92,7 +92,63 @@ LABS = {
                  "generative-ai-incident-tabletop-training-s1", "generative-ai-kenshu-joseikin-s1", "generative-ai-training-effectiveness-s1",
                  "generative-ai-training-effectiveness-s2", "generative-ai-training-rfp-vendor-selection-s1", "generative-ai-training-rfp-vendor-selection-s2"],
     },
+    # 業務図ラボ（2026-11-23 に一覧を作り直した）：/media/gyomuzu/ の記事すべて。案内はギョウムズAI（研修ではない）。TechWorker の色
+    "gyomuzu": {
+        "name": "業務図ラボ",
+        "colors": ["#FAFBFC", "#F0F2F5", "#E6E9EE", "#D5D9E0", "#11161D", "#2B323C", "#5A6677",
+                   "#005EFF", "#0050D9", "#005EFF", "#0047C2", "#EDF0F4", "#D9DEE5", "250,251,252"],
+        "color_note": "TechWorker の色（地 #FAFBFC・差し色 #005EFF）",
+        "title": "業務図ラボ｜業務図で、AIに任せる仕事を決める実務メディア",
+        "desc": ("部署の仕事を業務図にして、どの工程をAIに任せ、どこを人が決めるかを決めるための実務メディアです。"
+                 "経理の月次締め・見積もり・市場調査・用途探しなどの部署別の業務図と、AI Ready の条件、AIの作業者への任せ方と点検、部署への広げ方を解説します。"),
+        "h1": "業務図で、",
+        "h1_rest": '<span class="nw">AIに任せる<br class="sp">仕事を決める。</span>',
+        "line": "部署の仕事を業務図にして、AIに任せる工程と人が決める工程を分けるメディアです。",
+        "lead": "経理の月次締め・見積もり・市場調査・用途探しなどの部署別の業務図と、AI Ready の条件、AIの作業者への任せ方と点検、部署への広げ方を書いています。",
+        "train_anchor": "",
+        "train_name": "ギョウムズAI",
+        "train_text": "業務図を起点に、貴社の生成AI環境でAIエージェントを構築し、毎月の検証と改善まで弊社が担います。",
+        "cta": {"url": "../../gyoumuzuai", "k": "AIが作る業務図", "btn": "ギョウムズAIを見る"},
+        "offer": "gyomuzu-templates",
+        "docs": [("cases", "2026年版 生成AI活用事例集")],
+        "about_who": "業務図を起点にAIエージェントを作るギョウムズAIを提供する",
+        "about": ("業務図は、TechWorker の社内で回している業務、支援の事例（会社名は伏せています）、記事で提案する設計例のどれかで、どれなのかを図の下に書いています。"),
+        "figs": ["accounting-monthly-close-process-map-s1", "accounting-monthly-close-process-map-s2", "ai-ready-s1", "ai-ready-s2",
+                 "ai-task-allocation-process-map-s1", "ai-worker-review-process-map-s1", "company-memory-nightly-process-map-s1",
+                 "department-ai-rollout-process-map-s1", "market-research-inhouse-process-map-s1", "material-use-ideation-process-map-s1",
+                 "material-use-ideation-process-map-s2", "media-article-automation-process-map-s1", "quotation-draft-review-process-map-s1",
+                 "site-weekly-improvement-process-map-s1", "site-weekly-improvement-process-map-s2"],
+    },
+    # AIセキュリティ・ラボ（2026-11-23 に一覧を作り直した）：/media/security/ の記事すべて。案内は研修（共通編が漏えいと誤りを防ぐ）。TechWorker の色
+    "security": {
+        "name": "AIセキュリティ・ラボ",
+        "colors": ["#FAFBFC", "#F0F2F5", "#E6E9EE", "#D5D9E0", "#11161D", "#2B323C", "#5A6677",
+                   "#005EFF", "#0050D9", "#005EFF", "#0047C2", "#EDF0F4", "#D9DEE5", "250,251,252"],
+        "color_note": "TechWorker の色（地 #FAFBFC・差し色 #005EFF）",
+        "title": "AIセキュリティ・ラボ｜生成AIを安全に使い、自社のAIサービスを守るための実務メディア",
+        "desc": ("生成AIを社内で安全に使い、自社のサイトやAIサービスを守るための実務メディアです。AI DLP で機密データを止める設計、ブラウザ操作AIのセッション分離、"
+                 "LLM API の高額請求を防ぐ上限、Markdown 表示の XSS 対策、AIクローラーの制御を、公式資料で確かめた日付つきで解説します。"),
+        "h1": "生成AIを、",
+        "h1_rest": '<span class="nw">安全に使える<br class="sp">形にする。</span>',
+        "line": "生成AIを社内で安全に使う設計と、自社のサイトやAIサービスを守る設計を扱うメディアです。",
+        "lead": "AI DLP で機密データを止める設計、ブラウザ操作AIのセッション分離、LLM API の高額請求を防ぐ上限、Markdown 表示の XSS 対策、AIクローラーの制御を書いています。",
+        "train_anchor": "how",
+        "train_name": "生成AI研修",
+        "train_text": ("最初の60分の共通編で、漏えいと誤りを防ぐ線引きを全員でそろえます。入れてよい情報を仕分け、罠の入った文書で試す演習のあと、お使いの製品の編に進みます。"),
+        "offer": "ai-contract-pack",
+        "docs": [("security", "Claude Code 企業導入 セキュリティ＆セットアップ実践ガイド"), ("cases", "2026年版 生成AI活用事例集")],
+        "about": "記事は各社の公式ドキュメントと規格（RFC など）をもとに書き、確かめた日付を記事に書いています。",
+        "figs": ["ai-crawler-control-s1", "ai-crawler-control-s2", "ai-crawler-control-s3", "browser-agent-session-isolation-design-s1",
+                 "browser-agent-session-isolation-design-s2", "generative-ai-dlp-design-s1", "generative-ai-dlp-design-s2", "generative-ai-dlp-design-s3",
+                 "llm-api-cost-abuse-controls-s1", "llm-api-cost-abuse-controls-s2", "llm-markdown-output-xss-sanitization-s1",
+                 "llm-markdown-output-xss-sanitization-s2"],
+    },
 }
+
+# 研修へ案内するラボの既定。研修以外へ案内するラボは LABS に cta（行き先・上の札・釦の字）を書く
+TRAIN_URL = "https://kenshu.techworker.co.jp/program/"
+CTA_DEFAULT = {"k": "法人研修", "btn": "研修の内容を見る"}
+ABOUT_WHO = "生成AIの法人研修と導入支援を行う"
 
 ARW = '<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg>'
 
@@ -114,17 +170,17 @@ def rx(text, pattern, repl, label, flags=re.S):
 def walls(lab, out_dir):
     """記事の図を切った画像（f-）と、ラボの記事の表紙（c-、560×294）を交互に並べる。Claude ラボの壁と同じ組み方"""
     out_dir.mkdir(parents=True, exist_ok=True)
+    labs = json.loads((ROOT / "media/audiences.json").read_text())["labs"]
+    rule = labs[KEY]
     names = []
     for f in lab["figs"]:
-        src = ROOT / "media/kenshu/figs" / f"{f}.png"
+        src = ROOT / "media" / rule["dir"] / "figs" / f"{f}.png"
         im = Image.open(src).convert("RGB")
         if im.size != (1920, 1080):
             raise SystemExit(f"{src}: 図が 1920×1080 でない")
         # 上の札（製品の印）と下の札（媒体の名前）を切る。Claude ラボの壁と同じ切り方
         im.crop((0, 120, 1920, 991)).resize((560, 254), Image.LANCZOS).save(out_dir / f"f-{f}.jpg", quality=82, optimize=True)
         names.append(f"f-{f}.jpg")
-    labs = json.loads((ROOT / "media/audiences.json").read_text())["labs"]
-    rule = labs[KEY]
 
     def mine(stem):  # rest のラボ（導入ラボ）は、同じフォルダのほかのラボに入らない記事
         if rule.get("rest"):
@@ -183,10 +239,15 @@ def main():
 
     # 上の帯と1画面目
     t = sub(t, '<a class="subnav__name" href="index.html">Claude ラボ</a>', f'<a class="subnav__name" href="index.html">{name}</a>', "上の帯の名前")
-    t = sub(t, f"{UTM}claude&amp;utm_content=nav#claude-code\" class=\"subnav__cta\">Claude Code 研修</a>",
-            f"{UTM}{KEY}&amp;utm_content=nav#{lab['train_anchor']}\" class=\"subnav__cta\">{lab['train_name']}</a>", "上の帯の研修")
+    cta = {**CTA_DEFAULT, **lab.get("cta", {})}
+    url = cta.get("url", TRAIN_URL)
+    anchor = f"#{lab['train_anchor']}" if lab.get("train_anchor") else ""
+    t = sub(t, f"{TRAIN_URL}?{UTM}claude&amp;utm_content=nav#claude-code\" class=\"subnav__cta\">Claude Code 研修</a>",
+            f"{url}?{UTM}{KEY}&amp;utm_content=nav{anchor}\" class=\"subnav__cta\">{lab['train_name']}</a>", "上の帯の研修")
     t = sub(t, '<section class="hero" aria-label="Claude ラボ">', f'<section class="hero" aria-label="{name}">', "1画面目の名前")
     t = sub(t, "<h1>Claude を、<br>", f"<h1>{lab['h1']}<br>", "見出し")
+    if lab.get("h1_rest"):
+        t = sub(t, '<span class="nw">会社で使える<br class="sp">形にする。</span></h1>', f"{lab['h1_rest']}</h1>", "見出しの2行目")
     t = rx(t, r'<p class="hero__line">[^<]*</p>', f'<p class="hero__line">{lab["line"]}</p>', "一言")
     t = rx(t, r'<p class="hero__desc">[^<]*</p>', f'<p class="hero__desc">{lab["lead"]}</p>', "説明")
 
@@ -213,17 +274,21 @@ def main():
     t = sub(t, '<section class="c-train" aria-label="Claude Code 研修">', f'<section class="c-train" aria-label="{lab["train_name"]}">', "研修の段の名前")
     t = sub(t, "<h2>Claude Code 研修</h2>", f"<h2>{lab['train_name']}</h2>", "研修の見出し")
     t = rx(t, r'(<h2>' + re.escape(lab["train_name"]) + r'</h2>\n    <p>)[^<]*(</p>)', rf"\g<1>{lab['train_text']}\g<2>", "研修の説明")
-    t = sub(t, f"{UTM}claude&amp;utm_content=band#claude-code", f"{UTM}{KEY}&amp;utm_content=band#{lab['train_anchor']}", "研修の釦")
+    t = sub(t, f"{TRAIN_URL}?{UTM}claude&amp;utm_content=band#claude-code\">研修の内容を見る",
+            f"{url}?{UTM}{KEY}&amp;utm_content=band{anchor}\">{cta['btn']}", "研修の釦")
+    t = sub(t, '<div class="c-train__k">法人研修</div>', f'<div class="c-train__k">{cta["k"]}</div>', "研修の段の上の札")
 
     # このメディアについて（Claude for Startups の行は Claude ラボだけ）
     t = rx(t, r'(<h2>このメディアについて</h2>\n    <div>\n).*?(\n    </div>)',
-           rf'\g<1>      <p>「{name}」は、生成AIの法人研修と導入支援を行う<a href="../../index.html">株式会社TechWorker</a>が運営するメディアです。</p>\n      <p>{lab["about"]}</p>\g<2>',
+           rf'\g<1>      <p>「{name}」は、{lab.get("about_who", ABOUT_WHO)}<a href="../../index.html">株式会社TechWorker</a>が運営するメディアです。</p>\n      <p>{lab["about"]}</p>\g<2>',
            "このメディアについて")
 
     # 型の Claude の言葉が残っていないか（ラボ自身の文に出てくる製品の名前は数えない。導入ラボの文は Claude を含む）
     body = re.sub(r"<style>.*?</style>", "", t, flags=re.S)
     for k in ("title", "desc", "line", "lead", "train_text", "about"):
         body = body.replace(lab[k], "")
+    for _, label in lab["docs"]:
+        body = body.replace(label, "")
     left = [w for w in ("Claude", "Anthropic", "claude") if w in body]
     if left:
         raise SystemExit(f"Claude の言葉が残っている：{left}")

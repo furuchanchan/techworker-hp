@@ -30,17 +30,7 @@
 <link rel="stylesheet" href="../article.css?v=20261120d">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AIクローラーからサイトを守る｜robots.txtの限界とCloudflareでの制御【2026】", "description": "AIの学習を止め、検索からの流入を残すには、クローラーごとの役割を見分けます。robots.txtの限界と、Cloudflareで観測・制御できる範囲を確認します。", "datePublished": "2026-08-09", "dateModified": "2026-11-21", "inLanguage": "ja", "image": "https://techworker.co.jp/media/security/covers/ai-crawler-control.png", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company.html", "image": "https://techworker.co.jp/assets/author-furuno.jpg", "sameAs": ["https://x.com/koutarou_furuno"], "affiliation": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/ogp.png", "width": 1200, "height": 630}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techworker.co.jp/media/security/ai-crawler-control"}, "citation": ["https://developers.cloudflare.com/changelog/post/2025-12-18-overview-tab/", "https://github.com/cloudflare/cloudflare-docs/blob/production/LICENSE", "https://developers.cloudflare.com/ai-crawl-control/features/manage-ai-crawlers/", "https://www.rfc-editor.org/rfc/rfc9309.html"]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "robots.txtでAIクローラーを止められますか？", "acceptedAnswer": {"@type": "Answer", "text": "従うクローラーには有効ですが、無視するクライアントを通信で止める力はありません。RFC 9309が定めるrobots.txtは取得してよいかを伝える規約で、アクセス制御や本人確認の仕組みではないためです。従わない通信はWAFの規則で止めます。"}}, {"@type": "Question", "name": "AIクローラーをまとめて遮断すると、何が起きますか？", "acceptedAnswer": {"@type": "Answer", "text": "検索・回答サービスからの流入まで失う可能性があります。運営者、目的、要求量、対象パス、流入を見て、クローラーごとに決めます。会員向け資料や原価表のパスは厳しく、公開記事は引用と流入を見ながら許可する、といった分け方です。"}}, {"@type": "Question", "name": "CloudflareでAIクローラーを遮断するには、どこで操作しますか？", "acceptedAnswer": {"@type": "Answer", "text": "AI Crawl ControlのCrawlersタブで、クローラーごとに許可、遮断、提供中なら課金を選びます。遮断はWAFの個別規則へ反映されます。Overviewは要求や流入を見る画面です。"}}, {"@type": "Question", "name": "Cloudflareの無料プランで、AIクローラーをすべて見分けられますか？", "acceptedAnswer": {"@type": "Answer", "text": "取りこぼすことがあります。Cloudflare公式資料では、無料プランの識別は主に自己申告するUser-Agentを使い、より高度な検知にはBot Managementが関わります。名前だけを偽装するクライアントや、新しいクローラーは取りこぼし得ます。"}}, {"@type": "Question", "name": "設定を変えたあと、何を比べて確かめますか？", "acceptedAnswer": {"@type": "Answer", "text": "変更後の7日と28日の要求、接続元サーバーの負荷、流入を比べます。遮断件数だけを成果にしません。必要なボットを誤って止めた場合に戻せるよう、規則を変えた人、理由、対象パスを記録します。"}}]}</script>
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org","@type":"BreadcrumbList",
-  "itemListElement":[
-    {"@type":"ListItem","position":1,"name":"ホーム","item":"https://techworker.co.jp/"},
-    {"@type":"ListItem","position":2,"name":"メディア","item":"https://techworker.co.jp/media/"},
-    {"@type":"ListItem","position":3,"name":"AIセキュリティ・ラボ","item":"https://techworker.co.jp/media/security/"},
-    {"@type":"ListItem","position":4,"name":"AIクローラーからサイトを守る","item":"https://techworker.co.jp/media/security/ai-crawler-control"}
-  ]
-}
-</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "AIセキュリティ・ラボ", "item": "https://techworker.co.jp/media/security/"}, {"@type": "ListItem", "position": 4, "name": "AIクローラーからサイトを守る", "item": "https://techworker.co.jp/media/security/ai-crawler-control"}]}</script>
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -68,13 +58,13 @@ fbq('init','1264057945446029');fbq('track','PageView');
 </header>
 <div class="subnav">
   <div class="wrap subnav__in">
-    <a class="subnav__name" href="index.html">AIセキュリティラボ</a>
+    <a class="subnav__name" href="../security/">AIセキュリティ・ラボ</a>
     <nav aria-label="メディアの行き先"><a href="index.html#about">このメディアについて</a><a href="../../contact.html" class="subnav__cta">無料相談</a></nav>
   </div>
 </div>
 
 <header class="art-head">
-  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AIセキュリティ・ラボ</a><span class="sep">/</span>AIクローラーからサイトを守る</nav>
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="../security/">AIセキュリティ・ラボ</a><span class="sep">/</span>AIクローラーからサイトを守る</nav>
   <div class="kicker">実行環境と通信の制限</div>
   <h1>AIクローラーからサイトを守る｜robots.txtの限界とCloudflareでの制御</h1>
   <p class="dek">AIの学習を止め、検索からの流入を残すには、クローラーごとの役割を見分けます。robots.txtの限界と、Cloudflareで観測・制御できる範囲を確認します。</p>
@@ -142,7 +132,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 </div></div>
 
 <p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="https://kenshu.techworker.co.jp/" style="color:var(--electric);font-weight:700;text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--electric) 30%,transparent);">生成AI法人研修</a>　／　<a href="../../contact.html" style="color:var(--electric);font-weight:700;text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--electric) 30%,transparent);">無料相談</a>　／　<a href="../../library/" style="color:var(--electric);font-weight:700;text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--electric) 30%,transparent);">事例集（無料DL）</a></p>
-<div class="back-list"><a href="index.html">← AIセキュリティ・ラボに戻る</a></div>
+<div class="back-list"><a href="../security/">← AIセキュリティ・ラボの記事一覧に戻る</a></div>
 
 <section class="related"><div class="container">
   <div class="rl-h">Related</div>

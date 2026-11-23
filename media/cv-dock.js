@@ -70,7 +70,7 @@
   };
   function companymap(where, img) {
     return {
-      kind: "無料相談・30分", img: img || "/media/cv/companymap.jpg", offer: "companymap_consult",
+      kind: "無料相談・30分", img: img || "/media/cv/companymap.jpg?v=20261123-band", offer: "companymap_consult",
       title: where + "の1つの業務を、30分の無料相談でAIが業務図にします",
       points: ["お仕事の流れを伺いながら、その場でAIが業務図を作ります", "詰まっている所、AIに任せられる所まで1枚で分かります", "手順書やExcelがあれば、その場で使います（なくてもお話から作れます）"],
       note: "最初の1枚は無料。申込みの入力は1分です",
@@ -79,7 +79,7 @@
   }
   // 研修の相談（研修・セキュリティ・エージェント・基盤の記事の右下）。見本は研修サイトに載せている教材の1枚
   var TRAINING = {
-    kind: "無料相談・30分", img: "/media/cv/kenshu.jpg?v=6", offer: "training_consult",
+    kind: "無料相談・30分", img: "/media/cv/kenshu.jpg?v=20261123-band", offer: "training_consult",
     title: "御社のAI環境とセキュリティに合わせて、生成AI研修を組みます",
     points: [],
     note: "",
