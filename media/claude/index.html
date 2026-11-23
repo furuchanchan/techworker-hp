@@ -35,93 +35,188 @@ fbq('init','1264057945446029');fbq('track','PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel Code -->
-<style>
-/* ===== Claude ラボ（業務図ラボの枠を写す：題→大きく1点→表紙つきの一覧→資料） ===== */
-
-.jz-wrap{max-width:1100px;margin:0 auto;padding:0 48px;width:100%;}
-
-/* hero */
-
-
-.jz-hero{max-width:1100px;margin:0 auto;padding:140px 48px 0;}
-.jz-hero .kicker{font-family:var(--en);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--electric);}
-.jz-hero h1{font-family:var(--jp);font-weight:700;font-size:clamp(32px,5vw,58px);line-height:1.2;letter-spacing:.02em;margin-top:18px;max-width:17ch;}
-.jz-hero .lead{font-size:18px;color:var(--slate);line-height:1.9;margin-top:24px;max-width:54ch;}
-
-/* section heading */
-
-
-.jz-sec{max-width:1100px;margin:0 auto;padding:0 48px;}
-.jz-sec-h{font-family:var(--en);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--slate);margin-bottom:24px;}
-
-/* 記事一覧 = 均一なリスト行（サムネ無し・高さ均一） */
-
-
-.jz-latest{margin-top:56px;}
-.jz-list{border-top:1px solid var(--line-2);}
-.jz-list a{display:grid;grid-template-columns:176px minmax(0,1fr) 24px;gap:28px;align-items:start;padding:26px 4px;border-bottom:1px solid var(--line);text-decoration:none;color:inherit;transition:background .2s;}
-.jz-list a:hover{background:var(--white);}
-.jz-list .l-side{display:flex;flex-direction:column;gap:7px;padding-top:3px;}
-.jz-list .l-cat{font-family:var(--en);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);}
-.jz-list .l-date{font-family:var(--en);font-size:12px;color:var(--slate);font-feature-settings:"tnum" 1;font-weight:700;}
-.jz-list .l-title{font-family:var(--jp);font-weight:700;font-size:18px;line-height:1.55;letter-spacing:.02em;color:var(--ink);transition:color .2s;}
-.jz-list a:hover .l-title{color:var(--electric);}
-.jz-list .l-desc{font-size:14px;color:var(--slate);line-height:1.75;margin-top:8px;}
-.jz-list .l-arrow{font-family:var(--en);color:var(--electric);font-size:17px;justify-self:end;align-self:center;transition:transform .2s;font-weight:700;}
-.jz-list a:hover .l-arrow{transform:translateX(4px);}
-
-/* このメディアについて */
-
-
-.jz-about{margin-top:72px;padding:40px 0 48px;border-top:1px solid var(--line);}
-.jz-about .ab-body{max-width:66ch;}
-.jz-about .ab-body p{font-size:14.5px;color:var(--slate);line-height:1.95;}
-.jz-about .ab-body p+p{margin-top:12px;}
-.jz-about .ab-body a{color:var(--electric);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--electric) 30%,transparent);}
-.jz-about .ab-body a:hover{border-bottom-color:var(--electric);}
-
-@media(max-width:880px){
-  .jz-hero{padding:108px 24px 0;}
-  .jz-sec{padding:0 24px;}
-  .jz-list a{grid-template-columns:1fr;gap:9px;padding:22px 2px;}
-  .jz-list .l-side{flex-direction:row;align-items:center;gap:12px;}
-  .jz-list .l-arrow{display:none;}
-}
-:root{--electric:#005EFF;--electric-dark:#0047C2}
-.jz-hero h1,.jz-list .l-title{word-break:auto-phrase}
-.jz-list .l-cat,.cl-feat-b .l-cat{text-transform:none;letter-spacing:.04em}
-.jz-about .ab-body a{border-bottom-color:rgba(31,41,51,.3)}
-
-/* 大きく1点：いちばん読まれている記事 */
-.cl-feat{margin-top:56px;}
-.cl-feat-card{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:36px;align-items:center;text-decoration:none;color:inherit;border:1px solid var(--line-2);border-radius:14px;background:var(--white);padding:22px;transition:border-color .2s;}
-.cl-feat-card:hover{border-color:var(--electric);}
-.cl-feat-card img{display:block;width:100%;height:auto;aspect-ratio:1200/630;border-radius:10px;border:1px solid var(--line);}
-.cl-feat-b{padding-right:12px;}
-.cl-feat-b .l-cat{font-family:var(--en);font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--electric);}
-.cl-feat-t{font-family:var(--jp);font-weight:700;font-size:clamp(20px,2.4vw,26px);line-height:1.5;letter-spacing:.02em;color:var(--ink);margin-top:10px;word-break:auto-phrase;}
-.cl-feat-d{font-size:14.5px;color:var(--slate);line-height:1.85;margin-top:12px;}
-.cl-feat-m{font-family:var(--en);font-size:12px;font-weight:700;color:var(--slate);margin-top:14px;font-feature-settings:"tnum" 1;}
-.cl-feat-go{display:inline-block;margin-top:16px;font-family:var(--jp);font-weight:700;font-size:14px;color:var(--electric);}
-/* 資料 */
-.cl-docs{margin-top:64px;}
-.cl-docs .tw-lead{margin:0;}
-/* 受け取り欄の中の試算を灰色の箱にせず、欄の中に平らに置く（箱の中の箱を作らない。記事側の試算の見た目は 11/20 からの測定中なので変えない） */
-.cl-docs .tw-lead .tl-calc{background:none;padding:0;border-radius:0;}
-.cl-docs-more{font-size:14px;color:var(--slate);line-height:1.9;margin-top:16px;}
-.cl-docs-more a{color:var(--electric);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(31,41,51,.3);}
-@media(max-width:880px){
-  .cl-feat-card{grid-template-columns:1fr;gap:18px;padding:14px;}
-  .cl-feat-b{padding:0 4px 6px;}
-}
-</style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Claude ラボ", "description": "Claude と Claude Code を法人で使うための実務メディアです。Team・Enterprise・API の契約と料金、管理者の設定とセキュリティ、Claude Code の社内展開と研修、新しい機能の使いどころを解説します。料金や機能は Anthropic の公式資料で確かめ、確かめた日付を記事に書いています。", "url": "https://techworker.co.jp/media/claude/", "inLanguage": "ja", "isPartOf": {"@type": "WebSite", "name": "TechWorker", "url": "https://techworker.co.jp/"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}, "mainEntity": {"@type": "ItemList", "itemListElement": [{"@type": "ListItem", "position": 1, "url": "https://techworker.co.jp/media/kenshu/claude-meetings-toha", "name": "Claude Meetingsとは｜Google MeetのAI議事録の料金と、管理者が決める3つの設定"}, {"@type": "ListItem", "position": 2, "url": "https://techworker.co.jp/media/kenshu/claude-enterprise-yosan-kanri", "name": "Claude Enterpriseの予算管理｜部署ごとの共有予算・コストコード・利用レポートの設定"}, {"@type": "ListItem", "position": 3, "url": "https://techworker.co.jp/media/kenshu/claude-dounyu-shien-settei-daikou", "name": "Claudeの導入支援・設定代行は何を頼めるか｜自社でやる設定と外へ出す範囲の分け方"}, {"@type": "ListItem", "position": 4, "url": "https://techworker.co.jp/media/kenshu/claude-fable-5-2-houjin", "name": "Claude Fable 5.2の料金と法人利用｜Team・Enterpriseでの使い方と、管理者が11月16日までに決めること"}, {"@type": "ListItem", "position": 5, "url": "https://techworker.co.jp/media/kenshu/claude-code-kenshu-houjin", "name": "Claude Codeの法人研修｜対象者・内容・日数・費用の決め方と、依頼前に決める5つのこと"}, {"@type": "ListItem", "position": 6, "url": "https://techworker.co.jp/media/kenshu/claude-enterprise-security-center", "name": "Claude Enterpriseのセキュリティセンター｜推奨の設定と見比べる手順"}, {"@type": "ListItem", "position": 7, "url": "https://techworker.co.jp/media/kenshu/claude-google-workspace-trial", "name": "ClaudeをGoogle Docs・Sheets・Slidesで使う｜承認と保存の確認点"}, {"@type": "ListItem", "position": 8, "url": "https://techworker.co.jp/media/kenshu/claude-code-shanai-tenkai", "name": "Claude Codeの社内展開｜社内データの扱い・設定配布・ルール雛形"}, {"@type": "ListItem", "position": 9, "url": "https://techworker.co.jp/media/kenshu/claude-code-cost", "name": "Claudeの法人契約と料金｜Team・Enterprise・APIとClaude Codeの選び方"}]}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "Claude ラボ", "item": "https://techworker.co.jp/media/claude/"}]}</script>
 <link rel="stylesheet" href="/media/audience-filter.css?v=20261006-media-only">
 <script src="/media/audience-filter.js?v=20261006-media-only" defer></script>
 <link rel="stylesheet" href="/assets/site/site.css">
+
+<style>
+/* ===== Claude ラボ（2026-11-23）：1画面目は本体HPの壁を Claude の色（地 #FAF9F5・差し色 #D97757）で敷く。記事は主役1本＋新着2本＋表紙の3列を1つの格子に。動きは壁の流れる3列だけ ===== */
+body.cl{--bg:#FAF9F5;--bg2:#F0EEE6;--bg3:#E8E6DC;--ln:#D1CFC5;--tx:#141413;--tx2:#30302E;--tx3:#5E5D59;--ac:#D97757;--ac-d:#C6613F;
+  --electric:#141413;--electric-dark:#30302E;--ink:#141413;--slate:#5E5D59;--white:#FFFFFF;--line:#E8E6DC;--line-2:#D1CFC5;
+  --edge:calc(max(0px,(100vw - var(--wrap)) / 2) + var(--pad));background:var(--bg);color:var(--tx);font-size:16px;letter-spacing:.02em;}
+.cl h1,.cl h2,.cl h3,.cl .c-t,.cl .c-btn{font-feature-settings:"palt";letter-spacing:.02em;word-break:auto-phrase;}
+.cl .wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--pad);}
+/* 上の帯と足：地の色に合わせる */
+.cl .subnav{background:var(--bg);border-bottom:1px solid var(--bg3);}
+.cl .subnav nav a:hover{color:var(--ac-d);}
+.cl .subnav nav .subnav__cta{background:var(--ac);color:var(--tx);}
+.cl .subnav nav .subnav__cta:hover{background:var(--ac-d);color:var(--tx);filter:none;}
+.cl .ft{background:var(--bg2);}
+/* 釦 */
+.c-btn{display:inline-flex;align-items:center;gap:18px;min-height:54px;padding:0 26px;border-radius:6px;font:700 15px/1 var(--f-body);text-decoration:none;transition:background .2s,color .2s;}
+.c-btn .arw{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;}
+.c-btn--main{background:var(--ac);color:var(--tx);}
+.c-btn--main:hover{background:var(--ac-d);}
+.c-btn--sub{color:var(--tx);box-shadow:inset 0 0 0 1.5px var(--tx);}
+.c-btn--sub:hover{background:var(--bg2);}
+.c-go{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:15px;color:var(--tx);text-decoration:underline;text-decoration-color:var(--ac);text-decoration-thickness:2px;text-underline-offset:7px;}
+.c-go .arw{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.8;}
+.c-h2{font:700 30px/1.4 var(--f-min);}
+
+/* ---- 1画面目 ---- */
+.hero{position:relative;overflow:hidden;height:clamp(540px,calc(100svh - 270px),660px);}
+.hero__in{position:relative;z-index:2;height:100%;width:64%;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:0 24px 8px var(--edge);}
+.hero h1{font:800 62px/1.28 var(--f-min);}
+.hero h1 .nw{white-space:nowrap;}
+.hero h1 .sp{display:none;}
+.hero__line{margin-top:30px;font-size:21px;font-weight:700;line-height:1.7;word-break:auto-phrase;}
+.hero__desc{margin-top:12px;max-width:34em;font-size:15.5px;line-height:1.9;color:var(--tx2);word-break:auto-phrase;}
+.hero__acts{display:flex;gap:14px;flex-wrap:wrap;margin-top:36px;}
+.hero__acts .c-btn--main{min-width:220px;justify-content:space-between;}
+/* 壁（本体HP index.html の .wall を写し、色だけ替えた） */
+.wall{--gap:18px;position:absolute;inset:0;overflow:hidden;background:#EFEDE5;}
+.wall__cam{position:absolute;inset:0;perspective:1700px;perspective-origin:60% 44%;}
+.wall__plane{position:absolute;left:43%;top:50%;width:1500px;height:0;display:flex;align-items:flex-start;gap:var(--gap);transform-origin:0 0;transform:scale(.72) rotateY(-24deg) rotateX(12deg) rotateZ(-7deg) translateY(-1250px);}
+.wall__col{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:var(--gap);}
+.wall__col--move{animation:wall-up 520s linear infinite;will-change:transform;}
+.wall__col img{display:block;width:100%;height:auto;border-radius:10px;border:1px solid #DCD8CC;background:#fff;}
+@keyframes wall-up{from{transform:translateY(0);}to{transform:translateY(calc(-33.3333% - var(--gap) / 3));}}
+@media (prefers-reduced-motion:reduce){.wall__col{animation:none;}}
+.wall--hero .wall__plane{left:6%;width:1900px;transform:scale(1.04) rotateY(-24deg) rotateX(12deg) rotateZ(-7deg) translateY(-1000px);}
+.wall--hero .wall__veil{position:absolute;inset:0;background:
+  radial-gradient(ellipse 640px 170px at 28% 68%,rgba(250,249,245,.78) 0,rgba(250,249,245,.78) 45%,rgba(250,249,245,0) 100%),
+  linear-gradient(0deg,rgba(250,249,245,.92) 0,rgba(250,249,245,0) 16%),
+  linear-gradient(90deg,rgba(250,249,245,.8) 0,rgba(250,249,245,.8) 52%,rgba(250,249,245,.4) 62%,rgba(250,249,245,.08) 71%,rgba(250,249,245,0) 78%);}
+
+/* ---- 記事：見出しと絞り込みを1行、その下に主役1本＋新着2本、残りを表紙の3列 ---- */
+.c-meta{font-size:13px;font-weight:700;line-height:1.6;color:var(--tx2);font-feature-settings:"tnum" 1;}
+.c-meta i{font-style:normal;font-weight:500;color:var(--tx3);margin-left:14px;}
+.c-list{max-width:var(--wrap);margin:0 auto;padding:96px var(--pad) 0;display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:24px;align-items:end;}
+.c-list__hd{grid-column:1;}
+.cl .audience-controls{grid-column:2;margin:0;gap:6px;justify-content:flex-end;}
+.cl .audience-controls button{border-radius:6px;background:transparent;border:1px solid var(--ln);color:var(--tx);font-weight:700;padding:9px 16px;}
+.cl .audience-controls button:hover{border-color:var(--tx);}
+.cl .audience-controls button[aria-pressed="true"]{background:var(--bg3);border-color:var(--tx);color:var(--tx);}
+.cl .audience-result{grid-column:1 / -1;margin:12px 0 0;font-size:13px;color:var(--tx3);}
+.cl .audience-empty,.cl .audience-more{grid-column:1 / -1;}
+.cl .audience-empty a{color:var(--tx);}
+#audience-results{grid-column:1 / -1;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:56px 32px;margin-top:28px;}
+.cc{display:flex;flex-direction:column;min-width:0;color:inherit;text-decoration:none;}
+.cc img{display:block;width:100%;height:auto;aspect-ratio:1200/630;object-fit:cover;border-radius:10px;border:1px solid var(--bg3);background:var(--bg2);}
+.cc--feat{grid-column:span 6;}
+.cc--side{grid-column:span 3;}
+.cc--row{grid-column:span 4;}
+.cc-b{display:flex;flex-direction:column;}
+.cc-m{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 14px;margin-top:16px;}
+.cl .cc-m .audience-tag{margin:0;padding:0;border:0;border-radius:0;background:none;font-size:13px;font-weight:500;line-height:1.6;color:var(--tx3);}
+.cc-t{margin-top:8px;font-size:18px;font-weight:700;line-height:1.6;font-feature-settings:"palt";letter-spacing:.02em;word-break:auto-phrase;}
+.cc-d{margin-top:8px;font-size:14px;line-height:1.85;color:var(--tx3);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+.cc--side .cc-d{-webkit-line-clamp:4;}
+.cc-pick{display:flex;align-items:center;gap:8px;margin-top:20px;font-size:14px;font-weight:700;color:var(--tx);}
+.cc-pick::before{content:"";width:8px;height:8px;background:var(--ac);}
+.cc--feat .cc-m{margin-top:8px;}
+.cc--feat .cc-t{margin-top:10px;font:700 28px/1.5 var(--f-min);}
+.cc--feat .cc-d{margin-top:12px;font-size:15px;line-height:1.9;color:var(--tx2);-webkit-line-clamp:4;}
+.cc--feat .c-go{margin-top:20px;align-self:flex-start;}
+.cc:hover .cc-t{text-decoration:underline;text-decoration-color:var(--ac);text-decoration-thickness:2px;text-underline-offset:6px;}
+
+/* ---- 資料 ---- */
+.c-docs{margin-top:120px;padding:96px 0 104px;background:var(--bg2);}
+.c-docs__g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.3fr);gap:56px;align-items:start;}
+.c-docs__k{margin-top:22px;font-size:13px;font-weight:700;color:var(--tx3);}
+.c-docs__o{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid var(--ln);color:var(--tx);font-size:14.5px;font-weight:700;line-height:1.7;text-decoration:none;word-break:auto-phrase;}
+.c-docs__k+.c-docs__o{margin-top:8px;border-top:1px solid var(--ln);}
+.c-docs__o .arw{flex:none;width:16px;height:16px;fill:none;stroke:var(--ac-d);stroke-width:1.8;}
+.c-docs__o:hover{color:var(--ac-d);}
+.c-docs .tw-lead{margin:0;}
+/* 受け取り欄の中の試算を灰色の箱にしない（今の版と同じ指定） */
+.c-docs .tw-lead .tl-calc{background:none;padding:0;border-radius:0;}
+/* 受け取り欄の外枠も外し、段の地にじかに置く（枠のカードを作らない） */
+.c-docs .tw-lead{background:transparent;border:0;box-shadow:none;border-radius:0;padding:0;}
+
+/* 資料の欄（lead.js）と右下の小窓（cv-dock.js）の釦も、黒い地に白い字にしない。光る筋と脈打つ動きは止める */
+.cl .tw-lead button,.cl .tw-lead .tl-go,.cl .twd-b,.cl .twd-pill{background:var(--ac);color:var(--tx);box-shadow:none;}
+.cl .tw-lead button:hover,.cl .tw-lead .tl-go:hover,.cl .twd-b:hover,.cl .twd-pill:hover{background:var(--ac-d);color:var(--tx);}
+.cl .twd-b{animation:none;}
+.cl .twd-b::after{display:none;}
+
+/* ---- 研修：止めた壁を右に敷いた段 ---- */
+.c-train{position:relative;overflow:hidden;}
+.c-train__in{position:relative;z-index:2;padding:112px var(--pad) 112px var(--edge);max-width:calc(var(--edge) + 600px);}
+.c-train__k{font-size:14px;font-weight:700;color:var(--tx3);}
+.c-train h2{margin-top:10px;font:800 44px/1.3 var(--f-min);}
+.c-train p{margin-top:18px;font-size:15.5px;line-height:1.95;color:var(--tx2);max-width:30em;}
+.c-train .c-btn{margin-top:30px;}
+.wall--still{background:var(--bg);}
+.wall--still .wall__plane{left:48%;width:1500px;transform:scale(.8) rotateY(-24deg) rotateX(12deg) rotateZ(-7deg) translateY(-760px);}
+.wall--still .wall__veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(250,249,245,1) 0,rgba(250,249,245,1) 44%,rgba(250,249,245,.55) 54%,rgba(250,249,245,.1) 66%,rgba(250,249,245,0) 76%);}
+
+/* ---- このメディアについて ---- */
+.c-about{padding:88px 0 104px;border-top:1px solid var(--bg3);}
+.c-about__g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.3fr);gap:56px;}
+.c-about h2{font:700 22px/1.5 var(--f-min);}
+.c-about p{font-size:15px;line-height:2;color:var(--tx2);max-width:44em;}
+.c-about p+p{margin-top:12px;}
+.c-about a{color:var(--tx);font-weight:700;text-decoration:underline;text-decoration-color:var(--ac);text-underline-offset:5px;}
+
+@media (max-width:1360px) and (min-width:1101px){
+  .wall--hero .wall__plane{transform:scale(.94) rotateY(-24deg) rotateX(12deg) rotateZ(-7deg) translateY(-1000px);}
+}
+@media (max-width:1100px){
+  .hero h1{font-size:5.4vw;}
+  .hero{height:clamp(460px,calc(100svh - 400px),600px);}
+  .hero__in{width:66%;}
+  .wall--hero .wall__plane{left:2%;width:1300px;transform:scale(1.12) rotateY(-24deg) rotateX(12deg) rotateZ(-7deg) translateY(-900px);}
+  .wall--hero .wall__veil{background:
+    linear-gradient(0deg,rgba(250,249,245,.92) 0,rgba(250,249,245,0) 16%),
+    linear-gradient(90deg,rgba(250,249,245,.86) 0,rgba(250,249,245,.86) 62%,rgba(250,249,245,.4) 72%,rgba(250,249,245,.08) 82%,rgba(250,249,245,0) 88%);}
+  #audience-results{grid-template-columns:repeat(2,minmax(0,1fr));gap:48px 28px;}
+  .cc--feat{grid-column:1 / -1;}
+  .cc--side,.cc--row{grid-column:span 1;}
+  .cc--feat .cc-t{font-size:24px;}
+}
+@media (max-width:960px){
+  .wall--hero .wall__plane{left:0%;width:1200px;}
+  .c-docs__g,.c-about__g{grid-template-columns:1fr;gap:28px;}
+}
+@media (max-width:760px){
+  body.cl{--pad:20px;}
+  .hero{height:auto;}
+  .hero__in{width:auto;height:auto;padding:40px var(--pad) 190px;}
+  .hero h1{font-size:36px;line-height:1.36;}
+  .hero__line{margin-top:20px;font-size:17px;line-height:1.65;}
+  .hero__desc{margin-top:8px;font-size:14px;line-height:1.85;}
+  .hero__acts{margin-top:24px;gap:10px;width:100%;}
+  .hero__acts .c-btn{min-height:50px;}
+  .hero__acts{flex-wrap:nowrap;}
+  .hero__acts .c-btn{flex:1 1 0;min-width:0;justify-content:center;gap:10px;padding:0 12px;}
+  .hero h1 .nw{white-space:normal;}
+  .hero h1 .sp{display:inline;}
+  .wall{--gap:12px;}
+  .wall__cam{perspective:700px;perspective-origin:50% 80%;}
+  .wall__col img{border-radius:6px;}
+  .wall--hero .wall__plane{left:-4%;top:100%;width:900px;transform:rotateX(34deg) rotateZ(-14deg) translateY(-900px);}
+  .wall--hero .wall__veil{background:linear-gradient(180deg,rgba(250,249,245,1) 0,rgba(250,249,245,1) 75%,rgba(250,249,245,.5) 80%,rgba(250,249,245,0) 88%);}
+  .c-h2{font-size:24px;}
+  .c-list{padding-top:64px;grid-template-columns:1fr;}
+  .cl .audience-controls{grid-column:1;justify-content:flex-start;margin-top:16px;}
+  #audience-results{grid-template-columns:1fr;gap:44px;}
+  .cc--feat .cc-t{font-size:22px;}
+  .cc--feat .cc-d{font-size:14px;}
+  .cc-t{font-size:17px;}
+  .cc-d,.cc--side .cc-d{-webkit-line-clamp:2;}
+  .c-docs{margin-top:88px;padding:64px 0 72px;}
+  .c-train__in{padding:64px var(--pad) 72px;}
+  .c-train{border-top:1px solid var(--bg3);}
+  .c-train h2{font-size:32px;}
+  .wall--still{display:none;}
+  .c-about{padding:64px 0 72px;}
+}
+</style>
 </head>
-<body>
+<body class="cl">
 
 <header class="hd hd--solid">
   <a class="logo" href="/" aria-label="TechWorker ホーム">Tech<i>Worker</i></a>
@@ -143,62 +238,61 @@ fbq('init','1264057945446029');fbq('track','PageView');
 </div>
 
 <main>
-
-<header class="jz-hero">
-  <span class="kicker">Claude Lab</span>
-  <h1>Claude を、会社で使える形にする。</h1>
-  <p class="lead">Claude と Claude Code を法人で使うときの判断を扱うメディアです。Team・Enterprise・API の契約と料金、管理者の設定とセキュリティ、Claude Code の社内展開と研修、新しい機能の使いどころを書いています。料金や機能は Anthropic の公式資料で確かめ、確かめた日付を記事に書いています。</p>
-</header>
-
-<!-- lab-feature:start -->
-<section class="jz-sec cl-feat">
-  <div class="jz-sec-h">いちばん読まれている記事</div>
-  <a class="cl-feat-card" href="../kenshu/claude-code-cost.html"><img src="../kenshu/covers/claude-code-cost.png" alt="Claudeの法人契約と料金｜Team・Enterprise・APIとClaude Codeの選び方" width="1200" height="630"><div class="cl-feat-b"><div class="l-cat">料金と比較</div><h2 class="cl-feat-t">Claudeの法人契約と料金｜Team・Enterprise・APIとClaude Codeの選び方</h2><p class="cl-feat-d">Claudeの法人契約は、Team・Enterprise・API従量の3つです。Teamは1人月20ドルから（年払い）で、支払いはカードだけです。請求書払いは営業経由のEnterpriseです。料金表、日本円の目安、適格請求書、稟議の手順を公式資料（2026年11月21日確認）で整理します。</p><div class="cl-feat-m">更新 2026.11.21</div><span class="cl-feat-go">記事を読む &rarr;</span></div></a>
+<section class="hero" aria-label="Claude ラボ">
+  <div class="wall wall--hero" aria-hidden="true"><div class="wall__cam"><div class="wall__plane"><div class="wall__col"><img src="wall/c-enterprise-yosan-kanri.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-steps.jpg" alt="" width="560" height="254"><img src="wall/c-dounyu-shien-settei-daikou.jpg" alt="" width="560" height="294"><img src="wall/f-code-kenshu-houjin-s2.jpg" alt="" width="560" height="254"><img src="wall/c-code-kenshu-houjin.jpg" alt="" width="560" height="294"><img src="wall/f-enterprise-security-center-s1.jpg" alt="" width="560" height="254"><img src="wall/c-google-workspace-trial.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-enterprise.jpg" alt="" width="560" height="254"><img src="wall/f-dounyu-shien-settei-daikou-s2.jpg" alt="" width="560" height="254"><img src="wall/f-enterprise-yosan-kanri-s2.jpg" alt="" width="560" height="254"><img src="wall/f-fable-5-2-houjin-2.jpg" alt="" width="560" height="254"><img src="wall/f-google-workspace-trial-s2.jpg" alt="" width="560" height="254"><img src="wall/c-enterprise-yosan-kanri.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-steps.jpg" alt="" width="560" height="254"><img src="wall/c-dounyu-shien-settei-daikou.jpg" alt="" width="560" height="294"><img src="wall/f-code-kenshu-houjin-s2.jpg" alt="" width="560" height="254"><img src="wall/c-code-kenshu-houjin.jpg" alt="" width="560" height="294"><img src="wall/f-enterprise-security-center-s1.jpg" alt="" width="560" height="254"><img src="wall/c-google-workspace-trial.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-enterprise.jpg" alt="" width="560" height="254"><img src="wall/f-dounyu-shien-settei-daikou-s2.jpg" alt="" width="560" height="254"><img src="wall/f-enterprise-yosan-kanri-s2.jpg" alt="" width="560" height="254"><img src="wall/f-fable-5-2-houjin-2.jpg" alt="" width="560" height="254"><img src="wall/f-google-workspace-trial-s2.jpg" alt="" width="560" height="254"><img src="wall/c-enterprise-yosan-kanri.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-steps.jpg" alt="" width="560" height="254"><img src="wall/c-dounyu-shien-settei-daikou.jpg" alt="" width="560" height="294"><img src="wall/f-code-kenshu-houjin-s2.jpg" alt="" width="560" height="254"><img src="wall/c-code-kenshu-houjin.jpg" alt="" width="560" height="294"><img src="wall/f-enterprise-security-center-s1.jpg" alt="" width="560" height="254"><img src="wall/c-google-workspace-trial.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-enterprise.jpg" alt="" width="560" height="254"><img src="wall/f-dounyu-shien-settei-daikou-s2.jpg" alt="" width="560" height="254"><img src="wall/f-enterprise-yosan-kanri-s2.jpg" alt="" width="560" height="254"><img src="wall/f-fable-5-2-houjin-2.jpg" alt="" width="560" height="254"><img src="wall/f-google-workspace-trial-s2.jpg" alt="" width="560" height="254"></div><div class="wall__col wall__col--move"><img src="wall/c-meetings-toha.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-plans.jpg" alt="" width="560" height="254"><img src="wall/c-fable-5-2-houjin.jpg" alt="" width="560" height="294"><img src="wall/f-code-kenshu-houjin-s1.jpg" alt="" width="560" height="254"><img src="wall/c-enterprise-security-center.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-usage.jpg" alt="" width="560" height="254"><img src="wall/c-code-shanai-tenkai.jpg" alt="" width="560" height="294"><img src="wall/f-dounyu-shien-settei-daikou-s1.jpg" alt="" width="560" height="254"><img src="wall/f-enterprise-yosan-kanri-s1.jpg" alt="" width="560" height="254"><img src="wall/f-google-workspace-trial-s1.jpg" alt="" width="560" height="254"><img src="wall/f-code-cost-pay.jpg" alt="" width="560" height="254"><img src="wall/f-meetings-toha-s1.jpg" alt="" width="560" height="254"><img src="wall/c-meetings-toha.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-plans.jpg" alt="" width="560" height="254"><img src="wall/c-fable-5-2-houjin.jpg" alt="" width="560" height="294"><img src="wall/f-code-kenshu-houjin-s1.jpg" alt="" width="560" height="254"><img src="wall/c-enterprise-security-center.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-usage.jpg" alt="" width="560" height="254"><img src="wall/c-code-shanai-tenkai.jpg" alt="" width="560" height="294"><img src="wall/f-dounyu-shien-settei-daikou-s1.jpg" alt="" width="560" height="254"><img src="wall/f-enterprise-yosan-kanri-s1.jpg" alt="" width="560" height="254"><img src="wall/f-google-workspace-trial-s1.jpg" alt="" width="560" height="254"><img src="wall/f-code-cost-pay.jpg" alt="" width="560" height="254"><img src="wall/f-meetings-toha-s1.jpg" alt="" width="560" height="254"><img src="wall/c-meetings-toha.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-plans.jpg" alt="" width="560" height="254"><img src="wall/c-fable-5-2-houjin.jpg" alt="" width="560" height="294"><img src="wall/f-code-kenshu-houjin-s1.jpg" alt="" width="560" height="254"><img src="wall/c-enterprise-security-center.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-usage.jpg" alt="" width="560" height="254"><img src="wall/c-code-shanai-tenkai.jpg" alt="" width="560" height="294"><img src="wall/f-dounyu-shien-settei-daikou-s1.jpg" alt="" width="560" height="254"><img src="wall/f-enterprise-yosan-kanri-s1.jpg" alt="" width="560" height="254"><img src="wall/f-google-workspace-trial-s1.jpg" alt="" width="560" height="254"><img src="wall/f-code-cost-pay.jpg" alt="" width="560" height="254"><img src="wall/f-meetings-toha-s1.jpg" alt="" width="560" height="254"></div><div class="wall__col"><img src="wall/c-code-kenshu-houjin.jpg" alt="" width="560" height="294"><img src="wall/f-enterprise-security-center-s1.jpg" alt="" width="560" height="254"><img src="wall/c-google-workspace-trial.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-enterprise.jpg" alt="" width="560" height="254"><img src="wall/f-dounyu-shien-settei-daikou-s2.jpg" alt="" width="560" height="254"><img src="wall/f-enterprise-yosan-kanri-s2.jpg" alt="" width="560" height="254"><img src="wall/f-fable-5-2-houjin-2.jpg" alt="" width="560" height="254"><img src="wall/f-google-workspace-trial-s2.jpg" alt="" width="560" height="254"><img src="wall/c-enterprise-yosan-kanri.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-steps.jpg" alt="" width="560" height="254"><img src="wall/c-dounyu-shien-settei-daikou.jpg" alt="" width="560" height="294"><img src="wall/f-code-kenshu-houjin-s2.jpg" alt="" width="560" height="254"><img src="wall/c-code-kenshu-houjin.jpg" alt="" width="560" height="294"><img src="wall/f-enterprise-security-center-s1.jpg" alt="" width="560" height="254"><img src="wall/c-google-workspace-trial.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-enterprise.jpg" alt="" width="560" height="254"><img src="wall/f-dounyu-shien-settei-daikou-s2.jpg" alt="" width="560" height="254"><img src="wall/f-enterprise-yosan-kanri-s2.jpg" alt="" width="560" height="254"><img src="wall/f-fable-5-2-houjin-2.jpg" alt="" width="560" height="254"><img src="wall/f-google-workspace-trial-s2.jpg" alt="" width="560" height="254"><img src="wall/c-enterprise-yosan-kanri.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-steps.jpg" alt="" width="560" height="254"><img src="wall/c-dounyu-shien-settei-daikou.jpg" alt="" width="560" height="294"><img src="wall/f-code-kenshu-houjin-s2.jpg" alt="" width="560" height="254"><img src="wall/c-code-kenshu-houjin.jpg" alt="" width="560" height="294"><img src="wall/f-enterprise-security-center-s1.jpg" alt="" width="560" height="254"><img src="wall/c-google-workspace-trial.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-enterprise.jpg" alt="" width="560" height="254"><img src="wall/f-dounyu-shien-settei-daikou-s2.jpg" alt="" width="560" height="254"><img src="wall/f-enterprise-yosan-kanri-s2.jpg" alt="" width="560" height="254"><img src="wall/f-fable-5-2-houjin-2.jpg" alt="" width="560" height="254"><img src="wall/f-google-workspace-trial-s2.jpg" alt="" width="560" height="254"><img src="wall/c-enterprise-yosan-kanri.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-steps.jpg" alt="" width="560" height="254"><img src="wall/c-dounyu-shien-settei-daikou.jpg" alt="" width="560" height="294"><img src="wall/f-code-kenshu-houjin-s2.jpg" alt="" width="560" height="254"></div><div class="wall__col wall__col--move"><img src="wall/c-enterprise-security-center.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-usage.jpg" alt="" width="560" height="254"><img src="wall/c-code-shanai-tenkai.jpg" alt="" width="560" height="294"><img src="wall/f-dounyu-shien-settei-daikou-s1.jpg" alt="" width="560" height="254"><img src="wall/f-enterprise-yosan-kanri-s1.jpg" alt="" width="560" height="254"><img src="wall/f-google-workspace-trial-s1.jpg" alt="" width="560" height="254"><img src="wall/f-code-cost-pay.jpg" alt="" width="560" height="254"><img src="wall/f-meetings-toha-s1.jpg" alt="" width="560" height="254"><img src="wall/c-meetings-toha.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-plans.jpg" alt="" width="560" height="254"><img src="wall/c-fable-5-2-houjin.jpg" alt="" width="560" height="294"><img src="wall/f-code-kenshu-houjin-s1.jpg" alt="" width="560" height="254"><img src="wall/c-enterprise-security-center.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-usage.jpg" alt="" width="560" height="254"><img src="wall/c-code-shanai-tenkai.jpg" alt="" width="560" height="294"><img src="wall/f-dounyu-shien-settei-daikou-s1.jpg" alt="" width="560" height="254"><img src="wall/f-enterprise-yosan-kanri-s1.jpg" alt="" width="560" height="254"><img src="wall/f-google-workspace-trial-s1.jpg" alt="" width="560" height="254"><img src="wall/f-code-cost-pay.jpg" alt="" width="560" height="254"><img src="wall/f-meetings-toha-s1.jpg" alt="" width="560" height="254"><img src="wall/c-meetings-toha.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-plans.jpg" alt="" width="560" height="254"><img src="wall/c-fable-5-2-houjin.jpg" alt="" width="560" height="294"><img src="wall/f-code-kenshu-houjin-s1.jpg" alt="" width="560" height="254"><img src="wall/c-enterprise-security-center.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-usage.jpg" alt="" width="560" height="254"><img src="wall/c-code-shanai-tenkai.jpg" alt="" width="560" height="294"><img src="wall/f-dounyu-shien-settei-daikou-s1.jpg" alt="" width="560" height="254"><img src="wall/f-enterprise-yosan-kanri-s1.jpg" alt="" width="560" height="254"><img src="wall/f-google-workspace-trial-s1.jpg" alt="" width="560" height="254"><img src="wall/f-code-cost-pay.jpg" alt="" width="560" height="254"><img src="wall/f-meetings-toha-s1.jpg" alt="" width="560" height="254"><img src="wall/c-meetings-toha.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-plans.jpg" alt="" width="560" height="254"><img src="wall/c-fable-5-2-houjin.jpg" alt="" width="560" height="294"><img src="wall/f-code-kenshu-houjin-s1.jpg" alt="" width="560" height="254"></div><div class="wall__col"><img src="wall/f-dounyu-shien-settei-daikou-s2.jpg" alt="" width="560" height="254"><img src="wall/f-enterprise-yosan-kanri-s2.jpg" alt="" width="560" height="254"><img src="wall/f-fable-5-2-houjin-2.jpg" alt="" width="560" height="254"><img src="wall/f-google-workspace-trial-s2.jpg" alt="" width="560" height="254"><img src="wall/c-enterprise-yosan-kanri.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-steps.jpg" alt="" width="560" height="254"><img src="wall/c-dounyu-shien-settei-daikou.jpg" alt="" width="560" height="294"><img src="wall/f-code-kenshu-houjin-s2.jpg" alt="" width="560" height="254"><img src="wall/c-code-kenshu-houjin.jpg" alt="" width="560" height="294"><img src="wall/f-enterprise-security-center-s1.jpg" alt="" width="560" height="254"><img src="wall/c-google-workspace-trial.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-enterprise.jpg" alt="" width="560" height="254"><img src="wall/f-dounyu-shien-settei-daikou-s2.jpg" alt="" width="560" height="254"><img src="wall/f-enterprise-yosan-kanri-s2.jpg" alt="" width="560" height="254"><img src="wall/f-fable-5-2-houjin-2.jpg" alt="" width="560" height="254"><img src="wall/f-google-workspace-trial-s2.jpg" alt="" width="560" height="254"><img src="wall/c-enterprise-yosan-kanri.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-steps.jpg" alt="" width="560" height="254"><img src="wall/c-dounyu-shien-settei-daikou.jpg" alt="" width="560" height="294"><img src="wall/f-code-kenshu-houjin-s2.jpg" alt="" width="560" height="254"><img src="wall/c-code-kenshu-houjin.jpg" alt="" width="560" height="294"><img src="wall/f-enterprise-security-center-s1.jpg" alt="" width="560" height="254"><img src="wall/c-google-workspace-trial.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-enterprise.jpg" alt="" width="560" height="254"><img src="wall/f-dounyu-shien-settei-daikou-s2.jpg" alt="" width="560" height="254"><img src="wall/f-enterprise-yosan-kanri-s2.jpg" alt="" width="560" height="254"><img src="wall/f-fable-5-2-houjin-2.jpg" alt="" width="560" height="254"><img src="wall/f-google-workspace-trial-s2.jpg" alt="" width="560" height="254"><img src="wall/c-enterprise-yosan-kanri.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-steps.jpg" alt="" width="560" height="254"><img src="wall/c-dounyu-shien-settei-daikou.jpg" alt="" width="560" height="294"><img src="wall/f-code-kenshu-houjin-s2.jpg" alt="" width="560" height="254"><img src="wall/c-code-kenshu-houjin.jpg" alt="" width="560" height="294"><img src="wall/f-enterprise-security-center-s1.jpg" alt="" width="560" height="254"><img src="wall/c-google-workspace-trial.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-enterprise.jpg" alt="" width="560" height="254"></div><div class="wall__col wall__col--move"><img src="wall/f-enterprise-yosan-kanri-s1.jpg" alt="" width="560" height="254"><img src="wall/f-google-workspace-trial-s1.jpg" alt="" width="560" height="254"><img src="wall/f-code-cost-pay.jpg" alt="" width="560" height="254"><img src="wall/f-meetings-toha-s1.jpg" alt="" width="560" height="254"><img src="wall/c-meetings-toha.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-plans.jpg" alt="" width="560" height="254"><img src="wall/c-fable-5-2-houjin.jpg" alt="" width="560" height="294"><img src="wall/f-code-kenshu-houjin-s1.jpg" alt="" width="560" height="254"><img src="wall/c-enterprise-security-center.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-usage.jpg" alt="" width="560" height="254"><img src="wall/c-code-shanai-tenkai.jpg" alt="" width="560" height="294"><img src="wall/f-dounyu-shien-settei-daikou-s1.jpg" alt="" width="560" height="254"><img src="wall/f-enterprise-yosan-kanri-s1.jpg" alt="" width="560" height="254"><img src="wall/f-google-workspace-trial-s1.jpg" alt="" width="560" height="254"><img src="wall/f-code-cost-pay.jpg" alt="" width="560" height="254"><img src="wall/f-meetings-toha-s1.jpg" alt="" width="560" height="254"><img src="wall/c-meetings-toha.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-plans.jpg" alt="" width="560" height="254"><img src="wall/c-fable-5-2-houjin.jpg" alt="" width="560" height="294"><img src="wall/f-code-kenshu-houjin-s1.jpg" alt="" width="560" height="254"><img src="wall/c-enterprise-security-center.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-usage.jpg" alt="" width="560" height="254"><img src="wall/c-code-shanai-tenkai.jpg" alt="" width="560" height="294"><img src="wall/f-dounyu-shien-settei-daikou-s1.jpg" alt="" width="560" height="254"><img src="wall/f-enterprise-yosan-kanri-s1.jpg" alt="" width="560" height="254"><img src="wall/f-google-workspace-trial-s1.jpg" alt="" width="560" height="254"><img src="wall/f-code-cost-pay.jpg" alt="" width="560" height="254"><img src="wall/f-meetings-toha-s1.jpg" alt="" width="560" height="254"><img src="wall/c-meetings-toha.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-plans.jpg" alt="" width="560" height="254"><img src="wall/c-fable-5-2-houjin.jpg" alt="" width="560" height="294"><img src="wall/f-code-kenshu-houjin-s1.jpg" alt="" width="560" height="254"><img src="wall/c-enterprise-security-center.jpg" alt="" width="560" height="294"><img src="wall/f-code-cost-usage.jpg" alt="" width="560" height="254"><img src="wall/c-code-shanai-tenkai.jpg" alt="" width="560" height="294"><img src="wall/f-dounyu-shien-settei-daikou-s1.jpg" alt="" width="560" height="254"></div></div></div><div class="wall__veil"></div></div>
+  <div class="hero__in">
+    <h1>Claude を、<br><span class="nw">会社で使える<br class="sp">形にする。</span></h1>
+    <p class="hero__line">Claude と Claude Code を法人で使うときの判断を扱うメディアです。</p>
+    <p class="hero__desc">Team・Enterprise・API の契約と料金、管理者の設定とセキュリティ、Claude Code の社内展開と研修、新しい機能の使いどころを書いています。</p>
+    <div class="hero__acts">
+      <a class="c-btn c-btn--main" href="#articles">記事を読む<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a>
+      <a class="c-btn c-btn--sub" href="#docs">資料を受け取る</a>
+    </div>
+  </div>
 </section>
-<!-- lab-feature:end -->
 
-<!-- articles -->
-<section id="articles" data-audience-catalog class="jz-sec jz-latest">
-  <div class="jz-sec-h">記事一覧</div>
+<section id="articles" data-audience-catalog class="c-list">
+<div class="c-list__hd"><h2 class="c-h2">記事一覧</h2></div>
 <div class="audience-controls" role="group" aria-label="対象読者で絞り込む" hidden><button type="button" data-audience-filter="all" data-audience-label="すべて" aria-pressed="true" aria-controls="audience-results">すべて<span class="audience-count">9</span></button><button type="button" data-audience-filter="it" data-audience-label="情シス・AI導入担当" aria-pressed="false" aria-controls="audience-results">情シス・AI導入担当<span class="audience-count">8</span></button><button type="button" data-audience-filter="hr" data-audience-label="人事・研修担当" aria-pressed="false" aria-controls="audience-results">人事・研修担当<span class="audience-count">1</span></button><button type="button" data-audience-filter="operations" data-audience-label="業務責任者" aria-pressed="false" aria-controls="audience-results" hidden>業務責任者<span class="audience-count">0</span></button><button type="button" data-audience-filter="executive" data-audience-label="経営者・経営幹部" aria-pressed="false" aria-controls="audience-results" hidden>経営者・経営幹部<span class="audience-count">0</span></button></div>
 <p class="audience-result" role="status" aria-live="polite" aria-atomic="true">すべて：9件</p>
-<div id="audience-results" class="jz-list has-thumb rv">
-<a data-audience-item data-audience="it" href="../kenshu/claude-meetings-toha.html"><img class="l-thumb" src="../kenshu/covers/thumbs/claude-meetings-toha.jpg" alt="Claude Meetingsとは｜Google MeetのAI議事録の料金と、管理者が決める3つの設定" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">社内ルールと安全</div><div class="l-date">2026.11.20</div></div><div><div class="l-title">Claude Meetingsとは｜Google MeetのAI議事録の料金と、管理者が決める3つの設定</div><div class="l-desc">Claude Meetingsは、ClaudeがGoogle Meetの会議に参加者として入り、議事録と資料を作る機能です。2026年11月12日にTeamとEnterpriseでベータ提供が始まりました。Teamは既定でオンです。料金、3つの設定、同意の文例を公式情報（2026年11月20日確認）で整理します。</div><span class="audience-tag">情シス・AI導入担当</span></div><div class="l-arrow">&rarr;</div></a>
-<a data-audience-item data-audience="it" href="../kenshu/claude-enterprise-yosan-kanri.html"><img class="l-thumb" src="../kenshu/covers/thumbs/claude-enterprise-yosan-kanri.jpg" alt="Claude Enterpriseの予算管理｜部署ごとの共有予算・コストコード・利用レポートの設定" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">料金と比較</div><div class="l-date">2026.11.18</div></div><div><div class="l-title">Claude Enterpriseの予算管理｜部署ごとの共有予算・コストコード・利用レポートの設定</div><div class="l-desc">Claude Enterpriseでは、部署などのグループごとに月の共有予算を置けます。50・75・95・100%で課金の権限を持つ人にメールが届き、使い切ると止まります。コストコードでの集計と利用レポートも含め、設定の場所と稟議に書くことを公式ヘルプ（2026年11月18日確認）で整理します。</div><span class="audience-tag">情シス・AI導入担当</span></div><div class="l-arrow">&rarr;</div></a>
-<a data-audience-item data-audience="it" href="../kenshu/claude-dounyu-shien-settei-daikou.html"><img class="l-thumb" src="../kenshu/covers/thumbs/claude-dounyu-shien-settei-daikou.jpg" alt="Claudeの導入支援・設定代行は何を頼めるか｜自社でやる設定と外へ出す範囲の分け方" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">導入と業務への組み込み</div><div class="l-date">2026.11.17</div></div><div><div class="l-title">Claudeの導入支援・設定代行は何を頼めるか｜自社でやる設定と外へ出す範囲の分け方</div><div class="l-desc">Claudeの導入支援・設定代行で頼めることを、Team・Enterpriseの管理作業ごとに整理します。SSOや連携、保持期間の設定はオーナー以上の権限が要り、DNSとIdPの操作も自社に残ります。外へ出す範囲の分け方と頼む前の準備を、公式ヘルプ（2026年11月17日確認）で解説します。</div><span class="audience-tag">情シス・AI導入担当</span></div><div class="l-arrow">&rarr;</div></a>
-<a data-audience-item data-audience="it" href="../kenshu/claude-fable-5-2-houjin.html"><img class="l-thumb" src="../kenshu/covers/thumbs/claude-fable-5-2-houjin.jpg" alt="Claude Fable 5.2の料金と法人利用｜Team・Enterpriseでの使い方と、管理者が11月16日までに決めること" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">料金と比較</div><div class="l-date">2026.11.12</div></div><div><div class="l-title">Claude Fable 5.2の料金と法人利用｜Team・Enterpriseでの使い方と、管理者が11月16日までに決めること</div><div class="l-desc">Claude Fable 5.2は2026年11月9日に出た上位モデルで、APIは100万トークン当たり入力8ドル・出力40ドルです。Teamのプレミアム席は週の利用枠の半分まで追加料金なし、標準席は使った分の支払いです。公式情報（11月12日確認）で整理します。</div><span class="audience-tag">情シス・AI導入担当</span></div><div class="l-arrow">&rarr;</div></a>
-<a data-audience-item data-audience="hr" href="../kenshu/claude-code-kenshu-houjin.html"><img class="l-thumb" src="../kenshu/covers/thumbs/claude-code-kenshu-houjin.jpg" alt="Claude Codeの法人研修｜対象者・内容・日数・費用の決め方と、依頼前に決める5つのこと" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">研修の設計と運営</div><div class="l-date">2026.11.12</div></div><div><div class="l-title">Claude Codeの法人研修｜対象者・内容・日数・費用の決め方と、依頼前に決める5つのこと</div><div class="l-desc">Claude Codeの法人研修は、コードを書かない部署でも受けられます。対象者・内容・日数・費用の決め方と、契約や管理者の設定など依頼前に決める5つのことを、公式資料（2026年11月12日確認）とTechWorkerの研修の組み方で示します。</div><span class="audience-tag">人事・研修担当</span></div><div class="l-arrow">&rarr;</div></a>
-<a data-audience-item data-audience="it" href="../kenshu/claude-enterprise-security-center.html"><img class="l-thumb" src="../kenshu/covers/thumbs/claude-enterprise-security-center.jpg" alt="Claude Enterpriseのセキュリティセンター｜推奨の設定と見比べる手順" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">社内ルールと安全</div><div class="l-date">2026.11.10</div></div><div><div class="l-title">Claude Enterpriseのセキュリティセンター｜推奨の設定と見比べる手順</div><div class="l-desc">11月5日、Claude Enterpriseにセキュリティセンター（ベータ）が加わりました。今の設定とAnthropicの推奨の値を1ページで見比べられます。開ける人、見える内容、社内の点検での使い方を示します。</div><span class="audience-tag">情シス・AI導入担当</span></div><div class="l-arrow">&rarr;</div></a>
-<a data-audience-item data-audience="it" href="../kenshu/claude-google-workspace-trial.html"><img class="l-thumb" src="../kenshu/covers/thumbs/claude-google-workspace-trial.jpg" alt="ClaudeをGoogle Docs・Sheets・Slidesで使う｜承認と保存の確認点" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">導入と業務への組み込み</div><div class="l-date">2026.10.07</div></div><div><div class="l-title">ClaudeをGoogle Docs・Sheets・Slidesで使う｜承認と保存の確認点</div><div class="l-desc">Google Workspace用のClaudeアドオンが公開ベータに入りました。情シスは、対象ファイル、編集の承認範囲、保存条件をそろえてから試行を始めます。</div><span class="audience-tag">情シス・AI導入担当</span></div><div class="l-arrow">&rarr;</div></a>
-<a data-audience-item data-audience="it" href="../kenshu/claude-code-shanai-tenkai.html"><img class="l-thumb" src="../kenshu/covers/thumbs/claude-code-shanai-tenkai.jpg" alt="Claude Codeの社内展開｜社内データの扱い・設定配布・ルール雛形" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">Claude Codeの活用</div><div class="l-date">2026.07.29</div></div><div><div class="l-title">Claude Codeの社内展開｜社内データの扱い・設定配布・ルール雛形</div><div class="l-desc">Claude Codeの社内展開は契約とデータ方針、managed-settings.jsonによる設定配布、利用ルール、監査、パイロットからの段階展開の順で進めます。手順ごとに決めることと、利用ルールの雛形、展開前のチェックリストをまとめました。</div><span class="audience-tag">情シス・AI導入担当</span></div><div class="l-arrow">&rarr;</div></a>
-<a data-audience-item data-audience="it" href="../kenshu/claude-code-cost.html"><img class="l-thumb" src="../kenshu/covers/thumbs/claude-code-cost.jpg" alt="Claudeの法人契約と料金｜Team・Enterprise・APIとClaude Codeの選び方" width="600" height="315" loading="lazy"><div class="l-side"><div class="l-cat">料金と比較</div><div class="l-date">2026.07.22</div></div><div><div class="l-title">Claudeの法人契約と料金｜Team・Enterprise・APIとClaude Codeの選び方</div><div class="l-desc">Claudeの法人契約は、Team・Enterprise・API従量の3つです。Teamは1人月20ドルから（年払い）で、支払いはカードだけです。請求書払いは営業経由のEnterpriseです。料金表、日本円の目安、適格請求書、稟議の手順を公式資料（2026年11月21日確認）で整理します。</div><span class="audience-tag">情シス・AI導入担当</span></div><div class="l-arrow">&rarr;</div></a>
-    </div>
+<div id="audience-results" class="jz-cards">
+<a data-audience-item data-audience="it" class="cc cc--feat" href="../kenshu/claude-code-cost.html"><img src="../kenshu/covers/claude-code-cost.png" alt="Claudeの法人契約と料金｜Team・Enterprise・APIとClaude Codeの選び方" width="1200" height="630" fetchpriority="high"><span class="cc-b"><span class="cc-pick">いちばん読まれている記事</span><span class="cc-m"><span class="c-meta">料金と比較<i>2026.07.22（更新 2026.11.21）</i></span><span class="audience-tag">情シス・AI導入担当</span></span><span class="cc-t">Claudeの法人契約と料金｜Team・Enterprise・APIとClaude Codeの選び方</span><span class="cc-d">Claudeの法人契約は、Team・Enterprise・API従量の3つです。Teamは1人月20ドルから（年払い）で、支払いはカードだけです。請求書払いは営業経由のEnterpriseです。料金表、日本円の目安、適格請求書、稟議の手順を公式資料（2026年11月21日確認）で整理します。</span><span class="c-go">記事を読む<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></span></a>
+<a data-audience-item data-audience="it" class="cc cc--side" href="../kenshu/claude-meetings-toha.html"><img src="../kenshu/covers/thumbs/claude-meetings-toha.jpg" srcset="../kenshu/covers/thumbs/claude-meetings-toha.jpg 600w, ../kenshu/covers/claude-meetings-toha.png 1200w" sizes="(max-width:760px) calc(100vw - 40px), (max-width:1100px) 46vw, 380px" alt="Claude Meetingsとは｜Google MeetのAI議事録の料金と、管理者が決める3つの設定" width="600" height="315" loading="lazy"><span class="cc-b"><span class="cc-m"><span class="c-meta">社内ルールと安全<i>2026.11.20</i></span><span class="audience-tag">情シス・AI導入担当</span></span><span class="cc-t">Claude Meetingsとは｜Google MeetのAI議事録の料金と、管理者が決める3つの設定</span><span class="cc-d">Claude Meetingsは、ClaudeがGoogle Meetの会議に参加者として入り、議事録と資料を作る機能です。2026年11月12日にTeamとEnterpriseでベータ提供が始まりました。Teamは既定でオンです。料金、3つの設定、同意の文例を公式情報（2026年11月20日確認）で整理します。</span></span></a>
+<a data-audience-item data-audience="it" class="cc cc--side" href="../kenshu/claude-enterprise-yosan-kanri.html"><img src="../kenshu/covers/thumbs/claude-enterprise-yosan-kanri.jpg" srcset="../kenshu/covers/thumbs/claude-enterprise-yosan-kanri.jpg 600w, ../kenshu/covers/claude-enterprise-yosan-kanri.png 1200w" sizes="(max-width:760px) calc(100vw - 40px), (max-width:1100px) 46vw, 380px" alt="Claude Enterpriseの予算管理｜部署ごとの共有予算・コストコード・利用レポートの設定" width="600" height="315" loading="lazy"><span class="cc-b"><span class="cc-m"><span class="c-meta">料金と比較<i>2026.11.18</i></span><span class="audience-tag">情シス・AI導入担当</span></span><span class="cc-t">Claude Enterpriseの予算管理｜部署ごとの共有予算・コストコード・利用レポートの設定</span><span class="cc-d">Claude Enterpriseでは、部署などのグループごとに月の共有予算を置けます。50・75・95・100%で課金の権限を持つ人にメールが届き、使い切ると止まります。コストコードでの集計と利用レポートも含め、設定の場所と稟議に書くことを公式ヘルプ（2026年11月18日確認）で整理します。</span></span></a>
+<a data-audience-item data-audience="it" class="cc cc--row" href="../kenshu/claude-dounyu-shien-settei-daikou.html"><img src="../kenshu/covers/thumbs/claude-dounyu-shien-settei-daikou.jpg" srcset="../kenshu/covers/thumbs/claude-dounyu-shien-settei-daikou.jpg 600w, ../kenshu/covers/claude-dounyu-shien-settei-daikou.png 1200w" sizes="(max-width:760px) calc(100vw - 40px), (max-width:1100px) 46vw, 380px" alt="Claudeの導入支援・設定代行は何を頼めるか｜自社でやる設定と外へ出す範囲の分け方" width="600" height="315" loading="lazy"><span class="cc-b"><span class="cc-m"><span class="c-meta">導入と業務への組み込み<i>2026.11.17</i></span><span class="audience-tag">情シス・AI導入担当</span></span><span class="cc-t">Claudeの導入支援・設定代行は何を頼めるか｜自社でやる設定と外へ出す範囲の分け方</span><span class="cc-d">Claudeの導入支援・設定代行で頼めることを、Team・Enterpriseの管理作業ごとに整理します。SSOや連携、保持期間の設定はオーナー以上の権限が要り、DNSとIdPの操作も自社に残ります。外へ出す範囲の分け方と頼む前の準備を、公式ヘルプ（2026年11月17日確認）で解説します。</span></span></a>
+<a data-audience-item data-audience="it" class="cc cc--row" href="../kenshu/claude-fable-5-2-houjin.html"><img src="../kenshu/covers/thumbs/claude-fable-5-2-houjin.jpg" srcset="../kenshu/covers/thumbs/claude-fable-5-2-houjin.jpg 600w, ../kenshu/covers/claude-fable-5-2-houjin.png 1200w" sizes="(max-width:760px) calc(100vw - 40px), (max-width:1100px) 46vw, 380px" alt="Claude Fable 5.2の料金と法人利用｜Team・Enterpriseでの使い方と、管理者が11月16日までに決めること" width="600" height="315" loading="lazy"><span class="cc-b"><span class="cc-m"><span class="c-meta">料金と比較<i>2026.11.12</i></span><span class="audience-tag">情シス・AI導入担当</span></span><span class="cc-t">Claude Fable 5.2の料金と法人利用｜Team・Enterpriseでの使い方と、管理者が11月16日までに決めること</span><span class="cc-d">Claude Fable 5.2は2026年11月9日に出た上位モデルで、APIは100万トークン当たり入力8ドル・出力40ドルです。Teamのプレミアム席は週の利用枠の半分まで追加料金なし、標準席は使った分の支払いです。公式情報（11月12日確認）で整理します。</span></span></a>
+<a data-audience-item data-audience="hr" class="cc cc--row" href="../kenshu/claude-code-kenshu-houjin.html"><img src="../kenshu/covers/thumbs/claude-code-kenshu-houjin.jpg" srcset="../kenshu/covers/thumbs/claude-code-kenshu-houjin.jpg 600w, ../kenshu/covers/claude-code-kenshu-houjin.png 1200w" sizes="(max-width:760px) calc(100vw - 40px), (max-width:1100px) 46vw, 380px" alt="Claude Codeの法人研修｜対象者・内容・日数・費用の決め方と、依頼前に決める5つのこと" width="600" height="315" loading="lazy"><span class="cc-b"><span class="cc-m"><span class="c-meta">研修の設計と運営<i>2026.11.12</i></span><span class="audience-tag">人事・研修担当</span></span><span class="cc-t">Claude Codeの法人研修｜対象者・内容・日数・費用の決め方と、依頼前に決める5つのこと</span><span class="cc-d">Claude Codeの法人研修は、コードを書かない部署でも受けられます。対象者・内容・日数・費用の決め方と、契約や管理者の設定など依頼前に決める5つのことを、公式資料（2026年11月12日確認）とTechWorkerの研修の組み方で示します。</span></span></a>
+<a data-audience-item data-audience="it" class="cc cc--row" href="../kenshu/claude-enterprise-security-center.html"><img src="../kenshu/covers/thumbs/claude-enterprise-security-center.jpg" srcset="../kenshu/covers/thumbs/claude-enterprise-security-center.jpg 600w, ../kenshu/covers/claude-enterprise-security-center.png 1200w" sizes="(max-width:760px) calc(100vw - 40px), (max-width:1100px) 46vw, 380px" alt="Claude Enterpriseのセキュリティセンター｜推奨の設定と見比べる手順" width="600" height="315" loading="lazy"><span class="cc-b"><span class="cc-m"><span class="c-meta">社内ルールと安全<i>2026.11.10</i></span><span class="audience-tag">情シス・AI導入担当</span></span><span class="cc-t">Claude Enterpriseのセキュリティセンター｜推奨の設定と見比べる手順</span><span class="cc-d">11月5日、Claude Enterpriseにセキュリティセンター（ベータ）が加わりました。今の設定とAnthropicの推奨の値を1ページで見比べられます。開ける人、見える内容、社内の点検での使い方を示します。</span></span></a>
+<a data-audience-item data-audience="it" class="cc cc--row" href="../kenshu/claude-google-workspace-trial.html"><img src="../kenshu/covers/thumbs/claude-google-workspace-trial.jpg" srcset="../kenshu/covers/thumbs/claude-google-workspace-trial.jpg 600w, ../kenshu/covers/claude-google-workspace-trial.png 1200w" sizes="(max-width:760px) calc(100vw - 40px), (max-width:1100px) 46vw, 380px" alt="ClaudeをGoogle Docs・Sheets・Slidesで使う｜承認と保存の確認点" width="600" height="315" loading="lazy"><span class="cc-b"><span class="cc-m"><span class="c-meta">導入と業務への組み込み<i>2026.10.07</i></span><span class="audience-tag">情シス・AI導入担当</span></span><span class="cc-t">ClaudeをGoogle Docs・Sheets・Slidesで使う｜承認と保存の確認点</span><span class="cc-d">Google Workspace用のClaudeアドオンが公開ベータに入りました。情シスは、対象ファイル、編集の承認範囲、保存条件をそろえてから試行を始めます。</span></span></a>
+<a data-audience-item data-audience="it" class="cc cc--row" href="../kenshu/claude-code-shanai-tenkai.html"><img src="../kenshu/covers/thumbs/claude-code-shanai-tenkai.jpg" srcset="../kenshu/covers/thumbs/claude-code-shanai-tenkai.jpg 600w, ../kenshu/covers/claude-code-shanai-tenkai.png 1200w" sizes="(max-width:760px) calc(100vw - 40px), (max-width:1100px) 46vw, 380px" alt="Claude Codeの社内展開｜社内データの扱い・設定配布・ルール雛形" width="600" height="315" loading="lazy"><span class="cc-b"><span class="cc-m"><span class="c-meta">Claude Codeの活用<i>2026.07.29</i></span><span class="audience-tag">情シス・AI導入担当</span></span><span class="cc-t">Claude Codeの社内展開｜社内データの扱い・設定配布・ルール雛形</span><span class="cc-d">Claude Codeの社内展開は契約とデータ方針、managed-settings.jsonによる設定配布、利用ルール、監査、パイロットからの段階展開の順で進めます。手順ごとに決めることと、利用ルールの雛形、展開前のチェックリストをまとめました。</span></span></a>
+</div>
 <p class="audience-empty" hidden>このメディアには、選んだ読者向けの記事がまだありません。<br><a href="/media/#media">ほかのメディアを見る</a></p><button type="button" class="audience-more" aria-controls="audience-results" hidden>もっと見る</button></section>
 
-<!-- documents -->
-<section class="jz-sec cl-docs" id="docs">
-  <div class="jz-sec-h">資料</div>
-  <div class="tw-lead" data-offer="claude-cost-sheet" data-campaign="claude-lab" data-pos="hub"></div>
-  <p class="cl-docs-more">ほかの資料：<a href="../../library/?doc=ringi&amp;utm_source=techworker_media&amp;utm_medium=hub&amp;utm_campaign=claude&amp;utm_content=docs_ringi">Claude Code 法人導入 稟議書テンプレート</a>／<a href="../../library/?doc=security&amp;utm_source=techworker_media&amp;utm_medium=hub&amp;utm_campaign=claude&amp;utm_content=docs_security">Claude Code 企業導入 セキュリティ＆セットアップ実践ガイド</a></p>
+<section class="c-docs" id="docs">
+  <div class="wrap c-docs__g">
+    <div class="c-docs__side"><h2 class="c-h2">資料</h2>
+      <p class="c-docs__k">ほかの資料</p><a class="c-docs__o" href="../../library/?doc=ringi&amp;utm_source=techworker_media&amp;utm_medium=hub&amp;utm_campaign=claude&amp;utm_content=docs_ringi">Claude Code 法人導入 稟議書テンプレート<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a><a class="c-docs__o" href="../../library/?doc=security&amp;utm_source=techworker_media&amp;utm_medium=hub&amp;utm_campaign=claude&amp;utm_content=docs_security">Claude Code 企業導入 セキュリティ＆セットアップ実践ガイド<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a></div>
+    <div class="tw-lead" data-offer="claude-cost-sheet" data-campaign="claude-lab" data-pos="hub"></div>
+  </div>
 </section>
 
-<!-- training -->
-<section class="jz-sec" style="margin-top:40px;">
-  <aside class="inline-dx-cta" data-cta-placement="band" style="border:1px solid var(--line-2);border-radius:14px;background:var(--white);padding:30px 32px;display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
-    <div style="flex:1;min-width:260px;">
-      <div style="font-family:var(--jp);font-size:12px;font-weight:700;color:var(--electric);">法人研修</div>
-      <div style="font-family:var(--jp);font-weight:700;font-size:clamp(18px,2.4vw,22px);color:var(--ink);line-height:1.5;margin-top:9px;">Claude Code 研修</div>
-      <div style="font-size:14px;color:var(--slate);line-height:1.85;margin-top:7px;max-width:54ch;">セットアップと安全な設定から、手元の Excel と文書を読んで下書きを作る道具づくりまでを、1日（6時間）の講義と操作演習で行います。コードを書く経験は要りません。</div>
+<section class="c-train" aria-label="Claude Code 研修">
+  <div class="wall wall--still" aria-hidden="true"><div class="wall__cam"><div class="wall__plane"><div class="wall__col"><img src="wall/f-code-cost-plans.jpg" alt="" width="560" height="254"><img src="wall/f-code-kenshu-houjin-s1.jpg" alt="" width="560" height="254"><img src="wall/f-code-cost-usage.jpg" alt="" width="560" height="254"><img src="wall/f-dounyu-shien-settei-daikou-s1.jpg" alt="" width="560" height="254"><img src="wall/f-enterprise-yosan-kanri-s1.jpg" alt="" width="560" height="254"><img src="wall/f-google-workspace-trial-s1.jpg" alt="" width="560" height="254"><img src="wall/f-code-cost-pay.jpg" alt="" width="560" height="254"><img src="wall/f-meetings-toha-s1.jpg" alt="" width="560" height="254"><img src="wall/f-code-cost-steps.jpg" alt="" width="560" height="254"><img src="wall/f-code-kenshu-houjin-s2.jpg" alt="" width="560" height="254"></div><div class="wall__col"><img src="wall/f-enterprise-yosan-kanri-s1.jpg" alt="" width="560" height="254"><img src="wall/f-google-workspace-trial-s1.jpg" alt="" width="560" height="254"><img src="wall/f-code-cost-pay.jpg" alt="" width="560" height="254"><img src="wall/f-meetings-toha-s1.jpg" alt="" width="560" height="254"><img src="wall/f-code-cost-steps.jpg" alt="" width="560" height="254"><img src="wall/f-code-kenshu-houjin-s2.jpg" alt="" width="560" height="254"><img src="wall/f-enterprise-security-center-s1.jpg" alt="" width="560" height="254"><img src="wall/f-code-cost-enterprise.jpg" alt="" width="560" height="254"><img src="wall/f-dounyu-shien-settei-daikou-s2.jpg" alt="" width="560" height="254"><img src="wall/f-enterprise-yosan-kanri-s2.jpg" alt="" width="560" height="254"></div><div class="wall__col"><img src="wall/f-code-cost-steps.jpg" alt="" width="560" height="254"><img src="wall/f-code-kenshu-houjin-s2.jpg" alt="" width="560" height="254"><img src="wall/f-enterprise-security-center-s1.jpg" alt="" width="560" height="254"><img src="wall/f-code-cost-enterprise.jpg" alt="" width="560" height="254"><img src="wall/f-dounyu-shien-settei-daikou-s2.jpg" alt="" width="560" height="254"><img src="wall/f-enterprise-yosan-kanri-s2.jpg" alt="" width="560" height="254"><img src="wall/f-fable-5-2-houjin-2.jpg" alt="" width="560" height="254"><img src="wall/f-google-workspace-trial-s2.jpg" alt="" width="560" height="254"><img src="wall/f-code-cost-plans.jpg" alt="" width="560" height="254"><img src="wall/f-code-kenshu-houjin-s1.jpg" alt="" width="560" height="254"></div><div class="wall__col"><img src="wall/f-dounyu-shien-settei-daikou-s2.jpg" alt="" width="560" height="254"><img src="wall/f-enterprise-yosan-kanri-s2.jpg" alt="" width="560" height="254"><img src="wall/f-fable-5-2-houjin-2.jpg" alt="" width="560" height="254"><img src="wall/f-google-workspace-trial-s2.jpg" alt="" width="560" height="254"><img src="wall/f-code-cost-plans.jpg" alt="" width="560" height="254"><img src="wall/f-code-kenshu-houjin-s1.jpg" alt="" width="560" height="254"><img src="wall/f-code-cost-usage.jpg" alt="" width="560" height="254"><img src="wall/f-dounyu-shien-settei-daikou-s1.jpg" alt="" width="560" height="254"><img src="wall/f-enterprise-yosan-kanri-s1.jpg" alt="" width="560" height="254"><img src="wall/f-google-workspace-trial-s1.jpg" alt="" width="560" height="254"></div><div class="wall__col"><img src="wall/f-code-cost-usage.jpg" alt="" width="560" height="254"><img src="wall/f-dounyu-shien-settei-daikou-s1.jpg" alt="" width="560" height="254"><img src="wall/f-enterprise-yosan-kanri-s1.jpg" alt="" width="560" height="254"><img src="wall/f-google-workspace-trial-s1.jpg" alt="" width="560" height="254"><img src="wall/f-code-cost-pay.jpg" alt="" width="560" height="254"><img src="wall/f-meetings-toha-s1.jpg" alt="" width="560" height="254"><img src="wall/f-code-cost-steps.jpg" alt="" width="560" height="254"><img src="wall/f-code-kenshu-houjin-s2.jpg" alt="" width="560" height="254"><img src="wall/f-enterprise-security-center-s1.jpg" alt="" width="560" height="254"><img src="wall/f-code-cost-enterprise.jpg" alt="" width="560" height="254"></div></div></div><div class="wall__veil"></div></div>
+  <div class="c-train__in">
+    <div class="c-train__k">法人研修</div>
+    <h2>Claude Code 研修</h2>
+    <p>セットアップと安全な設定から、手元の Excel と文書を読んで下書きを作る道具づくりまでを、1日（6時間）の講義と操作演習で行います。コードを書く経験は要りません。</p>
+    <a class="c-btn c-btn--main" data-cta-placement="band" href="https://kenshu.techworker.co.jp/program/?utm_source=techworker_media&amp;utm_medium=hub&amp;utm_campaign=claude&amp;utm_content=band#claude-code">研修の内容を見る<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a>
+  </div>
+</section>
+
+<section class="c-about" id="about">
+  <div class="wrap c-about__g">
+    <h2>このメディアについて</h2>
+    <div>
+      <p>「Claude ラボ」は、生成AIの法人研修と導入支援を行う<a href="../../index.html">株式会社TechWorker</a>が運営するメディアです。TechWorker は Anthropic 社のスタートアップ支援プログラム「<a href="../../news/011">Claude for Startups</a>」に採択されています。</p>
+      <p>記事は Anthropic の公式の料金表・ヘルプ・発表をもとに書き、料金や機能は確かめた日付を記事に書いています。</p>
     </div>
-    <a href="https://kenshu.techworker.co.jp/program/?utm_source=techworker_media&amp;utm_medium=hub&amp;utm_campaign=claude&amp;utm_content=band#claude-code" class="btn" style="white-space:nowrap;flex:none;color:var(--paper);border-bottom:none;">研修の内容を見る <i>&rarr;</i></a>
-  </aside>
-</section>
-
-<section class="jz-sec jz-about" id="about">
-  <div class="jz-sec-h">このメディアについて</div>
-  <div class="ab-body">
-    <p>「Claude ラボ」は、生成AIの法人研修と導入支援を行う<a href="../../index.html">株式会社TechWorker</a>が運営するメディアです。TechWorker は Anthropic 社のスタートアップ支援プログラム「<a href="../../news/011">Claude for Startups</a>」に採択されています。</p>
-    <p>記事は Anthropic の公式の料金表・ヘルプ・発表をもとに書き、料金や機能は確かめた日付を記事に書いています。</p>
   </div>
 </section>
 
