@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js" data-media="kenshu">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}if(location.hostname==='techworker.co.jp')gtag('config', 'G-3V34NWXVCJ');
+</script>
+<script src="/assets/tw-track.js" defer></script>
+<script src="/assets/tw-event.js" defer></script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>暗黙知とは｜形式知との違いと、業務の暗黙知をAIの聞き取りで残す手順 — TechWorker</title>
+<meta name="description" content="暗黙知とは、経験から身につき、言葉にしきれない知識です。ポランニーと野中郁次郎・竹内弘高の原典、厚生労働省の令和7年度の調査をもとに、形式知との違い、形式知にする4つの方法の違い、業務の暗黙知を聞き取りで残す手順と、AIに任せる所を整理します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/kenshu/anmokuchi-toha">
+<meta property="og:type" content="article">
+<meta property="og:title" content="暗黙知とは｜形式知との違いと、業務の暗黙知をAIの聞き取りで残す手順">
+<meta property="og:description" content="暗黙知とは、経験から身につき、言葉にしきれない知識です。ポランニーと野中郁次郎・竹内弘高の原典、厚生労働省の令和7年度の調査をもとに、形式知との違い、形式知にする4つの方法の違い、業務の暗黙知を聞き取りで残す手順と、AIに任せる所を整理します。">
+<meta property="og:image" content="https://techworker.co.jp/media/kenshu/covers/anmokuchi-toha.png">
+<meta property="og:url" content="https://techworker.co.jp/media/kenshu/anmokuchi-toha">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="暗黙知とは｜形式知との違いと、業務の暗黙知をAIの聞き取りで残す手順">
+<meta name="twitter:image" content="https://techworker.co.jp/media/kenshu/covers/anmokuchi-toha.png">
+<link rel="stylesheet" href="../article.css?v=20261120d">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "暗黙知とは｜形式知との違いと、業務の暗黙知をAIの聞き取りで残す手順", "description": "暗黙知とは、経験から身につき、言葉にしきれない知識です。ポランニーと野中郁次郎・竹内弘高の原典、厚生労働省の令和7年度の調査をもとに、形式知との違い、形式知にする4つの方法の違い、業務の暗黙知を聞き取りで残す手順と、AIに任せる所を整理します。", "datePublished": "2026-11-23", "dateModified": "2026-11-23", "image": "https://techworker.co.jp/media/kenshu/covers/anmokuchi-toha.png", "inLanguage": "ja", "mainEntityOfPage": "https://techworker.co.jp/media/kenshu/anmokuchi-toha", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/favicon.svg"}}, "citation": ["https://press.uchicago.edu/ucp/books/book/chicago/T/bo6035368.html", "https://libcat.library.tamu.edu/Record/in00000375533", "https://global.oup.com/academic/product/the-knowledge-creating-company-9780195092691", "https://newsroom.haas.berkeley.edu/magazine/fall-2017/the-alchemist-of-innovation-management/", "https://toyokeizai.net/articles/-/572393", "https://www.hanmoto.com/bd/isbn/9784492522325", "https://www.mhlw.go.jp/stf/houdou/newpage_00233.html", "https://www.mhlw.go.jp/content/11801500/001728125.pdf", "https://techworker.co.jp/gyoumuzuai"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "暗黙知ラボ", "item": "https://techworker.co.jp/media/anmokuchi/"}, {"@type": "ListItem", "position": 4, "name": "暗黙知とは", "item": "https://techworker.co.jp/media/kenshu/anmokuchi-toha"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "暗黙知は英語で何と言いますか？", "acceptedAnswer": {"@type": "Answer", "text": "tacit knowledgeです。形式知はexplicit knowledgeと呼ばれます。カリフォルニア大学バークレー校のHaasは、この2つをポランニーの分け方として紹介しています。"}}, {"@type": "Question", "name": "暗黙知はすべて形式知にできますか？", "acceptedAnswer": {"@type": "Answer", "text": "できません。シカゴ大学出版局の紹介ページに載る評者の言葉も、知識は完全には形式にできないとしています。判断に効く所から順に残し、残しきれない所は担当者が隣で教える時間を取ります。"}}, {"@type": "Question", "name": "手順書があるのに、仕事が特定の人に頼ったままなのはなぜですか？", "acceptedAnswer": {"@type": "Answer", "text": "手順書には決まった手順が残りますが、例外とそうする理由が抜けやすいためです。分かれ目と例外を聞き取り、手順の横に理由を書き足すと、ほかの人も同じ判断ができるようになります。"}}, {"@type": "Question", "name": "聞き取りには、どのくらいの時間がかかりますか？", "acceptedAnswer": {"@type": "Answer", "text": "業務の量によるため、決まった時間はありません。ギョウムズAIの初期診断は社内の負担を質問票に1時間、確認会に2時間の計3時間以内としています。聞く前に資料から手順を読んでおくと、聞く時間を判断と例外に使えます。"}}, {"@type": "Question", "name": "退職まで時間がないときは、何から残しますか？", "acceptedAnswer": {"@type": "Answer", "text": "例外と判断の分かれ目から残します。直近の実例を担当者と一緒に見て、迷った件や上長に確かめた件を先に聞きます。決まった手順を資料から起こすのは、後でかまいません。"}}, {"@type": "Question", "name": "聞き取りをAIに任せても大丈夫ですか？", "acceptedAnswer": {"@type": "Answer", "text": "質問の用意、書き起こし、下書きの整理は任せられます。答えが正しいか、どちらの判断を正とするかは、担当者と上長が確かめます。録音や書き起こしの前に、話す人の了承を得てください。"}}]}</script>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<link rel="stylesheet" href="/assets/site/site.css">
+<link rel="stylesheet" href="/media/audience-filter.css?v=20261006-media-only">
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header class="hd hd--solid">
+  <a class="logo" href="/" aria-label="TechWorker ホーム">Tech<i>Worker</i></a>
+  <nav id="hd-nav" aria-label="主な行き先">
+    <a href="/services">事業・サービス</a>
+    <a href="/#concept">考え方</a>
+    <a href="/agent-cases/">事例</a>
+    <a href="/news">ニュース</a>
+    <a href="/company">会社情報</a>
+    <a href="/contact">お問い合わせ</a>
+  </nav>
+  <button class="menu" type="button" aria-label="メニューを開く" aria-controls="hd-nav" aria-expanded="false"></button>
+</header>
+<div class="subnav">
+  <div class="wrap subnav__in">
+    <a class="subnav__name" href="../anmokuchi/">暗黙知ラボ</a>
+    <nav aria-label="メディアの行き先"><a href="../../gyoumuzuai?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=anmokuchi-toha&amp;utm_content=nav">ギョウムズAIについて</a><a href="../../gyoumuzuai?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=anmokuchi-toha&amp;utm_content=nav_cta" class="subnav__cta">ギョウムズAIを見る</a></nav>
+  </div>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="../anmokuchi/">暗黙知ラボ</a><span class="sep">/</span>暗黙知とは</nav>
+  <div class="kicker">導入と業務への組み込み</div>
+  <h1>暗黙知とは｜形式知との違いと、業務の暗黙知をAIの聞き取りで残す手順</h1>
+  <p class="dek">暗黙知は経験から身につき、言葉にしきれない知識です。原典と厚生労働省の調査をもとに、形式知との違い、形式知にする方法の違い、業務の暗黙知を聞き取りで残す手順をまとめます。</p>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.11.23</span><span class="dot">·</span><span>読了 10分</span>
+  </div>
+<p class="article-audience"><span class="article-audience-label">主な対象読者</span><a href="/media/anmokuchi/?audience=operations#articles">業務責任者</a></p>
+</header>
+
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div>
+      <a href="#teigi">暗黙知とは、何ですか？</a>
+      <a href="#seci">形式知との違いと、SECIモデルとは何ですか？</a>
+      <a href="#data">なぜ今、暗黙知を残す必要があるのですか？</a>
+      <a href="#houhou">暗黙知を形式知にする方法は、何がありますか？</a>
+      <a href="#kiku">業務の暗黙知を聞き取るとき、何を聞きますか？</a>
+      <a href="#tejun">聞き取りで残す手順はどう進めますか？</a>
+      <a href="#ai">AIに任せる所と、人が決める所はどこですか？</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#next">今週、何から始めればよいですか？</a>
+      <a href="#sources">出典と確認範囲</a>
+    </div></nav>
+
+  <article class="art-body">
+
+<p>暗黙知（tacit knowledge）は、経験から身につき、言葉にしきれない知識です。手順書に書かれていない判断の基準や、例外のときの動き方がこれに当たります。</p>
+<ul>
+<li><strong>言葉の出どころ：</strong>哲学者マイケル・ポランニーが1966年の著書『The Tacit Dimension』で論じました。</li>
+<li><strong>形式知との違い：</strong>形式知は言葉や数字で書き表せる知識です。違いは言葉にしきれるかどうかにあります。</li>
+<li><strong>業務での残し方：</strong>判断の分かれ目・例外・理由の3つを聞き取り、過去の実例に当てて確かめるのが基本です。</li>
+</ul>
+<p>原典の紹介ページと公的な調査（2026年11月23日確認）をもとに、形式知にする方法の違いと、聞き取りで残す手順をまとめます。</p>
+
+<h2 id="teigi">暗黙知とは、何ですか？</h2>
+<p class="answer">経験から身につき、言葉にしきれない知識です。ポランニーは、人は語れる以上のことを知っている、という事実から知識を考え直しました。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“I shall reconsider human knowledge by starting from the fact that we can know more than we can tell”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>人の知識を考え直すにあたり、私たちは語れる以上のことを知っている、という事実から始めたい。</p><footer>出典：<a href="https://press.uchicago.edu/ucp/books/book/chicago/T/bo6035368.html" target="_blank" rel="noopener noreferrer">The University of Chicago Press「The Tacit Dimension」</a>の書籍紹介に引かれたポランニーの一文（2026年11月23日確認）</footer></blockquote>
+<p>『The Tacit Dimension』は1966年にDoubledayから出た本です。今の版は、シカゴ大学出版局が出した2009年の版（128ページ）です。</p>
+<p>カリフォルニア大学バークレー校のビジネススクール（Haas）は、ポランニーの分け方を次のように紹介しています。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“explicit knowledge,” which can be captured in language and figures, and “tacit knowledge,” which is tied to the body, senses, intuition, and past experiences.</span></p><p class="source-translation"><span class="source-label">日本語訳</span>言葉や数字でとらえられる形式知と、体・感覚・直感・過去の経験に結び付いた暗黙知。</p><footer>出典：<a href="https://newsroom.haas.berkeley.edu/magazine/fall-2017/the-alchemist-of-innovation-management/" target="_blank" rel="noopener noreferrer">UC Berkeley Haas「The Alchemist of Innovation Management」</a>（2017年秋号、2026年11月23日確認）</footer></blockquote>
+<figure class="fig-inline"><a href="figs/anmokuchi-toha-chigai.png" target="_blank" rel="noopener"><picture><source media="(max-width:640px)" srcset="figs/anmokuchi-toha-chigai-m.png" width="960" height="1595"><img src="figs/anmokuchi-toha-chigai.png" alt="暗黙知と形式知の違い。暗黙知は経験から身につき言葉にしきれない知識で、体・感覚・勘・過去の経験に結び付く。形式知は言葉や数字で書き表せる知識で、手順書・規程・業務図・表に残る。" width="1920" height="1080" loading="lazy" decoding="async"></picture></a><figcaption><span class="source-label">TechWorker作成：</span>本文の2つの引用をもとに、違いを図にしました。画像を押すと拡大できます。</figcaption></figure>
+<p>職場に置き換えると、値引きをどこまで認めるか、どの問い合わせを上長に回すか、といった判断が暗黙知に当たります。担当者は迷わずに決めていても、理由を聞かれるとすぐには言葉になりません。</p>
+
+<h2 id="seci">形式知との違いと、SECIモデルとは何ですか？</h2>
+<p class="answer">形式知は言葉や数字で書き表せる知識で、手順書や規程に残ります。SECIモデルは、暗黙知と形式知を行き来しながら組織の知識が増える流れを、4つの段階で示した考え方です。</p>
+<p>考えたのは、野中郁次郎氏と竹内弘高氏です。2人は1995年に、オックスフォード大学出版局から『The Knowledge-Creating Company』を出しました。出版社の紹介はこの本の中身を次のように書いています。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“[…] this book reveals how Japanese companies translate tacit to explicit knowledge and use it to produce new processes, products, and services”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>（前略）この本は、日本の企業が暗黙知を形式知に移し、それを使って新しい工程や製品、サービスを生み出す方法を明らかにします。</p><footer>出典：<a href="https://global.oup.com/academic/product/the-knowledge-creating-company-9780195092691" target="_blank" rel="noopener noreferrer">Oxford University Press「The Knowledge-Creating Company」</a>の書籍紹介（2026年11月23日確認）</footer></blockquote>
+<p>4つの段階は共同化（Socialization）、表出化（Externalization）、連結化（Combination）、内面化（Internalization）です。英語の頭文字からSECIと呼ばれます。Haasの紹介によると、2人はこの流れを、知識が会社の外と中を動いていくらせんとして描きました。日本語の版は『知識創造企業』で、2020年に東洋経済新報社から新装版が出ています。</p>
+<p>Haasは、2人が1991年にハーバード・ビジネス・レビューに書いた論文の例も紹介しています。松下電器のホームベーカリーの開発では、数か月かけて分析しても、機械で生地をうまくこねられませんでした。設計者の1人が熟練のパン職人のこね方を観察し、数式のモデルに移して解決しました。</p>
+<p>言葉にならないこね方を、観察して形のある物に移した例です。業務の暗黙知を残す仕事も、同じ移し方をします。</p>
+
+<h2 id="data">なぜ今、暗黙知を残す必要があるのですか？</h2>
+<p class="answer">教える人と教える時間が足りないためです。厚生労働省の令和7年度の調査では、人材育成に問題がある事業所の59.5%が、指導する人材の不足を挙げました。</p>
+<p>厚生労働省は2026年7月31日に、令和7年度「能力開発基本調査」の結果を公表しました。常用労働者30人以上の事業所が対象で、7,194事業所に配り、有効回答率は54.2%です。</p>
+<p>能力開発や人材育成に、何らかの問題があるとした事業所は80.1%でした。問題点の内訳（複数回答）の上位3つは次のとおりです。</p>
+<div class="tbl-wrap">
+  <table style="min-width:420px">
+    <tr><th>人材育成の問題点</th><th>割合</th></tr>
+    <tr><td>指導する人材が不足している</td><td>59.5%</td></tr>
+    <tr><td>人材を育成しても辞めてしまう</td><td>51.6%</td></tr>
+    <tr><td>人材育成を行う時間がない</td><td>45.5%</td></tr>
+  </table>
+</div>
+<p class="fig-cap">出典：<a href="https://www.mhlw.go.jp/content/11801500/001728125.pdf" target="_blank" rel="noopener noreferrer">厚生労働省「令和７年度 能力開発基本調査 調査結果の概要」</a>p.24 図36。人材育成に問題があるとした事業所（80.1%）に占める割合（2026年11月23日確認）</p>
+<figure class="fig-inline"><a href="figs/anmokuchi-toha-mondai.png" target="_blank" rel="noopener"><picture><source media="(max-width:640px)" srcset="figs/anmokuchi-toha-mondai-m.png" width="960" height="1169"><img src="figs/anmokuchi-toha-mondai.png" alt="厚生労働省の令和7年度能力開発基本調査で、人材育成に問題があるとした事業所の問題点。指導する人材が不足59.5%、育成しても辞めてしまう51.6%、育成を行う時間がない45.5%。" width="1920" height="1080" loading="lazy" decoding="async"></picture></a><figcaption><span class="source-label">TechWorker作成：</span>上の表の数字を横棒にしました。<a href="https://www.mhlw.go.jp/content/11801500/001728125.pdf" target="_blank" rel="noopener noreferrer">出典：厚生労働省「調査結果の概要」図36</a></figcaption></figure>
+<p>教える人が足りず、育てても辞めてしまう職場では、隣で見て覚える教え方が回りにくくなります。担当者の頭の中にある判断は、本人がいるうちに書き残す必要があります。</p>
+<p>同じ調査では、技能継承に取り組む事業所のうち、退職予定者のノウハウなどを文書化やマニュアル化している所は22.0%でした（p.42 図64）。技能伝承の数字は<a href="gijutsu-shokei-ai.html">技術承継・技能伝承とAI</a>にまとめています。</p>
+
+<h2 id="houhou">暗黙知を形式知にする方法は、何がありますか？</h2>
+<p class="answer">主な方法は手順書・動画・聞き取り・業務図の4つです。残る物と抜けやすい物が違うので、業務図と聞き取りを組み合わせると抜けを補えます。</p>
+<div class="tbl-wrap">
+  <table style="min-width:640px">
+    <tr><th>方法</th><th>残る物</th><th>抜けやすい物</th><th>向く仕事</th></tr>
+    <tr><td style="white-space:nowrap">手順書</td><td>決まった手順と条件</td><td>例外と、そうする理由</td><td>毎回ほぼ同じ手順の仕事</td></tr>
+    <tr><td style="white-space:nowrap">動画</td><td>手の動き・画面の操作</td><td>判断の理由、あとで探すこと</td><td>機械や画面の操作</td></tr>
+    <tr><td style="white-space:nowrap">聞き取り</td><td>判断の分かれ目と理由</td><td>聞かなかった事柄、話す人の思い込み</td><td>判断の多い仕事</td></tr>
+    <tr><td style="white-space:nowrap">業務図</td><td>流れ・担当・分かれ目</td><td>各工程の細かい手順</td><td>人や部署をまたぐ仕事</td></tr>
+  </table>
+</div>
+<p class="fig-cap">TechWorkerの整理。業務図は、部署の仕事の流れと担当、判断の分かれ目を1枚に描いた図です</p>
+<figure class="fig-inline"><a href="figs/anmokuchi-toha-houhou.png" target="_blank" rel="noopener"><picture><source media="(max-width:640px)" srcset="figs/anmokuchi-toha-houhou-m.png" width="960" height="1368"><img src="figs/anmokuchi-toha-houhou.png" alt="形式知にする4つの方法で残る物と抜けやすい物。手順書は手順が残り例外と理由が抜けやすい。動画は操作が残り判断の理由が抜けやすい。聞き取りは判断の分かれ目と理由が残り聞かなかった事柄が抜ける。業務図は流れと担当が残り細かい手順が抜けやすい。" width="1920" height="1080" loading="lazy" decoding="async"></picture></a><figcaption><span class="source-label">TechWorker作成：</span>上の表の「残る物」と「抜けやすい物」を図にしました。</figcaption></figure>
+<p>手順書はよく使われる方法ですが、例外とその理由が抜けやすくなります。業務図で流れと分かれ目を1枚にし、分かれ目ごとに聞き取りで理由を足すと、手順書だけでは抜ける所が埋まります。</p>
+<p>どの方法を使っても、全部を書き切ることはできません。シカゴ大学出版局の紹介ページには、ポランニーの考えでは知識は完全には形式にできない、という評者の言葉も載っています。判断に効く所から順に残すのが現実的です。</p>
+<p>部署の仕事を業務図に起こすときの雛形は、下の枠から受け取れます。</p>
+<div class="tw-lead" data-offer="gyomuzu-templates" data-campaign="anmokuchi-toha" data-pos="mid"></div>
+
+<h2 id="kiku">業務の暗黙知を聞き取るとき、何を聞きますか？</h2>
+<p class="answer">判断の分かれ目、例外、なぜそうするかの3つです。手順は手元の資料から読み取り、聞き取りの時間はこの3つに使います。</p>
+<figure class="fig-inline"><a href="figs/anmokuchi-toha-kiku.png" target="_blank" rel="noopener"><picture><source media="(max-width:640px)" srcset="figs/anmokuchi-toha-kiku-m.png" width="960" height="1905"><img src="figs/anmokuchi-toha-kiku.png" alt="聞き取りで聞く3つ。判断の分かれ目（どこで何を見て決めるか）、例外（いつもと違う時に何をするか）、理由（なぜそうするのか）。聞いた内容は過去の実例に当てて確かめる。" width="1920" height="1080" loading="lazy" decoding="async"></picture></a><figcaption><span class="source-label">TechWorker作成：</span>下の表の3つを図にしました。画像を押すと拡大できます。</figcaption></figure>
+<div class="tbl-wrap">
+  <table style="min-width:620px">
+    <tr><th>聞くこと</th><th>質問の例</th><th>残す形</th></tr>
+    <tr><td style="white-space:nowrap">判断の分かれ目</td><td>この件は、どちらに回しますか。何を見て決めましたか</td><td>業務図の分かれ目に、条件を書く</td></tr>
+    <tr><td style="white-space:nowrap">例外</td><td>最近、困った件は何でしたか。そのとき誰に確かめましたか</td><td>例外の一覧に、件と対応を書く</td></tr>
+    <tr><td style="white-space:nowrap">理由</td><td>この確認をやめると、何が起きますか</td><td>手順の横に、理由を1行で書く</td></tr>
+  </table>
+</div>
+<p class="fig-cap">TechWorkerの整理。質問の例は聞く内容を表すための一例です</p>
+<p>「普段どうしていますか」と聞くと、いつもの手順の説明で時間が終わりがちです。具体的な件をたずねると、判断に使った材料が出てきます。理由を聞くときは、その手順をやめたときに起きることをたずねると答えやすくなります。</p>
+
+<h2 id="tejun">聞き取りで残す手順はどう進めますか？</h2>
+<p class="answer">業務を1つ決め、資料から下書きを作り、3つを聞き、過去の実例で確かめ、ほかの人が読んで直す、の5つの順で進めます。</p>
+<ol>
+<li><strong>業務を1つ決める：</strong>異動や退職の予定がある担当者の仕事から、1つを選びます。部署全体を一度に扱うと、聞き取りが浅くなるためです。</li>
+<li><strong>資料から下書きを作る：</strong>手順書、帳票、過去のメールなど、手元の資料から流れの下書きを作ります。手順は、聞く前に分かっている状態が理想です。</li>
+<li><strong>3つを聞く：</strong>下書きを見せながら、分かれ目・例外・理由を聞きます。話す人の了承を得たうえでの録音と書き起こしは、聞き漏らしを後から確かめる材料です。</li>
+<li><strong>過去の実例で確かめる：</strong>直近の実例を選び、書いた条件どおりに判断すると同じ結果になるかを見ます。合わない件は聞き漏らしか例外です。</li>
+<li><strong>ほかの人が読んで直す：</strong>担当者以外の人が読み、同じ判断ができるかを試します。読んで分からない所を、本人に聞き直します。</li>
+</ol>
+<p>TechWorkerのギョウムズAIは、この手順の2〜4をAIと組み合わせて進める例です。公式ページによると、担当者への聞き取り、手元の資料、業務の記録の3つから、AIが部署の仕事の流れを1枚の業務図にします。14日間の初期診断では、資料から業務図の下書きを作り、判断と例外に絞った8つの質問で確かめる流れです。社内の負担は質問票に1時間、確認会に2時間の計3時間以内です。AIに工程を任せる前には過去の実例30件で確かめ、すべて正しく出力できた工程から任せるとしています。</p>
+
+<h2 id="ai">AIに任せる所と、人が決める所はどこですか？</h2>
+<p class="answer">質問の用意、書き起こし、下書きの整理はAIに任せられます。何を正しい判断とするか、例外をどう扱うかは、担当者と上長が決めます。</p>
+<div class="tbl-wrap">
+  <table style="min-width:620px">
+    <tr><th>場面</th><th>AIに任せる</th><th>人が決める</th></tr>
+    <tr><td style="white-space:nowrap">聞く前</td><td>資料を読み、流れの下書きと質問の案を作る</td><td>どの業務から残すか</td></tr>
+    <tr><td style="white-space:nowrap">聞くとき</td><td>答えの書き起こし、答えに合わせた次の質問の案</td><td>答えが合っているか（話した本人が確かめる）</td></tr>
+    <tr><td style="white-space:nowrap">聞いた後</td><td>業務図や手順書の形に整え、食い違いを並べる</td><td>食い違ったとき、どちらを正とするか</td></tr>
+    <tr><td style="white-space:nowrap">使うとき</td><td>書いた判断の基準に沿って、下書きを作る</td><td>最後の判断と、社外に出す前の確認</td></tr>
+  </table>
+</div>
+<p class="fig-cap">TechWorkerの整理</p>
+<p>AIは、書かれた物をもとに答えを作ります。理由が書かれていない判断は、AIに任せても同じようには再現できません。暗黙知を書き残す仕事はAIに業務を任せる前の準備にもなります。</p>
+<p>ギョウムズAIの公式ページも、社外への送信や登録の確定など人が承認する工程を先に決め、止める条件に当たる件は人に回すと書いています。</p>
+
+<p data-rel-links>書き残した記録をAIが答える前に読む仕組みは、<a href="company-brain-toha.html">Company Brain（会社の記憶）とは</a>で説明しました。AIに仕事を任せられる状態の条件は、<a href="../gyomuzu/ai-ready.html">AI Readyとは</a>にまとめました。</p>
+<h2 id="faq">よくある質問</h2>
+<div class="faq"><div class="q">暗黙知は英語で何と言いますか？</div><p class="a">tacit knowledgeです。形式知はexplicit knowledgeと呼ばれます。カリフォルニア大学バークレー校のHaasは、この2つをポランニーの分け方として紹介しています。</p></div>
+<div class="faq"><div class="q">暗黙知はすべて形式知にできますか？</div><p class="a">できません。シカゴ大学出版局の紹介ページに載る評者の言葉も、知識は完全には形式にできないとしています。判断に効く所から順に残し、残しきれない所は担当者が隣で教える時間を取ります。</p></div>
+<div class="faq"><div class="q">手順書があるのに、仕事が特定の人に頼ったままなのはなぜですか？</div><p class="a">手順書には決まった手順が残りますが、例外とそうする理由が抜けやすいためです。分かれ目と例外を聞き取り、手順の横に理由を書き足すと、ほかの人も同じ判断ができるようになります。</p></div>
+<div class="faq"><div class="q">聞き取りには、どのくらいの時間がかかりますか？</div><p class="a">業務の量によるため、決まった時間はありません。ギョウムズAIの初期診断は社内の負担を質問票に1時間、確認会に2時間の計3時間以内としています。聞く前に資料から手順を読んでおくと、聞く時間を判断と例外に使えます。</p></div>
+<div class="faq"><div class="q">退職まで時間がないときは、何から残しますか？</div><p class="a">例外と判断の分かれ目から残します。直近の実例を担当者と一緒に見て、迷った件や上長に確かめた件を先に聞きます。決まった手順を資料から起こすのは、後でかまいません。</p></div>
+<div class="faq"><div class="q">聞き取りをAIに任せても大丈夫ですか？</div><p class="a">質問の用意、書き起こし、下書きの整理は任せられます。答えが正しいか、どちらの判断を正とするかは、担当者と上長が確かめます。録音や書き起こしの前に、話す人の了承を得てください。</p></div>
+
+<h2 id="next">今週、何から始めればよいですか？</h2>
+<p class="answer">異動や退職の予定がある担当者の仕事を1つ選び、直近の実例を一緒に見ることが最初の一歩です。</p>
+<ol>
+<li>対象の業務を1つ決め、手順書や帳票など手元の資料を集めます。</li>
+<li>担当者と30分の時間を取り、直近の実例を見ながら、分かれ目・例外・理由を聞いてください。</li>
+<li>書いた内容を別の人が読み、同じ判断ができるかを確かめます。</li>
+</ol>
+<p>部署別の業務図の雛形と、AIに任せる工程の見つけ方は、下の枠から受け取れます。</p>
+<div class="tw-lead" data-offer="gyomuzu-templates" data-campaign="anmokuchi-toha" data-pos="end"></div>
+
+<h2 id="sources">出典と確認範囲</h2>
+<p class="source-note">確認日：2026年11月23日。書籍は、出版社と大学の紹介ページ、大学図書館の目録で書誌と要旨を確かめました。原典の本文は読んでいません。ポランニーの一文は出版社の紹介ページに引かれた物で、原典のページ番号は確かめていません。SECIモデルの4つの段階の日本語の名前は、東洋経済オンラインに載った続編の書評によります。形式知にする方法の表、聞く3つの表、AIと人の分け方は、TechWorkerの整理です。</p>
+<ol class="source-list"><li><a href="https://press.uchicago.edu/ucp/books/book/chicago/T/bo6035368.html" target="_blank" rel="noopener noreferrer">The University of Chicago Press「The Tacit Dimension」Michael Polanyi（With a New Foreword by Amartya Sen、2009年5月、128ページ、ISBN 9780226672984）</a></li><li><a href="https://libcat.library.tamu.edu/Record/in00000375533" target="_blank" rel="noopener noreferrer">Texas A&amp;M University Libraries の目録「The tacit dimension」（Garden City, N.Y.: Doubleday, 1966、Terry lectures）</a></li><li><a href="https://global.oup.com/academic/product/the-knowledge-creating-company-9780195092691" target="_blank" rel="noopener noreferrer">Oxford University Press「The Knowledge-Creating Company」Ikujiro Nonaka, Hirotaka Takeuchi（1995年9月7日、304ページ、ISBN 9780195092691）</a></li><li><a href="https://newsroom.haas.berkeley.edu/magazine/fall-2017/the-alchemist-of-innovation-management/" target="_blank" rel="noopener noreferrer">UC Berkeley Haas「The Alchemist of Innovation Management」（Haas News、2017年秋号）</a></li><li><a href="https://toyokeizai.net/articles/-/572393" target="_blank" rel="noopener noreferrer">東洋経済オンライン「『ワイズカンパニー 知識創造から知識実践への新しいモデル』知識創造から｢知恵｣へ、人間中心経営への進化」（書評、2020年10月23日）</a></li><li><a href="https://www.hanmoto.com/bd/isbn/9784492522325" target="_blank" rel="noopener noreferrer">版元ドットコム「知識創造企業（新装版）」野中郁次郎・竹内弘高 著、梅本勝博 訳（東洋経済新報社、2020年12月4日発売）</a></li><li><a href="https://www.mhlw.go.jp/stf/houdou/newpage_00233.html" target="_blank" rel="noopener noreferrer">厚生労働省「令和７年度『能力開発基本調査』の結果を公表します」（2026年7月31日）</a></li><li><a href="https://www.mhlw.go.jp/content/11801500/001728125.pdf" target="_blank" rel="noopener noreferrer">厚生労働省「令和７年度 能力開発基本調査 調査結果の概要」（参考1）p.24 図35・図36、p.42 図64</a></li><li><a href="https://techworker.co.jp/gyoumuzuai" target="_blank" rel="noopener noreferrer">TechWorker「ギョウムズAI」</a></li></ol>
+
+</article>
+</div>
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div>
+    <p>上場企業を含む50社超・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>部署の仕事の流れと判断の理由を、AIが1枚の業務図にします。</h3>
+    <p>ギョウムズAIは、担当者への聞き取り・手元の資料・業務の記録の3つから、AIが部署の仕事の流れを1枚の業務図にするサービスです。判断と例外に絞った8つの質問で確かめ、社内のご負担は3時間以内です。</p>
+  </div>
+  <a href="../../gyoumuzuai/contact?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=anmokuchi-toha&amp;utm_content=end" class="btn">30分の無料相談 <i>→</i></a>
+</div></div>
+<div class="back-list"><a href="../anmokuchi/">← 暗黙知ラボの記事一覧に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="company-brain-toha.html" class="related-card"><span class="rc-cat">導入と業務への組み込み</span><div class="rc-title">Company Brain（会社の記憶）とは｜GBrainの料金・保存先と、社内に入れる前に決める3つのこと</div></a>
+    <a href="../gyomuzu/ai-ready.html" class="related-card"><span class="rc-cat">任せる工程の決め方</span><div class="rc-title">AI Readyとは｜経産省の定義と、AIに仕事を任せられる会社の条件</div></a>
+  </div>
+</div></section>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__in">
+      <div>
+        <p class="ft__name">株式会社TechWorker</p>
+        <p class="ft__addr">〒169-0051 東京都新宿区西早稲田一丁目22番3号<br>早稲田アントレプレナーシップセンター</p>
+      </div>
+      <nav aria-label="フッターの行き先">
+        <a href="/services">事業・サービス</a>
+        <a href="/company">会社情報</a>
+        <a href="/news">ニュース</a>
+        <a href="/#concept">考え方</a>
+        <a href="/agent-cases/">事例</a>
+        <a href="/contact">お問い合わせ</a>
+        <a href="/privacy">プライバシーポリシー</a>
+      </nav>
+    </div>
+    <div class="nv-badge"><a href="/news/013"><img src="/assets/badges/nvidia-inception-program.svg" alt="NVIDIA Inception Program" width="93" height="40" loading="lazy"></a><p>NVIDIA、NVIDIA ロゴ、NVIDIA Inception は、米国およびその他の国における NVIDIA Corporation の商標および/または登録商標です。</p></div>
+    <small>© TechWorker Inc.</small>
+  </div>
+</footer>
+
+<script>
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+<script src="/media/article-tracker.js?v=20261120i" defer></script>
+<script>
+// スマホの行き先：右上の釦で開け閉めする。行き先を押したら閉じる。スクロールしたら頭に暗い面を敷く
+(() => {
+  const hd = document.querySelector('.hd'), btn = hd.querySelector('.menu');
+  const set = open => { hd.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く'); };
+  btn.addEventListener('click', () => set(!hd.classList.contains('is-open')));
+  hd.querySelector('nav').addEventListener('click', e => { if (e.target.closest('a')) set(false); });
+  const onScroll = () => hd.classList.toggle('is-scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+})();
+</script>
+<script src="../lead.js?v=20261120f" defer></script>
+</body>
+</html>

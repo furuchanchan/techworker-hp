@@ -29,7 +29,7 @@
 <meta name="twitter:image" content="https://techworker.co.jp/media/kenshu/covers/company-brain-toha.png">
 <link rel="stylesheet" href="../article.css?v=20261120d">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Company Brain（会社の記憶）とは｜GBrainの料金・保存先と、社内に入れる前に決める3つのこと【2026年11月】", "description": "Company Brain（会社の記憶）は、社内のメモや議事録、決めたことを1か所にため、社員が使うAIが答える前に読む仕組みです。代表例のGBrainの料金、自社で動かす費用、保存先とSSO、日本語の検索、入れる前に決めることを、公式情報（2026年11月19日確認）とTechWorkerの運用記録で整理します。", "datePublished": "2026-11-19", "dateModified": "2026-11-21", "image": "https://techworker.co.jp/media/kenshu/covers/company-brain-toha.png", "inLanguage": "ja", "mainEntityOfPage": "https://techworker.co.jp/media/kenshu/company-brain-toha", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/favicon.svg"}}, "citation": ["https://github.com/garrytan/gbrain", "https://gbrain.io/pricing", "https://gbrain.io/faq", "https://gbrain.io/trust/security", "https://gbrain.io/trust/privacy", "https://gbrain.io/trust/subprocessors", "https://github.com/garrytan/gbrain/blob/master/docs/guides/multi-language-fts.md", "https://tsuguvi.com", "https://www.merge.dev/blog/what-is-a-company-brain-how-it-gives-enterprise-ai-company-context"]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "導入ラボ", "item": "https://techworker.co.jp/media/kenshu/"}, {"@type": "ListItem", "position": 4, "name": "Company Brain（会社の記憶）とは", "item": "https://techworker.co.jp/media/kenshu/company-brain-toha"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "暗黙知ラボ", "item": "https://techworker.co.jp/media/anmokuchi/"}, {"@type": "ListItem", "position": 4, "name": "Company Brain（会社の記憶）とは", "item": "https://techworker.co.jp/media/kenshu/company-brain-toha"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Company Brainと社内検索（エンタープライズサーチ）は、何が違いますか？", "acceptedAnswer": {"@type": "Answer", "text": "社内検索は今ある文書を探して見せる仕組みです。会社の記憶は会話や議事録から事実や決めたことを書き足し、古くなった内容を退けて、AIが答える前に読みます。GBrainのホスト版はTeamとEnterpriseでこの手入れを料金に含めています。"}}, {"@type": "Question", "name": "GBrainは日本語で使えますか？", "acceptedAnswer": {"@type": "Answer", "text": "公式の料金ページ、FAQ、READMEに、日本語への対応を明記した記載はありません。検索の手引きには、日本語・中国語・韓国語の扱いが書かれています。TechWorkerでは多言語の埋め込みモデル（bge-m3）を選び、意味で探す機能が日本語でも動いています。語で探す機能は、今のバージョンでは索引を使わない探し方になり、量が増えると遅くなります。"}}, {"@type": "Question", "name": "無料で使えますか？", "acceptedAnswer": {"@type": "Answer", "text": "本体はMITライセンスで、自社で動かすのは無料です。データベース、埋め込みのAPI、常に動かすサーバーの費用は別にかかります。ホスト版の料金ページに無料試用の記載はありません。プライバシーの規定には、支払いのないまま無料試用を終えたワークスペースは、日付を知らせるメールから5日後に削除すると書かれています。条件は申し込みの画面で確かめます。"}}, {"@type": "Question", "name": "社員の会話が、AIの学習に使われますか？", "acceptedAnswer": {"@type": "Answer", "text": "ホスト版の公式FAQはチームの中身をAIの学習に使わず、売らず、宣伝にも使わないと書いています。ただし既定で、文はAnthropic（モデル）とOpenAI（埋め込み）に、Web検索の語はExaに送られ、その先は各社の規定に従います。"}}, {"@type": "Question", "name": "解約すると、データはどうなりますか？", "acceptedAnswer": {"@type": "Answer", "text": "メモはMarkdownのファイルで持ち出せます。解約は支払った期間の終わりまで有効です。ブレインを削除すると元に戻せず、日次の控えが最大9日残ります（控えの保持期間を読めない場合は最大62日）。支払いの終わったワークスペースは12か月後に削除するとされていますが、公式はまだ実施していないと書いています。"}}]}</script>
 
 <!-- Meta Pixel Code -->
@@ -59,20 +59,20 @@ fbq('init','1264057945446029');fbq('track','PageView');
 </header>
 <div class="subnav">
   <div class="wrap subnav__in">
-    <a class="subnav__name" href="../kenshu/">導入ラボ</a>
+    <a class="subnav__name" href="../anmokuchi/">暗黙知ラボ</a>
     <nav aria-label="メディアの行き先"><a href="https://kenshu.techworker.co.jp/">生成AI研修について</a><a href="https://kenshu.techworker.co.jp/contact/" class="subnav__cta">研修の相談</a></nav>
   </div>
 </div>
 
 <header class="art-head">
-  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="../kenshu/">導入ラボ</a><span class="sep">/</span>Company Brain（会社の記憶）とは</nav>
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="../anmokuchi/">暗黙知ラボ</a><span class="sep">/</span>Company Brain（会社の記憶）とは</nav>
   <div class="kicker">導入と業務への組み込み</div>
   <h1>Company Brain（会社の記憶）とは｜GBrainの料金・保存先と、社内に入れる前に決める3つのこと</h1>
   <p class="dek">Company Brain（会社の記憶）は、社内のメモや議事録、決めたことを1か所にため、社員が使うAIが答える前に読む仕組みです。代表例のGBrainの料金、自社で動かす費用、保存先とSSO、日本語の検索、入れる前に決めることを、公式情報（2026年11月19日確認）とTechWorkerの運用記録で整理します。</p>
   <div class="a-meta">
     <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.11.19</span><span class="dot">·</span><span>読了 10分</span>
   </div>
-<p class="article-audience"><span class="article-audience-label">主な対象読者</span><a href="/media/kenshu/?audience=it#articles">情シス・AI導入担当</a></p>
+<p class="article-audience"><span class="article-audience-label">主な対象読者</span><a href="/media/anmokuchi/?audience=it#articles">情シス・AI導入担当</a></p>
 </header>
 
 
@@ -109,6 +109,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <p>ここでのエージェントは、指示を受けて調べ物や作業を進めるAIのことです。会社の記憶があると、AIに毎回社内の事情を説明し直す手間が減ります。</p>
 <p>似た仕組みに社内検索（エンタープライズサーチ）があります。社内検索は今ある文書を探して見せます。会社の記憶は会話や議事録から事実や決めたことを書き足し、古い内容を退けていく点が違います。GBrainのホスト版はこの手入れをTeamとEnterpriseの料金に含めています。</p>
 <p>言葉の使い方はまだそろっていません。Tsuguviは自社を「A company brain」と名乗り、データ連携のMergeは、人とAIのツールが使う、組織の知識とつながりの共有の層だと説明しています。製品を比べるときは、名前でなく、何を入れ、誰が直し、どのAIが読むかで比べます。</p>
+<p>会社の記憶に入れたい中身の多くは、担当者の頭の中にある判断の理由です。この暗黙知を聞き取りで残す手順は、<a href="anmokuchi-toha.html">暗黙知とは</a>で扱っています。</p>
 
 <h2 id="gbrain">GBrainは、何をする道具ですか？</h2>
 <p class="answer">Markdownのメモと社内の文書をデータベースに入れ、語と意味の両方で探せるようにする道具です。Claude Code、ChatGPT、CursorなどのAIから、MCPという接続の決まりでつなぎます。</p>
@@ -200,6 +201,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 <li><strong>どこに置き、どのAIへ送るか：</strong>保存先と、文が送られるAIの会社（既定でモデルはAnthropic、埋め込みはOpenAI、Web検索はExa）を、社内の規程と照らします。顧客の情報を入れるなら、契約で決めた保存先と合うかを確かめます。</li>
 <li><strong>何を入れ、誰が直すか：</strong>入れ物だけ用意しても、AIの答えは変わりません。議事録や決めたことを書き足す流れを先に作ります。AIが聞き違えて書いた内容も、次の答えに使われます。直す担当を決め、出典を残します。</li>
 </ol>
+<p>退職する担当者の判断を先に残したい場合の進め方は、<a href="gijutsu-shokei-ai.html">技術承継・技能伝承の進め方</a>で扱っています。</p>
 <p>GBrainの公式も外から読み込んだ内容に、AIへの指示を書き換える文が混じる危険を書いています。そのうえで、ブレインの出力を判断の出発点として扱い、正しいものとして扱わないよう勧めています。</p>
 <blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“Treat brain output as a starting point that informs your judgment, not as authoritative.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>ブレインの出力は、判断の材料になる出発点として扱い、確かなものとして扱わないでください。</p><footer>出典：<a href="https://gbrain.io/trust/security" target="_blank" rel="noopener noreferrer">gbrain.io「Security」</a>（2026年11月19日確認）</footer></blockquote>
 
@@ -260,7 +262,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 </div></div>
 
 <p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="https://kenshu.techworker.co.jp/" style="color:var(--electric);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">生成AI法人研修（主要ツール全対応）</a>　／　<a href="https://kenshu.techworker.co.jp/contact/" style="color:var(--electric);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">無料相談</a></p>
-<div class="back-list"><a href="../kenshu/">← 導入ラボの記事一覧に戻る</a></div>
+<div class="back-list"><a href="../anmokuchi/">← 暗黙知ラボの記事一覧に戻る</a></div>
 
 <section class="related"><div class="container">
   <div class="rl-h">Related</div>

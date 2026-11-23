@@ -101,9 +101,15 @@
     // Token ラボ（/media/token/ と media 直下の token-* の記事）。記事は複数社のモデルの単価を比べるので、4社の料金比較表つきの稟議パック。
     // 11/23 まで Claude Code のセキュリティの手引きを出していて、11/11〜11/22 の表示 412回・開いた 0回だった
     token: function () { return Object.assign({}, CONTRACT, { sub: DIAG }); },
+    // Codex ラボ（2026-11-23）：一覧は4社の料金比較表つきの稟議パック。記事は /media/kenshu/ の下なので研修（kenshu）のまま
+    codex: function () { return Object.assign({}, CONTRACT, { sub: DIAG }); },
+    // 暗黙知ラボ（2026-11-23）：一覧と記事（/media/kenshu/ の anmokuchi-・gijutsu-shokei-・company-brain-）は業務図と同じ案内
+    anmokuchi: function () { return OFFERS.gyomuzu(); },
     simulation: function () { return Object.assign({}, CASES, { sub: { label: "発売前の検証を相談する", href: "/launch-simulation/", offer: "launch_simulation" } }); }
   };
-  var make = OFFERS[seg] || (/^token-/.test(slug) ? OFFERS.token : function () { return Object.assign({}, CASES, { sub: DIAG }); });
+  // 記事の名前で決まるラボ（フォルダが別のラボと同じ物）。名前の方を先に見る
+  var bySlug = /^token-/.test(slug) ? "token" : /^(anmokuchi-|gijutsu-shokei-|company-brain-)/.test(slug) ? "anmokuchi" : "";
+  var make = OFFERS[bySlug] || OFFERS[seg] || function () { return Object.assign({}, CASES, { sub: DIAG }); };
   var o = make();
   var media = seg || "home";
   var DOCS = { security: GUIDE, cases: CASES, gyomuzu: TEMPLATES, ringi: RINGI, claudecost: CLAUDE_SHEET, copilotsheet: COPILOT_SHEET, contract: CONTRACT };
@@ -229,7 +235,7 @@
 
   // 研修とセキュリティの記事の末尾の申込み（.art-cta）に、研修サイトの安全度チェック（3分・登録不要）への1行を足す
   function addCheckToArtCta() {
-    if (seg !== "kenshu" && seg !== "security") return;
+    if ((seg !== "kenshu" && seg !== "security") || bySlug === "anmokuchi") return;
     var head = document.querySelector(".art-cta .inner > div");
     if (!head || head.querySelector(".art-chk")) return;
     var u = new URL("https://kenshu.techworker.co.jp/check/");
