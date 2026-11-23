@@ -3,7 +3,7 @@
       受け取る物の見本（資料の表紙・業務図）と、中身の具体例3つ、受け取り方（送信後すぐ読める等）を見せる。
    2) 記事中の申込み（.mid-cta）にも、同じ見本と中身の具体例を足す。研修・セキュリティの記事は、記事末の申込み（.art-cta）に研修サイトの安全度チェックへの1行を足す。
    中身の具体例は、実在する資料・ページに書いてあることだけ（library/cases-2026.html・claude-code-security.html・gyomuzu-templates.html・claude-code-ringi.html・claude-cost-sheet.html・copilot-ignite-sheet.html・ai-contract-pack.html・companymap）。
-   絵は公式ロゴ（加工しない）と資料の実物の画面だけ（2026-11-23）。
+   絵は表紙と同じ型（公式ロゴの札・言い切りの帯・線の図）。founder-os scripts/media-covers/offer-specs を render.js で描く（2026-11-23 古野さん「受け取りの絵もここみたいなフォーマットでいいよ」）。
    - 出す時: ページを2割読んだ時か、12秒たった時（一覧・ホームはスクロールを始めた時）
    - 記事の冒頭、記事中・記事末の申込み、フッターが見えている間は隠す（図が見えていても出したまま。2026-11-20）。×で小さな札にたたむ（同じタブの間は維持）
    - 計測: media_dock_view／close／open。クリックは article-tracker.js の media_cta_click（cta_placement=dock） */
@@ -18,51 +18,51 @@
   var isHub = /\/media\/([a-z]+\/)?(index(\.html)?)?$/.test(path);
 
   var GUIDE = {
-    kind: "無料ダウンロード", img: "/media/cv/security.jpg?v=20261123-logo", offer: "guide_claude_code_security", logos: ["/assets/logos/claude.svg"],
+    kind: "無料ダウンロード", img: "/media/cv/security.jpg?v=20261123-band", offer: "guide_claude_code_security", logos: ["/assets/logos/claude.svg"],
     title: "Claude Code 企業導入 セキュリティ＆セットアップ実践ガイド",
     points: ["情シスの確認にそのまま使える10項目のチェックリスト", "情報漏洩・過剰な権限・外部依存の3大リスク", "権限・シークレット・監査ログなど5つの設計原則"],
     note: "送信後、その場で読めます（PDF保存も可）",
     cta: "無料で受け取る", mcta: "受け取る", href: "/library/?doc=security", short: "導入ガイドを受け取る", mt: "Claude Code 導入ガイド（無料）"
   };
   var CASES = {
-    kind: "無料ダウンロード", img: "/media/cv/cases.jpg?v=20261123-logo", offer: "guide_cases_2026",
+    kind: "無料ダウンロード", img: "/media/cv/cases.jpg?v=20261123-band", offer: "guide_cases_2026",
     title: "2026年版 生成AI活用事例集",
     points: ["化学メーカー：新素材のアイデア出しを、発散から収束まで1時間で", "大手製薬：市場リサーチを内製化し、外注費を削減", "さくらインターネット：全社300名のAI研修"],
     note: "送信後、その場で読めます（PDF保存も可）",
     cta: "無料で受け取る", mcta: "受け取る", href: "/library/?doc=cases", short: "事例集を受け取る", mt: "生成AI活用事例集（無料）"
   };
   var RINGI = {
-    kind: "無料ダウンロード", img: "/media/cv/ringi.jpg?v=20261123-logo", offer: "guide_claude_code_ringi", logos: ["/assets/logos/claude.svg"],
+    kind: "無料ダウンロード", img: "/media/cv/ringi.jpg?v=20261123-band", offer: "guide_claude_code_ringi", logos: ["/assets/logos/claude.svg"],
     title: "Claude Code 法人導入 稟議書テンプレート（料金比較表つき）",
     points: ["Team・Enterprise・API従量の料金比較表（2026年9月30日確認）", "人数と統制の要件で選ぶ、規模別の契約の選び方", "件名から承認者まで、［　］を埋めて使える稟議書の文例"],
     note: "送信後、その場で読めます（PDF保存も可）",
     cta: "無料で受け取る", mcta: "受け取る", href: "/library/?doc=ringi", short: "稟議書テンプレートを受け取る", mt: "Claude Code 稟議書テンプレート（無料）"
   };
   var TEMPLATES = {
-    kind: "無料ダウンロード", img: "/media/cv/gyomuzu.jpg?v=20261123-logo", offer: "guide_gyomuzu_templates",
+    kind: "無料ダウンロード", img: "/media/cv/gyomuzu.jpg?v=20261123-band", offer: "guide_gyomuzu_templates",
     title: "部署別 業務図テンプレート集（AIに任せる工程の見つけ方つき）",
     points: ["経理・人事労務・カスタマー対応・総務法務・営業の5部署の業務図の例", "自社の業務をそのまま書き込める空の型", "AIに任せる工程を決める札の付け方（2つの質問）"],
     note: "送信後、その場で読めます（PDF保存も可）",
     cta: "無料で受け取る", mcta: "受け取る", href: "/library/?doc=gyomuzu", short: "業務図テンプレートを受け取る", mt: "部署別 業務図テンプレート集（無料）"
   };
   // ラボの一覧（/media/claude/・/media/copilot/・/media/gemini/）では、そのラボの読者が受け取りやすい資料を出す。
-  // 絵は公式ロゴと資料の実物の画面（founder-os scripts/media-covers/cv-images.mjs で描く。2026-11-23）
+  // 絵は表紙と同じ型（founder-os scripts/media-covers/offer-specs を render.js で描く）
   var CLAUDE_SHEET = {
-    kind: "Excel を無料で受け取る", img: "/media/cv/claude-cost.jpg?v=20261123-logo", offer: "sheet_claude_cost", logos: ["/assets/logos/claude.svg", "/assets/copilot/microsoft/excel.svg"],
+    kind: "Excel を無料で受け取る", img: "/media/cv/claude-cost.jpg?v=20261123-band", offer: "sheet_claude_cost", logos: ["/assets/logos/claude.svg", "/assets/copilot/microsoft/excel.svg"],
     title: "Claude 法人契約の費用試算シート",
     points: ["Team Standard・Premium・Enterprise・API従量を、月額（ドル）と年額（円・税込）で1枚に（2026年11月20日に公式で確認した価格）", "件名から見直しの時期まで、［　］を埋めれば出せる稟議の行の文例", "契約を決めて稟議に載せるまでの5つの手順と、担当・期限の表"],
     note: "送信後、その場で開けます",
     cta: "無料で受け取る", mcta: "受け取る", href: "/library/?doc=claudecost", short: "費用試算シートを受け取る", mt: "Claude 費用試算シート（無料）"
   };
   var COPILOT_SHEET = {
-    kind: "Excel を無料で受け取る", img: "/media/cv/copilot-ignite.jpg?v=20261123-logo", offer: "sheet_copilot_ignite", logos: ["/assets/copilot/microsoft/copilot.svg", "/assets/copilot/microsoft/excel.svg"],
+    kind: "Excel を無料で受け取る", img: "/media/cv/copilot-ignite.jpg?v=20261123-band", offer: "sheet_copilot_ignite", logos: ["/assets/copilot/microsoft/copilot.svg", "/assets/copilot/microsoft/excel.svg"],
     title: "Copilot 稟議の追加分シート（Ignite 2026 対応）",
     points: ["席の料金・Agent 365・クレジットの上限を、月額と年額で1枚に（2026年11月18日に公式で確認した価格）", "2つの質問に答えると、Agent 365 の要否が出る", "稟議に足す行の文例と、今週決める5つの担当・期限の表"],
     note: "送信後、その場で開けます",
     cta: "無料で受け取る", mcta: "受け取る", href: "/library/?doc=copilotsheet", short: "追加分シートを受け取る", mt: "Copilot 稟議の追加分シート（無料）"
   };
   var CONTRACT = {
-    kind: "無料ダウンロード", img: "/media/cv/contract.jpg?v=20261123-logo", offer: "pack_ai_contract", logos: ["/assets/logos/chatgpt.png", "/assets/logos/claude.svg", "/assets/logos/gemini-2025.png", "/assets/copilot/microsoft/copilot.svg"],
+    kind: "無料ダウンロード", img: "/media/cv/contract.jpg?v=20261123-band", offer: "pack_ai_contract", logos: ["/assets/logos/chatgpt.png", "/assets/logos/claude.svg", "/assets/logos/gemini-2025.png", "/assets/copilot/microsoft/copilot.svg"],
     title: "生成AIの法人契約 稟議パック（4社の料金比較表つき）",
     points: ["4社の法人プランの料金・最低席数・データの扱いを1枚に（公式で確認した日付つき）", "件名から承認者まで、［　］を埋めれば出せる稟議書の文例", "入力してよい情報・だめな情報を決める、社内利用ルールの雛形"],
     note: "送信後、その場で読めます（PDF保存も可）",
@@ -129,7 +129,7 @@
     ".twd{position:fixed;right:20px;bottom:20px;z-index:60;font-family:var(--jp,'IBM Plex Sans JP',system-ui,sans-serif);color:var(--ink,#11161D);transition:opacity .35s,transform .35s}" +
     ".twd.off{opacity:0;transform:translateY(14px);pointer-events:none}" +
     ".twd-card{width:316px;background:#FCFCFB;border:1px solid rgba(13,17,23,.12);border-radius:16px;overflow:hidden;box-shadow:0 30px 70px -28px rgba(13,17,23,.5),0 2px 8px rgba(13,17,23,.06);position:relative}" +
-    ".twd-img{display:block;width:100%;height:auto;aspect-ratio:680/300;object-fit:cover;background:#EEF3FF}" +
+    ".twd-img{display:block;width:100%;height:auto;aspect-ratio:1200/630;object-fit:cover;background:#EEF3FF}" +
     ".twd-in{padding:14px 18px 14px}" +
     ".twd-k{display:inline-block;font-size:11.5px;font-weight:700;color:" + A + ";background:color-mix(in srgb," + A + " 9%,#FCFCFB);border-radius:999px;padding:3px 10px}" +
     ".twd-t{font-size:16px;font-weight:800;line-height:1.5;margin-top:8px;letter-spacing:.02em}" +
@@ -145,7 +145,7 @@
     ".twd-b:hover{background:var(--electric-dark,#003DAA);transform:translateY(-1px)}" +
     ".twd-n{font-size:11.5px;color:var(--slate,#5A6677);text-align:center;margin-top:7px}" +
     ".twd-s{display:block;text-align:center;margin-top:8px;padding-top:9px;border-top:1px solid rgba(13,17,23,.08);font-size:12.5px;font-weight:700;color:var(--ink-soft,#2A333F);text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(13,17,23,.25)}" +
-    ".twd-x{position:absolute;right:8px;top:8px;width:30px;height:30px;border:0;background:rgba(252,252,251,.92);border-radius:50%;cursor:pointer;color:#4B5563;font-size:17px;line-height:1;box-shadow:0 2px 6px rgba(13,17,23,.15)}.twd-x:hover{background:#FCFCFB}" +
+    ".twd-x{position:absolute;right:6px;top:6px;width:26px;height:26px;border:1px solid rgba(13,17,23,.14);background:rgba(252,252,251,.94);border-radius:50%;cursor:pointer;color:#4B5563;font-size:15px;line-height:1}.twd-x:hover{background:#FCFCFB}" +
     ".twd-mt,.twd-sm,.twd-th{display:none}" +
     ".twd-pill{display:none;align-items:center;gap:10px;border:0;cursor:pointer;background:" + A + ";color:#FCFCFB;font-family:inherit;font-size:13.5px;font-weight:700;border-radius:999px;padding:6px 18px 6px 6px;box-shadow:0 14px 34px -14px rgba(13,17,23,.6)}" +
     ".twd-pill img{width:34px;height:34px;border-radius:50%;object-fit:cover;object-position:52% 40%;background:#FCFCFB}" +
@@ -161,7 +161,7 @@
     ".twd-x{top:50%;transform:translateY(-50%);right:4px;box-shadow:none;background:none}.twd.min{left:auto}}" +
     /* 記事中の申込み（.mid-cta）に見本と中身を足した形 */
     ".mid-cta.rich{display:grid;grid-template-columns:220px minmax(0,1fr);gap:22px;align-items:center;padding:20px 22px}" +
-    ".mid-cta.rich .mc-img{display:block;width:100%;height:auto;aspect-ratio:680/300;object-fit:cover;border-radius:10px;border:1px solid rgba(13,17,23,.08)}" +
+    ".mid-cta.rich .mc-img{display:block;width:100%;height:auto;aspect-ratio:1200/630;object-fit:cover;border-radius:10px;border:1px solid rgba(13,17,23,.08)}" +
     ".mid-cta.rich .mc-body{min-width:0}" +
     ".mid-cta.rich .mc-p{list-style:none;margin:8px 0 0;padding:0}.mid-cta.rich .mc-p li{position:relative;padding-left:18px;font-size:13px;line-height:1.65;color:var(--ink-soft,#2A333F);margin-top:3px}" +
     ".mid-cta.rich .mc-p li::before{content:'';position:absolute;left:2px;top:.5em;width:8px;height:8px;border-radius:50%;background:" + A + "}" +
@@ -177,7 +177,7 @@
     box.setAttribute("aria-label", o.kind);
     box.setAttribute("data-cta-placement", "dock");
     var card = el("div", "twd-card");
-    var img = el("img", "twd-img"); img.src = o.img; img.alt = o.title + "の見本"; img.width = 680; img.height = 300; img.loading = "lazy";
+    var img = el("img", "twd-img"); img.src = o.img; img.alt = o.title + "の見本"; img.width = 1200; img.height = 630; img.loading = "lazy";
     // スマホの帯の小さな絵（52px）は、資料の画面だと読めないので、公式ロゴがある資料はロゴを並べる
     var th;
     if (o.logos) { th = el("span", "twd-th twd-thl n" + o.logos.length); o.logos.forEach(function (src) { var li = el("img"); li.src = src; li.alt = ""; th.appendChild(li); }); }
@@ -212,7 +212,7 @@
       if (a) d = DOCS[(a.getAttribute("href").match(/doc=([a-z]+)/) || [])[1]];
       else if ((a = m.querySelector('a[href*="gyoumuzuai"], a[href*="companymap"]'))) d = companymap(seg === "shigyo" ? "事務所" : "部署", seg === "shigyo" ? "/media/cv/companymap-shigyo.jpg" : null);
       if (!a || !d) return;
-      var img = el("img", "mc-img"); img.src = d.img; img.alt = d.title + "の見本"; img.loading = "lazy"; img.width = 680; img.height = 300;
+      var img = el("img", "mc-img"); img.src = d.img; img.alt = d.title + "の見本"; img.loading = "lazy"; img.width = 1200; img.height = 630;
       m.insertBefore(img, m.firstChild);
       var body = m.querySelector(".mc-body");
       var t = body && body.querySelector(".mc-t"); if (t) t.textContent = d.title;
