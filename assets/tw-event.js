@@ -85,6 +85,9 @@
   pop.innerHTML = '<a href="' + link('pop') + '"><img src="' + EV.img + '" alt="' + EV.title + '" width="1600" height="900" loading="lazy"><span class="b"><span class="w">' + EV.kicker + '</span><span class="h" style="display:block">' + EV.title + '</span><span class="w" style="margin-bottom:8px">' + EV.lead + '</span><span class="m">' + EV.cta + '</span></span></a><button type="button" class="twev-x" aria-label="閉じる">×</button>';
   function show() {
     if (window.scrollY < window.innerHeight * 0.6) return;
+    // メディアの記事には記事ごとの右下の申込み枠（/media/cv-dock.js の .twd）がある。
+    // 同じ右下に重なり、この小窓（z-index 1000）が記事の枠（60）を覆って押せなくしていたので、記事では出さない（2026-11-23）
+    if (document.querySelector('.twd, script[src^="/media/cv-dock.js"]')) { window.removeEventListener('scroll', show); return; }
     var band = document.querySelector('[data-tw-until]');  // 同じ告知の段が見えている間は出さない
     if (band && band.getBoundingClientRect().bottom > 0) return;
     window.removeEventListener('scroll', show);
