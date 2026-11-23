@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js" data-media="copilot">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}if(location.hostname==='techworker.co.jp')gtag('config', 'G-3V34NWXVCJ');
+</script>
+<script src="/assets/tw-track.js" defer></script>
+<script src="/assets/tw-event.js" defer></script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Copilot ラボ｜Microsoft 365 Copilot・GitHub Copilot を法人で使うための実務メディア</title>
+<meta name="description" content="Microsoft 365 Copilot と GitHub Copilot を法人で使うための実務メディアです。ライセンスと料金、SharePoint の権限の棚卸しと管理者の設定、エージェントとコネクタ、社内への広げ方と研修を、Microsoft・GitHub の公式資料で確かめた日付つきで解説します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/copilot/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Copilot ラボ｜Microsoft 365 Copilot・GitHub Copilot を法人で使うための実務メディア">
+<meta property="og:description" content="Microsoft 365 Copilot と GitHub Copilot を法人で使うための実務メディアです。ライセンスと料金、SharePoint の権限の棚卸しと管理者の設定、エージェントとコネクタ、社内への広げ方と研修を、Microsoft・GitHub の公式資料で確かめた日付つきで解説します。">
+<meta property="og:image" content="https://techworker.co.jp/assets/ogp.png">
+<meta property="og:url" content="https://techworker.co.jp/media/copilot/">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Copilot ラボ｜Microsoft 365 Copilot・GitHub Copilot を法人で使うための実務メディア">
+<meta name="twitter:image" content="https://techworker.co.jp/assets/ogp.png">
+<link rel="stylesheet" href="../article.css?v=20261120d">
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Copilot ラボ", "description": "Microsoft 365 Copilot と GitHub Copilot を法人で使うための実務メディアです。ライセンスと料金、SharePoint の権限の棚卸しと管理者の設定、エージェントとコネクタ、社内への広げ方と研修を、Microsoft・GitHub の公式資料で確かめた日付つきで解説します。", "url": "https://techworker.co.jp/media/copilot/", "inLanguage": "ja", "isPartOf": {"@type": "WebSite", "name": "TechWorker", "url": "https://techworker.co.jp/"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/"}, "mainEntity": {"@type": "ItemList", "itemListElement": [{"@type": "ListItem", "position": 1, "url": "https://techworker.co.jp/media/kenshu/copilot-mcp-connector", "name": "CopilotのMCPコネクタとは｜社内システムのつなぎ方と、管理者が先に決める設定"}, {"@type": "ListItem", "position": 2, "url": "https://techworker.co.jp/media/kenshu/gpt-6-2-copilot", "name": "GPT-6.2をCopilotで使うには｜Sol・Astraの提供先と管理者の設定"}, {"@type": "ListItem", "position": 3, "url": "https://techworker.co.jp/media/kenshu/copilot-scheduled-prompts-shuryo", "name": "Copilotの従来のスケジュールされたプロンプトは12月31日で終了｜作り直しとTeamsのAI Workflows"}, {"@type": "ListItem", "position": 4, "url": "https://techworker.co.jp/media/kenshu/ignite-2026-copilot", "name": "Microsoft Ignite 2026のCopilotまとめ｜管理者が見る発表とAgent 365・ライセンスの変更"}, {"@type": "ListItem", "position": 5, "url": "https://techworker.co.jp/media/kenshu/copilot-cowork-toha", "name": "Copilot Coworkとは｜Copilot Chatとの違い、ライセンスと料金、管理者が先に決める設定"}, {"@type": "ListItem", "position": 6, "url": "https://techworker.co.jp/media/kenshu/github-copilot-houjin-keiyaku", "name": "GitHub Copilotの法人契約と料金｜Business・Enterpriseと、GitHub Enterprise同梱の選び方"}, {"@type": "ListItem", "position": 7, "url": "https://techworker.co.jp/media/kenshu/copilot-houjin-keiyaku", "name": "Microsoft 365 Copilotの法人料金と契約｜Copilot Chat・Business・大企業向け・従量課金の選び方"}, {"@type": "ListItem", "position": 8, "url": "https://techworker.co.jp/media/kenshu/copilot-agent-usage-report", "name": "Copilotのエージェント利用状況レポート｜広げる・止めるを決める見方"}, {"@type": "ListItem", "position": 9, "url": "https://techworker.co.jp/media/kenshu/copilot-sharepoint-permission-audit", "name": "Microsoft 365 Copilot導入前のSharePoint権限棚卸し｜過剰共有を防ぐ実務"}, {"@type": "ListItem", "position": 10, "url": "https://techworker.co.jp/media/kenshu/copilot-chat-basic-vs-m365-copilot-premium-training", "name": "Copilot Chat BasicとMicrosoft 365 Copilot Premiumの研修を分ける"}, {"@type": "ListItem", "position": 11, "url": "https://techworker.co.jp/media/kenshu/copilot-bpr", "name": "Microsoft Copilot×業務プロセス改革（BPR）｜ツール研修で終わらせない導入設計"}, {"@type": "ListItem", "position": 12, "url": "https://techworker.co.jp/media/kenshu/copilot-adoption", "name": "Microsoft Copilotが定着しない原因と対策｜利用率を上げる定着支援の設計"}, {"@type": "ListItem", "position": 13, "url": "https://techworker.co.jp/media/kenshu/copilot-training-cost", "name": "Copilot研修の費用を比較する｜見積もりの内訳と助成金の確認点"}]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "Copilot ラボ", "item": "https://techworker.co.jp/media/copilot/"}]}</script>
+<link rel="stylesheet" href="/media/audience-filter.css?v=20261006-media-only">
+<script src="/media/audience-filter.js?v=20261006-media-only" defer></script>
+<link rel="stylesheet" href="/assets/site/site.css">
+
+<style>
+/* ===== Copilot ラボ（2026-11-23。Claude ラボの一覧を型に scripts/make_lab_hub.py で作った）：1画面目は本体HPの壁を Microsoft 365 の画面の色（地 #FAFAFA・差し色 #0F6CBD）で敷く。記事は主役1本＋新着2本＋表紙の3列を1つの格子に。動きは壁の流れる3列だけ ===== */
+body.cl{--bg:#FAFAFA;--bg2:#F0F0F0;--bg3:#E0E0E0;--ln:#D1D1D1;--tx:#242424;--tx2:#424242;--tx3:#616161;--ac:#0F6CBD;--ac-d:#115EA3;--ac-b:#0F6CBD;--ac-bh:#0F548C;
+  --electric:#242424;--electric-dark:#424242;--ink:#242424;--slate:#616161;--white:#FFFFFF;--line:#E0E0E0;--line-2:#D1D1D1;
+  --edge:calc(max(0px,(100vw - var(--wrap)) / 2) + var(--pad));background:var(--bg);color:var(--tx);font-size:16px;letter-spacing:.02em;}
+.cl h1,.cl h2,.cl h3,.cl .c-t,.cl .c-btn{font-feature-settings:"palt";letter-spacing:.02em;word-break:auto-phrase;}
+.cl .wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--pad);}
+/* 上の帯と足：地の色に合わせる */
+.cl .subnav{background:var(--bg);border-bottom:1px solid var(--bg3);}
+.cl .subnav nav a:hover{color:var(--ac-d);}
+.cl .subnav nav .subnav__cta{background:var(--ac-b);color:#fff;}
+.cl .subnav nav .subnav__cta:hover{background:var(--ac-bh);color:#fff;filter:none;}
+.cl .ft{background:var(--bg2);}
+/* 釦 */
+.c-btn{display:inline-flex;align-items:center;gap:18px;min-height:54px;padding:0 26px;border-radius:6px;font:700 15px/1 var(--f-body);text-decoration:none;transition:background .2s,color .2s;}
+.c-btn .arw{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;}
+.c-btn--main{background:var(--ac-b);color:#fff;}
+.c-btn--main:hover{background:var(--ac-bh);}
+.c-btn--sub{color:var(--tx);box-shadow:inset 0 0 0 1.5px var(--tx);}
+.c-btn--sub:hover{background:var(--bg2);}
+.c-go{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:15px;color:var(--tx);text-decoration:underline;text-decoration-color:var(--ac);text-decoration-thickness:2px;text-underline-offset:7px;}
+.c-go .arw{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.8;}
+.c-h2{font:700 30px/1.4 var(--f-min);}
+
+/* ---- 1画面目 ---- */
+.hero{position:relative;overflow:hidden;height:clamp(540px,calc(100svh - 270px),660px);}
+.hero__in{position:relative;z-index:2;height:100%;width:64%;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:0 24px 8px var(--edge);}
+.hero h1{font:800 62px/1.28 var(--f-min);}
+.hero h1 .nw{white-space:nowrap;}
+.hero h1 .sp{display:none;}
+.hero__line{margin-top:30px;font-size:21px;font-weight:700;line-height:1.7;word-break:auto-phrase;}
+.hero__desc{margin-top:12px;max-width:34em;font-size:15.5px;line-height:1.9;color:var(--tx2);word-break:auto-phrase;}
+.hero__acts{display:flex;gap:14px;flex-wrap:wrap;margin-top:36px;}
+.hero__acts .c-btn--main{min-width:220px;justify-content:space-between;}
+/* 壁（本体HP index.html の .wall を写し、色だけ替えた） */
+.wall{--gap:18px;position:absolute;inset:0;overflow:hidden;background:#EBEBEB;}
+.wall__cam{position:absolute;inset:0;perspective:1700px;perspective-origin:60% 44%;}
+.wall__plane{position:absolute;left:43%;top:50%;width:1500px;height:0;display:flex;align-items:flex-start;gap:var(--gap);transform-origin:0 0;transform:scale(.72) rotateY(-24deg) rotateX(12deg) rotateZ(-7deg) translateY(-1250px);}
+.wall__col{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:var(--gap);}
+.wall__col--move{animation:wall-up 520s linear infinite;will-change:transform;}
+.wall__col img{display:block;width:100%;height:auto;border-radius:10px;border:1px solid #D6D6D6;background:#fff;}
+@keyframes wall-up{from{transform:translateY(0);}to{transform:translateY(calc(-33.3333% - var(--gap) / 3));}}
+@media (prefers-reduced-motion:reduce){.wall__col{animation:none;}}
+.wall--hero .wall__plane{left:6%;width:1900px;transform:scale(1.04) rotateY(-24deg) rotateX(12deg) rotateZ(-7deg) translateY(-1000px);}
+.wall--hero .wall__veil{position:absolute;inset:0;background:
+  radial-gradient(ellipse 640px 170px at 28% 68%,rgba(250,250,250,.78) 0,rgba(250,250,250,.78) 45%,rgba(250,250,250,0) 100%),
+  linear-gradient(0deg,rgba(250,250,250,.92) 0,rgba(250,250,250,0) 16%),
+  linear-gradient(90deg,rgba(250,250,250,.8) 0,rgba(250,250,250,.8) 52%,rgba(250,250,250,.4) 62%,rgba(250,250,250,.08) 71%,rgba(250,250,250,0) 78%);}
+
+/* ---- 記事：見出しと絞り込みを1行、その下に主役1本＋新着2本、残りを表紙の3列 ---- */
+.c-meta{font-size:13px;font-weight:700;line-height:1.6;color:var(--tx2);font-feature-settings:"tnum" 1;}
+.c-meta i{font-style:normal;font-weight:500;color:var(--tx3);margin-left:14px;}
+.c-list{max-width:var(--wrap);margin:0 auto;padding:96px var(--pad) 0;display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:24px;align-items:end;}
+.c-list__hd{grid-column:1;}
+.cl .audience-controls{grid-column:2;margin:0;gap:6px;justify-content:flex-end;}
+.cl .audience-controls button{border-radius:6px;background:transparent;border:1px solid var(--ln);color:var(--tx);font-weight:700;padding:9px 16px;}
+.cl .audience-controls button:hover{border-color:var(--tx);}
+.cl .audience-controls button[aria-pressed="true"]{background:var(--bg3);border-color:var(--tx);color:var(--tx);}
+.cl .audience-result{grid-column:1 / -1;margin:12px 0 0;font-size:13px;color:var(--tx3);}
+.cl .audience-empty,.cl .audience-more{grid-column:1 / -1;}
+.cl .audience-empty a{color:var(--tx);}
+#audience-results{grid-column:1 / -1;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:56px 32px;margin-top:28px;}
+.cc{display:flex;flex-direction:column;min-width:0;color:inherit;text-decoration:none;}
+.cc img{display:block;width:100%;height:auto;aspect-ratio:1200/630;object-fit:cover;border-radius:10px;border:1px solid var(--bg3);background:var(--bg2);}
+.cc--feat{grid-column:span 6;}
+.cc--side{grid-column:span 3;}
+.cc--row{grid-column:span 4;}
+.cc-b{display:flex;flex-direction:column;}
+.cc-m{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 14px;margin-top:16px;}
+.cl .cc-m .audience-tag{margin:0;padding:0;border:0;border-radius:0;background:none;font-size:13px;font-weight:500;line-height:1.6;color:var(--tx3);}
+.cc-t{margin-top:8px;font-size:18px;font-weight:700;line-height:1.6;font-feature-settings:"palt";letter-spacing:.02em;word-break:auto-phrase;}
+.cc-d{margin-top:8px;font-size:14px;line-height:1.85;color:var(--tx3);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+.cc--side .cc-d{-webkit-line-clamp:4;}
+.cc-pick{display:flex;align-items:center;gap:8px;margin-top:20px;font-size:14px;font-weight:700;color:var(--tx);}
+.cc-pick::before{content:"";width:8px;height:8px;background:var(--ac);}
+.cc--feat .cc-m{margin-top:8px;}
+.cc--feat .cc-t{margin-top:10px;font:700 28px/1.5 var(--f-min);}
+.cc--feat .cc-d{margin-top:12px;font-size:15px;line-height:1.9;color:var(--tx2);-webkit-line-clamp:4;}
+.cc--feat .c-go{margin-top:20px;align-self:flex-start;}
+.cc:hover .cc-t{text-decoration:underline;text-decoration-color:var(--ac);text-decoration-thickness:2px;text-underline-offset:6px;}
+
+/* ---- 資料 ---- */
+.c-docs{margin-top:120px;padding:96px 0 104px;background:var(--bg2);}
+.c-docs__g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.3fr);gap:56px;align-items:start;}
+.c-docs__k{margin-top:22px;font-size:13px;font-weight:700;color:var(--tx3);}
+.c-docs__o{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid var(--ln);color:var(--tx);font-size:14.5px;font-weight:700;line-height:1.7;text-decoration:none;word-break:auto-phrase;}
+.c-docs__k+.c-docs__o{margin-top:8px;border-top:1px solid var(--ln);}
+.c-docs__o .arw{flex:none;width:16px;height:16px;fill:none;stroke:var(--ac-d);stroke-width:1.8;}
+.c-docs__o:hover{color:var(--ac-d);}
+.c-docs .tw-lead{margin:0;}
+/* 受け取り欄の中の試算を灰色の箱にしない（今の版と同じ指定） */
+.c-docs .tw-lead .tl-calc{background:none;padding:0;border-radius:0;}
+/* 受け取り欄の外枠も外し、段の地にじかに置く（枠のカードを作らない） */
+.c-docs .tw-lead{background:transparent;border:0;box-shadow:none;border-radius:0;padding:0;}
+
+/* 資料の欄（lead.js）と右下の小窓（cv-dock.js）の釦も、黒い地に白い字にしない。光る筋と脈打つ動きは止める */
+.cl .tw-lead button,.cl .tw-lead .tl-go,.cl .twd-b,.cl .twd-pill{background:var(--ac-b);color:#fff;box-shadow:none;}
+.cl .tw-lead button:hover,.cl .tw-lead .tl-go:hover,.cl .twd-b:hover,.cl .twd-pill:hover{background:var(--ac-bh);color:#fff;}
+.cl .twd-b{animation:none;}
+.cl .twd-b::after{display:none;}
+
+/* ---- 研修：止めた壁を右に敷いた段 ---- */
+.c-train{position:relative;overflow:hidden;}
+.c-train__in{position:relative;z-index:2;padding:112px var(--pad) 112px var(--edge);max-width:calc(var(--edge) + 600px);}
+.c-train__k{font-size:14px;font-weight:700;color:var(--tx3);}
+.c-train h2{margin-top:10px;font:800 44px/1.3 var(--f-min);}
+.c-train p{margin-top:18px;font-size:15.5px;line-height:1.95;color:var(--tx2);max-width:30em;}
+.c-train .c-btn{margin-top:30px;}
+.wall--still{background:var(--bg);}
+.wall--still .wall__plane{left:48%;width:1500px;transform:scale(.8) rotateY(-24deg) rotateX(12deg) rotateZ(-7deg) translateY(-760px);}
+.wall--still .wall__veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(250,250,250,1) 0,rgba(250,250,250,1) 44%,rgba(250,250,250,.55) 54%,rgba(250,250,250,.1) 66%,rgba(250,250,250,0) 76%);}
+
+/* ---- このメディアについて ---- */
+.c-about{padding:88px 0 104px;border-top:1px solid var(--bg3);}
+.c-about__g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.3fr);gap:56px;}
+.c-about h2{font:700 22px/1.5 var(--f-min);}
+.c-about p{font-size:15px;line-height:2;color:var(--tx2);max-width:44em;}
+.c-about p+p{margin-top:12px;}
+.c-about a{color:var(--tx);font-weight:700;text-decoration:underline;text-decoration-color:var(--ac);text-underline-offset:5px;}
+
+@media (max-width:1360px) and (min-width:1101px){
+  .wall--hero .wall__plane{transform:scale(.94) rotateY(-24deg) rotateX(12deg) rotateZ(-7deg) translateY(-1000px);}
+}
+@media (max-width:1100px){
+  .hero h1{font-size:5.4vw;}
+  .hero{height:clamp(460px,calc(100svh - 400px),600px);}
+  .hero__in{width:66%;}
+  .wall--hero .wall__plane{left:2%;width:1300px;transform:scale(1.12) rotateY(-24deg) rotateX(12deg) rotateZ(-7deg) translateY(-900px);}
+  .wall--hero .wall__veil{background:
+    linear-gradient(0deg,rgba(250,250,250,.92) 0,rgba(250,250,250,0) 16%),
+    linear-gradient(90deg,rgba(250,250,250,.86) 0,rgba(250,250,250,.86) 62%,rgba(250,250,250,.4) 72%,rgba(250,250,250,.08) 82%,rgba(250,250,250,0) 88%);}
+  #audience-results{grid-template-columns:repeat(2,minmax(0,1fr));gap:48px 28px;}
+  .cc--feat{grid-column:1 / -1;}
+  .cc--side,.cc--row{grid-column:span 1;}
+  .cc--feat .cc-t{font-size:24px;}
+}
+@media (max-width:960px){
+  .wall--hero .wall__plane{left:0%;width:1200px;}
+  .c-docs__g,.c-about__g{grid-template-columns:1fr;gap:28px;}
+}
+@media (max-width:760px){
+  body.cl{--pad:20px;}
+  .hero{height:auto;}
+  .hero__in{width:auto;height:auto;padding:40px var(--pad) 190px;}
+  .hero h1{font-size:36px;line-height:1.36;}
+  .hero__line{margin-top:20px;font-size:17px;line-height:1.65;}
+  .hero__desc{margin-top:8px;font-size:14px;line-height:1.85;}
+  .hero__acts{margin-top:24px;gap:10px;width:100%;}
+  .hero__acts .c-btn{min-height:50px;}
+  .hero__acts{flex-wrap:nowrap;}
+  .hero__acts .c-btn{flex:1 1 0;min-width:0;justify-content:center;gap:10px;padding:0 12px;}
+  .hero h1 .nw{white-space:normal;}
+  .hero h1 .sp{display:inline;}
+  .wall{--gap:12px;}
+  .wall__cam{perspective:700px;perspective-origin:50% 80%;}
+  .wall__col img{border-radius:6px;}
+  .wall--hero .wall__plane{left:-4%;top:100%;width:900px;transform:rotateX(34deg) rotateZ(-14deg) translateY(-900px);}
+  .wall--hero .wall__veil{background:linear-gradient(180deg,rgba(250,250,250,1) 0,rgba(250,250,250,1) 75%,rgba(250,250,250,.5) 80%,rgba(250,250,250,0) 88%);}
+  .c-h2{font-size:24px;}
+  .c-list{padding-top:64px;grid-template-columns:1fr;}
+  .cl .audience-controls{grid-column:1;justify-content:flex-start;margin-top:16px;}
+  #audience-results{grid-template-columns:1fr;gap:44px;}
+  .cc--feat .cc-t{font-size:22px;}
+  .cc--feat .cc-d{font-size:14px;}
+  .cc-t{font-size:17px;}
+  .cc-d,.cc--side .cc-d{-webkit-line-clamp:2;}
+  .c-docs{margin-top:88px;padding:64px 0 72px;}
+  .c-train__in{padding:64px var(--pad) 72px;}
+  .c-train{border-top:1px solid var(--bg3);}
+  .c-train h2{font-size:32px;}
+  .wall--still{display:none;}
+  .c-about{padding:64px 0 72px;}
+}
+</style>
+</head>
+<body class="cl">
+
+<header class="hd hd--solid">
+  <a class="logo" href="/" aria-label="TechWorker ホーム">Tech<i>Worker</i></a>
+  <nav id="hd-nav" aria-label="主な行き先">
+    <a href="/services">事業・サービス</a>
+    <a href="/#concept">考え方</a>
+    <a href="/agent-cases/">事例</a>
+    <a href="/news">ニュース</a>
+    <a href="/company">会社情報</a>
+    <a href="/contact">お問い合わせ</a>
+  </nav>
+  <button class="menu" type="button" aria-label="メニューを開く" aria-controls="hd-nav" aria-expanded="false"></button>
+</header>
+<div class="subnav">
+  <div class="wrap subnav__in">
+    <a class="subnav__name" href="index.html">Copilot ラボ</a>
+    <nav aria-label="メディアの行き先"><a href="index.html#about">このメディアについて</a><a href="https://kenshu.techworker.co.jp/program/?utm_source=techworker_media&amp;utm_medium=hub&amp;utm_campaign=copilot&amp;utm_content=nav#copilot" class="subnav__cta">Copilot 研修</a></nav>
+  </div>
+</div>
+
+<main>
+<section class="hero" aria-label="Copilot ラボ">
+  <div class="wall wall--hero" aria-hidden="true"><div class="wall__cam"><div class="wall__plane"><div class="wall__col"><img src="wall/f-copilot-adoption-s1.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-adoption.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-bpr-s1.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-agent-usage-report.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-bpr-s2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-bpr.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-bpr-s3.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-chat-basic-vs-m365-copilot-premium-training.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-cowork-toha-1.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-cowork-toha.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-cowork-toha-2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-houjin-keiyaku.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-houjin-keiyaku-2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-mcp-connector.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-mcp-connector-jouken.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-scheduled-prompts-shuryo.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-mcp-connector-kata.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-sharepoint-permission-audit.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-mcp-connector-kimeru.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-training-cost.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-scheduled-prompts-shuryo-s1.jpg" alt="" width="560" height="254"><img src="wall/c-github-copilot-houjin-keiyaku.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-sharepoint-permission-audit-s1.jpg" alt="" width="560" height="254"><img src="wall/c-gpt-6-2-copilot.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-sharepoint-permission-audit-s2.jpg" alt="" width="560" height="254"><img src="wall/c-ignite-2026-copilot.jpg" alt="" width="560" height="294"><img src="wall/f-github-copilot-houjin-keiyaku-2.jpg" alt="" width="560" height="254"><img src="wall/f-copilot-adoption-s1.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-adoption.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-bpr-s1.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-agent-usage-report.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-bpr-s2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-bpr.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-bpr-s3.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-chat-basic-vs-m365-copilot-premium-training.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-cowork-toha-1.jpg" alt="" width="560" height="254"></div><div class="wall__col wall__col--move"><img src="wall/f-copilot-bpr-s1.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-agent-usage-report.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-bpr-s2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-bpr.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-bpr-s3.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-chat-basic-vs-m365-copilot-premium-training.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-cowork-toha-1.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-cowork-toha.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-cowork-toha-2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-houjin-keiyaku.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-houjin-keiyaku-2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-mcp-connector.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-mcp-connector-jouken.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-scheduled-prompts-shuryo.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-mcp-connector-kata.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-sharepoint-permission-audit.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-mcp-connector-kimeru.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-training-cost.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-scheduled-prompts-shuryo-s1.jpg" alt="" width="560" height="254"><img src="wall/c-github-copilot-houjin-keiyaku.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-sharepoint-permission-audit-s1.jpg" alt="" width="560" height="254"><img src="wall/c-gpt-6-2-copilot.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-sharepoint-permission-audit-s2.jpg" alt="" width="560" height="254"><img src="wall/c-ignite-2026-copilot.jpg" alt="" width="560" height="294"><img src="wall/f-github-copilot-houjin-keiyaku-2.jpg" alt="" width="560" height="254"><img src="wall/f-copilot-adoption-s1.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-adoption.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-bpr-s1.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-agent-usage-report.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-bpr-s2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-bpr.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-bpr-s3.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-chat-basic-vs-m365-copilot-premium-training.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-cowork-toha-1.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-cowork-toha.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-cowork-toha-2.jpg" alt="" width="560" height="254"></div><div class="wall__col"><img src="wall/f-copilot-bpr-s2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-bpr.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-bpr-s3.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-chat-basic-vs-m365-copilot-premium-training.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-cowork-toha-1.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-cowork-toha.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-cowork-toha-2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-houjin-keiyaku.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-houjin-keiyaku-2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-mcp-connector.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-mcp-connector-jouken.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-scheduled-prompts-shuryo.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-mcp-connector-kata.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-sharepoint-permission-audit.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-mcp-connector-kimeru.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-training-cost.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-scheduled-prompts-shuryo-s1.jpg" alt="" width="560" height="254"><img src="wall/c-github-copilot-houjin-keiyaku.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-sharepoint-permission-audit-s1.jpg" alt="" width="560" height="254"><img src="wall/c-gpt-6-2-copilot.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-sharepoint-permission-audit-s2.jpg" alt="" width="560" height="254"><img src="wall/c-ignite-2026-copilot.jpg" alt="" width="560" height="294"><img src="wall/f-github-copilot-houjin-keiyaku-2.jpg" alt="" width="560" height="254"><img src="wall/f-copilot-adoption-s1.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-adoption.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-bpr-s1.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-agent-usage-report.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-bpr-s2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-bpr.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-bpr-s3.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-chat-basic-vs-m365-copilot-premium-training.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-cowork-toha-1.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-cowork-toha.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-cowork-toha-2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-houjin-keiyaku.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-houjin-keiyaku-2.jpg" alt="" width="560" height="254"></div><div class="wall__col wall__col--move"><img src="wall/f-copilot-bpr-s3.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-chat-basic-vs-m365-copilot-premium-training.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-cowork-toha-1.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-cowork-toha.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-cowork-toha-2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-houjin-keiyaku.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-houjin-keiyaku-2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-mcp-connector.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-mcp-connector-jouken.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-scheduled-prompts-shuryo.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-mcp-connector-kata.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-sharepoint-permission-audit.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-mcp-connector-kimeru.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-training-cost.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-scheduled-prompts-shuryo-s1.jpg" alt="" width="560" height="254"><img src="wall/c-github-copilot-houjin-keiyaku.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-sharepoint-permission-audit-s1.jpg" alt="" width="560" height="254"><img src="wall/c-gpt-6-2-copilot.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-sharepoint-permission-audit-s2.jpg" alt="" width="560" height="254"><img src="wall/c-ignite-2026-copilot.jpg" alt="" width="560" height="294"><img src="wall/f-github-copilot-houjin-keiyaku-2.jpg" alt="" width="560" height="254"><img src="wall/f-copilot-adoption-s1.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-adoption.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-bpr-s1.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-agent-usage-report.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-bpr-s2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-bpr.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-bpr-s3.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-chat-basic-vs-m365-copilot-premium-training.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-cowork-toha-1.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-cowork-toha.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-cowork-toha-2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-houjin-keiyaku.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-houjin-keiyaku-2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-mcp-connector.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-mcp-connector-jouken.jpg" alt="" width="560" height="254"></div><div class="wall__col"><img src="wall/f-copilot-cowork-toha-1.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-cowork-toha.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-cowork-toha-2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-houjin-keiyaku.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-houjin-keiyaku-2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-mcp-connector.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-mcp-connector-jouken.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-scheduled-prompts-shuryo.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-mcp-connector-kata.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-sharepoint-permission-audit.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-mcp-connector-kimeru.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-training-cost.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-scheduled-prompts-shuryo-s1.jpg" alt="" width="560" height="254"><img src="wall/c-github-copilot-houjin-keiyaku.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-sharepoint-permission-audit-s1.jpg" alt="" width="560" height="254"><img src="wall/c-gpt-6-2-copilot.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-sharepoint-permission-audit-s2.jpg" alt="" width="560" height="254"><img src="wall/c-ignite-2026-copilot.jpg" alt="" width="560" height="294"><img src="wall/f-github-copilot-houjin-keiyaku-2.jpg" alt="" width="560" height="254"><img src="wall/f-copilot-adoption-s1.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-adoption.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-bpr-s1.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-agent-usage-report.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-bpr-s2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-bpr.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-bpr-s3.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-chat-basic-vs-m365-copilot-premium-training.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-cowork-toha-1.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-cowork-toha.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-cowork-toha-2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-houjin-keiyaku.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-houjin-keiyaku-2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-mcp-connector.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-mcp-connector-jouken.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-scheduled-prompts-shuryo.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-mcp-connector-kata.jpg" alt="" width="560" height="254"></div><div class="wall__col wall__col--move"><img src="wall/f-copilot-cowork-toha-2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-houjin-keiyaku.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-houjin-keiyaku-2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-mcp-connector.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-mcp-connector-jouken.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-scheduled-prompts-shuryo.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-mcp-connector-kata.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-sharepoint-permission-audit.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-mcp-connector-kimeru.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-training-cost.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-scheduled-prompts-shuryo-s1.jpg" alt="" width="560" height="254"><img src="wall/c-github-copilot-houjin-keiyaku.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-sharepoint-permission-audit-s1.jpg" alt="" width="560" height="254"><img src="wall/c-gpt-6-2-copilot.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-sharepoint-permission-audit-s2.jpg" alt="" width="560" height="254"><img src="wall/c-ignite-2026-copilot.jpg" alt="" width="560" height="294"><img src="wall/f-github-copilot-houjin-keiyaku-2.jpg" alt="" width="560" height="254"><img src="wall/f-copilot-adoption-s1.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-adoption.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-bpr-s1.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-agent-usage-report.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-bpr-s2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-bpr.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-bpr-s3.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-chat-basic-vs-m365-copilot-premium-training.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-cowork-toha-1.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-cowork-toha.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-cowork-toha-2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-houjin-keiyaku.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-houjin-keiyaku-2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-mcp-connector.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-mcp-connector-jouken.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-scheduled-prompts-shuryo.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-mcp-connector-kata.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-sharepoint-permission-audit.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-mcp-connector-kimeru.jpg" alt="" width="560" height="254"></div></div></div><div class="wall__veil"></div></div>
+  <div class="hero__in">
+    <h1>Copilot を、<br><span class="nw">会社で使える<br class="sp">形にする。</span></h1>
+    <p class="hero__line">Microsoft 365 Copilot と GitHub Copilot を法人で使うときの判断を扱うメディアです。</p>
+    <p class="hero__desc">ライセンスと料金、SharePoint の権限の棚卸しと管理者の設定、エージェントとコネクタ、社内への広げ方と研修を書いています。</p>
+    <div class="hero__acts">
+      <a class="c-btn c-btn--main" href="#articles">記事を読む<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a>
+      <a class="c-btn c-btn--sub" href="#docs">資料を受け取る</a>
+    </div>
+  </div>
+</section>
+
+<section id="articles" data-audience-catalog class="c-list">
+<div class="c-list__hd"><h2 class="c-h2">記事一覧</h2></div>
+<div class="audience-controls" role="group" aria-label="対象読者で絞り込む" hidden><button type="button" data-audience-filter="all" data-audience-label="すべて" aria-pressed="true" aria-controls="audience-results">すべて<span class="audience-count">13</span></button><button type="button" data-audience-filter="it" data-audience-label="情シス・AI導入担当" aria-pressed="false" aria-controls="audience-results">情シス・AI導入担当<span class="audience-count">9</span></button><button type="button" data-audience-filter="hr" data-audience-label="人事・研修担当" aria-pressed="false" aria-controls="audience-results">人事・研修担当<span class="audience-count">3</span></button><button type="button" data-audience-filter="operations" data-audience-label="業務責任者" aria-pressed="false" aria-controls="audience-results">業務責任者<span class="audience-count">1</span></button><button type="button" data-audience-filter="executive" data-audience-label="経営者・経営幹部" aria-pressed="false" aria-controls="audience-results" hidden>経営者・経営幹部<span class="audience-count">0</span></button></div>
+<p class="audience-result" role="status" aria-live="polite" aria-atomic="true">すべて：13件</p>
+<div id="audience-results" class="jz-cards">
+<a data-audience-item data-audience="it" class="cc cc--feat" href="../kenshu/ignite-2026-copilot.html"><img src="../kenshu/covers/ignite-2026-copilot.png" alt="Microsoft Ignite 2026のCopilotまとめ｜管理者が見る発表とAgent 365・ライセンスの変更" width="1200" height="630" fetchpriority="high"><span class="cc-b"><span class="cc-pick">いちばん読まれている記事</span><span class="cc-m"><span class="c-meta">導入と業務への組み込み<i>2026.11.18</i></span><span class="audience-tag">情シス・AI導入担当</span></span><span class="cc-t">Microsoft Ignite 2026のCopilotまとめ｜管理者が見る発表とAgent 365・ライセンスの変更</span><span class="cc-d">Microsoft Ignite 2026のCopilotの発表から、管理者に関わる物を選びました。Copilot本体の料金の変更は見当たらず、Microsoft製エージェントの利用状況はAgent 365無しで見られます。提供の状態と今週決めることを、Book of News（11月18日確認）で整理します。</span><span class="c-go">記事を読む<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></span></a>
+<a data-audience-item data-audience="it" class="cc cc--side" href="../kenshu/copilot-mcp-connector.html"><img src="../kenshu/covers/thumbs/copilot-mcp-connector.jpg" srcset="../kenshu/covers/thumbs/copilot-mcp-connector.jpg 600w, ../kenshu/covers/copilot-mcp-connector.png 1200w" sizes="(max-width:760px) calc(100vw - 40px), (max-width:1100px) 46vw, 380px" alt="CopilotのMCPコネクタとは｜社内システムのつなぎ方と、管理者が先に決める設定" width="600" height="315" loading="lazy"><span class="cc-b"><span class="cc-m"><span class="c-meta">導入と業務への組み込み<i>2026.11.23</i></span><span class="audience-tag">情シス・AI導入担当</span></span><span class="cc-t">CopilotのMCPコネクタとは｜社内システムのつなぎ方と、管理者が先に決める設定</span><span class="cc-d">Microsoft 365 CopilotのMCPコネクタ（フェデレーテッド コネクタ）は、Slackや社内システムのデータをコピーせずに読み、書き込みもできます。社員が使える5つの条件、書き込みの承認、自社のMCPサーバーをつなぐ手順を、公式情報（11月23日確認）で整理します。</span></span></a>
+<a data-audience-item data-audience="it" class="cc cc--side" href="../kenshu/gpt-6-2-copilot.html"><img src="../kenshu/covers/thumbs/gpt-6-2-copilot.jpg" srcset="../kenshu/covers/thumbs/gpt-6-2-copilot.jpg 600w, ../kenshu/covers/gpt-6-2-copilot.png 1200w" sizes="(max-width:760px) calc(100vw - 40px), (max-width:1100px) 46vw, 380px" alt="GPT-6.2をCopilotで使うには｜Sol・Astraの提供先と管理者の設定" width="600" height="315" loading="lazy"><span class="cc-b"><span class="cc-m"><span class="c-meta">導入と業務への組み込み<i>2026.11.22</i></span><span class="audience-tag">情シス・AI導入担当</span></span><span class="cc-t">GPT-6.2をCopilotで使うには｜Sol・Astraの提供先と管理者の設定</span><span class="cc-d">GPT-6.2 SolとAstraがMicrosoft Copilotで使えるようになりました。SolはChatやWord・Excel、AstraはCoworkとStudioから。OpenAIのモデルは既定で全員が使える設定です。管理者の設定とデータの扱いを、公式情報（11月22日確認）で整理します。</span></span></a>
+<a data-audience-item data-audience="it" class="cc cc--row" href="../kenshu/copilot-scheduled-prompts-shuryo.html"><img src="../kenshu/covers/thumbs/copilot-scheduled-prompts-shuryo.jpg" srcset="../kenshu/covers/thumbs/copilot-scheduled-prompts-shuryo.jpg 600w, ../kenshu/covers/copilot-scheduled-prompts-shuryo.png 1200w" sizes="(max-width:760px) calc(100vw - 40px), (max-width:1100px) 46vw, 380px" alt="Copilotの従来のスケジュールされたプロンプトは12月31日で終了｜作り直しとTeamsのAI Workflows" width="600" height="315" loading="lazy"><span class="cc-b"><span class="cc-m"><span class="c-meta">導入と業務への組み込み<i>2026.11.20</i></span><span class="audience-tag">情シス・AI導入担当</span></span><span class="cc-t">Copilotの従来のスケジュールされたプロンプトは12月31日で終了｜作り直しとTeamsのAI Workflows</span><span class="cc-d">Microsoft 365 Copilotの従来のスケジュールされたプロンプトは、2026年12月31日に廃止されます。続けたいスケジュールは、利用者が新しい「スケジュールされたタスク」として作り直します。上限、棚卸し、TeamsのAI Workflowsの扱いを公式情報（2026年11月20日確認）で整理します。</span></span></a>
+<a data-audience-item data-audience="it" class="cc cc--row" href="../kenshu/copilot-cowork-toha.html"><img src="../kenshu/covers/thumbs/copilot-cowork-toha.jpg" srcset="../kenshu/covers/thumbs/copilot-cowork-toha.jpg 600w, ../kenshu/covers/copilot-cowork-toha.png 1200w" sizes="(max-width:760px) calc(100vw - 40px), (max-width:1100px) 46vw, 380px" alt="Copilot Coworkとは｜Copilot Chatとの違い、ライセンスと料金、管理者が先に決める設定" width="600" height="315" loading="lazy"><span class="cc-b"><span class="cc-m"><span class="c-meta">導入と業務への組み込み<i>2026.11.16</i></span><span class="audience-tag">情シス・AI導入担当</span></span><span class="cc-t">Copilot Coworkとは｜Copilot Chatとの違い、ライセンスと料金、管理者が先に決める設定</span><span class="cc-d">Copilot Coworkの料金は、Microsoft 365 Copilotのライセンス（大企業向けは1人月4,497円相当、年払い・税別）に、使った分のCopilotクレジットが加わります。Copilot Chatとの違い、支出ポリシーとDLPの範囲を公式情報（2026年11月16日確認）で整理します。</span></span></a>
+<a data-audience-item data-audience="it" class="cc cc--row" href="../kenshu/github-copilot-houjin-keiyaku.html"><img src="../kenshu/covers/thumbs/github-copilot-houjin-keiyaku.jpg" srcset="../kenshu/covers/thumbs/github-copilot-houjin-keiyaku.jpg 600w, ../kenshu/covers/github-copilot-houjin-keiyaku.png 1200w" sizes="(max-width:760px) calc(100vw - 40px), (max-width:1100px) 46vw, 380px" alt="GitHub Copilotの法人契約と料金｜Business・Enterpriseと、GitHub Enterprise同梱の選び方" width="600" height="315" loading="lazy"><span class="cc-b"><span class="cc-m"><span class="c-meta">料金と比較<i>2026.11.13</i></span><span class="audience-tag">情シス・AI導入担当</span></span><span class="cc-t">GitHub Copilotの法人契約と料金｜Business・Enterpriseと、GitHub Enterprise同梱の選び方</span><span class="cc-d">GitHub Copilotの法人契約は、Business（1人月19ドル）、Enterprise（月39ドル）、10月28日に営業窓口経由で始まったCopilot accessの3つです。料金表、50人での年額、使いすぎを止める予算の設定を公式情報（2026年11月13日確認）で整理します。</span></span></a>
+<a data-audience-item data-audience="it" class="cc cc--row" href="../kenshu/copilot-houjin-keiyaku.html"><img src="../kenshu/covers/thumbs/copilot-houjin-keiyaku.jpg" srcset="../kenshu/covers/thumbs/copilot-houjin-keiyaku.jpg 600w, ../kenshu/covers/copilot-houjin-keiyaku.png 1200w" sizes="(max-width:760px) calc(100vw - 40px), (max-width:1100px) 46vw, 380px" alt="Microsoft 365 Copilotの法人料金と契約｜Copilot Chat・Business・大企業向け・従量課金の選び方" width="600" height="315" loading="lazy"><span class="cc-b"><span class="cc-m"><span class="c-meta">料金と比較<i>2026.11.11</i></span><span class="audience-tag">情シス・AI導入担当</span></span><span class="cc-t">Microsoft 365 Copilotの法人料金と契約｜Copilot Chat・Business・大企業向け・従量課金の選び方</span><span class="cc-d">Copilotの法人契約は、無料のCopilot Chat、1人月4,497円相当のMicrosoft 365 Copilot、300人以下向けで月3,148円相当のCopilot Business、従量課金の4つです（年払い・税抜）。選び方と稟議の論点を公式ページで整理します（2026年11月11日確認）。</span></span></a>
+<a data-audience-item data-audience="it" class="cc cc--row" href="../kenshu/copilot-agent-usage-report.html"><img src="../kenshu/covers/thumbs/copilot-agent-usage-report.jpg" srcset="../kenshu/covers/thumbs/copilot-agent-usage-report.jpg 600w, ../kenshu/covers/copilot-agent-usage-report.png 1200w" sizes="(max-width:760px) calc(100vw - 40px), (max-width:1100px) 46vw, 380px" alt="Copilotのエージェント利用状況レポート｜広げる・止めるを決める見方" width="600" height="315" loading="lazy"><span class="cc-b"><span class="cc-m"><span class="c-meta">定着と効果測定<i>2026.11.11</i></span><span class="audience-tag">情シス・AI導入担当</span></span><span class="cc-t">Copilotのエージェント利用状況レポート｜広げる・止めるを決める見方</span><span class="cc-d">11月4日、Microsoft 365 管理センターのエージェントの利用状況レポートが新しくなりました。ライセンスの有無と、作った人の種類で分けて使われ方を見られます。開き方と、広げる・止めるの判断への使い方を示します。</span></span></a>
+<a data-audience-item data-audience="it" class="cc cc--row" href="../kenshu/copilot-sharepoint-permission-audit.html"><img src="../kenshu/covers/thumbs/copilot-sharepoint-permission-audit.jpg" srcset="../kenshu/covers/thumbs/copilot-sharepoint-permission-audit.jpg 600w, ../kenshu/covers/copilot-sharepoint-permission-audit.png 1200w" sizes="(max-width:760px) calc(100vw - 40px), (max-width:1100px) 46vw, 380px" alt="Microsoft 365 Copilot導入前のSharePoint権限棚卸し｜過剰共有を防ぐ実務" width="600" height="315" loading="lazy"><span class="cc-b"><span class="cc-m"><span class="c-meta">社内ルールと安全<i>2026.09.21</i></span><span class="audience-tag">情シス・AI導入担当</span></span><span class="cc-t">Microsoft 365 Copilot導入前のSharePoint権限棚卸し｜過剰共有を防ぐ実務</span><span class="cc-d">Microsoft 365 Copilot導入前のSharePoint権限棚卸しは、全社共有・外部共有・所有者不在・機密サイトの抽出から始めます。4週間の進め方と、RCD・RAC・RSSの違い、うまくいかない例をまとめました。</span></span></a>
+<a data-audience-item data-audience="hr" class="cc cc--row" href="../kenshu/copilot-chat-basic-vs-m365-copilot-premium-training.html"><img src="../kenshu/covers/thumbs/copilot-chat-basic-vs-m365-copilot-premium-training.jpg" srcset="../kenshu/covers/thumbs/copilot-chat-basic-vs-m365-copilot-premium-training.jpg 600w, ../kenshu/covers/copilot-chat-basic-vs-m365-copilot-premium-training.png 1200w" sizes="(max-width:760px) calc(100vw - 40px), (max-width:1100px) 46vw, 380px" alt="Copilot Chat BasicとMicrosoft 365 Copilot Premiumの研修を分ける" width="600" height="315" loading="lazy"><span class="cc-b"><span class="cc-m"><span class="c-meta">研修の設計と運営<i>2026.09.01</i></span><span class="audience-tag">人事・研修担当</span></span><span class="cc-t">Copilot Chat BasicとMicrosoft 365 Copilot Premiumの研修を分ける</span><span class="cc-d">Microsoft 365 Copilot Chatと有償のMicrosoft 365 Copilotは、研修課題を分けます。利用できるデータとアプリ内機能の差を、公式レポートの対象から読み解きます。</span></span></a>
+<a data-audience-item data-audience="operations" class="cc cc--row" href="../kenshu/copilot-bpr.html"><img src="../kenshu/covers/thumbs/copilot-bpr.jpg" srcset="../kenshu/covers/thumbs/copilot-bpr.jpg 600w, ../kenshu/covers/copilot-bpr.png 1200w" sizes="(max-width:760px) calc(100vw - 40px), (max-width:1100px) 46vw, 380px" alt="Microsoft Copilot×業務プロセス改革（BPR）｜ツール研修で終わらせない導入設計" width="600" height="315" loading="lazy"><span class="cc-b"><span class="cc-m"><span class="c-meta">導入と業務への組み込み<i>2026.08.01</i></span><span class="audience-tag">業務責任者</span></span><span class="cc-t">Microsoft Copilot×業務プロセス改革（BPR）｜ツール研修で終わらせない導入設計</span><span class="cc-d">Microsoft CopilotをBPR（業務プロセス改革）につなげる導入の進め方を解説します。業務の棚卸し、AI適用余地のマッピング、プロセスの再設計、研修と定着の4段階と、ツール導入型との違い、利用レポートで分かる範囲を示します。</span></span></a>
+<a data-audience-item data-audience="hr" class="cc cc--row" href="../kenshu/copilot-adoption.html"><img src="../kenshu/covers/thumbs/copilot-adoption.jpg" srcset="../kenshu/covers/thumbs/copilot-adoption.jpg 600w, ../kenshu/covers/copilot-adoption.png 1200w" sizes="(max-width:760px) calc(100vw - 40px), (max-width:1100px) 46vw, 380px" alt="Microsoft Copilotが定着しない原因と対策｜利用率を上げる定着支援の設計" width="600" height="315" loading="lazy"><span class="cc-b"><span class="cc-m"><span class="c-meta">定着と効果測定<i>2026.07.25</i></span><span class="audience-tag">人事・研修担当</span></span><span class="cc-t">Microsoft Copilotが定着しない原因と対策｜利用率を上げる定着支援の設計</span><span class="cc-d">Copilotが定着しない原因はプロンプトが分からない、手作業の方が速い、推進体制がない、測定していないの4つです。管理センターの利用レポートで部門別のアクティブ利用率を測り、チャンピオンの任命から90日の改善ループまでの進め方を示します。</span></span></a>
+<a data-audience-item data-audience="hr" class="cc cc--row" href="../kenshu/copilot-training-cost.html"><img src="../kenshu/covers/thumbs/copilot-training-cost.jpg" srcset="../kenshu/covers/thumbs/copilot-training-cost.jpg 600w, ../kenshu/covers/copilot-training-cost.png 1200w" sizes="(max-width:760px) calc(100vw - 40px), (max-width:1100px) 46vw, 380px" alt="Copilot研修の費用を比較する｜見積もりの内訳と助成金の確認点" width="600" height="315" loading="lazy"><span class="cc-b"><span class="cc-m"><span class="c-meta">料金と比較<i>2026.07.18</i></span><span class="audience-tag">人事・研修担当</span></span><span class="cc-t">Copilot研修の費用を比較する｜見積もりの内訳と助成金の確認点</span><span class="cc-d">Copilot研修の費用は講師料に加えて演習環境、カスタマイズ、研修後の定着支援で決まります。見積もりで聞く7つの項目、研修の形態ごとの費用構造、人材開発支援助成金の要件（OFF-JT10時間以上、助成率は中小企業75%）を整理します。</span></span></a>
+</div>
+<p class="audience-empty" hidden>このメディアには、選んだ読者向けの記事がまだありません。<br><a href="/media/#media">ほかのメディアを見る</a></p><button type="button" class="audience-more" aria-controls="audience-results" hidden>もっと見る</button></section>
+
+<section class="c-docs" id="docs">
+  <div class="wrap c-docs__g">
+    <div class="c-docs__side"><h2 class="c-h2">資料</h2>
+      <p class="c-docs__k">ほかの資料</p><a class="c-docs__o" href="../../library/?doc=cases&amp;utm_source=techworker_media&amp;utm_medium=hub&amp;utm_campaign=copilot&amp;utm_content=docs_cases">2026年版 生成AI活用事例集<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a></div>
+    <div class="tw-lead" data-offer="copilot-ignite-sheet" data-campaign="copilot-lab" data-pos="hub"></div>
+  </div>
+</section>
+
+<section class="c-train" aria-label="Copilot 研修">
+  <div class="wall wall--still" aria-hidden="true"><div class="wall__cam"><div class="wall__plane"><div class="wall__col"><img src="wall/c-copilot-adoption.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-bpr-s1.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-agent-usage-report.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-bpr-s2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-bpr.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-bpr-s3.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-chat-basic-vs-m365-copilot-premium-training.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-cowork-toha-1.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-cowork-toha.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-cowork-toha-2.jpg" alt="" width="560" height="254"></div><div class="wall__col"><img src="wall/f-copilot-bpr-s2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-bpr.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-bpr-s3.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-chat-basic-vs-m365-copilot-premium-training.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-cowork-toha-1.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-cowork-toha.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-cowork-toha-2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-houjin-keiyaku.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-houjin-keiyaku-2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-mcp-connector.jpg" alt="" width="560" height="294"></div><div class="wall__col"><img src="wall/c-copilot-chat-basic-vs-m365-copilot-premium-training.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-cowork-toha-1.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-cowork-toha.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-cowork-toha-2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-houjin-keiyaku.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-houjin-keiyaku-2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-mcp-connector.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-mcp-connector-jouken.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-scheduled-prompts-shuryo.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-mcp-connector-kata.jpg" alt="" width="560" height="254"></div><div class="wall__col"><img src="wall/f-copilot-cowork-toha-2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-houjin-keiyaku.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-houjin-keiyaku-2.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-mcp-connector.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-mcp-connector-jouken.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-scheduled-prompts-shuryo.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-mcp-connector-kata.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-sharepoint-permission-audit.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-mcp-connector-kimeru.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-training-cost.jpg" alt="" width="560" height="294"></div><div class="wall__col"><img src="wall/c-copilot-mcp-connector.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-mcp-connector-jouken.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-scheduled-prompts-shuryo.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-mcp-connector-kata.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-sharepoint-permission-audit.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-mcp-connector-kimeru.jpg" alt="" width="560" height="254"><img src="wall/c-copilot-training-cost.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-scheduled-prompts-shuryo-s1.jpg" alt="" width="560" height="254"><img src="wall/c-github-copilot-houjin-keiyaku.jpg" alt="" width="560" height="294"><img src="wall/f-copilot-sharepoint-permission-audit-s1.jpg" alt="" width="560" height="254"></div></div></div><div class="wall__veil"></div></div>
+  <div class="c-train__in">
+    <div class="c-train__k">法人研修</div>
+    <h2>Copilot 研修</h2>
+    <p>Copilot Chat と Microsoft 365 Copilot の違い、Word・Excel・Outlook・Teams での実務から、社内の規程に答えるエージェントと、申請の受付から承認・通知までのフローづくりまでを、1日（6時間）の講義と操作演習で行います。</p>
+    <a class="c-btn c-btn--main" data-cta-placement="band" href="https://kenshu.techworker.co.jp/program/?utm_source=techworker_media&amp;utm_medium=hub&amp;utm_campaign=copilot&amp;utm_content=band#copilot">研修の内容を見る<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a>
+  </div>
+</section>
+
+<section class="c-about" id="about">
+  <div class="wrap c-about__g">
+    <h2>このメディアについて</h2>
+    <div>
+      <p>「Copilot ラボ」は、生成AIの法人研修と導入支援を行う<a href="../../index.html">株式会社TechWorker</a>が運営するメディアです。</p>
+      <p>料金や機能の記事は Microsoft・GitHub の公式の料金表・ドキュメント・発表をもとに書き、確かめた日付を記事に書いています。</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__in">
+      <div>
+        <p class="ft__name">株式会社TechWorker</p>
+        <p class="ft__addr">〒169-0051 東京都新宿区西早稲田一丁目22番3号<br>早稲田アントレプレナーシップセンター</p>
+      </div>
+      <nav aria-label="フッターの行き先">
+        <a href="/services">事業・サービス</a>
+        <a href="/company">会社情報</a>
+        <a href="/news">ニュース</a>
+        <a href="/#concept">考え方</a>
+        <a href="/agent-cases/">事例</a>
+        <a href="/contact">お問い合わせ</a>
+        <a href="/privacy">プライバシーポリシー</a>
+      </nav>
+    </div>
+    <div class="nv-badge"><a href="/news/013"><img src="/assets/badges/nvidia-inception-program.svg" alt="NVIDIA Inception Program" width="93" height="40" loading="lazy"></a><p>NVIDIA、NVIDIA ロゴ、NVIDIA Inception は、米国およびその他の国における NVIDIA Corporation の商標および/または登録商標です。</p></div>
+    <small>© TechWorker Inc.</small>
+  </div>
+</footer>
+
+<script>
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+<script src="../lead.js?v=20261120f" defer></script>
+<script src="/media/article-tracker.js?v=20261120i" defer></script>
+<script>
+// スマホの行き先：右上の釦で開け閉めする。行き先を押したら閉じる。スクロールしたら頭に暗い面を敷く
+(() => {
+  const hd = document.querySelector('.hd'), btn = hd.querySelector('.menu');
+  const set = open => { hd.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く'); };
+  btn.addEventListener('click', () => set(!hd.classList.contains('is-open')));
+  hd.querySelector('nav').addEventListener('click', e => { if (e.target.closest('a')) set(false); });
+  const onScroll = () => hd.classList.toggle('is-scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+})();
+</script>
+</body>
+</html>

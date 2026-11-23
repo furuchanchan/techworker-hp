@@ -29,7 +29,7 @@
 <meta name="twitter:image" content="https://techworker.co.jp/media/kenshu/covers/gpt-6-2-copilot.png">
 <link rel="stylesheet" href="../article.css?v=20261120d">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "GPT-6.2をCopilotで使うには｜Sol・Astraの提供先と管理者の設定【2026年11月】", "description": "GPT-6.2 SolとAstraがMicrosoft Copilotで使えるようになりました。SolはChatやWord・Excel、AstraはCoworkとStudioから。OpenAIのモデルは既定で全員が使える設定です。管理者の設定とデータの扱いを、公式情報（11月22日確認）で整理します。", "datePublished": "2026-11-22", "dateModified": "2026-11-22", "image": "https://techworker.co.jp/media/kenshu/covers/gpt-6-2-copilot.png", "inLanguage": "ja", "mainEntityOfPage": "https://techworker.co.jp/media/kenshu/gpt-6-2-copilot", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/favicon.svg"}}, "citation": ["https://techcommunity.microsoft.com/blog/microsoft-copilot-blog/available-today-openais-gpt-6-2-sol-and-gpt-6-2-astra-in-microsoft-copilot/4574229", "https://openai.com/index/introducing-gpt-6-2-astra-sol/", "https://learn.microsoft.com/en-us/copilot/implement/openai-subprocessor", "https://learn.microsoft.com/en-us/microsoft-copilot-studio/agents-experience/authoring-agent-model-availability", "https://learn.microsoft.com/en-us/power-platform/admin/allow-llm-generative-responses", "https://learn.microsoft.com/en-us/microsoft-copilot-studio/requirements-messages-management", "https://learn.microsoft.com/en-us/microsoft-365/admin/manage/get-started-frontier?view=o365-worldwide", "https://www.microsoft.com/insidetrack/blog/charting-your-course-in-copilot-picking-the-right-model-mode-and-effort/", "https://www.microsoft.com/en-us/copilot/blog/2026/11/16/what-ai-at-work-really-costs/", "https://www.microsoft.com/ja-jp/microsoft-365-copilot/enterprise"]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "AI研修・導入ラボ", "item": "https://techworker.co.jp/media/kenshu/"}, {"@type": "ListItem", "position": 4, "name": "GPT-6.2をCopilotで使うには", "item": "https://techworker.co.jp/media/kenshu/gpt-6-2-copilot"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "Copilot ラボ", "item": "https://techworker.co.jp/media/copilot/"}, {"@type": "ListItem", "position": 4, "name": "GPT-6.2をCopilotで使うには", "item": "https://techworker.co.jp/media/kenshu/gpt-6-2-copilot"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "GPT-6.2は、Microsoft 365 Copilotのライセンスがあれば使えますか？", "acceptedAnswer": {"@type": "Answer", "text": "SolはCopilot Chat、Cowork、Copilot Studio、Word・Excel・PowerPointで、対象の利用者に順に展開されています。AstraはCoworkとCopilot Studioで展開され、ChatとWord・Excel・PowerPointではFrontierの利用者だけが使えます。表示はライセンス、組織の設定、地域で変わります。"}}, {"@type": "Question", "name": "GPT-6.2を使うと、Copilotの料金は上がりますか？", "acceptedAnswer": {"@type": "Answer", "text": "2026年11月20日の発表に料金の記載はありません。ChatとMicrosoft 365のアプリでの利用はCopilotの利用者ごとの料金に含まれ、CoworkとCopilot StudioのエージェントはCopilotクレジットの従量課金です。"}}, {"@type": "Question", "name": "社員にGPT-6.2を使わせないようにできますか？", "acceptedAnswer": {"@type": "Answer", "text": "できます。Microsoft 365 管理センターのCopilotの設定で、AI providers operating as Microsoft subprocessorsのOpenAIをNo usersにするか、使える人とグループを指定します。Microsoftが運用するGPTのモデルは、この設定では止まりません。"}}, {"@type": "Question", "name": "GPT-6.2に入力したデータは、日本国内で処理されますか？", "acceptedAnswer": {"@type": "Answer", "text": "Microsoft Learnによると、OpenAIが運用するモデルは、国内でデータを処理する約束の対象から外れています。製品条項とデータ保護補遺（DPA）は適用されます。"}}, {"@type": "Question", "name": "GPT-6.2 SolとAstraは、どちらを使えばよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "OpenAIはSolを日々の業務向け、Astraを最も難しいプロジェクト向けと説明しています。API料金ではAstraがSolの4倍です。Copilotの中では、同じ依頼を両方で試してから、Astraを使う業務を決めます。"}}]}</script>
 
 <!-- Meta Pixel Code -->
@@ -59,20 +59,20 @@ fbq('init','1264057945446029');fbq('track','PageView');
 </header>
 <div class="subnav">
   <div class="wrap subnav__in">
-    <a class="subnav__name" href="index.html">AI研修・導入ラボ</a>
+    <a class="subnav__name" href="../copilot/">Copilot ラボ</a>
     <nav aria-label="メディアの行き先"><a href="https://kenshu.techworker.co.jp/">生成AI研修について</a><a href="https://kenshu.techworker.co.jp/contact/" class="subnav__cta">研修の相談</a></nav>
   </div>
 </div>
 
 <header class="art-head">
-  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="index.html">AI研修・導入ラボ</a><span class="sep">/</span>GPT-6.2をCopilotで使うには</nav>
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="../copilot/">Copilot ラボ</a><span class="sep">/</span>GPT-6.2をCopilotで使うには</nav>
   <div class="kicker">導入と業務への組み込み</div>
   <h1>GPT-6.2をCopilotで使うには｜Sol・Astraの提供先と管理者の設定</h1>
   <p class="dek">GPT-6.2 SolとAstraがMicrosoft Copilotで使えるようになりました。SolはChatやWord・Excel、AstraはCoworkとStudioから。OpenAIのモデルは既定で全員が使える設定です。管理者の設定とデータの扱いを、公式情報（11月22日確認）で整理します。</p>
   <div class="a-meta">
     <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.11.22</span><span class="dot">·</span><span>読了 7分</span>
   </div>
-<p class="article-audience"><span class="article-audience-label">主な対象読者</span><a href="/media/kenshu/?audience=it#articles">情シス・AI導入担当</a></p>
+<p class="article-audience"><span class="article-audience-label">主な対象読者</span><a href="/media/copilot/?audience=it#articles">情シス・AI導入担当</a></p>
 </header>
 
 
@@ -238,7 +238,7 @@ fbq('init','1264057945446029');fbq('track','PageView');
 </div></div>
 
 <p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="https://kenshu.techworker.co.jp/" style="color:var(--electric);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">生成AI法人研修（主要ツール全対応）</a>　／　<a href="https://kenshu.techworker.co.jp/contact/" style="color:var(--electric);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">無料相談</a></p>
-<div class="back-list"><a href="index.html">← AI研修・導入ラボの記事一覧に戻る</a></div>
+<div class="back-list"><a href="../copilot/">← Copilot ラボの記事一覧に戻る</a></div>
 
 <section class="related"><div class="container">
   <div class="rl-h">Related</div>
