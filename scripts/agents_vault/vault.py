@@ -22,7 +22,7 @@ DATA = VAULT / "data"
 SCHEMA = json.loads((Path(__file__).parent / "schema.json").read_text())
 SITE = "https://techworker.co.jp"
 BASE = SITE + "/media/agents/"
-CSS_V = "20261021-vault"
+CSS_V = "20261123-noline"
 META_KEYS = {"published_on", "checked_on"}
 
 PRODUCTS = {
@@ -471,13 +471,13 @@ def index_page(entries):
                {"@type": "ListItem", "position": i, "url": BASE + x["slug"], "name": x["title"]} for i, x in enumerate(entries, 1)]}}]
     cards = "".join(card(x) for x in entries)
     image = (f"{BASE}covers/{entries[0]['slug']}.png" if entries else SITE + "/assets/ogp.png")
-    return head(title, desc, BASE, image, "website", ld).replace('</head>', '<link rel="stylesheet" href="/media/home.css?v=20261105-media-look">\n</head>').replace('<body>', '<body class="hm">') + f"""
+    return head(title, desc, BASE, image, "website", ld).replace('</head>', '<link rel="stylesheet" href="/media/home.css?v=20261123-noscroll">\n</head>').replace('<body>', '<body class="hm">') + f"""
 {NAV}
 <main>
 <header class="phead"><div class="wrap"><h1 class="ptitle">エージェント保管庫</h1><p>いつもの業務をAIエージェントに任せるための見本帳。{n}件を、できること・作り方・そのまま貼れる指示文・管理者が先に決める設定の同じ形で。平日に1件ずつ、最終更新 {dot(latest)}。</p><nav class="crumb" aria-label="パンくず"><a href="/">トップ</a> ＞ <a href="/media/">メディア</a> ＞ <span>エージェント保管庫</span></nav></div></header>
 
 <section class="sec mono" id="gyomuzu"><div class="wrap">
-  <div class="gzx"><div class="sc"><img src="/media/img/gz-dev.png?v=20261105" alt="弊社の業務図「開発の依頼・検証・本番反映」。工程ごとに人とAIの持ち場を分けた図" width="3370" height="807" loading="eager"></div><span class="hint">横に動かせます →</span><span class="fade"></span></div>
+  <a class="gzx" href="/media/img/gz-dev.png?v=20261105" target="_blank" rel="noopener"><img src="/media/img/gz-dev-2row.png?v=20261123" alt="弊社の業務図「開発の依頼・検証・本番反映」。工程ごとに人とAIの持ち場を分けた図（2段に分けて表示）" width="1758" height="1662" loading="eager"><span class="hint">図を大きく開く</span></a>
   <p class="cap">弊社の業務図「開発の依頼・検証・本番反映」（ギョウムズAI、2026-11-04）。人は依頼と確認、AIが実装・テスト・PR。保管庫の1件は、こうした図のAIの工程1つ分。</p>
 </div></section>
 
