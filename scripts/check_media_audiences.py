@@ -3,13 +3,16 @@
 from pathlib import Path
 from html.parser import HTMLParser
 from urllib.parse import urlsplit,parse_qs,unquote
-import collections,json,re,sys
+import collections,json,os,re,sys
 ROOT=Path(__file__).resolve().parents[1]
 class Markup(HTMLParser):
  def __init__(self):super().__init__();self.tags=[]
  def handle_starttag(self,tag,attrs):self.tags.append((tag,dict(attrs)))
 def check():
- data=json.loads((ROOT/'media/audiences.json').read_text());roles=data['roles'];articles=data['articles'];errors=[]
+ data=json.loads((ROOT/'media/audiences.json').read_text());roles=data['roles'];articles=data['articles'];errors=[];labs=data.get('labs',{})
+ def lab_of(path):
+  folder,name=path.split('/')[1],path.rsplit('/',1)[1]
+  return next((k for k,l in labs.items() if folder==l['dir'] and name.startswith(tuple(l['prefixes']))),folder)
  actual={str(p.relative_to(ROOT)) for p in (ROOT/'media').rglob('*.html') if re.search(r'<article\b[^>]*class="[^"]*art-body',p.read_text())}
  if actual!=set(articles):errors.append('Article inventory does not match audience assignments')
  if set(roles)!={'it','hr','operations','executive'}:errors.append('Expected four approved audiences')
@@ -19,13 +22,13 @@ def check():
   if not head:errors.append(path+': missing article header');continue
   tags=re.findall(r'<p class="article-audience"[^>]*>.*?</p>',text,re.S)
   if len(tags)!=1 or tags[0] not in head[0]:errors.append(path+': expected one audience label in header');continue
-  group=path.split('/')[1]
+  group=lab_of(path)
   expected_href=f'/media/{group}/?audience={role}#articles'
   if roles[role] not in tags[0]:errors.append(path+': label differs from assignment')
-  if group in ['gyomuzu','kenshu','interview','security'] and f'href="{expected_href}"' not in tags[0]:errors.append(path+': audience link must point to its own media')
+  if group in ['gyomuzu','kenshu','interview','security',*labs] and f'href="{expected_href}"' not in tags[0]:errors.append(path+': audience link must point to its own media')
   if '/media/?audience=' in tags[0]:errors.append(path+': removed global filter link')
   if '/media/audience-filter.css?' not in text:errors.append(path+': audience stylesheet missing')
- groups=['gyomuzu','kenshu','interview','security']
+ groups=['gyomuzu','kenshu','interview','security',*labs]
  home=(ROOT/'media/index.html').read_text()
  if any(marker in home for marker in ['data-audience-catalog','data-audience-filter','audience-jump','audience-filter.js']):errors.append('Media home must not contain audience filters')
  hubs=[f'media/{g}/index.html' for g in groups]
@@ -38,11 +41,11 @@ def check():
   paths=[]
   for card in cards:
    rel=unquote(urlsplit(card['href']).path)
-   path=ROOT/rel.lstrip('/') if rel.startswith('/') else (ROOT/hub).parent/rel
+   path=ROOT/rel.lstrip('/') if rel.startswith('/') else Path(os.path.normpath((ROOT/hub).parent/rel))
    if not path.suffix:path=path.with_suffix('.html')
    key=str(path.relative_to(ROOT));paths.append(key)
    if key not in articles or card.get('data-audience')!=articles.get(key):errors.append(hub+': mislabeled card '+key)
-  expected={p for p in articles if p.startswith(str(Path(hub).parent)+'/')}
+  expected={p for p in articles if lab_of(p)==hub.split('/')[1]}
   if set(paths)!=expected or len(paths)!=len(set(paths)):errors.append(hub+': missing, duplicated or extra article cards')
   counts=collections.Counter(articles[p] for p in paths if p in articles)
   filters=re.findall(r'<button\b[^>]*data-audience-filter="([^"]+)"[^>]*>.*?<span class="audience-count">(\d+)</span></button>',text,re.S)

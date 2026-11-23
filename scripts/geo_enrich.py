@@ -104,9 +104,17 @@ def llms(arts):
            f"- [国内上場企業の生成AI活用データ]({SITE}/genai-data/)：国内の上場企業が生成AIを使っていると公表しているかを東証33業種ごとに数えたデータ。出典のリンクつき、毎日更新、CC BY 4.0",
            f"- [AIエージェントの事例]({SITE}/agent-cases/)：TechWorkerが社内で動かしているAIエージェントと、お客さんと作ったAIの仕組みの事例",
            f"- [お知らせ]({SITE}/news)", f"- [TechWorker Media（記事の一覧）]({SITE}/media/)", ""]
+    # フォルダを動かさずに作ったラボ（Claude ラボ＝kenshu の claude-*）の記事は、ラボの見出しの下に並べる。正本は media/audiences.json の labs
+    aud = ROOT / "media" / "audiences.json"
+    labs = json.loads(aud.read_text(encoding="utf-8")).get("labs", {}) if aud.exists() else {}
+    def hub(p):
+        for key, lab in labs.items():
+            if p.parent.name == lab["dir"] and p.stem.startswith(tuple(lab["prefixes"])):
+                return ROOT / "media" / key
+        return p.parent
     by = {}
     for p, t in arts:
-        by.setdefault(p.parent, []).append((p, t))
+        by.setdefault(hub(p), []).append((p, t))
     for d in sorted(by):
         if d.name == "media":
             name = "TechWorker Media"
