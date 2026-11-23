@@ -108,7 +108,7 @@
     simulation: function () { return Object.assign({}, CASES, { sub: { label: "発売前の検証を相談する", href: "/launch-simulation/", offer: "launch_simulation" } }); }
   };
   // 記事の名前で決まるラボ（フォルダが別のラボと同じ物）。名前の方を先に見る
-  var bySlug = /^token-/.test(slug) ? "token" : /^(anmokuchi-|gijutsu-shokei-|company-brain-)/.test(slug) ? "anmokuchi" : "";
+  var bySlug = /^token-/.test(slug) ? "token" : /^codex-/.test(slug) ? "codex" : /^(anmokuchi-|gijutsu-shokei-|company-brain-)/.test(slug) ? "anmokuchi" : "";
   var make = OFFERS[bySlug] || OFFERS[seg] || function () { return Object.assign({}, CASES, { sub: DIAG }); };
   var o = make();
   var media = seg || "home";
