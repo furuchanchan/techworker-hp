@@ -143,6 +143,32 @@ LABS = {
                  "llm-api-cost-abuse-controls-s1", "llm-api-cost-abuse-controls-s2", "llm-markdown-output-xss-sanitization-s1",
                  "llm-markdown-output-xss-sanitization-s2"],
     },
+    # AIインタビュー・ラボ（2026-11-23 に一覧を作り直した）：/media/interview/ の記事すべて。案内はギョウムズAI（聞き取りから業務図を作る）。
+    # CoeSignal は売らない方針（2026-10-27）なので、一覧からは案内しない。右下の枠（cv-dock.js）もギョウムズAI
+    "interview": {
+        "name": "AIインタビュー・ラボ",
+        "colors": ["#FAFBFC", "#F0F2F5", "#E6E9EE", "#D5D9E0", "#11161D", "#2B323C", "#5A6677",
+                   "#005EFF", "#0050D9", "#005EFF", "#0047C2", "#EDF0F4", "#D9DEE5", "250,251,252"],
+        "color_note": "TechWorker の色（地 #FAFBFC・差し色 #005EFF）",
+        "title": "AIインタビュー・ラボ｜AIの聞き取りを、社内の調査と判断に使うための実務メディア",
+        "desc": ("AIが聞き手になるインタビュー（AIインタビュー）を、社内の聞き取りや調査に使うための実務メディアです。"
+                 "AIモデレーターと人の分担、AI面接との違い、人はAIに本音を話すかの研究、何人に聞けば足りるか、社内の活用事例、分析の進め方、ツールの選び方を、論文と各社の公開資料をもとに解説します。"),
+        "h1": "AIの聞き取りを、",
+        "h1_rest": '<span class="nw">社内の判断に<br class="sp">使う。</span>',
+        "line": "AIが聞き手になるインタビューを、社内の聞き取りと調査に使うためのメディアです。",
+        "lead": "AIモデレーターと人の分担、AI面接との違い、人はAIに本音を話すか、何人に聞けば足りるか、社内の活用事例、分析とツールの選び方を書いています。",
+        "train_anchor": "",
+        "train_name": "ギョウムズAI",
+        "train_text": "AIのインタビューと既存の資料・記録から、AIが業務図を作ります。8つの質問で判断の理由まで確かめ、業務図を起点に貴社の生成AI環境でAIエージェントを構築します。",
+        "cta": {"url": "../../gyoumuzuai", "k": "AIが聞き取る業務図", "btn": "ギョウムズAIを見る"},
+        "offer": "gyomuzu-templates",
+        "docs": [("cases", "2026年版 生成AI活用事例集")],
+        "about_who": "業務図を起点にAIエージェントを作るギョウムズAIを提供する",
+        "about": "記事は論文と各社の公開資料をもとに書き、出典を記事に載せています。",
+        "figs": ["ai-moderator-s1", "ai-moderator-s2", "honesty-with-ai-s1", "honesty-with-ai-s2", "honesty-with-ai-s3",
+                 "how-many-interviews-s1", "how-many-interviews-s2", "internal-interview-cases-s1", "interview-analysis-s1",
+                 "interview-tools-comparison-s2"],
+    },
 }
 
 # 研修へ案内するラボの既定。研修以外へ案内するラボは LABS に cta（行き先・上の札・釦の字）を書く
