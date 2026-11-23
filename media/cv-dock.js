@@ -110,6 +110,7 @@
     ".twd-p li{position:relative;padding-left:20px;font-size:12.5px;line-height:1.6;color:var(--ink-soft,#2A333F);margin-top:4px}" +
     ".twd-p li::before{content:'';position:absolute;left:2px;top:.42em;width:11px;height:11px;border-radius:50%;background:" + A + " url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.4l2.6 2.6L12 5.4' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E\") center/9px no-repeat}" +
     ".twd-b{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:12px;background:" + A + ";color:#FCFCFB;text-decoration:none;font-size:16.5px;font-weight:800;letter-spacing:.03em;border-radius:9px;padding:15px 14px;box-shadow:0 10px 20px -12px color-mix(in srgb," + A + " 80%,transparent);transition:transform .2s,background .2s}" +
+    ".twd a.twd-b,.twd a.twd-b:hover{color:#FCFCFB}" +
     ".twd-b{position:relative;overflow:hidden;animation:twdPulse 2.8s ease-in-out infinite}" +
     ".twd-b::after{content:'';position:absolute;top:0;bottom:0;left:-60%;width:45%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.42),transparent);transform:skewX(-18deg);animation:twdShine 2.8s ease-in-out infinite;pointer-events:none}" +
     "@keyframes twdShine{0%,55%{left:-60%}100%{left:130%}}" +
