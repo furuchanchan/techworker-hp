@@ -68,6 +68,30 @@ LABS = {
                  "gemini-gmail-kitei-on-s1", "gemini-gmail-kitei-on-s2", "gemini-houjin-keiyaku-s1", "gemini-houjin-keiyaku-s2",
                  "gemini-notebook-in-gemini-app-s2", "google-workspace-skills-s1", "google-workspace-skills-s2"],
     },
+    # 導入ラボ（2026-11-23）：/media/kenshu/ のまま、ほかのラボに入らない kenshu の記事すべて（audiences.json の rest）。TechWorker の Paper と Electric（#005EFF）
+    "kenshu": {
+        "name": "導入ラボ",
+        "colors": ["#FAFBFC", "#F0F2F5", "#E6E9EE", "#D5D9E0", "#11161D", "#2B323C", "#5A6677",
+                   "#005EFF", "#0050D9", "#005EFF", "#0047C2", "#EDF0F4", "#D9DEE5", "250,251,252"],
+        "color_note": "TechWorker の色（地 #FAFBFC・差し色 #005EFF）",
+        "title": "導入ラボ｜生成AIを会社で選び、入れ、根づかせるための実務メディア",
+        "desc": ("生成AIを会社で選び、入れ、根づかせるための実務メディアです。ChatGPT・Claude・Gemini・Copilot・Cursor の法人契約と料金の比べ方、"
+                 "研修の委託先の選び方と効果の測り方、助成金、事故への備えを、公式資料で確かめた日付つきで解説します。"),
+        "h1": "生成AIを、",
+        "line": "生成AIを会社に入れるときの、契約の選び方と社内への広げ方を扱うメディアです。",
+        "lead": "ChatGPT・Claude・Gemini・Copilot・Cursor の法人契約と料金、研修の委託先の選び方と効果の測り方、助成金、誤回答や情報漏えいへの備えを書いています。",
+        "train_anchor": "how",
+        "train_name": "生成AI研修",
+        "train_text": ("最初の60分は全員が共通編を受け、そのあと、お使いの製品の編に進みます。"
+                       "受講者は全員、事前に実際の業務を1つ書き、研修の中でその業務をAIに任せる形まで作ります。"),
+        "offer": "ai-contract-pack",
+        "docs": [("cases", "2026年版 生成AI活用事例集")],
+        "about": ("料金や契約の記事は各社の公式の料金表・ヘルプ・発表を、助成金の記事は厚生労働省の資料をもとに書き、確かめた日付を記事に書いています。"),
+        "figs": ["ai-training-outcome-first-exercise-s1", "ai-training-outcome-first-exercise-s2", "chatgpt-houjin-keiyaku-2", "company-brain-toha-s1",
+                 "cursor-houjin-keiyaku-hikaku", "cursor-houjin-keiyaku-seki", "cursor-houjin-keiyaku-shiharai", "cursor-houjin-keiyaku-tasha",
+                 "generative-ai-incident-tabletop-training-s1", "generative-ai-kenshu-joseikin-s1", "generative-ai-training-effectiveness-s1",
+                 "generative-ai-training-effectiveness-s2", "generative-ai-training-rfp-vendor-selection-s1", "generative-ai-training-rfp-vendor-selection-s2"],
+    },
 }
 
 ARW = '<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg>'
@@ -99,10 +123,16 @@ def walls(lab, out_dir):
         # 上の札（製品の印）と下の札（媒体の名前）を切る。Claude ラボの壁と同じ切り方
         im.crop((0, 120, 1920, 991)).resize((560, 254), Image.LANCZOS).save(out_dir / f"f-{f}.jpg", quality=82, optimize=True)
         names.append(f"f-{f}.jpg")
-    rule = json.loads((ROOT / "media/audiences.json").read_text())["labs"][KEY]
+    labs = json.loads((ROOT / "media/audiences.json").read_text())["labs"]
+    rule = labs[KEY]
+
+    def mine(stem):  # rest のラボ（導入ラボ）は、同じフォルダのほかのラボに入らない記事
+        if rule.get("rest"):
+            return not any(k != KEY and o["dir"] == rule["dir"] and stem.startswith(tuple(o["prefixes"])) for k, o in labs.items())
+        return stem.startswith(tuple(rule["prefixes"]))
     covers = []
     for path in sorted((ROOT / "media" / rule["dir"] / "covers").glob("*.png")):
-        if path.stem.startswith(tuple(rule["prefixes"])) and (ROOT / "media" / rule["dir"] / f"{path.stem}.html").is_file():
+        if mine(path.stem) and (ROOT / "media" / rule["dir"] / f"{path.stem}.html").is_file():
             Image.open(path).convert("RGB").resize((560, 294), Image.LANCZOS).save(out_dir / f"c-{path.stem}.jpg", quality=82, optimize=True)
             covers.append(f"c-{path.stem}.jpg")
     mixed = []
@@ -190,7 +220,11 @@ def main():
            rf'\g<1>      <p>「{name}」は、生成AIの法人研修と導入支援を行う<a href="../../index.html">株式会社TechWorker</a>が運営するメディアです。</p>\n      <p>{lab["about"]}</p>\g<2>',
            "このメディアについて")
 
-    left = [w for w in ("Claude", "Anthropic", "claude") if w in re.sub(r"<style>.*?</style>", "", t, flags=re.S)]
+    # 型の Claude の言葉が残っていないか（ラボ自身の文に出てくる製品の名前は数えない。導入ラボの文は Claude を含む）
+    body = re.sub(r"<style>.*?</style>", "", t, flags=re.S)
+    for k in ("title", "desc", "line", "lead", "train_text", "about"):
+        body = body.replace(lab[k], "")
+    left = [w for w in ("Claude", "Anthropic", "claude") if w in body]
     if left:
         raise SystemExit(f"Claude の言葉が残っている：{left}")
     out = ROOT / "media" / KEY / "index.html"

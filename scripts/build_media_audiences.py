@@ -16,7 +16,7 @@ DATA = json.loads((ROOT / 'media/audiences.json').read_text())
 ROLES = DATA['roles']
 ARTICLES = DATA['articles']
 LABS = DATA.get('labs', {})
-MEDIA = {'gyomuzu': '業務図ラボ', 'kenshu': 'AI研修・導入ラボ', 'interview': 'AIインタビュー・ラボ', 'security': 'AIセキュリティ・ラボ'} | {k: v['name'] for k, v in LABS.items()}
+MEDIA = {'gyomuzu': '業務図ラボ', 'kenshu': '導入ラボ', 'interview': 'AIインタビュー・ラボ', 'security': 'AIセキュリティ・ラボ'} | {k: v['name'] for k, v in LABS.items()}
 
 def lab_of(path):
     # フォルダを動かさずに作ったラボ（labs）の記事は、そのラボの一覧に載る。それ以外はフォルダの一覧

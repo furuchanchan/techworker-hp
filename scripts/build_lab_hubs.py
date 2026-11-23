@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """記事のフォルダを動かさずに作る「ラボ」（例：Claude ラボ）の一覧ページを、記事のファイルから作り直す。
 使い方: python3 scripts/build_lab_hubs.py [リポジトリ]
-ラボの決まりは media/audiences.json の "labs"（dir のフォルダで、prefixes で始まる記事がそのラボの記事）。
+ラボの決まりは media/audiences.json の "labs"（dir のフォルダで、prefixes で始まる記事がそのラボの記事。"rest": true のラボは、同じフォルダのほかのラボに入らない記事すべてで、一覧はフォルダの一覧そのもの＝導入ラボ /media/kenshu/）。
 1. ラボの記事の頭の行き先（上の帯・パンくず・構造化データ・一覧へ戻る）をラボにそろえる
 2. 元のフォルダの一覧（例 media/kenshu/index.html）からラボの記事の行を外す
 3. ラボの一覧ページ（media/<ラボ>/index.html）の記事一覧（主役1本＋新着2本＋残り）と ItemList を作り直す
@@ -29,10 +29,17 @@ def one(pattern, repl, text, label, flags=0):
     return out
 
 
-def members(lab):
+def claimed(path, lab, labs):
+    """記事がこのラボのものか。rest のラボ（導入ラボ＝kenshu）は、同じフォルダのほかのラボに入らない記事すべて"""
+    if lab.get("rest"):
+        return not any(o is not lab and o["dir"] == lab["dir"] and path.stem.startswith(tuple(o["prefixes"])) for o in labs.values())
+    return path.stem.startswith(tuple(lab["prefixes"]))
+
+
+def members(lab, labs):
     out = []
     for path in sorted((ROOT / "media" / lab["dir"]).glob("*.html")):
-        if path.name == "index.html" or not path.stem.startswith(tuple(lab["prefixes"])):
+        if path.name == "index.html" or not claimed(path, lab, labs):
             continue
         text = path.read_text()
         if 'http-equiv="refresh"' in text or not re.search(r'<article\b[^>]*class="[^"]*art-body', text):
@@ -61,8 +68,8 @@ def fix_article(path, key, lab):
               f'<a class="subnav__name" href="{hub}">{name}</a>', text, f"{path.name} 上の帯")
     out = one(r'(<a href="\.\./index\.html">メディア</a><span class="sep">/</span>)<a href="[^"]*">[^<]*</a>',
               lambda m: m.group(1) + f'<a href="{hub}">{name}</a>', out, f"{path.name} パンくず")
-    # 「一覧に戻る」は古い記事に無い物がある（claude-code-shanai-tenkai）。あれば付け替える
-    out, n = re.subn(r'<div class="back-list"><a href="[^"]*">← [^<]*の記事一覧に戻る</a></div>',
+    # 「一覧に戻る」は古い記事に無い物や、古い書き方（← AI研修・導入ラボに戻る など）がある。あれば付け替える
+    out, n = re.subn(r'<div class="back-list"><a href="[^"]*">← [^<]*に戻る</a></div>',
                      f'<div class="back-list"><a href="{hub}">← {name}の記事一覧に戻る</a></div>', out)
     if n > 1:
         raise SystemExit(f"{path.name}: 一覧へ戻る行が {n} 個ある")
@@ -103,7 +110,9 @@ def list_span(text, label):
     raise SystemExit(f"{label}: 記事一覧の div が閉じていない")
 
 
-def drop_from_source(lab, slugs):
+def drop_from_source(key, lab, slugs):
+    if key == lab["dir"]:  # 一覧がフォルダの一覧そのもの（導入ラボ＝kenshu）。行は render_hub が作り直す
+        return 0
     path = ROOT / "media" / lab["dir"] / "index.html"
     text = path.read_text()
     start, end = list_span(text, str(path))
@@ -178,10 +187,10 @@ def render_hub(key, lab, items):
 def main():
     labs = json.loads((ROOT / "media/audiences.json").read_text()).get("labs", {})
     for key, lab in labs.items():
-        paths = members(lab)
+        paths = members(lab, labs)
         items = sorted((read(p) for p in paths), key=lambda i: (i["date"], i["slug"]), reverse=True)
         fixed = sum(fix_article(p, key, lab) for p in paths)
-        dropped = drop_from_source(lab, {i["slug"] for i in items})
+        dropped = drop_from_source(key, lab, {i["slug"] for i in items})
         render_hub(key, lab, items)
         print(f"{lab['name']}: 記事 {len(items)} 本、頭を直した記事 {fixed} 本、元の一覧から外した行 {dropped}")
     # 作り直した一覧の行には読者の札が無いので、続けて必ず付ける（片方だけ流すと点検で落ちる）
