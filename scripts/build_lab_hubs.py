@@ -4,7 +4,7 @@
 ラボの決まりは media/audiences.json の "labs"（dir のフォルダで、prefixes で始まる記事がそのラボの記事）。
 1. ラボの記事の頭の行き先（上の帯・パンくず・構造化データ・一覧へ戻る）をラボにそろえる
 2. 元のフォルダの一覧（例 media/kenshu/index.html）からラボの記事の行を外す
-3. ラボの一覧ページ（media/<ラボ>/index.html）の「大きく1点」と記事一覧・ItemList を作り直す
+3. ラボの一覧ページ（media/<ラボ>/index.html）の記事一覧（主役1本＋新着2本＋残り）と ItemList を作り直す
 読者の絞り込み（data-audience と件数）は、最後に scripts/build_media_audiences.py を流して付ける。
 2026-11-23 に Claude ラボを作ったときに足した。"""
 import html
@@ -116,34 +116,45 @@ def drop_from_source(lab, slugs):
     return 0
 
 
+ARROW = '<svg class="arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg>'
+
+
+def card(d, i, kind, pick=""):
+    """記事1本。kind は feat（主役）・side（新着の2本）・row（残り）。
+    分類と日付は c-meta に入れる。build_media_audiences.py が c-meta の直後に読者の札を足すので、c-meta の中に span を入れない。"""
+    slug, title = i["slug"], esc(i["title"])
+    big, small = f"../{d}/covers/{slug}.png", f"../{d}/covers/thumbs/{slug}.jpg"
+    if kind == "feat":
+        img = f'<img src="{big}" alt="{title}" width="1200" height="630" fetchpriority="high">'
+        shown = (i["date"] + ("（更新 " + i["modified"] + "）" if i["modified"] > i["date"] else "")).replace("-", ".")
+    else:
+        img = (f'<img src="{small}" srcset="{small} 600w, {big} 1200w" sizes="(max-width:760px) calc(100vw - 40px), (max-width:1100px) 46vw, 380px" '
+               f'alt="{title}" width="600" height="315" loading="lazy">')
+        shown = i["date"].replace("-", ".")
+    head = f'<span class="cc-pick">{esc(pick)}</span>' if pick else ""
+    go = f'<span class="c-go">記事を読む{ARROW}</span>' if kind == "feat" else ""
+    return (f'<a class="cc cc--{kind}" href="../{d}/{slug}.html">{img}<span class="cc-b">{head}'
+            f'<span class="cc-m"><span class="c-meta">{esc(i["cat"])}<i>{shown}</i></span></span>'
+            f'<span class="cc-t">{title}</span><span class="cc-d">{esc(i["desc"])}</span>{go}</span></a>')
+
+
 def render_hub(key, lab, items):
     path = ROOT / "media" / key / "index.html"
     text = path.read_text()
     d = lab["dir"]
-    rows = [
-        f'<a href="../{d}/{i["slug"]}.html"><img class="l-thumb" src="../{d}/covers/thumbs/{i["slug"]}.jpg" alt="{esc(i["title"])}" width="600" height="315" loading="lazy">'
-        f'<div class="l-side"><div class="l-cat">{esc(i["cat"])}</div><div class="l-date">{i["date"].replace("-", ".")}</div></div>'
-        f'<div><div class="l-title">{esc(i["title"])}</div><div class="l-desc">{esc(i["desc"])}</div></div><div class="l-arrow">&rarr;</div></a>'
-        for i in items]
     for i in items:
-        if not (ROOT / "media" / d / "covers/thumbs" / f'{i["slug"]}.jpg').is_file():
-            raise SystemExit(f"{key}: 表紙の小さい画像が無い media/{d}/covers/thumbs/{i['slug']}.jpg")
-    start, end = list_span(text, str(path))
-    text = text[:start] + "\n" + "\n".join(rows) + "\n    " + text[end:]
-
+        for p in (f'covers/thumbs/{i["slug"]}.jpg', f'covers/{i["slug"]}.png'):
+            if not (ROOT / "media" / d / p).is_file():
+                raise SystemExit(f"{key}: 表紙が無い media/{d}/{p}")
     feat = next((i for i in items if i["slug"] == lab["featured"]), None)
     if not feat:
         raise SystemExit(f"{key}: 大きく見せる記事 {lab['featured']} がラボの記事に無い")
-    big = f"{d}/covers/{feat['slug']}.png"
-    if not (ROOT / "media" / big).is_file():
-        raise SystemExit(f"{key}: 大きい表紙が無い media/{big}")
-    shown = ("更新 " + feat["modified"] if feat["modified"] > feat["date"] else "公開 " + feat["date"]).replace("-", ".")
-    block = (f'<!-- lab-feature:start -->\n<section class="jz-sec cl-feat">\n  <div class="jz-sec-h">{esc(lab["featured_label"])}</div>\n'
-             f'  <a class="cl-feat-card" href="../{d}/{feat["slug"]}.html"><img src="../{big}" alt="{esc(feat["title"])}" width="1200" height="630">'
-             f'<div class="cl-feat-b"><div class="l-cat">{esc(feat["cat"])}</div><h2 class="cl-feat-t">{esc(feat["title"])}</h2>'
-             f'<p class="cl-feat-d">{esc(feat["desc"])}</p><div class="cl-feat-m">{shown}</div><span class="cl-feat-go">記事を読む &rarr;</span></div></a>\n'
-             f'</section>\n<!-- lab-feature:end -->')
-    text = one(r"<!-- lab-feature:start -->.*?<!-- lab-feature:end -->", lambda m: block, text, f"{key} 大きく1点", flags=re.S)
+    # 並び：主役1本 → 新しい順の2本 → 残りを新しい順に（記事一覧の中に主役を2回出さない）
+    rest = [i for i in items if i is not feat]
+    rows = ([card(d, feat, "feat", lab["featured_label"])] + [card(d, i, "side") for i in rest[:2]]
+            + [card(d, i, "row") for i in rest[2:]])
+    start, end = list_span(text, str(path))
+    text = text[:start] + "\n" + "\n".join(rows) + "\n" + text[end:]
 
     collections = 0
 
