@@ -85,7 +85,9 @@ def check(page):
     if not source:
         issues.append('source material must appear in the opening explanation')
     else:
-        if len(text(body[:source.start()])) > 700:
+        # 冒頭の要点の図（fig-top、2026-11-24〜すべての記事の最初）は読む文ではないので、前置きの長さに数えない
+        intro = re.sub(r'<figure class="[^"]*\bfig-top\b.*?</figure>', '', body[:source.start()], flags=re.S)
+        if len(text(intro)) > 700:
             issues.append('source material appears after a long introduction')
         cta = re.search(r'class=["\'][^"\']*\b(?:mid-cta|inline-dx-cta)\b', body)
         if cta and cta.start() < source.start():
