@@ -103,12 +103,12 @@
     token: function () { return Object.assign({}, CONTRACT, { sub: DIAG }); },
     // Codex ラボ（2026-11-23）：一覧は4社の料金比較表つきの稟議パック。記事は /media/kenshu/ の下なので研修（kenshu）のまま
     codex: function () { return Object.assign({}, CONTRACT, { sub: DIAG }); },
-    // 暗黙知ラボ（2026-11-23）：一覧と記事（/media/kenshu/ の anmokuchi-・gijutsu-shokei-・company-brain-）は業務図と同じ案内
+    // 暗黙知ラボ（2026-11-23、11-24 に zokujinka- を足した）：一覧と記事（/media/kenshu/ の anmokuchi-・gijutsu-shokei-・company-brain-・zokujinka-）は業務図と同じ案内
     anmokuchi: function () { return OFFERS.gyomuzu(); },
     simulation: function () { return Object.assign({}, CASES, { sub: { label: "発売前の検証を相談する", href: "/launch-simulation/", offer: "launch_simulation" } }); }
   };
   // 記事の名前で決まるラボ（フォルダが別のラボと同じ物）。名前の方を先に見る
-  var bySlug = /^token-/.test(slug) ? "token" : /^codex-/.test(slug) ? "codex" : /^(anmokuchi-|gijutsu-shokei-|company-brain-)/.test(slug) ? "anmokuchi" : "";
+  var bySlug = /^token-/.test(slug) ? "token" : /^codex-/.test(slug) ? "codex" : /^(anmokuchi-|gijutsu-shokei-|company-brain-|zokujinka-)/.test(slug) ? "anmokuchi" : "";
   var make = OFFERS[bySlug] || OFFERS[seg] || function () { return Object.assign({}, CASES, { sub: DIAG }); };
   var o = make();
   var media = seg || "home";
