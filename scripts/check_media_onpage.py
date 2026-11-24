@@ -12,7 +12,7 @@
 - 他の記事から本文の中で張られたリンクが2本以上（一覧・ホーム・sitemap は数えない）
 - sitemap.xml に載っている
 - 図（2026-11-20 古野さん「視覚的な情報少なすぎて最悪」「リアルタイム系は特にリアルタイムな画像を」）:
-  本文の図（figure.fig-inline）が3枚以上。公式の原文を引用する記事（.source-quote がある＝発表・時事・料金の記事）は、
+  本文の図（figure.fig-inline）が3枚以上。最初の見出し（h2）の前に、記事の要点の図を1枚（2026-11-24 本人「記事の最初に画像が欲しいな」）。公式の原文を引用する記事（.source-quote がある＝発表・時事・料金の記事）は、
   公式の画面（figure.fig-inline.fig-real。page_shot.mjs で撮った製品の画面）を入れるときは、直後の .fig-cap に「出典：」と撮影日。原文の切り抜き画像（-quote-N）は使わず、引用の形だけにする。
 """
 import html, json, os, re, sys
@@ -73,6 +73,9 @@ def check(f):
     body = s[s.find("<article"):s.find("</article>")] if "<article" in s else s
     figs = re.findall(r'<figure class="([^"]*\bfig-inline\b[^"]*)"', body)
     if len(figs) < 3: bad.append(f"本文の図が {len(figs)}枚（3枚以上）")
+    # 2026-11-24 本人「記事の最初に画像が欲しいな」（属人化の記事の冒頭が字だけだった）：最初の見出しの前に、記事の要点の図を1枚
+    h2 = body.find("<h2")
+    if not re.search(r'<figure class="[^"]*\bfig-inline\b', body[:h2 if h2 >= 0 else len(body)]): bad.append("最初の見出しの前に図が無い（記事の要点の図を冒頭に1枚）")
     # 2026-11-20 本人「赤文字で引くだけのところはいらない」「視認性が下がっている」：原文の切り抜き画像は使わず、引用（blockquote.source-quote）で見せる
     if re.search(r'figs/[a-z0-9-]+-quote-\d\.(jpg|png)', body) or "下線は弊社" in body: bad.append("原文の切り抜き画像がある（引用の形だけにする）")
     real = re.findall(r'<figure class="[^"]*\bfig-real\b[^"]*">.*?</figure>\s*(<p class="fig-cap">.*?</p>)?', body, re.S)
