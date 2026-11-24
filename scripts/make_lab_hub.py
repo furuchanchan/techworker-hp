@@ -215,7 +215,7 @@ LABS = {
         "figs": ["codex-houjin-keiyaku-ryokin-plans", "codex-houjin-keiyaku-ryokin-cost", "codex-houjin-keiyaku-ryokin-choose",
                  "codex-shanai-donyu-settei-areas", "codex-shanai-donyu-settei-sandbox", "codex-shanai-donyu-settei-token"],
     },
-    # 暗黙知ラボ（2026-11-23）：/media/kenshu/ の anmokuchi-・gijutsu-shokei-・company-brain- の記事。案内はギョウムズAI（聞き取りから業務図を作る）
+    # 暗黙知ラボ（2026-11-23）：/media/kenshu/ の anmokuchi-・gijutsu-shokei-・company-brain-・zokujinka-（11-24）の記事。案内はギョウムズAI（聞き取りから業務図を作る）
     "anmokuchi": {
         "name": "暗黙知ラボ",
         "colors": ["#FAFBFC", "#F0F2F5", "#E6E9EE", "#D5D9E0", "#11161D", "#2B323C", "#5A6677",
@@ -223,11 +223,11 @@ LABS = {
         "color_note": "TechWorker の色（地 #FAFBFC・差し色 #005EFF）",
         "title": "暗黙知ラボ｜人の頭の中にある仕事の判断を、会社に残すための実務メディア",
         "desc": ("担当者の頭の中にある仕事の判断（暗黙知）を、異動や退職の前に会社に残すための実務メディアです。暗黙知と形式知の違い、聞き取りで残す手順、"
-                 "技術承継・技能伝承の進め方、AIが会社の記録を読んで答える仕組みを、原典と公的な資料をもとに解説します。"),
+                 "技術承継・技能伝承の進め方、業務の属人化を解消する手順、AIが会社の記録を読んで答える仕組みを、原典と公的な資料をもとに解説します。"),
         "h1": "暗黙知を、",
         "h1_rest": '<span class="nw">会社に<br class="sp">残す。</span>',
         "line": "人の頭の中にある仕事の判断を、異動や退職の前に会社に残すためのメディアです。",
-        "lead": "暗黙知と形式知の違い、業務の暗黙知を聞き取りで残す手順、技術承継・技能伝承の進め方、AIが会社の記録を読んで答える仕組みを書いています。",
+        "lead": "暗黙知と形式知の違い、業務の暗黙知を聞き取りで残す手順、技術承継・技能伝承の進め方、業務の属人化を解消する手順、AIが会社の記録を読んで答える仕組みを書いています。",
         "train_anchor": "",
         "train_name": "ギョウムズAI",
         "train_text": "担当者への聞き取りと手元の資料から、AIが部署の仕事の流れを業務図にします。業務図を起点に、貴社の生成AI環境でAIエージェントを構築します。",
@@ -237,7 +237,8 @@ LABS = {
         "about_who": "業務図を起点にAIエージェントを作るギョウムズAIを提供する",
         "about": "記事は原典の書籍・論文と、省庁の白書などの公的な資料をもとに書き、出典を記事に載せています。",
         "figs": ["anmokuchi-toha-chigai", "anmokuchi-toha-houhou", "anmokuchi-toha-kiku", "company-brain-toha-s1",
-                 "gijutsu-shokei-ai-now", "gijutsu-shokei-ai-steps", "gijutsu-shokei-ai-ai"],
+                 "gijutsu-shokei-ai-now", "gijutsu-shokei-ai-steps", "gijutsu-shokei-ai-ai",
+                 "zokujinka-kaisho-now", "zokujinka-kaisho-steps"],
     },
 }
 
