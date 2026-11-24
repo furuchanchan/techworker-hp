@@ -425,3 +425,13 @@ html body .art-body h2+p.answer+figure.fig-inline{margin-top:22px;}
 .fig-inline a:has(>picture){cursor:zoom-in}
 .fig-inline a:has(>picture)::after{content:"画像を拡大 ↗";display:block;margin-top:6px;text-align:right;font-size:12px;font-weight:700;line-height:1.5;color:var(--electric)}
 .fig-inline picture{display:block}
+
+/* 2026-11-24: 記事タイトルの直前にホームのカバー画像を置く（本人「タイトルの前にホームのカバーを載せるでいいかもしれない」） */
+html body .subnav ~ .art-head:has(.art-hero-cover){padding-top:36px;}
+html body .art-head .crumb:has(+ .art-hero-cover){margin-bottom:16px;}
+html body .art-head .art-hero-cover{display:block;width:100%;height:auto;border-radius:12px;border:1px solid var(--line);margin:0 0 24px;background:var(--white);}
+@media(max-width:880px){
+  html body .subnav ~ .art-head:has(.art-hero-cover){padding-top:24px;}
+  html body .art-head .crumb:has(+ .art-hero-cover){margin-bottom:12px;}
+  html body .art-head .art-hero-cover{border-radius:10px;margin-bottom:18px;}
+}
