@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js" data-media="kenshu">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}if(location.hostname==='techworker.co.jp')gtag('config', 'G-3V34NWXVCJ');
+</script>
+<script src="/assets/tw-track.js" defer></script>
+<script src="/assets/tw-event.js" defer></script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claudeのコンピューター操作（computer use）を会社で使う｜Team・Enterpriseの設定とTeamの12月1日の変更 — TechWorker</title>
+<meta name="description" content="Claudeのコンピューター操作（computer use）は、2026年11月20日にTeamとEnterpriseでベータになりました。既定はオフです。オンにする設定、使えるアプリの絞り方、MDMで止める方法、Teamで12月1日に既定でオンになる統合の体験を、公式のヘルプで整理します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/kenshu/claude-computer-use-houjin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Claudeのコンピューター操作（computer use）を会社で使う｜Team・Enterpriseの設定とTeamの12月1日の変更">
+<meta property="og:description" content="Claudeのコンピューター操作（computer use）は、2026年11月20日にTeamとEnterpriseでベータになりました。既定はオフです。オンにする設定、使えるアプリの絞り方、MDMで止める方法、Teamで12月1日に既定でオンになる統合の体験を、公式のヘルプで整理します。">
+<meta property="og:image" content="https://techworker.co.jp/media/kenshu/covers/claude-computer-use-houjin.png">
+<meta property="og:url" content="https://techworker.co.jp/media/kenshu/claude-computer-use-houjin">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claudeのコンピューター操作（computer use）を会社で使う｜Team・Enterpriseの設定とTeamの12月1日の変更">
+<meta name="twitter:image" content="https://techworker.co.jp/media/kenshu/covers/claude-computer-use-houjin.png">
+<link rel="stylesheet" href="../article.css?v=20261124-hero">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Claudeのコンピューター操作（computer use）を会社で使う｜Team・Enterpriseの設定とTeamの12月1日の変更", "description": "Claudeのコンピューター操作（computer use）は、2026年11月20日にTeamとEnterpriseでベータになりました。既定はオフです。オンにする設定、使えるアプリの絞り方、MDMで止める方法、Teamで12月1日に既定でオンになる統合の体験を、公式のヘルプで整理します。", "datePublished": "2026-11-26", "dateModified": "2026-11-26", "image": "https://techworker.co.jp/media/kenshu/covers/claude-computer-use-houjin.png", "inLanguage": "ja", "mainEntityOfPage": "https://techworker.co.jp/media/kenshu/claude-computer-use-houjin", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/favicon.svg"}}, "citation": ["https://support.claude.com/en/articles/12138966-release-notes", "https://support.claude.com/en/articles/18483812-set-up-computer-use-for-team-and-enterprise-plans", "https://support.claude.com/en/articles/14128542-let-claude-use-your-computer-in-cowork", "https://support.claude.com/en/articles/13364135-use-claude-cowork-safely", "https://support.claude.com/en/articles/18342806-set-up-and-manage-the-new-unified-claude-experience-for-your-team-organization", "https://claude.com/pricing"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "Claude ラボ", "item": "https://techworker.co.jp/media/claude/"}, {"@type": "ListItem", "position": 4, "name": "Claudeのコンピューター操作", "item": "https://techworker.co.jp/media/kenshu/claude-computer-use-houjin"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "個人向けのProやMaxでも使えますか？", "acceptedAnswer": {"@type": "Answer", "text": "使えます。Pro・Max・Ultraでは、macOSとWindowsのClaude Desktopで、CoworkとClaude Codeの中で使えます。TeamとEnterpriseでは新しい統合の体験でだけ動き、オーナーがオンにするまで使えません。"}}, {"@type": "Question", "name": "会社のプランで、Claude Codeの中からも使えますか？", "acceptedAnswer": {"@type": "Answer", "text": "使えません。TeamとEnterpriseでは、Claude Codeと、「Cowork」を選んで始めたタスクでは動かないと、設定の記事に書かれています。"}}, {"@type": "Question", "name": "スクリーンショットはどこに残りますか？", "acceptedAnswer": {"@type": "Answer", "text": "会話と一緒に保存されます。Claudeの操作を確かめる自動の点検も最新のスクリーンショットを見られ、Anthropicはその点検の記録に写しを残すことがあります。保存の期間は設定の記事に書かれていません。"}}, {"@type": "Question", "name": "オフにすれば、すぐに止まりますか？", "acceptedAnswer": {"@type": "Answer", "text": "すぐには止まりません。各社員のClaude Desktopに届くまで約1時間、ときにはそれ以上かかります。その間、Claudeは画面を見て、許可済みのアプリを使えます。"}}, {"@type": "Question", "name": "Web版やスマホのアプリからも使えますか？", "acceptedAnswer": {"@type": "Answer", "text": "使えます。組織の「Computer access」の設定がオンで、Claude Desktopを開いたパソコンに会話をつないでいることが条件です。Web版では「＋」の「Devices」からパソコンを選びます。"}}]}</script>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<link rel="stylesheet" href="/assets/site/site.css">
+<link rel="stylesheet" href="/media/audience-filter.css?v=20261006-media-only">
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header class="hd hd--solid">
+  <a class="logo" href="/" aria-label="TechWorker ホーム">Tech<i>Worker</i></a>
+  <nav id="hd-nav" aria-label="主な行き先">
+    <a href="/services">事業・サービス</a>
+    <a href="/#concept">考え方</a>
+    <a href="/agent-cases/">事例</a>
+    <a href="/news">ニュース</a>
+    <a href="/company">会社情報</a>
+    <a href="/contact">お問い合わせ</a>
+  </nav>
+  <button class="menu" type="button" aria-label="メニューを開く" aria-controls="hd-nav" aria-expanded="false"></button>
+</header>
+<div class="subnav">
+  <div class="wrap subnav__in">
+    <a class="subnav__name" href="../claude/">Claude ラボ</a>
+    <nav aria-label="メディアの行き先"><a href="https://kenshu.techworker.co.jp/">生成AI研修について</a><a href="https://kenshu.techworker.co.jp/contact/" class="subnav__cta">研修の相談</a></nav>
+  </div>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="../claude/">Claude ラボ</a><span class="sep">/</span>Claudeのコンピューター操作</nav>
+  <img class="art-hero-cover" src="covers/claude-computer-use-houjin.png" alt="Claudeのコンピューター操作（computer use）を会社で使う｜Team・Enterpriseの設定とTeamの12月1日の変更" width="1200" height="630" fetchpriority="high" decoding="async">
+  <div class="kicker">社内ルールと安全</div>
+  <h1>Claudeのコンピューター操作（computer use）を会社で使う｜Team・Enterpriseの設定とTeamの12月1日の変更</h1>
+  <p class="dek">Claudeのコンピューター操作（computer use）は、2026年11月20日にTeamとEnterpriseでベータになりました。既定はオフです。オンにする設定、使えるアプリの絞り方、MDMで止める方法、Teamで12月1日に既定でオンになる統合の体験を、公式のヘルプで整理します。</p>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.11.26</span><span class="dot">·</span><span>読了 9分</span>
+  </div>
+<p class="article-audience"><span class="article-audience-label">主な対象読者</span><a href="/media/claude/?audience=it#articles">情シス・AI導入担当</a></p>
+</header>
+
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div>
+      <a href="#toha">Claudeのコンピューター操作とは何ですか？</a>
+      <a href="#settei">会社で使えるようにするには、どこを設定しますか？</a>
+      <a href="#ryokin">追加の料金はかかりますか？</a>
+      <a href="#kakunin">有効にする前に、何を確かめますか？</a>
+      <a href="#apps">使わせるアプリを絞るには、どうしますか？</a>
+      <a href="#mdm">特定のパソコンで止めるには、どうしますか？</a>
+      <a href="#dec1">12月1日に何が変わりますか？</a>
+      <a href="#kimeru">情シスが今週決めることは何ですか？</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#next">次の一歩は何から始めればよいですか？</a>
+      <a href="#sources">出典と確認範囲</a>
+    </div></nav>
+
+  <article class="art-body">
+
+<p>Anthropicは2026年11月20日、Claudeの「コンピューター操作（computer use）」をTeamとEnterpriseのプランでベータとして出しました。Claudeが社員の画面を見て、許可されたデスクトップのアプリをクリックと入力で操作する機能です。ブラウザなど一部のアプリでは、できる操作が限られます。</p>
+<ul>
+<li><strong>既定：</strong>オフです。組織のオーナーが組織設定の「Capabilities」でオンにするまで、社員は使えません。</li>
+<li><strong>前提：</strong>「Chat and Cowork unified」（チャットとCoworkを1つにした新しい体験）がオンの組織だけで動きます。Teamでは、この統合が2026年12月1日に既定でオンになります。</li>
+<li><strong>注意：</strong>Claudeとアプリの間に隔離された環境がありません。画面のスクリーンショットは会話と一緒に保存されます。</li>
+</ul>
+<p>Claudeのヘルプセンターの設定の記事を2026年11月26日に読み、設定の名前と条件を確かめました。情シスが有効にする前に決めることをまとめます。</p>
+
+<h2 id="toha">Claudeのコンピューター操作とは何ですか？</h2>
+<p class="answer">Claudeが社員のパソコンの画面を見て、社員が許可したアプリをクリックと入力で操作する機能です。TeamとEnterpriseでは2026年11月20日にベータになり、組織ごとに順に届いています。</p>
+<figure class="fig-inline"><a href="figs/claude-computer-use-houjin-toha.png" target="_blank" rel="noopener"><picture><source media="(max-width:640px)" srcset="figs/claude-computer-use-houjin-toha-m.png?v=1" width="960" height="1724"><img src="figs/claude-computer-use-houjin-toha.png" alt="Claudeのコンピューター操作の要点。できることはクリックと入力、法人のプランでは11月20日にベータとして開始、最初の状態は既定でオフ。" width="1920" height="1080" loading="lazy" decoding="async"></picture></a><figcaption><span class="source-label">TechWorker作成：</span>Claudeのヘルプセンターの記述を図にしました。画像を押すと拡大できます。</figcaption></figure>
+<p>リリースノートは次のように書いています。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“Computer use lets Claude see a user's screen and work in the desktop apps they allow.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>コンピューター操作では、Claudeが利用者の画面を見て、利用者が許可したデスクトップのアプリで作業できます。</p><footer>出典：<a href="https://support.claude.com/en/articles/12138966-release-notes" target="_blank" rel="noopener noreferrer">Claude Help Center「Release notes」</a>（2026年11月20日の項）</footer></blockquote>
+<p>会社のプランで使える場所と、使えない場所は次のとおりです。</p>
+<ul>
+<li><strong>Claude Desktop：</strong>macOS 14以降とWindowsで使えます。</li>
+<li><strong>Web版とスマホのアプリ：</strong>組織の「Computer access」がオンで、Claude Desktopを開いたパソコンにつないだときに使えます。</li>
+<li><strong>使えない所：</strong>Claude Codeと、「Cowork」を選んで始めたタスクでは動きません。</li>
+</ul>
+<p>「Computer use」と「Computer access」は別の設定です。Computer useは、Claudeが画面を見てアプリを操作する設定です。Computer accessは予約したタスクやWeb版、スマホのアプリから社員のパソコンを使う設定です。</p>
+
+<h2 id="settei">会社で使えるようにするには、どこを設定しますか？</h2>
+<p class="answer">オーナーかプライマリーオーナーが組織設定の「Capabilities」で「Chat and Cowork unified」と「Computer use」の2つをオンにします。そのあと、社員が自分のClaude Desktopで「Enable computer use」をオンにします。</p>
+<figure class="fig-inline"><a href="figs/claude-computer-use-houjin-settei.png" target="_blank" rel="noopener"><picture><source media="(max-width:640px)" srcset="figs/claude-computer-use-houjin-settei-m.png?v=1" width="960" height="1971"><img src="figs/claude-computer-use-houjin-settei.png" alt="会社で使うまでの5つの手順。オーナーでログイン、組織設定のCapabilitiesを開く、Chat and Cowork unifiedをオン、Computer useをオン、社員がEnable computer useをオン。" width="1920" height="1080" loading="lazy" decoding="async"></picture></a><figcaption><span class="source-label">TechWorker作成：</span>設定の記事の手順を図にしました。画像を押すと拡大できます。</figcaption></figure>
+<p>画面の名前は英語の表示のまま書きます。</p>
+<ol>
+<li>オーナーかプライマリーオーナーで、Claudeにログインします。</li>
+<li>「Organization settings」（組織設定）の「Capabilities」（機能）を開きます。</li>
+<li>「Chat and Cowork unified」がオンかを確かめます。オフのままでは動きません。</li>
+<li>「Claude Desktop」の下にある「Computer use」をオンにします。Enterpriseで役割の一覧が開いたら、使わせない役割のチェックを外して「Turn on」を押します。</li>
+<li>社員は最新のClaude Desktopで「Enable computer use」をオンにします。パソコンごと、アカウントごとの操作です。</li>
+</ol>
+<p>設定が見当たらない、またはオンにできないときは、まだ自社の組織に届いていないか、対象外の組織です。次の構成の組織はオンにできません。</p>
+<ul>
+<li>HIPAA対応の構成（米国の医療情報の規則に合わせた構成）</li>
+<li>Claude Code向けのZero Data Retention（ZDR）</li>
+<li>顧客が管理する暗号鍵（CMEK）</li>
+<li>FERPAやK-12（米国の教育向け）の設定</li>
+</ul>
+<p>関係する設定を表にまとめました。</p>
+<div class="tbl-wrap">
+  <table style="min-width:640px">
+    <tr><th>設定の名前</th><th>場所</th><th>役割</th><th>最初の状態</th></tr>
+    <tr><td>Chat and Cowork unified</td><td>組織設定 &gt; Capabilities</td><td>チャットとCoworkを1つにした新しい体験。コンピューター操作の前提</td><td>Teamは2026年12月1日に既定でオン</td></tr>
+    <tr><td>Computer use</td><td>組織設定 &gt; Capabilities &gt; Claude Desktop</td><td>Claudeが画面を見てアプリを操作する</td><td>オフ</td></tr>
+    <tr><td>Computer access</td><td>組織設定 &gt; Capabilities</td><td>予約したタスク・Web版・スマホから社員のパソコンを使う</td><td>記載なし</td></tr>
+    <tr><td>App access</td><td>組織設定 &gt; Capabilities &gt; Claude Desktop</td><td>使わせないアプリ、または使ってよいアプリの一覧</td><td>一覧なし</td></tr>
+    <tr><td>computerUseEnabled</td><td>MDM（JamfやIntuneなど）</td><td>選んだパソコンでコンピューター操作を止める</td><td>配らない（MDMでの制限なし）</td></tr>
+  </table>
+</div>
+<p class="fig-cap">出典：Claude Help Center「Set up computer use for Team and Enterprise plans」「Set up and manage the new unified Claude experience for your Team organization」（2026年11月26日確認）</p>
+<p>Enterpriseでは役割ごとに使える人を絞れます。Teamには独自の役割がないため、オンにすると全員が対象になります。選んだパソコンで止めるには、後で述べるMDMの鍵を使います。User・Admin・Owner・Primary Ownerの役割の人は、オンにした時点で使えます。使わせない人は役割を「Custom」にし、15分待ってからオンにします。</p>
+
+<h2 id="ryokin">追加の料金はかかりますか？</h2>
+<p class="answer">コンピューター操作だけの料金は設定の記事にも料金ページにも書かれていません。費用の基本は、TeamかEnterpriseの席の料金です。</p>
+<p>日本から開いた料金ページの表示を、2026年11月26日に確かめました。ページの下に「Prices include 10% JCT」（消費税10%込み）と書かれています。</p>
+<div class="tbl-wrap">
+  <table style="min-width:620px">
+    <tr><th>プラン</th><th>年払い（1席の月額）</th><th>月払い（1席の月額）</th><th>条件</th></tr>
+    <tr><td>Team スタンダード</td><td>22ドル</td><td>27.50ドル</td><td>2〜150名</td></tr>
+    <tr><td>Team プレミアム</td><td>110ドル</td><td>137.50ドル</td><td>スタンダードの5倍の使用量</td></tr>
+    <tr><td>Enterprise</td><td colspan="2">1席 月20ドル（年払い）＋APIの単価での使用量</td><td>20席から</td></tr>
+  </table>
+</div>
+<p class="fig-cap">出典：Claude「料金」のTeam &amp; Enterpriseの表示（2026年11月26日確認）。Enterpriseの20ドルに消費税が含まれるかは、ページから読み取れません</p>
+<p>Teamのスタンダードを10人で年払いにすると、22ドル×10人×12か月で年2,640ドルです。1ドル155円と仮に置くと、約41万円です。為替は仮の値です。</p>
+<p>統合の体験の記事は、コードを動かす作業やファイルを扱う作業は、短いチャットより席の使用量を多く使うと書いています。使用量のクレジットをオンにした組織では、超えた分が標準の単価で請求されます。組織の支出上限を設定していれば、請求はその上限までです。コンピューター操作の使用量の数え方は、公式に書かれていません。</p>
+<p>人数と1人当たりの利用量から、Team・Enterprise・API従量の年額を出すExcelは、下の枠から受け取れます。</p>
+<div class="tw-lead" data-offer="claude-cost-sheet" data-campaign="claude-computer-use-houjin" data-pos="mid"></div>
+
+<h2 id="kakunin">有効にする前に、何を確かめますか？</h2>
+<p class="answer">Claudeと社員のアプリの間に隔離がないこと、つないだフォルダの外のファイルも触れること、スクリーンショットが会話と一緒に残ることの3つです。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“Computer use has no sandbox between Claude and a user's applications.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>コンピューター操作には、Claudeと利用者のアプリの間にサンドボックス（隔離された環境）がありません。</p><footer>出典：<a href="https://support.claude.com/en/articles/18483812-set-up-computer-use-for-team-and-enterprise-plans" target="_blank" rel="noopener noreferrer">Claude Help Center「Set up computer use for Team and Enterprise plans」</a>（2026年11月26日確認）</footer></blockquote>
+<ul>
+<li><strong>隔離がない：</strong>画面に出たWebページやメールの中身で、Claudeが意図しない操作をするおそれがあると、設定の記事は書いています。</li>
+<li><strong>フォルダの外：</strong>社員が許可したアプリを通して、つないだフォルダの外のファイルを開き、変え、消せます。フォルダの制限や「Read only」の指定も、コンピューター操作には効きません。</li>
+<li><strong>スクリーンショット：</strong>Claudeは画面を見るためにスクリーンショットを撮り、会話と一緒に保存します。個人情報や秘密の情報が写ることがあります。</li>
+<li><strong>点検の記録：</strong>Claudeの操作を確かめる自動の点検も、最新のスクリーンショットを見られます。Anthropicはその点検の記録に写しを残すことがあります。この点検は「Automatically approve」のモードで動くと、利用者向けの記事は書いています。</li>
+</ul>
+<p>利用者向けの記事「Let Claude use your computer in Cowork」によると、Anthropicのシステムは、Claudeが画面を使う間にプロンプトインジェクションの兆しを調べています。画面の文に紛れた指示で、AIの操作を乗っ取る攻撃のことです。同じ記事は、この機能はまだ初期で攻撃も変わり続けるので、注意して使うよう書いています。</p>
+<p>社員が会社の許可なく個人のAIを使う問題は、「<a href="shadow-ai-toha.html">シャドーAIとは</a>」で扱っています。</p>
+
+<h2 id="apps">使わせるアプリを絞るには、どうしますか？</h2>
+<p class="answer">「App access」で、使わせない一覧の「Block these apps」か、使ってよい一覧の「Allow only these apps」を選びます。何も設定しなくても、ブラウザや投資のアプリなどには最初から制限があります。</p>
+<figure class="fig-inline"><a href="figs/claude-computer-use-houjin-apps.png" target="_blank" rel="noopener"><picture><source media="(max-width:640px)" srcset="figs/claude-computer-use-houjin-apps-m.png?v=1" width="960" height="1781"><img src="figs/claude-computer-use-houjin-apps.png" alt="アプリごとの既定の制限。ブラウザと投資のアプリは見るだけ、ターミナルとコードエディタはクリックとスクロールだけ、音楽・動画・電子書籍のアプリは使えない。" width="1920" height="1080" loading="lazy" decoding="async"></picture></a><figcaption><span class="source-label">TechWorker作成：</span>ヘルプセンターに書かれた既定の制限を図にしました。画像を押すと拡大できます。</figcaption></figure>
+<p>Claudeはアプリを使う前に1つずつ社員の許可を求めます。そのうえで、アプリの種類ごとに次の制限があります。</p>
+<div class="tbl-wrap">
+  <table style="min-width:560px">
+    <tr><th>アプリ</th><th>Claudeができること</th></tr>
+    <tr><td>ブラウザ、投資・取引・暗号資産の多くのアプリ</td><td>画面は見えるが、クリックも入力もできない</td></tr>
+    <tr><td>ターミナルとコードエディタ</td><td>クリックとスクロールはできる。入力はできない。クリックでコードが動くことはある</td></tr>
+    <tr><td>音楽、動画配信、電子書籍などのアプリ</td><td>使えない</td></tr>
+    <tr><td>そのほかの大半のアプリ</td><td>すべての操作ができる</td></tr>
+  </table>
+</div>
+<p class="fig-cap">出典：Claude Help Center「Let Claude use your computer in Cowork」（2026年11月26日確認）</p>
+<p>会社でさらに絞るときの手順です。変えられるのはオーナーかプライマリーオーナーだけです。</p>
+<ol>
+<li>組織設定の「Capabilities」を開き、「Claude Desktop」の「Computer use」の下にある「App access」を探します。</li>
+<li>「Block these apps」か「Allow only these apps」を選び、「Add app」を押します。</li>
+<li>一覧から選ぶか、一覧にないアプリはIDを入れます。Macは「com.microsoft.Excel」のようなバンドルID、Windowsは「excel.exe」のようなファイル名です。</li>
+<li>「Done」を押します。各社員のClaude Desktopに届くまで、約1時間、ときにはそれ以上かかることがあります。その間は、外したばかりのアプリもClaudeが使えます。</li>
+</ol>
+<p>一覧は社員のパソコンに送られます。社員には表示されませんが、見つけることはできるため、秘密の情報を書かないよう記事は求めています。入力したIDが本物のアプリかは、確かめられません。</p>
+<p>一覧が効かない範囲もあります。Claude in Chrome、組み込みのブラウザ、Claude Code、デスクトップの拡張機能です。ほかに、個人のアカウントへの切り替え、ブラウザの中のWebサイトと拡張機能、リモートデスクトップや仮想マシンの中のアプリも対象外です。使わせないアプリからコピーした文も、Claudeは読めます。</p>
+
+<h2 id="mdm">特定のパソコンで止めるには、どうしますか？</h2>
+<p class="answer">JamfやIntuneなどのMDMで、Claude Desktopのポリシーの鍵「computerUseEnabled」をfalseにして、パソコン単位で配ります。Claude Desktop 5.1231.0以降が必要です。</p>
+<ul>
+<li><strong>Mac：</strong>設定のドメイン「com.anthropic.claudefordesktop」の構成プロファイルで、computerUseEnabledをfalseにします。</li>
+<li><strong>Windows：</strong>「HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Claude」に、computerUseEnabledを値0のDWORDで置きます。</li>
+<li><strong>配る単位：</strong>利用者ではなくパソコンの単位で配ります。利用者の単位ではその1人にしか効きません。</li>
+<li><strong>反映：</strong>Claude Desktopを終了して開き直したときに効きます。窓を閉じるだけでは効きません。</li>
+</ul>
+<p>効いたかはそのパソコンのClaude Desktopの「Settings」で確かめます。「Enable computer use」が灰色になり、組織がこのパソコンでの利用を止めたという文が出ます。</p>
+<p>Windowsでは、古いバージョンのClaude Desktopが、この鍵しか置かれていないポリシー全体を受け付けないことがあると、記事は警告しています。先にClaude Desktopを全台で更新します。</p>
+<p>この鍵を置いたパソコンは、Claude Desktopから管理対象として扱われます。利用者は更新の経路（リリースチャネル）を選べなくなり、利用者の単位に置いたほかのClaudeの設定も読まれなくなります。ほかの設定も、パソコンの単位に移します。</p>
+<p>この鍵は「Record a skill」、Claude in Chrome、組み込みのブラウザ、ターミナルのClaude Code、ローカルのMCPサーバー、デスクトップの拡張機能には効きません。パソコンの設定を変えられる人を止める鍵ではない、とも書かれています。</p>
+<p>Claude Desktopの管理設定の配り方は、「<a href="claude-code-shanai-tenkai.html">Claude Codeの社内展開</a>」でも扱っています。</p>
+
+<h2 id="dec1">12月1日に何が変わりますか？</h2>
+<p class="answer">Teamの組織では、「Chat and Cowork unified」が2026年12月1日に既定でオンになります。コンピューター操作は別の設定で、最初の状態はオフです。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“It turns on by default on December 1, 2026, unless an owner keeps it off.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>（新しい統合の体験は）オーナーがオフのままにしない限り、2026年12月1日に既定でオンになります。</p><footer>出典：<a href="https://support.claude.com/en/articles/18342806-set-up-and-manage-the-new-unified-claude-experience-for-your-team-organization" target="_blank" rel="noopener noreferrer">Claude Help Center「Set up and manage the new unified Claude experience for your Team organization」</a>（2026年11月26日確認）</footer></blockquote>
+<ul>
+<li><strong>止める方法：</strong>オフのままにするには、12月1日より前に、組織設定の「Capabilities」で「Keep disabled」を選びます。</li>
+<li><strong>前提の設定：</strong>「Cloud code execution and file creation」がオフの組織では、案内も出ず、何もオンになりません。ただし12月1日以降は、その設定をオンにした時点で新しい体験もオンになります。</li>
+<li><strong>選んだ組織：</strong>すでにオンかオフを選んだ組織は、その選択が続きます。</li>
+<li><strong>2027年2月1日：</strong>チャットとCoworkが別々の今の体験は終わり、残った利用者は自動で新しい体験に移ります。</li>
+</ul>
+<p>統合の後は利用状況のレポートの行も変わります。チャットとCoworkの使用量は「Chat and Cowork unified」の行に入ります。支出や使用量を足すときは、この行も含めるよう記事は求めています。ZDRの組織には、これらの日付は当てはまりません。Enterpriseの扱いは別の記事にあり、本記事では確かめていません。</p>
+
+<h2 id="kimeru">情シスが今週決めることは何ですか？</h2>
+<p class="answer">12月1日の統合を受けるか、誰に試させるか、使わせないアプリ、MDMで止めるパソコン、画面に写してよい情報の5つです。</p>
+<figure class="fig-inline"><a href="figs/claude-computer-use-houjin-kimeru.png" target="_blank" rel="noopener"><picture><source media="(max-width:640px)" srcset="figs/claude-computer-use-houjin-kimeru-m.png?v=1" width="960" height="1832"><img src="figs/claude-computer-use-houjin-kimeru.png" alt="情シスが今週決める5つ。12月1日の統合を決める、試す人を決める、使わせないアプリを並べる、MDMで止めるPCを決める、画面に出る情報を決める。" width="1920" height="1080" loading="lazy" decoding="async"></picture></a><figcaption><span class="source-label">TechWorker作成：</span>TechWorkerの提案を図にしました。画像を押すと拡大できます。</figcaption></figure>
+<ol>
+<li><strong>12月1日の統合を決める：</strong>Teamの組織は新しい体験を受けるか「Keep disabled」にするかを、11月中に決めます。</li>
+<li><strong>試す人を決める：</strong>最初は2〜3人に絞ります。Enterpriseは役割で絞れます。Teamは組織設定で人を絞れません。社員が自分でオンにするまでは使えないので、試す人を社内ルールで決め、止めたいパソコンにはMDMの鍵を配ります。</li>
+<li><strong>使わせないアプリを並べる：</strong>パスワード管理、会計、顧客の個人情報を扱うアプリなどを、App accessの一覧に入れます。</li>
+<li><strong>MDMで止めるパソコンを決める：</strong>共用のパソコンや、重要な情報を扱うパソコンを先に決めます。</li>
+<li><strong>画面に出る情報を決める：</strong>スクリーンショットが会話と一緒に残る前提で、使ってよい業務の範囲を社内ルールに書きます。</li>
+</ol>
+<p>5つはTechWorkerの提案です。Enterpriseの管理機能の全体は、「<a href="claude-enterprise-security-center.html">Claude Enterpriseのセキュリティセンター</a>」で解説しています。</p>
+
+<h2 id="faq">よくある質問</h2>
+<div class="faq"><div class="q">個人向けのProやMaxでも使えますか？</div><p class="a">使えます。Pro・Max・Ultraでは、macOSとWindowsのClaude Desktopで、CoworkとClaude Codeの中で使えます。TeamとEnterpriseでは新しい統合の体験でだけ動き、オーナーがオンにするまで使えません。</p></div>
+<div class="faq"><div class="q">会社のプランで、Claude Codeの中からも使えますか？</div><p class="a">使えません。TeamとEnterpriseでは、Claude Codeと、「Cowork」を選んで始めたタスクでは動かないと、設定の記事に書かれています。</p></div>
+<div class="faq"><div class="q">スクリーンショットはどこに残りますか？</div><p class="a">会話と一緒に保存されます。Claudeの操作を確かめる自動の点検も最新のスクリーンショットを見られ、Anthropicはその点検の記録に写しを残すことがあります。保存の期間は設定の記事に書かれていません。</p></div>
+<div class="faq"><div class="q">オフにすれば、すぐに止まりますか？</div><p class="a">すぐには止まりません。各社員のClaude Desktopに届くまで約1時間、ときにはそれ以上かかります。その間、Claudeは画面を見て、許可済みのアプリを使えます。</p></div>
+<div class="faq"><div class="q">Web版やスマホのアプリからも使えますか？</div><p class="a">使えます。組織の「Computer access」の設定がオンで、Claude Desktopを開いたパソコンに会話をつないでいることが条件です。Web版では「＋」の「Devices」からパソコンを選びます。</p></div>
+
+<h2 id="next">次の一歩は何から始めればよいですか？</h2>
+<p class="answer">組織設定の「Capabilities」を開き、今の状態を確かめることから始めます。</p>
+<ol>
+<li>「Chat and Cowork unified」と「Computer use」が今オンかオフかを確かめます。</li>
+<li>Teamの組織は12月1日の前に統合を受けるかを決めます。</li>
+<li>使わせないアプリの一覧を作ってから、2〜3人で試します。</li>
+</ol>
+<p>TechWorkerの研修では、受講者の実際の業務1本について、Claudeに任せる手順と確かめる手順を当日に作ります。30日後に、使った人の割合と1件にかかる時間を測って報告します。検討段階のご相談だけでも歓迎です。</p>
+<div class="tw-lead" data-offer="claude-cost-sheet" data-campaign="claude-computer-use-houjin" data-pos="end"></div>
+
+<h2 id="sources">出典と確認範囲</h2>
+<p class="source-note">確認日：2026年11月26日。ヘルプセンターの記事は更新日を「Updated this week」などで示しています。暦の日付は出ていません。TechWorkerの組織ではコンピューター操作をまだ有効にしておらず、動作は確かめていません。スクリーンショットの保存の期間、コンピューター操作の使用量の数え方、日本語の画面での表示名は、公式に書かれていません。Enterpriseの統合の体験の記事は読んでいません。情シスが決める5つはTechWorkerの提案です。</p>
+<ol class="source-list"><li><a href="https://support.claude.com/en/articles/12138966-release-notes" target="_blank" rel="noopener noreferrer">Claude Help Center「Release notes」（2026年11月20日の項）</a></li><li><a href="https://support.claude.com/en/articles/18483812-set-up-computer-use-for-team-and-enterprise-plans" target="_blank" rel="noopener noreferrer">Claude Help Center「Set up computer use for Team and Enterprise plans」（2026年11月26日確認）</a></li><li><a href="https://support.claude.com/en/articles/14128542-let-claude-use-your-computer-in-cowork" target="_blank" rel="noopener noreferrer">Claude Help Center「Let Claude use your computer in Cowork」（2026年11月26日確認）</a></li><li><a href="https://support.claude.com/en/articles/13364135-use-claude-cowork-safely" target="_blank" rel="noopener noreferrer">Claude Help Center「Use Claude Cowork safely」（2026年11月26日確認）</a></li><li><a href="https://support.claude.com/en/articles/18342806-set-up-and-manage-the-new-unified-claude-experience-for-your-team-organization" target="_blank" rel="noopener noreferrer">Claude Help Center「Set up and manage the new unified Claude experience for your Team organization」（2026年11月26日確認）</a></li><li><a href="https://claude.com/pricing" target="_blank" rel="noopener noreferrer">Claude「料金」Team &amp; Enterprise（日本からの表示、2026年11月26日確認）</a></li></ol>
+
+</article>
+</div>
+
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div>
+    <p>上場企業を含む50社超・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>Claudeに任せる仕事1本を、研修の当日に仕上げます。</h3>
+    <p>受講者の実際の業務1本を、Claudeに任せる手順と確かめる手順まで研修当日に作ります。30日後に、使った人の割合と1件にかかる時間を測って報告します。教材は公式の変更に合わせて毎週見直します。検討段階のご相談だけでも歓迎です。</p>
+  </div>
+  <a href="https://kenshu.techworker.co.jp/?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=claude-computer-use-houjin&amp;utm_content=end" class="btn">研修内容・費用を相談する <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="https://kenshu.techworker.co.jp/" style="color:var(--electric);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">生成AI法人研修（主要ツール全対応）</a>　／　<a href="https://kenshu.techworker.co.jp/contact/" style="color:var(--electric);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">無料相談</a></p>
+<div class="back-list"><a href="../claude/">← Claude ラボの記事一覧に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="claude-enterprise-security-center.html" class="related-card"><span class="rc-cat">社内ルールと安全</span><div class="rc-title">Claude Enterpriseのセキュリティセンター｜推奨の設定と見比べる手順</div></a>
+    <a href="claude-code-shanai-tenkai.html" class="related-card"><span class="rc-cat">Claude Codeの活用</span><div class="rc-title">Claude Codeの社内展開｜社内データの扱い・設定配布・ルール雛形</div></a>
+  </div>
+</div></section>
+
+<p style="max-width:var(--measure);margin:40px auto 0;padding:0 20px;font-size:12px;color:var(--slate);line-height:1.9;">本記事は株式会社TechWorkerが独自に作成したものであり、Anthropic PBCとの提携・後援・承認を受けたものではありません。Anthropic、ClaudeはAnthropic PBCの商標です。</p>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__in">
+      <div>
+        <p class="ft__name">株式会社TechWorker</p>
+        <p class="ft__addr">〒169-0051 東京都新宿区西早稲田一丁目22番3号<br>早稲田アントレプレナーシップセンター</p>
+      </div>
+      <nav aria-label="フッターの行き先">
+        <a href="/services">事業・サービス</a>
+        <a href="/company">会社情報</a>
+        <a href="/news">ニュース</a>
+        <a href="/#concept">考え方</a>
+        <a href="/agent-cases/">事例</a>
+        <a href="/contact">お問い合わせ</a>
+        <a href="/privacy">プライバシーポリシー</a>
+      </nav>
+    </div>
+    <div class="nv-badge"><a href="/news/013"><img src="/assets/badges/nvidia-inception-program.svg" alt="NVIDIA Inception Program" width="93" height="40" loading="lazy"></a><p>NVIDIA、NVIDIA ロゴ、NVIDIA Inception は、米国およびその他の国における NVIDIA Corporation の商標および/または登録商標です。</p></div>
+    <small>© TechWorker Inc.</small>
+  </div>
+</footer>
+
+<script>
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+<script src="/media/article-tracker.js?v=20261120i" defer></script>
+<script>
+// スマホの行き先：右上の釦で開け閉めする。行き先を押したら閉じる。スクロールしたら頭に暗い面を敷く
+(() => {
+  const hd = document.querySelector('.hd'), btn = hd.querySelector('.menu');
+  const set = open => { hd.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く'); };
+  btn.addEventListener('click', () => set(!hd.classList.contains('is-open')));
+  hd.querySelector('nav').addEventListener('click', e => { if (e.target.closest('a')) set(false); });
+  const onScroll = () => hd.classList.toggle('is-scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+})();
+</script>
+<script src="../lead.js?v=20261120f" defer></script>
+</body>
+</html>
