@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js" data-media="kenshu">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V34NWXVCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  try{var twq=/[?&]tw_internal=([01])/.exec(location.search);if(twq)twq[1]==='1'?localStorage.setItem('tw_internal','1'):localStorage.removeItem('tw_internal');if(localStorage.getItem('tw_internal')==='1')gtag('set',{traffic_type:'internal'});}catch(e){}if(location.hostname==='techworker.co.jp')gtag('config', 'G-3V34NWXVCJ');
+</script>
+<script src="/assets/tw-track.js" defer></script>
+<script src="/assets/tw-event.js" defer></script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Shipとは｜PRのレビュー・修正・承認をAIに任せる前に会社で決める設定と費用 — TechWorker</title>
+<meta name="description" content="Claude ShipはGitHubのプルリクエストのレビュー・修正・承認の判定をClaudeに任せる仕組みで、2026年11月23日にTeamとEnterpriseで始まりました。料金はトークンの使用量で決まります。入れる前に決める上限・設定の順・人を通すルールを、公式の文書で整理します。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="canonical" href="https://techworker.co.jp/media/kenshu/claude-ship-houjin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Claude Shipとは｜PRのレビュー・修正・承認をAIに任せる前に会社で決める設定と費用">
+<meta property="og:description" content="Claude ShipはGitHubのプルリクエストのレビュー・修正・承認の判定をClaudeに任せる仕組みで、2026年11月23日にTeamとEnterpriseで始まりました。料金はトークンの使用量で決まります。入れる前に決める上限・設定の順・人を通すルールを、公式の文書で整理します。">
+<meta property="og:image" content="https://techworker.co.jp/media/kenshu/covers/claude-ship-houjin.png">
+<meta property="og:url" content="https://techworker.co.jp/media/kenshu/claude-ship-houjin">
+<meta property="og:site_name" content="TechWorker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Shipとは｜PRのレビュー・修正・承認をAIに任せる前に会社で決める設定と費用">
+<meta name="twitter:image" content="https://techworker.co.jp/media/kenshu/covers/claude-ship-houjin.png">
+<link rel="stylesheet" href="../article.css?v=20261124-hero">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Claude Shipとは｜PRのレビュー・修正・承認をAIに任せる前に会社で決める設定と費用", "description": "Claude ShipはGitHubのプルリクエストのレビュー・修正・承認の判定をClaudeに任せる仕組みで、2026年11月23日にTeamとEnterpriseで始まりました。料金はトークンの使用量で決まります。入れる前に決める上限・設定の順・人を通すルールを、公式の文書で整理します。", "datePublished": "2026-11-27", "dateModified": "2026-11-27", "image": "https://techworker.co.jp/media/kenshu/covers/claude-ship-houjin.png", "inLanguage": "ja", "mainEntityOfPage": "https://techworker.co.jp/media/kenshu/claude-ship-houjin", "author": {"@type": "Person", "name": "古野光太朗", "jobTitle": "株式会社TechWorker 代表取締役 CEO兼CTO", "url": "https://techworker.co.jp/company"}, "publisher": {"@type": "Organization", "name": "株式会社TechWorker", "url": "https://techworker.co.jp/", "logo": {"@type": "ImageObject", "url": "https://techworker.co.jp/assets/favicon.svg"}}, "citation": ["https://claude.com/resources/articles/introducing-claude-ship", "https://code.claude.com/docs/en/claude-ship", "https://code.claude.com/docs/en/code-review-setup", "https://code.claude.com/docs/en/code-review-costs", "https://code.claude.com/docs/en/pr-steward-setup", "https://code.claude.com/docs/en/pr-steward-security", "https://code.claude.com/docs/en/approvals-setup", "https://code.claude.com/docs/en/approvals", "https://code.claude.com/docs/en/approvals-github-rules", "https://claude.com/pricing"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://techworker.co.jp/"}, {"@type": "ListItem", "position": 2, "name": "メディア", "item": "https://techworker.co.jp/media/"}, {"@type": "ListItem", "position": 3, "name": "Claude ラボ", "item": "https://techworker.co.jp/media/claude/"}, {"@type": "ListItem", "position": 4, "name": "Claude Shipとは", "item": "https://techworker.co.jp/media/kenshu/claude-ship-houjin"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "開発者が手元で/shipを使うと、組織に課金されますか？", "acceptedAnswer": {"@type": "Answer", "text": "/shipを使った分は、その開発者の通常のClaude Codeの使用量に入ります。組織の使用量のクレジットから引かれるのは、組織の設定で動かすCode Review、PR Steward、Claude Approvalsの分です。"}}, {"@type": "Question", "name": "使用量のクレジットをオフにすれば、費用は止まりますか？", "acceptedAnswer": {"@type": "Answer", "text": "止まりません。組織設定の「Usage」で使用量のクレジットをオフにしても、オンのエージェントは動き続け、課金も続きます。止めるには、Approvals、PR Steward、Code Reviewの順にオフにします。"}}, {"@type": "Question", "name": "GitHub以外のリポジトリでも使えますか？", "acceptedAnswer": {"@type": "Answer", "text": "組織で動かす3つのエージェントは、GitHubのリポジトリ向けです。Claude ApprovalsはGitHub Enterprise Cloudを含むgithub.comで動きます。GitHub Enterprise Serverで使うときの設定は、公式の別の文書「GitHub Enterprise Server」にあります。開発者の手元の/shipと/stewardは、GitLab・Bitbucket・Azure DevOpsでもブランチを最大7日見守れますが、PRは開きません。"}}, {"@type": "Question", "name": "Enterpriseのプロモーションのクレジットはどう受け取りますか？", "acceptedAnswer": {"@type": "Answer", "text": "対象のEnterpriseの組織は、1万ドル以上のClaude Shipのクレジットを受け取れます。受け取ってから30日以内に使い、受け取りの期限は2027年1月15日です。対象の条件は公式の規約で確かめます。"}}, {"@type": "Question", "name": "すでにCode Reviewを使っています。何が変わりますか？", "acceptedAnswer": {"@type": "Answer", "text": "設定の場所が組織設定の「Claude Ship」に移りました。また、ルールのファイル「.claude/approvals.yml」を既定のブランチに入れると、ルールで「claude/code_review」を名指ししていないファイルでは、自動のレビューが通常止まります。"}}]}</script>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1264057945446029');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1264057945446029&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<link rel="stylesheet" href="/assets/site/site.css">
+<link rel="stylesheet" href="/media/audience-filter.css?v=20261006-media-only">
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header class="hd hd--solid">
+  <a class="logo" href="/" aria-label="TechWorker ホーム">Tech<i>Worker</i></a>
+  <nav id="hd-nav" aria-label="主な行き先">
+    <a href="/services">事業・サービス</a>
+    <a href="/#concept">考え方</a>
+    <a href="/agent-cases/">事例</a>
+    <a href="/news">ニュース</a>
+    <a href="/company">会社情報</a>
+    <a href="/contact">お問い合わせ</a>
+  </nav>
+  <button class="menu" type="button" aria-label="メニューを開く" aria-controls="hd-nav" aria-expanded="false"></button>
+</header>
+<div class="subnav">
+  <div class="wrap subnav__in">
+    <a class="subnav__name" href="../claude/">Claude ラボ</a>
+    <nav aria-label="メディアの行き先"><a href="https://kenshu.techworker.co.jp/">生成AI研修について</a><a href="https://kenshu.techworker.co.jp/contact/" class="subnav__cta">研修の相談</a></nav>
+  </div>
+</div>
+
+<header class="art-head">
+  <nav class="crumb" aria-label="パンくず"><a href="../../index.html">ホーム</a><span class="sep">/</span><a href="../index.html">メディア</a><span class="sep">/</span><a href="../claude/">Claude ラボ</a><span class="sep">/</span>Claude Shipとは</nav>
+  <img class="art-hero-cover" src="covers/claude-ship-houjin.png" alt="Claude Shipとは｜PRのレビュー・修正・承認をAIに任せる前に会社で決める設定と費用" width="1200" height="630" fetchpriority="high" decoding="async">
+  <div class="kicker">Claude Codeの活用</div>
+  <h1>Claude Shipとは｜PRのレビュー・修正・承認をAIに任せる前に会社で決める設定と費用</h1>
+  <p class="dek">Claude ShipはGitHubのプルリクエストのレビュー・修正・承認の判定をClaudeに任せる仕組みで、2026年11月23日にTeamとEnterpriseで始まりました。料金はトークンの使用量で決まります。入れる前に決める上限・設定の順・人を通すルールを、公式の文書で整理します。</p>
+  <div class="a-meta">
+    <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async"><span class="who">古野光太朗</span><span class="dot">·</span><span>2026.11.27</span><span class="dot">·</span><span>読了 10分</span>
+  </div>
+<p class="article-audience"><span class="article-audience-label">主な対象読者</span><a href="/media/claude/?audience=it#articles">情シス・AI導入担当</a></p>
+</header>
+
+
+<div class="art-layout">
+  <nav class="art-toc" aria-label="目次"><div class="art-toc-inner"><div class="toc-h">目次</div>
+      <a href="#toha">Claude Shipとは何ですか？</a>
+      <a href="#ryokin">料金はどう決まりますか？</a>
+      <a href="#mitsumori">月の費用はどう見積もりますか？</a>
+      <a href="#junban">会社で使い始めるには、どの順で設定しますか？</a>
+      <a href="#hitonashi">人が見ないままマージされるのは、どんなときですか？</a>
+      <a href="#kengen">PR StewardはGitHubで何ができますか？</a>
+      <a href="#tomeru">使えない組織と、止め方は？</a>
+      <a href="#kimeru">今週決めることは何ですか？</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#next">次の一歩は何から始めればよいですか？</a>
+      <a href="#sources">出典と確認範囲</a>
+    </div></nav>
+
+  <article class="art-body">
+
+<p>Anthropicは2026年11月23日、GitHubのプルリクエスト（PR）をClaudeがレビューし、直し、承認の判定まで進める「Claude Ship」を出しました。対象はTeamとEnterpriseのプランです。</p>
+<ul>
+<li><strong>中身：</strong>Code Review（一般提供）、PR Steward（ベータ）、Claude Approvals（ベータ）の3つのエージェントです。</li>
+<li><strong>費用：</strong>トークンの使用量で決まり、プランに含まれる使用量とは別に請求されます。PR Stewardは、管理者が設定するまで専用の上限がありません。</li>
+<li><strong>注意：</strong>GitHubの設定によっては、作成者のほかに誰も見ないままマージされることがあります。</li>
+</ul>
+<p>Claude Code Docsの設定・費用・権限の文書を2026年11月27日に読みました。入れる前に情シスと開発部門の責任者が決めることをまとめます。</p>
+
+<h2 id="toha">Claude Shipとは何ですか？</h2>
+<p class="answer">GitHubのPRをレビュー・直し・承認の判定まで進める3つのエージェントの組み合わせです。TeamとEnterpriseの組織で、GitHubのリポジトリに使えます。</p>
+<figure class="fig-inline"><a href="figs/claude-ship-houjin-toha.png" target="_blank" rel="noopener"><picture><source media="(max-width:640px)" srcset="figs/claude-ship-houjin-toha-m.png?v=1" width="960" height="1779"><img src="figs/claude-ship-houjin-toha.png" alt="Claude Shipの3つのエージェント。Code Reviewは問題を見つけ、PR Stewardは直しをpushし、Claude Approvalsはチームが書いたルールで誰の承認が要るかを示す。" width="1920" height="1080" loading="lazy" decoding="async"></picture></a><figcaption><span class="source-label">TechWorker作成：</span>Claude Code Docsの記述を図にしました。画像を押すと拡大できます。</figcaption></figure>
+<p>公式の文書はClaude Shipを次のように説明しています。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“Claude Ship is a set of agents that help get your team’s GitHub pull requests ready to merge”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>Claude ShipはチームのGitHubのプルリクエストをマージできる状態に近づけるエージェントの組み合わせです。</p><footer>出典：<a href="https://code.claude.com/docs/en/claude-ship" target="_blank" rel="noopener noreferrer">Claude Code Docs「Claude Ship」</a>（2026年11月27日確認）</footer></blockquote>
+<p>3つのエージェントの役割と始まり方を表にしました。</p>
+<div class="tbl-wrap">
+  <table style="min-width:680px">
+    <tr><th>エージェント</th><th>役割</th><th>提供の段階</th><th>始まり方</th></tr>
+    <tr><td>Code Review</td><td>変更をまわりのコードと合わせて読み、論理の誤りや脆弱性を行ごとにコメントする</td><td>一般提供</td><td>オーナーがリポジトリごとにオンにする</td></tr>
+    <tr><td>PR Steward</td><td>失敗したチェック、マージの衝突、レビューの指摘に対して、直しをpushする。承認とマージはしない設計</td><td>ベータ</td><td>オーナーがリポジトリごとにオンにする</td></tr>
+    <tr><td>Claude Approvals</td><td>チームが書いたルールのファイルで、誰の承認が残っているかを示すチェック</td><td>ベータ</td><td>ルールのファイルが既定のブランチに入ると始まる</td></tr>
+  </table>
+</div>
+<p class="fig-cap">出典：Claude Code Docs「Claude Ship」「Claude Approvals」（2026年11月27日確認）</p>
+<p>開発者は手元のClaude Code（v2.1.330以降のCLI）で「/ship」と打てば、自分のPRで近い流れを試せます。PRを開き、レビューを受け、指摘と失敗したチェックを直すところまで進めます。GitHubのリポジトリでは、GitHub CLI 2.63以降も要ります。マージは開発者が自分でします。何をマージできるかは、開発者の権限とブランチのルールで決まります。</p>
+<p>公式は、Claude ShipはAIを使うため、不具合や脆弱性を見落とすことがあると書いています。人のレビューを置き換える物として扱わず、どこに人を残すかを先に決めます。</p>
+
+<h2 id="ryokin">料金はどう決まりますか？</h2>
+<p class="answer">1回あたりの固定料金は無く、トークンの使用量で決まります。費用はプランに含まれる使用量とは別に、組織の使用量のクレジットから引かれます。</p>
+<p>エージェントごとに、何に課金されるかと上限の置き場所が違います。</p>
+<div class="tbl-wrap">
+  <table style="min-width:680px">
+    <tr><th>エージェント</th><th>課金される物</th><th>上限の置き場所</th></tr>
+    <tr><td>Code Review</td><td>レビューのトークン。レビューの水準（Quick・Standard・Deep）、変更の大きさ、まわりのコードの複雑さで変わる</td><td>組織設定の「Usage」にあるCode Reviewの月の上限</td></tr>
+    <tr><td>PR Steward</td><td>直しの作業のトークン</td><td>「Usage」の月の上限と、PR1件ごとの上限。設定するまで専用の上限は無い</td></tr>
+    <tr><td>Claude Approvals</td><td>基本料金は無い。ルールが呼ぶ分類器（classifier）と、ルールが求めるCode Reviewに課金。observe modeでも課金される</td><td>分類器の月の上限と、Code Reviewの上限</td></tr>
+    <tr><td>/ship（開発者の手元）</td><td>通常のClaude Codeの使用量</td><td>各人のプランの使用量</td></tr>
+  </table>
+</div>
+<p class="fig-cap">出典：Anthropic「Introducing Claude Ship」（2026年11月23日）、Claude Code Docs「Claude Ship」「Code Review costs and usage」「Set up PR Steward」「Set up Claude Approvals」（2026年11月27日確認）</p>
+<p>請求は組織あてで、レビューを頼んだ開発者あてではありません。ほかのClaude Codeの機能をAmazon Bedrock、Google CloudのAgent Platform、Microsoft Foundry経由で使っている組織でも、Code Reviewの費用はAnthropicの請求書に載ります。</p>
+<p>見落としやすいのは、使用量のクレジットをオフにしても止まらない点です。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“If you turn off usage credits in Organization settings > Usage, an agent that’s on keeps running and billing your organization.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>組織設定の「Usage」で使用量のクレジットをオフにしても、オンになっているエージェントは動き続け、組織への課金も続きます。</p><footer>出典：<a href="https://code.claude.com/docs/en/claude-ship" target="_blank" rel="noopener noreferrer">Claude Code Docs「Claude Ship」</a>（2026年11月27日確認）</footer></blockquote>
+<p>対象のEnterpriseの組織は、1万ドル以上のClaude Shipのクレジットを受け取れます。受け取ってから30日以内に使い、受け取りの期限は2027年1月15日です。条件は公式の規約に書かれています。</p>
+<p>Claude Shipを使うには、TeamかEnterpriseの席が要ります。日本から開いた料金ページの表示を、2026年11月27日に確かめました。ページの下に「Prices include 10% JCT」（消費税10%込み）とあります。</p>
+<div class="tbl-wrap">
+  <table style="min-width:600px">
+    <tr><th>プラン</th><th>年払い（1席の月額）</th><th>月払い（1席の月額）</th><th>条件</th></tr>
+    <tr><td>Team スタンダード</td><td>22ドル</td><td>27.50ドル</td><td>2〜150名</td></tr>
+    <tr><td>Team プレミアム</td><td>110ドル</td><td>137.50ドル</td><td>スタンダードの5倍の使用量</td></tr>
+    <tr><td>Enterprise</td><td colspan="2">1席 月20ドル（年払い）＋APIの単価での使用量</td><td>20席から</td></tr>
+  </table>
+</div>
+<p class="fig-cap">出典：Claude「料金」のTeam &amp; Enterpriseの表示（2026年11月27日確認）。Teamの年払いを10%の消費税で割り戻すと、税抜はスタンダードが20ドル、プレミアムが100ドルです。Enterpriseの20ドルに消費税が含まれるかは、ページから読み取れません</p>
+<p>支払い方法（カードか請求書か）と消費税の扱いは、<a href="claude-code-cost.html#pay">Claudeの法人契約と料金</a>の支払いの節にまとめています。席の数と1人当たりの利用量から年額を出すExcelは、下の枠から受け取れます。</p>
+<div class="tw-lead" data-offer="claude-cost-sheet" data-campaign="claude-ship-houjin" data-pos="mid"></div>
+
+<h2 id="mitsumori">月の費用はどう見積もりますか？</h2>
+<p class="answer">いくつかのリポジトリでCode Reviewを数件動かし、管理画面に出る1回の平均の費用に、月のPRの数を掛けます。pushのたびにレビューするなら、1件のpushの数も掛けます。</p>
+<figure class="fig-inline"><a href="figs/claude-ship-houjin-hiyou.png" target="_blank" rel="noopener"><picture><source media="(max-width:640px)" srcset="figs/claude-ship-houjin-hiyou-m.png?v=1" width="960" height="2108"><img src="figs/claude-ship-houjin-hiyou.png" alt="Code Reviewの月の費用の出し方。管理画面のCost欄で読む1回の平均に、そのリポジトリで1か月に開くPRの数と、1件のpushの数を掛ける。" width="1920" height="1080" loading="lazy" decoding="async"></picture></a><figcaption><span class="source-label">TechWorker作成：</span>Claude Code Docsの見積もりの手順を図にしました。画像を押すと拡大できます。</figcaption></figure>
+<p>公式の文書は広く入れる前に小さく試して見積もるよう勧めています。手順は次のとおりです。</p>
+<ol>
+<li>試す期間の月の上限を設定します。</li>
+<li>代表的なリポジトリをいくつか選び、「Review runs」を「Once after PR creation」（PR作成時に1回）か「Manual」（手動）にして、Code Reviewをオンにします。</li>
+<li>数件のレビューが動いたら、組織設定の「Claude Ship」でリポジトリの行の「Edit」を押し、「Cost」の欄で1回の平均を読みます。</li>
+<li>平均に、そのリポジトリで1か月に開くPRの数を掛けます。「After every push」にするなら、1件のpushの数もさらに掛けます。</li>
+</ol>
+<p>自社の値を入れる表の例です。空欄は自社の値で埋めます。</p>
+<div class="tbl-wrap">
+  <table style="min-width:560px">
+    <tr><th>項目</th><th>自社の値</th><th>どこで調べるか</th></tr>
+    <tr><td>1回の平均の費用</td><td>　　　ドル</td><td>Claude Shipの画面のCostの欄</td></tr>
+    <tr><td>1か月に開くPRの数</td><td>　　　件</td><td>GitHubのPRの一覧</td></tr>
+    <tr><td>1件のpushの数</td><td>　　　回</td><td>「After every push」のときだけ。それ以外は1</td></tr>
+    <tr><td>月の見込み</td><td>　　　ドル</td><td>上の3つを掛ける</td></tr>
+  </table>
+</div>
+<p>新しく足したリポジトリは「After every push」で始まり、いちばん多くレビューが動きます。下書きのPRと、フォークからのPRは、自動のレビューの対象外です。分析の画面のリポジトリ別の内訳の費用は定価での見積もりで、割引やクレジットを引く前の額です。請求の額はAnthropicの請求書で確かめます。Enterpriseで部署ごとに予算を分ける設定は、<a href="claude-enterprise-yosan-kanri.html">Claude Enterpriseの予算管理</a>にまとめています。</p>
+
+<h2 id="junban">会社で使い始めるには、どの順で設定しますか？</h2>
+<p class="answer">オーナーが組織設定の「Claude Ship」で、1つのリポジトリにCode Review、PR Steward、Claude Approvalsの順に1つずつオンにします。Approvalsはobserve mode（判定を見せるだけの状態）で始めます。</p>
+<figure class="fig-inline"><a href="figs/claude-ship-houjin-junban.png" target="_blank" rel="noopener"><picture><source media="(max-width:640px)" srcset="figs/claude-ship-houjin-junban-m.png?v=1" width="960" height="1971"><img src="figs/claude-ship-houjin-junban.png" alt="Claude Shipを入れる順。月の上限を決め、Code Review、PR Stewardの順にオンにし、Approvalsはobserveで始め、判定が人と合ってから必須のチェックにする。" width="1920" height="1080" loading="lazy" decoding="async"></picture></a><figcaption><span class="source-label">TechWorker作成：</span>Claude Code Docsの設定の文書を図にしました。画像を押すと拡大できます。</figcaption></figure>
+<p>始める前に、次の権限を持つ人をそろえます。</p>
+<ul>
+<li><strong>Claudeの組織のオーナー：</strong>管理画面の手順のすべてに要ります。</li>
+<li><strong>GitHubの組織のオーナー：</strong>Claude GitHub Appを入れて、Claudeの組織につなぎます。</li>
+<li><strong>リポジトリの管理者：</strong>PR Steward用のブランチのルールと、Approvalsの必須のチェックを足します。非公開のリポジトリでは、GitHubの有料のプランが要ります。</li>
+<li><strong>書き込み権限のある2人：</strong>Approvalsのルールを強制にする前に要ります。公式のルールの例は、.claude/の中の変更に2人を求めるためです。</li>
+</ul>
+<p>設定は次の順に進めます。画面の名前は英語の表示のまま書きます。</p>
+<ol>
+<li><strong>Code Review：</strong>「Review」の下のスイッチをオンにし、GitHubをつなぎ、リポジトリを選んで「Turn on」を押します。テストのPRを開き、数分で「Claude Code Review」のチェックが出るかを確かめます。</li>
+<li><strong>PR Steward：</strong>先に既定のブランチへ、承認1件と、新しいpushで古い承認を取り消すルールを足します。「Runs for」で「Listed users only」を選べば、数人で試せます。月の上限を入れ、「Steward」を「Manual (@claude steward)」にして始めます。</li>
+<li><strong>Claude Approvals：</strong>ルールのファイル「.claude/approvals.yml」を、ほかの変更と分けたPRで足します。次のPRで、題が「(observe mode)」で始まるチェックが出るかを確かめます。</li>
+<li><strong>強制に切り替える：</strong>observe modeの判定が人の判断と合うようになったら、「mode: observe」の行を消してマージします。5分後に、開いているPRで「@claude approvals rerun」とコメントし、GitHubで「Claude Approvals」を必須のチェックにします。</li>
+</ol>
+<p>PR Stewardは、直しの中身が人のレビューと合うようになってから「On」にします。オンにできるのは最大256のリポジトリです。</p>
+
+<h2 id="hitonashi">人が見ないままマージされるのは、どんなときですか？</h2>
+<p class="answer">公式は代表的な場合として4つを挙げています。チェックを必須にしていない、ルールが作成者のほかに誰も求めていない、GitHubがClaudeの承認を1件と数える、Claudeがレビューなしで承認する、の4つです。ほかの場合は別の文書に書かれています。</p>
+<blockquote class="source-quote"><p class="source-original"><span class="source-label">原文</span><span lang="en">“A pull request can merge when nobody but its author has looked at it.”</span></p><p class="source-translation"><span class="source-label">日本語訳</span>プルリクエストは作成者のほかに誰も見ていないままマージされることがあります。</p><footer>出典：<a href="https://code.claude.com/docs/en/approvals" target="_blank" rel="noopener noreferrer">Claude Code Docs「Claude Approvals」</a>（2026年11月27日確認）</footer></blockquote>
+<div class="tbl-wrap">
+  <table style="min-width:680px">
+    <tr><th>場合</th><th>起きること</th><th>防ぎ方</th></tr>
+    <tr><td>チェックが必須でない</td><td>Claude Approvalsのチェックは、GitHubで必須にした所でだけマージを止める。observe modeでは通常止めない</td><td>強制に切り替えた後、ブランチのルールで必須のチェックにする</td></tr>
+    <tr><td>ルールが誰も求めない</td><td>作成者も1人に数える。「seats: 1」なら、ほかの人は見なくてよい。「seats: 0」なら、ボットが書いたPRは誰も見ずに入りうる</td><td>人を必ず通すファイルには、作成者でない人を求めるルールを置く</td></tr>
+    <tr><td>GitHubがClaudeの承認を数える</td><td>ブランチのルールが承認1件を求める所では、Claudeの承認がその1件になりうる</td><td>GitHubで求める承認の数を見直す</td></tr>
+    <tr><td>Claudeがレビューなしで承認する</td><td>「claude: approves」だけのルールは、Code Reviewを動かさない</td><td>Code Reviewが通ったときだけClaudeが承認するルールにする</td></tr>
+  </table>
+</div>
+<p class="fig-cap">出典：Claude Code Docs「Claude Approvals」「Claude Approvals and your GitHub rules」（2026年11月27日確認）</p>
+<p>GitHubの自動マージやマージのキューを使っている場合も、人の承認を求めないルールでは、誰も操作しないまま変更が入ることがあります。</p>
+<p>別の文書「Claude Approvals and your GitHub rules」は、作成者のほかに誰も見ないまま入る場合を、ほかにも挙げています。</p>
+<ul>
+<li>ボットを通す「from」の一覧を書いたルール</li>
+<li>スクリプトやエージェントが動かすアカウント（machine user）が、人として数えられるとき</li>
+<li>pushのあとも承認を残す「reuse」</li>
+<li>どのルールにも当たらないファイル。GitHubは中立の結果を通ったものとして数える</li>
+<li>分類器の答えを条件に使うルール。その答えはPRの文で誘導できる</li>
+<li>既定のブランチへの直接のpush。チェックが付かないため、GitHubでPRを必須にする</li>
+</ul>
+<p>ルールのファイルはリポジトリの中のファイルです。既定のブランチにマージできる人なら変えられ、Approvalsをオンにもできます。ルールのファイルは保護されたファイルで、変えるPRには書き込み権限のある人（作成者でもよい）が要ることがあります。machine userも人として数えます。Claudeの組織のオーナーは組織全体でApprovalsをオフにできます。</p>
+<p>必須のチェックにするときは、チェックの発行元をClaudeのアプリにします。「any source」のままだと、別の所から来た同じ名前のチェックもGitHubが受け付けます。APIで設定するときのアプリのIDは1236702です。</p>
+
+<h2 id="kengen">PR StewardはGitHubで何ができますか？</h2>
+<p class="answer">Claude GitHub Appとして、PRのリポジトリの中身・PR・issueを読み書きします。Anthropicがホストする環境では、承認やブランチの保護の変更をAnthropicの側で断り、マージやforce pushはGitHubのブランチのルールに任せます。</p>
+<div class="tbl-wrap">
+  <table style="min-width:640px">
+    <tr><th>区分</th><th>中身</th></tr>
+    <tr><td>権限</td><td>中身（contents）・PR・issueの読み書き。Appの入れ方によっては、checksとstatusesの読み取り、Actionsの書き込み。github.comでは、ワークフローのファイルを変えられる権限も付きうる</td></tr>
+    <tr><td>動く場所</td><td>Anthropicがホストするクラウドのセッション（この表はその場合）</td></tr>
+    <tr><td>Anthropicが断る操作</td><td>PRの承認、ブランチの保護・ルールセット・statusの変更、チェックの書き込み、ブランチの削除、タグのpush</td></tr>
+    <tr><td>GitHubのルールに任せる操作</td><td>マージ、自動マージのオン、force push、PR以外のブランチへのpush、レビューの取り消し</td></tr>
+  </table>
+</div>
+<p class="fig-cap">出典：Claude Code Docs「What PR Steward can access」（2026年11月27日確認）</p>
+<p>マージ、自動マージ、force pushのコマンドには、2つの点検が入ります。公式によると、書き方を変えたコマンドは2つの点検のどちらでも止まらないことがあります。GitHubの側で止めるには、ブランチのルールでレビューを必須にし、Claude GitHub Appをルールセットのbypassの一覧に入れないようにします。</p>
+<p>自社でホストする環境では、セッションが読めるGitHubの認証情報で承認されると、Anthropicの側では断れません。GitHubはその承認を、求める承認の数に入れることがあります。</p>
+
+<h2 id="tomeru">使えない組織と、止め方は？</h2>
+<p class="answer">Zero Data Retention、HIPAAの構成、顧客が管理する暗号鍵（CMEK）を使う組織では使えません。止めるときは、Approvals、PR Steward、Code Reviewの順にオフにします。</p>
+<ul>
+<li><strong>Approvalsの追加の制限：</strong>FERPAやAccess Transparencyの設定がある組織では、Approvalsを始められません。</li>
+<li><strong>止める順の理由：</strong>ルールのファイルがあると、Code Reviewがオフでも、課金されるレビューをルールが始めることがあるためです。</li>
+<li><strong>GitHub Appの扱い：</strong>Claude GitHub Appの停止や削除は、Approvalsをオフにした後にします。先にすると、必須のチェックがマージを止めることがあります。開いているPRに残ったClaudeの承認を、GitHubが数え続けることもあります。</li>
+<li><strong>古い承認：</strong>GitHubで承認を必須にしているなら、新しいcommitが来たら古い承認を取り消す設定をオンにします。オフのままだと、新しいpushのあともClaudeの承認が数えられることがあります。</li>
+</ul>
+<p>この手順で止めても、開発者の「/ship」と「/steward」のコマンドは使えるままです。止め方は公式の文書に別に書かれています。</p>
+
+<h2 id="kimeru">今週決めることは何ですか？</h2>
+<p class="answer">試すリポジトリ、月の上限の額、人を必ず通すファイル、ブランチの保護、強制に切り替える基準の5つです。公式の設定の文書をもとにしたTechWorkerの提案です。</p>
+<figure class="fig-inline"><a href="figs/claude-ship-houjin-kimeru.png" target="_blank" rel="noopener"><picture><source media="(max-width:640px)" srcset="figs/claude-ship-houjin-kimeru-m.png?v=1" width="960" height="1916"><img src="figs/claude-ship-houjin-kimeru.png" alt="情シスと開発責任者が今週決める5つ。試すリポジトリ、月の上限の額、人を必ず通すファイル、ブランチの保護、強制に移す基準。" width="1920" height="1080" loading="lazy" decoding="async"></picture></a><figcaption><span class="source-label">TechWorker作成：</span>TechWorkerの提案を図にしました。画像を押すと拡大できます。</figcaption></figure>
+<ol>
+<li><strong>試すリポジトリ：</strong>1つから始めます。PRが毎週開き、戻しやすいリポジトリが向きます。</li>
+<li><strong>月の上限の額：</strong>組織の使用量のクレジット、Code Review、PR Stewardの3つの欄に入れます。Approvalsで分類器を使うなら、その欄にも入れます。</li>
+<li><strong>人を必ず通すファイル：</strong>Claudeの判定にかかわらず人の承認を求めるファイルを書き出します。たとえば.claude/の中、認証や課金を扱うコード、CIの設定です。</li>
+<li><strong>ブランチの保護：</strong>承認1件、古い承認の取り消し、bypassの一覧からClaudeのアプリを外す、必須のチェックの発行元の4つを確かめます。</li>
+<li><strong>強制に切り替える基準：</strong>observe modeの判定と人の判断が何件続けて合えば切り替えるかを、先に決めます。</li>
+</ol>
+
+<h2 id="faq">よくある質問</h2>
+<div class="faq"><div class="q">開発者が手元で/shipを使うと、組織に課金されますか？</div><p class="a">/shipを使った分は、その開発者の通常のClaude Codeの使用量に入ります。組織の使用量のクレジットから引かれるのは、組織の設定で動かすCode Review、PR Steward、Claude Approvalsの分です。</p></div>
+<div class="faq"><div class="q">使用量のクレジットをオフにすれば、費用は止まりますか？</div><p class="a">止まりません。組織設定の「Usage」で使用量のクレジットをオフにしても、オンのエージェントは動き続け、課金も続きます。止めるには、Approvals、PR Steward、Code Reviewの順にオフにします。</p></div>
+<div class="faq"><div class="q">GitHub以外のリポジトリでも使えますか？</div><p class="a">組織で動かす3つのエージェントは、GitHubのリポジトリ向けです。Claude ApprovalsはGitHub Enterprise Cloudを含むgithub.comで動きます。GitHub Enterprise Serverで使うときの設定は、公式の別の文書「GitHub Enterprise Server」にあります。開発者の手元の/shipと/stewardは、GitLab・Bitbucket・Azure DevOpsでもブランチを最大7日見守れますが、PRは開きません。</p></div>
+<div class="faq"><div class="q">Enterpriseのプロモーションのクレジットはどう受け取りますか？</div><p class="a">対象のEnterpriseの組織は、1万ドル以上のClaude Shipのクレジットを受け取れます。受け取ってから30日以内に使い、受け取りの期限は2027年1月15日です。対象の条件は公式の規約で確かめます。</p></div>
+<div class="faq"><div class="q">すでにCode Reviewを使っています。何が変わりますか？</div><p class="a">設定の場所が組織設定の「Claude Ship」に移りました。また、ルールのファイル「.claude/approvals.yml」を既定のブランチに入れると、ルールで「claude/code_review」を名指ししていないファイルでは、自動のレビューが通常止まります。</p></div>
+
+<h2 id="next">次の一歩は何から始めればよいですか？</h2>
+<p class="answer">開発者の数人に手元の/shipを試してもらい、同時に1つのリポジトリでCode Reviewを手動で動かして、1回の平均の費用を読みます。</p>
+<p>/shipは各人のClaude Codeの使用量で動くため、組織の設定を変えずに試せます。組織で動かすCode Reviewは、上限を入れてから「Manual」で始めます。Claude Codeを社内に広げるときのルールと設定の配り方は、<a href="claude-code-shanai-tenkai.html">Claude Codeの社内展開</a>にまとめています。</p>
+<p>席の料金と使用量から年額を出すExcelは、下の枠から受け取れます。</p>
+<div class="tw-lead" data-offer="claude-cost-sheet" data-campaign="claude-ship-houjin" data-pos="end"></div>
+
+<h2 id="sources">出典と確認範囲</h2>
+<p class="source-note">確認日：2026年11月27日。TechWorkerの組織では、Claude Shipの3つのエージェントをまだ動かしていません。1回のレビューの実際の費用と、日本語の画面での表示名は未確認です。PR StewardとClaude Approvalsはベータのため、設定の名前や制限は変わることがあります。</p>
+<ol class="source-list"><li><a href="https://claude.com/resources/articles/introducing-claude-ship" target="_blank" rel="noopener noreferrer">Anthropic「Introducing Claude Ship」（2026年11月23日、2026年11月27日確認）</a></li><li><a href="https://code.claude.com/docs/en/claude-ship" target="_blank" rel="noopener noreferrer">Claude Code Docs「Claude Ship」（2026年11月27日確認）</a></li><li><a href="https://code.claude.com/docs/en/code-review-setup" target="_blank" rel="noopener noreferrer">Claude Code Docs「Set up Code Review」（2026年11月27日確認）</a></li><li><a href="https://code.claude.com/docs/en/code-review-costs" target="_blank" rel="noopener noreferrer">Claude Code Docs「Code Review costs and usage」（2026年11月27日確認）</a></li><li><a href="https://code.claude.com/docs/en/pr-steward-setup" target="_blank" rel="noopener noreferrer">Claude Code Docs「Set up PR Steward」（2026年11月27日確認）</a></li><li><a href="https://code.claude.com/docs/en/pr-steward-security" target="_blank" rel="noopener noreferrer">Claude Code Docs「What PR Steward can access」（2026年11月27日確認）</a></li><li><a href="https://code.claude.com/docs/en/approvals-setup" target="_blank" rel="noopener noreferrer">Claude Code Docs「Set up Claude Approvals」（2026年11月27日確認）</a></li><li><a href="https://code.claude.com/docs/en/approvals" target="_blank" rel="noopener noreferrer">Claude Code Docs「Claude Approvals」（2026年11月27日確認）</a></li><li><a href="https://code.claude.com/docs/en/approvals-github-rules" target="_blank" rel="noopener noreferrer">Claude Code Docs「Claude Approvals and your GitHub rules」（2026年11月27日確認）</a></li><li><a href="https://claude.com/pricing" target="_blank" rel="noopener noreferrer">Claude「料金」（日本からの表示、2026年11月27日確認）</a></li></ol>
+
+
+</article>
+</div>
+
+
+<div class="author"><div class="inner">
+  <img class="av" src="../../assets/author-furuno.jpg" alt="古野光太朗" decoding="async">
+  <div>
+    <div class="who">古野光太朗 <span>／ 株式会社TechWorker 代表取締役 CEO兼CTO</span></div>
+    <p>上場企業を含む50社超・2,500名の生成AI導入・活用を支援。「AIはエンジンだ。コンテキストは燃料だ。」を掲げ、企業の業務文脈をAIが扱える形に整える「コンテキスト整理」を専門とする。</p>
+  </div>
+</div></div>
+
+<div class="art-cta"><div class="inner">
+  <div>
+    <h3>Claude Codeを、開発部門の実際の仕事1本で使えるようにします。</h3>
+    <p>受講者の実際の業務1本を、Claude Codeに任せる手順と確かめる手順まで研修当日に作ります。30日後に、使った人の割合と1件にかかる時間を測って報告します。教材は公式の変更に合わせて毎週見直します。検討段階のご相談だけでも歓迎です。</p>
+  </div>
+  <a href="https://kenshu.techworker.co.jp/?utm_source=techworker_media&amp;utm_medium=article&amp;utm_campaign=claude-ship-houjin&amp;utm_content=end" class="btn">研修内容・費用を相談する <i>→</i></a>
+</div></div>
+
+<p class="rel-svc" style="max-width:var(--measure);margin:30px auto 0;font-size:14px;color:var(--slate);line-height:1.9;">関連サービス：<a href="https://kenshu.techworker.co.jp/" style="color:var(--electric);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">生成AI法人研修（主要ツール全対応）</a>　／　<a href="https://kenshu.techworker.co.jp/contact/" style="color:var(--electric);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(164,121,72,.3);">無料相談</a></p>
+<div class="back-list"><a href="../claude/">← Claude ラボの記事一覧に戻る</a></div>
+
+<section class="related"><div class="container">
+  <div class="rl-h">Related</div>
+  <div class="related-grid">
+    <a href="claude-code-shanai-tenkai.html" class="related-card"><span class="rc-cat">Claude Codeの活用</span><div class="rc-title">Claude Codeの社内展開｜社内データの扱い・設定配布・ルール雛形</div></a>
+    <a href="claude-enterprise-yosan-kanri.html" class="related-card"><span class="rc-cat">料金と比較</span><div class="rc-title">Claude Enterpriseの予算管理｜部署ごとの共有予算・コストコード・利用レポートの設定</div></a>
+  </div>
+</div></section>
+
+<p style="max-width:var(--measure);margin:40px auto 0;padding:0 20px;font-size:12px;color:var(--slate);line-height:1.9;">本記事は株式会社TechWorkerが独自に作成したものであり、Anthropic PBCおよびGitHub, Inc.との提携・後援・承認を受けたものではありません。Anthropic、ClaudeはAnthropic PBCの商標です。GitHubはGitHub, Inc.の商標です。</p>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__in">
+      <div>
+        <p class="ft__name">株式会社TechWorker</p>
+        <p class="ft__addr">〒169-0051 東京都新宿区西早稲田一丁目22番3号<br>早稲田アントレプレナーシップセンター</p>
+      </div>
+      <nav aria-label="フッターの行き先">
+        <a href="/services">事業・サービス</a>
+        <a href="/company">会社情報</a>
+        <a href="/news">ニュース</a>
+        <a href="/#concept">考え方</a>
+        <a href="/agent-cases/">事例</a>
+        <a href="/contact">お問い合わせ</a>
+        <a href="/privacy">プライバシーポリシー</a>
+      </nav>
+    </div>
+    <div class="nv-badge"><a href="/news/013"><img src="/assets/badges/nvidia-inception-program.svg" alt="NVIDIA Inception Program" width="93" height="40" loading="lazy"></a><p>NVIDIA、NVIDIA ロゴ、NVIDIA Inception は、米国およびその他の国における NVIDIA Corporation の商標および/または登録商標です。</p></div>
+    <small>© TechWorker Inc.</small>
+  </div>
+</footer>
+
+<script>
+var pb=document.getElementById('progress');
+addEventListener('scroll',function(){var h=document.documentElement;var d=h.scrollHeight-h.clientHeight;pb.style.width=(d>0?(h.scrollTop/d*100):0)+'%';},{passive:true});
+(function(){
+  var links={};document.querySelectorAll('.art-toc a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('active');if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-92px 0px -68% 0px'});
+  document.querySelectorAll('.art-body h2[id]').forEach(function(s){io.observe(s);});
+})();
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');rio.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+</script>
+<script src="/media/article-tracker.js?v=20261120i" defer></script>
+<script>
+// スマホの行き先：右上の釦で開け閉めする。行き先を押したら閉じる。スクロールしたら頭に暗い面を敷く
+(() => {
+  const hd = document.querySelector('.hd'), btn = hd.querySelector('.menu');
+  const set = open => { hd.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く'); };
+  btn.addEventListener('click', () => set(!hd.classList.contains('is-open')));
+  hd.querySelector('nav').addEventListener('click', e => { if (e.target.closest('a')) set(false); });
+  const onScroll = () => hd.classList.toggle('is-scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+})();
+</script>
+<script src="../lead.js?v=20261120f" defer></script>
+</body>
+</html>
